@@ -1,22 +1,246 @@
-# Owen Graphite
+# Owen Graphite Document
 
-A minimal graphite dark theme for [Obsidian](https://obsidian.md/).
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
+[![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
+[![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-16%20options-0d9488?style=flat-square)](#style-settings-항목)
 
-## Features
+> **Obsidian 보고서 지향 라이트/다크 테마.**
+> 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
+> **Live Preview ↔ Reading View 시각 동기**, **한국어 보고서 작성 최적화**.
 
-- Dark graphite color palette
-- Colorful headings for easy document navigation
-- Syntax-highlighted code blocks
-- Styled blockquotes, tables, tags, and callouts
+![Light Mode](screenshots/light.png)
 
-## Installation
+<details>
+<summary>📷 Dark Mode / Report Mode 스크린샷</summary>
 
-### Manual
+![Dark Mode](screenshots/dark.png)
+![Report Mode (auto-numbering + serif body + cover page)](screenshots/report.png)
 
-1. Download `manifest.json` and `theme.css` from this repository.
-2. Copy them to your Obsidian vault's `.obsidian/themes/Owen Graphite/` folder.
-3. Open Obsidian → **Settings** → **Appearance** → select **Owen Graphite** under Themes.
+</details>
 
-## License
+---
 
-MIT
+## ✨ 한 줄 요약
+
+| 분야 | 내용 |
+|------|------|
+| **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + Style Settings 16종 + Live Preview/Reading parity |
+| **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
+| **모바일** | ✅ Desktop & Mobile |
+| **버전** | `1.4.1` (Obsidian 1.6.0+) |
+
+---
+
+## 📦 설치
+
+### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
+
+1. 설정 → **외관 → 테마 관리**
+2. 검색: `Owen Graphite Document`
+3. 설치 → 사용
+
+### 옵션 B — 수동 설치
+
+```bash
+cd <YourVault>/.obsidian/themes
+git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
+```
+
+또는 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서
+`theme.css`, `manifest.json`만 다운로드 → `<YourVault>/.obsidian/themes/Owen Graphite Document/`에 배치.
+
+이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite Document` 선택.
+
+### 옵션 C — Style Settings 통합 (권장)
+
+[Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
+사이드바에서 16개 토글로 즉시 모드 전환 가능.
+
+---
+
+## 🎨 주요 특징
+
+### 시각 디자인
+- **그래파이트 액센트**: 차분한 회색 + 5종 액센트 컬러 프리셋 (Graphite/Blue/Teal/Violet/Amber)
+- **헤더 3단계 강조**: H1 좌측 5px 보더 + 그라디언트, H2 하단 220px 액센트 바, H3 좌측 보더
+- **세련된 callout**: note·info·tip·abstract·example·quote·question·warning·success 9종
+- **표 강화**: tabular-nums, hover 행, sticky 첫 컬럼, zebra 토글, `.num` 우측정렬
+
+### Live Preview ↔ Reading View 동등 (v1.3.1)
+- CM6 헤더 라인별 line-height + 폰트 명시 (1.45 generic 덮어쓰기 해소)
+- 코드블록 박스 외곽선 (begin / middle / end 모두 좌우 보더)
+- 위키링크 / 태그 / 인라인 코드 chip이 Source 모드에서도 동일한 모양
+- Strong / em / strikethrough / 체크박스 정렬 보정
+- Callout / 표 widget 변수 공유, frontmatter 박스 round border
+
+### 보고서 출력 (v1.4.0)
+- **A3 가로 기본** + Header(제목) / Footer(페이지 번호) 자동 삽입
+- **헤더 자동 넘버링**: H2 = `1.`, H3 = `1.1`, H4 = `1.1.1`
+- **드롭 캡 / 첫 줄 들여쓰기 / 세리프 본문** — 한국 보고서 스타일
+- **표지 페이지**: 첫 H1을 화면 중앙 큰 글씨로 변환 (보고서 모드)
+- **외부 링크 URL 자동 표시**, 표/이미지/callout `page-break-inside: avoid`
+
+### 콘텐츠 강조
+- `<kbd>` Mac 키 캡 스타일
+- `> [!secret]` blur 처리, hover 시 해제
+- Mermaid 카드형 컨테이너 (배경 + 둥근 모서리 + 그림자)
+- 이미지 zoom-in 커서 + brightness hover
+- Footnote ref 하이라이트, hover popover 그림자/패딩 통일
+
+### 워크스페이스 폴리시
+- 사이드바 폴더 path-based 색상
+- 활성 파일 4px accent bar, 활성 탭 상단 액센트 보더
+- 탭 아이콘 타입별 색상 (md/canvas/pdf/image)
+- 검색/제안 결과 카드 hover
+
+### 플러그인 통합 (라이트/다크 모두)
+- **Dataview** 표 → 본 테마 표 스타일 통일
+- **Properties** (Obsidian 1.4+) — 박스 + grid layout
+- **Bases** (Obsidian 1.7+) — 카드 + 표 보더
+- **Excalidraw**, **Kanban**, **Calendar**
+
+### 접근성
+- `:focus-visible` 두꺼운 outline + glow
+- `prefers-contrast: high` — 보더·하이라이트 강화
+- `prefers-reduced-motion` — 트랜지션 제거
+- CJK 자동 +0.5px 보정 (한글 가독성)
+- OS 다크 모드 자동 추종 옵션
+
+---
+
+## ⚙️ Style Settings 항목
+
+[Style Settings 플러그인](https://github.com/mgmeyers/obsidian-style-settings) 설치 후 사이드바에서 토글로 즉시 적용:
+
+| 항목 | 종류 | 기본값 | 설명 |
+|------|------|--------|------|
+| 본문 폰트 크기 | 슬라이더 | 15px | 13–18px |
+| 본문 줄간격 | 셀렉트 | 1.5 | 1.35 / 1.45 / 1.5 / 1.6 / 1.7 |
+| 본문 최대 폭 | 셀렉트 | 420mm | 210/297/360/420mm / 100% |
+| 헤더 강조 색상 | 색상 | `#4b5563` | 자유 색상 |
+| 표 zebra 줄무늬 | 토글 | ON | 짝수 행 옅은 배경 |
+| **보고서 모드** | 토글 | OFF | 표지+넘버링+들여쓰기+세리프 한 번에 |
+| 본문 세리프 글꼴 | 토글 | OFF | Noto Serif KR |
+| 첫 줄 들여쓰기 | 토글 | OFF | 1em |
+| 헤더 자동 넘버링 | 토글 | OFF | 1. / 1.1 / 1.1.1 |
+| 드롭 캡 | 토글 | OFF | 첫 문단 첫 글자 크게 |
+| 간격 프리셋 | 셀렉트 | 표준 | 컴팩트 / 표준 / 여유 |
+| PDF 페이지 크기 | 셀렉트 | A3 가로 | A4 세로 / A4 가로 / A3 가로 |
+| 액센트 컬러 프리셋 | 셀렉트 | Graphite | Graphite / Blue / Teal / Violet / Amber |
+| 코드블록 테마 | 셀렉트 | Light | Light / Solarized / Nord / Dracula |
+| 시선 보호 모드 | 토글 | OFF | 베이지 배경 |
+| OS 다크 모드 자동 추종 | 토글 | OFF | 시스템 설정 따라감 |
+| 한글/CJK +0.5px 보정 | 토글 | ON | 가독성 |
+
+---
+
+## 🏷️ 사용자 클래스 (수동 부여)
+
+| 클래스 | 위치 | 효과 |
+|--------|------|------|
+| `.ogd-blur` | inline element | 텍스트 blur, hover 시 해제 |
+| `.ogd-cover` | h1 | 표지 페이지 강제 |
+| `sticky-first-col` | `<table>` | 첫 컬럼 sticky scroll |
+| `.num` | th/td | 숫자 우측정렬 + tabular-nums |
+
+```html
+<span class="ogd-blur">민감한 정보</span>
+```
+
+---
+
+## 💬 Callout 종류
+
+| 데이터-콜아웃 | 색상 | 용도 |
+|--------------|------|------|
+| `note` / `info` | 블루 | 일반 정보 |
+| `tip` / `hint` / `important` | 시안 | 팁, 중요 |
+| `abstract` / `summary` / `tldr` | 보라 | 요약 |
+| `example` | 앰버 | 예시 |
+| `quote` / `cite` | 그레이 (italic) | 인용 |
+| `question` / `help` / `faq` | 옐로 | 질문 |
+| `warning` / `danger` / `error` / `bug` | 오렌지 | 경고 |
+| `success` / `check` / `done` | 그린 | 완료 |
+| `secret` / `hidden` | 그레이 + blur | 가려진 내용 |
+
+---
+
+## 🖨️ A3 인쇄 가이드
+
+### Obsidian PDF Export
+1. **보고서 모드 ON** (선택)
+2. 메뉴 → **PDF로 내보내기**
+3. 페이지 크기: **A3** / 방향: **가로** / 여백: 15mm
+4. 모든 callout/표/이미지가 페이지 경계에서 자동 분할 회피
+
+### 인쇄 시 자동 적용
+- H1마다 새 페이지 시작
+- 외부 링크 옆에 URL 자동 표시
+- UI 영역(사이드바·탭·상태바·copy 버튼) 자동 숨김
+- 색상 정확 출력 (`-webkit-print-color-adjust: exact`)
+
+---
+
+## 🅰️ 권장 폰트
+
+미리 설치하면 더 깔끔합니다 (없어도 fallback 적용):
+
+- **Pretendard** / **Pretendard Variable** — 본문 (sans)
+- **Noto Sans KR** / **Apple SD Gothic Neo** — fallback
+- **Noto Serif KR** / **나눔명조** — 보고서 모드 (serif)
+- **JetBrains Mono** / **D2Coding** — 코드 (mono)
+
+---
+
+## 📁 파일 구조
+
+```
+Owen Graphite Document/
+├── theme.css         # ~2,560줄, 모든 스타일
+├── manifest.json     # 버전·메타
+├── README.md         # 이 파일
+├── CHANGELOG.md      # 버전별 변경 이력
+├── LICENSE           # MIT
+└── screenshots/
+    ├── light.png     # 1280×720
+    ├── dark.png
+    └── report.png
+```
+
+---
+
+## 📝 변경 이력
+
+전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
+
+- **v1.4.1** — Blockquote/callout 좌측 보더 텍스트 겹침 수정
+- **v1.4.0** — 33-point 종합 업그레이드 (보고서 모드, A4 옵션, 액센트 5종, 코드 4종, 접근성)
+- **v1.3.1** — Live Preview ↔ Reading View 12-point parity
+- **v1.3.0** — 13개 카테고리 종합 개선
+- **v1.2.0** — Live Preview 빈 줄 압축
+- **v1.1.0** — PDF 컴팩트 spacing
+- **v1.0.0** — 초기 그래파이트 라이트 테마
+
+---
+
+## 🤝 기여
+
+이슈, 기능 제안, PR을 환영합니다:
+- 이슈: [GitHub Issues](https://github.com/towishy/Owen-Graphite/issues)
+- 토론: [Discussions](https://github.com/towishy/Owen-Graphite/discussions)
+
+---
+
+## 📜 라이선스
+
+[MIT License](LICENSE) © 2026 Owen ([@towishy](https://github.com/towishy))
+
+---
+
+## 🙏 크레딧
+
+- 글꼴: Pretendard (Kil Hyung-jin), Noto Sans/Serif KR (Google), JetBrains Mono (JetBrains), D2Coding (Naver)
+- 영감: Obsidian Minimal, Things, AnuPpuccin
+- 빌드 환경: Obsidian 1.6.x / macOS · Windows · Linux

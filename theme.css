@@ -1,378 +1,2612 @@
-/* Owen Graphite v1.0.0 by towishy */
+/* Owen Graphite Document for Obsidian — A report-oriented theme. */
 
-.theme-dark,
-.theme-light {
-  /* Base colors */
-  --color-base-00: #1e2127;
-  --color-base-05: #21252b;
-  --color-base-10: #282c34;
-  --color-base-20: #2c313a;
-  --color-base-25: #333840;
-  --color-base-30: #3a3f4b;
-  --color-base-35: #424755;
-  --color-base-40: #4b5263;
-  --color-base-50: #636d83;
-  --color-base-60: #7f8899;
-  --color-base-70: #9da5b4;
-  --color-base-100: #abb2bf;
+/* @settings
+name: Owen Graphite Document
+id: owen-graphite-document
+settings:
+  -
+    id: ogd-body-size
+    title: 본문 폰트 크기
+    description: 본문(p, li 등) 기본 글자 크기
+    type: variable-number-slider
+    default: 15
+    min: 13
+    max: 18
+    step: 1
+    format: px
+  -
+    id: ogd-line-height
+    title: 본문 줄간격
+    type: variable-select
+    default: 1.5
+    options:
+      - 1.35
+      - 1.45
+      - 1.5
+      - 1.6
+      - 1.7
+  -
+    id: ogd-max-width
+    title: 본문 최대 폭
+    type: variable-select
+    default: 420mm
+    options:
+      - 210mm
+      - 297mm
+      - 360mm
+      - 420mm
+      - 100%
+  -
+    id: ogd-accent
+    title: 헤더 강조 색상
+    type: variable-color
+    format: hex
+    default: '#4b5563'
+  -
+    id: ogd-zebra
+    title: 표 zebra 줄무늬
+    type: class-toggle
+    default: true
+  -
+    id: ogd-report-mode
+    title: 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프)
+    description: 표지/넘버링/들여쓰기/세리프 본문을 한 번에 적용
+    type: class-toggle
+    default: false
+  -
+    id: ogd-serif-body
+    title: 본문 세리프 글꼴
+    description: 본문만 Noto Serif KR로 전환 (긴 보고서 가독성)
+    type: class-toggle
+    default: false
+  -
+    id: ogd-indent-paragraph
+    title: 첫 줄 들여쓰기
+    description: 한국 보고서 스타일 1em 들여쓰기
+    type: class-toggle
+    default: false
+  -
+    id: ogd-auto-number-headings
+    title: 헤더 자동 넘버링 (1. 1.1 1.1.1)
+    type: class-toggle
+    default: false
+  -
+    id: ogd-drop-cap
+    title: 드롭 캡 (첫 문단 첫 글자 크게)
+    type: class-toggle
+    default: false
+  -
+    id: ogd-spacing-preset
+    title: 간격 프리셋
+    type: class-select
+    default: ogd-spacing-standard
+    options:
+      -
+        label: 컴팩트
+        value: ogd-spacing-compact
+      -
+        label: 표준
+        value: ogd-spacing-standard
+      -
+        label: 여유
+        value: ogd-spacing-relaxed
+  -
+    id: ogd-page-size
+    title: PDF 페이지 크기
+    type: class-select
+    default: ogd-page-a3-land
+    options:
+      -
+        label: A4 세로
+        value: ogd-page-a4-port
+      -
+        label: A4 가로
+        value: ogd-page-a4-land
+      -
+        label: A3 가로 (기본)
+        value: ogd-page-a3-land
+  -
+    id: ogd-accent-preset
+    title: 액센트 컬러 프리셋
+    type: class-select
+    default: ogd-accent-graphite
+    options:
+      -
+        label: Graphite (기본)
+        value: ogd-accent-graphite
+      -
+        label: Blue
+        value: ogd-accent-blue
+      -
+        label: Teal
+        value: ogd-accent-teal
+      -
+        label: Violet
+        value: ogd-accent-violet
+      -
+        label: Amber
+        value: ogd-accent-amber
+  -
+    id: ogd-code-theme
+    title: 코드블록 테마
+    type: class-select
+    default: ogd-code-light
+    options:
+      -
+        label: Light (기본)
+        value: ogd-code-light
+      -
+        label: Solarized
+        value: ogd-code-solarized
+      -
+        label: Nord
+        value: ogd-code-nord
+      -
+        label: Dracula (다크 전용)
+        value: ogd-code-dracula
+  -
+    id: ogd-eye-care
+    title: 시선 보호 모드 (베이지 배경)
+    type: class-toggle
+    default: false
+  -
+    id: ogd-auto-dark
+    title: OS 다크 모드 자동 추종
+    description: 시스템 다크 모드일 때 자동으로 다크 테마 변수 적용
+    type: class-toggle
+    default: false
+  -
+    id: ogd-cjk-boost
+    title: 한글/CJK 폰트 +0.5px 자동 보정
+    type: class-toggle
+    default: true
+  -
+    id: ogd-first-page-header
+    title: PDF 첫 페이지 우측 상단 문구
+    description: PDF 내보내기 시 첫 페이지 우측 상단에만 표시되는 문구 (예 "내부 전용", "Confidential"). 비워두면 표시 안 함
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-first-page-header-color
+    title: 첫 페이지 우측 상단 문구 색상
+    type: variable-color
+    format: hex
+    default: '#b91c1c'
+*/
 
-  /* Accent */
-  --color-accent: #5c8db8;
-  --color-accent-1: #5c8db8;
-  --color-accent-2: #4a7aa8;
-
-  /* Background */
-  --background-primary: var(--color-base-00);
-  --background-primary-alt: var(--color-base-05);
-  --background-secondary: var(--color-base-10);
-  --background-secondary-alt: var(--color-base-20);
-  --background-modifier-border: var(--color-base-30);
-  --background-modifier-form-field: var(--color-base-05);
-  --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
-  --background-modifier-success: #4a7c59;
-  --background-modifier-error: #7c4a4a;
-  --background-modifier-error-rgb: 124, 74, 74;
-  --background-modifier-cover: rgba(0, 0, 0, 0.6);
-
-  /* Text colors */
-  --text-normal: var(--color-base-100);
-  --text-muted: var(--color-base-60);
-  --text-faint: var(--color-base-50);
-  --text-on-accent: #ffffff;
-  --text-error: #e06c75;
-  --text-success: #98c379;
-  --text-selection: rgba(92, 141, 184, 0.25);
-  --text-accent: var(--color-accent);
-  --text-accent-hover: var(--color-accent-2);
-
-  /* Interactive */
-  --interactive-normal: var(--color-base-10);
-  --interactive-hover: var(--color-base-20);
-  --interactive-accent: var(--color-accent);
-  --interactive-accent-hover: var(--color-accent-2);
-  --interactive-success: #4a7c59;
-
-  /* Scrollbar */
-  --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
-  --scrollbar-bg: rgba(255, 255, 255, 0.05);
-  --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
-
-  /* Tags */
-  --tag-color: var(--color-accent);
-  --tag-background: rgba(92, 141, 184, 0.15);
-  --tag-background-hover: rgba(92, 141, 184, 0.25);
-  --tag-border-color: rgba(92, 141, 184, 0.4);
-  --tag-border-width: 1px;
-  --tag-padding-x: 0.5em;
-  --tag-padding-y: 0.15em;
-  --tag-radius: 1em;
-
-  /* Headings */
-  --h1-color: #e5c07b;
-  --h2-color: #e06c75;
-  --h3-color: #98c379;
-  --h4-color: #56b6c2;
-  --h5-color: #61afef;
-  --h6-color: var(--color-base-70);
-
-  /* Code */
-  --code-background: var(--color-base-10);
-  --code-normal: #abb2bf;
-  --code-comment: #5c6370;
-  --code-function: #61afef;
-  --code-important: #e06c75;
-  --code-keyword: #c678dd;
-  --code-operator: #56b6c2;
-  --code-property: #e06c75;
-  --code-punctuation: #abb2bf;
-  --code-string: #98c379;
-  --code-tag: #e06c75;
-  --code-value: #d19a66;
-
-  /* Inline code */
-  --code-inline-background: var(--color-base-20);
-  --code-inline-padding-horizontal: 0.35em;
-  --code-inline-padding-vertical: 0.1em;
-  --code-radius: 4px;
-  --code-size: 0.875em;
-
-  /* Blockquote */
-  --blockquote-background-color: var(--color-base-10);
-  --blockquote-border-color: var(--color-accent);
-  --blockquote-border-thickness: 3px;
-  --blockquote-color: var(--text-muted);
-  --blockquote-font-style: normal;
-
-  /* Tables */
-  --table-background: transparent;
-  --table-border-color: var(--background-modifier-border);
-  --table-border-width: 1px;
-  --table-header-background: var(--color-base-10);
-  --table-header-background-hover: var(--color-base-20);
-  --table-header-color: var(--text-normal);
-  --table-row-background-hover: var(--color-base-05);
-  --table-row-alt-background: var(--color-base-05);
-  --table-column-max-width: none;
-  --table-column-min-width: 0;
-
-  /* Links */
-  --link-color: var(--color-accent);
-  --link-color-hover: var(--color-accent-2);
-  --link-decoration: none;
-  --link-decoration-hover: underline;
-  --link-external-color: #56b6c2;
-  --link-external-color-hover: #4a9fad;
-  --link-external-decoration: none;
-  --link-external-decoration-hover: underline;
-  --link-unresolved-color: var(--color-base-60);
-  --link-unresolved-decoration-style: dashed;
-  --link-unresolved-opacity: 0.7;
-
-  /* Divider */
-  --hr-color: var(--color-base-30);
-  --hr-thickness: 1px;
-
-  /* Indent guides */
-  --indentation-guide-color: rgba(255, 255, 255, 0.08);
-  --indentation-guide-color-active: rgba(255, 255, 255, 0.2);
-  --indentation-guide-width: 1px;
-
-  /* Checkboxes */
-  --checkbox-border-color: var(--color-base-50);
-  --checkbox-border-width: 1px;
-  --checkbox-color: var(--color-accent);
-  --checkbox-marker-color: var(--background-primary);
-  --checkbox-radius: 3px;
-  --checkbox-size: 15px;
-
-  /* Callouts */
-  --callout-border-width: 0px;
-  --callout-border-opacity: 0.25;
-  --callout-padding: 12px 16px;
-  --callout-radius: 4px;
-  --callout-blend-mode: darken;
-
-  /* File browser */
-  --nav-item-color: var(--text-muted);
-  --nav-item-color-hover: var(--text-normal);
-  --nav-item-color-active: var(--text-normal);
-  --nav-item-color-highlighted: var(--color-accent);
-  --nav-item-background-hover: var(--color-base-20);
-  --nav-item-background-active: var(--color-base-25);
-  --nav-item-padding: 3px 8px;
-
-  /* Ribbon */
-  --ribbon-background: var(--color-base-10);
-  --ribbon-background-collapsed: var(--color-base-10);
-
-  /* Sidebar */
-  --sidebar-markdown-font-size: 0.85em;
-
-  /* Tab */
-  --tab-background-active: var(--color-base-00);
-  --tab-text-color: var(--text-muted);
-  --tab-text-color-active: var(--text-normal);
-  --tab-text-color-focused: var(--text-normal);
-  --tab-text-color-focused-active: var(--text-normal);
-  --tab-text-color-focused-highlighted: var(--color-accent);
-  --tab-text-color-focused-active-current: var(--text-normal);
-
-  /* Editor */
-  --caret-color: var(--color-accent);
+:root {
+  --ogd-body-size: 15px;
+  --ogd-line-height: 1.5;
+  --ogd-max-width: 420mm;
+  --ogd-accent: #4b5563;
+  --ogd-first-page-header: "";
+  --ogd-first-page-header-color: #b91c1c;
 }
 
-/* Workspace */
-.workspace-leaf-content {
+.theme-light,
+.theme-dark {
+  --font-interface-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "SFMono-Regular", "Cascadia Code",
+    "D2Coding", "Menlo", monospace;
+
+  --background-primary: #ffffff;
+  --background-primary-alt: #f9fafb;
+  --background-secondary: #eef2f7;
+  --background-secondary-alt: #e5e7eb;
+  --background-modifier-border: #d1d5db;
+  --background-modifier-border-hover: #9ca3af;
+  --background-modifier-hover: #f3f4f6;
+  --background-modifier-active-hover: #e5e7eb;
+
+  --text-normal: #1a1a1a;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+  --text-accent: #374151;
+  --text-accent-hover: #111827;
+  --text-on-accent: #ffffff;
+  --text-on-accent-inverted: #111827;
+  --text-selection: rgba(75, 85, 99, 0.18);
+
+  --interactive-normal: #f3f4f6;
+  --interactive-hover: #e5e7eb;
+  --interactive-accent: #4b5563;
+  --interactive-accent-rgb: 75, 85, 99;
+  --interactive-accent-hover: #374151;
+  --interactive-success: #047857;
+
+  --titlebar-background: #eef2f7;
+  --titlebar-background-focused: #eef2f7;
+  --ribbon-background: #eef2f7;
+  --tab-container-background: #eef2f7;
+  --tab-background-active: #ffffff;
+  --tab-outline-color: #d1d5db;
+
+  --divider-color: #d1d5db;
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: #cbd5e1;
+  --scrollbar-active-thumb-bg: #9ca3af;
+
+  --header-accent: var(--ogd-accent, #4b5563);
+  --header-accent-dark: #374151;
+  --header-text: #111827;
+  --header-muted: #6b7280;
+  --header-line: #d1d5db;
+  --header-bg-soft: #f3f4f6;
+
+  --blockquote-border-color: #6b7280;
+  --blockquote-border-thickness: 3px;
+  --blockquote-background-color: #f9fafb;
+  --blockquote-color: #374151;
+  --blockquote-font-style: normal;
+
+  --callout-border-width: 0px;
+  --callout-border-opacity: 1;
+  --callout-radius: 6px;
+  --callout-blend-mode: normal;
+  --callout-title-color: #1f2937;
+  --callout-content-color: #374151;
+  --callout-info: 75, 85, 99;
+  --callout-note: 75, 85, 99;
+  --callout-tip: 75, 85, 99;
+  --callout-abstract: 75, 85, 99;
+  --callout-summary: 75, 85, 99;
+  --callout-tldr: 75, 85, 99;
+  --callout-question: 75, 85, 99;
+  --callout-help: 75, 85, 99;
+  --callout-faq: 75, 85, 99;
+  --callout-warning: 146, 64, 14;
+  --callout-attention: 146, 64, 14;
+  --callout-caution: 146, 64, 14;
+  --callout-failure: 146, 64, 14;
+  --callout-fail: 146, 64, 14;
+  --callout-missing: 146, 64, 14;
+  --callout-danger: 146, 64, 14;
+  --callout-error: 146, 64, 14;
+  --callout-bug: 146, 64, 14;
+  --callout-success: 4, 120, 87;
+  --callout-check: 4, 120, 87;
+  --callout-done: 4, 120, 87;
+
+  --code-background: #f8fafc;
+  --code-normal: #111827;
+  --code-comment: #6b7280;
+  --code-function: #1d4ed8;
+  --code-important: #374151;
+  --code-keyword: #374151;
+  --code-property: #1d4ed8;
+  --code-punctuation: #4b5563;
+  --code-string: #047857;
+  --code-tag: #1d4ed8;
+  --code-value: #047857;
+
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+}
+
+body {
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-family: var(--font-interface-theme);
+}
+
+.workspace,
+.workspace-split,
+.workspace-leaf,
+.workspace-tabs,
+.workspace-tab-header-container,
+.side-dock-ribbon,
+.mod-root .workspace-tab-header-container {
+  background-color: var(--background-secondary);
+}
+
+.workspace-leaf-content,
+.view-content,
+.markdown-reading-view,
+.markdown-source-view {
   background-color: var(--background-primary);
 }
 
-/* Editor styles */
-.cm-s-obsidian .cm-header-1 { color: var(--h1-color); font-weight: 700; }
-.cm-s-obsidian .cm-header-2 { color: var(--h2-color); font-weight: 700; }
-.cm-s-obsidian .cm-header-3 { color: var(--h3-color); font-weight: 700; }
-.cm-s-obsidian .cm-header-4 { color: var(--h4-color); font-weight: 600; }
-.cm-s-obsidian .cm-header-5 { color: var(--h5-color); font-weight: 600; }
-.cm-s-obsidian .cm-header-6 { color: var(--h6-color); font-weight: 600; }
+.nav-file-title,
+.nav-folder-title,
+.tree-item-self,
+.workspace-tab-header-inner-title {
+  color: #374151;
+}
 
-/* Reading view headings */
-.markdown-preview-view h1 { color: var(--h1-color); }
-.markdown-preview-view h2 { color: var(--h2-color); }
-.markdown-preview-view h3 { color: var(--h3-color); }
-.markdown-preview-view h4 { color: var(--h4-color); }
-.markdown-preview-view h5 { color: var(--h5-color); }
-.markdown-preview-view h6 { color: var(--h6-color); }
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: #111827;
+  font-weight: 700;
+}
 
-/* Scrollbar */
+button,
+.clickable-icon,
+.setting-item-control button,
+.modal button {
+  border: 1px solid #cbd5e1;
+  background-color: #f3f4f6;
+  color: #111827;
+  box-shadow: none;
+}
+
+button:hover,
+.clickable-icon:hover,
+.setting-item-control button:hover,
+.modal button:hover {
+  border-color: #9ca3af;
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+button.mod-cta,
+.setting-item-control button.mod-cta,
+.modal button.mod-cta {
+  border-color: #374151;
+  background-color: #4b5563;
+  color: #ffffff;
+}
+
+button.mod-cta:hover,
+.setting-item-control button.mod-cta:hover,
+.modal button.mod-cta:hover {
+  border-color: #111827;
+  background-color: #374151;
+  color: #ffffff;
+}
+
+button.mod-warning,
+.setting-item-control button.mod-warning,
+.modal button.mod-warning {
+  border-color: #92400e;
+  background-color: #fffbeb;
+  color: #78350f;
+}
+
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.markdown-source-view.is-readable-line-width .cm-contentContainer,
+.markdown-source-view.is-readable-line-width .CodeMirror-sizer,
+.markdown-rendered.is-readable-line-width {
+  max-width: var(--ogd-max-width, 420mm);
+  margin: 0 auto;
+}
+
+.markdown-preview-view,
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-content {
+  font-family: var(--font-text-theme);
+  font-size: var(--ogd-body-size, 15px);
+  color: var(--text-normal);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.markdown-rendered p {
+  line-height: var(--ogd-line-height, 1.5) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.45em !important;
+  color: var(--text-normal);
+}
+
+.markdown-source-view.mod-cm6 .cm-line {
+  line-height: 1.45 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  color: #1a1a1a;
+}
+
+/* Compact empty paragraph break in Live Preview to match PDF spacing.
+   An "empty" cm-line is a literal blank line between paragraphs; by
+   default it claims a full line-height which makes Live Preview look
+   far airier than the PDF/Reading view. */
+.markdown-source-view.mod-cm6 .cm-line:empty,
+.markdown-source-view.mod-cm6 .cm-line:has(br:only-child) {
+  line-height: 0.45em !important;
+  min-height: 0.45em !important;
+  height: 0.45em !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Reading view: tighten consecutive paragraph stacks. */
+.markdown-rendered p + p {
+  margin-top: 0.18em !important;
+}
+
+.markdown-rendered h1,
+.markdown-preview-view.markdown-rendered h1,
+.markdown-reading-view .markdown-rendered h1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 1.0em !important;
+  margin-bottom: 0.4em !important;
+  padding: 0.42em 0.78em 0.42em 0.9em !important;
+  font-size: 2.05em !important;
+  font-weight: 850 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  color: var(--header-text) !important;
+  background: linear-gradient(90deg, var(--header-bg-soft), #fafafa 72%, transparent) !important;
+  border-left: 5px solid var(--header-accent) !important;
+  border-bottom: 1px solid var(--header-line) !important;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+.markdown-rendered h2,
+.markdown-preview-view.markdown-rendered h2,
+.markdown-reading-view .markdown-rendered h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 0.95em !important;
+  margin-bottom: 0.3em !important;
+  padding-bottom: 0.22em !important;
+  font-size: 1.6em !important;
+  font-weight: 780 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+  color: var(--header-text) !important;
+  border-bottom: 1px solid var(--header-line) !important;
+}
+
+.markdown-rendered h2::after,
+.markdown-preview-view.markdown-rendered h2::after,
+.markdown-reading-view .markdown-rendered h2::after,
+.markdown-source-view.mod-cm6 .HyperMD-header-2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: min(220px, 36%);
+  height: 3px;
+  background: var(--header-accent);
+  border-radius: 999px;
+}
+
+.markdown-rendered h3,
+.markdown-preview-view.markdown-rendered h3,
+.markdown-reading-view .markdown-rendered h3,
+.markdown-source-view.mod-cm6 .HyperMD-header-3 {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 0.7em !important;
+  margin-bottom: 0.2em !important;
+  padding: 0.08em 0 0.08em 0.7em !important;
+  font-size: 1.3em !important;
+  font-weight: 720 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: var(--header-accent-dark) !important;
+  border-left: 5px solid var(--header-accent) !important;
+  border-bottom: none !important;
+}
+
+.markdown-rendered h1:has(+ table),
+.markdown-rendered h1:has(+ .table-wrapper),
+.markdown-rendered h2:has(+ table),
+.markdown-rendered h2:has(+ .table-wrapper),
+.markdown-rendered h3:has(+ table),
+.markdown-rendered h3:has(+ .table-wrapper) {
+  margin-bottom: 0.2em !important;
+}
+
+.markdown-rendered table,
+.markdown-preview-view table,
+.markdown-reading-view table {
+  margin-top: 0.35em !important;
+  margin-bottom: 0.85em !important;
+  width: auto !important;
+  max-width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 0.92em !important;
+  border: 1px solid #ddd !important;
+}
+
+.markdown-rendered h1 + table,
+.markdown-rendered h2 + table,
+.markdown-rendered h3 + table,
+.markdown-rendered h1 + .table-wrapper,
+.markdown-rendered h2 + .table-wrapper,
+.markdown-rendered h3 + .table-wrapper,
+.markdown-rendered h1 + .table-wrapper table,
+.markdown-rendered h2 + .table-wrapper table,
+.markdown-rendered h3 + .table-wrapper table {
+  margin-top: 0.2em !important;
+}
+
+.markdown-rendered th,
+.markdown-preview-view th,
+.markdown-reading-view th {
+  background-color: #f7f7f7 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding: 9px 16px !important;
+  white-space: nowrap !important;
+  border-bottom: 1px dashed #000000 !important;
+  border-left: 1px solid #ddd !important;
+  border-right: 1px solid #ddd !important;
+}
+
+.markdown-rendered td,
+.markdown-preview-view td,
+.markdown-reading-view td {
+  line-height: 1.6 !important;
+  padding: 8px 16px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  border-left: 1px solid #f0f0f0 !important;
+  border-right: 1px solid #f0f0f0 !important;
+  vertical-align: middle !important;
+  text-align: left !important;
+  color: #333333 !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+}
+
+.markdown-rendered th:first-child,
+.markdown-rendered td:first-child {
+  border-left: none !important;
+}
+
+.markdown-rendered th:last-child,
+.markdown-rendered td:last-child {
+  border-right: none !important;
+}
+
+.markdown-rendered tr:nth-child(even) {
+  background-color: #fafafa !important;
+}
+
+.markdown-rendered blockquote,
+.markdown-preview-view blockquote,
+.markdown-reading-view blockquote,
+.workspace-leaf-content .markdown-rendered blockquote,
+.workspace-leaf-content .markdown-preview-view blockquote,
+.workspace-leaf-content .markdown-reading-view blockquote {
+  box-sizing: border-box !important;
+  margin: 0.45em 0 !important;
+  padding: 8px 16px 8px 22px !important;
+  border-top: 1px solid #d1d5db !important;
+  border-right: 1px solid #d1d5db !important;
+  border-bottom: 1px solid #d1d5db !important;
+  border-left: 4px solid #6b7280 !important;
+  border-inline-start: 4px solid #6b7280 !important;
+  border-radius: 6px !important;
+  background: #f9fafb !important;
+  color: #374151 !important;
+  box-shadow: none !important;
+  font-style: normal !important;
+}
+
+.markdown-rendered blockquote > :first-child,
+.markdown-preview-view blockquote > :first-child,
+.markdown-reading-view blockquote > :first-child,
+.markdown-rendered .callout-content > :first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-rendered blockquote > :last-child,
+.markdown-preview-view blockquote > :last-child,
+.markdown-reading-view blockquote > :last-child,
+.markdown-rendered .callout-content > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-rendered blockquote p,
+.markdown-preview-view blockquote p,
+.markdown-reading-view blockquote p {
+  color: #374151 !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0.3em !important;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
+  box-sizing: border-box !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0.2em 16px 0.2em 24px !important;
+  border-left: 4px solid #6b7280 !important;
+  border-inline-start: 4px solid #6b7280 !important;
+  background: #f9fafb !important;
+  color: #374151 !important;
+  font-style: normal !important;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
+  color: transparent !important;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
+  color: #374151 !important;
+  font-style: normal !important;
+}
+
+.markdown-rendered div.callout,
+.markdown-rendered .callout,
+.markdown-preview-view .callout,
+.markdown-reading-view .callout,
+.workspace-leaf-content .markdown-rendered div.callout,
+.workspace-leaf-content .markdown-rendered .callout {
+  box-sizing: border-box !important;
+  margin: 0.55em 0 !important;
+  padding: 10px 14px 10px 18px !important;
+  border-top: 1px solid #d1d5db !important;
+  border-right: 1px solid #d1d5db !important;
+  border-bottom: 1px solid #d1d5db !important;
+  border-left: 5px solid #4b5563 !important;
+  border-radius: 6px !important;
+  background: #f9fafb !important;
+  box-shadow: none !important;
+  mix-blend-mode: normal !important;
+  color: #374151 !important;
+}
+
+.markdown-rendered div.callout[data-callout="warning"],
+.markdown-rendered div.callout[data-callout="attention"],
+.markdown-rendered div.callout[data-callout="caution"],
+.markdown-rendered div.callout[data-callout="failure"],
+.markdown-rendered div.callout[data-callout="fail"],
+.markdown-rendered div.callout[data-callout="missing"],
+.markdown-rendered div.callout[data-callout="danger"],
+.markdown-rendered div.callout[data-callout="error"],
+.markdown-rendered div.callout[data-callout="bug"] {
+  border-left-color: #92400e !important;
+  background: #fffbeb !important;
+}
+
+.markdown-rendered div.callout[data-callout="success"],
+.markdown-rendered div.callout[data-callout="check"],
+.markdown-rendered div.callout[data-callout="done"] {
+  border-left-color: #047857 !important;
+  background: #f0fdf4 !important;
+}
+
+.markdown-rendered .callout-title,
+.markdown-preview-view .callout-title,
+.markdown-reading-view .callout-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 0 !important;
+  color: #1f2937 !important;
+  font-size: 0.98em !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+}
+
+.markdown-rendered .callout-title-inner,
+.markdown-rendered .callout-content,
+.markdown-preview-view .callout-title-inner,
+.markdown-preview-view .callout-content {
+  color: #374151 !important;
+}
+
+.markdown-rendered .callout-content {
+  margin-top: 5px !important;
+  font-size: 0.95em !important;
+  line-height: 1.5 !important;
+}
+
+.markdown-rendered .callout-icon,
+.markdown-preview-view .callout-icon,
+.markdown-reading-view .callout-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 4px !important;
+  background: #4b5563 !important;
+  color: #ffffff !important;
+}
+
+.markdown-rendered .callout[data-callout="warning"] .callout-icon,
+.markdown-rendered .callout[data-callout="attention"] .callout-icon,
+.markdown-rendered .callout[data-callout="caution"] .callout-icon,
+.markdown-rendered .callout[data-callout="failure"] .callout-icon,
+.markdown-rendered .callout[data-callout="fail"] .callout-icon,
+.markdown-rendered .callout[data-callout="missing"] .callout-icon,
+.markdown-rendered .callout[data-callout="danger"] .callout-icon,
+.markdown-rendered .callout[data-callout="error"] .callout-icon,
+.markdown-rendered .callout[data-callout="bug"] .callout-icon {
+  background: #92400e !important;
+}
+
+.markdown-rendered .callout[data-callout="success"] .callout-icon,
+.markdown-rendered .callout[data-callout="check"] .callout-icon,
+.markdown-rendered .callout[data-callout="done"] .callout-icon {
+  background: #047857 !important;
+}
+
+.markdown-rendered .callout-icon svg,
+.markdown-preview-view .callout-icon svg,
+.markdown-reading-view .callout-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+  stroke-width: 2.4px !important;
+}
+
+.markdown-rendered pre,
+.markdown-preview-view pre,
+.markdown-reading-view pre,
+.workspace-leaf-content .markdown-rendered pre {
+  margin: 0.55em 0 0.75em !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
+  background: #f8fafc !important;
+  box-shadow: none !important;
+}
+
+.markdown-rendered pre::before {
+  content: attr(class);
+  display: block;
+  padding: 8px 14px;
+  color: #374151;
+  background: #eef2f7;
+  border-bottom: 1px solid #d1d5db;
+  font-family: var(--font-monospace-theme);
+  font-size: 0.78em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.markdown-rendered pre code,
+.markdown-preview-view pre code,
+.markdown-reading-view pre code,
+.workspace-leaf-content .markdown-rendered pre code {
+  display: block !important;
+  padding: 10px 14px !important;
+  color: #111827 !important;
+  background: transparent !important;
+  font-family: var(--font-monospace-theme) !important;
+  font-size: 0.9em !important;
+  line-height: 1.45 !important;
+  white-space: pre-wrap !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.markdown-rendered code:not(pre code),
+.markdown-preview-view code:not(pre code),
+.markdown-reading-view code:not(pre code) {
+  padding: 0.16em 0.38em !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 4px !important;
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  font-family: var(--font-monospace-theme) !important;
+  font-size: 0.9em !important;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  background: #f8fafc !important;
+  color: #111827 !important;
+  font-family: var(--font-monospace-theme) !important;
+  font-size: 0.9em !important;
+  line-height: 1.65 !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top: 1px solid #d1d5db !important;
+  border-left: 1px solid #d1d5db !important;
+  border-right: 1px solid #d1d5db !important;
+  border-radius: 6px 6px 0 0 !important;
+  padding-top: 10px !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom: 1px solid #d1d5db !important;
+  border-left: 1px solid #d1d5db !important;
+  border-right: 1px solid #d1d5db !important;
+  border-radius: 0 0 6px 6px !important;
+  padding-bottom: 10px !important;
+}
+
+.markdown-rendered ul,
+.markdown-preview-view ul,
+.markdown-reading-view ul {
+  padding-left: 20px !important;
+  margin-top: 0.25em !important;
+  margin-bottom: 0.55em !important;
+  margin-left: 8px !important;
+  border-left: none !important;
+}
+
+.markdown-rendered ol,
+.markdown-preview-view ol,
+.markdown-reading-view ol {
+  padding-left: 22px !important;
+  margin-top: 0.25em !important;
+  margin-bottom: 0.55em !important;
+  margin-left: 8px !important;
+}
+
+.markdown-rendered li,
+.markdown-preview-view li,
+.markdown-reading-view li {
+  margin-bottom: 0.18em !important;
+  line-height: 1.5 !important;
+  list-style-type: disc !important;
+}
+
+.markdown-rendered li > p,
+.markdown-preview-view li > p,
+.markdown-reading-view li > p {
+  margin-bottom: 0.18em !important;
+}
+
+.markdown-rendered li::before,
+.markdown-preview-view li::before,
+.markdown-reading-view li::before {
+  display: none !important;
+}
+
+.markdown-rendered a,
+.markdown-source-view.mod-cm6 .cm-link,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  color: #1d4ed8;
+  text-decoration-color: rgba(29, 78, 216, 0.35);
+}
+
+.markdown-rendered a:hover {
+  text-decoration-color: #1d4ed8;
+}
+
+/* Broken / unresolved internal links */
+.markdown-rendered a.internal-link.is-unresolved,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
+  color: #b45309;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(180, 83, 9, 0.55);
+}
+
+.markdown-rendered mark,
+.cm-highlight {
+  background-color: #fef3c7;
+  color: #111827;
+  padding: 0 0.15em;
+  border-radius: 2px;
+}
+
+/* =====================================================================
+   H4 ~ H6 — fill the hierarchy gap below H3
+   ===================================================================== */
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4 {
+  margin-top: 0.6em !important;
+  margin-bottom: 0.18em !important;
+  padding-left: 0.5em !important;
+  font-size: 1.12em !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  color: var(--header-accent-dark) !important;
+  border-left: 3px solid var(--header-accent) !important;
+}
+
+.markdown-rendered h5,
+.markdown-source-view.mod-cm6 .HyperMD-header-5 {
+  margin-top: 0.55em !important;
+  margin-bottom: 0.14em !important;
+  font-size: 1.0em !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em !important;
+  color: var(--header-muted) !important;
+}
+
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .HyperMD-header-6 {
+  margin-top: 0.5em !important;
+  margin-bottom: 0.12em !important;
+  font-size: 0.92em !important;
+  font-weight: 700 !important;
+  color: var(--header-muted) !important;
+}
+
+/* Anchor § hint on heading hover (Reading view only) */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 16px;
+}
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) .heading-collapse-indicator {
+  opacity: 0.35;
+}
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6):hover .heading-collapse-indicator {
+  opacity: 1;
+}
+
+/* =====================================================================
+   Selection highlight — unified accent tint
+   ===================================================================== */
+::selection {
+  background-color: rgba(75, 85, 99, 0.22);
+  color: inherit;
+}
+
+/* =====================================================================
+   Table refinements — tabular numerals, sticky first column, hover row
+   ===================================================================== */
+.markdown-rendered table {
+  font-variant-numeric: tabular-nums;
+}
+.markdown-rendered td,
+.markdown-rendered th {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.markdown-rendered td.num,
+.markdown-rendered th.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+}
+.markdown-rendered tr:hover td {
+  background-color: #f5f7fa !important;
+}
+.markdown-rendered table.sticky-first-col td:first-child,
+.markdown-rendered table.sticky-first-col th:first-child {
+  position: sticky;
+  left: 0;
+  background: #ffffff;
+  z-index: 1;
+  box-shadow: 1px 0 0 #e5e7eb;
+}
+/* zebra toggle via Style Settings class */
+body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
+  background-color: #fafbfc !important;
+}
+
+/* =====================================================================
+   Code — language badge in top-right + diff line tinting
+   ===================================================================== */
+.markdown-rendered pre {
+  position: relative;
+}
+.markdown-rendered pre::before {
+  /* Hide the heavy header bar; replace with a small badge */
+  content: none !important;
+}
+.markdown-rendered pre[class*="language-"]::after {
+  content: attr(class);
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  padding: 2px 8px;
+  background: rgba(75, 85, 99, 0.85);
+  color: #ffffff;
+  font-family: var(--font-monospace-theme);
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.markdown-rendered pre > code .token.deleted,
+.markdown-rendered pre > code .line-deleted {
+  background: rgba(239, 68, 68, 0.12);
+  display: inline-block;
+  width: 100%;
+}
+.markdown-rendered pre > code .token.inserted,
+.markdown-rendered pre > code .line-added {
+  background: rgba(34, 197, 94, 0.12);
+  display: inline-block;
+  width: 100%;
+}
+
+/* Inline code baseline correction for KO/EN mix */
+.markdown-rendered code:not(pre code) {
+  vertical-align: baseline;
+  font-feature-settings: "kern" 1;
+}
+
+/* Copy button contrast */
+.markdown-rendered pre .copy-code-button {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #111827 !important;
+  font-weight: 600;
+}
+
+/* =====================================================================
+   Callout — full set: note/info/tip/abstract/example/important/quote
+   ===================================================================== */
+.markdown-rendered .callout[data-callout="note"],
+.markdown-rendered .callout[data-callout="info"] {
+  border-left-color: #1d4ed8 !important;
+  background: #eff6ff !important;
+}
+.markdown-rendered .callout[data-callout="note"] .callout-icon,
+.markdown-rendered .callout[data-callout="info"] .callout-icon {
+  background: #1d4ed8 !important;
+}
+
+.markdown-rendered .callout[data-callout="tip"],
+.markdown-rendered .callout[data-callout="hint"],
+.markdown-rendered .callout[data-callout="important"] {
+  border-left-color: #0e7490 !important;
+  background: #ecfeff !important;
+}
+.markdown-rendered .callout[data-callout="tip"] .callout-icon,
+.markdown-rendered .callout[data-callout="hint"] .callout-icon,
+.markdown-rendered .callout[data-callout="important"] .callout-icon {
+  background: #0e7490 !important;
+}
+
+.markdown-rendered .callout[data-callout="abstract"],
+.markdown-rendered .callout[data-callout="summary"],
+.markdown-rendered .callout[data-callout="tldr"] {
+  border-left-color: #7c3aed !important;
+  background: #f5f3ff !important;
+}
+.markdown-rendered .callout[data-callout="abstract"] .callout-icon,
+.markdown-rendered .callout[data-callout="summary"] .callout-icon,
+.markdown-rendered .callout[data-callout="tldr"] .callout-icon {
+  background: #7c3aed !important;
+}
+
+.markdown-rendered .callout[data-callout="example"] {
+  border-left-color: #d97706 !important;
+  background: #fffbeb !important;
+}
+.markdown-rendered .callout[data-callout="example"] .callout-icon {
+  background: #d97706 !important;
+}
+
+.markdown-rendered .callout[data-callout="quote"],
+.markdown-rendered .callout[data-callout="cite"] {
+  border-left-color: #6b7280 !important;
+  background: #f9fafb !important;
+  font-style: italic !important;
+}
+.markdown-rendered .callout[data-callout="quote"] .callout-icon,
+.markdown-rendered .callout[data-callout="cite"] .callout-icon {
+  background: #6b7280 !important;
+}
+
+.markdown-rendered .callout[data-callout="question"],
+.markdown-rendered .callout[data-callout="help"],
+.markdown-rendered .callout[data-callout="faq"] {
+  border-left-color: #ca8a04 !important;
+  background: #fefce8 !important;
+}
+.markdown-rendered .callout[data-callout="question"] .callout-icon,
+.markdown-rendered .callout[data-callout="help"] .callout-icon,
+.markdown-rendered .callout[data-callout="faq"] .callout-icon {
+  background: #ca8a04 !important;
+}
+
+.markdown-rendered .callout-fold {
+  opacity: 0.6;
+}
+.markdown-rendered .callout:hover .callout-fold {
+  opacity: 1;
+}
+
+/* Nested blockquote depth coloring */
+.markdown-rendered blockquote blockquote {
+  border-left-color: #9ca3af !important;
+  background: #f3f4f6 !important;
+}
+.markdown-rendered blockquote blockquote blockquote {
+  border-left-color: #d1d5db !important;
+  background: #f9fafb !important;
+}
+
+/* =====================================================================
+   Lists — tasks, ordered numbers, indent guides
+   ===================================================================== */
+.markdown-rendered ol li::marker {
+  color: var(--header-accent);
+  font-weight: 700;
+}
+.markdown-rendered ul ul,
+.markdown-rendered ul ol,
+.markdown-rendered ol ul,
+.markdown-rendered ol ol {
+  margin-top: 0.15em !important;
+  margin-bottom: 0.15em !important;
+  border-left: 1px dotted #e5e7eb;
+  padding-left: 14px !important;
+  margin-left: 4px !important;
+}
+
+/* Task checkbox restyle */
+.markdown-rendered input[type="checkbox"],
+.markdown-source-view.mod-cm6 input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #9ca3af;
+  border-radius: 3px;
+  background: #ffffff;
+  vertical-align: -2px;
+  margin-right: 6px;
+  position: relative;
+  cursor: pointer;
+}
+.markdown-rendered input[type="checkbox"]:checked,
+.markdown-source-view.mod-cm6 input[type="checkbox"]:checked {
+  background: var(--header-accent);
+  border-color: var(--header-accent);
+}
+.markdown-rendered input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: -3px;
+  left: 1px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+.markdown-rendered li.task-list-item.is-checked,
+.markdown-rendered li[data-task="x"] {
+  color: #9ca3af;
+  text-decoration: line-through;
+  text-decoration-color: rgba(156, 163, 175, 0.6);
+}
+
+/* =====================================================================
+   Tags — chip style
+   ===================================================================== */
+.markdown-rendered a.tag,
+.tag,
+.cm-hashtag {
+  display: inline-block;
+  padding: 1px 8px !important;
+  background: #eef2f7 !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 999px !important;
+  font-size: 0.82em !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  line-height: 1.5 !important;
+}
+.markdown-rendered a.tag:hover {
+  background: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+/* =====================================================================
+   Footnotes
+   ===================================================================== */
+.markdown-rendered .footnotes {
+  margin-top: 1.5em;
+  padding-top: 0.6em;
+  border-top: 1px solid #d1d5db;
+  font-size: 0.88em;
+  color: #4b5563;
+}
+.markdown-rendered .footnote-ref a,
+.markdown-rendered a.footnote-link {
+  font-size: 0.78em;
+  vertical-align: super;
+  text-decoration: none;
+  color: var(--header-accent);
+}
+
+/* =====================================================================
+   Frontmatter / Properties
+   ===================================================================== */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
+  color: #6b7280 !important;
+  font-size: 0.88em !important;
+  font-family: var(--font-monospace-theme) !important;
+  background: #fafbfc !important;
+}
+.metadata-container {
+  background: #fafbfc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 0.4em 0 0.8em;
+}
+
+/* =====================================================================
+   Images & embeds — figure caption, shadows
+   ===================================================================== */
+.markdown-rendered img:not(.emoji) {
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+.markdown-rendered p > img + em,
+.markdown-rendered figcaption {
+  display: block;
+  text-align: center;
+  font-size: 0.86em;
+  color: #6b7280;
+  margin-top: 4px;
+  font-style: normal;
+}
+.markdown-rendered .internal-embed iframe,
+.markdown-rendered .external-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 6px;
+}
+.markdown-rendered .pdf-embed {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* =====================================================================
+   Live Preview ↔ Reading view parity helpers
+   ===================================================================== */
+.markdown-source-view.mod-cm6 .cm-formatting-header,
+.markdown-source-view.mod-cm6 .cm-formatting-list,
+.markdown-source-view.mod-cm6 .cm-formatting-quote {
+  color: #cbd5e1 !important;
+  font-weight: 400 !important;
+}
+.markdown-source-view.mod-cm6 .cm-formatting-link,
+.markdown-source-view.mod-cm6 .cm-formatting-link-string,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-formatting-link {
+  color: #cbd5e1 !important;
+}
+
+/* =====================================================================
+   Workspace polish — sidebar, tabs, status bar, search
+   ===================================================================== */
+.nav-file-title,
+.nav-folder-title {
+  padding: 3px 8px !important;
+  font-size: 0.92em !important;
+  line-height: 1.4 !important;
+}
+.nav-file-title.is-active,
+.nav-folder-title.is-active {
+  background: #eef2f7 !important;
+  border-radius: 4px;
+}
+.workspace-tab-header.is-active {
+  border-top: 2px solid var(--header-accent) !important;
+  margin-top: -1px;
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: #111827 !important;
+}
+.status-bar {
+  font-size: 0.8em !important;
+  padding: 2px 10px !important;
+}
+.search-result-file-matched-text,
+.suggestion-highlight {
+  background: #fef3c7 !important;
+  color: #111827 !important;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* =====================================================================
+   Focus & scrollbar (accessibility)
+   ===================================================================== */
+/* Apply focus ring ONLY to interactive elements; never on content containers */
+:is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
+  outline: 2px solid var(--header-accent) !important;
+  outline-offset: 2px !important;
+}
+/* Explicitly remove focus outline from content containers */
+.workspace-leaf,
+.workspace-leaf-content,
+.view-content,
+.markdown-source-view,
+.markdown-reading-view,
+.markdown-preview-view,
+.cm-editor,
+.cm-scroller,
+.cm-content {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.workspace-leaf:focus,
+.workspace-leaf:focus-visible,
+.workspace-leaf-content:focus,
+.workspace-leaf-content:focus-visible,
+.view-content:focus,
+.view-content:focus-visible,
+.markdown-source-view:focus,
+.markdown-source-view:focus-visible,
+.markdown-reading-view:focus,
+.markdown-reading-view:focus-visible,
+.cm-editor:focus,
+.cm-editor:focus-visible,
+.cm-scroller:focus,
+.cm-scroller:focus-visible,
+.cm-content:focus,
+.cm-content:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 12px;
+  height: 12px;
 }
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb-bg);
-  border-radius: 3px;
+  border: 3px solid var(--background-primary);
+  border-radius: 999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-active-thumb-bg);
 }
 
-/* Status bar */
-.status-bar {
-  background-color: var(--color-base-10);
-  border-top: 1px solid var(--background-modifier-border);
+/* =====================================================================
+   DARK MODE
+   ===================================================================== */
+.theme-dark {
+  --background-primary: #1f2024;
+  --background-primary-alt: #25272d;
+  --background-secondary: #17181c;
+  --background-secondary-alt: #14151a;
+  --background-modifier-border: #353841;
+  --background-modifier-border-hover: #4a4d57;
+  --background-modifier-hover: #2a2c33;
+  --background-modifier-active-hover: #34373f;
+
+  --text-normal: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+  --text-accent: #cbd5e1;
+  --text-accent-hover: #f3f4f6;
+  --text-on-accent: #ffffff;
+  --text-selection: rgba(148, 163, 184, 0.28);
+
+  --interactive-normal: #2a2c33;
+  --interactive-hover: #353841;
+  --interactive-accent: #94a3b8;
+  --interactive-accent-rgb: 148, 163, 184;
+  --interactive-accent-hover: #cbd5e1;
+
+  --titlebar-background: #14151a;
+  --titlebar-background-focused: #14151a;
+  --ribbon-background: #14151a;
+  --tab-container-background: #14151a;
+  --tab-background-active: #1f2024;
+  --tab-outline-color: #353841;
+
+  --divider-color: #353841;
+  --scrollbar-thumb-bg: #3f424b;
+  --scrollbar-active-thumb-bg: #6b7280;
+
+  --header-accent: var(--ogd-accent, #94a3b8);
+  --header-accent-dark: #cbd5e1;
+  --header-text: #f3f4f6;
+  --header-muted: #9ca3af;
+  --header-line: #353841;
+  --header-bg-soft: #25272d;
+
+  --blockquote-background-color: #25272d;
+  --blockquote-color: #cbd5e1;
+
+  --code-background: #25272d;
+  --code-normal: #e5e7eb;
+  --code-comment: #6b7280;
+  --code-function: #93c5fd;
+  --code-keyword: #cbd5e1;
+  --code-property: #93c5fd;
+  --code-punctuation: #9ca3af;
+  --code-string: #6ee7b7;
+  --code-tag: #93c5fd;
+  --code-value: #6ee7b7;
 }
 
-/* Title bar */
-.titlebar {
-  background-color: var(--color-base-10);
+.theme-dark .markdown-rendered p,
+.theme-dark .markdown-source-view.mod-cm6 .cm-content,
+.theme-dark .markdown-rendered {
+  color: var(--text-normal);
+}
+.theme-dark .markdown-rendered table {
+  border-color: #353841 !important;
+}
+.theme-dark .markdown-rendered th {
+  background-color: #25272d !important;
+  color: #f3f4f6 !important;
+  border-bottom-color: #6b7280 !important;
+  border-left-color: #353841 !important;
+  border-right-color: #353841 !important;
+}
+.theme-dark .markdown-rendered td {
+  border-color: #2a2c33 !important;
+}
+.theme-dark .markdown-rendered tr:hover td {
+  background-color: #2a2c33 !important;
+}
+.theme-dark body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
+  background-color: #25272d !important;
+}
+.theme-dark .markdown-rendered table.sticky-first-col td:first-child,
+.theme-dark .markdown-rendered table.sticky-first-col th:first-child {
+  background: #1f2024;
+  box-shadow: 1px 0 0 #353841;
+}
+.theme-dark .markdown-rendered blockquote {
+  background: #25272d !important;
+  color: #cbd5e1 !important;
+  border-color: #353841 !important;
+  border-left-color: #6b7280 !important;
+}
+.theme-dark .markdown-rendered blockquote blockquote {
+  background: #2a2c33 !important;
+  border-left-color: #9ca3af !important;
+}
+.theme-dark .markdown-rendered .callout {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="note"],
+.theme-dark .markdown-rendered .callout[data-callout="info"] {
+  background: #1e293b !important; border-left-color: #60a5fa !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="tip"],
+.theme-dark .markdown-rendered .callout[data-callout="hint"],
+.theme-dark .markdown-rendered .callout[data-callout="important"] {
+  background: #082f2f !important; border-left-color: #22d3ee !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="abstract"],
+.theme-dark .markdown-rendered .callout[data-callout="summary"],
+.theme-dark .markdown-rendered .callout[data-callout="tldr"] {
+  background: #2a1f3d !important; border-left-color: #a78bfa !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="warning"],
+.theme-dark .markdown-rendered .callout[data-callout="attention"],
+.theme-dark .markdown-rendered .callout[data-callout="caution"],
+.theme-dark .markdown-rendered .callout[data-callout="failure"],
+.theme-dark .markdown-rendered .callout[data-callout="danger"],
+.theme-dark .markdown-rendered .callout[data-callout="error"],
+.theme-dark .markdown-rendered .callout[data-callout="bug"] {
+  background: #3a2a18 !important; border-left-color: #fb923c !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="success"],
+.theme-dark .markdown-rendered .callout[data-callout="check"],
+.theme-dark .markdown-rendered .callout[data-callout="done"] {
+  background: #0f2a1d !important; border-left-color: #34d399 !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="example"] {
+  background: #3a2e0f !important; border-left-color: #fbbf24 !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="question"],
+.theme-dark .markdown-rendered .callout[data-callout="help"],
+.theme-dark .markdown-rendered .callout[data-callout="faq"] {
+  background: #3a330f !important; border-left-color: #facc15 !important;
+}
+.theme-dark .markdown-rendered pre {
+  background: #14151a !important;
+  border-color: #353841 !important;
+}
+.theme-dark .markdown-rendered pre code {
+  color: #e5e7eb !important;
+}
+.theme-dark .markdown-rendered code:not(pre code) {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #f3f4f6 !important;
+}
+.theme-dark .markdown-rendered a {
+  color: #93c5fd !important;
+}
+.theme-dark .markdown-rendered a.internal-link.is-unresolved {
+  color: #fbbf24 !important;
+}
+.theme-dark .markdown-rendered mark,
+.theme-dark .cm-highlight {
+  background-color: #4d3a0a !important;
+  color: #fde68a !important;
+}
+.theme-dark .markdown-rendered a.tag,
+.theme-dark .tag,
+.theme-dark .cm-hashtag {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-rendered input[type="checkbox"] {
+  background: #1f2024;
+  border-color: #6b7280;
+}
+.theme-dark .nav-file-title.is-active,
+.theme-dark .nav-folder-title.is-active {
+  background: #2a2c33 !important;
+}
+.theme-dark .search-result-file-matched-text,
+.theme-dark .suggestion-highlight {
+  background: #4d3a0a !important;
+  color: #fde68a !important;
 }
 
-/* Vault name / workspace title */
-.workspace-drawer.mod-left .workspace-drawer-inner {
-  background-color: var(--color-base-05);
+/* =====================================================================
+   PRINT — A3 landscape, page breaks, color-exact, inline URLs
+   ===================================================================== */
+@media print {
+  @page {
+    size: A3 landscape;
+    margin: 15mm;
+  }
+
+  body {
+    width: 420mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .markdown-preview-view,
+  .markdown-rendered {
+    font-size: 11pt !important;
+  }
+
+  .markdown-rendered h1 { break-before: page; page-break-before: always; }
+  .markdown-rendered h1:first-child { break-before: avoid; page-break-before: avoid; }
+  .markdown-rendered :is(h1, h2, h3, h4) {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  img,
+  tr,
+  li,
+  pre,
+  blockquote,
+  table,
+  .callout,
+  figure {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .markdown-rendered a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.78em;
+    color: #6b7280;
+    word-break: break-all;
+  }
+
+  .markdown-rendered .callout,
+  .markdown-rendered blockquote,
+  .markdown-rendered th,
+  .markdown-rendered tr:nth-child(even) td {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide UI chrome in print */
+  .workspace-ribbon,
+  .workspace-tab-header-container,
+  .status-bar,
+  .titlebar,
+  .copy-code-button,
+  .markdown-rendered pre[class*="language-"]::after {
+    display: none !important;
+  }
+
+  .markdown-rendered th,
+  .markdown-preview-view th,
+  .markdown-reading-view th {
+    background-color: #f7f7f7 !important;
+    border-bottom: 1px dashed #000000 !important;
+  }
 }
 
-/* Active line highlight */
-.cm-active.cm-line {
-  background-color: rgba(255, 255, 255, 0.03);
+/* =====================================================================
+   v1.3.1 — Live Preview ↔ Reading View parity (12-point upgrade)
+   Goal: minimize visual jump when toggling ⌘E between Source/Reading.
+   ===================================================================== */
+
+/* (1) CM6 header line-height per level — override generic .cm-line 1.45 */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
+  line-height: 1.2 !important;
+  padding-top: 0.42em !important;
+  padding-bottom: 0.42em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  line-height: 1.25 !important;
+  padding-bottom: 0.22em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+  line-height: 1.3 !important;
+  padding: 0.08em 0 0.08em 0.7em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
+  line-height: 1.3 !important;
+  padding-left: 0.5em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+  line-height: 1.3 !important;
+}
+/* HyperMD inline header text size — CM6 needs explicit per-level */
+.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 2.05em !important; font-weight: 850 !important; }
+.markdown-source-view.mod-cm6 .cm-header-2 { font-size: 1.6em  !important; font-weight: 780 !important; }
+.markdown-source-view.mod-cm6 .cm-header-3 { font-size: 1.3em  !important; font-weight: 720 !important; }
+.markdown-source-view.mod-cm6 .cm-header-4 { font-size: 1.12em !important; font-weight: 700 !important; }
+.markdown-source-view.mod-cm6 .cm-header-5 { font-size: 1.0em  !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.04em; }
+.markdown-source-view.mod-cm6 .cm-header-6 { font-size: 0.92em !important; font-weight: 700 !important; }
+/* Heading hash markers (#, ##, ###) — soft, like Reading-view absent */
+.markdown-source-view.mod-cm6 .cm-formatting-header {
+  color: #cbd5e1 !important;
+  font-weight: 400 !important;
+  opacity: 0.7;
 }
 
-/* Selection highlight */
-.cm-s-obsidian .cm-selectionBackground,
-.cm-selectionBackground {
-  background-color: rgba(92, 141, 184, 0.2) !important;
+/* (2) Codeblock middle lines — add side borders for full box look */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  border-left: 1px solid #d1d5db !important;
+  border-right: 1px solid #d1d5db !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+/* Re-apply rounded radii for begin/end after middle override */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-radius: 6px 6px 0 0 !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-radius: 0 0 6px 6px !important;
+}
+/* Code fence ``` markers — dim */
+.markdown-source-view.mod-cm6 .cm-formatting-code-block,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .cm-formatting-code,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-end .cm-formatting-code {
+  color: #9ca3af !important;
+  opacity: 0.7;
 }
 
-/* Blockquote */
-.markdown-preview-view blockquote {
-  background-color: var(--blockquote-background-color);
-  border-left: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
-  color: var(--blockquote-color);
-  border-radius: 0 4px 4px 0;
-  padding: 8px 16px;
+/* (3) Wikilink chip in CM6 — match Reading view's [[link]] */
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link,
+.markdown-source-view.mod-cm6 .cm-link.cm-hmd-internal-link {
+  background: rgba(29, 78, 216, 0.07) !important;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
+  background: rgba(180, 83, 9, 0.08) !important;
 }
 
-/* Inline code */
-.markdown-preview-view code {
-  background-color: var(--code-inline-background);
-  border-radius: var(--code-radius);
-  padding: var(--code-inline-padding-vertical) var(--code-inline-padding-horizontal);
-  font-size: var(--code-size);
-  color: #e06c75;
+/* (4) Tag chip in CM6 — pill shape */
+.markdown-source-view.mod-cm6 .cm-hashtag,
+.markdown-source-view.mod-cm6 .cm-hashtag-begin,
+.markdown-source-view.mod-cm6 .cm-hashtag-end {
+  background: #eef2f7 !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+  font-size: 0.82em !important;
+  font-weight: 600 !important;
+  padding: 1px 0 !important;
+}
+.markdown-source-view.mod-cm6 .cm-hashtag-begin {
+  border-right: 0 !important;
+  border-radius: 999px 0 0 999px !important;
+  padding-left: 8px !important;
+}
+.markdown-source-view.mod-cm6 .cm-hashtag-end {
+  border-left: 0 !important;
+  border-radius: 0 999px 999px 0 !important;
+  padding-right: 8px !important;
 }
 
-/* Code block */
-.markdown-preview-view pre {
-  background-color: var(--code-background);
+/* (5) Inline code in CM6 — match Reading view */
+.markdown-source-view.mod-cm6 .cm-inline-code {
+  background: var(--code-background) !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 3px;
+  padding: 0 4px;
+  font-family: var(--font-monospace-theme) !important;
+  font-size: 0.92em !important;
+}
+/* Hide the surrounding backticks visually but keep them readable */
+.markdown-source-view.mod-cm6 .cm-formatting-code {
+  color: #cbd5e1 !important;
+  opacity: 0.6;
+}
+
+/* (6) Strong / em explicit weight & style */
+.markdown-source-view.mod-cm6 .cm-strong {
+  font-weight: 700 !important;
+  color: var(--text-normal) !important;
+}
+.markdown-source-view.mod-cm6 .cm-em {
+  font-style: italic !important;
+}
+.markdown-source-view.mod-cm6 .cm-strong.cm-em {
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+/* Strikethrough */
+.markdown-source-view.mod-cm6 .cm-strikethrough {
+  text-decoration: line-through;
+  text-decoration-color: rgba(107, 114, 128, 0.6);
+  color: #9ca3af !important;
+}
+
+/* (7) Checkbox alignment in CM6 */
+.markdown-source-view.mod-cm6 .HyperMD-list-line .task-list-label,
+.markdown-source-view.mod-cm6 .HyperMD-task-line {
+  display: inline;
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line input[type="checkbox"] {
+  margin-right: 6px !important;
+  margin-left: 0 !important;
+  vertical-align: -2px !important;
+  position: relative;
+  top: 0 !important;
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line .cm-formatting-task {
+  color: transparent !important;
+  font-size: 0 !important;
+  width: 0 !important;
+  display: inline-block;
+}
+
+/* (8) Callout widget in Live Preview — share Reading view styling */
+.markdown-source-view.mod-cm6 .cm-callout,
+.markdown-source-view.mod-cm6 .HyperMD-callout {
+  border-radius: var(--callout-radius, 6px) !important;
+  padding: 8px 12px !important;
+  margin: 0.4em 0 !important;
+}
+.markdown-source-view.mod-cm6 .HyperMD-callout .cm-formatting-quote {
+  display: none !important;
+}
+/* Callout fold widget visibility */
+.markdown-source-view.mod-cm6 .cm-callout-fold {
+  opacity: 0.6;
+}
+.markdown-source-view.mod-cm6 .cm-callout:hover .cm-callout-fold {
+  opacity: 1;
+}
+
+/* (9) Table widget in Live Preview */
+.markdown-source-view.mod-cm6 .cm-table-widget,
+.markdown-source-view.mod-cm6 .HyperMD-table-row,
+.markdown-source-view.mod-cm6 table.cm-table {
+  border-collapse: collapse !important;
+  width: 100%;
+  margin: 0.4em 0 !important;
+  font-variant-numeric: tabular-nums;
+}
+.markdown-source-view.mod-cm6 .cm-table-widget th,
+.markdown-source-view.mod-cm6 table.cm-table th {
+  background: #f3f4f6 !important;
+  border-bottom: 2px solid #6b7280 !important;
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
+  padding: 6px 10px !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.markdown-source-view.mod-cm6 .cm-table-widget td,
+.markdown-source-view.mod-cm6 table.cm-table td {
+  border: 1px solid #e5e7eb !important;
+  padding: 5px 10px !important;
+  vertical-align: top;
+}
+.markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
+.markdown-source-view.mod-cm6 table.cm-table tr:hover td {
+  background: #f5f7fa !important;
+}
+/* Pipe `|` separators in source mode — dim */
+.markdown-source-view.mod-cm6 .cm-hmd-table-sep {
+  color: #cbd5e1 !important;
+  opacity: 0.6;
+}
+
+/* (10) — covered above in (2) */
+
+/* (11) List markers in CM6 — color & weight */
+.markdown-source-view.mod-cm6 .cm-formatting-list,
+.markdown-source-view.mod-cm6 .cm-formatting-list-ul,
+.markdown-source-view.mod-cm6 .cm-formatting-list-ol {
+  color: var(--header-accent) !important;
+  font-weight: 700 !important;
+}
+/* List indent guide in CM6 */
+.markdown-source-view.mod-cm6 .HyperMD-list-line-2,
+.markdown-source-view.mod-cm6 .HyperMD-list-line-3,
+.markdown-source-view.mod-cm6 .HyperMD-list-line-4 {
+  border-left: 1px dotted #e5e7eb;
+  padding-left: 4px;
+}
+
+/* (12) Frontmatter box — round first/last lines */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1 {
+  border: 1px solid #e5e7eb !important;
+  border-bottom: 0 !important;
+  border-radius: 6px 6px 0 0 !important;
+  padding-top: 4px !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end {
+  border: 1px solid #e5e7eb !important;
+  border-top: 0 !important;
+  border-radius: 0 0 6px 6px !important;
+  padding-bottom: 4px !important;
+  margin-bottom: 0.6em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter:not(.HyperMD-frontmatter-1):not(.HyperMD-frontmatter-end) {
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+/* =====================================================================
+   v1.3.1 — Dark mode parity for CM6 widgets
+   ===================================================================== */
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-header,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-list,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-quote,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-link,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-code,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-table-sep {
+  color: #4a4d57 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  background: rgba(147, 197, 253, 0.10) !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
+  background: rgba(251, 191, 36, 0.10) !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag-begin,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag-end {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-inline-code {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #f3f4f6 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  background: #14151a !important;
+  border-color: #353841 !important;
+  color: #e5e7eb !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget th,
+.theme-dark .markdown-source-view.mod-cm6 table.cm-table th {
+  background: #25272d !important;
+  border-bottom-color: #6b7280 !important;
+  border-left-color: #353841 !important;
+  border-right-color: #353841 !important;
+  color: #f3f4f6 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget td,
+.theme-dark .markdown-source-view.mod-cm6 table.cm-table td {
+  border-color: #2a2c33 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
+.theme-dark .markdown-source-view.mod-cm6 table.cm-table tr:hover td {
+  background: #2a2c33 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end {
+  background: #1a1b20 !important;
+  border-color: #2a2c33 !important;
+  color: #9ca3af !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-strikethrough {
+  color: #6b7280 !important;
+}
+
+/* =====================================================================
+   v1.4.0 — 33-point comprehensive upgrade
+   A. Typography  B. Content emphasis  C. Report features
+   D. UI polish  E. Plugin integration  F. Style Settings presets
+   G. Accessibility / i18n
+   ===================================================================== */
+
+/* ---------- A. TYPOGRAPHY ---------- */
+
+/* A1. Drop cap (toggle: ogd-drop-cap) */
+body.ogd-drop-cap .markdown-rendered > p:first-of-type::first-letter,
+body.ogd-drop-cap .markdown-rendered h1 + p::first-letter {
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.9;
+  font-weight: 800;
+  padding: 0.05em 0.12em 0 0;
+  color: var(--header-accent);
+  font-family: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
+}
+
+/* A2. Tabular numerals on tables (always-on, inherits from v1.3) */
+.markdown-rendered table { font-variant-numeric: tabular-nums lining-nums; }
+
+/* A3. First-line indent (toggle: ogd-indent-paragraph) */
+body.ogd-indent-paragraph .markdown-rendered p {
+  text-indent: 1em;
+}
+body.ogd-indent-paragraph .markdown-rendered :is(h1, h2, h3, h4, h5, h6) + p,
+body.ogd-indent-paragraph .markdown-rendered blockquote p,
+body.ogd-indent-paragraph .markdown-rendered .callout p,
+body.ogd-indent-paragraph .markdown-rendered li p {
+  text-indent: 0;
+}
+
+/* A4. Serif body (toggle: ogd-serif-body) */
+body.ogd-serif-body .markdown-rendered,
+body.ogd-serif-body .markdown-source-view.mod-cm6 .cm-content {
+  font-family: "Noto Serif KR", "Nanum Myeongjo", "Source Serif Pro",
+    Georgia, "Times New Roman", serif !important;
+}
+body.ogd-serif-body .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-text-theme) !important; /* headings stay sans */
+}
+
+/* A5. Smart dash / ellipsis hint via CSS only — visual replacement
+       (browsers don't auto-substitute; we use ::before for `--` and `...`
+       inside <p>; lightweight pure-CSS approximation) */
+.markdown-rendered p { hanging-punctuation: first last; }
+
+/* A6. Auto heading numbering (toggle: ogd-auto-number-headings) */
+body.ogd-auto-number-headings .markdown-rendered {
+  counter-reset: ogd-h2 ogd-h3 ogd-h4;
+}
+body.ogd-auto-number-headings .markdown-rendered h2 {
+  counter-increment: ogd-h2;
+  counter-reset: ogd-h3 ogd-h4;
+}
+body.ogd-auto-number-headings .markdown-rendered h2::before {
+  content: counter(ogd-h2) ". ";
+  color: var(--header-accent);
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+body.ogd-auto-number-headings .markdown-rendered h3 {
+  counter-increment: ogd-h3;
+  counter-reset: ogd-h4;
+}
+body.ogd-auto-number-headings .markdown-rendered h3::before {
+  content: counter(ogd-h2) "." counter(ogd-h3) " ";
+  color: var(--header-accent);
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+body.ogd-auto-number-headings .markdown-rendered h4 {
+  counter-increment: ogd-h4;
+}
+body.ogd-auto-number-headings .markdown-rendered h4::before {
+  content: counter(ogd-h2) "." counter(ogd-h3) "." counter(ogd-h4) " ";
+  color: var(--header-accent);
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+
+/* ---------- B. CONTENT EMPHASIS ---------- */
+
+/* B1. Spoiler / blur — `> [!secret]` callout or .ogd-blur class */
+.markdown-rendered .callout[data-callout="secret"],
+.markdown-rendered .callout[data-callout="hidden"] {
+  border-left-color: #6b7280 !important;
+  background: #f3f4f6 !important;
+}
+.markdown-rendered .callout[data-callout="secret"] .callout-content,
+.markdown-rendered .callout[data-callout="hidden"] .callout-content,
+.markdown-rendered .ogd-blur {
+  filter: blur(5px);
+  transition: filter 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.markdown-rendered .callout[data-callout="secret"]:hover .callout-content,
+.markdown-rendered .callout[data-callout="hidden"]:hover .callout-content,
+.markdown-rendered .ogd-blur:hover {
+  filter: blur(0);
+  user-select: text;
+}
+
+/* B2. Keyboard caps — <kbd> styling */
+.markdown-rendered kbd,
+kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  margin: 0 1px;
+  font-family: var(--font-monospace-theme);
+  font-size: 0.82em;
+  font-weight: 600;
+  color: #111827;
+  background: linear-gradient(180deg, #ffffff, #f3f4f6);
+  border: 1px solid #cbd5e1;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  vertical-align: 1px;
+  line-height: 1.2;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+/* B3. Footnote ref hover */
+.markdown-rendered .footnote-ref a:hover,
+.markdown-rendered a.footnote-link:hover {
+  background: #fef3c7;
+  border-radius: 2px;
+}
+
+/* B4. Hover popover style */
+.popover.hover-popover {
+  border-radius: 8px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  padding: 12px !important;
+  max-width: 480px !important;
+  background: var(--background-primary) !important;
+}
+
+/* B5. Image zoom hint */
+.markdown-rendered img:not(.emoji):not(.callout-icon img) {
+  cursor: zoom-in;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.markdown-rendered img:not(.emoji):not(.callout-icon img):hover {
+  filter: brightness(1.04);
+}
+
+/* B6. Mermaid container card */
+.markdown-rendered .mermaid,
+.markdown-rendered pre.language-mermaid {
+  background: #fafbfc !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin: 0.6em 0 !important;
+  text-align: center;
+  overflow-x: auto;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.markdown-rendered .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- C. REPORT FEATURES ---------- */
+
+/* C1. Cover page — frontmatter `cover: true` adds .ogd-cover class via
+       Dataview/Templater; pure-CSS hook on body class as fallback */
+body.ogd-report-mode .markdown-rendered > h1:first-of-type,
+.ogd-cover {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  text-align: center;
+  font-size: 3em !important;
+  border: 0 !important;
+  border-bottom: 3px double var(--header-accent) !important;
+  background: none !important;
+  padding: 2em 0 !important;
+  margin: 1em 0 2em 0 !important;
+  page-break-after: always;
+}
+
+/* C2. TOC dot leaders — for [[_TOC_]] / outline output */
+.markdown-rendered .toc a,
+.markdown-rendered .table-of-contents a,
+.markdown-rendered .outline a {
+  display: flex;
+  align-items: baseline;
+}
+.markdown-rendered .toc a::after,
+.markdown-rendered .table-of-contents a::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px dotted #9ca3af;
+  margin: 0 6px;
+  position: relative;
+  top: -3px;
+}
+
+/* C3+C4. Print header/footer + chapter counters */
+@media print {
+  body { counter-reset: ogd-page; }
+  .markdown-rendered h1 { counter-reset: ogd-page-in-chapter; }
+  @page {
+    @top-center {
+      content: string(ogd-doc-title);
+      font-size: 9pt;
+      color: #6b7280;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-size: 9pt;
+      color: #6b7280;
+    }
+  }
+  /* First page only — top-right header (Style Settings: ogd-first-page-header) */
+  @page :first {
+    @top-right {
+      content: var(--ogd-first-page-header);
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--ogd-first-page-header-color);
+    }
+  }
+  .markdown-rendered h1:first-of-type {
+    string-set: ogd-doc-title content();
+  }
+}
+
+/* C5. Page size presets */
+body.ogd-page-a4-port @media print { @page { size: A4 portrait; } }
+body.ogd-page-a4-land @media print { @page { size: A4 landscape; } }
+/* CSS doesn't allow @media inside selector — use class on body instead: */
+@media print {
+  body.ogd-page-a4-port {
+    width: 210mm !important;
+  }
+  body.ogd-page-a4-land {
+    width: 297mm !important;
+  }
+}
+/* Note: `size:` cannot vary by body class; users with non-A3 must set
+   PDF Export dialog page size in Obsidian itself. The width override
+   above keeps content from overflowing during preview. */
+
+/* C6. Report metadata block — frontmatter rendered nicely */
+body.ogd-report-mode .metadata-container {
+  background: #fafbfc !important;
+  border: 1px solid #d1d5db !important;
   border-radius: 6px;
-  border: 1px solid var(--background-modifier-border);
+  padding: 12px 16px !important;
+  margin: 1em 0 1.5em !important;
+  font-size: 0.95em;
+}
+body.ogd-report-mode .metadata-container .metadata-property {
+  display: grid;
+  grid-template-columns: 8em 1fr;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px dashed #e5e7eb;
 }
 
-.markdown-preview-view pre code {
-  background-color: transparent;
-  color: var(--code-normal);
-  padding: 0;
+/* Report mode bundles A3+A6+A4 */
+body.ogd-report-mode {
+  /* Activate auto-numbering, indent, serif */
+}
+body.ogd-report-mode .markdown-rendered {
+  counter-reset: ogd-h2 ogd-h3 ogd-h4;
+}
+body.ogd-report-mode .markdown-rendered h2 {
+  counter-increment: ogd-h2;
+  counter-reset: ogd-h3 ogd-h4;
+}
+body.ogd-report-mode .markdown-rendered h2::before {
+  content: counter(ogd-h2) ". ";
+  color: var(--header-accent);
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+body.ogd-report-mode .markdown-rendered h3 {
+  counter-increment: ogd-h3;
+}
+body.ogd-report-mode .markdown-rendered h3::before {
+  content: counter(ogd-h2) "." counter(ogd-h3) " ";
+  color: var(--header-accent);
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+body.ogd-report-mode .markdown-rendered p {
+  text-indent: 1em;
+}
+body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p,
+body.ogd-report-mode .markdown-rendered blockquote p,
+body.ogd-report-mode .markdown-rendered li p,
+body.ogd-report-mode .markdown-rendered .callout p {
+  text-indent: 0;
+}
+body.ogd-report-mode .markdown-rendered {
+  font-family: "Noto Serif KR", "Nanum Myeongjo", "Source Serif Pro",
+    Georgia, serif !important;
+}
+body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
+  font-family: var(--font-text-theme) !important;
 }
 
-/* Bold and italic */
-.cm-s-obsidian .cm-strong { color: #e5c07b; }
-.cm-s-obsidian .cm-em { color: #c678dd; font-style: italic; }
-.markdown-preview-view strong { color: #e5c07b; }
-.markdown-preview-view em { color: #c678dd; }
+/* ---------- D. UI POLISH ---------- */
 
-/* Horizontal rule */
-.markdown-preview-view hr {
-  border-color: var(--hr-color);
-  border-width: var(--hr-thickness);
+/* D1. Sidebar folder color coding by name */
+.nav-folder-title[data-path^="outputs"] .nav-folder-title-content,
+.nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content {
+  color: #ca8a04 !important;
+  font-weight: 600;
+}
+.nav-folder-title[data-path^="wiki"] .nav-folder-title-content {
+  color: #1d4ed8 !important;
+  font-weight: 600;
+}
+.nav-folder-title[data-path^="raw"] .nav-folder-title-content {
+  color: #6b7280 !important;
+}
+.nav-folder-title[data-path^="scripts"] .nav-folder-title-content {
+  color: #047857 !important;
 }
 
-/* Tags */
-.cm-s-obsidian .cm-hashtag {
-  color: var(--tag-color);
+/* D2. Active file 4px accent bar */
+.nav-file-title.is-active {
+  border-left: 4px solid var(--header-accent) !important;
+  padding-left: 4px !important;
 }
 
-a.tag {
-  background-color: var(--tag-background);
-  border: var(--tag-border-width) solid var(--tag-border-color);
-  border-radius: var(--tag-radius);
-  color: var(--tag-color);
-  padding: var(--tag-padding-y) var(--tag-padding-x);
-  text-decoration: none;
+/* D3. Tab icon coloring by file type */
+.workspace-tab-header[data-type="markdown"] .workspace-tab-header-inner-icon {
+  color: #1d4ed8;
+}
+.workspace-tab-header[data-type="canvas"] .workspace-tab-header-inner-icon {
+  color: #7c3aed;
+}
+.workspace-tab-header[data-type="pdf"] .workspace-tab-header-inner-icon {
+  color: #b91c1c;
+}
+.workspace-tab-header[data-type="image"] .workspace-tab-header-inner-icon {
+  color: #047857;
 }
 
-a.tag:hover {
-  background-color: var(--tag-background-hover);
-  color: var(--tag-color);
-}
-
-/* Search highlight */
-.search-result-file-matched-text {
-  color: var(--text-normal);
-  background-color: rgba(229, 192, 123, 0.3);
-}
-
-/* Graph view */
-.graph-view.color-fill {
-  color: var(--color-accent);
-}
-
-.graph-view.color-line {
-  color: var(--color-base-40);
-}
-
-.graph-view.color-text {
+/* D4. Status bar segments */
+.status-bar .status-bar-item-segment {
+  padding: 0 6px;
   color: var(--text-muted);
 }
-
-/* Modal */
-.modal {
-  background-color: var(--color-base-10);
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 8px;
+.status-bar .status-bar-item-segment + .status-bar-item-segment {
+  border-left: 1px solid var(--background-modifier-border);
 }
 
-/* Prompt / command palette */
-.prompt {
-  background-color: var(--color-base-10);
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 8px;
-}
-
-.prompt-input {
-  background-color: var(--color-base-05);
-  color: var(--text-normal);
-}
-
+/* D5. Command palette card hover */
+.suggestion-item.is-selected,
 .prompt-results .suggestion-item.is-selected {
-  background-color: var(--color-base-25);
+  background: var(--background-modifier-hover) !important;
+  border-radius: 4px;
+  border-left: 3px solid var(--header-accent);
+  padding-left: calc(0.6em - 3px);
 }
 
-/* Checkbox task lists */
-.task-list-item-checkbox {
-  border-color: var(--checkbox-border-color);
-  border-width: var(--checkbox-border-width);
-  border-radius: var(--checkbox-radius);
+/* D6. Graph view nodes by type tag */
+.graph-view.color-fill { color: var(--text-muted); }
+.graph-view.color-circle { color: var(--header-accent); }
+.graph-view.color-text { color: var(--text-normal); }
+.graph-view.color-arrow { color: var(--text-faint); }
+
+/* D7. Dataview table unification */
+.markdown-rendered .dataview.table-view-table,
+.markdown-rendered .dataview.dataview-table,
+.block-language-dataview table {
+  border-collapse: collapse !important;
+  width: 100%;
+  font-size: 0.92em;
+  font-variant-numeric: tabular-nums;
+  margin: 0.4em 0;
+}
+.markdown-rendered .dataview.table-view-table th,
+.block-language-dataview table th {
+  background: #f3f4f6 !important;
+  border-bottom: 2px solid #6b7280 !important;
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
+  padding: 6px 10px !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.markdown-rendered .dataview.table-view-table td,
+.block-language-dataview table td {
+  border: 1px solid #e5e7eb !important;
+  padding: 5px 10px !important;
+  vertical-align: top;
+}
+.markdown-rendered .dataview.table-view-table tr:hover td,
+.block-language-dataview table tr:hover td {
+  background: #f5f7fa !important;
 }
 
-.task-list-item-checkbox:checked {
-  background-color: var(--checkbox-color);
-  border-color: var(--checkbox-color);
+/* ---------- E. PLUGIN INTEGRATION ---------- */
+
+/* E1. Excalidraw */
+.excalidraw-host,
+.excalidraw,
+.excalidraw-svg {
+  background: #fafbfc !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px;
 }
 
-/* Frontmatter */
-.cm-s-obsidian span.cm-hmd-frontmatter {
-  color: var(--text-muted);
+/* E2. Kanban */
+.kanban-plugin__lane,
+.kanban-plugin .kanban-plugin__lane {
+  background: #f3f4f6 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 6px !important;
+}
+.kanban-plugin__item,
+.kanban-plugin .kanban-plugin__item {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-left: 3px solid var(--header-accent) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.kanban-plugin__lane-title {
+  font-weight: 700 !important;
+  color: var(--header-accent-dark) !important;
 }
 
-/* Footnotes */
-.markdown-preview-view .footnotes {
-  color: var(--text-muted);
-  font-size: 0.875em;
-  border-top: 1px solid var(--hr-color);
-  margin-top: 2em;
-  padding-top: 1em;
+/* E3. Calendar */
+.calendar-container .week,
+.calendar-container .day {
+  border-color: var(--background-modifier-border) !important;
+}
+.calendar-container .day.is-active {
+  background: var(--header-accent) !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+/* E4. Properties (Obsidian 1.4+) */
+.metadata-container,
+.metadata-properties-heading {
+  background: #fafbfc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+.metadata-property {
+  padding: 3px 0;
+}
+.metadata-property-key,
+.metadata-property-key-input {
+  color: var(--text-muted) !important;
+  font-weight: 600;
+  font-size: 0.92em;
+}
+.metadata-property-value,
+.metadata-property-value input,
+.metadata-property-value .multi-select-input {
+  font-size: 0.94em;
+}
+
+/* E5. Bases (Obsidian 1.7+) */
+.base-view,
+.bases-table,
+.bases-card-view {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+}
+.bases-table th {
+  background: #f3f4f6 !important;
+  font-weight: 700;
+  border-bottom: 2px solid #6b7280 !important;
+}
+.bases-card {
+  background: #fafbfc !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 6px !important;
+  padding: 12px !important;
+}
+
+/* ---------- F. STYLE SETTINGS PRESETS ---------- */
+
+/* F3. Spacing presets */
+body.ogd-spacing-compact {
+  --ogd-line-height: 1.4;
+}
+body.ogd-spacing-compact .markdown-rendered p { margin-bottom: 0.32em !important; }
+body.ogd-spacing-compact .markdown-rendered h1 { margin-top: 0.7em !important; }
+body.ogd-spacing-compact .markdown-rendered h2 { margin-top: 0.7em !important; }
+body.ogd-spacing-compact .markdown-rendered h3 { margin-top: 0.55em !important; }
+
+body.ogd-spacing-standard {
+  --ogd-line-height: 1.5;
+}
+
+body.ogd-spacing-relaxed {
+  --ogd-line-height: 1.7;
+}
+body.ogd-spacing-relaxed .markdown-rendered p { margin-bottom: 0.7em !important; }
+body.ogd-spacing-relaxed .markdown-rendered h1 { margin-top: 1.4em !important; }
+body.ogd-spacing-relaxed .markdown-rendered h2 { margin-top: 1.25em !important; }
+
+/* F5. Accent presets */
+body.ogd-accent-graphite { --ogd-accent: #4b5563; }
+body.ogd-accent-blue     { --ogd-accent: #2563eb; }
+body.ogd-accent-teal     { --ogd-accent: #0d9488; }
+body.ogd-accent-violet   { --ogd-accent: #7c3aed; }
+body.ogd-accent-amber    { --ogd-accent: #b45309; }
+
+/* F6. Code themes */
+body.ogd-code-light .markdown-rendered pre {
+  background: #f8fafc !important;
+}
+
+body.ogd-code-solarized .markdown-rendered pre,
+body.ogd-code-solarized .markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  background: #fdf6e3 !important;
+  color: #586e75 !important;
+}
+body.ogd-code-solarized .markdown-rendered pre .token.keyword { color: #859900 !important; }
+body.ogd-code-solarized .markdown-rendered pre .token.string  { color: #2aa198 !important; }
+body.ogd-code-solarized .markdown-rendered pre .token.function { color: #268bd2 !important; }
+body.ogd-code-solarized .markdown-rendered pre .token.comment { color: #93a1a1 !important; }
+
+body.ogd-code-nord .markdown-rendered pre,
+body.ogd-code-nord .markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  background: #2e3440 !important;
+  color: #d8dee9 !important;
+}
+body.ogd-code-nord .markdown-rendered pre .token.keyword { color: #81a1c1 !important; }
+body.ogd-code-nord .markdown-rendered pre .token.string  { color: #a3be8c !important; }
+body.ogd-code-nord .markdown-rendered pre .token.function { color: #88c0d0 !important; }
+body.ogd-code-nord .markdown-rendered pre .token.comment { color: #4c566a !important; }
+
+body.ogd-code-dracula .markdown-rendered pre,
+body.ogd-code-dracula .markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  background: #282a36 !important;
+  color: #f8f8f2 !important;
+}
+body.ogd-code-dracula .markdown-rendered pre .token.keyword { color: #ff79c6 !important; }
+body.ogd-code-dracula .markdown-rendered pre .token.string  { color: #f1fa8c !important; }
+body.ogd-code-dracula .markdown-rendered pre .token.function { color: #50fa7b !important; }
+body.ogd-code-dracula .markdown-rendered pre .token.comment { color: #6272a4 !important; }
+
+/* F2. Eye-care mode */
+body.ogd-eye-care.theme-light {
+  --background-primary: #fdfcf7;
+  --background-primary-alt: #f8f5ec;
+  --background-secondary: #f1ede0;
+  --code-background: #f5f0e0;
+}
+body.ogd-eye-care.theme-light .markdown-rendered {
+  color: #2a2620;
+}
+
+/* ---------- G. ACCESSIBILITY / I18N ---------- */
+
+/* G1. High contrast */
+@media (prefers-contrast: high) {
+  .theme-light {
+    --text-normal: #000000;
+    --text-muted: #1f2937;
+    --background-modifier-border: #6b7280;
+  }
+  .markdown-rendered :is(h1, h2, h3) {
+    border-bottom-width: 2px !important;
+    border-left-width: 6px !important;
+  }
+  .markdown-rendered table { border: 2px solid #000 !important; }
+  .markdown-rendered table th,
+  .markdown-rendered table td { border-color: #000 !important; }
+  .markdown-rendered a { text-decoration: underline !important; }
+}
+
+/* G2. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation-duration: 0.001s !important;
+  }
+  .markdown-rendered img:hover { filter: none !important; transform: none !important; }
+}
+
+/* G3. Strong focus ring — interactive elements only */
+:is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
+  outline: 3px solid var(--header-accent) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.18);
+}
+
+/* G4. CJK font boost */
+body.ogd-cjk-boost .markdown-rendered :lang(ko),
+body.ogd-cjk-boost .markdown-rendered :lang(ja),
+body.ogd-cjk-boost .markdown-rendered :lang(zh) {
+  font-size: calc(var(--ogd-body-size, 15px) + 0.5px);
+}
+
+/* G5. Auto dark — apply dark variables based on OS preference,
+       independent of Obsidian's theme switch. Activated via class. */
+body.ogd-auto-dark {
+  /* placeholder; rules below trigger on prefers-color-scheme */
+}
+@media (prefers-color-scheme: dark) {
+  body.ogd-auto-dark {
+    --background-primary: #1f2024;
+    --background-primary-alt: #25272d;
+    --background-secondary: #17181c;
+    --background-secondary-alt: #14151a;
+    --background-modifier-border: #353841;
+    --text-normal: #e5e7eb;
+    --text-muted: #9ca3af;
+    --text-faint: #6b7280;
+    --code-background: #25272d;
+    --header-text: #f3f4f6;
+    --header-line: #353841;
+  }
+  body.ogd-auto-dark .markdown-rendered { color: #e5e7eb; }
+  body.ogd-auto-dark .markdown-rendered table th { background: #25272d !important; color: #f3f4f6 !important; }
+  body.ogd-auto-dark .markdown-rendered table td { border-color: #2a2c33 !important; }
+  body.ogd-auto-dark .markdown-rendered pre { background: #14151a !important; border-color: #353841 !important; }
+  body.ogd-auto-dark .markdown-rendered code:not(pre code) { background: #25272d !important; color: #f3f4f6 !important; }
+  body.ogd-auto-dark .markdown-rendered a { color: #93c5fd !important; }
+  body.ogd-auto-dark kbd { background: linear-gradient(180deg, #2a2c33, #1f2024); color: #f3f4f6; border-color: #4a4d57; }
+}
+
+/* =====================================================================
+   Dark mode parity for v1.4.0 additions
+   ===================================================================== */
+.theme-dark .markdown-rendered .dataview.table-view-table th,
+.theme-dark .block-language-dataview table th {
+  background: #25272d !important;
+  border-bottom-color: #6b7280 !important;
+  border-left-color: #353841 !important;
+  border-right-color: #353841 !important;
+  color: #f3f4f6 !important;
+}
+.theme-dark .markdown-rendered .dataview.table-view-table td,
+.theme-dark .block-language-dataview table td {
+  border-color: #2a2c33 !important;
+}
+.theme-dark .markdown-rendered .dataview.table-view-table tr:hover td,
+.theme-dark .block-language-dataview table tr:hover td {
+  background: #2a2c33 !important;
+}
+.theme-dark .markdown-rendered .mermaid,
+.theme-dark .markdown-rendered pre.language-mermaid {
+  background: #1a1b20 !important;
+  border-color: #353841 !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="secret"],
+.theme-dark .markdown-rendered .callout[data-callout="hidden"] {
+  background: #25272d !important;
+  border-left-color: #6b7280 !important;
+}
+.theme-dark kbd {
+  background: linear-gradient(180deg, #2a2c33, #1f2024) !important;
+  color: #f3f4f6 !important;
+  border-color: #4a4d57 !important;
+}
+.theme-dark .metadata-container,
+.theme-dark .metadata-properties-heading {
+  background: #1a1b20 !important;
+  border-color: #2a2c33 !important;
+}
+.theme-dark .kanban-plugin__lane { background: #1a1b20 !important; border-color: #2a2c33 !important; }
+.theme-dark .kanban-plugin__item { background: #25272d !important; border-color: #353841 !important; }
+.theme-dark .excalidraw-host,
+.theme-dark .excalidraw,
+.theme-dark .excalidraw-svg { background: #1a1b20 !important; border-color: #353841 !important; }
+.theme-dark .bases-card { background: #1a1b20 !important; border-color: #353841 !important; }
+.theme-dark .bases-table th { background: #25272d !important; border-bottom-color: #6b7280 !important; }
+.theme-dark .nav-folder-title[data-path^="outputs"] .nav-folder-title-content,
+.theme-dark .nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content { color: #fbbf24 !important; }
+.theme-dark .nav-folder-title[data-path^="wiki"] .nav-folder-title-content { color: #93c5fd !important; }
+.theme-dark .nav-folder-title[data-path^="raw"] .nav-folder-title-content { color: #9ca3af !important; }
+.theme-dark .nav-folder-title[data-path^="scripts"] .nav-folder-title-content { color: #6ee7b7 !important; }
+.theme-dark body.ogd-eye-care {
+  --background-primary: #1f1d18;
+  --background-primary-alt: #25221a;
+  --background-secondary: #17150f;
+}
+.theme-dark .markdown-rendered .ogd-blur,
+.theme-dark .markdown-rendered .callout[data-callout="secret"] .callout-content,
+.theme-dark .markdown-rendered .callout[data-callout="hidden"] .callout-content {
+  filter: blur(5px);
 }
