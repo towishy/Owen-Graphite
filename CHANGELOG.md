@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.7] — 2026-04-26
+
+### Changed
+- **H3 스타일 변경** — 좌측 5px 액센트 바 제거 → 하단 1px 연한 회색 underline (`rgba(0,0,0,0.08)` / 다크 `rgba(255,255,255,0.10)`)
+  - "4.1 라우팅 충돌" 같은 시큐셨널 소절 표시 시 좌측 바가 시각적 잡음을 주던 문제 해소
+  - H1은 기존 좌측 액센트 바 유지 (대제목 강조)
+
 ## [1.7.6] — 2026-04-26
 
 ### Added
