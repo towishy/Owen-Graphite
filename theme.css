@@ -2151,7 +2151,9 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     position: absolute;
     top: 0;
     right: 0;
-    font-family: var(--font-text-theme, var(--font-text, inherit));
+    /* Use explicit body font stack — var() may not inherit in Obsidian print container */
+    font-family: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif !important;
     font-size: 10pt;
     font-weight: 600;
     color: var(--ogd-first-page-header-color, #b91c1c);

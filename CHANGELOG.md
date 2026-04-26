@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.8] — 2026-04-26
+
+### Fixed
+- v1.4.7에서 `var(--font-text-theme)`가 PDF export 의 인쇄 컨테이너에서 상속되지 않아 머리말 폰트가 system 폰트로 표시되던 문제 수정
+  - `font-family`에 Pretendard 스택을 명시적으로 삽입 + `!important`로 우선순위 고정
+
 ## [1.4.7] — 2026-04-26
 
 ### Changed
