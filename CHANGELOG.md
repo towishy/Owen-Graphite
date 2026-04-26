@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.4] — 2026-04-26
+
+### Added
+- **Settings / Style Settings polish** — setting item spacing, heading/description tone, control layout을 Graphite 문서 톤으로 정리
+- **Form controls parity** — text input, dropdown, textarea, button, toggle, slider, color picker를 라이트/다크 모드에서 일관되게 조정
+- **Focus state 정리** — 설정 화면 컨트롤의 focus ring과 hover feedback을 접근성 유지 범위에서 차분하게 통일
+
 ## [1.8.3] — 2026-04-26
 
 ### Added

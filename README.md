@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 21종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.3` (Obsidian 1.6.0+) |
+| **버전** | `1.8.4` (Obsidian 1.6.0+) |
 
 ---
 
@@ -56,7 +56,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ### 옵션 C — Style Settings 통합 (권장)
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
-사이드바에서 19개 옵션으로 즉시 모드 전환 가능.
+사이드바에서 21개 옵션으로 즉시 모드 전환 가능.
 자세한 설정 방법은 아래 [⚙️ Style Settings 플러그인 설정](#%EF%B8%8F-style-settings-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%84%A4%EC%A0%95) 섹션을 참고하세요.
 
 ---
@@ -235,6 +235,7 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 - **Bases** (Obsidian 1.7+) — 카드 + 표 보더
 - **Excalidraw**, **Kanban**, **Calendar**
 - Command Palette / Modal / Menu / Hover Preview overlay 톤 통일
+- Settings / Style Settings controls — input, dropdown, toggle, slider, color picker 톤 통일
 
 ### 접근성
 - `:focus-visible` 두꺼운 outline + glow
@@ -357,6 +358,7 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.4** — Settings/Style Settings 화면, form controls, focus state 톤 정리
 - **v1.8.3** — Command Palette/Modal/Menu polish, Hover Preview/Popover 개선, Dataview 표 parity 보강
 - **v1.8.2** — Sidebar/File Explorer 현대화, 특수 체크박스 상태 강화, Search/Highlight 가독성 개선
 - **v1.8.1** — Properties/Frontmatter 카드형 정리, 모바일 table/Mermaid overflow 안정화, callout 팔레트 사용법 문서화
