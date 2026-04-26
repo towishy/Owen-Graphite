@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.19] — 2026-04-26
+
+### Added
+- PDF 디자인 10개 개선 전/후를 비교하는 HTML fixture와 PNG preview 이미지 추가
+
+### Changed
+- PDF export에서 제목 직후 문단, H2/H3/H4 다음 표, 긴 표 셀, 첫 컬럼, `hr` 구분선의 간격과 가독성을 보강
+- PDF용 `ogd-status-badge`, `ogd-executive-summary`, `ogd-action-summary` 스타일을 추가해 emoji 상태값과 반복 액션 문장을 badge/callout 형태로 정리할 수 있도록 보강
+- 긴 표가 페이지를 넘어갈 때 `thead` 반복과 행 분할 회피가 더 안정적으로 동작하도록 print table cascade 보강
+- 문서 원문에 별도 class를 추가하지 않아도 첫 Executive Summary 표의 상태 컬럼과 표 뒤 bold-leading 액션 문단이 더 명확히 보이도록 자동 print selector 보강
+
 ## [1.8.18] — 2026-04-26
 
 ### Changed

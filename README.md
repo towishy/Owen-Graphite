@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.18` (Obsidian 1.6.0+) |
+| **버전** | `1.8.19` (Obsidian 1.6.0+) |
 
 ---
 
@@ -335,6 +335,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.19** — PDF 보고서 간격, 표 가독성, 상태 badge, action/summary callout, 반복 table header 안정화 및 10개 개선 preview 추가
 - **v1.8.18** — PDF export 첫 H1/H2 title rule 출력 안정화, 첫 페이지 헤더-제목 사이 옅은 구분선 추가, README preview 이미지 노출 정리
 - **v1.8.17** — H1 제목 길이에 맞춘 Teal-to-Sky 하단 라인과 첫 페이지 제목 간격 개선, preview 이미지 추가
 - **v1.8.16** — 외부 링크 Muted Teal 점선 밑줄 적용, 색상 후보 preview 이미지 추가
