@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.14` (Obsidian 1.6.0+) |
+| **버전** | `1.8.15` (Obsidian 1.6.0+) |
 
 ---
 
@@ -165,9 +165,12 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 - **Graphite-first 팔레트**: 헤더, blockquote, callout, 코드 색상을 회색 중심으로 고정해 제품별 색상보다 문서 내용이 먼저 보이게 합니다.
 - **보고서형 heading 체계**: Reading View에서는 H1/H2/H3에 여백, 좌측 bar, 하단 rule을 더 강하게 적용해 긴 문서의 구획이 빠르게 스캔됩니다.
 - **표 중심 레이아웃**: 표 header, border, cell padding, zebra 톤을 안정화해 라이선스 매트릭스·기능 비교표·고객 보고서 표가 PDF에서도 균일하게 보입니다.
+- **보고서 구조 요소 확장**: TOC, 이미지/첨부 캡션, Mermaid/SVG diagram frame, footnote, task list, definition list, 검색 하이라이트, PDF heading rhythm을 같은 회색 문서 톤으로 맞춥니다.
 - **blockquote/callout 충돌 완화**: 기본 테마와 커뮤니티 플러그인의 blockquote/callout 스타일 충돌을 회색 카드 톤으로 정리합니다.
 - **Live Preview 편집성 보존**: Reading View용 block heading 장식은 Live Preview 편집 라인에 강제하지 않습니다. 펼쳐진 H3-H6 섹션 제목을 클릭해도 아래 표/콘텐츠 위젯과 hitbox가 겹치지 않도록 CM6 heading line은 별도 plain hitbox로 유지합니다.
 - **CM6 wrapping 안전성**: Live Preview에서는 CodeMirror의 커서 좌표 계산과 시각적 줄바꿈이 어긋나지 않도록 `word-break`, `overflow-wrap`, `.cm-line` 높이 강제를 최소화합니다.
+
+![Gray override snippet 8개 구조 개선 preview](screenshots/snippet-design-8-improvements-preview.png)
 
 ### 적용 방법
 
@@ -423,12 +426,14 @@ Owen Graphite/
 │   └── fixtures/
 │       ├── table-report.md
 │       ├── live-preview-editing.md
-│       └── snippet-design-concept-preview.html
+│       ├── snippet-design-concept-preview.html
+│       └── snippet-design-8-improvements-preview.html
 └── screenshots/
     ├── light.png     # 512×288
     ├── dark.png
     ├── report.png
-    └── snippet-design-concept-preview.png
+    ├── snippet-design-concept-preview.png
+    └── snippet-design-8-improvements-preview.png
 ```
 
 ### 로컬 검증
@@ -443,6 +448,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.15** — Gray override snippet TOC/caption/diagram/footnote/task/definition/search/PDF rhythm 구조 개선, preview 이미지 추가
 - **v1.8.14** — Gray override snippet compact callout/table/inline/print/dark-mode 디자인 개선, preview fixture 추가
 - **v1.8.13** — Live Preview 편집성 guard/fixture 추가, callout outline 아이콘 팔레트 정리
 - **v1.8.12** — `note` / `info` callout 아이콘을 모던한 원형 outline 배지로 정리

@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.15] — 2026-04-26
+
+### Added
+- Gray override snippet에 TOC, 이미지/첨부 캡션, Mermaid/SVG diagram frame, footnote, task list, definition list, 검색 하이라이트, PDF heading rhythm 스타일 추가
+- 8개 추가 디자인 개선안을 시각화하는 HTML fixture와 PNG preview 이미지 추가
+
+### Changed
+- README의 Gray Report Force Override 설명에 8개 개선 preview 이미지를 연결하고 기능 설명을 확장
+
 ## [1.8.14] — 2026-04-26
 
 ### Added

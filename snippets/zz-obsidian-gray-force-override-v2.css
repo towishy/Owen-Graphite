@@ -363,6 +363,18 @@ body .markdown-reading-view mark {
     border-radius: 3px !important;
     background: #fef3c7 !important;
     color: #78350f !important;
+    box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.22) !important;
+}
+
+body .markdown-rendered :is(.search-highlight, .search-hit, .is-search-match),
+body .markdown-preview-view :is(.search-highlight, .search-hit, .is-search-match),
+body .markdown-reading-view :is(.search-highlight, .search-hit, .is-search-match),
+body :is(.search-result-file-matched-text, .suggestion-highlight) {
+    padding: 0.05em 0.24em !important;
+    border-radius: 3px !important;
+    background: #fef3c7 !important;
+    color: #78350f !important;
+    box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.24) !important;
 }
 
 body .markdown-rendered kbd,
@@ -387,6 +399,205 @@ body .markdown-reading-view hr {
     height: 1px !important;
     border: 0 !important;
     background: linear-gradient(90deg, #475569 0 92px, #d1d5db 92px 100%) !important;
+}
+
+/* ------------------------------------------------------------
+   3.6 Report Navigation, Media, Definitions & Notes
+   ------------------------------------------------------------ */
+body .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+body .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+body .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) {
+    margin: 1.05em 0 1.45em !important;
+    padding: 0.85em 1em 0.85em 1.15em !important;
+    border-left: 4px solid #64748b !important;
+    border-radius: 0 6px 6px 0 !important;
+    background: #f8fafc !important;
+    color: #475569 !important;
+}
+
+body .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) :is(ul, ol),
+body .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) :is(ul, ol),
+body .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) :is(ul, ol) {
+    margin: 0 !important;
+    padding-left: 1.35em !important;
+}
+
+body .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li,
+body .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li,
+body .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li {
+    margin-bottom: 0.35em !important;
+    color: #475569 !important;
+    font-size: 0.92em !important;
+    line-height: 1.55 !important;
+}
+
+body .markdown-rendered figure,
+body .markdown-preview-view figure,
+body .markdown-reading-view figure,
+body .markdown-rendered :is(.image-embed, .internal-embed.image-embed),
+body .markdown-preview-view :is(.image-embed, .internal-embed.image-embed),
+body .markdown-reading-view :is(.image-embed, .internal-embed.image-embed) {
+    margin: 1.15em 0 1.6em !important;
+}
+
+body .markdown-rendered figcaption,
+body .markdown-preview-view figcaption,
+body .markdown-reading-view figcaption,
+body .markdown-rendered :is(.image-caption, .media-caption, .figure-caption),
+body .markdown-preview-view :is(.image-caption, .media-caption, .figure-caption),
+body .markdown-reading-view :is(.image-caption, .media-caption, .figure-caption),
+body .markdown-rendered img + em,
+body .markdown-preview-view img + em,
+body .markdown-reading-view img + em {
+    display: block !important;
+    margin-top: 0.55em !important;
+    color: #64748b !important;
+    font-size: 0.86em !important;
+    font-style: normal !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+}
+
+body .markdown-rendered :is(.mermaid, .diagram-frame, .svg-frame),
+body .markdown-preview-view :is(.mermaid, .diagram-frame, .svg-frame),
+body .markdown-reading-view :is(.mermaid, .diagram-frame, .svg-frame) {
+    margin: 1.15em 0 1.6em !important;
+    padding: 0.85em !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 7px !important;
+    background: #fbfdff !important;
+    overflow-x: auto !important;
+}
+
+body .markdown-rendered :is(.mermaid, .diagram-frame, .svg-frame) svg,
+body .markdown-preview-view :is(.mermaid, .diagram-frame, .svg-frame) svg,
+body .markdown-reading-view :is(.mermaid, .diagram-frame, .svg-frame) svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+body .markdown-rendered dl,
+body .markdown-preview-view dl,
+body .markdown-reading-view dl,
+body .markdown-rendered .definition-list,
+body .markdown-preview-view .definition-list,
+body .markdown-reading-view .definition-list {
+    margin: 1em 0 1.45em !important;
+    border-top: 1px solid #d8e1ea !important;
+    border-bottom: 1px solid #d8e1ea !important;
+}
+
+body .markdown-rendered :is(dt, .definition-row),
+body .markdown-preview-view :is(dt, .definition-row),
+body .markdown-reading-view :is(dt, .definition-row) {
+    color: #334155 !important;
+    font-weight: 800 !important;
+}
+
+body .markdown-rendered dt,
+body .markdown-preview-view dt,
+body .markdown-reading-view dt {
+    padding-top: 0.75em !important;
+}
+
+body .markdown-rendered dd,
+body .markdown-preview-view dd,
+body .markdown-reading-view dd {
+    margin: 0.25em 0 0 !important;
+    padding: 0 0 0.75em 0 !important;
+    border-bottom: 1px solid #eef2f7 !important;
+    color: #475569 !important;
+    line-height: 1.62 !important;
+}
+
+body .markdown-rendered .definition-row,
+body .markdown-preview-view .definition-row,
+body .markdown-reading-view .definition-row {
+    display: grid !important;
+    grid-template-columns: minmax(120px, 0.24fr) 1fr !important;
+    gap: 0.9em !important;
+    padding: 0.75em 0 !important;
+    border-bottom: 1px solid #eef2f7 !important;
+}
+
+body .markdown-rendered .definition-row:last-child,
+body .markdown-preview-view .definition-row:last-child,
+body .markdown-reading-view .definition-row:last-child,
+body .markdown-rendered dd:last-child,
+body .markdown-preview-view dd:last-child,
+body .markdown-reading-view dd:last-child {
+    border-bottom: 0 !important;
+}
+
+body .markdown-rendered :is(.definition-row .desc, .definition-desc),
+body .markdown-preview-view :is(.definition-row .desc, .definition-desc),
+body .markdown-reading-view :is(.definition-row .desc, .definition-desc) {
+    color: #475569 !important;
+    font-weight: 400 !important;
+    line-height: 1.62 !important;
+}
+
+body .markdown-rendered .contains-task-list,
+body .markdown-preview-view .contains-task-list,
+body .markdown-reading-view .contains-task-list {
+    margin: 1em 0 1.45em !important;
+    padding-left: 0 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 7px !important;
+    overflow: hidden !important;
+}
+
+body .markdown-rendered .task-list-item,
+body .markdown-preview-view .task-list-item,
+body .markdown-reading-view .task-list-item {
+    margin: 0 !important;
+    padding: 0.62em 0.8em !important;
+    border-bottom: 1px solid #eef2f7 !important;
+    color: #334155 !important;
+    list-style: none !important;
+}
+
+body .markdown-rendered .task-list-item:last-child,
+body .markdown-preview-view .task-list-item:last-child,
+body .markdown-reading-view .task-list-item:last-child {
+    border-bottom: 0 !important;
+}
+
+body .markdown-rendered .task-list-item.is-checked,
+body .markdown-preview-view .task-list-item.is-checked,
+body .markdown-reading-view .task-list-item.is-checked {
+    background: #fbfdff !important;
+    color: #64748b !important;
+    text-decoration: none !important;
+}
+
+body .markdown-rendered input.task-list-item-checkbox,
+body .markdown-preview-view input.task-list-item-checkbox,
+body .markdown-reading-view input.task-list-item-checkbox {
+    margin-inline-end: 0.55em !important;
+    border-color: #94a3b8 !important;
+    border-radius: 4px !important;
+}
+
+body .markdown-rendered .footnotes,
+body .markdown-preview-view .footnotes,
+body .markdown-reading-view .footnotes,
+body .markdown-rendered .footnote-section,
+body .markdown-preview-view .footnote-section,
+body .markdown-reading-view .footnote-section {
+    margin-top: 1.45em !important;
+    padding-top: 0.8em !important;
+    border-top: 1px solid #d8e1ea !important;
+    color: #64748b !important;
+    font-size: 0.86em !important;
+    line-height: 1.58 !important;
+}
+
+body .markdown-rendered :is(.footnote-ref, .footnote-link, .footnote-backref),
+body .markdown-preview-view :is(.footnote-ref, .footnote-link, .footnote-backref),
+body .markdown-reading-view :is(.footnote-ref, .footnote-link, .footnote-backref) {
+    color: #475569 !important;
+    font-weight: 750 !important;
 }
 
 /* ------------------------------------------------------------
@@ -948,6 +1159,99 @@ body.theme-dark .markdown-reading-view a {
     border-bottom-color: #1e3a8a !important;
 }
 
+body.theme-dark .markdown-rendered mark,
+body.theme-dark .markdown-preview-view mark,
+body.theme-dark .markdown-reading-view mark,
+body.theme-dark .markdown-rendered :is(.search-highlight, .search-hit, .is-search-match),
+body.theme-dark .markdown-preview-view :is(.search-highlight, .search-hit, .is-search-match),
+body.theme-dark .markdown-reading-view :is(.search-highlight, .search-hit, .is-search-match),
+body.theme-dark :is(.search-result-file-matched-text, .suggestion-highlight) {
+    background: rgba(120, 53, 15, 0.58) !important;
+    color: #fde68a !important;
+    box-shadow: inset 0 -1px 0 rgba(253, 230, 138, 0.22) !important;
+}
+
+body.theme-dark .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+body.theme-dark .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+body.theme-dark .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+body.theme-dark .markdown-rendered :is(.mermaid, .diagram-frame, .svg-frame),
+body.theme-dark .markdown-preview-view :is(.mermaid, .diagram-frame, .svg-frame),
+body.theme-dark .markdown-reading-view :is(.mermaid, .diagram-frame, .svg-frame) {
+    border-color: #334155 !important;
+    background: #151f2f !important;
+    color: #cbd5e1 !important;
+}
+
+body.theme-dark .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li,
+body.theme-dark .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li,
+body.theme-dark .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li,
+body.theme-dark .markdown-rendered figcaption,
+body.theme-dark .markdown-preview-view figcaption,
+body.theme-dark .markdown-reading-view figcaption,
+body.theme-dark .markdown-rendered :is(.image-caption, .media-caption, .figure-caption),
+body.theme-dark .markdown-preview-view :is(.image-caption, .media-caption, .figure-caption),
+body.theme-dark .markdown-reading-view :is(.image-caption, .media-caption, .figure-caption),
+body.theme-dark .markdown-rendered img + em,
+body.theme-dark .markdown-preview-view img + em,
+body.theme-dark .markdown-reading-view img + em,
+body.theme-dark .markdown-rendered dd,
+body.theme-dark .markdown-preview-view dd,
+body.theme-dark .markdown-reading-view dd,
+body.theme-dark .markdown-rendered :is(.definition-row .desc, .definition-desc),
+body.theme-dark .markdown-preview-view :is(.definition-row .desc, .definition-desc),
+body.theme-dark .markdown-reading-view :is(.definition-row .desc, .definition-desc),
+body.theme-dark .markdown-rendered .footnotes,
+body.theme-dark .markdown-preview-view .footnotes,
+body.theme-dark .markdown-reading-view .footnotes,
+body.theme-dark .markdown-rendered .footnote-section,
+body.theme-dark .markdown-preview-view .footnote-section,
+body.theme-dark .markdown-reading-view .footnote-section {
+    color: #94a3b8 !important;
+}
+
+body.theme-dark .markdown-rendered dl,
+body.theme-dark .markdown-preview-view dl,
+body.theme-dark .markdown-reading-view dl,
+body.theme-dark .markdown-rendered .definition-list,
+body.theme-dark .markdown-preview-view .definition-list,
+body.theme-dark .markdown-reading-view .definition-list,
+body.theme-dark .markdown-rendered .definition-row,
+body.theme-dark .markdown-preview-view .definition-row,
+body.theme-dark .markdown-reading-view .definition-row,
+body.theme-dark .markdown-rendered dd,
+body.theme-dark .markdown-preview-view dd,
+body.theme-dark .markdown-reading-view dd,
+body.theme-dark .markdown-rendered .contains-task-list,
+body.theme-dark .markdown-preview-view .contains-task-list,
+body.theme-dark .markdown-reading-view .contains-task-list,
+body.theme-dark .markdown-rendered .task-list-item,
+body.theme-dark .markdown-preview-view .task-list-item,
+body.theme-dark .markdown-reading-view .task-list-item,
+body.theme-dark .markdown-rendered .footnotes,
+body.theme-dark .markdown-preview-view .footnotes,
+body.theme-dark .markdown-reading-view .footnotes,
+body.theme-dark .markdown-rendered .footnote-section,
+body.theme-dark .markdown-preview-view .footnote-section,
+body.theme-dark .markdown-reading-view .footnote-section {
+    border-color: #334155 !important;
+}
+
+body.theme-dark .markdown-rendered :is(dt, .definition-row),
+body.theme-dark .markdown-preview-view :is(dt, .definition-row),
+body.theme-dark .markdown-reading-view :is(dt, .definition-row),
+body.theme-dark .markdown-rendered .task-list-item,
+body.theme-dark .markdown-preview-view .task-list-item,
+body.theme-dark .markdown-reading-view .task-list-item {
+    color: #cbd5e1 !important;
+}
+
+body.theme-dark .markdown-rendered .task-list-item.is-checked,
+body.theme-dark .markdown-preview-view .task-list-item.is-checked,
+body.theme-dark .markdown-reading-view .task-list-item.is-checked {
+    background: #131c2b !important;
+    color: #94a3b8 !important;
+}
+
 body.theme-dark .markdown-rendered hr,
 body.theme-dark .markdown-preview-view hr,
 body.theme-dark .markdown-reading-view hr {
@@ -986,9 +1290,21 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
     }
 
     img,
+    figure,
+    figcaption,
     tr,
     li,
     table,
+    dl,
+    .definition-list,
+    .toc,
+    .report-toc,
+    .table-of-contents,
+    .mermaid,
+    .diagram-frame,
+    .svg-frame,
+    .footnotes,
+    .footnote-section,
     blockquote,
     .callout,
     pre {
@@ -1004,6 +1320,13 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
     h6 {
         page-break-after: avoid;
         break-after: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 
     body .markdown-rendered th,
