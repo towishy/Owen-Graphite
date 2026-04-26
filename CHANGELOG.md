@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.3] — 2026-04-26
+
+### Added
+- **Command Palette / Modal / Menu polish** — overlay surface, prompt input, selected suggestion, menu hover를 Graphite 톤으로 통일
+- **Hover Preview / Popover 개선** — wiki hover preview를 가벼운 문서 카드처럼 보이도록 border, shadow, padding, heading color 정리
+- **Dataview 표 parity 보강** — 일반 표와 동일한 rounded border, header, zebra, hover, 다크 모드 톤으로 정렬
+
 ## [1.8.2] — 2026-04-26
 
 ### Added

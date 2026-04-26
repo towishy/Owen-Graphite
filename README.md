@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 21종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.2` (Obsidian 1.6.0+) |
+| **버전** | `1.8.3` (Obsidian 1.6.0+) |
 
 ---
 
@@ -234,6 +234,7 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 - **Properties** (Obsidian 1.4+) — 박스 + grid layout
 - **Bases** (Obsidian 1.7+) — 카드 + 표 보더
 - **Excalidraw**, **Kanban**, **Calendar**
+- Command Palette / Modal / Menu / Hover Preview overlay 톤 통일
 
 ### 접근성
 - `:focus-visible` 두꺼운 outline + glow
@@ -356,6 +357,7 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.3** — Command Palette/Modal/Menu polish, Hover Preview/Popover 개선, Dataview 표 parity 보강
 - **v1.8.2** — Sidebar/File Explorer 현대화, 특수 체크박스 상태 강화, Search/Highlight 가독성 개선
 - **v1.8.1** — Properties/Frontmatter 카드형 정리, 모바일 table/Mermaid overflow 안정화, callout 팔레트 사용법 문서화
 - **v1.8.0** — PDF 출력 안정화, 보고서형 callout 팔레트 확장, 표 모던 스타일, Style Settings 옵션 2종 추가
