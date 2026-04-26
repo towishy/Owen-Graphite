@@ -2140,30 +2140,36 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
      Strategy: attach ::before to body/print container; position: absolute renders
      ONLY on the first page in Chromium print pagination. Place INSIDE the printable
      area (top: 0; right: 0) so it isn't clipped by page margins. */
-  body, .print, .markdown-preview-view, .markdown-rendered {
+  body, .print, .markdown-preview-view, .markdown-preview-sizer,
+  .markdown-preview-section, .markdown-rendered {
     position: relative;
   }
   body::before,
   .print::before,
   .markdown-preview-view::before,
+  .markdown-preview-sizer::before,
+  .markdown-preview-section > div:first-child::before,
   .markdown-rendered::before {
-    content: var(--ogd-first-page-header, "");
-    position: absolute;
-    top: 0;
-    right: 0;
-    /* Match body font exactly — Pretendard SemiBold may not be installed,
-       which causes fallback to serif. Use weight 500 (Medium) which Pretendard
-       Variable supports, with explicit !important to override print rules. */
-    font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
-      "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic",
-      system-ui, sans-serif !important;
+    content: var(--ogd-first-page-header, "") !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    /* Force same exact font as body — use system-ui first as it's guaranteed
+       not to fall back to serif in Chromium print. Pretendard added if available. */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro",
+      "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 10pt !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     font-style: normal !important;
-    color: var(--ogd-first-page-header-color, #b91c1c);
-    white-space: nowrap;
-    z-index: 9999;
-    pointer-events: none;
+    font-variant: normal !important;
+    font-synthesis: weight style !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    color: var(--ogd-first-page-header-color, #b91c1c) !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
   }
   .markdown-rendered h1:first-of-type {
     string-set: ogd-doc-title content();

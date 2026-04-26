@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.10] — 2026-04-26
+
+### Fixed
+- v1.4.9에서도 Times serif로 fallback되던 문제 최종 수정
+  - 폰트 스택 1순위를 **`-apple-system`** + **`BlinkMacSystemFont`**로 변경 (macOS의 SF Pro 강제 적용 시스템 폰트는 절대 serif fallback 안 됨)
+  - `font-weight: 400` (Regular)로 낮춰 weight 매칭 실패 제거
+  - `font-synthesis: weight style` 명시로 합성 허용
+  - `.markdown-preview-sizer::before`, `.markdown-preview-section > div:first-child::before` 추가로 Obsidian 실제 print 컨테이너에 직접 부착
+  - 모든 속성에 `!important` 추가하여 print 룰 완전 제어
+
 ## [1.4.9] — 2026-04-26
 
 ### Fixed
