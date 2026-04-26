@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.7] — 2026-04-26
+
+### Changed
+- PDF 첫 페이지 우상단 문구가 본문 폰트(Pretendard 등)를 따르도록 `font-family: var(--font-text-theme)` 명시
+
 ## [1.4.6] — 2026-04-26
 
 ### Fixed
