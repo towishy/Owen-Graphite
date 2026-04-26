@@ -146,6 +146,47 @@ body .markdown-reading-view .markdown-rendered h3 {
     border-bottom: none !important;
 }
 
+body .markdown-rendered h4,
+body .markdown-preview-view.markdown-rendered h4,
+body .markdown-reading-view .markdown-rendered h4 {
+    box-sizing: border-box !important;
+    margin-top: 0.95em !important;
+    margin-bottom: 0.36em !important;
+    padding-bottom: 0.18em !important;
+    font-size: 1.16em !important;
+    font-weight: 700 !important;
+    line-height: 1.38 !important;
+    letter-spacing: 0 !important;
+    color: #374151 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+body .markdown-rendered h5,
+body .markdown-preview-view.markdown-rendered h5,
+body .markdown-reading-view .markdown-rendered h5 {
+    box-sizing: border-box !important;
+    margin-top: 0.85em !important;
+    margin-bottom: 0.3em !important;
+    font-size: 1.03em !important;
+    font-weight: 700 !important;
+    line-height: 1.42 !important;
+    letter-spacing: 0 !important;
+    color: #4b5563 !important;
+}
+
+body .markdown-rendered h6,
+body .markdown-preview-view.markdown-rendered h6,
+body .markdown-reading-view .markdown-rendered h6 {
+    box-sizing: border-box !important;
+    margin-top: 0.8em !important;
+    margin-bottom: 0.25em !important;
+    font-size: 0.95em !important;
+    font-weight: 750 !important;
+    line-height: 1.42 !important;
+    letter-spacing: 0 !important;
+    color: #6b7280 !important;
+}
+
 /* Live Preview headings must keep a plain CM6 line hitbox.
    Block-style rendered heading decorations can swallow clicks when a section is expanded. */
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
@@ -192,7 +233,13 @@ body .markdown-rendered h1:has(+ .table-wrapper),
 body .markdown-rendered h2:has(+ table),
 body .markdown-rendered h2:has(+ .table-wrapper),
 body .markdown-rendered h3:has(+ table),
-body .markdown-rendered h3:has(+ .table-wrapper) {
+body .markdown-rendered h3:has(+ .table-wrapper),
+body .markdown-rendered h4:has(+ table),
+body .markdown-rendered h4:has(+ .table-wrapper),
+body .markdown-rendered h5:has(+ table),
+body .markdown-rendered h5:has(+ .table-wrapper),
+body .markdown-rendered h6:has(+ table),
+body .markdown-rendered h6:has(+ .table-wrapper) {
     margin-bottom: 0.4em !important;
 }
 
@@ -208,34 +255,43 @@ body .markdown-reading-view table {
     max-width: 100% !important;
     border-collapse: collapse !important;
     font-size: 0.92em !important;
-    border: 1px solid #ddd !important;
+    border: 1px solid #e5e7eb !important;
 }
 
 body .markdown-rendered h1 + table,
 body .markdown-rendered h2 + table,
 body .markdown-rendered h3 + table,
+body .markdown-rendered h4 + table,
+body .markdown-rendered h5 + table,
+body .markdown-rendered h6 + table,
 body .markdown-rendered h1 + .table-wrapper,
 body .markdown-rendered h2 + .table-wrapper,
 body .markdown-rendered h3 + .table-wrapper,
+body .markdown-rendered h4 + .table-wrapper,
+body .markdown-rendered h5 + .table-wrapper,
+body .markdown-rendered h6 + .table-wrapper,
 body .markdown-rendered h1 + .table-wrapper table,
 body .markdown-rendered h2 + .table-wrapper table,
-body .markdown-rendered h3 + .table-wrapper table {
+body .markdown-rendered h3 + .table-wrapper table,
+body .markdown-rendered h4 + .table-wrapper table,
+body .markdown-rendered h5 + .table-wrapper table,
+body .markdown-rendered h6 + .table-wrapper table {
     margin-top: 0.35em !important;
 }
 
 body .markdown-rendered th,
 body .markdown-preview-view th,
 body .markdown-reading-view th {
-    background-color: #f7f7f7 !important;
-    color: #000000 !important;
+    background-color: #f8fafc !important;
+    color: #111827 !important;
     font-weight: 700 !important;
     text-align: center !important;
     vertical-align: middle !important;
     padding: 12px 20px !important;
     white-space: nowrap !important;
-    border-bottom: 1px dashed #000000 !important;
-    border-left: 1px solid #ddd !important;
-    border-right: 1px solid #ddd !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    border-left: 1px solid #e5e7eb !important;
+    border-right: 1px solid #e5e7eb !important;
 }
 
 body .markdown-rendered td,
@@ -243,18 +299,18 @@ body .markdown-preview-view td,
 body .markdown-reading-view td {
     line-height: 1.6 !important;
     padding: 10px 20px !important;
-    border-bottom: 1px solid #f0f0f0 !important;
-    border-left: 1px solid #f0f0f0 !important;
-    border-right: 1px solid #f0f0f0 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    border-left: 1px solid #f1f5f9 !important;
+    border-right: 1px solid #f1f5f9 !important;
     vertical-align: middle !important;
     text-align: left !important;
-    color: #333333 !important;
+    color: #1f2937 !important;
     word-break: keep-all !important;
     overflow-wrap: break-word !important;
 }
 
 body .markdown-rendered tr:nth-child(even) {
-    background-color: #fafafa !important;
+    background-color: #fbfdff !important;
 }
 
 /* ------------------------------------------------------------
@@ -267,15 +323,15 @@ body .workspace-leaf-content .markdown-rendered blockquote,
 body .workspace-leaf-content .markdown-preview-view blockquote,
 body .workspace-leaf-content .markdown-reading-view blockquote {
     margin: 0.95em 0 !important;
-    padding: 12px 18px 12px 20px !important;
-    border-top: 1px solid #d1d5db !important;
-    border-right: 1px solid #d1d5db !important;
-    border-bottom: 1px solid #d1d5db !important;
+    padding: 8px 0 8px 18px !important;
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
     border-left: 3px solid #6b7280 !important;
     border-inline-start: 3px solid #6b7280 !important;
-    border-radius: 6px !important;
-    background: #f9fafb !important;
-    background-color: #f9fafb !important;
+    border-radius: 0 !important;
+    background: linear-gradient(90deg, #f8fafc 0, transparent 88%) !important;
+    background-color: transparent !important;
     color: #374151 !important;
     box-shadow: none !important;
     font-style: normal !important;
@@ -347,10 +403,10 @@ body .workspace-leaf-content .markdown-rendered .callout {
     border-top: 1px solid #d1d5db !important;
     border-right: 1px solid #d1d5db !important;
     border-bottom: 1px solid #d1d5db !important;
-    border-left: 5px solid #4b5563 !important;
+    border-left: 4px solid #64748b !important;
     border-radius: 6px !important;
-    background: #f9fafb !important;
-    background-color: #f9fafb !important;
+    background: #fbfcfd !important;
+    background-color: #fbfcfd !important;
     box-shadow: none !important;
     mix-blend-mode: normal !important;
     color: #374151 !important;
@@ -364,12 +420,60 @@ body .markdown-rendered div.callout[data-callout="caution"] {
     background-color: #fffbeb !important;
 }
 
+body .markdown-rendered div.callout[data-callout="failure"],
+body .markdown-rendered div.callout[data-callout="fail"],
+body .markdown-rendered div.callout[data-callout="missing"],
+body .markdown-rendered div.callout[data-callout="danger"],
+body .markdown-rendered div.callout[data-callout="error"],
+body .markdown-rendered div.callout[data-callout="bug"] {
+    border-left-color: #b91c1c !important;
+    background: #fef2f2 !important;
+    background-color: #fef2f2 !important;
+}
+
 body .markdown-rendered div.callout[data-callout="success"],
 body .markdown-rendered div.callout[data-callout="check"],
 body .markdown-rendered div.callout[data-callout="done"] {
     border-left-color: #047857 !important;
     background: #f0fdf4 !important;
     background-color: #f0fdf4 !important;
+}
+
+body .markdown-rendered div.callout[data-callout="tip"],
+body .markdown-rendered div.callout[data-callout="hint"],
+body .markdown-rendered div.callout[data-callout="important"] {
+    border-left-color: #0f766e !important;
+    background: #f0fdfa !important;
+    background-color: #f0fdfa !important;
+}
+
+body .markdown-rendered div.callout[data-callout="abstract"],
+body .markdown-rendered div.callout[data-callout="summary"],
+body .markdown-rendered div.callout[data-callout="tldr"] {
+    border-left-color: #334155 !important;
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+}
+
+body .markdown-rendered div.callout[data-callout="question"],
+body .markdown-rendered div.callout[data-callout="help"],
+body .markdown-rendered div.callout[data-callout="faq"] {
+    border-left-color: #7c3aed !important;
+    background: #faf5ff !important;
+    background-color: #faf5ff !important;
+}
+
+body .markdown-rendered div.callout[data-callout="example"] {
+    border-left-color: #6d28d9 !important;
+    background: #f5f3ff !important;
+    background-color: #f5f3ff !important;
+}
+
+body .markdown-rendered div.callout[data-callout="quote"],
+body .markdown-rendered div.callout[data-callout="cite"] {
+    border-left-color: #64748b !important;
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
 }
 
 body .markdown-rendered .callout-title,
@@ -399,23 +503,13 @@ body .markdown-reading-view .callout-icon {
     align-items: center !important;
     justify-content: center !important;
     flex: 0 0 auto !important;
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 4px !important;
-    background: #4b5563 !important;
-    color: #ffffff !important;
-}
-
-body .markdown-rendered .callout[data-callout="warning"] .callout-icon,
-body .markdown-rendered .callout[data-callout="attention"] .callout-icon,
-body .markdown-rendered .callout[data-callout="caution"] .callout-icon {
-    background: #92400e !important;
-}
-
-body .markdown-rendered .callout[data-callout="success"] .callout-icon,
-body .markdown-rendered .callout[data-callout="check"] .callout-icon,
-body .markdown-rendered .callout[data-callout="done"] .callout-icon {
-    background: #047857 !important;
+    width: 22px !important;
+    height: 22px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #475569 !important;
 }
 
 body .markdown-rendered .callout-icon svg,
@@ -423,7 +517,7 @@ body .markdown-preview-view .callout-icon svg,
 body .markdown-reading-view .callout-icon svg {
     width: 14px !important;
     height: 14px !important;
-    stroke-width: 2.4px !important;
+    stroke-width: 2.15px !important;
 }
 
 body .markdown-rendered .callout[data-callout="note"],
@@ -436,28 +530,54 @@ body .markdown-rendered .callout[data-callout="info"] {
 
 body .markdown-rendered .callout[data-callout="note"] .callout-icon,
 body .markdown-rendered .callout[data-callout="info"] .callout-icon {
-    width: 22px !important;
-    height: 22px !important;
     border: 1.5px solid #94a3b8 !important;
-    border-radius: 999px !important;
-    background: #ffffff !important;
-    background-color: #ffffff !important;
     color: #475569 !important;
 }
 
-body .markdown-rendered .callout[data-callout="note"] .callout-icon svg,
-body .markdown-rendered .callout[data-callout="info"] .callout-icon svg {
-    width: 14px !important;
-    height: 14px !important;
-    stroke-width: 2.15px !important;
-}
-
+body .markdown-rendered .callout[data-callout="abstract"] { --callout-icon: lucide-clipboard-list; }
+body .markdown-rendered .callout[data-callout="summary"] { --callout-icon: lucide-clipboard-list; }
+body .markdown-rendered .callout[data-callout="tldr"] { --callout-icon: lucide-clipboard-list; }
+body .markdown-rendered .callout[data-callout="tip"] { --callout-icon: lucide-lightbulb; }
+body .markdown-rendered .callout[data-callout="hint"] { --callout-icon: lucide-lightbulb; }
+body .markdown-rendered .callout[data-callout="important"] { --callout-icon: lucide-lightbulb; }
 body .markdown-rendered .callout[data-callout="warning"] { --callout-icon: lucide-triangle-alert; }
 body .markdown-rendered .callout[data-callout="attention"] { --callout-icon: lucide-triangle-alert; }
 body .markdown-rendered .callout[data-callout="caution"] { --callout-icon: lucide-triangle-alert; }
 body .markdown-rendered .callout[data-callout="success"] { --callout-icon: lucide-check-circle-2; }
 body .markdown-rendered .callout[data-callout="check"] { --callout-icon: lucide-check-circle-2; }
 body .markdown-rendered .callout[data-callout="done"] { --callout-icon: lucide-check-circle-2; }
+body .markdown-rendered .callout[data-callout="failure"] { --callout-icon: lucide-triangle-alert; }
+body .markdown-rendered .callout[data-callout="fail"] { --callout-icon: lucide-triangle-alert; }
+body .markdown-rendered .callout[data-callout="missing"] { --callout-icon: lucide-triangle-alert; }
+body .markdown-rendered .callout[data-callout="danger"] { --callout-icon: lucide-triangle-alert; }
+body .markdown-rendered .callout[data-callout="error"] { --callout-icon: lucide-triangle-alert; }
+body .markdown-rendered .callout[data-callout="bug"] { --callout-icon: lucide-triangle-alert; }
+body .markdown-rendered .callout[data-callout="question"] { --callout-icon: lucide-circle-help; }
+body .markdown-rendered .callout[data-callout="help"] { --callout-icon: lucide-circle-help; }
+body .markdown-rendered .callout[data-callout="faq"] { --callout-icon: lucide-circle-help; }
+body .markdown-rendered .callout[data-callout="example"] { --callout-icon: lucide-list-checks; }
+body .markdown-rendered .callout[data-callout="quote"] { --callout-icon: lucide-quote; }
+body .markdown-rendered .callout[data-callout="cite"] { --callout-icon: lucide-quote; }
+
+body .markdown-rendered .callout:is(
+    [data-callout="abstract"],
+    [data-callout="summary"],
+    [data-callout="tldr"],
+    [data-callout="quote"],
+    [data-callout="cite"]
+) .callout-icon {
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+body .markdown-rendered .callout:is(
+    [data-callout="tip"],
+    [data-callout="hint"],
+    [data-callout="important"]
+) .callout-icon {
+    border-color: #5eead4 !important;
+    color: #0f766e !important;
+}
 
 body .markdown-rendered .callout:is(
     [data-callout="warning"],
@@ -465,9 +585,6 @@ body .markdown-rendered .callout:is(
     [data-callout="caution"]
 ) .callout-icon {
     border: 1.5px solid #fcd34d !important;
-    border-radius: 999px !important;
-    background: #ffffff !important;
-    background-color: #ffffff !important;
     color: #92400e !important;
 }
 
@@ -477,10 +594,29 @@ body .markdown-rendered .callout:is(
     [data-callout="done"]
 ) .callout-icon {
     border: 1.5px solid #86efac !important;
-    border-radius: 999px !important;
-    background: #ffffff !important;
-    background-color: #ffffff !important;
     color: #047857 !important;
+}
+
+body .markdown-rendered .callout:is(
+    [data-callout="failure"],
+    [data-callout="fail"],
+    [data-callout="missing"],
+    [data-callout="danger"],
+    [data-callout="error"],
+    [data-callout="bug"]
+) .callout-icon {
+    border-color: #fca5a5 !important;
+    color: #b91c1c !important;
+}
+
+body .markdown-rendered .callout:is(
+    [data-callout="question"],
+    [data-callout="help"],
+    [data-callout="faq"],
+    [data-callout="example"]
+) .callout-icon {
+    border-color: #c4b5fd !important;
+    color: #6d28d9 !important;
 }
 
 /* ------------------------------------------------------------
@@ -537,23 +673,23 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
     color: #111827 !important;
     font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace !important;
     font-size: 0.9em !important;
-    line-height: 1.65 !important;
+    line-height: inherit !important;
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-    border-top: 1px solid #d1d5db !important;
-    border-left: 1px solid #d1d5db !important;
-    border-right: 1px solid #d1d5db !important;
-    border-radius: 6px 6px 0 0 !important;
-    padding-top: 10px !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    padding-top: 0 !important;
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-    border-bottom: 1px solid #d1d5db !important;
-    border-left: 1px solid #d1d5db !important;
-    border-right: 1px solid #d1d5db !important;
-    border-radius: 0 0 6px 6px !important;
-    padding-bottom: 10px !important;
+    border-bottom: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* ------------------------------------------------------------
@@ -602,7 +738,7 @@ body .markdown-reading-view li::before {
     body .markdown-rendered th,
     body .markdown-preview-view th,
     body .markdown-reading-view th {
-        background-color: #f7f7f7 !important;
-        border-bottom: 1px dashed #000 !important;
+        background-color: #f8fafc !important;
+        border-bottom: 1px solid #cbd5e1 !important;
     }
 }
