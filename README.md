@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.7` (Obsidian 1.6.0+) |
+| **버전** | `1.8.8` (Obsidian 1.6.0+) |
 
 ---
 
@@ -49,9 +49,11 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ```
 
 또는 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서
-`theme.css`, `manifest.json`만 다운로드 → `<YourVault>/.obsidian/themes/Owen Graphite/`에 배치.
+`theme.css`, `manifest.json`, `README.md`, `CHANGELOG.md`, `LICENSE`를 다운로드 → `<YourVault>/.obsidian/themes/Owen Graphite/`에 배치.
 
 이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
+
+> Obsidian 테마 관리 화면에서 README가 비어 보이면 테마 폴더에 `README.md`가 같이 들어 있는지 확인한 뒤, **업데이트 확인** 또는 Obsidian 재시작을 실행하세요.
 
 ### 옵션 C — Style Settings 통합 (권장)
 
@@ -401,6 +403,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.8** — README 릴리즈 자산 검증, 마켓플레이스 README 표시 안내, 수동 설치 파일 목록 정리
 - **v1.8.7** — 보고서형 테이블 클래스, PDF 표 출력 안정화, 모바일 표 스크롤 힌트, 표 fixture 문서
 - **v1.8.6** — 문서 정합성, Live Preview/Mobile/Mermaid/PDF parity, Outline/Bookmarks/Bases/Embed polish, 검증 스크립트
 - **v1.8.5** — Canvas/Graph View, Backlink/Outgoing/Search/Tag pane 탐색 UI 톤 정리

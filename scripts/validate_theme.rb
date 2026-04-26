@@ -78,6 +78,12 @@ Dir.chdir(ROOT) do
   end
   info("screenshots are 512x288 PNGs")
 
+  release_workflow = read(".github/workflows/release.yml")
+  release_assets = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE]
+  missing_assets = release_assets.reject { |asset| release_workflow.match?(/^\s{12}#{Regexp.escape(asset)}\s*$/) }
+  fail_with("release workflow missing assets: #{missing_assets.join(', ')}") unless missing_assets.empty?
+  info("release workflow includes README assets")
+
   diff_check, diff_err, diff_status = Open3.capture3("git", "diff", "--check")
   fail_with("git diff --check failed:\n#{diff_check}#{diff_err}") unless diff_status.success?
   info("git diff --check clean")

@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.8] — 2026-04-26
+
+### Added
+- **Release asset guard** — release workflow가 `README.md`, `CHANGELOG.md`, `theme.css`, `manifest.json`, `LICENSE`를 모두 첨부하는지 로컬/CI 검증에 포함
+- **Marketplace README guidance** — Obsidian 테마 화면에서 README가 비어 보일 때 확인할 설치/업데이트 절차를 README에 추가
+
+### Changed
+- 수동 설치 안내를 현재 릴리즈 자산 구성에 맞게 갱신
+
 ## [1.8.7] — 2026-04-26
 
 ### Added
