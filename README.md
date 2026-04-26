@@ -60,99 +60,28 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
 사이드바에서 26개 옵션으로 즉시 모드 전환 가능.
-자세한 설정 방법은 아래 [⚙️ Style Settings 플러그인 설정](#%EF%B8%8F-style-settings-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%84%A4%EC%A0%95) 섹션을 참고하세요.
+주요 사용 흐름은 아래 [빠른 사용법](#-빠른-사용법)과 [고급 설정 요약](#-고급-설정-요약)을 참고하세요.
 
 ---
 
-## ⚙️ Style Settings 플러그인 설정
+## 🚀 빠른 사용법
 
-> **이 테마의 모든 커스터마이징(보고서 모드, A3 페이지 크기, 액센트 컬러, PDF 첫 페이지 헤더 등)은 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 통해 제어합니다.** 플러그인이 없어도 테마 자체는 동작하지만, **PDF 첫 페이지 헤더 / 보고서 모드 / 액센트 컬러 변경 등 핵심 기능을 사용하려면 반드시 설치해야 합니다.**
+1. Obsidian → 설정 → 외관 → 테마에서 **Owen Graphite**를 선택합니다.
+2. [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 설치하면 26개 옵션을 UI에서 조정할 수 있습니다.
+3. 보고서 PDF가 필요하면 **보고서 모드**를 켜고, PDF Export에서 `A3` / `가로` / `15mm` 여백을 선택합니다.
+4. 첫 페이지 헤더가 필요하면 Style Settings에서 좌·우 라벨/본문/사이드바 색을 채웁니다. 비워둔 쪽은 출력되지 않습니다.
 
-### 1단계 — Style Settings 플러그인 설치
+## 🔧 고급 설정 요약
 
-1. Obsidian → **설정 → 커뮤니티 플러그인 → 탐색**
-2. 검색: `Style Settings`
-3. **설치 → 활성화**
+| 영역 | 대표 옵션 | 용도 |
+|------|-----------|------|
+| 문서 밀도 | 본문 폰트 크기, 줄간격, 최대 폭, 간격 프리셋 | 화면/인쇄 가독성 조정 |
+| 보고서 출력 | 보고서 모드, A3 페이지, 세리프 본문, 첫 줄 들여쓰기, 자동 넘버링 | PDF 보고서 레이아웃 구성 |
+| 색상/표현 | 액센트 컬러, 코드블록 테마, 시선 보호 모드, OS 다크 모드 | 개인 작업 환경 튜닝 |
+| PDF 첫 페이지 | 좌·우 라벨/본문/사이드바 색, 라벨 색 | 표지 상단 메타 정보 출력 |
+| 안정성 | 표 zebra, 표 모던 스타일, PDF 블록 분할 방지 | 긴 표·callout·이미지 출력 안정화 |
 
-### 2단계 — 테마 옵션 패널 열기
-
-1. 좌측 사이드바 하단 **톱니바퀴 아이콘** 또는 명령 팔레트(`⌘ P`) → `Style Settings: Show style settings view` 실행
-2. 좌측 트리에서 **`Owen Graphite`** 펼치기
-3. 카테고리별로 토글·슬라이더·텍스트 입력·색상 선택기를 통해 즉시 적용
-
-### 3단계 — PDF 첫 페이지 헤더 설정 (Design ② Side Bar + Two-line)
-
-PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 등급·작성자·프로젝트 코드 등을 표시할 수 있습니다.
-모든 항목은 **비워두면 표시되지 않으므로**, 필요한 쪽만 채우면 됩니다.
-
-#### 우측 (`PREPARED BY` 영역, 기본 색상 `#111827` Dark)
-
-| Style Settings 항목명 | 입력 예시 | 설명 |
-|----------------------|----------|------|
-| **PDF 첫 페이지 우측 라벨** | `PREPARED BY`, `AUTHOR`, `작성자` | 상단 작은 대문자 라벨 (7.5pt SemiBold) |
-| **PDF 첫 페이지 우측 본문** | `Security Architecture Team`, `홍길동 · CSA` | 하단 큰 글씨 본문 (10.5pt Medium) |
-| **PDF 첫 페이지 우측 사이드바 색** | `#111827` (기본) / `#bc8cff` 등 | 우측 3px 수직 막대 색 |
-
-#### 좌측 (`CONFIDENTIAL` 영역, 기본 색상 `#0ea5e9` Sky)
-
-| Style Settings 항목명 | 입력 예시 | 설명 |
-|----------------------|----------|------|
-| **PDF 첫 페이지 좌측 라벨** | `CONFIDENTIAL`, `INTERNAL`, `프로젝트 코드` | 상단 작은 대문자 라벨 |
-| **PDF 첫 페이지 좌측 본문** | `Q2 Security Review · 분기 보고서` | 하단 본문 |
-| **PDF 첫 페이지 좌측 사이드바 색** | `#0ea5e9` (기본) / `#dc2626` 등 | 좌측 3px 수직 막대 색 |
-
-#### 공통
-
-| 항목 | 기본값 | 설명 |
-|------|-------|------|
-| **PDF 첫 페이지 라벨 색** | `#6b7280` | 좌·우 라벨 글자 공통 색상 |
-
-#### 입력 예시 (보고서 표지)
-
-```
-좌측 라벨:    CONFIDENTIAL
-좌측 본문:    Q2 Security Review · 분기 보고서
-좌측 막대 색: #0ea5e9 (Sky)
-
-우측 라벨:    PREPARED BY
-우측 본문:    Security Architecture Team
-우측 막대 색: #111827 (Dark)
-
-라벨 색:      #6b7280 (Gray)
-```
-
-→ PDF로 내보내면 첫 페이지 상단에 다음과 같이 표시됩니다:
-
-```
-│ CONFIDENTIAL                              PREPARED BY │
-│ Q2 Security Review · 분기 보고서  Security Architecture Team │
-└─ Sky 막대                                Dark 막대 ─┘
-```
-
-> 💡 **팁:** 라벨만 채우고 본문을 비우거나, 본문만 채우고 라벨을 비울 수도 있습니다. 한 쪽(좌 또는 우)을 통째로 비우면 해당 쪽 사이드바·라벨·본문 모두 렌더링되지 않습니다.
-
-### 4단계 — 보고서 모드 토글 (선택)
-
-표지 페이지 + 헤더 자동 넘버링 + 들여쓰기 + 세리프 본문을 **한 번에** 적용:
-
-1. Style Settings 패널 → `Owen Graphite` → **보고서 모드** 토글 ON
-2. PDF 내보내기 시 자동으로:
-   - 첫 H1 → 화면 중앙 큰 표지로 변환
-   - H2/H3/H4 → `1.` / `1.1` / `1.1.1` 자동 넘버링
-   - 본문 → Noto Serif KR 세리프
-   - 모든 문단 첫 줄 들여쓰기
-
-### 5단계 — A3 가로 페이지 크기 설정
-
-1. Style Settings → **PDF 페이지 크기** → `A3 가로` 선택 (기본값)
-2. Obsidian → **PDF로 내보내기** → 페이지 크기 `A3` / 방향 `가로` / 여백 `15mm`
-
-### Style Settings 없이 사용하면?
-
-- 테마는 정상 동작하지만 **모든 옵션이 기본값으로 고정**됩니다.
-- PDF 첫 페이지 헤더는 **빈 값**으로 처리되어 표시되지 않습니다.
-- 보고서 모드·액센트 컬러·코드블록 테마 등을 변경하려면 `theme.css`를 직접 수정해야 합니다.
-- **결론: 플러그인 설치를 강력 권장합니다.**
+Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본값으로 고정됩니다. PDF 헤더, 보고서 모드, 액센트 컬러 변경을 자주 쓴다면 플러그인 사용을 권장합니다.
 
 ---
 
@@ -162,15 +91,13 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 ### 디자인 의도
 
-- **Graphite-first 팔레트**: 헤더, blockquote, callout, 코드 색상을 회색 중심으로 고정해 제품별 색상보다 문서 내용이 먼저 보이게 합니다.
-- **보고서형 heading 체계**: Reading View에서는 H1/H2/H3에 여백, 좌측 bar, 하단 rule을 더 강하게 적용해 긴 문서의 구획이 빠르게 스캔됩니다.
-- **표 중심 레이아웃**: 표 header, border, cell padding, zebra 톤을 안정화해 라이선스 매트릭스·기능 비교표·고객 보고서 표가 PDF에서도 균일하게 보입니다.
-- **보고서 구조 요소 확장**: TOC, 이미지/첨부 캡션, Mermaid/SVG diagram frame, footnote, task list, definition list, 검색 하이라이트, PDF heading rhythm을 같은 회색 문서 톤으로 맞춥니다.
-- **외부 링크 구분**: 외부 URL은 Muted Teal 점선 밑줄로 표시해 내부 링크 chip과 시각적으로 분리합니다.
-- **모던 제목 라인**: H1은 제목 길이에 맞춘 Teal-to-Sky 하단 라인으로 문서 첫 화면의 식별성을 높입니다.
-- **blockquote/callout 충돌 완화**: 기본 테마와 커뮤니티 플러그인의 blockquote/callout 스타일 충돌을 회색 카드 톤으로 정리합니다.
-- **Live Preview 편집성 보존**: Reading View용 block heading 장식은 Live Preview 편집 라인에 강제하지 않습니다. 펼쳐진 H3-H6 섹션 제목을 클릭해도 아래 표/콘텐츠 위젯과 hitbox가 겹치지 않도록 CM6 heading line은 별도 plain hitbox로 유지합니다.
-- **CM6 wrapping 안전성**: Live Preview에서는 CodeMirror의 커서 좌표 계산과 시각적 줄바꿈이 어긋나지 않도록 `word-break`, `overflow-wrap`, `.cm-line` 높이 강제를 최소화합니다.
+| 초점 | 내용 |
+|------|------|
+| Graphite-first | 헤더, blockquote, callout, 코드 색상을 회색 중심으로 고정 |
+| 보고서 구조 | H1/H2/H3, TOC, 캡션, diagram frame, footnote, task list를 같은 톤으로 정리 |
+| 표/PDF 안정성 | 비교표·매트릭스·고객 보고서 표가 화면과 PDF에서 균일하게 보이도록 보강 |
+| 링크 구분 | 외부 URL은 Muted Teal 점선 밑줄로 내부 링크와 분리 |
+| Live Preview 안전성 | Reading View 장식을 CM6 편집 라인에 과도하게 강제하지 않음 |
 
 ![Gray override snippet 8개 구조 개선 preview](screenshots/snippet-design-8-improvements-preview.png)
 
@@ -186,46 +113,17 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 ## 🎨 주요 특징
 
-### 시각 디자인
-- **그래파이트 액센트**: 차분한 회색 + 5종 액센트 컬러 프리셋 (Graphite/Blue/Teal/Violet/Amber)
-- **헤더 3단계 강조**: H1 좌측 5px 보더 + 그라디언트, H2 하단 220px 액센트 바, H3 좌측 보더
-- **세련된 callout**: note·info·tip·abstract·example·quote·question·warning·success 9종
-- **표 강화**: tabular-nums, hover 행, sticky 첫 컬럼, zebra 토글, `.num` 우측정렬
+| 영역 | 특징 |
+|------|------|
+| 시각 디자인 | Graphite 기반 팔레트, 5종 액센트, heading rhythm, 표/코드/callout 톤 통일 |
+| Live Preview | Reading View와 위키링크·태그·코드·callout·표 스타일을 최대한 맞추되 클릭 편집성과 커서 좌표 안정성을 우선 |
+| 보고서 출력 | A3 가로, 헤더/푸터, 자동 넘버링, 표지 페이지, 세리프 본문, PDF page-break 보강 |
+| PDF 첫 페이지 | 좌·우 라벨/본문 2줄 구조, 3px side bar, 빈 값 자동 생략 |
+| 콘텐츠 강조 | `<kbd>`, `secret` blur, Mermaid frame, 이미지 hover, footnote/popover 톤 정리 |
+| 워크스페이스 | 사이드바, 탭, 검색, Properties, Bases, Canvas, Graph, Backlink, Tag pane 톤 통일 |
+| 접근성 | `:focus-visible`, high contrast, reduced motion, CJK 가독성 보정, OS dark mode 옵션 |
 
-### Live Preview ↔ Reading View 동등 (v1.3.1)
-- CM6 헤더 라인별 line-height + 폰트 명시 (1.45 generic 덮어쓰기 해소)
-- 코드블록 박스 외곽선 (begin / middle / end 모두 좌우 보더)
-- 위키링크 / 태그 / 인라인 코드 chip이 Source 모드에서도 동일한 모양
-- Strong / em / strikethrough / 체크박스 정렬 보정
-- Callout / 표 widget 변수 공유, frontmatter 박스 round border
-
-### Live Preview 편집성 원칙 (v1.8.13+)
-
-Reading View는 보고서형 장식과 스캔성을 우선하지만, Live Preview는 클릭 편집성과 커서 좌표 안정성을 우선합니다. 따라서 `.markdown-source-view.mod-cm6` 영역에서는 blockquote 배경/보더, heading z-index, `.cm-line` margin/line-height, `.cm-content` 강제 wrapping을 매우 제한적으로 사용합니다.
-
-회귀 확인용 문서는 [docs/fixtures/live-preview-editing.md](docs/fixtures/live-preview-editing.md)에 있습니다. H2-H6 주변 문장, 여러 줄로 접히는 blockquote, callout 내부 긴 문장, 표 인접 heading을 Live Preview에서 직접 클릭해 확인할 수 있습니다.
-
-### 보고서 출력 (v1.4.0)
-- **A3 가로 기본** + Header(제목) / Footer(페이지 번호) 자동 삽입
-- **헤더 자동 넘버링**: H2 = `1.`, H3 = `1.1`, H4 = `1.1.1`
-- **드롭 캡 / 첫 줄 들여쓰기 / 세리프 본문** — 한국 보고서 스타일
-- **표지 페이지**: 첫 H1을 화면 중앙 큰 글씨로 변환 (보고서 모드)
-- **외부 링크 URL 자동 표시**, 표/이미지/callout `page-break-inside: avoid`
-
-### PDF 첫 페이지 모던 헤더 (v1.5.0+)
-- **Design ② Side Bar + Two-line** — 좌/우 각각 **라벨(소문자, 상단) + 본문(하단) 2줄 구조** + **3px 수직 사이드바**
-- 상단 레이블: 7.5pt SemiBold uppercase + 1.8px letter-spacing
-- 하단 본문: 10.5pt Medium, 본문 폰트 스택과 동일 (Pretendard 우선, macOS/Windows 패리티)
-- 좌측은 `Sky #0ea5e9`, 우측은 `Dark #111827` 기본 (Style Settings에서 변경 가능)
-- 라벨 또는 본문을 비워두면 해당 쪽 렌더링 생략
-
-### 콘텐츠 강조
-- `<kbd>` Mac 키 캡 스타일
-- `> [!secret]` blur 처리, hover 시 해제
-- 보고서형 callout 팔레트: `[!conclusion]`, `[!recommendation]`, `[!risk]`, `[!action]`, `[!decision]`
-- Mermaid 카드형 컨테이너 (배경 + 둥근 모서리 + 그림자)
-- 이미지 zoom-in 커서 + brightness hover
-- Footnote ref 하이라이트, hover popover 그림자/패딩 통일
+Live Preview 클릭 회귀 확인용 문서는 [docs/fixtures/live-preview-editing.md](docs/fixtures/live-preview-editing.md)에 있습니다.
 
 ### 보고서형 callout 팔레트 (v1.8.0+)
 
@@ -415,31 +313,14 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 
 ```
 Owen Graphite/
-├── theme.css         # 모든 스타일
-├── manifest.json     # 버전·메타
-├── README.md         # 이 파일
-├── CHANGELOG.md      # 버전별 변경 이력
-├── LICENSE           # MIT
-├── scripts/
-│   └── validate_theme.rb
-├── snippets/
-│   └── zz-obsidian-gray-force-override-v2.css
-├── docs/
-│   └── fixtures/
-│       ├── table-report.md
-│       ├── live-preview-editing.md
-│       ├── snippet-design-concept-preview.html
-│       ├── snippet-design-8-improvements-preview.html
-│       ├── external-link-dotted-underline-preview.html
-│       └── report-title-spacing-preview.html
-└── screenshots/
-    ├── light.png     # 512×288
-    ├── dark.png
-    ├── report.png
-    ├── snippet-design-concept-preview.png
-    ├── snippet-design-8-improvements-preview.png
-    ├── external-link-dotted-underline-preview.png
-    └── report-title-spacing-preview.png
+├── theme.css          # 테마 본체
+├── manifest.json      # Obsidian 테마 메타데이터
+├── README.md          # 빠른 사용법과 설정 요약
+├── CHANGELOG.md       # 전체 릴리즈 노트
+├── snippets/          # 선택 CSS snippet
+├── docs/fixtures/     # 검증·디자인 preview fixture
+├── screenshots/       # README/마켓플레이스 이미지
+└── scripts/           # 로컬 검증 스크립트
 ```
 
 ### 로컬 검증
@@ -459,34 +340,8 @@ ruby scripts/validate_theme.rb
 - **v1.8.16** — 외부 링크 Muted Teal 점선 밑줄 적용, 색상 후보 preview 이미지 추가
 - **v1.8.15** — Gray override snippet TOC/caption/diagram/footnote/task/definition/search/PDF rhythm 구조 개선, preview 이미지 추가
 - **v1.8.14** — Gray override snippet compact callout/table/inline/print/dark-mode 디자인 개선, preview fixture 추가
-- **v1.8.13** — Live Preview 편집성 guard/fixture 추가, callout outline 아이콘 팔레트 정리
-- **v1.8.12** — `note` / `info` callout 아이콘을 모던한 원형 outline 배지로 정리
-- **v1.8.11** — Live Preview blockquote 줄바꿈 클릭 편집 복구, CM6 래핑/line-height 정렬
-- **v1.8.10** — 펼쳐진 Live Preview H3-H6 제목 클릭 편집 복구, Gray override snippet selector 분리
-- **v1.8.9** — Live Preview H3/H4 제목 클릭 편집 영역 정렬
-- **v1.8.8** — README 릴리즈 자산 검증, 마켓플레이스 README 표시 안내, 수동 설치 파일 목록 정리
-- **v1.8.7** — 보고서형 테이블 클래스, PDF 표 출력 안정화, 모바일 표 스크롤 힌트, 표 fixture 문서
-- **v1.8.6** — 문서 정합성, Live Preview/Mobile/Mermaid/PDF parity, Outline/Bookmarks/Bases/Embed polish, 검증 스크립트
-- **v1.8.5** — Canvas/Graph View, Backlink/Outgoing/Search/Tag pane 탐색 UI 톤 정리
-- **v1.8.4** — Settings/Style Settings 화면, form controls, focus state 톤 정리
-- **v1.8.3** — Command Palette/Modal/Menu polish, Hover Preview/Popover 개선, Dataview 표 parity 보강
-- **v1.8.2** — Sidebar/File Explorer 현대화, 특수 체크박스 상태 강화, Search/Highlight 가독성 개선
-- **v1.8.1** — Properties/Frontmatter 카드형 정리, 모바일 table/Mermaid overflow 안정화, callout 팔레트 사용법 문서화
-- **v1.8.0** — PDF 출력 안정화, 보고서형 callout 팔레트 확장, 표 모던 스타일, Style Settings 옵션 2종 추가
-- **v1.7.0** — UX·접근성·인쇄 종합 개선 (액티브 탭, 모바일 분기, PDF 푸터, 그래프 톤, 검색 강조, 임베드 액센트, 8종 체크박스, 태그 호버, `:focus-visible` 통일, `prefers-contrast`)
-- **v1.6.1** — Editing Toolbar 좌측 여백 8px
-- **v1.6.0** — 테마 이름 변경 (`Owen Graphite Document` → `Owen Graphite`), PDF 헤더 컨테이너 정리
-- **v1.5.1** — Side Bar가 라벨+본문 양쪽을 모두 덮도록 확장 (Design ② 완성)
-- **v1.5.0** — PDF 첫 페이지 모던 헤더 (Side Bar + Two-line, 좌·우 라벨 + 본문)
-- **v1.4.7–1.4.12** — 첫 페이지 헤더 폰트 안정화 및 좌측 헤더 추가
-- **v1.4.5–1.4.6** — PDF 첫 페이지 헤더 렌더링 수정 (Chromium @page var() 회피)
-- **v1.4.1** — Blockquote/callout 좌측 보더 텍스트 겹침 수정
-- **v1.4.0** — 33-point 종합 업그레이드 (보고서 모드, A4 옵션, 액센트 5종, 코드 4종, 접근성)
-- **v1.3.1** — Live Preview ↔ Reading View 12-point parity
-- **v1.3.0** — 13개 카테고리 종합 개선
-- **v1.2.0** — Live Preview 빈 줄 압축
-- **v1.1.0** — PDF 컴팩트 spacing
-- **v1.0.0** — 초기 그래파이트 라이트 테마
+
+이전 버전의 세부 변경은 [CHANGELOG.md](CHANGELOG.md)에만 유지해 README를 짧게 관리합니다.
 
 ---
 
