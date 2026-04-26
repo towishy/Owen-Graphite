@@ -2151,11 +2151,15 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     position: absolute;
     top: 0;
     right: 0;
-    /* Use explicit body font stack — var() may not inherit in Obsidian print container */
-    font-family: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
-      "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif !important;
-    font-size: 10pt;
-    font-weight: 600;
+    /* Match body font exactly — Pretendard SemiBold may not be installed,
+       which causes fallback to serif. Use weight 500 (Medium) which Pretendard
+       Variable supports, with explicit !important to override print rules. */
+    font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic",
+      system-ui, sans-serif !important;
+    font-size: 10pt !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
     color: var(--ogd-first-page-header-color, #b91c1c);
     white-space: nowrap;
     z-index: 9999;

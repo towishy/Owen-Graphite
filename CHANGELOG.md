@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.9] — 2026-04-26
+
+### Fixed
+- v1.4.8에서도 첫 페이지 헤더가 Times 계열 serif 폰트로 떨어지던 문제 수정
+  - 원인: `font-weight: 600`이 Pretendard SemiBold를 찾지 못해 fallback 발생
+  - 수정: `Pretendard Variable` 우선 + `font-weight: 500` (Medium, Variable 폰트가 다 지원) + `-apple-system`/`BlinkMacSystemFont` 스택 추가
+  - `font-style/size/weight` 모두 `!important`로 인쇄 머지 룰 완전 제어
+
 ## [1.4.8] — 2026-04-26
 
 ### Fixed
