@@ -2135,14 +2135,25 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       color: #6b7280;
     }
   }
-  /* First page only — top-right header (Style Settings: ogd-first-page-header) */
-  @page :first {
-    @top-right {
-      content: var(--ogd-first-page-header);
-      font-size: 10pt;
-      font-weight: 600;
-      color: var(--ogd-first-page-header-color);
-    }
+  /* First page only — top-right header (Style Settings: ogd-first-page-header)
+     NOTE: Chromium PDF engine doesn't resolve var() inside @page margin boxes,
+     so we use ::before on the print container instead. It naturally appears only
+     on the first page because subsequent pages start fresh page boxes. */
+  .markdown-preview-view,
+  .markdown-rendered {
+    position: relative;
+  }
+  .markdown-preview-view::before,
+  .print .markdown-rendered::before {
+    content: var(--ogd-first-page-header);
+    position: absolute;
+    top: -10mm;
+    right: 0;
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--ogd-first-page-header-color);
+    white-space: nowrap;
+    z-index: 10;
   }
   .markdown-rendered h1:first-of-type {
     string-set: ogd-doc-title content();

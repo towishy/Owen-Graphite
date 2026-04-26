@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.5] — 2026-04-26
+
+### Fixed
+- PDF 첫 페이지 우측 상단 문구가 PDF에 표시되지 않던 문제 수정
+  - 원인: Chromium PDF 엔진은 `@page` 마진 박스(`@top-right` 등) 내부에서 CSS 변수(`var()`)를 해석하지 못함
+  - 해결: `@page :first { @top-right }` 방식 대신 `.markdown-preview-view::before` + `position: absolute`로 실제 DOM 요소에 배치
+  - 이후 페이지는 새 페이지 박스라 자연스럽게 미표시
+
 ## [1.4.4] — 2026-04-26
 
 ### Added
