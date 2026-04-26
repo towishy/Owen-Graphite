@@ -233,6 +233,8 @@ settings:
   --ogd-fp-right-label: "";
   --ogd-fp-left-label: "";
   --ogd-fp-label-color: #6b7280;
+  --ogd-title-rule-start: #0f766e;
+  --ogd-title-rule-end: #0284c7;
 }
 
 .theme-light,
@@ -495,18 +497,34 @@ button.mod-warning,
 .markdown-reading-view .markdown-rendered h1 {
   position: relative;
   box-sizing: border-box;
-  margin-top: 1.0em !important;
-  margin-bottom: 0.4em !important;
-  padding: 0.42em 0.78em 0.42em 0.9em !important;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 1.35em !important;
+  margin-bottom: 0.9em !important;
+  padding: 0 0 0.52em !important;
   font-size: 2.05em !important;
   font-weight: 850 !important;
   line-height: 1.2 !important;
   letter-spacing: 0 !important;
   color: var(--header-text) !important;
-  background: linear-gradient(90deg, var(--header-bg-soft), #fafafa 72%, transparent) !important;
-  border-left: 5px solid var(--header-accent) !important;
-  border-bottom: 1px solid var(--header-line) !important;
-  border-radius: 0 6px 6px 0 !important;
+  background: transparent !important;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+}
+
+.markdown-rendered h1::after,
+.markdown-preview-view.markdown-rendered h1::after,
+.markdown-reading-view .markdown-rendered h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ogd-title-rule-start), var(--ogd-title-rule-end));
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(15, 118, 110, 0.12);
 }
 
 .markdown-rendered h2,
@@ -2471,6 +2489,9 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     pointer-events: none !important;
   }
   .markdown-rendered h1:first-of-type {
+    margin-top: 44px !important;
+    margin-bottom: 30px !important;
+    padding-bottom: 26px !important;
     string-set: ogd-doc-title content();
   }
 }
@@ -5016,9 +5037,8 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-  v1.8.16 — External link dotted underline marker
-  Release adds Muted Teal dotted underline styling for external links in
-  the base theme and optional gray report override snippet, plus a color
-  candidate preview fixture.
+  v1.8.17 — Title-width teal-to-sky H1 rule marker
+  Release adds title-length H1 underline styling and first-page title
+  spacing polish for report-style documents.
    ============================================================ */
 

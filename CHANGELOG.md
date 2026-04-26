@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.17] — 2026-04-26
+
+### Added
+- 보고서 제목 라인 간격과 컬러를 확인하는 HTML fixture와 PNG preview 이미지 추가
+
+### Changed
+- 기본 테마와 Gray override snippet의 H1 제목 스타일을 제목 길이에 맞는 Teal-to-Sky 하단 라인으로 정리
+- PDF 첫 페이지의 첫 H1은 헤더와 제목, 제목 라인과 본문 사이 여백을 더 넓게 조정
+
 ## [1.8.16] — 2026-04-26
 
 ### Added

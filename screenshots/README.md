@@ -10,6 +10,7 @@ Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 | `snippet-design-concept-preview.png` | 2936×2462 | Concept | Gray override snippet vNext 디자인 개선안 preview |
 | `snippet-design-8-improvements-preview.png` | 3096×3586 | Concept | Gray override snippet 8개 구조 개선 preview |
 | `external-link-dotted-underline-preview.png` | 3016×2438 | Concept | 외부 링크 점선 밑줄 색상 후보 preview |
+| `report-title-spacing-preview.png` | 3408×1988 | Concept | H1 제목 길이 기반 Teal-to-Sky 라인과 첫 페이지 간격 preview |
 
 > 모든 스크린샷은 익명 샘플 콘텐츠로 제작되어 개인·고객사 식별 정보가 포함되지 않습니다.
 
