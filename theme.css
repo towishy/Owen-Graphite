@@ -1109,12 +1109,24 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
    ===================================================================== */
 .markdown-rendered .callout[data-callout="note"],
 .markdown-rendered .callout[data-callout="info"] {
-  border-left-color: #1d4ed8 !important;
-  background: #eff6ff !important;
+  --callout-icon: lucide-info;
+  border-left-color: #64748b !important;
+  background: #f8fafc !important;
 }
 .markdown-rendered .callout[data-callout="note"] .callout-icon,
 .markdown-rendered .callout[data-callout="info"] .callout-icon {
-  background: #1d4ed8 !important;
+  width: 22px !important;
+  height: 22px !important;
+  border: 1.5px solid #94a3b8 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #475569 !important;
+}
+.markdown-rendered .callout[data-callout="note"] .callout-icon svg,
+.markdown-rendered .callout[data-callout="info"] .callout-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+  stroke-width: 2.15px !important;
 }
 
 .markdown-rendered .callout[data-callout="tip"],
@@ -4887,8 +4899,8 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-  v1.8.11 — Live Preview blockquote wrap click alignment marker
-  Source-view line wrapping stays close to CodeMirror defaults so wrapped
-  visual rows in blockquotes keep reliable edit cursor placement.
+  v1.8.12 — Modern info callout icon marker
+  Note/info callouts use a quiet outline lucide-info badge instead of a
+  filled blue square, keeping report callouts calmer and more consistent.
    ============================================================ */
 

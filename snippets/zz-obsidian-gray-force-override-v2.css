@@ -426,6 +426,32 @@ body .markdown-reading-view .callout-icon svg {
     stroke-width: 2.4px !important;
 }
 
+body .markdown-rendered .callout[data-callout="note"],
+body .markdown-rendered .callout[data-callout="info"] {
+    --callout-icon: lucide-info;
+    border-left-color: #64748b !important;
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+}
+
+body .markdown-rendered .callout[data-callout="note"] .callout-icon,
+body .markdown-rendered .callout[data-callout="info"] .callout-icon {
+    width: 22px !important;
+    height: 22px !important;
+    border: 1.5px solid #94a3b8 !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #475569 !important;
+}
+
+body .markdown-rendered .callout[data-callout="note"] .callout-icon svg,
+body .markdown-rendered .callout[data-callout="info"] .callout-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke-width: 2.15px !important;
+}
+
 /* ------------------------------------------------------------
    6. Codeblocks
    ------------------------------------------------------------ */

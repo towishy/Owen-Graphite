@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.12] — 2026-04-26
+
+### Changed
+- `note` / `info` callout의 파란 채움 사각 아이콘을 slate 계열 원형 outline `lucide-info` 배지로 변경
+- Gray override CSS snippet에서도 동일한 info/note callout 아이콘 톤을 적용해 보고서형 문서 스타일과 일관되게 정리
+
 ## [1.8.11] — 2026-04-26
 
 ### Fixed
