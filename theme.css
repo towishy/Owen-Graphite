@@ -162,27 +162,47 @@ settings:
     default: true
   -
     id: ogd-first-page-header
-    title: PDF 첫 페이지 우측 상단 문구
-    description: PDF 내보내기 시 첫 페이지 우측 상단에만 표시되는 문구 (예 "내부 전용", "Confidential"). 비워두면 표시 안 함
+    title: PDF 첫 페이지 우측 상단 문구 (본문)
+    description: PDF 내보내기 시 첫 페이지 우측 상단에만 표시되는 본문 (예 "Owen Lee | Sr. CSA"). 비워두면 표시 안 함
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-first-page-header-color
-    title: 첫 페이지 우측 상단 문구 색상
+    title: 첫 페이지 우측 본문 삼이드바 색상
     type: variable-color
     format: hex
-    default: '#b91c1c'
+    default: '#111827'
+  -
+    id: ogd-fp-right-label
+    title: 첫 페이지 우측 상단 라벨 (소문자)
+    description: 본문 위에 작게 표시되는 라벨 (예 "PREPARED BY"). 비워두면 표시 안 함
+    type: variable-text
+    default: ''
+    quotes: true
   -
     id: ogd-first-page-header-left
-    title: PDF 첫 페이지 좌측 상단 문구
-    description: PDF 내보내기 시 첫 페이지 좌측 상단에만 표시되는 문구 (예 "2026 Q2", "프로젝트 코드"). 비워두면 표시 안 함
+    title: PDF 첫 페이지 좌측 상단 문구 (본문)
+    description: PDF 내보내기 시 첫 페이지 좌측 상단에만 표시되는 본문 (예 "Microsoft Security"). 비워두면 표시 안 함
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-first-page-header-left-color
-    title: 첫 페이지 좌측 상단 문구 색상
+    title: 첫 페이지 좌측 본문 삼이드바 색상
+    type: variable-color
+    format: hex
+    default: '#0ea5e9'
+  -
+    id: ogd-fp-left-label
+    title: 첫 페이지 좌측 상단 라벨 (소문자)
+    description: 본문 위에 작게 표시되는 라벨 (예 "CONFIDENTIAL"). 비워두면 표시 안 함
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-fp-label-color
+    title: 첫 페이지 좌·우 라벨 공통 색상
     type: variable-color
     format: hex
     default: '#6b7280'
@@ -194,9 +214,12 @@ settings:
   --ogd-max-width: 420mm;
   --ogd-accent: #4b5563;
   --ogd-first-page-header: "";
-  --ogd-first-page-header-color: #b91c1c;
+  --ogd-first-page-header-color: #111827;
   --ogd-first-page-header-left: "";
-  --ogd-first-page-header-left-color: #6b7280;
+  --ogd-first-page-header-left-color: #0ea5e9;
+  --ogd-fp-right-label: "";
+  --ogd-fp-left-label: "";
+  --ogd-fp-label-color: #6b7280;
 }
 
 .theme-light,
@@ -2150,53 +2173,39 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       color: #6b7280;
     }
   }
-  /* First page only — top-right header (Style Settings: ogd-first-page-header)
-     Chromium PDF doesn't resolve var() inside @page margin boxes.
-     Strategy: attach ::before to body/print container; position: absolute renders
-     ONLY on the first page in Chromium print pagination. Place INSIDE the printable
-     area (top: 0; right: 0) so it isn't clipped by page margins. */
+  /* First page only — Design ③ Side Bar + Two-line.
+     LABELS render via body::before/::after (top, small caps).
+     VALUES render via .markdown-preview-sizer/.markdown-preview-view/.markdown-rendered
+     ::before/::after (below labels, larger, with vertical accent bar).
+     Position:absolute renders only on first page in Chromium pagination.
+     Both label and value default to empty — show only when user fills them. */
   body, .print, .markdown-preview-view, .markdown-preview-sizer,
   .markdown-preview-section, .markdown-rendered {
     position: relative;
   }
-  body::before,
-  .print::before,
-  .markdown-preview-view::before,
-  .markdown-preview-sizer::before,
-  .markdown-preview-section > div:first-child::before,
-  .markdown-rendered::before {
-    content: var(--ogd-first-page-header, "") !important;
+  /* ---------- LABELS (top row, small caps, accent color) ---------- */
+  body::before {
+    content: var(--ogd-fp-right-label, "") !important;
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
-    /* Cross-platform body font match — same stack as body across macOS/Windows.
-       weight 400 (Regular) is universally available; font-synthesis allows
-       browser to fake bold if needed. Avoid weight 500/600 which require
-       explicit Pretendard SemiBold/Medium files (often missing on Windows). */
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif !important;
-    font-size: 10pt !important;
-    font-weight: 400 !important;
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
     font-style: normal !important;
-    font-variant: normal !important;
     font-synthesis: weight style !important;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
-    color: var(--ogd-first-page-header-color, #b91c1c) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.8px !important;
+    color: var(--ogd-fp-label-color, #6b7280) !important;
     white-space: nowrap !important;
     z-index: 9999 !important;
     pointer-events: none !important;
   }
-  /* Left header (::after, mirrors ::before but on left side) */
-  body::after,
-  .print::after,
-  .markdown-preview-view::after,
-  .markdown-preview-sizer::after,
-  .markdown-preview-section > div:first-child::after,
-  .markdown-rendered::after {
-    content: var(--ogd-first-page-header-left, "") !important;
+  body::after {
+    content: var(--ogd-fp-left-label, "") !important;
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -2204,14 +2213,68 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif !important;
-    font-size: 10pt !important;
-    font-weight: 400 !important;
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
     font-style: normal !important;
-    font-variant: normal !important;
+    font-synthesis: weight style !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.8px !important;
+    color: var(--ogd-fp-label-color, #6b7280) !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+  }
+  /* ---------- VALUES (below labels, larger, dark, with side bar) ---------- */
+  .print::before,
+  .markdown-preview-view::before,
+  .markdown-preview-sizer::before,
+  .markdown-preview-section > div:first-child::before,
+  .markdown-rendered::before {
+    content: var(--ogd-first-page-header, "") !important;
+    position: absolute !important;
+    top: 14px !important;
+    right: 0 !important;
+    padding-right: 10px !important;
+    border-right: 3px solid var(--ogd-first-page-header-color, #111827) !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10.5pt !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
     font-synthesis: weight style !important;
     text-transform: none !important;
     letter-spacing: 0 !important;
-    color: var(--ogd-first-page-header-left-color, #6b7280) !important;
+    line-height: 1.1 !important;
+    color: #111827 !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+  }
+  .print::after,
+  .markdown-preview-view::after,
+  .markdown-preview-sizer::after,
+  .markdown-preview-section > div:first-child::after,
+  .markdown-rendered::after {
+    content: var(--ogd-first-page-header-left, "") !important;
+    position: absolute !important;
+    top: 14px !important;
+    left: 0 !important;
+    padding-left: 10px !important;
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9) !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10.5pt !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    line-height: 1.1 !important;
+    color: #111827 !important;
     white-space: nowrap !important;
     z-index: 9999 !important;
     pointer-events: none !important;

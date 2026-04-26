@@ -4,6 +4,24 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] — 2026-04-26
+
+### Added
+- **PDF 첫 페이지 헤더 모던 디자인 (Design ② Side Bar + Two-line)**
+  - 좌·우 각각 **라벨(소문자, 상단) + 본문(하단) 2줄 구조** + **3px 수직 삼이드바**
+  - 신규 Style Settings 옵션 3개:
+    - `ogd-fp-right-label` (variable-text): 우측 라벨 (예: "PREPARED BY")
+    - `ogd-fp-left-label` (variable-text): 좌측 라벨 (예: "CONFIDENTIAL")
+    - `ogd-fp-label-color` (variable-color, 기본 `#6b7280`): 좌·우 라벨 공통 색상
+  - 기존 옵션 재활용 (하위 호환):
+    - `ogd-first-page-header` → 우측 본문
+    - `ogd-first-page-header-color` → 우측 삼이드바 색상 (기본 `#111827` Dark)
+    - `ogd-first-page-header-left` → 좌측 본문
+    - `ogd-first-page-header-left-color` → 좌측 삼이드바 색상 (기본 `#0ea5e9` Sky)
+  - 라벨은 8pt SemiBold + uppercase + 1.8px letter-spacing, 본문은 10.5pt Medium
+  - 라벨·본문 모두 비워두면 표시 안 함 (하위 호환)
+  - 라벨은 `body::before/::after`, 본문은 `.markdown-preview-sizer ::before/::after` 등 여러 컨테이너에 분리하여 서로 이중 렌더링 아닌 단일 위치에 배치
+
 ## [1.4.12] — 2026-04-26
 
 ### Added
