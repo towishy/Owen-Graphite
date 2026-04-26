@@ -173,8 +173,6 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 - **CM6 wrapping 안전성**: Live Preview에서는 CodeMirror의 커서 좌표 계산과 시각적 줄바꿈이 어긋나지 않도록 `word-break`, `overflow-wrap`, `.cm-line` 높이 강제를 최소화합니다.
 
 ![Gray override snippet 8개 구조 개선 preview](screenshots/snippet-design-8-improvements-preview.png)
-![External link dotted underline preview](screenshots/external-link-dotted-underline-preview.png)
-![Report title spacing preview](screenshots/report-title-spacing-preview.png)
 
 ### 적용 방법
 
