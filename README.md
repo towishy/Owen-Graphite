@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 21종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.1` (Obsidian 1.6.0+) |
+| **버전** | `1.8.2` (Obsidian 1.6.0+) |
 
 ---
 
@@ -212,8 +212,22 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 ### 워크스페이스 폴리시
 - 사이드바 폴더 path-based 색상
 - 활성 파일 4px accent bar, 활성 탭 상단 액센트 보더
+- File Explorer hover/active 상태 강화, active folder hierarchy 강조
 - 탭 아이콘 타입별 색상 (md/canvas/pdf/image)
 - 검색/제안 결과 카드 hover
+
+### 작업 상태 체크박스 (v1.8.2+)
+
+```markdown
+- [ ] 대기
+- [x] 완료
+- [/] 진행 중
+- [>] 위임/전달
+- [!] 중요/위험
+- [?] 확인 필요
+- [-] 취소/제외
+- [*] 핵심/즐겨찾기
+```
 
 ### 플러그인 통합 (라이트/다크 모두)
 - **Dataview** 표 → 본 테마 표 스타일 통일
@@ -342,6 +356,7 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.2** — Sidebar/File Explorer 현대화, 특수 체크박스 상태 강화, Search/Highlight 가독성 개선
 - **v1.8.1** — Properties/Frontmatter 카드형 정리, 모바일 table/Mermaid overflow 안정화, callout 팔레트 사용법 문서화
 - **v1.8.0** — PDF 출력 안정화, 보고서형 callout 팔레트 확장, 표 모던 스타일, Style Settings 옵션 2종 추가
 - **v1.7.0** — UX·접근성·인쇄 종합 개선 (액티브 탭, 모바일 분기, PDF 푸터, 그래프 톤, 검색 강조, 임베드 액센트, 8종 체크박스, 태그 호버, `:focus-visible` 통일, `prefers-contrast`)

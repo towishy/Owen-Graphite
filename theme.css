@@ -3418,3 +3418,144 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   white-space: pre !important;
 }
 
+/* ============================================================
+   v1.8.2 — Workspace navigation + task states + search/highlight
+   - File explorer gains clearer hierarchy, hover, and active states
+   - Special task checkboxes become semantic status markers
+   - Search results and ==highlight== get a modern, readable treatment
+   ============================================================ */
+
+/* Sidebar / File Explorer */
+.nav-folder-title,
+.nav-file-title {
+  border-radius: 6px !important;
+  margin: 1px 6px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease !important;
+}
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  transform: translateX(1px);
+}
+.nav-file-title.is-active {
+  background: #eef2ff !important;
+  color: #111827 !important;
+  box-shadow: inset 3px 0 0 #6366f1 !important;
+}
+.nav-folder-title.is-active {
+  background: #f8fafc !important;
+  box-shadow: inset 3px 0 0 #94a3b8 !important;
+}
+.nav-folder.mod-root > .nav-folder-title {
+  font-weight: 700 !important;
+}
+.nav-file-title-content,
+.nav-folder-title-content {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.theme-dark .nav-folder-title:hover,
+.theme-dark .nav-file-title:hover {
+  background: #1f2937 !important;
+  color: #f9fafb !important;
+}
+.theme-dark .nav-file-title.is-active {
+  background: #1e1b4b !important;
+  color: #f9fafb !important;
+  box-shadow: inset 3px 0 0 #818cf8 !important;
+}
+.theme-dark .nav-folder-title.is-active {
+  background: #111827 !important;
+  box-shadow: inset 3px 0 0 #64748b !important;
+}
+
+/* Semantic task checkbox states */
+.markdown-rendered li.task-list-item[data-task]:not([data-task=" "]),
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task]:not([data-task=" "]) {
+  color: var(--text-normal) !important;
+  text-decoration: none !important;
+}
+.markdown-rendered li.task-list-item[data-task] input[type="checkbox"] {
+  border-width: 1.5px !important;
+}
+.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"],
+.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"] {
+  background: #eff6ff !important;
+  border-color: #3b82f6 !important;
+}
+.markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"] {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+.markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"] {
+  background: #fdf2f8 !important;
+  border-color: #ec4899 !important;
+}
+.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"] {
+  background: #f3f4f6 !important;
+  border-color: #6b7280 !important;
+}
+.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"] {
+  background: #fffbeb !important;
+  border-color: #f59e0b !important;
+}
+.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"]::after { content: "…" !important; color: #1d4ed8 !important; left: 2px !important; top: -5px !important; }
+.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"]::after { content: "›" !important; color: #1d4ed8 !important; left: 3px !important; top: -3px !important; font-size: 15px !important; }
+.markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"]::after { content: "!" !important; color: #b91c1c !important; left: 4px !important; top: -2px !important; }
+.markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"]::after { content: "?" !important; color: #be185d !important; left: 3px !important; top: -2px !important; }
+.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"]::after { content: "–" !important; color: #374151 !important; left: 2px !important; top: -4px !important; }
+.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"]::after { content: "★" !important; color: #b45309 !important; left: 1px !important; top: -3px !important; font-size: 10px !important; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"],
+.theme-dark .markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"] { background: #1e3a8a !important; border-color: #60a5fa !important; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"] { background: #7f1d1d !important; border-color: #f87171 !important; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"] { background: #831843 !important; border-color: #f472b6 !important; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"] { background: #374151 !important; border-color: #9ca3af !important; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"] { background: #78350f !important; border-color: #fbbf24 !important; }
+
+/* Search and highlight readability */
+.markdown-rendered mark,
+.markdown-preview-view mark,
+.cm-s-obsidian span.cm-highlight {
+  background: linear-gradient(180deg, transparent 12%, #fef3c7 12%, #fde68a 88%, transparent 88%) !important;
+  color: #111827 !important;
+  border-radius: 3px !important;
+  padding: 0 2px !important;
+}
+.search-result-file-match,
+.search-result-file-matched-text,
+.search-result-file-match-text,
+.suggestion-highlight {
+  background: #fff7ed !important;
+  color: #7c2d12 !important;
+  border-radius: 4px !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 146, 60, 0.35) !important;
+}
+.is-flashing,
+.markdown-rendered .is-flashing {
+  background: rgba(14, 165, 233, 0.16) !important;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.28) !important;
+  border-radius: 4px !important;
+}
+.theme-dark .markdown-rendered mark,
+.theme-dark .markdown-preview-view mark,
+.theme-dark .cm-s-obsidian span.cm-highlight {
+  background: linear-gradient(180deg, transparent 10%, rgba(251, 191, 36, 0.35) 10%, rgba(245, 158, 11, 0.42) 90%, transparent 90%) !important;
+  color: #fef3c7 !important;
+}
+.theme-dark .search-result-file-match,
+.theme-dark .search-result-file-matched-text,
+.theme-dark .search-result-file-match-text,
+.theme-dark .suggestion-highlight {
+  background: rgba(124, 45, 18, 0.72) !important;
+  color: #ffedd5 !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 146, 60, 0.45) !important;
+}
+.theme-dark .is-flashing,
+.theme-dark .markdown-rendered .is-flashing {
+  background: rgba(56, 189, 248, 0.18) !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35) !important;
+}
+

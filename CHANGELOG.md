@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.2] — 2026-04-26
+
+### Added
+- **Sidebar / File Explorer 현대화** — 파일·폴더 hover, active file, active folder, depth path 가독성을 graphite 톤으로 강화
+- **특수 체크박스 상태 강화** — `[/]`, `[>]`, `[!]`, `[?]`, `[-]`, `[*]` 상태에 의미별 배경·보더·문자 마커 적용
+- **Search / Highlight 가독성 개선** — `==highlight==`, 검색 결과, suggestion highlight, flash target을 라이트/다크 모두 더 선명하게 조정
+
 ## [1.8.1] — 2026-04-26
 
 ### Added
