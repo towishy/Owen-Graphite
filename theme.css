@@ -2861,18 +2861,12 @@ body.ogd-auto-dark {
   display: none !important;
 }
 
-/* #5 — PDF footer page numbers */
+/* #5 — PDF footer page numbers (v1.7.2: right-only, no prefix) */
 @media print {
   @page {
     margin: 18mm 16mm 22mm 16mm;
-    @bottom-left {
-      content: "Owen Graphite";
-      font-family: var(--font-text, sans-serif);
-      font-size: 9pt;
-      color: #6b7280;
-    }
     @bottom-right {
-      content: "p. " counter(page) " / " counter(pages);
+      content: counter(page) " / " counter(pages);
       font-family: var(--font-text, sans-serif);
       font-size: 9pt;
       color: #6b7280;

@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.2] — 2026-04-26
+
+### Changed
+- **PDF 푸터 간소화** — 좌측 "Owen Graphite" 제거, 우측 접두어 "p. " 제거 → `"1 / 19"` 형식만 유지
+
 ## [1.7.1] — 2026-04-26
 
 ### Fixed
