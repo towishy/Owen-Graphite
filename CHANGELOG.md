@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.1] — 2026-04-26
+
+### Fixed
+- v1.5.0의 삼이드바가 본문 줄에만 짧게 그려지던 문제 수정 — 샘플 이미지는 라벨+본문을 모두 덮는 김이의 상하 막대로 표현
+  - 본문 재원소에 `padding-top: 16px` + `top: 0`으로 이동 → 삼이드바 길이가 라벨 영역까지 확장
+  - 라벨의 left/right offset을 13px로 조정해 삼이드바와 겹치지 않게 안쪽 배치
+  - 라벨 top도 2px로 미세 조정해 삼이드바 상단과 정렬
+
 ## [1.5.0] — 2026-04-26
 
 ### Added
