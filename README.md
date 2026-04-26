@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 21종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.0` (Obsidian 1.6.0+) |
+| **버전** | `1.8.1` (Obsidian 1.6.0+) |
 
 ---
 
@@ -185,9 +185,29 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 ### 콘텐츠 강조
 - `<kbd>` Mac 키 캡 스타일
 - `> [!secret]` blur 처리, hover 시 해제
+- 보고서형 callout 팔레트: `[!conclusion]`, `[!recommendation]`, `[!risk]`, `[!action]`, `[!decision]`
 - Mermaid 카드형 컨테이너 (배경 + 둥근 모서리 + 그림자)
 - 이미지 zoom-in 커서 + brightness hover
 - Footnote ref 하이라이트, hover popover 그림자/패딩 통일
+
+### 보고서형 callout 팔레트 (v1.8.0+)
+
+```markdown
+> [!conclusion] 권장 결론
+> 최종 판단이나 제안 텍스트를 강조합니다.
+
+> [!recommendation] 권장 조치
+> 실행 가능한 권장안을 정리합니다.
+
+> [!risk] 주의
+> 정책 충돌, 우회 가능성, 운영 위험을 표시합니다.
+
+> [!action] 다음 단계
+> 담당자나 후속 작업을 나열합니다.
+
+> [!decision] 결정 사항
+> 회의 또는 설계 결정의 확정 내용을 기록합니다.
+```
 
 ### 워크스페이스 폴리시
 - 사이드바 폴더 path-based 색상
@@ -322,6 +342,7 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.1** — Properties/Frontmatter 카드형 정리, 모바일 table/Mermaid overflow 안정화, callout 팔레트 사용법 문서화
 - **v1.8.0** — PDF 출력 안정화, 보고서형 callout 팔레트 확장, 표 모던 스타일, Style Settings 옵션 2종 추가
 - **v1.7.0** — UX·접근성·인쇄 종합 개선 (액티브 탭, 모바일 분기, PDF 푸터, 그래프 톤, 검색 강조, 임베드 액센트, 8종 체크박스, 태그 호버, `:focus-visible` 통일, `prefers-contrast`)
 - **v1.6.1** — Editing Toolbar 좌측 여백 8px

@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] — 2026-04-26
+
+### Added
+- **Properties / Frontmatter 카드형 정리** — 메타데이터 영역의 배경, 좌측 바, row divider, key/value 색상을 보고서 톤으로 정리
+- **모바일 table / Mermaid / Dataview overflow 안정화** — 넓은 구조물이 모바일 화면을 밀어내지 않고 가로 스크롤되도록 조정
+- **README callout 팔레트 사용법 추가** — `[!conclusion]`, `[!recommendation]`, `[!risk]`, `[!action]`, `[!decision]` 예시 문서화
+
 ## [1.8.0] — 2026-04-26
 
 ### Added

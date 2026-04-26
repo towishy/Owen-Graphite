@@ -3332,3 +3332,89 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   color: #f9fafb !important;
 }
 
+/* ============================================================
+   v1.8.1 — Properties card + mobile overflow stability
+   - Modernizes Obsidian Properties / YAML frontmatter panels
+   - Prevents wide tables and Mermaid diagrams from breaking mobile layout
+   ============================================================ */
+
+/* Properties / Frontmatter: quieter report-card surface */
+.metadata-container {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-left: 4px solid #94a3b8 !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+  margin: 0.6em 0 1.0em !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+.metadata-container .metadata-property {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22) !important;
+  padding: 4px 0 !important;
+}
+.metadata-container .metadata-property:last-child {
+  border-bottom: 0 !important;
+}
+.metadata-container .metadata-property-key,
+.metadata-container .metadata-property-key-input {
+  color: #475569 !important;
+  font-weight: 650 !important;
+}
+.metadata-container .metadata-property-value,
+.metadata-container .metadata-property-value input,
+.metadata-container .metadata-property-value textarea {
+  color: #111827 !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border-left: 3px solid #cbd5e1 !important;
+  padding-left: 8px !important;
+}
+
+.theme-dark .metadata-container {
+  background: #111827 !important;
+  border-color: #334155 !important;
+  border-left-color: #64748b !important;
+  box-shadow: none !important;
+}
+.theme-dark .metadata-container .metadata-property {
+  border-bottom-color: rgba(100, 116, 139, 0.32) !important;
+}
+.theme-dark .metadata-container .metadata-property-key,
+.theme-dark .metadata-container .metadata-property-key-input {
+  color: #cbd5e1 !important;
+}
+.theme-dark .metadata-container .metadata-property-value,
+.theme-dark .metadata-container .metadata-property-value input,
+.theme-dark .metadata-container .metadata-property-value textarea {
+  color: #f8fafc !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
+  background: #111827 !important;
+  color: #cbd5e1 !important;
+  border-left-color: #64748b !important;
+}
+
+/* Mobile: wide structured content scrolls horizontally instead of pushing layout */
+.is-mobile .markdown-rendered table,
+.is-mobile .markdown-rendered .table-wrapper,
+.is-mobile .markdown-rendered .mermaid,
+.is-mobile .markdown-rendered pre,
+.is-mobile .markdown-rendered .block-language-dataview {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+.is-mobile .markdown-rendered table {
+  display: block !important;
+  width: max-content !important;
+  min-width: 100% !important;
+}
+.is-mobile .markdown-rendered .mermaid svg {
+  max-width: none !important;
+}
+.is-mobile .markdown-rendered pre {
+  white-space: pre !important;
+}
+
