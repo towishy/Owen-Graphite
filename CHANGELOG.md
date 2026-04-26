@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.7] — 2026-04-26
+
+### Added
+- **Table output polish** — wide/compact/numeric/comparison/risk/matrix/print-fit/wrap table 클래스로 보고서형 표 출력 제어 강화
+- **PDF table stability** — 긴 셀, 코드 셀, 행 분할, 표 설명/출처 문구가 PDF에서 더 안정적으로 보이도록 보강
+- **Mobile table affordance** — 모바일에서 넓은 표가 가로 스크롤 가능하다는 시각 힌트와 overflow 안전장치 추가
+- **Table fixture document** — 주요 표 클래스와 PDF 회귀 확인용 Markdown fixture 추가
+
+### Changed
+- README에 테이블 클래스 사용법과 보고서 표 출력 가이드를 추가
+
 ## [1.8.6] — 2026-04-26
 
 ### Added

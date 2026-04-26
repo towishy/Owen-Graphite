@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.6` (Obsidian 1.6.0+) |
+| **버전** | `1.8.7` (Obsidian 1.6.0+) |
 
 ---
 
@@ -290,10 +290,40 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 | `.ogd-cover` | h1 | 표지 페이지 강제 |
 | `sticky-first-col` | `<table>` | 첫 컬럼 sticky scroll |
 | `.num` | th/td | 숫자 우측정렬 + tabular-nums |
+| `wide-table` | `<table>` | 열이 많은 표의 폰트/간격 압축 |
+| `compact-table` | `<table>` | 로그/체크리스트용 조밀한 표 |
+| `numeric-table` | `<table>` | 숫자 중심 표 우측 정렬 |
+| `comparison-table` | `<table>` | 비교표 첫 컬럼/헤더 강조 |
+| `risk-table` | `<table>` | 위험도/상태 badge 스타일 (`.risk-high`, `.risk-medium`, `.risk-low`, `.risk-ok`) |
+| `matrix-table` | `<table>` | 매트릭스형 표 중앙 정렬 |
+| `print-fit-table` | `<table>` | PDF 출력 시 폰트/패딩 축소 |
+| `wrap-table` | `<table>` | 긴 URL/식별자 줄바꿈 강화 |
 
 ```html
 <span class="ogd-blur">민감한 정보</span>
 ```
+
+### 보고서형 테이블 클래스
+
+Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 class를 줄 수 있을 때 다음 클래스를 사용합니다.
+
+```html
+<table class="wide-table print-fit-table comparison-table">
+    <thead>
+        <tr><th>항목</th><th>정책</th><th class="num">점수</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Baseline</td><td>장문 정책 설명</td><td class="num">95.2%</td></tr>
+    </tbody>
+</table>
+<p class="table-note">출처: 내부 검토 샘플</p>
+```
+
+- `wide-table print-fit-table`: 열이 많은 A3/PDF 표
+- `numeric-table`: 수치·금액·점수 중심 표
+- `comparison-table`: 제품/정책/옵션 비교표
+- `risk-table`: `High`, `Medium`, `Low`, `OK`, `Fail` 같은 상태값 강조
+- `wrap-table`: 긴 URL, 정책명, 리소스 ID 줄바꿈
 
 ---
 
@@ -344,13 +374,15 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 ```
 Owen Graphite/
-├── theme.css         # ~4,300줄, 모든 스타일
+├── theme.css         # ~4,850줄, 모든 스타일
 ├── manifest.json     # 버전·메타
 ├── README.md         # 이 파일
 ├── CHANGELOG.md      # 버전별 변경 이력
 ├── LICENSE           # MIT
 ├── scripts/
 │   └── validate_theme.rb
+├── docs/
+│   └── fixtures/table-report.md
 └── screenshots/
     ├── light.png     # 512×288
     ├── dark.png
@@ -369,6 +401,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.7** — 보고서형 테이블 클래스, PDF 표 출력 안정화, 모바일 표 스크롤 힌트, 표 fixture 문서
 - **v1.8.6** — 문서 정합성, Live Preview/Mobile/Mermaid/PDF parity, Outline/Bookmarks/Bases/Embed polish, 검증 스크립트
 - **v1.8.5** — Canvas/Graph View, Backlink/Outgoing/Search/Tag pane 탐색 UI 톤 정리
 - **v1.8.4** — Settings/Style Settings 화면, form controls, focus state 톤 정리

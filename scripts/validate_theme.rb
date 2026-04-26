@@ -22,7 +22,7 @@ def read(path)
 end
 
 Dir.chdir(ROOT) do
-  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE screenshots/light.png screenshots/dark.png screenshots/report.png]
+  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE docs/fixtures/table-report.md screenshots/light.png screenshots/dark.png screenshots/report.png]
   missing = required.reject { |path| File.file?(path) && File.size(path).positive? }
   fail_with("missing required files: #{missing.join(', ')}") unless missing.empty?
   info("required files present")
