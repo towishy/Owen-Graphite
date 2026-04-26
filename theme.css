@@ -3035,3 +3035,42 @@ a.external-link:focus-visible,
   justify-content: center !important;
   white-space: normal !important;
 }
+
+/* ============================================================
+   v1.7.4 — Mermaid label background mismatch fix
+   Symptom: foreignObject/.nodeLabel has its own bg (or inherits
+            theme bg) that differs from <rect> fill, producing
+            visible color seam inside the node.
+   Fix: force all label-side backgrounds transparent so the rect
+        fill is the single source of truth for node color.
+   ============================================================ */
+.markdown-rendered .mermaid svg .node foreignObject,
+.markdown-rendered .mermaid svg .node foreignObject > div,
+.markdown-rendered .mermaid svg .node foreignObject > div > span,
+.markdown-rendered .mermaid svg .nodeLabel,
+.markdown-rendered .mermaid svg .nodeLabel > span,
+.markdown-rendered .mermaid svg .nodeLabel > p,
+.markdown-rendered .mermaid svg .label foreignObject,
+.markdown-rendered .mermaid svg .label foreignObject > div {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+/* Edge labels: keep small bg pill but match container card color
+   so they do not punch a hole through edges */
+.markdown-rendered .mermaid svg .edgeLabel,
+.markdown-rendered .mermaid svg .edgeLabel rect,
+.markdown-rendered .mermaid svg .edgeLabel foreignObject,
+.markdown-rendered .mermaid svg .edgeLabel foreignObject > div,
+.markdown-rendered .mermaid svg .edgeLabel span {
+  background: var(--background-primary) !important;
+  background-color: var(--background-primary) !important;
+}
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel,
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel rect,
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject,
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject > div,
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel span {
+  background: var(--background-primary) !important;
+  background-color: var(--background-primary) !important;
+}
+

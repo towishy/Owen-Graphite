@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.4] — 2026-04-26
+
+### Fixed
+- **Mermaid 노드 내부 배경 색 불일치 해소** — `<rect>` fill과 `foreignObject`/`nodeLabel` 내부 디비 배경이 달라 노드 안에 색상 이음이 보이던 현상을 수정. 라벨 측 배경을 전부 transparent로 고정 → rect fill이 유일 색상 소스
+- **Edge label 배경**은 컨테이너 카드 색과 동일하게 `--background-primary`로 고정 (엣지와 겹치는 자리에서 잠식의 랜드마크 제거)
+
 ## [1.7.3] — 2026-04-26
 
 ### Fixed
