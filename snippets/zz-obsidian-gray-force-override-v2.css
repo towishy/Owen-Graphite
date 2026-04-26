@@ -61,12 +61,21 @@ body .markdown-rendered.is-readable-line-width {
     margin: 0 auto !important;
 }
 
-body .markdown-rendered p,
-body .markdown-source-view.mod-cm6 .cm-line {
+body .markdown-rendered p {
     line-height: 1.8 !important;
     margin-bottom: 0.45em !important;
     font-family: "Pretendard", "Segoe UI", "Apple SD Gothic Neo", sans-serif !important;
     color: #1a1a1a !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-content {
+    font-family: "Pretendard", "Segoe UI", "Apple SD Gothic Neo", sans-serif !important;
+    color: #1a1a1a !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 /* ------------------------------------------------------------
@@ -145,8 +154,8 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
-    position: relative !important;
-    z-index: 2 !important;
+    position: static !important;
+    z-index: auto !important;
     box-sizing: border-box !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
@@ -163,19 +172,19 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
     line-height: 1.32 !important;
-    padding: 0.18em 0 0.28em 0.08em !important;
+    padding: 0.22em 0 0.36em 0.08em !important;
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
     line-height: 1.45 !important;
-    padding: 0.16em 0 0.22em 0.08em !important;
+    padding: 0.22em 0 0.34em 0.08em !important;
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
-    line-height: 1.35 !important;
-    padding: 0.08em 0 0.14em 0.08em !important;
+    line-height: 1.5 !important;
+    padding: 0.24em 0 0.42em 0.08em !important;
 }
 
 body .markdown-rendered h1:has(+ table),
@@ -295,13 +304,16 @@ body .markdown-reading-view blockquote p {
 /* Live Preview blockquote lines */
 body .markdown-source-view.mod-cm6 .HyperMD-quote,
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
+    position: static !important;
+    z-index: auto !important;
+    box-sizing: border-box !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    padding: 0.18em 16px 0.18em 20px !important;
-    border-left: 3px solid #6b7280 !important;
-    border-inline-start: 3px solid #6b7280 !important;
-    background: #f9fafb !important;
-    background-color: #f9fafb !important;
+    padding: 0 !important;
+    border-left: 0 !important;
+    border-inline-start: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
     color: #374151 !important;
     font-style: normal !important;
 }
@@ -312,16 +324,12 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote + .cm-line.HyperMD-quo
 }
 
 body .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
-    color: transparent !important;
+    color: #9ca3af !important;
+    opacity: 0.75 !important;
 }
 
 body .markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
     color: #374151 !important;
-    font-style: normal !important;
-}
-
-body .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
-    color: transparent !important;
     font-style: normal !important;
 }
 

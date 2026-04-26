@@ -434,8 +434,17 @@ button.mod-warning,
   font-size: var(--ogd-body-size, 15px);
   color: var(--text-normal);
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+.markdown-preview-view,
+.markdown-rendered {
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+
+.markdown-source-view.mod-cm6 .cm-content {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 
 .markdown-rendered p {
@@ -446,7 +455,7 @@ button.mod-warning,
 }
 
 .markdown-source-view.mod-cm6 .cm-line {
-  line-height: 1.45 !important;
+  line-height: inherit !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   margin-top: 0 !important;
@@ -467,6 +476,15 @@ button.mod-warning,
   margin: 0 !important;
 }
 
+.markdown-source-view.mod-cm6 .cm-line:empty:has(+ .HyperMD-header),
+.markdown-source-view.mod-cm6 .cm-line:has(br:only-child):has(+ .HyperMD-header),
+.markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:empty,
+.markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:has(br:only-child) {
+  line-height: 1.05em !important;
+  min-height: 1.05em !important;
+  height: 1.05em !important;
+}
+
 /* Reading view: tighten consecutive paragraph stacks. */
 .markdown-rendered p + p {
   margin-top: 0.18em !important;
@@ -474,8 +492,7 @@ button.mod-warning,
 
 .markdown-rendered h1,
 .markdown-preview-view.markdown-rendered h1,
-.markdown-reading-view .markdown-rendered h1,
-.markdown-source-view.mod-cm6 .HyperMD-header-1 {
+.markdown-reading-view .markdown-rendered h1 {
   position: relative;
   box-sizing: border-box;
   margin-top: 1.0em !important;
@@ -494,8 +511,7 @@ button.mod-warning,
 
 .markdown-rendered h2,
 .markdown-preview-view.markdown-rendered h2,
-.markdown-reading-view .markdown-rendered h2,
-.markdown-source-view.mod-cm6 .HyperMD-header-2 {
+.markdown-reading-view .markdown-rendered h2 {
   position: relative;
   box-sizing: border-box;
   margin-top: 0.95em !important;
@@ -511,8 +527,7 @@ button.mod-warning,
 
 .markdown-rendered h2::after,
 .markdown-preview-view.markdown-rendered h2::after,
-.markdown-reading-view .markdown-rendered h2::after,
-.markdown-source-view.mod-cm6 .HyperMD-header-2::after {
+.markdown-reading-view .markdown-rendered h2::after {
   content: "";
   position: absolute;
   left: 0;
@@ -670,16 +685,18 @@ button.mod-warning,
   box-sizing: border-box !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
-  padding: 0.2em 16px 0.2em 24px !important;
-  border-left: 4px solid #6b7280 !important;
-  border-inline-start: 4px solid #6b7280 !important;
-  background: #f9fafb !important;
+  padding: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
   color: #374151 !important;
   font-style: normal !important;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
-  color: transparent !important;
+  color: #9ca3af !important;
+  opacity: 0.75 !important;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
@@ -1685,33 +1702,34 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
   line-height: 1.25 !important;
-  padding-bottom: 0.22em !important;
+  padding-top: 0.18em !important;
+  padding-bottom: 0.32em !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
-  position: relative !important;
-  z-index: 1 !important;
+  position: static !important;
+  z-index: auto !important;
   line-height: 1.42 !important;
-  padding-top: 0.12em !important;
-  padding-bottom: 0.18em !important;
+  padding-top: 0.18em !important;
+  padding-bottom: 0.3em !important;
   padding-left: 0.08em !important;
   padding-right: 0 !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
-  position: relative !important;
-  z-index: 1 !important;
-  line-height: 1.38 !important;
-  padding-top: 0.08em !important;
-  padding-bottom: 0.14em !important;
+  position: static !important;
+  z-index: auto !important;
+  line-height: 1.5 !important;
+  padding-top: 0.24em !important;
+  padding-bottom: 0.42em !important;
   padding-left: 0.08em !important;
   padding-right: 0 !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
-  position: relative !important;
-  z-index: 1 !important;
-  line-height: 1.35 !important;
-  padding-top: 0.06em !important;
-  padding-bottom: 0.1em !important;
+  position: static !important;
+  z-index: auto !important;
+  line-height: 1.45 !important;
+  padding-top: 0.16em !important;
+  padding-bottom: 0.28em !important;
   padding-left: 0.08em !important;
 }
 /* HyperMD inline header text size — CM6 needs explicit per-level */
@@ -4869,8 +4887,8 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-  v1.8.10 — Live Preview expanded heading click target alignment marker
-  H3-H6 source-view line boxes stay above expanded content widgets so
-  Obsidian can place the edit cursor reliably on headings.
+  v1.8.11 — Live Preview blockquote wrap click alignment marker
+  Source-view line wrapping stays close to CodeMirror defaults so wrapped
+  visual rows in blockquotes keep reliable edit cursor placement.
    ============================================================ */
 

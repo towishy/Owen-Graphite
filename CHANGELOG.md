@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.11] — 2026-04-26
+
+### Fixed
+- Live Preview에서 blockquote 문장이 화면상 여러 줄로 접힐 때 두 번째 시각 줄 클릭이 편집으로 진입하지 못하던 문제를 수정
+- CM6 편집 영역의 강제 word-break / overflow-wrap / line-height 조정을 분리해 CodeMirror 커서 좌표와 시각적 줄바꿈이 어긋나지 않도록 정리
+- Gray override CSS snippet의 Live Preview heading / blockquote 레이어와 간격을 조정해 제목 아래 문장 클릭 안정성 개선
+
 ## [1.8.10] — 2026-04-26
 
 ### Fixed
