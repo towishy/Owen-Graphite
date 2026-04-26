@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.11] — 2026-04-26
+
+### Changed
+- 첫 페이지 헤더 폰트 스택을 본문 스택과 완전 일치 (Pretendard 1순위)
+  - macOS에서 Pretendard가 설치되어있으면 본문과 동일한 Pretendard로 표시
+  - Windows에서도 동일한 스택 적용 (Pretendard → Apple SD Gothic Neo → Noto Sans KR → Segoe UI → Malgun Gothic → sans-serif)
+  - weight 400 (Regular)로 유지 — 모든 OS에서 안전 + `font-synthesis: weight style`로 필요 시 합성
+
 ## [1.4.10] — 2026-04-26
 
 ### Fixed

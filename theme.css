@@ -2154,11 +2154,14 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
-    /* Force same exact font as body — use system-ui first as it's guaranteed
-       not to fall back to serif in Chromium print. Pretendard added if available. */
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro",
-      "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo",
-      "Noto Sans KR", "Helvetica Neue", Arial, sans-serif !important;
+    /* Cross-platform body font match — same stack as body across macOS/Windows.
+       weight 400 (Regular) is universally available; font-synthesis allows
+       browser to fake bold if needed. Avoid weight 500/600 which require
+       explicit Pretendard SemiBold/Medium files (often missing on Windows). */
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
     font-size: 10pt !important;
     font-weight: 400 !important;
     font-style: normal !important;
