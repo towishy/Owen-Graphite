@@ -939,6 +939,25 @@ button.mod-warning,
   text-decoration-color: #1d4ed8;
 }
 
+.markdown-rendered a.external-link,
+.markdown-rendered a[href^="http://"]:not(.internal-link),
+.markdown-rendered a[href^="https://"]:not(.internal-link) {
+  color: #0f766e;
+  font-weight: 760;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #5eead4;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.22em;
+}
+
+.markdown-rendered a.external-link:hover,
+.markdown-rendered a[href^="http://"]:not(.internal-link):hover,
+.markdown-rendered a[href^="https://"]:not(.internal-link):hover {
+  color: #0d9488;
+  text-decoration-color: #0f766e;
+}
+
 /* Broken / unresolved internal links */
 .markdown-rendered a.internal-link.is-unresolved,
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
@@ -1686,6 +1705,16 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 }
 .theme-dark .markdown-rendered a {
   color: #93c5fd !important;
+}
+.theme-dark .markdown-rendered a.external-link,
+.theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link),
+.theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link) {
+  color: #5eead4 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: dotted !important;
+  text-decoration-color: #2dd4bf !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.22em !important;
 }
 .theme-dark .markdown-rendered a.internal-link.is-unresolved {
   color: #fbbf24 !important;
@@ -4987,9 +5016,9 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-  v1.8.15 — Gray override snippet report structure polish marker
-  Release adds TOC, media captions, diagram frames, footnotes, task lists,
-  definition lists, search highlight tone, and PDF heading rhythm for the
-  optional report override snippet.
+  v1.8.16 — External link dotted underline marker
+  Release adds Muted Teal dotted underline styling for external links in
+  the base theme and optional gray report override snippet, plus a color
+  candidate preview fixture.
    ============================================================ */
 

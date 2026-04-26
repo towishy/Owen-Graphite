@@ -356,6 +356,38 @@ body .markdown-reading-view a {
     border-bottom: 1px solid #bfdbfe !important;
 }
 
+body .markdown-rendered a.external-link,
+body .markdown-preview-view a.external-link,
+body .markdown-reading-view a.external-link,
+body .markdown-rendered a[href^="http://"]:not(.internal-link),
+body .markdown-preview-view a[href^="http://"]:not(.internal-link),
+body .markdown-reading-view a[href^="http://"]:not(.internal-link),
+body .markdown-rendered a[href^="https://"]:not(.internal-link),
+body .markdown-preview-view a[href^="https://"]:not(.internal-link),
+body .markdown-reading-view a[href^="https://"]:not(.internal-link) {
+    color: #0f766e !important;
+    font-weight: 760 !important;
+    text-decoration-line: underline !important;
+    text-decoration-style: dotted !important;
+    text-decoration-color: #5eead4 !important;
+    text-decoration-thickness: 1.5px !important;
+    text-underline-offset: 0.22em !important;
+    border-bottom: 0 !important;
+}
+
+body .markdown-rendered a.external-link:hover,
+body .markdown-preview-view a.external-link:hover,
+body .markdown-reading-view a.external-link:hover,
+body .markdown-rendered a[href^="http://"]:not(.internal-link):hover,
+body .markdown-preview-view a[href^="http://"]:not(.internal-link):hover,
+body .markdown-reading-view a[href^="http://"]:not(.internal-link):hover,
+body .markdown-rendered a[href^="https://"]:not(.internal-link):hover,
+body .markdown-preview-view a[href^="https://"]:not(.internal-link):hover,
+body .markdown-reading-view a[href^="https://"]:not(.internal-link):hover {
+    color: #0d9488 !important;
+    text-decoration-color: #0f766e !important;
+}
+
 body .markdown-rendered mark,
 body .markdown-preview-view mark,
 body .markdown-reading-view mark {
@@ -1157,6 +1189,24 @@ body.theme-dark .markdown-preview-view a,
 body.theme-dark .markdown-reading-view a {
     color: #93c5fd !important;
     border-bottom-color: #1e3a8a !important;
+}
+
+body.theme-dark .markdown-rendered a.external-link,
+body.theme-dark .markdown-preview-view a.external-link,
+body.theme-dark .markdown-reading-view a.external-link,
+body.theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link),
+body.theme-dark .markdown-preview-view a[href^="http://"]:not(.internal-link),
+body.theme-dark .markdown-reading-view a[href^="http://"]:not(.internal-link),
+body.theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link),
+body.theme-dark .markdown-preview-view a[href^="https://"]:not(.internal-link),
+body.theme-dark .markdown-reading-view a[href^="https://"]:not(.internal-link) {
+    color: #5eead4 !important;
+    text-decoration-line: underline !important;
+    text-decoration-style: dotted !important;
+    text-decoration-color: #2dd4bf !important;
+    text-decoration-thickness: 1.5px !important;
+    text-underline-offset: 0.22em !important;
+    border-bottom: 0 !important;
 }
 
 body.theme-dark .markdown-rendered mark,

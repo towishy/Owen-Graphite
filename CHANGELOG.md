@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.16] — 2026-04-26
+
+### Added
+- 외부 링크 점선 밑줄 색상 후보를 비교하는 HTML fixture와 PNG preview 이미지 추가
+
+### Changed
+- 기본 테마와 Gray override snippet의 외부 링크를 Muted Teal 점선 밑줄 스타일로 정리해 내부 링크와 구분
+
 ## [1.8.15] — 2026-04-26
 
 ### Added
