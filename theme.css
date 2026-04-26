@@ -173,6 +173,19 @@ settings:
     type: variable-color
     format: hex
     default: '#b91c1c'
+  -
+    id: ogd-first-page-header-left
+    title: PDF 첫 페이지 좌측 상단 문구
+    description: PDF 내보내기 시 첫 페이지 좌측 상단에만 표시되는 문구 (예 "2026 Q2", "프로젝트 코드"). 비워두면 표시 안 함
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-first-page-header-left-color
+    title: 첫 페이지 좌측 상단 문구 색상
+    type: variable-color
+    format: hex
+    default: '#6b7280'
 */
 
 :root {
@@ -182,6 +195,8 @@ settings:
   --ogd-accent: #4b5563;
   --ogd-first-page-header: "";
   --ogd-first-page-header-color: #b91c1c;
+  --ogd-first-page-header-left: "";
+  --ogd-first-page-header-left-color: #6b7280;
 }
 
 .theme-light,
@@ -2170,6 +2185,33 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     text-transform: none !important;
     letter-spacing: 0 !important;
     color: var(--ogd-first-page-header-color, #b91c1c) !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+  }
+  /* Left header (::after, mirrors ::before but on left side) */
+  body::after,
+  .print::after,
+  .markdown-preview-view::after,
+  .markdown-preview-sizer::after,
+  .markdown-preview-section > div:first-child::after,
+  .markdown-rendered::after {
+    content: var(--ogd-first-page-header-left, "") !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10pt !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-synthesis: weight style !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    color: var(--ogd-first-page-header-left-color, #6b7280) !important;
     white-space: nowrap !important;
     z-index: 9999 !important;
     pointer-events: none !important;

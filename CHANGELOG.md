@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.12] — 2026-04-26
+
+### Added
+- PDF 첫 페이지 **좌측 상단** 머리말 추가 — Style Settings 사용자 입력형
+  - `ogd-first-page-header-left` (variable-text): 좌측에 표시할 문구 (예: "2026 Q2", "프로젝트 코드")
+  - `ogd-first-page-header-left-color` (variable-color, 기본 `#6b7280` 그레이): 문구 색상
+  - `::after` 의사요소로 좌측 배치, 기존 우측 `::before`와 독립적으로 제어
+  - 둘 다 비워두면 표시 안 함
+
 ## [1.4.11] — 2026-04-26
 
 ### Changed
