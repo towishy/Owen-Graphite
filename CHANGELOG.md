@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.5] — 2026-04-26
+
+### Fixed
+- **Mermaid 노드 하단 흰색 잨여림 제거** — v1.7.3의 `overflow: visible`가 텍스트를 rect 밖으로 밀어내며 흰 빈 영역이 생성되던 현상 해소
+  - `overflow: hidden` 복원 → 라벨이 rect 내부에만 머무름
+  - 교체책: 폰트 11px (기존 12px)로 축소 → 멀티라인 라벨도 대부분 맞음
+  - flex 수직 중앙 정렬로 그래도 잘리지 않도록 배치
+- **v1.7.3 + v1.7.4 블록 통합** — 중복 셀렉터 제거
+
+### Author Note
+- 극단적으로 긴 라벨은 여전히 컷트될 수 있으므로 **소스에 `<br/>` 명시적 줄바꿈** 권장 (memory 가이드 참조)
+
 ## [1.7.4] — 2026-04-26
 
 ### Fixed

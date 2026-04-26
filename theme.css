@@ -2987,63 +2987,13 @@ a.external-link:focus-visible,
 }
 
 /* ============================================================
-   v1.7.3 — Mermaid label overflow fix
-   Symptom: multi-line node labels (with <br/>) get clipped
-            because mermaid measures single-line height.
-   Fix: shrink font, allow foreignObject overflow,
-        and provide top/bottom breathing room via line-height.
+   v1.7.5 — Mermaid label sizing & color unification
+   - Rect fill is the ONLY source of node color (label bg = transparent)
+   - Labels stay INSIDE the rect (no overflow) — shrink font instead
+   - Use flex centering so multi-line text is vertically centered
    ============================================================ */
-.markdown-rendered .mermaid svg .nodeLabel,
-.markdown-rendered .mermaid svg .edgeLabel,
-.markdown-rendered .mermaid svg foreignObject {
-  overflow: visible !important;
-}
-.markdown-rendered .mermaid svg .nodeLabel,
-.markdown-rendered .mermaid svg .nodeLabel span,
-.markdown-rendered .mermaid svg .nodeLabel p {
-  font-size: 12px !important;
-  line-height: 1.25 !important;
-  white-space: normal !important;
-  word-break: keep-all !important;
-  overflow-wrap: break-word !important;
-  padding: 2px 4px !important;
-  text-align: center !important;
-}
-.markdown-rendered .mermaid svg .edgeLabel,
-.markdown-rendered .mermaid svg .edgeLabel span,
-.markdown-rendered .mermaid svg .edgeLabel p {
-  font-size: 11px !important;
-  line-height: 1.25 !important;
-}
-/* Cluster (subgraph) titles slightly smaller */
-.markdown-rendered .mermaid svg .cluster .nodeLabel {
-  font-size: 12.5px !important;
-  font-weight: 600 !important;
-}
-/* Allow node group SVG to render labels outside its rect bounds
-   (visual overflow only — does not enlarge actual rect, but prevents
-   text from being hard-clipped) */
-.markdown-rendered .mermaid svg .node foreignObject,
-.markdown-rendered .mermaid svg .label foreignObject {
-  overflow: visible !important;
-}
-.markdown-rendered .mermaid svg .node foreignObject > div,
-.markdown-rendered .mermaid svg .label foreignObject > div {
-  overflow: visible !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  white-space: normal !important;
-}
 
-/* ============================================================
-   v1.7.4 — Mermaid label background mismatch fix
-   Symptom: foreignObject/.nodeLabel has its own bg (or inherits
-            theme bg) that differs from <rect> fill, producing
-            visible color seam inside the node.
-   Fix: force all label-side backgrounds transparent so the rect
-        fill is the single source of truth for node color.
-   ============================================================ */
+/* Label backgrounds: always transparent so rect fill shows through */
 .markdown-rendered .mermaid svg .node foreignObject,
 .markdown-rendered .mermaid svg .node foreignObject > div,
 .markdown-rendered .mermaid svg .node foreignObject > div > span,
@@ -3055,22 +3005,53 @@ a.external-link:focus-visible,
   background: transparent !important;
   background-color: transparent !important;
 }
-/* Edge labels: keep small bg pill but match container card color
-   so they do not punch a hole through edges */
+
+/* Keep labels INSIDE rect (no visible overflow seam) */
+.markdown-rendered .mermaid svg .node foreignObject,
+.markdown-rendered .mermaid svg .label foreignObject {
+  overflow: hidden !important;
+}
+.markdown-rendered .mermaid svg .node foreignObject > div,
+.markdown-rendered .mermaid svg .label foreignObject > div {
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: normal !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Smaller font so multi-line labels fit inside auto-measured rect */
+.markdown-rendered .mermaid svg .nodeLabel,
+.markdown-rendered .mermaid svg .nodeLabel span,
+.markdown-rendered .mermaid svg .nodeLabel p {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+  padding: 1px 3px !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* Edge labels: opaque pill matching theme background */
 .markdown-rendered .mermaid svg .edgeLabel,
 .markdown-rendered .mermaid svg .edgeLabel rect,
 .markdown-rendered .mermaid svg .edgeLabel foreignObject,
 .markdown-rendered .mermaid svg .edgeLabel foreignObject > div,
-.markdown-rendered .mermaid svg .edgeLabel span {
+.markdown-rendered .mermaid svg .edgeLabel span,
+.markdown-rendered .mermaid svg .edgeLabel p {
   background: var(--background-primary) !important;
   background-color: var(--background-primary) !important;
+  font-size: 10.5px !important;
+  line-height: 1.2 !important;
 }
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel,
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel rect,
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject,
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject > div,
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel span {
-  background: var(--background-primary) !important;
-  background-color: var(--background-primary) !important;
+
+/* Cluster (subgraph) titles */
+.markdown-rendered .mermaid svg .cluster .nodeLabel {
+  font-size: 12px !important;
+  font-weight: 600 !important;
 }
 
