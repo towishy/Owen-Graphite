@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.12` (Obsidian 1.6.0+) |
+| **버전** | `1.8.13` (Obsidian 1.6.0+) |
 
 ---
 
@@ -167,6 +167,7 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 - **표 중심 레이아웃**: 표 header, border, cell padding, zebra 톤을 안정화해 라이선스 매트릭스·기능 비교표·고객 보고서 표가 PDF에서도 균일하게 보입니다.
 - **blockquote/callout 충돌 완화**: 기본 테마와 커뮤니티 플러그인의 blockquote/callout 스타일 충돌을 회색 카드 톤으로 정리합니다.
 - **Live Preview 편집성 보존**: Reading View용 block heading 장식은 Live Preview 편집 라인에 강제하지 않습니다. 펼쳐진 H3-H6 섹션 제목을 클릭해도 아래 표/콘텐츠 위젯과 hitbox가 겹치지 않도록 CM6 heading line은 별도 plain hitbox로 유지합니다.
+- **CM6 wrapping 안전성**: Live Preview에서는 CodeMirror의 커서 좌표 계산과 시각적 줄바꿈이 어긋나지 않도록 `word-break`, `overflow-wrap`, `.cm-line` 높이 강제를 최소화합니다.
 
 ### 적용 방법
 
@@ -192,6 +193,12 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 - 위키링크 / 태그 / 인라인 코드 chip이 Source 모드에서도 동일한 모양
 - Strong / em / strikethrough / 체크박스 정렬 보정
 - Callout / 표 widget 변수 공유, frontmatter 박스 round border
+
+### Live Preview 편집성 원칙 (v1.8.13+)
+
+Reading View는 보고서형 장식과 스캔성을 우선하지만, Live Preview는 클릭 편집성과 커서 좌표 안정성을 우선합니다. 따라서 `.markdown-source-view.mod-cm6` 영역에서는 blockquote 배경/보더, heading z-index, `.cm-line` margin/line-height, `.cm-content` 강제 wrapping을 매우 제한적으로 사용합니다.
+
+회귀 확인용 문서는 [docs/fixtures/live-preview-editing.md](docs/fixtures/live-preview-editing.md)에 있습니다. H2-H6 주변 문장, 여러 줄로 접히는 blockquote, callout 내부 긴 문장, 표 인접 heading을 Live Preview에서 직접 클릭해 확인할 수 있습니다.
 
 ### 보고서 출력 (v1.4.0)
 - **A3 가로 기본** + Header(제목) / Footer(페이지 번호) 자동 삽입
@@ -432,6 +439,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.13** — Live Preview 편집성 guard/fixture 추가, callout outline 아이콘 팔레트 정리
 - **v1.8.12** — `note` / `info` callout 아이콘을 모던한 원형 outline 배지로 정리
 - **v1.8.11** — Live Preview blockquote 줄바꿈 클릭 편집 복구, CM6 래핑/line-height 정렬
 - **v1.8.10** — 펼쳐진 Live Preview H3-H6 제목 클릭 편집 복구, Gray override snippet selector 분리

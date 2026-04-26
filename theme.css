@@ -1132,6 +1132,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .markdown-rendered .callout[data-callout="tip"],
 .markdown-rendered .callout[data-callout="hint"],
 .markdown-rendered .callout[data-callout="important"] {
+  --callout-icon: lucide-lightbulb;
   border-left-color: #0e7490 !important;
   background: #ecfeff !important;
 }
@@ -1144,6 +1145,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .markdown-rendered .callout[data-callout="abstract"],
 .markdown-rendered .callout[data-callout="summary"],
 .markdown-rendered .callout[data-callout="tldr"] {
+  --callout-icon: lucide-clipboard-list;
   border-left-color: #7c3aed !important;
   background: #f5f3ff !important;
 }
@@ -1154,6 +1156,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 }
 
 .markdown-rendered .callout[data-callout="example"] {
+  --callout-icon: lucide-list-checks;
   border-left-color: #d97706 !important;
   background: #fffbeb !important;
 }
@@ -1163,6 +1166,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 
 .markdown-rendered .callout[data-callout="quote"],
 .markdown-rendered .callout[data-callout="cite"] {
+  --callout-icon: lucide-quote;
   border-left-color: #6b7280 !important;
   background: #f9fafb !important;
   font-style: italic !important;
@@ -1175,6 +1179,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .markdown-rendered .callout[data-callout="question"],
 .markdown-rendered .callout[data-callout="help"],
 .markdown-rendered .callout[data-callout="faq"] {
+  --callout-icon: lucide-circle-help;
   border-left-color: #ca8a04 !important;
   background: #fefce8 !important;
 }
@@ -1182,6 +1187,66 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .markdown-rendered .callout[data-callout="help"] .callout-icon,
 .markdown-rendered .callout[data-callout="faq"] .callout-icon {
   background: #ca8a04 !important;
+}
+
+.markdown-rendered .callout:is(
+  [data-callout="tip"],
+  [data-callout="hint"],
+  [data-callout="important"]
+) .callout-icon {
+  border: 1.5px solid #67e8f9 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #0e7490 !important;
+}
+.markdown-rendered .callout:is(
+  [data-callout="abstract"],
+  [data-callout="summary"],
+  [data-callout="tldr"]
+) .callout-icon {
+  border: 1.5px solid #c4b5fd !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #6d28d9 !important;
+}
+.markdown-rendered .callout:is(
+  [data-callout="warning"],
+  [data-callout="attention"],
+  [data-callout="caution"],
+  [data-callout="failure"],
+  [data-callout="fail"],
+  [data-callout="missing"],
+  [data-callout="danger"],
+  [data-callout="error"],
+  [data-callout="bug"],
+  [data-callout="example"],
+  [data-callout="question"],
+  [data-callout="help"],
+  [data-callout="faq"]
+) .callout-icon {
+  border: 1.5px solid #fcd34d !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #92400e !important;
+}
+.markdown-rendered .callout:is(
+  [data-callout="success"],
+  [data-callout="check"],
+  [data-callout="done"]
+) .callout-icon {
+  border: 1.5px solid #86efac !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #047857 !important;
+}
+.markdown-rendered .callout:is(
+  [data-callout="quote"],
+  [data-callout="cite"]
+) .callout-icon {
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #475569 !important;
 }
 
 .markdown-rendered .callout-fold {
@@ -1583,6 +1648,29 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .theme-dark .markdown-rendered .callout[data-callout="help"],
 .theme-dark .markdown-rendered .callout[data-callout="faq"] {
   background: #3a330f !important; border-left-color: #facc15 !important;
+}
+.theme-dark .markdown-rendered .callout .callout-icon {
+  background: #111827 !important;
+}
+.theme-dark .markdown-rendered .callout:is([data-callout="note"], [data-callout="info"], [data-callout="quote"], [data-callout="cite"]) .callout-icon {
+  border-color: #64748b !important;
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-rendered .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) .callout-icon {
+  border-color: #22d3ee !important;
+  color: #a5f3fc !important;
+}
+.theme-dark .markdown-rendered .callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) .callout-icon {
+  border-color: #a78bfa !important;
+  color: #ddd6fe !important;
+}
+.theme-dark .markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"], [data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) .callout-icon {
+  border-color: #f59e0b !important;
+  color: #fde68a !important;
+}
+.theme-dark .markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
+  border-color: #34d399 !important;
+  color: #bbf7d0 !important;
 }
 .theme-dark .markdown-rendered pre {
   background: #14151a !important;
@@ -4899,8 +4987,8 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-  v1.8.12 — Modern info callout icon marker
-  Note/info callouts use a quiet outline lucide-info badge instead of a
-  filled blue square, keeping report callouts calmer and more consistent.
+  v1.8.13 — Live Preview editability guard and callout palette marker
+  Release adds a regression fixture, selector guards, and a calmer outline
+  icon language across report callouts.
    ============================================================ */
 

@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.13] — 2026-04-26
+
+### Added
+- Live Preview heading / paragraph / wrapped blockquote / callout / table adjacency 편집 hitbox 회귀 확인용 fixture 문서 추가
+- `validate_theme.rb`에 CM6 Live Preview 편집성을 깨뜨리기 쉬운 selector guard 추가
+
+### Changed
+- 기본 callout 팔레트를 의미별 `lucide-*` 아이콘과 원형 outline 배지 중심으로 정리
+- README에 Live Preview 편집성 원칙과 회귀 fixture / selector guard 검증 항목을 문서화
+
 ## [1.8.12] — 2026-04-26
 
 ### Changed

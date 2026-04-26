@@ -22,7 +22,7 @@ def read(path)
 end
 
 Dir.chdir(ROOT) do
-  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE snippets/zz-obsidian-gray-force-override-v2.css docs/fixtures/table-report.md docs/fixtures/table-preview.html screenshots/light.png screenshots/dark.png screenshots/report.png screenshots/table-sample.png]
+  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE snippets/zz-obsidian-gray-force-override-v2.css docs/fixtures/table-report.md docs/fixtures/table-preview.html docs/fixtures/live-preview-editing.md screenshots/light.png screenshots/dark.png screenshots/report.png screenshots/table-sample.png]
   missing = required.reject { |path| File.file?(path) && File.size(path).positive? }
   fail_with("missing required files: #{missing.join(', ')}") unless missing.empty?
   info("required files present")
@@ -84,6 +84,26 @@ Dir.chdir(ROOT) do
   missing_assets = release_assets.reject { |asset| release_workflow.match?(/^\s{12}#{Regexp.escape(asset)}\s*$/) }
   fail_with("release workflow missing assets: #{missing_assets.join(', ')}") unless missing_assets.empty?
   info("release workflow includes README assets")
+
+  css_sources = {
+    "theme.css" => theme,
+    "snippets/zz-obsidian-gray-force-override-v2.css" => read("snippets/zz-obsidian-gray-force-override-v2.css")
+  }
+  forbidden_live_preview_rules = {
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-line\s*\{[^}]*margin-(?:top|bottom)\s*:\s*(?:[1-9]|0\.[1-9]|[a-zA-Z_-])[^;}]*/m => "non-zero margin on CM6 .cm-line",
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-line\s*\{[^}]*line-height\s*:\s*(?:[0-9]|var\(|calc\(|normal\b)[^;}]+/m => "global line-height override on CM6 .cm-line",
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-content\s*\{[^}]*overflow-wrap\s*:\s*anywhere/m => "overflow-wrap:anywhere on CM6 .cm-content",
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-content\s*\{[^}]*word-break\s*:\s*keep-all/m => "word-break:keep-all on CM6 .cm-content",
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-quote[^{}]*\{[^}]*background(?:-color)?\s*:\s*(?:#|rgb|hsl|var\(|linear-gradient)[^;}]+/m => "non-transparent Live Preview quote background",
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-quote[^{}]*\{[^}]*border(?:-left|-inline-start)?\s*:\s*(?:[1-9]|0\.[1-9]|[a-zA-Z_-])[^;}]*/m => "decorative Live Preview quote border",
+    /(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-header-[3-6][^{}]*\{[^}]*z-index\s*:\s*(?:-?\d+|var\()[^;}]+/m => "stacking z-index on Live Preview H3-H6"
+  }
+  css_sources.each do |path, content|
+    forbidden_live_preview_rules.each do |pattern, description|
+      fail_with("#{path}: #{description}") if content.match?(pattern)
+    end
+  end
+  info("Live Preview editability guards clean")
 
   diff_check, diff_err, diff_status = Open3.capture3("git", "diff", "--check")
   fail_with("git diff --check failed:\n#{diff_check}#{diff_err}") unless diff_status.success?
