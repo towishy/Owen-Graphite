@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.8] — 2026-04-26
+
+### Changed
+- **H4 스타일 통일** — v1.7.7에서 H3에 적용한 패턴을 H4(`#### 4.1`)에도 적용: 좌측 3px 액센트 바 제거 → 하단 1px 연한 회색 underline
+
 ## [1.7.7] — 2026-04-26
 
 ### Changed
