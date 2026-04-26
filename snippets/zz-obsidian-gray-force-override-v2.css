@@ -86,6 +86,7 @@ body .markdown-source-view.mod-cm6 .cm-line {
 body .markdown-rendered h1,
 body .markdown-preview-view.markdown-rendered h1,
 body .markdown-reading-view .markdown-rendered h1 {
+    display: inline-block !important;
     position: relative !important;
     box-sizing: border-box !important;
     width: fit-content !important;
@@ -110,10 +111,12 @@ body .markdown-reading-view .markdown-rendered h1::after {
     content: "" !important;
     position: absolute !important;
     left: 0 !important;
-    right: 0 !important;
+    right: auto !important;
     bottom: 0 !important;
+    width: 100% !important;
     height: 4px !important;
-    background: linear-gradient(90deg, var(--title-rule-start), var(--title-rule-end)) !important;
+    background-color: var(--title-rule-start) !important;
+    background-image: linear-gradient(90deg, var(--title-rule-start), var(--title-rule-end)) !important;
     border-radius: 999px !important;
     box-shadow: 0 1px 0 rgba(15, 118, 110, 0.12) !important;
 }
@@ -1397,10 +1400,84 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
         break-inside: avoid;
     }
 
+    body .markdown-rendered h1,
+    body .markdown-preview-view.markdown-rendered h1,
+    body .markdown-reading-view .markdown-rendered h1 {
+        display: inline-block !important;
+        width: fit-content !important;
+        max-width: 100% !important;
+        border: 0 !important;
+        border-bottom: 4px solid var(--title-rule-start, #0f766e) !important;
+        border-image-source: linear-gradient(90deg, var(--title-rule-start, #0f766e), var(--title-rule-end, #0284c7)) !important;
+        border-image-slice: 1 !important;
+        border-image-width: 0 0 4px 0 !important;
+        border-image-repeat: stretch !important;
+        background: transparent !important;
+        padding-bottom: 0.42em !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body .markdown-rendered h1::after,
+    body .markdown-preview-view.markdown-rendered h1::after,
+    body .markdown-reading-view .markdown-rendered h1::after {
+        display: none !important;
+        content: none !important;
+    }
+
     body .markdown-rendered th,
     body .markdown-preview-view th,
     body .markdown-reading-view th {
         background-color: #f8fafc !important;
         border-bottom: 1px solid #cbd5e1 !important;
     }
+}
+
+/* Final title-rule override for Obsidian PDF export cascade. */
+body .markdown-rendered h1,
+body .markdown-preview-view.markdown-rendered h1,
+body .markdown-reading-view .markdown-rendered h1,
+body.ogd-report-mode .markdown-rendered > h1:first-of-type,
+body .markdown-rendered h2:first-of-type,
+body .markdown-preview-view.markdown-rendered h2:first-of-type,
+body .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+    display: inline-block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding-bottom: 0.52em !important;
+    border: 0 !important;
+    border-bottom: 4px solid #0f766e !important;
+    border-image-source: linear-gradient(90deg, #0f766e, #0284c7) !important;
+    border-image-slice: 1 !important;
+    border-image-width: 0 0 4px 0 !important;
+    border-image-repeat: stretch !important;
+    background: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+body .markdown-rendered h1:first-of-type,
+body .markdown-preview-view.markdown-rendered h1:first-of-type,
+body .markdown-reading-view .markdown-rendered h1:first-of-type,
+body.ogd-report-mode .markdown-rendered > h1:first-of-type,
+body .markdown-rendered h2:first-of-type,
+body .markdown-preview-view.markdown-rendered h2:first-of-type,
+body .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+    padding-top: 34px !important;
+    border-top: 1px solid #edf2f7 !important;
+    box-shadow: 0 -1px 0 #f8fafc !important;
+}
+
+body .markdown-rendered h1::after,
+body .markdown-preview-view.markdown-rendered h1::after,
+body .markdown-reading-view .markdown-rendered h1::after,
+body.ogd-report-mode .markdown-rendered > h1:first-of-type::after,
+body .markdown-rendered h2:first-of-type::after,
+body .markdown-preview-view.markdown-rendered h2:first-of-type::after,
+body .markdown-reading-view .markdown-rendered h2:first-of-type::after,
+body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
+    display: none !important;
+    content: none !important;
 }

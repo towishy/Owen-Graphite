@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.18] — 2026-04-26
+
+### Changed
+- PDF export에서 첫 H1/H2 제목 라인이 제목 길이에 맞는 Teal-to-Sky rule로 안정적으로 출력되도록 print cascade 보강
+- PDF 첫 페이지 헤더와 첫 제목 사이에 매우 옅은 구분선을 추가해 상단 영역을 더 정돈
+- README의 Gray override 섹션에서 report title spacing preview 이미지 노출 제거
+
 ## [1.8.17] — 2026-04-26
 
 ### Added
