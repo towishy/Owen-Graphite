@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite Document** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.6] — 2026-04-26
+
+### Fixed
+- v1.4.5에서도 PDF 첫 페이지 헤더가 보이지 않던 문제 수정
+  - `top: -10mm`이 페이지 마진 영역 밖으로 잘린 것으로 판단
+  - `body`, `.print`, `.markdown-preview-view`, `.markdown-rendered` 모두에 `::before` 바인딩하여 Obsidian PDF DOM 변이에 대응
+  - `top: 0; right: 0`으로 인쇄 가능 영역 안의 우상단 배치
+  - `var(...)`에 fallback `""` 및 `#b91c1c` 명시로 변수 미설정 시 안전 동작
+  - `pointer-events: none`으로 에디터 상호작용 방해 방지
+
 ## [1.4.5] — 2026-04-26
 
 ### Fixed
