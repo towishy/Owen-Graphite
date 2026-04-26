@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] — 2026-04-26
+
+### Added
+- **PDF 출력 안정화 강화** — callout, blockquote, table, code block, mermaid, embed, image의 페이지 중간 분할을 완화하고 H2–H4가 다음 본문과 떨어져 출력되는 현상 완화
+- **보고서형 callout 팔레트 확장** — `[!recommendation]`, `[!risk]`, `[!action]`, `[!decision]` 추가
+- **표 모던 스타일 강화** — 헤더 배경, 첫 컬럼 강조, zebra, hover, rounded border, PDF 친화 border 톤 개선
+- **Style Settings 옵션 2종 추가** — `표 모던 스타일 강화`, `PDF 블록 분할 방지 강화`
+
+### Notes
+- 기존 `[!conclusion]` Soft Sky 스타일은 유지
+- 표/print 개선은 기본 적용되며, Style Settings가 있으면 명시적으로 제어 가능
+
 ## [1.7.10] — 2026-04-26
 
 ### Added

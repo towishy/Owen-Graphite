@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-19%20options-0d9488?style=flat-square)](#style-settings-항목)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-21%20options-0d9488?style=flat-square)](#style-settings-항목)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -26,10 +26,10 @@
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 19종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 21종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.7.10` (Obsidian 1.6.0+) |
+| **버전** | `1.8.0` (Obsidian 1.6.0+) |
 
 ---
 
@@ -322,6 +322,7 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.0** — PDF 출력 안정화, 보고서형 callout 팔레트 확장, 표 모던 스타일, Style Settings 옵션 2종 추가
 - **v1.7.0** — UX·접근성·인쇄 종합 개선 (액티브 탭, 모바일 분기, PDF 푸터, 그래프 톤, 검색 강조, 임베드 액센트, 8종 체크박스, 태그 호버, `:focus-visible` 통일, `prefers-contrast`)
 - **v1.6.1** — Editing Toolbar 좌측 여백 8px
 - **v1.6.0** — 테마 이름 변경 (`Owen Graphite Document` → `Owen Graphite`), PDF 헤더 컨테이너 정리
