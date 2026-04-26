@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.6] — 2026-04-26
+
+### Added
+- **Mermaid 노드 기본 fill** — `classDef`가 지정되지 않은 노드가 순백으로 렌더되어 팔레트 일관성이 깨지는 문제 해소
+  - 라이트: `#f4f4f9` (prep 그레이) / 다크: `#2d2d2d`
+  - `!important` 미사용 → 사용자 `classDef` 인라인 스타일은 그대로 우선 적용
+
 ## [1.7.5] — 2026-04-26
 
 ### Fixed

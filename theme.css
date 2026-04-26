@@ -3055,3 +3055,26 @@ a.external-link:focus-visible,
   font-weight: 600 !important;
 }
 
+/* ============================================================
+   v1.7.6 — Mermaid: default fill for unclassified nodes
+   So nodes without classDef get a neutral palette color instead
+   of stark white, keeping diagram visually consistent.
+   No !important so classDef inline style still wins.
+   ============================================================ */
+.markdown-rendered .mermaid svg .node rect,
+.markdown-rendered .mermaid svg .node polygon,
+.markdown-rendered .mermaid svg .node circle,
+.markdown-rendered .mermaid svg .node ellipse,
+.markdown-rendered .mermaid svg .node path {
+  fill: #f4f4f9;
+  stroke: #4c4c4c;
+}
+.theme-dark .markdown-rendered .mermaid svg .node rect,
+.theme-dark .markdown-rendered .mermaid svg .node polygon,
+.theme-dark .markdown-rendered .mermaid svg .node circle,
+.theme-dark .markdown-rendered .mermaid svg .node ellipse,
+.theme-dark .markdown-rendered .mermaid svg .node path {
+  fill: #2d2d2d;
+  stroke: #888;
+}
+
