@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-21%20options-0d9488?style=flat-square)](#style-settings-항목)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-26%20options-0d9488?style=flat-square)](#style-settings-항목)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -26,10 +26,10 @@
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 21종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.5` (Obsidian 1.6.0+) |
+| **버전** | `1.8.6` (Obsidian 1.6.0+) |
 
 ---
 
@@ -56,7 +56,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ### 옵션 C — Style Settings 통합 (권장)
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
-사이드바에서 21개 옵션으로 즉시 모드 전환 가능.
+사이드바에서 26개 옵션으로 즉시 모드 전환 가능.
 자세한 설정 방법은 아래 [⚙️ Style Settings 플러그인 설정](#%EF%B8%8F-style-settings-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%84%A4%EC%A0%95) 섹션을 참고하세요.
 
 ---
@@ -258,6 +258,8 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 | 본문 최대 폭 | 셀렉트 | 420mm | 210/297/360/420mm / 100% |
 | 헤더 강조 색상 | 색상 | `#4b5563` | 자유 색상 |
 | 표 zebra 줄무늬 | 토글 | ON | 짝수 행 옅은 배경 |
+| 표 모던 스타일 강화 | 토글 | ON | 헤더/첫 컬럼/hover/PDF border 강화 |
+| PDF 블록 분할 방지 강화 | 토글 | ON | callout/표/Mermaid/코드/이미지 분할 완화 |
 | **보고서 모드** | 토글 | OFF | 표지+넘버링+들여쓰기+세리프 한 번에 |
 | 본문 세리프 글꼴 | 토글 | OFF | Noto Serif KR |
 | 첫 줄 들여쓰기 | 토글 | OFF | 1em |
@@ -342,15 +344,23 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 ```
 Owen Graphite/
-├── theme.css         # ~2,560줄, 모든 스타일
+├── theme.css         # ~4,300줄, 모든 스타일
 ├── manifest.json     # 버전·메타
 ├── README.md         # 이 파일
 ├── CHANGELOG.md      # 버전별 변경 이력
 ├── LICENSE           # MIT
+├── scripts/
+│   └── validate_theme.rb
 └── screenshots/
-    ├── light.png     # 1280×720
+    ├── light.png     # 512×288
     ├── dark.png
     └── report.png
+```
+
+### 로컬 검증
+
+```bash
+ruby scripts/validate_theme.rb
 ```
 
 ---
@@ -359,6 +369,7 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.6** — 문서 정합성, Live Preview/Mobile/Mermaid/PDF parity, Outline/Bookmarks/Bases/Embed polish, 검증 스크립트
 - **v1.8.5** — Canvas/Graph View, Backlink/Outgoing/Search/Tag pane 탐색 UI 톤 정리
 - **v1.8.4** — Settings/Style Settings 화면, form controls, focus state 톤 정리
 - **v1.8.3** — Command Palette/Modal/Menu polish, Hover Preview/Popover 개선, Dataview 표 parity 보강

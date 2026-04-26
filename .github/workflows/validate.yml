@@ -36,3 +36,6 @@ jobs:
         run: |
           jq -e '.name and .version and .minAppVersion and .author' manifest.json > /dev/null \
             || { echo "::error::manifest.json missing required fields"; exit 1; }
+
+      - name: Run local theme validation
+        run: ruby scripts/validate_theme.rb --ci

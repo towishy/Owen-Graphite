@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.6] — 2026-04-26
+
+### Added
+- **Parity cleanup** — Live Preview callout/table/embed spacing and Source mode chips를 Reading View 톤에 더 가깝게 보강
+- **Mobile stability** — narrow viewport sidebar/search/tag panes, long filenames, wide embeds overflow를 안정화
+- **Knowledge panes polish** — Outline / Bookmarks / Bases / embedded media / status bar를 v1.8.5 탐색 UI 톤으로 확장
+- **Validation script** — manifest, changelog, required files, screenshots, legacy release marker, local vault sync 상태를 한 번에 확인하는 Ruby 검증 스크립트 추가
+
+### Changed
+- README / screenshots 문서의 옵션 수, 파일 구조, 스크린샷 크기, 버전 표기를 실제 v1.8.6 상태에 맞게 정리
+
 ## [1.8.5] — 2026-04-26
 
 ### Added

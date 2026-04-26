@@ -1,12 +1,12 @@
 # Screenshots
 
-Owen Graphite Document 테마의 마켓플레이스 등록용 스크린샷.
+Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 크기 | 모드 | 내용 |
 |------|------|------|------|
-| `light.png` | 1280×720 (16:9) | Light | 헤더 + 표 + callout + 코드 발췌 |
-| `dark.png`  | 1280×720 (16:9) | Dark | 동일 노트 다크 모드 |
-| `report.png`| 1280×720 (16:9) | Report | 보고서 모드 (표지 + 자동 넘버링 + Side Bar 헤더) |
+| `light.png` | 512×288 (16:9) | Light | 헤더 + 표 + callout + 코드 발췌 |
+| `dark.png`  | 512×288 (16:9) | Dark | 동일 노트 다크 모드 |
+| `report.png`| 512×288 (16:9) | Report | 보고서 모드 (표지 + 자동 넘버링 + Side Bar 헤더) |
 
 > 모든 스크린샷은 익명 샘플 콘텐츠로 제작되어 개인·고객사 식별 정보가 포함되지 않습니다.
 
@@ -22,7 +22,7 @@ import cairosvg
 cairosvg.svg2png(
     url=f'owen-graphite-screenshot-{n}.svg'.replace('{n}', '$n'),
     write_to=f'screenshots/{n}.png'.replace('{n}', '$n'),
-    output_width=1280, output_height=720)
+    output_width=512, output_height=288)
 "
 done
 ```
@@ -31,7 +31,7 @@ done
 
 ```bash
 brew install librsvg
-rsvg-convert -w 1280 -h 720 owen-graphite-screenshot-light.svg -o screenshots/light.png
+rsvg-convert -w 512 -h 288 owen-graphite-screenshot-light.svg -o screenshots/light.png
 ```
 
 ### 압축 (선택)
@@ -51,4 +51,4 @@ pngquant --quality=70-85 screenshots/*.png --ext .png --force
 - `Win + Shift + S` → 영역 캡처
 
 ### 권장 비율
-- **16:9** (1280×720, 1920×1080) — Obsidian 공식 권장
+- **16:9** (512×288 lightweight preview, 1280×720 full preview)
