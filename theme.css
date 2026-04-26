@@ -3089,3 +3089,23 @@ a.external-link:focus-visible,
   stroke: #888;
 }
 
+/* ============================================================
+   v1.7.9 — Extra breathing room before headings that follow content
+   Use sibling selectors so heading margin-top only grows when
+   actually preceded by paragraph/list/quote/table — keeps
+   consecutive headings tight.
+   ============================================================ */
+.markdown-rendered :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 {
+  margin-top: 2.2em !important;
+}
+.markdown-rendered :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 {
+  margin-top: 1.8em !important;
+}
+.markdown-rendered :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 {
+  margin-top: 1.5em !important;
+}
+.markdown-rendered :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h5,
+.markdown-rendered :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h6 {
+  margin-top: 1.2em !important;
+}
+

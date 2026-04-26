@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.9] — 2026-04-26
+
+### Changed
+- **단락/리스트 다음에 오는 헤더 간격 확대** — 본문 이후 헤더는 간격을 크게, 연속 헤더는 그대로 유지 (sibling 셀렉터)
+  - H2: 2.2em / H3: 1.8em / H4: 1.5em / H5·H6: 1.2em
+  - 본문 마지막 문장과 소절 헤더 간 경계 가독성 향상
+
 ## [1.7.8] — 2026-04-26
 
 ### Changed
