@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.8` (Obsidian 1.6.0+) |
+| **버전** | `1.8.9` (Obsidian 1.6.0+) |
 
 ---
 
@@ -407,6 +407,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.9** — Live Preview H3/H4 제목 클릭 편집 영역 정렬
 - **v1.8.8** — README 릴리즈 자산 검증, 마켓플레이스 README 표시 안내, 수동 설치 파일 목록 정리
 - **v1.8.7** — 보고서형 테이블 클래스, PDF 표 출력 안정화, 모바일 표 스크롤 힌트, 표 fixture 문서
 - **v1.8.6** — 문서 정합성, Live Preview/Mobile/Mermaid/PDF parity, Outline/Bookmarks/Bases/Embed polish, 검증 스크립트

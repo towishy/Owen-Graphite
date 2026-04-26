@@ -1687,11 +1687,15 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
   line-height: 1.3 !important;
-  padding: 0.08em 0 0.08em 0.7em !important;
+  padding-top: 0.08em !important;
+  padding-bottom: 0.08em !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
   line-height: 1.3 !important;
-  padding-left: 0.5em !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
@@ -4852,8 +4856,8 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.8 — Release packaging guard marker
-   README.md is now treated as a required release asset so Obsidian's
-   theme detail view can render documentation after install/update.
+  v1.8.9 — Live Preview heading click target alignment marker
+  H3/H4 source-view line padding stays aligned with rendered text so
+  Obsidian can place the edit cursor reliably on headings.
    ============================================================ */
 

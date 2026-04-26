@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.9] — 2026-04-26
+
+### Changed
+- Live Preview에서 H3/H4 제목의 클릭 편집 영역이 시각적 제목 위치와 어긋나지 않도록 헤더 라인 패딩을 정리
+
 ## [1.8.8] — 2026-04-26
 
 ### Added
