@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-16%20options-0d9488?style=flat-square)](#style-settings-항목)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-23%20options-0d9488?style=flat-square)](#style-settings-항목)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -26,10 +26,10 @@
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + Style Settings 16종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 23종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.4.1` (Obsidian 1.6.0+) |
+| **버전** | `1.5.1` (Obsidian 1.6.0+) |
 
 ---
 
@@ -82,6 +82,13 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
 - **표지 페이지**: 첫 H1을 화면 중앙 큰 글씨로 변환 (보고서 모드)
 - **외부 링크 URL 자동 표시**, 표/이미지/callout `page-break-inside: avoid`
 
+### PDF 첫 페이지 모던 헤더 (v1.5.0+)
+- **Design ② Side Bar + Two-line** — 좌/우 각각 **라벨(소문자, 상단) + 본문(하단) 2줄 구조** + **3px 수직 사이드바**
+- 상단 레이블: 7.5pt SemiBold uppercase + 1.8px letter-spacing
+- 하단 본문: 10.5pt Medium, 본문 폰트 스택과 동일 (Pretendard 우선, macOS/Windows 패리티)
+- 좌측은 `Sky #0ea5e9`, 우측은 `Dark #111827` 기본 (Style Settings에서 변경 가능)
+- 라벨 또는 본문을 비워두면 해당 쪽 렌더링 생략
+
 ### 콘텐츠 강조
 - `<kbd>` Mac 키 캡 스타일
 - `> [!secret]` blur 처리, hover 시 해제
@@ -133,6 +140,13 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
 | 시선 보호 모드 | 토글 | OFF | 베이지 배경 |
 | OS 다크 모드 자동 추종 | 토글 | OFF | 시스템 설정 따라감 |
 | 한글/CJK +0.5px 보정 | 토글 | ON | 가독성 |
+| **PDF 첫 페이지 우측 본문** | 텍스트 | (빈 값) | 예: `회사명`, `2026 Q2 보고서` |
+| **PDF 첫 페이지 우측 라벨** | 텍스트 | (빈 값) | 예: `PREPARED BY`, `AUTHOR` |
+| **PDF 첫 페이지 우측 사이드바 색** | 색상 | `#111827` | 우측 수직 막대 색 |
+| **PDF 첫 페이지 좌측 본문** | 텍스트 | (빈 값) | 예: `Q2 Security Review` |
+| **PDF 첫 페이지 좌측 라벨** | 텍스트 | (빈 값) | 예: `CONFIDENTIAL` |
+| **PDF 첫 페이지 좌측 사이드바 색** | 색상 | `#0ea5e9` | 좌측 수직 막대 색 |
+| **PDF 첫 페이지 라벨 색** | 색상 | `#6b7280` | 좌/우 라벨 공통 색 |
 
 ---
 
@@ -215,6 +229,10 @@ Owen Graphite Document/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.5.1** — Side Bar가 라벨+본문 양쪽을 모두 덮도록 확장 (Design ② 완성)
+- **v1.5.0** — PDF 첫 페이지 모던 헤더 (Side Bar + Two-line, 좌·우 라벨 + 본문)
+- **v1.4.7–1.4.12** — 첫 페이지 헤더 폰트 안정화 및 좌측 헤더 추가
+- **v1.4.5–1.4.6** — PDF 첫 페이지 헤더 렌더링 수정 (Chromium @page var() 회피)
 - **v1.4.1** — Blockquote/callout 좌측 보더 텍스트 겹침 수정
 - **v1.4.0** — 33-point 종합 업그레이드 (보고서 모드, A4 옵션, 액센트 5종, 코드 4종, 접근성)
 - **v1.3.1** — Live Preview ↔ Reading View 12-point parity
