@@ -2985,3 +2985,53 @@ a.external-link:focus-visible,
     border-width: 2px !important;
   }
 }
+
+/* ============================================================
+   v1.7.3 — Mermaid label overflow fix
+   Symptom: multi-line node labels (with <br/>) get clipped
+            because mermaid measures single-line height.
+   Fix: shrink font, allow foreignObject overflow,
+        and provide top/bottom breathing room via line-height.
+   ============================================================ */
+.markdown-rendered .mermaid svg .nodeLabel,
+.markdown-rendered .mermaid svg .edgeLabel,
+.markdown-rendered .mermaid svg foreignObject {
+  overflow: visible !important;
+}
+.markdown-rendered .mermaid svg .nodeLabel,
+.markdown-rendered .mermaid svg .nodeLabel span,
+.markdown-rendered .mermaid svg .nodeLabel p {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+  padding: 2px 4px !important;
+  text-align: center !important;
+}
+.markdown-rendered .mermaid svg .edgeLabel,
+.markdown-rendered .mermaid svg .edgeLabel span,
+.markdown-rendered .mermaid svg .edgeLabel p {
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+}
+/* Cluster (subgraph) titles slightly smaller */
+.markdown-rendered .mermaid svg .cluster .nodeLabel {
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+}
+/* Allow node group SVG to render labels outside its rect bounds
+   (visual overflow only — does not enlarge actual rect, but prevents
+   text from being hard-clipped) */
+.markdown-rendered .mermaid svg .node foreignObject,
+.markdown-rendered .mermaid svg .label foreignObject {
+  overflow: visible !important;
+}
+.markdown-rendered .mermaid svg .node foreignObject > div,
+.markdown-rendered .mermaid svg .label foreignObject > div {
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: normal !important;
+}

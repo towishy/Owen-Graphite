@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.3] — 2026-04-26
+
+### Fixed
+- **Mermaid 노드 라벨 잘림 완화** — 박스 안 멀티라인 텍스트(`<br/>`)가 잘리는 현상을 완화:
+  - 노드 서점 12px / 엣지 라벨 11px / 클러스터 제목 12.5px 하향 조정
+  - line-height 1.25, `word-break: keep-all`, `overflow-wrap: break-word`
+  - `foreignObject overflow: visible` → 하단 잘릴하더라도 표시 유지
+  - flex 수직 중앙 정렬로 파단단 레이아웃 근접도한 동작
+- **권장: 장문 라벨은 mermaid 소스에 `<br/>`로 명시적 줄바꿈 넣기** (Mermaid 자체 측정 한계 회피)
+
 ## [1.7.2] — 2026-04-26
 
 ### Changed
