@@ -56,7 +56,100 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
 ### 옵션 C — Style Settings 통합 (권장)
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
-사이드바에서 16개 토글로 즉시 모드 전환 가능.
+사이드바에서 23개 옵션으로 즉시 모드 전환 가능.
+자세한 설정 방법은 아래 [⚙️ Style Settings 플러그인 설정](#%EF%B8%8F-style-settings-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%84%A4%EC%A0%95) 섹션을 참고하세요.
+
+---
+
+## ⚙️ Style Settings 플러그인 설정
+
+> **이 테마의 모든 커스터마이징(보고서 모드, A3 페이지 크기, 액센트 컬러, PDF 첫 페이지 헤더 등)은 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 통해 제어합니다.** 플러그인이 없어도 테마 자체는 동작하지만, **PDF 첫 페이지 헤더 / 보고서 모드 / 액센트 컬러 변경 등 핵심 기능을 사용하려면 반드시 설치해야 합니다.**
+
+### 1단계 — Style Settings 플러그인 설치
+
+1. Obsidian → **설정 → 커뮤니티 플러그인 → 탐색**
+2. 검색: `Style Settings`
+3. **설치 → 활성화**
+
+### 2단계 — 테마 옵션 패널 열기
+
+1. 좌측 사이드바 하단 **톱니바퀴 아이콘** 또는 명령 팔레트(`⌘ P`) → `Style Settings: Show style settings view` 실행
+2. 좌측 트리에서 **`Owen Graphite Document`** 펼치기
+3. 카테고리별로 토글·슬라이더·텍스트 입력·색상 선택기를 통해 즉시 적용
+
+### 3단계 — PDF 첫 페이지 헤더 설정 (Design ② Side Bar + Two-line)
+
+PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 등급·작성자·프로젝트 코드 등을 표시할 수 있습니다.
+모든 항목은 **비워두면 표시되지 않으므로**, 필요한 쪽만 채우면 됩니다.
+
+#### 우측 (`PREPARED BY` 영역, 기본 색상 `#111827` Dark)
+
+| Style Settings 항목명 | 입력 예시 | 설명 |
+|----------------------|----------|------|
+| **PDF 첫 페이지 우측 라벨** | `PREPARED BY`, `AUTHOR`, `작성자` | 상단 작은 대문자 라벨 (7.5pt SemiBold) |
+| **PDF 첫 페이지 우측 본문** | `Security Architecture Team`, `홍길동 · CSA` | 하단 큰 글씨 본문 (10.5pt Medium) |
+| **PDF 첫 페이지 우측 사이드바 색** | `#111827` (기본) / `#bc8cff` 등 | 우측 3px 수직 막대 색 |
+
+#### 좌측 (`CONFIDENTIAL` 영역, 기본 색상 `#0ea5e9` Sky)
+
+| Style Settings 항목명 | 입력 예시 | 설명 |
+|----------------------|----------|------|
+| **PDF 첫 페이지 좌측 라벨** | `CONFIDENTIAL`, `INTERNAL`, `프로젝트 코드` | 상단 작은 대문자 라벨 |
+| **PDF 첫 페이지 좌측 본문** | `Q2 Security Review · 분기 보고서` | 하단 본문 |
+| **PDF 첫 페이지 좌측 사이드바 색** | `#0ea5e9` (기본) / `#dc2626` 등 | 좌측 3px 수직 막대 색 |
+
+#### 공통
+
+| 항목 | 기본값 | 설명 |
+|------|-------|------|
+| **PDF 첫 페이지 라벨 색** | `#6b7280` | 좌·우 라벨 글자 공통 색상 |
+
+#### 입력 예시 (보고서 표지)
+
+```
+좌측 라벨:    CONFIDENTIAL
+좌측 본문:    Q2 Security Review · 분기 보고서
+좌측 막대 색: #0ea5e9 (Sky)
+
+우측 라벨:    PREPARED BY
+우측 본문:    Security Architecture Team
+우측 막대 색: #111827 (Dark)
+
+라벨 색:      #6b7280 (Gray)
+```
+
+→ PDF로 내보내면 첫 페이지 상단에 다음과 같이 표시됩니다:
+
+```
+│ CONFIDENTIAL                              PREPARED BY │
+│ Q2 Security Review · 분기 보고서  Security Architecture Team │
+└─ Sky 막대                                Dark 막대 ─┘
+```
+
+> 💡 **팁:** 라벨만 채우고 본문을 비우거나, 본문만 채우고 라벨을 비울 수도 있습니다. 한 쪽(좌 또는 우)을 통째로 비우면 해당 쪽 사이드바·라벨·본문 모두 렌더링되지 않습니다.
+
+### 4단계 — 보고서 모드 토글 (선택)
+
+표지 페이지 + 헤더 자동 넘버링 + 들여쓰기 + 세리프 본문을 **한 번에** 적용:
+
+1. Style Settings 패널 → `Owen Graphite Document` → **보고서 모드** 토글 ON
+2. PDF 내보내기 시 자동으로:
+   - 첫 H1 → 화면 중앙 큰 표지로 변환
+   - H2/H3/H4 → `1.` / `1.1` / `1.1.1` 자동 넘버링
+   - 본문 → Noto Serif KR 세리프
+   - 모든 문단 첫 줄 들여쓰기
+
+### 5단계 — A3 가로 페이지 크기 설정
+
+1. Style Settings → **PDF 페이지 크기** → `A3 가로` 선택 (기본값)
+2. Obsidian → **PDF로 내보내기** → 페이지 크기 `A3` / 방향 `가로` / 여백 `15mm`
+
+### Style Settings 없이 사용하면?
+
+- 테마는 정상 동작하지만 **모든 옵션이 기본값으로 고정**됩니다.
+- PDF 첫 페이지 헤더는 **빈 값**으로 처리되어 표시되지 않습니다.
+- 보고서 모드·액센트 컬러·코드블록 테마 등을 변경하려면 `theme.css`를 직접 수정해야 합니다.
+- **결론: 플러그인 설치를 강력 권장합니다.**
 
 ---
 
@@ -117,9 +210,9 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
 
 ---
 
-## ⚙️ Style Settings 항목
+## 📋 Style Settings 전체 옵션 목록
 
-[Style Settings 플러그인](https://github.com/mgmeyers/obsidian-style-settings) 설치 후 사이드바에서 토글로 즉시 적용:
+플러그인 설치 후 사이드바에서 토글로 즉시 적용:
 
 | 항목 | 종류 | 기본값 | 설명 |
 |------|------|--------|------|
