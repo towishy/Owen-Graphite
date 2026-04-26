@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-23%20options-0d9488?style=flat-square)](#style-settings-항목)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-19%20options-0d9488?style=flat-square)](#style-settings-항목)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -26,10 +26,10 @@
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 23종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 19종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.5.1` (Obsidian 1.6.0+) |
+| **버전** | `1.6.0` (Obsidian 1.6.0+) |
 
 ---
 
@@ -38,25 +38,25 @@
 ### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
 
 1. 설정 → **외관 → 테마 관리**
-2. 검색: `Owen Graphite Document`
+2. 검색: `Owen Graphite`
 3. 설치 → 사용
 
 ### 옵션 B — 수동 설치
 
 ```bash
 cd <YourVault>/.obsidian/themes
-git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
+git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ```
 
 또는 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서
-`theme.css`, `manifest.json`만 다운로드 → `<YourVault>/.obsidian/themes/Owen Graphite Document/`에 배치.
+`theme.css`, `manifest.json`만 다운로드 → `<YourVault>/.obsidian/themes/Owen Graphite/`에 배치.
 
-이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite Document` 선택.
+이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
 ### 옵션 C — Style Settings 통합 (권장)
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
-사이드바에서 23개 옵션으로 즉시 모드 전환 가능.
+사이드바에서 19개 옵션으로 즉시 모드 전환 가능.
 자세한 설정 방법은 아래 [⚙️ Style Settings 플러그인 설정](#%EF%B8%8F-style-settings-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%84%A4%EC%A0%95) 섹션을 참고하세요.
 
 ---
@@ -74,7 +74,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite Document"
 ### 2단계 — 테마 옵션 패널 열기
 
 1. 좌측 사이드바 하단 **톱니바퀴 아이콘** 또는 명령 팔레트(`⌘ P`) → `Style Settings: Show style settings view` 실행
-2. 좌측 트리에서 **`Owen Graphite Document`** 펼치기
+2. 좌측 트리에서 **`Owen Graphite`** 펼치기
 3. 카테고리별로 토글·슬라이더·텍스트 입력·색상 선택기를 통해 즉시 적용
 
 ### 3단계 — PDF 첫 페이지 헤더 설정 (Design ② Side Bar + Two-line)
@@ -132,7 +132,7 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 표지 페이지 + 헤더 자동 넘버링 + 들여쓰기 + 세리프 본문을 **한 번에** 적용:
 
-1. Style Settings 패널 → `Owen Graphite Document` → **보고서 모드** 토글 ON
+1. Style Settings 패널 → `Owen Graphite` → **보고서 모드** 토글 ON
 2. PDF 내보내기 시 자동으로:
    - 첫 H1 → 화면 중앙 큰 표지로 변환
    - H2/H3/H4 → `1.` / `1.1` / `1.1.1` 자동 넘버링
@@ -304,7 +304,7 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 ## 📁 파일 구조
 
 ```
-Owen Graphite Document/
+Owen Graphite/
 ├── theme.css         # ~2,560줄, 모든 스타일
 ├── manifest.json     # 버전·메타
 ├── README.md         # 이 파일

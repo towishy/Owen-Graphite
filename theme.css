@@ -1,7 +1,7 @@
-/* Owen Graphite Document for Obsidian — A report-oriented theme. */
+/* Owen Graphite for Obsidian — A report-oriented theme. */
 
 /* @settings
-name: Owen Graphite Document
+name: Owen Graphite
 id: owen-graphite-document
 settings:
   -
@@ -92,7 +92,8 @@ settings:
         value: ogd-spacing-relaxed
   -
     id: ogd-page-size
-    title: PDF 페이지 크기
+    title: PDF 페이지 크기 (Preview 폭 힌트)
+    description: 실제 PDF 페이지 크기는 Obsidian PDF Export 다이얼로그에서 별도로 선택해야 합니다. 이 옵션은 인쇄 미리보기에서 본문 폭만 조정합니다.
     type: class-select
     default: ogd-page-a3-land
     options:
@@ -169,7 +170,7 @@ settings:
     quotes: true
   -
     id: ogd-first-page-header-color
-    title: 첫 페이지 우측 본문 삼이드바 색상
+    title: 첫 페이지 우측 본문 사이드바 색상
     type: variable-color
     format: hex
     default: '#111827'
@@ -189,7 +190,7 @@ settings:
     quotes: true
   -
     id: ogd-first-page-header-left-color
-    title: 첫 페이지 좌측 본문 삼이드바 색상
+    title: 첫 페이지 좌측 본문 사이드바 색상
     type: variable-color
     format: hex
     default: '#0ea5e9'
@@ -2224,12 +2225,12 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 9999 !important;
     pointer-events: none !important;
   }
-  /* ---------- VALUES (below labels, larger, dark, with side bar) ---------- */
-  .print::before,
-  .markdown-preview-view::before,
-  .markdown-preview-sizer::before,
-  .markdown-preview-section > div:first-child::before,
-  .markdown-rendered::before {
+  /* ---------- VALUES (below labels, larger, dark, with side bar) ----------
+     Bound to .markdown-preview-sizer only \u2014 the most stable container
+     across Obsidian print DOM mutations. Earlier versions (v1.4.5\u20131.5.1)
+     attached to 5 containers as a defensive fallback; reduced in v1.6.0
+     after extensive PDF export validation. */
+  .markdown-preview-sizer::before {
     content: var(--ogd-first-page-header, "") !important;
     position: absolute !important;
     top: 0 !important;
@@ -2252,11 +2253,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 9999 !important;
     pointer-events: none !important;
   }
-  .print::after,
-  .markdown-preview-view::after,
-  .markdown-preview-sizer::after,
-  .markdown-preview-section > div:first-child::after,
-  .markdown-rendered::after {
+  .markdown-preview-sizer::after {
     content: var(--ogd-first-page-header-left, "") !important;
     position: absolute !important;
     top: 0 !important;
@@ -2284,21 +2281,16 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   }
 }
 
-/* C5. Page size presets */
-body.ogd-page-a4-port @media print { @page { size: A4 portrait; } }
-body.ogd-page-a4-land @media print { @page { size: A4 landscape; } }
-/* CSS doesn't allow @media inside selector — use class on body instead: */
+/* C5. Page size presets — preview width hint only.
+   NOTE: CSS `@page { size: ... }` cannot be conditioned on a body class
+   (Chromium evaluates @page before body class is known). Users must set
+   the actual PDF page size in Obsidian's Export dialog. The width
+   overrides below only prevent preview overflow before export. */
 @media print {
-  body.ogd-page-a4-port {
-    width: 210mm !important;
-  }
-  body.ogd-page-a4-land {
-    width: 297mm !important;
-  }
+  body.ogd-page-a4-port { width: 210mm !important; }
+  body.ogd-page-a4-land { width: 297mm !important; }
+  body.ogd-page-a3-land { width: 420mm !important; }
 }
-/* Note: `size:` cannot vary by body class; users with non-A3 must set
-   PDF Export dialog page size in Obsidian itself. The width override
-   above keeps content from overflowing during preview. */
 
 /* C6. Report metadata block — frontmatter rendered nicely */
 body.ogd-report-mode .metadata-container {
@@ -2744,4 +2736,69 @@ body.ogd-auto-dark {
 .theme-dark .markdown-rendered .callout[data-callout="secret"] .callout-content,
 .theme-dark .markdown-rendered .callout[data-callout="hidden"] .callout-content {
   filter: blur(5px);
+}
+
+/* =====================================================================
+   v1.6.0 — Polish patches
+   - Mermaid dark text fill
+   - Reading view internal-link chip (parity with Live Preview)
+   - Code language label vs copy button collision fix
+   - PDF doc-title fallback safety (handled by string-set behavior)
+   ===================================================================== */
+
+/* Mermaid: SVG text was unreadable in dark mode (only container was tinted) */
+.theme-dark .markdown-rendered .mermaid svg text,
+.theme-dark .markdown-rendered .mermaid svg .nodeLabel,
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel {
+  fill: #e5e7eb !important;
+  color: #e5e7eb !important;
+}
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel rect,
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject {
+  background: transparent !important;
+  fill: transparent !important;
+}
+.theme-dark .markdown-rendered .mermaid svg .cluster rect {
+  fill: #25272d !important;
+  stroke: #4a4d57 !important;
+}
+
+/* Reading view: internal-link chip parity with CM6 Live Preview */
+.markdown-rendered a.internal-link {
+  background: rgba(29, 78, 216, 0.07);
+  border-radius: 3px;
+  padding: 0 3px;
+  text-decoration: none;
+}
+.markdown-rendered a.internal-link:hover {
+  background: rgba(29, 78, 216, 0.14);
+  text-decoration: underline;
+  text-decoration-color: rgba(29, 78, 216, 0.5);
+}
+.markdown-rendered a.internal-link.is-unresolved {
+  background: rgba(180, 83, 9, 0.08);
+  text-decoration-style: dotted;
+}
+.theme-dark .markdown-rendered a.internal-link {
+  background: rgba(147, 197, 253, 0.10);
+}
+.theme-dark .markdown-rendered a.internal-link:hover {
+  background: rgba(147, 197, 253, 0.18);
+}
+.theme-dark .markdown-rendered a.internal-link.is-unresolved {
+  background: rgba(251, 191, 36, 0.12);
+}
+
+/* Code: language badge moved left so it doesn't overlap the copy button.
+   Default copy button sits at top:6px right:6px. Push badge to right:48px. */
+.markdown-rendered pre[class*="language-"]::after {
+  right: 48px !important;
+}
+/* Show badge only on hover to keep code blocks visually clean */
+.markdown-rendered pre[class*="language-"]::after {
+  opacity: 0 !important;
+  transition: opacity 0.15s ease;
+}
+.markdown-rendered pre[class*="language-"]:hover::after {
+  opacity: 0.85 !important;
 }

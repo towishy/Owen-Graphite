@@ -1,31 +1,60 @@
 # Changelog
 
-All notable changes to **Owen Graphite Document** are recorded here.
+All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.6.0] — 2026-04-26
+
+### Changed
+- **테마 이름 `Owen Graphite Document` → `Owen Graphite`**
+  - `manifest.json#name`, `appearance.json#cssTheme`, 종속 텍스트 일괄 교체
+  - Style Settings ID(`owen-graphite-document`)와 CSS 변수(`--ogd-*`)는 기존 사용자 설정 보존을 위해 그대로 유지
+
+### Fixed
+- **PDF 첫 페이지 헤더 값 부착 컨테이너 5→01개로 정리** — v1.4.5–1.5.1 누적 방어 코드 제거
+  - `.markdown-preview-sizer::before/::after`만 유지 (가장 안정적)
+  - PDF DOM 이중 렌더링 위험 차단 + ~30줄 감축
+- **무효 CSS 문법 제거** — `body.ogd-page-* @media print { @page { size: ... } }` 불당 중첩 제거
+  - `@page { size: ... }`는 body class로 조건화 불가 (Chromium 제약). README에 명시.
+  - Style Settings `PDF 페이지 크기` 옵션은 "Preview 폭 힌트"로 설명 명확화 (실제 PDF 크기는 Obsidian Export 다이얼로그에서 설정)
+- **오타 수정**: "삼이드바" → "사이드바" (theme.css 주석 · Style Settings 설명 · CHANGELOG 다수 위치)
+
+### Added
+- **Mermaid 다크 모드 텍스트 가독성 수정**
+  - SVG `<text>`, `.nodeLabel`, `.edgeLabel`이 검은색마 남아 다이어그램이 안 보이던 문제 해결
+  - cluster rect 배경도 다크 펠리트에 맞게 보정
+- **Reading view 내부 링크 chip 스타일** (Live Preview와 패리티)
+  - `[[위키링크]]`가 Reading view에서도 연한 파란색 chip으로 표시
+  - hover 시 더 진한 배경 + 밑줄
+  - unresolved 링크는 호박 조 + 점선 밑줄
+  - 다크 모드 패리티 동시 적용
+- **코드 언어 배지 × 복사 버튼 중첩 해소**
+  - 배지를 `right: 48px`로 이동, hover 시에만 표시
+  - 평소 코드블록은 멀끔하게 유지
 
 ## [1.5.1] — 2026-04-26
 
 ### Fixed
-- v1.5.0의 삼이드바가 본문 줄에만 짧게 그려지던 문제 수정 — 샘플 이미지는 라벨+본문을 모두 덮는 김이의 상하 막대로 표현
-  - 본문 재원소에 `padding-top: 16px` + `top: 0`으로 이동 → 삼이드바 길이가 라벨 영역까지 확장
-  - 라벨의 left/right offset을 13px로 조정해 삼이드바와 겹치지 않게 안쪽 배치
-  - 라벨 top도 2px로 미세 조정해 삼이드바 상단과 정렬
+- v1.5.0의 사이드바가 본문 줄에만 짧게 그려지던 문제 수정 — 샘플 이미지는 라벨+본문을 모두 덮는 김이의 상하 막대로 표현
+  - 본문 재원소에 `padding-top: 16px` + `top: 0`으로 이동 → 사이드바 길이가 라벨 영역까지 확장
+  - 라벨의 left/right offset을 13px로 조정해 사이드바와 겹치지 않게 안쪽 배치
+  - 라벨 top도 2px로 미세 조정해 사이드바 상단과 정렬
 
 ## [1.5.0] — 2026-04-26
 
 ### Added
 - **PDF 첫 페이지 헤더 모던 디자인 (Design ② Side Bar + Two-line)**
-  - 좌·우 각각 **라벨(소문자, 상단) + 본문(하단) 2줄 구조** + **3px 수직 삼이드바**
+  - 좌·우 각각 **라벨(소문자, 상단) + 본문(하단) 2줄 구조** + **3px 수직 사이드바**
   - 신규 Style Settings 옵션 3개:
     - `ogd-fp-right-label` (variable-text): 우측 라벨 (예: "PREPARED BY")
     - `ogd-fp-left-label` (variable-text): 좌측 라벨 (예: "CONFIDENTIAL")
     - `ogd-fp-label-color` (variable-color, 기본 `#6b7280`): 좌·우 라벨 공통 색상
   - 기존 옵션 재활용 (하위 호환):
     - `ogd-first-page-header` → 우측 본문
-    - `ogd-first-page-header-color` → 우측 삼이드바 색상 (기본 `#111827` Dark)
+    - `ogd-first-page-header-color` → 우측 사이드바 색상 (기본 `#111827` Dark)
     - `ogd-first-page-header-left` → 좌측 본문
-    - `ogd-first-page-header-left-color` → 좌측 삼이드바 색상 (기본 `#0ea5e9` Sky)
+    - `ogd-first-page-header-left-color` → 좌측 사이드바 색상 (기본 `#0ea5e9` Sky)
   - 라벨은 8pt SemiBold + uppercase + 1.8px letter-spacing, 본문은 10.5pt Medium
   - 라벨·본문 모두 비워두면 표시 안 함 (하위 호환)
   - 라벨은 `body::before/::after`, 본문은 `.markdown-preview-sizer ::before/::after` 등 여러 컨테이너에 분리하여 서로 이중 렌더링 아닌 단일 위치에 배치
@@ -106,8 +135,8 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [1.4.3] — 2026-04-26
 
 ### Removed
-- PDF/인쇄 출력 시 좌하단에 표시되던 "Owen Graphite Document" 푸터 텍스트 제거
-  - `@page { @bottom-left { content: "Owen Graphite Document" } }` 블록 삭제
+- PDF/인쇄 출력 시 좌하단에 표시되던 "Owen Graphite" 푸터 텍스트 제거
+  - `@page { @bottom-left { content: "Owen Graphite" } }` 블록 삭제
   - 우하단 페이지 번호(`N / N`)와 상단 문서 제목은 유지
 
 ## [1.4.2] — 2026-04-26
