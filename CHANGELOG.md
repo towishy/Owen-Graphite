@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1] — 2026-04-26
+
+### Added
+- **Editing Toolbar 플러그인 좌측 여백 8px** — 사이드바 분리선과 툴바 사이 시각적 간격 확보
+  - 셀렉터: `.editingToolbarModalBar { margin-left: 8px }`
+
 ## [1.6.0] — 2026-04-26
 
 ### Changed
