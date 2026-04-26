@@ -2808,3 +2808,173 @@ body.ogd-auto-dark {
 .editingToolbarModalBar {
   margin-left: 8px !important;
 }
+
+/* ============================================================
+   v1.7.0 — UX, Accessibility, Print, Mobile improvements
+   All rules are ADDITIVE (no changes to existing selectors)
+   ============================================================ */
+
+/* #1 — Active tab indicator */
+.workspace-tab-header.is-active {
+  position: relative;
+}
+.workspace-tab-header.is-active::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 2px;
+  background: var(--interactive-accent);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* #3 — Mobile (.is-mobile) refinements */
+.is-mobile .view-header {
+  padding: 6px 8px;
+}
+.is-mobile .markdown-preview-view,
+.is-mobile .markdown-source-view {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.is-mobile .markdown-preview-sizer {
+  padding: 12px 14px !important;
+}
+/* PDF/print mock header is desktop-only */
+.is-mobile .markdown-preview-sizer::before,
+.is-mobile .markdown-preview-sizer::after {
+  display: none !important;
+}
+
+/* #5 — PDF footer page numbers */
+@media print {
+  @page {
+    margin: 18mm 16mm 22mm 16mm;
+    @bottom-left {
+      content: "Owen Graphite";
+      font-family: var(--font-text, sans-serif);
+      font-size: 9pt;
+      color: #6b7280;
+    }
+    @bottom-right {
+      content: "p. " counter(page) " / " counter(pages);
+      font-family: var(--font-text, sans-serif);
+      font-size: 9pt;
+      color: #6b7280;
+    }
+  }
+}
+
+/* #6 — Graph view tonal alignment */
+.graph-view.color-fill {
+  color: var(--text-normal);
+}
+.graph-view.color-line {
+  color: var(--background-modifier-border);
+}
+.graph-view.color-text {
+  color: var(--text-muted);
+}
+.theme-dark .graph-view.color-line {
+  color: rgba(255, 255, 255, 0.12);
+}
+
+/* #7 — Search result highlight boost */
+.search-result-file-match-text,
+.suggestion-highlight {
+  background: rgba(255, 214, 102, 0.35);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.theme-dark .search-result-file-match-text,
+.theme-dark .suggestion-highlight {
+  background: rgba(255, 214, 102, 0.22);
+}
+
+/* #8 — Embedded note left accent */
+.markdown-embed,
+.internal-embed.markdown-embed-content {
+  border-left: 3px solid var(--interactive-accent);
+  padding-left: 12px;
+  background: var(--background-secondary);
+  border-radius: 4px;
+}
+.markdown-embed-title {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  margin-bottom: 4px;
+}
+
+/* #9 — Custom checkbox states (Minimal-style) */
+input[data-task="x"]:checked,
+li[data-task="x"] > input:checked,
+li[data-task="x"] > p > input:checked { --checkbox-color: #10b981; }
+input[data-task="/"]:checked,
+li[data-task="/"] > input:checked { --checkbox-color: #f59e0b; }
+input[data-task="-"]:checked,
+li[data-task="-"] > input:checked { --checkbox-color: #6b7280; text-decoration: line-through; }
+input[data-task=">"]:checked,
+li[data-task=">"] > input:checked { --checkbox-color: #3b82f6; }
+input[data-task="<"]:checked,
+li[data-task="<"] > input:checked { --checkbox-color: #8b5cf6; }
+input[data-task="?"]:checked,
+li[data-task="?"] > input:checked { --checkbox-color: #ec4899; }
+input[data-task="!"]:checked,
+li[data-task="!"] > input:checked { --checkbox-color: #ef4444; }
+input[data-task="*"]:checked,
+li[data-task="*"] > input:checked { --checkbox-color: #f59e0b; }
+ul > li.task-list-item[data-task]:not([data-task=" "]) {
+  color: var(--text-muted);
+}
+ul > li.task-list-item[data-task="x"] {
+  text-decoration: line-through;
+  text-decoration-color: rgba(107, 114, 128, 0.5);
+}
+
+/* #10 — Tag chip hover feedback */
+a.tag {
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+a.tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  background-color: var(--interactive-accent-hover, var(--interactive-accent));
+  color: var(--text-on-accent);
+}
+
+/* #11 — Unified :focus-visible (WCAG 2.4.7) */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.clickable-icon:focus-visible,
+a.internal-link:focus-visible,
+a.external-link:focus-visible,
+.workspace-tab-header:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+*:focus:not(:focus-visible) { outline: none; }
+
+/* #12 — High-contrast mode */
+@media (prefers-contrast: more) {
+  :root {
+    --background-modifier-border: #555;
+    --text-muted: #333;
+  }
+  .theme-dark {
+    --background-modifier-border: #aaa;
+    --text-muted: #ccc;
+  }
+  a, a.internal-link, a.tag {
+    text-decoration: underline;
+  }
+  button, input, textarea, select {
+    border-width: 2px !important;
+  }
+}

@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 19종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.6.0` (Obsidian 1.6.0+) |
+| **버전** | `1.7.0` (Obsidian 1.6.0+) |
 
 ---
 
@@ -322,6 +322,9 @@ Owen Graphite/
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.7.0** — UX·접근성·인쇄 종합 개선 (액티브 탭, 모바일 분기, PDF 푸터, 그래프 톤, 검색 강조, 임베드 액센트, 8종 체크박스, 태그 호버, `:focus-visible` 통일, `prefers-contrast`)
+- **v1.6.1** — Editing Toolbar 좌측 여백 8px
+- **v1.6.0** — 테마 이름 변경 (`Owen Graphite Document` → `Owen Graphite`), PDF 헤더 컨테이너 정리
 - **v1.5.1** — Side Bar가 라벨+본문 양쪽을 모두 덮도록 확장 (Design ② 완성)
 - **v1.5.0** — PDF 첫 페이지 모던 헤더 (Side Bar + Two-line, 좌·우 라벨 + 본문)
 - **v1.4.7–1.4.12** — 첫 페이지 헤더 폰트 안정화 및 좌측 헤더 추가

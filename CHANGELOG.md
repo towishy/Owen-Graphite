@@ -4,6 +4,24 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] — 2026-04-26
+
+### Added
+- **#1 액티브 탭 인디케이터** — `.workspace-tab-header.is-active::before` 2px 액센트 바
+- **#3 모바일 분기** — `.is-mobile` 헤더 패딩, 본문 폰트 16px, PDF 헤더 자동 숨김
+- **#5 PDF 푸터 페이지 번호** — `@page @bottom-left/right` 페이지 카운터
+- **#6 Graph view 톤 일치** — 라이트/다크 line·text·fill 변수 정합
+- **#7 검색 결과 하이라이트 강화** — 황색 배경 + 라운드 보더
+- **#8 임베드 노트 좌측 액센트** — 3px 액센트 + secondary bg + title 강조
+- **#9 커스텀 체크박스 8종** — `x`, `/`, `-`, `>`, `<`, `?`, `!`, `*` 컬러 매핑 (Minimal 호환)
+- **#10 태그 칩 호버 피드백** — translateY -1px + shadow + accent bg
+- **#11 통일 `:focus-visible`** — WCAG 2.4.7 준수 2px outline (모든 인터랙티브 요소)
+- **#12 `prefers-contrast: more`** — 고대비 모드 자동 분기 (border 강도, 링크 underline)
+
+### Notes
+- 모든 변경은 **추가 전용**(additive). 기존 셀렉터 미수정 → 회귀 위험 최소화
+- `@layer` 리팩토링 및 Callout 시각 통일은 v2.0에서 진행
+
 ## [1.6.1] — 2026-04-26
 
 ### Added
