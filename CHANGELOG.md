@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.5] — 2026-04-26
+
+### Added
+- **Canvas polish** — canvas node, selected/focused state, edge, controls를 문서 카드 톤으로 정리
+- **Graph View tonal alignment** — dense graph에서도 node, line, highlight, label이 차분하게 보이도록 라이트/다크 색상 보강
+- **Backlink / Outgoing / Search / Tag pane 정리** — 링크 탐색 패널의 hover, match, count badge, tag chip 스타일을 Graphite 톤으로 통일
+
 ## [1.8.4] — 2026-04-26
 
 ### Added

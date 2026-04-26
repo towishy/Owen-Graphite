@@ -3995,3 +3995,270 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   outline-color: #94a3b8 !important;
 }
 
+/* ============================================================
+   v1.8.5 — Canvas + Graph + Link panes polish
+   - Canvas nodes and controls inherit the document-card language
+   - Graph view colors become quieter and easier to scan
+   - Backlinks, outgoing links, search results, and tag panes align
+   ============================================================ */
+
+/* Canvas: note cards and controls */
+.canvas-wrapper,
+.canvas-background {
+  background-color: #f8fafc !important;
+}
+.canvas-node {
+  border-radius: 8px !important;
+}
+.canvas-node-container,
+.canvas-node-content {
+  background: #ffffff !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+.canvas-node:hover .canvas-node-container,
+.canvas-node:hover .canvas-node-content {
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12) !important;
+}
+.canvas-node.is-selected .canvas-node-container,
+.canvas-node.is-selected .canvas-node-content,
+.canvas-node.is-focused .canvas-node-container,
+.canvas-node.is-focused .canvas-node-content {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.20), 0 8px 24px rgba(15, 23, 42, 0.14) !important;
+}
+.canvas-node-label {
+  color: #374151 !important;
+  font-weight: 650 !important;
+}
+.canvas-group-label {
+  color: #475569 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+.canvas-edge-path,
+.canvas-edges path {
+  stroke: #94a3b8 !important;
+}
+.canvas-edge.is-focused .canvas-edge-path,
+.canvas-edge:hover .canvas-edge-path {
+  stroke: #6366f1 !important;
+}
+.canvas-controls,
+.canvas-card-menu {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14) !important;
+}
+.canvas-control-item,
+.canvas-card-menu .clickable-icon {
+  color: #475569 !important;
+  border-radius: 6px !important;
+}
+.canvas-control-item:hover,
+.canvas-card-menu .clickable-icon:hover {
+  background: #eef2ff !important;
+  color: #111827 !important;
+}
+
+/* Graph view: quiet contrast for dense knowledge maps */
+.graph-view.color-fill {
+  color: #64748b !important;
+}
+.graph-view.color-fill-highlight,
+.graph-view.color-circle {
+  color: #6366f1 !important;
+}
+.graph-view.color-line,
+.graph-view.color-arrow {
+  color: rgba(100, 116, 139, 0.42) !important;
+}
+.graph-view.color-line-highlight,
+.graph-view.color-arrow-highlight {
+  color: #6366f1 !important;
+}
+.graph-view.color-text {
+  color: #334155 !important;
+}
+
+/* Backlinks, outgoing links, search panes */
+.backlink-pane,
+.outgoing-link-pane,
+.search-result-container {
+  color: #374151 !important;
+}
+.backlink-pane .tree-item-self,
+.outgoing-link-pane .tree-item-self,
+.search-result-file-title,
+.search-result-file-match {
+  border-radius: 6px !important;
+}
+.backlink-pane .tree-item-self:hover,
+.outgoing-link-pane .tree-item-self:hover,
+.search-result-file-title:hover,
+.search-result-file-match:hover {
+  background: #f3f4f6 !important;
+}
+.backlink-pane .tree-item-inner,
+.outgoing-link-pane .tree-item-inner,
+.search-result-file-title {
+  color: #111827 !important;
+  font-weight: 650 !important;
+}
+.search-result-file-match {
+  border-left: 3px solid #cbd5e1 !important;
+  margin: 4px 0 !important;
+  padding: 6px 8px !important;
+}
+.search-result-file-matched-text,
+.search-result-file-match-text {
+  background: #fff7ed !important;
+  color: #7c2d12 !important;
+  border-radius: 4px !important;
+}
+.search-empty-state,
+.backlink-pane .search-empty-state,
+.outgoing-link-pane .search-empty-state {
+  color: #64748b !important;
+  font-style: normal !important;
+}
+
+/* Tag pane and link chips */
+.tag-pane-tag,
+.tag-container .tree-item-self,
+.tag-container .tree-item-inner {
+  border-radius: 999px !important;
+}
+.tag-pane-tag,
+.tag-container .tree-item-self {
+  color: #374151 !important;
+}
+.tag-pane-tag:hover,
+.tag-container .tree-item-self:hover {
+  background: #eef2ff !important;
+  color: #111827 !important;
+}
+.tag-pane-tag-count,
+.tree-item-flair,
+.search-result-file-match-count {
+  background: #e5e7eb !important;
+  color: #475569 !important;
+  border-radius: 999px !important;
+  font-weight: 650 !important;
+}
+
+.theme-dark .canvas-wrapper,
+.theme-dark .canvas-background {
+  background-color: #0f172a !important;
+}
+.theme-dark .canvas-node-container,
+.theme-dark .canvas-node-content {
+  background: #111827 !important;
+  border-color: #334155 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28) !important;
+}
+.theme-dark .canvas-node:hover .canvas-node-container,
+.theme-dark .canvas-node:hover .canvas-node-content {
+  border-color: #475569 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.38) !important;
+}
+.theme-dark .canvas-node.is-selected .canvas-node-container,
+.theme-dark .canvas-node.is-selected .canvas-node-content,
+.theme-dark .canvas-node.is-focused .canvas-node-container,
+.theme-dark .canvas-node.is-focused .canvas-node-content {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.24), 0 8px 24px rgba(0, 0, 0, 0.42) !important;
+}
+.theme-dark .canvas-node-label,
+.theme-dark .canvas-group-label {
+  color: #e5e7eb !important;
+}
+.theme-dark .canvas-edge-path,
+.theme-dark .canvas-edges path {
+  stroke: #475569 !important;
+}
+.theme-dark .canvas-edge.is-focused .canvas-edge-path,
+.theme-dark .canvas-edge:hover .canvas-edge-path {
+  stroke: #818cf8 !important;
+}
+.theme-dark .canvas-controls,
+.theme-dark .canvas-card-menu {
+  background: rgba(17, 24, 39, 0.94) !important;
+  border-color: #334155 !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42) !important;
+}
+.theme-dark .canvas-control-item,
+.theme-dark .canvas-card-menu .clickable-icon {
+  color: #cbd5e1 !important;
+}
+.theme-dark .canvas-control-item:hover,
+.theme-dark .canvas-card-menu .clickable-icon:hover {
+  background: #1e1b4b !important;
+  color: #f8fafc !important;
+}
+.theme-dark .graph-view.color-fill {
+  color: #94a3b8 !important;
+}
+.theme-dark .graph-view.color-fill-highlight,
+.theme-dark .graph-view.color-circle {
+  color: #818cf8 !important;
+}
+.theme-dark .graph-view.color-line,
+.theme-dark .graph-view.color-arrow {
+  color: rgba(148, 163, 184, 0.28) !important;
+}
+.theme-dark .graph-view.color-line-highlight,
+.theme-dark .graph-view.color-arrow-highlight {
+  color: #818cf8 !important;
+}
+.theme-dark .graph-view.color-text {
+  color: #cbd5e1 !important;
+}
+.theme-dark .backlink-pane,
+.theme-dark .outgoing-link-pane,
+.theme-dark .search-result-container {
+  color: #cbd5e1 !important;
+}
+.theme-dark .backlink-pane .tree-item-self:hover,
+.theme-dark .outgoing-link-pane .tree-item-self:hover,
+.theme-dark .search-result-file-title:hover,
+.theme-dark .search-result-file-match:hover {
+  background: #1f2937 !important;
+}
+.theme-dark .backlink-pane .tree-item-inner,
+.theme-dark .outgoing-link-pane .tree-item-inner,
+.theme-dark .search-result-file-title {
+  color: #f8fafc !important;
+}
+.theme-dark .search-result-file-match {
+  border-left-color: #475569 !important;
+}
+.theme-dark .search-result-file-matched-text,
+.theme-dark .search-result-file-match-text {
+  background: rgba(124, 45, 18, 0.72) !important;
+  color: #ffedd5 !important;
+}
+.theme-dark .search-empty-state,
+.theme-dark .backlink-pane .search-empty-state,
+.theme-dark .outgoing-link-pane .search-empty-state {
+  color: #94a3b8 !important;
+}
+.theme-dark .tag-pane-tag,
+.theme-dark .tag-container .tree-item-self {
+  color: #cbd5e1 !important;
+}
+.theme-dark .tag-pane-tag:hover,
+.theme-dark .tag-container .tree-item-self:hover {
+  background: #1e1b4b !important;
+  color: #f8fafc !important;
+}
+.theme-dark .tag-pane-tag-count,
+.theme-dark .tree-item-flair,
+.theme-dark .search-result-file-match-count {
+  background: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
