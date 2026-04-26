@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Snippet Design Concept Preview</title>
+  <style>
+    :root {
+      --bg: #eef2f7;
+      --paper: #ffffff;
+      --ink: #111827;
+      --muted: #64748b;
+      --line: #d9e1ea;
+      --soft: #f8fafc;
+      --slate: #475569;
+      --blue: #2563eb;
+      --teal: #0f766e;
+      --amber: #92400e;
+      --red: #b91c1c;
+      --green: #047857;
+      --violet: #6d28d9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 28px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Pretendard, "Segoe UI", "Apple SD Gothic Neo", system-ui, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .canvas {
+      width: 1440px;
+      min-height: 980px;
+      margin: 0 auto;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 22px;
+      background: #f6f8fb;
+      border: 1px solid #d6dee8;
+      border-radius: 8px;
+    }
+
+    .sheet {
+      background: var(--paper);
+      border: 1px solid #dbe3ec;
+      border-radius: 8px;
+      padding: 34px 38px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .sheet.dark {
+      --paper: #111827;
+      --ink: #e5e7eb;
+      --muted: #9ca3af;
+      --line: #334155;
+      --soft: #172033;
+      background: var(--paper);
+      border-color: #263244;
+      box-shadow: none;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: var(--soft);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      padding: 0.66em 0.9em 0.66em 1em;
+      color: var(--ink);
+      background: linear-gradient(90deg, #f3f6fa, transparent 82%);
+      border-left: 5px solid #4b5563;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 6px 6px 0;
+      font-size: 31px;
+      line-height: 1.22;
+    }
+
+    .dark h1 {
+      background: linear-gradient(90deg, #1f2937, transparent 82%);
+      border-left-color: #94a3b8;
+    }
+
+    h2 {
+      position: relative;
+      margin: 28px 0 14px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--line);
+      font-size: 24px;
+      line-height: 1.32;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 180px;
+      height: 3px;
+      border-radius: 999px;
+      background: #4b5563;
+    }
+
+    .dark h2::after { background: #94a3b8; }
+
+    h4 {
+      margin: 20px 0 8px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--line);
+      color: var(--slate);
+      font-size: 17px;
+      line-height: 1.38;
+    }
+
+    .dark h4 { color: #cbd5e1; }
+
+    h5 {
+      margin: 16px 0 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.42;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.78;
+    }
+
+    a { color: #1d4ed8; font-weight: 700; text-decoration: none; border-bottom: 1px solid #bfdbfe; }
+    .dark a { color: #93c5fd; border-bottom-color: #1e3a8a; }
+
+    code {
+      padding: 0.13em 0.34em;
+      border: 1px solid #dbe4ee;
+      border-radius: 4px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: "SFMono-Regular", "Cascadia Code", Menlo, monospace;
+      font-size: 0.9em;
+    }
+
+    .dark code {
+      border-color: #334155;
+      background: #172033;
+      color: #dbeafe;
+    }
+
+    mark {
+      padding: 0.05em 0.25em;
+      border-radius: 3px;
+      background: #fef3c7;
+      color: #78350f;
+    }
+
+    .callout-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .callout {
+      padding: 11px 13px;
+      border: 1px solid #d8e0ea;
+      border-left: 4px solid #64748b;
+      border-radius: 6px;
+      background: #fbfcfd;
+    }
+
+    .dark .callout { border-color: #334155; background: #151f2f; }
+    .callout.tip { border-left-color: var(--teal); background: #f0fdfa; }
+    .callout.warn { border-left-color: var(--amber); background: #fffbeb; }
+    .callout.error { border-left-color: var(--red); background: #fef2f2; }
+    .callout.success { border-left-color: var(--green); background: #f0fdf4; }
+    .callout.question { border-left-color: var(--violet); background: #faf5ff; }
+    .dark .callout.tip,
+    .dark .callout.warn,
+    .dark .callout.error,
+    .dark .callout.success,
+    .dark .callout.question { background: #151f2f; }
+
+    .callout-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-weight: 850;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 999px;
+      background: #fff;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .tip .icon { border-color: #5eead4; color: var(--teal); }
+    .warn .icon { border-color: #fcd34d; color: var(--amber); }
+    .error .icon { border-color: #fca5a5; color: var(--red); }
+    .success .icon { border-color: #86efac; color: var(--green); }
+    .question .icon { border-color: #c4b5fd; color: var(--violet); }
+
+    .callout p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.62; }
+
+    blockquote {
+      margin: 18px 0;
+      padding: 9px 0 9px 18px;
+      border-left: 3px solid #6b7280;
+      background: linear-gradient(90deg, #f8fafc 0, transparent 88%);
+      color: #374151;
+    }
+
+    .dark blockquote { background: linear-gradient(90deg, #172033 0, transparent 88%); color: #cbd5e1; }
+    blockquote p { margin: 0; color: inherit; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      border: 1px solid #e5e7eb;
+      font-size: 13px;
+    }
+
+    th {
+      padding: 11px 14px;
+      background: #f8fafc;
+      color: #111827;
+      border: 1px solid #e5e7eb;
+      border-bottom: 1px solid #cbd5e1;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 10px 14px;
+      border: 1px solid #f1f5f9;
+      color: #1f2937;
+      line-height: 1.55;
+      vertical-align: middle;
+    }
+
+    tr:nth-child(even) { background: #fbfdff; }
+    td:first-child { color: #0f172a; font-weight: 750; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .dark table, .dark th, .dark td { border-color: #334155; }
+    .dark th { background: #172033; color: #e5e7eb; }
+    .dark td { color: #d1d5db; }
+    .dark tr:nth-child(even) { background: #131c2b; }
+    .dark td:first-child { color: #f8fafc; }
+
+    hr {
+      margin: 26px 0;
+      height: 1px;
+      border: 0;
+      background: linear-gradient(90deg, #475569 0 92px, var(--line) 92px 100%);
+    }
+
+    pre {
+      margin: 16px 0 20px;
+      padding: 14px 16px;
+      overflow: hidden;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: #f8fafc;
+      color: #111827;
+      font: 13px/1.65 "SFMono-Regular", "Cascadia Code", Menlo, monospace;
+      white-space: pre-wrap;
+    }
+
+    .dark pre { border-color: #334155; background: #172033; color: #dbeafe; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--soft); font-size: 12px; font-weight: 750; }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <section class="sheet markdown-rendered">
+      <div class="label">Snippet vNext concept · report density</div>
+      <h1>Defender 운영 보고서</h1>
+      <p>본문은 넓은 A3 보고서에서 읽기 편하도록 행간을 유지하고, <a href="#">참조 링크</a>, <code>policyAssignmentId</code>, <mark>핵심 상태</mark> 같은 인라인 요소는 조용하지만 구분되도록 정리합니다.</p>
+
+      <h2>1. 요약 상태</h2>
+      <div class="callout-grid">
+        <div class="callout tip"><div class="callout-title"><span class="icon">i</span>Tip / Important</div><p>권장 조치와 운영 팁은 teal 계열로 차분하게 표시합니다.</p></div>
+        <div class="callout warn"><div class="callout-title"><span class="icon">!</span>Warning</div><p>주의가 필요한 항목은 amber 배지와 얕은 tint로 강조합니다.</p></div>
+        <div class="callout error"><div class="callout-title"><span class="icon">!</span>Error / Danger</div><p>실패나 위험 상태는 red 계열로 즉시 구분됩니다.</p></div>
+        <div class="callout success"><div class="callout-title"><span class="icon">✓</span>Success</div><p>완료 상태는 green 계열의 outline 아이콘으로 통일합니다.</p></div>
+      </div>
+
+      <h4>세부 관찰</h4>
+      <blockquote><p>Blockquote는 callout과 겹치지 않도록 박스감을 줄이고, 왼쪽 라인 중심의 인용 스타일로 분리합니다.</p></blockquote>
+
+      <h2>2. 정책 테이블</h2>
+      <table>
+        <thead><tr><th>영역</th><th>상태</th><th>대상 리소스</th><th>비율</th></tr></thead>
+        <tbody>
+          <tr><td>Secure Score</td><td><code>Healthy</code></td><td class="num">128</td><td class="num">96.4%</td></tr>
+          <tr><td>JIT Access</td><td><code>Review</code></td><td class="num">18</td><td class="num">72.0%</td></tr>
+          <tr><td>Endpoint Plan</td><td><code>Enabled</code></td><td class="num">84</td><td class="num">91.2%</td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+      <h5>Inline / Code / Print Detail</h5>
+      <pre>policy:
+  name: Defender CSPM baseline
+  output: A3 landscape report
+  page_break: avoid tables and callouts</pre>
+      <div class="chips"><span class="chip">compact callout</span><span class="chip">table polish</span><span class="chip">print rules</span><span class="chip">inline elements</span></div>
+    </section>
+
+    <aside class="sheet dark markdown-rendered">
+      <div class="label">Dark mode direction</div>
+      <h1>Dark Preview</h1>
+      <p>Dark mode를 지원할 경우에는 같은 정보 구조를 유지하되, 배경 tint와 border 대비를 낮춰 장시간 편집에 맞춥니다.</p>
+      <h2>Compact Blocks</h2>
+      <div class="callout question"><div class="callout-title"><span class="icon">?</span>Question / Example</div><p>보라 계열은 질문, 예시, FAQ 계열을 묶는 데 적합합니다.</p></div>
+      <blockquote><p>인용은 어두운 배경에서도 과하게 떠 보이지 않도록 좌측선과 약한 gradient만 유지합니다.</p></blockquote>
+      <table>
+        <thead><tr><th>Token</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>surface</td><td><code>#111827</code></td></tr>
+          <tr><td>line</td><td><code>#334155</code></td></tr>
+          <tr><td>text</td><td><code>#e5e7eb</code></td></tr>
+        </tbody>
+      </table>
+      <hr>
+      <pre>.markdown-source-view.mod-cm6 {
+  /* keep editor hitboxes plain */
+}</pre>
+    </aside>
+  </main>
+</body>
+</html>

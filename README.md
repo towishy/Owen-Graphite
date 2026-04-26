@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.13` (Obsidian 1.6.0+) |
+| **버전** | `1.8.14` (Obsidian 1.6.0+) |
 
 ---
 
@@ -410,7 +410,7 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 
 ```
 Owen Graphite/
-├── theme.css         # ~4,850줄, 모든 스타일
+├── theme.css         # 모든 스타일
 ├── manifest.json     # 버전·메타
 ├── README.md         # 이 파일
 ├── CHANGELOG.md      # 버전별 변경 이력
@@ -420,11 +420,15 @@ Owen Graphite/
 ├── snippets/
 │   └── zz-obsidian-gray-force-override-v2.css
 ├── docs/
-│   └── fixtures/table-report.md
+│   └── fixtures/
+│       ├── table-report.md
+│       ├── live-preview-editing.md
+│       └── snippet-design-concept-preview.html
 └── screenshots/
     ├── light.png     # 512×288
     ├── dark.png
-    └── report.png
+    ├── report.png
+    └── snippet-design-concept-preview.png
 ```
 
 ### 로컬 검증
@@ -439,6 +443,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.14** — Gray override snippet compact callout/table/inline/print/dark-mode 디자인 개선, preview fixture 추가
 - **v1.8.13** — Live Preview 편집성 guard/fixture 추가, callout outline 아이콘 팔레트 정리
 - **v1.8.12** — `note` / `info` callout 아이콘을 모던한 원형 outline 배지로 정리
 - **v1.8.11** — Live Preview blockquote 줄바꿈 클릭 편집 복구, CM6 래핑/line-height 정렬

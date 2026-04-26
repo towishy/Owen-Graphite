@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.14] — 2026-04-26
+
+### Added
+- Gray override CSS snippet 디자인 개선안을 시각화하는 HTML fixture와 PNG preview 이미지 추가
+- Gray override snippet에 `hr`, link, `mark`, `kbd`, table caption / numeric cell / first-column 강조 스타일 추가
+- Gray override snippet에 print/PDF page-break 보강과 dark mode report fallback 스타일 추가
+
+### Changed
+- Gray override snippet의 callout을 compact density와 semantic outline icon badge 중심으로 정리
+- Gray override snippet의 table, blockquote, inline code, Live Preview codeblock 톤을 보고서형 문서에 맞게 완화
+
 ## [1.8.13] — 2026-04-26
 
 ### Added

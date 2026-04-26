@@ -258,6 +258,17 @@ body .markdown-reading-view table {
     border: 1px solid #e5e7eb !important;
 }
 
+body .markdown-rendered table caption,
+body .markdown-preview-view table caption,
+body .markdown-reading-view table caption {
+    caption-side: top !important;
+    margin-bottom: 0.45em !important;
+    color: #64748b !important;
+    font-size: 0.88em !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+}
+
 body .markdown-rendered h1 + table,
 body .markdown-rendered h2 + table,
 body .markdown-rendered h3 + table,
@@ -311,6 +322,71 @@ body .markdown-reading-view td {
 
 body .markdown-rendered tr:nth-child(even) {
     background-color: #fbfdff !important;
+}
+
+body .markdown-rendered td:first-child,
+body .markdown-preview-view td:first-child,
+body .markdown-reading-view td:first-child {
+    color: #111827 !important;
+    font-weight: 700 !important;
+}
+
+body .markdown-rendered td:is(.num, .number, .numeric),
+body .markdown-preview-view td:is(.num, .number, .numeric),
+body .markdown-reading-view td:is(.num, .number, .numeric) {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums !important;
+}
+
+body .markdown-rendered td code,
+body .markdown-preview-view td code,
+body .markdown-reading-view td code {
+    white-space: nowrap !important;
+}
+
+/* ------------------------------------------------------------
+   3.5 Inline Elements & Section Rules
+   ------------------------------------------------------------ */
+body .markdown-rendered a,
+body .markdown-preview-view a,
+body .markdown-reading-view a {
+    color: #1d4ed8 !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #bfdbfe !important;
+}
+
+body .markdown-rendered mark,
+body .markdown-preview-view mark,
+body .markdown-reading-view mark {
+    padding: 0.05em 0.25em !important;
+    border-radius: 3px !important;
+    background: #fef3c7 !important;
+    color: #78350f !important;
+}
+
+body .markdown-rendered kbd,
+body .markdown-preview-view kbd,
+body .markdown-reading-view kbd {
+    display: inline-block !important;
+    padding: 0.12em 0.42em !important;
+    border: 1px solid #cbd5e1 !important;
+    border-bottom-color: #94a3b8 !important;
+    border-radius: 4px !important;
+    background: #f8fafc !important;
+    color: #111827 !important;
+    font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace !important;
+    font-size: 0.86em !important;
+    line-height: 1.35 !important;
+}
+
+body .markdown-rendered hr,
+body .markdown-preview-view hr,
+body .markdown-reading-view hr {
+    margin: 1.7em 0 !important;
+    height: 1px !important;
+    border: 0 !important;
+    background: linear-gradient(90deg, #475569 0 92px, #d1d5db 92px 100%) !important;
 }
 
 /* ------------------------------------------------------------
@@ -398,8 +474,8 @@ body .markdown-preview-view .callout,
 body .markdown-reading-view .callout,
 body .workspace-leaf-content .markdown-rendered div.callout,
 body .workspace-leaf-content .markdown-rendered .callout {
-    margin: 1.2em 0 !important;
-    padding: 14px 16px !important;
+    margin: 1.05em 0 !important;
+    padding: 11px 13px !important;
     border-top: 1px solid #d1d5db !important;
     border-right: 1px solid #d1d5db !important;
     border-bottom: 1px solid #d1d5db !important;
@@ -481,10 +557,10 @@ body .markdown-preview-view .callout-title,
 body .markdown-reading-view .callout-title {
     display: flex !important;
     align-items: center !important;
-    gap: 9px !important;
+    gap: 8px !important;
     padding: 0 !important;
     color: #1f2937 !important;
-    font-size: 0.98em !important;
+    font-size: 0.94em !important;
     font-weight: 800 !important;
     line-height: 1.35 !important;
 }
@@ -494,6 +570,26 @@ body .markdown-rendered .callout-content,
 body .markdown-preview-view .callout-title-inner,
 body .markdown-preview-view .callout-content {
     color: #374151 !important;
+}
+
+body .markdown-rendered .callout-content,
+body .markdown-preview-view .callout-content,
+body .markdown-reading-view .callout-content {
+    margin-top: 0.35em !important;
+    font-size: 0.95em !important;
+    line-height: 1.62 !important;
+}
+
+body .markdown-rendered .callout-content > :first-child,
+body .markdown-preview-view .callout-content > :first-child,
+body .markdown-reading-view .callout-content > :first-child {
+    margin-top: 0 !important;
+}
+
+body .markdown-rendered .callout-content > :last-child,
+body .markdown-preview-view .callout-content > :last-child,
+body .markdown-reading-view .callout-content > :last-child {
+    margin-bottom: 0 !important;
 }
 
 body .markdown-rendered .callout-icon,
@@ -656,11 +752,11 @@ body .workspace-leaf-content .markdown-rendered pre code {
 body .markdown-rendered code:not(pre code),
 body .markdown-preview-view code:not(pre code),
 body .markdown-reading-view code:not(pre code) {
-    padding: 0.16em 0.38em !important;
-    border: 1px solid #e5e7eb !important;
+    padding: 0.13em 0.34em !important;
+    border: 1px solid #dbe4ee !important;
     border-radius: 4px !important;
-    background: #f3f4f6 !important;
-    background-color: #f3f4f6 !important;
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
     color: #111827 !important;
     font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace !important;
     font-size: 0.9em !important;
@@ -717,7 +813,165 @@ body .markdown-reading-view li::before {
 }
 
 /* ------------------------------------------------------------
-   8. Print
+   8. Dark Mode Report Fallback
+   ------------------------------------------------------------ */
+body.theme-dark .markdown-rendered p,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-content {
+    color: #e5e7eb !important;
+}
+
+body.theme-dark .markdown-rendered h1,
+body.theme-dark .markdown-preview-view.markdown-rendered h1,
+body.theme-dark .markdown-reading-view .markdown-rendered h1 {
+    color: #f8fafc !important;
+    background: linear-gradient(90deg, #1f2937, transparent 82%) !important;
+    border-left-color: #94a3b8 !important;
+    border-bottom-color: #334155 !important;
+}
+
+body.theme-dark .markdown-rendered h2,
+body.theme-dark .markdown-preview-view.markdown-rendered h2,
+body.theme-dark .markdown-reading-view .markdown-rendered h2,
+body.theme-dark .markdown-rendered h4,
+body.theme-dark .markdown-preview-view.markdown-rendered h4,
+body.theme-dark .markdown-reading-view .markdown-rendered h4 {
+    color: #e5e7eb !important;
+    border-bottom-color: #334155 !important;
+}
+
+body.theme-dark .markdown-rendered h2::after,
+body.theme-dark .markdown-preview-view.markdown-rendered h2::after,
+body.theme-dark .markdown-reading-view .markdown-rendered h2::after {
+    background: #94a3b8 !important;
+}
+
+body.theme-dark .markdown-rendered h3,
+body.theme-dark .markdown-preview-view.markdown-rendered h3,
+body.theme-dark .markdown-reading-view .markdown-rendered h3,
+body.theme-dark .markdown-rendered h5,
+body.theme-dark .markdown-preview-view.markdown-rendered h5,
+body.theme-dark .markdown-reading-view .markdown-rendered h5,
+body.theme-dark .markdown-rendered h6,
+body.theme-dark .markdown-preview-view.markdown-rendered h6,
+body.theme-dark .markdown-reading-view .markdown-rendered h6 {
+    color: #cbd5e1 !important;
+}
+
+body.theme-dark .markdown-rendered table,
+body.theme-dark .markdown-preview-view table,
+body.theme-dark .markdown-reading-view table,
+body.theme-dark .markdown-rendered th,
+body.theme-dark .markdown-preview-view th,
+body.theme-dark .markdown-reading-view th,
+body.theme-dark .markdown-rendered td,
+body.theme-dark .markdown-preview-view td,
+body.theme-dark .markdown-reading-view td {
+    border-color: #334155 !important;
+}
+
+body.theme-dark .markdown-rendered th,
+body.theme-dark .markdown-preview-view th,
+body.theme-dark .markdown-reading-view th {
+    background-color: #172033 !important;
+    color: #e5e7eb !important;
+}
+
+body.theme-dark .markdown-rendered td,
+body.theme-dark .markdown-preview-view td,
+body.theme-dark .markdown-reading-view td {
+    color: #d1d5db !important;
+}
+
+body.theme-dark .markdown-rendered td:first-child,
+body.theme-dark .markdown-preview-view td:first-child,
+body.theme-dark .markdown-reading-view td:first-child {
+    color: #f8fafc !important;
+}
+
+body.theme-dark .markdown-rendered tr:nth-child(even) {
+    background-color: #131c2b !important;
+}
+
+body.theme-dark .markdown-rendered blockquote,
+body.theme-dark .markdown-preview-view blockquote,
+body.theme-dark .markdown-reading-view blockquote,
+body.theme-dark .workspace-leaf-content .markdown-rendered blockquote,
+body.theme-dark .workspace-leaf-content .markdown-preview-view blockquote,
+body.theme-dark .workspace-leaf-content .markdown-reading-view blockquote {
+    background: linear-gradient(90deg, #172033 0, transparent 88%) !important;
+    color: #cbd5e1 !important;
+    border-left-color: #94a3b8 !important;
+    border-inline-start-color: #94a3b8 !important;
+}
+
+body.theme-dark .markdown-rendered div.callout,
+body.theme-dark .markdown-rendered .callout,
+body.theme-dark .markdown-preview-view .callout,
+body.theme-dark .markdown-reading-view .callout,
+body.theme-dark .workspace-leaf-content .markdown-rendered div.callout,
+body.theme-dark .workspace-leaf-content .markdown-rendered .callout {
+    border-color: #334155 !important;
+    background: #151f2f !important;
+    background-color: #151f2f !important;
+    color: #d1d5db !important;
+}
+
+body.theme-dark .markdown-rendered .callout-title,
+body.theme-dark .markdown-preview-view .callout-title,
+body.theme-dark .markdown-reading-view .callout-title,
+body.theme-dark .markdown-rendered .callout-title-inner,
+body.theme-dark .markdown-rendered .callout-content,
+body.theme-dark .markdown-preview-view .callout-title-inner,
+body.theme-dark .markdown-preview-view .callout-content {
+    color: #e5e7eb !important;
+}
+
+body.theme-dark .markdown-rendered .callout-icon,
+body.theme-dark .markdown-preview-view .callout-icon,
+body.theme-dark .markdown-reading-view .callout-icon,
+body.theme-dark .markdown-rendered code:not(pre code),
+body.theme-dark .markdown-preview-view code:not(pre code),
+body.theme-dark .markdown-reading-view code:not(pre code),
+body.theme-dark .markdown-rendered kbd,
+body.theme-dark .markdown-preview-view kbd,
+body.theme-dark .markdown-reading-view kbd {
+    border-color: #334155 !important;
+    background: #172033 !important;
+    background-color: #172033 !important;
+    color: #dbeafe !important;
+}
+
+body.theme-dark .markdown-rendered a,
+body.theme-dark .markdown-preview-view a,
+body.theme-dark .markdown-reading-view a {
+    color: #93c5fd !important;
+    border-bottom-color: #1e3a8a !important;
+}
+
+body.theme-dark .markdown-rendered hr,
+body.theme-dark .markdown-preview-view hr,
+body.theme-dark .markdown-reading-view hr {
+    background: linear-gradient(90deg, #94a3b8 0 92px, #334155 92px 100%) !important;
+}
+
+body.theme-dark .markdown-rendered pre,
+body.theme-dark .markdown-preview-view pre,
+body.theme-dark .markdown-reading-view pre,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre {
+    border-color: #334155 !important;
+    background: #172033 !important;
+    background-color: #172033 !important;
+}
+
+body.theme-dark .markdown-rendered pre code,
+body.theme-dark .markdown-preview-view pre code,
+body.theme-dark .markdown-reading-view pre code,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
+    color: #dbeafe !important;
+}
+
+/* ------------------------------------------------------------
+   9. Print
    ------------------------------------------------------------ */
 @media print {
     @page {
@@ -731,8 +985,25 @@ body .markdown-reading-view li::before {
         print-color-adjust: exact;
     }
 
-    img, tr, li {
+    img,
+    tr,
+    li,
+    table,
+    blockquote,
+    .callout,
+    pre {
         page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        page-break-after: avoid;
+        break-after: avoid;
     }
 
     body .markdown-rendered th,
