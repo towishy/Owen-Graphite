@@ -2230,7 +2230,11 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
      across Obsidian print DOM mutations. Earlier versions (v1.4.5\u20131.5.1)
      attached to 5 containers as a defensive fallback; reduced in v1.6.0
      after extensive PDF export validation. */
-  .markdown-preview-sizer::before {
+  /* v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF) */
+  .markdown-preview-sizer::before,
+  .markdown-preview-view::before,
+  .markdown-preview-section::before,
+  .markdown-rendered::before {
     content: var(--ogd-first-page-header, "") !important;
     position: absolute !important;
     top: 0 !important;
@@ -2253,7 +2257,10 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 9999 !important;
     pointer-events: none !important;
   }
-  .markdown-preview-sizer::after {
+  .markdown-preview-sizer::after,
+  .markdown-preview-view::after,
+  .markdown-preview-section::after,
+  .markdown-rendered::after {
     content: var(--ogd-first-page-header-left, "") !important;
     position: absolute !important;
     top: 0 !important;
@@ -2844,7 +2851,13 @@ body.ogd-auto-dark {
 }
 /* PDF/print mock header is desktop-only */
 .is-mobile .markdown-preview-sizer::before,
-.is-mobile .markdown-preview-sizer::after {
+.is-mobile .markdown-preview-sizer::after,
+.is-mobile .markdown-preview-view::before,
+.is-mobile .markdown-preview-view::after,
+.is-mobile .markdown-preview-section::before,
+.is-mobile .markdown-preview-section::after,
+.is-mobile .markdown-rendered::before,
+.is-mobile .markdown-rendered::after {
   display: none !important;
 }
 

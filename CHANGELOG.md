@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] — 2026-04-26
+
+### Fixed
+- **PDF 첫 페이지 헤더 값(VALUE) 미표시 문제 해소** — v1.6.0에서 `.markdown-preview-sizer` 단일 컨테이너로 줄인 바인딩을 4개 컨테이너(`sizer`/`view`/`section`/`rendered`)로 복원. 다일과 플랫폼별 PDF 렌더 DOM 차이에 대한 동시 대응.
+
 ## [1.7.0] — 2026-04-26
 
 ### Added
