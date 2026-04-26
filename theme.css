@@ -3109,3 +3109,50 @@ a.external-link:focus-visible,
   margin-top: 1.2em !important;
 }
 
+/* ============================================================
+   v1.7.10 — Custom callout: [!conclusion] (Soft Sky)
+   Usage in markdown:
+     > [!conclusion] 권장 결론
+     > 본문...
+   ============================================================ */
+.markdown-rendered .callout[data-callout="conclusion"] {
+  --callout-color: 14, 165, 233; /* #0ea5e9 */
+  --callout-icon: lucide-lightbulb;
+  background: #f0f9ff !important;
+  border: 1px solid #bae6fd !important;
+  border-left: 4px solid #0ea5e9 !important;
+  border-radius: 8px !important;
+  color: #0c4a6e !important;
+}
+.markdown-rendered .callout[data-callout="conclusion"] .callout-title {
+  color: #0c4a6e !important;
+  font-weight: 700 !important;
+}
+.markdown-rendered .callout[data-callout="conclusion"] .callout-icon svg,
+.markdown-rendered .callout[data-callout="conclusion"] .callout-title-inner {
+  color: #0ea5e9 !important;
+}
+.markdown-rendered .callout[data-callout="conclusion"] p,
+.markdown-rendered .callout[data-callout="conclusion"] li,
+.markdown-rendered .callout[data-callout="conclusion"] strong {
+  color: #0c4a6e !important;
+}
+
+/* Dark mode */
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] {
+  background: #082f49 !important;
+  border: 1px solid #075985 !important;
+  border-left: 4px solid #38bdf8 !important;
+  color: #e0f2fe !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] .callout-title,
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] p,
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] li,
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] strong {
+  color: #e0f2fe !important;
+}
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] .callout-icon svg,
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] .callout-title-inner {
+  color: #7dd3fc !important;
+}
+

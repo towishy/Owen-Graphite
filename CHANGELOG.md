@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.10] — 2026-04-26
+
+### Added
+- **커스텀 callout `[!conclusion]`** — Soft Sky 팔레트로 권장 결론/제안 강조
+  - 라이트: bg `#f0f9ff` / border-left `#0ea5e9` / text `#0c4a6e`
+  - 다크: bg `#082f49` / border-left `#38bdf8` / text `#e0f2fe`
+  - 사용법: `> [!conclusion] 권장 결론`
+
 ## [1.7.9] — 2026-04-26
 
 ### Changed
