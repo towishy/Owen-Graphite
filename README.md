@@ -156,6 +156,28 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 ---
 
+## 🧩 선택 CSS snippet — Gray Report Force Override
+
+릴리즈 자산에 포함된 `snippets/zz-obsidian-gray-force-override-v2.css`는 Owen Graphite를 기반으로 **더 엄격한 회색 보고서 톤**을 강제하고 싶을 때 쓰는 선택 snippet입니다. 테마 본체보다 강한 우선순위로 적용되므로, 팀 보고서나 고객 제출 문서처럼 화면·PDF·공유 환경에서 색상 편차를 줄이고 싶을 때 적합합니다.
+
+### 디자인 의도
+
+- **Graphite-first 팔레트**: 헤더, blockquote, callout, 코드 색상을 회색 중심으로 고정해 제품별 색상보다 문서 내용이 먼저 보이게 합니다.
+- **보고서형 heading 체계**: Reading View에서는 H1/H2/H3에 여백, 좌측 bar, 하단 rule을 더 강하게 적용해 긴 문서의 구획이 빠르게 스캔됩니다.
+- **표 중심 레이아웃**: 표 header, border, cell padding, zebra 톤을 안정화해 라이선스 매트릭스·기능 비교표·고객 보고서 표가 PDF에서도 균일하게 보입니다.
+- **blockquote/callout 충돌 완화**: 기본 테마와 커뮤니티 플러그인의 blockquote/callout 스타일 충돌을 회색 카드 톤으로 정리합니다.
+- **Live Preview 편집성 보존**: Reading View용 block heading 장식은 Live Preview 편집 라인에 강제하지 않습니다. 펼쳐진 H3-H6 섹션 제목을 클릭해도 아래 표/콘텐츠 위젯과 hitbox가 겹치지 않도록 CM6 heading line은 별도 plain hitbox로 유지합니다.
+
+### 적용 방법
+
+1. 릴리즈에서 `zz-obsidian-gray-force-override-v2.css`를 다운로드합니다.
+2. `<YourVault>/.obsidian/snippets/`에 배치합니다.
+3. Obsidian → 설정 → 외관 → **CSS snippets**에서 `zz-obsidian-gray-force-override-v2`를 활성화합니다.
+
+> 이 snippet은 선택 사항입니다. Owen Graphite 기본 테마만으로도 정상 동작하며, snippet은 더 단단한 회색 보고서 톤이 필요할 때 추가로 켜는 보강 레이어입니다.
+
+---
+
 ## 🎨 주요 특징
 
 ### 시각 디자인
@@ -388,6 +410,8 @@ Owen Graphite/
 ├── LICENSE           # MIT
 ├── scripts/
 │   └── validate_theme.rb
+├── snippets/
+│   └── zz-obsidian-gray-force-override-v2.css
 ├── docs/
 │   └── fixtures/table-report.md
 └── screenshots/
