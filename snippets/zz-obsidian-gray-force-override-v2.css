@@ -1,0 +1,543 @@
+/* ============================================================
+   Obsidian Gray Report Force Override v2
+   - 파일명 권장: zz-obsidian-gray-force-override-v2.css
+   - 기본 테마/커뮤니티 테마의 blockquote, callout, codeblock 충돌 대응
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   0. Global Variables
+   ------------------------------------------------------------ */
+body,
+body.theme-light,
+body.theme-dark {
+    --header-accent: #4b5563;
+    --header-accent-dark: #374151;
+    --header-text: #111827;
+    --header-line: #d1d5db;
+    --header-bg-soft: #f3f4f6;
+
+    --blockquote-border-color: #6b7280;
+    --blockquote-border-thickness: 3px;
+    --blockquote-background-color: #f9fafb;
+    --blockquote-color: #374151;
+    --blockquote-font-style: normal;
+
+    --callout-border-width: 0px;
+    --callout-border-opacity: 1;
+    --callout-radius: 6px;
+    --callout-blend-mode: normal;
+    --callout-title-color: #1f2937;
+    --callout-content-color: #374151;
+    --callout-info: 75, 85, 99;
+    --callout-note: 75, 85, 99;
+    --callout-warning: 146, 64, 14;
+    --callout-attention: 146, 64, 14;
+    --callout-caution: 146, 64, 14;
+    --callout-success: 4, 120, 87;
+    --callout-check: 4, 120, 87;
+    --callout-done: 4, 120, 87;
+
+    --code-background: #f8fafc;
+    --code-normal: #111827;
+    --code-comment: #6b7280;
+    --code-function: #1d4ed8;
+    --code-important: #374151;
+    --code-keyword: #374151;
+    --code-property: #1d4ed8;
+    --code-punctuation: #4b5563;
+    --code-string: #047857;
+    --code-tag: #1d4ed8;
+    --code-value: #047857;
+}
+
+/* ------------------------------------------------------------
+   1. Layout & Body Text
+   ------------------------------------------------------------ */
+body .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+body .markdown-source-view.is-readable-line-width .cm-contentContainer,
+body .markdown-source-view.is-readable-line-width .CodeMirror-sizer,
+body .markdown-rendered.is-readable-line-width {
+    max-width: 420mm !important;
+    margin: 0 auto !important;
+}
+
+body .markdown-rendered p,
+body .markdown-source-view.mod-cm6 .cm-line {
+    line-height: 1.8 !important;
+    margin-bottom: 1.2em !important;
+    font-family: "Pretendard", "Segoe UI", "Apple SD Gothic Neo", sans-serif !important;
+    color: #1a1a1a !important;
+}
+
+/* ------------------------------------------------------------
+   2. Headers
+   ------------------------------------------------------------ */
+body .markdown-rendered h1,
+body .markdown-preview-view.markdown-rendered h1,
+body .markdown-reading-view .markdown-rendered h1 {
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin-top: 2.8em !important;
+    margin-bottom: 1.1em !important;
+    padding: 0.72em 0.9em 0.72em 1.05em !important;
+    font-size: 2.15em !important;
+    font-weight: 850 !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0 !important;
+    color: var(--header-text) !important;
+    background: linear-gradient(90deg, var(--header-bg-soft), #fafafa 72%, transparent) !important;
+    border-left: 5px solid var(--header-accent) !important;
+    border-bottom: 1px solid var(--header-line) !important;
+    border-radius: 0 6px 6px 0 !important;
+}
+
+body .markdown-rendered h2,
+body .markdown-preview-view.markdown-rendered h2,
+body .markdown-reading-view .markdown-rendered h2 {
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin-top: 2.3em !important;
+    margin-bottom: 0.9em !important;
+    padding-bottom: 0.45em !important;
+    font-size: 1.72em !important;
+    font-weight: 780 !important;
+    line-height: 1.32 !important;
+    letter-spacing: 0 !important;
+    color: var(--header-text) !important;
+    border-bottom: 1px solid var(--header-line) !important;
+}
+
+body .markdown-rendered h2::after,
+body .markdown-preview-view.markdown-rendered h2::after,
+body .markdown-reading-view .markdown-rendered h2::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: -1px !important;
+    width: min(220px, 36%) !important;
+    height: 3px !important;
+    background: var(--header-accent) !important;
+    border-radius: 999px !important;
+}
+
+body .markdown-rendered h3,
+body .markdown-preview-view.markdown-rendered h3,
+body .markdown-reading-view .markdown-rendered h3 {
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin-top: 1.85em !important;
+    margin-bottom: 0.65em !important;
+    padding: 0.12em 0 0.12em 0.75em !important;
+    font-size: 1.38em !important;
+    font-weight: 720 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0 !important;
+    color: var(--header-accent-dark) !important;
+    border-left: 5px solid var(--header-accent) !important;
+    border-bottom: none !important;
+}
+
+/* Live Preview headings must keep a plain CM6 line hitbox.
+   Block-style rendered heading decorations can swallow clicks when a section is expanded. */
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+    position: relative !important;
+    z-index: 2 !important;
+    box-sizing: border-box !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border-left: 0 !important;
+    border-bottom: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
+    line-height: 1.25 !important;
+    padding: 0.42em 0 0.42em 0.08em !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+    line-height: 1.32 !important;
+    padding: 0.18em 0 0.28em 0.08em !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+    line-height: 1.45 !important;
+    padding: 0.16em 0 0.22em 0.08em !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+    line-height: 1.35 !important;
+    padding: 0.08em 0 0.14em 0.08em !important;
+}
+
+body .markdown-rendered h1:has(+ table),
+body .markdown-rendered h1:has(+ .table-wrapper),
+body .markdown-rendered h2:has(+ table),
+body .markdown-rendered h2:has(+ .table-wrapper),
+body .markdown-rendered h3:has(+ table),
+body .markdown-rendered h3:has(+ .table-wrapper) {
+    margin-bottom: 0.4em !important;
+}
+
+/* ------------------------------------------------------------
+   3. Tables
+   ------------------------------------------------------------ */
+body .markdown-rendered table,
+body .markdown-preview-view table,
+body .markdown-reading-view table {
+    margin-top: 1.1em !important;
+    margin-bottom: 2.5em !important;
+    width: auto !important;
+    max-width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 0.92em !important;
+    border: 1px solid #ddd !important;
+}
+
+body .markdown-rendered h1 + table,
+body .markdown-rendered h2 + table,
+body .markdown-rendered h3 + table,
+body .markdown-rendered h1 + .table-wrapper,
+body .markdown-rendered h2 + .table-wrapper,
+body .markdown-rendered h3 + .table-wrapper,
+body .markdown-rendered h1 + .table-wrapper table,
+body .markdown-rendered h2 + .table-wrapper table,
+body .markdown-rendered h3 + .table-wrapper table {
+    margin-top: 0.35em !important;
+}
+
+body .markdown-rendered th,
+body .markdown-preview-view th,
+body .markdown-reading-view th {
+    background-color: #f7f7f7 !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 12px 20px !important;
+    white-space: nowrap !important;
+    border-bottom: 1px dashed #000000 !important;
+    border-left: 1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
+}
+
+body .markdown-rendered td,
+body .markdown-preview-view td,
+body .markdown-reading-view td {
+    line-height: 1.6 !important;
+    padding: 10px 20px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    border-left: 1px solid #f0f0f0 !important;
+    border-right: 1px solid #f0f0f0 !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    color: #333333 !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+}
+
+body .markdown-rendered tr:nth-child(even) {
+    background-color: #fafafa !important;
+}
+
+/* ------------------------------------------------------------
+   4. Blockquotes - Default Theme Compatible
+   ------------------------------------------------------------ */
+body .markdown-rendered blockquote,
+body .markdown-preview-view blockquote,
+body .markdown-reading-view blockquote,
+body .workspace-leaf-content .markdown-rendered blockquote,
+body .workspace-leaf-content .markdown-preview-view blockquote,
+body .workspace-leaf-content .markdown-reading-view blockquote {
+    margin: 0.95em 0 !important;
+    padding: 12px 18px 12px 20px !important;
+    border-top: 1px solid #d1d5db !important;
+    border-right: 1px solid #d1d5db !important;
+    border-bottom: 1px solid #d1d5db !important;
+    border-left: 3px solid #6b7280 !important;
+    border-inline-start: 3px solid #6b7280 !important;
+    border-radius: 6px !important;
+    background: #f9fafb !important;
+    background-color: #f9fafb !important;
+    color: #374151 !important;
+    box-shadow: none !important;
+    font-style: normal !important;
+}
+
+body .markdown-rendered blockquote > :first-child,
+body .markdown-preview-view blockquote > :first-child,
+body .markdown-reading-view blockquote > :first-child {
+    margin-top: 0 !important;
+}
+
+body .markdown-rendered blockquote > :last-child,
+body .markdown-preview-view blockquote > :last-child,
+body .markdown-reading-view blockquote > :last-child {
+    margin-bottom: 0 !important;
+}
+
+body .markdown-rendered blockquote p,
+body .markdown-preview-view blockquote p,
+body .markdown-reading-view blockquote p {
+    color: #374151 !important;
+    line-height: 1.75 !important;
+    margin-bottom: 0.65em !important;
+}
+
+/* Live Preview blockquote lines */
+body .markdown-source-view.mod-cm6 .HyperMD-quote,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0.18em 16px 0.18em 20px !important;
+    border-left: 3px solid #6b7280 !important;
+    border-inline-start: 3px solid #6b7280 !important;
+    background: #f9fafb !important;
+    background-color: #f9fafb !important;
+    color: #374151 !important;
+    font-style: normal !important;
+}
+
+body .markdown-source-view.mod-cm6 .HyperMD-quote + .HyperMD-quote,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote + .cm-line.HyperMD-quote {
+    margin-top: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
+    color: transparent !important;
+}
+
+body .markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
+    color: #374151 !important;
+    font-style: normal !important;
+}
+
+body .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
+    color: transparent !important;
+    font-style: normal !important;
+}
+
+/* ------------------------------------------------------------
+   5. Callouts - Graphite Document
+   ------------------------------------------------------------ */
+body .markdown-rendered div.callout,
+body .markdown-rendered .callout,
+body .markdown-preview-view .callout,
+body .markdown-reading-view .callout,
+body .workspace-leaf-content .markdown-rendered div.callout,
+body .workspace-leaf-content .markdown-rendered .callout {
+    margin: 1.2em 0 !important;
+    padding: 14px 16px !important;
+    border-top: 1px solid #d1d5db !important;
+    border-right: 1px solid #d1d5db !important;
+    border-bottom: 1px solid #d1d5db !important;
+    border-left: 5px solid #4b5563 !important;
+    border-radius: 6px !important;
+    background: #f9fafb !important;
+    background-color: #f9fafb !important;
+    box-shadow: none !important;
+    mix-blend-mode: normal !important;
+    color: #374151 !important;
+}
+
+body .markdown-rendered div.callout[data-callout="warning"],
+body .markdown-rendered div.callout[data-callout="attention"],
+body .markdown-rendered div.callout[data-callout="caution"] {
+    border-left-color: #92400e !important;
+    background: #fffbeb !important;
+    background-color: #fffbeb !important;
+}
+
+body .markdown-rendered div.callout[data-callout="success"],
+body .markdown-rendered div.callout[data-callout="check"],
+body .markdown-rendered div.callout[data-callout="done"] {
+    border-left-color: #047857 !important;
+    background: #f0fdf4 !important;
+    background-color: #f0fdf4 !important;
+}
+
+body .markdown-rendered .callout-title,
+body .markdown-preview-view .callout-title,
+body .markdown-reading-view .callout-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 0 !important;
+    color: #1f2937 !important;
+    font-size: 0.98em !important;
+    font-weight: 800 !important;
+    line-height: 1.35 !important;
+}
+
+body .markdown-rendered .callout-title-inner,
+body .markdown-rendered .callout-content,
+body .markdown-preview-view .callout-title-inner,
+body .markdown-preview-view .callout-content {
+    color: #374151 !important;
+}
+
+body .markdown-rendered .callout-icon,
+body .markdown-preview-view .callout-icon,
+body .markdown-reading-view .callout-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 4px !important;
+    background: #4b5563 !important;
+    color: #ffffff !important;
+}
+
+body .markdown-rendered .callout[data-callout="warning"] .callout-icon,
+body .markdown-rendered .callout[data-callout="attention"] .callout-icon,
+body .markdown-rendered .callout[data-callout="caution"] .callout-icon {
+    background: #92400e !important;
+}
+
+body .markdown-rendered .callout[data-callout="success"] .callout-icon,
+body .markdown-rendered .callout[data-callout="check"] .callout-icon,
+body .markdown-rendered .callout[data-callout="done"] .callout-icon {
+    background: #047857 !important;
+}
+
+body .markdown-rendered .callout-icon svg,
+body .markdown-preview-view .callout-icon svg,
+body .markdown-reading-view .callout-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke-width: 2.4px !important;
+}
+
+/* ------------------------------------------------------------
+   6. Codeblocks
+   ------------------------------------------------------------ */
+body .markdown-rendered pre,
+body .markdown-preview-view pre,
+body .markdown-reading-view pre,
+body .workspace-leaf-content .markdown-rendered pre {
+    margin: 1.35em 0 1.8em !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+    box-shadow: none !important;
+}
+
+body .markdown-rendered pre code,
+body .markdown-preview-view pre code,
+body .markdown-reading-view pre code,
+body .workspace-leaf-content .markdown-rendered pre code {
+    display: block !important;
+    padding: 14px 16px !important;
+    color: #111827 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace !important;
+    font-size: 0.9em !important;
+    line-height: 1.65 !important;
+    white-space: pre-wrap !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+}
+
+body .markdown-rendered code:not(pre code),
+body .markdown-preview-view code:not(pre code),
+body .markdown-reading-view code:not(pre code) {
+    padding: 0.16em 0.38em !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 4px !important;
+    background: #f3f4f6 !important;
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+    font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace !important;
+    font-size: 0.9em !important;
+}
+
+body .markdown-source-view.mod-cm6 .HyperMD-codeblock,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+    color: #111827 !important;
+    font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace !important;
+    font-size: 0.9em !important;
+    line-height: 1.65 !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+    border-top: 1px solid #d1d5db !important;
+    border-left: 1px solid #d1d5db !important;
+    border-right: 1px solid #d1d5db !important;
+    border-radius: 6px 6px 0 0 !important;
+    padding-top: 10px !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+    border-bottom: 1px solid #d1d5db !important;
+    border-left: 1px solid #d1d5db !important;
+    border-right: 1px solid #d1d5db !important;
+    border-radius: 0 0 6px 6px !important;
+    padding-bottom: 10px !important;
+}
+
+/* ------------------------------------------------------------
+   7. Lists
+   ------------------------------------------------------------ */
+body .markdown-rendered ul,
+body .markdown-preview-view ul,
+body .markdown-reading-view ul {
+    padding-left: 20px !important;
+    margin-left: 10px !important;
+    border-left: none !important;
+}
+
+body .markdown-rendered li,
+body .markdown-preview-view li,
+body .markdown-reading-view li {
+    margin-bottom: 0.8em !important;
+    list-style-type: disc !important;
+}
+
+body .markdown-rendered li::before,
+body .markdown-preview-view li::before,
+body .markdown-reading-view li::before {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------
+   8. Print
+   ------------------------------------------------------------ */
+@media print {
+    @page {
+        size: A3 landscape;
+        margin: 15mm;
+    }
+
+    body {
+        width: 420mm;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    img, tr, li {
+        page-break-inside: avoid;
+    }
+
+    body .markdown-rendered th,
+    body .markdown-preview-view th,
+    body .markdown-reading-view th {
+        background-color: #f7f7f7 !important;
+        border-bottom: 1px dashed #000 !important;
+    }
+}

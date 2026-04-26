@@ -22,7 +22,7 @@ def read(path)
 end
 
 Dir.chdir(ROOT) do
-  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE docs/fixtures/table-report.md docs/fixtures/table-preview.html screenshots/light.png screenshots/dark.png screenshots/report.png screenshots/table-sample.png]
+  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE snippets/zz-obsidian-gray-force-override-v2.css docs/fixtures/table-report.md docs/fixtures/table-preview.html screenshots/light.png screenshots/dark.png screenshots/report.png screenshots/table-sample.png]
   missing = required.reject { |path| File.file?(path) && File.size(path).positive? }
   fail_with("missing required files: #{missing.join(', ')}") unless missing.empty?
   info("required files present")
@@ -80,7 +80,7 @@ Dir.chdir(ROOT) do
   info("screenshot PNG dimensions match expected sizes")
 
   release_workflow = read(".github/workflows/release.yml")
-  release_assets = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE]
+  release_assets = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE snippets/zz-obsidian-gray-force-override-v2.css]
   missing_assets = release_assets.reject { |asset| release_workflow.match?(/^\s{12}#{Regexp.escape(asset)}\s*$/) }
   fail_with("release workflow missing assets: #{missing_assets.join(', ')}") unless missing_assets.empty?
   info("release workflow includes README assets")

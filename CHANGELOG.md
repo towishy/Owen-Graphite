@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.10] — 2026-04-26
+
+### Fixed
+- Live Preview에서 펼쳐진 H3-H6 섹션 제목 클릭이 아래 콘텐츠 위젯과 겹쳐 편집으로 진입하지 못하던 문제를 수정
+- Gray override CSS snippet이 Reading View용 heading block 스타일을 Live Preview 편집 라인에 강제 적용하지 않도록 selector 분리
+
 ## [1.8.9] — 2026-04-26
 
 ### Changed
