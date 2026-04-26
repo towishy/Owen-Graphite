@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Table Preview</title>
+  <link rel="stylesheet" href="../../theme.css">
+  <style>
+    :root {
+      --background-primary: #ffffff;
+      --background-secondary: #f8fafc;
+      --font-interface-theme: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-text-theme: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-monospace-theme: "JetBrains Mono", "D2Coding", monospace;
+    }
+    body {
+      margin: 0;
+      background: #eef2f7;
+      color: #111827;
+      font-family: var(--font-text-theme);
+    }
+    .preview-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 34px;
+    }
+    .preview-header {
+      margin-bottom: 22px;
+    }
+    .preview-header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .preview-header p {
+      margin: 0;
+      color: #64748b;
+      font-size: 15px;
+    }
+    .sample-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .sample-panel {
+      background: #ffffff;
+      border: 1px solid #dbe2ea;
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+    .sample-panel h2 {
+      margin: 0 0 12px;
+      padding: 0 0 8px;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+    .markdown-rendered table {
+      width: 100%;
+      margin: 0 0 14px;
+      border: 1px solid #dbe2ea;
+      border-radius: 8px;
+      overflow: hidden;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #ffffff;
+    }
+    .markdown-rendered th {
+      background: #f8fafc;
+      color: #111827;
+      border-bottom: 1px solid #dbe2ea;
+    }
+    .markdown-rendered td,
+    .markdown-rendered th {
+      border-right: 1px solid #e5e7eb;
+      border-bottom: 1px solid #eef2f7;
+    }
+    .markdown-rendered tr:last-child td {
+      border-bottom: 0;
+    }
+    .markdown-rendered td:last-child,
+    .markdown-rendered th:last-child {
+      border-right: 0;
+    }
+    .markdown-rendered code {
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 5px;
+      color: #334155;
+      font-family: var(--font-monospace-theme);
+    }
+    @media (max-width: 900px) {
+      .sample-grid {
+        grid-template-columns: 1fr;
+      }
+      .preview-shell {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body class="ogd-modern-tables ogd-print-avoid-breaks">
+  <main class="preview-shell markdown-rendered">
+    <header class="preview-header">
+      <h1>Owen Graphite v1.8.7 Table Design Samples</h1>
+      <p>wide / print-fit / comparison / risk / numeric / matrix 테이블 조합 미리보기</p>
+    </header>
+
+    <section class="sample-grid">
+      <article class="sample-panel">
+        <h2>Wide Comparison Table</h2>
+        <table class="wide-table print-fit-table comparison-table wrap-table">
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>정책 설명</th>
+              <th>장문 식별자</th>
+              <th class="num">점수</th>
+              <th>권장 조치</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Baseline</td>
+              <td>기본 보안 기준을 만족하지만 일부 예외 정책이 존재합니다.</td>
+              <td><code>sec-Restrict-Tenant-Access-Policy-prod-eastasia-2026-review</code></td>
+              <td class="num">95.2%</td>
+              <td>예외 정책 만료일을 명시하고 분기별 검토에 포함합니다.</td>
+            </tr>
+            <tr>
+              <td>Conditional Access</td>
+              <td>사용자, 디바이스, 위치 조건별 MFA 강제 정책이 분리되어 있습니다.</td>
+              <td><code>ca-policy-high-risk-signin-global-exclusion-breakglass</code></td>
+              <td class="num">88.7%</td>
+              <td>Break-glass 제외 사유를 별도 표로 추적합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-source">Internal review fixture, 2026 Q2.</p>
+      </article>
+
+      <article class="sample-panel">
+        <h2>Risk Table</h2>
+        <table class="risk-table compact-table">
+          <thead>
+            <tr>
+              <th>리스크</th>
+              <th>완화책</th>
+              <th>상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>예외 정책 누락</td>
+              <td>Appendix 분리</td>
+              <td class="risk-high">High</td>
+            </tr>
+            <tr>
+              <td>긴 URL overflow</td>
+              <td><code>wrap-table</code></td>
+              <td class="risk-medium">Medium</td>
+            </tr>
+            <tr>
+              <td>숫자 비교</td>
+              <td><code>numeric-table</code></td>
+              <td class="risk-ok">OK</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">상태 셀은 risk-* 클래스로 명시합니다.</p>
+      </article>
+
+      <article class="sample-panel">
+        <h2>Numeric Table</h2>
+        <table class="numeric-table print-fit-table">
+          <thead>
+            <tr>
+              <th>월</th>
+              <th>요청</th>
+              <th>완료</th>
+              <th>성공률</th>
+              <th>평균 처리일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2026-01</td><td>1,204</td><td>1,178</td><td>97.84%</td><td>2.4</td></tr>
+            <tr><td>2026-02</td><td>982</td><td>951</td><td>96.84%</td><td>2.8</td></tr>
+            <tr><td>2026-03</td><td>1,341</td><td>1,309</td><td>97.61%</td><td>2.1</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="sample-panel">
+        <h2>Risk Matrix</h2>
+        <table class="matrix-table compact-table risk-table">
+          <thead>
+            <tr>
+              <th>영향도 \ 가능성</th>
+              <th>Low</th>
+              <th>Medium</th>
+              <th>High</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>High</td><td class="risk-medium">M</td><td class="risk-high">H</td><td class="risk-high">H</td></tr>
+            <tr><td>Medium</td><td class="risk-low">L</td><td class="risk-medium">M</td><td class="risk-high">H</td></tr>
+            <tr><td>Low</td><td class="risk-low">L</td><td class="risk-low">L</td><td class="risk-medium">M</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

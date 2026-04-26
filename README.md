@@ -309,6 +309,10 @@ PDF로 내보낼 때 **첫 페이지 좌·우 상단**에 회사 정보·기밀 
 
 Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 class를 줄 수 있을 때 다음 클래스를 사용합니다.
 
+![Table design samples](screenshots/table-sample.png)
+
+전체 미리보기 HTML은 [docs/fixtures/table-preview.html](docs/fixtures/table-preview.html), PDF/모바일 회귀 확인용 Markdown 샘플은 [docs/fixtures/table-report.md](docs/fixtures/table-report.md)에 있습니다.
+
 ```html
 <table class="wide-table print-fit-table comparison-table">
     <thead>

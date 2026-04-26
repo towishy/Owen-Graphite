@@ -22,7 +22,7 @@ def read(path)
 end
 
 Dir.chdir(ROOT) do
-  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE docs/fixtures/table-report.md screenshots/light.png screenshots/dark.png screenshots/report.png]
+  required = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE docs/fixtures/table-report.md docs/fixtures/table-preview.html screenshots/light.png screenshots/dark.png screenshots/report.png screenshots/table-sample.png]
   missing = required.reject { |path| File.file?(path) && File.size(path).positive? }
   fail_with("missing required files: #{missing.join(', ')}") unless missing.empty?
   info("required files present")
@@ -68,7 +68,8 @@ Dir.chdir(ROOT) do
   png_sizes = {
     "screenshots/light.png" => [512, 288],
     "screenshots/dark.png" => [512, 288],
-    "screenshots/report.png" => [512, 288]
+    "screenshots/report.png" => [512, 288],
+    "screenshots/table-sample.png" => [1946, 1988]
   }
   png_sizes.each do |path, expected|
     data = File.binread(path, 24)
@@ -76,7 +77,7 @@ Dir.chdir(ROOT) do
     width, height = data.byteslice(16, 8).unpack("NN")
     fail_with("#{path} expected #{expected.join('x')}, got #{width}x#{height}") unless [width, height] == expected
   end
-  info("screenshots are 512x288 PNGs")
+  info("screenshot PNG dimensions match expected sizes")
 
   release_workflow = read(".github/workflows/release.yml")
   release_assets = %w[theme.css manifest.json README.md CHANGELOG.md LICENSE]
