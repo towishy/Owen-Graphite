@@ -26,7 +26,7 @@
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + Style Settings 26종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
 | **버전** | `1.8.39` (Obsidian 1.6.0+) |
@@ -335,15 +335,12 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
-- **v1.8.39** — Settings 모달 nav/setting row hover에 liquid-glass 톤 적용
-- **v1.8.38** — macOS 사이드바 토글 hover를 liquid-glass 톤으로 정리
-- **v1.8.37** — macOS 사이드바 토글 버튼이 두꺼운 프레임처럼 보이던 회귀 수정
+- **v1.8.39** — Settings 모달 liquid-glass hover 적용 (좌측 nav + 우측 설정 행, light/dark 패리티)
+- **v1.8.38** — macOS 사이드바 토글 버튼 hover 시 liquid-glass 표면 적용 (본얰 상태는 native subtle 유지)
+- **v1.8.37** — macOS 사이드바 토글 버튼이 타이틀바 안에서 36×36 프레임으로 떠 보이던 회귀 수정
+- **v1.8.36** — 데스크톱 chrome 전역 liquid-glass: ribbon·사이드바 토글·탭 list·nav hover·active file·Editing Toolbar·resize handle·context menu·tooltip·breadcrumb (mobile parity 유지)
 - **v1.8.19** — PDF 보고서 간격, 표 가독성, 상태 badge, action/summary callout, 반복 table header 안정화 및 10개 개선 preview 추가
-- **v1.8.18** — PDF export 첫 H1/H2 title rule 출력 안정화, 첫 페이지 헤더-제목 사이 옅은 구분선 추가, README preview 이미지 노출 정리
-- **v1.8.17** — H1 제목 길이에 맞춘 Teal-to-Sky 하단 라인과 첫 페이지 제목 간격 개선, preview 이미지 추가
-- **v1.8.16** — 외부 링크 Muted Teal 점선 밑줄 적용, 색상 후보 preview 이미지 추가
-- **v1.8.15** — Gray override snippet TOC/caption/diagram/footnote/task/definition/search/PDF rhythm 구조 개선, preview 이미지 추가
-- **v1.8.14** — Gray override snippet compact callout/table/inline/print/dark-mode 디자인 개선, preview fixture 추가
+- **v1.8.18** — PDF export 첫 H1/H2 title rule 출력 안정화, 첫 페이지 헤더-제목 사이 옷은 구분선 추가
 
 이전 버전의 세부 변경은 [CHANGELOG.md](CHANGELOG.md)에만 유지해 README를 짧게 관리합니다.
 
