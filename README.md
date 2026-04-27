@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-27%20options-0d9488?style=flat-square)](#style-settings-항목)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-27%20options-0d9488?style=flat-square)](#style-settings-전체-옵션-목록)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.49` (Obsidian 1.6.0+) |
+| **버전** | `1.8.50` (Obsidian 1.6.0+) |
 
 ---
 
@@ -109,6 +109,8 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 | 색상/표현 | 액센트 컬러, 코드블록 테마, 시선 보호 모드, OS 다크 모드, Glass 강도 | 개인 작업 환경 튜닝 |
 | PDF 첫 페이지 | 좌·우 라벨/본문/사이드바 색, 라벨 색 | 표지 상단 메타 정보 출력 |
 | 안정성 | 표 zebra, 표 모던 스타일, PDF 블록 분할 방지 | 긴 표·callout·이미지 출력 안정화 |
+
+Style Settings UI는 `읽기와 본문`, `표와 코드`, `보고서와 PDF`, `워크스페이스와 접근성`, `PDF 첫 페이지 헤더` 구획으로 나뉘어 긴 옵션 목록을 빠르게 훑을 수 있습니다. 실제 조정 가능한 옵션 수는 기존과 동일한 27개입니다.
 
 Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본값으로 고정됩니다. PDF 헤더, 보고서 모드, 액센트 컬러 변경을 자주 쓴다면 플러그인 사용을 권장합니다.
 
@@ -292,6 +294,9 @@ Live Preview 클릭 회귀 확인용 문서는 [docs/fixtures/live-preview-editi
 | `matrix-table` | `<table>` | 매트릭스형 표 중앙 정렬 |
 | `print-fit-table` | `<table>` | PDF 출력 시 폰트/패딩 축소 |
 | `wrap-table` | `<table>` | 긴 URL/식별자 줄바꿈 강화 |
+| `nowrap-code-table` | `<table>` | 긴 코드 토큰을 한 줄 ellipsis로 표시 |
+| `scroll-token-table` | `<table>` | 코드 토큰 셀 폭을 보존해 행 높이 급증 완화 |
+| `scroll-table` | `<table>` | 화면에서는 표 자체를 가로 스크롤 |
 
 ```html
 <span class="ogd-blur">민감한 정보</span>
@@ -306,7 +311,7 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 전체 미리보기 HTML은 [docs/fixtures/table-preview.html](docs/fixtures/table-preview.html), PDF/모바일 회귀 확인용 Markdown 샘플은 [docs/fixtures/table-report.md](docs/fixtures/table-report.md)에 있습니다.
 
 ```html
-<table class="wide-table print-fit-table comparison-table">
+<table class="wide-table print-fit-table comparison-table nowrap-code-table">
     <thead>
         <tr><th>항목</th><th>정책</th><th class="num">점수</th></tr>
     </thead>
@@ -322,6 +327,8 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 - `comparison-table`: 제품/정책/옵션 비교표
 - `risk-table`: `High`, `Medium`, `Low`, `OK`, `Fail` 같은 상태값 강조
 - `wrap-table`: 긴 URL, 정책명, 리소스 ID 줄바꿈
+- `nowrap-code-table` / `scroll-token-table`: 정책 ID처럼 줄바꿈보다 스캔성이 중요한 긴 코드 토큰
+- `scroll-table`: 화면 검토에서는 가로 스크롤을 허용하고 PDF에서는 기존 print-fit 규칙과 함께 사용
 
 ---
 
@@ -329,6 +336,11 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 
 | 데이터-콜아웃 | 색상 | 용도 |
 |--------------|------|------|
+| `conclusion` | 그레이 | 최종 요약·판단 |
+| `recommendation` | 그린 | 권장 조치 |
+| `risk` | 앰버 | 위험·주의 |
+| `action` | 시안 | 다음 작업 |
+| `decision` | 그레이 | 결정 사항 |
 | `note` / `info` | 블루 | 일반 정보 |
 | `tip` / `hint` / `important` | 시안 | 팁, 중요 |
 | `abstract` / `summary` / `tldr` | 보라 | 요약 |
@@ -404,7 +416,8 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
-- **v1.8.46** — 최신 glass UI 접근성 보강(reduced motion/high contrast/forced colors), Python validator 강화, validate workflow 단일화, Glass preset 설명 추가
+- **v1.8.50** — Style Settings 구획 헤더, 현대적인 파일 탐색기 접기 chevron, 본문 좌측 여백 보강, 긴 코드 토큰용 표 유틸리티, 보고서형 callout 아이콘/톤 정리
+- **v1.8.49** — 참고 출처 링크 밀집 구간을 출처/문서/설명 구조로 정리하는 `.ogd-reference-list` 패턴 추가
 - **v1.8.45** — 기존 Ruby 검증 스크립트 제거, Python-only 검증/릴리즈 자동화로 정리, Python 로컬 산출물 ignore 추가
 - **v1.8.44** — Python 기반 검증기/릴리즈 ZIP 생성기 추가, GitHub Actions 검증·릴리즈 워크플로 Python 단일화, 수동 설치용 ZIP asset 자동 생성
 - **v1.8.43** — Style Settings Glass 강도 프리셋(Off/Reduced/Subtle/Standard/Strong), 저성능용 Reduced glass, 컨트롤/Properties/Editing Toolbar glass polish, 스크린샷 갱신

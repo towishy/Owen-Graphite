@@ -135,8 +135,20 @@ def no_stale_legacy_markers() -> None:
 def style_settings_count() -> None:
     theme = read_text("theme.css")
     readme = read_text("README.md")
-    ids = re.findall(r"^\s*id:\s*([a-zA-Z0-9_-]+)", theme, flags=re.M)
-    option_count = len({setting_id for setting_id in ids if setting_id != "owen-graphite-document"})
+    settings_match = re.search(r"/\* @settings(?P<body>.*?)\*/", theme, flags=re.S)
+    if not settings_match:
+        fail("theme.css missing Style Settings block")
+    blocks = re.split(r"\n\s*-\s*\n", settings_match.group("body"))
+    option_ids = []
+    for block in blocks:
+        id_match = re.search(r"^\s*id:\s*([a-zA-Z0-9_-]+)", block, flags=re.M)
+        if not id_match or id_match.group(1) == "owen-graphite-document":
+            continue
+        type_match = re.search(r"^\s*type:\s*([a-zA-Z0-9_-]+)", block, flags=re.M)
+        if type_match and type_match.group(1) == "heading":
+            continue
+        option_ids.append(id_match.group(1))
+    option_count = len(set(option_ids))
     if option_count != 27:
         fail(f"expected 27 Style Settings options, got {option_count}")
     if "27개 옵션" not in readme or "27%20options" not in readme:

@@ -4,7 +4,7 @@
 
 ## 1. Wide Comparison Table
 
-<table class="wide-table print-fit-table comparison-table wrap-table">
+<table class="wide-table print-fit-table comparison-table nowrap-code-table">
   <thead>
     <tr>
       <th>항목</th>
@@ -33,6 +33,30 @@
 </table>
 
 <p class="table-source">Internal review fixture, 2026 Q2.</p>
+
+## 1-1. Scroll Token Table
+
+<table class="wide-table scroll-table scroll-token-table">
+  <thead>
+    <tr>
+      <th>유형</th>
+      <th>식별자</th>
+      <th>검토 메모</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tenant policy</td>
+      <td><code>sec-Restrict-Tenant-Access-Policy-prod-eastasia-2026-review</code></td>
+      <td>행 높이보다 식별자 스캔성이 중요할 때 사용합니다.</td>
+    </tr>
+    <tr>
+      <td>Conditional Access</td>
+      <td><code>ca-policy-high-risk-signin-global-exclusion-breakglass</code></td>
+      <td>화면 검토에서는 ellipsis, PDF에서는 print-fit 조합을 확인합니다.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 2. Risk Table
 

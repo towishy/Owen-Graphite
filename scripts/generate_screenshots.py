@@ -1,8 +1,9 @@
 """
-Owen Graphite v1.8.43 marketing screenshot generator (pure Pillow).
+Owen Graphite v1.8.50 marketing screenshot generator (pure Pillow).
 
 Renders three 1280x720 PNG mock-ups (light / dark / report) showcasing
-v1.8.43 liquid-glass desktop chrome (ribbon icons, sidebar toggle hover,
+v1.8.50 report UX polish (modern disclosure chevrons, long-token tables,
+grouped Style Settings, semantic report callouts) plus liquid-glass desktop chrome (ribbon icons, sidebar toggle hover,
 nav file hover lift, tab list, breadcrumb, command palette, settings toggles,
 callout, table). Then
 downscales to 512x288 for the marketplace listing.
@@ -23,21 +24,41 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 W, H = 1280, 720
 THUMB = (512, 288)
 
-FONTS_DIR = Path(r"C:\Windows\Fonts")
+FONT_DIRS = [
+    Path(r"C:\Windows\Fonts"),
+    Path("/System/Library/Fonts"),
+    Path("/System/Library/Fonts/Supplemental"),
+    Path("/Library/Fonts"),
+]
 
 
 def font(name: str, size: int) -> ImageFont.FreeTypeFont:
-    return ImageFont.truetype(str(FONTS_DIR / name), size)
+    for font_dir in FONT_DIRS:
+        candidate = font_dir / name
+        if candidate.exists():
+            return ImageFont.truetype(str(candidate), size)
+    return ImageFont.load_default(size=size)
 
 
 def fonts(size: int, weight: str = "regular", serif: bool = False) -> ImageFont.FreeTypeFont:
     if serif:
-        for f in ["batang.ttc", "NanumMyeongjo.ttf"]:
-            if (FONTS_DIR / f).exists():
-                return font(f, size)
+        for f in ["batang.ttc", "NanumMyeongjo.ttf", "AppleMyungjo.ttf", "Songti.ttc", "Times New Roman.ttf"]:
+            for font_dir in FONT_DIRS:
+                if (font_dir / f).exists():
+                    return font(f, size)
         return font("malgun.ttf", size)
+    mac_regulars = ["AppleSDGothicNeo.ttc", "Arial Unicode.ttf", "Arial Unicode MS.ttf"]
+    mac_bolds = ["AppleSDGothicNeo.ttc", "Arial Bold.ttf"]
     if weight == "bold":
+        for f in ["malgunbd.ttf", *mac_bolds]:
+            for font_dir in FONT_DIRS:
+                if (font_dir / f).exists():
+                    return font(f, size)
         return font("malgunbd.ttf", size)
+    for f in ["malgun.ttf", *mac_regulars]:
+        for font_dir in FONT_DIRS:
+            if (font_dir / f).exists():
+                return font(f, size)
     return font("malgun.ttf", size)
 
 
@@ -278,14 +299,14 @@ def render_variant(variant):
         d.line((h1_x + i, rule_y, h1_x + i, rule_y + 2), fill=c)
 
         sub = ("보고서 모드 · A3 가로 · 자동 넘버링 · 세리프 본문" if is_report
-            else "Liquid-glass desktop chrome · Style Settings 27 · Live Preview parity")
+            else "Modern chevrons · Style Settings groups · Live Preview parity")
     text(d, h1_x, rule_y + 14, sub, 13, p["text_muted"], serif=serif)
 
     body_y = rule_y + 50
     body_lines = [
         "그래파이트(Graphite) 톤의 보고서 지향 테마. 라이트/다크 위젯 패리티,",
-        "한국어 타이포그래피 보정(CJK +0.5px), 그리고 v1.8.43에서 정리된",
-        "데스크톱 liquid-glass presets로 작업창 시각 노이즈를 줄였습니다.",
+        "한국어 타이포그래피 보정(CJK +0.5px), 긴 식별자 표 스캔성,",
+        "그리고 v1.8.50에서 정리된 보고서형 callout 톤을 제공합니다.",
     ]
     for i, line in enumerate(body_lines):
         text(d, h1_x, body_y + i * 22, line, 13, p["text"], serif=serif)
@@ -334,7 +355,7 @@ def render_variant(variant):
         toggle(img, px + 154, py + 99, p, enabled=True)
 
     od.rectangle((ribbon_w, H - 28, W, H), fill=p["panel_alt"], outline=p["border"])
-    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.43  ·  {variant.title()} mode",
+    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.50  ·  {variant.title()} mode",
          11, p["text_dim"])
 
     big_path = OUT_DIR / f"_big-{variant}.png"

@@ -106,14 +106,14 @@
 <body class="ogd-modern-tables ogd-print-avoid-breaks">
   <main class="preview-shell markdown-rendered">
     <header class="preview-header">
-      <h1>Owen Graphite v1.8.7 Table Design Samples</h1>
-      <p>wide / print-fit / comparison / risk / numeric / matrix 테이블 조합 미리보기</p>
+      <h1>Owen Graphite v1.8.50 Table Design Samples</h1>
+      <p>wide / print-fit / comparison / risk / numeric / matrix / long-token 테이블 조합 미리보기</p>
     </header>
 
     <section class="sample-grid">
       <article class="sample-panel">
         <h2>Wide Comparison Table</h2>
-        <table class="wide-table print-fit-table comparison-table wrap-table">
+        <table class="wide-table print-fit-table comparison-table nowrap-code-table">
           <thead>
             <tr>
               <th>항목</th>
@@ -209,6 +209,31 @@
             <tr><td>High</td><td class="risk-medium">M</td><td class="risk-high">H</td><td class="risk-high">H</td></tr>
             <tr><td>Medium</td><td class="risk-low">L</td><td class="risk-medium">M</td><td class="risk-high">H</td></tr>
             <tr><td>Low</td><td class="risk-low">L</td><td class="risk-low">L</td><td class="risk-medium">M</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="sample-panel">
+        <h2>Long Token Table</h2>
+        <table class="wide-table scroll-table scroll-token-table">
+          <thead>
+            <tr>
+              <th>유형</th>
+              <th>식별자</th>
+              <th>메모</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tenant policy</td>
+              <td><code>sec-Restrict-Tenant-Access-Policy-prod-eastasia-2026-review</code></td>
+              <td>긴 토큰을 한 줄로 스캔합니다.</td>
+            </tr>
+            <tr>
+              <td>Conditional Access</td>
+              <td><code>ca-policy-high-risk-signin-global-exclusion-breakglass</code></td>
+              <td>행 높이 급증을 줄입니다.</td>
+            </tr>
           </tbody>
         </table>
       </article>

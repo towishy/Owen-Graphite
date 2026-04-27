@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.50] — 2026-04-27
+
+### Added
+- Style Settings section headings for reading, table/code, report/PDF, workspace/accessibility, and first-page header controls while keeping the same 27 functional options.
+- `nowrap-code-table`, `scroll-token-table`, and `scroll-table` table helper classes for long policy IDs, URLs, and resource names that should not make rows excessively tall.
+
+### Changed
+- File explorer disclosure arrows now use a softer modern chevron treatment with hover feedback in light and dark modes.
+- Reading and Live Preview content gains slightly more left breathing room so report blocks do not sit too close to the sidebar.
+- Report callouts (`conclusion`, `recommendation`, `risk`, `action`, `decision`) now share a calmer semantic outline language and updated Lucide icon mapping.
+
 ## [1.8.49] — 2026-04-27
 
 ### Added
