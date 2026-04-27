@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Tab Glass Preview</title>
+  <style>
+    :root {
+      --background-primary: #ffffff;
+      --background-secondary: #eef2f7;
+      --background-secondary-alt: #e5ebf3;
+      --text-normal: #111827;
+      --text-muted: #64748b;
+      --text-faint: #94a3b8;
+      --header-accent: #64748b;
+      --interactive-accent: #475569;
+      --tab-container-background: #eef2f7;
+      --tab-background-active: #ffffff;
+      --tab-outline-color: #d1d5db;
+      --ogd-glass-bg: rgba(255, 255, 255, 0.68);
+      --ogd-glass-bg-hover: rgba(255, 255, 255, 0.54);
+      --ogd-glass-border: transparent;
+      --ogd-glass-highlight: rgba(255, 255, 255, 0.86);
+      --ogd-glass-shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      --ogd-glass-shadow-tab: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(255, 255, 255, 0.42), 0 10px 24px -16px rgba(15, 23, 42, 0.40), 0 5px 12px -9px rgba(15, 23, 42, 0.30);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(14, 165, 233, 0.09), transparent 36%),
+        linear-gradient(315deg, rgba(99, 102, 241, 0.08), transparent 42%),
+        #f8fafc;
+      color: var(--text-normal);
+      font-family: Inter, Pretendard, "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+      padding: 28px;
+    }
+
+    .preview-shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .preview-header {
+      margin: 0 0 18px;
+    }
+
+    .preview-header h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .preview-header p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .sample-card {
+      min-width: 0;
+      border: 1px solid rgba(148, 163, 184, 0.30);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 16px 42px rgba(15, 23, 42, 0.10);
+    }
+
+    .sample-title {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+      background: rgba(248, 250, 252, 0.78);
+      font-size: 13px;
+      font-weight: 760;
+      color: #334155;
+    }
+
+    .sample-title span:last-child {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .obsidian-frame {
+      height: 262px;
+      background: var(--background-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .titlebar {
+      height: 44px;
+      display: flex;
+      align-items: end;
+      padding: 0 10px;
+      background: #e9eef5;
+      border-bottom: 1px solid var(--tab-outline-color);
+    }
+
+    .workspace-tab-header-container {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 0 8px;
+      background: var(--tab-container-background);
+    }
+
+    .workspace-tab-header {
+      height: 34px;
+      min-width: 42px;
+      max-width: 238px;
+      display: flex;
+      align-items: stretch;
+      position: relative;
+      color: #475569;
+      margin-top: 0;
+    }
+
+    .workspace-tab-header.is-active {
+      border-top: 0;
+      margin-top: 0;
+    }
+
+    .workspace-tab-header.is-active::before {
+      display: none;
+    }
+
+    .workspace-tab-header-inner {
+      min-width: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 9px 0 10px;
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workspace-tab-header-inner-icon {
+      width: 15px;
+      height: 15px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: #1d4ed8;
+    }
+
+    .workspace-tab-header-inner-icon::before {
+      content: "";
+      width: 12px;
+      height: 14px;
+      border: 1.7px solid currentColor;
+      border-radius: 2px;
+      box-shadow: inset 0 4px 0 rgba(29, 78, 216, 0.12);
+    }
+
+    .workspace-tab-header-inner-title {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 650;
+      color: #374151;
+    }
+
+    .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+      color: #111827;
+      font-weight: 760;
+    }
+
+    .workspace-tab-header-inner-close-button {
+      width: 18px;
+      height: 18px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 5px;
+      color: #64748b;
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .workspace-tab-header-inner-close-button::before { content: "×"; }
+
+    .workspace-tab-header-inner-close-button:hover {
+      background: rgba(100, 116, 139, 0.12);
+      color: #334155;
+    }
+
+    .new-tab {
+      width: 34px;
+      height: 34px;
+      margin-left: 0;
+      display: grid;
+      place-items: center;
+      align-self: flex-end;
+      border: 1px solid rgba(148, 163, 184, 0.46);
+      border-bottom-color: rgba(148, 163, 184, 0.30);
+      border-radius: 0;
+      color: #64748b;
+      background: rgba(255, 255, 255, 0.52);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .nav-row {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      border-bottom: 1px solid #d1d5db;
+      background: #f8fafc;
+    }
+
+    .nav-button {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #dbe2ea;
+      border-radius: 6px;
+      color: #94a3b8;
+      font-size: 24px;
+      background: #ffffff;
+    }
+
+    .toolbar {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 28px;
+      border-bottom: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #111827;
+      font-size: 23px;
+    }
+
+    .toolbar span {
+      width: 42px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+    }
+
+    .editor-area {
+      position: absolute;
+      inset: 144px 0 0;
+      background: #ffffff;
+    }
+
+    .editor-area::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #6b7280;
+      opacity: 0.9;
+    }
+
+    .baseline .workspace-tab-header.is-active .workspace-tab-header-inner {
+      background: var(--tab-background-active);
+      border: 1px solid var(--tab-outline-color);
+      border-bottom-color: transparent;
+      box-shadow: none;
+    }
+
+    .baseline .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+      background: transparent;
+    }
+
+    .conservative .workspace-tab-header.is-active .workspace-tab-header-inner {
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.62));
+      border: 1px solid transparent;
+      border-bottom-color: rgba(100, 116, 139, 0.10);
+      box-shadow: var(--ogd-glass-shadow-soft);
+      -webkit-backdrop-filter: blur(10px) saturate(1.08);
+      backdrop-filter: blur(10px) saturate(1.08);
+    }
+
+    .conservative .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+    .conservative .workspace-tab-header.hovered .workspace-tab-header-inner {
+      background: rgba(255, 255, 255, 0.40);
+      border: 1px solid transparent;
+    }
+
+    .balanced .workspace-tab-header.is-active .workspace-tab-header-inner {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.50)),
+        rgba(255, 255, 255, 0.34);
+      border: 1px solid var(--ogd-glass-border);
+      border-bottom-color: transparent;
+      box-shadow: var(--ogd-glass-shadow-tab);
+      -webkit-backdrop-filter: blur(14px) saturate(1.16);
+      backdrop-filter: blur(14px) saturate(1.16);
+    }
+
+    .balanced .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+    .balanced .workspace-tab-header.hovered .workspace-tab-header-inner {
+      background: linear-gradient(180deg, rgba(255,255,255,0.54), rgba(255,255,255,0.34));
+      border: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
+      -webkit-backdrop-filter: blur(8px) saturate(1.08);
+      backdrop-filter: blur(8px) saturate(1.08);
+    }
+
+    .strong .workspace-tab-header.is-active .workspace-tab-header-inner {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.40)),
+        rgba(255, 255, 255, 0.32);
+      border: 1px solid rgba(100, 116, 139, 0.34);
+      border-bottom-color: rgba(100, 116, 139, 0.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.92), inset 0 -1px 0 rgba(15,23,42,0.06);
+      -webkit-backdrop-filter: blur(18px) saturate(1.22);
+      backdrop-filter: blur(18px) saturate(1.22);
+    }
+
+    .strong .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(100, 116, 139, 0.12);
+    }
+
+    .strong .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+    .strong .workspace-tab-header.hovered .workspace-tab-header-inner {
+      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.32));
+      border-color: rgba(100, 116, 139, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.82), 0 4px 10px rgba(15,23,42,0.08);
+      -webkit-backdrop-filter: blur(12px) saturate(1.12);
+      backdrop-filter: blur(12px) saturate(1.12);
+    }
+
+    .variant-note {
+      min-height: 54px;
+      padding: 10px 14px 12px;
+      border-top: 1px solid rgba(148, 163, 184, 0.24);
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.45;
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    @media (max-width: 920px) {
+      body { padding: 16px; }
+      .sample-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-shell">
+    <header class="preview-header">
+      <h1>Owen Graphite Tab Glass 후보 샘플</h1>
+      <p>라인 없이, 활성 탭에 밝은 glass와 부드러운 diffuse shadow를 적용한 비교 화면입니다.</p>
+    </header>
+
+    <section class="sample-grid">
+      <article class="sample-card baseline">
+        <div class="sample-title"><span>현재 기준</span><span>Baseline</span></div>
+        <div class="obsidian-frame">
+          <div class="titlebar">
+            <div class="workspace-tab-header-container">
+              <div class="workspace-tab-header is-active"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">krafton-purview-e5-fea...</span><span class="workspace-tab-header-inner-close-button"></span></div></div>
+              <div class="workspace-tab-header"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">table-report</span></div></div>
+              <div class="new-tab">+</div>
+            </div>
+          </div>
+          <div class="nav-row"><div class="nav-button">‹</div><div class="nav-button">›</div></div>
+          <div class="toolbar"><span>↶</span><span>↷</span><span>♜</span><span>◇</span><span>H2</span><span>H3</span><span>Hn</span><span>B</span></div>
+          <div class="editor-area"></div>
+        </div>
+        <div class="variant-note">현재 탭 형태를 재현한 기준안입니다. active tab 외곽과 container가 직접 맞닿습니다.</div>
+      </article>
+
+      <article class="sample-card conservative">
+        <div class="sample-title"><span>안전안</span><span>Conservative</span></div>
+        <div class="obsidian-frame">
+          <div class="titlebar">
+            <div class="workspace-tab-header-container">
+              <div class="workspace-tab-header is-active"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">krafton-purview-e5-fea...</span><span class="workspace-tab-header-inner-close-button"></span></div></div>
+              <div class="workspace-tab-header hovered"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">table-report</span></div></div>
+              <div class="new-tab">+</div>
+            </div>
+          </div>
+          <div class="nav-row"><div class="nav-button">‹</div><div class="nav-button">›</div></div>
+          <div class="toolbar"><span>↶</span><span>↷</span><span>♜</span><span>◇</span><span>H2</span><span>H3</span><span>Hn</span><span>B</span></div>
+          <div class="editor-area"></div>
+        </div>
+        <div class="variant-note">active inner에만 약한 glass와 작은 shadow를 둡니다. 정렬 안정성이 가장 높습니다.</div>
+      </article>
+
+      <article class="sample-card balanced">
+        <div class="sample-title"><span>추천안</span><span>Balanced</span></div>
+        <div class="obsidian-frame">
+          <div class="titlebar">
+            <div class="workspace-tab-header-container">
+              <div class="workspace-tab-header is-active"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">krafton-purview-e5-fea...</span><span class="workspace-tab-header-inner-close-button"></span></div></div>
+              <div class="workspace-tab-header hovered"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">table-report</span></div></div>
+              <div class="new-tab">+</div>
+            </div>
+          </div>
+          <div class="nav-row"><div class="nav-button">‹</div><div class="nav-button">›</div></div>
+          <div class="toolbar"><span>↶</span><span>↷</span><span>♜</span><span>◇</span><span>H2</span><span>H3</span><span>Hn</span><span>B</span></div>
+          <div class="editor-area"></div>
+        </div>
+        <div class="variant-note">active tab은 선명하게, hover tab은 얇게 처리합니다. 효과와 안정성의 균형안입니다.</div>
+      </article>
+
+      <article class="sample-card strong">
+        <div class="sample-title"><span>강한안</span><span>Strong</span></div>
+        <div class="obsidian-frame">
+          <div class="titlebar">
+            <div class="workspace-tab-header-container">
+              <div class="workspace-tab-header is-active"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">krafton-purview-e5-fea...</span><span class="workspace-tab-header-inner-close-button"></span></div></div>
+              <div class="workspace-tab-header hovered"><div class="workspace-tab-header-inner"><span class="workspace-tab-header-inner-icon"></span><span class="workspace-tab-header-inner-title">table-report</span></div></div>
+              <div class="new-tab">+</div>
+            </div>
+          </div>
+          <div class="nav-row"><div class="nav-button">‹</div><div class="nav-button">›</div></div>
+          <div class="toolbar"><span>↶</span><span>↷</span><span>♜</span><span>◇</span><span>H2</span><span>H3</span><span>Hn</span><span>B</span></div>
+          <div class="editor-area"></div>
+        </div>
+        <div class="variant-note">glass 존재감이 가장 강합니다. 실제 적용 시 shadow가 인접 탭과 충돌하는지 확인이 필요합니다.</div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

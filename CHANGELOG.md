@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.47] — 2026-04-27
+
+### Added
+- Workspace tab glass treatment for desktop chrome, scoped to the inner tab surface to avoid Obsidian tab-frame divider conflicts.
+- A tab glass preview fixture for comparing conservative, balanced, and strong tab styling variants before applying them to the main theme.
+
+### Changed
+- Active workspace tabs now use a line-free focused glass surface with subtle diffuse shadow, stronger text emphasis, square corners, and wider tab spacing.
+- Default Obsidian tab separator pseudo-lines are neutralized so inactive-tab dividers and active-tab internal vertical lines do not show through the glass surface.
+- Reduced-motion, high-contrast, forced-colors, dark mode, and glass-intensity presets remain aligned with the new tab styling.
+
 ## [1.8.46] — 2026-04-27
 
 ### Added
