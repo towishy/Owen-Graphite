@@ -2604,8 +2604,8 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 /* D1. Sidebar folder color coding by name */
 .nav-folder-title[data-path^="outputs"] .nav-folder-title-content,
 .nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content {
-  color: #ca8a04 !important;
-  font-weight: 600;
+  color: #111827 !important;
+  font-weight: 700;
 }
 .nav-folder-title[data-path^="wiki"] .nav-folder-title-content {
   color: #1d4ed8 !important;
@@ -2970,7 +2970,7 @@ body.ogd-auto-dark {
 .theme-dark .bases-card { background: #1a1b20 !important; border-color: #353841 !important; }
 .theme-dark .bases-table th { background: #25272d !important; border-bottom-color: #6b7280 !important; }
 .theme-dark .nav-folder-title[data-path^="outputs"] .nav-folder-title-content,
-.theme-dark .nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content { color: #fbbf24 !important; }
+.theme-dark .nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content { color: #f9fafb !important; font-weight: 700; }
 .theme-dark .nav-folder-title[data-path^="wiki"] .nav-folder-title-content { color: #93c5fd !important; }
 .theme-dark .nav-folder-title[data-path^="raw"] .nav-folder-title-content { color: #9ca3af !important; }
 .theme-dark .nav-folder-title[data-path^="scripts"] .nav-folder-title-content { color: #6ee7b7 !important; }
@@ -3053,7 +3053,7 @@ body.ogd-auto-dark {
 /* Editing Toolbar plugin: small left gap from sidebar divider */
 .workspace-leaf-content .cm-editor .editingToolbarModalBar,
 .editingToolbarModalBar {
-  margin-left: 8px !important;
+  margin-left: 0 !important;
 }
 
 /* ============================================================
@@ -5359,3 +5359,772 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 }
 
+/* ============================================================
+
+
+/* ============================================================
+   v1.8.20 — Nav hover & active file polish
+   File explorer hover frame and selected document glass effect.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
+    background: rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid rgba(15, 23, 42, 0.18) !important;
+    border-radius: 4px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
+    background: rgba(226, 232, 240, 0.08) !important;
+    border: 1px solid rgba(226, 232, 240, 0.22) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active {
+    position: relative;
+    overflow: hidden !important;
+    border-left: 0 !important;
+    padding-left: 8px !important;
+    border-radius: 4px !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.68)) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 7px 18px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(100, 116, 139, 0.34) !important;
+    color: #111827 !important;
+    font-weight: 800 !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 42px;
+    height: 42px;
+    transform: translateY(-50%) rotate(-7deg);
+    background: #475569;
+    opacity: 0.12;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.4' d='M9.5 1.8H4.2a1.4 1.4 0 0 0-1.4 1.4v9.6a1.4 1.4 0 0 0 1.4 1.4h7.6a1.4 1.4 0 0 0 1.4-1.4V5.5L9.5 1.8Z'/%3E%3Cpath stroke='black' stroke-linejoin='round' stroke-width='1.4' d='M9.4 1.8v3.8h3.8'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.4' d='M9.5 1.8H4.2a1.4 1.4 0 0 0-1.4 1.4v9.6a1.4 1.4 0 0 0 1.4 1.4h7.6a1.4 1.4 0 0 0 1.4-1.4V5.5L9.5 1.8Z'/%3E%3Cpath stroke='black' stroke-linejoin='round' stroke-width='1.4' d='M9.4 1.8v3.8h3.8'/%3E%3C/svg%3E") center / contain no-repeat;
+    pointer-events: none;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  body:not(.is-mobile).theme-dark .nav-file-title.is-active {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.42)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.24), 0 0 0 1px rgba(203, 213, 225, 0.16) !important;
+    color: #f8fafc !important;
+  }
+
+  body:not(.is-mobile).theme-dark .nav-file-title.is-active::after {
+    background: #cbd5e1;
+    opacity: 0.13;
+  }
+}
+
+
+/* ============================================================
+   v1.8.21 — Ribbon glass icons
+   Translucent glass effect for left ribbon icons only.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    width: 36px !important;
+    height: 36px !important;
+    padding: 8px !important;
+    border: 1px solid rgba(100, 116, 139, 0.34) !important;
+    border-radius: 8px !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.55)) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(12px) saturate(140%);
+    color: #334155 !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+    position: relative;
+    overflow: hidden;
+    opacity: 1 !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
+    content: "";
+    position: absolute;
+    inset: 2px 2px auto 2px;
+    height: 45%;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.70), transparent);
+    pointer-events: none;
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    border-color: rgba(71, 85, 105, 0.44) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.65)) !important;
+    color: #111827 !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    border: 1px solid rgba(203, 213, 225, 0.16) !important;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.42)) !important;
+    color: #cbd5e1 !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 4px 12px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), transparent);
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    border-color: rgba(203, 213, 225, 0.28) !important;
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55)) !important;
+    color: #f8fafc !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.22 — Hover glass polish
+   Stronger glass + drop shadow on hover for ribbon icons and nav items.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 8px 22px rgba(15, 23, 42, 0.18) !important;
+    transform: translateY(-1px);
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 8px 22px rgba(0, 0, 0, 0.42) !important;
+  }
+
+  body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid rgba(100, 116, 139, 0.34) !important;
+    border-radius: 6px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.20) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.23 — Active file deeper glass
+   Stronger translucent glass + drop shadow for selected document.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .nav-file-title.is-active {
+    position: relative;
+    overflow: hidden !important;
+    border-left: 0 !important;
+    padding-left: 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(71, 85, 105, 0.50) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.62)) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(170%);
+    backdrop-filter: blur(20px) saturate(170%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(15, 23, 42, 0.10), 0 14px 30px rgba(15, 23, 42, 0.22), 0 4px 10px rgba(15, 23, 42, 0.14) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active::before {
+    content: "";
+    position: absolute;
+    inset: 2px 2px auto 2px;
+    height: 50%;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  body:not(.is-mobile).theme-dark .nav-file-title.is-active {
+    border: 1px solid rgba(203, 213, 225, 0.30) !important;
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(15, 23, 42, 0.55)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.32), 0 14px 30px rgba(0, 0, 0, 0.50), 0 4px 10px rgba(0, 0, 0, 0.32) !important;
+    color: #f8fafc !important;
+  }
+
+  body:not(.is-mobile).theme-dark .nav-file-title.is-active::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent);
+  }
+}
+
+
+/* ============================================================
+   v1.8.24 — Editing toolbar hover glass
+   Glass + drop shadow on hover for editing toolbar buttons (incl. popovers).
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton) {
+    border-radius: 6px !important;
+    transition: all 0.15s ease;
+  }
+
+  body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(100, 116, 139, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 6px 16px rgba(15, 23, 42, 0.16) !important;
+    color: #0f172a !important;
+    transform: translateY(-1px);
+  }
+
+  body:not(.is-mobile).theme-dark :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover {
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.52)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.22) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.28), 0 6px 16px rgba(0, 0, 0, 0.40) !important;
+    color: #f8fafc !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.25b — Exclude right sidebar toggle from glass
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .sidebar-toggle-button.mod-right,
+  body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right,
+  body:not(.is-mobile) .workspace-tab-header-tab-list,
+  body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    padding: 4px !important;
+    margin: 0 3px !important;
+    align-self: center !important;
+    border: 0 !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  body:not(.is-mobile) .sidebar-toggle-button.mod-right svg,
+  body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right svg,
+  body:not(.is-mobile) .workspace-tab-header-tab-list svg,
+  body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list svg {
+    width: 15px !important;
+    height: 15px !important;
+    margin: 0 !important;
+  }
+
+  body:not(.is-mobile) .sidebar-toggle-button.mod-right::after,
+  body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  body:not(.is-mobile) .sidebar-toggle-button.mod-right:hover,
+  body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right:hover {
+    background: rgba(100, 116, 139, 0.10) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.27 — Resize handle subdue
+   Make workspace resize handle visually subtle.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-leaf-resize-handle,
+  body:not(.is-mobile) .workspace-split > .workspace-leaf-resize-handle {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    width: 4px !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-resize-handle:hover {
+    background: rgba(100, 116, 139, 0.18) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-resize-handle:hover {
+    background: rgba(203, 213, 225, 0.18) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.28 — Subdue dark frame lines
+   Soften header/splitter dark lines around document area.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .mod-root .workspace-tab-header-container,
+  body:not(.is-mobile) .mod-root .view-header {
+    border-bottom-color: rgba(100, 116, 139, 0.22) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .mod-root .workspace-tab-header-container,
+  body:not(.is-mobile).theme-dark .mod-root .view-header {
+    border-bottom-color: rgba(203, 213, 225, 0.18) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root,
+  body:not(.is-mobile) .mod-root .workspace-leaf,
+  body:not(.is-mobile) .mod-root .workspace-tabs {
+    border-color: rgba(100, 116, 139, 0.22) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root,
+  body:not(.is-mobile).theme-dark .mod-root .workspace-leaf,
+  body:not(.is-mobile).theme-dark .mod-root .workspace-tabs {
+    border-color: rgba(203, 213, 225, 0.18) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.29 — Editing toolbar / scrollable header dark line subdue
+   Some Editing Toolbar configs sit inline (non-sticky) inside the
+   scroll container, so its bottom border scrolls away with content.
+   Neutralize that thin dark line.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .cm-editor .editing-toolbar,
+  body:not(.is-mobile) .markdown-source-view .editing-toolbar,
+  body:not(.is-mobile) .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile) .editing-toolbar {
+    border-bottom: 1px solid rgba(100, 116, 139, 0.18) !important;
+    box-shadow: none !important;
+  }
+  body:not(.is-mobile).theme-dark .cm-editor .editing-toolbar,
+  body:not(.is-mobile).theme-dark .markdown-source-view .editing-toolbar,
+  body:not(.is-mobile).theme-dark .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile).theme-dark .editing-toolbar {
+    border-bottom-color: rgba(203, 213, 225, 0.16) !important;
+  }
+
+  /* Neutralize stray dark hairlines on top-of-content surfaces */
+  body:not(.is-mobile) .markdown-source-view.mod-cm6 .cm-scroller,
+  body:not(.is-mobile) .markdown-preview-view .markdown-preview-sizer,
+  body:not(.is-mobile) .markdown-reading-view .markdown-preview-sizer {
+    border-top: 0 !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.30 — Editing toolbar nudge right
+   Push toolbar slightly right so it doesn't hug the left sidebar edge.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .cm-editor .editing-toolbar,
+  body:not(.is-mobile) .markdown-source-view .editing-toolbar,
+  body:not(.is-mobile) .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile) .editing-toolbar {
+    padding-left: 72px !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.31 — Resize handle glass tint
+   Replace flat handle with subtle glass surface; brighter on hover.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-leaf-resize-handle,
+  body:not(.is-mobile) .workspace-split > .workspace-leaf-resize-handle {
+    width: 6px !important;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.30)) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(150%) !important;
+    backdrop-filter: blur(10px) saturate(150%) !important;
+    border: 0 !important;
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,0.55),
+      inset -1px 0 0 rgba(148,163,184,0.18) !important;
+    transition: background 160ms ease, box-shadow 160ms ease !important;
+  }
+  body:not(.is-mobile) .workspace-leaf-resize-handle:hover,
+  body:not(.is-mobile) .workspace-split > .workspace-leaf-resize-handle:hover {
+    background: linear-gradient(180deg, rgba(224,242,254,0.85), rgba(186,230,253,0.55)) !important;
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,0.85),
+      inset -1px 0 0 rgba(14,165,233,0.35) !important;
+  }
+  body:not(.is-mobile).theme-dark .workspace-leaf-resize-handle,
+  body:not(.is-mobile).theme-dark .workspace-split > .workspace-leaf-resize-handle {
+    background: linear-gradient(180deg, rgba(30,41,59,0.55), rgba(15,23,42,0.30)) !important;
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.35) !important;
+  }
+  body:not(.is-mobile).theme-dark .workspace-leaf-resize-handle:hover,
+  body:not(.is-mobile).theme-dark .workspace-split > .workspace-leaf-resize-handle:hover {
+    background: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18)) !important;
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,0.18),
+      inset -1px 0 0 rgba(56,189,248,0.45) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.32 — Editing toolbar glass surface + glass icons
+   Apply liquid-glass effect to Editing Toolbar plugin bar and icons.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .cm-editor .editing-toolbar,
+  body:not(.is-mobile) .markdown-source-view .editing-toolbar,
+  body:not(.is-mobile) .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile) .editing-toolbar {
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+    backdrop-filter: blur(18px) saturate(160%) !important;
+    border-bottom: 1px solid rgba(148,163,184,0.22) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -1px 0 rgba(148,163,184,0.16),
+      0 6px 18px rgba(15,23,42,0.06) !important;
+    border-radius: 10px !important;
+    margin: 6px 10px !important;
+  }
+  body:not(.is-mobile).theme-dark .cm-editor .editing-toolbar,
+  body:not(.is-mobile).theme-dark .markdown-source-view .editing-toolbar,
+  body:not(.is-mobile).theme-dark .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile).theme-dark .editing-toolbar {
+    background: linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55)) !important;
+    border-bottom-color: rgba(203,213,225,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.35),
+      0 6px 18px rgba(0,0,0,0.35) !important;
+  }
+
+  /* Glass icon buttons inside the toolbar */
+  body:not(.is-mobile) .editing-toolbar .editing-toolbar-button,
+  body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button,
+  body:not(.is-mobile) .editing-toolbar button,
+  body:not(.is-mobile) .editing-toolbar .clickable-icon {
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22)) !important;
+    border: 1px solid rgba(148,163,184,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.75),
+      inset 0 -1px 0 rgba(148,163,184,0.12) !important;
+    border-radius: 8px !important;
+    transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease !important;
+  }
+  body:not(.is-mobile) .editing-toolbar .editing-toolbar-button:hover,
+  body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button:hover,
+  body:not(.is-mobile) .editing-toolbar button:hover,
+  body:not(.is-mobile) .editing-toolbar .clickable-icon:hover {
+    background: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -1px 0 rgba(14,165,233,0.30),
+      0 4px 10px rgba(14,165,233,0.18) !important;
+    transform: translateY(-0.5px) !important;
+  }
+  body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button,
+  body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button,
+  body:not(.is-mobile).theme-dark .editing-toolbar button,
+  body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon {
+    background: linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)) !important;
+    border-color: rgba(148,163,184,0.22) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.06),
+      inset 0 -1px 0 rgba(0,0,0,0.30) !important;
+  }
+  body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button:hover,
+  body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button:hover,
+  body:not(.is-mobile).theme-dark .editing-toolbar button:hover,
+  body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon:hover {
+    background: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(56,189,248,0.45),
+      0 4px 10px rgba(56,189,248,0.22) !important;
+    transform: translateY(-0.5px) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.33 — Editing toolbar submenu glass
+   Apply glass to popover submenu (paste/cut/copy etc.) under toolbar.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .editing-toolbar-modal-bg,
+  body:not(.is-mobile) .editing-toolbar-modal,
+  body:not(.is-mobile) .editing-toolbar-popover,
+  body:not(.is-mobile) [class*="cMenu"][class*="SubmenuBar"],
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"],
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Popup"],
+  body:not(.is-mobile) [class*="editing-toolbar"][class*="submenu"],
+  body:not(.is-mobile) [class*="editing-toolbar"][class*="Submenu"] {
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+    backdrop-filter: blur(18px) saturate(160%) !important;
+    border: 1px solid rgba(148,163,184,0.22) !important;
+    border-radius: 12px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -1px 0 rgba(148,163,184,0.16),
+      0 14px 30px rgba(15,23,42,0.10),
+      0 4px 10px rgba(15,23,42,0.06) !important;
+    padding: 6px !important;
+  }
+
+  body:not(.is-mobile).theme-dark .editing-toolbar-modal-bg,
+  body:not(.is-mobile).theme-dark .editing-toolbar-modal,
+  body:not(.is-mobile).theme-dark .editing-toolbar-popover,
+  body:not(.is-mobile).theme-dark [class*="cMenu"][class*="SubmenuBar"],
+  body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"],
+  body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Popup"],
+  body:not(.is-mobile).theme-dark [class*="editing-toolbar"][class*="submenu"],
+  body:not(.is-mobile).theme-dark [class*="editing-toolbar"][class*="Submenu"] {
+    background: linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55)) !important;
+    border-color: rgba(203,213,225,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.35),
+      0 14px 30px rgba(0,0,0,0.45),
+      0 4px 10px rgba(0,0,0,0.30) !important;
+  }
+
+  /* Buttons inside submenu inherit the same glass icon style */
+  body:not(.is-mobile) .editing-toolbar-modal button,
+  body:not(.is-mobile) .editing-toolbar-modal .clickable-icon,
+  body:not(.is-mobile) .editing-toolbar-popover button,
+  body:not(.is-mobile) .editing-toolbar-popover .clickable-icon,
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] button,
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon {
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22)) !important;
+    border: 1px solid rgba(148,163,184,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.75),
+      inset 0 -1px 0 rgba(148,163,184,0.12) !important;
+    border-radius: 8px !important;
+    transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease !important;
+  }
+  body:not(.is-mobile) .editing-toolbar-modal button:hover,
+  body:not(.is-mobile) .editing-toolbar-modal .clickable-icon:hover,
+  body:not(.is-mobile) .editing-toolbar-popover button:hover,
+  body:not(.is-mobile) .editing-toolbar-popover .clickable-icon:hover,
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] button:hover,
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon:hover {
+    background: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -1px 0 rgba(14,165,233,0.30),
+      0 4px 10px rgba(14,165,233,0.18) !important;
+    transform: translateY(-0.5px) !important;
+  }
+  body:not(.is-mobile).theme-dark .editing-toolbar-modal button,
+  body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon,
+  body:not(.is-mobile).theme-dark .editing-toolbar-popover button,
+  body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon,
+  body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] button,
+  body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon {
+    background: linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)) !important;
+    border-color: rgba(148,163,184,0.22) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.06),
+      inset 0 -1px 0 rgba(0,0,0,0.30) !important;
+  }
+  body:not(.is-mobile).theme-dark .editing-toolbar-modal button:hover,
+  body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon:hover,
+  body:not(.is-mobile).theme-dark .editing-toolbar-popover button:hover,
+  body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon:hover,
+  body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] button:hover,
+  body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon:hover {
+    background: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(56,189,248,0.45),
+      0 4px 10px rgba(56,189,248,0.22) !important;
+    transform: translateY(-0.5px) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.34 — Context menu glass surface
+   Apply liquid-glass effect to right-click / dropdown menus.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .menu {
+    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50)) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+    backdrop-filter: blur(16px) saturate(160%) !important;
+    border: 1px solid rgba(148,163,184,0.22) !important;
+    border-radius: 10px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -1px 0 rgba(148,163,184,0.14),
+      0 12px 28px rgba(15,23,42,0.12),
+      0 4px 10px rgba(15,23,42,0.06) !important;
+    padding: 6px !important;
+  }
+  body:not(.is-mobile) .menu .menu-item {
+    border-radius: 8px !important;
+    transition: background 140ms ease, box-shadow 140ms ease !important;
+  }
+  body:not(.is-mobile) .menu .menu-item:hover,
+  body:not(.is-mobile) .menu .menu-item.selected,
+  body:not(.is-mobile) .menu .menu-item:focus {
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.55)) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+    backdrop-filter: blur(12px) saturate(140%) !important;
+    border: 1px solid rgba(100,116,139,0.34) !important;
+    color: #0f172a !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.94),
+      inset 0 -1px 0 rgba(15,23,42,0.06),
+      0 6px 16px rgba(15,23,42,0.12) !important;
+  }
+  body:not(.is-mobile) .menu .menu-separator {
+    background: rgba(148,163,184,0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .menu {
+    background: linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58)) !important;
+    border-color: rgba(203,213,225,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.35),
+      0 12px 28px rgba(0,0,0,0.45),
+      0 4px 10px rgba(0,0,0,0.30) !important;
+  }
+  body:not(.is-mobile).theme-dark .menu .menu-item:hover,
+  body:not(.is-mobile).theme-dark .menu .menu-item.selected,
+  body:not(.is-mobile).theme-dark .menu .menu-item:focus {
+    background: linear-gradient(180deg, rgba(30,41,59,0.75), rgba(15,23,42,0.45)) !important;
+    border: 1px solid rgba(203,213,225,0.20) !important;
+    color: #f8fafc !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.10),
+      inset 0 -1px 0 rgba(0,0,0,0.24),
+      0 6px 16px rgba(0,0,0,0.32) !important;
+  }
+  body:not(.is-mobile).theme-dark .menu .menu-separator {
+    background: rgba(203,213,225,0.18) !important;
+  }
+}
+
+
+
+/* ============================================================
+   v1.8.35 — Tooltip glass surface
+   Apply liquid-glass effect to Obsidian tooltips (.tooltip).
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .tooltip,
+  body:not(.is-mobile) .tooltip.mod-top,
+  body:not(.is-mobile) .tooltip.mod-bottom,
+  body:not(.is-mobile) .tooltip.mod-left,
+  body:not(.is-mobile) .tooltip.mod-right {
+    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50)) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+    backdrop-filter: blur(16px) saturate(160%) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(148,163,184,0.22) !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -1px 0 rgba(148,163,184,0.14),
+      0 12px 28px rgba(15,23,42,0.12),
+      0 4px 10px rgba(15,23,42,0.06) !important;
+  }
+  body:not(.is-mobile) .tooltip .tooltip-arrow {
+    border-top-color: rgba(255,255,255,0.92) !important;
+    border-bottom-color: rgba(255,255,255,0.92) !important;
+    filter: drop-shadow(0 1px 2px rgba(15,23,42,0.10)) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .tooltip,
+  body:not(.is-mobile).theme-dark .tooltip.mod-top,
+  body:not(.is-mobile).theme-dark .tooltip.mod-bottom,
+  body:not(.is-mobile).theme-dark .tooltip.mod-left,
+  body:not(.is-mobile).theme-dark .tooltip.mod-right {
+    background: linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58)) !important;
+    color: #f8fafc !important;
+    border-color: rgba(203,213,225,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.35),
+      0 12px 28px rgba(0,0,0,0.45),
+      0 4px 10px rgba(0,0,0,0.30) !important;
+  }
+  body:not(.is-mobile).theme-dark .tooltip .tooltip-arrow {
+    border-top-color: rgba(30,41,59,0.82) !important;
+    border-bottom-color: rgba(30,41,59,0.82) !important;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.36 — Breadcrumb hover glass
+   Apply nav-style glass hover to view-header breadcrumb segments.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .view-header-breadcrumb {
+    border-radius: 6px !important;
+    padding: 2px 6px !important;
+    transition: background 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
+    border: 1px solid transparent !important;
+  }
+  body:not(.is-mobile) .view-header-breadcrumb:hover {
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.55)) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+    backdrop-filter: blur(12px) saturate(140%) !important;
+    border: 1px solid rgba(100,116,139,0.34) !important;
+    color: #0f172a !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.94),
+      inset 0 -1px 0 rgba(15,23,42,0.06),
+      0 6px 16px rgba(15,23,42,0.12) !important;
+  }
+  body:not(.is-mobile).theme-dark .view-header-breadcrumb:hover {
+    background: linear-gradient(180deg, rgba(30,41,59,0.75), rgba(15,23,42,0.45)) !important;
+    border: 1px solid rgba(203,213,225,0.20) !important;
+    color: #f8fafc !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.10),
+      inset 0 -1px 0 rgba(0,0,0,0.24),
+      0 6px 16px rgba(0,0,0,0.32) !important;
+  }
+}

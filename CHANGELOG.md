@@ -4,12 +4,34 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.36] — 2026-04-27
+
+### Added
+- Liquid-glass surface across desktop chrome:
+  - Ribbon · sidebar toggle · workspace tab list · nav file/folder hover · active file (v1.8.20–v1.8.23)
+  - Editing Toolbar plugin: bar · icon buttons · submenu popovers (v1.8.24, v1.8.32, v1.8.33)
+  - Resize handle, context menu (`.menu`), tooltip, breadcrumb hover (v1.8.27, v1.8.31, v1.8.34, v1.8.35, v1.8.36)
+- All glass blocks scoped to `@media (min-width: 701px)` + `body:not(.is-mobile)` to keep mobile parity stable.
+- Light/Dark theme pairs for every glass surface (slate gradient + sky accent on hover).
+
+### Changed
+- Sidebar `outputs` / `raw/obsidian/outputs` folder labels are now bold near-black (`#111827` light / `#f9fafb` dark) for stronger hierarchy (D1).
+- Resize handle muted by default, brightens on hover with sky tint.
+- Editing Toolbar shifted right (padding-left 72px) so it no longer hugs the left sidebar edge.
+- `mod-root` view-header / tab-header borders softened to `rgba(100,116,139,0.22)` (light) / `rgba(203,213,225,0.18)` (dark) to remove sharp dark hairlines.
+
+### Fixed
+- v1.8.24 block was missing its closing `}` for the `@media` wrapper, which silently nested all subsequent v1.8.25b–v1.8.36 rules. Brace balance restored to 862/862.
+- Removed duplicate v1.8.34 `.menu` glass block.
+
 ## [1.8.19] — 2026-04-26
 
 ### Added
 - PDF 디자인 10개 개선 전/후를 비교하는 HTML fixture와 PNG preview 이미지 추가
+- Border식 작업 영역 프레임, 반투명 유리 리본 아이콘, 활성 문서, 활성 탭 chrome 샘플 fixture와 preview 이미지 추가
 
 ### Changed
+- macOS/Windows Obsidian 데스크톱 클라이언트에서 작업 영역 chrome이 반투명 유리 톤으로 보이도록 최종 override 추가
 - PDF export에서 제목 직후 문단, H2/H3/H4 다음 표, 긴 표 셀, 첫 컬럼, `hr` 구분선의 간격과 가독성을 보강
 - PDF용 `ogd-status-badge`, `ogd-executive-summary`, `ogd-action-summary` 스타일을 추가해 emoji 상태값과 반복 액션 문장을 badge/callout 형태로 정리할 수 있도록 보강
 - 긴 표가 페이지를 넘어갈 때 `thead` 반복과 행 분할 회피가 더 안정적으로 동작하도록 print table cascade 보강
