@@ -49,6 +49,10 @@ RELEASE_ASSETS = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
+    "screenshots/light.png",
+    "screenshots/dark.png",
+    "screenshots/report.png",
+    "screenshots/table-sample.png",
     "snippets/zz-obsidian-gray-force-override-v2.css",
 ]
 
@@ -227,12 +231,12 @@ def target_sync_check(target: Path | None, ci: bool) -> None:
     if not existing:
         ok("target vault sync check skipped")
         return
-    for rel in ["theme.css", "manifest.json"]:
+    for rel in RELEASE_ASSETS:
         source = (ROOT / rel).read_bytes()
         target_data = (existing / rel).read_bytes()
         if source != target_data:
-            fail(f"target vault theme differs: {existing / rel}")
-    ok("target vault theme.css and manifest.json are synchronized")
+            fail(f"target vault asset differs: {existing / rel}")
+    ok("target vault release assets are synchronized")
 
 
 def main() -> int:

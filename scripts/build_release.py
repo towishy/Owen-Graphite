@@ -16,6 +16,10 @@ DEFAULT_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
+    "screenshots/light.png",
+    "screenshots/dark.png",
+    "screenshots/report.png",
+    "screenshots/table-sample.png",
     "snippets/zz-obsidian-gray-force-override-v2.css",
 ]
 

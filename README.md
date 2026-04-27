@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.47` (Obsidian 1.6.0+) |
+| **버전** | `1.8.48` (Obsidian 1.6.0+) |
 
 ---
 
@@ -67,7 +67,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 
 #### Releases 파일로 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `theme.css`, `manifest.json`, `README.md`, `CHANGELOG.md`, `LICENSE`를 다운로드한 뒤 아래 위치에 배치합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `theme.css`, `manifest.json`, `README.md`, `CHANGELOG.md`, `LICENSE`, `screenshots/`를 다운로드한 뒤 아래 위치에 배치합니다.
 
 | 플랫폼 | 테마 대상 경로 |
 |------|------|
@@ -83,7 +83,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 
 이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> Obsidian 테마 관리 화면에서 README가 비어 보이면 테마 폴더에 `README.md`가 같이 들어 있는지 확인한 뒤, **업데이트 확인** 또는 Obsidian 재시작을 실행하세요.
+> Obsidian 테마 관리 화면에서 README나 스크린샷이 비어 보이면 테마 폴더에 `README.md`와 `screenshots/`가 같이 들어 있는지 확인한 뒤, **업데이트 확인** 또는 Obsidian 재시작을 실행하세요.
 
 ### 옵션 C — Style Settings 통합 (권장)
 
@@ -137,7 +137,7 @@ Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본�
 | Graphite-first | 헤더, blockquote, callout, 코드 색상을 회색 중심으로 고정 |
 | 보고서 구조 | H1/H2/H3, TOC, 캡션, diagram frame, footnote, task list를 같은 톤으로 정리 |
 | 표/PDF 안정성 | 비교표·매트릭스·고객 보고서 표가 화면과 PDF에서 균일하게 보이도록 보강 |
-| 링크 구분 | 외부 URL은 Muted Teal 점선 밑줄로 내부 링크와 분리 |
+| 링크 구분 | 외부 URL은 Muted Gray 점선 밑줄로 내부 링크와 분리 |
 | Live Preview 안전성 | Reading View 장식을 CM6 편집 라인에 과도하게 강제하지 않음 |
 
 ![Gray override snippet 8개 구조 개선 preview](screenshots/snippet-design-8-improvements-preview.png)

@@ -985,11 +985,11 @@ button.mod-warning,
 .markdown-rendered a.external-link,
 .markdown-rendered a[href^="http://"]:not(.internal-link),
 .markdown-rendered a[href^="https://"]:not(.internal-link) {
-  color: #0f766e;
+  color: #334155;
   font-weight: 760;
   text-decoration-line: underline;
   text-decoration-style: dotted;
-  text-decoration-color: #5eead4;
+  text-decoration-color: #94a3b8;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.22em;
 }
@@ -997,8 +997,8 @@ button.mod-warning,
 .markdown-rendered a.external-link:hover,
 .markdown-rendered a[href^="http://"]:not(.internal-link):hover,
 .markdown-rendered a[href^="https://"]:not(.internal-link):hover {
-  color: #0d9488;
-  text-decoration-color: #0f766e;
+  color: #1f2937;
+  text-decoration-color: #64748b;
 }
 
 /* Broken / unresolved internal links */
@@ -1752,12 +1752,18 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .theme-dark .markdown-rendered a.external-link,
 .theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link),
 .theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link) {
-  color: #5eead4 !important;
+  color: #cbd5e1 !important;
   text-decoration-line: underline !important;
   text-decoration-style: dotted !important;
-  text-decoration-color: #2dd4bf !important;
+  text-decoration-color: #94a3b8 !important;
   text-decoration-thickness: 1.5px !important;
   text-underline-offset: 0.22em !important;
+}
+.theme-dark .markdown-rendered a.external-link:hover,
+.theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link):hover,
+.theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link):hover {
+  color: #e5e7eb !important;
+  text-decoration-color: #cbd5e1 !important;
 }
 .theme-dark .markdown-rendered a.internal-link.is-unresolved {
   color: #fbbf24 !important;
@@ -5428,18 +5434,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile) .nav-file-title.is-active::after {
-    content: "";
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    width: 42px;
-    height: 42px;
-    transform: translateY(-50%) rotate(-7deg);
-    background: #475569;
-    opacity: 0.12;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.4' d='M9.5 1.8H4.2a1.4 1.4 0 0 0-1.4 1.4v9.6a1.4 1.4 0 0 0 1.4 1.4h7.6a1.4 1.4 0 0 0 1.4-1.4V5.5L9.5 1.8Z'/%3E%3Cpath stroke='black' stroke-linejoin='round' stroke-width='1.4' d='M9.4 1.8v3.8h3.8'/%3E%3C/svg%3E") center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.4' d='M9.5 1.8H4.2a1.4 1.4 0 0 0-1.4 1.4v9.6a1.4 1.4 0 0 0 1.4 1.4h7.6a1.4 1.4 0 0 0 1.4-1.4V5.5L9.5 1.8Z'/%3E%3Cpath stroke='black' stroke-linejoin='round' stroke-width='1.4' d='M9.4 1.8v3.8h3.8'/%3E%3C/svg%3E") center / contain no-repeat;
-    pointer-events: none;
+    content: none !important;
+    display: none !important;
   }
 
   body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
@@ -5454,8 +5450,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile).theme-dark .nav-file-title.is-active::after {
-    background: #cbd5e1;
-    opacity: 0.13;
+    content: none !important;
+    display: none !important;
   }
 }
 
@@ -7022,6 +7018,89 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 }
 
+/* Search pane input glass, aligned with the focused workspace tab surface. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] {
+    --ogd-search-input-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.68));
+    --ogd-search-input-control-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.58));
+    --ogd-search-input-border: rgba(100, 116, 139, 0.28);
+    --ogd-search-input-control-border: rgba(100, 116, 139, 0.20);
+    --ogd-search-input-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(255, 255, 255, 0.34), 0 10px 24px -16px rgba(15, 23, 42, 0.42), 0 5px 12px -9px rgba(15, 23, 42, 0.32);
+    --ogd-search-input-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 4px 12px -10px rgba(15, 23, 42, 0.22);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="search"] {
+    --ogd-search-input-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(15, 23, 42, 0.58));
+    --ogd-search-input-control-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.66), rgba(15, 23, 42, 0.46));
+    --ogd-search-input-border: rgba(203, 213, 225, 0.18);
+    --ogd-search-input-control-border: rgba(203, 213, 225, 0.14);
+    --ogd-search-input-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px -16px rgba(0, 0, 0, 0.68), 0 5px 12px -9px rgba(0, 0, 0, 0.56);
+    --ogd-search-input-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 12px -10px rgba(0, 0, 0, 0.42);
+  }
+
+  body:not(.is-mobile).ogd-glass-off .workspace-leaf-content[data-type="search"] {
+    --ogd-search-input-bg: var(--background-primary) !important;
+    --ogd-search-input-control-bg: var(--background-secondary) !important;
+    --ogd-search-input-border: var(--background-modifier-border) !important;
+    --ogd-search-input-control-border: var(--background-modifier-border) !important;
+    --ogd-search-input-shadow: none !important;
+    --ogd-search-input-control-shadow: none !important;
+  }
+
+  body:not(.is-mobile).ogd-glass-reduced .workspace-leaf-content[data-type="search"] {
+    --ogd-search-input-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82)) !important;
+    --ogd-search-input-control-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.76)) !important;
+    --ogd-search-input-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 5px 12px -10px rgba(15, 23, 42, 0.22) !important;
+    --ogd-search-input-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+  }
+
+  body:not(.is-mobile).theme-dark.ogd-glass-reduced .workspace-leaf-content[data-type="search"] {
+    --ogd-search-input-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.74)) !important;
+    --ogd-search-input-control-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.66), rgba(30, 41, 59, 0.54)) !important;
+    --ogd-search-input-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 12px -10px rgba(0, 0, 0, 0.44) !important;
+    --ogd-search-input-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container {
+    background: var(--ogd-search-input-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    border: 1px solid var(--ogd-search-input-border) !important;
+    box-shadow: var(--ogd-search-input-shadow) !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container :is(input, input[type="search"], input[type="text"]) {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    outline-color: transparent !important;
+    outline-offset: 0 !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container:is(:focus, :focus-visible, :focus-within),
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container :is(input, input[type="search"], input[type="text"]):is(:focus, :focus-visible) {
+    outline: 0 !important;
+    outline-color: transparent !important;
+    outline-offset: 0 !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container:is(:focus-within) {
+    background: var(--ogd-search-input-bg) !important;
+    border-color: var(--ogd-search-input-border) !important;
+    box-shadow: var(--ogd-search-input-shadow) !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container :is(.clickable-icon, button, .search-input-clear-button),
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] :is(.search-input-container + .clickable-icon, .search-input-container ~ .clickable-icon, .search-input-container + button, .search-input-container ~ button) {
+    background: var(--ogd-search-input-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border: 1px solid var(--ogd-search-input-control-border) !important;
+    box-shadow: var(--ogd-search-input-control-shadow) !important;
+  }
+}
+
 /* v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users. */
 @media (prefers-reduced-motion: reduce) {
   body:not(.is-mobile) {
@@ -7043,6 +7122,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .menu-item,
     .suggestion-item,
     .search-suggest-item,
+    .search-input-container,
     .setting-item,
     .setting-item-control button,
     .checkbox-container,
@@ -7074,6 +7154,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .menu-item,
     .suggestion-item,
     .search-suggest-item,
+    .search-input-container,
     .setting-item,
     .setting-item-control button,
     .checkbox-container,
@@ -7110,6 +7191,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-color: var(--header-accent) !important;
     box-shadow: var(--ogd-tab-glass-shadow) !important;
   }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-input-container {
+    border-color: var(--header-accent) !important;
+  }
 }
 
 @media (forced-colors: active) {
@@ -7131,7 +7216,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: none !important;
   }
 
-  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .checkbox-container, .setting-item, .suggestion-item, .status-bar-item-segment, .workspace-tab-header-inner) {
+  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .checkbox-container, .setting-item, .suggestion-item, .status-bar-item-segment, .workspace-tab-header-inner, .search-input-container) {
     border-color: ButtonBorder !important;
     box-shadow: none !important;
   }
