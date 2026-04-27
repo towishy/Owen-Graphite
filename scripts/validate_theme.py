@@ -39,6 +39,14 @@ REQUIRED_FILES = [
     "screenshots/dark.png",
     "screenshots/report.png",
     "screenshots/table-sample.png",
+    "screenshots/github-repo-promo-sample.png",
+    "screenshots/readme/github-repo-promo-sample-readme.png",
+    "screenshots/selected-document-icon-color-samples.png",
+    "screenshots/selected-document-icon-effect-samples.png",
+    "screenshots/selected-file-border-frame-preview.png",
+    "screenshots/snippet-design-8-improvements-preview.png",
+    "screenshots/vault-tree-design-samples.png",
+    "screenshots/vault-tree-icon-design-samples.png",
 ]
 
 PNG_SIZES = {
@@ -58,6 +66,14 @@ RELEASE_ASSETS = [
     "screenshots/dark.png",
     "screenshots/report.png",
     "screenshots/table-sample.png",
+    "screenshots/github-repo-promo-sample.png",
+    "screenshots/readme/github-repo-promo-sample-readme.png",
+    "screenshots/selected-document-icon-color-samples.png",
+    "screenshots/selected-document-icon-effect-samples.png",
+    "screenshots/selected-file-border-frame-preview.png",
+    "screenshots/snippet-design-8-improvements-preview.png",
+    "screenshots/vault-tree-design-samples.png",
+    "screenshots/vault-tree-icon-design-samples.png",
     "snippets/zz-obsidian-gray-force-override-v2.css",
 ]
 

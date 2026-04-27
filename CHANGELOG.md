@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.53] — 2026-04-28
+
+### Fixed
+- Release ZIP and GitHub Release assets now include every screenshot referenced by the README, including the README promo image and recent preview fixtures.
+
 ## [1.8.52] — 2026-04-28
 
 ### Added
