@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.54` (Obsidian 1.6.0+) |
+| **버전** | `1.8.55` (Obsidian 1.6.0+) |
 
 ---
 
@@ -472,6 +472,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.55** — 작성 화면 노이즈를 줄이도록 lead 문단, 상태 badge, 구분선, 사이드바 위계, 링크 문법, H2-표 간격을 정리
 - **v1.8.54** — 실제 Obsidian 적용 화면 기준으로 표, 편집 spellcheck 밑줄, 제목 rhythm, 선택 파일 상태를 정리
 - **v1.8.53** — 릴리즈 ZIP과 GitHub Release asset에 README 참조 스크린샷을 모두 포함하도록 패키징 보강
 - **v1.8.52** — 파일 탐색기 폴더/문서 아이콘을 Thin Outline Icons로 정리, 선택 문서 glass 효과에서 outline grow와 heavy filled icon 제거, vault tree 시안 fixture/스크린샷 추가
