@@ -6270,3 +6270,65 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       0 4px 12px rgba(0, 0, 0, 0.30) !important;
   }
 }
+
+/* ============================================================
+   v1.8.40 — Search options liquid-glass hover
+   Apply the same translucent glass + drop shadow treatment to
+   search option suggestion popovers and their hover/click states.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.50)) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+    backdrop-filter: blur(16px) saturate(160%) !important;
+    border: 1px solid rgba(148, 163, 184, 0.22) !important;
+    border-radius: 12px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.14),
+      0 14px 32px rgba(15, 23, 42, 0.14),
+      0 4px 12px rgba(15, 23, 42, 0.07) !important;
+    padding: 6px !important;
+  }
+
+  body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item) {
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+    margin: 2px 4px !important;
+    transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease !important;
+  }
+
+  body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+    backdrop-filter: blur(12px) saturate(140%) !important;
+    border-color: rgba(100, 116, 139, 0.34) !important;
+    color: #0f172a !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.94),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.06),
+      0 6px 16px rgba(15, 23, 42, 0.12) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.58)) !important;
+    border-color: rgba(203, 213, 225, 0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+      0 14px 32px rgba(0, 0, 0, 0.45),
+      0 4px 12px rgba(0, 0, 0, 0.30) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)) !important;
+    border-color: rgba(203, 213, 225, 0.20) !important;
+    color: #f8fafc !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.24),
+      0 6px 16px rgba(0, 0, 0, 0.32) !important;
+  }
+}

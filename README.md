@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.39` (Obsidian 1.6.0+) |
+| **버전** | `1.8.40` (Obsidian 1.6.0+) |
 
 ---
 
@@ -43,14 +43,43 @@
 
 ### 옵션 B — 수동 설치
 
+Obsidian vault 안의 `.obsidian/themes/Owen Graphite/` 폴더에 테마 파일을 배치합니다.
+
+#### Windows
+
+PowerShell에서 vault 경로를 기준으로 실행합니다.
+
+```powershell
+cd "D:\Path\To\YourVault\.obsidian\themes"
+git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
+```
+
+예: vault가 `D:\JAELE\WIKI`라면 대상 경로는 `D:\JAELE\WIKI\.obsidian\themes\Owen Graphite\`입니다.
+
+#### macOS / Linux
+
 ```bash
 cd <YourVault>/.obsidian/themes
 git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ```
 
-또는 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서
-`theme.css`, `manifest.json`, `README.md`, `CHANGELOG.md`, `LICENSE`를 다운로드 → `<YourVault>/.obsidian/themes/Owen Graphite/`에 배치.
-선택 CSS snippet을 함께 쓰는 경우 `snippets/zz-obsidian-gray-force-override-v2.css`를 `<YourVault>/.obsidian/snippets/`에 배치한 뒤 Obsidian 설정 → 외관 → CSS snippets에서 활성화하세요.
+예: vault가 `/Users/owen/Work/WIKI`라면 대상 경로는 `/Users/owen/Work/WIKI/.obsidian/themes/Owen Graphite/`입니다.
+
+#### Releases 파일로 설치
+
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `theme.css`, `manifest.json`, `README.md`, `CHANGELOG.md`, `LICENSE`를 다운로드한 뒤 아래 위치에 배치합니다.
+
+| 플랫폼 | 테마 대상 경로 |
+|------|------|
+| Windows | `<YourVault>\.obsidian\themes\Owen Graphite\` |
+| macOS / Linux | `<YourVault>/.obsidian/themes/Owen Graphite/` |
+
+선택 CSS snippet을 함께 쓰는 경우 `snippets/zz-obsidian-gray-force-override-v2.css`를 아래 위치에 배치한 뒤 Obsidian 설정 → 외관 → CSS snippets에서 활성화하세요.
+
+| 플랫폼 | snippet 대상 경로 |
+|------|------|
+| Windows | `<YourVault>\.obsidian\snippets\` |
+| macOS / Linux | `<YourVault>/.obsidian/snippets/` |
 
 이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
@@ -335,6 +364,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.40** — 검색 옵션 suggestion popover hover/click 상태에 liquid-glass + 그림자 효과 적용
 - **v1.8.39** — Settings 모달 liquid-glass hover 적용 (좌측 nav + 우측 설정 행, light/dark 패리티)
 - **v1.8.38** — macOS 사이드바 토글 버튼 hover 시 liquid-glass 표면 적용 (본얰 상태는 native subtle 유지)
 - **v1.8.37** — macOS 사이드바 토글 버튼이 타이틀바 안에서 36×36 프레임으로 떠 보이던 회귀 수정

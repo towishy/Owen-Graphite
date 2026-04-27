@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.40] — 2026-04-27
+
+### Added
+- 검색 옵션 suggestion popover(`.suggestion-container`, search suggest variants)에 desktop liquid-glass surface 적용.
+- 검색 옵션 항목 hover/click/selected 상태에 반투명 유리창 효과, blur, drop shadow, subtle lift 적용.
+- Light/Dark 테마 패리티 보장.
+
 ## [1.8.39] — 2026-04-27
 
 ### Added
