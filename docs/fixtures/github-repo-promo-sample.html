@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen GitHub Repository Promo Sample</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #d9dee7;
+      --paper: #f7f8fb;
+      --surface: rgba(255, 255, 255, 0.88);
+      --shadow: 0 22px 50px rgba(31, 41, 55, 0.16);
+      --blue: #2563eb;
+      --teal: #0f766e;
+      --violet: #7c3aed;
+      --amber: #b45309;
+      --green: #15803d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(15, 118, 110, 0.14), transparent 32%),
+        linear-gradient(145deg, #f4f6fa 0%, #eef2f7 54%, #f8fafc 100%);
+    }
+
+    .poster {
+      width: 1920px;
+      height: 1080px;
+      padding: 54px 76px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 34px;
+      border: 1px solid rgba(148, 163, 184, 0.34);
+      border-radius: 30px;
+      pointer-events: none;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #475569;
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 1120px;
+      color: #111827;
+      font-size: 56px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .summary {
+      max-width: 520px;
+      margin: 8px 0 0;
+      color: #475569;
+      font-size: 24px;
+      line-height: 1.48;
+      text-align: right;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .repo-card {
+      height: 760px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.44);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+    }
+
+    .repo-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 92px;
+      padding: 22px 26px 18px;
+      border-bottom: 1px solid rgba(203, 213, 225, 0.72);
+    }
+
+    .repo-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 23px;
+      font-weight: 850;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 12px 24px rgba(15, 23, 42, 0.18);
+    }
+
+    .wiki .repo-mark { background: linear-gradient(145deg, var(--blue), #0f766e); }
+    .graphite .repo-mark { background: linear-gradient(145deg, #374151, #111827); }
+    .editor .repo-mark { background: linear-gradient(145deg, var(--violet), #2563eb); }
+
+    .repo-title {
+      min-width: 0;
+    }
+
+    .repo-title h2 {
+      margin: 0 0 4px;
+      color: #111827;
+      font-size: 27px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .repo-title p {
+      margin: 0;
+      color: #64748b;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .screen {
+      height: 280px;
+      margin: 22px 22px 0;
+      overflow: hidden;
+      border: 1px solid #d4dae5;
+      border-radius: 8px;
+      background: #f8fafc;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .browser-bar {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      border-bottom: 1px solid #dbe2ec;
+      background: #eef2f7;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #94a3b8;
+    }
+
+    .screen-body {
+      height: calc(100% - 34px);
+    }
+
+    .wiki-ui {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      height: 100%;
+      background: #f9fafb;
+    }
+
+    .wiki-nav {
+      padding: 16px 12px;
+      border-right: 1px solid #e2e8f0;
+      background: #f1f5f9;
+    }
+
+    .tree-line {
+      height: 9px;
+      margin-bottom: 13px;
+      border-radius: 999px;
+      background: #cbd5e1;
+    }
+
+    .tree-line:nth-child(2) { width: 72%; background: #93c5fd; }
+    .tree-line:nth-child(3) { width: 88%; }
+    .tree-line:nth-child(4) { width: 64%; background: #99f6e4; }
+    .tree-line:nth-child(5) { width: 80%; }
+    .tree-line:nth-child(6) { width: 56%; background: #d8b4fe; }
+
+    .wiki-main {
+      padding: 18px 18px 16px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .metric {
+      min-height: 66px;
+      padding: 10px;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      background: #eff6ff;
+    }
+
+    .metric strong {
+      display: block;
+      color: #1d4ed8;
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: #475569;
+      font-size: 11px;
+      line-height: 1.15;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+
+    .step {
+      min-height: 58px;
+      padding: 10px 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #fff;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 750;
+      text-align: center;
+    }
+
+    .graph-lines {
+      height: 104px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #dbe2ec;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+    }
+
+    .node {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2563eb;
+      box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.1);
+    }
+
+    .node:nth-child(1) { left: 40px; top: 36px; }
+    .node:nth-child(2) { left: 106px; top: 68px; background: #0f766e; }
+    .node:nth-child(3) { left: 178px; top: 28px; background: #7c3aed; }
+    .node:nth-child(4) { left: 262px; top: 58px; background: #b45309; }
+    .node:nth-child(5) { left: 328px; top: 22px; background: #15803d; }
+
+    .edge {
+      position: absolute;
+      height: 2px;
+      transform-origin: left center;
+      background: #cbd5e1;
+    }
+
+    .edge.a { width: 74px; left: 52px; top: 47px; transform: rotate(25deg); }
+    .edge.b { width: 84px; left: 118px; top: 73px; transform: rotate(-29deg); }
+    .edge.c { width: 88px; left: 190px; top: 38px; transform: rotate(19deg); }
+    .edge.d { width: 78px; left: 274px; top: 62px; transform: rotate(-28deg); }
+
+    .graphite-shot img,
+    .editor-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+    }
+
+    .editor-shot img {
+      object-position: top center;
+    }
+
+    .copy {
+      padding: 18px 26px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tagline {
+      margin: 0 0 14px;
+      color: #111827;
+      font-size: 23px;
+      line-height: 1.32;
+      font-weight: 820;
+    }
+
+    .points {
+      display: grid;
+      gap: 9px;
+      margin: 0 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #475569;
+      font-size: 16px;
+      line-height: 1.38;
+    }
+
+    .points li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #64748b;
+    }
+
+    .wiki .points li::before { background: var(--blue); }
+    .graphite .points li::before { background: #374151; }
+    .editor .points li::before { background: var(--violet); }
+
+    .repo-link {
+      margin-top: auto;
+      padding: 12px 16px;
+      border: 1px solid #dbe2ec;
+      border-radius: 8px;
+      background: #f8fafc;
+      color: #334155;
+      font-size: 16px;
+      font-weight: 760;
+      text-align: center;
+    }
+
+    footer {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      color: #64748b;
+      font-size: 15px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="towishy GitHub repositories promotional sample">
+    <header>
+      <div>
+        <p class="eyebrow">towishy GitHub Repository Picks</p>
+        <h1>LLM Wiki부터 Obsidian 작성 환경까지 이어지는 지식 작업 스택</h1>
+      </div>
+      <p class="summary">수집, 정제, 작성, 출력을 하나의 흐름으로 묶는 Owen의 Markdown 기반 도구 모음.</p>
+    </header>
+
+    <section class="grid" aria-label="Repository cards">
+      <article class="repo-card wiki">
+        <div class="repo-top">
+          <div class="repo-mark">W</div>
+          <div class="repo-title">
+            <h2>Owen WIKI</h2>
+            <p>LLM-native knowledge operations template</p>
+          </div>
+        </div>
+        <div class="screen">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="screen-body wiki-ui">
+            <aside class="wiki-nav">
+              <div class="tree-line"></div>
+              <div class="tree-line"></div>
+              <div class="tree-line"></div>
+              <div class="tree-line"></div>
+              <div class="tree-line"></div>
+              <div class="tree-line"></div>
+            </aside>
+            <div class="wiki-main">
+              <div class="metric-row">
+                <div class="metric"><strong>663</strong><span>pages</span></div>
+                <div class="metric"><strong>6,317</strong><span>wikilinks</span></div>
+                <div class="metric"><strong>0</strong><span>broken links</span></div>
+              </div>
+              <div class="pipeline">
+                <div class="step">raw</div>
+                <div class="step">wiki</div>
+                <div class="step">ontology</div>
+                <div class="step">outputs</div>
+              </div>
+              <div class="graph-lines">
+                <span class="edge a"></span><span class="edge b"></span><span class="edge c"></span><span class="edge d"></span>
+                <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copy">
+          <p class="tagline">대규모 원본 자료를 LLM이 운영 가능한 위키와 온톨로지로 정리합니다.</p>
+          <ul class="points">
+            <li>raw, wiki, ontology, outputs 레이어 분리</li>
+            <li>품질 게이트, 액션 큐, 운영 대시보드 포함</li>
+            <li>보고서와 발표 자료까지 재가공하는 템플릿 킷</li>
+          </ul>
+          <div class="repo-link">github.com/towishy/owen-wiki</div>
+        </div>
+      </article>
+
+      <article class="repo-card graphite">
+        <div class="repo-top">
+          <div class="repo-mark">G</div>
+          <div class="repo-title">
+            <h2>Owen Graphite</h2>
+            <p>Obsidian report-focused light and dark theme</p>
+          </div>
+        </div>
+        <div class="screen graphite-shot">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="screen-body">
+            <img src="../../screenshots/light.png" alt="Owen Graphite light mode screenshot">
+          </div>
+        </div>
+        <div class="copy">
+          <p class="tagline">한국어 보고서와 기술 문서를 위한 차분한 Graphite 기반 Obsidian 테마입니다.</p>
+          <ul class="points">
+            <li>A3 PDF, 표지, 헤더 자동 넘버링 지원</li>
+            <li>Live Preview와 Reading View 시각 동기화</li>
+            <li>Style Settings 27개 옵션과 모바일 대응</li>
+          </ul>
+          <div class="repo-link">github.com/towishy/Owen-Graphite</div>
+        </div>
+      </article>
+
+      <article class="repo-card editor">
+        <div class="repo-top">
+          <div class="repo-mark">E</div>
+          <div class="repo-title">
+            <h2>Owen Editor</h2>
+            <p>Obsidian Markdown UI editor plugin</p>
+          </div>
+        </div>
+        <div class="screen editor-shot">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="screen-body">
+            <img src="https://raw.githubusercontent.com/towishy/owen-editor/main/screenshots/owen-editor-ui-preview.png" alt="Owen Editor toolbar screenshot">
+          </div>
+        </div>
+        <div class="copy">
+          <p class="tagline">Markdown 편집을 빠르게 만드는 플로팅 글래스 툴바와 팔레트를 제공합니다.</p>
+          <ul class="points">
+            <li>선택 영역 미니 툴바와 위치 조절 가능한 편집 툴바</li>
+            <li>표 빌더, 콜아웃, 링크, 템플릿, 하이라이트 지원</li>
+            <li>Owen Graphite용 보고서 스니펫과 표 프리셋 제공</li>
+          </ul>
+          <div class="repo-link">github.com/towishy/owen-editor</div>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <span>Owen Knowledge Stack</span>
+      <span>LLM Wiki · Obsidian Theme · Markdown Editor</span>
+    </footer>
+  </main>
+</body>
+</html>
