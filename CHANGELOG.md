@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.56] — 2026-04-28
+
+### Changed
+- Refined search input focus states with a calmer Graphite ring across search panes, modals, and prompt inputs.
+- Polished command palette, suggestion, and menu selected rows so overlay lists feel consistent with the document selection language.
+- Unified tooltip and hover popover surfaces with lower-contrast borders, softer shadows, and tighter document-preview rhythm.
+- Improved empty states and keyboard `:focus-visible` indicators for quieter screens that still remain navigable.
+
 ## [1.8.55] — 2026-04-28
 
 ### Added

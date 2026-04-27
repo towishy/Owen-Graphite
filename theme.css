@@ -8388,3 +8388,350 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     margin: 1.12em 0 1.34em !important;
   }
 }
+
+/* ============================================================
+   v1.8.56 — Overlay interaction polish
+   - Search focus, command palette, tooltip/popover, empty states, and keyboard focus align
+   ============================================================ */
+
+/* Search and prompt focus: clear enough for action, quiet enough for writing */
+.search-input-container input,
+.workspace-leaf-content[data-type="search"] input[type="search"],
+.workspace-leaf-content[data-type="search"] input[type="text"],
+.prompt-input,
+.modal input[type="search"],
+.modal input[type="text"] {
+  transition: border-color 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease !important;
+}
+
+.search-input-container input:focus,
+.search-input-container input:focus-visible,
+.workspace-leaf-content[data-type="search"] input[type="search"]:focus,
+.workspace-leaf-content[data-type="search"] input[type="search"]:focus-visible,
+.workspace-leaf-content[data-type="search"] input[type="text"]:focus,
+.workspace-leaf-content[data-type="search"] input[type="text"]:focus-visible,
+.prompt-input:focus,
+.prompt-input:focus-visible,
+.modal input[type="search"]:focus,
+.modal input[type="search"]:focus-visible,
+.modal input[type="text"]:focus,
+.modal input[type="text"]:focus-visible {
+  background: #ffffff !important;
+  border-color: #64748b !important;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.16), inset 0 1px 1px rgba(15, 23, 42, 0.04) !important;
+  outline: none !important;
+}
+
+/* Command palette, suggestions, and menus: selected rows share one Graphite grammar */
+.prompt-results,
+.suggestion-container,
+.menu {
+  --ogd-overlay-selected-bg: rgba(226, 232, 240, 0.72);
+  --ogd-overlay-selected-line: #475569;
+  --ogd-overlay-selected-text: #111827;
+}
+
+.prompt-results .suggestion-item,
+.suggestion-container .suggestion-item,
+.menu .menu-item {
+  min-height: 30px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  color: #334155 !important;
+  border-radius: 7px !important;
+  transition: background-color 0.12s ease, color 0.12s ease, box-shadow 0.12s ease !important;
+}
+
+.prompt-results .suggestion-item.is-selected,
+.suggestion-container .suggestion-item.is-selected,
+.menu .menu-item:hover,
+.menu .menu-item.selected {
+  background: var(--ogd-overlay-selected-bg) !important;
+  color: var(--ogd-overlay-selected-text) !important;
+  box-shadow: inset 3px 0 0 var(--ogd-overlay-selected-line) !important;
+}
+
+.suggestion-item.is-selected .suggestion-title,
+.suggestion-item.is-selected .suggestion-note,
+.menu-item:hover .menu-item-title,
+.menu-item.selected .menu-item-title {
+  color: inherit !important;
+}
+
+.suggestion-highlight,
+.search-result-file-matched-text,
+.search-result-file-match-text {
+  background: #fef3c7 !important;
+  color: #78350f !important;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.28) !important;
+}
+
+.search-result-file-match.mod-current,
+.search-result-file-match.is-active,
+.search-result-file-match:hover {
+  background: #f8fafc !important;
+  border-left-color: #64748b !important;
+}
+
+/* Tooltip and popover surfaces: one low-noise floating surface language */
+.tooltip,
+.popover,
+.popover.hover-popover,
+.hover-popover .markdown-embed,
+.hover-popover .markdown-embed-content,
+.modal,
+.prompt,
+.suggestion-container,
+.menu {
+  border-color: rgba(148, 163, 184, 0.34) !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.13) !important;
+}
+
+.tooltip {
+  background: rgba(30, 41, 59, 0.94) !important;
+  color: #f8fafc !important;
+  border-radius: 7px !important;
+  font-size: 12px !important;
+  font-weight: 620 !important;
+  letter-spacing: 0 !important;
+}
+
+.popover.hover-popover .markdown-preview-view,
+.popover.hover-popover .markdown-rendered {
+  padding: 12px 14px !important;
+  color: #334155 !important;
+}
+
+.popover.hover-popover .markdown-rendered :is(h1, h2, h3) {
+  margin-top: 0.2em !important;
+  margin-bottom: 0.45em !important;
+}
+
+.popover.hover-popover .markdown-rendered p {
+  margin-top: 0.42em !important;
+  margin-bottom: 0.42em !important;
+}
+
+/* Empty states: readable, but no longer louder than real content */
+.empty-state,
+.empty-state-container,
+.search-empty-state,
+.backlink-pane .search-empty-state,
+.outgoing-link-pane .search-empty-state,
+.workspace-leaf-content[data-type="search"] .search-empty-state,
+.workspace-leaf-content[data-type="backlink"] .search-empty-state,
+.workspace-leaf-content[data-type="outgoing-link"] .search-empty-state {
+  color: #64748b !important;
+  font-size: 0.94em !important;
+  font-weight: 520 !important;
+  line-height: 1.52 !important;
+}
+
+.empty-state-title,
+.empty-state-action,
+.empty-state-container .empty-state-title {
+  color: #475569 !important;
+  font-weight: 680 !important;
+}
+
+.empty-state-action {
+  border-color: rgba(148, 163, 184, 0.36) !important;
+  background: rgba(248, 250, 252, 0.74) !important;
+  border-radius: 7px !important;
+}
+
+.empty-state-action:hover {
+  background: #f1f5f9 !important;
+  color: #111827 !important;
+}
+
+/* Keyboard focus: unified accessible ring without persistent mouse noise */
+:is(
+  button,
+  input,
+  textarea,
+  select,
+  a,
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [role="menuitem"],
+  .clickable-icon,
+  .nav-file-title,
+  .nav-folder-title,
+  .workspace-tab-header,
+  .suggestion-item,
+  .menu-item,
+  .tree-item-self,
+  .empty-state-action
+):focus-visible {
+  outline: 2px solid rgba(71, 85, 105, 0.86) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.15) !important;
+}
+
+:is(
+  button,
+  input,
+  textarea,
+  select,
+  a,
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [role="menuitem"],
+  .clickable-icon,
+  .nav-file-title,
+  .nav-folder-title,
+  .workspace-tab-header,
+  .suggestion-item,
+  .menu-item,
+  .tree-item-self,
+  .empty-state-action
+):focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+.theme-dark .search-input-container input:focus,
+.theme-dark .search-input-container input:focus-visible,
+.theme-dark .workspace-leaf-content[data-type="search"] input[type="search"]:focus,
+.theme-dark .workspace-leaf-content[data-type="search"] input[type="search"]:focus-visible,
+.theme-dark .workspace-leaf-content[data-type="search"] input[type="text"]:focus,
+.theme-dark .workspace-leaf-content[data-type="search"] input[type="text"]:focus-visible,
+.theme-dark .prompt-input:focus,
+.theme-dark .prompt-input:focus-visible,
+.theme-dark .modal input[type="search"]:focus,
+.theme-dark .modal input[type="search"]:focus-visible,
+.theme-dark .modal input[type="text"]:focus,
+.theme-dark .modal input[type="text"]:focus-visible {
+  background: #0f172a !important;
+  border-color: #94a3b8 !important;
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.18), inset 0 1px 1px rgba(0, 0, 0, 0.22) !important;
+}
+
+.theme-dark .prompt-results,
+.theme-dark .suggestion-container,
+.theme-dark .menu {
+  --ogd-overlay-selected-bg: rgba(51, 65, 85, 0.78);
+  --ogd-overlay-selected-line: #cbd5e1;
+  --ogd-overlay-selected-text: #f8fafc;
+}
+
+.theme-dark .prompt-results .suggestion-item,
+.theme-dark .suggestion-container .suggestion-item,
+.theme-dark .menu .menu-item {
+  color: #cbd5e1 !important;
+}
+
+.theme-dark .suggestion-highlight,
+.theme-dark .search-result-file-matched-text,
+.theme-dark .search-result-file-match-text {
+  background: rgba(120, 53, 15, 0.72) !important;
+  color: #fde68a !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.34) !important;
+}
+
+.theme-dark .search-result-file-match.mod-current,
+.theme-dark .search-result-file-match.is-active,
+.theme-dark .search-result-file-match:hover {
+  background: #111827 !important;
+  border-left-color: #cbd5e1 !important;
+}
+
+.theme-dark .tooltip,
+.theme-dark .popover,
+.theme-dark .popover.hover-popover,
+.theme-dark .hover-popover .markdown-embed,
+.theme-dark .hover-popover .markdown-embed-content,
+.theme-dark .modal,
+.theme-dark .prompt,
+.theme-dark .suggestion-container,
+.theme-dark .menu {
+  border-color: rgba(100, 116, 139, 0.48) !important;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42) !important;
+}
+
+.theme-dark .tooltip {
+  background: rgba(248, 250, 252, 0.94) !important;
+  color: #111827 !important;
+}
+
+.theme-dark .popover.hover-popover .markdown-preview-view,
+.theme-dark .popover.hover-popover .markdown-rendered {
+  color: #cbd5e1 !important;
+}
+
+.theme-dark .empty-state,
+.theme-dark .empty-state-container,
+.theme-dark .search-empty-state,
+.theme-dark .backlink-pane .search-empty-state,
+.theme-dark .outgoing-link-pane .search-empty-state,
+.theme-dark .workspace-leaf-content[data-type="search"] .search-empty-state,
+.theme-dark .workspace-leaf-content[data-type="backlink"] .search-empty-state,
+.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .search-empty-state {
+  color: #94a3b8 !important;
+}
+
+.theme-dark .empty-state-title,
+.theme-dark .empty-state-action,
+.theme-dark .empty-state-container .empty-state-title {
+  color: #cbd5e1 !important;
+}
+
+.theme-dark .empty-state-action {
+  border-color: rgba(100, 116, 139, 0.48) !important;
+  background: rgba(15, 23, 42, 0.64) !important;
+}
+
+.theme-dark .empty-state-action:hover {
+  background: #1f2937 !important;
+  color: #f8fafc !important;
+}
+
+.theme-dark :is(
+  button,
+  input,
+  textarea,
+  select,
+  a,
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [role="menuitem"],
+  .clickable-icon,
+  .nav-file-title,
+  .nav-folder-title,
+  .workspace-tab-header,
+  .suggestion-item,
+  .menu-item,
+  .tree-item-self,
+  .empty-state-action
+):focus-visible {
+  outline-color: rgba(203, 213, 225, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.18) !important;
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+  :is(
+    button,
+    input,
+    textarea,
+    select,
+    a,
+    [role="button"],
+    [role="link"],
+    [role="tab"],
+    [role="menuitem"],
+    .clickable-icon,
+    .nav-file-title,
+    .nav-folder-title,
+    .workspace-tab-header,
+    .suggestion-item,
+    .menu-item,
+    .tree-item-self,
+    .empty-state-action
+  ):focus-visible {
+    outline: 2px solid CanvasText !important;
+    box-shadow: none !important;
+  }
+}
