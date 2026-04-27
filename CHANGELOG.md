@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.37] — 2026-04-27
+
+### Fixed
+- macOS: 좌/우 사이드바 토글 버튼이 v1.8.21–22 글래스 트리트먼트로 인해 타이틀바 안에서 두꺼운 36×36 프레임 버튼처럼 떠 보이던 문제 수정. `body.mod-macos`에서만 토글 버튼을 Obsidian 기본 subtle 스타일로 되돌리고, 좌측 ribbon 아이콘의 글래스 효과는 그대로 유지.
+
 ## [1.8.36] — 2026-04-27
 
 ### Added

@@ -6128,3 +6128,41 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       0 6px 16px rgba(0,0,0,0.32) !important;
   }
 }
+
+
+/* ============================================================
+   v1.8.37 — macOS sidebar toggle reset
+   On macOS, the left/right sidebar toggle buttons live inside the
+   title bar (not the ribbon). The v1.8.21–22 glass treatment turns
+   them into heavy 36×36 framed buttons that float awkwardly in the
+   chrome. Restore Obsidian's native subtle styling on macOS only,
+   while keeping the ribbon icons glassy.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right),
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    width: auto !important;
+    height: auto !important;
+    padding: 4px !important;
+    border: 0 !important;
+    border-radius: var(--clickable-icon-radius, 4px) !important;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    color: var(--icon-color, var(--text-muted)) !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    background: var(--background-modifier-hover) !important;
+    color: var(--icon-color-hover, var(--text-normal)) !important;
+  }
+}
