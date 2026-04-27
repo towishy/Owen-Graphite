@@ -1,8 +1,8 @@
 """
-Owen Graphite v1.8.50 marketing screenshot generator (pure Pillow).
+Owen Graphite v1.8.51 marketing screenshot generator (pure Pillow).
 
 Renders three 1280x720 PNG mock-ups (light / dark / report) showcasing
-v1.8.50 report UX polish (modern disclosure chevrons, long-token tables,
+v1.8.51 report UX polish (modern disclosure chevrons, long-token tables,
 grouped Style Settings, semantic report callouts) plus liquid-glass desktop chrome (ribbon icons, sidebar toggle hover,
 nav file hover lift, tab list, breadcrumb, command palette, settings toggles,
 callout, table). Then
@@ -306,7 +306,7 @@ def render_variant(variant):
     body_lines = [
         "그래파이트(Graphite) 톤의 보고서 지향 테마. 라이트/다크 위젯 패리티,",
         "한국어 타이포그래피 보정(CJK +0.5px), 긴 식별자 표 스캔성,",
-        "그리고 v1.8.50에서 정리된 보고서형 callout 톤을 제공합니다.",
+        "그리고 v1.8.51에서 정리된 보고서형 callout 톤을 제공합니다.",
     ]
     for i, line in enumerate(body_lines):
         text(d, h1_x, body_y + i * 22, line, 13, p["text"], serif=serif)
@@ -355,7 +355,7 @@ def render_variant(variant):
         toggle(img, px + 154, py + 99, p, enabled=True)
 
     od.rectangle((ribbon_w, H - 28, W, H), fill=p["panel_alt"], outline=p["border"])
-    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.50  ·  {variant.title()} mode",
+    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.51  ·  {variant.title()} mode",
          11, p["text_dim"])
 
     big_path = OUT_DIR / f"_big-{variant}.png"

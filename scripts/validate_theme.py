@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 import struct
@@ -29,7 +30,11 @@ REQUIRED_FILES = [
     "snippets/zz-obsidian-gray-force-override-v2.css",
     "docs/fixtures/table-report.md",
     "docs/fixtures/table-preview.html",
+    "docs/fixtures/callout-report.md",
+    "docs/fixtures/callout-preview.html",
     "docs/fixtures/live-preview-editing.md",
+    "scripts/contrast_audit.py",
+    "scripts/visual_regression.py",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
@@ -198,6 +203,24 @@ def python_only_scripts() -> None:
     ok("scripts are Python-only and local artifacts are ignored")
 
 
+def contrast_audit() -> None:
+    script = ROOT / "scripts" / "contrast_audit.py"
+    spec = importlib.util.spec_from_file_location("contrast_audit", script)
+    if spec is None or spec.loader is None:
+        fail("unable to load scripts/contrast_audit.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    failures = []
+    for pair in module.PAIRS:
+        ratio = module.contrast_ratio(pair.foreground, pair.background)
+        if ratio < pair.minimum:
+            failures.append(f"{pair.name} ({ratio:.2f}:1)")
+    if failures:
+        fail(f"contrast audit failed: {', '.join(failures)}")
+    ok(f"contrast audit passed ({len(module.PAIRS)} pairs)")
+
+
 def release_zip_if_present(version: str) -> None:
     zip_path = ROOT / "dist" / f"Owen-Graphite-{version}.zip"
     if not zip_path.exists():
@@ -251,6 +274,17 @@ def target_sync_check(target: Path | None, ci: bool) -> None:
     ok("target vault release assets are synchronized")
 
 
+def release_checklist(version: str, ci: bool) -> None:
+    zip_path = ROOT / "dist" / f"Owen-Graphite-{version}.zip"
+    print("\nRelease checklist")
+    print(f"- version: {version}")
+    print("- required files: present")
+    print("- Style Settings: 27 functional options")
+    print("- screenshots: dimensions verified")
+    print(f"- release ZIP: {'present' if zip_path.exists() else 'not built yet'}")
+    print("- target vault sync: skipped in CI" if ci else "- target vault sync: checked when target exists")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ci", action="store_true", help="Skip local vault synchronization checks.")
@@ -264,10 +298,12 @@ def main() -> int:
     png_dimensions()
     release_workflow_assets()
     python_only_scripts()
+    contrast_audit()
     release_zip_if_present(version)
     live_preview_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
+    release_checklist(version, args.ci)
     return 0
 
 

@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.50` (Obsidian 1.6.0+) |
+| **버전** | `1.8.51` (Obsidian 1.6.0+) |
 
 ---
 
@@ -113,6 +113,16 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 Style Settings UI는 `읽기와 본문`, `표와 코드`, `보고서와 PDF`, `워크스페이스와 접근성`, `PDF 첫 페이지 헤더` 구획으로 나뉘어 긴 옵션 목록을 빠르게 훑을 수 있습니다. 실제 조정 가능한 옵션 수는 기존과 동일한 27개입니다.
 
 Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본값으로 고정됩니다. PDF 헤더, 보고서 모드, 액센트 컬러 변경을 자주 쓴다면 플러그인 사용을 권장합니다.
+
+### 추천 프리셋 조합
+
+| 사용 흐름 | 권장 설정 | 보조 클래스/패턴 |
+|----------|-----------|------------------|
+| 매일 작성 | 표준 간격, Graphite accent, Subtle 또는 Standard glass | 기본 Markdown + 일반 callout |
+| 긴 보고서/PDF | 보고서 모드, PDF 블록 분할 방지, A3 가로 preview | `wide-table print-fit-table`, 보고서형 callout |
+| 눈 피로 감소 | 줄간격 1.6 또는 1.7, 시선 보호 모드, Reduced glass | 외부 링크/출처 목록은 `.ogd-reference-list` |
+| 기술 감사 보고서 | 표 모던 스타일, 코드블록 Light/Nord, 자동 넘버링 | `comparison-table nowrap-code-table`, `risk-table` |
+| 저성능 환경 | Glass Off 또는 Reduced, 애니메이션 최소화 | 큰 Mermaid/표는 fixture로 사전 확인 |
 
 ### Glass 강도 프리셋
 
@@ -205,6 +215,16 @@ Live Preview 클릭 회귀 확인용 문서는 [docs/fixtures/live-preview-editi
 > 회의 또는 설계 결정의 확정 내용을 기록합니다.
 ```
 
+Callout 회귀 확인용 fixture는 [docs/fixtures/callout-report.md](docs/fixtures/callout-report.md)와 [docs/fixtures/callout-preview.html](docs/fixtures/callout-preview.html)에 있습니다.
+
+### Detail Preview
+
+| 초점 | 확인 위치 | 확인 내용 |
+|------|-----------|-----------|
+| 파일 탐색기 active/chevron | [screenshots/light.png](screenshots/light.png), [screenshots/dark.png](screenshots/dark.png) | 접기 아이콘, active 파일, hover 톤 |
+| 보고서형 callout | [docs/fixtures/callout-preview.html](docs/fixtures/callout-preview.html) | conclusion/recommendation/risk/action/decision 톤 |
+| 긴 식별자 표 | [docs/fixtures/table-preview.html](docs/fixtures/table-preview.html) | `nowrap-code-table`, `scroll-token-table`, `scroll-table` 조합 |
+
 ### 워크스페이스 폴리시
 - 사이드바 폴더 path-based 색상
 - 활성 파일 4px accent bar, 활성 탭 상단 액센트 보더
@@ -233,6 +253,16 @@ Live Preview 클릭 회귀 확인용 문서는 [docs/fixtures/live-preview-editi
 - Command Palette / Modal / Menu / Hover Preview overlay 톤 통일
 - Settings / Style Settings controls — input, dropdown, toggle, slider, color picker 톤 통일
 - Canvas / Graph / Backlink / Tag pane — 지식 그래프 탐색 UI 톤 통일
+
+| 플러그인/영역 | 지원 수준 | 비고 |
+|--------------|-----------|------|
+| Dataview | Styled | 표, hover, zebra, numeric tone 통일 |
+| Properties / Bases | Styled | 카드/표/입력면 Graphite 톤 적용 |
+| Canvas / Graph | Styled | 노드, edge, control surface 톤 정리 |
+| Backlinks / Outgoing / Search / Tag pane | Styled | 결과 match, count badge, tag chip 정리 |
+| Excalidraw / Kanban / Calendar | Basic tone aligned | 주요 surface와 border 톤만 보정 |
+| Editing Toolbar | Styled | top bar, icon button, submenu glass 톤 |
+| 알 수 없는 third-party view | Not modified | Obsidian 기본 변수 상속에 의존 |
 
 ### 접근성
 - `:focus-visible` 두꺼운 outline + glow
@@ -330,6 +360,8 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 - `nowrap-code-table` / `scroll-token-table`: 정책 ID처럼 줄바꿈보다 스캔성이 중요한 긴 코드 토큰
 - `scroll-table`: 화면 검토에서는 가로 스크롤을 허용하고 PDF에서는 기존 print-fit 규칙과 함께 사용
 
+권장 조합은 `comparison-table nowrap-code-table`(정책 비교), `wide-table scroll-table scroll-token-table`(화면 검토용 넓은 표), `wide-table print-fit-table wrap-table`(PDF 제출용 넓은 표)입니다.
+
 ---
 
 ## 💬 Callout 종류
@@ -400,7 +432,27 @@ Owen Graphite/
 python scripts/validate_theme.py
 ```
 
-Windows/macOS 양쪽에서 같은 검증 경로를 쓰기 위해 모든 로컬 검증과 릴리즈 자동화는 Python 스크립트로만 관리합니다.
+Windows/macOS 양쪽에서 같은 검증 경로를 쓰기 위해 모든 로컬 검증과 릴리즈 자동화는 Python 스크립트로만 관리합니다. 검증기는 필수 파일, 버전 정합성, Style Settings 카운트, 스크린샷 크기, contrast audit, 릴리즈 ZIP 내용, Live Preview 안전 selector, `git diff --check`, 선택적 vault sync를 확인하고 마지막에 release checklist를 출력합니다.
+
+### 색상 대비 감사
+
+```bash
+python scripts/contrast_audit.py
+```
+
+주요 light/dark 텍스트, 링크, 표, callout, 검색 하이라이트 색상 조합의 WCAG AA 기본 대비를 확인합니다.
+
+### 시각 회귀 확인
+
+실제 Obsidian DOM과 가장 가까운 HTML fixture는 [docs/fixtures](docs/fixtures)에 모아 둡니다. 브라우저 또는 Playwright 같은 캡처 도구로 `table-preview.html`, `callout-preview.html`, `search-input-glass-preview.html`, `tab-glass-preview.html`을 캡처해 light/dark/report 변경 전후를 비교하면 CSS cascade 회귀를 빠르게 확인할 수 있습니다.
+
+```bash
+python -m pip install playwright
+python -m playwright install chromium
+python scripts/visual_regression.py
+```
+
+캡처 결과는 `screenshots/fixture-regression/` 아래에 생성됩니다. 이 폴더는 비교용 로컬 산출물로 사용하고 릴리즈 asset에는 포함하지 않습니다.
 
 ### 릴리즈 ZIP 생성
 
@@ -416,6 +468,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.51** — callout fixture, contrast audit, release checklist, 추천 프리셋/플러그인 지원표/시각 회귀 문서, CSS 섹션 인덱스와 토큰 alias 추가
 - **v1.8.50** — Style Settings 구획 헤더, 현대적인 파일 탐색기 접기 chevron, 본문 좌측 여백 보강, 긴 코드 토큰용 표 유틸리티, 보고서형 callout 아이콘/톤 정리
 - **v1.8.49** — 참고 출처 링크 밀집 구간을 출처/문서/설명 구조로 정리하는 `.ogd-reference-list` 패턴 추가
 - **v1.8.45** — 기존 Ruby 검증 스크립트 제거, Python-only 검증/릴리즈 자동화로 정리, Python 로컬 산출물 ignore 추가

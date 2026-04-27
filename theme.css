@@ -1,5 +1,14 @@
 /* Owen Graphite for Obsidian — A report-oriented theme. */
 
+/* Section index
+  1. Style Settings metadata
+  2. Base variables and Graphite token aliases
+  3. Typography, headings, links, lists, callouts, code, and tables
+  4. Workspace chrome, navigation panes, overlays, and plugin integrations
+  5. Report/PDF print rules and first-page header helpers
+  6. Mobile, accessibility, high-contrast, reduced-motion, and glass presets
+  7. Release patch blocks for compatibility and regression hardening */
+
 /* @settings
 name: Owen Graphite
 id: owen-graphite-document
@@ -273,6 +282,14 @@ settings:
   --ogd-line-height: 1.5;
   --ogd-max-width: 420mm;
   --ogd-accent: #4b5563;
+  --ogd-surface-base: #ffffff;
+  --ogd-surface-muted: #f8fafc;
+  --ogd-surface-subtle: #f3f4f6;
+  --ogd-line-soft: #e5e7eb;
+  --ogd-line-strong: #cbd5e1;
+  --ogd-text-strong: #111827;
+  --ogd-text-body: #1a1a1a;
+  --ogd-text-muted: #64748b;
   --ogd-first-page-header: "";
   --ogd-first-page-header-color: #111827;
   --ogd-first-page-header-left: "";
@@ -1382,8 +1399,8 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 /* Task checkbox restyle */
 .markdown-rendered input[type="checkbox"],
 .markdown-source-view.mod-cm6 input[type="checkbox"] {
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   width: 14px;
   height: 14px;
   border: 1.5px solid #9ca3af;
@@ -1840,7 +1857,6 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
     width: 420mm;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    color-adjust: exact;
   }
 
   .markdown-preview-view,
@@ -2263,10 +2279,7 @@ body.ogd-serif-body .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-text-theme) !important; /* headings stay sans */
 }
 
-/* A5. Smart dash / ellipsis hint via CSS only — visual replacement
-       (browsers don't auto-substitute; we use ::before for `--` and `...`
-       inside <p>; lightweight pure-CSS approximation) */
-.markdown-rendered p { hanging-punctuation: first last; }
+/* A5 reserved for future punctuation refinement. */
 
 /* A6. Auto heading numbering (toggle: ogd-auto-number-headings) */
 body.ogd-auto-number-headings .markdown-rendered {
@@ -2316,12 +2329,14 @@ body.ogd-auto-number-headings .markdown-rendered h4::before {
   filter: blur(5px);
   transition: filter 0.2s ease;
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
 }
 .markdown-rendered .callout[data-callout="secret"]:hover .callout-content,
 .markdown-rendered .callout[data-callout="hidden"]:hover .callout-content,
 .markdown-rendered .ogd-blur:hover {
   filter: blur(0);
+  -webkit-user-select: text;
   user-select: text;
 }
 
@@ -3692,7 +3707,6 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 .is-mobile .markdown-rendered .block-language-dataview {
   max-width: 100% !important;
   overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch !important;
 }
 .is-mobile .markdown-rendered table {
   display: block !important;
@@ -4952,7 +4966,6 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   max-width: 100% !important;
   overflow-x: auto !important;
   table-layout: auto !important;
-  -webkit-overflow-scrolling: touch !important;
 }
 
 .markdown-rendered table.wide-table,

@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.51] — 2026-04-27
+
+### Added
+- Callout report and HTML preview fixtures for semantic report callout regression checks.
+- `scripts/contrast_audit.py` for key light/dark foreground and background contrast pairs.
+- Optional `scripts/visual_regression.py` Playwright capture helper for HTML fixture screenshots.
+- Validator contrast audit integration plus a final release checklist summary.
+- README guidance for Style Settings presets, plugin support levels, table utility combinations, detail preview links, and optional visual regression workflow.
+
+### Changed
+- `theme.css` now starts with a compact section index and exposes shared Graphite surface/line/text token aliases for future maintenance.
+
 ## [1.8.50] — 2026-04-27
 
 ### Added
