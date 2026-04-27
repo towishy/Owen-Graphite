@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.42] — 2026-04-27
+
+### Added
+- Floating UI glass expansion for command palette, modal/prompt surfaces, hover popovers, notices, Properties/frontmatter panels, Canvas controls, and status bar hover segments.
+- Settings controls now share the desktop glass treatment across toggles, inputs, dropdowns, sliders, color pickers, and button-adjacent focus/hover states.
+- Toggle switches receive a glass track/thumb treatment with light/dark parity and distinct enabled/disabled surfaces.
+
+### Changed
+- Settings row hover glass now covers the full outer row box again, using an outline-based border treatment to avoid shrinking the hover surface.
+- Command palette and suggestion selected states are now more distinct from plain hover states, improving keyboard navigation clarity.
+- Nested plugin settings rows, including Style Settings-style layouts, use a lighter glass hover so deeply nested controls remain readable.
+- Status bar glass hover is more restrained to keep the footer calm while still matching the broader chrome language.
+
 ## [1.8.41] — 2026-04-27
 
 ### Changed
