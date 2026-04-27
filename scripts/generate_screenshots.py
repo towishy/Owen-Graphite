@@ -1,9 +1,10 @@
 """
-Owen Graphite v1.8.39 marketing screenshot generator (pure Pillow).
+Owen Graphite v1.8.43 marketing screenshot generator (pure Pillow).
 
 Renders three 1280x720 PNG mock-ups (light / dark / report) showcasing
-v1.8.39 liquid-glass desktop chrome (ribbon icons, sidebar toggle hover,
-nav file hover lift, tab list, breadcrumb, callout, table). Then
+v1.8.43 liquid-glass desktop chrome (ribbon icons, sidebar toggle hover,
+nav file hover lift, tab list, breadcrumb, command palette, settings toggles,
+callout, table). Then
 downscales to 512x288 for the marketplace listing.
 
 Pure Pillow, no SVG. Uses Windows-installed Malgun Gothic for Korean
@@ -156,6 +157,20 @@ def rounded_glass(img, x, y, w, h, p, hovered=False, radius=6):
     img.paste(overlay, (x, y), hl)
 
 
+def toggle(img, x, y, p, enabled=True):
+    od = ImageDraw.Draw(img)
+    rounded_glass(img, x, y, 48, 26, p, hovered=False, radius=13)
+    if enabled:
+        od.rounded_rectangle((x, y, x + 47, y + 25), radius=13,
+                             fill=lerp(p["accent"], p["panel"], 0.28),
+                             outline=p["glass_border"], width=1)
+        cx = x + 34
+    else:
+        cx = x + 14
+    od.ellipse((cx - 10, y + 3, cx + 10, y + 23), fill=p["glass_top"], outline=p["border_strong"], width=1)
+    od.arc((cx - 6, y + 7, cx + 6, y + 19), start=210, end=510, fill=p["accent_dark"], width=2)
+
+
 def text(d, x, y, s, sz, color, weight="regular", serif=False):
     d.text((x, y), s, font=fonts(sz, weight=weight, serif=serif), fill=color)
 
@@ -262,15 +277,15 @@ def render_variant(variant):
         c = lerp(p["accent_dark"], p["accent"], i / rule_w)
         d.line((h1_x + i, rule_y, h1_x + i, rule_y + 2), fill=c)
 
-    sub = ("보고서 모드 · A3 가로 · 자동 넘버링 · 세리프 본문" if is_report
-           else "Liquid-glass desktop chrome · Style Settings 26 · Live Preview parity")
+        sub = ("보고서 모드 · A3 가로 · 자동 넘버링 · 세리프 본문" if is_report
+            else "Liquid-glass desktop chrome · Style Settings 27 · Live Preview parity")
     text(d, h1_x, rule_y + 14, sub, 13, p["text_muted"], serif=serif)
 
     body_y = rule_y + 50
     body_lines = [
         "그래파이트(Graphite) 톤의 보고서 지향 테마. 라이트/다크 위젯 패리티,",
-        "한국어 타이포그래피 보정(CJK +0.5px), 그리고 v1.8.36–39에서 추가된",
-        "데스크톱 liquid-glass chrome으로 작업창 시각 노이즈를 줄였습니다.",
+        "한국어 타이포그래피 보정(CJK +0.5px), 그리고 v1.8.43에서 정리된",
+        "데스크톱 liquid-glass presets로 작업창 시각 노이즈를 줄였습니다.",
     ]
     for i, line in enumerate(body_lines):
         text(d, h1_x, body_y + i * 22, line, 13, p["text"], serif=serif)
@@ -305,8 +320,21 @@ def render_variant(variant):
         for cx, val in zip(col_x, row):
             text(d, cx, ry + 6, val, 11, p["text"], serif=serif)
 
+    if not is_report:
+        px, py = h1_x + cw - 246, body_y + 18
+        rounded_glass(img, px, py, 224, 142, p, hovered=True, radius=10)
+        text(d, px + 14, py + 12, "Command Palette", 12, p["text"], weight="bold")
+        od.rounded_rectangle((px + 14, py + 34, px + 210, py + 58), radius=6,
+                             fill=p["panel_alt"], outline=p["border_strong"], width=1)
+        text(d, px + 24, py + 39, "Search command...", 10, p["text_dim"])
+        rounded_glass(img, px + 12, py + 68, 200, 26, p, hovered=True, radius=6)
+        od.rectangle((px + 12, py + 68, px + 15, py + 94), fill=p["accent"])
+        text(d, px + 24, py + 74, "Toggle glass intensity", 10, p["text"])
+        text(d, px + 24, py + 104, "Settings glass", 10, p["text_muted"])
+        toggle(img, px + 154, py + 99, p, enabled=True)
+
     od.rectangle((ribbon_w, H - 28, W, H), fill=p["panel_alt"], outline=p["border"])
-    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.39  ·  {variant.title()} mode",
+    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.43  ·  {variant.title()} mode",
          11, p["text_dim"])
 
     big_path = OUT_DIR / f"_big-{variant}.png"

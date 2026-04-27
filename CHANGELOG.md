@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.43] — 2026-04-27
+
+### Added
+- Style Settings glass intensity preset: Off, Reduced, Subtle, Standard, and Strong for desktop liquid-glass chrome.
+- Reduced glass mode disables blur while keeping restrained surface contrast and light shadows for low-power or battery-focused environments.
+- Additional control polish for color pickers, disabled controls, CTA/warning/destructive pressed states, command palette focus rings, and Properties value focus rows.
+
+### Changed
+- Glass surfaces now share preset-driven filter variables so prompts, modals, hover popovers, settings controls, Canvas controls, status bar segments, and Editing Toolbar plugin surfaces can scale together.
+- Print output explicitly neutralizes glass variables to keep report/PDF rendering isolated from desktop UI effects.
+- Marketplace screenshots were regenerated to show v1.8.43 command palette, glass toggles, and the new preset language.
+
 ## [1.8.42] — 2026-04-27
 
 ### Added

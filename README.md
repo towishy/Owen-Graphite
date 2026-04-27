@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-26%20options-0d9488?style=flat-square)](#style-settings-항목)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-27%20options-0d9488?style=flat-square)](#style-settings-항목)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -26,10 +26,10 @@
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome** + Style Settings 26종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.42` (Obsidian 1.6.0+) |
+| **버전** | `1.8.43` (Obsidian 1.6.0+) |
 
 ---
 
@@ -88,7 +88,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ### 옵션 C — Style Settings 통합 (권장)
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
-사이드바에서 26개 옵션으로 즉시 모드 전환 가능.
+사이드바에서 27개 옵션으로 즉시 모드 전환 가능.
 주요 사용 흐름은 아래 [빠른 사용법](#-빠른-사용법)과 [고급 설정 요약](#-고급-설정-요약)을 참고하세요.
 
 ---
@@ -96,7 +96,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 ## 🚀 빠른 사용법
 
 1. Obsidian → 설정 → 외관 → 테마에서 **Owen Graphite**를 선택합니다.
-2. [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 설치하면 26개 옵션을 UI에서 조정할 수 있습니다.
+2. [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 설치하면 27개 옵션을 UI에서 조정할 수 있습니다.
 3. 보고서 PDF가 필요하면 **보고서 모드**를 켜고, PDF Export에서 `A3` / `가로` / `15mm` 여백을 선택합니다.
 4. 첫 페이지 헤더가 필요하면 Style Settings에서 좌·우 라벨/본문/사이드바 색을 채웁니다. 비워둔 쪽은 출력되지 않습니다.
 
@@ -106,7 +106,7 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 |------|-----------|------|
 | 문서 밀도 | 본문 폰트 크기, 줄간격, 최대 폭, 간격 프리셋 | 화면/인쇄 가독성 조정 |
 | 보고서 출력 | 보고서 모드, A3 페이지, 세리프 본문, 첫 줄 들여쓰기, 자동 넘버링 | PDF 보고서 레이아웃 구성 |
-| 색상/표현 | 액센트 컬러, 코드블록 테마, 시선 보호 모드, OS 다크 모드 | 개인 작업 환경 튜닝 |
+| 색상/표현 | 액센트 컬러, 코드블록 테마, 시선 보호 모드, OS 다크 모드, Glass 강도 | 개인 작업 환경 튜닝 |
 | PDF 첫 페이지 | 좌·우 라벨/본문/사이드바 색, 라벨 색 | 표지 상단 메타 정보 출력 |
 | 안정성 | 표 zebra, 표 모던 스타일, PDF 블록 분할 방지 | 긴 표·callout·이미지 출력 안정화 |
 
@@ -364,6 +364,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.43** — Style Settings Glass 강도 프리셋(Off/Reduced/Subtle/Standard/Strong), 저성능용 Reduced glass, 컨트롤/Properties/Editing Toolbar glass polish, 스크린샷 갱신
 - **v1.8.42** — Floating UI와 Settings 컨트롤 전반에 liquid-glass 확장, 토글 glass track/thumb, 선택 suggestion 상태 세밀화, Settings 행 hover 외곽 박스 복구
 - **v1.8.41** — Editing Toolbar 좌측 간격 보정, 프레임 조절바 hover 표시 방식, workspace divider/파일 탐색기 스크롤바 라인 정리
 - **v1.8.40** — 검색 옵션 suggestion popover hover/click 상태에 liquid-glass + 그림자 효과 적용
