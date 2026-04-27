@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.38] — 2026-04-27
+
+### Changed
+- macOS: 사이드바 토글 버튼 hover 시 다른 chrome과 동일한 liquid-glass 표면(연한 슬레이트 gradient + blur + 서틀 lift) 적용. 본얰 상태는 여전히 Obsidian 기본 subtle을 유지해 타이틀바 안에서 떠 보이지 않음.
+
 ## [1.8.37] — 2026-04-27
 
 ### Fixed
