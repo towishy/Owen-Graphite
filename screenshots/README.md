@@ -7,11 +7,8 @@ Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 | `light.png` | 512×288 (16:9) | Light | 헤더 + 표 + callout + 코드 발췌 |
 | `dark.png`  | 512×288 (16:9) | Dark | 동일 노트 다크 모드 |
 | `report.png`| 512×288 (16:9) | Report | 보고서 모드 (표지 + 자동 넘버링 + Side Bar 헤더) |
-| `snippet-design-concept-preview.png` | 2936×2462 | Concept | Gray override snippet vNext 디자인 개선안 preview |
 | `snippet-design-8-improvements-preview.png` | 3096×3586 | Concept | Gray override snippet 8개 구조 개선 preview |
-| `external-link-dotted-underline-preview.png` | 3016×2438 | Concept | 외부 링크 점선 밑줄 색상 후보 preview |
-| `report-title-spacing-preview.png` | 3408×1988 | Concept | H1 제목 길이 기반 Teal-to-Sky 라인과 첫 페이지 간격 preview |
-| `pdf-10-improvements-preview.png` | 1748×1414 | Concept | PDF 디자인 10개 개선 전/후 비교 preview |
+| `table-sample.png` | — | Concept | 보고서형 테이블 클래스 디자인 샘플 |
 
 > 모든 스크린샷은 익명 샘플 콘텐츠로 제작되어 개인·고객사 식별 정보가 포함되지 않습니다.
 
