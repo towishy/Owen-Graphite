@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.39] — 2026-04-27
+
+### Added
+- Settings 모달에 liquid-glass hover 적용: 좌측 nav 항목(`.vertical-tab-nav-item`)과 우측 설정 행(`.setting-item`) 모두 hover 시 슬레이트 gradient + blur + 서틀 lift 적용. Active nav 항목은 sky-tint로 구분.
+- Light/Dark 테마 패리티 보장.
+
 ## [1.8.38] — 2026-04-27
 
 ### Changed
