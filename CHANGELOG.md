@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.54] — 2026-04-28
+
+### Changed
+- Refined default Markdown table surfaces with a calmer graphite header, softer internal grid, quieter hover state, and clearer first-column emphasis.
+- Improved document rhythm around title/section headings and their following lead paragraphs for real Obsidian report editing screens.
+- Softened selected file explorer glass contrast so the active document stays clear without pulling focus from the report body.
+- Reduced spellcheck and grammar underline noise in Live Preview while preserving the editor signal.
+
 ## [1.8.53] — 2026-04-28
 
 ### Fixed
