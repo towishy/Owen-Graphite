@@ -9,6 +9,7 @@ import re
 import struct
 import subprocess
 import sys
+import zipfile
 from pathlib import Path
 
 
@@ -95,10 +96,16 @@ def manifest_and_versions() -> str:
 
     changelog = read_text("CHANGELOG.md")
     readme = read_text("README.md")
-    if f"## [{version}]" not in changelog:
-        fail(f"CHANGELOG missing {version} header")
-    if f"`{version}`" not in readme and f"v{version}" not in readme:
-        fail(f"README missing {version} version")
+    changelog_match = re.search(r"^## \[(\d+\.\d+\.\d+)\]", changelog, flags=re.M)
+    if not changelog_match:
+        fail("CHANGELOG missing latest version header")
+    if changelog_match.group(1) != version:
+        fail(f"CHANGELOG latest header {changelog_match.group(1)} does not match manifest {version}")
+    readme_match = re.search(r"\| \*\*버전\*\* \| `(\d+\.\d+\.\d+)`", readme)
+    if not readme_match:
+        fail("README missing top-level version row")
+    if readme_match.group(1) != version:
+        fail(f"README version {readme_match.group(1)} does not match manifest {version}")
     ok("version markers aligned")
     return version
 
@@ -146,12 +153,50 @@ def png_dimensions() -> None:
 
 def release_workflow_assets() -> None:
     workflow = read_text(".github/workflows/release.yml")
+    validate_workflow = read_text(".github/workflows/validate.yml")
     missing = [asset for asset in RELEASE_ASSETS if not re.search(rf"^\s+{re.escape(asset)}\s*$", workflow, flags=re.M)]
     if missing:
         fail(f"release workflow missing assets: {', '.join(missing)}")
     if "dist/Owen-Graphite-*.zip" not in workflow:
         fail("release workflow missing generated zip asset")
+    if "python scripts/validate_theme.py --ci" not in workflow:
+        fail("release workflow must run Python validator")
+    if "python scripts/build_release.py" not in workflow:
+        fail("release workflow must build release ZIP with Python")
+    if validate_workflow.count("python scripts/validate_theme.py --ci") != 1:
+        fail("validate workflow must call the Python validator exactly once")
+    if any(token in validate_workflow for token in ["jq ", "ruby", "validate_theme.rb"]):
+        fail("validate workflow should rely on Python validation only")
     ok("release workflow includes theme files and zip asset")
+
+
+def python_only_scripts() -> None:
+    ruby_scripts = sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "scripts").glob("*.rb"))
+    if ruby_scripts:
+        fail(f"Ruby scripts are not allowed: {', '.join(ruby_scripts)}")
+    gitignore = read_text(".gitignore")
+    required_ignores = ["dist/", ".venv/", "__pycache__/", "*.py[cod]"]
+    missing = [item for item in required_ignores if item not in gitignore]
+    if missing:
+        fail(f".gitignore missing Python/release artifacts: {', '.join(missing)}")
+    ok("scripts are Python-only and local artifacts are ignored")
+
+
+def release_zip_if_present(version: str) -> None:
+    zip_path = ROOT / "dist" / f"Owen-Graphite-{version}.zip"
+    if not zip_path.exists():
+        ok("release ZIP content check skipped")
+        return
+    expected = [f"Owen Graphite/{asset}" for asset in RELEASE_ASSETS]
+    with zipfile.ZipFile(zip_path) as archive:
+        names = archive.namelist()
+    missing = [name for name in expected if name not in names]
+    extra = [name for name in names if name not in expected]
+    if missing:
+        fail(f"release ZIP missing assets: {', '.join(missing)}")
+    if extra:
+        fail(f"release ZIP has unexpected assets: {', '.join(extra)}")
+    ok("release ZIP contents match expected manual install package")
 
 
 def live_preview_guards() -> None:
@@ -197,11 +242,13 @@ def main() -> int:
     args = parser.parse_args()
 
     required_files()
-    manifest_and_versions()
+    version = manifest_and_versions()
     no_stale_legacy_markers()
     style_settings_count()
     png_dimensions()
     release_workflow_assets()
+    python_only_scripts()
+    release_zip_if_present(version)
     live_preview_guards()
     diff_check()
     target_sync_check(args.target, args.ci)

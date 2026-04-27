@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.46] — 2026-04-27
+
+### Added
+- Accessibility hardening for the latest glass UI layer: reduced-motion users now get no hover lift, no glass blur filters, and near-zero transition timing across toolbar, settings, status bar, popover, suggestion, metadata, and canvas controls.
+- High-contrast and forced-colors handling for glass borders, focus outlines, selected suggestions, modals, notices, toggles, and status bar segments.
+- Python validator checks for Python-only scripts, ignored local Python/build artifacts, single-source validation workflow usage, release workflow Python calls, and generated release ZIP contents when present.
+
+### Changed
+- Validation workflow now delegates to `python scripts/validate_theme.py --ci` as the single source of truth instead of duplicating manifest/theme checks in shell steps.
+- README documents Glass intensity presets and accessibility behavior more explicitly.
+
 ## [1.8.45] — 2026-04-27
 
 ### Removed

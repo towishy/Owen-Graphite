@@ -16,31 +16,5 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Validate manifest.json ↔ CHANGELOG.md version
-        shell: bash
-        run: |
-          set -euo pipefail
-          MANIFEST_VER=$(jq -r .version manifest.json)
-          if [ -z "$MANIFEST_VER" ] || [ "$MANIFEST_VER" = "null" ]; then
-            echo "::error::manifest.json missing 'version'"
-            exit 1
-          fi
-          if ! grep -qE "^## \[${MANIFEST_VER}\]" CHANGELOG.md; then
-            echo "::error::CHANGELOG.md is missing '## [${MANIFEST_VER}]' header"
-            exit 1
-          fi
-          echo "OK: manifest.version=${MANIFEST_VER} matches CHANGELOG entry"
-
-      - name: Check theme.css exists and is non-empty
-        run: |
-          test -s theme.css || { echo "::error::theme.css missing or empty"; exit 1; }
-          LINES=$(wc -l < theme.css)
-          echo "theme.css: ${LINES} lines"
-
-      - name: Validate manifest.json schema
-        run: |
-          jq -e '.name and .version and .minAppVersion and .author' manifest.json > /dev/null \
-            || { echo "::error::manifest.json missing required fields"; exit 1; }
-
-      - name: Run local theme validation
+      - name: Run theme validation
         run: python scripts/validate_theme.py --ci

@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.45` (Obsidian 1.6.0+) |
+| **버전** | `1.8.46` (Obsidian 1.6.0+) |
 
 ---
 
@@ -111,6 +111,18 @@ git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
 | 안정성 | 표 zebra, 표 모던 스타일, PDF 블록 분할 방지 | 긴 표·callout·이미지 출력 안정화 |
 
 Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본값으로 고정됩니다. PDF 헤더, 보고서 모드, 액센트 컬러 변경을 자주 쓴다면 플러그인 사용을 권장합니다.
+
+### Glass 강도 프리셋
+
+| 프리셋 | 권장 상황 |
+|------|-----------|
+| Off | glass 효과 없이 가장 단순한 UI가 필요할 때 |
+| Reduced | 배터리·저성능 환경에서 blur 부담을 줄이고 싶을 때 |
+| Subtle | 업무용으로 차분한 glass 느낌만 남기고 싶을 때 |
+| Standard | 기본 추천값 |
+| Strong | glass 표면과 그림자를 더 뚜렷하게 보고 싶을 때 |
+
+`prefers-reduced-motion` 환경에서는 hover lift와 blur filter가 자동으로 억제됩니다. 고대비/forced-colors 환경에서는 glass border와 focus outline을 더 명확하게 유지합니다.
 
 ---
 
@@ -374,6 +386,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.46** — 최신 glass UI 접근성 보강(reduced motion/high contrast/forced colors), Python validator 강화, validate workflow 단일화, Glass preset 설명 추가
 - **v1.8.45** — 기존 Ruby 검증 스크립트 제거, Python-only 검증/릴리즈 자동화로 정리, Python 로컬 산출물 ignore 추가
 - **v1.8.44** — Python 기반 검증기/릴리즈 ZIP 생성기 추가, GitHub Actions 검증·릴리즈 워크플로 Python 단일화, 수동 설치용 ZIP asset 자동 생성
 - **v1.8.43** — Style Settings Glass 강도 프리셋(Off/Reduced/Subtle/Standard/Strong), 저성능용 Reduced glass, 컨트롤/Properties/Editing Toolbar glass polish, 스크린샷 갱신
