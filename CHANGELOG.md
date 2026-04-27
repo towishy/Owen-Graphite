@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.49] — 2026-04-27
+
+### Added
+- Optional `.ogd-reference-list` pattern for reference-heavy sections, separating source badges, document titles, metadata, and notes for faster scanning in reports.
+- `.ogd-reference-summary`, `.ogd-reference-source`, `.ogd-reference-main`, `.ogd-reference-title`, `.ogd-reference-meta`, and `.ogd-reference-note` helper classes with light/dark and mobile handling.
+- Reference-list polish preview fixture comparing the current bullet list style with the recommended structured reference layout.
+
+### Changed
+- README now documents the reference-list pattern and keeps it opt-in so ordinary Markdown lists remain unchanged.
+
 ## [1.8.48] — 2026-04-27
 
 ### Added

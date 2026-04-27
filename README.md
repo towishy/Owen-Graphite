@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.48` (Obsidian 1.6.0+) |
+| **버전** | `1.8.49` (Obsidian 1.6.0+) |
 
 ---
 
@@ -161,10 +161,28 @@ Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본�
 | 보고서 출력 | A3 가로, 헤더/푸터, 자동 넘버링, 표지 페이지, 세리프 본문, PDF page-break 보강 |
 | PDF 첫 페이지 | 좌·우 라벨/본문 2줄 구조, 3px side bar, 빈 값 자동 생략 |
 | 콘텐츠 강조 | `<kbd>`, `secret` blur, Mermaid frame, 이미지 hover, footnote/popover 톤 정리 |
+| 참고 출처 | `.ogd-reference-list` 선택 패턴으로 링크 밀집 구간을 출처/문서/설명 구조로 정리 |
 | 워크스페이스 | 사이드바, 탭, 검색, Properties, Bases, Canvas, Graph, Backlink, Tag pane 톤 통일 |
 | 접근성 | `:focus-visible`, high contrast, reduced motion, CJK 가독성 보정, OS dark mode 옵션 |
 
 Live Preview 클릭 회귀 확인용 문서는 [docs/fixtures/live-preview-editing.md](docs/fixtures/live-preview-editing.md)에 있습니다.
+
+### 참고 출처 정리 패턴
+
+링크가 많은 참고 출처 섹션은 선택적으로 HTML list에 `.ogd-reference-list`를 붙여 더 빠르게 스캔할 수 있습니다. 일반 Markdown 목록 스타일은 바꾸지 않습니다.
+
+```html
+<p class="ogd-reference-summary">링크 밀집 구간만 출처명, 문서명, 설명으로 분리합니다.</p>
+<ol class="ogd-reference-list">
+    <li>
+        <span class="ogd-reference-source">Microsoft</span>
+        <div class="ogd-reference-main">
+            <a class="ogd-reference-title" href="https://learn.microsoft.com/">Microsoft Purview service description</a>
+            <span class="ogd-reference-meta">Purview 기능별 라이선스 기준</span>
+        </div>
+    </li>
+</ol>
+```
 
 ### 보고서형 callout 팔레트 (v1.8.0+)
 

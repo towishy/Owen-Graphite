@@ -4991,7 +4991,147 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   color: #475569 !important;
 }
 
+.markdown-rendered :is(ol, ul).ogd-reference-list,
+.markdown-preview-view :is(ol, ul).ogd-reference-list,
+.markdown-reading-view :is(ol, ul).ogd-reference-list {
+  margin: 0.8em 0 1.2em !important;
+  padding: 0 !important;
+  list-style: none !important;
+  border-top: 1px solid rgba(148, 163, 184, 0.28) !important;
+}
+
+.markdown-rendered :is(ol, ul).ogd-reference-list > li,
+.markdown-preview-view :is(ol, ul).ogd-reference-list > li,
+.markdown-reading-view :is(ol, ul).ogd-reference-list > li {
+  display: grid !important;
+  grid-template-columns: minmax(86px, 7.2em) minmax(0, 1fr) !important;
+  gap: 0.7em !important;
+  align-items: start !important;
+  margin: 0 !important;
+  padding: 0.56em 0 0.62em !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28) !important;
+}
+
+.markdown-rendered :is(ol, ul).ogd-reference-list > li::before,
+.markdown-preview-view :is(ol, ul).ogd-reference-list > li::before,
+.markdown-reading-view :is(ol, ul).ogd-reference-list > li::before {
+  display: none !important;
+}
+
+.markdown-rendered .ogd-reference-source,
+.markdown-preview-view .ogd-reference-source,
+.markdown-reading-view .ogd-reference-source {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 1.65em !important;
+  padding: 0.14em 0.55em !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 999px !important;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  font-size: 0.78em !important;
+  font-weight: 760 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+.markdown-rendered .ogd-reference-main,
+.markdown-preview-view .ogd-reference-main,
+.markdown-reading-view .ogd-reference-main {
+  min-width: 0 !important;
+  color: #64748b !important;
+  line-height: 1.48 !important;
+}
+
+.markdown-rendered .ogd-reference-title,
+.markdown-preview-view .ogd-reference-title,
+.markdown-reading-view .ogd-reference-title {
+  display: inline !important;
+  font-weight: 760 !important;
+}
+
+.markdown-rendered .ogd-reference-meta,
+.markdown-preview-view .ogd-reference-meta,
+.markdown-reading-view .ogd-reference-meta,
+.markdown-rendered .ogd-reference-note,
+.markdown-preview-view .ogd-reference-note,
+.markdown-reading-view .ogd-reference-note {
+  color: #64748b !important;
+  font-size: 0.92em !important;
+}
+
+.markdown-rendered .ogd-reference-note,
+.markdown-preview-view .ogd-reference-note,
+.markdown-reading-view .ogd-reference-note {
+  display: block !important;
+  margin-top: 0.2em !important;
+  line-height: 1.42 !important;
+}
+
+.markdown-rendered .ogd-reference-summary,
+.markdown-preview-view .ogd-reference-summary,
+.markdown-reading-view .ogd-reference-summary {
+  margin: 0.65em 0 1em !important;
+  padding: 0.72em 0.9em !important;
+  border-left: 3px solid #94a3b8 !important;
+  background: #f8fafc !important;
+  color: #334155 !important;
+  font-size: 0.96em !important;
+  line-height: 1.5 !important;
+}
+
+.theme-dark .markdown-rendered :is(ol, ul).ogd-reference-list,
+.theme-dark .markdown-preview-view :is(ol, ul).ogd-reference-list,
+.theme-dark .markdown-reading-view :is(ol, ul).ogd-reference-list,
+.theme-dark .markdown-rendered :is(ol, ul).ogd-reference-list > li,
+.theme-dark .markdown-preview-view :is(ol, ul).ogd-reference-list > li,
+.theme-dark .markdown-reading-view :is(ol, ul).ogd-reference-list > li {
+  border-color: rgba(203, 213, 225, 0.16) !important;
+}
+
+.theme-dark .markdown-rendered .ogd-reference-source,
+.theme-dark .markdown-preview-view .ogd-reference-source,
+.theme-dark .markdown-reading-view .ogd-reference-source {
+  border-color: rgba(203, 213, 225, 0.24) !important;
+  background: rgba(30, 41, 59, 0.74) !important;
+  color: #cbd5e1 !important;
+}
+
+.theme-dark .markdown-rendered .ogd-reference-main,
+.theme-dark .markdown-preview-view .ogd-reference-main,
+.theme-dark .markdown-reading-view .ogd-reference-main,
+.theme-dark .markdown-rendered .ogd-reference-meta,
+.theme-dark .markdown-preview-view .ogd-reference-meta,
+.theme-dark .markdown-reading-view .ogd-reference-meta,
+.theme-dark .markdown-rendered .ogd-reference-note,
+.theme-dark .markdown-preview-view .ogd-reference-note,
+.theme-dark .markdown-reading-view .ogd-reference-note {
+  color: #94a3b8 !important;
+}
+
+.theme-dark .markdown-rendered .ogd-reference-summary,
+.theme-dark .markdown-preview-view .ogd-reference-summary,
+.theme-dark .markdown-reading-view .ogd-reference-summary {
+  border-left-color: #94a3b8 !important;
+  background: rgba(30, 41, 59, 0.56) !important;
+  color: #cbd5e1 !important;
+}
+
 @media (max-width: 700px) {
+  .markdown-rendered :is(ol, ul).ogd-reference-list > li,
+  .markdown-preview-view :is(ol, ul).ogd-reference-list > li,
+  .markdown-reading-view :is(ol, ul).ogd-reference-list > li {
+    grid-template-columns: 1fr !important;
+    gap: 0.3em !important;
+  }
+
+  .markdown-rendered .ogd-reference-source,
+  .markdown-preview-view .ogd-reference-source,
+  .markdown-reading-view .ogd-reference-source {
+    justify-self: start !important;
+  }
+
   .markdown-rendered table,
   .markdown-preview-view table,
   .markdown-reading-view table {

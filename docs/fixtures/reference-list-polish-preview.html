@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Reference List Polish Preview</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --paper-soft: #f9fafb;
+      --line: #d7dde6;
+      --line-soft: rgba(148, 163, 184, 0.28);
+      --text: #1f2937;
+      --muted: #64748b;
+      --strong: #111827;
+      --link: #334155;
+      --link-line: #94a3b8;
+      --link-line-hover: #64748b;
+      --badge-bg: #f1f5f9;
+      --badge-line: #cbd5e1;
+      --shadow: 0 18px 46px -34px rgba(15, 23, 42, 0.32);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      line-height: 1.58;
+    }
+
+    .stage {
+      width: min(1280px, calc(100vw - 56px));
+      margin: 34px auto;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sheet {
+      min-height: 720px;
+      padding: 34px 38px 38px;
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 20px;
+      padding: 3px 10px;
+      border: 1px solid var(--badge-line);
+      border-radius: 999px;
+      background: var(--badge-bg);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      color: var(--strong);
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 18px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 24px;
+      font-size: 17px;
+    }
+
+    li {
+      margin: 7px 0;
+      padding-left: 2px;
+    }
+
+    a {
+      color: var(--link);
+      font-weight: 700;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: var(--link-line);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 0.22em;
+    }
+
+    a:hover,
+    a.is-hovered {
+      color: #1f2937;
+      text-decoration-color: var(--link-line-hover);
+    }
+
+    .note {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .ogd-reference-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 16px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .ogd-reference-list > li {
+      display: grid;
+      grid-template-columns: 94px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      margin: 0;
+      padding: 11px 0 12px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .ogd-reference-source {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border: 1px solid var(--badge-line);
+      border-radius: 999px;
+      background: var(--badge-bg);
+      color: #475569;
+      font-size: 12px;
+      font-weight: 760;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .ogd-reference-main {
+      min-width: 0;
+    }
+
+    .ogd-reference-title {
+      display: inline;
+      font-size: 16px;
+      line-height: 1.48;
+    }
+
+    .ogd-reference-meta {
+      display: inline;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .ogd-reference-note {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .ogd-reference-summary {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-left: 3px solid #94a3b8;
+      background: var(--paper-soft);
+      color: #334155;
+      font-size: 16px;
+    }
+
+    .compact-rule {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 980px) {
+      .stage { width: min(100vw - 28px, 680px); margin: 20px auto; }
+      .comparison { grid-template-columns: 1fr; }
+      .sheet { min-height: 0; padding: 26px 22px; }
+      h1 { font-size: 26px; }
+      p, ul { font-size: 16px; }
+      .ogd-reference-list > li { grid-template-columns: 1fr; gap: 6px; }
+      .ogd-reference-source { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <section class="comparison">
+      <article class="sheet">
+        <div class="label">Current</div>
+        <h1>참고 출처</h1>
+        <p>현재 방식은 Obsidian 기본 목록에 gray dotted 외부 링크를 얹은 형태입니다.</p>
+        <ul>
+          <li>Microsoft 365 Licensing Guidance for Security & Compliance (2026 최신)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">Learn about Microsoft Purview</a> (공식 솔루션 카탈로그 13개 + 신규 DSPM)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">Microsoft Purview service description</a> (Purview 기능별 E5/E3/add-on/PAYG 기준)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">Microsoft Purview billing models</a> (per-user licensing + Azure pay-as-you-go 보완 모델)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">Data Security Investigations</a> (DSI 개요, Defender XDR/IRM/DSPM 연동)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">Billing in Data Security Investigations</a> (storage meter + AI compute units)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">DSPM for AI(classic)</a></li>
+          <li>Microsoft Learn: <a class="is-hovered" href="https://learn.microsoft.com/">Network Data Security</a> (E5 + PAYG 설정, GSA preview 과금 예외)</li>
+          <li>Microsoft Learn: <a href="https://learn.microsoft.com/">Customer Lockbox</a></li>
+          <li>본 매트릭스는 2026-04 기준이며 라이선스 변경 빈번하므로 최종 확인 권장</li>
+        </ul>
+        <p class="note">장점: 마크다운 원형을 유지합니다. 단점: 링크가 많으면 행 길이와 괄호 설명이 섞여 스캔이 조금 무거워집니다.</p>
+      </article>
+
+      <article class="sheet">
+        <div class="label">Recommended</div>
+        <h1>참고 출처</h1>
+        <p class="ogd-reference-summary">링크 밀집 구간만 reference-list 패턴으로 정리하면 출처명, 문서명, 설명이 분리되어 보고서 하단에서 더 빠르게 스캔됩니다.</p>
+        <ol class="ogd-reference-list">
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title" href="https://learn.microsoft.com/">Learn about Microsoft Purview</a> <span class="ogd-reference-meta">공식 솔루션 카탈로그 13개 + 신규 DSPM</span></div>
+          </li>
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title" href="https://learn.microsoft.com/">Microsoft Purview service description</a> <span class="ogd-reference-meta">Purview 기능별 E5/E3/add-on/PAYG 기준</span></div>
+          </li>
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title" href="https://learn.microsoft.com/">Microsoft Purview billing models</a> <span class="ogd-reference-meta">per-user licensing + Azure pay-as-you-go 보완 모델</span></div>
+          </li>
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title" href="https://learn.microsoft.com/">Data Security Investigations</a> <span class="ogd-reference-meta">DSI 개요, Defender XDR/IRM/DSPM 연동</span></div>
+          </li>
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title" href="https://learn.microsoft.com/">Billing in Data Security Investigations</a> <span class="ogd-reference-meta">storage meter + AI compute units</span></div>
+          </li>
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title is-hovered" href="https://learn.microsoft.com/">Network Data Security</a> <span class="ogd-reference-meta">E5 + PAYG 설정, GSA preview 과금 예외</span></div>
+          </li>
+          <li>
+            <span class="ogd-reference-source">Microsoft</span>
+            <div class="ogd-reference-main"><a class="ogd-reference-title" href="https://learn.microsoft.com/">Customer Lockbox</a><div class="ogd-reference-note">고객 데이터 접근 승인 흐름과 감사 기록 확인용 참고 문서</div></div>
+          </li>
+        </ol>
+        <p class="compact-rule">제안: 일반 목록은 그대로 두고, 참고 출처처럼 링크가 5개 이상 몰린 섹션에만 선택적으로 적용합니다.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
