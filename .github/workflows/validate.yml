@@ -11,6 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
       - name: Validate manifest.json ↔ CHANGELOG.md version
         shell: bash
         run: |
@@ -38,4 +43,4 @@ jobs:
             || { echo "::error::manifest.json missing required fields"; exit 1; }
 
       - name: Run local theme validation
-        run: ruby scripts/validate_theme.rb --ci
+        run: python scripts/validate_theme.py --ci

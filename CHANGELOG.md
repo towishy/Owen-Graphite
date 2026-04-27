@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.44] — 2026-04-27
+
+### Added
+- Cross-platform Python validator (`scripts/validate_theme.py`) for required files, manifest/README/CHANGELOG version alignment, Style Settings option count, screenshot dimensions, release workflow assets, Live Preview editability guards, `git diff --check`, and optional active-vault sync checks.
+- Python release ZIP builder (`scripts/build_release.py`) that packages manual install assets into `dist/Owen-Graphite-<version>.zip`.
+
+### Changed
+- GitHub Actions validation and release workflows now use Python instead of Ruby, improving Windows/macOS parity and reducing local setup friction.
+- Release workflow now validates the package and attaches the generated manual-install ZIP alongside individual theme assets.
+- README local validation instructions now prefer Python and document the release ZIP build command.
+
 ## [1.8.43] — 2026-04-27
 
 ### Added
