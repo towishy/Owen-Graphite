@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.52] — 2026-04-28
+
+### Added
+- Vault tree design, icon treatment, selected-document icon effect, and color comparison preview fixtures with generated sample screenshots.
+
+### Changed
+- File explorer folder and document pseudo-icons now use the lighter Thin Outline Icons treatment for a calmer Graphite tree.
+- Active file selection keeps the glass surface and shadow while removing the outline-grow ring, scale lift, and heavy filled icon treatment.
+
 ## [1.8.51] — 2026-04-27
 
 ### Added

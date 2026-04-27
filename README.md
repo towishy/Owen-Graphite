@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.51` (Obsidian 1.6.0+) |
+| **버전** | `1.8.52` (Obsidian 1.6.0+) |
 
 ---
 
@@ -468,6 +468,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.52** — 파일 탐색기 폴더/문서 아이콘을 Thin Outline Icons로 정리, 선택 문서 glass 효과에서 outline grow와 heavy filled icon 제거, vault tree 시안 fixture/스크린샷 추가
 - **v1.8.51** — callout fixture, contrast audit, release checklist, 추천 프리셋/플러그인 지원표/시각 회귀 문서, CSS 섹션 인덱스와 토큰 alias 추가
 - **v1.8.50** — Style Settings 구획 헤더, 현대적인 파일 탐색기 접기 chevron, 본문 좌측 여백 보강, 긴 코드 토큰용 표 유틸리티, 보고서형 callout 아이콘/톤 정리
 - **v1.8.49** — 참고 출처 링크 밀집 구간을 출처/문서/설명 구조로 정리하는 `.ogd-reference-list` 패턴 추가

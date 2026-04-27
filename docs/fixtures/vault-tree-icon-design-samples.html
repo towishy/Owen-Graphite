@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Vault Tree Icon Design Samples</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --panel-soft: #f8fafc;
+      --line: #dbe2eb;
+      --line-strong: #9aa7b7;
+      --text: #111827;
+      --muted: #405066;
+      --folder: #334155;
+      --file: #475569;
+      --accent: #64748b;
+      --blue: #2563eb;
+      --teal: #0f766e;
+      --shadow: 0 18px 42px rgba(15, 23, 42, .10);
+      --glass: linear-gradient(180deg, rgba(255,255,255,.95), rgba(241,245,249,.62));
+      --glass-hover: linear-gradient(180deg, rgba(255,255,255,.92), rgba(248,250,252,.55));
+      --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: var(--font);
+    }
+
+    .page {
+      width: 1440px;
+      margin: 0 auto;
+      padding: 38px;
+    }
+
+    .header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 9px 0 0;
+      color: #5f6c7d;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      gap: 8px 16px;
+      color: #64748b;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .legend-icon {
+      display: inline-flex;
+      width: 18px;
+      height: 18px;
+      margin-right: 7px;
+      vertical-align: -4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .sample {
+      overflow: hidden;
+      min-height: 830px;
+      border: 1px solid rgba(148, 163, 184, .34);
+      border-radius: 8px;
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .sample-header {
+      min-height: 118px;
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(148, 163, 184, .24);
+      background: linear-gradient(180deg, rgba(248,250,252,.98), rgba(255,255,255,.86));
+    }
+
+    .kicker {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .note {
+      margin-top: 7px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .tree {
+      padding: 16px 10px 24px;
+      font-size: 13px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      min-height: 28px;
+      margin: 1px 3px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--file);
+      line-height: 1.35;
+    }
+
+    .row.folder { color: var(--folder); font-size: 13.5px; font-weight: 760; }
+    .row.file { color: var(--file); font-size: 12.75px; font-weight: 500; }
+
+    .top {
+      min-height: 30px;
+      margin-top: 6px;
+      margin-bottom: 3px;
+      padding: 0 10px 0 8px;
+      border-color: rgba(148, 163, 184, .22);
+      background: rgba(248, 250, 252, .78);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .74);
+      color: #334155;
+      font-size: 12.5px;
+      font-weight: 850;
+      letter-spacing: .02em;
+    }
+
+    .lvl-1 { margin-left: 26px; }
+    .lvl-2 { margin-left: 52px; }
+    .lvl-3 { margin-left: 78px; }
+
+    .rail {
+      position: relative;
+    }
+
+    .rail::before {
+      position: absolute;
+      left: -14px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--line);
+      content: "";
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      max-width: 100%;
+      padding: 4px 12px 4px 6px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transform-origin: left center;
+    }
+
+    .name {
+      overflow: hidden;
+      min-width: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .icon {
+      flex: 0 0 auto;
+      width: 16px;
+      height: 16px;
+      margin-right: 7px;
+      color: #8a97a8;
+    }
+
+    .top .icon { width: 17px; height: 17px; color: #64748b; }
+
+    .active {
+      min-height: 38px;
+      color: #0f172a;
+    }
+
+    .active .label {
+      padding: 6px 18px 6px 10px;
+      border-color: rgba(71, 85, 105, .44);
+      background: var(--glass);
+      box-shadow:
+        0 0 0 2px rgba(100, 116, 139, .22),
+        inset 0 1px 0 rgba(255, 255, 255, .98),
+        inset 0 -1px 0 rgba(15, 23, 42, .10),
+        0 14px 30px rgba(15, 23, 42, .22),
+        0 4px 10px rgba(15, 23, 42, .14);
+      color: #0f172a;
+      font-size: 14.2px;
+      font-weight: 850;
+      transform: scale(1.025);
+    }
+
+    .hover-box.top {
+      background: var(--glass-hover);
+      border-color: rgba(100, 116, 139, .34);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .94),
+        inset 0 -1px 0 rgba(15, 23, 42, .06),
+        0 6px 16px rgba(15, 23, 42, .12);
+    }
+
+    .option-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      margin-right: 7px;
+      border: 1px solid rgba(148, 163, 184, .34);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .66);
+      color: #64748b;
+    }
+
+    .mini-dot {
+      width: 8px;
+      height: 8px;
+      margin-right: 9px;
+      border-radius: 999px;
+      background: #94a3b8;
+      box-shadow: 0 0 0 3px rgba(148, 163, 184, .14);
+    }
+
+    .folder .mini-dot { background: #64748b; }
+    .file .mini-dot { background: #0f766e; }
+
+    .type-pill {
+      flex: 0 0 auto;
+      min-width: 22px;
+      height: 18px;
+      margin-right: 7px;
+      padding: 0 5px;
+      border-radius: 5px;
+      background: #eef2f7;
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 850;
+      line-height: 17px;
+      text-align: center;
+    }
+
+    .file .type-pill { background: #e8f5f2; color: #0f766e; }
+    .folder .type-pill { background: #eef2f7; color: #475569; }
+
+    svg { display: block; width: 100%; height: 100%; }
+
+    .svg-symbols {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .recommendation {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border: 1px solid #d9e0ea;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .92);
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.65;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .07);
+    }
+  </style>
+</head>
+<body>
+  <svg class="svg-symbols" aria-hidden="true" width="0" height="0">
+    <symbol id="folder-line" viewBox="0 0 24 24">
+      <path d="M3.5 6.5h6.2l1.9 2h8.9v9.8a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+      <path d="M3.5 8.5h17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="file-line" viewBox="0 0 24 24">
+      <path d="M6.5 3.5h7.4l3.6 3.8v13.2h-11Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+      <path d="M13.7 3.7v4h3.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="folder-fill" viewBox="0 0 24 24">
+      <path d="M3.4 7.2a2 2 0 0 1 2-2h4.5l1.8 2h7a2 2 0 0 1 2 2v1H3.4Z" fill="currentColor" opacity=".86"/>
+      <path d="M3.4 9.2h17.2v8.9a2 2 0 0 1-2 2H5.4a2 2 0 0 1-2-2Z" fill="currentColor" opacity=".58"/>
+    </symbol>
+    <symbol id="file-fill" viewBox="0 0 24 24">
+      <path d="M6.5 3.6h7.3l3.7 3.8v13H6.5Z" fill="currentColor" opacity=".20"/>
+      <path d="M8.4 12.1h7.2M8.4 15.5h5.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <main class="page">
+    <header class="header">
+      <div>
+        <h1>Vault Tree Icon Samples</h1>
+        <p class="lead">현재 Owen Graphite 볼트 트리 디자인을 유지하면서 폴더와 문서를 글자 앞 아이콘으로 구분하는 네 가지 방향입니다.</p>
+      </div>
+      <div class="legend" aria-label="legend">
+        <span><svg class="legend-icon"><use href="#folder-line"></use></svg>folder</span>
+        <span><svg class="legend-icon"><use href="#file-line"></use></svg>document</span>
+        <span><span class="mini-dot"></span>semantic marker</span>
+        <span><span class="type-pill">MD</span>type tag</span>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="icon samples">
+      <article class="sample">
+        <div class="sample-header">
+          <div class="kicker">Sample A</div>
+          <h2>Thin Outline Icons</h2>
+          <div class="note">가장 안전한 안. 현재 그래파이트 톤을 해치지 않고 폴더/문서 차이만 조용히 표시합니다.</div>
+        </div>
+        <div class="tree">
+          <div class="row folder top"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">Clippings</span></span></div>
+          <div class="row folder top hover-box"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">copilot</span></span></div>
+          <div class="row folder top"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">outputs</span></span></div>
+          <div class="rail">
+            <div class="row folder lvl-1"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">drafts</span></span></div>
+            <div class="row file lvl-2"><span class="label"><svg class="icon"><use href="#file-line"></use></svg><span class="name">서식테스트</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">entities</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">reports</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">attachments</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">comparisons</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><svg class="icon"><use href="#folder-line"></use></svg><span class="name">synthesis</span></span></div>
+            <div class="row file lvl-3"><span class="label"><svg class="icon"><use href="#file-line"></use></svg><span class="name">krafton-purview-e5-fe...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><svg class="icon"><use href="#file-line"></use></svg><span class="name">auto-hub-security-mic...</span></span></div>
+            <div class="row file lvl-3 active"><span class="label"><svg class="icon"><use href="#file-line"></use></svg><span class="name">entra-p2-access-revi...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><svg class="icon"><use href="#file-line"></use></svg><span class="name">readiness-archive...</span></span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sample">
+        <div class="sample-header">
+          <div class="kicker">Sample B</div>
+          <h2>Soft Filled Icons</h2>
+          <div class="note">조금 더 눈에 띄는 안. 선택 문서의 유리 박스와 잘 어울리지만 아이콘 존재감이 큽니다.</div>
+        </div>
+        <div class="tree">
+          <div class="row folder top"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">Clippings</span></span></div>
+          <div class="row folder top hover-box"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">copilot</span></span></div>
+          <div class="row folder top"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">outputs</span></span></div>
+          <div class="rail">
+            <div class="row folder lvl-1"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">drafts</span></span></div>
+            <div class="row file lvl-2"><span class="label"><svg class="icon"><use href="#file-fill"></use></svg><span class="name">서식테스트</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">entities</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">reports</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">attachments</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">comparisons</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><svg class="icon"><use href="#folder-fill"></use></svg><span class="name">synthesis</span></span></div>
+            <div class="row file lvl-3"><span class="label"><svg class="icon"><use href="#file-fill"></use></svg><span class="name">krafton-purview-e5-fe...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><svg class="icon"><use href="#file-fill"></use></svg><span class="name">auto-hub-security-mic...</span></span></div>
+            <div class="row file lvl-3 active"><span class="label"><svg class="icon"><use href="#file-fill"></use></svg><span class="name">entra-p2-access-revi...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><svg class="icon"><use href="#file-fill"></use></svg><span class="name">readiness-archive...</span></span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sample">
+        <div class="sample-header">
+          <div class="kicker">Sample C</div>
+          <h2>Semantic Dot + Text</h2>
+          <div class="note">가장 미니멀한 안. 폴더/문서를 작은 색상 표식으로만 구분해서 트리 노이즈가 적습니다.</div>
+        </div>
+        <div class="tree">
+          <div class="row folder top"><span class="label"><span class="mini-dot"></span><span class="name">Clippings</span></span></div>
+          <div class="row folder top hover-box"><span class="label"><span class="mini-dot"></span><span class="name">copilot</span></span></div>
+          <div class="row folder top"><span class="label"><span class="mini-dot"></span><span class="name">outputs</span></span></div>
+          <div class="rail">
+            <div class="row folder lvl-1"><span class="label"><span class="mini-dot"></span><span class="name">drafts</span></span></div>
+            <div class="row file lvl-2"><span class="label"><span class="mini-dot"></span><span class="name">서식테스트</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><span class="mini-dot"></span><span class="name">entities</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><span class="mini-dot"></span><span class="name">reports</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><span class="mini-dot"></span><span class="name">attachments</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><span class="mini-dot"></span><span class="name">comparisons</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><span class="mini-dot"></span><span class="name">synthesis</span></span></div>
+            <div class="row file lvl-3"><span class="label"><span class="mini-dot"></span><span class="name">krafton-purview-e5-fe...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><span class="mini-dot"></span><span class="name">auto-hub-security-mic...</span></span></div>
+            <div class="row file lvl-3 active"><span class="label"><span class="mini-dot"></span><span class="name">entra-p2-access-revi...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><span class="mini-dot"></span><span class="name">readiness-archive...</span></span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sample">
+        <div class="sample-header">
+          <div class="kicker">Sample D</div>
+          <h2>Type Badge Prefix</h2>
+          <div class="note">정보성이 가장 강한 안. 폴더와 Markdown 문서를 즉시 구분하지만, 장기 사용 시 조금 바쁠 수 있습니다.</div>
+        </div>
+        <div class="tree">
+          <div class="row folder top"><span class="label"><span class="type-pill">DIR</span><span class="name">Clippings</span></span></div>
+          <div class="row folder top hover-box"><span class="label"><span class="type-pill">DIR</span><span class="name">copilot</span></span></div>
+          <div class="row folder top"><span class="label"><span class="type-pill">DIR</span><span class="name">outputs</span></span></div>
+          <div class="rail">
+            <div class="row folder lvl-1"><span class="label"><span class="type-pill">DIR</span><span class="name">drafts</span></span></div>
+            <div class="row file lvl-2"><span class="label"><span class="type-pill">MD</span><span class="name">서식테스트</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><span class="type-pill">DIR</span><span class="name">entities</span></span></div>
+            <div class="row folder lvl-1"><span class="label"><span class="type-pill">DIR</span><span class="name">reports</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><span class="type-pill">DIR</span><span class="name">attachments</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><span class="type-pill">DIR</span><span class="name">comparisons</span></span></div>
+            <div class="row folder lvl-2"><span class="label"><span class="type-pill">DIR</span><span class="name">synthesis</span></span></div>
+            <div class="row file lvl-3"><span class="label"><span class="type-pill">MD</span><span class="name">krafton-purview-e5-fe...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><span class="type-pill">MD</span><span class="name">auto-hub-security-mic...</span></span></div>
+            <div class="row file lvl-3 active"><span class="label"><span class="type-pill">MD</span><span class="name">entra-p2-access-revi...</span></span></div>
+            <div class="row file lvl-3"><span class="label"><span class="type-pill">MD</span><span class="name">readiness-archive...</span></span></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="recommendation">
+      추천: 실제 적용은 Sample A가 가장 자연스럽습니다. 현재의 glass hover/active, 최상위 폴더 박스, 긴 파일명 ellipsis와 충돌이 적고, 폴더/문서 구분도 충분합니다. Sample C는 더 미니멀하고, Sample D는 정보성은 강하지만 볼트가 복잡해 보일 수 있습니다.
+    </section>
+  </main>
+</body>
+</html>
