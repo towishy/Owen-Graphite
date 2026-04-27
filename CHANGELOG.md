@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.45] — 2026-04-27
+
+### Removed
+- Removed the legacy Ruby validator (`scripts/validate_theme.rb`). Theme validation and release automation are now Python-only.
+
+### Changed
+- README now describes Python as the single validation path for both Windows and macOS.
+- `.gitignore` now excludes local Python virtual environments and bytecode caches.
+
 ## [1.8.44] — 2026-04-27
 
 ### Added

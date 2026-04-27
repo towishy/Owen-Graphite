@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.44` (Obsidian 1.6.0+) |
+| **버전** | `1.8.45` (Obsidian 1.6.0+) |
 
 ---
 
@@ -358,7 +358,7 @@ Owen Graphite/
 python scripts/validate_theme.py
 ```
 
-Windows/macOS 양쪽에서 같은 검증 경로를 쓰기 위해 Python 검증기를 기본으로 사용합니다. Ruby 검증기는 이전 호환용으로만 유지합니다.
+Windows/macOS 양쪽에서 같은 검증 경로를 쓰기 위해 모든 로컬 검증과 릴리즈 자동화는 Python 스크립트로만 관리합니다.
 
 ### 릴리즈 ZIP 생성
 
@@ -374,6 +374,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.45** — 기존 Ruby 검증 스크립트 제거, Python-only 검증/릴리즈 자동화로 정리, Python 로컬 산출물 ignore 추가
 - **v1.8.44** — Python 기반 검증기/릴리즈 ZIP 생성기 추가, GitHub Actions 검증·릴리즈 워크플로 Python 단일화, 수동 설치용 ZIP asset 자동 생성
 - **v1.8.43** — Style Settings Glass 강도 프리셋(Off/Reduced/Subtle/Standard/Strong), 저성능용 Reduced glass, 컨트롤/Properties/Editing Toolbar glass polish, 스크린샷 갱신
 - **v1.8.42** — Floating UI와 Settings 컨트롤 전반에 liquid-glass 확장, 토글 glass track/thumb, 선택 suggestion 상태 세밀화, Settings 행 hover 외곽 박스 복구
