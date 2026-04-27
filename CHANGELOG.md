@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.41] — 2026-04-27
+
+### Changed
+- Editing Toolbar plugin top bar now offsets from the left splitter using the plugin's own toolbar offset variable, so the full toolbar surface no longer hugs the sidebar frame.
+- Workspace resize handles are hidden by default but remain usable: hovering/focusing the split edge reveals a subtle handle while preserving drag resizing.
+- Workspace frame/divider cleanup now neutralizes persistent split-pane frame lines through Obsidian divider and tab outline variables.
+- File explorer and side dock scrollbar cleanup hides the sidebar thumb line across nested scroll containers.
+
 ## [1.8.40] — 2026-04-27
 
 ### Added

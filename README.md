@@ -29,7 +29,7 @@
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome** + Style Settings 26종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.40` (Obsidian 1.6.0+) |
+| **버전** | `1.8.41` (Obsidian 1.6.0+) |
 
 ---
 
@@ -364,6 +364,7 @@ ruby scripts/validate_theme.rb
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.41** — Editing Toolbar 좌측 간격 보정, 프레임 조절바 hover 표시 방식, workspace divider/파일 탐색기 스크롤바 라인 정리
 - **v1.8.40** — 검색 옵션 suggestion popover hover/click 상태에 liquid-glass + 그림자 효과 적용
 - **v1.8.39** — Settings 모달 liquid-glass hover 적용 (좌측 nav + 우측 설정 행, light/dark 패리티)
 - **v1.8.38** — macOS 사이드바 토글 버튼 hover 시 liquid-glass 표면 적용 (본얰 상태는 native subtle 유지)
