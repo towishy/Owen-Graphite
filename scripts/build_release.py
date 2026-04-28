@@ -29,7 +29,6 @@ DEFAULT_FILES = [
     "screenshots/snippet-design-8-improvements-preview.png",
     "screenshots/vault-tree-design-samples.png",
     "screenshots/vault-tree-icon-design-samples.png",
-    "snippets/zz-obsidian-gray-force-override-v2.css",
 ]
 
 

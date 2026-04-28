@@ -356,9 +356,10 @@ settings:
 
   --blockquote-border-color: #6b7280;
   --blockquote-border-thickness: 3px;
-  --blockquote-background-color: #f9fafb;
+  --blockquote-background-color: transparent;
   --blockquote-color: #374151;
   --blockquote-font-style: normal;
+  --blockquote-content-padding: 0.6em 0 0.6em 1.2em;
 
   --callout-border-width: 0px;
   --callout-border-opacity: 1;
@@ -409,6 +410,15 @@ body {
   background: var(--background-secondary);
   color: var(--text-normal);
   font-family: var(--font-interface-theme);
+}
+
+/* v1.8.68 — Hide inline title by default (filename is shown in tab header).
+   Excludes hover-popover preview which still needs the title for context. */
+.workspace-leaf-content .inline-title,
+.markdown-source-view .inline-title,
+.markdown-preview-view .inline-title,
+.markdown-reading-view .inline-title {
+  display: none !important;
 }
 
 .workspace,
@@ -564,42 +574,63 @@ button.mod-warning,
   margin-top: 0.18em !important;
 }
 
+/* H1 — Sample B: Editorial number kicker (auto-numbered chapter) */
+.markdown-rendered,
+.markdown-preview-view.markdown-rendered,
+.markdown-reading-view .markdown-rendered {
+  counter-reset: ogd-h1-counter;
+}
+
 .markdown-rendered h1,
 .markdown-preview-view.markdown-rendered h1,
 .markdown-reading-view .markdown-rendered h1 {
-  display: inline-block !important;
+  display: block !important;
   position: relative !important;
   box-sizing: border-box !important;
-  width: fit-content !important;
+  width: auto !important;
   max-width: 100% !important;
-  margin-top: 1.35em !important;
-  margin-bottom: 0.9em !important;
-  padding: 0 0 0.52em !important;
-  font-size: 2.05em !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.6em !important;
+  padding: 0.3em 0 0.2em !important;
+  font-size: 2.15em !important;
   font-weight: 850 !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
   color: var(--header-text) !important;
   background: transparent !important;
+  border: 0 !important;
   border-left: 0 !important;
   border-bottom: 0 !important;
   border-radius: 0 !important;
+  counter-increment: ogd-h1-counter;
 }
 
+.markdown-rendered h1::before,
+.markdown-preview-view.markdown-rendered h1::before,
+.markdown-reading-view .markdown-rendered h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero) !important;
+  display: block !important;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono",
+    "D2Coding", Consolas, "Courier New", monospace !important;
+  font-size: 0.5em !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  color: var(--ogd-title-rule-start, #0f766e) !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1 !important;
+}
+
+/* Disable previous gradient underline */
 .markdown-rendered h1::after,
 .markdown-preview-view.markdown-rendered h1::after,
 .markdown-reading-view .markdown-rendered h1::after {
-  content: "" !important;
-  position: absolute !important;
-  left: 0 !important;
-  right: auto !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 4px !important;
-  background-color: var(--ogd-title-rule-start) !important;
-  background-image: linear-gradient(90deg, var(--ogd-title-rule-start), var(--ogd-title-rule-end)) !important;
-  border-radius: 999px !important;
-  box-shadow: 0 1px 0 rgba(15, 118, 110, 0.12) !important;
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  height: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 .markdown-rendered h2,
@@ -665,13 +696,13 @@ button.mod-warning,
 .markdown-rendered table,
 .markdown-preview-view table,
 .markdown-reading-view table {
-  margin-top: 0.35em !important;
-  margin-bottom: 0.85em !important;
+  margin-top: 1.1em !important;
+  margin-bottom: 2.5em !important;
   width: auto !important;
   max-width: 100% !important;
   border-collapse: collapse !important;
   font-size: 0.92em !important;
-  border: 1px solid #ddd !important;
+  border: 1px solid #e5e7eb !important;
 }
 
 .markdown-rendered h1 + table,
@@ -689,29 +720,29 @@ button.mod-warning,
 .markdown-rendered th,
 .markdown-preview-view th,
 .markdown-reading-view th {
-  background-color: #f7f7f7 !important;
-  color: #000000 !important;
+  background-color: #f8fafc !important;
+  color: #111827 !important;
   font-weight: 700 !important;
   text-align: center !important;
   vertical-align: middle !important;
-  padding: 9px 16px !important;
+  padding: 12px 20px !important;
   white-space: nowrap !important;
-  border-bottom: 1px dashed #000000 !important;
-  border-left: 1px solid #ddd !important;
-  border-right: 1px solid #ddd !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
 }
 
 .markdown-rendered td,
 .markdown-preview-view td,
 .markdown-reading-view td {
   line-height: 1.6 !important;
-  padding: 8px 16px !important;
-  border-bottom: 1px solid #f0f0f0 !important;
-  border-left: 1px solid #f0f0f0 !important;
-  border-right: 1px solid #f0f0f0 !important;
+  padding: 10px 20px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  border-left: 1px solid #f1f5f9 !important;
+  border-right: 1px solid #f1f5f9 !important;
   vertical-align: middle !important;
   text-align: left !important;
-  color: #333333 !important;
+  color: #1f2937 !important;
   word-break: keep-all !important;
   overflow-wrap: break-word !important;
 }
@@ -727,7 +758,20 @@ button.mod-warning,
 }
 
 .markdown-rendered tr:nth-child(even) {
-  background-color: #fafafa !important;
+  background-color: #fbfdff !important;
+}
+
+.markdown-rendered td:first-child,
+.markdown-preview-view td:first-child,
+.markdown-reading-view td:first-child {
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+
+.markdown-rendered td code,
+.markdown-preview-view td code,
+.markdown-reading-view td code {
+  white-space: nowrap !important;
 }
 
 .markdown-rendered blockquote,
@@ -736,19 +780,76 @@ button.mod-warning,
 .workspace-leaf-content .markdown-rendered blockquote,
 .workspace-leaf-content .markdown-preview-view blockquote,
 .workspace-leaf-content .markdown-reading-view blockquote {
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
   box-sizing: border-box !important;
-  margin: 0.45em 0 !important;
-  padding: 8px 16px 8px 22px !important;
-  border-top: 1px solid #d1d5db !important;
-  border-right: 1px solid #d1d5db !important;
-  border-bottom: 1px solid #d1d5db !important;
-  border-left: 4px solid #6b7280 !important;
-  border-inline-start: 4px solid #6b7280 !important;
+  margin: 0.95em 0 !important;
+  padding: 0.6em 0.9em 0.6em 1em !important;
+  padding-inline-start: 1em !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-inline-start-width: 0 !important;
   border-radius: 6px !important;
-  background: #f9fafb !important;
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
   color: #374151 !important;
   box-shadow: none !important;
-  font-style: normal !important;
+  font-style: italic !important;
+}
+
+/* Force blockquote inner spacing — high specificity to override Obsidian defaults */
+body .markdown-rendered blockquote,
+body .markdown-preview-view blockquote,
+body .markdown-reading-view blockquote {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  padding-left: 0.2em !important;
+  padding-inline-start: 0.2em !important;
+}
+
+/* v1.8.65 — Definitive blockquote border removal in Reading view.
+   Targets every level (single, nested, dark) and all border longhands. */
+body .markdown-rendered blockquote,
+body .markdown-preview-view blockquote,
+body .markdown-reading-view blockquote,
+body.theme-light .markdown-rendered blockquote,
+body.theme-dark .markdown-rendered blockquote,
+body .markdown-rendered blockquote blockquote,
+body .markdown-rendered blockquote blockquote blockquote {
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+  border-width: 0 !important;
+  border-left-width: 0 !important;
+  border-inline-start: 0 !important;
+  border-inline-start-width: 0 !important;
+  border-inline-end-width: 0 !important;
+  border-color: transparent !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Ensure blockquote children inherit inner spacing */
+.markdown-rendered blockquote > p,
+.markdown-rendered blockquote > ul,
+.markdown-rendered blockquote > ol,
+.markdown-rendered blockquote > div,
+.markdown-preview-view blockquote > p,
+.markdown-preview-view blockquote > ul,
+.markdown-preview-view blockquote > ol,
+.markdown-preview-view blockquote > div,
+.markdown-reading-view blockquote > p,
+.markdown-reading-view blockquote > ul,
+.markdown-reading-view blockquote > ol,
+.markdown-reading-view blockquote > div {
+  margin-left: 0.6em !important;
 }
 
 .markdown-rendered blockquote > :first-child,
@@ -769,22 +870,53 @@ button.mod-warning,
 .markdown-preview-view blockquote p,
 .markdown-reading-view blockquote p {
   color: #374151 !important;
-  line-height: 1.5 !important;
-  margin-bottom: 0.3em !important;
+  line-height: 1.75 !important;
+  margin-bottom: 0.65em !important;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
   box-sizing: border-box !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
-  padding: 0 !important;
+  padding: 0.05em 0.6em 0.05em 0.8em !important;
+  border: 0 !important;
   border-left: 0 !important;
   border-inline-start: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  border-inline-start-width: 0 !important;
+  border-left-width: 0 !important;
+  border-color: transparent !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
   color: #374151 !important;
-  font-style: normal !important;
+  font-style: italic !important;
+  box-shadow: none !important;
+}
+
+/* v1.8.65 — Live Preview: also kill blockquote element rendered inside CM6 */
+.markdown-source-view.mod-cm6 blockquote,
+.markdown-source-view.mod-cm6 .cm-embed-block blockquote,
+.markdown-source-view.mod-cm6 .cm-content blockquote {
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-inline-start-width: 0 !important;
+  border-left-width: 0 !important;
+  border-color: transparent !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
+  border-radius: 6px !important;
+  padding: 0.4em 0.8em !important;
+  font-style: italic !important;
+  box-shadow: none !important;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
@@ -804,14 +936,15 @@ button.mod-warning,
 .workspace-leaf-content .markdown-rendered div.callout,
 .workspace-leaf-content .markdown-rendered .callout {
   box-sizing: border-box !important;
-  margin: 0.55em 0 !important;
-  padding: 10px 14px 10px 18px !important;
+  margin: 1.05em 0 !important;
+  padding: 11px 13px !important;
   border-top: 1px solid #d1d5db !important;
   border-right: 1px solid #d1d5db !important;
   border-bottom: 1px solid #d1d5db !important;
-  border-left: 5px solid #4b5563 !important;
+  border-left: 4px solid #64748b !important;
   border-radius: 6px !important;
-  background: #f9fafb !important;
+  background: #fbfcfd !important;
+  background-color: #fbfcfd !important;
   box-shadow: none !important;
   mix-blend-mode: normal !important;
   color: #374151 !important;
@@ -819,15 +952,21 @@ button.mod-warning,
 
 .markdown-rendered div.callout[data-callout="warning"],
 .markdown-rendered div.callout[data-callout="attention"],
-.markdown-rendered div.callout[data-callout="caution"],
+.markdown-rendered div.callout[data-callout="caution"] {
+  border-left-color: #92400e !important;
+  background: #fffbeb !important;
+  background-color: #fffbeb !important;
+}
+
 .markdown-rendered div.callout[data-callout="failure"],
 .markdown-rendered div.callout[data-callout="fail"],
 .markdown-rendered div.callout[data-callout="missing"],
 .markdown-rendered div.callout[data-callout="danger"],
 .markdown-rendered div.callout[data-callout="error"],
 .markdown-rendered div.callout[data-callout="bug"] {
-  border-left-color: #92400e !important;
-  background: #fffbeb !important;
+  border-left-color: #b91c1c !important;
+  background: #fef2f2 !important;
+  background-color: #fef2f2 !important;
 }
 
 .markdown-rendered div.callout[data-callout="success"],
@@ -835,6 +974,44 @@ button.mod-warning,
 .markdown-rendered div.callout[data-callout="done"] {
   border-left-color: #047857 !important;
   background: #f0fdf4 !important;
+  background-color: #f0fdf4 !important;
+}
+
+.markdown-rendered div.callout[data-callout="tip"],
+.markdown-rendered div.callout[data-callout="hint"],
+.markdown-rendered div.callout[data-callout="important"] {
+  border-left-color: #0f766e !important;
+  background: #f0fdfa !important;
+  background-color: #f0fdfa !important;
+}
+
+.markdown-rendered div.callout[data-callout="abstract"],
+.markdown-rendered div.callout[data-callout="summary"],
+.markdown-rendered div.callout[data-callout="tldr"] {
+  border-left-color: #334155 !important;
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
+}
+
+.markdown-rendered div.callout[data-callout="question"],
+.markdown-rendered div.callout[data-callout="help"],
+.markdown-rendered div.callout[data-callout="faq"] {
+  border-left-color: #7c3aed !important;
+  background: #faf5ff !important;
+  background-color: #faf5ff !important;
+}
+
+.markdown-rendered div.callout[data-callout="example"] {
+  border-left-color: #6d28d9 !important;
+  background: #f5f3ff !important;
+  background-color: #f5f3ff !important;
+}
+
+.markdown-rendered div.callout[data-callout="quote"],
+.markdown-rendered div.callout[data-callout="cite"] {
+  border-left-color: #64748b !important;
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
 }
 
 .markdown-rendered .callout-title,
@@ -857,10 +1034,12 @@ button.mod-warning,
   color: #374151 !important;
 }
 
-.markdown-rendered .callout-content {
-  margin-top: 5px !important;
+.markdown-rendered .callout-content,
+.markdown-preview-view .callout-content,
+.markdown-reading-view .callout-content {
+  margin-top: 0.35em !important;
   font-size: 0.95em !important;
-  line-height: 1.5 !important;
+  line-height: 1.62 !important;
 }
 
 .markdown-rendered .callout-icon,
@@ -870,23 +1049,34 @@ button.mod-warning,
   align-items: center !important;
   justify-content: center !important;
   flex: 0 0 auto !important;
-  width: 20px !important;
-  height: 20px !important;
-  border-radius: 4px !important;
-  background: #4b5563 !important;
-  color: #ffffff !important;
+  width: 22px !important;
+  height: 22px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #475569 !important;
 }
 
 .markdown-rendered .callout[data-callout="warning"] .callout-icon,
 .markdown-rendered .callout[data-callout="attention"] .callout-icon,
-.markdown-rendered .callout[data-callout="caution"] .callout-icon,
+.markdown-rendered .callout[data-callout="caution"] .callout-icon {
+  border: 1.5px solid #fcd34d !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #92400e !important;
+}
+
 .markdown-rendered .callout[data-callout="failure"] .callout-icon,
 .markdown-rendered .callout[data-callout="fail"] .callout-icon,
 .markdown-rendered .callout[data-callout="missing"] .callout-icon,
 .markdown-rendered .callout[data-callout="danger"] .callout-icon,
 .markdown-rendered .callout[data-callout="error"] .callout-icon,
 .markdown-rendered .callout[data-callout="bug"] .callout-icon {
-  background: #92400e !important;
+  border: 1.5px solid #fca5a5 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #b91c1c !important;
 }
 
 .markdown-rendered .callout[data-callout="success"] .callout-icon,
@@ -907,7 +1097,7 @@ button.mod-warning,
 .markdown-preview-view pre,
 .markdown-reading-view pre,
 .workspace-leaf-content .markdown-rendered pre {
-  margin: 0.55em 0 0.75em !important;
+  margin: 1.35em 0 1.8em !important;
   padding: 0 !important;
   overflow: hidden !important;
   border: 1px solid #d1d5db !important;
@@ -934,12 +1124,12 @@ button.mod-warning,
 .markdown-reading-view pre code,
 .workspace-leaf-content .markdown-rendered pre code {
   display: block !important;
-  padding: 10px 14px !important;
+  padding: 14px 16px !important;
   color: #111827 !important;
   background: transparent !important;
   font-family: var(--font-monospace-theme) !important;
   font-size: 0.9em !important;
-  line-height: 1.45 !important;
+  line-height: 1.65 !important;
   white-space: pre-wrap !important;
   word-break: normal !important;
   overflow-wrap: anywhere !important;
@@ -1025,7 +1215,9 @@ button.mod-warning,
 .markdown-source-view.mod-cm6 .cm-link,
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
   color: #1d4ed8;
-  text-decoration-color: rgba(29, 78, 216, 0.35);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #bfdbfe;
 }
 
 .markdown-rendered a:hover {
@@ -1033,22 +1225,35 @@ button.mod-warning,
 }
 
 .markdown-rendered a.external-link,
+.markdown-preview-view a.external-link,
+.markdown-reading-view a.external-link,
 .markdown-rendered a[href^="http://"]:not(.internal-link),
-.markdown-rendered a[href^="https://"]:not(.internal-link) {
-  color: #334155;
+.markdown-preview-view a[href^="http://"]:not(.internal-link),
+.markdown-reading-view a[href^="http://"]:not(.internal-link),
+.markdown-rendered a[href^="https://"]:not(.internal-link),
+.markdown-preview-view a[href^="https://"]:not(.internal-link),
+.markdown-reading-view a[href^="https://"]:not(.internal-link) {
+  color: #0f766e;
   font-weight: 760;
   text-decoration-line: underline;
   text-decoration-style: dotted;
-  text-decoration-color: #94a3b8;
+  text-decoration-color: #5eead4;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.22em;
+  border-bottom: 0;
 }
 
 .markdown-rendered a.external-link:hover,
+.markdown-preview-view a.external-link:hover,
+.markdown-reading-view a.external-link:hover,
 .markdown-rendered a[href^="http://"]:not(.internal-link):hover,
-.markdown-rendered a[href^="https://"]:not(.internal-link):hover {
-  color: #1f2937;
-  text-decoration-color: #64748b;
+.markdown-preview-view a[href^="http://"]:not(.internal-link):hover,
+.markdown-reading-view a[href^="http://"]:not(.internal-link):hover,
+.markdown-rendered a[href^="https://"]:not(.internal-link):hover,
+.markdown-preview-view a[href^="https://"]:not(.internal-link):hover,
+.markdown-reading-view a[href^="https://"]:not(.internal-link):hover {
+  color: #0d9488;
+  text-decoration-color: #0f766e;
 }
 
 /* Broken / unresolved internal links */
@@ -1060,11 +1265,25 @@ button.mod-warning,
 }
 
 .markdown-rendered mark,
+.markdown-preview-view mark,
+.markdown-reading-view mark,
 .cm-highlight {
-  background-color: #fef3c7;
-  color: #111827;
-  padding: 0 0.15em;
-  border-radius: 2px;
+  padding: 0.05em 0.25em !important;
+  border-radius: 3px !important;
+  background: #fef3c7 !important;
+  color: #78350f !important;
+  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.22) !important;
+}
+
+.markdown-rendered :is(.search-highlight, .search-hit, .is-search-match),
+.markdown-preview-view :is(.search-highlight, .search-hit, .is-search-match),
+.markdown-reading-view :is(.search-highlight, .search-hit, .is-search-match),
+:is(.search-result-file-matched-text, .suggestion-highlight) {
+  padding: 0.05em 0.24em !important;
+  border-radius: 3px !important;
+  background: #fef3c7 !important;
+  color: #78350f !important;
+  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.24) !important;
 }
 
 /* =====================================================================
@@ -1245,35 +1464,47 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .markdown-rendered .callout[data-callout="hint"],
 .markdown-rendered .callout[data-callout="important"] {
   --callout-icon: lucide-lightbulb;
-  border-left-color: #0e7490 !important;
-  background: #ecfeff !important;
+  border-left-color: #0f766e !important;
+  background: #f0fdfa !important;
+  background-color: #f0fdfa !important;
 }
 .markdown-rendered .callout[data-callout="tip"] .callout-icon,
 .markdown-rendered .callout[data-callout="hint"] .callout-icon,
 .markdown-rendered .callout[data-callout="important"] .callout-icon {
-  background: #0e7490 !important;
+  border: 1.5px solid #5eead4 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #0f766e !important;
 }
 
 .markdown-rendered .callout[data-callout="abstract"],
 .markdown-rendered .callout[data-callout="summary"],
 .markdown-rendered .callout[data-callout="tldr"] {
   --callout-icon: lucide-clipboard-list;
-  border-left-color: #7c3aed !important;
-  background: #f5f3ff !important;
+  border-left-color: #334155 !important;
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
 }
 .markdown-rendered .callout[data-callout="abstract"] .callout-icon,
 .markdown-rendered .callout[data-callout="summary"] .callout-icon,
 .markdown-rendered .callout[data-callout="tldr"] .callout-icon {
-  background: #7c3aed !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #475569 !important;
 }
 
 .markdown-rendered .callout[data-callout="example"] {
   --callout-icon: lucide-list-checks;
-  border-left-color: #d97706 !important;
-  background: #fffbeb !important;
+  border-left-color: #6d28d9 !important;
+  background: #f5f3ff !important;
+  background-color: #f5f3ff !important;
 }
 .markdown-rendered .callout[data-callout="example"] .callout-icon {
-  background: #d97706 !important;
+  border: 1.5px solid #c4b5fd !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #6d28d9 !important;
 }
 
 .markdown-rendered .callout[data-callout="quote"],
@@ -1292,13 +1523,17 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .markdown-rendered .callout[data-callout="help"],
 .markdown-rendered .callout[data-callout="faq"] {
   --callout-icon: lucide-circle-help;
-  border-left-color: #ca8a04 !important;
-  background: #fefce8 !important;
+  border-left-color: #7c3aed !important;
+  background: #faf5ff !important;
+  background-color: #faf5ff !important;
 }
 .markdown-rendered .callout[data-callout="question"] .callout-icon,
 .markdown-rendered .callout[data-callout="help"] .callout-icon,
 .markdown-rendered .callout[data-callout="faq"] .callout-icon {
-  background: #ca8a04 !important;
+  border: 1.5px solid #c4b5fd !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #6d28d9 !important;
 }
 
 .markdown-rendered .callout:is(
@@ -1306,40 +1541,54 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   [data-callout="hint"],
   [data-callout="important"]
 ) .callout-icon {
-  border: 1.5px solid #67e8f9 !important;
+  border: 1.5px solid #5eead4 !important;
   border-radius: 999px !important;
   background: #ffffff !important;
-  color: #0e7490 !important;
+  color: #0f766e !important;
 }
 .markdown-rendered .callout:is(
   [data-callout="abstract"],
   [data-callout="summary"],
   [data-callout="tldr"]
 ) .callout-icon {
-  border: 1.5px solid #c4b5fd !important;
+  border: 1.5px solid #cbd5e1 !important;
   border-radius: 999px !important;
   background: #ffffff !important;
-  color: #6d28d9 !important;
+  color: #475569 !important;
 }
 .markdown-rendered .callout:is(
   [data-callout="warning"],
   [data-callout="attention"],
-  [data-callout="caution"],
-  [data-callout="failure"],
-  [data-callout="fail"],
-  [data-callout="missing"],
-  [data-callout="danger"],
-  [data-callout="error"],
-  [data-callout="bug"],
-  [data-callout="example"],
-  [data-callout="question"],
-  [data-callout="help"],
-  [data-callout="faq"]
+  [data-callout="caution"]
 ) .callout-icon {
   border: 1.5px solid #fcd34d !important;
   border-radius: 999px !important;
   background: #ffffff !important;
   color: #92400e !important;
+}
+.markdown-rendered .callout:is(
+  [data-callout="failure"],
+  [data-callout="fail"],
+  [data-callout="missing"],
+  [data-callout="danger"],
+  [data-callout="error"],
+  [data-callout="bug"]
+) .callout-icon {
+  border: 1.5px solid #fca5a5 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #b91c1c !important;
+}
+.markdown-rendered .callout:is(
+  [data-callout="example"],
+  [data-callout="question"],
+  [data-callout="help"],
+  [data-callout="faq"]
+) .callout-icon {
+  border: 1.5px solid #c4b5fd !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #6d28d9 !important;
 }
 .markdown-rendered .callout:is(
   [data-callout="success"],
@@ -1370,12 +1619,24 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 
 /* Nested blockquote depth coloring */
 .markdown-rendered blockquote blockquote {
-  border-left-color: #9ca3af !important;
-  background: #f3f4f6 !important;
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
+  background: transparent !important;
 }
 .markdown-rendered blockquote blockquote blockquote {
-  border-left-color: #d1d5db !important;
-  background: #f9fafb !important;
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
+  background: transparent !important;
 }
 
 /* =====================================================================
@@ -1459,22 +1720,139 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
    Footnotes
    ===================================================================== */
 .markdown-rendered .footnotes {
-  margin-top: 1.5em;
-  padding-top: 0.6em;
-  border-top: 1px solid #d1d5db;
-  font-size: 0.88em;
-  color: #4b5563;
+  margin-top: 1.45em;
+  padding-top: 0.8em;
+  border-top: 1px solid #d8e1ea;
+  font-size: 0.86em;
+  color: #64748b;
+  line-height: 1.58;
 }
 .markdown-rendered .footnote-ref a,
-.markdown-rendered a.footnote-link {
+.markdown-rendered a.footnote-link,
+.markdown-rendered .footnote-backref {
   font-size: 0.78em;
   vertical-align: super;
   text-decoration: none;
-  color: var(--header-accent);
+  color: #475569;
+  font-weight: 750;
 }
 
 /* =====================================================================
-   Frontmatter / Properties
+   Horizontal rule — gradient accent
+   ===================================================================== */
+.markdown-rendered hr,
+.markdown-preview-view hr,
+.markdown-reading-view hr {
+  margin: 1.7em 0 !important;
+  height: 1px !important;
+  border: 0 !important;
+  background: linear-gradient(90deg, #475569 0 92px, #d1d5db 92px 100%) !important;
+}
+
+/* =====================================================================
+   Table of Contents — report navigation container
+   ===================================================================== */
+.markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+.markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+.markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) {
+  margin: 1.05em 0 1.45em !important;
+  padding: 0.85em 1em 0.85em 1.15em !important;
+  border-left: 4px solid #64748b !important;
+  border-radius: 0 6px 6px 0 !important;
+  background: #f8fafc !important;
+  color: #475569 !important;
+}
+
+.markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) :is(ul, ol) {
+  margin: 0 !important;
+  padding-left: 1.35em !important;
+}
+
+.markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li {
+  margin-bottom: 0.35em !important;
+  color: #475569 !important;
+  font-size: 0.92em !important;
+  line-height: 1.55 !important;
+}
+
+/* =====================================================================
+   Definition list — dl/dt/dd grid layout
+   ===================================================================== */
+.markdown-rendered dl,
+.markdown-preview-view dl,
+.markdown-reading-view dl,
+.markdown-rendered .definition-list,
+.markdown-preview-view .definition-list,
+.markdown-reading-view .definition-list {
+  margin: 1em 0 1.45em !important;
+  border-top: 1px solid #d8e1ea !important;
+  border-bottom: 1px solid #d8e1ea !important;
+}
+
+.markdown-rendered :is(dt, .definition-row),
+.markdown-preview-view :is(dt, .definition-row),
+.markdown-reading-view :is(dt, .definition-row) {
+  color: #334155 !important;
+  font-weight: 800 !important;
+}
+
+.markdown-rendered dt {
+  padding-top: 0.75em !important;
+}
+
+.markdown-rendered dd {
+  margin: 0.25em 0 0 !important;
+  padding: 0 0 0.75em 0 !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  color: #475569 !important;
+  line-height: 1.62 !important;
+}
+
+.markdown-rendered dd:last-child {
+  border-bottom: 0 !important;
+}
+
+.markdown-rendered .definition-row {
+  display: grid !important;
+  grid-template-columns: minmax(120px, 0.24fr) 1fr !important;
+  gap: 0.9em !important;
+  padding: 0.75em 0 !important;
+  border-bottom: 1px solid #eef2f7 !important;
+}
+
+.markdown-rendered .definition-row:last-child {
+  border-bottom: 0 !important;
+}
+
+/* =====================================================================
+   Task list container — card-style checklist
+   ===================================================================== */
+.markdown-rendered .contains-task-list {
+  margin: 1em 0 1.45em !important;
+  padding-left: 0 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 7px !important;
+  overflow: hidden !important;
+}
+
+.markdown-rendered .contains-task-list > .task-list-item {
+  margin: 0 !important;
+  padding: 0.62em 0.8em !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  color: #334155 !important;
+  list-style: none !important;
+}
+
+.markdown-rendered .contains-task-list > .task-list-item:last-child {
+  border-bottom: 0 !important;
+}
+
+.markdown-rendered .task-list-item.is-checked {
+  background: #fbfdff !important;
+}
+
+/* =====================================================================
+   Keyboard caps — <kbd> enhanced styling (from snippet)
    ===================================================================== */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
   color: #6b7280 !important;
@@ -1711,14 +2089,26 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   box-shadow: 1px 0 0 #353841;
 }
 .theme-dark .markdown-rendered blockquote {
-  background: #25272d !important;
+  --blockquote-border-thickness: 0px !important;
+  --blockquote-border-color: transparent !important;
+  background: #1f2937 !important;
+  background-color: #1f2937 !important;
   color: #cbd5e1 !important;
-  border-color: #353841 !important;
-  border-left-color: #6b7280 !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-color: transparent !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
+  border-radius: 6px !important;
 }
 .theme-dark .markdown-rendered blockquote blockquote {
-  background: #2a2c33 !important;
-  border-left-color: #9ca3af !important;
+  background: #111827 !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-left-color: transparent !important;
+  border-inline-start-color: transparent !important;
 }
 .theme-dark .markdown-rendered .callout {
   background: #25272d !important;
@@ -1843,6 +2233,68 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   background: #4d3a0a !important;
   color: #fde68a !important;
 }
+/* Dark mode — snippet-merged supplementary rules */
+.theme-dark .markdown-rendered a.external-link,
+.theme-dark .markdown-preview-view a.external-link,
+.theme-dark .markdown-reading-view a.external-link,
+.theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link),
+.theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link) {
+  color: #5eead4 !important;
+  text-decoration-color: #2dd4bf !important;
+  border-bottom: 0 !important;
+}
+.theme-dark .markdown-rendered mark,
+.theme-dark .markdown-preview-view mark,
+.theme-dark .markdown-reading-view mark,
+.theme-dark .markdown-rendered :is(.search-highlight, .search-hit, .is-search-match) {
+  background: rgba(120, 53, 15, 0.58) !important;
+  color: #fde68a !important;
+  box-shadow: inset 0 -1px 0 rgba(253, 230, 138, 0.22) !important;
+}
+.theme-dark .markdown-rendered hr,
+.theme-dark .markdown-preview-view hr,
+.theme-dark .markdown-reading-view hr {
+  background: linear-gradient(90deg, #94a3b8 0 92px, #334155 92px 100%) !important;
+}
+.theme-dark .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+.theme-dark .markdown-rendered :is(.mermaid, .diagram-frame, .svg-frame) {
+  border-color: #334155 !important;
+  background: #151f2f !important;
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-rendered dl,
+.theme-dark .markdown-rendered .definition-list,
+.theme-dark .markdown-rendered .definition-row,
+.theme-dark .markdown-rendered dd,
+.theme-dark .markdown-rendered .contains-task-list,
+.theme-dark .markdown-rendered .contains-task-list > .task-list-item,
+.theme-dark .markdown-rendered .footnotes {
+  border-color: #334155 !important;
+}
+.theme-dark .markdown-rendered :is(dt, .definition-row),
+.theme-dark .markdown-rendered .contains-task-list > .task-list-item {
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-rendered dd,
+.theme-dark .markdown-rendered :is(.definition-row .desc, .definition-desc),
+.theme-dark .markdown-rendered figcaption,
+.theme-dark .markdown-rendered :is(.image-caption, .media-caption, .figure-caption),
+.theme-dark .markdown-rendered img + em,
+.theme-dark .markdown-rendered .footnotes {
+  color: #94a3b8 !important;
+}
+.theme-dark .markdown-rendered .task-list-item.is-checked {
+  background: #131c2b !important;
+  color: #94a3b8 !important;
+}
+.theme-dark .markdown-rendered .callout-icon,
+.theme-dark .markdown-rendered code:not(pre code),
+.theme-dark .markdown-rendered kbd {
+  border-color: #334155 !important;
+  background: #172033 !important;
+  background-color: #172033 !important;
+  color: #dbeafe !important;
+}
 
 /* =====================================================================
    PRINT — A3 landscape, page breaks, color-exact, inline URLs
@@ -1869,6 +2321,22 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   .markdown-rendered :is(h1, h2, h3, h4) {
     break-after: avoid;
     page-break-after: avoid;
+  }
+
+  /* v1.8.67 — PDF: enlarge H1 for stronger visual hierarchy */
+  .markdown-rendered h1,
+  .markdown-preview-view.markdown-rendered h1,
+  .markdown-reading-view .markdown-rendered h1 {
+    font-size: 2.8em !important;
+    line-height: 1.1 !important;
+    margin-top: 1.2em !important;
+    margin-bottom: 0.7em !important;
+  }
+  .markdown-rendered h1::before,
+  .markdown-preview-view.markdown-rendered h1::before,
+  .markdown-reading-view .markdown-rendered h1::before {
+    font-size: 0.32em !important;
+    margin-bottom: 0.7em !important;
   }
 
   img,
@@ -1898,6 +2366,17 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
     print-color-adjust: exact !important;
   }
 
+  /* Restore blockquote left bar for PDF output */
+  .markdown-rendered blockquote,
+  .markdown-preview-view blockquote,
+  .markdown-reading-view blockquote {
+    border-left: 3px solid #6b7280 !important;
+    border-inline-start: 3px solid #6b7280 !important;
+    padding-left: 1.2em !important;
+    padding-inline-start: 1.2em !important;
+    background: linear-gradient(90deg, #f8fafc 0, transparent 88%) !important;
+  }
+
   /* Hide UI chrome in print */
   .workspace-ribbon,
   .workspace-tab-header-container,
@@ -1911,8 +2390,28 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   .markdown-rendered th,
   .markdown-preview-view th,
   .markdown-reading-view th {
-    background-color: #f7f7f7 !important;
-    border-bottom: 1px dashed #000000 !important;
+    background-color: #f8fafc !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+  }
+
+  /* Snippet-merged: additional print break avoidance */
+  dl,
+  .definition-list,
+  .toc,
+  .report-toc,
+  .table-of-contents,
+  .mermaid,
+  .diagram-frame,
+  .svg-frame,
+  .footnotes,
+  .footnote-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 
@@ -2591,19 +3090,14 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   .markdown-preview-view.markdown-rendered h1,
   .markdown-reading-view .markdown-rendered h1,
   body.ogd-report-mode .markdown-rendered > h1:first-of-type {
-    display: inline-block !important;
-    width: fit-content !important;
+    display: block !important;
+    width: auto !important;
     max-width: 100% !important;
     border: 0 !important;
-    border-bottom: 4px solid var(--ogd-title-rule-start, #0f766e) !important;
-    border-image-source: linear-gradient(90deg, var(--ogd-title-rule-start, #0f766e), var(--ogd-title-rule-end, #0284c7)) !important;
-    border-image-slice: 1 !important;
-    border-image-width: 0 0 4px 0 !important;
-    border-image-repeat: stretch !important;
+    border-bottom: 0 !important;
+    border-image: none !important;
     background: transparent !important;
-    padding-bottom: 0.42em !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    padding: 0.3em 0 0.2em !important;
   }
 
   .markdown-rendered h1::after,
@@ -5564,11 +6058,8 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   weak separators, and print table header continuity.
    ============================================================ */
 
-/* Final title-rule override for Obsidian PDF export cascade. */
-body .markdown-rendered h1,
-body .markdown-preview-view.markdown-rendered h1,
-body .markdown-reading-view .markdown-rendered h1,
-body.ogd-report-mode .markdown-rendered > h1:first-of-type,
+/* Final title-rule override for Obsidian PDF export cascade.
+   v1.8.66 — Disabled for H1 (Sample B kicker style); kept for first-of-type H2. */
 body .markdown-rendered h2:first-of-type,
 body .markdown-preview-view.markdown-rendered h2:first-of-type,
 body .markdown-reading-view .markdown-rendered h2:first-of-type,
@@ -5588,10 +6079,24 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type {
   print-color-adjust: exact !important;
 }
 
-body .markdown-rendered h1:first-of-type,
-body .markdown-preview-view.markdown-rendered h1:first-of-type,
-body .markdown-reading-view .markdown-rendered h1:first-of-type,
-body.ogd-report-mode .markdown-rendered > h1:first-of-type,
+/* Reset H1 — Sample B kicker style takes precedence */
+body .markdown-rendered h1,
+body .markdown-preview-view.markdown-rendered h1,
+body .markdown-reading-view .markdown-rendered h1,
+body.ogd-report-mode .markdown-rendered > h1:first-of-type {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-image: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding-top: 0.3em !important;
+  padding-bottom: 0.2em !important;
+}
+
 body .markdown-rendered h2:first-of-type,
 body .markdown-preview-view.markdown-rendered h2:first-of-type,
 body .markdown-reading-view .markdown-rendered h2:first-of-type,

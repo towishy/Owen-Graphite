@@ -4,6 +4,27 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.64] — 2026-04-29
+
+### Added
+- H1 헤딩에 자동 챕터 번호 키커(Sample B 에디토리얼 스타일) 적용 — `01`, `02` 형식의 모노스페이스 키커 + 큰 굵은 제목, Reading view·Live Preview·PDF 모두 동일.
+- Blockquote 인용문 시각화 방식 개선 — 세로 바 대신 연한 회색 배경(`#f8fafc`) + 둥근 모서리 + 이탤릭 글꼴 조합. PDF 출력에서도 동일하게 적용.
+- 인라인 제목(inline title) 기본 비활성화 — 파일명은 탭 헤더에서 표시.
+
+### Changed
+- 기존 별도 CSS 스니핏(`zz-obsidian-gray-force-override-v2.css`) 기능을 테마에 완전 흡수하여 빌트인으로 제공. 별도 스니핏 설치 불필요.
+- PDF 출력 시 H1 폰트 크기를 `2.15em → 2.8em`으로 강화하여 H2와의 시각적 위계 명확화.
+- 다크 모드 blockquote 배경을 `#1f2937`로 정리하여 라이트 모드와 대칭.
+
+### Removed
+- `snippets/zz-obsidian-gray-force-override-v2.css` 파일 제거 (기능은 테마로 이전).
+- README의 별도 snippet 설치 안내 섹션 제거, 빌트인 흡수 안내로 교체.
+- `build_release.py`/`validate_theme.py` 스크립트의 snippet 참조 제거.
+
+### Fixed
+- PDF에서 H1 아래 그라데이션 라인이 중복 출력되던 v1.8.19 패치 잔존 규칙 정리.
+- 키커 자간이 너무 넓어 "0 1"로 분리되어 보이던 문제 수정 (`letter-spacing 4px → 2px`, fallback 폰트에 Consolas/Cascadia Mono 추가).
+
 ## [1.8.63] — 2026-04-28
 
 ### Added

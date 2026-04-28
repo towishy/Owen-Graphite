@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.62` (Obsidian 1.6.0+) |
+| **버전** | `1.8.64` (Obsidian 1.6.0+) |
 
 ---
 
@@ -135,12 +135,7 @@ echo "OK: Owen Graphite installed or updated."
 
 이미 같은 이름의 폴더가 있다면 Obsidian을 종료한 뒤 기존 `Owen Graphite` 폴더를 교체하거나, 백업 이름으로 바꾼 다음 새 폴더를 배치하세요.
 
-선택 CSS snippet을 함께 쓰는 경우 `snippets/zz-obsidian-gray-force-override-v2.css`를 아래 위치에 배치한 뒤 Obsidian 설정 → 외관 → CSS snippets에서 활성화하세요.
-
-| 플랫폼 | snippet 대상 경로 |
-|------|------|
-| Windows | `<YourVault>\.obsidian\snippets\` |
-| macOS / Linux | `<YourVault>/.obsidian/snippets/` |
+> **v1.8.64+ 업데이트:** 기존 별도 CSS snippet (`zz-obsidian-gray-force-override-v2.css`) 기능은 모두 본 테마에 흡수되어 빌트인으로 제공됩니다. 더 이상 별도 snippet 설치는 필요하지 않습니다.
 
 이후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
@@ -199,29 +194,21 @@ Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본�
 
 ---
 
-## 🧩 선택 CSS snippet — Gray Report Force Override
+## 🧩 Gray Report Tone — 빌트인 (v1.8.64+)
 
-릴리즈 자산에 포함된 `snippets/zz-obsidian-gray-force-override-v2.css`는 Owen Graphite를 기반으로 **더 엄격한 회색 보고서 톤**을 강제하고 싶을 때 쓰는 선택 snippet입니다. 테마 본체보다 강한 우선순위로 적용되므로, 팀 보고서나 고객 제출 문서처럼 화면·PDF·공유 환경에서 색상 편차를 줄이고 싶을 때 적합합니다.
+과거 별도 CSS snippet (`zz-obsidian-gray-force-override-v2.css`)으로 제공하던 **엄격한 회색 보고서 톤** 기능은 v1.8.64부터 테마에 완전 흡수되어 별도 설치 없이 기본 동작합니다.
 
-### 디자인 의도
+### 흡수된 주요 기능
 
-| 초점 | 내용 |
+| 영역 | 내용 |
 |------|------|
 | Graphite-first | 헤더, blockquote, callout, 코드 색상을 회색 중심으로 고정 |
-| 보고서 구조 | H1/H2/H3, TOC, 캡션, diagram frame, footnote, task list를 같은 톤으로 정리 |
+| 보고서 구조 | H1/H2/H3, TOC, 캡션, diagram frame, footnote, task list 통일 톤 |
 | 표/PDF 안정성 | 비교표·매트릭스·고객 보고서 표가 화면과 PDF에서 균일하게 보이도록 보강 |
 | 링크 구분 | 외부 URL은 Muted Gray 점선 밑줄로 내부 링크와 분리 |
 | Live Preview 안전성 | Reading View 장식을 CM6 편집 라인에 과도하게 강제하지 않음 |
 
-![Gray override snippet 8개 구조 개선 preview](screenshots/snippet-design-8-improvements-preview.png)
-
-### 적용 방법
-
-1. 릴리즈에서 `zz-obsidian-gray-force-override-v2.css`를 다운로드합니다.
-2. `<YourVault>/.obsidian/snippets/`에 배치합니다.
-3. Obsidian → 설정 → 외관 → **CSS snippets**에서 `zz-obsidian-gray-force-override-v2`를 활성화합니다.
-
-> 이 snippet은 선택 사항입니다. Owen Graphite 기본 테마만으로도 정상 동작하며, snippet은 더 단단한 회색 보고서 톤이 필요할 때 추가로 켜는 보강 레이어입니다.
+> 과거에 snippet을 설치하셨던 사용자는 `<YourVault>/.obsidian/snippets/zz-obsidian-gray-force-override-v2.css`를 제거하고 Obsidian 설정 → 외관 → CSS snippets에서 비활성화하세요. 동일한 효과가 테마에서 자동 적용됩니다.
 
 ---
 
@@ -477,11 +464,10 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 
 ```
 Owen Graphite/
-├── theme.css          # 테마 본체
+├── theme.css          # 테마 본체 (과거 snippet 기능 흡수)
 ├── manifest.json      # Obsidian 테마 메타데이터
 ├── README.md          # 빠른 사용법과 설정 요약
 ├── CHANGELOG.md       # 전체 릴리즈 노트
-├── snippets/          # 선택 CSS snippet
 ├── docs/fixtures/     # 검증·디자인 preview fixture
 ├── screenshots/       # README/마켓플레이스 이미지
 └── scripts/           # 로컬 검증 스크립트
@@ -521,7 +507,7 @@ python scripts/visual_regression.py
 python scripts/build_release.py
 ```
 
-생성물은 `dist/Owen-Graphite-<version>.zip`에 저장되며, 수동 설치용 필수 파일과 선택 snippet을 `Owen Graphite/` 폴더 구조로 묶습니다.
+생성물은 `dist/Owen-Graphite-<version>.zip`에 저장되며, 수동 설치용 필수 파일을 `Owen Graphite/` 폴더 구조로 묶습니다.
 
 ---
 
@@ -529,6 +515,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.64** — H1 스타일을 편집 장세·챕터 번호 키커 (Sample B)로 재디자인, blockquote는 세로바 대신 연한 배경+이탈릭으로 시각화, 인라인 제목 기본 비활성화, 별도 CSS snippet을 테마에 완전 흡수
 - **v1.8.62** — Windows/macOS/Linux Git 설치 명령에서 Git 출력 잡음을 숨기고 성공 시 OK 메시지만 표시하도록 정리
 - **v1.8.61** — Windows 신규 설치의 Reading View/Live Preview readable 컬럼 중앙 배치 회귀를 더 넓은 Obsidian DOM 선택자로 보강
 - **v1.8.60** — Windows 신규 설치에서 readable 본문 컬럼 앞에 큰 공백이 생기던 정렬 회귀 수정, 설치 예시 경로와 ZIP 폴더명 안내 정리

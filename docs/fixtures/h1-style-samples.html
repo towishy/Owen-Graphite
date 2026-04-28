@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>H1 스타일 샘플</title>
+<style>
+  body {
+    font-family: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo",
+      "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 60px;
+    line-height: 1.6;
+  }
+  .sample {
+    margin-bottom: 60px;
+    padding: 32px 36px 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #ffffff;
+  }
+  .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #4b5563;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+  .desc {
+    color: #6b7280;
+    font-size: 13px;
+    margin: -10px 0 20px;
+  }
+  h2.demo {
+    font-size: 1.6em;
+    font-weight: 780;
+    line-height: 1.25;
+    color: #111827;
+    margin: 1em 0 0.3em;
+    padding-bottom: 0.22em;
+    border-bottom: 1px solid #d1d5db;
+    position: relative;
+  }
+  h2.demo::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: min(220px, 36%);
+    height: 3px;
+    background: var(--ogd-accent, #4b5563);
+    border-radius: 999px;
+  }
+  p.body {
+    color: #374151;
+    margin: 12px 0;
+  }
+
+  /* ============ Sample A: Current — Underline gradient ============ */
+  .sa h1 {
+    display: inline-block;
+    position: relative;
+    padding: 0 0 0.52em;
+    font-size: 2.05em;
+    font-weight: 850;
+    line-height: 1.2;
+    color: #111827;
+    margin: 0;
+  }
+  .sa h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0f766e, #0284c7);
+    border-radius: 999px;
+  }
+
+  /* ============ Sample B: Number badge — Editorial ============ */
+  .sb h1 {
+    position: relative;
+    font-size: 2.1em;
+    font-weight: 850;
+    line-height: 1.15;
+    color: #0f172a;
+    margin: 0 0 0.4em;
+    padding: 0.1em 0 0.3em;
+  }
+  .sb h1::before {
+    content: "01";
+    display: block;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #0f766e;
+    margin-bottom: 0.5em;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  /* ============ Sample C: Side accent block ============ */
+  .sc h1 {
+    position: relative;
+    font-size: 2.0em;
+    font-weight: 850;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0 0 0.4em;
+    padding: 0.4em 0 0.4em 1em;
+    border-left: 6px solid #0f766e;
+    background: linear-gradient(90deg, rgba(15, 118, 110, 0.06) 0%, transparent 80%);
+  }
+
+  /* ============ Sample D: Top kicker line ============ */
+  .sd h1 {
+    position: relative;
+    font-size: 2.05em;
+    font-weight: 850;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0 0 0.4em;
+    padding: 0.6em 0 0.2em;
+  }
+  .sd h1::before {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    background: linear-gradient(90deg, #0f766e, #0284c7);
+    border-radius: 999px;
+    margin-bottom: 0.5em;
+  }
+
+  /* ============ Sample E: Soft gray pill background ============ */
+  .se h1 {
+    display: inline-block;
+    font-size: 2.0em;
+    font-weight: 850;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0 0 0.4em;
+    padding: 0.35em 0.7em;
+    background: #f1f5f9;
+    border-radius: 10px;
+    border-bottom: 4px solid #0f766e;
+  }
+
+  /* ============ Sample F: Document-style centered with sub-rule ============ */
+  .sf h1 {
+    position: relative;
+    font-size: 2.15em;
+    font-weight: 850;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0 0 0.5em;
+    padding: 0 0 0.4em;
+    text-align: left;
+  }
+  .sf h1::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #d1d5db;
+    margin-top: 0.4em;
+  }
+  .sf h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 80px;
+    height: 3px;
+    background: #0f766e;
+    border-radius: 999px;
+  }
+</style>
+</head>
+<body>
+
+<h1 style="font-size:1.4em;color:#4b5563;margin-bottom:8px">H1 스타일 샘플 6종</h1>
+<p class="desc">현재 H2와 시각적으로 명확히 구분되는 H1 스타일 후보입니다. 마음에 드는 번호를 알려주세요.</p>
+
+<div class="sample sa">
+  <span class="label">Sample A — 현재 (그라데이션 밑줄)</span>
+  <h1>Zero Trust E5 구현 가이드</h1>
+  <h2 class="demo">Microsoft 공식 Zero Trust 프레임워크</h2>
+  <p class="body">H2와 두께 차이만 있어 위계가 약합니다.</p>
+</div>
+
+<div class="sample sb">
+  <span class="label">Sample B — 넘버 키커</span>
+  <h1>Zero Trust E5 구현 가이드</h1>
+  <h2 class="demo">Microsoft 공식 Zero Trust 프레임워크</h2>
+  <p class="body">상단에 챕터 번호 또는 키워드 배지. 보고서·매거진 스타일.</p>
+</div>
+
+<div class="sample sc">
+  <span class="label">Sample C — 좌측 액센트 블록</span>
+  <h1>Zero Trust E5 구현 가이드</h1>
+  <h2 class="demo">Microsoft 공식 Zero Trust 프레임워크</h2>
+  <p class="body">좌측 굵은 컬러 바와 페이드 배경. 시선이 즉시 집중됨.</p>
+</div>
+
+<div class="sample sd">
+  <span class="label">Sample D — 상단 짧은 액센트</span>
+  <h1>Zero Trust E5 구현 가이드</h1>
+  <h2 class="demo">Microsoft 공식 Zero Trust 프레임워크</h2>
+  <p class="body">제목 위 짧은 그라데이션 막대. 미니멀하고 모던.</p>
+</div>
+
+<div class="sample se">
+  <span class="label">Sample E — 소프트 필 배경</span>
+  <h1>Zero Trust E5 구현 가이드</h1>
+  <h2 class="demo">Microsoft 공식 Zero Trust 프레임워크</h2>
+  <p class="body">옅은 회색 배경에 컬러 밑테. 카드/태그 느낌.</p>
+</div>
+
+<div class="sample sf">
+  <span class="label">Sample F — 더블 룰 (얇은 선 + 짧은 액센트)</span>
+  <h1>Zero Trust E5 구현 가이드</h1>
+  <h2 class="demo">Microsoft 공식 Zero Trust 프레임워크</h2>
+  <p class="body">전체 폭 얇은 회색선 + 좌측 짧은 컬러 바. 신문 1면 느낌.</p>
+</div>
+
+</body>
+</html>

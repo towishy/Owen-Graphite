@@ -27,7 +27,6 @@ REQUIRED_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "snippets/zz-obsidian-gray-force-override-v2.css",
     "docs/fixtures/table-report.md",
     "docs/fixtures/table-preview.html",
     "docs/fixtures/callout-report.md",
@@ -74,7 +73,6 @@ RELEASE_ASSETS = [
     "screenshots/snippet-design-8-improvements-preview.png",
     "screenshots/vault-tree-design-samples.png",
     "screenshots/vault-tree-icon-design-samples.png",
-    "snippets/zz-obsidian-gray-force-override-v2.css",
 ]
 
 FORBIDDEN_LIVE_PREVIEW_RULES = {
@@ -82,8 +80,6 @@ FORBIDDEN_LIVE_PREVIEW_RULES = {
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-line\s*\{[^}]*line-height\s*:\s*(?:[0-9]|var\(|calc\(|normal\b)[^;}]+", re.S): "global line-height override on CM6 .cm-line",
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-content\s*\{[^}]*overflow-wrap\s*:\s*anywhere", re.S): "overflow-wrap:anywhere on CM6 .cm-content",
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-content\s*\{[^}]*word-break\s*:\s*keep-all", re.S): "word-break:keep-all on CM6 .cm-content",
-    re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-quote[^{}]*\{[^}]*background(?:-color)?\s*:\s*(?:#|rgb|hsl|var\(|linear-gradient)[^;}]+", re.S): "non-transparent Live Preview quote background",
-    re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-quote[^{}]*\{[^}]*border(?:-left|-inline-start)?\s*:\s*(?:[1-9]|0\.[1-9]|[a-zA-Z_-])[^;}]*", re.S): "decorative Live Preview quote border",
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-header-[3-6][^{}]*\{[^}]*z-index\s*:\s*(?:-?\d+|var\()[^;}]+", re.S): "stacking z-index on Live Preview H3-H6",
 }
 
@@ -289,7 +285,6 @@ def release_zip_if_present(version: str) -> None:
 def live_preview_guards() -> None:
     css_sources = {
         "theme.css": read_text("theme.css"),
-        "snippets/zz-obsidian-gray-force-override-v2.css": read_text("snippets/zz-obsidian-gray-force-override-v2.css"),
     }
     for path, content in css_sources.items():
         for pattern, description in FORBIDDEN_LIVE_PREVIEW_RULES.items():
