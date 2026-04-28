@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.6] — 2026-04-29 — Baseline declaration
+
+### Documentation
+- **v2.0.5를 정식 안정 베이스라인으로 선언** — v1.8.42 이후 누적된 Live Preview 표 셀 inflate 단에 v2.0.5 hard reset으로 완전 해소. v2.0.5 상태를 이후 작업의 기준점으로 삼음.
+- `theme.css` BOF 헤더에 `Baseline (verified stable)` 마커 추가.
+- `README.md`에 `baseline since v2.0.5` 표기.
+
+### Notes
+- CSS 동작 변경 없음. 순수 문서·메타 패치.
+- 향후 v2.1.0부터는 v2.0.5 기반으로 `src/` 모듈 분할과 추가 기능 진행.
+
 ## [2.0.5] — 2026-04-29 — Hard reset for table-cell-wrapper
 
 ### Fixed
