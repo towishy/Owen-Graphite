@@ -122,6 +122,12 @@ echo "OK: Owen Graphite installed or updated."
 
 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `Owen-Graphite-<version>.zip`을 다운로드한 뒤 압축을 해제합니다. ZIP 안의 최상위 폴더 이름은 반드시 `Owen Graphite`여야 합니다. 압축 해제 도구가 다른 이름의 폴더를 만들었다면 폴더명을 `Owen Graphite`로 바꾼 뒤 플랫폼별 테마 대상 경로에 배치합니다.
 
+> **⚠️ ZIP 파일 선택 주의**
+> Release Assets 목록에는 GitHub가 자동 생성하는 `Source code (zip)`과 테마 배포용 `Owen-Graphite-<version>.zip`이 함께 표시됩니다.
+> **반드시 `Owen-Graphite-<version>.zip`을 다운로드하세요.** `Source code (zip)`은 빌드 전 소스 코드이므로 테마로 사용할 수 없습니다.
+>
+> ![ZIP 다운로드 안내 — Assets에서 Owen-Graphite-x.x.x.zip 선택](screenshots/readme/zip-download-guide.svg)
+
 | 플랫폼 | 테마 대상 경로 |
 |------|------|
 | Windows | `<YourVault>\.obsidian\themes\Owen Graphite\` |
