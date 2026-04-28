@@ -4621,11 +4621,9 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
    - Outline, Bookmarks, Bases, embeds, and status bar inherit v1.8.5 tone
    ============================================================ */
 
-/* Live Preview parity: chips, embeds, and editing widgets */
-.markdown-source-view.mod-cm6 .cm-contentContainer,
-.markdown-source-view.mod-cm6 .cm-content {
-  max-width: 100% !important;
-}
+/* Live Preview parity: chips, embeds, and editing widgets.
+   Keep the editor content width controlled by the readable-line-width rules above;
+   overriding the CM6 containers here can collapse Korean paragraphs to a one-character column. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout,
 .markdown-source-view.mod-cm6 .cm-embed-block,
 .markdown-source-view.mod-cm6 .cm-html-embed,

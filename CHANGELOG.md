@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.57] — 2026-04-28
+
+### Fixed
+- Fixed a Live Preview layout regression where manually installed themes without the optional force-override snippet could collapse Korean editing lines into a one-character-wide column.
+
 ## [1.8.56] — 2026-04-28
 
 ### Changed
