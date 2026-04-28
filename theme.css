@@ -10045,3 +10045,49 @@ body .markdown-source-view.mod-cm6 table.cm-table .cm-line:empty {
 }
 
 /* End of v2.0.3 table inflate hardening ==================================== */
+
+
+/* ============================================================================
+ * v2.0.4 — Bugfix: Live Preview tables rendered as cm-embed-block <table>
+ * ----------------------------------------------------------------------------
+ * In current Obsidian (1.6.x+), Live Preview renders a markdown table that the
+ * cursor is NOT inside as a static block: .cm-embed-block > <table>. The
+ * v2.0.2/v2.0.3 selectors targeted .cm-table-widget / .HyperMD-table-row only,
+ * so .cm-embed-block tables kept inflating because Obsidian wraps cell text in
+ * <p> with default 1em top/bottom margins.
+ * ========================================================================== */
+
+body .markdown-source-view.mod-cm6 .cm-embed-block table td > p,
+body .markdown-source-view.mod-cm6 .cm-embed-block table th > p,
+body .markdown-source-view.mod-cm6 .cm-embed-block table td > p:first-child,
+body .markdown-source-view.mod-cm6 .cm-embed-block table th > p:first-child,
+body .markdown-source-view.mod-cm6 .cm-embed-block table td > p:last-child,
+body .markdown-source-view.mod-cm6 .cm-embed-block table th > p:last-child {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-embed-block table td,
+body .markdown-source-view.mod-cm6 .cm-embed-block table th {
+  vertical-align: top !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-embed-block table tr {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-embed-block,
+body .markdown-source-view.mod-cm6 .cm-embed-block > table {
+  min-height: 0 !important;
+}
+
+/* If a cell has multiple paragraphs, only the inner gaps keep small spacing */
+body .markdown-source-view.mod-cm6 .cm-embed-block table td > p + p,
+body .markdown-source-view.mod-cm6 .cm-embed-block table th > p + p {
+  margin-top: 0.4em !important;
+}
+
+/* End of v2.0.4 cm-embed-block table fix =================================== */

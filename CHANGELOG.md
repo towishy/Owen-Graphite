@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.4] — 2026-04-29 — Live Preview cm-embed-block table fix
+
+### Fixed
+- **Live Preview 표 셀이 늘어나는 현상 실제 원인 차단** — v2.0.2/v2.0.3은 `.cm-table-widget` / `.HyperMD-table-row` 만 노렸으나, 현재 Obsidian(1.6.x+) Live Preview는 커서가 표 밖에 있을 때 표를 `.cm-embed-block > <table>` 정적 블록으로 렌더링함. 실제 세이브되는 표에 대해 `td > p` margin 0, `td/th/tr` height auto + min-height 0, 컬러 block 자체 min-height 0 적용.
+
 ## [2.0.3] — 2026-04-29 — Table inflate hardening
 
 ### Fixed
