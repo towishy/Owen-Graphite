@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] — 2026-04-29 — Table cell height opt-out
+
+### Added
+- **Style Settings: "표 셀 행 높이 자동 stretch (legacy)"** — v2.0.5 hard reset을 원하는 사용자가 v2.0.4 이전 동작(셀이 행 내 제일 큰 셀 높이로 늘어나는 관습)으로 돌아갈 수 있도록 opt-in toggle 추가. 기본값: off (v2.0.5 동작 유지).
+  - body class: `.ogd-table-cell-stretch`
+  - Style Settings 옵션 수: 27 → **28**
+
+### Changed
+- README/validate 스크립트에서 옵션 카운트 27 → 28 갱신.
+
+### Notes
+- 테마 버전 추적: v2.0.5 baseline + 1 opt-in toggle.
+- v3.0.0에서는 `theme.css` 모듈 분할(`src/*.css`)로 이동 예정. 현재는 회귀 위험 최소화 우선.
+
 ## [2.0.6] — 2026-04-29 — Baseline declaration
 
 ### Documentation

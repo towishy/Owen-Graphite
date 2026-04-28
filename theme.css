@@ -109,6 +109,12 @@ settings:
     type: class-toggle
     default: true
   -
+    id: ogd-table-cell-stretch
+    title: 표 셀 행 높이 자동 stretch (legacy)
+    description: 켜면 v2.0.4 이전 동작처럼 셀이 행 내 가장 큰 셀 높이로 늘어남. 끄면 v2.0.5 이후 기본인 컨텐츠 높이로 셀 표시
+    type: class-toggle
+    default: false
+  -
     id: ogd-settings-report
     title: 보고서와 PDF
     type: heading
@@ -10168,3 +10174,27 @@ body .markdown-source-view.mod-cm6 .cm-table-widget tr {
 }
 
 /* End of v2.0.5 hard reset ================================================ */
+
+
+/* ============================================================================
+ * v2.1.0 — Table cell height opt-out + Style Settings toggle
+ * ----------------------------------------------------------------------------
+ * v2.0.5 introduced a hard reset on every descendant of LP table cells.
+ * Some users may want the legacy "row stretches to tallest cell" behavior.
+ * Provide an opt-out via body class .ogd-table-cell-stretch (Style Settings
+ * toggle below). When enabled, restore default min-height behavior so cells
+ * align to the row's tallest content again.
+ * ========================================================================== */
+
+body.ogd-table-cell-stretch .markdown-source-view.mod-cm6 td *,
+body.ogd-table-cell-stretch .markdown-source-view.mod-cm6 th * {
+  min-height: revert !important;
+  max-height: revert !important;
+}
+body.ogd-table-cell-stretch .markdown-source-view.mod-cm6 td p,
+body.ogd-table-cell-stretch .markdown-source-view.mod-cm6 th p {
+  margin-top: revert !important;
+  margin-bottom: revert !important;
+}
+
+/* End of v2.1.0 table cell height opt-out ================================= */
