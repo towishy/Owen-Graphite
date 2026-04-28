@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] — 2026-04-29 — Status bar + Footnote + Checkbox states
+
+### Added
+- **Status bar / Title bar** — 상태표시줄 그라디언트 바닥, 아이템 구분자, hover 하이라이트. titlebar·탭 컨테이너 배경 통일.
+- **Footnote (각주)** — 본문 `sup.footnote-link a`를 돔근 배지로 변경, 하단 `section.footnotes`에 `Footnotes` 라벨 + 점선 구분자, backref 톤다운.
+- **Checkbox 6종 상태** — `data-task` 속성 기반:
+  - `[x]` done (상도) · `[/]` in-progress (반 판 블루) · `[!]` important (빨강 느낌표)
+  - `[?]` question (보라 물음표) · `[-]` cancelled (회색 이선) · `[>]` forwarded (주황 꿩쇠)
+
+### Notes
+- 다크 모드 패리티 전 항목 포함.
+- 베이스라인 v2.2.0 유지; 추가 패치만.
+- Style Settings 옵션 수: 28 (변동 없음).
+
 ## [2.3.1] — 2026-04-29 — View header title emphasis
 
 ### Changed

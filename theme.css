@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.3.1 — View header title emphasis
+ * Version 2.4.0 — Small pack (Status bar + Footnote + Checkbox states)
  * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -10685,3 +10685,304 @@ body.theme-dark .view-header-breadcrumb {
   color: #64748b !important;
 }
 /* End of v2.3.1 ========================================================== */
+
+
+/* ============================================================================
+ * v2.4.0 — Small pack: Status bar, Footnote, Checkbox states
+ * Additive only; v2.2.0 baseline preserved.
+ * ========================================================================== */
+
+/* --- 1. Status bar / Title bar ----------------------------------------- */
+.status-bar {
+  background: linear-gradient(180deg, #fafbfc, #f1f5f9) !important;
+  border-top: 1px solid #e2e8f0 !important;
+  padding: 0 0.6em !important;
+  font-size: 0.78em !important;
+  color: #64748b !important;
+  min-height: 26px !important;
+}
+.status-bar-item {
+  padding: 0 0.55em !important;
+  border-right: 1px solid #e2e8f0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.3em !important;
+  color: #64748b !important;
+}
+.status-bar-item:last-child {
+  border-right: none !important;
+}
+.status-bar-item:hover {
+  color: #1e293b !important;
+  background: #ffffff !important;
+}
+.titlebar,
+.workspace-tab-header-container {
+  background: #f8fafc !important;
+}
+.titlebar-text {
+  font-weight: 500 !important;
+  color: #475569 !important;
+  letter-spacing: 0.01em !important;
+}
+body.theme-dark .status-bar {
+  background: linear-gradient(180deg, #1c2128, #15191f) !important;
+  border-top-color: #2c333d !important;
+  color: #94a3b8 !important;
+}
+body.theme-dark .status-bar-item {
+  border-right-color: #2c333d !important;
+  color: #94a3b8 !important;
+}
+body.theme-dark .status-bar-item:hover {
+  color: #f1f5f9 !important;
+  background: #2c333d !important;
+}
+body.theme-dark .titlebar,
+body.theme-dark .workspace-tab-header-container {
+  background: #15191f !important;
+}
+body.theme-dark .titlebar-text {
+  color: #cbd5e1 !important;
+}
+
+/* --- 2. Footnote / 각주 ------------------------------------------------- */
+.markdown-rendered sup.footnote-link a,
+.markdown-rendered .footnote-ref a,
+.markdown-preview-view sup.footnote-link a,
+.markdown-preview-view .footnote-ref a {
+  display: inline-block !important;
+  min-width: 1.4em !important;
+  padding: 0 0.35em !important;
+  margin: 0 0.15em !important;
+  background: #eef2ff !important;
+  color: #4338ca !important;
+  border-radius: 999px !important;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.7em !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  border: 1px solid #c7d2fe !important;
+  vertical-align: super !important;
+  line-height: 1.3 !important;
+  transition: background 0.15s ease;
+}
+.markdown-rendered sup.footnote-link a:hover,
+.markdown-rendered .footnote-ref a:hover {
+  background: #c7d2fe !important;
+}
+.markdown-rendered section.footnotes,
+.markdown-preview-view section.footnotes {
+  margin-top: 2.5em !important;
+  padding-top: 1em !important;
+  border-top: 2px solid #e2e8f0 !important;
+  font-size: 0.88em !important;
+  color: #475569 !important;
+}
+.markdown-rendered section.footnotes::before {
+  content: "Footnotes";
+  display: block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.8em;
+}
+.markdown-rendered section.footnotes ol,
+.markdown-preview-view section.footnotes ol {
+  padding-left: 1.5em !important;
+}
+.markdown-rendered section.footnotes li {
+  padding: 0.25em 0 !important;
+  border-bottom: 1px dashed #eef2f7 !important;
+}
+.markdown-rendered section.footnotes li:last-child {
+  border-bottom: none !important;
+}
+.markdown-rendered .footnote-backref {
+  margin-left: 0.4em !important;
+  color: #94a3b8 !important;
+  text-decoration: none !important;
+  font-size: 0.9em !important;
+}
+.markdown-rendered .footnote-backref:hover {
+  color: #4338ca !important;
+}
+body.theme-dark .markdown-rendered sup.footnote-link a,
+body.theme-dark .markdown-rendered .footnote-ref a {
+  background: #1e293b !important;
+  color: #a5b4fc !important;
+  border-color: #3a4150 !important;
+}
+body.theme-dark .markdown-rendered sup.footnote-link a:hover,
+body.theme-dark .markdown-rendered .footnote-ref a:hover {
+  background: #312e81 !important;
+}
+body.theme-dark .markdown-rendered section.footnotes {
+  border-top-color: #2c333d !important;
+  color: #cbd5e1 !important;
+}
+body.theme-dark .markdown-rendered section.footnotes li {
+  border-bottom-color: #2c333d !important;
+}
+
+/* --- 3. Checkbox custom states ----------------------------------------- *
+ * Style based on data-task attribute (Reading & Live Preview).
+ *  - x : done       (green)
+ *  - / : in-progress(blue)
+ *  - ! : important  (red)
+ *  - ? : question   (purple)
+ *  - - : cancelled  (gray strike)
+ *  - > : forwarded  (orange)
+ * --------------------------------------------------------------------------*/
+ul.contains-task-list .task-list-item {
+  position: relative;
+}
+.task-list-item-checkbox {
+  border-radius: 4px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  width: 1.05em !important;
+  height: 1.05em !important;
+  vertical-align: -0.18em !important;
+  appearance: none !important;
+  background: #ffffff !important;
+  cursor: pointer;
+  position: relative;
+  margin-right: 0.5em !important;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.task-list-item-checkbox:hover {
+  border-color: #94a3b8 !important;
+}
+/* x = done */
+.task-list-item[data-task="x"] > .task-list-item-checkbox,
+.task-list-item[data-task="X"] > .task-list-item-checkbox,
+li.task-list-item.is-checked > .task-list-item-checkbox {
+  background: #10b981 !important;
+  border-color: #059669 !important;
+}
+.task-list-item[data-task="x"] > .task-list-item-checkbox::after,
+.task-list-item[data-task="X"] > .task-list-item-checkbox::after,
+li.task-list-item.is-checked > .task-list-item-checkbox::after {
+  content: "\2713";
+  color: #ffffff;
+  font-size: 0.85em;
+  font-weight: 700;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.task-list-item[data-task="x"],
+.task-list-item[data-task="X"],
+li.task-list-item.is-checked {
+  color: #94a3b8 !important;
+  text-decoration: line-through !important;
+}
+/* / = in-progress */
+.task-list-item[data-task="/"] > .task-list-item-checkbox {
+  background: linear-gradient(135deg, #3b82f6 50%, #ffffff 50%) !important;
+  border-color: #2563eb !important;
+}
+/* ! = important */
+.task-list-item[data-task="!"] > .task-list-item-checkbox {
+  background: #ef4444 !important;
+  border-color: #dc2626 !important;
+}
+.task-list-item[data-task="!"] > .task-list-item-checkbox::after {
+  content: "!";
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.85em;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.task-list-item[data-task="!"] {
+  font-weight: 600 !important;
+}
+/* ? = question */
+.task-list-item[data-task="?"] > .task-list-item-checkbox {
+  background: #a855f7 !important;
+  border-color: #9333ea !important;
+}
+.task-list-item[data-task="?"] > .task-list-item-checkbox::after {
+  content: "?";
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85em;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+/* - = cancelled */
+.task-list-item[data-task="-"] > .task-list-item-checkbox {
+  background: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+}
+.task-list-item[data-task="-"] > .task-list-item-checkbox::after {
+  content: "\2013";
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.9em;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.task-list-item[data-task="-"] {
+  color: #94a3b8 !important;
+  text-decoration: line-through !important;
+  text-decoration-color: #cbd5e1 !important;
+}
+/* > = forwarded */
+.task-list-item[data-task=">"] > .task-list-item-checkbox {
+  background: #f59e0b !important;
+  border-color: #d97706 !important;
+}
+.task-list-item[data-task=">"] > .task-list-item-checkbox::after {
+  content: "\203A";
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95em;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+body.theme-dark .task-list-item-checkbox {
+  background: #1c2128 !important;
+  border-color: #475569 !important;
+}
+body.theme-dark .task-list-item-checkbox:hover {
+  border-color: #94a3b8 !important;
+}
+body.theme-dark .task-list-item[data-task="-"] > .task-list-item-checkbox {
+  background: #2c333d !important;
+}
+body.theme-dark .task-list-item[data-task="-"] > .task-list-item-checkbox::after {
+  color: #94a3b8;
+}
+body.theme-dark .task-list-item[data-task="x"],
+body.theme-dark .task-list-item[data-task="X"],
+body.theme-dark li.task-list-item.is-checked,
+body.theme-dark .task-list-item[data-task="-"] {
+  color: #64748b !important;
+}
+
+/* End of v2.4.0 small pack ================================================ */
