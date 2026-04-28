@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.1] — 2026-04-29 — View header title emphasis
+
+### Changed
+- **뷰 헤더 문서 제목** (`.view-header-title`, breadcrumb 마지막 항목) 굵게 + 약간 크게 표시해 현재 문서 인식성 강화.
+- breadcrumb 상위 경로는 톤다운(`#94a3b8`)으로 조정.
+
 ## [2.3.0] — 2026-04-29 — Properties + Quote + Dataview
 
 ### Added

@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.3.0 — Mid-scale UX (Properties + Quote + Dataview)
+ * Version 2.3.1 — View header title emphasis
  * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -10663,3 +10663,25 @@ body.theme-dark .block-language-dataview table tbody tr:hover td {
 }
 
 /* End of v2.3.0 Mid-scale UX =============================================== */
+
+
+/* ============================================================================
+ * v2.3.1 — View header title (breadcrumb 마지막 항목 = 문서 제목) emphasis
+ * ========================================================================== */
+.view-header-title {
+  font-weight: 700 !important;
+  font-size: 1.05em !important;
+  color: #1e293b !important;
+  letter-spacing: -0.01em !important;
+}
+.view-header-breadcrumb {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+}
+body.theme-dark .view-header-title {
+  color: #f1f5f9 !important;
+}
+body.theme-dark .view-header-breadcrumb {
+  color: #64748b !important;
+}
+/* End of v2.3.1 ========================================================== */
