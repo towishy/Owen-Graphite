@@ -4,6 +4,32 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2] — 2026-04-29 — Bugfix + README 종합 정리
+
+### Fixed
+- **Live Preview 표 셀 편집시 행이 화면 높이로 늘어나는 버그 수정** — `.cm-content { min-height: calc(100vh - 220px) }` 베이스 룰이 표 셀 안 중첩 CodeMirror 에디터에도 적용되어 셀이 화면 전체로 부풀던 현상을 수정. `.cm-table-widget` / `table.cm-table` / `.HyperMD-table-row` 안쪽의 `cm-content`·`cm-line`·`cm-scroller`에 `min-height: 0` `height: auto` 적용.
+
+### Documentation
+- **한 줄 요약 차별점** — Workspace Surfaces / Polish Pack 단서 추가.
+- **사용자 클래스 표 확장** — `.cover-page` `.cover-meta` `.cover-rule` `.ogd-mini-toc` v2.0.0 옵인 클래스 도쇄.
+- **파일 구조 광명** — `CONTRIBUTING.md`, `LICENSE`, `.github/workflows/`, `src/` 신규 항목 표시 및 theme.css 라인 그급 명시.
+- **변경 이력 최신화** — v1.8.65 / v1.8.66 / v1.9.0 / v2.0.0 요약 추가.
+- **기여 섹션** — CONTRIBUTING.md / src/README.md 참조 링크 추가.
+
+## [2.0.1] — 2026-04-29 — README 종합 정리
+
+v2.0.0 시점의 기능·파일 구조·사용자 클래스를 README에 종합 반영하는 문서 패치.
+
+### Documentation
+- **한 줄 요약 차별점** — Workspace Surfaces / Polish Pack 단서 추가.
+- **사용자 클래스 표 확장** — `.cover-page` `.cover-meta` `.cover-rule` `.ogd-mini-toc` v2.0.0 옵인 클래스 도쇄.
+- **파일 구조 광멵** — `CONTRIBUTING.md`, `LICENSE`, `.github/workflows/`, `src/` 신규 항목 표시 및 theme.css 라인 그기 명시.
+- **변경 이력 최신화** — v1.8.65 / v1.8.66 / v1.9.0 / v2.0.0 요약 추가.
+- **기여 섹션** — CONTRIBUTING.md / src/README.md 참조 링크 추가.
+
+### Notes
+- CSS 변경 없음. v2.0.0 완전 동일.
+
 ## [2.0.0] — 2026-04-29 — Workspace Surfaces Pack
 
 노트 본문 외 주요 워크스페이스 면을 통일된 디자인 언어로 정리하고, 향후 모듈 분할 계획을 `src/` 디렉터리에 문서화한 메이저 릴리즈.

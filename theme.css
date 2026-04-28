@@ -9924,3 +9924,43 @@ body.theme-dark .markdown-rendered .ogd-mini-toc a {
 }
 
 /* End of v2.0.0 Workspace Surfaces Pack ==================================== */
+
+
+/* ============================================================================
+ * v2.0.2 — Bugfix: nested CM editor inside table cells inflating to viewport
+ * ----------------------------------------------------------------------------
+ * The base rule
+ *   body .markdown-source-view.mod-cm6 .cm-content { min-height: calc(100vh - 220px) }
+ * also matches the nested CodeMirror editor that Obsidian mounts inside a
+ * table cell when the user starts editing it. The cell then expands to almost
+ * the full viewport height, breaking the surrounding row layout.
+ * Reset min-height/height for any .cm-content / .cm-line that lives inside a
+ * Live Preview table widget. Reading view tables are unaffected.
+ * ========================================================================== */
+
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-content,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-content,
+body .markdown-source-view.mod-cm6 .HyperMD-table-row .cm-content,
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-editor .cm-scroller,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-editor .cm-scroller {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-line,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-line,
+body .markdown-source-view.mod-cm6 .HyperMD-table-row .cm-line {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Table cells themselves should size to content, not stretch to row max */
+body .markdown-source-view.mod-cm6 .cm-table-widget td,
+body .markdown-source-view.mod-cm6 .cm-table-widget th,
+body .markdown-source-view.mod-cm6 table.cm-table td,
+body .markdown-source-view.mod-cm6 table.cm-table th {
+  vertical-align: top !important;
+  height: auto !important;
+}
+
+/* End of v2.0.2 table-cell inflate fix ===================================== */

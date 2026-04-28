@@ -30,10 +30,10 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
+| **차별점** | A3 인쇄 + 헤더 자동 넘벍링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + **Workspace Surfaces (Graph view·Canvas·Folder cues·Mini TOC·Cover page)** + **Polish Pack (callout stripe·code label·dark parity)** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `2.0.0` (Obsidian 1.6.0+) |
+| **버전** | `2.0.2` (Obsidian 1.6.0+) |
 
 ---
 
@@ -407,8 +407,10 @@ Callout 회귀 확인용 fixture는 [docs/fixtures/callout-report.md](docs/fixtu
 | 클래스 | 위치 | 효과 |
 |--------|------|------|
 | `.ogd-blur` | inline element | 텍스트 blur, hover 시 해제 |
-| `.ogd-cover` | h1 | 표지 페이지 강제 |
-| `sticky-first-col` | `<table>` | 첫 컬럼 sticky scroll |
+| `.ogd-cover` | h1 | 표지 페이지 강제 || `.cover-page` | YAML cssclasses 또는 div wrapper | **(v2.0.0+)** 세로로 중앙 정렬된 레포트 표지 + 자동 페이지 분할 |
+| `.cover-meta` | div inside `.cover-page` | **(v2.0.0+)** 표지 하단 메타(날짜/버전) 모노스페이스 |
+| `.cover-rule` | div inside `.cover-page` | **(v2.0.0+)** 제목 아래 80×3px accent 룰 |
+| `.ogd-mini-toc` | YAML cssclasses 또는 div wrapper | **(v2.0.0+)** Reading view 우측 sticky mini TOC, 모바일 자동 인라인 || `sticky-first-col` | `<table>` | 첫 컬럼 sticky scroll |
 | `.num` | th/td | 숫자 우측정렬 + tabular-nums |
 | `wide-table` | `<table>` | 열이 많은 표의 폰트/간격 압축 |
 | `compact-table` | `<table>` | 로그/체크리스트용 조밀한 표 |
@@ -510,13 +512,17 @@ Markdown 표 바로 아래에 HTML 표를 쓰거나, Dataview/HTML 출력에서 
 
 ```
 Owen Graphite/
-├── theme.css          # 테마 본체 (과거 snippet 기능 흡수)
-├── manifest.json      # Obsidian 테마 메타데이터
-├── README.md          # 빠른 사용법과 설정 요약
-├── CHANGELOG.md       # 전체 릴리즈 노트
-├── docs/fixtures/     # 검증·디자인 preview fixture
-├── screenshots/       # README/마켓플레이스 이미지
-└── scripts/           # 로컬 검증 스크립트
+├── theme.css                # 테마 본체 (~9,900줄, snippet 흠수)
+├── manifest.json            # Obsidian 테마 메타데이터
+├── README.md                # 빠른 사용법과 설정 요약
+├── CHANGELOG.md             # 전체 릴리즈 노트
+├── CONTRIBUTING.md          # (v1.9.0+) 외부 기여 가이드
+├── LICENSE                  # MIT
+├── .github/workflows/       # validate / release CI
+├── docs/fixtures/           # 검증·디자인 preview fixture
+├── screenshots/             # README/마켓플레이스 이미지
+├── scripts/                 # 로컬 검증 스크립트 (Python)
+└── src/                     # (v2.0.0+) 장기 모듈화 로드맵 문서
 ```
 
 ### 로컬 검증
@@ -560,8 +566,10 @@ python scripts/build_release.py
 ## 📝 변경 이력
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
-
-- **v1.8.64** — H1 스타일을 편집 장세·챕터 번호 키커 (Sample B)로 재디자인, blockquote는 세로바 대신 연한 배경+이탈릭으로 시각화, 인라인 제목 기본 비활성화, 별도 CSS snippet을 테마에 완전 흡수
+- **v2.0.0** — Workspace Surfaces Pack: Graph view·Canvas 스타일, File explorer 폴더 컬러 큐(10개 패턴), Reading view mini TOC, Print 표지 페이지 유틸리티. 파괴적 변경 없음.
+- **v1.9.0** — Maintainability Pass: CONTRIBUTING.md 신규, theme.css BOF Section Index, CI brace balance 검사. 디자인 변경 없음.
+- **v1.8.66** — Polish Pack: Dark Mode parity, Mobile 반응형, Tab 대비, Callout 컬러바, 코드 언어 라벨, Inline code 톤, Heading anchor, Status bar mono, Search HL, Frontmatter.
+- **v1.8.65** — Windows Live Preview `>` 마커 그리프 이슈 수정, 모노스페이스 폰트 폴백 강화, PDF thead 반복 출력 및 줄간격 미세조정.- **v1.8.64** — H1 스타일을 편집 장세·챕터 번호 키커 (Sample B)로 재디자인, blockquote는 세로바 대신 연한 배경+이탈릭으로 시각화, 인라인 제목 기본 비활성화, 별도 CSS snippet을 테마에 완전 흡수
 - **v1.8.62** — Windows/macOS/Linux Git 설치 명령에서 Git 출력 잡음을 숨기고 성공 시 OK 메시지만 표시하도록 정리
 - **v1.8.61** — Windows 신규 설치의 Reading View/Live Preview readable 컬럼 중앙 배치 회귀를 더 넓은 Obsidian DOM 선택자로 보강
 - **v1.8.60** — Windows 신규 설치에서 readable 본문 컬럼 앞에 큰 공백이 생기던 정렬 회귀 수정, 설치 예시 경로와 ZIP 폴더명 안내 정리
@@ -595,9 +603,12 @@ python scripts/build_release.py
 
 ## 🤝 기여
 
-이슈, 기능 제안, PR을 환영합니다:
+이슈, 기능 제안, PR을 환영합니다. 외부 기여자는 [CONTRIBUTING.md](CONTRIBUTING.md)의 개발 환경·검증·릴리즈 절차를 먼저 확인해 주세요.
+
 - 이슈: [GitHub Issues](https://github.com/towishy/Owen-Graphite/issues)
 - 토론: [Discussions](https://github.com/towishy/Owen-Graphite/discussions)
+- 기여 가이드: [CONTRIBUTING.md](CONTRIBUTING.md)
+- 모듈화 로드맵: [src/README.md](src/README.md)
 
 ---
 
