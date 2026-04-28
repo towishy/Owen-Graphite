@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.62] — 2026-04-28
+
+### Changed
+- Updated Windows, macOS, and Linux Git install commands to suppress raw Git output and print a clear OK message only after a successful install or update.
+
 ## [1.8.61] — 2026-04-28
 
 ### Fixed
