@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.58` (Obsidian 1.6.0+) |
+| **버전** | `1.8.59` (Obsidian 1.6.0+) |
 
 ---
 
@@ -45,39 +45,69 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 2. 검색: `Owen Graphite`
 3. 설치 → 사용
 
-### 옵션 B — 수동 설치
+### 옵션 B — Git으로 수동 설치 / 업데이트
 
-Obsidian vault 안의 `.obsidian/themes/Owen Graphite/` 폴더에 테마 파일을 배치합니다.
+Obsidian vault 안의 `.obsidian/themes/Owen Graphite/` 폴더에 테마 저장소를 설치합니다. Git으로 설치하면 이후 같은 명령으로 빠르게 업데이트할 수 있습니다.
+
+Git이 없다면 먼저 설치하세요.
+
+| 플랫폼 | Git 설치 명령 |
+|------|------|
+| Windows | `winget install --id Git.Git -e --source winget` |
+| macOS | `brew install git` |
+| Ubuntu / Debian | `sudo apt update && sudo apt install git` |
+| Fedora | `sudo dnf install git` |
 
 #### Windows
 
-PowerShell에서 vault 루트 경로를 기준으로 실행합니다. 아래 명령은 테마를 반드시 `.obsidian\themes\Owen Graphite` 아래에 설치합니다.
+PowerShell에서 vault 루트 경로를 기준으로 실행합니다. 아래 명령은 테마를 반드시 `.obsidian\themes\Owen Graphite` 아래에 설치하며, 이미 Git으로 설치된 경우에는 새로 clone하지 않고 업데이트합니다.
 
 ```powershell
 cd "D:\Path\To\YourVault"
 New-Item -ItemType Directory -Force ".obsidian\themes" | Out-Null
-git clone https://github.com/towishy/Owen-Graphite.git ".obsidian\themes\Owen Graphite"
+$ThemeDir = ".obsidian\themes\Owen Graphite"
+
+if (Test-Path "$ThemeDir\.git") {
+    git -C $ThemeDir pull --ff-only
+} elseif (Test-Path $ThemeDir) {
+    Write-Host "Owen Graphite folder already exists but is not a Git clone. Replace it with the latest Release ZIP files or rename the existing folder first."
+} else {
+    git clone https://github.com/towishy/Owen-Graphite.git $ThemeDir
+}
 ```
 
 예: vault가 `D:\JAELE\WIKI`라면 대상 경로는 `D:\JAELE\WIKI\.obsidian\themes\Owen Graphite\`입니다.
 
 #### macOS / Linux
 
+터미널에서 vault 루트 경로를 기준으로 실행합니다. 이미 Git으로 설치된 경우에는 새로 clone하지 않고 업데이트합니다.
+
 ```bash
-cd <YourVault>/.obsidian/themes
-git clone https://github.com/towishy/Owen-Graphite.git "Owen Graphite"
+cd "/path/to/YourVault"
+mkdir -p ".obsidian/themes"
+THEME_DIR=".obsidian/themes/Owen Graphite"
+
+if [ -d "$THEME_DIR/.git" ]; then
+    git -C "$THEME_DIR" pull --ff-only
+elif [ -e "$THEME_DIR" ]; then
+    echo "Owen Graphite folder already exists but is not a Git clone. Replace it with the latest Release ZIP files or rename the existing folder first."
+else
+    git clone https://github.com/towishy/Owen-Graphite.git "$THEME_DIR"
+fi
 ```
 
 예: vault가 `/Users/owen/Work/WIKI`라면 대상 경로는 `/Users/owen/Work/WIKI/.obsidian/themes/Owen Graphite/`입니다.
 
-#### Releases 파일로 설치
+### 옵션 C — ZIP으로 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `theme.css`, `manifest.json`, `README.md`, `CHANGELOG.md`, `LICENSE`, `screenshots/`를 다운로드한 뒤 아래 위치에 배치합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `Owen-Graphite-<version>.zip`을 다운로드한 뒤 압축을 해제합니다. ZIP 안의 `Owen Graphite` 폴더를 플랫폼별 테마 대상 경로에 배치합니다.
 
 | 플랫폼 | 테마 대상 경로 |
 |------|------|
 | Windows | `<YourVault>\.obsidian\themes\Owen Graphite\` |
 | macOS / Linux | `<YourVault>/.obsidian/themes/Owen Graphite/` |
+
+이미 같은 이름의 폴더가 있다면 Obsidian을 종료한 뒤 기존 `Owen Graphite` 폴더를 교체하거나, 백업 이름으로 바꾼 다음 새 폴더를 배치하세요.
 
 선택 CSS snippet을 함께 쓰는 경우 `snippets/zz-obsidian-gray-force-override-v2.css`를 아래 위치에 배치한 뒤 Obsidian 설정 → 외관 → CSS snippets에서 활성화하세요.
 
@@ -473,6 +503,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.59** — 신규 Obsidian 설치에서 Live Preview 본문 영역이 내용 폭으로 수축해 빈 영역 클릭이 먹지 않던 회귀 수정, Windows/macOS/Linux Git 설치·업데이트 및 ZIP 수동 설치 안내 정리
 - **v1.8.58** — 신규 Obsidian 설치에서 Reading View 문단이 한 글자 폭으로 접히는 회귀 수정, Windows 수동 설치 명령을 `.obsidian\themes` 경로 기준으로 정리
 - **v1.8.57** — 수동 설치 + 스니핏 미적용 환경의 Live Preview 본문 폭 수축 가능성을 1차 보강
 - **v1.8.56** — 검색 focus, command palette/list popup, tooltip/popover, empty state, focus-visible 상태를 Graphite 톤으로 정리

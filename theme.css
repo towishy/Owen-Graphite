@@ -8771,3 +8771,43 @@ body .markdown-reading-view .markdown-rendered p {
   word-break: keep-all !important;
   overflow-wrap: break-word !important;
 }
+
+/* ============================================================
+   v1.8.59 — Live Preview editor width hotfix
+   - Keep the CM6 editing surface stretched across the readable column so
+     clicks in the writing area focus the document instead of only the text glyphs.
+   ============================================================ */
+
+body .markdown-source-view.mod-cm6 .cm-editor,
+body .markdown-source-view.mod-cm6 .cm-scroller,
+body .markdown-source-view.mod-cm6 .cm-sizer,
+body .markdown-source-view.mod-cm6 .cm-contentContainer,
+body .markdown-source-view.mod-cm6 .cm-content {
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer,
+body .markdown-source-view.mod-cm6.is-readable-line-width .CodeMirror-sizer {
+  max-width: var(--ogd-max-width, 420mm) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-content {
+  display: block !important;
+  max-width: 100% !important;
+  min-height: calc(100vh - 220px) !important;
+  cursor: text !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  text-align: left !important;
+}

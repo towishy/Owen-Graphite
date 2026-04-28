@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.59] — 2026-04-28
+
+### Fixed
+- Fixed a fresh-install Live Preview regression where the CodeMirror editing surface could shrink to the text glyph width, leaving the rest of the writing area unresponsive to clicks.
+
+### Changed
+- Updated the manual install docs with platform-specific Git install commands, Git-based install/update commands for Windows/macOS/Linux, and a separate ZIP install path.
+
 ## [1.8.58] — 2026-04-28
 
 ### Fixed

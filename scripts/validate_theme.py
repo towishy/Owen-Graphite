@@ -98,6 +98,16 @@ REQUIRED_READING_VIEW_GUARDS = [
     "overflow-wrap: break-word !important",
 ]
 
+REQUIRED_LIVE_PREVIEW_WIDTH_GUARDS = [
+    "body .markdown-source-view.mod-cm6 .cm-sizer",
+    "body .markdown-source-view.mod-cm6 .cm-contentContainer",
+    "body .markdown-source-view.mod-cm6 .cm-content",
+    "body .markdown-source-view.mod-cm6 .cm-line",
+    "align-self: stretch !important",
+    "min-height: calc(100vh - 220px) !important",
+    "cursor: text !important",
+]
+
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -288,6 +298,14 @@ def reading_view_layout_guards() -> None:
     ok("Reading View layout guards clean")
 
 
+def live_preview_width_guards() -> None:
+    theme = read_text("theme.css")
+    missing = [guard for guard in REQUIRED_LIVE_PREVIEW_WIDTH_GUARDS if guard not in theme]
+    if missing:
+        fail(f"theme.css missing Live Preview width guards: {', '.join(missing)}")
+    ok("Live Preview width guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -340,6 +358,7 @@ def main() -> int:
     release_zip_if_present(version)
     live_preview_guards()
     reading_view_layout_guards()
+    live_preview_width_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)
