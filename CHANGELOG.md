@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.58] — 2026-04-28
+
+### Fixed
+- Fixed a fresh-install Reading View regression where preview paragraph blocks could shrink to a one-character-wide column in Korean notes.
+
+### Changed
+- Updated the Windows manual install command so it creates `.obsidian\themes` from the vault root and clones directly into `.obsidian\themes\Owen Graphite`.
+
 ## [1.8.57] — 2026-04-28
 
 ### Fixed

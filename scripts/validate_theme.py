@@ -87,6 +87,17 @@ FORBIDDEN_LIVE_PREVIEW_RULES = {
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-header-[3-6][^{}]*\{[^}]*z-index\s*:\s*(?:-?\d+|var\()[^;}]+", re.S): "stacking z-index on Live Preview H3-H6",
 }
 
+FORBIDDEN_READING_VIEW_RULES = {
+    re.compile(r"\.markdown-rendered\s*\{[^}]*overflow-wrap\s*:\s*anywhere", re.S): "overflow-wrap:anywhere on global .markdown-rendered",
+}
+
+REQUIRED_READING_VIEW_GUARDS = [
+    "body .markdown-preview-section > div",
+    "body .markdown-rendered > div",
+    "body .markdown-rendered p",
+    "overflow-wrap: break-word !important",
+]
+
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -266,6 +277,17 @@ def live_preview_guards() -> None:
     ok("Live Preview editability guards clean")
 
 
+def reading_view_layout_guards() -> None:
+    theme = read_text("theme.css")
+    for pattern, description in FORBIDDEN_READING_VIEW_RULES.items():
+        if pattern.search(theme):
+            fail(f"theme.css: {description}")
+    missing = [guard for guard in REQUIRED_READING_VIEW_GUARDS if guard not in theme]
+    if missing:
+        fail(f"theme.css missing Reading View layout guards: {', '.join(missing)}")
+    ok("Reading View layout guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -317,6 +339,7 @@ def main() -> int:
     contrast_audit()
     release_zip_if_present(version)
     live_preview_guards()
+    reading_view_layout_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)

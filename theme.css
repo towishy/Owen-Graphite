@@ -513,7 +513,7 @@ button.mod-warning,
 .markdown-preview-view,
 .markdown-rendered {
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .markdown-source-view.mod-cm6 .cm-content {
@@ -8732,4 +8732,42 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     outline: 2px solid CanvasText !important;
     box-shadow: none !important;
   }
+}
+
+/* ============================================================
+   v1.8.58 — Reading View block width hotfix
+   - Fresh Obsidian installs can render preview blocks as shrink-to-fit flex items.
+     Keep block wrappers full-width so Korean body text never collapses to a one-character column.
+   ============================================================ */
+
+body .markdown-preview-view,
+body .markdown-reading-view,
+body .markdown-rendered {
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+}
+
+body .markdown-preview-sizer,
+body .markdown-preview-section,
+body .markdown-rendered {
+  min-width: 0 !important;
+}
+
+body .markdown-preview-section > div,
+body .markdown-rendered > div {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+body .markdown-rendered p,
+body .markdown-preview-view.markdown-rendered p,
+body .markdown-reading-view .markdown-rendered p {
+  display: block !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
 }
