@@ -490,7 +490,7 @@ button.mod-warning,
 .markdown-source-view.is-readable-line-width .CodeMirror-sizer,
 .markdown-rendered.is-readable-line-width {
   max-width: var(--ogd-max-width, 420mm);
-  margin: 0 auto;
+  margin: 0;
 }
 
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
@@ -8792,7 +8792,21 @@ body .markdown-source-view.mod-cm6 .cm-content {
 body .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer,
 body .markdown-source-view.mod-cm6.is-readable-line-width .CodeMirror-sizer {
   max-width: var(--ogd-max-width, 420mm) !important;
-  margin-left: auto !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* ============================================================
+   v1.8.60 — Readable column left alignment
+   - Avoid an oversized leading blank area on fresh Windows installs by anchoring
+     the readable Markdown column to the pane's left edge instead of centering it.
+   ============================================================ */
+
+body .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+body .markdown-source-view.is-readable-line-width .cm-contentContainer,
+body .markdown-source-view.is-readable-line-width .CodeMirror-sizer,
+body .markdown-rendered.is-readable-line-width {
+  margin-left: 0 !important;
   margin-right: auto !important;
 }
 

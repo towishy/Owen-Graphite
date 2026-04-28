@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.59` (Obsidian 1.6.0+) |
+| **버전** | `1.8.60` (Obsidian 1.6.0+) |
 
 ---
 
@@ -76,8 +76,6 @@ if (Test-Path "$ThemeDir\.git") {
 }
 ```
 
-예: vault가 `D:\JAELE\WIKI`라면 대상 경로는 `D:\JAELE\WIKI\.obsidian\themes\Owen Graphite\`입니다.
-
 #### macOS / Linux
 
 터미널에서 vault 루트 경로를 기준으로 실행합니다. 이미 Git으로 설치된 경우에는 새로 clone하지 않고 업데이트합니다.
@@ -96,11 +94,9 @@ else
 fi
 ```
 
-예: vault가 `/Users/owen/Work/WIKI`라면 대상 경로는 `/Users/owen/Work/WIKI/.obsidian/themes/Owen Graphite/`입니다.
-
 ### 옵션 C — ZIP으로 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `Owen-Graphite-<version>.zip`을 다운로드한 뒤 압축을 해제합니다. ZIP 안의 `Owen Graphite` 폴더를 플랫폼별 테마 대상 경로에 배치합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 `Owen-Graphite-<version>.zip`을 다운로드한 뒤 압축을 해제합니다. ZIP 안의 최상위 폴더 이름은 반드시 `Owen Graphite`여야 합니다. 압축 해제 도구가 다른 이름의 폴더를 만들었다면 폴더명을 `Owen Graphite`로 바꾼 뒤 플랫폼별 테마 대상 경로에 배치합니다.
 
 | 플랫폼 | 테마 대상 경로 |
 |------|------|
@@ -503,6 +499,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.60** — Windows 신규 설치에서 readable 본문 컬럼 앞에 큰 공백이 생기던 정렬 회귀 수정, 설치 예시 경로와 ZIP 폴더명 안내 정리
 - **v1.8.59** — 신규 Obsidian 설치에서 Live Preview 본문 영역이 내용 폭으로 수축해 빈 영역 클릭이 먹지 않던 회귀 수정, Windows/macOS/Linux Git 설치·업데이트 및 ZIP 수동 설치 안내 정리
 - **v1.8.58** — 신규 Obsidian 설치에서 Reading View 문단이 한 글자 폭으로 접히는 회귀 수정, Windows 수동 설치 명령을 `.obsidian\themes` 경로 기준으로 정리
 - **v1.8.57** — 수동 설치 + 스니핏 미적용 환경의 Live Preview 본문 폭 수축 가능성을 1차 보강

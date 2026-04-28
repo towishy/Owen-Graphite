@@ -108,6 +108,14 @@ REQUIRED_LIVE_PREVIEW_WIDTH_GUARDS = [
     "cursor: text !important",
 ]
 
+REQUIRED_READABLE_COLUMN_GUARDS = [
+    "body .markdown-preview-view.is-readable-line-width .markdown-preview-sizer",
+    "body .markdown-source-view.is-readable-line-width .cm-contentContainer",
+    "body .markdown-rendered.is-readable-line-width",
+    "margin-left: 0 !important",
+    "margin-right: auto !important",
+]
+
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -306,6 +314,14 @@ def live_preview_width_guards() -> None:
     ok("Live Preview width guards clean")
 
 
+def readable_column_guards() -> None:
+    theme = read_text("theme.css")
+    missing = [guard for guard in REQUIRED_READABLE_COLUMN_GUARDS if guard not in theme]
+    if missing:
+        fail(f"theme.css missing readable column guards: {', '.join(missing)}")
+    ok("readable column alignment guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -359,6 +375,7 @@ def main() -> int:
     live_preview_guards()
     reading_view_layout_guards()
     live_preview_width_guards()
+    readable_column_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)
