@@ -4,6 +4,23 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] — 2026-04-29 — Maintainability Pass
+
+구조·문서·자동화를 정비한 마이너 릴리즈. CSS 동작은 v1.8.66과 동일하고 제로 회귀입니다.
+
+### Added
+- **`CONTRIBUTING.md`** — 로컬 개발 환경 세팅, rsync·validate·build 워크플로우, CSS 패치 블록 추가 규칙, 릴리즈 절차(한글 노트는 `--notes-file` 필수) 등 외부 기여자 가이드.
+- **README Style Settings i18n 매핑표** — 한글 구획 명을 English 대응 명과 함께 표기(외국 사용자 접근성).
+- **theme.css BOF Section Index** — 구제적인 라인 범위 추가, 몇 달간 누적된 패치 블록(v1.8.42 ~ v1.8.66) 인벤토리 및 기여자 주의사항 명시.
+
+### Changed
+- **CI 강화 (`.github/workflows/validate.yml`)** — brace balance 검사와 `manifest.json` JSON 파싱을 PR 단계에서 자동 검증.
+- **theme.css 헤더** — 라이선스(MIT)·저자·레포 명시, 섬션 레이아웃 명확화.
+
+### Notes
+- 새 기능/디자인 변경 없음. 온전히 유지 보수 릴리즈(`minor` bump는 CONTRIBUTING/CI/Index 신규 파일·세그먼트 추가를 알리기 위함).
+- 향후 v2.0.0에서 theme.css 실제 모듈 분할(섬션별 파일)을 검토 예정. 현재는 회귀 위험 최소화 우선.
+
 ## [1.8.66] — 2026-04-29 — Polish Pack
 
 ### Added

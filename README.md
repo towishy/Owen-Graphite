@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.66` (Obsidian 1.6.0+) |
+| **버전** | `1.9.0` (Obsidian 1.6.0+) |
 
 ---
 
@@ -167,6 +167,16 @@ echo "OK: Owen Graphite installed or updated."
 | 안정성 | 표 zebra, 표 모던 스타일, PDF 블록 분할 방지 | 긴 표·callout·이미지 출력 안정화 |
 
 Style Settings UI는 `읽기와 본문`, `표와 코드`, `보고서와 PDF`, `워크스페이스와 접근성`, `PDF 첫 페이지 헤더` 구획으로 나뉘어 긴 옵션 목록을 빠르게 훑을 수 있습니다. 실제 조정 가능한 옵션 수는 기존과 동일한 27개입니다.
+
+#### Style Settings 구획 (한글 / English)
+
+| 한글 구획 | English section | 주요 옵션 |
+|----------|-----------------|-----------|
+| 읽기와 본문 | Reading & Body | font size, line height, max width, accent |
+| 표와 코드 | Tables & Code | zebra, modern table style, PDF block-break guard |
+| 보고서와 PDF | Report & PDF | report mode, serif body, indent, auto numbering, drop cap, spacing preset, page size |
+| 워크스페이스와 접근성 | Workspace & A11y | accent preset, code block theme, sepia, OS dark, glass intensity, CJK font tune |
+| PDF 첫 페이지 헤더 | PDF Cover Header | left/right body & sidebar color, label color |
 
 Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본값으로 고정됩니다. PDF 헤더, 보고서 모드, 액센트 컬러 변경을 자주 쓴다면 플러그인 사용을 권장합니다.
 

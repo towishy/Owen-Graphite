@@ -16,5 +16,17 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Brace balance check
+        run: |
+          python -c "
+          s = open('theme.css').read()
+          o, c = s.count('{'), s.count('}')
+          print(f'Open: {o}  Close: {c}')
+          assert o == c, f'Brace imbalance: {o} open vs {c} close'
+          "
+
+      - name: Manifest JSON parse
+        run: python -c "import json; json.load(open('manifest.json'))"
+
       - name: Run theme validation
         run: python scripts/validate_theme.py --ci

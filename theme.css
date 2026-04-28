@@ -1,13 +1,42 @@
-/* Owen Graphite for Obsidian — A report-oriented theme. */
+/* Owen Graphite for Obsidian — A report-oriented theme.
+ * Version 1.9.0 — Maintainability Pass
+ * Author: towishy  ·  License: MIT
+ * Repository: https://github.com/towishy/Owen-Graphite
+ */
 
-/* Section index
-  1. Style Settings metadata
-  2. Base variables and Graphite token aliases
-  3. Typography, headings, links, lists, callouts, code, and tables
-  4. Workspace chrome, navigation panes, overlays, and plugin integrations
-  5. Report/PDF print rules and first-page header helpers
-  6. Mobile, accessibility, high-contrast, reduced-motion, and glass presets
-  7. Release patch blocks for compatibility and regression hardening */
+/* ============================================================================
+ * SECTION INDEX (line ranges are approximate; search markers below for jumps)
+ * ----------------------------------------------------------------------------
+ *  1. Style Settings metadata                          L0012 — L0309
+ *  2. Base variables and Graphite token aliases        L0310 — L0414
+ *  3. Typography, headings, links, lists, callouts,
+ *     code, and tables                                 L0415 — L1296
+ *  4. Workspace chrome, navigation panes, overlays,
+ *     plugin integrations                              L1297 — L2308
+ *  5. Report/PDF print rules + first-page headers      L2309 — L2799
+ *  6. Mobile, accessibility, high-contrast,
+ *     reduced-motion, glass presets                    L2800 — L7653
+ *  7. Release patch blocks (chronological hardening)   L7654 — EOF
+ *
+ * RELEASE PATCH BLOCKS (jump via "/* v1.8" search):
+ *  - v1.8.42  Glass control polish + selected-state    @ L7654
+ *  - v1.8.43  Glass intensity, plugin polish, print    @ L7747
+ *  - v1.8.46  Accessibility hardening for glass UI     @ L8449
+ *  - v1.8.47  Square workspace tab glass               @ L7909
+ *  - v1.8.65  Blockquote border removal + Live Preview @ L0811, L0900
+ *  - v1.8.65  PDF table thead repeat + line-height     @ within section 5
+ *  - v1.8.66  Polish Pack (dark/mobile/tabs/callout
+ *             stripe/code label/inline code/anchor/
+ *             search/frontmatter)                      @ L9415 — L9666
+ *  - v1.8.68  Hide inline title by default             @ L0415
+ *
+ * NOTE for future contributors:
+ *  - Append new patch blocks at EOF with a clear "/* vX.Y.Z — title */" header
+ *    and an "/* End of vX.Y.Z ... */" closer.
+ *  - Avoid editing earlier sections directly; prefer additive overrides
+ *    in section 7 to preserve the regression-tested baseline.
+ *  - Keep brace count balanced (run scripts/validate_theme.py before commit).
+ * ========================================================================== */
 
 /* @settings
 name: Owen Graphite
