@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.9.0` (Obsidian 1.6.0+) |
+| **버전** | `2.0.0` (Obsidian 1.6.0+) |
 
 ---
 
@@ -219,6 +219,22 @@ Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본�
 | Live Preview 안전성 | Reading View 장식을 CM6 편집 라인에 과도하게 강제하지 않음 |
 
 > 과거에 snippet을 설치하셨던 사용자는 `<YourVault>/.obsidian/snippets/zz-obsidian-gray-force-override-v2.css`를 제거하고 Obsidian 설정 → 외관 → CSS snippets에서 비활성화하세요. 동일한 효과가 테마에서 자동 적용됩니다.
+
+---
+
+## 🖥️ Workspace Surfaces Pack — 빌트인 (v2.0.0+)
+
+v2.0.0부터 노트 본문 외 **워크스페이스 상의 주요 면**(Graph view, Canvas, File explorer, 출력물)을 통일된 디자인 언어로 정리합니다.
+
+| 영역 | 상세 |
+|------|------|
+| **Graph view** | 노드 레이블 폰트 통일, hover 시 accent stroke, 원형 그룹 컬러 input pill |
+| **Canvas** | 카드 다층 shadow, focus 외곽선, color group 6개 변수화, edge hover 강조 |
+| **File explorer 폴더 컬러 큐** | `raw/` `wiki/` `outputs/` `reports/` `presentations/` `Clippings/` `Attachments/` `Templates/` `archive/` `drafts/` 10개 패턴에 3px 좌측 틴트 |
+| **Reading view mini TOC** | `.ogd-mini-toc` 클래스 적용 시 우측 sticky TOC, 모바일에서 자동 인라인화, 프린트에서 숨김 |
+| **Print 표지 페이지** | YAML에 `cssclasses: [cover-page]` 또는 `<div class="cover-page">` 래핑 시 세로 중앙 정렬 표지 + 자동 페이지 분할, `.cover-meta` `.cover-rule` 하위 스타일 제공 |
+
+> 모든 기능은 **opt-in** 또는 **경로 자동 감지** 방식으로 동작하며, 기존 노트·테마 동작에 영향을 주지 않습니다.
 
 ---
 

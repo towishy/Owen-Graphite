@@ -4,6 +4,22 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] — 2026-04-29 — Workspace Surfaces Pack
+
+노트 본문 외 주요 워크스페이스 면을 통일된 디자인 언어로 정리하고, 향후 모듈 분할 계획을 `src/` 디렉터리에 문서화한 메이저 릴리즈.
+
+### Added
+- **Graph view 스타일** — 노드 레이블 폰트 통일(11px / 500 weight), hover 시 accent stroke, 그룹 컬러 input 원형 pill.
+- **Canvas 컴포넌트** — 카드 다층 shadow, focus 외곽선, edge hover 강조, 6개 color group 변수화.
+- **File explorer 폴더 컬러 큐** — 온톨로지 경로 패턴(`raw/`, `wiki/`, `outputs/`, `reports/`, `presentations/`, `Clippings/`, `Attachments/`, `Templates/`, `archive/`, `drafts/`)에 3px 좌측 틴트.
+- **Reading view mini TOC** — `.ogd-mini-toc` 옵인 클래스. 우측 sticky TOC, 모바일 자동 인라인, 프린트에서 숨김, `:target` hover 강조.
+- **Print 표지 페이지** — `cover-page` 옵인 클래스. 세로로 중앙 정렬, H1 확대, `.cover-meta`·`.cover-rule` 서브클래스, 출력 시 자동 페이지 분할.
+- **`src/README.md`** — v2.1.0 이후 도입할 모듈 분할 구조, 빌드 파이프라인, 마이그레이션 원칙 정리.
+
+### Notes
+- **파괴적 변경 없음** (v1.x 사용자 안전). 새 기능은 전부 opt-in(에 대한 클래스 적용) 또는 경로 자동 감지 방식. v2.0.0 bump는 새 면적의 수(workspace surfaces)와 모듈화 로드맵 공식화를 반영.
+- `theme.css` 실제 모듈 분할은 v2.1.0 부터 단계적으로 진행 예정 (`src/README.md` 참조).
+
 ## [1.9.0] — 2026-04-29 — Maintainability Pass
 
 구조·문서·자동화를 정비한 마이너 릴리즈. CSS 동작은 v1.8.66과 동일하고 제로 회귀입니다.

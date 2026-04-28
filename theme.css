@@ -9693,3 +9693,234 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 }
 
 /* End of v1.8.66 polish pack ============================================== */
+
+
+/* ============================================================================
+ * v2.0.0 — Workspace Surfaces Pack
+ * Graph view, Canvas, File explorer folder color cues, Reading view mini TOC,
+ * Print cover page (.cover-page utility).
+ * Additive only; never weakens prior rules. Safe for v1.x users.
+ * ========================================================================== */
+
+/* --- Graph view nodes ---------------------------------------------------- */
+.graph-view.color-circle,
+.graph-view.color-fill {
+  --graph-node-radius: 4 !important;
+}
+.graph-view.color-fill text.cm-textmark,
+.graph-view text {
+  font-family: var(--font-text-theme, inherit) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+}
+.graph-view.color-line,
+.graph-view circle,
+.graph-view line {
+  transition: opacity 0.18s ease, stroke-width 0.18s ease;
+}
+.graph-view circle:hover {
+  stroke: var(--interactive-accent, #475569) !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Folder-based tinting (works only when groups feature is on) */
+.graph-controls .graph-color-group .color-input {
+  border-radius: 999px !important;
+}
+
+/* --- Canvas nodes -------------------------------------------------------- */
+.canvas-node {
+  border-radius: 8px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06),
+              0 4px 12px rgba(15, 23, 42, 0.04) !important;
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.canvas-node:hover {
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.10),
+              0 8px 24px rgba(15, 23, 42, 0.08) !important;
+}
+.canvas-node.is-focused {
+  box-shadow: 0 0 0 2px var(--interactive-accent, #475569),
+              0 6px 18px rgba(15, 23, 42, 0.12) !important;
+}
+.canvas-node-content {
+  padding: 14px 16px !important;
+}
+.canvas-node-content h1,
+.canvas-node-content h2,
+.canvas-node-content h3 {
+  margin-top: 0.4em !important;
+}
+.canvas-edge {
+  stroke-width: 1.5px !important;
+}
+.canvas-edge.is-focused,
+.canvas-edge:hover {
+  stroke: var(--interactive-accent, #475569) !important;
+  stroke-width: 2px !important;
+}
+.canvas-color-1 { --canvas-color: #ef4444; }  /* red    */
+.canvas-color-2 { --canvas-color: #f59e0b; }  /* orange */
+.canvas-color-3 { --canvas-color: #facc15; }  /* yellow */
+.canvas-color-4 { --canvas-color: #10b981; }  /* green  */
+.canvas-color-5 { --canvas-color: #06b6d4; }  /* cyan   */
+.canvas-color-6 { --canvas-color: #8b5cf6; }  /* purple */
+
+/* --- File explorer — folder color cues ----------------------------------- *
+ * Convention-driven: folders matching common ontology names get a subtle
+ * 3px left tint. Users can extend via CSS snippets if needed.
+ * --------------------------------------------------------------------------*/
+.nav-folder-title {
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.nav-folder-title[data-path*="raw/"]            { border-left-color: #94a3b8; }
+.nav-folder-title[data-path*="wiki/"]           { border-left-color: #3b82f6; }
+.nav-folder-title[data-path*="outputs/"]        { border-left-color: #10b981; }
+.nav-folder-title[data-path*="reports/"]        { border-left-color: #14b8a6; }
+.nav-folder-title[data-path*="presentations/"]  { border-left-color: #f59e0b; }
+.nav-folder-title[data-path*="Clippings/"]      { border-left-color: #a855f7; }
+.nav-folder-title[data-path*="Attachments/"]    { border-left-color: #cbd5e1; }
+.nav-folder-title[data-path*="Templates/"]      { border-left-color: #64748b; }
+.nav-folder-title[data-path*="archive/"]        { border-left-color: #9ca3af; opacity: 0.85; }
+.nav-folder-title[data-path*="drafts/"]         { border-left-color: #fcd34d; }
+
+body.theme-dark .nav-folder-title {
+  border-left-color: transparent;
+}
+body.theme-dark .nav-folder-title[data-path*="raw/"]           { border-left-color: #64748b; }
+body.theme-dark .nav-folder-title[data-path*="wiki/"]          { border-left-color: #60a5fa; }
+body.theme-dark .nav-folder-title[data-path*="outputs/"]       { border-left-color: #34d399; }
+
+/* --- Reading view mini TOC (optional, opt-in via .ogd-mini-toc) ---------- *
+ * Usage: wrap an outline list in a div with class `ogd-mini-toc` or add the
+ * class to the note via cssclasses frontmatter. CSS-only; no JS scroll spy.
+ * --------------------------------------------------------------------------*/
+.markdown-rendered .ogd-mini-toc,
+.markdown-preview-view.ogd-mini-toc .markdown-preview-sizer > ul:first-of-type {
+  position: sticky;
+  top: 4em;
+  float: right;
+  width: 240px;
+  margin: 0 0 1.5em 1.5em;
+  padding: 0.9em 1em;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.82em;
+  line-height: 1.5;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.markdown-rendered .ogd-mini-toc::before {
+  content: "TABLE OF CONTENTS";
+  display: block;
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid #e2e8f0;
+}
+.markdown-rendered .ogd-mini-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.markdown-rendered .ogd-mini-toc li {
+  margin: 0.25em 0;
+}
+.markdown-rendered .ogd-mini-toc a {
+  color: #475569;
+  text-decoration: none;
+}
+.markdown-rendered .ogd-mini-toc a:hover {
+  color: var(--interactive-accent, #1e293b);
+  text-decoration: underline;
+}
+.markdown-rendered .ogd-mini-toc :target {
+  background: #fef3c7;
+  font-weight: 600;
+}
+body.theme-dark .markdown-rendered .ogd-mini-toc {
+  background: #1c2128;
+  border-color: #2c333d;
+}
+body.theme-dark .markdown-rendered .ogd-mini-toc::before {
+  color: #94a3b8;
+  border-bottom-color: #2c333d;
+}
+body.theme-dark .markdown-rendered .ogd-mini-toc a {
+  color: #cbd5e1;
+}
+@media (max-width: 1024px) {
+  .markdown-rendered .ogd-mini-toc {
+    float: none;
+    width: 100%;
+    margin: 1em 0;
+    position: static;
+    max-height: none;
+  }
+}
+@media print {
+  .markdown-rendered .ogd-mini-toc {
+    display: none !important;
+  }
+}
+
+/* --- Print cover page (opt-in via .cover-page) --------------------------- *
+ * Usage: add `cssclasses: [cover-page]` to YAML frontmatter, or wrap a
+ * dedicated cover section with `<div class="cover-page">...</div>`. The
+ * marked block forces a page break after itself and centers content.
+ * --------------------------------------------------------------------------*/
+.markdown-rendered .cover-page,
+.markdown-rendered.cover-page > .markdown-preview-sizer > :first-child {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4em 2em;
+  break-after: page;
+  page-break-after: always;
+  -webkit-column-break-after: page;
+}
+.markdown-rendered .cover-page h1,
+.markdown-rendered.cover-page > .markdown-preview-sizer > :first-child h1 {
+  font-size: 3.4em !important;
+  margin-bottom: 0.4em !important;
+  border-bottom: none !important;
+}
+.markdown-rendered .cover-page h1::before,
+.markdown-rendered.cover-page > .markdown-preview-sizer > :first-child h1::before {
+  display: none !important;
+}
+.markdown-rendered .cover-page .cover-meta,
+.markdown-rendered.cover-page .cover-meta {
+  margin-top: 2em;
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.9em;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+.markdown-rendered .cover-page .cover-rule,
+.markdown-rendered.cover-page .cover-rule {
+  width: 80px;
+  height: 3px;
+  background: var(--interactive-accent, #475569);
+  margin: 1.2em auto;
+}
+@media screen {
+  .markdown-rendered .cover-page {
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    margin-bottom: 2em;
+  }
+}
+
+/* End of v2.0.0 Workspace Surfaces Pack ==================================== */
