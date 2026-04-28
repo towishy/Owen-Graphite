@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] — 2026-04-29 — UX Pack + new baseline
+
+### Added
+- **Tag pill** — Reading view의 `a.tag`도 론드된 핀 형태로 통일. `#project / #todo / #idea / #done / #blocked / #urgent / #question / #reference` 카테고리별 테마 색 자동 적용 (href 기반).
+- **Embedded note (트랜스클루전)** — `.markdown-embed`에 좌측 3px 액센트 + 도장 색 바탕 + 상단 `EMBED` 라벨로 원본 자료와 시각적 구분.
+- **Backlinks / Outline panel polish** — hover시 좌측 액센트 바, 자식 트리에 dashed indent guide, Outline 글꼴 0.88em / heading-1·2 굵기 구분.
+- **Command palette / Switcher** — 랜더링 그림자, 선택 항목 강조 배경, 단축키 `kbd` 모노스페이스 + 테두리 처리로 읽기 쉬움.
+- **Mermaid ML 8색 팔레트** — 명시적 `classDef` 없는 노드는 Owen 표준 그레이 prep 색, edge label 가독성 강화, cluster는 점선 테두리.
+
+### Baseline
+- **다크 모드 패리티** 전 항목 포함.
+- v2.0.5 hard reset + v2.1.0 opt-out toggle 유지.
+- 새 베이스라인: **v2.2.0**.
+
 ## [2.1.0] — 2026-04-29 — Table cell height opt-out
 
 ### Added

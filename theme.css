@@ -1,6 +1,6 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.0.6 — Baseline (verified stable)
- * Stable since v2.0.5 (LP table cell inflate fully resolved).
+ * Version 2.2.0 — Baseline (verified stable)
+ * Stable since v2.2.0 (UX Pack: tag pill, embed, backlinks/outline, palette, mermaid).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
  */
@@ -10198,3 +10198,238 @@ body.ogd-table-cell-stretch .markdown-source-view.mod-cm6 th p {
 }
 
 /* End of v2.1.0 table cell height opt-out ================================= */
+
+
+/* ============================================================================
+ * v2.2.0 — UX Pack: Tag pill, Embedded note, Backlinks/Outline, Command
+ * palette, Mermaid ML 8-color palette
+ * Additive only; v2.0.5 baseline preserved.
+ * ========================================================================== */
+
+/* --- 1. Tag pill ---------------------------------------------------------- *
+ * Both Live Preview (.cm-hashtag is already pill via earlier rule) and
+ * Reading view (.tag) get a clean rounded pill with category color.
+ * --------------------------------------------------------------------------*/
+.markdown-rendered a.tag,
+.markdown-preview-view a.tag,
+.tag-pane-tag-text {
+  display: inline-block !important;
+  padding: 0.12em 0.55em !important;
+  border-radius: 999px !important;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  font-size: 0.85em !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  border: 1px solid #e2e8f0 !important;
+  line-height: 1.4 !important;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.markdown-rendered a.tag:hover,
+.markdown-preview-view a.tag:hover {
+  background: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+/* Category-aware tinting via attribute (#project, #todo, #idea, ...) */
+.markdown-rendered a.tag[href*="#project"],
+.markdown-rendered a.tag[href*="#projects"]   { background: #dbeafe !important; color: #1e40af !important; border-color: #bfdbfe !important; }
+.markdown-rendered a.tag[href*="#todo"],
+.markdown-rendered a.tag[href*="#task"]       { background: #fef3c7 !important; color: #92400e !important; border-color: #fde68a !important; }
+.markdown-rendered a.tag[href*="#idea"]       { background: #ede9fe !important; color: #5b21b6 !important; border-color: #ddd6fe !important; }
+.markdown-rendered a.tag[href*="#done"]       { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
+.markdown-rendered a.tag[href*="#blocked"],
+.markdown-rendered a.tag[href*="#urgent"]     { background: #fee2e2 !important; color: #991b1b !important; border-color: #fecaca !important; }
+.markdown-rendered a.tag[href*="#question"]   { background: #fce7f3 !important; color: #9f1239 !important; border-color: #fbcfe8 !important; }
+.markdown-rendered a.tag[href*="#reference"],
+.markdown-rendered a.tag[href*="#ref"]        { background: #e0f2fe !important; color: #075985 !important; border-color: #bae6fd !important; }
+
+body.theme-dark .markdown-rendered a.tag,
+body.theme-dark .markdown-preview-view a.tag {
+  background: #2c333d !important;
+  color: #cbd5e1 !important;
+  border-color: #3a4150 !important;
+}
+
+/* --- 2. Embedded note (transclusion) ------------------------------------- */
+.markdown-rendered .markdown-embed,
+.markdown-preview-view .markdown-embed {
+  border-left: 3px solid #cbd5e1 !important;
+  background: #fafbfc !important;
+  padding: 0.8em 1.1em !important;
+  margin: 1em 0 !important;
+  border-radius: 0 6px 6px 0 !important;
+  position: relative;
+}
+.markdown-rendered .markdown-embed::before,
+.markdown-preview-view .markdown-embed::before {
+  content: "EMBED";
+  position: absolute;
+  top: -0.6em;
+  left: 0.8em;
+  background: #fafbfc;
+  padding: 0 0.4em;
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.65em;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+}
+.markdown-rendered .markdown-embed-title,
+.markdown-preview-view .markdown-embed-title {
+  font-size: 0.95em !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.4em !important;
+}
+.markdown-rendered .markdown-embed-content,
+.markdown-preview-view .markdown-embed-content {
+  font-size: 0.95em !important;
+  color: #475569 !important;
+}
+body.theme-dark .markdown-rendered .markdown-embed,
+body.theme-dark .markdown-preview-view .markdown-embed {
+  background: #1c2128 !important;
+  border-left-color: #475569 !important;
+}
+body.theme-dark .markdown-rendered .markdown-embed::before {
+  background: #1c2128 !important;
+  color: #64748b !important;
+}
+
+/* --- 3. Backlinks / Outline panel --------------------------------------- */
+.workspace-leaf-content[data-type="backlink"] .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item-self {
+  border-left: 2px solid transparent !important;
+  padding-left: 0.6em !important;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.workspace-leaf-content[data-type="backlink"] .tree-item-self:hover,
+.workspace-leaf-content[data-type="outline"] .tree-item-self:hover {
+  border-left-color: var(--interactive-accent, #475569) !important;
+  background: #f8fafc !important;
+}
+.workspace-leaf-content[data-type="backlink"] .tree-item-children,
+.workspace-leaf-content[data-type="outline"] .tree-item-children {
+  border-left: 1px dashed #e2e8f0 !important;
+  margin-left: 0.7em !important;
+  padding-left: 0.5em !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item-self {
+  font-size: 0.88em !important;
+  line-height: 1.45 !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item.is-clickable.heading-1 > .tree-item-self {
+  font-weight: 700 !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-2 > .tree-item-self {
+  font-weight: 600 !important;
+  color: #334155 !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self:hover,
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self:hover {
+  background: #1c2128 !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-children,
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-children {
+  border-left-color: #2c333d !important;
+}
+
+/* --- 4. Command palette / Switcher ------------------------------------- */
+.prompt {
+  border-radius: 10px !important;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.15),
+              0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+.prompt-input-container {
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+.suggestion-item {
+  padding: 0.5em 0.8em !important;
+  border-radius: 4px !important;
+  margin: 0 0.3em !important;
+}
+.suggestion-item.is-selected {
+  background: #eef2ff !important;
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+.suggestion-item.is-selected .suggestion-aux,
+.suggestion-item.is-selected .suggestion-hotkey,
+.suggestion-item.is-selected kbd {
+  color: #475569 !important;
+}
+.suggestion-hotkey,
+.suggestion-aux kbd,
+.suggestion kbd {
+  display: inline-block !important;
+  padding: 0.1em 0.45em !important;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.78em !important;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 4px !important;
+  letter-spacing: 0.02em !important;
+  min-width: 1.4em !important;
+  text-align: center !important;
+}
+body.theme-dark .prompt {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45) !important;
+}
+body.theme-dark .suggestion-item.is-selected {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+body.theme-dark .suggestion-hotkey,
+body.theme-dark .suggestion-aux kbd,
+body.theme-dark .suggestion kbd {
+  background: #2c333d !important;
+  color: #cbd5e1 !important;
+  border-color: #3a4150 !important;
+}
+
+/* --- 5. Mermaid ML 8-color palette ------------------------------------- *
+ * Apply Owen's standard ML pipeline palette to default Mermaid nodes when
+ * they have no explicit classDef. Users with custom classDefs are unaffected.
+ * --------------------------------------------------------------------------*/
+.markdown-rendered .mermaid .node rect,
+.markdown-rendered .mermaid .node polygon,
+.markdown-rendered .mermaid .node circle,
+.markdown-rendered .mermaid .node ellipse,
+.markdown-rendered .mermaid .node path {
+  stroke-width: 1px !important;
+}
+.markdown-rendered .mermaid .node:not([class*="prep"]):not([class*="train"]):not([class*="eval"]):not([class*="rf"]):not([class*="gb"]):not([class*="svm"]):not([class*="select"]):not([class*="deploy"]) rect,
+.markdown-rendered .mermaid .node.default rect {
+  fill: #f4f4f9 !important;
+  stroke: #4c4c4c !important;
+}
+.markdown-rendered .mermaid .edgeLabel {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+  font-size: 12px !important;
+}
+.markdown-rendered .mermaid .cluster rect {
+  fill: #f8fafc !important;
+  stroke: #cbd5e1 !important;
+  stroke-dasharray: 4 2 !important;
+}
+.markdown-rendered .mermaid .label {
+  font-family: var(--font-text-theme, inherit) !important;
+  font-size: 13px !important;
+  color: #1a1a1a !important;
+}
+body.theme-dark .markdown-rendered .mermaid .node.default rect,
+body.theme-dark .markdown-rendered .mermaid .node:not([class*="prep"]) rect {
+  fill: #2c333d !important;
+  stroke: #94a3b8 !important;
+}
+body.theme-dark .markdown-rendered .mermaid .edgeLabel {
+  background-color: #1c2128 !important;
+  color: #e2e8f0 !important;
+}
+body.theme-dark .markdown-rendered .mermaid .label {
+  color: #e2e8f0 !important;
+}
+
+/* End of v2.2.0 UX Pack ==================================================== */
