@@ -307,8 +307,8 @@ settings:
     "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
   --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
     "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
-  --font-monospace-theme: "JetBrains Mono", "SFMono-Regular", "Cascadia Code",
-    "D2Coding", "Menlo", monospace;
+  --font-monospace-theme: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono",
+    "Cascadia Code", "Consolas", "D2Coding", "Menlo", "Courier New", monospace;
 
   --background-primary: #ffffff;
   --background-primary-alt: #f9fafb;
@@ -920,8 +920,16 @@ body .markdown-rendered blockquote blockquote blockquote {
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
-  color: #9ca3af !important;
-  opacity: 0.75 !important;
+  /* v1.8.65 — Hide the > marker; soft background tint already conveys quote.
+     Fixes Windows font fallback rendering > as a protruding ‹ chevron glyph. */
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  opacity: 0 !important;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
@@ -1617,7 +1625,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   opacity: 1;
 }
 
-/* Nested blockquote depth coloring */
+/* Nested blockquote depth coloring — v1.8.65 tonal steps */
 .markdown-rendered blockquote blockquote {
   --blockquote-border-thickness: 0px !important;
   --blockquote-border-color: transparent !important;
@@ -1626,7 +1634,8 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   border-inline-start: 0 !important;
   border-left-color: transparent !important;
   border-inline-start-color: transparent !important;
-  background: transparent !important;
+  background: #f1f5f9 !important;
+  background-color: #f1f5f9 !important;
 }
 .markdown-rendered blockquote blockquote blockquote {
   --blockquote-border-thickness: 0px !important;
@@ -1636,7 +1645,8 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   border-inline-start: 0 !important;
   border-left-color: transparent !important;
   border-inline-start-color: transparent !important;
-  background: transparent !important;
+  background: #e2e8f0 !important;
+  background-color: #e2e8f0 !important;
 }
 
 /* =====================================================================
@@ -2337,6 +2347,60 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   .markdown-reading-view .markdown-rendered h1::before {
     font-size: 0.32em !important;
     margin-bottom: 0.7em !important;
+  }
+
+  /* v1.8.65 — PDF readability micro-tuning */
+  .markdown-rendered p,
+  .markdown-rendered li,
+  .markdown-preview-view p,
+  .markdown-preview-view li {
+    line-height: 1.55 !important;
+  }
+  .markdown-rendered table,
+  .markdown-preview-view table {
+    line-height: 1.45 !important;
+  }
+
+  /* v1.8.65 — Repeat table headers across PDF pages (Chromium native) */
+  .markdown-rendered table thead,
+  .markdown-preview-view table thead,
+  .markdown-reading-view table thead {
+    display: table-header-group !important;
+  }
+  .markdown-rendered table tfoot,
+  .markdown-preview-view table tfoot,
+  .markdown-reading-view table tfoot {
+    display: table-footer-group !important;
+  }
+
+  /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
+  .markdown-rendered h1 {
+    -webkit-column-break-before: page !important;
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+  .markdown-rendered h1:first-of-type,
+  .markdown-rendered > h1:first-child {
+    -webkit-column-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+  }
+
+  /* v1.8.65 — Footnotes section: keep at end, separate from body */
+  .markdown-rendered .footnotes,
+  .markdown-rendered section.footnotes,
+  .markdown-rendered .footnote-section {
+    margin-top: 2.5em !important;
+    padding-top: 1em !important;
+    border-top: 1px solid #cbd5e1 !important;
+    font-size: 0.88em !important;
+    color: #4b5563 !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
+  .markdown-rendered .footnotes ol,
+  .markdown-rendered .footnote-section ol {
+    padding-left: 1.4em !important;
   }
 
   img,

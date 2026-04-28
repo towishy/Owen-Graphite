@@ -4,6 +4,22 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.65] — 2026-04-29
+
+### Fixed
+- **Windows Live Preview에서 `>` 인용 마커가 돌출되는 »·› 글리프로 렌더링되는 폰트 폴백 이슈 수정** — `cm-formatting-quote`를 완전 숨김 처리하고 연한 배경 틴트로 인용 구분.
+- PDF에서 긴 표가 여러 페이지에 걸칠 때 헤더가 매 페이지 상단에 반복 출력되도록 `thead`에 `display: table-header-group` 적용.
+- Windows Chromium에서 H1 chapter break가 매번 적용되도록 `-webkit-column-break-before` fallback 추가.
+
+### Changed
+- 모노스페이스 폰트 폴백 보강 — `Cascadia Mono`, `Consolas`, `Courier New` 추가로 Windows 기본 설치 환경에서도 키커·코드 블록이 동일하게 렌더링.
+- Nested blockquote 단계별 톤 차등화 (1단계 `#f8fafc` → 2단계 `#f1f5f9` → 3단계 `#e2e8f0`).
+- PDF 줄간격 미세조정 (본문 1.5 → 1.55, 표 1.4 → 1.45).
+- PDF Footnote 섹션 스타일 보강 (상단 구분선 + 폰트 축소).
+
+### Removed
+- `docs/fixtures/h1-style-samples.html` 디버그용 임시 파일 제거.
+
 ## [1.8.64] — 2026-04-29
 
 ### Added
