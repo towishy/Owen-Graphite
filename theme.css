@@ -8803,9 +8803,27 @@ body .markdown-source-view.mod-cm6.is-readable-line-width .CodeMirror-sizer {
    ============================================================ */
 
 body .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+body .markdown-reading-view.is-readable-line-width .markdown-preview-sizer,
 body .markdown-source-view.is-readable-line-width .cm-contentContainer,
+body .markdown-source-view.is-readable-line-width .cm-sizer,
 body .markdown-source-view.is-readable-line-width .CodeMirror-sizer,
 body .markdown-rendered.is-readable-line-width {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* ============================================================
+   v1.8.61 — Broad readable line-width override
+   - Obsidian can attach readable-line-width classes to different view wrappers
+     between Reading View and Live Preview. Normalize every Markdown sizer layer.
+   ============================================================ */
+
+body :is(.markdown-preview-view, .markdown-reading-view, .markdown-source-view).is-readable-line-width
+  :is(.markdown-preview-sizer, .markdown-preview-section, .cm-sizer, .cm-contentContainer, .CodeMirror-sizer, .cm-content),
+body .markdown-rendered.is-readable-line-width {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
   margin-left: 0 !important;
   margin-right: auto !important;
 }

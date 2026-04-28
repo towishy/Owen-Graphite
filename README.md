@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.60` (Obsidian 1.6.0+) |
+| **버전** | `1.8.61` (Obsidian 1.6.0+) |
 
 ---
 
@@ -499,6 +499,7 @@ python scripts/build_release.py
 
 전체 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
+- **v1.8.61** — Windows 신규 설치의 Reading View/Live Preview readable 컬럼 중앙 배치 회귀를 더 넓은 Obsidian DOM 선택자로 보강
 - **v1.8.60** — Windows 신규 설치에서 readable 본문 컬럼 앞에 큰 공백이 생기던 정렬 회귀 수정, 설치 예시 경로와 ZIP 폴더명 안내 정리
 - **v1.8.59** — 신규 Obsidian 설치에서 Live Preview 본문 영역이 내용 폭으로 수축해 빈 영역 클릭이 먹지 않던 회귀 수정, Windows/macOS/Linux Git 설치·업데이트 및 ZIP 수동 설치 안내 정리
 - **v1.8.58** — 신규 Obsidian 설치에서 Reading View 문단이 한 글자 폭으로 접히는 회귀 수정, Windows 수동 설치 명령을 `.obsidian\themes` 경로 기준으로 정리

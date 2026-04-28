@@ -110,8 +110,11 @@ REQUIRED_LIVE_PREVIEW_WIDTH_GUARDS = [
 
 REQUIRED_READABLE_COLUMN_GUARDS = [
     "body .markdown-preview-view.is-readable-line-width .markdown-preview-sizer",
+    "body .markdown-reading-view.is-readable-line-width .markdown-preview-sizer",
     "body .markdown-source-view.is-readable-line-width .cm-contentContainer",
+    "body .markdown-source-view.is-readable-line-width .cm-sizer",
     "body .markdown-rendered.is-readable-line-width",
+    ":is(.markdown-preview-sizer, .markdown-preview-section, .cm-sizer, .cm-contentContainer, .CodeMirror-sizer, .cm-content)",
     "margin-left: 0 !important",
     "margin-right: auto !important",
 ]
