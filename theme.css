@@ -10091,3 +10091,79 @@ body .markdown-source-view.mod-cm6 .cm-embed-block table th > p + p {
 }
 
 /* End of v2.0.4 cm-embed-block table fix =================================== */
+
+
+/* ============================================================================
+ * v2.0.5 — Bugfix: forced reset on table-cell-wrapper + cm-active.cm-line
+ * ----------------------------------------------------------------------------
+ * Diagnosis (Obsidian 1.6.x+ Live Preview, .cm-embed-block.cm-table-widget):
+ *   td > div.table-cell-wrapper > div.cm-editor > div.cm-scroller
+ *      > div.cm-content > div.cm-active.cm-line
+ * The active cm-line was reported at ~80px tall for a single-line cell.
+ * Apply the most aggressive possible reset on every layer of the cell.
+ * ========================================================================== */
+
+/* Universal hard reset for every descendant of any LP table cell */
+body .markdown-source-view.mod-cm6 td,
+body .markdown-source-view.mod-cm6 th,
+body .markdown-source-view.mod-cm6 td *,
+body .markdown-source-view.mod-cm6 th * {
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+body .markdown-source-view.mod-cm6 td .cm-editor,
+body .markdown-source-view.mod-cm6 th .cm-editor,
+body .markdown-source-view.mod-cm6 td .cm-scroller,
+body .markdown-source-view.mod-cm6 th .cm-scroller,
+body .markdown-source-view.mod-cm6 td .cm-content,
+body .markdown-source-view.mod-cm6 th .cm-content,
+body .markdown-source-view.mod-cm6 td .cm-line,
+body .markdown-source-view.mod-cm6 th .cm-line,
+body .markdown-source-view.mod-cm6 td .table-cell-wrapper,
+body .markdown-source-view.mod-cm6 th .table-cell-wrapper {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Active line should not gain extra height when focused */
+body .markdown-source-view.mod-cm6 td .cm-active.cm-line,
+body .markdown-source-view.mod-cm6 th .cm-active.cm-line,
+body .markdown-source-view.mod-cm6 td .cm-line.cm-active,
+body .markdown-source-view.mod-cm6 th .cm-line.cm-active {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+}
+
+/* Cell paragraph margins (covers Reading view + cm-embed-block static) */
+body .markdown-source-view.mod-cm6 td p,
+body .markdown-source-view.mod-cm6 th p,
+.markdown-rendered table td p,
+.markdown-rendered table th p,
+.markdown-preview-view table td p,
+.markdown-preview-view table th p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Container itself */
+body .markdown-source-view.mod-cm6 .cm-embed-block.cm-table-widget,
+body .markdown-source-view.mod-cm6 .cm-table-widget,
+body .markdown-source-view.mod-cm6 .cm-table-widget table,
+body .markdown-source-view.mod-cm6 .cm-table-widget tbody,
+body .markdown-source-view.mod-cm6 .cm-table-widget thead,
+body .markdown-source-view.mod-cm6 .cm-table-widget tr {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* End of v2.0.5 hard reset ================================================ */

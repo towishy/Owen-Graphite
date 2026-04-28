@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.5] — 2026-04-29 — Hard reset for table-cell-wrapper
+
+### Fixed
+- **Live Preview 표 셀 inflate 완전 차단 (최종)** — v2.0.4 이후에도 `td > div.table-cell-wrapper > div.cm-editor > div.cm-scroller > div.cm-content > div.cm-active.cm-line` 경로의 cm-active.cm-line이 ~80px로 렌더링되는 케이스가 남아 있었음. 셀 내부 모든 계층(`td *`)에 강제 min-height 0, height auto, padding/margin 0 적용.
+- `.table-cell-wrapper`, `.cm-active.cm-line`, `.cm-editor`, `.cm-scroller`, `.cm-content`, `.cm-line` 명시 레이어에 개별 reset.
+- `.cm-embed-block.cm-table-widget` 컨테이너 + `table/thead/tbody/tr`에도 height auto.
+
 ## [2.0.4] — 2026-04-29 — Live Preview cm-embed-block table fix
 
 ### Fixed
