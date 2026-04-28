@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3] — 2026-04-29 — Table inflate hardening
+
+### Fixed
+- **표 셀 inflate 잔존 케이스 완전 차단** — v2.0.2에서도 다음 조건에서 셀이 높이로 부풀는 현상이 남아 있었음을 보완:
+  - (a) `cm-table-widget` 컨테이너 자체·중첩 자식이 inner cm-content로부터 min-height를 세승하는 경우 → 레벨 불문 `min-height: 0`.
+  - (b) Reading view에서 Obsidian이 셀 텍스트를 `<p>`로 래핑해 상하 1em margin을 추가하는 경우 → `td > p` margin 0.
+  - (c) 고정 height가 명시된 셀 → `height: auto`, `vertical-align: top` 명시.
+  - (d) Live Preview의 빈 trailing `cm-line` → `display: none`.
+- Reading view + Live Preview 양쪽에서 동일하게 적용.
+
 ## [2.0.2] — 2026-04-29 — Bugfix + README 종합 정리
 
 ### Fixed

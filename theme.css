@@ -9964,3 +9964,84 @@ body .markdown-source-view.mod-cm6 table.cm-table th {
 }
 
 /* End of v2.0.2 table-cell inflate fix ===================================== */
+
+
+/* ============================================================================
+ * v2.0.3 — Bugfix: table cell still inflating on focus / paragraph margins
+ * ----------------------------------------------------------------------------
+ * Even after v2.0.2, cells could still grow because:
+ *  (a) the cm-embed-block / cm-table-widget *containers themselves* picked up
+ *      min-height through their inner cm-content, and
+ *  (b) Obsidian wraps cell text in a <p> whose default top/bottom margins
+ *      add ~1em each, and
+ *  (c) the per-cell "edit block" button area introduces extra padding.
+ * Fix:
+ *   - Force min-height/height auto on the table widget container and its
+ *     editor/scroller children (any depth).
+ *   - Collapse <p> margins inside table cells (Live Preview + Reading view).
+ *   - Trim trailing whitespace from cm-line inside cells so empty trailing
+ *     editor lines don't pad the cell.
+ * Reading View (.markdown-rendered) is included for the static rendering case
+ * where a single-line cell still rendered tall due to <p> margins.
+ * ========================================================================== */
+
+/* (a) — kill min-height on every level of the table widget tree */
+body .markdown-source-view.mod-cm6 .cm-table-widget,
+body .markdown-source-view.mod-cm6 .cm-table-widget *,
+body .markdown-source-view.mod-cm6 table.cm-table,
+body .markdown-source-view.mod-cm6 table.cm-table *,
+body .markdown-source-view.mod-cm6 .HyperMD-table-row,
+body .markdown-source-view.mod-cm6 .HyperMD-table-row * {
+  min-height: 0 !important;
+}
+
+/* But keep cell padding intact — only reset HEIGHT on layout containers */
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-editor,
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-scroller,
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-content,
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-line,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-editor,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-scroller,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-content,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-line {
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* (b) — collapse paragraph margins inside table cells (LP + Reading) */
+body .markdown-source-view.mod-cm6 .cm-table-widget td > p,
+body .markdown-source-view.mod-cm6 .cm-table-widget th > p,
+body .markdown-source-view.mod-cm6 table.cm-table td > p,
+body .markdown-source-view.mod-cm6 table.cm-table th > p,
+.markdown-rendered table td > p,
+.markdown-rendered table th > p,
+.markdown-preview-view table td > p,
+.markdown-preview-view table th > p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* If the cell has multiple <p>, only the inner ones keep small spacing */
+.markdown-rendered table td > p + p,
+.markdown-rendered table th + p,
+.markdown-preview-view table td > p + p {
+  margin-top: 0.4em !important;
+}
+
+/* (c) — Reading view: ensure cells size to content, not to row tallest */
+.markdown-rendered table td,
+.markdown-rendered table th,
+.markdown-preview-view table td,
+.markdown-preview-view table th {
+  vertical-align: top !important;
+  /* height: auto is the default, but some plugins set fixed heights */
+  height: auto !important;
+}
+
+/* (d) — Live Preview: empty trailing cm-line inside a cell shouldn't push */
+body .markdown-source-view.mod-cm6 .cm-table-widget .cm-line:empty,
+body .markdown-source-view.mod-cm6 table.cm-table .cm-line:empty {
+  display: none !important;
+}
+
+/* End of v2.0.3 table inflate hardening ==================================== */
