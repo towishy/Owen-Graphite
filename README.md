@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘버링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + Style Settings 27종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `1.8.65` (Obsidian 1.6.0+) |
+| **버전** | `1.8.66` (Obsidian 1.6.0+) |
 
 ---
 
@@ -209,6 +209,26 @@ Style Settings 없이도 테마는 정상 동작하지만 모든 값이 기본�
 | Live Preview 안전성 | Reading View 장식을 CM6 편집 라인에 과도하게 강제하지 않음 |
 
 > 과거에 snippet을 설치하셨던 사용자는 `<YourVault>/.obsidian/snippets/zz-obsidian-gray-force-override-v2.css`를 제거하고 Obsidian 설정 → 외관 → CSS snippets에서 비활성화하세요. 동일한 효과가 테마에서 자동 적용됩니다.
+
+---
+
+## 🎛️ Polish Pack — 빌트인 (v1.8.66+)
+
+v1.8.66부터 일상 사용 경험을 고르게 다듬은 **Polish Pack**이 기본 포함됩니다.
+
+| 영역 | 상세 |
+|------|------|
+| **Dark Mode parity** | blockquote 3단계 톤, H1 kicker, inline code, search highlight가 다크 모드에서도 동등한 읽힌성 유지 |
+| **Mobile (≤768px)** | H1 축소, callout/아이콘 재배치, 탭 햄들 폰트 축소로 모바일·태블릿 애플 대응 |
+| **Tab 대비** | 활성 탭 상단 2px accent + bold, 비활성 탭 opacity 0.78 → hover시 1.0 |
+| **Callout 컬러바** | 13개 타입별 좌측 4px 컬러 스트라이프 (note/info/tip/success/warning/danger/example/quote/abstract/todo/question/bug 등) |
+| **코드 언어 라벨** | 코드블록 우상단 12개 언어 표시 (TS/JS/PY/SH/CSS/HTML/JSON/YAML/MD/RS/GO/SQL) |
+| **Inline code** | 연한 회색 배경 + 레드 텍스트로 본문과 명확한 구분 |
+| **방문 링크** | 외부 링크가 방문 후 보라색으로 전환되어 수신 이력 파악 용이 |
+| **헤딩 앵커** | H2/H3/H4 hover 시 좌측에 `#` 앵커 표시 (PDF 출력시는 숨김) |
+| **Status bar** | 모노스페이스 11px 통일로 글자수·라인수 가독성 향상 |
+| **Search 강조** | 검색 매치 amber 배경 + 외곽선으로 명확한 식별 |
+| **Frontmatter** | YAML·Properties 패널 모노스페이스 + 연한 명도 차등화 |
 
 ---
 

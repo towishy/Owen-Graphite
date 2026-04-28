@@ -4,6 +4,23 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.66] — 2026-04-29 — Polish Pack
+
+### Added
+- **Dark Mode parity** — blockquote 3단계 톤, H1 kicker 색상, inline code, search highlight의 다크 모드 전용 변수 추가로 명도 대비 귬형.
+- **Mobile 반응형** (`@media (max-width: 768px)`) — H1 2.8em → 1.9em, kicker letter-spacing 완화, callout padding·아이콘 축소, 탭 타이틀 폰트 조정.
+- **Tab 구분 강화** — 활성 탭 상단 2px accent bar + 600 weight, 비활성 탭 opacity 0.78에서 hover 시 1.0으로 복귀.
+- **Callout 타입별 좌측 컬러바** — note/info/tip/success/warning/danger/example/quote/abstract/todo/question/bug 13개 타입에 4px 수직 스트라이프.
+- **코드 블록 언어 라벨** — 코드블록 우상단에 언어 배지(TS/JS/PY/SH/CSS/HTML/JSON/YAML/MD/RS/GO/SQL).
+- **헤딩 앵커** — H2/H3/H4 hover 시 좌측 `#` 앵커 표시(인쇄시 숨김).
+- **Status bar 모노스페이스 통일** — 11px JetBrains Mono 적용.
+- **Search highlight 강화** — amber 배경 + box-shadow 외곽선, 다크 모드 `#5b4a14` 대응.
+- **Frontmatter 가독성** — YAML 코드블록과 Properties 패널 모노스페이스 + 키 weight 600.
+
+### Changed
+- **Inline code** 연한 회색 배경(`#f3f4f6`) + `#b91c1c` 텍스트로 본문과 더 명확하게 구분.
+- **방문 링크** `:visited` 색상을 보라색 계열(`#7c3aed` / dark `#c4b5fd`)로 전환.
+
 ## [1.8.65] — 2026-04-29
 
 ### Fixed
