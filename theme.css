@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.4.0 — Small pack (Status bar + Footnote + Checkbox states)
+ * Version 2.5.0 — Pro Pack (Canvas + Graph + Code label + Sticky table + Math + Caption + Anchor + dl)
  * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -112,6 +112,12 @@ settings:
     id: ogd-table-cell-stretch
     title: 표 셀 행 높이 자동 stretch (legacy)
     description: 켜면 v2.0.4 이전 동작처럼 셀이 행 내 가장 큰 셀 높이로 늘어남. 끄면 v2.0.5 이후 기본인 컨텐츠 높이로 셀 표시
+    type: class-toggle
+    default: false
+  -
+    id: ogd-table-sticky-header
+    title: 표 헤더 행 고정 (sticky)
+    description: 긴 표를 스크롤할 때 헤더 행이 상단에 고정되도록 합니다. Reading view와 Dataview 표에 적용됩니다.
     type: class-toggle
     default: false
   -
@@ -10986,3 +10992,311 @@ body.theme-dark .task-list-item[data-task="-"] {
 }
 
 /* End of v2.4.0 small pack ================================================ */
+
+/* ============================================================================
+ * v2.5.0 — Pro Pack: Canvas / Graph / Code label / Table sticky / Math /
+ *                    Image caption / Heading anchor / Definition list
+ * Pure additive patches; no edits to earlier sections. All selectors are
+ * scoped so they degrade gracefully if upstream HTML changes.
+ * ========================================================================== */
+
+/* ---- 1. Canvas polish ---------------------------------------------------- */
+.canvas-node {
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06),
+              0 4px 12px rgba(15, 23, 42, 0.08) !important;
+  border: 1px solid #d8dde6 !important;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+.canvas-node:hover {
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08),
+              0 10px 24px rgba(15, 23, 42, 0.12) !important;
+}
+.canvas-node.is-focused {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18),
+              0 10px 24px rgba(15, 23, 42, 0.14) !important;
+}
+.canvas-node-content {
+  border-radius: 10px !important;
+}
+.canvas-node-label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.canvas-edge path.canvas-edge-path,
+.canvas-edge .canvas-edge-line {
+  stroke: #94a3b8 !important;
+}
+.canvas-edge.is-focused path.canvas-edge-path,
+.canvas-edge.is-focused .canvas-edge-line {
+  stroke: #2563eb !important;
+}
+.canvas-edge-label {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  padding: 1px 6px !important;
+  font-size: 0.78em !important;
+  color: #475569 !important;
+}
+.canvas-minimap,
+.canvas-card-menu {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12) !important;
+}
+.canvas-background {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+}
+
+body.theme-dark .canvas-node {
+  border-color: #2c333d !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3),
+              0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
+body.theme-dark .canvas-edge path.canvas-edge-path,
+body.theme-dark .canvas-edge .canvas-edge-line {
+  stroke: #64748b !important;
+}
+body.theme-dark .canvas-edge-label {
+  background: rgba(28, 33, 40, 0.92) !important;
+  border-color: #2c333d !important;
+  color: #cbd5e1 !important;
+}
+body.theme-dark .canvas-background {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px) !important;
+}
+
+/* ---- 2. Graph view polish ------------------------------------------------ */
+.graph-view.color-fill {
+  color: #475569;
+}
+.graph-view.color-line {
+  color: #cbd5e1;
+}
+.graph-view.color-text {
+  color: #1e293b;
+}
+.graph-view.color-circle {
+  color: #94a3b8;
+}
+.graph-view.color-fill-attachment,
+.graph-view.color-fill-unresolved {
+  color: #cbd5e1;
+}
+.graph-view.color-fill-tag {
+  color: #0d9488;
+}
+.graph-view.color-fill-focused {
+  color: #2563eb;
+}
+.graph-view.color-arrow {
+  color: #94a3b8;
+}
+.graph-controls {
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.10) !important;
+}
+
+body.theme-dark .graph-view.color-fill { color: #94a3b8; }
+body.theme-dark .graph-view.color-line { color: #2c333d; }
+body.theme-dark .graph-view.color-text { color: #e2e8f0; }
+body.theme-dark .graph-view.color-circle { color: #64748b; }
+body.theme-dark .graph-view.color-fill-attachment,
+body.theme-dark .graph-view.color-fill-unresolved { color: #475569; }
+body.theme-dark .graph-view.color-fill-tag { color: #2dd4bf; }
+body.theme-dark .graph-view.color-fill-focused { color: #60a5fa; }
+body.theme-dark .graph-view.color-arrow { color: #64748b; }
+
+/* ---- 3. Code block language label + copy hint --------------------------- */
+.markdown-rendered pre[class*="language-"],
+.markdown-rendered pre > code[class*="language-"] {
+  position: relative;
+}
+.markdown-rendered pre > code[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-family: var(--font-monospace, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  background: rgba(241, 245, 249, 0.85);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  pointer-events: none;
+  /* Strip the "language-" prefix via display-only trim (CSS limit: shows raw class).
+     Most users see e.g. "language-js" — acceptable as a compact tag. */
+}
+/* When Obsidian wraps with .markdown-rendered .copy-code-button (built-in),
+   ensure our label does not overlap it. */
+.markdown-rendered pre:hover .copy-code-button {
+  opacity: 1 !important;
+}
+.markdown-rendered pre .copy-code-button {
+  opacity: 0;
+  transition: opacity 140ms ease;
+  border-radius: 6px !important;
+}
+
+body.theme-dark .markdown-rendered pre > code[class*="language-"]::before {
+  background: rgba(28, 33, 40, 0.85);
+  border-color: #2c333d;
+  color: #94a3b8;
+}
+
+/* ---- 4. Table sticky header (opt-in via Style Settings) ----------------- */
+body.ogd-table-sticky-header .markdown-rendered .table-wrapper,
+body.ogd-table-sticky-header .markdown-rendered .el-table,
+body.ogd-table-sticky-header .markdown-rendered div:has(> table) {
+  max-height: min(70vh, 800px);
+  overflow: auto;
+  position: relative;
+}
+body.ogd-table-sticky-header .markdown-rendered table thead th,
+body.ogd-table-sticky-header .markdown-rendered .dataview.table-view-table thead th,
+body.ogd-table-sticky-header .block-language-dataview table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f1f5f9 !important;
+  box-shadow: inset 0 -1px 0 #cbd5e1;
+}
+body.theme-dark.ogd-table-sticky-header .markdown-rendered table thead th,
+body.theme-dark.ogd-table-sticky-header .markdown-rendered .dataview.table-view-table thead th,
+body.theme-dark.ogd-table-sticky-header .block-language-dataview table thead th {
+  background: #1c2128 !important;
+  box-shadow: inset 0 -1px 0 #2c333d;
+}
+
+/* ---- 5. Math (KaTeX) blocks --------------------------------------------- */
+.markdown-rendered .math.math-block,
+.markdown-rendered mjx-container[display="true"],
+.markdown-rendered .block-language-math {
+  display: block;
+  position: relative;
+  padding: 0.6em 0.9em 0.6em 1.2em;
+  margin: 1em 0;
+  border-left: 3px solid #94a3b8;
+  background: rgba(241, 245, 249, 0.55);
+  border-radius: 0 8px 8px 0;
+  overflow-x: auto;
+}
+.markdown-rendered .math.math-inline,
+.markdown-rendered mjx-container:not([display="true"]) {
+  padding: 0 0.15em;
+}
+body.theme-dark .markdown-rendered .math.math-block,
+body.theme-dark .markdown-rendered mjx-container[display="true"],
+body.theme-dark .markdown-rendered .block-language-math {
+  border-left-color: #475569;
+  background: rgba(28, 33, 40, 0.5);
+}
+
+/* ---- 6. Image caption (italic line right after an image) ---------------- */
+.markdown-rendered p > img:only-child + em,
+.markdown-rendered p:has(> img:only-child) + p > em:only-child {
+  display: block;
+  text-align: center;
+  font-size: 0.85em;
+  color: #64748b;
+  margin-top: -0.6em;
+  font-style: italic;
+}
+.markdown-rendered p:has(> img:only-child) {
+  text-align: center;
+}
+body.theme-dark .markdown-rendered p > img:only-child + em,
+body.theme-dark .markdown-rendered p:has(> img:only-child) + p > em:only-child {
+  color: #94a3b8;
+}
+
+/* ---- 7. Heading anchor on hover ----------------------------------------- */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+}
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) > .heading-collapse-indicator {
+  /* keep upstream collapse indicator unaffected */
+}
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6)::after {
+  content: "¶";
+  position: absolute;
+  right: -1.1em;
+  top: 0;
+  color: #cbd5e1;
+  font-size: 0.7em;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 140ms ease, color 140ms ease;
+  pointer-events: none;
+}
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6):hover::after {
+  opacity: 1;
+  color: #94a3b8;
+}
+body.theme-dark .markdown-rendered :is(h1, h2, h3, h4, h5, h6)::after {
+  color: #475569;
+}
+body.theme-dark .markdown-rendered :is(h1, h2, h3, h4, h5, h6):hover::after {
+  color: #94a3b8;
+}
+
+/* ---- 8. Definition list (HTML <dl>) ------------------------------------- */
+.markdown-rendered dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1em;
+  row-gap: 0.4em;
+  margin: 1em 0;
+  padding: 0.6em 0.9em;
+  background: rgba(241, 245, 249, 0.55);
+  border-radius: 6px;
+}
+.markdown-rendered dl > dt {
+  font-weight: 700;
+  color: #1e293b;
+  text-align: right;
+  padding-top: 1px;
+}
+.markdown-rendered dl > dd {
+  margin: 0;
+  color: #334155;
+}
+body.theme-dark .markdown-rendered dl {
+  background: rgba(28, 33, 40, 0.5);
+}
+body.theme-dark .markdown-rendered dl > dt {
+  color: #e2e8f0;
+}
+body.theme-dark .markdown-rendered dl > dd {
+  color: #cbd5e1;
+}
+
+/* ---- 9. Print parity for v2.5.0 additions ------------------------------- */
+@media print {
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6)::after {
+    display: none !important;
+  }
+  body.ogd-table-sticky-header .markdown-rendered table thead th {
+    position: static !important;
+    box-shadow: none !important;
+  }
+  .markdown-rendered .math.math-block,
+  .markdown-rendered mjx-container[display="true"] {
+    background: transparent !important;
+    border-left-color: #94a3b8 !important;
+  }
+  .markdown-rendered pre > code[class*="language-"]::before {
+    display: none !important;
+  }
+}
+
+/* End of v2.5.0 Pro Pack ================================================== */

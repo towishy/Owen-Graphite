@@ -7,7 +7,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-28%20options-0d9488?style=flat-square)](#style-settings-전체-옵션-목록)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-29%20options-0d9488?style=flat-square)](#style-settings-전체-옵션-목록)
 
 > **Obsidian 보고서 지향 라이트/다크 테마.**
 > 그래파이트(graphite) 기반의 차분한 색감, **A3 인쇄 친화 레이아웃**,
@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘벍링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + **Workspace Surfaces (Graph view·Canvas·Folder cues·Mini TOC·Cover page)** + **Polish Pack (callout stripe·code label·dark parity)** + Style Settings 28종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `2.4.0` (Obsidian 1.6.0+, baseline since v2.2.0) |
+| **버전** | `2.5.0` (Obsidian 1.6.0+, baseline since v2.2.0) |
 
 ---
 
@@ -144,7 +144,7 @@ echo "OK: Owen Graphite installed or updated."
 ### 옵션 C — Style Settings 통합 (권장)
 
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인 설치 시
-사이드바에서 28개 옵션으로 즉시 모드 전환 가능.
+사이드바에서 29개 옵션으로 즉시 모드 전환 가능.
 주요 사용 흐름은 아래 [빠른 사용법](#-빠른-사용법)과 [고급 설정 요약](#-고급-설정-요약)을 참고하세요.
 
 ---
@@ -152,7 +152,7 @@ echo "OK: Owen Graphite installed or updated."
 ## 🚀 빠른 사용법
 
 1. Obsidian → 설정 → 외관 → 테마에서 **Owen Graphite**를 선택합니다.
-2. [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 설치하면 28개 옵션을 UI에서 조정할 수 있습니다.
+2. [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 설치하면 29개 옵션을 UI에서 조정할 수 있습니다.
 3. 보고서 PDF가 필요하면 **보고서 모드**를 켜고, PDF Export에서 `A3` / `가로` / `15mm` 여백을 선택합니다.
 4. 첫 페이지 헤더가 필요하면 Style Settings에서 좌·우 라벨/본문/사이드바 색을 채웁니다. 비워둔 쪽은 출력되지 않습니다.
 
@@ -166,7 +166,7 @@ echo "OK: Owen Graphite installed or updated."
 | PDF 첫 페이지 | 좌·우 라벨/본문/사이드바 색, 라벨 색 | 표지 상단 메타 정보 출력 |
 | 안정성 | 표 zebra, 표 모던 스타일, PDF 블록 분할 방지 | 긴 표·callout·이미지 출력 안정화 |
 
-Style Settings UI는 `읽기와 본문`, `표와 코드`, `보고서와 PDF`, `워크스페이스와 접근성`, `PDF 첫 페이지 헤더` 구획으로 나뉘어 긴 옵션 목록을 빠르게 훑을 수 있습니다. 실제 조정 가능한 옵션 수는 기존과 v2.1.0부터 28개 (&quot;표 셀 행 높이 자동 stretch&quot; 추가)입니다.
+Style Settings UI는 `읽기와 본문`, `표와 코드`, `보고서와 PDF`, `워크스페이스와 접근성`, `PDF 첫 페이지 헤더` 구획으로 나뉘어 긴 옵션 목록을 빠르게 훑을 수 있습니다. 실제 조정 가능한 옵션 수는 v2.5.0부터 29개 (&quot;표 헤더 행 고정 (sticky)&quot; 추가)입니다.
 
 #### Style Settings 구획 (한글 / English)
 

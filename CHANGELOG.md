@@ -4,6 +4,26 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] — 2026-04-29 — Pro Pack (Canvas + Graph + Code label + Sticky table + Math + Caption + Anchor + dl)
+
+### Added
+- **Canvas polish** — 노드 카드에 그래파이트 톤 라운드/그림자, focus 시 블루 액센트, 엣지는 텍스트 톤(`#94a3b8`)으로 통일, edge label 알약 캡슐, 그리드 배경 점선화. 다크 모드 패리티.
+- **Graph view** 색 팔레트 — `color-fill / color-line / color-text / color-circle / color-tag / color-focused / color-arrow` 등 그래파이트 변수에 매핑. 첨부·미해결 노드는 톤다운, focus는 블루, 태그는 틸. 다크 모드 패리티.
+- **Code block 언어 라벨** — Reading view 코드블록 우상단에 언어 클래스 기반 알약 라벨, hover 시 Obsidian 기본 copy 버튼 노출 강화.
+- **Table sticky header** (opt-in) — Style Settings `표 헤더 행 고정 (sticky)` 토글 (`.ogd-table-sticky-header`). Reading view + Dataview 표 모두 적용. PDF/print에서는 자동 비활성.
+- **Math (KaTeX) 블록** — `$$ … $$` 블록에 좌측 액센트 + 옅은 배경 + 가로 스크롤 허용. 다크 모드 패리티.
+- **Image caption** — 이미지 직후의 italic 단독 라인을 자동으로 가운데 정렬 캡션화 (CSS-only, `:has()` 사용).
+- **Heading anchor** — h1~h6 hover 시 우측에 `¶` 마커 표시 (PDF에서는 비활성).
+- **Definition list** (`<dl>`) — term/definition 그리드 레이아웃, term 굵게/우측 정렬, 옅은 배경 카드.
+
+### Changed
+- Style Settings 옵션 수: 28 → **29** (`ogd-table-sticky-header` 추가).
+- 검증 스크립트(`scripts/validate_theme.py`)를 29개 기준으로 갱신.
+
+### Notes
+- 모든 변경은 v2.2.0 베이스라인을 보존하는 EOF 추가 패치 형태. 기존 셀렉터 영향 없음.
+- 다크 모드 패리티 전 항목 포함. Print/PDF에서는 sticky·anchor·코드 라벨 비활성으로 인쇄 호환성 유지.
+
 ## [2.4.0] — 2026-04-29 — Status bar + Footnote + Checkbox states
 
 ### Added
