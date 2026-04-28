@@ -22,6 +22,7 @@ DEFAULT_FILES = [
     "screenshots/table-sample.png",
     "screenshots/github-repo-promo-sample.png",
     "screenshots/readme/github-repo-promo-sample-readme.png",
+    "screenshots/readme/zip-download-guide.svg",
     "screenshots/selected-document-icon-color-samples.png",
     "screenshots/selected-document-icon-effect-samples.png",
     "screenshots/selected-file-border-frame-preview.png",
