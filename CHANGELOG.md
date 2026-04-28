@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] — 2026-04-29 — Properties + Quote + Dataview
+
+### Added
+- **Properties (frontmatter) panel** — 카드 형태 컬러, 키 레이블 톤다운, 값 비워있으면 흐릿게, 타입별 아이콘 색 (`tag/date/status/author/url`), `multi-select-pill`은 메인 tag pill과 동일한 로드 형태.
+- **Quote (`>`) 블록** — callout과 구분되는 4px 좌측 액센트 + 좀 이테릭 + 좀 `“` 장식. Live Preview에서도 포맷 마커만 흐릿게 표시.
+- **Dataview 표 polish** — 헤더 uppercase + 정렬 마커 삼각형, zebra striping, hover 했라이트, 둘레테두리/메세지 일관. `block-language-dataview ul.dataview` 자식 트리에 좌측 가이드 라인.
+
+### Notes
+- 다크 모드 패리티 전 항목 포함.
+- 베이스라인(v2.2.0) 유지; 기존 선택자에 영향 없는 추가 패치.
+- Style Settings 옵션 수: 28 (변동 없음).
+
 ## [2.2.0] — 2026-04-29 — UX Pack + new baseline
 
 ### Added

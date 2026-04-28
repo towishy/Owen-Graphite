@@ -1,6 +1,6 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.2.0 — Baseline (verified stable)
- * Stable since v2.2.0 (UX Pack: tag pill, embed, backlinks/outline, palette, mermaid).
+ * Version 2.3.0 — Mid-scale UX (Properties + Quote + Dataview)
+ * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
  */
@@ -10433,3 +10433,233 @@ body.theme-dark .markdown-rendered .mermaid .label {
 }
 
 /* End of v2.2.0 UX Pack ==================================================== */
+
+
+/* ============================================================================
+ * v2.3.0 — Mid-scale UX: Properties panel, Quote block, Dataview table
+ * Additive only; v2.2.0 baseline preserved.
+ * ========================================================================== */
+
+/* --- 1. Properties (frontmatter) panel ---------------------------------- */
+.metadata-container {
+  background: #fafbfc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  padding: 0.6em 0.8em !important;
+  margin-bottom: 1em !important;
+}
+.metadata-container .metadata-property {
+  border-bottom: 1px dashed #eef2f7 !important;
+  padding: 0.25em 0 !important;
+  align-items: center !important;
+}
+.metadata-container .metadata-property:last-child {
+  border-bottom: none !important;
+}
+.metadata-container .metadata-property-key {
+  color: #64748b !important;
+  font-size: 0.85em !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+}
+.metadata-container .metadata-property-key-input {
+  color: #475569 !important;
+}
+.metadata-container .metadata-property-value {
+  color: #1e293b !important;
+  font-size: 0.92em !important;
+}
+.metadata-container .metadata-property-value:empty,
+.metadata-container .metadata-property-value input[value=""],
+.metadata-container .metadata-property-value .metadata-input-longtext:empty {
+  opacity: 0.45 !important;
+}
+.metadata-container .metadata-property-icon {
+  color: #94a3b8 !important;
+}
+/* Type-aware icon tint */
+.metadata-container .metadata-property[data-property-key*="tag"] .metadata-property-icon,
+.metadata-container .metadata-property[data-property-key*="tags"] .metadata-property-icon { color: #0d9488 !important; }
+.metadata-container .metadata-property[data-property-key*="date"] .metadata-property-icon,
+.metadata-container .metadata-property[data-property-key*="created"] .metadata-property-icon,
+.metadata-container .metadata-property[data-property-key*="modified"] .metadata-property-icon { color: #2563eb !important; }
+.metadata-container .metadata-property[data-property-key*="status"] .metadata-property-icon { color: #f59e0b !important; }
+.metadata-container .metadata-property[data-property-key*="author"] .metadata-property-icon,
+.metadata-container .metadata-property[data-property-key*="owner"] .metadata-property-icon { color: #9333ea !important; }
+.metadata-container .metadata-property[data-property-key*="link"] .metadata-property-icon,
+.metadata-container .metadata-property[data-property-key*="url"] .metadata-property-icon { color: #0ea5e9 !important; }
+
+/* Pill styling for tag values inside properties */
+.metadata-container .multi-select-pill {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 999px !important;
+  color: #475569 !important;
+  padding: 0.05em 0.5em !important;
+  font-size: 0.82em !important;
+}
+body.theme-dark .metadata-container {
+  background: #1c2128 !important;
+  border-color: #2c333d !important;
+}
+body.theme-dark .metadata-container .metadata-property {
+  border-bottom-color: #2c333d !important;
+}
+body.theme-dark .metadata-container .metadata-property-key { color: #94a3b8 !important; }
+body.theme-dark .metadata-container .metadata-property-value { color: #e2e8f0 !important; }
+body.theme-dark .metadata-container .multi-select-pill {
+  background: #2c333d !important;
+  border-color: #3a4150 !important;
+  color: #cbd5e1 !important;
+}
+
+/* --- 2. Quote (blockquote) block --------------------------------------- *
+ * Distinguish from callouts (which have icons + colored bg). Plain quotes
+ * get a thicker accent bar and faint italic without callout chrome.
+ * --------------------------------------------------------------------------*/
+.markdown-rendered blockquote:not(.callout),
+.markdown-preview-view blockquote:not(.callout) {
+  border-left: 4px solid #94a3b8 !important;
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.06), transparent 60%) !important;
+  padding: 0.6em 1em 0.6em 1.1em !important;
+  margin: 1em 0 !important;
+  color: #475569 !important;
+  font-style: italic !important;
+  border-radius: 0 4px 4px 0 !important;
+  position: relative;
+}
+.markdown-rendered blockquote:not(.callout)::before,
+.markdown-preview-view blockquote:not(.callout)::before {
+  content: "\201C";
+  position: absolute;
+  left: 0.35em;
+  top: -0.1em;
+  font-size: 1.8em;
+  color: #cbd5e1;
+  font-family: Georgia, "Noto Serif KR", serif;
+  line-height: 1;
+  pointer-events: none;
+}
+.markdown-rendered blockquote:not(.callout) p,
+.markdown-preview-view blockquote:not(.callout) p {
+  margin: 0.3em 0 !important;
+  padding-left: 1.2em !important;
+}
+.markdown-rendered blockquote:not(.callout) p:first-child {
+  margin-top: 0 !important;
+}
+.markdown-rendered blockquote:not(.callout) p:last-child {
+  margin-bottom: 0 !important;
+}
+/* Live Preview blockquote */
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  color: #475569 !important;
+  font-style: italic !important;
+}
+.markdown-source-view.mod-cm6 .cm-formatting-quote {
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+}
+body.theme-dark .markdown-rendered blockquote:not(.callout),
+body.theme-dark .markdown-preview-view blockquote:not(.callout) {
+  border-left-color: #64748b !important;
+  background: linear-gradient(90deg, rgba(100, 116, 139, 0.12), transparent 60%) !important;
+  color: #cbd5e1 !important;
+}
+body.theme-dark .markdown-rendered blockquote:not(.callout)::before {
+  color: #475569 !important;
+}
+
+/* --- 3. Dataview table polish ------------------------------------------ */
+.markdown-rendered .dataview.table-view-table,
+.markdown-preview-view .dataview.table-view-table,
+.block-language-dataview table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  font-size: 0.92em !important;
+  width: 100% !important;
+}
+.markdown-rendered .dataview.table-view-table thead th,
+.block-language-dataview table thead th {
+  background: #f8fafc !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  padding: 0.55em 0.75em !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+  font-size: 0.88em !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  position: relative;
+}
+.markdown-rendered .dataview.table-view-table thead th::after,
+.block-language-dataview table thead th::after {
+  content: "";
+  position: absolute;
+  right: 0.4em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #cbd5e1;
+  opacity: 0.6;
+}
+.markdown-rendered .dataview.table-view-table tbody td,
+.block-language-dataview table tbody td {
+  padding: 0.5em 0.75em !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  color: #1e293b !important;
+  vertical-align: top !important;
+}
+.markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td,
+.block-language-dataview table tbody tr:nth-child(even) td {
+  background: #fafbfc !important;
+}
+.markdown-rendered .dataview.table-view-table tbody tr:hover td,
+.block-language-dataview table tbody tr:hover td {
+  background: #eef2ff !important;
+}
+.markdown-rendered .dataview.table-view-table tbody tr:last-child td,
+.block-language-dataview table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+/* Dataview list/task subtle indent */
+.markdown-rendered .dataview.list-view-ul,
+.block-language-dataview ul.dataview {
+  padding-left: 1.2em !important;
+  border-left: 2px solid #e2e8f0 !important;
+  margin-left: 0.3em !important;
+}
+.markdown-rendered .dataview.task-list-item-checkbox {
+  margin-right: 0.5em !important;
+}
+body.theme-dark .markdown-rendered .dataview.table-view-table,
+body.theme-dark .block-language-dataview table {
+  border-color: #2c333d !important;
+}
+body.theme-dark .markdown-rendered .dataview.table-view-table thead th,
+body.theme-dark .block-language-dataview table thead th {
+  background: #1c2128 !important;
+  color: #cbd5e1 !important;
+  border-bottom-color: #475569 !important;
+}
+body.theme-dark .markdown-rendered .dataview.table-view-table tbody td,
+body.theme-dark .block-language-dataview table tbody td {
+  color: #e2e8f0 !important;
+  border-bottom-color: #2c333d !important;
+}
+body.theme-dark .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td,
+body.theme-dark .block-language-dataview table tbody tr:nth-child(even) td {
+  background: #1c2128 !important;
+}
+body.theme-dark .markdown-rendered .dataview.table-view-table tbody tr:hover td,
+body.theme-dark .block-language-dataview table tbody tr:hover td {
+  background: #2c333d !important;
+}
+
+/* End of v2.3.0 Mid-scale UX =============================================== */
