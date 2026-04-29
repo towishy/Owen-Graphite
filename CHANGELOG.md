@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.0] — 2026-04-29 — Reading & Properties Polish (5 items, samples-first approved)
+
+### Added (#2 Tab glow skipped per user)
+1. **Properties 패널 Glass** — `.metadata-container` 카드형 glass + tabular-nums (다크 대응).
+2. **본문 강조 종류별 차등** — strong/em/mark/del 톤·굵기·배경 분리 (CM6 클래스 포함).
+3. **인용문 좌측 라인 대체** — 4px bar 제거 → 배경 tint + radius 8px + 코너 글리프(“) (no-left-line 정책 일관성).
+4. **Reading view 진행률 인디케이터** — scroll-driven animation 기반 sticky 2px 그라디언트 바 (`@supports (animation-timeline: scroll())`, fallback safe).
+5. **Code block 언어 라벨 + copy 일체화** — 우상단 chrome 모듈로 통합 (data-lang ::before + .copy-code-button glass).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.11-preview.html`](docs/fixtures/v2.11-preview.html) 사용자 승인 후 적용.
+- 리드미 스크린샷: `screenshots/readme/v2.11-preview-{light,dark}.png`.
+
 ## [2.10.0] — 2026-04-29 — 12 Improvements Pack (samples-first approved)
 
 ### Added (12종 개선 · 좌측 라인 영구 밴 + Glass+Shadow 코어 정책 준수)

@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘벍링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + **Workspace Surfaces (Graph view·Canvas·Folder cues·Mini TOC·Cover page)** + **Polish Pack (callout stripe·code label·dark parity)** + Style Settings 28종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `2.10.0` (Obsidian 1.6.0+, baseline since v2.6.2) |
+| **버전** | `2.11.0` (Obsidian 1.6.0+, baseline since v2.6.2) |
 
 ---
 
@@ -395,6 +395,30 @@ Callout 회귀 확인용 fixture는 [docs/fixtures/callout-report.md](docs/fixtu
 ![v2.10.0 12 Improvements — Dark](screenshots/readme/v2.10-improvements-dark.png)
 
 > 인터랙티브 HTML 미리보기: [docs/fixtures/v2.10-improvements-preview.html](docs/fixtures/v2.10-improvements-preview.html) — 상단 🌗 버튼으로 라이트/다크 토글 가능.
+
+---
+
+## ✨ v2.11.0 기능 개선 — Reading & Properties Polish (5종)
+
+샘플-우선 정책으로 사전 승인된 5가지 개선 (#2 Tab bar 글로우는 사용자 결정으로 제외).
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Properties 패널 Glass | `.metadata-container` 카드형 glass + tabular-nums (다크 대응) |
+| 2 | 본문 강조 종류별 차등 | strong/em/mark/del 톤·굵기·배경 분리 (CM6 클래스 포함) |
+| 3 | 인용문 좌측 라인 대체 | 4px bar 제거 → 배경 tint + radius + 코너 글리프(") (no-left-line 정책 일관성) |
+| 4 | Reading view 진행률 | scroll-driven animation 기반 sticky 2px 그라디언트 바 (fallback safe) |
+| 5 | Code block 언어 + copy 일체화 | `data-lang` ::before + `.copy-code-button` 단일 chrome 모듈로 통합 |
+
+### 라이트 모드 미리보기
+
+![v2.11.0 Polish — Light](screenshots/readme/v2.11-preview-light.png)
+
+### 다크 모드 미리보기
+
+![v2.11.0 Polish — Dark](screenshots/readme/v2.11-preview-dark.png)
+
+> 인터랙티브 HTML 미리보기: [docs/fixtures/v2.11-preview.html](docs/fixtures/v2.11-preview.html)
 
 ---
 

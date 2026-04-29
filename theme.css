@@ -13006,3 +13006,189 @@ body.theme-dark .status-bar .status-bar-item[aria-label*="reading" i],
 body.theme-dark .status-bar .status-bar-item[aria-label*="읽기" i] { color: #cbd5e1 !important; }
 
 /* End of v2.10.0 — 12 Improvements Pack ================================== */
+
+/* ============================================================
+   v2.11.0 — Reading & Properties Polish (5 items)
+   #1 Properties Glass · #6 Emphasis tiers · #8 Quote no-left-line
+   · #11 Reading progress · #12 Code chrome
+   (Sample-first approved 2026-04-29; #2 Tab glow skipped per user)
+   ============================================================ */
+
+/* #1 Properties 패널 Glass — frontmatter 카드형 */
+.workspace-leaf-content[data-type="markdown"] .metadata-container,
+.markdown-source-view .metadata-container,
+.markdown-reading-view .metadata-container {
+  background: rgba(255, 255, 255, 0.72) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(1.1) !important;
+  backdrop-filter: blur(12px) saturate(1.1) !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06) !important;
+  padding: 12px 16px !important;
+  margin: 8px 0 14px !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="markdown"] .metadata-container,
+body.theme-dark .markdown-source-view .metadata-container,
+body.theme-dark .markdown-reading-view .metadata-container {
+  background: rgba(15, 23, 42, 0.72) !important;
+  border-color: rgba(71, 85, 105, 0.40) !important;
+}
+.metadata-container .metadata-property-key {
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+body.theme-dark .metadata-container .metadata-property-key { color: #94a3b8 !important; }
+.metadata-container .metadata-property-value,
+.metadata-container .metadata-property[data-property-key*="created"] .metadata-property-value,
+.metadata-container .metadata-property[data-property-key*="modified"] .metadata-property-value,
+.metadata-container .metadata-property[data-property-key*="words"] .metadata-property-value,
+.metadata-container .metadata-property[data-property-key*="count"] .metadata-property-value {
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* #6 본문 강조 종류별 차등 */
+.markdown-rendered strong,
+.markdown-preview-view strong,
+.cm-strong {
+  color: var(--text-normal) !important;
+  font-weight: 700 !important;
+}
+.markdown-rendered em,
+.markdown-preview-view em,
+.cm-em {
+  color: #475569 !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+}
+body.theme-dark .markdown-rendered em,
+body.theme-dark .markdown-preview-view em,
+body.theme-dark .cm-em { color: #cbd5e1 !important; }
+.markdown-rendered mark,
+.markdown-preview-view mark,
+.cm-highlight {
+  background: rgba(245, 158, 11, 0.22) !important;
+  color: #92400e !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  font-weight: 500 !important;
+}
+body.theme-dark .markdown-rendered mark,
+body.theme-dark .markdown-preview-view mark,
+body.theme-dark .cm-highlight {
+  background: rgba(245, 158, 11, 0.30) !important;
+  color: #fcd34d !important;
+}
+.markdown-rendered del,
+.markdown-preview-view del,
+.markdown-rendered s,
+.markdown-preview-view s,
+.cm-strikethrough {
+  color: var(--text-muted) !important;
+  text-decoration: line-through !important;
+  text-decoration-thickness: 1.5px !important;
+}
+
+/* #8 인용문 좌측 라인 대체 (no-left-line 코어 정책 일관성) */
+.markdown-rendered blockquote,
+.markdown-preview-view blockquote {
+  background: rgba(148, 163, 184, 0.10) !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  border-left: 1px solid rgba(148, 163, 184, 0.28) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  margin: 12px 0 !important;
+  position: relative !important;
+  color: var(--text-normal) !important;
+  box-shadow: none !important;
+}
+.markdown-rendered blockquote::before,
+.markdown-preview-view blockquote::before {
+  content: "\201C" !important;
+  position: absolute !important;
+  top: -2px !important;
+  left: 8px !important;
+  font-size: 28px !important;
+  color: var(--text-muted) !important;
+  opacity: 0.45 !important;
+  font-family: Georgia, serif !important;
+  pointer-events: none !important;
+}
+body.theme-dark .markdown-rendered blockquote,
+body.theme-dark .markdown-preview-view blockquote {
+  background: rgba(71, 85, 105, 0.18) !important;
+  border-color: rgba(71, 85, 105, 0.40) !important;
+}
+
+/* #11 Reading view 진행률 인디케이터 (CSS-only via scroll-driven animation; fallback safe) */
+@supports (animation-timeline: scroll()) {
+  .markdown-reading-view::before,
+  .workspace-leaf-content[data-type="markdown"] .markdown-reading-view::before {
+    content: "" !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    height: 2px !important;
+    width: 100% !important;
+    background: linear-gradient(90deg, #2563eb, #0d9488) !important;
+    transform-origin: left !important;
+    animation: og-read-progress linear !important;
+    animation-timeline: scroll(self) !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+  }
+  @keyframes og-read-progress {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+/* #12 Code block 언어 라벨 + copy 일체화 (단일 chrome 모듈) */
+.markdown-rendered pre:has(> code[class*="language-"]),
+.markdown-preview-view pre:has(> code[class*="language-"]) {
+  position: relative !important;
+}
+.markdown-rendered pre > code[class*="language-"]::before,
+.markdown-preview-view pre > code[class*="language-"]::before {
+  content: attr(data-lang) !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 36px !important;
+  padding: 4px 10px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #93c5fd !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  background: rgba(30, 41, 59, 0.92) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(71, 85, 105, 0.40) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-radius: 0 0 0 8px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+.markdown-rendered pre .copy-code-button,
+.markdown-preview-view pre .copy-code-button {
+  background: rgba(30, 41, 59, 0.92) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(71, 85, 105, 0.40) !important;
+  border-top: none !important;
+  border-radius: 0 8px 0 8px !important;
+  padding: 4px 10px !important;
+  font-size: 10px !important;
+  top: 0 !important;
+  right: 0 !important;
+}
+.markdown-rendered pre .copy-code-button:hover,
+.markdown-preview-view pre .copy-code-button:hover {
+  background: rgba(96, 165, 250, 0.20) !important;
+  color: #93c5fd !important;
+}
+
+/* End of v2.11.0 — Reading & Properties Polish ========================== */

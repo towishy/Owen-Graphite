@@ -28,6 +28,7 @@ REQUIRED_FILES = [
     "CHANGELOG.md",
     "LICENSE",
     "docs/fixtures/v2.10-improvements-preview.html",
+    "docs/fixtures/v2.11-preview.html",
     "scripts/contrast_audit.py",
     "scripts/visual_regression.py",
     "screenshots/light.png",
@@ -38,6 +39,8 @@ REQUIRED_FILES = [
     "screenshots/readme/github-repo-promo-sample-readme.png",
     "screenshots/readme/v2.10-improvements-light.png",
     "screenshots/readme/v2.10-improvements-dark.png",
+    "screenshots/readme/v2.11-preview-light.png",
+    "screenshots/readme/v2.11-preview-dark.png",
 ]
 
 PNG_SIZES = {
