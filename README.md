@@ -74,6 +74,10 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 
 ## 3. 테마 설치 방법
 
+> 💡 **2026-04-29 업데이트** — 옵션 B(Git) 설치 명령이 **idempotent** 하게 개선되었습니다.
+>
+> 이제 폴더가 이미 존재해도 **같은 스크립트를 다시 실행하면 자동 업데이트**됩니다. 수동 ZIP 설치 등 비-Git 폴더는 자동로 백업(`*.backup-YYYYMMDD-HHMMSS`) 후 재설치됩니다. 이전의 *"destination path already exists"* 오류가 해소됩니다.
+
 ### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
 
 1. 설정 → **외관 → 테마 관리**
@@ -294,6 +298,7 @@ Bookmarks 패널 · CM6 fold gutter · Dataview inline chip · reduced-motion ·
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |
 | **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · CM6 fold gutter · Dataview inline chip · reduced-motion 안전망 · high-contrast 대응 |
 | **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Ribbon active pill · Mermaid card · Tasks 플러그인 · Focus-visible 링 |
 | **v2.14.0** | Chrome & Indicator Polish — Sync pill · Settings 검색 강조 · Heading anchor `#` · Popover favicon · Properties focus ring |
