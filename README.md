@@ -2,8 +2,6 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen GitHub Repository Picks](screenshots/readme/github-repo-promo-sample-readme.png)
-
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
@@ -154,8 +152,6 @@ fi
 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-<version>.zip`** 을 다운로드해 압축 해제합니다.
 
 > **⚠️ 주의** Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-<version>.zip` 을 받으세요.
->
-> ![ZIP 다운로드 안내](screenshots/readme/zip-download-guide.svg)
 
 | 플랫폼 | 테마 대상 경로 |
 |--------|----------------|
@@ -180,8 +176,6 @@ Windows Obsidian에서 상단 탭과 titlebar 버튼이 정상 표시되도록 �
 
 Toggle switch · Search input + chips · Community cards · Pane title count badges · Drop snap target hint.
 
-> 인터랙티브 미리보기: [docs/fixtures/v2.20-preview.html](docs/fixtures/v2.20-preview.html)
-
 | # | 항목 | 내용 |
 |---|------|------|
 | 1 | Toggle switch glass (F3) | `.checkbox-container` glass track + floating thumb |
@@ -195,8 +189,6 @@ Toggle switch · Search input + chips · Community cards · Pane title count bad
 ### ✨ v2.19.0 — Editor Depth, System Cleanup & Glass Surface Sweep (10종)
 
 Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 + PDF · Media · Canvas · Floating status bar · Date/Color picker.
-
-> 인터랙티브 미리보기: [docs/fixtures/v2.19-preview.html](docs/fixtures/v2.19-preview.html)
 
 | # | 항목 | 내용 |
 |---|------|------|
@@ -233,8 +225,6 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | 4 | Status bar separator | item 사이 1×12px separator + hover tint (좌측 라인 정책 예외 — 구분용) |
 | 5 | Modal close (×) chrome | hover 시 rose tint + inset ring (destructive 액션 구분) |
 
-> 인터랙티브 미리보기: [docs/fixtures/v2.18-preview.html](docs/fixtures/v2.18-preview.html)
-
 ---
 
 ### ✨ v2.13.0 — Reading Polish & Surfaces (9종)
@@ -261,8 +251,6 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | 8 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
 | 9 | docs/style-settings.md | Style Settings 풀 레퍼런스 문서 신설 |
 
-> 인터랙티브 미리보기: [docs/fixtures/v2.13-preview.html](docs/fixtures/v2.13-preview.html)
-
 ---
 
 ### ✨ v2.12.0 — Panels & Code Polish (6종)
@@ -286,8 +274,6 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | 5 | Embed 노트 카드 Polish | `.markdown-embed` 글래스 카드 + 우상단 EMBED badge |
 | 6 | Glass 강도 변수 | `--og-glass-blur` CSS 변수 (8/12/16/20px override) |
 
-> 인터랙티브 미리보기: [docs/fixtures/v2.12-preview.html](docs/fixtures/v2.12-preview.html)
-
 ---
 
 ### ✨ v2.11.0 — Reading & Properties Polish (5종)
@@ -307,8 +293,6 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | 3 | 인용문 좌측 라인 대체 | 배경 tint + radius + 코너 글리프(") |
 | 4 | Reading view 진행률 | scroll-driven 2px 그라디언트 sticky 바 |
 | 5 | Code block 언어 + copy 일체화 | data-lang ::before + .copy-code-button 단일 chrome |
-
-> 인터랙티브 미리보기: [docs/fixtures/v2.11-preview.html](docs/fixtures/v2.11-preview.html)
 
 ---
 
@@ -330,8 +314,6 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | 4 | Outline 레벨별 위계 강화 | 10 | Selection 색조 통일 |
 | 5 | Tag pane 카운트 알약 | 11 | 링크 hover ↗ 인디케이터 |
 | 6 | 폴더 노트 수 카운트 | 12 | Status bar 단어수/읽기시간 tabular-nums |
-
-> 인터랙티브 미리보기: [docs/fixtures/v2.10-improvements-preview.html](docs/fixtures/v2.10-improvements-preview.html)
 
 ---
 
@@ -377,7 +359,7 @@ Owen Graphite/
 ├── CHANGELOG.md      # 전체 릴리즈 노트
 ├── CONTRIBUTING.md   # 기여 가이드
 ├── LICENSE           # MIT
-├── docs/fixtures/    # 디자인 미리보기 HTML
+├── docs/MAP/         # theme.css risk map 산출물
 ├── screenshots/      # README/마켓 이미지
 └── scripts/          # Python 검증/릴리즈 스크립트
 ```
