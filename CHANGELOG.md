@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.3] — 2026-04-30 — Windows viewport-independent tabbar rescue
+
+### Fixed
+- Windows Obsidian에서 기본 테마는 탭/버튼이 보이나 Owen Graphite로 전환하면 즉시 사라지는 문제를 추가 보강.
+- 기존 v2.22.0~2.22.2 복구가 모두 `@media (min-width: 701px)` / `:not(.is-mobile)` 조건 안에 있어 적용되지 않을 수 있는 케이스를 제거하고, non-macOS tabbar 영역에 조건 없는 최소 표시 복구 적용.
+- 탭바 컨테이너, 탭, 탭 내부 텍스트/아이콘/닫기 버튼, 새 탭/탭 목록 버튼, titlebar 버튼의 `display`, `visibility`, `opacity`, `color`, `background`, `filter`를 강제 복구.
+
+### Preserved
+- macOS는 `body.mod-macos` 제외로 기존 Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.2] — 2026-04-30 — Windows emergency tab/button visibility fallback
 
 ### Fixed
