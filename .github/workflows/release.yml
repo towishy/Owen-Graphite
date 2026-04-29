@@ -1,10 +1,11 @@
 name: Release
 
-# Trigger when you push a tag matching the manifest version (e.g., 1.4.1)
+# Trigger when you push a tag matching the manifest version (e.g., 1.4.1 or v2.6.0)
 on:
   push:
     tags:
       - "[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 permissions:
   contents: write
@@ -24,9 +25,9 @@ jobs:
       - name: Verify manifest version matches tag
         run: |
           MANIFEST_VERSION=$(jq -r .version manifest.json)
-          TAG_VERSION="${GITHUB_REF_NAME}"
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
           echo "Manifest version: $MANIFEST_VERSION"
-          echo "Tag version:      $TAG_VERSION"
+          echo "Tag version:      $TAG_VERSION (raw: ${GITHUB_REF_NAME})"
           if [ "$MANIFEST_VERSION" != "$TAG_VERSION" ]; then
             echo "::error::manifest.json version ($MANIFEST_VERSION) does not match git tag ($TAG_VERSION)"
             exit 1
