@@ -4,6 +4,24 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.13.0] — 2026-04-29 — Reading Polish & Surfaces (9 items, samples-first approved)
+
+### Added
+1. **Search 결과 패널 Polish** — `.search-result-file-match` 를 row glass + hover lift, match HL을 underline-gradient 로 강조.
+2. **Graph view legend / control glass** — `.graph-controls` 우상단 글래스 카드(blur·border·shadow), local graph 동일 적용.
+3. **Mobile bottom toolbar 재정비** — `.mobile-toolbar` 를 floating glass card 로, `safe-area-inset-bottom` 보강.
+4. **Print TOC 유틸리티** — `.ogd-print-toc` (A3 PDF cover-page 다음 자동 목차 페이지 + 점선 leader + accent 카운터).
+5. **Footnote 패널 Polish** — `.footnotes` 글래스 카드 + `FOOTNOTES` 소제목 + 번호 알약(pill), `sup.footnote-ref` 도 동일 pill.
+6. **Inline tag pill v2** — 본문 `a.tag` / CM6 `.cm-hashtag` 를 tag-pane 알약 디자인으로 통일 (teal 그라디언트 + border).
+7. **Callout 다크 패리티 재감사** — note/warning/danger/success 다크 배경·border·텍스트 톤 보강 (v2.11 quote no-left-line 이후 일부 대비 약화 해소).
+8. **Dataview 표 자동 매핑** — `.block-language-dataview table` 에 wide-table·sticky header·zebra·tabular-nums 자동 적용 (`@media print` 에서 sticky 비활성).
+9. **docs/style-settings.md 신설** — 33개 옵션 풀 레퍼런스 문서 (README 분류 표 보강, 죽은 링크 해소).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.13-preview.html`](docs/fixtures/v2.13-preview.html).
+- 리드미 스크린샷: `screenshots/readme/v2.13-preview-{light,dark}.png` (Playwright 캡처).
+- 베이스라인 정책 갱신: README는 v2.13.0 기준, 이전 마일스톤 마커는 CHANGELOG 로 위임.
+
 ## [2.12.0] — 2026-04-29 — Panels & Code Polish (6 items, samples-first approved)
 
 ### Added
