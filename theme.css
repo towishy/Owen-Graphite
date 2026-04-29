@@ -12593,3 +12593,46 @@ body.theme-dark .metadata-property:active::before {
  *
  *   다음 단계: 좌측 라인 무력화는 셀렉터 단위로 *최소 범위*에서 점진 적용 예정.
  * ========================================================================== */
+
+/* ============================================================================
+ * v2.9.2 — Step 1: File explorer active 좌측 라인 제거 (점진 적용 시작)
+ *   범위: .nav-file-title.is-active / .nav-folder-title.is-active 만.
+ *   - 기존 box-shadow inset Npx 0 0 (좌측 라인) 무력화
+ *   - ::before 좌측 stripe 무력화
+ *   - 강조 = "투명유리창(Glass) + 그림자(Shadow)" 코어 원칙 적용:
+ *       (1) 반투명 배경 rgba(...)
+ *       (2) backdrop-filter: blur (chrome glass)
+ *       (3) 다층 box-shadow (외곽 soft + inset highlight)
+ *       (4) 둘레 border (전체 둘러싸기, 좌측 단독 금지)
+ *   - 다른 chrome (outline/bookmarks/backlink/recent/tag/settings/notice/modal)
+ *     은 이번 단계에서 건드리지 않음
+ * ========================================================================== */
+.nav-file-title.is-active,
+.nav-folder-title.is-active {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 4px 12px rgba(37, 99, 235, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-left: 0;
+  background: rgba(37, 99, 235, 0.10);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  backdrop-filter: blur(8px) saturate(1.1);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  font-weight: 600;
+  border-radius: 6px;
+}
+.nav-file-title.is-active::before,
+.nav-folder-title.is-active::before {
+  content: none;
+  display: none;
+}
+.theme-dark .nav-file-title.is-active,
+.theme-dark .nav-folder-title.is-active {
+  background: rgba(96, 165, 250, 0.14);
+  border-color: rgba(96, 165, 250, 0.28);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.30),
+    0 4px 14px rgba(96, 165, 250, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+

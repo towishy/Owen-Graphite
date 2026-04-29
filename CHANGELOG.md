@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.2] — 2026-04-29 — Step 1: File explorer active 좌측 라인 제거 (Glass+Shadow)
+
+### Changed (chrome 좌측 라인 점진 적용 · 1단계)
+- **File explorer active 항목** (`.nav-file-title.is-active`, `.nav-folder-title.is-active`) — 기존 좌측 세로 라인(`box-shadow: inset 3px 0 0`, `::before` stripe) 제거.
+- 강조는 코어 디자인 원칙("Glass + Shadow") 그대로:
+  - 반투명 틴트 `rgba(37,99,235,0.10)`
+  - `backdrop-filter: blur(8px) saturate(1.1)`
+  - 다층 box-shadow (외곽 soft + inset highlight)
+  - 둘레 1px border `rgba(37,99,235,0.18)`
+- Outline / bookmarks / backlink / recent / tag / settings nav / notice / modal 등 **나머지 chrome은 이번 단계에서 건드리지 않음** (v2.9.0 사고 방지 위해 점진 처리).
+
 ## [2.9.1] — 2026-04-29 — Hotfix: revert v2.9.0 chrome overhaul
 
 ### Fixed
