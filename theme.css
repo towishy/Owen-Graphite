@@ -12595,148 +12595,37 @@ body.theme-dark .metadata-property:active::before {
  * ========================================================================== */
 
 /* ============================================================================
- * v2.9.2 — Step 1: File explorer active 좌측 라인 제거 (점진 적용 시작)
- *   범위: .nav-file-title.is-active / .nav-folder-title.is-active 만.
- *   - 기존 box-shadow inset Npx 0 0 (좌측 라인) 무력화
- *   - ::before 좌측 stripe 무력화
- *   - 강조 = "투명유리창(Glass) + 그림자(Shadow)" 코어 원칙 적용:
- *       (1) 반투명 배경 rgba(...)
- *       (2) backdrop-filter: blur (chrome glass)
- *       (3) 다층 box-shadow (외곽 soft + inset highlight)
- *       (4) 둘레 border (전체 둘러싸기, 좌측 단독 금지)
- *   - 다른 chrome (outline/bookmarks/backlink/recent/tag/settings/notice/modal)
- *     은 이번 단계에서 건드리지 않음
+ * v2.9.6 — Hotfix: 회색 외곽 박스 제거 + 좌측 라인 무력화만 유지
+ *
+ * 원인 분석:
+ *   v1.8.16+ 디자인은 .nav-file-title.is-active 자체는 빈 컨테이너로 두고
+ *   내부 .nav-file-title-content 에 글래스 효과를 적용하는 구조.
+ *   v2.9.2~v2.9.5에서 외부 컨테이너에 background+shadow+outline을 추가하면서
+ *   글래스 위에 회색 외곽 박스가 한 겹 더 얹혀 보였음.
+ *
+ * 정책:
+ *   - 좌측 세로 라인 강조 영구 금지 — 유지
+ *   - file explorer 는 기존 글래스 효과를 그대로 살리고 좌측 라인만 무력화
+ *   - outline/bookmarks/backlink/recent/tag 는 자체 글래스가 없으므로
+ *     가벼운 background tint + outline 으로 active 표시 (외곽 shadow 없음)
+ *   - dashed 좌측 가이드 라인 제거 유지
  * ========================================================================== */
+
+/* (1) file/folder explorer active — 외부 컨테이너 좌측 라인만 무력화. 
+       글래스/배경/shadow는 기존 .nav-file-title-content 룰에 위임 */
 .nav-file-title.is-active,
 .nav-folder-title.is-active {
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.06),
-    0 4px 12px rgba(37, 99, 235, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  border-left: 0;
-  background: rgba(37, 99, 235, 0.10);
-  -webkit-backdrop-filter: blur(8px) saturate(1.1);
-  backdrop-filter: blur(8px) saturate(1.1);
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  font-weight: 600;
-  border-radius: 6px;
+  border-left: 0 !important;
+  box-shadow: none !important;
 }
 .nav-file-title.is-active::before,
 .nav-folder-title.is-active::before {
-  content: none;
-  display: none;
-}
-.theme-dark .nav-file-title.is-active,
-.theme-dark .nav-folder-title.is-active {
-  background: rgba(96, 165, 250, 0.14);
-  border-color: rgba(96, 165, 250, 0.28);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.30),
-    0 4px 14px rgba(96, 165, 250, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  content: none !important;
+  display: none !important;
 }
 
-/* ============================================================================
- * v2.9.3 — Step 2: Outline / Bookmarks active 좌측 라인 제거 (Glass+Shadow)
- *   범위: outline 패널, bookmarks 패널 active 항목만.
- *   동일 패턴: 좌측 라인 제거 → 반투명 + blur + 다층 shadow + 둘레 border.
- *   Backlink/recent/tag/settings/notice/modal 은 다음 단계 (사고 방지 점진).
- * ========================================================================== */
-.outline .tree-item-self.is-active,
-.outline-view .tree-item-self.is-active,
-.bookmarks-view .tree-item-self.is-active,
-.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active,
-.workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active {
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.06),
-    0 4px 12px rgba(37, 99, 235, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  border-left: 0;
-  background: rgba(37, 99, 235, 0.10);
-  -webkit-backdrop-filter: blur(8px) saturate(1.1);
-  backdrop-filter: blur(8px) saturate(1.1);
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  font-weight: 600;
-  border-radius: 6px;
-}
-.outline .tree-item-self.is-active::before,
-.outline-view .tree-item-self.is-active::before,
-.bookmarks-view .tree-item-self.is-active::before,
-.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active::before,
-.workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active::before {
-  content: none;
-  display: none;
-}
-.theme-dark .outline .tree-item-self.is-active,
-.theme-dark .outline-view .tree-item-self.is-active,
-.theme-dark .bookmarks-view .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active {
-  background: rgba(96, 165, 250, 0.14);
-  border-color: rgba(96, 165, 250, 0.28);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.30),
-    0 4px 14px rgba(96, 165, 250, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-/* ============================================================================
- * v2.9.4 — Step 3: Backlink / Recent / Tag pane / Outgoing-link active
- *   범위: 위 4개 사이드바 패널의 active 항목.
- *   동일 Glass+Shadow 패턴. Settings nav / notice / modal 은 다음 단계.
- * ========================================================================== */
-.workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
-.workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
-.workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
-.workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.06),
-    0 4px 12px rgba(37, 99, 235, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  border-left: 0;
-  background: rgba(37, 99, 235, 0.10);
-  -webkit-backdrop-filter: blur(8px) saturate(1.1);
-  backdrop-filter: blur(8px) saturate(1.1);
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  font-weight: 600;
-  border-radius: 6px;
-}
-.workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active::before,
-.workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active::before,
-.workspace-leaf-content[data-type="tag"] .tree-item-self.is-active::before,
-.workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active::before {
-  content: none;
-  display: none;
-}
-.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
-  background: rgba(96, 165, 250, 0.14);
-  border-color: rgba(96, 165, 250, 0.28);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.30),
-    0 4px 14px rgba(96, 165, 250, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-
-
-
-/* ============================================================================
- * v2.9.5 — Hotfix: Outline active 잘림 + 좌측 dashed 가이드 라인 제거
- *   문제 1) v2.9.2/3/4에서 추가한 1px border가 outline 패널의 좁은 폭에서
- *           우측 잘림(overflow clip) 유발 → border → outline 으로 교체
- *           (outline 은 box layout 영향 X, outline-offset 으로 안쪽 배치)
- *   문제 2) v2.7.x 잔존 dashed 좌측 가이드(border-left: 1px dashed) 가
- *           outline/backlink tree-item-children 에 그대로 표시 → 무력화
- *   문제 3) outline/backlink tree-item-self 의 base border-left: 2px transparent
- *           + hover accent → 무력화 (영구 좌측 라인 금지 정책)
- * ========================================================================== */
-
-/* (1) border → outline 으로 변경 (overflow 방지) */
-.nav-file-title.is-active,
-.nav-folder-title.is-active,
+/* (2) outline / bookmarks / backlink / recent / tag / outgoing-link active
+       경량 강조: 배경 tint + outline (외곽 shadow 없음 — 좁은 패널 정확도 우선) */
 .outline .tree-item-self.is-active,
 .outline-view .tree-item-self.is-active,
 .bookmarks-view .tree-item-self.is-active,
@@ -12747,11 +12636,26 @@ body.theme-dark .metadata-property:active::before {
 .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
 .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
   border: 0 !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+  background: rgba(37, 99, 235, 0.10);
   outline: 1px solid rgba(37, 99, 235, 0.22);
   outline-offset: -1px;
+  font-weight: 600;
+  border-radius: 6px;
 }
-.theme-dark .nav-file-title.is-active,
-.theme-dark .nav-folder-title.is-active,
+.outline .tree-item-self.is-active::before,
+.outline-view .tree-item-self.is-active::before,
+.bookmarks-view .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="tag"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active::before {
+  content: none !important;
+  display: none !important;
+}
 .theme-dark .outline .tree-item-self.is-active,
 .theme-dark .outline-view .tree-item-self.is-active,
 .theme-dark .bookmarks-view .tree-item-self.is-active,
@@ -12761,10 +12665,11 @@ body.theme-dark .metadata-property:active::before {
 .theme-dark .workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
 .theme-dark .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
 .theme-dark .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
+  background: rgba(96, 165, 250, 0.14);
   outline-color: rgba(96, 165, 250, 0.32);
 }
 
-/* (2) 좌측 dashed 가이드 라인 무력화 (outline/backlink tree-item-children) */
+/* (3) outline / backlink dashed 좌측 가이드 라인 무력화 */
 .workspace-leaf-content[data-type="backlink"] .tree-item-children,
 .workspace-leaf-content[data-type="outline"] .tree-item-children {
   border-left: 0 !important;
@@ -12775,7 +12680,7 @@ body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-children
   border-left: 0 !important;
 }
 
-/* (3) outline/backlink tree-item-self base 좌측 라인 + hover accent 무력화 */
+/* (4) outline/backlink tree-item-self base 좌측 라인 + hover accent 무력화 */
 .workspace-leaf-content[data-type="backlink"] .tree-item-self,
 .workspace-leaf-content[data-type="outline"] .tree-item-self {
   border-left: 0 !important;

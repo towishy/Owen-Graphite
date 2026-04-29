@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.6] — 2026-04-29 — Hotfix: 회색 외곽 박스 제거 (기존 글래스에 광아올 추가 제거)
+
+### Fixed
+- **File explorer active 항목 우측 회색 박스 제거.** 원인: v1.8.16+ 디자인은 `.nav-file-title.is-active` 자체는 빈 컨테이너로 두고 내부 `.nav-file-title-content` 에 글래스 효과를 적용하는 구조. v2.9.2~v2.9.5에서 외부 컨테이너에 background+shadow+outline을 추가하는 실수로 글래스 위에 회색 박스가 한 겹 더 얹혀 보였음.
+- file/folder explorer 는 외부 컨테이너에 `border/box-shadow` 제거, **좌측 라인 무력화만 유지**. 기존 글래스 효과가 그대로 살아남.
+- outline/bookmarks/backlink/recent/tag 는 자체 글래스가 없으므로 **경량 패턴** (background tint + outline) 으로 적용. 외곢 shadow 없음 — 좁은 패널에서 잔상 방지.
+
 ## [2.9.5] — 2026-04-29 — Hotfix: Outline active 우측 잘림 + dashed 좌측 가이드 제거
 
 ### Fixed
