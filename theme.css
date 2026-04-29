@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.5.0 — Pro Pack (Canvas + Graph + Code label + Sticky table + Math + Caption + Anchor + dl)
+ * Version 2.6.0 — Workspace + Search/Modal + Polish Pack
  * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -118,6 +118,18 @@ settings:
     id: ogd-table-sticky-header
     title: 표 헤더 행 고정 (sticky)
     description: 긴 표를 스크롤할 때 헤더 행이 상단에 고정되도록 합니다. Reading view와 Dataview 표에 적용됩니다.
+    type: class-toggle
+    default: false
+  -
+    id: ogd-folder-color-code
+    title: 폴더 컬러 코드 (PARA 친화)
+    description: File Explorer 최상위 폴더 이름(`01-`, `02-`, `Inbox`, `Projects`, `Areas`, `Resources`, `Archive` 등)에 좌측 액센트 컬러를 자동 적용합니다.
+    type: class-toggle
+    default: false
+  -
+    id: ogd-inline-code-categories
+    title: 인라인 코드 카테고리 색
+    description: `key:`, `cmd:`, `path:`, `env:` 접두어가 붙은 인라인 코드를 카테고리별 색으로 구분합니다.
     type: class-toggle
     default: false
   -
@@ -11300,3 +11312,411 @@ body.theme-dark .markdown-rendered dl > dd {
 }
 
 /* End of v2.5.0 Pro Pack ================================================== */
+
+/* ============================================================================
+ * v2.6.0 — Workspace + Search/Modal + Polish Pack
+ *  A) Workspace polish: tab close/unsaved, folder color code, split divider
+ *  B) Search/Modal polish: search snippet, settings/modal panel
+ *  C) Finishing: inline code categories, mermaid dark parity, print pass
+ * ========================================================================== */
+
+/* ---- A1. Tab close button + unsaved indicator --------------------------- */
+.workspace-tab-header .workspace-tab-header-inner-close-button {
+  border-radius: 6px !important;
+  transition: background-color 140ms ease, color 140ms ease;
+  opacity: 0.55;
+}
+.workspace-tab-header:hover .workspace-tab-header-inner-close-button {
+  opacity: 1;
+}
+.workspace-tab-header .workspace-tab-header-inner-close-button:hover {
+  background: rgba(239, 68, 68, 0.14) !important;
+  color: #dc2626 !important;
+}
+/* Unsaved dot */
+.workspace-tab-header.has-unsaved-changes .workspace-tab-header-inner-close-button::before,
+.workspace-tab-header.is-modified .workspace-tab-header-inner-close-button::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 999px;
+  background: #f59e0b;
+  box-shadow: 0 0 0 2px var(--background-primary, #ffffff);
+}
+.workspace-tab-header.has-unsaved-changes .workspace-tab-header-inner-close-button svg,
+.workspace-tab-header.is-modified .workspace-tab-header-inner-close-button svg {
+  opacity: 0;
+}
+.workspace-tab-header.has-unsaved-changes:hover .workspace-tab-header-inner-close-button::before,
+.workspace-tab-header.is-modified:hover .workspace-tab-header-inner-close-button::before {
+  display: none;
+}
+.workspace-tab-header.has-unsaved-changes:hover .workspace-tab-header-inner-close-button svg,
+.workspace-tab-header.is-modified:hover .workspace-tab-header-inner-close-button svg {
+  opacity: 1;
+}
+/* Pinned tab lock icon */
+.workspace-tab-header.is-pinned .workspace-tab-header-inner-close-button {
+  color: #0d9488 !important;
+  opacity: 0.85 !important;
+}
+body.theme-dark .workspace-tab-header.has-unsaved-changes .workspace-tab-header-inner-close-button::before,
+body.theme-dark .workspace-tab-header.is-modified .workspace-tab-header-inner-close-button::before {
+  box-shadow: 0 0 0 2px #1c2128;
+}
+body.theme-dark .workspace-tab-header .workspace-tab-header-inner-close-button:hover {
+  background: rgba(239, 68, 68, 0.22) !important;
+  color: #fca5a5 !important;
+}
+
+/* ---- A2. File explorer folder color code (opt-in) ----------------------- */
+/* Common PARA / numeric prefix patterns. Uses [data-path^=] to match top-level. */
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
+  border-left: 3px solid transparent;
+  padding-left: 10px;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="00"],
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Inbox" i] {
+  border-left-color: #94a3b8;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="01"],
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Project" i] {
+  border-left-color: #2563eb;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="02"],
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Area" i] {
+  border-left-color: #0d9488;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="03"],
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Resource" i] {
+  border-left-color: #f59e0b;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="04"],
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Archive" i] {
+  border-left-color: #64748b;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Daily" i],
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Journal" i] {
+  border-left-color: #a855f7;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Template" i] {
+  border-left-color: #ec4899;
+}
+
+/* ---- A3. Workspace split divider (resizer) ------------------------------ */
+.workspace-leaf-resize-handle,
+.workspace-split > .workspace-tabs > .workspace-leaf-resize-handle,
+.workspace-split.mod-horizontal > .workspace-leaf-resize-handle {
+  background: transparent;
+  transition: background-color 140ms ease;
+}
+.workspace-leaf-resize-handle:hover {
+  background: rgba(37, 99, 235, 0.35) !important;
+}
+.workspace-split.mod-vertical > .workspace-leaf-resize-handle:hover {
+  box-shadow: inset 1px 0 0 #2563eb, inset -1px 0 0 #2563eb;
+}
+.workspace-split.mod-horizontal > .workspace-leaf-resize-handle:hover {
+  box-shadow: inset 0 1px 0 #2563eb, inset 0 -1px 0 #2563eb;
+}
+body.theme-dark .workspace-leaf-resize-handle:hover {
+  background: rgba(96, 165, 250, 0.4) !important;
+}
+
+/* ---- B1. Search snippet polish ------------------------------------------ */
+.workspace-leaf-content[data-type="search"] .search-result {
+  border-radius: 8px;
+  margin-bottom: 6px;
+  border: 1px solid transparent;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+}
+.workspace-leaf-content[data-type="search"] .search-result:hover {
+  border-color: #e2e8f0;
+  background: rgba(241, 245, 249, 0.55);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+.workspace-leaf-content[data-type="search"] .search-result-file-title {
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  letter-spacing: 0.005em;
+}
+.workspace-leaf-content[data-type="search"] .search-result-file-title .tree-item-flair {
+  font-size: 0.75em;
+  color: #64748b;
+  background: rgba(241, 245, 249, 0.85);
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+}
+.workspace-leaf-content[data-type="search"] .search-result-file-matched-text,
+.workspace-leaf-content[data-type="search"] .search-result-file-match .search-result-file-matched-text {
+  background: rgba(245, 158, 11, 0.28) !important;
+  color: #1e293b !important;
+  border-radius: 3px;
+  padding: 0 2px;
+  box-shadow: inset 0 -1px 0 rgba(245, 158, 11, 0.55);
+  font-weight: 600;
+}
+.workspace-leaf-content[data-type="search"] .search-result-file-match {
+  border-left: 2px solid #e2e8f0;
+  padding-left: 8px;
+  margin-left: 4px;
+  color: #475569 !important;
+}
+.workspace-leaf-content[data-type="search"] .search-result-file-match:hover {
+  border-left-color: #2563eb;
+  background: rgba(37, 99, 235, 0.04);
+}
+body.theme-dark .workspace-leaf-content[data-type="search"] .search-result:hover {
+  border-color: #2c333d;
+  background: rgba(28, 33, 40, 0.6);
+}
+body.theme-dark .workspace-leaf-content[data-type="search"] .search-result-file-title {
+  color: #e2e8f0 !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="search"] .search-result-file-matched-text {
+  background: rgba(245, 158, 11, 0.32) !important;
+  color: #fde68a !important;
+  box-shadow: inset 0 -1px 0 rgba(245, 158, 11, 0.5);
+}
+body.theme-dark .workspace-leaf-content[data-type="search"] .search-result-file-match {
+  border-left-color: #2c333d;
+  color: #94a3b8 !important;
+}
+
+/* ---- B2. Modal / Settings panel unification ----------------------------- */
+.modal-container .modal {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.20),
+              0 6px 16px rgba(15, 23, 42, 0.10) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.modal-container .modal-title,
+.modal-container .modal-header {
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  color: #1e293b !important;
+}
+.modal-container .modal-close-button {
+  border-radius: 6px;
+  transition: background-color 140ms ease;
+}
+.modal-container .modal-close-button:hover {
+  background: rgba(239, 68, 68, 0.14);
+  color: #dc2626;
+}
+/* Settings modal */
+.modal-container .vertical-tab-header {
+  background: rgba(241, 245, 249, 0.55);
+  border-right: 1px solid #e2e8f0;
+}
+.modal-container .vertical-tab-header-group-title {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #64748b !important;
+  padding: 10px 14px 4px;
+}
+.modal-container .vertical-tab-nav-item {
+  border-radius: 6px;
+  margin: 1px 6px;
+  padding: 6px 10px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+.modal-container .vertical-tab-nav-item:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1e293b;
+}
+.modal-container .vertical-tab-nav-item.is-active {
+  background: rgba(37, 99, 235, 0.14) !important;
+  color: #1e293b !important;
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 #2563eb;
+}
+.modal-container .setting-item-heading .setting-item-name {
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  color: #1e293b;
+}
+.modal-container .setting-item-name {
+  font-weight: 600;
+}
+.modal-container .setting-item-description {
+  color: #64748b;
+}
+body.theme-dark .modal-container .modal {
+  border-color: #2c333d !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45),
+              0 6px 16px rgba(0, 0, 0, 0.30) !important;
+}
+body.theme-dark .modal-container .modal-title,
+body.theme-dark .modal-container .modal-header,
+body.theme-dark .modal-container .setting-item-heading .setting-item-name,
+body.theme-dark .modal-container .vertical-tab-nav-item.is-active,
+body.theme-dark .modal-container .vertical-tab-nav-item:hover {
+  color: #e2e8f0 !important;
+}
+body.theme-dark .modal-container .vertical-tab-header {
+  background: rgba(28, 33, 40, 0.6);
+  border-right-color: #2c333d;
+}
+body.theme-dark .modal-container .vertical-tab-header-group-title {
+  color: #94a3b8 !important;
+}
+body.theme-dark .modal-container .setting-item-description {
+  color: #94a3b8;
+}
+
+/* ---- C1. Inline code categories (opt-in) -------------------------------- */
+/* Detection: textContent prefix via attribute selectors is not directly supported
+   in CSS. We use a content-prefix heuristic: whitespace-separated tokens that
+   start with `key:`, `cmd:`, `path:`, `env:`. Done via :has() workaround on
+   common containers, falling back to broad highlight color. */
+body.ogd-inline-code-categories :is(.markdown-rendered, .cm-content) :not(pre) > code {
+  /* Default subtle category-neutral pill */
+  background: rgba(241, 245, 249, 0.85);
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 0.05em 0.4em;
+  font-size: 0.88em;
+  color: #1e293b;
+}
+/* CSS cannot match text content; we leverage authoring convention with
+   double-backtick + emoji/prefix marker turned into role classes via Style
+   Settings. Provide ready-made utility classes the user can wrap with HTML:
+     <code class="og-key">key:foo</code>
+     <code class="og-cmd">cmd:bar</code>
+     <code class="og-path">path:/x/y</code>
+     <code class="og-env">env:NODE_ENV</code>
+*/
+body.ogd-inline-code-categories code.og-key,
+body.ogd-inline-code-categories :is(.markdown-rendered, .cm-content) code:where([data-prefix="key"]) {
+  background: rgba(13, 148, 136, 0.12);
+  border-color: rgba(13, 148, 136, 0.35);
+  color: #0f766e;
+}
+body.ogd-inline-code-categories code.og-cmd,
+body.ogd-inline-code-categories :is(.markdown-rendered, .cm-content) code:where([data-prefix="cmd"]) {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.35);
+  color: #1d4ed8;
+  font-weight: 600;
+}
+body.ogd-inline-code-categories code.og-path,
+body.ogd-inline-code-categories :is(.markdown-rendered, .cm-content) code:where([data-prefix="path"]) {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #b45309;
+}
+body.ogd-inline-code-categories code.og-env,
+body.ogd-inline-code-categories :is(.markdown-rendered, .cm-content) code:where([data-prefix="env"]) {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.35);
+  color: #7e22ce;
+}
+body.theme-dark.ogd-inline-code-categories :is(.markdown-rendered, .cm-content) :not(pre) > code {
+  background: rgba(28, 33, 40, 0.85);
+  border-color: #2c333d;
+  color: #e2e8f0;
+}
+body.theme-dark.ogd-inline-code-categories code.og-key { color: #5eead4; border-color: rgba(45, 212, 191, 0.45); }
+body.theme-dark.ogd-inline-code-categories code.og-cmd { color: #93c5fd; border-color: rgba(96, 165, 250, 0.45); }
+body.theme-dark.ogd-inline-code-categories code.og-path { color: #fcd34d; border-color: rgba(245, 158, 11, 0.45); }
+body.theme-dark.ogd-inline-code-categories code.og-env { color: #d8b4fe; border-color: rgba(168, 85, 247, 0.45); }
+
+/* ---- C2. Mermaid dark mode parity (ML 8-color palette) ------------------ */
+body.theme-dark .mermaid .node rect,
+body.theme-dark .mermaid .node polygon,
+body.theme-dark .mermaid .node circle,
+body.theme-dark .mermaid .node ellipse {
+  filter: brightness(0.85) saturate(0.95);
+}
+body.theme-dark .mermaid .edgeLabel,
+body.theme-dark .mermaid .edgeLabel rect,
+body.theme-dark .mermaid foreignObject .edgeLabel {
+  background: rgba(28, 33, 40, 0.92) !important;
+  color: #e2e8f0 !important;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+body.theme-dark .mermaid .edgeLabel p,
+body.theme-dark .mermaid .edgeLabel span {
+  color: #e2e8f0 !important;
+}
+body.theme-dark .mermaid .cluster rect {
+  stroke-dasharray: 4 3;
+  stroke: #475569 !important;
+  fill: rgba(28, 33, 40, 0.4) !important;
+}
+body.theme-dark .mermaid .node .label,
+body.theme-dark .mermaid .nodeLabel,
+body.theme-dark .mermaid .nodeLabel p {
+  color: #1a1a1a !important; /* keep readable on light pastel node fills */
+}
+body.theme-dark .mermaid .flowchart-link {
+  stroke: #94a3b8 !important;
+}
+body.theme-dark .mermaid marker path {
+  fill: #94a3b8 !important;
+  stroke: #94a3b8 !important;
+}
+
+/* ---- C3. Print / PDF finishing ----------------------------------------- */
+@media print {
+  /* Force code wrap in PDF to avoid horizontal overflow */
+  .markdown-preview-view pre,
+  .markdown-rendered pre,
+  .print pre {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow: visible !important;
+    page-break-inside: avoid;
+  }
+  .markdown-preview-view pre > code,
+  .markdown-rendered pre > code,
+  .print pre > code {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+  /* Tone-down callout backgrounds for ink saving */
+  .markdown-preview-view .callout,
+  .markdown-rendered .callout,
+  .print .callout {
+    background: transparent !important;
+    border: 1px solid #94a3b8 !important;
+    box-shadow: none !important;
+  }
+  .markdown-preview-view .callout-title,
+  .markdown-rendered .callout-title,
+  .print .callout-title {
+    background: transparent !important;
+    color: #1e293b !important;
+  }
+  /* Ensure tables don't break inside rows */
+  .markdown-preview-view tr,
+  .markdown-rendered tr,
+  .print tr {
+    page-break-inside: avoid;
+  }
+  /* Remove tab/folder color hints from print */
+  body.ogd-folder-color-code .nav-folder-title {
+    border-left-color: transparent !important;
+  }
+  /* Inline code in print: subtle */
+  body.ogd-inline-code-categories code,
+  body.ogd-inline-code-categories code.og-key,
+  body.ogd-inline-code-categories code.og-cmd,
+  body.ogd-inline-code-categories code.og-path,
+  body.ogd-inline-code-categories code.og-env {
+    background: transparent !important;
+    border-color: #cbd5e1 !important;
+    color: #1e293b !important;
+  }
+}
+
+/* End of v2.6.0 Workspace + Search/Modal + Polish Pack ==================== */

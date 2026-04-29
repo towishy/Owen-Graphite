@@ -4,6 +4,26 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0] — 2026-04-29 — Workspace + Search/Modal + Polish Pack
+
+### Added
+- **Tab close 버튼 / unsaved 인디케이터** — close 버튼 hover 시 빨강 배경, 미저장 탭에 노란 점 마커, hover 시 close 아이콘으로 전환. pinned 탭은 틸 컬러 강조.
+- **File Explorer 폴더 컬러 코드** (opt-in, `ogd-folder-color-code`) — top-level 폴더 이름(`00-/01-/.../Inbox/Projects/Areas/Resources/Archive/Daily/Templates`)에 좌측 액센트 컬러 자동 적용. PARA 친화.
+- **Workspace split divider** — 패널 resize handle hover 시 블루 액센트 + 두께 강조.
+- **Search 결과 polish** — 결과 카드 라운드/hover 그림자, 파일명 굵게, 매치 키워드 옐로우 highlight 강화, sub-match 좌측 가이드 라인.
+- **Modal / Settings 패널 통일** — modal 라운드/그림자 강화, Settings 좌측 nav를 본문 톤과 통일 (uppercase 그룹 라벨, active 항목 좌측 블루 액센트).
+- **Inline code 카테고리** (opt-in, `ogd-inline-code-categories`) — `<code class="og-key|og-cmd|og-path|og-env">` 또는 `data-prefix="..."` 속성으로 카테고리 색 분기 (틸/블루/오렌지/퍼플).
+- **Mermaid 다크모드 패리티** — ML 8색 팔레트 노드를 다크에서 약간 톤다운, edge label 다크 배경 + 가독성, cluster 점선 다크 톤, marker arrow 색 통일.
+- **Print/PDF 마감** — 코드블록 `pre-wrap` + `break-word` 강제, callout 인쇄 시 배경 제거 + 1px 보더, 표 row break 방지, 폴더 컬러 코드/인라인 코드 카테고리는 인쇄 시 톤다운.
+
+### Changed
+- Style Settings 옵션 수: 29 → **31** (`ogd-folder-color-code`, `ogd-inline-code-categories` 추가).
+- 검증 스크립트 옵션 카운트 31 기준으로 갱신.
+
+### Notes
+- 모든 변경은 v2.2.0 베이스라인을 보존하는 EOF 추가 패치 형태. 기존 셀렉터 영향 없음.
+- 다크 모드 패리티 전 항목 포함. 신규 opt-in 옵션은 기본값 off로 회귀 위험 0.
+
 ## [2.5.0] — 2026-04-29 — Pro Pack (Canvas + Graph + Code label + Sticky table + Math + Caption + Anchor + dl)
 
 ### Added
