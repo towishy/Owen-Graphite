@@ -17301,6 +17301,10 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
    tab row without styling global [role="tab"] or ribbon buttons.
    ============================================================ */
 
+@media not all {
+/* Disabled in v2.22.13-2: this exposed only a thin ribbon-colored row under
+  the Windows titlebar while the actual tabs still remained absent. */
+
 @media (min-width: 701px) {
   body.mod-windows:not(.is-mobile) :is(.workspace-tabs > .workspace-tab-header-container, .mod-root .workspace-tab-header-container, .workspace-tab-header-container),
   body:not(.mod-macos):not(.is-mobile) :is(.workspace-tabs > .workspace-tab-header-container, .mod-root .workspace-tab-header-container, .workspace-tab-header-container) {
@@ -17433,9 +17437,14 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.13 — Windows tabbar visual baseline reset =============== */
+}
 
 
 /* Windows tabbar repair candidate: root tab layout only, no changelog entry. */
+@media not all {
+/* Disabled in v2.22.13-2: this second root-layout candidate also produced a
+  thin colored strip below the titlebar without restoring tab headers. */
+
 @media (min-width: 701px) {
   body.mod-windows:not(.is-mobile) .workspace-split.mod-root > .workspace-tabs,
   body.mod-windows:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active,
@@ -17537,5 +17546,23 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
     background: var(--tab-background-active, var(--background-primary)) !important;
     border-color: rgba(71, 85, 105, 0.36) !important;
     color: var(--text-normal) !important;
+  }
+}
+}
+
+
+/* Windows tabbar empty-row cleanup: remove the stray strip without changelog. */
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container:not(:has(.workspace-tab-header)):not(:has([role="tab"])),
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container:not(:has(.workspace-tab-header)):not(:has([role="tab"])) {
+    min-height: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: hidden !important;
   }
 }
