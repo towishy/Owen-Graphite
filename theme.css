@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.7.0 — Sidebar/Panel + Authoring UX + Interaction polish
+ * Version 2.8.0 — Settings inputs + Notice/Embed + Plugins + Editor precision
  * Stable since v2.6.2 (UX Pack baseline upgraded; Settings YAML hotfix verified).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -12137,3 +12137,470 @@ body.theme-dark .popover.hover-popover .markdown-embed-title {
 }
 
 /* End of v2.7.0 Sidebar/Panel + Authoring + Interaction Pack ============== */
+
+/* ============================================================================
+ * v2.8.0 — Settings inputs + Notice/Embed + Plugins + Editor precision
+ *   A) Settings input/select/slider/checkbox unify, Notice stack/progress, Embed actions
+ *   B) Audio/Video/PDF embed, Excalidraw/Kanban/Tasks plugin polish, unresolved links
+ *   C) Vim mode caret + status, properties drag handle visibility
+ *
+ * Policy: 메뉴/탭/nav active 상태에 좌측 세로 액센트 라인 사용 금지.
+ *         강조는 background + font-weight로만.
+ * ========================================================================== */
+
+/* ---- A1. Settings input/select/slider/checkbox unify ------------------- */
+.modal-container .setting-item input[type="text"],
+.modal-container .setting-item input[type="search"],
+.modal-container .setting-item input[type="number"],
+.modal-container .setting-item input[type="email"],
+.modal-container .setting-item input[type="password"],
+.modal-container .setting-item textarea,
+.modal-container .setting-item select,
+.modal-container .dropdown {
+  border-radius: 6px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #ffffff !important;
+  padding: 4px 10px !important;
+  font-size: 0.92em !important;
+  color: #1e293b !important;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+.modal-container .setting-item input[type="text"]:focus,
+.modal-container .setting-item input[type="search"]:focus,
+.modal-container .setting-item input[type="number"]:focus,
+.modal-container .setting-item textarea:focus,
+.modal-container .setting-item select:focus,
+.modal-container .dropdown:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18) !important;
+  outline: none !important;
+}
+/* Toggle switch */
+.modal-container .setting-item .checkbox-container {
+  border-radius: 999px !important;
+  background: #cbd5e1 !important;
+  transition: background-color 140ms ease;
+}
+.modal-container .setting-item .checkbox-container.is-enabled {
+  background: #2563eb !important;
+}
+.modal-container .setting-item .checkbox-container::after {
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3) !important;
+}
+/* Slider */
+.modal-container .setting-item input[type="range"] {
+  accent-color: #2563eb;
+}
+.modal-container .setting-item .slider-track {
+  background: #e2e8f0 !important;
+  border-radius: 999px !important;
+  height: 4px !important;
+}
+.modal-container .setting-item .slider-thumb {
+  background: #2563eb !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25) !important;
+}
+/* Color picker */
+.modal-container .setting-item input[type="color"] {
+  border-radius: 6px !important;
+  border: 1px solid #e2e8f0 !important;
+  width: 34px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+/* Setting item button */
+.modal-container .setting-item button:not(.mod-cta):not(.mod-warning):not(.clickable-icon) {
+  border-radius: 6px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+  color: #1e293b !important;
+  padding: 4px 12px !important;
+  font-size: 0.9em !important;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.modal-container .setting-item button:not(.mod-cta):not(.mod-warning):not(.clickable-icon):hover {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+.modal-container .setting-item button.mod-cta {
+  border-radius: 6px !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600;
+}
+.modal-container .setting-item button.mod-cta:hover {
+  background: #1d4ed8 !important;
+}
+.modal-container .setting-item button.mod-warning {
+  border-radius: 6px !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600;
+}
+
+body.theme-dark .modal-container .setting-item input[type="text"],
+body.theme-dark .modal-container .setting-item input[type="search"],
+body.theme-dark .modal-container .setting-item input[type="number"],
+body.theme-dark .modal-container .setting-item textarea,
+body.theme-dark .modal-container .setting-item select,
+body.theme-dark .modal-container .dropdown {
+  background: #1c2128 !important;
+  border-color: #2c333d !important;
+  color: #e2e8f0 !important;
+}
+body.theme-dark .modal-container .setting-item input:focus,
+body.theme-dark .modal-container .setting-item textarea:focus,
+body.theme-dark .modal-container .setting-item select:focus {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.22) !important;
+}
+body.theme-dark .modal-container .setting-item .checkbox-container {
+  background: #475569 !important;
+}
+body.theme-dark .modal-container .setting-item .checkbox-container.is-enabled {
+  background: #60a5fa !important;
+}
+body.theme-dark .modal-container .setting-item button:not(.mod-cta):not(.mod-warning):not(.clickable-icon) {
+  background: #2c333d !important;
+  border-color: #3a4150 !important;
+  color: #e2e8f0 !important;
+}
+body.theme-dark .modal-container .setting-item button:not(.mod-cta):not(.mod-warning):not(.clickable-icon):hover {
+  background: #3a4150 !important;
+}
+
+/* ---- A2. Notice stack + auto-dismiss progress -------------------------- */
+.notice-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+.notice {
+  overflow: hidden;
+  animation: ogd-notice-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes ogd-notice-in {
+  from { opacity: 0; transform: translateX(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+/* Auto-dismiss progress bar (decorative; resets on hover via :hover state) */
+.notice::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #2563eb 100%);
+  transform-origin: left center;
+  animation: ogd-notice-progress 5s linear forwards;
+  opacity: 0.55;
+}
+.notice.mod-success::after { background: #10b981; }
+.notice.mod-warning::after { background: #f59e0b; }
+.notice.mod-error::after   { background: #ef4444; }
+.notice:hover::after {
+  animation-play-state: paused;
+  opacity: 0.9;
+}
+@keyframes ogd-notice-progress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ---- A3. Embed (transclusion) hover actions ---------------------------- */
+.markdown-rendered .markdown-embed,
+.markdown-preview-view .markdown-embed {
+  position: relative;
+}
+.markdown-rendered .markdown-embed-link,
+.markdown-preview-view .markdown-embed-link {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  opacity: 0 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  padding: 4px 6px !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.10) !important;
+  transition: opacity 140ms ease, background-color 140ms ease, border-color 140ms ease !important;
+  color: #475569 !important;
+  cursor: pointer;
+}
+.markdown-rendered .markdown-embed:hover .markdown-embed-link,
+.markdown-preview-view .markdown-embed:hover .markdown-embed-link {
+  opacity: 1 !important;
+}
+.markdown-rendered .markdown-embed-link:hover,
+.markdown-preview-view .markdown-embed-link:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #1d4ed8 !important;
+}
+body.theme-dark .markdown-rendered .markdown-embed-link,
+body.theme-dark .markdown-preview-view .markdown-embed-link {
+  background: rgba(28, 33, 40, 0.95) !important;
+  border-color: #2c333d !important;
+  color: #cbd5e1 !important;
+}
+body.theme-dark .markdown-rendered .markdown-embed-link:hover,
+body.theme-dark .markdown-preview-view .markdown-embed-link:hover {
+  background: #60a5fa !important;
+  color: #0f172a !important;
+}
+
+/* ---- B1. Audio / Video embed players ----------------------------------- */
+.markdown-rendered audio,
+.markdown-preview-view audio {
+  border-radius: 999px;
+  background: rgba(241, 245, 249, 0.8);
+  width: 100%;
+  margin: 0.5em 0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+.markdown-rendered video,
+.markdown-preview-view video {
+  border-radius: 10px;
+  background: #0f172a;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+  margin: 0.6em 0;
+}
+audio::-webkit-media-controls-panel,
+video::-webkit-media-controls-panel {
+  background: rgba(241, 245, 249, 0.95);
+}
+body.theme-dark .markdown-rendered audio,
+body.theme-dark .markdown-preview-view audio {
+  background: rgba(28, 33, 40, 0.85);
+}
+
+/* ---- B2. PDF viewer embed ---------------------------------------------- */
+.workspace-leaf-content[data-type="pdf"] .pdf-toolbar,
+.pdf-toolbar {
+  background: rgba(241, 245, 249, 0.85) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 4px 10px !important;
+}
+.pdf-toolbar button,
+.pdf-toolbar .clickable-icon {
+  border-radius: 6px !important;
+  transition: background-color 140ms ease;
+}
+.pdf-toolbar button:hover,
+.pdf-toolbar .clickable-icon:hover {
+  background: rgba(37, 99, 235, 0.10) !important;
+}
+.pdf-container,
+.pdf-viewer {
+  background: #f8fafc !important;
+}
+body.theme-dark .pdf-toolbar {
+  background: rgba(28, 33, 40, 0.85) !important;
+  border-bottom-color: #2c333d !important;
+}
+body.theme-dark .pdf-container,
+body.theme-dark .pdf-viewer {
+  background: #0f172a !important;
+}
+
+/* ---- B3. Excalidraw plugin polish (when present) ----------------------- */
+.workspace-leaf-content[data-type="excalidraw"] .excalidraw-canvas-wrapper,
+.workspace-leaf-content[data-type="excalidraw"] {
+  background: #fafbfc !important;
+}
+.workspace-leaf-content[data-type="excalidraw"] .excalidraw .ToolIcon {
+  border-radius: 6px !important;
+  transition: background-color 140ms ease;
+}
+.workspace-leaf-content[data-type="excalidraw"] .excalidraw .ToolIcon:hover {
+  background: rgba(37, 99, 235, 0.10) !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="excalidraw"] {
+  background: #0f172a !important;
+}
+
+/* ---- B4. Kanban plugin polish ------------------------------------------ */
+.workspace-leaf-content[data-type="kanban"] .kanban-plugin__lane-wrapper {
+  background: rgba(241, 245, 249, 0.6) !important;
+  border-radius: 10px !important;
+  padding: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.workspace-leaf-content[data-type="kanban"] .kanban-plugin__lane-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82em;
+  color: #475569;
+  padding: 4px 8px;
+}
+.workspace-leaf-content[data-type="kanban"] .kanban-plugin__item {
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+  margin-bottom: 6px !important;
+  padding: 8px 10px !important;
+  transition: box-shadow 140ms ease, transform 140ms ease;
+}
+.workspace-leaf-content[data-type="kanban"] .kanban-plugin__item:hover {
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.10) !important;
+  transform: translateY(-1px);
+}
+.workspace-leaf-content[data-type="kanban"] .kanban-plugin__item-title {
+  font-weight: 600;
+  color: #1e293b;
+}
+body.theme-dark .workspace-leaf-content[data-type="kanban"] .kanban-plugin__lane-wrapper {
+  background: rgba(28, 33, 40, 0.5) !important;
+  border-color: #2c333d !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="kanban"] .kanban-plugin__lane-title {
+  color: #94a3b8;
+}
+body.theme-dark .workspace-leaf-content[data-type="kanban"] .kanban-plugin__item {
+  background: #1c2128 !important;
+  border-color: #2c333d !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.30) !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="kanban"] .kanban-plugin__item-title {
+  color: #e2e8f0;
+}
+
+/* ---- B5. Tasks plugin: query result cards ------------------------------ */
+.tasks-list-text,
+.block-language-tasks .tasks-list-text {
+  font-size: 0.95em;
+  line-height: 1.55;
+}
+.block-language-tasks ul.contains-task-list,
+.markdown-rendered .block-language-tasks {
+  background: rgba(241, 245, 249, 0.4);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0.6em 0;
+}
+.block-language-tasks .task-list-item {
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+.block-language-tasks .task-list-item:hover {
+  background: rgba(37, 99, 235, 0.05);
+}
+body.theme-dark .markdown-rendered .block-language-tasks,
+body.theme-dark .block-language-tasks ul.contains-task-list {
+  background: rgba(28, 33, 40, 0.4);
+  border-color: #2c333d;
+}
+
+/* ---- B6. Unresolved (broken) link visualization ----------------------- */
+.markdown-rendered a.internal-link.is-unresolved,
+.markdown-preview-view a.internal-link.is-unresolved,
+.cm-hmd-internal-link.is-unresolved {
+  color: #b91c1c !important;
+  text-decoration: underline dashed !important;
+  text-underline-offset: 3px !important;
+  text-decoration-color: rgba(185, 28, 28, 0.45) !important;
+}
+.markdown-rendered a.internal-link.is-unresolved:hover {
+  color: #991b1b !important;
+  text-decoration-color: #b91c1c !important;
+}
+body.theme-dark .markdown-rendered a.internal-link.is-unresolved,
+body.theme-dark .markdown-preview-view a.internal-link.is-unresolved,
+body.theme-dark .cm-hmd-internal-link.is-unresolved {
+  color: #fca5a5 !important;
+  text-decoration-color: rgba(252, 165, 165, 0.5) !important;
+}
+
+/* ---- C1. Vim mode caret + status indicator ----------------------------- */
+.cm-editor.cm-vim-mode .cm-fat-cursor,
+body.is-vim .cm-editor .cm-fat-cursor {
+  background: rgba(37, 99, 235, 0.45) !important;
+  outline: 1px solid #2563eb !important;
+}
+.cm-editor.cm-vim-mode.cm-focused .cm-fat-cursor,
+body.is-vim .cm-editor.cm-focused .cm-fat-cursor {
+  background: rgba(37, 99, 235, 0.55) !important;
+}
+/* Visual mode selection */
+.cm-editor.cm-vim-mode .cm-vim-visual,
+body.is-vim .cm-editor .cm-vim-visual {
+  background: rgba(245, 158, 11, 0.20) !important;
+}
+/* Status bar mode chip */
+body.is-vim .status-bar .status-bar-item.mod-clickable[aria-label*="vim" i]::before,
+body.is-vim .status-bar .vim-mode-status::before,
+body.is-vim .status-bar [class*="vim-status"]::before {
+  content: "VIM";
+  font-size: 0.7em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+body.theme-dark.is-vim .cm-editor .cm-fat-cursor {
+  background: rgba(96, 165, 250, 0.45) !important;
+  outline-color: #60a5fa !important;
+}
+
+/* ---- C2. Properties drag handle visibility ----------------------------- */
+.metadata-property {
+  position: relative;
+  transition: background-color 120ms ease;
+}
+.metadata-property::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: transparent;
+  border-radius: 2px;
+  transition: background-color 140ms ease;
+}
+.metadata-property:hover::before {
+  background: #cbd5e1;
+}
+.metadata-property .metadata-property-icon,
+.metadata-property .metadata-property-key-input {
+  cursor: grab;
+}
+.metadata-property:active::before {
+  background: #2563eb;
+  cursor: grabbing;
+}
+body.theme-dark .metadata-property:hover::before {
+  background: #475569;
+}
+body.theme-dark .metadata-property:active::before {
+  background: #60a5fa;
+}
+
+/* ---- Print parity for v2.8.0 ------------------------------------------ */
+@media print {
+  .markdown-embed-link,
+  .pdf-toolbar,
+  .notice::after {
+    display: none !important;
+  }
+  .markdown-rendered a.internal-link.is-unresolved {
+    text-decoration: none !important;
+    color: #1e293b !important;
+  }
+}
+
+/* End of v2.8.0 Settings + Notice/Embed + Plugins + Editor Pack ========== */

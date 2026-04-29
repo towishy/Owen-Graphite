@@ -4,6 +4,34 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.0] — 2026-04-29 — Settings + Notice/Embed + Plugins + Editor Pack
+
+### Added
+- **Settings input/select/slider/checkbox/color picker/button** 일괄 통일 — 라운드, 포컬스 링, 토글 스위치 블루/다크 변형, mod-cta/mod-warning 버튼 컬러.
+- **Notice stack + auto-dismiss progress** — 슬라이드 인 애니메이션, 하단 프로그레스 바 (5s), hover 시 일시정지.
+- **Embed (트랜스클루전) 호버 액션** — 우상단 "원본 열기" 링크 버튼, hover 시 표시.
+- **Audio/Video 임베드 플레이어** — audio 돌알 라운드, video 라운드 + 그림자, 컨트롤 패널 톤 통일.
+- **PDF viewer 임베드** — 툴바 배경 통일, 버튼 hover background, container 배경 통일.
+- **Excalidraw 플러그인** — 캔버스 배경 톤, ToolIcon 라운드 + hover.
+- **Kanban 플러그인** — lane 배경/라운드, lane title uppercase + tracking, item 카드 그림자 + hover lift.
+- **Tasks 플러그인** — 쿼리 결과 본구 카드 배경/국경. v2.4.0 체크박스 6종 상태와 자연 연동.
+- **Unresolved (미해결) 링크** — dashed underline + 빨강 톤 (일견 식별성 ↑).
+- **Vim mode caret + status indicator** — 블록 caret 블루/아웃라인, visual mode 옥펀 선택, status bar VIM 컬러 칩.
+- **Properties drag handle** — hover 시 좌측 3px 그레이 핸들 (메뉴 active 강조 아닌 드래그 시각화 용도 — 정책 예외 허용).
+
+### Changed
+- `scripts/validate_theme.py` YAML lint 강화 — description 외에도 `title`/`default` 값의 YAML-special 접두 검증, 검사 문자 확장 (` * & ! | > % @ ? : - #).
+
+### Print/PDF
+- markdown-embed-link / pdf-toolbar / notice progress 는 print 시 숨김.
+- unresolved 링크는 print 시 dashed 제거 + 기본 색상.
+
+### Notes
+- 옵션 수 32개 유지 (CSS-only 패치).
+- 모든 변경 EOF 패치. 기존 셀렉터 영향 없음.
+- 다크 모드 패리티 전 항목 포함.
+- 메뉴/탭/nav active 좌측 세로 라인 금지 정책 (v2.6.1) 준수.
+
 ## [2.7.0] — 2026-04-29 — Sidebar/Panel + Authoring UX + Interaction Pack
 
 ### Added

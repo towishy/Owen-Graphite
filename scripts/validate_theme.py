@@ -188,22 +188,27 @@ def style_settings_count() -> None:
     if not settings_match:
         fail("theme.css missing Style Settings block")
     body = settings_match.group("body")
-    # YAML lint: every `description:` value that begins with a YAML-special
-    # character (backtick, *, &, !, |, >, %, @) must be quoted, otherwise
-    # the Style Settings plugin (js-yaml) raises bad-indentation errors.
+    # YAML lint: every `description:` / `title:` / `default:` value that begins
+    # with a YAML-special character (backtick, *, &, !, |, >, %, @, ?, :, -, #)
+    # must be quoted, otherwise the Style Settings plugin (js-yaml) raises
+    # bad-indentation errors which silently break the entire UI.
+    YAML_SPECIAL_PREFIX = set("`*&!|>%@?:-#")
     for lineno, line in enumerate(body.splitlines(), start=1):
-        m = re.match(r"\s*description:\s*(.+)$", line)
+        m = re.match(r"\s*(description|title|default):\s*(.+)$", line)
         if not m:
             continue
-        value = m.group(1).strip()
+        key, value = m.group(1), m.group(2).strip()
         if not value:
             continue
         # Already quoted -> ok.
         if value.startswith(('"', "'")):
             continue
-        if value[0] in "`*&!|>%@":
+        # Numeric/bool/null literals are fine.
+        if re.fullmatch(r"-?\d+(\.\d+)?|true|false|null|on|off|yes|no", value, re.I):
+            continue
+        if value[0] in YAML_SPECIAL_PREFIX:
             fail(
-                f"@settings description starts with YAML-special char {value[0]!r} "
+                f"@settings {key} starts with YAML-special char {value[0]!r} "
                 f"and must be quoted (line {lineno} inside @settings block): {value[:60]}"
             )
     blocks = re.split(r"\n\s*-\s*\n", body)
