@@ -4,6 +4,53 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.0] — 2026-04-29 — Left-line Permanent Ban + Glass/Shadow + Panels/Mobile + Navigation + Authoring Pack
+
+### Design Policy (PERMANENT)
+- **메인 디자인 언어 = "투명유리창(Glass) + 그림자(Shadow)"** — chrome 컴포넌트는 반투명 배경 + `backdrop-filter: blur` + 다층 그림자로 통일. 평면 단색 fill 금지.
+- **좌측 세로 라인 강조 톤 영구 밴** — file explorer / outline / bookmarks / tag / backlink / recent / sidebar / tab / modal / suggestion / settings nav / notice / drop indicator / folder color 등 **모든 chrome 영역**에서 active/hover/drop 강조용 좌측 세로 라인(border-left, box-shadow inset Npx 0 0, ::before 좌측 stripe) 사용 금지. 강조는 background 틴트 + font-weight + 둘레 border / outline 만으로 표현.
+- **예외**: callout / quote / embed / markdown-embed 본문 시맨틱 좌측 stripe (문서 콘텐츠 정체성 표현이며 active 강조가 아님 → 유지).
+
+### Removed
+- **Notice/Toast 좌측 4px 컬러 라인** 제거 (mod-info/success/warning/error 전체 background 틴트 + border 색).
+- **File explorer / Outline / Bookmarks / Backlinks / Recent / Tag / Outgoing-link 패널의 active 좌측 라인** 일괄 무력화 (background 틴트 + bold + 라운드).
+- **Settings 좌측 nav active 좌측 라인 / Suggestion 메뉴 좌측 라인 / Tab drop indicator 좌측 inset / Workspace split divider hover 좌측 라인 / Folder color code 좌측 라인 / Properties drag handle 좌측 라인** 모두 제거.
+
+### Enforced (Glass + Shadow)
+- Modal / Suggestion / Hover popover / Notice 모두 `rgba()` 반투명 배경 + `backdrop-filter: blur(...)` + 다층 그림자 적용 (라이트/다크 통합).
+- Mobile drawer / 헤더 / 툴바도 동일 정책 — 16px blur + 24px 외곽 그림자.
+
+### Added (A: Panels/Mobile)
+- **Tag pane** — 트리 항목 라운드 + hover 틸 배경, 태그 카운트 알약, 계층 padding 가이드(좌측 라인 없음).
+- **모바일 드로어** — 좌/우 드로어 라운드 + 그림자, 헤더/툴바 backdrop blur, 버튼 active 틴트.
+- **Calendar 플러그인** — 일 셀 라운드, 오늘 outline+굵게, 주말 빨강, 노트 dot 틸.
+- **Pinned 탭 lock 아이콘** 좌측 이모지 + **split divider hit area** 증해 (시각 두께 유지).
+
+### Added (B: Navigation)
+- **Search 옵션 토글** (정규식/대소문자/단어경계) active 시 블루 틴트.
+- **Quick switcher / Command palette** 그룹 헤더 uppercase + tracking + 구분선, fuzzy match 강조.
+- **Outline 패널** 계층 padding 가이드 + active 항목 background 틴트 강조(좌측 라인 없음).
+- **링크 hover 인디케이터** (↗) — 내부링크 블루, 외부링크 틸.
+
+### Added (C: Authoring precision)
+- **Code block diff 하이라이트** — `language-diff`에서 +/-/coord 줄 그린/레드/블루 틴트.
+- **Inline Dataview/Templater 결과** — 옷 틸 배경 + 틸 컬러.
+- **본문 색상 코드 옷 컬러 인디케이터** (opt-in `ogd-color-swatch`) — `<code class="og-color" data-color="#hex">` 안에 동그라미 swatch.
+- **Selection highlight** 블루 톤 (Reading view + CM6 에디터).
+- **Spell check underline** 톴다운 (빨강 dotted 알파 낮춤).
+- **Footnote ref** 점선 밑줄 + cursor:help 으로 hover 가능성 힌트 (기존 popover는 v2.7.0 팬업 상속).
+- **Status bar word count / reading time** 아이템 tabular-nums + 톤 궁기 강조.
+
+### Changed
+- Style Settings 옵션 수: 32 → **33** (`ogd-color-swatch` 추가).
+- 디자인 정책 메모 갱신 — "메뉴/탭/nav active + Notice" 좌측 세로 라인 금지로 범위 확대.
+
+### Print/PDF
+- 링크 hover 인디케이터, footnote dotted 밑줄 print 제거.
+
+### Notes
+- 모든 변경 EOF 패치 (Notice 라인 제거는 v2.7.0 블록 내 수정). 다크 모드 패리티 전 항목 포함.
+
 ## [2.8.0] — 2026-04-29 — Settings + Notice/Embed + Plugins + Editor Pack
 
 ### Added

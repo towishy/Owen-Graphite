@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.8.0 — Settings inputs + Notice/Embed + Plugins + Editor precision
+ * Version 2.9.0 — Panels/Mobile + Navigation + Authoring precision (no-left-bar policy on Notice)
  * Stable since v2.6.2 (UX Pack baseline upgraded; Settings YAML hotfix verified).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -138,6 +138,12 @@ settings:
     description: 기본 8종(#project/#todo/#idea/#done/#blocked/#urgent/#question/#reference) 외에 #meeting/#review/#wip/#archive/#weekly/#monthly/#draft/#published 추가 색을 적용합니다.
     type: class-toggle
     default: true
+  -
+    id: ogd-color-swatch
+    title: 본문 색상 코드 옆 컬러 인디케이터
+    description: "본문에 등장하는 `#hex` 또는 인라인 코드의 색상 값 옆에 작은 색 동그라미를 표시합니다."
+    type: class-toggle
+    default: false
   -
     id: ogd-settings-report
     title: 보고서와 PDF
@@ -12036,53 +12042,23 @@ body.theme-dark .workspace-tab-container .workspace-tab-header.is-drag-over {
   color: #1e293b !important;
   font-size: 0.92em;
   position: relative;
-  padding-left: 16px !important;
 }
 .notice.mod-info,
 .notice:not([class*="mod-"]) {
   border-color: #bfdbfe !important;
-}
-.notice.mod-info::before,
-.notice:not([class*="mod-"])::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: #2563eb;
-  border-radius: 10px 0 0 10px;
+  background: #eff6ff !important;
 }
 .notice.mod-success {
   border-color: #a7f3d0 !important;
-}
-.notice.mod-success::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: #10b981;
-  border-radius: 10px 0 0 10px;
+  background: #ecfdf5 !important;
 }
 .notice.mod-warning {
   border-color: #fde68a !important;
-}
-.notice.mod-warning::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: #f59e0b;
-  border-radius: 10px 0 0 10px;
+  background: #fffbeb !important;
 }
 .notice.mod-error {
   border-color: #fecaca !important;
-}
-.notice.mod-error::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: #ef4444;
-  border-radius: 10px 0 0 10px;
+  background: #fef2f2 !important;
 }
 body.theme-dark .notice {
   background: #1c2128 !important;
@@ -12604,3 +12580,472 @@ body.theme-dark .metadata-property:active::before {
 }
 
 /* End of v2.8.0 Settings + Notice/Embed + Plugins + Editor Pack ========== */
+
+/* ============================================================================
+ * v2.9.0 — Left-line Permanent Ban + Glass/Shadow design language enforcement
+ *          + Panels/Mobile + Navigation + Authoring precision
+ *
+ * DESIGN POLICY (영구):
+ *   1. 메인 디자인 언어 = "투명유리창(Glass) + 그림자(Shadow)"
+ *      - chrome 컴포넌트는 (1) 반투명 배경 (2) backdrop-filter: blur (3) 그림자
+ *      - 평면 단색 fill 금지
+ *   2. 좌측 세로 라인 강조 톤 (left vertical accent line for emphasis) = 영구 밴
+ *      - chrome (file explorer/outline/bookmarks/tag/backlink/recent/sidebar/tab/
+ *        modal/suggestion/settings nav/notice/drop indicator/folder color) 모두 적용
+ *      - 강조는 background tint + font-weight + 둘레 border / outline 만으로
+ *      - 예외: callout/quote/embed/markdown-embed 의 본문 시맨틱 좌측 stripe
+ *        (문서 콘텐츠의 정체성 표현이며 active 강조가 아님 → 유지)
+ * ========================================================================== */
+
+/* ---- BAN-1. Neutralize all chrome left-line accents (highest specificity) - */
+/* file explorer / nav active */
+body .nav-file-title.is-active,
+body .nav-folder-title.is-active,
+body .nav-file-title.is-being-renamed,
+body .nav-folder-title.is-being-renamed,
+body .theme-dark .nav-file-title.is-active,
+body .theme-dark .nav-folder-title.is-active {
+  box-shadow: none !important;
+  border-left: 0 !important;
+}
+body .nav-file-title.is-active::before,
+body .nav-folder-title.is-active::before {
+  content: none !important;
+  display: none !important;
+}
+/* outline / bookmarks / backlinks / recent / tag / outgoing-link */
+body .outline .tree-item-self.is-active,
+body .outline-view .tree-item-self.is-active,
+body .bookmarks-view .tree-item-self.is-active,
+body .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active,
+body .workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active,
+body .workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
+body .workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
+body .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
+body .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active,
+body .theme-dark .outline .tree-item-self.is-active,
+body .theme-dark .outline-view .tree-item-self.is-active,
+body .theme-dark .bookmarks-view .tree-item-self.is-active {
+  box-shadow: none !important;
+  border-left: 0 !important;
+}
+body .outline .tree-item-self.is-active::before,
+body .outline-view .tree-item-self.is-active::before,
+body .bookmarks-view .tree-item-self.is-active::before,
+body .workspace-leaf-content .tree-item-self.is-active::before {
+  content: none !important;
+  display: none !important;
+}
+/* settings nav, suggestion menu */
+body .modal-container .vertical-tab-nav-item.is-active,
+body .suggestion-container .suggestion-item.is-selected,
+body .menu.suggestion-container .suggestion-item.is-selected {
+  box-shadow: none !important;
+  border-left: 0 !important;
+}
+/* tab drop indicator (was inset Npx 0 0) */
+body .workspace-tab-container .workspace-tab-header.is-drop-target-before,
+body .workspace-tab-container .workspace-tab-header.is-drop-target-after {
+  box-shadow: none !important;
+}
+body .workspace-tab-container .workspace-tab-header.is-drop-target-before {
+  outline: 2px dashed #2563eb;
+  outline-offset: -2px;
+}
+body .workspace-tab-container .workspace-tab-header.is-drop-target-after {
+  outline: 2px dashed #2563eb;
+  outline-offset: -2px;
+}
+/* split divider hover (was inset 1px 0 0 + inset -1px 0 0) */
+body .workspace-split.mod-vertical > .workspace-leaf-resize-handle:hover,
+body .workspace-split.mod-horizontal > .workspace-leaf-resize-handle:hover {
+  box-shadow: none !important;
+}
+/* folder color code (PARA): convert left bar → background tint + icon color */
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
+  border-left: 0 !important;
+  padding-left: 8px !important;
+}
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="00"] .nav-folder-collapse-indicator,
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Inbox" i] .nav-folder-collapse-indicator { color: #94a3b8 !important; }
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="01"] .nav-folder-collapse-indicator,
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Project" i] .nav-folder-collapse-indicator { color: #2563eb !important; }
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="02"] .nav-folder-collapse-indicator,
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Area" i] .nav-folder-collapse-indicator { color: #0d9488 !important; }
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="03"] .nav-folder-collapse-indicator,
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Resource" i] .nav-folder-collapse-indicator { color: #f59e0b !important; }
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path^="04"] .nav-folder-collapse-indicator,
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Archive" i] .nav-folder-collapse-indicator { color: #64748b !important; }
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Daily" i] .nav-folder-collapse-indicator,
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Journal" i] .nav-folder-collapse-indicator { color: #a855f7 !important; }
+body.ogd-folder-color-code .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title[data-path*="Template" i] .nav-folder-collapse-indicator { color: #ec4899 !important; }
+/* properties drag handle: opacity-only (no left bar) */
+body .metadata-property::before {
+  content: none !important;
+  display: none !important;
+}
+body .metadata-property:hover { background: rgba(241, 245, 249, 0.55); border-radius: 4px; }
+body.theme-dark .metadata-property:hover { background: rgba(28, 33, 40, 0.55); }
+
+/* ---- BAN-2. Active emphasis = background tint + font-weight ----------- */
+body .nav-file-title.is-active,
+body .nav-folder-title.is-active {
+  background: rgba(37, 99, 235, 0.12) !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+body.theme-dark .nav-file-title.is-active,
+body.theme-dark .nav-folder-title.is-active {
+  background: rgba(96, 165, 250, 0.18) !important;
+}
+body .outline .tree-item-self.is-active,
+body .outline-view .tree-item-self.is-active,
+body .bookmarks-view .tree-item-self.is-active,
+body .workspace-leaf-content .tree-item-self.is-active {
+  background: rgba(37, 99, 235, 0.12) !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+body.theme-dark .outline .tree-item-self.is-active,
+body.theme-dark .outline-view .tree-item-self.is-active,
+body.theme-dark .bookmarks-view .tree-item-self.is-active,
+body.theme-dark .workspace-leaf-content .tree-item-self.is-active {
+  background: rgba(96, 165, 250, 0.18) !important;
+}
+body .modal-container .vertical-tab-nav-item.is-active {
+  background: rgba(37, 99, 235, 0.14) !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+body .suggestion-container .suggestion-item.is-selected,
+body .menu.suggestion-container .suggestion-item.is-selected {
+  background: rgba(37, 99, 235, 0.14) !important;
+  font-weight: 600 !important;
+}
+
+/* ---- GLASS-1. Apply glass+shadow to chrome panels added since v2.6.0 -- */
+.modal-container .modal {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+.suggestion-container,
+.menu.suggestion-container {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+}
+.popover.hover-popover,
+.popover.hover-popover.is-loaded {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+.notice {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+}
+.notice.mod-info,
+.notice:not([class*="mod-"]) { background: rgba(239, 246, 255, 0.85) !important; }
+.notice.mod-success { background: rgba(236, 253, 245, 0.85) !important; }
+.notice.mod-warning { background: rgba(255, 251, 235, 0.85) !important; }
+.notice.mod-error   { background: rgba(254, 242, 242, 0.85) !important; }
+
+body.theme-dark .modal-container .modal {
+  background: rgba(15, 23, 42, 0.78) !important;
+}
+body.theme-dark .suggestion-container,
+body.theme-dark .menu.suggestion-container {
+  background: rgba(15, 23, 42, 0.78) !important;
+}
+body.theme-dark .popover.hover-popover {
+  background: rgba(15, 23, 42, 0.82) !important;
+}
+body.theme-dark .notice {
+  background: rgba(15, 23, 42, 0.85) !important;
+}
+body.theme-dark .notice.mod-info,
+body.theme-dark .notice:not([class*="mod-"]) { background: rgba(30, 58, 138, 0.40) !important; }
+body.theme-dark .notice.mod-success { background: rgba(6, 78, 59, 0.40) !important; }
+body.theme-dark .notice.mod-warning { background: rgba(120, 53, 15, 0.40) !important; }
+body.theme-dark .notice.mod-error   { background: rgba(127, 29, 29, 0.40) !important; }
+
+/* ---- v2.9.0 ADDITIONS (no left-line, glass+shadow compliant) ---------- */
+
+/* A1. Tag pane */
+.workspace-leaf-content[data-type="tag"] .tag-pane-tag,
+.workspace-leaf-content[data-type="tag"] .tree-item-self {
+  border-radius: 6px;
+  margin: 1px 4px;
+  padding: 4px 8px;
+  transition: background-color 140ms ease;
+}
+.workspace-leaf-content[data-type="tag"] .tag-pane-tag:hover,
+.workspace-leaf-content[data-type="tag"] .tree-item-self:hover {
+  background: rgba(13, 148, 136, 0.08);
+}
+.workspace-leaf-content[data-type="tag"] .tag-pane-tag-count,
+.workspace-leaf-content[data-type="tag"] .tree-item-flair {
+  background: rgba(13, 148, 136, 0.12) !important;
+  color: #0f766e !important;
+  border-radius: 999px !important;
+  padding: 1px 7px !important;
+  font-size: 0.74em !important;
+  font-weight: 700;
+  border: 1px solid rgba(13, 148, 136, 0.3) !important;
+}
+.workspace-leaf-content[data-type="tag"] .tree-item-children {
+  /* hierarchy guide via padding only (no left line per policy except neutral guide is OK) */
+  padding-left: 12px;
+}
+
+/* A2. Mobile drawer (glass + shadow) */
+body.is-mobile .workspace-drawer {
+  border-radius: 0 14px 14px 0 !important;
+  background: rgba(248, 250, 252, 0.80) !important;
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.18) !important;
+}
+body.is-mobile .workspace-drawer.mod-right {
+  border-radius: 14px 0 0 14px !important;
+  box-shadow: -4px 0 24px rgba(15, 23, 42, 0.18) !important;
+}
+body.is-mobile .workspace-drawer-header,
+body.is-mobile .mobile-toolbar {
+  background: rgba(248, 250, 252, 0.85) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+body.is-mobile .workspace-drawer-button,
+body.is-mobile .mobile-toolbar-options-container .clickable-icon {
+  border-radius: 8px;
+  transition: background-color 140ms ease;
+}
+body.theme-dark.is-mobile .workspace-drawer {
+  background: rgba(15, 23, 42, 0.80) !important;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.50) !important;
+}
+body.theme-dark.is-mobile .workspace-drawer-header,
+body.theme-dark.is-mobile .mobile-toolbar {
+  background: rgba(15, 23, 42, 0.85) !important;
+}
+
+/* A3. Calendar plugin (no left line; today = full outline + tint) */
+.workspace-leaf-content[data-type="calendar"] .month-grid .day {
+  border-radius: 6px;
+  transition: background-color 140ms ease;
+}
+.workspace-leaf-content[data-type="calendar"] .month-grid .day:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+.workspace-leaf-content[data-type="calendar"] .month-grid .day.is-today {
+  background: rgba(37, 99, 235, 0.14) !important;
+  font-weight: 700;
+  outline: 1px solid #2563eb;
+  outline-offset: -2px;
+}
+.workspace-leaf-content[data-type="calendar"] .month-grid .day.weekend,
+.workspace-leaf-content[data-type="calendar"] .month-grid .day.is-weekend { color: #b91c1c; }
+.workspace-leaf-content[data-type="calendar"] .month-grid .day .dot { background: #0d9488 !important; }
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .month-grid .day.is-today {
+  background: rgba(96, 165, 250, 0.18) !important;
+  outline-color: #60a5fa;
+}
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .month-grid .day.weekend,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .month-grid .day.is-weekend { color: #fca5a5; }
+
+/* A4. Pinned tab + split divider hit area (no left line) */
+.workspace-tab-header.is-pinned::before {
+  content: "🔒";
+  font-size: 0.7em;
+  margin-right: 4px;
+  filter: grayscale(0.5);
+}
+.workspace-leaf-resize-handle { position: relative; }
+.workspace-leaf-resize-handle::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+}
+.workspace-leaf-resize-handle:hover {
+  background: rgba(37, 99, 235, 0.30) !important;
+}
+body.theme-dark .workspace-leaf-resize-handle:hover {
+  background: rgba(96, 165, 250, 0.35) !important;
+}
+
+/* B1. Search option toggles */
+.workspace-leaf-content[data-type="search"] .search-input-container .clickable-icon,
+.workspace-leaf-content[data-type="search"] .search-row .clickable-icon {
+  border-radius: 6px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+.workspace-leaf-content[data-type="search"] .search-input-container .clickable-icon:hover {
+  background: rgba(37, 99, 235, 0.10);
+}
+.workspace-leaf-content[data-type="search"] .search-input-container .clickable-icon.is-active,
+.workspace-leaf-content[data-type="search"] .search-row .clickable-icon.is-active {
+  background: rgba(37, 99, 235, 0.18) !important;
+  color: #1d4ed8 !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="search"] .search-input-container .clickable-icon.is-active,
+body.theme-dark .workspace-leaf-content[data-type="search"] .search-row .clickable-icon.is-active {
+  background: rgba(96, 165, 250, 0.22) !important;
+  color: #93c5fd !important;
+}
+
+/* B2. Quick switcher / Command palette grouping (no left line) */
+.suggestion-container .suggestion-group-name,
+.suggestion-container .suggestion-section-header {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #64748b;
+  padding: 8px 12px 4px;
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+  margin-top: 4px;
+}
+.suggestion-container .suggestion-group-name:first-child,
+.suggestion-container .suggestion-section-header:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+.suggestion-container .suggestion-highlight {
+  color: #1d4ed8 !important;
+  font-weight: 700;
+  background: rgba(37, 99, 235, 0.12);
+  padding: 0 1px;
+  border-radius: 2px;
+}
+body.theme-dark .suggestion-container .suggestion-group-name,
+body.theme-dark .suggestion-container .suggestion-section-header {
+  color: #94a3b8;
+  border-top-color: rgba(44, 51, 61, 0.6);
+}
+body.theme-dark .suggestion-container .suggestion-highlight {
+  color: #93c5fd !important;
+  background: rgba(96, 165, 250, 0.18);
+}
+
+/* B3. Outline / TOC indent — padding-only guide (no left line) */
+.workspace-leaf-content[data-type="outline"] .tree-item-children {
+  padding-left: 12px;
+}
+
+/* B4. Link hover indicator */
+.markdown-rendered a.internal-link:not(.is-unresolved):hover::after,
+.markdown-preview-view a.internal-link:not(.is-unresolved):hover::after {
+  content: "↗"; font-size: 0.75em; margin-left: 2px; opacity: 0.7; color: #2563eb;
+}
+.markdown-rendered a.external-link:hover::after,
+.markdown-preview-view a.external-link:hover::after {
+  content: "↗"; font-size: 0.75em; margin-left: 2px; opacity: 0.7; color: #0d9488;
+}
+body.theme-dark .markdown-rendered a.internal-link:not(.is-unresolved):hover::after { color: #60a5fa; }
+body.theme-dark .markdown-rendered a.external-link:hover::after { color: #2dd4bf; }
+
+/* C1. Diff highlight */
+.markdown-rendered pre > code.language-diff .token.inserted {
+  display: inline-block; width: 100%; padding: 0 4px; margin: 0 -4px;
+  background: rgba(16, 185, 129, 0.14); color: #065f46;
+}
+.markdown-rendered pre > code.language-diff .token.deleted {
+  display: inline-block; width: 100%; padding: 0 4px; margin: 0 -4px;
+  background: rgba(239, 68, 68, 0.14); color: #991b1b;
+}
+.markdown-rendered pre > code.language-diff .token.coord {
+  display: inline-block; width: 100%; padding: 0 4px; margin: 0 -4px;
+  background: rgba(37, 99, 235, 0.10); color: #1d4ed8;
+}
+body.theme-dark .markdown-rendered pre > code.language-diff .token.inserted { background: rgba(16, 185, 129, 0.22); color: #6ee7b7; }
+body.theme-dark .markdown-rendered pre > code.language-diff .token.deleted  { background: rgba(239, 68, 68, 0.22); color: #fca5a5; }
+body.theme-dark .markdown-rendered pre > code.language-diff .token.coord    { background: rgba(96, 165, 250, 0.18); color: #93c5fd; }
+
+/* C2. Inline Dataview / Templater results */
+.markdown-rendered .dataview.inline-field,
+.markdown-rendered .dataview-result-inline,
+.markdown-rendered .templater-inline {
+  background: rgba(13, 148, 136, 0.08);
+  border-radius: 4px;
+  padding: 0 4px;
+  border: 1px solid rgba(13, 148, 136, 0.18);
+  font-size: 0.92em;
+  color: #0f766e;
+}
+body.theme-dark .markdown-rendered .dataview.inline-field,
+body.theme-dark .markdown-rendered .dataview-result-inline,
+body.theme-dark .markdown-rendered .templater-inline {
+  background: rgba(45, 212, 191, 0.10);
+  border-color: rgba(45, 212, 191, 0.25);
+  color: #5eead4;
+}
+
+/* C3. Color swatch indicator (opt-in) */
+body.ogd-color-swatch :is(.markdown-rendered, .cm-content) code.og-color::before,
+body.ogd-color-swatch :is(.markdown-rendered, .cm-content) code[data-color]::before {
+  content: "";
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 4px;
+  vertical-align: -0.1em;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: var(--og-swatch, attr(data-color));
+}
+body.ogd-color-swatch code.og-color {
+  background: rgba(241, 245, 249, 0.85);
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 0.05em 0.4em;
+}
+body.theme-dark.ogd-color-swatch code.og-color {
+  background: rgba(28, 33, 40, 0.85);
+  border-color: #2c333d;
+  color: #e2e8f0;
+}
+
+/* C4. Selection highlight */
+::selection { background: rgba(37, 99, 235, 0.22); color: inherit; }
+.cm-content ::selection,
+.cm-content .cm-selectionBackground,
+.cm-editor .cm-selectionBackground { background: rgba(37, 99, 235, 0.18) !important; }
+body.theme-dark ::selection { background: rgba(96, 165, 250, 0.30); }
+body.theme-dark .cm-content ::selection,
+body.theme-dark .cm-editor .cm-selectionBackground { background: rgba(96, 165, 250, 0.22) !important; }
+
+/* C5. Spell check tone-down */
+.cm-content .cm-spell-error { text-decoration: underline dotted !important; text-decoration-color: rgba(239, 68, 68, 0.55) !important; text-underline-offset: 3px !important; }
+body.theme-dark .cm-content .cm-spell-error { text-decoration-color: rgba(252, 165, 165, 0.55) !important; }
+
+/* C6. Footnote ref hover hint */
+.markdown-rendered sup.footnote-link a {
+  cursor: help;
+  border-bottom: 1px dotted rgba(37, 99, 235, 0.5);
+}
+body.theme-dark .markdown-rendered sup.footnote-link a { border-bottom-color: rgba(96, 165, 250, 0.55); }
+
+/* C7. Status bar word count emphasis */
+.status-bar .status-bar-item.plugin-word-count,
+.status-bar .status-bar-item[aria-label*="word" i],
+.status-bar .status-bar-item[aria-label*="단어" i],
+.status-bar .status-bar-item[aria-label*="reading" i],
+.status-bar .status-bar-item[aria-label*="읽기" i] {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: #475569;
+}
+body.theme-dark .status-bar .status-bar-item[aria-label*="word" i],
+body.theme-dark .status-bar .status-bar-item[aria-label*="reading" i] { color: #cbd5e1; }
+
+/* ---- Print parity for v2.9.0 ------------------------------------------ */
+@media print {
+  .markdown-rendered sup.footnote-link a { border-bottom: none !important; }
+  body.ogd-color-swatch code.og-color::before,
+  body.ogd-color-swatch code[data-color]::before { border-color: #94a3b8 !important; }
+}
+
+/* End of v2.9.0 Left-line Ban + Glass enforcement + Panels/Mobile + Nav + Authoring */
