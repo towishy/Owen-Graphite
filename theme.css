@@ -12680,4 +12680,45 @@ body.theme-dark .metadata-property:active::before {
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+/* ============================================================================
+ * v2.9.4 — Step 3: Backlink / Recent / Tag pane / Outgoing-link active
+ *   범위: 위 4개 사이드바 패널의 active 항목.
+ *   동일 Glass+Shadow 패턴. Settings nav / notice / modal 은 다음 단계.
+ * ========================================================================== */
+.workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 4px 12px rgba(37, 99, 235, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-left: 0;
+  background: rgba(37, 99, 235, 0.10);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  backdrop-filter: blur(8px) saturate(1.1);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  font-weight: 600;
+  border-radius: 6px;
+}
+.workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="tag"] .tree-item-self.is-active::before,
+.workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active::before {
+  content: none;
+  display: none;
+}
+.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
+  background: rgba(96, 165, 250, 0.14);
+  border-color: rgba(96, 165, 250, 0.28);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.30),
+    0 4px 14px rgba(96, 165, 250, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+
 

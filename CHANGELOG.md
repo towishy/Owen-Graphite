@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.4] — 2026-04-29 — Step 3: Backlink / Recent / Tag / Outgoing-link active 좌측 라인 제거
+
+### Changed (chrome 좌측 라인 점진 적용 · 3단계)
+- **Backlink / Recent files / Tag pane / Outgoing-link** 패널의 active 항목 좌측 세로 라인 제거 + Glass+Shadow 적용.
+- v2.9.2/v2.9.3과 동일 패턴.
+- Settings nav / suggestion / notice / modal / popover 등은 **다음 단계**에서 처리.
+
 ## [2.9.3] — 2026-04-29 — Step 2: Outline / Bookmarks active 좌측 라인 제거
 
 ### Changed (chrome 좌측 라인 점진 적용 · 2단계)
