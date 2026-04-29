@@ -16720,3 +16720,137 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.6 — Windows/Linux v1.8.66 tab chrome restoration ======= */
+
+
+/* ============================================================
+   v2.22.7 — Windows/Linux tabbar layout slot restoration
+   - v2.22.6 restored color/visibility, but Windows can still collapse the
+     tabbar when the container flex slots are not explicitly restored.
+   - Keep scope to Windows/Linux desktop and restore the native Obsidian
+     tabbar skeleton: tabs column, header auto row, content flexible body.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile) .workspace-tabs,
+  body.mod-linux:not(.is-mobile) .workspace-tabs {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 36px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 6px !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    z-index: 20 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container-inner,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container-inner {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 32px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-container,
+  body.mod-linux:not(.is-mobile) .workspace-tab-container {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+    display: flex !important;
+    flex: 0 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 30px !important;
+    max-width: 240px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-inner,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-inner {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 28px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+    inset: auto !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-inner-title,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-inner-title {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.sidebar-toggle-button, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab, .titlebar-button, .titlebar-button-container button),
+  body.mod-linux:not(.is-mobile) :is(.sidebar-toggle-button, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab, .titlebar-button, .titlebar-button-container button) {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    inset: auto !important;
+  }
+}
+
+/* End of v2.22.7 — Windows/Linux tabbar layout slot restoration ======= */

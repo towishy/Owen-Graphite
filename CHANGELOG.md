@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.7] — 2026-04-30 — Windows tabbar layout slot restoration
+
+### Fixed
+- v2.22.6에서도 Windows Obsidian 상단 탭이 보이지 않는 문제에 대응해, Windows/Linux 한정으로 `.workspace-tabs` flex column, `.workspace-tab-header-container` auto header row, `.workspace-tab-container` flexible body 레이아웃 슬롯을 명시 복원.
+- 탭 헤더/탭 제목/새 탭 버튼/탭 목록 버튼/titlebar 버튼의 최소 크기와 flex 슬롯을 복구해 탭바가 0px 또는 화면 밖으로 접히지 않도록 보강.
+
+### Preserved
+- macOS Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.6] — 2026-04-30 — Windows default chrome restoration
 
 ### Fixed
