@@ -27,11 +27,7 @@ REQUIRED_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "docs/fixtures/table-report.md",
-    "docs/fixtures/table-preview.html",
-    "docs/fixtures/callout-report.md",
-    "docs/fixtures/callout-preview.html",
-    "docs/fixtures/live-preview-editing.md",
+    "docs/fixtures/v2.10-improvements-preview.html",
     "scripts/contrast_audit.py",
     "scripts/visual_regression.py",
     "screenshots/light.png",
@@ -40,12 +36,8 @@ REQUIRED_FILES = [
     "screenshots/table-sample.png",
     "screenshots/github-repo-promo-sample.png",
     "screenshots/readme/github-repo-promo-sample-readme.png",
-    "screenshots/selected-document-icon-color-samples.png",
-    "screenshots/selected-document-icon-effect-samples.png",
-    "screenshots/selected-file-border-frame-preview.png",
-    "screenshots/snippet-design-8-improvements-preview.png",
-    "screenshots/vault-tree-design-samples.png",
-    "screenshots/vault-tree-icon-design-samples.png",
+    "screenshots/readme/v2.10-improvements-light.png",
+    "screenshots/readme/v2.10-improvements-dark.png",
 ]
 
 PNG_SIZES = {

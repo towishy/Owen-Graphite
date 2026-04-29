@@ -4,6 +4,26 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.10.0] — 2026-04-29 — 12 Improvements Pack (samples-first approved)
+
+### Added (12종 개선 · 좌측 라인 영구 밴 + Glass+Shadow 코어 정책 준수)
+1. **Quick Switcher / Command Palette Glass** — `.prompt` 에 backdrop-blur(14px) + floating multi-shadow.
+2. **Notice / Toast** — 좌측 라인 없이 info/success/warning/error 카테고리 tint + 둘레 1px border + blur(10px).
+3. **Note Hover Popover Glass** — `.popover.hover-popover` 에 backdrop-blur(14px) + floating shadow + radius 10px.
+4. **Outline 레벨별 위계 강화** — H1 700/0.96em → H2 600/0.90em → H3 500/0.84em → H4+ 400/0.80em.
+5. **Tag pane 카운트 알약** — `.tree-item-flair` / `.tag-pane-tag-count` 틸 론 + 1px border + tabular-nums.
+6. **폴더 노트 수 카운트** — `.nav-folder-title[data-count]::after` (JS 플러그인 또는 Dataview로 속성 주입).
+7. **본문 색상 swatch (opt-in)** — `code.og-color` + `--swatch` CSS 변수로 ::before 동그라미.
+8. **각주 dotted hover hint** — `sup.footnote-link` 에 dotted underline + cursor:help.
+9. **Diff 코드블록 색상** — `language-diff` 의 +/-/@@ 줄 그린/레드/블루 톤.
+10. **Selection 색조 통일** — Reading view + CM6 에디터 동일 블루 톤 (라이트 22% / 다크 30%).
+11. **링크 hover ↗ 인디케이터** — 내부=블루, 외부=틸.
+12. **Status bar 단어수/읽기시간** — `tabular-nums` + letter-spacing + 강조 톤.
+
+### Workflow
+- 샘플-우선 정책 준수: 코드 적용 전 [`docs/fixtures/v2.10-improvements-preview.html`](docs/fixtures/v2.10-improvements-preview.html) 으로 사용자 승인 후 적용.
+- 리드미 스크린샷 추가: `screenshots/readme/v2.10-improvements-{light,dark}.png`.
+
 ## [2.9.8] — 2026-04-29 — Hotfix: outline active+hover 이중 박스 제거
 
 ### Fixed

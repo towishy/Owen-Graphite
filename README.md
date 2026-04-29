@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘벍링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + **Workspace Surfaces (Graph view·Canvas·Folder cues·Mini TOC·Cover page)** + **Polish Pack (callout stripe·code label·dark parity)** + Style Settings 28종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `2.9.8` (Obsidian 1.6.0+, baseline since v2.6.2) |
+| **버전** | `2.10.0` (Obsidian 1.6.0+, baseline since v2.6.2) |
 
 ---
 
@@ -364,6 +364,37 @@ Callout 회귀 확인용 fixture는 [docs/fixtures/callout-report.md](docs/fixtu
 - `prefers-reduced-motion` — 트랜지션 제거
 - CJK 자동 +0.5px 보정 (한글 가독성)
 - OS 다크 모드 자동 추종 옵션
+
+---
+
+## ✨ v2.10.0 기능 개선 (12종)
+
+좌측 라인 영구 밴 + Glass+Shadow 코어 정책 기반의 12가지 개선 사항. 라이트/다크 모두 동일 디자인 일관성 유지.
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Quick Switcher / Command Palette Glass | `backdrop-blur(14px)` + floating shadow + 상단 highlight |
+| 2 | Notice / Toast (좌측 라인 없이) | info/success/warning/error 카테고리 tint + 둘레 1px border + glass blur |
+| 3 | Note Hover Popover Glass | 위키링크 hover 미리보기 floating glass card |
+| 4 | Outline 레벨별 위계 강화 | H1 700/0.96em → H2 600/0.90em → H3 500/0.84em → H4+ 400/0.80em |
+| 5 | Tag pane 카운트 알약 | 태그 옆 노트 수를 둥근 pill (틸 톤 + 1px border) |
+| 6 | 폴더 노트 수 카운트 | `data-count` 속성 활용 — JS 플러그인/Dataview로 주입 |
+| 7 | 본문 색상 swatch (opt-in) | `code.og-color` + `--swatch` CSS 변수로 색상 동그라미 |
+| 8 | 각주 dotted hover hint | sup.footnote-link 에 dotted underline + cursor:help |
+| 9 | Diff 코드블록 색상 | language-diff 의 +/-/@@ 줄 그린/레드/블루 톤 |
+| 10 | Selection 색조 통일 | Reading view + CM6 에디터 모두 같은 블루 톤 (라이트 22% / 다크 30%) |
+| 11 | 링크 hover ↗ 인디케이터 | 내부=블루, 외부=틸 |
+| 12 | Status bar 단어수/읽기시간 | `tabular-nums` + letter-spacing + 강조 톤 |
+
+### 라이트 모드 미리보기
+
+![v2.10.0 12 Improvements — Light](screenshots/readme/v2.10-improvements-light.png)
+
+### 다크 모드 미리보기
+
+![v2.10.0 12 Improvements — Dark](screenshots/readme/v2.10-improvements-dark.png)
+
+> 인터랙티브 HTML 미리보기: [docs/fixtures/v2.10-improvements-preview.html](docs/fixtures/v2.10-improvements-preview.html) — 상단 🌗 버튼으로 라이트/다크 토글 가능.
 
 ---
 

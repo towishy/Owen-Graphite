@@ -12747,3 +12747,262 @@ body:not(.is-mobile).theme-dark :is(
 ) .tree-item-self:hover {
   background: rgba(96, 165, 250, 0.10) !important;
 }
+
+/* ============================================================================
+ * v2.10.0 — 12 Improvements Pack (samples-first approved)
+ *   #1 Quick Switcher Glass         #7  Color swatch (opt-in)
+ *   #2 Notice Toast (no left-line)  #8  Footnote dotted hint
+ *   #3 Hover popover Glass          #9  Diff highlight
+ *   #4 Outline level hierarchy      #10 Selection unified
+ *   #5 Tag pane count pill          #11 Link hover ↗
+ *   #6 Folder note count [data-count] (CSS-only; JS for live count is opt-in)
+ *   #12 Status bar word count tabular-nums
+ *
+ * 정책: 좌측 라인 영구 밴 + Glass+Shadow 코어. 셀렉터 최소 범위, !important 최소화.
+ * ========================================================================== */
+
+/* #1 Quick Switcher / Command Palette Glass (.prompt 보강) */
+.prompt {
+  background: rgba(255, 255, 255, 0.78) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.1) !important;
+  backdrop-filter: blur(14px) saturate(1.1) !important;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.18), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+}
+body.theme-dark .prompt {
+  background: rgba(15, 23, 42, 0.78) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.30) !important;
+}
+
+/* #2 Notice / Toast — 좌측 라인 없이 카테고리 tint + 둘레 border + glass */
+.notice {
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.10);
+}
+.notice::before { content: none !important; }
+.notice.mod-info,
+.notice:not([class*="mod-"]) {
+  background: rgba(239, 246, 255, 0.85);
+  border: 1px solid #93c5fd;
+  color: #1d4ed8;
+}
+.notice.mod-success {
+  background: rgba(236, 253, 245, 0.85);
+  border: 1px solid #6ee7b7;
+  color: #047857;
+}
+.notice.mod-warning {
+  background: rgba(255, 251, 235, 0.85);
+  border: 1px solid #fcd34d;
+  color: #b45309;
+}
+.notice.mod-error {
+  background: rgba(254, 242, 242, 0.85);
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+}
+body.theme-dark .notice.mod-info,
+body.theme-dark .notice:not([class*="mod-"]) { background: rgba(30, 58, 138, 0.40); color: #93c5fd; border-color: rgba(96, 165, 250, 0.45); }
+body.theme-dark .notice.mod-success { background: rgba(6, 78, 59, 0.40); color: #6ee7b7; border-color: rgba(45, 212, 191, 0.45); }
+body.theme-dark .notice.mod-warning { background: rgba(120, 53, 15, 0.40); color: #fcd34d; border-color: rgba(252, 211, 77, 0.45); }
+body.theme-dark .notice.mod-error   { background: rgba(127, 29, 29, 0.40); color: #fca5a5; border-color: rgba(252, 165, 165, 0.45); }
+
+/* #3 Hover popover Glass (note preview) */
+.popover.hover-popover,
+.popover.hover-popover.is-loaded {
+  background: rgba(255, 255, 255, 0.82) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.1) !important;
+  backdrop-filter: blur(14px) saturate(1.1) !important;
+  border: 1px solid rgba(226, 232, 240, 0.6) !important;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.18), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+  border-radius: 10px !important;
+}
+body.theme-dark .popover.hover-popover {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border-color: rgba(44, 51, 61, 0.6) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.30) !important;
+}
+
+/* #4 Outline level hierarchy (H1 700, H2 600, H3 500 muted, H4 400 muted) */
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-level-1 > .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item.is-clickable.heading-1 > .tree-item-self {
+  font-weight: 700 !important;
+  font-size: 0.96em !important;
+  color: #0f172a !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-level-2 > .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item.is-clickable.heading-2 > .tree-item-self {
+  font-weight: 600 !important;
+  font-size: 0.90em !important;
+  color: #1e293b !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-level-3 > .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item.is-clickable.heading-3 > .tree-item-self {
+  font-weight: 500 !important;
+  font-size: 0.84em !important;
+  color: #475569 !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-level-4 > .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item.is-clickable.heading-4 > .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-level-5 > .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item.heading-level-6 > .tree-item-self {
+  font-weight: 400 !important;
+  font-size: 0.80em !important;
+  color: #64748b !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item.heading-level-1 > .tree-item-self { color: #f1f5f9 !important; }
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item.heading-level-2 > .tree-item-self { color: #e2e8f0 !important; }
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item.heading-level-3 > .tree-item-self { color: #cbd5e1 !important; }
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item.heading-level-4 > .tree-item-self,
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item.heading-level-5 > .tree-item-self,
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item.heading-level-6 > .tree-item-self { color: #94a3b8 !important; }
+
+/* #5 Tag pane count pill */
+.workspace-leaf-content[data-type="tag"] .tree-item-flair,
+.workspace-leaf-content[data-type="tag"] .tag-pane-tag-count {
+  background: rgba(13, 148, 136, 0.12);
+  color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.30);
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-size: 0.74em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+body.theme-dark .workspace-leaf-content[data-type="tag"] .tree-item-flair,
+body.theme-dark .workspace-leaf-content[data-type="tag"] .tag-pane-tag-count {
+  background: rgba(45, 212, 191, 0.14);
+  color: #5eead4;
+  border-color: rgba(45, 212, 191, 0.32);
+}
+
+/* #6 Folder note count via [data-count] (CSS-only; JS plugin or Dataview를 통해 속성 주입 필요) */
+.nav-folder-title[data-count]::after {
+  content: attr(data-count);
+  margin-left: auto;
+  color: #64748b;
+  font-size: 0.74em;
+  font-variant-numeric: tabular-nums;
+  background: rgba(100, 116, 139, 0.10);
+  padding: 1px 6px;
+  border-radius: 999px;
+  align-self: center;
+}
+.nav-folder-title { display: flex !important; align-items: center !important; }
+body.theme-dark .nav-folder-title[data-count]::after {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.14);
+}
+
+/* #7 본문 색상 swatch (opt-in: code.og-color, --swatch CSS 변수) */
+:is(.markdown-rendered, .markdown-preview-view, .cm-content) code.og-color {
+  background: rgba(241, 245, 249, 0.85);
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 0.05em 0.4em;
+}
+:is(.markdown-rendered, .markdown-preview-view, .cm-content) code.og-color::before {
+  content: "";
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 4px;
+  vertical-align: -0.1em;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: var(--swatch, currentColor);
+}
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .cm-content) code.og-color {
+  background: rgba(28, 33, 40, 0.85);
+  border-color: #2c333d;
+  color: #e2e8f0;
+}
+
+/* #8 Footnote dotted hover hint (기존 v2.4.0 pill 위에 dotted 추가) */
+.markdown-rendered sup.footnote-link a,
+.markdown-preview-view sup.footnote-link a,
+.markdown-rendered .footnote-ref a,
+.markdown-preview-view .footnote-ref a {
+  cursor: help;
+  border-bottom: 1px dotted rgba(67, 56, 202, 0.6);
+}
+body.theme-dark .markdown-rendered sup.footnote-link a,
+body.theme-dark .markdown-preview-view sup.footnote-link a {
+  border-bottom-color: rgba(165, 180, 252, 0.6);
+}
+
+/* #9 Diff 코드블록 색상 (language-diff) */
+.markdown-rendered pre > code.language-diff .token.inserted,
+.markdown-rendered pre > code.language-diff .token.gd-insert,
+.markdown-rendered pre > code.language-diff > span.inserted,
+.markdown-rendered pre > code.language-diff .line-add {
+  display: inline-block; width: 100%;
+  background: rgba(16, 185, 129, 0.14); color: #065f46;
+  padding: 0 4px; margin: 0 -4px;
+}
+.markdown-rendered pre > code.language-diff .token.deleted,
+.markdown-rendered pre > code.language-diff .token.gd-delete,
+.markdown-rendered pre > code.language-diff > span.deleted,
+.markdown-rendered pre > code.language-diff .line-del {
+  display: inline-block; width: 100%;
+  background: rgba(239, 68, 68, 0.14); color: #991b1b;
+  padding: 0 4px; margin: 0 -4px;
+}
+.markdown-rendered pre > code.language-diff .token.coord,
+.markdown-rendered pre > code.language-diff .token.command {
+  display: inline-block; width: 100%;
+  background: rgba(37, 99, 235, 0.10); color: #1d4ed8;
+  padding: 0 4px; margin: 0 -4px;
+}
+body.theme-dark .markdown-rendered pre > code.language-diff .token.inserted,
+body.theme-dark .markdown-rendered pre > code.language-diff .token.gd-insert,
+body.theme-dark .markdown-rendered pre > code.language-diff > span.inserted,
+body.theme-dark .markdown-rendered pre > code.language-diff .line-add { background: rgba(16, 185, 129, 0.22); color: #6ee7b7; }
+body.theme-dark .markdown-rendered pre > code.language-diff .token.deleted,
+body.theme-dark .markdown-rendered pre > code.language-diff .token.gd-delete,
+body.theme-dark .markdown-rendered pre > code.language-diff > span.deleted,
+body.theme-dark .markdown-rendered pre > code.language-diff .line-del { background: rgba(239, 68, 68, 0.22); color: #fca5a5; }
+body.theme-dark .markdown-rendered pre > code.language-diff .token.coord,
+body.theme-dark .markdown-rendered pre > code.language-diff .token.command { background: rgba(96, 165, 250, 0.18); color: #93c5fd; }
+
+/* #10 Selection 색조 통일 (Reading view + CM6) */
+.markdown-rendered ::selection,
+.markdown-preview-view ::selection,
+.cm-content ::selection { background: rgba(37, 99, 235, 0.22); color: inherit; }
+.cm-editor .cm-selectionBackground,
+.cm-content .cm-selectionBackground { background: rgba(37, 99, 235, 0.18) !important; }
+body.theme-dark .markdown-rendered ::selection,
+body.theme-dark .markdown-preview-view ::selection,
+body.theme-dark .cm-content ::selection { background: rgba(96, 165, 250, 0.30); }
+body.theme-dark .cm-editor .cm-selectionBackground,
+body.theme-dark .cm-content .cm-selectionBackground { background: rgba(96, 165, 250, 0.22) !important; }
+
+/* #11 링크 hover ↗ 인디케이터 (내부=블루, 외부=틸) */
+.markdown-rendered a.internal-link:not(.is-unresolved):hover::after,
+.markdown-preview-view a.internal-link:not(.is-unresolved):hover::after {
+  content: " ↗"; font-size: 0.78em; opacity: 0.7; color: #2563eb;
+}
+.markdown-rendered a.external-link:hover::after,
+.markdown-preview-view a.external-link:hover::after {
+  content: " ↗"; font-size: 0.78em; opacity: 0.7; color: #0d9488;
+}
+body.theme-dark .markdown-rendered a.internal-link:not(.is-unresolved):hover::after { color: #60a5fa; }
+body.theme-dark .markdown-rendered a.external-link:hover::after { color: #2dd4bf; }
+
+/* #12 Status bar word count tabular-nums */
+.status-bar .status-bar-item.plugin-word-count,
+.status-bar .status-bar-item[aria-label*="word" i],
+.status-bar .status-bar-item[aria-label*="단어" i],
+.status-bar .status-bar-item[aria-label*="reading" i],
+.status-bar .status-bar-item[aria-label*="읽기" i] {
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 0.01em !important;
+  color: #475569 !important;
+}
+body.theme-dark .status-bar .status-bar-item[aria-label*="word" i],
+body.theme-dark .status-bar .status-bar-item[aria-label*="단어" i],
+body.theme-dark .status-bar .status-bar-item[aria-label*="reading" i],
+body.theme-dark .status-bar .status-bar-item[aria-label*="읽기" i] { color: #cbd5e1 !important; }
+
+/* End of v2.10.0 — 12 Improvements Pack ================================== */
