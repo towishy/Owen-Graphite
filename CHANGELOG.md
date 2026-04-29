@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.13] — 2026-04-30 — Windows tabbar visual baseline reset
+
+### Fixed
+- Windows titlebar/ribbon은 더 건드리지 않고, `.workspace-tab-header-container` 내부만 v1.8.66에 가까운 visible baseline으로 복원.
+- broad `[role="tab"]` 전역 selector를 피하고 tab header container 내부 descendants에만 visibility, height, opacity, text color를 보강.
+
+### Notes
+- 이 버전에서도 탭이 보이지 않으면 CSS selector가 아니라 Windows Obsidian의 실제 탭 DOM/설정 상태 확인이 필요함.
+
 ## [2.22.12] — 2026-04-30 — Windows forced chrome rollback
 
 ### Fixed

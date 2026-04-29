@@ -17291,3 +17291,145 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
   ============================================================ */
 
 /* End of v2.22.12 — Windows forced chrome rollback ===================== */
+
+
+/* ============================================================
+   v2.22.13 — Windows tabbar visual baseline reset
+   The Windows scope is confirmed by the titlebar color changes, but broad
+   titlebar/ribbon fixes caused regressions. This layer touches only the real
+   tab header container and its descendants, restoring a v1.8.66-like visible
+   tab row without styling global [role="tab"] or ribbon buttons.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile) :is(.workspace-tabs > .workspace-tab-header-container, .mod-root .workspace-tab-header-container, .workspace-tab-header-container),
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tabs > .workspace-tab-header-container, .mod-root .workspace-tab-header-container, .workspace-tab-header-container) {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 34px !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 6px !important;
+    background: var(--tab-container-background, var(--background-secondary)) !important;
+    background-color: var(--tab-container-background, var(--background-secondary)) !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    transform: none !important;
+    clip-path: none !important;
+    pointer-events: auto !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container-inner {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 30px !important;
+    height: auto !important;
+    max-height: none !important;
+    gap: 4px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    transform: none !important;
+    clip-path: none !important;
+    pointer-events: auto !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+    display: flex !important;
+    flex: 0 1 auto !important;
+    align-items: center !important;
+    min-width: 34px !important;
+    min-height: 30px !important;
+    width: auto !important;
+    height: 30px !important;
+    max-width: 240px !important;
+    max-height: none !important;
+    margin: 0 2px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    transform: none !important;
+    clip-path: none !important;
+    pointer-events: auto !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    max-height: none !important;
+    padding: 0 10px !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    transform: none !important;
+    clip-path: none !important;
+    pointer-events: auto !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]),
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) {
+    background: var(--tab-background-active, var(--background-primary)) !important;
+    color: var(--text-normal) !important;
+    opacity: 1 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) .workspace-tab-header-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) .workspace-tab-header-inner {
+    background: var(--tab-background-active, var(--background-primary)) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header-inner-title, .workspace-tab-header-title, .workspace-tab-header-inner-icon, .workspace-tab-header-icon, .workspace-tab-header-inner-close-button),
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header-inner-title, .workspace-tab-header-title, .workspace-tab-header-inner-icon, .workspace-tab-header-icon, .workspace-tab-header-inner-close-button) {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header::before,
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header::after,
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner::before,
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner::after,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container .workspace-tab-header::before,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container .workspace-tab-header::after,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner::before,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* End of v2.22.13 — Windows tabbar visual baseline reset =============== */
