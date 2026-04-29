@@ -1,0 +1,1647 @@
+{
+  "source": "theme.css",
+  "generated_at": "2026-04-29T19:09:41.520897+00:00",
+  "rule_count": 1227,
+  "finding_count": 84,
+  "severity_counts": {
+    "critical": 9,
+    "high": 2,
+    "medium": 3,
+    "low": 12,
+    "info": 58
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "score": 56,
+      "line": 3712,
+      "selector": ".workspace-tab-header.is-active::before",
+      "context": "root",
+      "block": "v1.7.0 — UX, Accessibility, Print, Mobile improvements",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "position: absolute",
+        "left: 8px",
+        "right: 8px",
+        "bottom: 0",
+        "height: 2px",
+        "pointer-events: none"
+      ],
+      "critical_properties": [
+        "pointer-events: none"
+      ],
+      "decorative_properties": [
+        "background",
+        "border-radius"
+      ],
+      "summary": ".workspace-tab-header touched by position, left, right, bottom, height"
+    },
+    {
+      "severity": "critical",
+      "score": 56,
+      "line": 6486,
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "width: 36px !important",
+        "height: 36px !important",
+        "position: relative",
+        "overflow: hidden",
+        "opacity: 1 !important"
+      ],
+      "critical_properties": [
+        "overflow: hidden"
+      ],
+      "decorative_properties": [
+        "background",
+        "border",
+        "border-radius",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by width, height, position, overflow, opacity"
+    },
+    {
+      "severity": "high",
+      "score": 51,
+      "line": 6659,
+      "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right, body:not(.is-mobile) .workspace-tab-header-tab-list, body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.25b — Exclude right sidebar toggle from glass",
+      "matched_selectors": [
+        ".workspace-tab-header",
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "width: 26px !important",
+        "height: 26px !important",
+        "min-width: 26px !important",
+        "min-height: 26px !important",
+        "transform: none !important",
+        "display: inline-flex !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "border-radius",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header, .sidebar-toggle-button touched by width, height, min-width, min-height, transform"
+    },
+    {
+      "severity": "critical",
+      "score": 49,
+      "line": 6502,
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "position: absolute",
+        "inset: 2px 2px auto 2px",
+        "height: 45%",
+        "pointer-events: none"
+      ],
+      "critical_properties": [
+        "pointer-events: none"
+      ],
+      "decorative_properties": [
+        "background",
+        "border-radius"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by position, inset, height, pointer-events"
+    },
+    {
+      "severity": "critical",
+      "score": 44,
+      "line": 7976,
+      "selector": "body:not(.is-mobile) .workspace-tab-header::before, body:not(.is-mobile) .workspace-tab-header::after, body:not(.is-mobile) .workspace-tab-header-inner::before, body:not(.is-mobile) .workspace-tab-header-inner::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "display: none !important",
+        "width: 0 !important"
+      ],
+      "critical_properties": [
+        "display: none !important",
+        "width: 0 !important"
+      ],
+      "decorative_properties": [
+        "background",
+        "background-color",
+        "border",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by display, width"
+    },
+    {
+      "severity": "high",
+      "score": 36,
+      "line": 7139,
+      "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.37 — macOS sidebar toggle reset",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "width: auto !important",
+        "height: auto !important",
+        "transform: none !important",
+        "overflow: visible !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "border-radius",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button touched by width, height, transform, overflow"
+    },
+    {
+      "severity": "critical",
+      "score": 30,
+      "line": 2450,
+      "selector": ".workspace-ribbon, .workspace-tab-header-container, .status-bar, .titlebar, .copy-code-button, .markdown-rendered pre[class*=\"language-\"]::after",
+      "context": "@media print",
+      "block": "v1.8.65 — Footnotes section: keep at end, separate from body",
+      "matched_selectors": [
+        ".workspace-tab-header-container",
+        ".workspace-tab-header",
+        ".titlebar",
+        ".workspace-ribbon"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [
+        "display: none !important"
+      ],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header-container, .workspace-tab-header, .titlebar, .workspace-ribbon touched by display"
+    },
+    {
+      "severity": "critical",
+      "score": 27,
+      "line": 6689,
+      "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right::after, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.25b — Exclude right sidebar toggle from glass",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [
+        "display: none !important"
+      ],
+      "decorative_properties": [],
+      "summary": ".sidebar-toggle-button touched by display"
+    },
+    {
+      "severity": "critical",
+      "score": 27,
+      "line": 7155,
+      "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.37 — macOS sidebar toggle reset",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [
+        "display: none !important"
+      ],
+      "decorative_properties": [],
+      "summary": ".sidebar-toggle-button touched by display"
+    },
+    {
+      "severity": "critical",
+      "score": 27,
+      "line": 8033,
+      "selector": "body:not(.is-mobile) .workspace-tab-header.is-active::before",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [
+        "display: none !important"
+      ],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by display"
+    },
+    {
+      "severity": "critical",
+      "score": 26,
+      "line": 9481,
+      "selector": ".workspace-tab-header:not(.is-active)",
+      "context": "root",
+      "block": "1. Dark mode parity for v1.8.6x components",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "opacity: 0.78"
+      ],
+      "critical_properties": [
+        "opacity: 0.78"
+      ],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by opacity"
+    },
+    {
+      "severity": "medium",
+      "score": 24,
+      "line": 6682,
+      "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right svg, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right svg, body:not(.is-mobile) .workspace-tab-header-tab-list svg, body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list svg",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.25b — Exclude right sidebar toggle from glass",
+      "matched_selectors": [
+        ".workspace-tab-header",
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "width: 15px !important",
+        "height: 15px !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header, .sidebar-toggle-button touched by width, height"
+    },
+    {
+      "severity": "medium",
+      "score": 19,
+      "line": 6543,
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.22 — Hover glass polish",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-1px)"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by transform"
+    },
+    {
+      "severity": "medium",
+      "score": 19,
+      "line": 8513,
+      "selector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .nav-file-title, .nav-folder-title, .workspace-tab-header, .workspace-tab-header-inner, .breadcrumb, .menu-item, .suggestion-item, .search-suggest-item, .search-input-container, .setting-item, .setting-item-control button, .checkbox-container, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar-item-segment, .metadata-property, .editingToolbarModalBar .clickable-icon, .editingToolbarPopover .clickable-icon, .editingToolbarButton ):is(:hover, :focus, :focus-visible, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
+      "context": "@media (prefers-reduced-motion: reduce)",
+      "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
+      "matched_selectors": [
+        ".workspace-tab-header",
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: none !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header, .sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 16,
+      "line": 3709,
+      "selector": ".workspace-tab-header.is-active",
+      "context": "root",
+      "block": "v1.7.0 — UX, Accessibility, Print, Mobile improvements",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "position: relative"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by position"
+    },
+    {
+      "severity": "low",
+      "score": 16,
+      "line": 6695,
+      "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right:hover, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right:hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.25b — Exclude right sidebar toggle from glass",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "transform: none !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow"
+      ],
+      "summary": ".sidebar-toggle-button touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 16,
+      "line": 7161,
+      "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.37 — macOS sidebar toggle reset",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "transform: translateY(-1px) !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 16,
+      "line": 7957,
+      "selector": "body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header-container",
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "overflow: visible !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header-container, .workspace-tab-header touched by overflow"
+    },
+    {
+      "severity": "low",
+      "score": 16,
+      "line": 9485,
+      "selector": ".workspace-tab-header:not(.is-active):hover",
+      "context": "root",
+      "block": "1. Dark mode parity for v1.8.6x components",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "opacity: 1"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by opacity"
+    },
+    {
+      "severity": "low",
+      "score": 15,
+      "line": 7962,
+      "selector": "body:not(.is-mobile) .workspace-tab-header",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "overflow: visible !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by overflow"
+    },
+    {
+      "severity": "low",
+      "score": 13,
+      "line": 6632,
+      "selector": "body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.24 — Editing toolbar hover glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-1px)"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 13,
+      "line": 6838,
+      "selector": "body:not(.is-mobile) .editing-toolbar .editing-toolbar-button:hover, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button:hover, body:not(.is-mobile) .editing-toolbar button:hover, body:not(.is-mobile) .editing-toolbar .clickable-icon:hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-0.5px) !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 13,
+      "line": 6859,
+      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button:hover, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button:hover, body:not(.is-mobile).theme-dark .editing-toolbar button:hover, body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon:hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-0.5px) !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 13,
+      "line": 6934,
+      "selector": "body:not(.is-mobile) .editing-toolbar-modal button:hover, body:not(.is-mobile) .editing-toolbar-modal .clickable-icon:hover, body:not(.is-mobile) .editing-toolbar-popover button:hover, body:not(.is-mobile) .editing-toolbar-popover .clickable-icon:hover, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button:hover, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon:hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.33 — Editing toolbar submenu glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-0.5px) !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 13,
+      "line": 6959,
+      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar-modal button:hover, body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon:hover, body:not(.is-mobile).theme-dark .editing-toolbar-popover button:hover, body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon:hover, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button:hover, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon:hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.33 — Editing toolbar submenu glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-0.5px) !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 13,
+      "line": 7538,
+      "selector": "body:not(.is-mobile) :is(.canvas-control-item, .canvas-card-menu .clickable-icon):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.42 - Floating UI glass expansion",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "transform: translateY(-1px) !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by transform"
+    },
+    {
+      "severity": "info",
+      "score": 12,
+      "line": 3519,
+      "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
+      "context": "root",
+      "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow",
+        "outline"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 12,
+      "line": 6518,
+      "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by border, background, color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 12,
+      "line": 7175,
+      "selector": "body.mod-macos:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.37 — macOS sidebar toggle reset",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button touched by background, border, box-shadow, color"
+    },
+    {
+      "severity": "info",
+      "score": 12,
+      "line": 8559,
+      "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
+      "context": "@media (forced-colors: active)",
+      "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow",
+        "outline"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 12,
+      "line": 9134,
+      "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
+      "context": "root",
+      "block": "v1.8.56 — Overlay interaction polish",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow",
+        "outline"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 12,
+      "line": 9300,
+      "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
+      "context": "@media (prefers-contrast: more), (forced-colors: active)",
+      "block": "v1.8.56 — Overlay interaction polish",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow",
+        "outline"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 1963,
+      "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
+      "context": "root",
+      "block": "Nested blockquote depth coloring — v1.8.65 tonal steps",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "outline"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 6512,
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by border-color, background, color"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 6529,
+      "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "color"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by border-color, background, color"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 7352,
+      "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-split.mod-root, .workspace-tabs.mod-active, .workspace-leaf.mod-active, .workspace-ribbon, .side-dock-ribbon)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.41 - Workspace frame cleanup",
+      "matched_selectors": [
+        ".workspace-tabs",
+        ".workspace-ribbon",
+        ".side-dock-ribbon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border",
+        "box-shadow",
+        "outline"
+      ],
+      "summary": ".workspace-tabs, .workspace-ribbon, .side-dock-ribbon touched by border, box-shadow, outline"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 8012,
+      "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by background, border-color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 8025,
+      "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by background, border-color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 8524,
+      "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
+      "context": "@media (prefers-contrast: more)",
+      "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 9158,
+      "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus:not(:focus-visible)",
+      "context": "root",
+      "block": "v1.8.56 — Overlay interaction polish",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "outline"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 9276,
+      "selector": ".theme-dark :is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
+      "context": "root",
+      "block": "v1.8.56 — Overlay interaction polish",
+      "matched_selectors": [
+        "[role=tab]",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 450,
+      "selector": ".nav-file-title.is-active, .nav-folder-title.is-active, .workspace-tab-header.is-active .workspace-tab-header-inner-title",
+      "context": "root",
+      "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color",
+        "font-weight"
+      ],
+      "summary": ".workspace-tab-header touched by color, font-weight"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 3848,
+      "selector": "button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .clickable-icon:focus-visible, a.internal-link:focus-visible, a.external-link:focus-visible, .workspace-tab-header:focus-visible",
+      "context": "root",
+      "block": "#5 — PDF footer page numbers (v1.7.2: right-only, no prefix)",
+      "matched_selectors": [
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-radius",
+        "outline"
+      ],
+      "summary": ".workspace-tab-header, .clickable-icon touched by outline, border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 7344,
+      "selector": "body:not(.is-mobile) :is(.workspace, .workspace-split, .workspace-tabs, .workspace-leaf, .workspace-leaf-content, .workspace-tab-container, .view-content)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.41 - Workspace frame cleanup",
+      "matched_selectors": [
+        ".workspace-tabs",
+        ".workspace-tab-container"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border",
+        "box-shadow",
+        "outline"
+      ],
+      "summary": ".workspace-tabs, .workspace-tab-container touched by border, outline, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 7987,
+      "selector": "body:not(.is-mobile) .workspace-tab-header-inner",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border",
+        "border-radius"
+      ],
+      "summary": ".workspace-tab-header touched by border, border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 8535,
+      "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
+      "context": "@media (prefers-contrast: more)",
+      "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by border-color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 8564,
+      "selector": "body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .checkbox-container, .setting-item, .suggestion-item, .status-bar-item-segment, .workspace-tab-header-inner, .search-input-container)",
+      "context": "@media (forced-colors: active)",
+      "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by border-color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 9477,
+      "selector": ".workspace-tab-header.is-active",
+      "context": "root",
+      "block": "1. Dark mode parity for v1.8.6x components",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by background, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 10,
+      "line": 9488,
+      "selector": ".workspace-tab-header.is-active .workspace-tab-header-inner-title",
+      "context": "root",
+      "block": "1. Dark mode parity for v1.8.6x components",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color",
+        "font-weight"
+      ],
+      "summary": ".workspace-tab-header touched by font-weight, color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 430,
+      "selector": ".workspace, .workspace-split, .workspace-leaf, .workspace-tabs, .workspace-tab-header-container, .side-dock-ribbon, .mod-root .workspace-tab-header-container",
+      "context": "root",
+      "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
+      "matched_selectors": [
+        ".workspace-tabs",
+        ".workspace-tab-header-container",
+        ".workspace-tab-header",
+        ".side-dock-ribbon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background-color"
+      ],
+      "summary": ".workspace-tabs, .workspace-tab-header-container, .workspace-tab-header, .side-dock-ribbon touched by background-color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 444,
+      "selector": ".nav-file-title, .nav-folder-title, .tree-item-self, .workspace-tab-header-inner-title",
+      "context": "root",
+      "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".workspace-tab-header touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 458,
+      "selector": "button, .clickable-icon, .setting-item-control button, .modal button",
+      "context": "root",
+      "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background-color",
+        "border",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by border, background-color, color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 1944,
+      "selector": ".workspace-tab-header.is-active .workspace-tab-header-inner-title",
+      "context": "root",
+      "block": "Nested blockquote depth coloring — v1.8.65 tonal steps",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".workspace-tab-header touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 3262,
+      "selector": ".workspace-tab-header[data-type=\"markdown\"] .workspace-tab-header-inner-icon",
+      "context": "root",
+      "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".workspace-tab-header touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 3265,
+      "selector": ".workspace-tab-header[data-type=\"canvas\"] .workspace-tab-header-inner-icon",
+      "context": "root",
+      "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".workspace-tab-header touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 3268,
+      "selector": ".workspace-tab-header[data-type=\"pdf\"] .workspace-tab-header-inner-icon",
+      "context": "root",
+      "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".workspace-tab-header touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 3271,
+      "selector": ".workspace-tab-header[data-type=\"image\"] .workspace-tab-header-inner-icon",
+      "context": "root",
+      "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".workspace-tab-header touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 6525,
+      "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by background"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 6550,
+      "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.22 — Hover glass polish",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 6642,
+      "selector": "body:not(.is-mobile).theme-dark :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.24 — Editing toolbar hover glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by background, border, box-shadow, color"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 6711,
+      "selector": "body:not(.is-mobile) .mod-root .workspace-tab-header-container, body:not(.is-mobile) .mod-root .view-header",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.28 — Subdue dark frame lines",
+      "matched_selectors": [
+        ".workspace-tab-header-container",
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header-container, .workspace-tab-header touched by box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 6826,
+      "selector": "body:not(.is-mobile) .editing-toolbar .editing-toolbar-button, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button, body:not(.is-mobile) .editing-toolbar button, body:not(.is-mobile) .editing-toolbar .clickable-icon",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "border-radius",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by background, border, box-shadow, border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 6920,
+      "selector": "body:not(.is-mobile) .editing-toolbar-modal button, body:not(.is-mobile) .editing-toolbar-modal .clickable-icon, body:not(.is-mobile) .editing-toolbar-popover button, body:not(.is-mobile) .editing-toolbar-popover .clickable-icon, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.33 — Editing toolbar submenu glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "border-radius",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by background, border, box-shadow, border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 8008,
+      "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 9,
+      "line": 8037,
+      "selector": "body:not(.is-mobile) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header-container",
+        ".workspace-tab-header",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-radius"
+      ],
+      "summary": ".workspace-tab-header-container, .workspace-tab-header, .clickable-icon touched by border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 468,
+      "selector": "button:hover, .clickable-icon:hover, .setting-item-control button:hover, .modal button:hover",
+      "context": "root",
+      "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background-color",
+        "border-color",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by border-color, background-color, color"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 1940,
+      "selector": ".workspace-tab-header.is-active",
+      "context": "root",
+      "block": "Nested blockquote depth coloring — v1.8.65 tonal steps",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 6717,
+      "selector": "body:not(.is-mobile).theme-dark .mod-root .workspace-tab-header-container, body:not(.is-mobile).theme-dark .mod-root .view-header",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.28 — Subdue dark frame lines",
+      "matched_selectors": [
+        ".workspace-tab-header-container",
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header-container, .workspace-tab-header touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 6723,
+      "selector": "body:not(.is-mobile) .workspace-split.mod-root, body:not(.is-mobile) .mod-root .workspace-leaf, body:not(.is-mobile) .mod-root .workspace-tabs",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.28 — Subdue dark frame lines",
+      "matched_selectors": [
+        ".workspace-tabs"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-color"
+      ],
+      "summary": ".workspace-tabs touched by border-color"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 6729,
+      "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root, body:not(.is-mobile).theme-dark .mod-root .workspace-leaf, body:not(.is-mobile).theme-dark .mod-root .workspace-tabs",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.28 — Subdue dark frame lines",
+      "matched_selectors": [
+        ".workspace-tabs"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-color"
+      ],
+      "summary": ".workspace-tabs touched by border-color"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 6849,
+      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button, body:not(.is-mobile).theme-dark .editing-toolbar button, body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by background, border-color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 6947,
+      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar-modal button, body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon, body:not(.is-mobile).theme-dark .editing-toolbar-popover button, body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.33 — Editing toolbar submenu glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by background, border-color, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 8001,
+      "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active), body:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner, body:not(.is-mobile) .workspace-tab-header.is-active, body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 8021,
+      "selector": "body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 8440,
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(.clickable-icon, button, .search-input-clear-button), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container + .clickable-icon, .search-input-container ~ .clickable-icon, .search-input-container + button, .search-input-container ~ button)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border",
+        "box-shadow"
+      ],
+      "summary": ".clickable-icon touched by background, border, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 8482,
+      "selector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .nav-file-title, .nav-folder-title, .workspace-tab-header, .workspace-tab-header-inner, .breadcrumb, .menu-item, .suggestion-item, .search-suggest-item, .search-input-container, .setting-item, .setting-item-control button, .checkbox-container, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar-item-segment, .metadata-property, .editingToolbarModalBar .clickable-icon, .editingToolbarPopover .clickable-icon, .editingToolbarButton ), body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice)",
+      "context": "@media (prefers-reduced-motion: reduce)",
+      "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
+      "matched_selectors": [
+        ".workspace-tab-header",
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header, .sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 9471,
+      "selector": ".workspace-tab-header-inner-title",
+      "context": "@media (max-width: 768px)",
+      "block": "1. Dark mode parity for v1.8.6x components",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by "
+    },
+    {
+      "severity": "info",
+      "score": 7,
+      "line": 4967,
+      "selector": ".canvas-control-item, .canvas-card-menu .clickable-icon",
+      "context": "root",
+      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-radius",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by color, border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 7,
+      "line": 4972,
+      "selector": ".canvas-control-item:hover, .canvas-card-menu .clickable-icon:hover",
+      "context": "root",
+      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by background, color"
+    },
+    {
+      "severity": "info",
+      "score": 7,
+      "line": 5108,
+      "selector": ".theme-dark .canvas-control-item:hover, .theme-dark .canvas-card-menu .clickable-icon:hover",
+      "context": "root",
+      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "color"
+      ],
+      "summary": ".clickable-icon touched by background, color"
+    },
+    {
+      "severity": "info",
+      "score": 6,
+      "line": 5104,
+      "selector": ".theme-dark .canvas-control-item, .theme-dark .canvas-card-menu .clickable-icon",
+      "context": "root",
+      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "color"
+      ],
+      "summary": ".clickable-icon touched by color"
+    },
+    {
+      "severity": "info",
+      "score": 6,
+      "line": 6627,
+      "selector": "body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton)",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.24 — Editing toolbar hover glass",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-radius"
+      ],
+      "summary": ".clickable-icon touched by border-radius"
+    },
+    {
+      "severity": "info",
+      "score": 5,
+      "line": 7835,
+      "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation.",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".clickable-icon touched by "
+    },
+    {
+      "severity": "info",
+      "score": 5,
+      "line": 7890,
+      "selector": "body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu), body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation.",
+      "matched_selectors": [
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".clickable-icon touched by "
+    }
+  ]
+}
