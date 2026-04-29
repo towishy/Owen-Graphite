@@ -15968,42 +15968,42 @@ body.theme-dark .notice .notice-action:hover {
   body.mod-windows:not(.is-mobile),
   body:not(.mod-macos):not(.is-mobile) {
     /* chrome 토큰 (Style Settings에서 추후 override 가능) */
-    --ogd-win-titlebar-bg: #e2e8f0;
-    --ogd-win-titlebar-border: rgba(100, 116, 139, 0.22);
-    --ogd-win-titlebar-text: #334155;
-    --ogd-win-tabbar-bg: #eef2f7;
-    --ogd-win-tabbar-border: rgba(100, 116, 139, 0.18);
-    --ogd-win-tab-bg-inactive: rgba(255, 255, 255, 0.55);
-    --ogd-win-tab-border-inactive: rgba(100, 116, 139, 0.22);
+    --ogd-win-titlebar-bg: #cbd5e1;
+    --ogd-win-titlebar-border: rgba(71, 85, 105, 0.32);
+    --ogd-win-titlebar-text: #1e293b;
+    --ogd-win-tabbar-bg: #d1d9e6;
+    --ogd-win-tabbar-border: rgba(71, 85, 105, 0.28);
+    --ogd-win-tab-bg-inactive: rgba(255, 255, 255, 0.50);
+    --ogd-win-tab-border-inactive: rgba(71, 85, 105, 0.28);
     --ogd-win-tab-bg-active: #ffffff;
-    --ogd-win-tab-border-active: rgba(100, 116, 139, 0.40);
-    --ogd-win-tab-shadow-active: 0 1px 3px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(15, 23, 42, 0.06);
+    --ogd-win-tab-border-active: rgba(71, 85, 105, 0.45);
+    --ogd-win-tab-shadow-active: 0 1px 3px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.10);
     --ogd-win-tab-fg-inactive: #475569;
     --ogd-win-tab-fg-active: #0f172a;
     --ogd-win-toggle-bg: #ffffff;
-    --ogd-win-toggle-border: rgba(100, 116, 139, 0.45);
-    --ogd-win-toggle-shadow: 0 1px 2px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    --ogd-win-toggle-fg: #334155;
+    --ogd-win-toggle-border: rgba(71, 85, 105, 0.50);
+    --ogd-win-toggle-shadow: 0 1px 2px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --ogd-win-toggle-fg: #1e293b;
   }
 
   body.mod-windows:not(.is-mobile).theme-dark,
   body:not(.mod-macos):not(.is-mobile).theme-dark {
-    --ogd-win-titlebar-bg: #0f1419;
-    --ogd-win-titlebar-border: rgba(203, 213, 225, 0.10);
-    --ogd-win-titlebar-text: #cbd5e1;
-    --ogd-win-tabbar-bg: #1c2128;
-    --ogd-win-tabbar-border: rgba(203, 213, 225, 0.08);
-    --ogd-win-tab-bg-inactive: rgba(30, 41, 59, 0.55);
-    --ogd-win-tab-border-inactive: rgba(203, 213, 225, 0.12);
+    --ogd-win-titlebar-bg: #0a0e13;
+    --ogd-win-titlebar-border: rgba(203, 213, 225, 0.14);
+    --ogd-win-titlebar-text: #e2e8f0;
+    --ogd-win-tabbar-bg: #14181f;
+    --ogd-win-tabbar-border: rgba(203, 213, 225, 0.12);
+    --ogd-win-tab-bg-inactive: rgba(30, 41, 59, 0.60);
+    --ogd-win-tab-border-inactive: rgba(203, 213, 225, 0.16);
     --ogd-win-tab-bg-active: #2c333d;
-    --ogd-win-tab-border-active: rgba(203, 213, 225, 0.22);
-    --ogd-win-tab-shadow-active: 0 1px 3px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.30);
-    --ogd-win-tab-fg-inactive: #94a3b8;
+    --ogd-win-tab-border-active: rgba(203, 213, 225, 0.30);
+    --ogd-win-tab-shadow-active: 0 1px 3px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.40);
+    --ogd-win-tab-fg-inactive: #cbd5e1;
     --ogd-win-tab-fg-active: #f8fafc;
     --ogd-win-toggle-bg: #2c333d;
-    --ogd-win-toggle-border: rgba(203, 213, 225, 0.22);
-    --ogd-win-toggle-shadow: 0 1px 3px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    --ogd-win-toggle-fg: #cbd5e1;
+    --ogd-win-toggle-border: rgba(203, 213, 225, 0.28);
+    --ogd-win-toggle-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --ogd-win-toggle-fg: #e2e8f0;
   }
 
   /* Titlebar (윈도/리눅스에서 항상 노출되는 OS 프레임 영역) */
@@ -16137,3 +16137,133 @@ body.theme-dark .notice .notice-action:hover {
 }
 
 /* End of v2.22.0 — Windows/Linux chrome visibility hotfix ============== */
+
+
+/* ============================================================
+   v2.22.1 — Windows/Linux chrome hardening
+   - v2.22.0에서 inner surface만 보강된 탭을 parent surface까지 보강
+   - 탭바 버튼 전체(탭 목록, 새 탭, 좌/우 토글, 닫기 버튼, titlebar 버튼) 가시성 보장
+   - macOS Glass는 body.mod-macos 제외로 유지
+   - EOF 추가 패치: 기존 셀렉터 수정 없음
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile),
+  body.mod-linux:not(.is-mobile),
+  body:not(.mod-macos):not(.is-mobile) {
+    --titlebar-background: var(--ogd-win-titlebar-bg) !important;
+    --titlebar-background-focused: var(--ogd-win-titlebar-bg) !important;
+    --tab-container-background: var(--ogd-win-tabbar-bg) !important;
+    --tab-background-active: var(--ogd-win-tab-bg-active) !important;
+    --tab-outline-color: var(--ogd-win-tab-border-active) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.titlebar, .workspace-tab-header-container, .workspace-tab-header-container-inner),
+  body.mod-linux:not(.is-mobile) :is(.titlebar, .workspace-tab-header-container, .workspace-tab-header-container-inner),
+  body:not(.mod-macos):not(.is-mobile) :is(.titlebar, .workspace-tab-header-container, .workspace-tab-header-container-inner) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner),
+  body.mod-linux:not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner),
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner) {
+    opacity: 1 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header:not(.is-active),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header:not(.is-active),
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header:not(.is-active) {
+    background: var(--ogd-win-tab-bg-inactive) !important;
+    border: 1px solid var(--ogd-win-tab-border-inactive) !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    color: var(--ogd-win-tab-fg-inactive) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header.is-active,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header.is-active {
+    background: var(--ogd-win-tab-bg-active) !important;
+    border: 1px solid var(--ogd-win-tab-border-active) !important;
+    border-radius: 6px !important;
+    box-shadow: var(--ogd-win-tab-shadow-active) !important;
+    color: var(--ogd-win-tab-fg-active) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header .workspace-tab-header-inner,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header .workspace-tab-header-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header .workspace-tab-header-inner {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button),
+  body.mod-linux:not(.is-mobile) :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button),
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
+    color: inherit !important;
+    opacity: 1 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab),
+  body.mod-linux:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab),
+  body:not(.mod-macos):not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab) {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    padding: 4px !important;
+    border: 1px solid var(--ogd-win-toggle-border) !important;
+    border-radius: 6px !important;
+    background: var(--ogd-win-toggle-bg) !important;
+    box-shadow: var(--ogd-win-toggle-shadow) !important;
+    color: var(--ogd-win-toggle-fg) !important;
+    opacity: 1 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab):hover,
+  body.mod-linux:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab):hover,
+  body:not(.mod-macos):not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab):hover {
+    background: rgba(100, 116, 139, 0.14) !important;
+    border-color: rgba(71, 85, 105, 0.56) !important;
+    color: var(--ogd-win-tab-fg-active) !important;
+  }
+
+  body.mod-windows:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab):hover,
+  body.mod-linux:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab):hover,
+  body:not(.mod-macos):not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab):hover {
+    background: rgba(203, 213, 225, 0.12) !important;
+    border-color: rgba(203, 213, 225, 0.34) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab, .titlebar-button) svg,
+  body.mod-linux:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab, .titlebar-button) svg,
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab, .titlebar-button) svg {
+    color: inherit !important;
+    stroke: currentColor !important;
+    opacity: 1 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.titlebar-button, .titlebar-button-container button),
+  body.mod-linux:not(.is-mobile) :is(.titlebar-button, .titlebar-button-container button),
+  body:not(.mod-macos):not(.is-mobile) :is(.titlebar-button, .titlebar-button-container button) {
+    color: var(--ogd-win-titlebar-text) !important;
+    opacity: 1 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.titlebar-button, .titlebar-button-container button):hover,
+  body.mod-linux:not(.is-mobile) :is(.titlebar-button, .titlebar-button-container button):hover,
+  body:not(.mod-macos):not(.is-mobile) :is(.titlebar-button, .titlebar-button-container button):hover {
+    background: rgba(100, 116, 139, 0.16) !important;
+    color: var(--ogd-win-tab-fg-active) !important;
+  }
+}
+
+/* End of v2.22.1 — Windows/Linux chrome hardening ====================== */

@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.1] — 2026-04-30 — Windows/Linux chrome hardening
+
+### Fixed
+- v2.22.0 적용 후에도 Windows Obsidian에서 탭/버튼이 계속 흐리거나 보이지 않을 수 있던 문제 보강.
+- 탭 내부 surface뿐 아니라 `.workspace-tab-header` parent surface까지 솔리드 배경/보더/그림자를 적용해 실제 Windows DOM 차이에 대응.
+- 탭바 버튼 전체(`.workspace-tab-header-tab-list`, `.workspace-tab-header-new-tab`, `.clickable-icon.mod-new-tab`), 좌/우 사이드바 토글, 탭 닫기 버튼, titlebar 버튼 색상/opacity를 Windows/non-macOS 한정으로 강제 보강.
+
+### Preserved
+- macOS는 `body.mod-macos` 제외로 기존 Glass 탭/버튼 룩 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.0] — 2026-04-30 — Windows/Linux chrome visibility hotfix (samples-first approved)
 
 ### Fixed
