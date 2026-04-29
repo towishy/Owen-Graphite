@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.5] — 2026-04-30 — Windows chrome rollback + conservative visibility only
+
+### Fixed
+- v2.22.3/v2.22.4의 광범위한 `display:flex` / workspace layout 강제 패치를 제거해, Windows 상단 chrome 레이아웃을 Obsidian 기본 구조에 다시 맡김.
+- 실제 Windows DOM 확인 전까지 구조 변경을 중단하고, Windows/Linux 한정으로 색상 토큰, `opacity`, `visibility`, text/icon color만 보수적으로 보강.
+
+### Preserved
+- macOS Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.4] — 2026-04-30 — Windows workspace-tabs layout correction
 
 ### Fixed
