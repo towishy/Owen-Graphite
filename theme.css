@@ -15951,6 +15951,11 @@ body.theme-dark .notice .notice-action:hover {
 
 /* End of v2.21.0 — Canvas, Inputs & Modals ============================= */
 
+@media not all {
+/* v2.22.8 — Disabled failed Windows/Linux chrome experiments.
+  v2.22.0-v2.22.7 forced titlebar/tabbar layout and color on Windows, which
+  produced a gray left titlebar strip and still hid tabs in the real app. */
+
 
 /* ============================================================
    v2.22.0 — Windows/Linux chrome visibility hotfix
@@ -16854,3 +16859,11 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.7 — Windows/Linux tabbar layout slot restoration ======= */
+}
+
+/* ============================================================
+  v2.22.8 — Windows default titlebar/tabbar rollback
+  Failed v2.22.0-v2.22.7 Windows/Linux chrome overrides are wrapped in
+  @media not all above, so Windows returns to the default Obsidian tabbar
+  layout that was visible in v1.8.66.
+  ============================================================ */

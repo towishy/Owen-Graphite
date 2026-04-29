@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.8] — 2026-04-30 — Windows default titlebar/tabbar rollback
+
+### Fixed
+- Windows Obsidian titlebar 왼쪽에 아래로 내려오는 회색 라인이 보이고, v2.22.7에서도 탭이 보이지 않던 문제에 대응.
+- 실패한 v2.22.0~v2.22.7 Windows/Linux chrome 강제 패치 묶음을 비활성화해 Windows가 Obsidian 기본 titlebar/tabbar 레이아웃을 다시 사용하도록 롤백.
+
+### Preserved
+- macOS Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.7] — 2026-04-30 — Windows tabbar layout slot restoration
 
 ### Fixed
