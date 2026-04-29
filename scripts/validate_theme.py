@@ -232,10 +232,10 @@ def style_settings_count() -> None:
             continue
         option_ids.append(id_match.group(1))
     option_count = len(set(option_ids))
-    if option_count != 33:
-        fail(f"expected 33 Style Settings options, got {option_count}")
-    if "33개 옵션" not in readme or "33%20options" not in readme:
-        fail("README missing 33 options text/badge")
+    if option_count != 27:
+        fail(f"expected 27 Style Settings options, got {option_count}")
+    if "27개 옵션" not in readme or "27%20options" not in readme:
+        fail("README missing 27 options text/badge")
     ok(f"Style Settings option count={option_count} (YAML lint clean)")
 
 
@@ -383,7 +383,7 @@ def release_checklist(version: str, ci: bool) -> None:
     print("\nRelease checklist")
     print(f"- version: {version}")
     print("- required files: present")
-    print("- Style Settings: 33 functional options")
+    print("- Style Settings: 27 functional options")
     print("- screenshots: dimensions verified")
     print(f"- release ZIP: {'present' if zip_path.exists() else 'not built yet'}")
     print("- target vault sync: skipped in CI" if ci else "- target vault sync: checked when target exists")

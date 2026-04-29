@@ -7,7 +7,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-33%20options-0d9488?style=flat-square)](#-스타일-설정-style-settings)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-27%20options-0d9488?style=flat-square)](#-스타일-설정-style-settings)
 
 ---
 
@@ -52,13 +52,13 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 - **자동 분할 회피** — callout·표·Mermaid·코드·이미지
 
 ### ⚙️ 사용자 커스터마이징
-- **Style Settings 33종** — 폰트·간격·컬러·보고서 모드 등 UI 토글
+- **Style Settings 27종** — 폰트·간격·컬러·보고서 모드 등 UI 토글
 - **사용자 클래스** — `.ogd-blur`·`.ogd-cover`·테이블 유틸리티·callout 14종
 - **시선 보호 모드** · **OS 다크 모드 자동 추종** · **CJK +0.5px 자동 보정**
 
 ### 📋 Style Settings (Style Settings)
 
-플러그인 설치 후 사이드바에서 토글로 즉시 적용. 전체 33개 옵션:
+플러그인 설치 후 사이드바에서 토글로 즉시 적용. 전체 27개 옵션:
 
 | 분류 | 대표 옵션 |
 |------|----------|
@@ -164,34 +164,15 @@ fi
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 33개 옵션을 사이드바 UI에서 토글할 수 있습니다.
+> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 27개 옵션을 사이드바 UI에서 토글할 수 있습니다.
 
 ---
 
 ## 4. 테마 신기능
 
-### ✨ v2.22.0 — Windows/Linux chrome visibility hotfix
+### ✨ v2.22.13 — Windows tab/button stable baseline
 
-윈도/리눅스 Obsidian에서 탭 + 좌/우 사이드바 토글 버튼이 거의 안 보이던 문제 수정. macOS Glass 정체성은 100% 유지하고, `body.mod-windows` 한정으로 솔리드 톤 + 보더 + 그림자를 적용하여 타이틀바 + 탭바 + 본문 3단 hierarchy로 분리.
-
-> 인터랙티브 미리보기: [docs/fixtures/v2.22-windows-chrome-preview.html](docs/fixtures/v2.22-windows-chrome-preview.html)
-
-### ✨ v2.21.0 — Canvas, Inputs & Modals (8종)
-
-Canvas frame · Canvas minimap · Slider · Dropdown · Number stepper · Notice action · Release notes modal · Code copy button.
-
-> 인터랙티브 미리보기: [docs/fixtures/v2.21-preview.html](docs/fixtures/v2.21-preview.html)
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Canvas frame (A1) | `.canvas-frame` 점선 보더 + 옅은 fill + floating chip 라벨 |
-| 2 | Canvas minimap (A2) | floating glass card + brand viewport 박스 |
-| 3 | Slider / range (D1) | 글래스 thumb + 그라디언트 fill track + focus 6px ring |
-| 4 | Dropdown select (D2) | `.dropdown` chrome + focus-visible 2px inset ring |
-| 5 | Number stepper (D3) | `input[type=number]` 글래스 + mono tabular-nums |
-| 6 | Notice action (C1) | `.notice-action` glass mini button + hover lift, `.mod-cta` brand fill |
-| 7 | Release notes modal (C2) | row glass hover + 버전 mono pill |
-| 8 | Code copy button (E2) | hover 노출 글래스 chip + `.copied` green pulse 600ms (reduce-motion 호환) |
+Windows Obsidian에서 상단 탭과 titlebar 버튼이 정상 표시되도록 검증된 `v1.8.66` CSS baseline으로 복원했습니다. 중간 테스트 빌드의 Windows chrome 강제 레이어는 제거했고, macOS/Windows 공통 데스크톱 탭 구조는 Obsidian 기본 동작에 맡깁니다.
 
 ---
 
@@ -278,7 +259,7 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | 6 | Inline tag pill v2 | 본문 `#tag` 도 tag-pane 알약 디자인으로 통일 |
 | 7 | Callout 다크 패리티 재감사 | note/warning/danger/success 다크 대비 보강 |
 | 8 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
-| 9 | docs/style-settings.md | 33개 옵션 풀 레퍼런스 문서 신설 |
+| 9 | docs/style-settings.md | Style Settings 풀 레퍼런스 문서 신설 |
 
 > 인터랙티브 미리보기: [docs/fixtures/v2.13-preview.html](docs/fixtures/v2.13-preview.html)
 
@@ -356,12 +337,11 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.22.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.22.13**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
-| **v2.22.0** | Windows/Linux chrome visibility hotfix — 타이틀바·탭바·본문 3단 hierarchy + 솔리드 활성 탭 + 사이드바 토글 보강 (macOS Glass 그대로) |
-| **v2.21.0** | Canvas, Inputs & Modals — Canvas frame · minimap · slider · dropdown · number stepper · notice action · release notes modal · code copy (8종) |
+| **v2.22.13** | Windows tab/button stable baseline — 검증된 v1.8.66 CSS baseline으로 복원, 중간 테스트 chrome 강제 레이어 제거 |
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
 | **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |
 | **v2.19.0** | Editor Depth, System Cleanup & Glass Surface Sweep — Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 · PDF · Media · Canvas · Floating status bar · Date/Color picker (10종) |
