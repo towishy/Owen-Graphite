@@ -4,6 +4,22 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.21.0] — 2026-04-29 — Canvas, Inputs & Modals (8 items, samples-first approved)
+
+### Added
+1. **Canvas group / frame (A1)** — `.canvas-frame` 점선 보더 + 옅은 카테고리 fill (라이트 teal / 다크 mint) + floating chip 라벨 (좌측 라인 X).
+2. **Canvas minimap (A2)** — `.canvas-minimap` floating glass card + brand viewport 박스.
+3. **Slider / range (D1)** — `input[type="range"]` 글래스 thumb (4px halo) + 그라디언트 fill track + active scale + focus-visible 6px ring.
+4. **Dropdown select (D2)** — `.dropdown`, `select.dropdown` chrome + focus-visible 2px inset ring.
+5. **Number stepper (D3)** — `input[type="number"]` 글래스 + mono tabular-nums + WebKit spinner hover opacity.
+6. **Notice action button (C1)** — `.notice .notice-action` 글래스 mini button + hover lift, `.mod-cta`는 brand fill.
+7. **Release notes / Help modal row (C2)** — `.release-notes-modal .release-notes-item` row glass hover + 버전 mono pill.
+8. **Code block copy button + success pulse (E2)** — `pre > button.copy-code-button` opacity 0→1 (hover 노출) + 글래스 chip + `.copied` green pulse 600ms (reduce-motion 호환).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.21-preview.html`](docs/fixtures/v2.21-preview.html) 사용자 승인 후 적용.
+- 좌측 라인 ban / Glass+Shadow core 정책 100% 준수 (full outline / inset ring / opacity 강조만 사용).
+
 ## [2.20.1] — 2026-04-29 — Hotfix: search-input double-ring
 
 ### Fixed

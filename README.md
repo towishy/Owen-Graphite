@@ -18,7 +18,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.20.1` (Obsidian 1.6.0+ · 현 베이스라인) |
+| **버전** | `2.21.0` (Obsidian 1.6.0+ · 현 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -169,6 +169,25 @@ fi
 ---
 
 ## 4. 테마 신기능
+
+### ✨ v2.21.0 — Canvas, Inputs & Modals (8종)
+
+Canvas frame · Canvas minimap · Slider · Dropdown · Number stepper · Notice action · Release notes modal · Code copy button.
+
+> 인터랙티브 미리보기: [docs/fixtures/v2.21-preview.html](docs/fixtures/v2.21-preview.html)
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Canvas frame (A1) | `.canvas-frame` 점선 보더 + 옅은 fill + floating chip 라벨 |
+| 2 | Canvas minimap (A2) | floating glass card + brand viewport 박스 |
+| 3 | Slider / range (D1) | 글래스 thumb + 그라디언트 fill track + focus 6px ring |
+| 4 | Dropdown select (D2) | `.dropdown` chrome + focus-visible 2px inset ring |
+| 5 | Number stepper (D3) | `input[type=number]` 글래스 + mono tabular-nums |
+| 6 | Notice action (C1) | `.notice-action` glass mini button + hover lift, `.mod-cta` brand fill |
+| 7 | Release notes modal (C2) | row glass hover + 버전 mono pill |
+| 8 | Code copy button (E2) | hover 노출 글래스 chip + `.copied` green pulse 600ms (reduce-motion 호환) |
+
+---
 
 ### ✨ v2.20.0 — Inputs & System Surfaces (5종)
 
@@ -331,10 +350,11 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.20.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.21.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.21.0** | Canvas, Inputs & Modals — Canvas frame · minimap · slider · dropdown · number stepper · notice action · release notes modal · code copy (8종) |
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
 | **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |
 | **v2.19.0** | Editor Depth, System Cleanup & Glass Surface Sweep — Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 · PDF · Media · Canvas · Floating status bar · Date/Color picker (10종) |

@@ -15601,3 +15601,352 @@ body.theme-dark :is(.is-drop-target-before, .is-drop-target-after) {
 }
 
 /* End of v2.20.0 — Inputs & System Surfaces ============================ */
+
+/* ======================================================================
+   v2.21.0 — Canvas, Inputs & Modals (8 items, samples-first approved)
+   - A1 Canvas frame · A2 Canvas minimap
+   - D1 Slider · D2 Dropdown · D3 Number stepper
+   - C1 Notice action · C2 Release notes modal
+   - E2 Code copy button + success pulse
+   좌측 라인 ban · Glass+Shadow core
+   ====================================================================== */
+
+/* --- A1 · Canvas group / frame ---------------------------------------- */
+.workspace-leaf-content[data-type="canvas"] .canvas-frame,
+.workspace-leaf-content[data-type="canvas"] .canvas-card-group,
+.workspace-leaf-content[data-type="canvas"] .canvas-node[data-type="group"] {
+  border-radius: 14px !important;
+  background: rgba(13, 148, 136, 0.06) !important;
+  border: 1.5px dashed rgba(13, 148, 136, 0.40) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+  box-shadow: none !important;
+}
+.workspace-leaf-content[data-type="canvas"] .canvas-frame .canvas-frame-text,
+.workspace-leaf-content[data-type="canvas"] .canvas-node[data-type="group"] > .canvas-node-label {
+  position: absolute !important;
+  top: -12px !important;
+  left: 12px !important;
+  padding: 3px 10px !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  color: #0d9488 !important;
+  border: 1px solid rgba(13, 148, 136, 0.40) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.10) !important;
+  width: auto !important;
+  height: auto !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="canvas"] .canvas-frame {
+  background: rgba(94, 234, 212, 0.08) !important;
+  border-color: rgba(94, 234, 212, 0.40) !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="canvas"] .canvas-frame .canvas-frame-text {
+  color: #5eead4 !important;
+  border-color: rgba(94, 234, 212, 0.40) !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+}
+
+/* --- A2 · Canvas minimap floating glass ------------------------------- */
+.workspace-leaf-content[data-type="canvas"] .canvas-minimap,
+.workspace-leaf-content[data-type="canvas"] .canvas-controls,
+.canvas-minimap-container {
+  border-radius: 10px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
+  backdrop-filter: blur(14px) saturate(150%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: var(--og-glass-shadow-lift,
+    0 4px 10px rgba(15, 23, 42, 0.10),
+    0 16px 36px rgba(15, 23, 42, 0.16)) !important;
+  padding: 8px !important;
+}
+.workspace-leaf-content[data-type="canvas"] .canvas-minimap-viewport,
+.canvas-minimap-viewport {
+  border: 1.5px solid #2563eb !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 2px var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+  cursor: move !important;
+}
+body.theme-dark .canvas-minimap-viewport {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.36) !important;
+}
+
+/* --- D1 · Slider / range input ---------------------------------------- */
+input[type="range"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  height: 22px !important;
+  cursor: pointer !important;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+}
+input[type="range"]::-moz-range-track {
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+}
+input[type="range"]::-moz-range-progress {
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, #2563eb, #0d9488) !important;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  margin-top: -6px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  border: 2px solid #2563eb !important;
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.20),
+    0 0 0 4px rgba(37, 99, 235, 0.10) !important;
+  cursor: grab !important;
+  transition: transform 0.12s ease, box-shadow 0.12s ease !important;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  border: 2px solid #2563eb !important;
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.20),
+    0 0 0 4px rgba(37, 99, 235, 0.10) !important;
+  cursor: grab !important;
+}
+input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.1); cursor: grabbing !important; }
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.20),
+    0 0 0 6px var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+body.theme-dark input[type="range"]::-webkit-slider-thumb,
+body.theme-dark input[type="range"]::-moz-range-thumb {
+  border-color: #60a5fa !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.50),
+    0 0 0 4px rgba(96, 165, 250, 0.16) !important;
+}
+
+/* --- D2 · Dropdown select chrome -------------------------------------- */
+.dropdown,
+select.dropdown {
+  border-radius: 8px !important;
+  padding: 6px 10px 6px 14px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  color: var(--text-normal) !important;
+}
+.dropdown:hover,
+select.dropdown:hover {
+  border-color: var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+.dropdown:focus-visible,
+select.dropdown:focus-visible {
+  border-color: #2563eb !important;
+  box-shadow: inset 0 0 0 2px var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+  outline: 0 !important;
+}
+body.theme-dark .dropdown:focus-visible,
+body.theme-dark select.dropdown:focus-visible {
+  border-color: #60a5fa !important;
+  box-shadow: inset 0 0 0 2px rgba(96, 165, 250, 0.36) !important;
+}
+
+/* --- D3 · Number stepper input ---------------------------------------- */
+input[type="number"] {
+  border-radius: 8px !important;
+  padding: 4px 8px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace !important;
+  font-variant-numeric: tabular-nums !important;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease !important;
+}
+input[type="number"]:hover {
+  border-color: var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+input[type="number"]:focus,
+input[type="number"]:focus-visible {
+  border-color: #2563eb !important;
+  box-shadow: inset 0 0 0 2px var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+  outline: 0 !important;
+}
+body.theme-dark input[type="number"]:focus,
+body.theme-dark input[type="number"]:focus-visible {
+  border-color: #60a5fa !important;
+  box-shadow: inset 0 0 0 2px rgba(96, 165, 250, 0.36) !important;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.6 !important;
+  cursor: pointer !important;
+  transition: opacity 0.12s ease !important;
+}
+input[type="number"]:hover::-webkit-inner-spin-button {
+  opacity: 1 !important;
+}
+
+/* --- C1 · Notice action button chrome --------------------------------- */
+.notice .notice-action,
+.notice button {
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  color: var(--text-normal) !important;
+  cursor: pointer !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease, border-color 0.12s ease !important;
+}
+.notice .notice-action:hover,
+.notice button:hover {
+  transform: translateY(-1px) !important;
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+  color: #2563eb !important;
+  border-color: var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+}
+.notice .notice-action.mod-cta,
+.notice .notice-action.mod-warning,
+.notice .notice-action.mod-primary {
+  background: #2563eb !important;
+  color: #fff !important;
+  border-color: #2563eb !important;
+}
+.notice .notice-action.mod-cta:hover {
+  background: #2563eb !important;
+  filter: brightness(1.1) !important;
+  color: #fff !important;
+}
+body.theme-dark .notice .notice-action:hover {
+  color: #93c5fd !important;
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.12) !important;
+}
+
+/* --- C2 · Release notes / Help modal row glass ------------------------ */
+.modal.mod-release-notes .release-notes-item,
+.modal.mod-release-notes .modal-content > div,
+.modal.mod-help .help-item,
+.release-notes-modal .release-notes-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  margin: 4px 8px !important;
+  transition: background 0.12s ease !important;
+}
+.modal.mod-release-notes .release-notes-item:hover,
+.release-notes-modal .release-notes-item:hover,
+.modal.mod-help .help-item:hover {
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+}
+.modal.mod-release-notes .release-notes-item .release-notes-version,
+.release-notes-modal .release-notes-item .version,
+.release-notes-modal .release-notes-item h3 {
+  flex: 0 0 auto !important;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--og-accent-pill-fg, #2563eb) !important;
+  padding: 2px 9px !important;
+  border-radius: 999px !important;
+  background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
+  border: 1px solid var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* --- E2 · Code block copy button + success pulse ---------------------- */
+.markdown-rendered pre,
+.markdown-source-view.mod-cm6 pre {
+  position: relative !important;
+}
+.markdown-rendered pre > button.copy-code-button,
+.markdown-source-view.mod-cm6 pre > button.copy-code-button {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  padding: 3px 9px 3px 7px !important;
+  border-radius: 6px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  color: var(--text-muted) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  opacity: 0 !important;
+  transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease,
+    color 0.15s ease, background 0.15s ease, border-color 0.15s ease !important;
+}
+.markdown-rendered pre:hover > button.copy-code-button,
+.markdown-source-view.mod-cm6 pre:hover > button.copy-code-button {
+  opacity: 1 !important;
+}
+.markdown-rendered pre > button.copy-code-button:hover {
+  color: #2563eb !important;
+  border-color: var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+}
+.markdown-rendered pre > button.copy-code-button:active,
+.markdown-rendered pre > button.copy-code-button.copied {
+  color: #10b981 !important;
+  border-color: rgba(16, 185, 129, 0.40) !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  animation: og-copy-pulse 0.6s ease !important;
+}
+@keyframes og-copy-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.50); }
+  100% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .markdown-rendered pre > button.copy-code-button:active,
+  .markdown-rendered pre > button.copy-code-button.copied {
+    animation: none !important;
+  }
+}
+
+/* End of v2.21.0 — Canvas, Inputs & Modals ============================= */
