@@ -1,43 +1,16 @@
 {
   "source": "theme.css",
-  "generated_at": "2026-04-29T19:09:41.520897+00:00",
+  "generated_at": "2026-04-29T19:10:14.166505+00:00",
   "rule_count": 1227,
   "finding_count": 84,
   "severity_counts": {
-    "critical": 9,
+    "critical": 1,
     "high": 2,
     "medium": 3,
-    "low": 12,
+    "low": 20,
     "info": 58
   },
   "findings": [
-    {
-      "severity": "critical",
-      "score": 56,
-      "line": 3712,
-      "selector": ".workspace-tab-header.is-active::before",
-      "context": "root",
-      "block": "v1.7.0 — UX, Accessibility, Print, Mobile improvements",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [
-        "position: absolute",
-        "left: 8px",
-        "right: 8px",
-        "bottom: 0",
-        "height: 2px",
-        "pointer-events: none"
-      ],
-      "critical_properties": [
-        "pointer-events: none"
-      ],
-      "decorative_properties": [
-        "background",
-        "border-radius"
-      ],
-      "summary": ".workspace-tab-header touched by position, left, right, bottom, height"
-    },
     {
       "severity": "critical",
       "score": 56,
@@ -99,61 +72,6 @@
       "summary": ".workspace-tab-header, .sidebar-toggle-button touched by width, height, min-width, min-height, transform"
     },
     {
-      "severity": "critical",
-      "score": 49,
-      "line": 6502,
-      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.21 — Ribbon glass icons",
-      "matched_selectors": [
-        ".sidebar-toggle-button",
-        ".workspace-ribbon",
-        ".side-dock-ribbon",
-        ".clickable-icon"
-      ],
-      "risky_properties": [
-        "position: absolute",
-        "inset: 2px 2px auto 2px",
-        "height: 45%",
-        "pointer-events: none"
-      ],
-      "critical_properties": [
-        "pointer-events: none"
-      ],
-      "decorative_properties": [
-        "background",
-        "border-radius"
-      ],
-      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by position, inset, height, pointer-events"
-    },
-    {
-      "severity": "critical",
-      "score": 44,
-      "line": 7976,
-      "selector": "body:not(.is-mobile) .workspace-tab-header::before, body:not(.is-mobile) .workspace-tab-header::after, body:not(.is-mobile) .workspace-tab-header-inner::before, body:not(.is-mobile) .workspace-tab-header-inner::after",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [
-        "display: none !important",
-        "width: 0 !important"
-      ],
-      "critical_properties": [
-        "display: none !important",
-        "width: 0 !important"
-      ],
-      "decorative_properties": [
-        "background",
-        "background-color",
-        "border",
-        "border-color",
-        "box-shadow"
-      ],
-      "summary": ".workspace-tab-header touched by display, width"
-    },
-    {
       "severity": "high",
       "score": 36,
       "line": 7139,
@@ -178,104 +96,6 @@
         "color"
       ],
       "summary": ".sidebar-toggle-button touched by width, height, transform, overflow"
-    },
-    {
-      "severity": "critical",
-      "score": 30,
-      "line": 2450,
-      "selector": ".workspace-ribbon, .workspace-tab-header-container, .status-bar, .titlebar, .copy-code-button, .markdown-rendered pre[class*=\"language-\"]::after",
-      "context": "@media print",
-      "block": "v1.8.65 — Footnotes section: keep at end, separate from body",
-      "matched_selectors": [
-        ".workspace-tab-header-container",
-        ".workspace-tab-header",
-        ".titlebar",
-        ".workspace-ribbon"
-      ],
-      "risky_properties": [
-        "display: none !important"
-      ],
-      "critical_properties": [
-        "display: none !important"
-      ],
-      "decorative_properties": [],
-      "summary": ".workspace-tab-header-container, .workspace-tab-header, .titlebar, .workspace-ribbon touched by display"
-    },
-    {
-      "severity": "critical",
-      "score": 27,
-      "line": 6689,
-      "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right::after, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right::after",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.25b — Exclude right sidebar toggle from glass",
-      "matched_selectors": [
-        ".sidebar-toggle-button"
-      ],
-      "risky_properties": [
-        "display: none !important"
-      ],
-      "critical_properties": [
-        "display: none !important"
-      ],
-      "decorative_properties": [],
-      "summary": ".sidebar-toggle-button touched by display"
-    },
-    {
-      "severity": "critical",
-      "score": 27,
-      "line": 7155,
-      "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.37 — macOS sidebar toggle reset",
-      "matched_selectors": [
-        ".sidebar-toggle-button"
-      ],
-      "risky_properties": [
-        "display: none !important"
-      ],
-      "critical_properties": [
-        "display: none !important"
-      ],
-      "decorative_properties": [],
-      "summary": ".sidebar-toggle-button touched by display"
-    },
-    {
-      "severity": "critical",
-      "score": 27,
-      "line": 8033,
-      "selector": "body:not(.is-mobile) .workspace-tab-header.is-active::before",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [
-        "display: none !important"
-      ],
-      "critical_properties": [
-        "display: none !important"
-      ],
-      "decorative_properties": [],
-      "summary": ".workspace-tab-header touched by display"
-    },
-    {
-      "severity": "critical",
-      "score": 26,
-      "line": 9481,
-      "selector": ".workspace-tab-header:not(.is-active)",
-      "context": "root",
-      "block": "1. Dark mode parity for v1.8.6x components",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [
-        "opacity: 0.78"
-      ],
-      "critical_properties": [
-        "opacity: 0.78"
-      ],
-      "decorative_properties": [],
-      "summary": ".workspace-tab-header touched by opacity"
     },
     {
       "severity": "medium",
@@ -338,6 +158,132 @@
       "critical_properties": [],
       "decorative_properties": [],
       "summary": ".workspace-tab-header, .sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by transform"
+    },
+    {
+      "severity": "low",
+      "score": 17,
+      "line": 3712,
+      "selector": ".workspace-tab-header.is-active::before",
+      "context": "root",
+      "block": "v1.7.0 — UX, Accessibility, Print, Mobile improvements",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "position: absolute",
+        "left: 8px",
+        "right: 8px",
+        "bottom: 0",
+        "height: 2px",
+        "pointer-events: none"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-radius"
+      ],
+      "summary": ".workspace-tab-header touched by position, left, right, bottom, height"
+    },
+    {
+      "severity": "low",
+      "score": 17,
+      "line": 6502,
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.21 — Ribbon glass icons",
+      "matched_selectors": [
+        ".sidebar-toggle-button",
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [
+        "position: absolute",
+        "inset: 2px 2px auto 2px",
+        "height: 45%",
+        "pointer-events: none"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-radius"
+      ],
+      "summary": ".sidebar-toggle-button, .workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by position, inset, height, pointer-events"
+    },
+    {
+      "severity": "low",
+      "score": 17,
+      "line": 6689,
+      "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right::after, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.25b — Exclude right sidebar toggle from glass",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".sidebar-toggle-button touched by display"
+    },
+    {
+      "severity": "low",
+      "score": 17,
+      "line": 7155,
+      "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.37 — macOS sidebar toggle reset",
+      "matched_selectors": [
+        ".sidebar-toggle-button"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".sidebar-toggle-button touched by display"
+    },
+    {
+      "severity": "low",
+      "score": 17,
+      "line": 7976,
+      "selector": "body:not(.is-mobile) .workspace-tab-header::before, body:not(.is-mobile) .workspace-tab-header::after, body:not(.is-mobile) .workspace-tab-header-inner::before, body:not(.is-mobile) .workspace-tab-header-inner::after",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "display: none !important",
+        "width: 0 !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "background-color",
+        "border",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by display, width"
+    },
+    {
+      "severity": "low",
+      "score": 17,
+      "line": 8033,
+      "selector": "body:not(.is-mobile) .workspace-tab-header.is-active::before",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by display"
     },
     {
       "severity": "low",
@@ -420,6 +366,23 @@
     {
       "severity": "low",
       "score": 16,
+      "line": 9481,
+      "selector": ".workspace-tab-header:not(.is-active)",
+      "context": "root",
+      "block": "1. Dark mode parity for v1.8.6x components",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [
+        "opacity: 0.78"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header touched by opacity"
+    },
+    {
+      "severity": "low",
+      "score": 16,
       "line": 9485,
       "selector": ".workspace-tab-header:not(.is-active):hover",
       "context": "root",
@@ -452,6 +415,26 @@
         "box-shadow"
       ],
       "summary": ".workspace-tab-header touched by overflow"
+    },
+    {
+      "severity": "low",
+      "score": 14,
+      "line": 2450,
+      "selector": ".workspace-ribbon, .workspace-tab-header-container, .status-bar, .titlebar, .copy-code-button, .markdown-rendered pre[class*=\"language-\"]::after",
+      "context": "@media print",
+      "block": "v1.8.65 — Footnotes section: keep at end, separate from body",
+      "matched_selectors": [
+        ".workspace-tab-header-container",
+        ".workspace-tab-header",
+        ".titlebar",
+        ".workspace-ribbon"
+      ],
+      "risky_properties": [
+        "display: none !important"
+      ],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-tab-header-container, .workspace-tab-header, .titlebar, .workspace-ribbon touched by display"
     },
     {
       "severity": "low",

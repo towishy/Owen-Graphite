@@ -85,7 +85,7 @@ DECORATIVE_PROPERTIES = {
 CRITICAL_VALUES = {
     "display": re.compile(r"\bnone\b", re.I),
     "visibility": re.compile(r"\bhidden\b|\bcollapse\b", re.I),
-    "opacity": re.compile(r"^(?:0(?:\.0+)?|0?\.0\d+)\b"),
+    "opacity": re.compile(r"^(?:0(?:\.0+)?|0?\.0\d+)(?![\d.])"),
     "height": re.compile(r"^0(?:px|rem|em|%)?\b", re.I),
     "width": re.compile(r"^0(?:px|rem|em|%)?\b", re.I),
     "max-height": re.compile(r"^0(?:px|rem|em|%)?\b", re.I),
@@ -238,6 +238,8 @@ def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]]) -> list[
     findings = []
     for rule in rules:
         selector_matches = matched_core_selectors(rule.selector)
+        is_pseudo = "::before" in rule.selector or "::after" in rule.selector
+        is_print_context = "@media print" in rule.context
         risky = []
         critical = []
         decorative = []
@@ -248,7 +250,7 @@ def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]]) -> list[
                 risky.append(f"{property_name}: {declaration.value}")
                 property_score += RISK_PROPERTIES[property_name]
                 value_pattern = CRITICAL_VALUES.get(property_name)
-                if value_pattern and value_pattern.search(declaration.value):
+                if value_pattern and value_pattern.search(declaration.value) and not is_pseudo and not is_print_context:
                     critical.append(f"{property_name}: {declaration.value}")
                     property_score += 10
             elif property_name in DECORATIVE_PROPERTIES:
@@ -259,6 +261,10 @@ def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]]) -> list[
         score = selector_score + property_score + min(len(selector_matches), 4)
         if any(label == "[role=tab]" for label, _ in selector_matches):
             score += 12
+        if is_pseudo and not critical:
+            score = min(score, 17)
+        if is_print_context and not critical:
+            score = min(score, 14)
         if not risky:
             severity = "info"
             score = selector_score + len(decorative)
