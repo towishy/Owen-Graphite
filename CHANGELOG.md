@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.6] — 2026-04-30 — Windows default chrome restoration
+
+### Fixed
+- Windows Obsidian에서 Owen Graphite 적용 시 상단 탭/버튼이 사라지고 왼쪽 Obsidian 아이콘만 보이던 문제의 root fix 적용.
+- EOF 복원 패치로 Windows/Linux에서 v2.22.0~v2.22.5의 솔리드 chrome 덮어쓰기를 무력화하고, v1.8.66에서 확인된 공통 데스크톱 탭 스타일을 다시 적용.
+- macOS Glass chrome은 그대로 유지하면서 Windows/Linux 탭/버튼은 `opacity`, `visibility`, text/icon color를 명시적으로 복원.
+
+### Preserved
+- macOS Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.5] — 2026-04-30 — Windows chrome rollback + conservative visibility only
 
 ### Fixed

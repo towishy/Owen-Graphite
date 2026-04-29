@@ -16540,3 +16540,183 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.5 — Windows chrome rollback + conservative visibility ==== */
+
+
+/* ============================================================
+   v2.22.6 — Windows/Linux v1.8.66 tab chrome restoration
+   - v1.8.66 showed tabs on Windows with the shared desktop tab styling.
+   - Keep macOS glass untouched; let Windows/Linux escape the failed v2.22.x
+     solid chrome overrides by restating the known-good tab surface rules.
+   - EOF additive patch; earlier blocks remain as historical context.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile),
+  body.mod-linux:not(.is-mobile) {
+    --titlebar-background: var(--background-secondary) !important;
+    --titlebar-background-focused: var(--background-secondary) !important;
+    --titlebar-text-color: var(--text-muted) !important;
+    --tab-container-background: var(--background-secondary) !important;
+    --tab-background-active: var(--background-primary) !important;
+    --tab-background-focused: var(--background-primary) !important;
+    --tab-outline-color: transparent !important;
+    --tab-outline-width: 0px !important;
+    --tab-text-color: var(--text-muted) !important;
+    --tab-text-color-focused: var(--text-normal) !important;
+    --tab-text-color-active: var(--text-normal) !important;
+    --tab-text-color-focused-active: var(--text-normal) !important;
+    --icon-color: var(--text-muted) !important;
+    --icon-color-hover: var(--text-normal) !important;
+    --icon-color-active: var(--text-normal) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.titlebar, .workspace-tab-header-container, .workspace-tab-header-container-inner),
+  body.mod-linux:not(.is-mobile) :is(.titlebar, .workspace-tab-header-container, .workspace-tab-header-container-inner) {
+    background: var(--background-secondary) !important;
+    background-color: var(--background-secondary) !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.workspace-tabs, .workspace-tab-container),
+  body.mod-linux:not(.is-mobile) :is(.workspace-tabs, .workspace-tab-container) {
+    background: var(--background-secondary) !important;
+    background-color: var(--background-secondary) !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  body.mod-windows:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner),
+  body.mod-linux:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 30px !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    box-shadow: none !important;
+    opacity: 0.78 !important;
+    visibility: visible !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]):is(:hover, :focus-within),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]):is(:hover, :focus-within) {
+    opacity: 1 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) {
+    background: var(--background-primary) !important;
+    color: var(--text-normal) !important;
+    box-shadow: inset 0 2px 0 0 var(--interactive-accent, #475569) !important;
+    opacity: 1 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 28px !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-inline-start-color: transparent !important;
+    border-inline-end-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--ogd-tab-glass-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    border-color: var(--ogd-tab-glass-border) !important;
+    border-bottom-color: var(--ogd-tab-glass-border-bottom) !important;
+    box-shadow: var(--ogd-tab-glass-shadow) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: var(--ogd-tab-glass-bg-hover) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-tab-glass-border-hover) !important;
+    box-shadow: var(--ogd-tab-glass-shadow-hover) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
+    display: inline-flex !important;
+    align-items: center !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--text-normal) !important;
+    font-weight: 600 !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(button, .clickable-icon, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-inner-close-button),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(button, .clickable-icon, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-inner-close-button) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    border: 0 !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(button, .clickable-icon, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-inner-close-button):hover,
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(button, .clickable-icon, .workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-inner-close-button):hover {
+    background: rgba(100, 116, 139, 0.10) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container :is(svg, .svg-icon),
+  body.mod-linux:not(.is-mobile) .workspace-tab-header-container :is(svg, .svg-icon),
+  body.mod-windows:not(.is-mobile) .titlebar :is(svg, .svg-icon),
+  body.mod-linux:not(.is-mobile) .titlebar :is(svg, .svg-icon) {
+    display: block !important;
+    color: currentColor !important;
+    stroke: currentColor !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* End of v2.22.6 — Windows/Linux v1.8.66 tab chrome restoration ======= */
