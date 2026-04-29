@@ -4,6 +4,28 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.0] — 2026-04-30 — Windows/Linux chrome visibility hotfix (samples-first approved)
+
+### Fixed
+- **윈도/리눅스 Obsidian에서 탭 + 좌/우 사이드바 토글 버튼이 거의 안 보이던 문제** 수정. 원인: macOS 기준 Glass(반투명 그라디언트 + `backdrop-filter: blur`)로 chrome 분리감을 만들었으나, 윈도/리눅스 Electron에서 `backdrop-filter`가 fallback되면 거의 순백 그라디언트가 동일 톤 컨테이너에 묻혀 형체 소실.
+
+### Added
+- `body.mod-windows` / `body:not(.mod-macos):not(.is-mobile)` 한정 솔리드 chrome 토큰 세트 도입(`--ogd-win-titlebar-*`, `--ogd-win-tabbar-*`, `--ogd-win-tab-*`, `--ogd-win-toggle-*`).
+  - **타이틀바**: 본문보다 진한 톤(라이트 `#e2e8f0` / 다크 `#0f1419`) + 1px 보더.
+  - **탭바**: 타이틀바보다 약간 밝은 톤(라이트 `#eef2f7` / 다크 `#1c2128`) — 3단 hierarchy.
+  - **활성 탭**: 솔리드(라이트 `#ffffff` / 다크 `#2c333d`) + 1px 보더 + soft shadow (카드처럼 들림).
+  - **비활성 탭**: 옅은 솔리드 배경 + 1px 보더 + opacity 0.78 → 0.95 완화.
+  - **사이드바 토글 (좌/우)**: 솔리드 배경 + 진한 보더 + 그림자, hover 시 톤 변경.
+- **blur fallback 가드** (`@supports not (backdrop-filter)`): 모든 OS의 backdrop-filter 미지원 환경에서도 동일한 솔리드 톤으로 chrome 가시성 보장.
+
+### Preserved
+- macOS Glass 정체성 100% 유지 (기본값 = 현재 룩, 변경 없음).
+- 좌측 라인 영구 밴 정책 / Glass+Shadow 코어 정책 위배 없음. 윈도/리눅스는 OS가 backdrop-filter를 일관 지원하지 않는 환경 특성상 "솔리드 + 그림자"로 표현(정책 § 적용 범위 예외 절차에 따른 핫픽스).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.22-windows-chrome-preview.html`](docs/fixtures/v2.22-windows-chrome-preview.html) 사용자 승인 후 적용.
+- EOF 추가 패치: 기존 셀렉터 수정 없음.
+
 ## [2.21.0] — 2026-04-29 — Canvas, Inputs & Modals (8 items, samples-first approved)
 
 ### Added

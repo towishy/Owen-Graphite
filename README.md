@@ -18,7 +18,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.21.0` (Obsidian 1.6.0+ · 현 베이스라인) |
+| **버전** | `2.22.0` (Obsidian 1.6.0+ · 현 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -169,6 +169,12 @@ fi
 ---
 
 ## 4. 테마 신기능
+
+### ✨ v2.22.0 — Windows/Linux chrome visibility hotfix
+
+윈도/리눅스 Obsidian에서 탭 + 좌/우 사이드바 토글 버튼이 거의 안 보이던 문제 수정. macOS Glass 정체성은 100% 유지하고, `body.mod-windows` 한정으로 솔리드 톤 + 보더 + 그림자를 적용하여 타이틀바 + 탭바 + 본문 3단 hierarchy로 분리.
+
+> 인터랙티브 미리보기: [docs/fixtures/v2.22-windows-chrome-preview.html](docs/fixtures/v2.22-windows-chrome-preview.html)
 
 ### ✨ v2.21.0 — Canvas, Inputs & Modals (8종)
 
@@ -350,10 +356,11 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.21.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.22.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.0** | Windows/Linux chrome visibility hotfix — 타이틀바·탭바·본문 3단 hierarchy + 솔리드 활성 탭 + 사이드바 토글 보강 (macOS Glass 그대로) |
 | **v2.21.0** | Canvas, Inputs & Modals — Canvas frame · minimap · slider · dropdown · number stepper · notice action · release notes modal · code copy (8종) |
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
 | **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |

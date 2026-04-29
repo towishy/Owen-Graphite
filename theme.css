@@ -15950,3 +15950,190 @@ body.theme-dark .notice .notice-action:hover {
 }
 
 /* End of v2.21.0 — Canvas, Inputs & Modals ============================= */
+
+
+/* ============================================================
+   v2.22.0 — Windows/Linux chrome visibility hotfix
+   - macOS Glass identity는 100% 유지 (기본값 = 현재 그대로)
+   - body.mod-windows / body:not(.mod-macos) 한정으로 솔리드 톤 +
+     보더 + 그림자를 강화하여 타이틀바 + 탭바 + 본문 3단 톤 분리
+   - blur fallback 가드(@supports not backdrop-filter) 포함
+   - 좌측 라인 정책 / Glass+Shadow 정책 위배 없음
+     (윈도는 OS가 backdrop-filter를 일관 지원하지 않아 솔리드 fallback)
+   - EOF 추가 패치: 기존 셀렉터 수정 없음
+   ============================================================ */
+
+/* ----- 1) Windows / non-macOS desktop only — 솔리드 chrome ----- */
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile),
+  body:not(.mod-macos):not(.is-mobile) {
+    /* chrome 토큰 (Style Settings에서 추후 override 가능) */
+    --ogd-win-titlebar-bg: #e2e8f0;
+    --ogd-win-titlebar-border: rgba(100, 116, 139, 0.22);
+    --ogd-win-titlebar-text: #334155;
+    --ogd-win-tabbar-bg: #eef2f7;
+    --ogd-win-tabbar-border: rgba(100, 116, 139, 0.18);
+    --ogd-win-tab-bg-inactive: rgba(255, 255, 255, 0.55);
+    --ogd-win-tab-border-inactive: rgba(100, 116, 139, 0.22);
+    --ogd-win-tab-bg-active: #ffffff;
+    --ogd-win-tab-border-active: rgba(100, 116, 139, 0.40);
+    --ogd-win-tab-shadow-active: 0 1px 3px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(15, 23, 42, 0.06);
+    --ogd-win-tab-fg-inactive: #475569;
+    --ogd-win-tab-fg-active: #0f172a;
+    --ogd-win-toggle-bg: #ffffff;
+    --ogd-win-toggle-border: rgba(100, 116, 139, 0.45);
+    --ogd-win-toggle-shadow: 0 1px 2px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --ogd-win-toggle-fg: #334155;
+  }
+
+  body.mod-windows:not(.is-mobile).theme-dark,
+  body:not(.mod-macos):not(.is-mobile).theme-dark {
+    --ogd-win-titlebar-bg: #0f1419;
+    --ogd-win-titlebar-border: rgba(203, 213, 225, 0.10);
+    --ogd-win-titlebar-text: #cbd5e1;
+    --ogd-win-tabbar-bg: #1c2128;
+    --ogd-win-tabbar-border: rgba(203, 213, 225, 0.08);
+    --ogd-win-tab-bg-inactive: rgba(30, 41, 59, 0.55);
+    --ogd-win-tab-border-inactive: rgba(203, 213, 225, 0.12);
+    --ogd-win-tab-bg-active: #2c333d;
+    --ogd-win-tab-border-active: rgba(203, 213, 225, 0.22);
+    --ogd-win-tab-shadow-active: 0 1px 3px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.30);
+    --ogd-win-tab-fg-inactive: #94a3b8;
+    --ogd-win-tab-fg-active: #f8fafc;
+    --ogd-win-toggle-bg: #2c333d;
+    --ogd-win-toggle-border: rgba(203, 213, 225, 0.22);
+    --ogd-win-toggle-shadow: 0 1px 3px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    --ogd-win-toggle-fg: #cbd5e1;
+  }
+
+  /* Titlebar (윈도/리눅스에서 항상 노출되는 OS 프레임 영역) */
+  body.mod-windows:not(.is-mobile) .titlebar,
+  body:not(.mod-macos):not(.is-mobile) .titlebar {
+    background: var(--ogd-win-titlebar-bg) !important;
+    border-bottom: 1px solid var(--ogd-win-titlebar-border) !important;
+    color: var(--ogd-win-titlebar-text) !important;
+  }
+  body.mod-windows:not(.is-mobile) .titlebar-text,
+  body:not(.mod-macos):not(.is-mobile) .titlebar-text {
+    color: var(--ogd-win-titlebar-text) !important;
+  }
+
+  /* 탭바 컨테이너 — 타이틀바와 별도 톤으로 분리 */
+  body.mod-windows:not(.is-mobile) .workspace-tab-header-container,
+  body.mod-windows:not(.is-mobile) .mod-root .workspace-tab-header-container,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container,
+  body:not(.mod-macos):not(.is-mobile) .mod-root .workspace-tab-header-container {
+    background: var(--ogd-win-tabbar-bg) !important;
+    border-bottom: 1px solid var(--ogd-win-tabbar-border) !important;
+  }
+
+  /* 비활성 탭 — 솔리드 옅은 배경 + 보더 + 글자색 보강 + opacity 완화 */
+  body.mod-windows:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+    background: var(--ogd-win-tab-bg-inactive) !important;
+    border: 1px solid var(--ogd-win-tab-border-inactive) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+  body.mod-windows:not(.is-mobile) .workspace-tab-header:not(.is-active),
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header:not(.is-active) {
+    opacity: 0.95 !important;
+  }
+  body.mod-windows:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title {
+    color: var(--ogd-win-tab-fg-inactive) !important;
+  }
+
+  /* 활성 탭 — 솔리드 흰/다크 + 1px 보더 + 부드러운 그림자 (카드처럼 들림) */
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--ogd-win-tab-bg-active) !important;
+    border: 1px solid var(--ogd-win-tab-border-active) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: var(--ogd-win-tab-shadow-active) !important;
+  }
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--ogd-win-tab-fg-active) !important;
+    font-weight: 600 !important;
+  }
+
+  /* 사이드바 토글 버튼 (좌/우) — 솔리드 톤 + 진한 보더 + 그림자 */
+  body.mod-windows:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right),
+  body:not(.mod-macos):not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    background: var(--ogd-win-toggle-bg) !important;
+    border: 1px solid var(--ogd-win-toggle-border) !important;
+    box-shadow: var(--ogd-win-toggle-shadow) !important;
+    color: var(--ogd-win-toggle-fg) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  body.mod-windows:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover,
+  body:not(.mod-macos):not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    background: rgba(100, 116, 139, 0.10) !important;
+    border-color: rgba(100, 116, 139, 0.55) !important;
+    transform: none !important;
+  }
+  body.mod-windows:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover,
+  body:not(.mod-macos):not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    background: rgba(203, 213, 225, 0.10) !important;
+    border-color: rgba(203, 213, 225, 0.32) !important;
+  }
+
+  /* v1.8.25b에서 mod-right 토글을 transparent 처리한 룰을 윈도/리눅스에서만 환원 */
+  body.mod-windows:not(.is-mobile) .sidebar-toggle-button.mod-right,
+  body:not(.mod-macos):not(.is-mobile) .sidebar-toggle-button.mod-right {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+  }
+
+  /* 활성 탭 underline (v2.12 #1) — 윈도 솔리드 활성 탭과 시각적 충돌 방지 */
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active::after,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header.is-active::after {
+    display: none !important;
+  }
+  body.mod-windows:not(.is-mobile) .workspace-tab-header.is-active::before,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header.is-active::before {
+    display: none !important;
+  }
+}
+
+/* ----- 2) blur fallback 가드 — backdrop-filter 미지원 환경 전반 ----- */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (min-width: 701px) {
+    body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
+      background: #ffffff !important;
+      border: 1px solid rgba(100, 116, 139, 0.40) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+    }
+    body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner {
+      background: #2c333d !important;
+      border-color: rgba(203, 213, 225, 0.22) !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.30) !important;
+    }
+    body:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+      background: rgba(255, 255, 255, 0.55) !important;
+      border: 1px solid rgba(100, 116, 139, 0.22) !important;
+    }
+    body:not(.is-mobile).theme-dark .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+      background: rgba(30, 41, 59, 0.55) !important;
+      border-color: rgba(203, 213, 225, 0.12) !important;
+    }
+    body:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+      background: #ffffff !important;
+      border: 1px solid rgba(100, 116, 139, 0.45) !important;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.10) !important;
+    }
+    body:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+      background: #2c333d !important;
+      border-color: rgba(203, 213, 225, 0.22) !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45) !important;
+    }
+  }
+}
+
+/* End of v2.22.0 — Windows/Linux chrome visibility hotfix ============== */
