@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.6.1 — Drop Settings nav left-accent (policy: no left bar on menu active states)
+ * Version 2.6.2 — Fix Style Settings YAML parse error (quoted backtick descriptions)
  * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -123,13 +123,13 @@ settings:
   -
     id: ogd-folder-color-code
     title: 폴더 컬러 코드 (PARA 친화)
-    description: File Explorer 최상위 폴더 이름(`01-`, `02-`, `Inbox`, `Projects`, `Areas`, `Resources`, `Archive` 등)에 좌측 액센트 컬러를 자동 적용합니다.
+    description: "File Explorer 최상위 폴더 이름(`01-`, `02-`, `Inbox`, `Projects`, `Areas`, `Resources`, `Archive` 등)에 좌측 액센트 컬러를 자동 적용합니다."
     type: class-toggle
     default: false
   -
     id: ogd-inline-code-categories
     title: 인라인 코드 카테고리 색
-    description: `key:`, `cmd:`, `path:`, `env:` 접두어가 붙은 인라인 코드를 카테고리별 색으로 구분합니다.
+    description: "`key:`, `cmd:`, `path:`, `env:` 접두어가 붙은 인라인 코드를 카테고리별 색으로 구분합니다."
     type: class-toggle
     default: false
   -

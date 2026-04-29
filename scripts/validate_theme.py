@@ -187,7 +187,26 @@ def style_settings_count() -> None:
     settings_match = re.search(r"/\* @settings(?P<body>.*?)\*/", theme, flags=re.S)
     if not settings_match:
         fail("theme.css missing Style Settings block")
-    blocks = re.split(r"\n\s*-\s*\n", settings_match.group("body"))
+    body = settings_match.group("body")
+    # YAML lint: every `description:` value that begins with a YAML-special
+    # character (backtick, *, &, !, |, >, %, @) must be quoted, otherwise
+    # the Style Settings plugin (js-yaml) raises bad-indentation errors.
+    for lineno, line in enumerate(body.splitlines(), start=1):
+        m = re.match(r"\s*description:\s*(.+)$", line)
+        if not m:
+            continue
+        value = m.group(1).strip()
+        if not value:
+            continue
+        # Already quoted -> ok.
+        if value.startswith(('"', "'")):
+            continue
+        if value[0] in "`*&!|>%@":
+            fail(
+                f"@settings description starts with YAML-special char {value[0]!r} "
+                f"and must be quoted (line {lineno} inside @settings block): {value[:60]}"
+            )
+    blocks = re.split(r"\n\s*-\s*\n", body)
     option_ids = []
     for block in blocks:
         id_match = re.search(r"^\s*id:\s*([a-zA-Z0-9_-]+)", block, flags=re.M)
@@ -202,7 +221,7 @@ def style_settings_count() -> None:
         fail(f"expected 31 Style Settings options, got {option_count}")
     if "31개 옵션" not in readme or "31%20options" not in readme:
         fail("README missing 31 options text/badge")
-    ok(f"Style Settings option count={option_count}")
+    ok(f"Style Settings option count={option_count} (YAML lint clean)")
 
 
 def png_dimensions() -> None:

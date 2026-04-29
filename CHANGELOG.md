@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.2] — 2026-04-29 — Fix Style Settings YAML parse error
+
+### Fixed
+- **Style Settings 파싱 에러** (`YAMLException: bad indentation of a mapping entry`) — v2.6.0에서 추가한 `ogd-folder-color-code`, `ogd-inline-code-categories` 옵션의 `description:` 값이 백틱(\`)으로 시작해 js-yaml 파서가 mapping entry로 오인식. 해당 두 description을 이중따옴표로 감싸 복구. 이 에러로 인해 전체 Style Settings UI가 렌더 실패 → PDF 헤더 설정 등 모든 옵션 UI 불가 상태였음.
+
+### Added
+- **YAML lint guard** in `scripts/validate_theme.py` — `@settings` 블록의 description 값이 YAML-special 문자(\` \* & ! | > % @)로 시작하면 검증 실패로 조기 차단.
+
+### Notes
+- 옵션 수 31개 유지. CSS 세렉터는 변경 없음.
+
 ## [2.6.1] — 2026-04-29 — Drop Settings nav left-accent
 
 ### Removed
