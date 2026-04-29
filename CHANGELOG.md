@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.1] — 2026-04-29 — Hotfix: revert v2.9.0 chrome overhaul
+
+### Fixed
+- **워크스페이스 레이아웃 깨짐 긴급 복구.** v2.9.0의 광범위한 `!important` chrome 룰 + `backdrop-filter` 적용이 사이드바/탭/툴바 레이아웃을 깨뜨려 EOF v2.9.0 패치 블록 전체 제거.
+- v2.7.0–v2.8.0 동작으로 복원. Style Settings UI / 옵션 33개 / 검증기 통과 그대로 유지.
+
+### Notes
+- 영구 디자인 정책(메인 = Glass + Shadow, chrome 좌측 세로 라인 영구 금지)은 보존. 다음 패치부터 셀렉터 단위로 *최소 범위*에서 점진 적용 예정.
+- v2.9.0 추가 기능(Tag pane, Mobile drawer, Calendar, Search 토글 등)도 동일하게 점진 재도입 예정.
+
 ## [2.9.0] — 2026-04-29 — Left-line Permanent Ban + Glass/Shadow + Panels/Mobile + Navigation + Authoring Pack
 
 ### Design Policy (PERMANENT)
