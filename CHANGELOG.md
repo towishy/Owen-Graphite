@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.3] — 2026-04-29 — Step 2: Outline / Bookmarks active 좌측 라인 제거
+
+### Changed (chrome 좌측 라인 점진 적용 · 2단계)
+- **Outline 패널** (`.outline .tree-item-self.is-active`) 좌측 세로 라인 제거 + Glass+Shadow 적용.
+- **Bookmarks 패널** (`.bookmarks-view .tree-item-self.is-active`) 동일 적용.
+- v2.9.2와 동일 패턴: 반투명 틴트 + `backdrop-filter: blur(8px)` + 다층 box-shadow + 둘레 1px border + radius 6px.
+- Backlink / recent / tag / settings nav / notice / modal 등은 **다음 단계**에서 처리 (점진 적용 유지).
+
 ## [2.9.2] — 2026-04-29 — Step 1: File explorer active 좌측 라인 제거 (Glass+Shadow)
 
 ### Changed (chrome 좌측 라인 점진 적용 · 1단계)
