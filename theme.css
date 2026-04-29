@@ -16669,3 +16669,115 @@ body:not(.mod-macos) :is(.workspace-tab-header-container, .titlebar) :is(svg, .s
 }
 
 /* End of v2.22.3 — Windows viewport-independent tabbar rescue ========== */
+
+
+/* ============================================================
+   v2.22.4 — Windows workspace-tabs layout correction
+   - v2.22.3의 넓은 display:flex 보강으로 workspace-tabs가 row화될 수 있는 문제 보정
+   - Obsidian 기본 구조: workspace-tabs = column, header = auto, tab-container = flex body
+   - 이후 탭/버튼 가시성은 레이아웃을 깨지 않는 범위에서만 보강
+   ============================================================ */
+
+body.mod-windows :is(.workspace-tabs, .mod-root .workspace-tabs),
+body.mod-linux :is(.workspace-tabs, .mod-root .workspace-tabs),
+body:not(.mod-macos) :is(.workspace-tabs, .mod-root .workspace-tabs) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  background: var(--tab-container-background, #d1d9e6) !important;
+  color: var(--tab-text-color, #475569) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.mod-windows :is(.workspace-tab-header-container, .workspace-tab-header-container-inner),
+body.mod-linux :is(.workspace-tab-header-container, .workspace-tab-header-container-inner),
+body:not(.mod-macos) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  min-height: 36px !important;
+  width: 100% !important;
+  overflow: visible !important;
+  background: var(--tab-container-background, #d1d9e6) !important;
+  color: var(--tab-text-color, #475569) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.mod-windows .workspace-tab-container,
+body.mod-linux .workspace-tab-container,
+body:not(.mod-macos) .workspace-tab-container {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+body.mod-windows :is(.workspace-tab-header-container-inner, .workspace-tab-header-spacer),
+body.mod-linux :is(.workspace-tab-header-container-inner, .workspace-tab-header-spacer),
+body:not(.mod-macos) :is(.workspace-tab-header-container-inner, .workspace-tab-header-spacer) {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+body.mod-windows .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+body.mod-linux .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+body:not(.mod-macos) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+  flex: 0 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  min-width: 36px !important;
+  max-width: 240px !important;
+  min-height: 30px !important;
+  height: 30px !important;
+  margin: 0 3px !important;
+  overflow: hidden !important;
+  color: var(--tab-text-color, #475569) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.mod-windows .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]),
+body.mod-linux .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]),
+body:not(.mod-macos) .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) {
+  color: var(--tab-text-color-active, #0f172a) !important;
+}
+
+body.mod-windows .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-inner-title),
+body.mod-linux .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-inner-title),
+body:not(.mod-macos) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-inner-title) {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.mod-windows :is(.titlebar, .titlebar-button-container),
+body.mod-linux :is(.titlebar, .titlebar-button-container),
+body:not(.mod-macos) :is(.titlebar, .titlebar-button-container) {
+  flex-direction: row !important;
+  align-items: center !important;
+  min-height: 30px !important;
+  color: var(--titlebar-text-color, #1e293b) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.mod-windows.theme-dark :is(.workspace-tabs, .mod-root .workspace-tabs, .workspace-tab-header-container, .workspace-tab-header-container-inner),
+body.mod-linux.theme-dark :is(.workspace-tabs, .mod-root .workspace-tabs, .workspace-tab-header-container, .workspace-tab-header-container-inner),
+body:not(.mod-macos).theme-dark :is(.workspace-tabs, .mod-root .workspace-tabs, .workspace-tab-header-container, .workspace-tab-header-container-inner) {
+  background: var(--tab-container-background, #14181f) !important;
+  color: var(--tab-text-color, #cbd5e1) !important;
+}
+
+/* End of v2.22.4 — Windows workspace-tabs layout correction ============ */

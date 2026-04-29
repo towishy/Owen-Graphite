@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.4] — 2026-04-30 — Windows workspace-tabs layout correction
+
+### Fixed
+- v2.22.3 적용 후 Windows 상단에서 왼쪽 Obsidian 아이콘만 보이고 탭/버튼이 계속 보이지 않는 문제를 보정.
+- 원인 후보: v2.22.3의 넓은 `display:flex` 복구가 `.workspace-tabs`를 기본 column 레이아웃이 아닌 row 흐름으로 만들 수 있어, 탭바/본문 레이아웃이 깨지는 케이스.
+- Windows/non-macOS 한정으로 `.workspace-tabs`는 `flex-direction: column`, `.workspace-tab-header-container`는 auto header, `.workspace-tab-container`는 flex body로 되돌림.
+
+### Preserved
+- macOS는 `body.mod-macos` 제외로 기존 Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.3] — 2026-04-30 — Windows viewport-independent tabbar rescue
 
 ### Fixed
