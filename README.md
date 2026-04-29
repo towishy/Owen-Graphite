@@ -18,7 +18,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.18.0` (Obsidian 1.6.0+ · 현 베이스라인) |
+| **버전** | `2.20.0` (Obsidian 1.6.0+ · 현 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -170,6 +170,43 @@ fi
 
 ## 4. 테마 신기능
 
+### ✨ v2.20.0 — Inputs & System Surfaces (5종)
+
+Toggle switch · Search input + chips · Community cards · Pane title count badges · Drop snap target hint.
+
+> 인터랙티브 미리보기: [docs/fixtures/v2.20-preview.html](docs/fixtures/v2.20-preview.html)
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Toggle switch glass (F3) | `.checkbox-container` glass track + floating thumb |
+| 2 | Search input + chips (F1) | glass pill + focus 3px ring + active filter pill |
+| 3 | Community cards (E4) | hover lift + installed green pill |
+| 4 | Pane title count badges (D2) | outline/backlinks/outgoing/tag mono pill 통일 |
+| 5 | Drop snap target hint (G1) | 전체 둘레 dashed outline (좌측 라인 제거) |
+
+---
+
+### ✨ v2.19.0 — Editor Depth, System Cleanup & Glass Surface Sweep (10종)
+
+Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 + PDF · Media · Canvas · Floating status bar · Date/Color picker.
+
+> 인터랙티브 미리보기: [docs/fixtures/v2.19-preview.html](docs/fixtures/v2.19-preview.html)
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Task checkbox glyphs (B4) | `[ ]` `[x]` `[/]` `[?]` `[!]` `[>]` `[-]` 7종 색별 매핑 |
+| 2 | Heading anchor copy hint (B5) | H1–H6 hover 시 `⎘` fade-in 커틀 힌트 |
+| 3 | Templater suggestion glass (C1) | popup blur(14) + lift shadow |
+| 4 | Nested tag pill (C5) | 계층 세그먼트 그라디언트 + word-break 안정화 |
+| 5 | Token migration v2 (D2) | `--og-accent-pill-{bg,fg,border}` `--og-glass-bg-strong` 신규 |
+| 6 | PDF viewer chrome (A1) | toolbar/sidebar 글래스 + 활성 페이지 accent ring |
+| 7 | Media player chrome (A2) | video/audio embed + native audio chrome 글래스 |
+| 8 | Canvas node cards (B1) | hover lift + `.is-focused` ring (좌측 라인 X) |
+| 9 | Floating status bar (D1) | status bar 부유 + word count accent pill |
+| 10 | Date/Color picker (C3) | flatpickr/daterangepicker/color picker 글래스 통일 |
+
+---
+
 ### ✨ v2.18.0 — All-A Surface Sweep (5종)
 
 Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar separator · Modal close (×) 일괄 정비.
@@ -294,10 +331,12 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.18.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.20.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |
+| **v2.19.0** | Editor Depth, System Cleanup & Glass Surface Sweep — Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 · PDF · Media · Canvas · Floating status bar · Date/Color picker (10종) |
 | **v2.18.0** | All-A Surface Sweep — Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar separator · Modal close (×) |
 | **v2.17.0** | Surface Gaps & Tokenization — Scrollbar polish · Empty state 일러스트 · Wiki-link unresolved 톤 · Calendar today/active · CSS 토큰화 v2 |
 | **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |

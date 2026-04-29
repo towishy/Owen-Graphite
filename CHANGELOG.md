@@ -4,6 +4,37 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.20.0] — 2026-04-29 — Inputs & System Surfaces (5 items, samples-first approved)
+
+### Added
+1. **Toggle switch glass (F3)** — `.checkbox-container` 글래스 track + floating thumb (떠 있는 그림자), `is-enabled`는 accent fill + ring (좌측 라인 X).
+2. **Search input + filter chips (F1)** — `.search-input-container` glass pill + `:focus-within` 3px brand ring + active toggle pill 통일.
+3. **Community plugins / themes cards (E4)** — `.community-item` 글래스 카드 + hover lift + `mod-installed` green pill.
+4. **Pane title count badges (D2)** — outline/backlinks/outgoing/tag 카운트를 mono pill로 통일 (brand/teal/amber 카테고리별 색).
+5. **Drop snap target hint (G1)** — `.is-drop-target`, `.is-drop-target-before/after` 전체 둘레 dashed outline + 얙은 brand fill (좌측 라인 패턴 완전 제거).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.20-preview.html`](docs/fixtures/v2.20-preview.html) 사용자 승인 후 적용.
+- v2.19.0 D2 토큰(`--og-accent-pill-*`, `--og-glass-bg-strong`) 적극 재사용.
+
+## [2.19.0] — 2026-04-29 — Editor Depth, System Cleanup & Glass Surface Sweep (10 items, samples-first approved)
+
+### Added
+1. **Task checkbox custom glyphs (B4)** — Tasks/Projects 컨벤션 7종(`[ ]` `[x]` `[/]` `[?]` `[!]` `[>]` `[-]`) 색별 매핑: 완료=green, 진행=accent split, 질문=amber, 중요=rose, 액션=purple, 취소=mute strikethrough.
+2. **Heading anchor copy hint (B5)** — H1–H6 hover 시 커틀 아이콘 `⎘` fade-in (v2.14 `#` 해시태그 결합). reduce-motion 안전망.
+3. **Templater suggestion glass (C1)** — `.suggestion-container.mod-templater`, `.menu.templater-menu` 반투명 + blur(14) + lift shadow (커맨드 팔레트 패턴 재사용).
+4. **Nested tag pill hierarchy (C5)** — `a.tag[href*="/"]` 세그먼트 그라디언트 + word-break 안정화.
+5. **Token migration Phase 1 (D2)** — `--og-accent-pill-{bg,fg,border}` `--og-glass-bg-strong` 신규 토큰 도입 (사용자 override 용이).
+6. **PDF viewer chrome (A1)** — `.pdf-toolbar`, `.pdf-sidebar`, `.pdf-thumbnail-view` 글래스 카드 + lift shadow + 8px inset margin. 활성 페이지 accent ring (좌측 라인 X).
+7. **Audio / Video player chrome (A2)** — `.video-embed`, `.media-embed`, `audio` chrome wrapper 반투명 + blur(12) + soft shadow.
+8. **Canvas node cards glass (B1)** — `.canvas-node` 반투명 fill + blur(8) + 2단 shadow, hover lift / `.is-focused` ring (좌측 라인 X). `.canvas-edge-label` pill 통일.
+9. **Floating glass status bar (D1)** — `.app-container .status-bar` 자체를 floating glass bar로 (8px inset margin), word count는 accent pill.
+10. **Date / Color picker popover (C3)** — `.flatpickr-calendar`, `.daterangepicker`, color picker 글래스 카드 통일. today=14% / selected=full accent + lift shadow.
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.19-preview.html`](docs/fixtures/v2.19-preview.html) 사용자 승인 후 적용.
+- 좌측 라인 영구 밴 + Glass+Shadow 3종세트 정책 전역 준수.
+
 ## [2.18.0] — 2026-04-29 — All-A Surface Sweep (5 items, samples-first approved)
 
 ### Added

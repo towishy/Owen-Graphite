@@ -14992,3 +14992,580 @@ body.theme-dark .modal-container .modal-close-button:hover {
 }
 
 /* End of v2.18.0 — All-A Surface Sweep ================================= */
+
+/* ======================================================================
+   v2.19.0 — Editor Depth, System Cleanup & Glass Surface Sweep (10 items)
+   - B4 Task checkbox glyphs · B5 Heading anchor copy · C1 Templater glass
+   - C5 Nested tag pill · D2 Token migration (chrome core)
+   - A1 PDF chrome · A2 Media controls · B1 Canvas nodes
+   - D1 Floating status bar · C3 Date/Color picker popover
+   Samples-first approved · 좌측 라인 ban · Glass+Shadow core
+   ====================================================================== */
+
+/* --- B4 · Task checkbox custom glyphs (Tasks/Projects convention) ----- */
+ul.contains-task-list .task-list-item-checkbox,
+.markdown-rendered ul.contains-task-list input[type="checkbox"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 4px !important;
+  border: 1.5px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  background: var(--background-primary) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  cursor: pointer !important;
+  position: relative !important;
+  transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.12s ease !important;
+  vertical-align: -3px !important;
+}
+ul.contains-task-list .task-list-item-checkbox:hover {
+  border-color: #2563eb !important;
+  transform: scale(1.05);
+}
+/* completed [x]/[X] */
+ul.contains-task-list .task-list-item-checkbox:checked,
+.markdown-rendered li[data-task="x"] > .task-list-item-checkbox,
+.markdown-rendered li[data-task="X"] > .task-list-item-checkbox {
+  background: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #fff !important;
+}
+ul.contains-task-list .task-list-item-checkbox:checked::after {
+  content: "✓"; color: #fff; font-size: 11px; font-weight: 800;
+}
+/* in-progress [/] */
+.markdown-rendered li[data-task="/"] > .task-list-item-checkbox {
+  background: linear-gradient(135deg, #2563eb 50%, transparent 50%) !important;
+  border-color: #2563eb !important;
+}
+/* question [?] */
+.markdown-rendered li[data-task="?"] > .task-list-item-checkbox {
+  background: rgba(217, 119, 6, 0.18) !important;
+  border-color: #d97706 !important;
+  color: #d97706 !important;
+}
+.markdown-rendered li[data-task="?"] > .task-list-item-checkbox::after { content: "?"; }
+/* important [!] */
+.markdown-rendered li[data-task="!"] > .task-list-item-checkbox {
+  background: rgba(244, 63, 94, 0.18) !important;
+  border-color: #f43f5e !important;
+  color: #f43f5e !important;
+}
+.markdown-rendered li[data-task="!"] > .task-list-item-checkbox::after { content: "!"; }
+/* next-action [>] */
+.markdown-rendered li[data-task=">"] > .task-list-item-checkbox {
+  background: rgba(147, 51, 234, 0.18) !important;
+  border-color: #9333ea !important;
+  color: #9333ea !important;
+}
+.markdown-rendered li[data-task=">"] > .task-list-item-checkbox::after { content: "→"; }
+/* cancelled [-] */
+.markdown-rendered li[data-task="-"] > .task-list-item-checkbox {
+  background: var(--text-muted) !important;
+  border-color: var(--text-muted) !important;
+  color: #fff !important;
+}
+.markdown-rendered li[data-task="-"] > .task-list-item-checkbox::after { content: "−"; }
+.markdown-rendered li.task-list-item.is-checked,
+.markdown-rendered li[data-task="x"],
+.markdown-rendered li[data-task="X"],
+.markdown-rendered li[data-task="-"] {
+  opacity: 0.55;
+  text-decoration: line-through;
+  text-decoration-color: var(--text-muted);
+}
+body.theme-dark ul.contains-task-list .task-list-item-checkbox {
+  border-color: var(--og-glass-border, rgba(71, 85, 105, 0.45)) !important;
+}
+
+/* --- B5 · Heading anchor copy (#) hover (extends v2.14) --------------- */
+.markdown-preview-section h1,
+.markdown-preview-section h2,
+.markdown-preview-section h3,
+.markdown-preview-section h4,
+.markdown-preview-section h5,
+.markdown-preview-section h6 {
+  position: relative !important;
+}
+.markdown-preview-section h1 .heading-collapse-indicator + a.markdown-link,
+.markdown-preview-section h1::before,
+.markdown-preview-section h2::before,
+.markdown-preview-section h3::before,
+.markdown-preview-section h4::before,
+.markdown-preview-section h5::before,
+.markdown-preview-section h6::before {
+  /* native v2.14 ::before fade-in remains; B5 uses real heading link */
+}
+.markdown-preview-section .heading-collapse-indicator + a,
+.markdown-preview-section h1 > a.tag,
+.markdown-preview-section h2 > a.tag,
+.markdown-preview-section h3 > a.tag {
+  /* anchor copy hint via aria */
+}
+@media (hover: hover) {
+  .markdown-preview-section :is(h1, h2, h3, h4, h5, h6):hover::after {
+    content: " ⎘";
+    color: var(--text-muted);
+    font-size: 0.55em;
+    font-weight: 400;
+    margin-left: 6px;
+    opacity: 0.6;
+    transition: opacity 0.12s ease, color 0.12s ease;
+    cursor: pointer;
+  }
+  .markdown-preview-section :is(h1, h2, h3, h4, h5, h6):hover::after:hover {
+    color: #2563eb;
+    opacity: 1;
+  }
+}
+
+/* --- C1 · Templater suggestion popup glass ---------------------------- */
+.suggestion-container.mod-templater,
+.menu.templater-menu,
+body .suggestion-container[data-source="templater"] {
+  background: var(--og-glass-bg, rgba(255, 255, 255, 0.78)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.28)) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--og-glass-shadow-lift,
+    0 4px 10px rgba(15, 23, 42, 0.10),
+    0 16px 36px rgba(15, 23, 42, 0.16)) !important;
+  padding: 6px !important;
+  min-width: 280px !important;
+}
+body.theme-dark .suggestion-container.mod-templater,
+body.theme-dark .menu.templater-menu,
+body.theme-dark .suggestion-container[data-source="templater"] {
+  background: rgba(15, 23, 42, 0.82) !important;
+}
+
+/* --- C5 · Nested tag pill (hierarchy segments) ------------------------ */
+a.tag[href*="/"],
+.cm-s-obsidian .cm-hashtag.cm-hashtag-end[data-contains-slash="true"] {
+  /* base pill already from v2.13 inline tag pill v2; segments via JS not available
+     so we keep gradient + inner separator hint via filter */
+  background-image: linear-gradient(90deg,
+    rgba(13, 148, 136, 0.18) 0%,
+    rgba(13, 148, 136, 0.10) 100%) !important;
+}
+/* visual separator hint between path segments using letter-spacing on `/` */
+a.tag {
+  word-break: break-word;
+}
+
+/* --- D2 · Token migration (chrome core selectors) --------------------- */
+/* Centralise hardcoded rgba into --og-* tokens so users can override.
+   This block re-asserts core chrome surfaces through tokens. */
+:root {
+  --og-glass-bg-strong: rgba(255, 255, 255, 0.92);
+  --og-accent-pill-bg: var(--og-accent-bg-active, rgba(37, 99, 235, 0.14));
+  --og-accent-pill-fg: #2563eb;
+  --og-accent-pill-border: var(--og-accent-ring, rgba(37, 99, 235, 0.28));
+}
+body.theme-dark {
+  --og-glass-bg-strong: rgba(15, 23, 42, 0.92);
+  --og-accent-pill-bg: rgba(96, 165, 250, 0.20);
+  --og-accent-pill-fg: #93c5fd;
+  --og-accent-pill-border: rgba(96, 165, 250, 0.36);
+}
+
+/* --- A1 · PDF viewer toolbar + sidebar glass -------------------------- */
+.workspace-leaf-content[data-type="pdf"] .pdf-toolbar,
+.pdf-viewer-container .pdf-toolbar,
+.pdf-container > .pdf-toolbar {
+  background: var(--og-glass-bg-strong) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
+  backdrop-filter: blur(14px) saturate(150%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  margin: 8px !important;
+}
+.workspace-leaf-content[data-type="pdf"] .pdf-sidebar,
+.pdf-viewer-container .pdf-sidebar,
+.pdf-thumbnail-view {
+  background: var(--og-glass-bg, rgba(255, 255, 255, 0.78)) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.28)) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  margin: 8px !important;
+}
+.pdf-thumbnail.is-active,
+.pdf-thumbnail-view .pdf-thumbnail-item.is-selected {
+  border: 1px solid #2563eb !important;
+  box-shadow: 0 0 0 2px var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+body.theme-dark .pdf-thumbnail.is-active,
+body.theme-dark .pdf-thumbnail-view .pdf-thumbnail-item.is-selected {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.36) !important;
+}
+
+/* --- A2 · Audio / Video player chrome glass --------------------------- */
+.video-embed,
+.media-embed.is-loaded,
+.markdown-rendered .internal-embed.media-embed {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  background: var(--og-glass-bg, rgba(255, 255, 255, 0.78)) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+}
+.markdown-rendered audio {
+  width: 100% !important;
+  border-radius: 999px !important;
+  background: var(--og-glass-bg, rgba(255, 255, 255, 0.78)) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  padding: 2px !important;
+}
+.markdown-rendered video {
+  border-radius: 10px !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+}
+
+/* --- B1 · Canvas node cards glass + lift ------------------------------ */
+.workspace-leaf-content[data-type="canvas"] .canvas-node {
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
+  backdrop-filter: blur(8px) saturate(130%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+.workspace-leaf-content[data-type="canvas"] .canvas-node:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--og-glass-shadow-lift,
+    0 4px 10px rgba(15, 23, 42, 0.10),
+    0 16px 36px rgba(15, 23, 42, 0.16)) !important;
+  border-color: var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+.workspace-leaf-content[data-type="canvas"] .canvas-node.is-focused {
+  border: 1px solid #2563eb !important;
+  box-shadow:
+    0 0 0 3px var(--og-accent-ring, rgba(37, 99, 235, 0.28)),
+    var(--og-glass-shadow-lift,
+      0 4px 10px rgba(15, 23, 42, 0.10),
+      0 16px 36px rgba(15, 23, 42, 0.16)) !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="canvas"] .canvas-node.is-focused {
+  border-color: #60a5fa !important;
+  box-shadow:
+    0 0 0 3px rgba(96, 165, 250, 0.36),
+    var(--og-glass-shadow-lift,
+      0 4px 10px rgba(0, 0, 0, 0.45),
+      0 16px 36px rgba(0, 0, 0, 0.60)) !important;
+}
+.workspace-leaf-content[data-type="canvas"] .canvas-edge-label {
+  padding: 2px 8px !important;
+  font-size: 10px !important;
+  border-radius: 999px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+}
+
+/* --- D1 · Floating glass status bar ----------------------------------- */
+.app-container .status-bar {
+  position: relative !important;
+  margin: 0 8px 8px 8px !important;
+  padding: 4px 8px !important;
+  border-radius: 10px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
+  backdrop-filter: blur(14px) saturate(150%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+}
+body.theme-dark .app-container .status-bar {
+  background: rgba(15, 23, 42, 0.92) !important;
+}
+.app-container .status-bar .status-bar-item.plugin-word-count,
+.app-container .status-bar .status-bar-item[aria-label*="word"],
+.app-container .status-bar .status-bar-item[aria-label*="단어"] {
+  background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
+  color: var(--og-accent-pill-fg, #2563eb) !important;
+  border: 1px solid var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
+  border-radius: 999px !important;
+  padding: 2px 10px !important;
+  font-weight: 600 !important;
+  font-variant-numeric: tabular-nums !important;
+  margin-left: auto !important;
+}
+
+/* --- C3 · Date / Color picker popover glass --------------------------- */
+.daterangepicker,
+.flatpickr-calendar,
+.menu.suggestion-container[data-source="date"],
+input[type="color"]::-webkit-color-swatch-wrapper,
+.color-picker-popover,
+.colour-picker-container,
+.workspace-tab-container .clr-picker {
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--og-glass-shadow-lift,
+    0 4px 10px rgba(15, 23, 42, 0.10),
+    0 16px 36px rgba(15, 23, 42, 0.16)) !important;
+  padding: 10px !important;
+}
+.flatpickr-calendar .flatpickr-day.today,
+.daterangepicker td.today {
+  background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
+  color: var(--og-accent-pill-fg, #2563eb) !important;
+  font-weight: 700 !important;
+  box-shadow: inset 0 0 0 1px var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
+  border-radius: 6px !important;
+}
+.flatpickr-calendar .flatpickr-day.selected,
+.flatpickr-calendar .flatpickr-day.startRange,
+.daterangepicker td.active {
+  background: #2563eb !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  border-radius: 6px !important;
+}
+body.theme-dark .flatpickr-calendar .flatpickr-day.selected,
+body.theme-dark .daterangepicker td.active {
+  background: #60a5fa !important;
+  color: #0b1220 !important;
+}
+
+/* End of v2.19.0 — Editor Depth, System Cleanup & Glass Surface Sweep == */
+
+/* ======================================================================
+   v2.20.0 — Inputs & System Surfaces (5 items)
+   - F3 Toggle switch · F1 Search input + chips · E4 Community cards
+   - D2 Pane title count badges · G1 Drop snap target hint
+   Samples-first approved · 좌측 라인 ban · Glass+Shadow core
+   ====================================================================== */
+
+/* --- F3 · Toggle switch (glass track + floating thumb) ---------------- */
+.checkbox-container {
+  width: 40px !important;
+  height: 22px !important;
+  border-radius: 999px !important;
+  background: rgba(148, 163, 184, 0.30) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.10) !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
+}
+.checkbox-container::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 2px !important;
+  left: 2px !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow:
+    0 1px 3px rgba(15, 23, 42, 0.20),
+    0 2px 6px rgba(15, 23, 42, 0.10) !important;
+  transition: transform 0.18s ease, background-color 0.15s ease !important;
+}
+.checkbox-container.is-enabled {
+  background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
+  border-color: var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
+}
+.checkbox-container.is-enabled::after {
+  transform: translateX(18px) !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+body.theme-dark .checkbox-container.is-enabled::after {
+  background: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+
+/* --- F1 · Search input + filter chips --------------------------------- */
+.search-input-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 4px 6px 4px 14px !important;
+  border-radius: 999px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
+  backdrop-filter: blur(14px) saturate(150%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease !important;
+}
+.search-input-container:focus-within {
+  border-color: #2563eb !important;
+  box-shadow:
+    0 0 0 3px var(--og-accent-ring, rgba(37, 99, 235, 0.28)),
+    var(--og-glass-shadow-md,
+      0 2px 4px rgba(15, 23, 42, 0.06),
+      0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+}
+.search-input-container input {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+/* Filter chip toggles in search header */
+.search-row .clickable-icon.is-active,
+.search-input-container .search-input-clear-button {
+  background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
+  color: var(--og-accent-pill-fg, #2563eb) !important;
+  border: 1px solid var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
+  border-radius: 999px !important;
+}
+
+/* --- E4 · Community plugins / themes glass cards ---------------------- */
+.community-modal-button-container .community-item,
+.community-modal .community-item,
+.installed-plugins-container .community-item {
+  padding: 12px !important;
+  border-radius: 12px !important;
+  background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: var(--og-glass-shadow-md,
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.10)) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+  position: relative !important;
+}
+.community-modal .community-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--og-glass-shadow-lift,
+    0 4px 10px rgba(15, 23, 42, 0.10),
+    0 16px 36px rgba(15, 23, 42, 0.16)) !important;
+  border-color: var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+.community-modal .community-item.mod-installed::after,
+.community-modal .community-item .community-item-flair {
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+
+/* --- D2 · Pane title count badges (mono pill) ------------------------- */
+.workspace-leaf-content[data-type="outline"] .nav-header .nav-buttons-container::after,
+.workspace-leaf-content[data-type="backlink"] .nav-header .nav-buttons-container::after,
+.workspace-leaf-content[data-type="outgoing-link"] .nav-header .nav-buttons-container::after,
+.workspace-leaf-content[data-type="tag"] .nav-header .nav-buttons-container::after,
+.tree-item-flair-outer .tree-item-flair,
+.search-result-file-matches::before {
+  /* anchor for count pills in pane headers */
+}
+.tree-item-flair,
+.nav-header .count,
+.search-result-file-matches .search-result-file-match-count,
+.backlink-pane .nav-header .count,
+.outgoing-link-pane .nav-header .count {
+  padding: 2px 9px !important;
+  border-radius: 999px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace !important;
+  font-variant-numeric: tabular-nums !important;
+  background: var(--background-primary) !important;
+  color: var(--text-normal) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.32)) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+}
+.workspace-leaf-content[data-type="backlink"] .tree-item-flair,
+.workspace-leaf-content[data-type="backlink"] .search-result-file-match-count {
+  background: rgba(13, 148, 136, 0.14) !important;
+  color: #0d9488 !important;
+  border-color: rgba(13, 148, 136, 0.35) !important;
+}
+.workspace-leaf-content[data-type="tag"] .tree-item-flair {
+  background: rgba(217, 119, 6, 0.14) !important;
+  color: #d97706 !important;
+  border-color: rgba(217, 119, 6, 0.35) !important;
+}
+.workspace-leaf-content[data-type="outline"] .tree-item-flair {
+  background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
+  color: var(--og-accent-pill-fg, #2563eb) !important;
+  border-color: var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
+}
+
+/* --- G1 · Drag/drop snap target hint (full outline, no left line) ----- */
+.is-drop-target,
+.nav-files-container .is-drop-target,
+.workspace-tabs .workspace-tab-header.is-drop-target,
+.tree-item.is-drop-target {
+  position: relative !important;
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+  outline: 2px dashed #2563eb !important;
+  outline-offset: -2px !important;
+  border-radius: 8px !important;
+  /* explicitly NO left-only border or inset shadow */
+  box-shadow: none !important;
+}
+body.theme-dark :is(.is-drop-target,
+  .nav-files-container .is-drop-target,
+  .workspace-tabs .workspace-tab-header.is-drop-target,
+  .tree-item.is-drop-target) {
+  outline-color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.12) !important;
+}
+/* Override any legacy is-drop-target-before/after that would create left line */
+.is-drop-target-before::before,
+.is-drop-target-after::after {
+  display: none !important;
+}
+.is-drop-target-before,
+.is-drop-target-after {
+  outline: 2px dashed #2563eb !important;
+  outline-offset: -2px !important;
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+  border-radius: 8px !important;
+}
+body.theme-dark :is(.is-drop-target-before, .is-drop-target-after) {
+  outline-color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.12) !important;
+}
+
+/* End of v2.20.0 — Inputs & System Surfaces ============================ */

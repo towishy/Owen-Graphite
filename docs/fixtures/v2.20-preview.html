@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Owen Graphite v2.20 — Inputs &amp; System Surfaces Preview</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --bg-stage: linear-gradient(135deg, rgba(148,163,184,0.10), rgba(148,163,184,0.04));
+    --bg-card: rgba(255,255,255,0.78);
+    --bg-card-strong: rgba(255,255,255,0.92);
+    --bg-solid: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: rgba(148,163,184,0.32);
+    --border-soft: rgba(148,163,184,0.20);
+    --accent: #2563eb;
+    --accent-bg-hover: rgba(37,99,235,0.08);
+    --accent-bg-active: rgba(37,99,235,0.14);
+    --accent-ring: rgba(37,99,235,0.28);
+    --teal: #0d9488;
+    --rose: #f43f5e;
+    --amber: #d97706;
+    --green: #10b981;
+    --shadow-md: 0 2px 4px rgba(15,23,42,0.06), 0 8px 24px rgba(15,23,42,0.10);
+    --shadow-lift: 0 4px 10px rgba(15,23,42,0.10), 0 16px 36px rgba(15,23,42,0.16);
+  }
+  body.dark {
+    --bg: #0b1220;
+    --bg-stage: linear-gradient(135deg, rgba(15,23,42,0.55), rgba(15,23,42,0.30));
+    --bg-card: rgba(15,23,42,0.78);
+    --bg-card-strong: rgba(15,23,42,0.92);
+    --bg-solid: #111827;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --border: rgba(71,85,105,0.45);
+    --border-soft: rgba(71,85,105,0.30);
+    --accent: #60a5fa;
+    --accent-bg-hover: rgba(96,165,250,0.12);
+    --accent-bg-active: rgba(96,165,250,0.20);
+    --accent-ring: rgba(96,165,250,0.36);
+    --shadow-md: 0 2px 4px rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.50);
+    --shadow-lift: 0 4px 10px rgba(0,0,0,0.45), 0 16px 36px rgba(0,0,0,0.60);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 32px 24px 80px; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Pretendard", sans-serif;
+    background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; }
+  .toolbar { max-width: 1280px; margin: 0 auto 28px; display: flex; align-items: center; gap: 16px;
+    padding: 12px 20px; border-radius: 14px; background: var(--bg-card);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md); }
+  .toolbar h1 { margin: 0; font-size: 16px; font-weight: 700; }
+  .toolbar .meta { font-size: 12px; color: var(--muted); margin-right: auto; }
+  .toolbar button { padding: 6px 14px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg-card-strong); color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600; }
+  .grid { max-width: 1280px; margin: 0 auto; display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 22px; }
+  .card { background: var(--bg-card); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    backdrop-filter: blur(14px) saturate(1.4); border: 1px solid var(--border);
+    border-radius: 14px; box-shadow: var(--shadow-md); padding: 18px 20px; }
+  .card h3 { margin: 0 0 4px; font-size: 14px; font-weight: 700; color: var(--accent); }
+  .card .desc { margin: 0 0 14px; font-size: 12px; color: var(--muted); }
+  .stage { background: var(--bg-stage); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 16px; min-height: 180px; }
+  .note { font-size: 11px; color: var(--muted); margin-top: 10px; }
+  .label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin: 14px 0 6px; }
+  .label:first-child { margin-top: 0; }
+
+  /* ====== F3 — Toggle switch ====== */
+  .tog-row { display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px; border-radius: 10px; background: var(--bg-solid);
+    border: 1px solid var(--border-soft); margin-bottom: 8px; }
+  .tog-row .name { font-size: 13px; font-weight: 600; }
+  .tog-row .name small { display: block; color: var(--muted); font-weight: 400; font-size: 11px; }
+  .tog {
+    width: 40px; height: 22px; border-radius: 999px; position: relative; cursor: pointer;
+    background: rgba(148,163,184,0.30);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border: 1px solid var(--border); box-shadow: inset 0 1px 2px rgba(15,23,42,0.10);
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .tog::after {
+    content: ""; position: absolute; top: 2px; left: 2px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg-card-strong);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(15,23,42,0.20), 0 2px 6px rgba(15,23,42,0.10);
+    transition: transform .18s ease, background .15s ease;
+  }
+  .tog.on { background: var(--accent-bg-active); border-color: var(--accent-ring); }
+  .tog.on::after { transform: translateX(18px); background: var(--accent); border-color: var(--accent); }
+  body.dark .tog.on::after { background: var(--accent); }
+  .tog.disabled { opacity: 0.45; cursor: not-allowed; }
+
+  /* ====== F1 — Search input + filter chips ====== */
+  .search-wrap {
+    display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px;
+    border-radius: 999px; background: var(--bg-card-strong);
+    -webkit-backdrop-filter: blur(14px) saturate(1.5); backdrop-filter: blur(14px) saturate(1.5);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  }
+  .search-wrap.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-ring), var(--shadow-md); }
+  .search-wrap .icon { color: var(--muted); font-size: 14px; }
+  .search-wrap input { flex: 1; border: 0; background: transparent; outline: 0; color: var(--text);
+    font-size: 13px; padding: 6px 0; font-family: inherit; }
+  .search-wrap .kbd { font-size: 10px; padding: 2px 6px; border-radius: 4px;
+    background: var(--bg-solid); border: 1px solid var(--border-soft); color: var(--muted);
+    font-family: ui-monospace, monospace; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px 3px 8px;
+    border-radius: 999px; font-size: 11px; font-weight: 600;
+    background: var(--bg-card-strong);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border: 1px solid var(--border); color: var(--text);
+    box-shadow: 0 1px 2px rgba(15,23,42,0.08);
+    cursor: pointer; transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .chip:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .chip.active { background: var(--accent-bg-active); color: var(--accent); border-color: var(--accent-ring); }
+  .chip .x { color: var(--muted); font-size: 12px; opacity: 0.7; }
+  .chip.tag { color: var(--teal); border-color: rgba(13,148,136,0.35); }
+  .chip.path { color: var(--amber); border-color: rgba(217,119,6,0.35); }
+
+  /* ====== E4 — Community plugins / themes cards ====== */
+  .com-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .com-card {
+    padding: 12px; border-radius: 12px; background: var(--bg-card-strong);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md);
+    display: flex; flex-direction: column; gap: 6px; position: relative;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .com-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: var(--accent-ring); }
+  .com-card .head { display: flex; align-items: center; gap: 8px; }
+  .com-card .icn { width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--teal));
+    display: inline-flex; align-items: center; justify-content: center; color: #fff;
+    font-size: 13px; font-weight: 700; box-shadow: 0 2px 6px rgba(15,23,42,0.18); }
+  .com-card .ttl { font-size: 13px; font-weight: 700; line-height: 1.2; }
+  .com-card .author { font-size: 10px; color: var(--muted); }
+  .com-card .body { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .com-card .footer { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 10px; color: var(--muted); }
+  .com-card .star { color: var(--amber); }
+  .com-card .featured { position: absolute; top: 8px; right: 8px;
+    padding: 2px 8px; border-radius: 999px; font-size: 9px; font-weight: 700;
+    background: linear-gradient(135deg, var(--amber), var(--rose)); color: #fff;
+    box-shadow: 0 2px 6px rgba(217,119,6,0.40); }
+  .com-card .installed { padding: 2px 8px; border-radius: 999px; font-size: 9px; font-weight: 700;
+    background: rgba(16,185,129,0.16); color: var(--green); border: 1px solid rgba(16,185,129,0.35); }
+
+  /* ====== D2 — Pane title count badges ====== */
+  .pane-list { display: flex; flex-direction: column; gap: 8px; }
+  .pane-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px; border-radius: 10px; background: var(--bg-card-strong);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  }
+  .pane-row .ttl { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em; }
+  .pane-row .ttl .ico { width: 18px; height: 18px; border-radius: 5px; background: var(--accent-bg-active);
+    color: var(--accent); display: inline-flex; align-items: center; justify-content: center; font-size: 10px;
+    border: 1px solid var(--accent-ring); }
+  .count {
+    padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 700;
+    font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums;
+    background: var(--bg-solid); color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(15,23,42,0.08);
+  }
+  .count.brand { background: var(--accent-bg-active); color: var(--accent); border-color: var(--accent-ring); }
+  .count.teal { background: rgba(13,148,136,0.14); color: var(--teal); border-color: rgba(13,148,136,0.35); }
+  .count.amber { background: rgba(217,119,6,0.14); color: var(--amber); border-color: rgba(217,119,6,0.35); }
+  .count.zero { color: var(--muted); }
+
+  /* ====== G1 — Drag/drop snap target hint ====== */
+  .drop-stage { position: relative; min-height: 220px;
+    background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+    background-size: 16px 16px; background-position: -8px -8px; padding: 12px; }
+  .drop-card {
+    padding: 10px 12px; border-radius: 8px; background: var(--bg-card-strong);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md);
+    font-size: 12px; margin-bottom: 8px;
+  }
+  .drop-card.ghost { opacity: 0.72; transform: rotate(1deg) scale(1.01);
+    box-shadow: var(--shadow-lift); }
+  .drop-target {
+    position: relative; padding: 10px 12px; border-radius: 8px;
+    background: var(--accent-bg-hover);
+    outline: 2px dashed var(--accent);
+    outline-offset: -2px;
+    color: var(--accent); font-weight: 600; font-size: 12px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .drop-target::before {
+    content: "↓ 여기에 놓기"; opacity: 0.85;
+  }
+  .drop-target.empty::before { content: "↓ 빈 영역에 놓기"; }
+  .drop-floater {
+    position: absolute; top: 14px; right: 14px;
+    padding: 4px 10px; border-radius: 999px; font-size: 10px; font-weight: 700;
+    background: var(--bg-card-strong); color: var(--accent);
+    border: 1px solid var(--accent-ring);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-md);
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>Owen Graphite v2.20 · Inputs &amp; System Surfaces</h1>
+  <div class="meta">F3 Toggle · F1 Search · E4 Community Cards · D2 Pane Counts · G1 Drop Hint</div>
+  <button onclick="document.body.classList.toggle('dark')">다크 토글</button>
+</div>
+
+<div class="grid">
+
+  <!-- F3 -->
+  <div class="card">
+    <h3>F3 · Toggle Switch (Glass Track + Floating Thumb)</h3>
+    <p class="desc">설정·테마 토글을 글래스 track + 떠 있는 thumb. on 상태는 accent fill + ring, 좌측 라인 X.</p>
+    <div class="stage">
+      <div class="tog-row">
+        <div class="name">Reading view 자동 전환<small>편집 종료 시 자동으로 읽기 모드</small></div>
+        <div class="tog on"></div>
+      </div>
+      <div class="tog-row">
+        <div class="name">시작 시 데일리노트 열기<small>매 세션 자동 생성</small></div>
+        <div class="tog"></div>
+      </div>
+      <div class="tog-row">
+        <div class="name">Glass 효과 강도<small>성능 절약 모드</small></div>
+        <div class="tog on"></div>
+      </div>
+      <div class="tog-row">
+        <div class="name">실험 기능 (Sync Diff)<small>비활성</small></div>
+        <div class="tog disabled"></div>
+      </div>
+    </div>
+    <p class="note">셀렉터: `.checkbox-container`, `.checkbox-container.is-enabled` (Obsidian 토글 표준).</p>
+  </div>
+
+  <!-- F1 -->
+  <div class="card">
+    <h3>F1 · Search Input + Filter Chips</h3>
+    <p class="desc">Global search / Quick switcher 입력란 glass pill. 활성 필터는 chip lift, 카테고리(tag/path)는 색상 코드.</p>
+    <div class="stage">
+      <div class="search-wrap focus">
+        <span class="icon">🔍</span>
+        <input value="glass surface sweep" />
+        <span class="kbd">⌘K</span>
+      </div>
+      <div class="chips">
+        <span class="chip active">전체 <span class="x">×</span></span>
+        <span class="chip tag">#design</span>
+        <span class="chip tag">#theme</span>
+        <span class="chip path">📁 docs/fixtures</span>
+        <span class="chip">file:md</span>
+        <span class="chip">match-case</span>
+      </div>
+      <div class="label">Default (no focus)</div>
+      <div class="search-wrap">
+        <span class="icon">🔍</span>
+        <input placeholder="검색어 입력…" />
+        <span class="kbd">/</span>
+      </div>
+    </div>
+    <p class="note">셀렉터: `.search-input-container`, `.search-input-container input:focus` ring; chips는 `.suggestion-flair` / 검색 토글 그룹 통합.</p>
+  </div>
+
+  <!-- E4 -->
+  <div class="card">
+    <h3>E4 · Community Plugins / Themes Cards</h3>
+    <p class="desc">`.community-item` 글래스 카드 + hover lift + featured / installed pill. 좌측 라인 X (전체 outline).</p>
+    <div class="stage">
+      <div class="com-grid">
+        <div class="com-card">
+          <span class="featured">FEATURED</span>
+          <div class="head">
+            <div class="icn">OG</div>
+            <div>
+              <div class="ttl">Owen Graphite</div>
+              <div class="author">by Owen (@towishy)</div>
+            </div>
+          </div>
+          <div class="body">반투명 유리창 + 그림자 디자인 언어. 좌측 라인 ban 정책.</div>
+          <div class="footer"><span class="star">★ 1.2k</span> · <span>v2.20.0</span></div>
+        </div>
+        <div class="com-card">
+          <div class="head">
+            <div class="icn" style="background:linear-gradient(135deg,#9333ea,#ec4899);">DV</div>
+            <div>
+              <div class="ttl">Dataview</div>
+              <div class="author">by blacksmithgu</div>
+            </div>
+          </div>
+          <div class="body">노트 메타데이터 쿼리 엔진.</div>
+          <div class="footer"><span class="star">★ 8.5k</span> · <span class="installed">설치됨</span></div>
+        </div>
+        <div class="com-card">
+          <div class="head">
+            <div class="icn" style="background:linear-gradient(135deg,#0d9488,#10b981);">CP</div>
+            <div>
+              <div class="ttl">Calendar</div>
+              <div class="author">by Liam Cain</div>
+            </div>
+          </div>
+          <div class="body">사이드바 캘린더 + 데일리노트 통합.</div>
+          <div class="footer"><span class="star">★ 3.1k</span></div>
+        </div>
+        <div class="com-card">
+          <div class="head">
+            <div class="icn" style="background:linear-gradient(135deg,#d97706,#f43f5e);">TP</div>
+            <div>
+              <div class="ttl">Templater</div>
+              <div class="author">by SilentVoid13</div>
+            </div>
+          </div>
+          <div class="body">동적 템플릿 + 스크립팅.</div>
+          <div class="footer"><span class="star">★ 4.7k</span> · <span class="installed">설치됨</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">셀렉터: `.community-item`, `.community-item:hover`, `.community-item .flair` (featured/installed pill).</p>
+  </div>
+
+  <!-- D2 -->
+  <div class="card">
+    <h3>D2 · Pane Title Count Badges</h3>
+    <p class="desc">Outline / Backlinks / Outgoing / Tag 패널 헤더 우측 카운트를 mono pill 통일 (글래스 + 1px ring). 카테고리 색.</p>
+    <div class="stage">
+      <div class="pane-list">
+        <div class="pane-row">
+          <span class="ttl"><span class="ico">≡</span> Outline</span>
+          <span class="count brand">12</span>
+        </div>
+        <div class="pane-row">
+          <span class="ttl"><span class="ico">←</span> Backlinks</span>
+          <span class="count teal">28</span>
+        </div>
+        <div class="pane-row">
+          <span class="ttl"><span class="ico">→</span> Outgoing</span>
+          <span class="count">7</span>
+        </div>
+        <div class="pane-row">
+          <span class="ttl"><span class="ico">#</span> Tags</span>
+          <span class="count amber">142</span>
+        </div>
+        <div class="pane-row">
+          <span class="ttl"><span class="ico">⊘</span> Unresolved</span>
+          <span class="count zero">0</span>
+        </div>
+      </div>
+    </div>
+    <p class="note">셀렉터: `.nav-header .count`, `.tree-item-flair`, backlinks `.search-result-count` 통일.</p>
+  </div>
+
+  <!-- G1 -->
+  <div class="card">
+    <h3>G1 · Drag-and-Drop Snap Target Hint</h3>
+    <p class="desc">파일/블록 드롭 위치를 전체 둘레 dashed outline + 옅은 fill (좌측 라인 X). 드래그 ghost는 회전 + lift shadow.</p>
+    <div class="stage">
+      <div class="drop-stage">
+        <div class="drop-floater">드래그 중 · 1 항목</div>
+        <div class="drop-card">📄 일반 노트 A</div>
+        <div class="drop-target"></div>
+        <div class="drop-card ghost">📄 드래그 중인 노트 (ghost)</div>
+        <div class="drop-card">📄 일반 노트 B</div>
+        <div class="drop-target empty"></div>
+      </div>
+    </div>
+    <p class="note">셀렉터: `.is-drop-target`, `.is-drop-target-before/after`(둘레 outline로 변경), `.is-being-dragged` (v2.18 A2 재사용).</p>
+  </div>
+
+</div>
+
+</body>
+</html>
