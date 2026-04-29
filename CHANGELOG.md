@@ -4,6 +4,31 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] — 2026-04-29 — Sidebar/Panel + Authoring UX + Interaction Pack
+
+### Added
+- **Bookmark / Recent files / File recovery 패널** — 트리 아이템 라운드/hover background, 북마크 별표 옵션 온레지, 최근 파일 시계 그레이. 좌측 세로 라인 없음 (정책 준수).
+- **Right sidebar 패널 헤더** — 백링크/아웃라인/아웃고잉링크 패널 타이틀 uppercase + tracking, count chip 알약 디자인.
+- **Status bar 위젯** — 아이템 hover background, 아이템 사이 1px 구분자, 라운드 코너.
+- **확장 태그 pill 카테고리** (opt-in `ogd-extended-tag-pills`, 기본 on) — #meeting/#review/#wip/#archive/#weekly/#monthly/#draft/#published 8종 추가 카테고리 색.
+- **Slash command / Editor autocomplete 팬업** — 라운드/그림자 강화, 선택 항목 background 강조 (좌측 라인 금지 정책 준수), 단축키 kbd 알약.
+- **Frontmatter 추가 타입** — `priority` (빨강), `status` (draft/review/done/archived 색), `progress` (틸), `version` (틸) 아이콘/값 컴러.
+- **Drag indicator** — 파일/폴더 drop zone에 dashed 블루 outline + 옥펀, 탭 drop 시 inset border + 좌/우 placeholder.
+- **Notice / Toast** — 라운드/그림자, mod-info/success/warning/error 별 좌측 4px 컬러 액센트.
+- **Hover preview popover** — 라운드/그림자 강화, 임베드 타이틀 굵게 + 단축 구분선.
+
+### Changed
+- Style Settings 옵션 수: 31 → **32** (`ogd-extended-tag-pills` 추가).
+- 베이스라인 선언: v2.2.0 → **v2.6.2** (UX Pack 누적분 + Settings YAML hotfix 검증).
+
+### Print/PDF
+- status-bar / notice-container / hover-popover / suggestion-container 는 print 시 숨김.
+
+### Notes
+- 모든 변경은 EOF 추가 패치 형태. 기존 셀렉터 영향 없음.
+- 다크 모드 패리티 전 항목 포함.
+- 메뉴/탭/nav active 좌측 세로 라인 금지 정책 (v2.6.1) 준수.
+
 ## [2.6.2] — 2026-04-29 — Fix Style Settings YAML parse error
 
 ### Fixed
