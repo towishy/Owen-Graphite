@@ -12722,3 +12722,72 @@ body.theme-dark .metadata-property:active::before {
 
 
 
+
+/* ============================================================================
+ * v2.9.5 — Hotfix: Outline active 잘림 + 좌측 dashed 가이드 라인 제거
+ *   문제 1) v2.9.2/3/4에서 추가한 1px border가 outline 패널의 좁은 폭에서
+ *           우측 잘림(overflow clip) 유발 → border → outline 으로 교체
+ *           (outline 은 box layout 영향 X, outline-offset 으로 안쪽 배치)
+ *   문제 2) v2.7.x 잔존 dashed 좌측 가이드(border-left: 1px dashed) 가
+ *           outline/backlink tree-item-children 에 그대로 표시 → 무력화
+ *   문제 3) outline/backlink tree-item-self 의 base border-left: 2px transparent
+ *           + hover accent → 무력화 (영구 좌측 라인 금지 정책)
+ * ========================================================================== */
+
+/* (1) border → outline 으로 변경 (overflow 방지) */
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.outline .tree-item-self.is-active,
+.outline-view .tree-item-self.is-active,
+.bookmarks-view .tree-item-self.is-active,
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
+.workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
+  border: 0 !important;
+  outline: 1px solid rgba(37, 99, 235, 0.22);
+  outline-offset: -1px;
+}
+.theme-dark .nav-file-title.is-active,
+.theme-dark .nav-folder-title.is-active,
+.theme-dark .outline .tree-item-self.is-active,
+.theme-dark .outline-view .tree-item-self.is-active,
+.theme-dark .bookmarks-view .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
+.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
+  outline-color: rgba(96, 165, 250, 0.32);
+}
+
+/* (2) 좌측 dashed 가이드 라인 무력화 (outline/backlink tree-item-children) */
+.workspace-leaf-content[data-type="backlink"] .tree-item-children,
+.workspace-leaf-content[data-type="outline"] .tree-item-children {
+  border-left: 0 !important;
+  padding-left: 0.7em !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-children,
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-children {
+  border-left: 0 !important;
+}
+
+/* (3) outline/backlink tree-item-self base 좌측 라인 + hover accent 무력화 */
+.workspace-leaf-content[data-type="backlink"] .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item-self {
+  border-left: 0 !important;
+  padding-left: 0.6em !important;
+}
+.workspace-leaf-content[data-type="backlink"] .tree-item-self:hover,
+.workspace-leaf-content[data-type="outline"] .tree-item-self:hover {
+  border-left-color: transparent !important;
+  background: rgba(37, 99, 235, 0.06) !important;
+  border-radius: 6px;
+}
+body.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self:hover,
+body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self:hover {
+  background: rgba(96, 165, 250, 0.10) !important;
+}

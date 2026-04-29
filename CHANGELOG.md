@@ -4,6 +4,13 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.5] — 2026-04-29 — Hotfix: Outline active 우측 잘림 + dashed 좌측 가이드 제거
+
+### Fixed
+- **Outline / Bookmarks / Tag / Backlink active 항목 우측 잘림** — v2.9.2~2.9.4의 1px `border` 가 좁은 패널 폭에서 overflow clip을 유발. `border` → `outline: 1px solid; outline-offset: -1px` 으로 교체 (레이아웃 영향 X).
+- **Outline / Backlink 패널 좌측 dashed 가이드 라인** (`tree-item-children { border-left: 1px dashed }`) 제거 — 좌측 라인 영구 금지 정책 적용.
+- **Outline / Backlink tree-item-self base 2px transparent border-left + hover accent** 무력화 — hover 강조도 background 틴트로 변경.
+
 ## [2.9.4] — 2026-04-29 — Step 3: Backlink / Recent / Tag / Outgoing-link active 좌측 라인 제거
 
 ### Changed (chrome 좌측 라인 점진 적용 · 3단계)
