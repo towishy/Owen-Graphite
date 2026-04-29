@@ -12682,3 +12682,68 @@ body.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self:ho
 body.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self:hover {
   background: rgba(96, 165, 250, 0.10) !important;
 }
+
+/* ============================================================================
+ * v2.9.8 — Hotfix: outline/bookmarks/backlink/recent/tag 패널의 active+hover
+ *          이중 박스 제거 (외곽 #eef2ff + 내부 흰 글래스 pill 동시 표시 문제)
+ *
+ * 원인: v1.8.16+ 의 글래스 hover 룰
+ *   `body:not(.is-mobile) :is(...) .tree-item-self:hover .tree-item-inner {
+ *      background: glass-bg-hover; backdrop-filter: blur; box-shadow: ... }`
+ *   가 file explorer 외에 우측 패널의 tree-item-self:hover 에도 매칭되어
+ *   active 항목 위에 마우스를 올리면 외곽 옅은 보라 + 내부 흰 pill 이중 표시.
+ *
+ * 정책: 우측 패널(outline/bookmarks/backlink/recent/tag/outgoing-link)은
+ *       글래스 hover pill 비활성. 단순 background 톤 + 굵은 텍스트만.
+ *       file explorer 의 글래스 hover 효과는 그대로 보존.
+ * ========================================================================== */
+body:not(.is-mobile) :is(
+  .workspace-leaf-content[data-type="outline"],
+  .workspace-leaf-content[data-type="bookmarks"],
+  .workspace-leaf-content[data-type="backlink"],
+  .workspace-leaf-content[data-type="recent-files"],
+  .workspace-leaf-content[data-type="tag"],
+  .workspace-leaf-content[data-type="outgoing-link"]
+) .tree-item-self:hover .tree-item-inner,
+body:not(.is-mobile) :is(
+  .workspace-leaf-content[data-type="outline"],
+  .workspace-leaf-content[data-type="bookmarks"],
+  .workspace-leaf-content[data-type="backlink"],
+  .workspace-leaf-content[data-type="recent-files"],
+  .workspace-leaf-content[data-type="tag"],
+  .workspace-leaf-content[data-type="outgoing-link"]
+) .tree-item-self.is-active .tree-item-inner {
+  padding: inherit !important;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  font-size: inherit !important;
+}
+body:not(.is-mobile) :is(
+  .workspace-leaf-content[data-type="outline"],
+  .workspace-leaf-content[data-type="bookmarks"],
+  .workspace-leaf-content[data-type="backlink"],
+  .workspace-leaf-content[data-type="recent-files"],
+  .workspace-leaf-content[data-type="tag"],
+  .workspace-leaf-content[data-type="outgoing-link"]
+) .tree-item-self:hover {
+  background: rgba(37, 99, 235, 0.06) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+body:not(.is-mobile).theme-dark :is(
+  .workspace-leaf-content[data-type="outline"],
+  .workspace-leaf-content[data-type="bookmarks"],
+  .workspace-leaf-content[data-type="backlink"],
+  .workspace-leaf-content[data-type="recent-files"],
+  .workspace-leaf-content[data-type="tag"],
+  .workspace-leaf-content[data-type="outgoing-link"]
+) .tree-item-self:hover {
+  background: rgba(96, 165, 250, 0.10) !important;
+}

@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.8] — 2026-04-29 — Hotfix: outline active+hover 이중 박스 제거
+
+### Fixed
+- **Outline / Bookmarks / Backlink / Recent / Tag / Outgoing-link active 항목 위 hover 시 이중 박스** — 외곽 연보라(#eef2ff) + 내부 흰색 글래스 pill 동시 표시 문제 해제.
+- 원인: v1.8.16+ file explorer 글래스 hover 룰(`tree-item-self:hover .tree-item-inner { background: glass; backdrop-filter: blur }`)이 좌우 패널의 tree-item-self 에도 매칭.
+- 조치: 우측 패널 6종(outline/bookmarks/backlink/recent/tag/outgoing-link)의 tree-item-inner 내부 글래스 효과 무력화, hover 는 단순 background 틴트만.
+- file explorer 글래스 hover 효과는 영향 없이 보존.
+
 ## [2.9.7] — 2026-04-29 — Hotfix: Outline active 회색 외곽 박스 제거 (기존 #eef2ff 에 위임)
 
 ### Fixed
