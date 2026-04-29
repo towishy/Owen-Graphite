@@ -15417,12 +15417,13 @@ body.theme-dark .checkbox-container.is-enabled::after {
   border-color: #60a5fa !important;
 }
 
-/* --- F1 · Search input + filter chips --------------------------------- */
+/* --- F1 · Search input + filter chips (v2.20.1 fix: no double ring) --- */
+/* Strategy: style the wrapper as a glass pill, fully strip the inner
+   <input> chrome so no nested halo/ring appears. focus ring is on wrapper
+   only via inset (no outer halo box). */
 .search-input-container {
   display: flex !important;
   align-items: center !important;
-  gap: 8px !important;
-  padding: 4px 6px 4px 14px !important;
   border-radius: 999px !important;
   background: var(--og-glass-bg-strong, rgba(255, 255, 255, 0.92)) !important;
   -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
@@ -15432,27 +15433,58 @@ body.theme-dark .checkbox-container.is-enabled::after {
     0 2px 4px rgba(15, 23, 42, 0.06),
     0 8px 24px rgba(15, 23, 42, 0.10)) !important;
   transition: border-color 0.12s ease, box-shadow 0.12s ease !important;
+  /* keep native padding from input; do not double-pad wrapper */
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 .search-input-container:focus-within {
   border-color: #2563eb !important;
+  /* inset ring only — no outer halo box */
   box-shadow:
-    0 0 0 3px var(--og-accent-ring, rgba(37, 99, 235, 0.28)),
+    inset 0 0 0 2px var(--og-accent-ring, rgba(37, 99, 235, 0.28)),
     var(--og-glass-shadow-md,
       0 2px 4px rgba(15, 23, 42, 0.06),
       0 8px 24px rgba(15, 23, 42, 0.10)) !important;
 }
-.search-input-container input {
+body.theme-dark .search-input-container:focus-within {
+  border-color: #60a5fa !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(96, 165, 250, 0.36),
+    var(--og-glass-shadow-md,
+      0 2px 4px rgba(0, 0, 0, 0.35),
+      0 8px 24px rgba(0, 0, 0, 0.50)) !important;
+}
+/* Strip ALL inner input chrome to prevent nested ring/border */
+.search-input-container > input,
+.search-input-container > input[type="search"],
+.search-input-container > input[type="text"] {
   background: transparent !important;
   border: 0 !important;
   outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 999px !important;
+}
+.search-input-container > input:focus,
+.search-input-container > input:focus-visible,
+.search-input-container > input:focus-within {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 /* Filter chip toggles in search header */
-.search-row .clickable-icon.is-active,
-.search-input-container .search-input-clear-button {
+.search-row .clickable-icon.is-active {
   background: var(--og-accent-pill-bg, rgba(37, 99, 235, 0.14)) !important;
   color: var(--og-accent-pill-fg, #2563eb) !important;
   border: 1px solid var(--og-accent-pill-border, rgba(37, 99, 235, 0.28)) !important;
   border-radius: 999px !important;
+}
+/* Clear button stays inside the pill, no own border */
+.search-input-container .search-input-clear-button {
+  border: 0 !important;
+  background: transparent !important;
+}
+.search-input-container .search-input-clear-button:hover {
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
 }
 
 /* --- E4 · Community plugins / themes glass cards ---------------------- */

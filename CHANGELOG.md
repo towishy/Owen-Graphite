@@ -4,6 +4,12 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.20.1] — 2026-04-29 — Hotfix: search-input double-ring
+
+### Fixed
+- **F1 Search input 이중 ring 제거** — v2.20.0 `.search-input-container` 글래스 pill과 내부 `<input>`의 기존 focus ring(v1.8.56 잔재)이 동시 노출되어 이중 halo 박스가 나타나는 사고 수정. wrapper는 inset ring만, 내부 input은 모든 chrome(border/outline/box-shadow) 완전 제거.
+- Style Settings 검색창 아이콘 오버랩 해소 (wrapper padding 0으로 되돌림).
+
 ## [2.20.0] — 2026-04-29 — Inputs & System Surfaces (5 items, samples-first approved)
 
 ### Added
