@@ -16876,6 +16876,11 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
    class matching may differ across Obsidian/Electron builds.
    ============================================================ */
 
+@media not all {
+/* v2.22.12 — Disabled: this layer kept the Windows titlebar black while tabs
+  remained hidden, so leave Windows/non-macOS titlebar/tabbar chrome to
+  Obsidian defaults until the actual Windows DOM can be inspected. */
+
 @media (min-width: 701px) {
   body:not(.mod-macos):not(.is-mobile) {
     --titlebar-background: #15191f !important;
@@ -17035,6 +17040,7 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.9 — Windows/Linux dark titlebar + tabbar visibility reset */
+}
 
 
 /* ============================================================
@@ -17226,6 +17232,10 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
    cannot be stretched by tab recovery selectors.
    ============================================================ */
 
+@media not all {
+/* v2.22.12 — Disabled: the guard still leaves the first Windows ribbon icon
+  distorted for the tester, so do not force ribbon button geometry here. */
+
 @media (min-width: 701px) {
   body:not(.mod-macos):not(.is-mobile) :is(.workspace-ribbon, .side-dock-ribbon) :is(.clickable-icon, .side-dock-ribbon-action, button, [role="tab"]) {
     display: flex !important;
@@ -17269,3 +17279,15 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.11 — Windows ribbon guard after tabbar rescue rollback === */
+}
+
+
+/* ============================================================
+  v2.22.12 — Windows forced chrome rollback
+  v2.22.9-v2.22.11 changed visible Windows chrome without restoring tabs.
+  Keep the earlier failed tabbar experiments disabled and stop forcing
+  non-macOS titlebar/tabbar/ribbon geometry until real Windows DOM data is
+  available.
+  ============================================================ */
+
+/* End of v2.22.12 — Windows forced chrome rollback ===================== */

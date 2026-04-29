@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.12] — 2026-04-30 — Windows forced chrome rollback
+
+### Fixed
+- v2.22.11에서도 Windows 세로 리본바 첫 번째 아이콘이 비정상으로 보이던 문제를 막기 위해 리본 크기 강제 가드를 비활성화.
+- Windows titlebar를 검은색으로 고정하던 v2.22.9 레이어를 비활성화해 Obsidian 기본 titlebar/tabbar 동작으로 되돌림.
+
+### Changed
+- 실제 Windows DOM 확인 전까지 non-macOS titlebar/tabbar/ribbon 구조 강제 복원 selector를 추가하지 않음.
+
 ## [2.22.11] — 2026-04-30 — Windows ribbon guard after tabbar rescue rollback
 
 ### Fixed
