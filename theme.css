@@ -14555,3 +14555,271 @@ body.theme-dark .markdown-preview-view .dataview.inline-field-value {
 }
 
 /* End of v2.16.0 — Interaction & A11y Deep Polish ====================== */
+
+/* ======================================================================
+ * v2.17.0 — Surface Gaps & Tokenization
+ * Picks: A4 Scrollbar polish · A1 Empty state 일러스트 · B5 Wiki-link unresolved
+ *        · C4 Calendar today/active · D1 CSS 변수 토큰화 v2
+ * Samples-first 정책 · 좌측 라인 영구 밴 + Glass+Shadow 코어 준수
+ * ====================================================================== */
+
+/* --- D1 · CSS 변수 토큰화 v2 (전역 토큰; 신규 패치는 토큰 우선 사용) --- */
+body {
+  --og-accent-bg-hover: rgba(37, 99, 235, 0.08);
+  --og-accent-bg-active: rgba(37, 99, 235, 0.14);
+  --og-accent-bg-strong: rgba(37, 99, 235, 0.24);
+  --og-accent-border-soft: rgba(37, 99, 235, 0.30);
+  --og-accent-ring: rgba(37, 99, 235, 0.28);
+  --og-teal-bg-soft: rgba(13, 148, 136, 0.10);
+  --og-teal-border-soft: rgba(13, 148, 136, 0.30);
+  --og-rose-bg-soft: rgba(244, 63, 94, 0.10);
+  --og-rose-border-soft: rgba(244, 63, 94, 0.32);
+  --og-amber-bg-soft: rgba(245, 158, 11, 0.12);
+  --og-amber-border-soft: rgba(245, 158, 11, 0.32);
+  --og-green-bg-soft: rgba(16, 185, 129, 0.12);
+  --og-green-border-soft: rgba(16, 185, 129, 0.34);
+  --og-glass-border: rgba(148, 163, 184, 0.28);
+  --og-glass-shadow-md: 0 2px 4px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.08);
+  --og-glass-shadow-lift: 0 4px 8px rgba(15, 23, 42, 0.10), 0 12px 32px rgba(15, 23, 42, 0.14);
+}
+body.theme-dark {
+  --og-accent-bg-hover: rgba(96, 165, 250, 0.12);
+  --og-accent-bg-active: rgba(96, 165, 250, 0.20);
+  --og-accent-bg-strong: rgba(96, 165, 250, 0.30);
+  --og-accent-border-soft: rgba(96, 165, 250, 0.32);
+  --og-accent-ring: rgba(96, 165, 250, 0.36);
+  --og-glass-border: rgba(71, 85, 105, 0.40);
+  --og-glass-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.45);
+  --og-glass-shadow-lift: 0 4px 8px rgba(0, 0, 0, 0.45), 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* --- A4 · Scrollbar polish (WebKit + Firefox) ------------------------- */
+.workspace ::-webkit-scrollbar,
+.markdown-source-view ::-webkit-scrollbar,
+.markdown-reading-view ::-webkit-scrollbar,
+.cm-scroller::-webkit-scrollbar,
+.workspace-leaf-content ::-webkit-scrollbar,
+.modal ::-webkit-scrollbar,
+.menu ::-webkit-scrollbar,
+.suggestion-container ::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  transition: width 0.15s ease, height 0.15s ease !important;
+}
+.workspace ::-webkit-scrollbar:hover,
+.markdown-source-view ::-webkit-scrollbar:hover,
+.markdown-reading-view ::-webkit-scrollbar:hover,
+.cm-scroller::-webkit-scrollbar:hover,
+.workspace-leaf-content ::-webkit-scrollbar:hover {
+  width: 12px !important;
+  height: 12px !important;
+}
+.workspace ::-webkit-scrollbar-track,
+.markdown-source-view ::-webkit-scrollbar-track,
+.markdown-reading-view ::-webkit-scrollbar-track,
+.cm-scroller::-webkit-scrollbar-track,
+.workspace-leaf-content ::-webkit-scrollbar-track,
+.modal ::-webkit-scrollbar-track,
+.menu ::-webkit-scrollbar-track,
+.suggestion-container ::-webkit-scrollbar-track {
+  background: transparent !important;
+  border: none !important;
+}
+.workspace ::-webkit-scrollbar-thumb,
+.markdown-source-view ::-webkit-scrollbar-thumb,
+.markdown-reading-view ::-webkit-scrollbar-thumb,
+.cm-scroller::-webkit-scrollbar-thumb,
+.workspace-leaf-content ::-webkit-scrollbar-thumb,
+.modal ::-webkit-scrollbar-thumb,
+.menu ::-webkit-scrollbar-thumb,
+.suggestion-container ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35) !important;
+  border-radius: 999px !important;
+  border: 2px solid transparent !important;
+  background-clip: padding-box !important;
+  transition: background-color 0.15s ease !important;
+}
+.workspace ::-webkit-scrollbar-thumb:hover,
+.markdown-source-view ::-webkit-scrollbar-thumb:hover,
+.markdown-reading-view ::-webkit-scrollbar-thumb:hover,
+.cm-scroller::-webkit-scrollbar-thumb:hover,
+.workspace-leaf-content ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb !important;
+}
+.workspace ::-webkit-scrollbar-corner,
+.cm-scroller::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+body.theme-dark .workspace ::-webkit-scrollbar-thumb,
+body.theme-dark .markdown-source-view ::-webkit-scrollbar-thumb,
+body.theme-dark .markdown-reading-view ::-webkit-scrollbar-thumb,
+body.theme-dark .cm-scroller::-webkit-scrollbar-thumb,
+body.theme-dark .workspace-leaf-content ::-webkit-scrollbar-thumb,
+body.theme-dark .modal ::-webkit-scrollbar-thumb,
+body.theme-dark .menu ::-webkit-scrollbar-thumb,
+body.theme-dark .suggestion-container ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.30) !important;
+}
+body.theme-dark .workspace ::-webkit-scrollbar-thumb:hover,
+body.theme-dark .markdown-source-view ::-webkit-scrollbar-thumb:hover,
+body.theme-dark .markdown-reading-view ::-webkit-scrollbar-thumb:hover,
+body.theme-dark .cm-scroller::-webkit-scrollbar-thumb:hover,
+body.theme-dark .workspace-leaf-content ::-webkit-scrollbar-thumb:hover {
+  background: #60a5fa !important;
+}
+/* Firefox fallback */
+.workspace, .markdown-source-view, .markdown-reading-view,
+.cm-scroller, .workspace-leaf-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+}
+body.theme-dark .workspace, body.theme-dark .markdown-source-view,
+body.theme-dark .markdown-reading-view, body.theme-dark .cm-scroller,
+body.theme-dark .workspace-leaf-content {
+  scrollbar-color: rgba(148, 163, 184, 0.30) transparent;
+}
+
+/* --- A1 · Empty state 일러스트 ---------------------------------------- */
+.empty-state,
+.workspace-leaf .empty-state,
+.workspace-leaf-content .empty-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 32px 24px !important;
+  text-align: center !important;
+}
+.empty-state::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(13, 148, 136, 0.14));
+  border: 1px solid var(--og-glass-border);
+  box-shadow:
+    0 8px 24px rgba(37, 99, 235, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  margin-bottom: 4px;
+}
+.empty-state-title,
+.empty-state .empty-state-title {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--text-normal) !important;
+  margin: 0 !important;
+}
+.empty-state-action,
+.empty-state .empty-state-action {
+  margin-top: 6px !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  background: var(--og-accent-bg-active) !important;
+  color: #2563eb !important;
+  border: 1px solid var(--og-accent-border-soft) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.12s ease !important;
+}
+.empty-state-action:hover,
+.empty-state .empty-state-action:hover {
+  background: var(--og-accent-bg-strong) !important;
+}
+body.theme-dark .empty-state::before {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.20), rgba(94, 234, 212, 0.14));
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+body.theme-dark .empty-state-action,
+body.theme-dark .empty-state .empty-state-action {
+  color: #93c5fd !important;
+}
+
+/* --- B5 · Wiki-link unresolved 톤 ------------------------------------- */
+.markdown-rendered a.internal-link.is-unresolved,
+.markdown-preview-view a.internal-link.is-unresolved,
+.cm-editor .cm-hmd-internal-link.is-unresolved,
+.cm-editor .cm-underline.is-unresolved {
+  color: var(--text-muted) !important;
+  border-bottom: 1px dashed var(--text-muted) !important;
+  text-decoration: none !important;
+  transition: color 0.12s ease, border-bottom-color 0.12s ease !important;
+}
+.markdown-rendered a.internal-link.is-unresolved:hover,
+.markdown-preview-view a.internal-link.is-unresolved:hover,
+.cm-editor .cm-hmd-internal-link.is-unresolved:hover {
+  color: #f43f5e !important;
+  border-bottom-color: #f43f5e !important;
+  border-bottom-style: dashed !important;
+}
+.markdown-rendered a.internal-link.is-unresolved::after,
+.markdown-preview-view a.internal-link.is-unresolved::after {
+  content: "?";
+  display: inline-block;
+  margin-left: 3px;
+  font-size: 0.75em;
+  vertical-align: super;
+  opacity: 0.7;
+  font-weight: 600;
+}
+body.theme-dark .markdown-rendered a.internal-link.is-unresolved:hover,
+body.theme-dark .markdown-preview-view a.internal-link.is-unresolved:hover,
+body.theme-dark .cm-editor .cm-hmd-internal-link.is-unresolved:hover {
+  color: #fda4af !important;
+  border-bottom-color: #fda4af !important;
+}
+
+/* --- C4 · Calendar 플러그인 today/active ------------------------------ */
+.workspace-leaf-content[data-type="calendar"] .day,
+.workspace-leaf-content[data-type="calendar"] .calendar-day {
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: none !important;
+  /* No left line */
+  box-shadow: none !important;
+  transition: background-color 0.12s ease !important;
+  position: relative !important;
+}
+.workspace-leaf-content[data-type="calendar"] .day:hover,
+.workspace-leaf-content[data-type="calendar"] .calendar-day:hover {
+  background: var(--og-accent-bg-hover) !important;
+}
+.workspace-leaf-content[data-type="calendar"] .day.today,
+.workspace-leaf-content[data-type="calendar"] .calendar-day.today,
+.workspace-leaf-content[data-type="calendar"] .day.is-today,
+.workspace-leaf-content[data-type="calendar"] .calendar-day.is-today {
+  background: var(--og-accent-bg-active) !important;
+  color: #2563eb !important;
+  font-weight: 700 !important;
+}
+.workspace-leaf-content[data-type="calendar"] .day.active,
+.workspace-leaf-content[data-type="calendar"] .calendar-day.active,
+.workspace-leaf-content[data-type="calendar"] .day.is-active,
+.workspace-leaf-content[data-type="calendar"] .calendar-day.is-active,
+.workspace-leaf-content[data-type="calendar"] .day.is-selected,
+.workspace-leaf-content[data-type="calendar"] .calendar-day.is-selected {
+  background: var(--og-accent-bg-strong) !important;
+  color: #2563eb !important;
+  font-weight: 700 !important;
+  box-shadow: inset 0 0 0 1px var(--og-accent-border-soft) !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .day.today,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .calendar-day.today,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .day.is-today,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .calendar-day.is-today,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .day.active,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .calendar-day.active,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .day.is-active,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .calendar-day.is-active,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .day.is-selected,
+body.theme-dark .workspace-leaf-content[data-type="calendar"] .calendar-day.is-selected {
+  color: #93c5fd !important;
+}
+
+/* End of v2.17.0 — Surface Gaps & Tokenization ========================= */

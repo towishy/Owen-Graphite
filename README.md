@@ -18,7 +18,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.16.0` (Obsidian 1.6.0+ · 현 베이스라인) |
+| **버전** | `2.17.0` (Obsidian 1.6.0+ · 현 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -170,27 +170,27 @@ fi
 
 ## 4. 테마 신기능
 
-### ✨ v2.16.0 — Interaction & A11y Deep Polish (5종)
+### ✨ v2.17.0 — Surface Gaps & Tokenization (5종)
 
-Bookmarks 패널 · CM6 fold gutter · Dataview inline chip · reduced-motion · high-contrast 일괄 정비.
+Scrollbar · Empty state · Wiki-link unresolved · Calendar today/active · CSS 토큰화 v2 일괄 정비.
 
 #### 라이트 모드
 
-![v2.16.0 — Light](screenshots/readme/v2.16-preview-light.png)
+![v2.17.0 — Light](screenshots/readme/v2.17-preview-light.png)
 
 #### 다크 모드
 
-![v2.16.0 — Dark](screenshots/readme/v2.16-preview-dark.png)
+![v2.17.0 — Dark](screenshots/readme/v2.17-preview-dark.png)
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Bookmarks 패널 chrome | hover lift + active pill + count pill (teal), 좌측 라인 X |
-| 2 | CM6 fold gutter polish | mute → brand on hover + smooth transition |
-| 3 | Dataview inline field chip | `key:: value` 를 key=accent + value=mono 2단 chip으로 자동 정렬 |
-| 4 | `prefers-reduced-motion` 전면 안전망 | pulse/lift/transition 일괄 비활성, 전역 animation cap |
-| 5 | `prefers-contrast: more` 대응 | border/text-muted/focus-ring/shadow 자동 강화 |
+| 1 | Scrollbar polish | 8px overlay glass thumb → hover 12px + brand 전환, Firefox fallback |
+| 2 | Empty state 일러스트 | `.empty-state::before` 그라디언트 glass square + brand CTA pill |
+| 3 | Wiki-link unresolved 톤 | muted + dashed underline + `?` superscript, hover 시 rose |
+| 4 | Calendar today/active | 원형 fill (today=14% · active=24% + ring), 좌측 라인 X |
+| 5 | CSS 토큰화 v2 | `--og-accent-bg-*`, `--og-glass-*` 등 전역 토큰 도입 (하위 호환 유지) |
 
-> 인터랙티브 미리보기 (RM/HC 토글 포함): [docs/fixtures/v2.16-preview.html](docs/fixtures/v2.16-preview.html)
+> 인터랙티브 미리보기: [docs/fixtures/v2.17-preview.html](docs/fixtures/v2.17-preview.html)
 
 ---
 
@@ -294,10 +294,11 @@ Bookmarks 패널 · CM6 fold gutter · Dataview inline chip · reduced-motion ·
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.16.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.17.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.17.0** | Surface Gaps & Tokenization — Scrollbar polish · Empty state 일러스트 · Wiki-link unresolved 톤 · Calendar today/active · CSS 토큰화 v2 |
 | **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |
 | **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · CM6 fold gutter · Dataview inline chip · reduced-motion 안전망 · high-contrast 대응 |
 | **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Ribbon active pill · Mermaid card · Tasks 플러그인 · Focus-visible 링 |

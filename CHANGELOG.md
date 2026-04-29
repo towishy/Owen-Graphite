@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.17.0] — 2026-04-29 — Surface Gaps & Tokenization (5 items, samples-first approved)
+
+### Added
+1. **Scrollbar polish (A4)** — WebKit `::-webkit-scrollbar` 8px overlay glass thumb → hover 12px 확장 + brand 색 전환, Firefox `scrollbar-color` fallback 포함 (workspace/cm-scroller/leaf/modal/menu 일괄).
+2. **Empty state 일러스트 (A1)** — `.empty-state::before` 72×72 그라디언트 glass square + `.empty-state-action` brand pill button.
+3. **Wiki-link unresolved 톤 (B5)** — `a.internal-link.is-unresolved` muted color + dashed underline + `?` superscript, hover 시 rose 톤으로 전환 (CM6 포함).
+4. **Calendar 플러그인 today/active (C4)** — `data-type="calendar"` .day 원형 fill: today=14% · active/is-selected=24% + 1px inset ring, 좌측 라인 X.
+5. **CSS 읽수 토큰화 v2 (D1)** — `--og-accent-bg-{hover,active,strong}` · `--og-accent-border-soft/ring` · `--og-{teal,rose,amber,green}-bg-soft/border-soft` · `--og-glass-{border,shadow-md,shadow-lift}` 전역 토큰 도입 (하위 호환 유지).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.17-preview.html`](docs/fixtures/v2.17-preview.html) 사용자 승인 후 적용.
+- 릴리즈 철학: chrome 눠라진 표면(scrollbar/empty state/calendar) 메우고, 향후 패치 재사용을 위한 토큰 레이어 확립.
+
 ## [2.16.0] — 2026-04-29 — Interaction & A11y Deep Polish (5 items, samples-first approved)
 
 ### Added
