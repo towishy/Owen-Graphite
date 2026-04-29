@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.9] — 2026-04-30 — Windows dark titlebar + tabbar visibility reset
+
+### Fixed
+- Windows Obsidian에서 v2.22.8 이후에도 탭이 보이지 않고, titlebar가 예전의 진한 회색 대신 연한 회색으로 보이던 문제에 대응.
+- Windows/Electron body class 차이를 고려해 `body:not(.mod-macos):not(.is-mobile)` 범위에서 titlebar/tabbar를 진한 회색 chrome으로 복원하고, tab header/title/button의 표시·크기·색상을 강제 복구.
+
+### Preserved
+- macOS Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.8] — 2026-04-30 — Windows default titlebar/tabbar rollback
 
 ### Fixed

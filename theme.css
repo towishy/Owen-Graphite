@@ -16867,3 +16867,171 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
   @media not all above, so Windows returns to the default Obsidian tabbar
   layout that was visible in v1.8.66.
   ============================================================ */
+
+
+/* ============================================================
+   v2.22.9 — Windows/Linux dark titlebar + tabbar visibility reset
+   Windows reports the tabs still hidden and the titlebar falling back to the
+   pale v2.4.0 chrome. Scope broadly to non-macOS desktop because Windows body
+   class matching may differ across Obsidian/Electron builds.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.mod-macos):not(.is-mobile) {
+    --titlebar-background: #15191f !important;
+    --titlebar-background-focused: #15191f !important;
+    --titlebar-text-color: #cbd5e1 !important;
+    --tab-container-background: #15191f !important;
+    --tab-background-active: #2c333d !important;
+    --tab-background-focused: #2c333d !important;
+    --tab-outline-color: #353841 !important;
+    --tab-outline-width: 1px !important;
+    --tab-text-color: #94a3b8 !important;
+    --tab-text-color-focused: #cbd5e1 !important;
+    --tab-text-color-active: #f1f5f9 !important;
+    --tab-text-color-focused-active: #f1f5f9 !important;
+    --icon-color: #cbd5e1 !important;
+    --icon-color-hover: #f8fafc !important;
+    --icon-color-active: #f8fafc !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.titlebar, .titlebar-button-container, .titlebar-button, .titlebar-text) {
+    background: var(--titlebar-background) !important;
+    background-color: var(--titlebar-background) !important;
+    border: 0 !important;
+    color: var(--titlebar-text-color) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-container, .mod-root .workspace-tab-header-container) {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 36px !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 6px !important;
+    background: var(--tab-container-background) !important;
+    background-color: var(--tab-container-background) !important;
+    border: 0 !important;
+    color: var(--tab-text-color) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container-inner {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 32px !important;
+    height: auto !important;
+    max-height: none !important;
+    gap: 6px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) .workspace-tabs {
+    background: var(--background-secondary) !important;
+    color: var(--tab-text-color) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 36px !important;
+    min-height: 30px !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 2px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: var(--tab-text-color) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container .workspace-tab-header-inner {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 28px !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 10px !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner,
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container [role="tab"][aria-selected="true"] .workspace-tab-header-inner {
+    background: var(--tab-background-active) !important;
+    color: var(--tab-text-color-active) !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) .workspace-tab-header-container :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab, .sidebar-toggle-button, .titlebar-button, .titlebar-button-container button) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    height: auto !important;
+    max-height: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: var(--icon-color) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+}
+
+/* End of v2.22.9 — Windows/Linux dark titlebar + tabbar visibility reset */
