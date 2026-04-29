@@ -82,12 +82,12 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 
 ### 옵션 B — Git 수동 설치 / 업데이트
 
-Obsidian vault의 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. 같은 명령으로 빠르게 업데이트할 수 있습니다.
+Obsidian vault의 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. **같은 명령을 다시 실행하면 자동으로 업데이트**됩니다 (이미 클론된 폴더는 `git pull --ff-only`).
 
-| 플랫폼 | Git 설치 | 클론 명령 |
+| 플랫폼 | Git 설치 | 설치 / 업데이트 명령 |
 |--------|----------|-----------|
 | Windows | `winget install --id Git.Git -e --source winget` | PowerShell 스크립트 (아래) |
-| macOS | `brew install git` | `git clone https://github.com/towishy/Owen-Graphite.git "$VAULT/.obsidian/themes/Owen Graphite"` |
+| macOS | `brew install git` | bash 스크립트 (아래) |
 | Linux | `sudo apt install git` (또는 `dnf install git`) | macOS와 동일 |
 
 #### Windows (PowerShell)
@@ -111,20 +111,39 @@ Write-Host "OK: Owen Graphite installed or updated."
 
 #### macOS / Linux (bash)
 
+최신 버전의 macOS에서는 git이 기본 포함되어 있으며, 아래 스크립트는 **설치 / 업데이트 / 손상된 폴더 복구**를 모두 처리합니다.
+
 ```bash
 set -e
-cd "/path/to/YourVault"
-mkdir -p ".obsidian/themes"
-THEME_DIR=".obsidian/themes/Owen Graphite"
+VAULT="/path/to/YourVault"          # ← vault 경로로 교체
 REPO="https://github.com/towishy/Owen-Graphite.git"
+THEME_DIR="$VAULT/.obsidian/themes/Owen Graphite"
+
+mkdir -p "$VAULT/.obsidian/themes"
+
 if [ -d "$THEME_DIR/.git" ]; then
-    git -C "$THEME_DIR" fetch --quiet origin main
-    git -C "$THEME_DIR" reset --quiet --hard origin/main
+  # 이미 설치됨 → 최신화 (rebase 대신 hard reset 으로 충돌 회피)
+  git -C "$THEME_DIR" fetch --quiet origin main
+  git -C "$THEME_DIR" reset --quiet --hard origin/main
+  git -C "$THEME_DIR" clean -qfd
+  echo "OK: Owen Graphite updated to $(git -C "$THEME_DIR" describe --tags --abbrev=0 2>/dev/null || echo 'main HEAD')."
+elif [ -e "$THEME_DIR" ]; then
+  # 폴더는 있으나 git 저장소가 아님 (수동 ZIP 설치 등) → 백업 후 재클론
+  BACKUP="$THEME_DIR.backup-$(date +%Y%m%d-%H%M%S)"
+  echo "WARN: 기존 비-Git 폴더 발견 → $BACKUP 으로 백업 후 재설치"
+  mv "$THEME_DIR" "$BACKUP"
+  git clone --quiet "$REPO" "$THEME_DIR"
+  echo "OK: Owen Graphite 재설치 완료 (이전 폴더는 $BACKUP 에 보관)."
 else
-    git clone --quiet "$REPO" "$THEME_DIR"
+  git clone --quiet "$REPO" "$THEME_DIR"
+  echo "OK: Owen Graphite 설치 완료."
 fi
-echo "OK: Owen Graphite installed or updated."
 ```
+
+> **한 줄 버전** (이미 vault 경로에서 실행 중일 때):
+> ```bash
+> THEME_DIR=".obsidian/themes/Owen Graphite"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main; else git clone -q https://github.com/towishy/Owen-Graphite.git "$THEME_DIR"; fi && echo "OK"
+> ```
 
 ### 옵션 C — ZIP 수동 설치
 
