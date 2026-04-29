@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.18.0] — 2026-04-29 — All-A Surface Sweep (5 items, samples-first approved)
+
+### Added
+1. **Workspace split divider polish (A1)** — `.workspace-leaf-resize-handle` hover 시 1px→2px brand fade + glow + col/row-resize cursor (전체 라인, 좌측 전용 X).
+2. **Drag preview ghost glass (A2)** — `.is-being-dragged` (tab/nav-file/folder/tree-item) opacity 0.85 + rotate(1deg) scale(1.02) + lift shadow + blur(10).
+3. **Vault switcher / Workspaces 모달 (A3)** — `.modal.mod-vault-switcher`, `.modal.mod-workspaces`, `.workspaces-modal` glass card + row hover lift + active pill.
+4. **Status bar separator (A4)** — `.status-bar-item + .status-bar-item::before` 1px×12px 수직 separator + item hover tint (구분용 세퍼레이터 · 강조 용도 아님 → 좌측 라인 정책 예외).
+5. **Modal close (×) chrome (A5)** — `.modal-close-button` mute → hover 시 rose tint + inset ring (destructive 액션 구분) + focus-visible brand ring.
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.18-preview.html`](docs/fixtures/v2.18-preview.html) 사용자 승인 ("A로 진행") 후 적용.
+- D1 토큰(`--og-glass-border/-shadow-lift`, `--og-accent-bg-*`) 적극 재사용으로 일관성 확보.
+
 ## [2.17.0] — 2026-04-29 — Surface Gaps & Tokenization (5 items, samples-first approved)
 
 ### Added

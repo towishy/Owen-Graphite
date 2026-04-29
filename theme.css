@@ -14823,3 +14823,172 @@ body.theme-dark .workspace-leaf-content[data-type="calendar"] .calendar-day.is-s
 }
 
 /* End of v2.17.0 — Surface Gaps & Tokenization ========================= */
+
+/* ======================================================================
+ * v2.18.0 — All-A Surface Sweep
+ * Picks: A1 Workspace split divider · A2 Drag preview ghost
+ *        · A3 Vault switcher modal · A4 Status bar separator
+ *        · A5 Modal close (X) chrome
+ * Samples-first 정책 · 좌측 라인 영구 밴 + Glass+Shadow 코어 준수
+ * ====================================================================== */
+
+/* --- A1 · Workspace split divider polish ------------------------------ */
+.workspace-split > .workspace-leaf-resize-handle,
+.workspace-split .workspace-leaf-resize-handle,
+.workspace-tabs .workspace-leaf-resize-handle {
+  background: var(--og-glass-border, rgba(148, 163, 184, 0.28)) !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, width 0.15s ease, height 0.15s ease !important;
+  cursor: col-resize !important;
+}
+.workspace-split.mod-horizontal > .workspace-leaf-resize-handle,
+.workspace-split.mod-horizontal .workspace-leaf-resize-handle {
+  cursor: row-resize !important;
+}
+.workspace-split > .workspace-leaf-resize-handle:hover,
+.workspace-split .workspace-leaf-resize-handle:hover,
+.workspace-tabs .workspace-leaf-resize-handle:hover {
+  background: #2563eb !important;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.30) !important;
+  /* Full-line hover (not left-only) — meets policy */
+}
+body.theme-dark .workspace-split > .workspace-leaf-resize-handle:hover,
+body.theme-dark .workspace-split .workspace-leaf-resize-handle:hover,
+body.theme-dark .workspace-tabs .workspace-leaf-resize-handle:hover {
+  background: #60a5fa !important;
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.40) !important;
+}
+
+/* --- A2 · Drag preview ghost glass ------------------------------------ */
+.is-being-dragged,
+.workspace-tab-header.is-being-dragged,
+.nav-file.is-being-dragged,
+.nav-folder.is-being-dragged,
+.nav-file-title.is-being-dragged,
+.nav-folder-title.is-being-dragged,
+.tree-item-self.is-being-dragged {
+  opacity: 0.85 !important;
+  transform: rotate(1deg) scale(1.02) !important;
+  box-shadow: var(--og-glass-shadow-lift, 0 4px 8px rgba(15, 23, 42, 0.10), 0 12px 32px rgba(15, 23, 42, 0.14)) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(1.1) !important;
+  backdrop-filter: blur(10px) saturate(1.1) !important;
+  cursor: grabbing !important;
+  border-radius: 8px !important;
+  z-index: 100 !important;
+}
+
+/* --- A3 · Vault switcher / Workspace 모달 chrome ---------------------- */
+.modal.mod-vault-switcher,
+.modal.mod-workspaces,
+.workspaces-modal {
+  background: var(--bg-card, rgba(255, 255, 255, 0.78)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.1) !important;
+  backdrop-filter: blur(14px) saturate(1.1) !important;
+  border: 1px solid var(--og-glass-border, rgba(148, 163, 184, 0.28)) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--og-glass-shadow-lift, 0 4px 8px rgba(15, 23, 42, 0.10), 0 12px 32px rgba(15, 23, 42, 0.14)) !important;
+}
+.modal.mod-vault-switcher .vault,
+.modal.mod-vault-switcher .workspace,
+.modal.mod-workspaces .workspace,
+.workspaces-modal .workspace,
+.modal.mod-vault-switcher .modal-content > div[role="button"],
+.modal.mod-workspaces .modal-content > div[role="button"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 10px !important;
+  border-radius: 6px !important;
+  margin: 2px 0 !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  transition: background-color 0.12s ease, border-color 0.12s ease,
+              transform 0.12s ease, box-shadow 0.12s ease !important;
+  cursor: pointer !important;
+}
+.modal.mod-vault-switcher .vault:hover,
+.modal.mod-vault-switcher .workspace:hover,
+.modal.mod-workspaces .workspace:hover,
+.workspaces-modal .workspace:hover {
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+  border-color: var(--og-glass-border, rgba(148, 163, 184, 0.28)) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+  /* No left line */
+}
+.modal.mod-vault-switcher .vault.is-active,
+.modal.mod-vault-switcher .workspace.is-active,
+.modal.mod-workspaces .workspace.is-active {
+  background: var(--og-accent-bg-active, rgba(37, 99, 235, 0.14)) !important;
+  font-weight: 600 !important;
+}
+
+/* --- A4 · Status bar item glass row + separator ----------------------- */
+.status-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 4px 12px !important;
+}
+.status-bar .status-bar-item {
+  position: relative !important;
+  padding: 2px 10px !important;
+  border-radius: 6px !important;
+  transition: color 0.12s ease, background-color 0.12s ease !important;
+  background: transparent !important;
+}
+.status-bar .status-bar-item:hover {
+  background: var(--og-accent-bg-hover, rgba(37, 99, 235, 0.08)) !important;
+  color: #2563eb !important;
+}
+.status-bar .status-bar-item + .status-bar-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: var(--og-glass-border, rgba(148, 163, 184, 0.28));
+  pointer-events: none;
+  /* This is a SEPARATOR between items, NOT a left-accent for emphasis.
+     Allowed because it does not represent active/hover/selected state. */
+}
+body.theme-dark .status-bar .status-bar-item:hover {
+  color: #93c5fd !important;
+}
+
+/* --- A5 · Modal close (X) button chrome ------------------------------- */
+.modal .modal-close-button,
+.modal-container .modal-close-button {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  transition: background-color 0.12s ease, color 0.12s ease, box-shadow 0.12s ease !important;
+}
+.modal .modal-close-button:hover,
+.modal-container .modal-close-button:hover {
+  background: rgba(244, 63, 94, 0.12) !important;
+  color: #f43f5e !important;
+  box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.30) !important;
+}
+.modal .modal-close-button:focus-visible,
+.modal-container .modal-close-button:focus-visible {
+  box-shadow: 0 0 0 3px var(--og-accent-ring, rgba(37, 99, 235, 0.28)) !important;
+}
+body.theme-dark .modal .modal-close-button:hover,
+body.theme-dark .modal-container .modal-close-button:hover {
+  background: rgba(244, 63, 94, 0.18) !important;
+  color: #fda4af !important;
+  box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.40) !important;
+}
+
+/* End of v2.18.0 — All-A Surface Sweep ================================= */

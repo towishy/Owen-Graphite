@@ -18,7 +18,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.17.0` (Obsidian 1.6.0+ · 현 베이스라인) |
+| **버전** | `2.18.0` (Obsidian 1.6.0+ · 현 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -170,27 +170,27 @@ fi
 
 ## 4. 테마 신기능
 
-### ✨ v2.17.0 — Surface Gaps & Tokenization (5종)
+### ✨ v2.18.0 — All-A Surface Sweep (5종)
 
-Scrollbar · Empty state · Wiki-link unresolved · Calendar today/active · CSS 토큰화 v2 일괄 정비.
+Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar separator · Modal close (×) 일괄 정비.
 
 #### 라이트 모드
 
-![v2.17.0 — Light](screenshots/readme/v2.17-preview-light.png)
+![v2.18.0 — Light](screenshots/readme/v2.18-preview-light.png)
 
 #### 다크 모드
 
-![v2.17.0 — Dark](screenshots/readme/v2.17-preview-dark.png)
+![v2.18.0 — Dark](screenshots/readme/v2.18-preview-dark.png)
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Scrollbar polish | 8px overlay glass thumb → hover 12px + brand 전환, Firefox fallback |
-| 2 | Empty state 일러스트 | `.empty-state::before` 그라디언트 glass square + brand CTA pill |
-| 3 | Wiki-link unresolved 톤 | muted + dashed underline + `?` superscript, hover 시 rose |
-| 4 | Calendar today/active | 원형 fill (today=14% · active=24% + ring), 좌측 라인 X |
-| 5 | CSS 토큰화 v2 | `--og-accent-bg-*`, `--og-glass-*` 등 전역 토큰 도입 (하위 호환 유지) |
+| 1 | Workspace split divider | hover 시 1→2px brand fade + glow + resize cursor (전체 라인) |
+| 2 | Drag preview ghost glass | `.is-being-dragged` opacity 0.85 + rotate(1deg) + lift shadow + blur(10) |
+| 3 | Vault switcher 모달 | glass card + row hover lift + active pill (settings row 패턴 재사용) |
+| 4 | Status bar separator | item 사이 1×12px separator + hover tint (좌측 라인 정책 예외 — 구분용) |
+| 5 | Modal close (×) chrome | hover 시 rose tint + inset ring (destructive 액션 구분) |
 
-> 인터랙티브 미리보기: [docs/fixtures/v2.17-preview.html](docs/fixtures/v2.17-preview.html)
+> 인터랙티브 미리보기: [docs/fixtures/v2.18-preview.html](docs/fixtures/v2.18-preview.html)
 
 ---
 
@@ -294,10 +294,11 @@ Scrollbar · Empty state · Wiki-link unresolved · Calendar today/active · CSS
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.17.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.18.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.18.0** | All-A Surface Sweep — Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar separator · Modal close (×) |
 | **v2.17.0** | Surface Gaps & Tokenization — Scrollbar polish · Empty state 일러스트 · Wiki-link unresolved 톤 · Calendar today/active · CSS 토큰화 v2 |
 | **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |
 | **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · CM6 fold gutter · Dataview inline chip · reduced-motion 안전망 · high-contrast 대응 |
