@@ -12625,7 +12625,7 @@ body.theme-dark .metadata-property:active::before {
 }
 
 /* (2) outline / bookmarks / backlink / recent / tag / outgoing-link active
-       경량 강조: 배경 tint + outline (외곽 shadow 없음 — 좁은 패널 정확도 우선) */
+       — 좌측 라인만 무력화. 배경은 기존 v2.7.x 의 #eef2ff 룰에 위임 (외곽 박스 누적 방지) */
 .outline .tree-item-self.is-active,
 .outline-view .tree-item-self.is-active,
 .bookmarks-view .tree-item-self.is-active,
@@ -12638,9 +12638,7 @@ body.theme-dark .metadata-property:active::before {
   border: 0 !important;
   border-left: 0 !important;
   box-shadow: none !important;
-  background: rgba(37, 99, 235, 0.10);
-  outline: 1px solid rgba(37, 99, 235, 0.22);
-  outline-offset: -1px;
+  outline: 0 !important;
   font-weight: 600;
   border-radius: 6px;
 }
@@ -12655,18 +12653,6 @@ body.theme-dark .metadata-property:active::before {
 .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active::before {
   content: none !important;
   display: none !important;
-}
-.theme-dark .outline .tree-item-self.is-active,
-.theme-dark .outline-view .tree-item-self.is-active,
-.theme-dark .bookmarks-view .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="bookmarks"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="recent-files"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="tag"] .tree-item-self.is-active,
-.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .tree-item-self.is-active {
-  background: rgba(96, 165, 250, 0.14);
-  outline-color: rgba(96, 165, 250, 0.32);
 }
 
 /* (3) outline / backlink dashed 좌측 가이드 라인 무력화 */

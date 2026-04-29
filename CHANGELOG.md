@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.7] — 2026-04-29 — Hotfix: Outline active 회색 외곽 박스 제거 (기존 #eef2ff 에 위임)
+
+### Fixed
+- **Outline / Bookmarks / Backlink / Recent / Tag / Outgoing-link active 항목 회색 외곽 박스 제거.** v2.9.6에서 추가한 `background: rgba(37,99,235,0.10) + outline: 1px solid` 가 기존 v2.7.x 룰(`background: #eef2ff`)과 중첩되어 외곡 회색 박스 표시.
+- 좌측 라인 무력화는 유지, 배경은 기존 연보라 틴트에 위임 — 외곽 박스·외곽 shadow 모두 제거.
+
+### Policy (매모리 등록)
+- **신규 디자인 기능은 코드 적용 전 반드시 샘플 이미지를 보여주고 사용자 확인 후 진행** — 코어 디자인 원칙으로 영구 등록. 버그 핫픽스·기존 정책 적용 등은 예외.
+
 ## [2.9.6] — 2026-04-29 — Hotfix: 회색 외곽 박스 제거 (기존 글래스에 광아올 추가 제거)
 
 ### Fixed
