@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.11] — 2026-04-30 — Windows ribbon guard after tabbar rescue rollback
+
+### Fixed
+- v2.22.10에서 Windows 세로 리본바 첫 번째 아이콘이 세로로 늘어지던 문제 수정.
+- 리본 아이콘까지 잡아 늘리던 broad `[role="tab"]` tabbar rescue 블록을 비활성화하고, Windows/non-macOS 리본 버튼·SVG 크기를 32px/18px로 복원.
+
+### Preserved
+- v2.22.9의 Windows dark titlebar 색상 복원 유지.
+- macOS Glass chrome 유지.
+
 ## [2.22.10] — 2026-04-30 — Windows dark-mode tabbar structural rescue
 
 ### Fixed

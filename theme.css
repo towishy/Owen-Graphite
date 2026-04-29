@@ -17044,6 +17044,10 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
    Obsidian tab header descendant inside that row.
    ============================================================ */
 
+@media not all {
+/* v2.22.11 — Disabled: the broad [role="tab"] selector stretched the first
+  vertical ribbon icon on Windows while tabs still remained hidden. */
+
 @media (min-width: 701px) {
   body:not(.mod-macos):not(.is-mobile) :is(.workspace-split.mod-root, .mod-root .workspace-tabs, .workspace-tabs) {
     display: flex !important;
@@ -17212,3 +17216,56 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.10 — Windows dark-mode tabbar structural rescue ========= */
+}
+
+
+/* ============================================================
+   v2.22.11 — Windows ribbon guard after tabbar rescue rollback
+   Keep the v2.22.9 dark titlebar fix, but disable the overbroad v2.22.10
+   tabbar rescue above. Restore ribbon buttons so role/tab-like plugin icons
+   cannot be stretched by tab recovery selectors.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-ribbon, .side-dock-ribbon) :is(.clickable-icon, .side-dock-ribbon-action, button, [role="tab"]) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    margin: 2px auto !important;
+    padding: 6px !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: var(--icon-color, #cbd5e1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-ribbon, .side-dock-ribbon) :is(.clickable-icon, .side-dock-ribbon-action, button, [role="tab"]) :is(svg, .svg-icon) {
+    display: block !important;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+    color: currentColor !important;
+    stroke: currentColor !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* End of v2.22.11 — Windows ribbon guard after tabbar rescue rollback === */
