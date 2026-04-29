@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.1] — 2026-04-29 — Drop Settings nav left-accent
+
+### Removed
+- **Settings 좌측 nav active 항목의 좌측 세로 블루 라인** (`box-shadow: inset 2px 0 0 #2563eb`) 제거. 강조는 background + font-weight로만 처리.
+
+### Policy
+- **메뉴/탭/nav active 상태에 좌측 세로 액센트 라인 사용 금지** (사용자 정책, 2026-04-29). callout stripe / folder color code / search guide 등 의도된 디자인 언어는 유지.
+
+### Notes
+- 옵션 수 31개 유지. CSS 단일 행 삭제만.
+
 ## [2.6.0] — 2026-04-29 — Workspace + Search/Modal + Polish Pack
 
 ### Added

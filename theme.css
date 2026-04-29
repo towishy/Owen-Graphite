@@ -1,5 +1,5 @@
 /* Owen Graphite for Obsidian — A report-oriented theme.
- * Version 2.6.0 — Workspace + Search/Modal + Polish Pack
+ * Version 2.6.1 — Drop Settings nav left-accent (policy: no left bar on menu active states)
  * Stable since v2.2.0 (UX Pack baseline preserved).
  * Author: towishy  ·  License: MIT
  * Repository: https://github.com/towishy/Owen-Graphite
@@ -11536,7 +11536,8 @@ body.theme-dark .workspace-leaf-content[data-type="search"] .search-result-file-
   background: rgba(37, 99, 235, 0.14) !important;
   color: #1e293b !important;
   font-weight: 600;
-  box-shadow: inset 2px 0 0 #2563eb;
+  /* NOTE: 좌측 세로 액센트 라인 사용 금지 (사용자 정책).
+     강조는 background + font-weight 만으로 처리. */
 }
 .modal-container .setting-item-heading .setting-item-name {
   font-weight: 700;
