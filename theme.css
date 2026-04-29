@@ -17433,3 +17433,109 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.13 — Windows tabbar visual baseline reset =============== */
+
+
+/* Windows tabbar repair candidate: root tab layout only, no changelog entry. */
+@media (min-width: 701px) {
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root > .workspace-tabs,
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active,
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root > .workspace-tabs,
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    background: var(--background-secondary) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root > .workspace-tabs > .workspace-tab-header-container,
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active > .workspace-tab-header-container,
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root > .workspace-tabs > .workspace-tab-header-container,
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active > .workspace-tab-header-container {
+    display: flex !important;
+    flex: 0 0 34px !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 34px !important;
+    width: 100% !important;
+    height: 34px !important;
+    max-height: 34px !important;
+    margin: 0 !important;
+    padding: 2px 6px !important;
+    background: var(--tab-container-background, var(--background-secondary)) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 2 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root > .workspace-tabs > .workspace-tab-container,
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active > .workspace-tab-container,
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root > .workspace-tabs > .workspace-tab-container,
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-active > .workspace-tab-container {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+    display: flex !important;
+    flex: 0 1 180px !important;
+    align-items: center !important;
+    min-width: 112px !important;
+    min-height: 28px !important;
+    width: auto !important;
+    height: 28px !important;
+    max-width: 240px !important;
+    max-height: 28px !important;
+    margin: 0 2px !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.74) !important;
+    border: 1px solid rgba(100, 116, 139, 0.28) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  body.mod-windows:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]),
+  body:not(.mod-macos):not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container :is(.workspace-tab-header, [role="tab"]) {
+    background: rgba(30, 41, 59, 0.74) !important;
+    border-color: rgba(203, 213, 225, 0.20) !important;
+    color: var(--text-muted) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.30) !important;
+  }
+
+  body.mod-windows:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]),
+  body:not(.mod-macos):not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) {
+    background: var(--tab-background-active, var(--background-primary)) !important;
+    border-color: rgba(71, 85, 105, 0.36) !important;
+    color: var(--text-normal) !important;
+  }
+}
