@@ -17035,3 +17035,180 @@ body.mod-linux :is(.workspace-tab-header-container, .titlebar) :is(svg, .svg-ico
 }
 
 /* End of v2.22.9 — Windows/Linux dark titlebar + tabbar visibility reset */
+
+
+/* ============================================================
+   v2.22.10 — Windows dark-mode tabbar structural rescue
+   The v2.22.9 titlebar rule applies on Windows, so this final layer forces
+   the tabbar slot itself to occupy a visible row and exposes every known
+   Obsidian tab header descendant inside that row.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-split.mod-root, .mod-root .workspace-tabs, .workspace-tabs) {
+    display: flex !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.mod-root .workspace-tabs, .workspace-tabs) {
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    background: var(--background-secondary) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    isolation: isolate !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tabs > .workspace-tab-header-container, .mod-root .workspace-tab-header-container, .workspace-tab-header-container) {
+    display: flex !important;
+    flex: 0 0 40px !important;
+    order: 0 !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 40px !important;
+    width: 100% !important;
+    height: 40px !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 4px 8px !important;
+    background: #15191f !important;
+    border: 0 !important;
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    z-index: 100 !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-container-inner, .workspace-tab-header-container .workspace-tab-header-container-inner) {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    max-height: none !important;
+    gap: 6px !important;
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tabs > .workspace-tab-container, .workspace-tab-container) {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    order: 1 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header, [role="tab"]) {
+    display: flex !important;
+    flex: 0 1 220px !important;
+    align-items: center !important;
+    min-width: 96px !important;
+    min-height: 30px !important;
+    width: auto !important;
+    height: 30px !important;
+    max-height: none !important;
+    margin: 0 2px !important;
+    padding: 0 !important;
+    background: #20242c !important;
+    border: 1px solid rgba(203, 213, 225, 0.18) !important;
+    border-radius: 4px !important;
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header.is-active, [role="tab"][aria-selected="true"]) {
+    background: #2c333d !important;
+    border-color: rgba(203, 213, 225, 0.30) !important;
+    color: #f8fafc !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-inner, .workspace-tab-header-content) {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    max-height: none !important;
+    padding: 0 9px !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-inner-title, .workspace-tab-header-title, .workspace-tab-header-inner-icon, .workspace-tab-header-icon, .workspace-tab-header-inner-close-button) {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  body:not(.mod-macos):not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    max-height: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+}
+
+/* End of v2.22.10 — Windows dark-mode tabbar structural rescue ========= */

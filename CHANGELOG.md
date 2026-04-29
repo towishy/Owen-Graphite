@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.10] — 2026-04-30 — Windows dark-mode tabbar structural rescue
+
+### Fixed
+- Windows dark theme에서 titlebar 색상은 적용되지만 탭이 계속 보이지 않는 문제에 대응.
+- non-macOS desktop 한정으로 `.workspace-tabs`, `.workspace-tab-header-container`, `.workspace-tab-container`, tab header descendant 전체의 flex 슬롯·높이·가시성·텍스트 색상을 강하게 복구.
+
+### Preserved
+- macOS Glass chrome 유지.
+- 좌측 라인 영구 밴 정책 위반 없음.
+
 ## [2.22.9] — 2026-04-30 — Windows dark titlebar + tabbar visibility reset
 
 ### Fixed
