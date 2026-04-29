@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.0] — 2026-04-29 — Surfaces & A11y Polish (5 items, samples-first approved)
+
+### Added
+1. **Context menu glass (A1)** — `.menu` blur(12) + lift shadow + `.menu-item.selected/.is-active/.mod-active` 를 brand 14% bg pill (좌측 라인 X), separator 톤 통일.
+2. **Ribbon active pill (A4)** — `.workspace-ribbon .side-dock-ribbon-action.is-active/.mod-active` 좌측 라인 잔재 제거 → full pill bg + 1px inset ring + soft shadow.
+3. **Mermaid block chrome (B3)** — `.block-language-mermaid` 글래스 카드 + 우상단 "MERMAID" badge (code/embed 패턴 일관성).
+4. **Tasks 플러그인 chrome (C1)** — `task-due/scheduled/start` 자동 pill (amber) · `task-overdue` rose · `task-done` green · 완료 항목 strikethrough + 0.55 opacity.
+5. **Focus-visible ring 통일 (D2)** — input/textarea/select/button/a/clickable-icon/tab-header/nav-title/suggestion/menu-item/ribbon `:focus-visible` 3px brand ring 표준화 (라이트 28% / 다크 36%).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.15-preview.html`](docs/fixtures/v2.15-preview.html).
+- 사용자 "모두 진행 + 서밋/릴리즈" 명시로 일괄 적용.
+
 ## [2.14.0] — 2026-04-29 — Chrome & Indicator Polish (5 items, samples-first approved)
 
 ### Added
