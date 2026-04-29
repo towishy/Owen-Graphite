@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.16.0] — 2026-04-29 — Interaction & A11y Deep Polish (5 items, samples-first approved)
+
+### Added
+1. **Bookmarks 패널 chrome (A4)** — `.workspace-leaf-content[data-type="bookmarks"]` 항목 hover lift + active pill + `.tree-item-flair` count pill (teal). 좌측 라인 X.
+2. **CM6 fold gutter polish (B1)** — `.cm-gutter.cm-foldGutter .cm-gutterElement` mute → brand on hover + smooth color/transform transition.
+3. **Dataview inline field chip (C1)** — `.dataview.inline-field-key/-value` 로 key=accent pill + value=mono pill 2단 chip 통일 (Properties · tag pill 계열 일관성).
+4. **`prefers-reduced-motion` 전면 안전망 (D1)** — progress bar / sync pulse / ribbon / menu / bookmarks / fold gutter / hover lift · 전역 `animation-duration: 0.001ms` cap.
+5. **`prefers-contrast: more` 대응 (D5)** — chrome border 0.28→0.62 · `--text-muted` solid 톤 · focus-visible ring 0.28→0.55 · modal/popover 그림자 강화.
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.16-preview.html`](docs/fixtures/v2.16-preview.html) (RM/HC 토글 포함).
+- 사용자 "D로 진행 계속" 명시로 일괄 적용 · 서밋/릴리즈.
+
 ## [2.15.0] — 2026-04-29 — Surfaces & A11y Polish (5 items, samples-first approved)
 
 ### Added

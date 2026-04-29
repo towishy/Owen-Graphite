@@ -18,7 +18,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.15.0` (Obsidian 1.6.0+ · 현 베이스라인) |
+| **버전** | `2.16.0` (Obsidian 1.6.0+ · 현 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -147,27 +147,27 @@ echo "OK: Owen Graphite installed or updated."
 
 ## 4. 테마 신기능
 
-### ✨ v2.15.0 — Surfaces & A11y Polish (5종)
+### ✨ v2.16.0 — Interaction & A11y Deep Polish (5종)
 
-컨텍스트 메뉴 · 리본 active · Mermaid 카드 · Tasks 플러그인 · Focus-visible 링 일괄 정비.
+Bookmarks 패널 · CM6 fold gutter · Dataview inline chip · reduced-motion · high-contrast 일괄 정비.
 
 #### 라이트 모드
 
-![v2.15.0 — Light](screenshots/readme/v2.15-preview-light.png)
+![v2.16.0 — Light](screenshots/readme/v2.16-preview-light.png)
 
 #### 다크 모드
 
-![v2.15.0 — Dark](screenshots/readme/v2.15-preview-dark.png)
+![v2.16.0 — Dark](screenshots/readme/v2.16-preview-dark.png)
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Context menu glass | `.menu` blur(12) + lift shadow + active pill (좌측 라인 X) |
-| 2 | Ribbon active pill | `.side-dock-ribbon-action.is-active` full pill + 1px inset ring |
-| 3 | Mermaid block chrome | `.block-language-mermaid` 글래스 카드 + "MERMAID" badge |
-| 4 | Tasks 플러그인 chrome | due/scheduled pill (amber) · overdue (rose) · done (green) + 완료 strikethrough |
-| 5 | Focus-visible ring 통일 | input/button/a/menu-item/ribbon 등 3px brand ring 표준화 |
+| 1 | Bookmarks 패널 chrome | hover lift + active pill + count pill (teal), 좌측 라인 X |
+| 2 | CM6 fold gutter polish | mute → brand on hover + smooth transition |
+| 3 | Dataview inline field chip | `key:: value` 를 key=accent + value=mono 2단 chip으로 자동 정렬 |
+| 4 | `prefers-reduced-motion` 전면 안전망 | pulse/lift/transition 일괄 비활성, 전역 animation cap |
+| 5 | `prefers-contrast: more` 대응 | border/text-muted/focus-ring/shadow 자동 강화 |
 
-> 인터랙티브 미리보기: [docs/fixtures/v2.15-preview.html](docs/fixtures/v2.15-preview.html)
+> 인터랙티브 미리보기 (RM/HC 토글 포함): [docs/fixtures/v2.16-preview.html](docs/fixtures/v2.16-preview.html)
 
 ---
 
@@ -271,10 +271,11 @@ echo "OK: Owen Graphite installed or updated."
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.15.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 베이스라인은 **v2.16.0**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · CM6 fold gutter · Dataview inline chip · reduced-motion 안전망 · high-contrast 대응 |
 | **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Ribbon active pill · Mermaid card · Tasks 플러그인 · Focus-visible 링 |
 | **v2.14.0** | Chrome & Indicator Polish — Sync pill · Settings 검색 강조 · Heading anchor `#` · Popover favicon · Properties focus ring |
 | **v2.13.0** | Reading Polish & Surfaces — Search row glass · Graph controls · Mobile toolbar · Print TOC · Footnote pill · Tag pill v2 · Callout dark 재감사 · Dataview 자동 · docs/style-settings.md |
