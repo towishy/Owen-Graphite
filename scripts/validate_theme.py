@@ -29,6 +29,7 @@ REQUIRED_FILES = [
     "LICENSE",
     "docs/fixtures/v2.10-improvements-preview.html",
     "docs/fixtures/v2.11-preview.html",
+    "docs/fixtures/v2.12-preview.html",
     "scripts/contrast_audit.py",
     "scripts/visual_regression.py",
     "screenshots/light.png",
@@ -41,6 +42,8 @@ REQUIRED_FILES = [
     "screenshots/readme/v2.10-improvements-dark.png",
     "screenshots/readme/v2.11-preview-light.png",
     "screenshots/readme/v2.11-preview-dark.png",
+    "screenshots/readme/v2.12-preview-light.png",
+    "screenshots/readme/v2.12-preview-dark.png",
 ]
 
 PNG_SIZES = {

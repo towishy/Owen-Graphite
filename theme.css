@@ -13192,3 +13192,166 @@ body.theme-dark .markdown-preview-view blockquote {
 }
 
 /* End of v2.11.0 — Reading & Properties Polish ========================== */
+
+/* ============================================================
+   v2.12.0 — Panels & Code Polish (6 items)
+   #1 Tab active underline · #2 Backlinks/Outgoing card lift
+   #7 Table zebra+sticky · #10 Code line numbers · #14 Embed card
+   #15 Glass blur strength variable
+   (Sample-first approved 2026-04-29)
+   ============================================================ */
+
+/* #15 Glass 강도 CSS 변수 (Style Settings에서 override) */
+body { --og-glass-blur: 14px; }
+
+/* #1 Tab bar 활성 탭 — bottom underline + soft shadow (no left line, no outer ring) */
+.workspace-tab-header.is-active {
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.18) !important;
+  background: var(--background-primary) !important;
+  position: relative !important;
+}
+.workspace-tab-header.is-active::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 14px !important;
+  right: 14px !important;
+  bottom: 2px !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #2563eb, #0d9488) !important;
+  border-radius: 2px !important;
+  pointer-events: none !important;
+}
+body.theme-dark .workspace-tab-header.is-active {
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.25) !important;
+}
+body.theme-dark .workspace-tab-header.is-active::after {
+  background: linear-gradient(90deg, #60a5fa, #2dd4bf) !important;
+}
+
+/* #2 Backlinks / Outgoing links 카드화 + hover lift */
+.workspace-leaf-content[data-type="backlink"] .search-result,
+.workspace-leaf-content[data-type="outgoing-link"] .search-result,
+.workspace-leaf-content[data-type="backlink"] .tree-item.search-result,
+.workspace-leaf-content[data-type="outgoing-link"] .tree-item.search-result {
+  padding: 10px 12px !important;
+  margin: 4px 6px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  -webkit-backdrop-filter: blur(var(--og-glass-blur)) saturate(1.1) !important;
+  backdrop-filter: blur(var(--og-glass-blur)) saturate(1.1) !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+.workspace-leaf-content[data-type="backlink"] .search-result:hover,
+.workspace-leaf-content[data-type="outgoing-link"] .search-result:hover,
+.workspace-leaf-content[data-type="backlink"] .tree-item.search-result:hover,
+.workspace-leaf-content[data-type="outgoing-link"] .tree-item.search-result:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10), 0 12px 28px rgba(15, 23, 42, 0.12) !important;
+  border-color: rgba(37, 99, 235, 0.32) !important;
+}
+body.theme-dark .workspace-leaf-content[data-type="backlink"] .search-result,
+body.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .search-result,
+body.theme-dark .workspace-leaf-content[data-type="backlink"] .tree-item.search-result,
+body.theme-dark .workspace-leaf-content[data-type="outgoing-link"] .tree-item.search-result {
+  background: rgba(15, 23, 42, 0.62) !important;
+  border-color: rgba(71, 85, 105, 0.40) !important;
+}
+
+/* #7 테이블 zebra + sticky header */
+.markdown-rendered table tbody tr:nth-child(even),
+.markdown-preview-view table tbody tr:nth-child(even) {
+  background: rgba(148, 163, 184, 0.06) !important;
+}
+body.theme-dark .markdown-rendered table tbody tr:nth-child(even),
+body.theme-dark .markdown-preview-view table tbody tr:nth-child(even) {
+  background: rgba(71, 85, 105, 0.12) !important;
+}
+.markdown-rendered table thead th,
+.markdown-preview-view table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border-bottom: 1.5px solid #2563eb !important;
+  z-index: 1 !important;
+}
+body.theme-dark .markdown-rendered table thead th,
+body.theme-dark .markdown-preview-view table thead th {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-bottom-color: #60a5fa !important;
+}
+
+/* #10 Code block line numbers — opt-in via .og-line-numbers wrapper or pre.line-numbers */
+.markdown-rendered pre.line-numbers,
+.markdown-preview-view pre.line-numbers,
+.og-line-numbers .markdown-rendered pre,
+.og-line-numbers pre {
+  padding-left: 56px !important;
+  counter-reset: og-ln !important;
+  position: relative !important;
+}
+.markdown-rendered pre.line-numbers code .line,
+.markdown-preview-view pre.line-numbers code .line,
+.og-line-numbers pre code .line {
+  display: block !important;
+  counter-increment: og-ln !important;
+  position: relative !important;
+}
+.markdown-rendered pre.line-numbers code .line::before,
+.markdown-preview-view pre.line-numbers code .line::before,
+.og-line-numbers pre code .line::before {
+  content: counter(og-ln) !important;
+  position: absolute !important;
+  left: -44px !important;
+  width: 32px !important;
+  text-align: right !important;
+  color: rgba(148, 163, 184, 0.60) !important;
+  font-variant-numeric: tabular-nums !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  border-right: 1px solid rgba(71, 85, 105, 0.40) !important;
+  padding-right: 8px !important;
+}
+
+/* #14 Embed 노트 카드 Polish — `![[note]]` 영역 글래스 카드 + EMBED badge */
+.markdown-rendered .markdown-embed,
+.markdown-preview-view .markdown-embed,
+.markdown-rendered .internal-embed.markdown-embed,
+.markdown-preview-view .internal-embed.markdown-embed {
+  position: relative !important;
+  padding: 16px 18px 14px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  -webkit-backdrop-filter: blur(var(--og-glass-blur)) saturate(1.1) !important;
+  backdrop-filter: blur(var(--og-glass-blur)) saturate(1.1) !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.08) !important;
+  margin: 12px 0 !important;
+}
+.markdown-rendered .markdown-embed::before,
+.markdown-preview-view .markdown-embed::before {
+  content: "embed" !important;
+  position: absolute !important;
+  top: -8px !important;
+  right: 12px !important;
+  padding: 2px 10px !important;
+  border-radius: 999px !important;
+  background: rgba(13, 148, 136, 0.92) !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.35) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+body.theme-dark .markdown-rendered .markdown-embed,
+body.theme-dark .markdown-preview-view .markdown-embed {
+  background: rgba(15, 23, 42, 0.62) !important;
+  border-color: rgba(71, 85, 105, 0.40) !important;
+}
+
+/* End of v2.12.0 — Panels & Code Polish ================================== */

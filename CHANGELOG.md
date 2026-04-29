@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.12.0] — 2026-04-29 — Panels & Code Polish (6 items, samples-first approved)
+
+### Added
+1. **Tab bar 활성 탭 underline** — 그라디언트 underline + soft shadow (좌측 라인 X, outer ring X).
+2. **Backlinks / Outgoing card lift** — 우측 패널 링크 항목을 padded glass row + hover lift.
+3. **테이블 zebra + sticky header** — 짝수행 미세 톤 + accent 밑줄 sticky header.
+4. **Code block line numbers** (opt-in) — `pre.line-numbers` 에 CSS counter 기반 좌측 행 번호 + 1px divider.
+5. **Embed 노트 카드 Polish** — `.markdown-embed` 글래스 카드 + 우상단 "EMBED" badge.
+6. **Glass 강도 변수** — `--og-glass-blur` CSS 변수 도입 (Style Settings으로 사용자가 8/12/16/20px override 가능).
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.12-preview.html`](docs/fixtures/v2.12-preview.html).
+- 리드미 스크린샷: `screenshots/readme/v2.12-preview-{light,dark}.png`.
+
 ## [2.11.0] — 2026-04-29 — Reading & Properties Polish (5 items, samples-first approved)
 
 ### Added (#2 Tab glow skipped per user)

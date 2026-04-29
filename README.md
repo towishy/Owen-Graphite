@@ -33,7 +33,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **차별점** | A3 인쇄 + 헤더 자동 넘벍링 + 표지 + **PDF 첫 페이지 모던 헤더 (Side Bar + Two-line)** + **데스크톱 Liquid-glass chrome presets** + **Workspace Surfaces (Graph view·Canvas·Folder cues·Mini TOC·Cover page)** + **Polish Pack (callout stripe·code label·dark parity)** + Style Settings 28종 + Live Preview/Reading parity |
 | **Light & Dark** | ✅ 양쪽 모두 모든 위젯 패리티 보장 |
 | **모바일** | ✅ Desktop & Mobile |
-| **버전** | `2.11.0` (Obsidian 1.6.0+, baseline since v2.6.2) |
+| **버전** | `2.12.0` (Obsidian 1.6.0+, baseline since v2.6.2) |
 
 ---
 
@@ -419,6 +419,31 @@ Callout 회귀 확인용 fixture는 [docs/fixtures/callout-report.md](docs/fixtu
 ![v2.11.0 Polish — Dark](screenshots/readme/v2.11-preview-dark.png)
 
 > 인터랙티브 HTML 미리보기: [docs/fixtures/v2.11-preview.html](docs/fixtures/v2.11-preview.html)
+
+---
+
+## ✨ v2.12.0 기능 개선 — Panels & Code Polish (6종)
+
+우측 패널 가시성 + 코드/테이블 사용성 강화.
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Tab bar 활성 탭 underline | 그라디언트 underline + soft shadow (좌측 라인 X) |
+| 2 | Backlinks / Outgoing card lift | 우측 패널 padded glass row + hover transform |
+| 3 | 테이블 zebra + sticky | 짝수행 미세 톤 + sticky header (accent underline) |
+| 4 | Code block line numbers (opt-in) | `pre.line-numbers` 에 CSS counter 기반 좌측 행 번호 |
+| 5 | Embed 노트 카드 Polish | `.markdown-embed` 글래스 카드 + 우상단 EMBED badge |
+| 6 | Glass 강도 변수 | `--og-glass-blur` CSS 변수로 8/12/16/20px override 가능 |
+
+### 라이트 모드 미리보기
+
+![v2.12.0 Polish — Light](screenshots/readme/v2.12-preview-light.png)
+
+### 다크 모드 미리보기
+
+![v2.12.0 Polish — Dark](screenshots/readme/v2.12-preview-dark.png)
+
+> 인터랙티브 HTML 미리보기: [docs/fixtures/v2.12-preview.html](docs/fixtures/v2.12-preview.html)
 
 ---
 
