@@ -31,6 +31,7 @@ REQUIRED_FILES = [
     "docs/fixtures/v2.11-preview.html",
     "docs/fixtures/v2.12-preview.html",
     "docs/fixtures/v2.13-preview.html",
+    "docs/fixtures/v2.14-preview.html",
     "docs/style-settings.md",
     "scripts/contrast_audit.py",
     "scripts/visual_regression.py",
@@ -48,6 +49,8 @@ REQUIRED_FILES = [
     "screenshots/readme/v2.12-preview-dark.png",
     "screenshots/readme/v2.13-preview-light.png",
     "screenshots/readme/v2.13-preview-dark.png",
+    "screenshots/readme/v2.14-preview-light.png",
+    "screenshots/readme/v2.14-preview-dark.png",
 ]
 
 PNG_SIZES = {
@@ -72,6 +75,8 @@ RELEASE_ASSETS = [
     "screenshots/readme/zip-download-guide.svg",
     "screenshots/readme/v2.13-preview-light.png",
     "screenshots/readme/v2.13-preview-dark.png",
+    "screenshots/readme/v2.14-preview-light.png",
+    "screenshots/readme/v2.14-preview-dark.png",
     "screenshots/selected-document-icon-color-samples.png",
     "screenshots/selected-document-icon-effect-samples.png",
     "screenshots/selected-file-border-frame-preview.png",

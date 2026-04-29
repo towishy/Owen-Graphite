@@ -13724,3 +13724,346 @@ body.theme-dark .markdown-preview-view .block-language-dataview table tbody tr:n
 }
 
 /* End of v2.13.0 — Reading Polish & Surfaces ============================ */
+
+/* ========================================================================
+ * v2.14.0 — Chrome & Indicator Polish (5 items, samples-first approved)
+ * ======================================================================== */
+
+/* #1 Sync / Cloud indicator pills (status bar) */
+body .status-bar .status-bar-item.plugin-obsidian-sync,
+body .status-bar .status-bar-item.plugin-git,
+body .status-bar .status-bar-item[aria-label*="Sync" i],
+body .status-bar .status-bar-item[aria-label*="iCloud" i] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 4px 10px 4px 8px !important;
+  margin: 0 4px !important;
+  border-radius: 999px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  -webkit-backdrop-filter: blur(var(--og-glass-blur, 10px)) !important;
+  backdrop-filter: blur(var(--og-glass-blur, 10px)) !important;
+  border: 1px solid rgba(148, 163, 184, 0.30) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+  color: #047857 !important;
+  border-color: rgba(16, 185, 129, 0.40) !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync::before,
+body .status-bar .status-bar-item.plugin-git::before,
+body .status-bar .status-bar-item[aria-label*="Sync" i]::before,
+body .status-bar .status-bar-item[aria-label*="iCloud" i]::before {
+  content: "" !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18) !important;
+  flex: 0 0 auto !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync.mod-syncing,
+body .status-bar .status-bar-item.plugin-git.mod-busy,
+body .status-bar .status-bar-item[aria-label*="Syncing" i] {
+  color: #2563eb !important;
+  border-color: rgba(37, 99, 235, 0.40) !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync.mod-syncing::before,
+body .status-bar .status-bar-item.plugin-git.mod-busy::before,
+body .status-bar .status-bar-item[aria-label*="Syncing" i]::before {
+  background: #2563eb !important;
+  animation: og-sync-pulse 1.4s ease-in-out infinite !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync.mod-warning,
+body .status-bar .status-bar-item.plugin-git.mod-warning,
+body .status-bar .status-bar-item[aria-label*="Conflict" i] {
+  color: #92400e !important;
+  border-color: rgba(245, 158, 11, 0.40) !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync.mod-warning::before,
+body .status-bar .status-bar-item.plugin-git.mod-warning::before,
+body .status-bar .status-bar-item[aria-label*="Conflict" i]::before {
+  background: #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.20) !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync.mod-error,
+body .status-bar .status-bar-item.plugin-git.mod-error,
+body .status-bar .status-bar-item[aria-label*="Offline" i],
+body .status-bar .status-bar-item[aria-label*="Error" i] {
+  color: #9f1239 !important;
+  border-color: rgba(244, 63, 94, 0.42) !important;
+}
+body .status-bar .status-bar-item.plugin-obsidian-sync.mod-error::before,
+body .status-bar .status-bar-item.plugin-git.mod-error::before,
+body .status-bar .status-bar-item[aria-label*="Offline" i]::before,
+body .status-bar .status-bar-item[aria-label*="Error" i]::before {
+  background: #f43f5e !important;
+  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.20) !important;
+}
+@keyframes og-sync-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.15); }
+}
+body.theme-dark .status-bar .status-bar-item.plugin-obsidian-sync,
+body.theme-dark .status-bar .status-bar-item.plugin-git,
+body.theme-dark .status-bar .status-bar-item[aria-label*="Sync" i],
+body.theme-dark .status-bar .status-bar-item[aria-label*="iCloud" i] {
+  background: rgba(15, 23, 42, 0.62) !important;
+  color: #6ee7b7 !important;
+}
+body.theme-dark .status-bar .status-bar-item.plugin-obsidian-sync.mod-syncing,
+body.theme-dark .status-bar .status-bar-item.plugin-git.mod-busy,
+body.theme-dark .status-bar .status-bar-item[aria-label*="Syncing" i] {
+  color: #93c5fd !important;
+}
+body.theme-dark .status-bar .status-bar-item.plugin-obsidian-sync.mod-warning,
+body.theme-dark .status-bar .status-bar-item.plugin-git.mod-warning,
+body.theme-dark .status-bar .status-bar-item[aria-label*="Conflict" i] {
+  color: #fcd34d !important;
+}
+body.theme-dark .status-bar .status-bar-item.plugin-obsidian-sync.mod-error,
+body.theme-dark .status-bar .status-bar-item.plugin-git.mod-error,
+body.theme-dark .status-bar .status-bar-item[aria-label*="Offline" i],
+body.theme-dark .status-bar .status-bar-item[aria-label*="Error" i] {
+  color: #fda4af !important;
+}
+
+/* #2 Settings 모달 검색 결과 강조 (row glass + match HL gradient) */
+body .modal.mod-settings .vertical-tab-content .setting-item,
+body .modal-container .vertical-tab-content .setting-item {
+  margin: 4px 8px !important;
+  padding: 12px 14px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  -webkit-backdrop-filter: blur(var(--og-glass-blur, 10px)) !important;
+  backdrop-filter: blur(var(--og-glass-blur, 10px)) !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  border-top: 1px solid rgba(148, 163, 184, 0.22) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+body .modal.mod-settings .vertical-tab-content .setting-item:hover,
+body .modal-container .vertical-tab-content .setting-item:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08), 0 12px 28px rgba(15, 23, 42, 0.10) !important;
+  border-color: rgba(37, 99, 235, 0.28) !important;
+}
+body .modal.mod-settings .search-result-file-matched-text,
+body .modal.mod-settings mark,
+body .modal-container .search-result-file-matched-text {
+  background: linear-gradient(180deg, transparent 60%, rgba(245, 158, 11, 0.45) 60%) !important;
+  padding: 0 2px !important;
+  border-radius: 2px !important;
+  font-weight: 600 !important;
+  color: inherit !important;
+}
+body.theme-dark .modal.mod-settings .vertical-tab-content .setting-item,
+body.theme-dark .modal-container .vertical-tab-content .setting-item {
+  background: rgba(15, 23, 42, 0.62) !important;
+  border-color: rgba(71, 85, 105, 0.36) !important;
+  border-top-color: rgba(71, 85, 105, 0.36) !important;
+}
+body.theme-dark .modal.mod-settings .vertical-tab-content .setting-item:hover,
+body.theme-dark .modal-container .vertical-tab-content .setting-item:hover {
+  border-color: rgba(96, 165, 250, 0.42) !important;
+}
+body.theme-dark .modal.mod-settings .search-result-file-matched-text,
+body.theme-dark .modal.mod-settings mark,
+body.theme-dark .modal-container .search-result-file-matched-text {
+  background: linear-gradient(180deg, transparent 60%, rgba(245, 158, 11, 0.55) 60%) !important;
+  color: #fcd34d !important;
+}
+
+/* #3 Heading anchor # hover interaction */
+body .markdown-rendered h1,
+body .markdown-rendered h2,
+body .markdown-rendered h3,
+body .markdown-rendered h4,
+body .markdown-rendered h5,
+body .markdown-rendered h6,
+body .markdown-preview-view h1,
+body .markdown-preview-view h2,
+body .markdown-preview-view h3,
+body .markdown-preview-view h4,
+body .markdown-preview-view h5,
+body .markdown-preview-view h6 {
+  position: relative !important;
+}
+body .markdown-rendered h1::before,
+body .markdown-rendered h2::before,
+body .markdown-rendered h3::before,
+body .markdown-rendered h4::before,
+body .markdown-rendered h5::before,
+body .markdown-rendered h6::before,
+body .markdown-preview-view h1::before,
+body .markdown-preview-view h2::before,
+body .markdown-preview-view h3::before,
+body .markdown-preview-view h4::before,
+body .markdown-preview-view h5::before,
+body .markdown-preview-view h6::before {
+  content: "#" !important;
+  position: absolute !important;
+  left: -1.05em !important;
+  top: 50% !important;
+  transform: translateY(-50%) translateX(4px) !important;
+  color: #2563eb !important;
+  font-weight: 800 !important;
+  opacity: 0 !important;
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+  pointer-events: none !important;
+}
+body .markdown-rendered h1:hover::before,
+body .markdown-rendered h2:hover::before,
+body .markdown-rendered h3:hover::before,
+body .markdown-rendered h4:hover::before,
+body .markdown-rendered h5:hover::before,
+body .markdown-rendered h6:hover::before,
+body .markdown-preview-view h1:hover::before,
+body .markdown-preview-view h2:hover::before,
+body .markdown-preview-view h3:hover::before,
+body .markdown-preview-view h4:hover::before,
+body .markdown-preview-view h5:hover::before,
+body .markdown-preview-view h6:hover::before {
+  opacity: 1 !important;
+  transform: translateY(-50%) translateX(0) !important;
+}
+body.theme-dark .markdown-rendered h1::before,
+body.theme-dark .markdown-rendered h2::before,
+body.theme-dark .markdown-rendered h3::before,
+body.theme-dark .markdown-rendered h4::before,
+body.theme-dark .markdown-rendered h5::before,
+body.theme-dark .markdown-rendered h6::before,
+body.theme-dark .markdown-preview-view h1::before,
+body.theme-dark .markdown-preview-view h2::before,
+body.theme-dark .markdown-preview-view h3::before,
+body.theme-dark .markdown-preview-view h4::before,
+body.theme-dark .markdown-preview-view h5::before,
+body.theme-dark .markdown-preview-view h6::before {
+  color: #93c5fd !important;
+}
+@media print {
+  body .markdown-rendered h1::before,
+  body .markdown-rendered h2::before,
+  body .markdown-rendered h3::before,
+  body .markdown-rendered h4::before,
+  body .markdown-rendered h5::before,
+  body .markdown-rendered h6::before,
+  body .markdown-preview-view h1::before,
+  body .markdown-preview-view h2::before,
+  body .markdown-preview-view h3::before,
+  body .markdown-preview-view h4::before,
+  body .markdown-preview-view h5::before,
+  body .markdown-preview-view h6::before {
+    display: none !important;
+  }
+}
+
+/* #4 Hover popover — favicon + domain breadcrumb (external links only) */
+body .popover.hover-popover.is-loaded .external-link-popover,
+body .popover.hover-popover .external-link-popover-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 10px !important;
+  color: #64748b !important;
+  margin-bottom: 6px !important;
+  padding-bottom: 6px !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28) !important;
+}
+body .popover.hover-popover .external-link-popover-header .favicon {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 3px !important;
+  background: linear-gradient(135deg, #2563eb, #0d9488) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+}
+body .popover.hover-popover .external-link-popover-header .domain {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+}
+body .popover.hover-popover .external-link-popover-header .crumb {
+  color: #64748b !important;
+}
+body.theme-dark .popover.hover-popover .external-link-popover-header {
+  color: #94a3b8 !important;
+  border-bottom-color: rgba(71, 85, 105, 0.40) !important;
+}
+body.theme-dark .popover.hover-popover .external-link-popover-header .domain {
+  color: #93c5fd !important;
+}
+
+/* #5 Frontmatter Properties polish — focus glass ring + tag chips */
+body .metadata-container .metadata-property input,
+body .metadata-container .metadata-property .metadata-input,
+body .metadata-container .metadata-property .metadata-input-longtext {
+  width: 100% !important;
+  padding: 5px 9px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #0f172a !important;
+  font-size: 13px !important;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+body .metadata-container .metadata-property input:focus,
+body .metadata-container .metadata-property .metadata-input:focus,
+body .metadata-container .metadata-property .metadata-input-longtext:focus,
+body .metadata-container .metadata-property input:focus-visible {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18) !important;
+  outline: none !important;
+}
+body .metadata-container .multi-select-pill,
+body .metadata-container .metadata-property .multi-select-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 1px 9px 1px 8px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, rgba(13, 148, 136, 0.16), rgba(13, 148, 136, 0.10)) !important;
+  color: #0d9488 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  border: 1px solid rgba(13, 148, 136, 0.28) !important;
+  margin: 2px 4px 2px 0 !important;
+}
+body .metadata-container .multi-select-pill::before,
+body .metadata-container .metadata-property .multi-select-pill::before {
+  content: "" !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #0d9488 !important;
+  margin-right: 4px !important;
+  flex: 0 0 auto !important;
+}
+body.theme-dark .metadata-container .metadata-property input,
+body.theme-dark .metadata-container .metadata-property .metadata-input,
+body.theme-dark .metadata-container .metadata-property .metadata-input-longtext {
+  background: rgba(15, 23, 42, 0.78) !important;
+  color: #e5e7eb !important;
+  border-color: rgba(71, 85, 105, 0.40) !important;
+}
+body.theme-dark .metadata-container .metadata-property input:focus,
+body.theme-dark .metadata-container .metadata-property .metadata-input:focus,
+body.theme-dark .metadata-container .metadata-property .metadata-input-longtext:focus {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.22) !important;
+}
+body.theme-dark .metadata-container .multi-select-pill,
+body.theme-dark .metadata-container .metadata-property .multi-select-pill {
+  color: #5eead4 !important;
+  background: linear-gradient(180deg, rgba(94, 234, 212, 0.14), rgba(94, 234, 212, 0.08)) !important;
+  border-color: rgba(94, 234, 212, 0.30) !important;
+}
+body.theme-dark .metadata-container .multi-select-pill::before,
+body.theme-dark .metadata-container .metadata-property .multi-select-pill::before {
+  background: #5eead4 !important;
+}
+
+/* End of v2.14.0 — Chrome & Indicator Polish ============================ */

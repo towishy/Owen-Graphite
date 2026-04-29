@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.14.0] — 2026-04-29 — Chrome & Indicator Polish (5 items, samples-first approved)
+
+### Added
+1. **Sync / Cloud 인디케이터 Polish** — Status bar `plugin-obsidian-sync` / `plugin-git` / aria-label 매칭 항목을 glass pill + 상태색 4단계 (ok/busy/warn/err), busy는 `og-sync-pulse` 애니메이션.
+2. **Settings 모달 검색 결과 강조** — `.modal.mod-settings .setting-item` 를 row glass + hover lift, `mark` / `search-result-file-matched-text` 를 underline-gradient HL.
+3. **Heading anchor `#` hover 인터랙션** — H1–H6 좌측 fade-in `#` (`::before`), `@media print` 에서 비활성.
+4. **Hover popover favicon + 도메인 breadcrumb** — `.popover.hover-popover .external-link-popover-header` 헤더 chrome 추가 (그라디언트 favicon + accent 도메인 + crumb).
+5. **Frontmatter Properties 인라인 편집 polish** — `.metadata-container input` 에 focus glass ring (3px), `.multi-select-pill` 을 v2.13 chip 디자인 (teal 그라디언트 + dot)으로 통일.
+
+### Workflow
+- 샘플-우선 정책 준수: [`docs/fixtures/v2.14-preview.html`](docs/fixtures/v2.14-preview.html).
+- 리드미 스크린샷: `screenshots/readme/v2.14-preview-{light,dark}.png` (Playwright 캡처).
+
 ## [2.13.0] — 2026-04-29 — Reading Polish & Surfaces (9 items, samples-first approved)
 
 ### Added
