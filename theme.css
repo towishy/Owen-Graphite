@@ -3705,22 +3705,6 @@ body.ogd-auto-dark {
    All rules are ADDITIVE (no changes to existing selectors)
    ============================================================ */
 
-/* #1 — Active tab indicator */
-.workspace-tab-header.is-active {
-  position: relative;
-}
-.workspace-tab-header.is-active::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: 0;
-  height: 2px;
-  background: var(--interactive-accent);
-  border-radius: 2px;
-  pointer-events: none;
-}
-
 /* #3 — Mobile (.is-mobile) refinements */
 .is-mobile .view-header {
   padding: 6px 8px;
@@ -7118,7 +7102,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       inset 0 -1px 0 rgba(15, 23, 42, 0.07),
       0 6px 16px rgba(15, 23, 42, 0.14) !important;
     color: #111827 !important;
-    transform: translateY(-1px) !important;
   }
 
   /* Liquid-glass hover (dark) */
@@ -7916,7 +7899,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-inline-start: 0 !important;
     border-inline-end: 0 !important;
     margin-top: 0 !important;
-    overflow: visible !important;
     box-shadow: none !important;
   }
 
@@ -7978,10 +7960,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     backdrop-filter: var(--ogd-glass-filter-control) !important;
     border-color: var(--ogd-tab-glass-border-hover) !important;
     box-shadow: var(--ogd-tab-glass-shadow-hover) !important;
-  }
-
-  body:not(.is-mobile) .workspace-tab-header.is-active::before {
-    display: none !important;
   }
 
   body:not(.is-mobile) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab) {
@@ -9602,3 +9580,92 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 }
 
 /* End of v1.8.66 polish pack ============================================== */
+
+/* ============================================================
+   v2.22.14-hotfix — Live Preview table row inflation guard
+   Prevent global CM6 min-height rules from expanding table-cell editors.
+   ============================================================ */
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  table.cm-table,
+  .HyperMD-table-row,
+  .cm-embed-block table
+) :is(
+  .cm-content,
+  .cm-line,
+  .cm-scroller,
+  .cm-sizer,
+  .cm-contentContainer,
+  .cm-editor,
+  .table-cell-wrapper,
+  p,
+  td,
+  th,
+  tr,
+  tbody,
+  thead
+) {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-embed-block table :is(td, th) > p {
+  margin: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  .cm-embed-block.cm-table-widget,
+  table.cm-table,
+  .cm-embed-block table
+) td :is(
+  .table-cell-wrapper,
+  .cm-editor,
+  .cm-scroller,
+  .cm-content,
+  .cm-line,
+  .cm-active.cm-line
+) {
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  .cm-embed-block.cm-table-widget,
+  table.cm-table,
+  .cm-embed-block table
+) :is(
+  table,
+  thead,
+  tbody,
+  tr,
+  td,
+  th
+) {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  .cm-embed-block.cm-table-widget,
+  table.cm-table,
+  .cm-embed-block table
+) td :is(
+  .cm-line:empty,
+  .cm-active.cm-line:empty,
+  .cm-line:has(br:only-child),
+  .cm-active.cm-line:has(br:only-child)
+) {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

@@ -9,6 +9,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixed
 - MAP 기반 CSS 안정화로 core chrome 리스크 게이트를 `critical=0`, `high=0`, `medium=0`으로 정리.
 - ribbon/toggle/tab-header 관련 구조 개입 속성(width/height/overflow/position/display/transform 강제)을 축소해 Windows/macOS chrome 회귀 가능성을 낮춤.
+- Live Preview 표 편집 회귀(행 높이 비정상 팽창) 재발을 차단: table cell 내부 편집 체인(`td > .table-cell-wrapper > .cm-editor > .cm-scroller > .cm-content > .cm-line/.cm-active.cm-line`)과 table 구조 계층에 `min-height: 0`, `height: auto` hard reset을 재적용하고, 빈 trailing line 렌더를 숨겨 inflate를 방지.
 
 ### Changed
 - `scripts/validate_theme.py`의 stale marker 스캔 범위를 최적화 (`.venv`/`dist`/cache 디렉터리 및 대용량 파일 제외)하여 검증 시간을 단축.
