@@ -2,7 +2,7 @@
 
 [Style Settings 플러그인](https://github.com/mgmeyers/obsidian-style-settings)을 설치하면 사이드바에서 27개 옵션을 토글로 즉시 적용할 수 있습니다. 본 문서는 README의 분류 표를 보강하는 풀 레퍼런스입니다.
 
-> 베이스라인: **v2.22.13**
+> 베이스라인: **v2.22.15**
 
 ---
 
@@ -122,5 +122,6 @@ Style Settings 옵션과 별개로, 노트 안에서 직접 부여하는 유틸�
 
 ## 관련 문서
 - [README.md](../README.md) — 테마 소개 / 설치 / 신기능
+- [ai-document-guide.md](ai-document-guide.md) — AI/LLM-WIKI 문서 작성 가이드
 - [CHANGELOG.md](../CHANGELOG.md) — 전체 릴리즈 노트
 - [docs/fixtures/](fixtures/) — 디자인 미리보기 HTML

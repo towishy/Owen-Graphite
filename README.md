@@ -67,6 +67,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **컬러** | 액센트 프리셋·코드블록 테마·시선 보호·OS 다크 모드 추종·Glass 강도 변수 `--og-glass-blur` |
 
 > 전체 옵션 표는 [docs/style-settings.md](docs/style-settings.md) 또는 플러그인 UI에서 확인할 수 있습니다.
+> AI 문서 생성 규칙은 [docs/ai-document-guide.md](docs/ai-document-guide.md)에서 확인할 수 있습니다.
 
 ---
 
@@ -319,10 +320,11 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 베이스라인은 **v2.22.13**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 롤백 베이스라인은 **v2.22.15**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.15** | Live Preview table inflation regression hotfix — 표 셀 편집 행 팽창 차단, `v2.22.15`를 최종 롤백 베이스라인으로 고정 |
 | **v2.22.13** | Windows tab/button stable baseline — 검증된 v1.8.66 CSS baseline으로 복원, 중간 테스트 chrome 강제 레이어 제거 |
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
 | **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |
@@ -359,6 +361,7 @@ Owen Graphite/
 ├── CHANGELOG.md      # 전체 릴리즈 노트
 ├── CONTRIBUTING.md   # 기여 가이드
 ├── LICENSE           # MIT
+├── docs/ai-document-guide.md # AI/LLM-WIKI 문서 작성 가이드
 ├── docs/MAP/         # theme.css risk map 산출물
 ├── screenshots/      # README/마켓 이미지
 └── scripts/          # Python 검증/릴리즈 스크립트

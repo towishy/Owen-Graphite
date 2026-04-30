@@ -16,6 +16,9 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 - 안정 롤백 기준선을 `v2.22.15`로 승격. 표 편집 회귀가 있던 `v2.22.14` 공개 release/tag는 제거하고, 이후 복구 기준은 `v2.22.15` 하나만 유지.
 
+### Documentation
+- AI/LLM-WIKI가 Owen Graphite의 보고서 모드, callout, table utility, Mermaid, PDF 유틸리티를 활용해 모던한 Obsidian 문서를 작성하도록 안내하는 `docs/ai-document-guide.md` 추가.
+
 ## [2.22.14] — 2026-04-30 — MAP-driven CSS stabilization and release hardening
 
 ### Fixed

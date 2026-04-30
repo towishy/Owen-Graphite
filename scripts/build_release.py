@@ -16,6 +16,7 @@ DEFAULT_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
+    "docs/ai-document-guide.md",
     "docs/MAP/theme-css-risk-map.html",
     "docs/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
