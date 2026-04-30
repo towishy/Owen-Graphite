@@ -158,9 +158,28 @@ def manifest_and_versions() -> str:
 def no_stale_legacy_markers() -> None:
     legacy_pattern = re.compile(r"v?1\.7\.6")
     stale_hits: list[str] = []
+    skip_dirs = {
+        ".git",
+        ".venv",
+        "dist",
+        "__pycache__",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".ruff_cache",
+        ".idea",
+        ".vscode",
+    }
+    max_scan_bytes = 1_500_000
     for path in ROOT.rglob("*"):
         rel = path.relative_to(ROOT).as_posix()
-        if path.is_dir() or rel.startswith(".git/") or rel == ".DS_Store":
+        if path.is_dir() or rel == ".DS_Store":
+            continue
+        if any(part in skip_dirs for part in path.parts):
+            continue
+        try:
+            if path.stat().st_size > max_scan_bytes:
+                continue
+        except OSError:
             continue
         try:
             content = path.read_text(encoding="utf-8")

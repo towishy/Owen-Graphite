@@ -6483,9 +6483,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
    ============================================================ */
 
 @media (min-width: 701px) {
-  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
-    width: 36px !important;
-    height: 36px !important;
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action) {
     padding: 8px !important;
     border: 1px solid rgba(100, 116, 139, 0.34) !important;
     border-radius: 8px !important;
@@ -6494,39 +6492,22 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     backdrop-filter: blur(12px) saturate(140%);
     color: #334155 !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
-    position: relative;
-    overflow: hidden;
-    opacity: 1 !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
-    content: "";
-    position: absolute;
-    inset: 2px 2px auto 2px;
-    height: 45%;
-    border-radius: 6px 6px 0 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.70), transparent);
-    pointer-events: none;
-  }
-
-  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
     border-color: rgba(71, 85, 105, 0.44) !important;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.65)) !important;
     color: #111827 !important;
   }
 
-  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action) {
     border: 1px solid rgba(203, 213, 225, 0.16) !important;
     background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.42)) !important;
     color: #cbd5e1 !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 4px 12px rgba(0, 0, 0, 0.24) !important;
   }
 
-  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), transparent);
-  }
-
-  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
     border-color: rgba(203, 213, 225, 0.28) !important;
     background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55)) !important;
     color: #f8fafc !important;
@@ -6540,14 +6521,13 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
    ============================================================ */
 
 @media (min-width: 701px) {
-  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     backdrop-filter: blur(16px) saturate(160%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 8px 22px rgba(15, 23, 42, 0.18) !important;
-    transform: translateY(-1px);
   }
 
-  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+  body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 8px 22px rgba(0, 0, 0, 0.42) !important;
   }
 
@@ -6657,38 +6637,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right,
   body:not(.is-mobile) .workspace-tab-header-tab-list,
   body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list {
-    width: 26px !important;
-    height: 26px !important;
-    min-width: 26px !important;
-    min-height: 26px !important;
     padding: 4px !important;
     margin: 0 3px !important;
-    align-self: center !important;
     border: 0 !important;
     border-radius: 4px !important;
     background: transparent !important;
     box-shadow: none !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    transform: none !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  body:not(.is-mobile) .sidebar-toggle-button.mod-right svg,
-  body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right svg,
-  body:not(.is-mobile) .workspace-tab-header-tab-list svg,
-  body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list svg {
-    width: 15px !important;
-    height: 15px !important;
-    margin: 0 !important;
-  }
-
-  body:not(.is-mobile) .sidebar-toggle-button.mod-right::after,
-  body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right::after {
-    display: none !important;
-    content: none !important;
   }
 
   body:not(.is-mobile) .sidebar-toggle-button.mod-right:hover,
@@ -6696,7 +6652,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: rgba(100, 116, 139, 0.10) !important;
     border: 0 !important;
     box-shadow: none !important;
-    transform: none !important;
   }
 }
 
@@ -7137,8 +7092,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
 @media (min-width: 701px) {
   body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
-    width: auto !important;
-    height: auto !important;
     padding: 4px !important;
     border: 0 !important;
     border-radius: var(--clickable-icon-radius, 6px) !important;
@@ -7147,14 +7100,11 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     backdrop-filter: none !important;
     box-shadow: none !important;
     color: var(--icon-color, var(--text-muted)) !important;
-    transform: none !important;
-    overflow: visible !important;
     transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease !important;
   }
 
   body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
     content: none !important;
-    display: none !important;
   }
 
   /* Liquid-glass hover (light) */
@@ -8455,14 +8405,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile) :is(
-    .workspace-ribbon .clickable-icon,
-    .clickable-icon.side-dock-ribbon-action,
-    .sidebar-toggle-button.mod-left,
-    .sidebar-toggle-button.mod-right,
     .nav-file-title,
     .nav-folder-title,
-    .workspace-tab-header,
-    .workspace-tab-header-inner,
     .breadcrumb,
     .menu-item,
     .suggestion-item,
@@ -8487,14 +8431,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile) :is(
-    .workspace-ribbon .clickable-icon,
-    .clickable-icon.side-dock-ribbon-action,
-    .sidebar-toggle-button.mod-left,
-    .sidebar-toggle-button.mod-right,
     .nav-file-title,
     .nav-folder-title,
-    .workspace-tab-header,
-    .workspace-tab-header-inner,
     .breadcrumb,
     .menu-item,
     .suggestion-item,
