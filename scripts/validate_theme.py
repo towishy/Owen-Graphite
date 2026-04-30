@@ -107,6 +107,15 @@ REQUIRED_READABLE_COLUMN_GUARDS = [
     "margin-right: auto !important",
 ]
 
+REQUIRED_TABLE_INFLATION_GUARDS = [
+    ".cm-embed-block table :is(td, th) > p",
+    ".cm-embed-block.cm-table-widget",
+    ".table-cell-wrapper,",
+    ".cm-active.cm-line",
+    ".cm-active.cm-line:empty",
+    "line-height: 0 !important",
+]
+
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -355,6 +364,14 @@ def readable_column_guards() -> None:
     ok("readable column alignment guards clean")
 
 
+def table_inflation_guards() -> None:
+    theme = read_text("theme.css")
+    missing = [guard for guard in REQUIRED_TABLE_INFLATION_GUARDS if guard not in theme]
+    if missing:
+        fail(f"theme.css missing table inflation guards: {', '.join(missing)}")
+    ok("table inflation guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -409,6 +426,7 @@ def main() -> int:
     reading_view_layout_guards()
     live_preview_width_guards()
     readable_column_guards()
+    table_inflation_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)

@@ -1,6 +1,7 @@
 # CSS Stabilization Checklist (MAP-driven)
 
 ## Goal Gates
+- Rollback baseline: `v2.22.15` is the only retained release/tag baseline
 - MAP gate: critical = 0, high = 0
 - Validation gate: `python scripts/validate_theme.py --ci` must pass
 - Build gate: `python scripts/build_release.py` must produce `dist/Owen-Graphite-<version>.zip`
@@ -25,10 +26,14 @@
 ## Pre-release Quick Checks
 - `docs/MAP/theme-css-risk-map.json` has zero critical/high.
 - `scripts/validate_theme.py --ci` is green.
+- `scripts/validate_theme.py --ci` must report `table inflation guards clean`.
 - `dist/Owen-Graphite-<version>.zip` exists and opens correctly.
 - No unexpected structural overrides were reintroduced in `theme.css`.
 
 ## Regression Watchlist
+- Live Preview table cell editor chain (`td > .table-cell-wrapper > .cm-editor > .cm-scroller > .cm-content > .cm-line/.cm-active.cm-line`)
+- Embedded table paragraph margin reset (`.cm-embed-block table :is(td, th) > p`)
+- Empty trailing table lines (`.cm-active.cm-line:empty`, `br:only-child`)
 - Ribbon icon blocks
 - Sidebar toggle reset blocks (macOS and desktop)
 - Workspace tab header shaping blocks
