@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.14] — 2026-04-30 — MAP-driven CSS stabilization and release hardening
+
+### Fixed
+- MAP 기반 CSS 안정화로 core chrome 리스크 게이트를 `critical=0`, `high=0`, `medium=0`으로 정리.
+- ribbon/toggle/tab-header 관련 구조 개입 속성(width/height/overflow/position/display/transform 강제)을 축소해 Windows/macOS chrome 회귀 가능성을 낮춤.
+
+### Changed
+- `scripts/validate_theme.py`의 stale marker 스캔 범위를 최적화 (`.venv`/`dist`/cache 디렉터리 및 대용량 파일 제외)하여 검증 시간을 단축.
+- MAP 운영 체크리스트 문서 추가: `docs/MAP/css-stabilization-checklist.md`.
+
 ## [2.22.13] — 2026-04-30 — Windows tab and titlebar button baseline
 
 ### Fixed
