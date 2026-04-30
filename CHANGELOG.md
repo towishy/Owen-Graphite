@@ -13,6 +13,9 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - MAP 재측정 결과 유지: `critical=0`, `high=0`, `medium=0`.
 - `scripts/validate_theme.py --ci` 전체 통과.
 
+### Changed
+- 안정 롤백 기준선을 `v2.22.15`로 승격. 표 편집 회귀가 있던 `v2.22.14` 공개 release/tag는 제거하고, 이후 복구 기준은 `v2.22.15` 하나만 유지.
+
 ## [2.22.14] — 2026-04-30 — MAP-driven CSS stabilization and release hardening
 
 ### Fixed
