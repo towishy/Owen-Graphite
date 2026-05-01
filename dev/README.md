@@ -46,6 +46,12 @@ The cascade order is explicit in `_order.txt`. Do not rely on filename sorting a
 
 Most splits are mechanical and order-preserving. Functional fixes should still happen in `dev/`, then be bundled into `theme.css`.
 
+## Support Artifacts
+
+- `MAP/`: generated CSS risk map and stabilization checklist.
+- `src/`: superseded modularization plan retained as historical planning context.
+- `test-samples/`: development and regression sample notes for Owen Graphite and Owen Editor design parity.
+
 ## Selector Notes
 
 Obsidian usually applies theme and Style Settings classes to `body`. Combine those classes on the same selector, for example `body.theme-dark.ogd-zebra`, not `.theme-dark body.ogd-zebra`.

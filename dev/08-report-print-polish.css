@@ -480,21 +480,7 @@
    - Report callouts share a quieter semantic outline language
    ============================================================ */
 
-.markdown-rendered .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-),
-.markdown-preview-view .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-),
-.markdown-reading-view .callout:is(
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
   [data-callout="conclusion"],
   [data-callout="recommendation"],
   [data-callout="risk"],
@@ -513,61 +499,37 @@
   color: var(--ogd-text-slate, #334155) !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
 }
-.markdown-rendered .callout[data-callout="conclusion"],
-.markdown-preview-view .callout[data-callout="conclusion"],
-.markdown-reading-view .callout[data-callout="conclusion"] {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="conclusion"] {
   --callout-icon: lucide-clipboard-check;
   --ogd-report-callout-accent: var(--ogd-text-subtle, #475569);
   --ogd-report-callout-bg: var(--ogd-surface-muted, #f8fafc);
   --ogd-report-callout-border: var(--ogd-line-strong, #cbd5e1);
 }
-.markdown-rendered .callout[data-callout="recommendation"],
-.markdown-preview-view .callout[data-callout="recommendation"],
-.markdown-reading-view .callout[data-callout="recommendation"] {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="recommendation"] {
   --callout-icon: lucide-badge-check;
   --ogd-report-callout-accent: #047857;
   --ogd-report-callout-bg: #f0fdf4;
   --ogd-report-callout-border: #bbf7d0;
 }
-.markdown-rendered .callout[data-callout="risk"],
-.markdown-preview-view .callout[data-callout="risk"],
-.markdown-reading-view .callout[data-callout="risk"] {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="risk"] {
   --callout-icon: lucide-shield-alert;
   --ogd-report-callout-accent: #b45309;
   --ogd-report-callout-bg: #fffbeb;
   --ogd-report-callout-border: #fde68a;
 }
-.markdown-rendered .callout[data-callout="action"],
-.markdown-preview-view .callout[data-callout="action"],
-.markdown-reading-view .callout[data-callout="action"] {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="action"] {
   --callout-icon: lucide-list-todo;
   --ogd-report-callout-accent: #0e7490;
   --ogd-report-callout-bg: #ecfeff;
   --ogd-report-callout-border: #a5f3fc;
 }
-.markdown-rendered .callout[data-callout="decision"],
-.markdown-preview-view .callout[data-callout="decision"],
-.markdown-reading-view .callout[data-callout="decision"] {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="decision"] {
   --callout-icon: lucide-scale;
   --ogd-report-callout-accent: #4b5563;
   --ogd-report-callout-bg: var(--ogd-surface-subtle, #f3f4f6);
   --ogd-report-callout-border: #d1d5db;
 }
-.markdown-rendered .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) .callout-icon,
-.markdown-preview-view .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) .callout-icon,
-.markdown-reading-view .callout:is(
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
   [data-callout="conclusion"],
   [data-callout="recommendation"],
   [data-callout="risk"],
@@ -581,21 +543,7 @@
   background: var(--ogd-surface-base, #ffffff) !important;
   color: var(--ogd-report-callout-accent) !important;
 }
-.markdown-rendered .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) :is(.callout-title, .callout-title-inner, .callout-content, p, li, strong),
-.markdown-preview-view .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) :is(.callout-title, .callout-title-inner, .callout-content, p, li, strong),
-.markdown-reading-view .callout:is(
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
   [data-callout="conclusion"],
   [data-callout="recommendation"],
   [data-callout="risk"],
@@ -608,21 +556,7 @@
   margin-left: 0.45em !important;
 }
 
-.theme-dark .markdown-rendered .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-),
-.theme-dark .markdown-preview-view .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-),
-.theme-dark .markdown-reading-view .callout:is(
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
   [data-callout="conclusion"],
   [data-callout="recommendation"],
   [data-callout="risk"],
@@ -636,21 +570,7 @@
   color: var(--ogd-line-soft, #e5e7eb) !important;
   box-shadow: var(--ogd-shadow-none, none) !important;
 }
-.theme-dark .markdown-rendered .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) .callout-icon,
-.theme-dark .markdown-preview-view .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) .callout-icon,
-.theme-dark .markdown-reading-view .callout:is(
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
   [data-callout="conclusion"],
   [data-callout="recommendation"],
   [data-callout="risk"],
