@@ -2,7 +2,7 @@
 
 [Style Settings 플러그인](https://github.com/mgmeyers/obsidian-style-settings)을 설치하면 사이드바에서 28개 옵션을 토글로 즉시 적용할 수 있습니다. 본 문서는 README의 분류 표를 보강하는 풀 레퍼런스입니다.
 
-> 베이스라인: **v2.22.18**
+> 베이스라인: **v2.22.19**
 
 ---
 

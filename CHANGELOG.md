@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.19] — 2026-05-01 — File explorer active path release
+
+### Added
+- 선택된 문서가 포함된 최상위 폴더에 glass selected surface, cyan border, hover 계열 shadow를 적용해 현재 문서의 루트 위치를 더 명확하게 표시.
+- 선택된 문서 경로의 중간 폴더에 Path Rail 디자인을 적용: cyan left rail, 작은 경로 점, 선명한 폴더 아이콘/텍스트 강조를 추가.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.18] — 2026-05-01 — Active document icon glow line hotfix
 
 ### Fixed
