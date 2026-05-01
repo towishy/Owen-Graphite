@@ -171,7 +171,7 @@ fi
 
 ## 4. 테마 신기능
 
-아래 항목은 현재 DEV CSS 기준으로 구현 증거가 확인된 기능만 유지합니다. 오래된 preview 이미지 중 일부 구현이 빠졌거나 selector 증거가 약한 항목은 README에서 제거하고, 재도입 후보는 [docs/future-recommendations.md](docs/future-recommendations.md)에 분리했습니다.
+아래 항목은 현재 DEV CSS에서 selector/토큰 구현이 확인된 범위만 기록합니다. 플러그인별 DOM 검증이 필요한 항목이나 설명 대비 구현 범위가 좁은 항목은 README에서 제외하고, 재도입 후보는 [docs/future-recommendations.md](docs/future-recommendations.md)에 분리했습니다.
 
 ### ✨ v2.22.13 — Windows tab/button stable baseline
 
@@ -179,36 +179,28 @@ Windows Obsidian에서 상단 탭과 titlebar 버튼이 정상 표시되도록 �
 
 ---
 
-### ✨ v2.20.0 — Inputs & System Surfaces (5종)
+### ✨ v2.20.0 — Inputs & Settings Controls
 
-Toggle switch · Search input + chips · Community cards · Pane title count badges · Drop snap target hint.
+Toggle switch · Search input control glass.
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Toggle switch glass (F3) | `.checkbox-container` glass track + floating thumb |
-| 2 | Search input + chips (F1) | glass pill + focus 3px ring + active filter pill |
-| 3 | Community cards (E4) | hover lift + installed green pill |
-| 4 | Pane title count badges (D2) | outline/backlinks/outgoing/tag mono pill 통일 |
-| 5 | Drop snap target hint (G1) | 전체 둘레 dashed outline (좌측 라인 제거) |
+| 1 | Toggle switch glass | `.checkbox-container` glass track + thumb + hover/focus lift |
+| 2 | Search input control glass | `.search-input-container` glass surface + 검색 아이콘/clear 버튼 control glass |
 
 ---
 
-### ✨ v2.19.0 — Editor Depth, System Cleanup & Glass Surface Sweep (10종)
+### ✨ v2.19.0 — Editor Depth & Glass Surface Sweep
 
-Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 + PDF · Media · Canvas · Floating status bar · Date/Color picker.
+Task glyph · prompt/suggestion glass · Canvas controls · status bar segment hover · color picker controls.
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Task checkbox glyphs (B4) | `[ ]` `[x]` `[/]` `[?]` `[!]` `[>]` `[-]` 7종 색별 매핑 |
-| 2 | Heading anchor copy hint (B5) | H1–H6 hover 시 `⎘` fade-in 커틀 힌트 |
-| 3 | Templater suggestion glass (C1) | popup blur(14) + lift shadow |
-| 4 | Nested tag pill (C5) | 계층 세그먼트 그라디언트 + word-break 안정화 |
-| 5 | Token migration v2 (D2) | `--og-accent-pill-{bg,fg,border}` `--og-glass-bg-strong` 신규 |
-| 6 | PDF viewer chrome (A1) | toolbar/sidebar 글래스 + 활성 페이지 accent ring |
-| 7 | Media player chrome (A2) | video/audio embed + native audio chrome 글래스 |
-| 8 | Canvas node cards (B1) | hover lift + `.is-focused` ring (좌측 라인 X) |
-| 9 | Floating status bar (D1) | status bar 부유 + word count accent pill |
-| 10 | Date/Color picker (C3) | flatpickr/daterangepicker/color picker 글래스 통일 |
+| 1 | Task checkbox glyphs | `[x]` `[/]` `[?]` `[!]` `[>]` `[-]` `[*]` 등 task 상태별 색상/글리프 |
+| 2 | Prompt / suggestion glass | `.prompt`, `.suggestion-container`, `.suggestion-item.is-selected` glass surface |
+| 3 | Canvas node/control cards | `.canvas-node` hover lift + selected/focused ring + controls glass |
+| 4 | Status bar segment hover | `.status-bar-item-segment` hover glass + lift |
+| 5 | Color picker controls | `input[type="color"]`, `.pickr .pcr-button` control surface 통일 |
 
 ---
 
@@ -218,7 +210,7 @@ Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Workspace split divider | hover 시 1→2px brand fade + glow + resize cursor (전체 라인) |
+| 1 | Workspace split divider | 기본 divider line 제거 + resize handle hover 시 subtle tint 표시 |
 
 ---
 
@@ -230,8 +222,8 @@ Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token
 |---|------|------|
 | 1 | Search 결과 패널 Polish | row glass + hover lift + match HL underline-gradient |
 | 2 | Graph view legend / control | 우상단 controls glass card (blur·border·shadow) |
-| 3 | Footnote 패널 Polish | 글래스 카드 + 번호 알약(pill) + ref pill 일관 |
-| 4 | Inline tag pill v2 | 본문 `#tag` 도 tag-pane 알약 디자인으로 통일 |
+| 3 | Footnote compact refs | footnote ref/backref 크기·weight·hover hint 정리 |
+| 4 | Inline tag pill v2 | 본문 `#tag` / CM6 hashtag pill 스타일 통일 |
 | 5 | Callout 다크 패리티 재감사 | note/warning/danger/success 다크 대비 보강 |
 | 6 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
 | 7 | docs/style-settings.md | Style Settings 풀 레퍼런스 문서 신설 |
@@ -255,8 +247,8 @@ Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token
 | 1 | Tab bar 활성 탭 underline | 그라디언트 underline + soft shadow (좌측 라인 X) |
 | 2 | Backlinks / Outgoing card lift | 우측 패널 padded glass row + hover transform |
 | 3 | 테이블 zebra + sticky | 짝수행 미세 톤 + sticky header (accent underline) |
-| 4 | Code block line numbers (opt-in) | `pre.line-numbers` 에 CSS counter 기반 좌측 행 번호 |
-| 5 | Embed 노트 카드 Polish | `.markdown-embed` 글래스 카드 + 우상단 EMBED badge |
+| 4 | Code block language/copy chrome | language badge + copy button contrast/collision 보정 |
+| 5 | Embed 노트 카드 Polish | `.markdown-embed` / internal embed surface 정리 |
 | 6 | Glass 강도 변수 | `--og-glass-blur` CSS 변수 (8/12/16/20px override) |
 
 ---
@@ -301,16 +293,16 @@ Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token
 | **v2.22.15** | Live Preview table inflation regression hotfix — 표 셀 편집 행 팽창 차단, `v2.22.15`를 안정 롤백 베이스라인으로 고정 |
 | **v2.22.13** | Windows tab/button stable baseline — 검증된 v1.8.66 CSS baseline으로 복원, 중간 테스트 chrome 강제 레이어 제거 |
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
-| **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |
-| **v2.19.0** | Editor Depth, System Cleanup & Glass Surface Sweep — Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 · PDF · Media · Canvas · Floating status bar · Date/Color picker (10종) |
-| **v2.18.0** | Surface divider polish — Workspace split divider hover affordance |
+| **v2.20.0** | Inputs & Settings Controls — Toggle switch · Search input control glass |
+| **v2.19.0** | Editor Depth & Glass Surface Sweep — Task glyph · Prompt glass · Canvas controls · Status bar segment hover · Color picker controls |
+| **v2.18.0** | Surface divider polish — Workspace divider line removal and resize handle hover tint |
 | **v2.17.0** | Surface Gaps & Tokenization — Scrollbar polish · Empty state 일러스트 · Wiki-link unresolved 톤 · Calendar today/active · CSS 토큰화 v2 |
 | **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |
 | **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · reduced-motion 안전망 · high-contrast 대응 |
 | **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Mermaid card · Tasks 플러그인 · Focus-visible 링 |
 | **v2.14.0** | Chrome & Indicator Polish — Settings 검색 강조 · Heading anchor `#` · Popover favicon · Properties focus ring |
-| **v2.13.0** | Reading Polish & Surfaces — Search row glass · Graph controls · Footnote pill · Tag pill v2 · Callout dark 재감사 · Dataview 자동 · docs/style-settings.md |
-| **v2.12.0** | Panels & Code Polish — Tab underline · Backlinks lift · Table zebra+sticky · Code line numbers · Embed card · Glass 강도 변수 |
+| **v2.13.0** | Reading Polish & Surfaces — Search row glass · Graph controls · Footnote ref polish · Tag pill v2 · Callout dark 재감사 · Dataview 자동 · docs/style-settings.md |
+| **v2.12.0** | Panels & Code Polish — Tab underline · Backlinks lift · Table zebra+sticky · Code language/copy chrome · Embed card · Glass 강도 변수 |
 | **v2.11.0** | Reading & Properties Polish — Properties Glass · 강조 차등 · 인용문 no-left-line · Code chrome |
 
 > 전체 릴리즈 노트 → [CHANGELOG.md](CHANGELOG.md)

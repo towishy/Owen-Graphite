@@ -34,6 +34,30 @@ This list collects previously advertised or previewed ideas that are not current
 - Risk: medium; ribbon active classes need to be verified in current Obsidian.
 - Suggested treatment: full pill background, subtle inset ring, no transform by default.
 
+### Community Cards
+- Source idea: v2.20 community card hover and installed pill.
+- Why it fits: marketplace/plugin cards can reuse the existing glass card and semantic installed-pill language.
+- Risk: medium because current DEV CSS has no verified community-card selectors.
+- Suggested treatment: verify current Obsidian DOM first, then scope narrowly to community/plugin browser card classes.
+
+### Drop Snap Target Hint
+- Source idea: v2.20 drop snap target dashed outline.
+- Why it fits: a full-outline drop target matches the no-left-rail layout rule.
+- Risk: medium because drag/drop selectors are transient and need real interaction screenshots.
+- Suggested treatment: use only confirmed drop target classes and avoid changing hit areas.
+
+### PDF Viewer Chrome
+- Source idea: v2.19 PDF toolbar/sidebar glass and active page ring.
+- Why it fits: PDF chrome could share the same floating control glass as canvas/search controls.
+- Risk: medium because only print/export and embed styling are currently verified, not the PDF viewer toolbar DOM.
+- Suggested treatment: verify `.pdf-*` viewer selectors in current Obsidian before styling.
+
+### Code Block Line Numbers
+- Source idea: v2.12 `pre.line-numbers` counter-based line numbers.
+- Why it fits: opt-in line numbers can help technical notes without changing default code block density.
+- Risk: low to medium; copy button/language badge collision needs retesting.
+- Suggested treatment: keep behind an explicit opt-in class and test long lines plus copy button overlap.
+
 ## Defer Unless Needed
 
 ### Drag Preview Ghost
