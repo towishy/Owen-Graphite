@@ -41,9 +41,9 @@
 .prompt-results .suggestion-item.is-selected,
 .menu-item:hover,
 .menu-item.selected {
-  background: #eef2ff !important;
+  background: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.70), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.56)) !important;
   color: var(--ogd-text-strong, #111827) !important;
-  box-shadow: inset 3px 0 0 #6366f1 !important;
+  box-shadow: inset 3px 0 0 rgba(100, 116, 139, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 3px 8px rgba(15, 23, 42, 0.08) !important;
   border-left: 0 !important;
 }
 
@@ -153,7 +153,7 @@
 .theme-dark .menu-item.selected {
   background: radial-gradient(circle at 78% 20%, rgba(148, 163, 184, 0.10), transparent 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(15, 23, 42, 0.34)) !important;
   color: var(--ogd-text-inverted, #f8fafc) !important;
-  box-shadow: inset 3px 0 0 rgba(129, 140, 248, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 9px rgba(0, 0, 0, 0.18) !important;
+  box-shadow: inset 3px 0 0 rgba(203, 213, 225, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 9px rgba(0, 0, 0, 0.18) !important;
 }
 .theme-dark .markdown-rendered .dataview.table-view-table,
 .theme-dark .markdown-rendered .dataview.dataview-table,
@@ -225,10 +225,10 @@
 .markdown-rendered :is(.dataview.inline-field-key, .dataview-inline-field-key):is(:hover, :focus-visible),
 .markdown-preview-view :is(.dataview.inline-field-key, .dataview-inline-field-key):is(:hover, :focus-visible),
 .markdown-reading-view :is(.dataview.inline-field-key, .dataview-inline-field-key):is(:hover, :focus-visible) {
-  border-color: rgba(96, 165, 250, 0.30) !important;
+  border-color: rgba(100, 116, 139, 0.30) !important;
   background: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.84), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.60)) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(96, 165, 250, 0.06), 0 3px 8px rgba(15, 23, 42, 0.08), 0 0 0 2px rgba(96, 165, 250, 0.05) !important;
-  color: #1d4ed8 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 3px 8px rgba(15, 23, 42, 0.08), 0 0 0 2px rgba(148, 163, 184, 0.06) !important;
+  color: var(--ogd-text-strong, #111827) !important;
 }
 
 .markdown-rendered :is(.dataview.inline-field-value, .dataview-inline-field-value),
@@ -274,10 +274,10 @@
 .theme-dark .markdown-rendered :is(.dataview.inline-field-key, .dataview-inline-field-key):is(:hover, :focus-visible),
 .theme-dark .markdown-preview-view :is(.dataview.inline-field-key, .dataview-inline-field-key):is(:hover, :focus-visible),
 .theme-dark .markdown-reading-view :is(.dataview.inline-field-key, .dataview-inline-field-key):is(:hover, :focus-visible) {
-  border-color: rgba(147, 197, 253, 0.26) !important;
+  border-color: rgba(203, 213, 225, 0.22) !important;
   background: radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.14), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.66), rgba(15, 23, 42, 0.40)) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(147, 197, 253, 0.05), 0 4px 10px rgba(0, 0, 0, 0.26), 0 0 0 2px rgba(147, 197, 253, 0.04) !important;
-  color: #bfdbfe !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(203, 213, 225, 0.05), 0 4px 10px rgba(0, 0, 0, 0.26), 0 0 0 2px rgba(203, 213, 225, 0.04) !important;
+  color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 
 .theme-dark .markdown-rendered :is(.dataview.inline-field-value, .dataview-inline-field-value),

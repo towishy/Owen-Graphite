@@ -49,10 +49,10 @@
   body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover,
   body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button:hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(147,197,253,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
+    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(96,165,250,0.10),
+      inset 0 -1px 0 rgba(15,23,42,0.07),
       0 8px 18px rgba(15,23,42,0.13) !important;
     transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
@@ -68,10 +68,10 @@
   body:not(.is-mobile).theme-dark .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover,
   body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button:hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(147,197,253,0.08), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
+    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.18),
-      inset 0 -1px 0 rgba(147,197,253,0.10),
+      inset 0 -1px 0 rgba(203,213,225,0.08),
       0 8px 20px rgba(0,0,0,0.34) !important;
     transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
@@ -129,10 +129,10 @@
     transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease !important;
   }
   body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(147,197,253,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
+    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(96,165,250,0.10),
+      inset 0 -1px 0 rgba(15,23,42,0.07),
       0 8px 18px rgba(15,23,42,0.13) !important;
     transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
@@ -144,10 +144,10 @@
       inset 0 -1px 0 rgba(0,0,0,0.30) !important;
   }
   body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(147,197,253,0.08), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
+    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.18),
-      inset 0 -1px 0 rgba(147,197,253,0.10),
+      inset 0 -1px 0 rgba(203,213,225,0.08),
       0 8px 20px rgba(0,0,0,0.34) !important;
     transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
@@ -369,15 +369,15 @@
     bottom: 0 !important;
     height: 3px !important;
     border-radius: var(--ogd-radius-pill, 999px) !important;
-    background: linear-gradient(90deg, rgba(100, 116, 139, 0.08), rgba(147, 197, 253, 0.34), rgba(100, 116, 139, 0.08)) !important;
-    box-shadow: 0 0 8px rgba(96, 165, 250, 0.12) !important;
+    background: linear-gradient(90deg, rgba(100, 116, 139, 0.08), rgba(148, 163, 184, 0.30), rgba(100, 116, 139, 0.08)) !important;
+    box-shadow: 0 0 8px rgba(100, 116, 139, 0.10) !important;
     pointer-events: none !important;
     transition: box-shadow 160ms ease, opacity 160ms ease !important;
   }
 
   body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
     color: var(--ogd-text-strong, #111827) !important;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.60), 0 0 12px rgba(14, 165, 233, 0.14) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.60), 0 0 12px rgba(100, 116, 139, 0.12) !important;
   }
 
   body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible)::before {
@@ -389,7 +389,7 @@
   }
 
   body:not(.is-mobile) .view-header-title:is(:hover, :focus, :focus-visible)::after {
-    box-shadow: 0 0 12px rgba(96, 165, 250, 0.20) !important;
+    box-shadow: 0 0 12px rgba(100, 116, 139, 0.16) !important;
   }
 
   body:not(.is-mobile) :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
@@ -525,7 +525,7 @@
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
     background: radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.72), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.58)) !important;
     border: 1px solid rgba(100, 116, 139, 0.34) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(96, 165, 250, 0.10), 0 8px 18px rgba(15, 23, 42, 0.13), 0 0 0 2px rgba(147, 197, 253, 0.08) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 8px 18px rgba(15, 23, 42, 0.13), 0 0 0 2px rgba(148, 163, 184, 0.08) !important;
     color: var(--ogd-text-strong, #111827) !important;
   }
 
@@ -542,9 +542,9 @@
 
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active,
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
-    background: radial-gradient(circle at 76% 26%, rgba(148, 163, 184, 0.16), transparent 36%), radial-gradient(circle at 14% 64%, rgba(147, 197, 253, 0.08), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.52)) !important;
+    background: radial-gradient(circle at 76% 26%, rgba(148, 163, 184, 0.16), transparent 36%), radial-gradient(circle at 14% 64%, rgba(203, 213, 225, 0.06), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.52)) !important;
     border: 1px solid rgba(203, 213, 225, 0.24) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(147, 197, 253, 0.10), 0 8px 22px rgba(0, 0, 0, 0.36), 0 0 0 2px rgba(147, 197, 253, 0.07) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(203, 213, 225, 0.08), 0 8px 22px rgba(0, 0, 0, 0.36), 0 0 0 2px rgba(203, 213, 225, 0.06) !important;
     color: var(--ogd-text-inverted, #f8fafc) !important;
   }
 
@@ -728,8 +728,8 @@
   }
 
   body:not(.is-mobile) .workspace-split.mod-left-split :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle):is(:hover, :focus, :active) {
-    background: linear-gradient(90deg, rgba(148, 163, 184, 0.00), rgba(100, 116, 139, 0.30), rgba(147, 197, 253, 0.08)) !important;
-    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.04) !important;
+    background: linear-gradient(90deg, rgba(148, 163, 184, 0.00), rgba(100, 116, 139, 0.30), rgba(148, 163, 184, 0.06)) !important;
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.05) !important;
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-left-split {
@@ -757,8 +757,8 @@
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-left-split :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle):is(:hover, :focus, :active) {
-    background: linear-gradient(90deg, rgba(203, 213, 225, 0.00), rgba(203, 213, 225, 0.24), rgba(147, 197, 253, 0.08)) !important;
-    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.05) !important;
+    background: linear-gradient(90deg, rgba(203, 213, 225, 0.00), rgba(203, 213, 225, 0.24), rgba(203, 213, 225, 0.06)) !important;
+    box-shadow: 0 0 0 1px rgba(203, 213, 225, 0.06) !important;
   }
 }
 
