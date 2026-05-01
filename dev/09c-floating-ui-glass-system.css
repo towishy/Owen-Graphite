@@ -10,6 +10,10 @@
     --ogd-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.52));
     --ogd-glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.66));
     --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55));
+    --ogd-glass-surface-bg: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50));
+    --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55));
+    --ogd-glass-control-bg: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22));
+    --ogd-glass-control-hover-bg: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55));
     --ogd-glass-border: rgba(148, 163, 184, 0.24);
     --ogd-glass-border-hover: rgba(100, 116, 139, 0.34);
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(148, 163, 184, 0.14), 0 14px 32px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(15, 23, 42, 0.07);
@@ -20,6 +24,10 @@
     --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.58));
     --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.68));
     --ogd-glass-bg-hover: linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45));
+    --ogd-glass-surface-bg: linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58));
+    --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55));
+    --ogd-glass-control-bg: linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30));
+    --ogd-glass-control-hover-bg: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18));
     --ogd-glass-border: rgba(203, 213, 225, 0.18);
     --ogd-glass-border-hover: rgba(203, 213, 225, 0.24);
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.35), 0 14px 32px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.30);
@@ -31,6 +39,10 @@
       --ogd-glass-bg: var(--background-primary) !important;
       --ogd-glass-bg-strong: var(--background-primary) !important;
       --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-surface-bg: var(--background-primary) !important;
+      --ogd-glass-toolbar-bg: var(--background-primary) !important;
+      --ogd-glass-control-bg: var(--background-primary-alt) !important;
+      --ogd-glass-control-hover-bg: var(--background-modifier-hover) !important;
       --ogd-glass-filter: none !important;
       --ogd-glass-filter-soft: none !important;
       --ogd-glass-filter-control: none !important;
@@ -42,6 +54,10 @@
       --ogd-glass-bg: var(--background-primary) !important;
       --ogd-glass-bg-strong: var(--background-primary) !important;
       --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-surface-bg: var(--background-primary) !important;
+      --ogd-glass-toolbar-bg: var(--background-primary) !important;
+      --ogd-glass-control-bg: var(--background-primary-alt) !important;
+      --ogd-glass-control-hover-bg: var(--background-modifier-hover) !important;
       --ogd-glass-shadow: 0 10px 28px rgba(0, 0, 0, 0.38) !important;
       --ogd-glass-shadow-hover: 0 5px 14px rgba(0, 0, 0, 0.30) !important;
     }
@@ -409,7 +425,7 @@
     --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.38) !important;
   }
 
-  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) {
+  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) {
     -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
     backdrop-filter: var(--ogd-glass-filter) !important;
   }
@@ -468,7 +484,7 @@
     background: rgba(15, 23, 42, 0.34) !important;
   }
 
-  body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
+  body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
   body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -481,6 +497,7 @@
     .nav-file-title:hover,
     .nav-folder-title:hover,
     .tree-item-self:hover,
+    #editingToolbarModalBar,
     .editingToolbarModalBar,
     .editingToolbarPopover,
     .editingToolbarPopoverItems,

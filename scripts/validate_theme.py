@@ -50,11 +50,19 @@ REQUIRED_FILES = [
     "dev/05-live-preview.css",
     "dev/06-feature-presets.css",
     "dev/07-plugin-workspace.css",
+    "dev/07a-navigation-tasks-search.css",
+    "dev/07b-overlay-popover-dataview.css",
+    "dev/07c-settings-controls.css",
+    "dev/07d-canvas-graph-link-panes.css",
+    "dev/07e-live-preview-mobile-plugin.css",
     "dev/08-report-print-polish.css",
     "dev/09a-nav-ribbon-glass.css",
     "dev/09b-editing-menu-tooltip-glass.css",
     "dev/09c-floating-ui-glass-system.css",
     "dev/09d-tabs-file-explorer-search.css",
+    "dev/10a-accessibility-motion-contrast.css",
+    "dev/10b-late-reading-nav-polish.css",
+    "dev/10c-overlay-layout-polish.css",
     "dev/10-a11y-regression-hotfixes.css",
     "screenshots/light.png",
     "screenshots/dark.png",
@@ -144,11 +152,16 @@ REQUIRED_TABLE_INFLATION_GUARDS = [
 PRINT_BLOCK_OWNERSHIP = {
     "dev/04-print-base.css": 1,
     "dev/06-feature-presets.css": 3,
-    "dev/07-plugin-workspace.css": 3,
+    "dev/07-plugin-workspace.css": 2,
+    "dev/07e-live-preview-mobile-plugin.css": 1,
     "dev/08-report-print-polish.css": 2,
     "dev/09c-floating-ui-glass-system.css": 1,
-    "dev/10-a11y-regression-hotfixes.css": 3,
+    "dev/10b-late-reading-nav-polish.css": 2,
+    "dev/10c-overlay-layout-polish.css": 1,
 }
+
+MAX_DEV_MODULE_LINES = 1500
+MAX_DEV_MODULE_IMPORTANT = 550
 
 
 def fail(message: str) -> None:
@@ -528,7 +541,11 @@ def css_variable_usage_guards() -> None:
             failures.append(f"{rel}:{lineno}: backdrop-filter must use --ogd-glass-filter variables or none")
 
     theme = read_text("theme.css")
-    required_motion_tokens = [
+    required_design_tokens = [
+        "--ogd-glass-surface-bg:",
+        "--ogd-glass-toolbar-bg:",
+        "--ogd-glass-control-bg:",
+        "--ogd-glass-control-hover-bg:",
         "--ogd-hover-lift:",
         "--ogd-hover-lift-subtle:",
         "--ogd-hover-shift:",
@@ -537,13 +554,59 @@ def css_variable_usage_guards() -> None:
         "body.ogd-motion-subtle",
         "body.ogd-motion-standard",
     ]
-    missing = [token for token in required_motion_tokens if token not in theme]
+    missing = [token for token in required_design_tokens if token not in theme]
     if missing:
-        failures.append(f"theme.css missing motion tokens/classes: {', '.join(missing)}")
+        failures.append(f"theme.css missing glass/motion tokens/classes: {', '.join(missing)}")
 
     if failures:
         fail("CSS variable usage guards failed:\n" + "\n".join(failures))
     ok("CSS variable usage guards clean")
+
+
+def _unescaped_quote_count(line: str) -> int:
+    count = 0
+    escaped = False
+    for char in line:
+        if escaped:
+            escaped = False
+            continue
+        if char == "\\":
+            escaped = True
+            continue
+        if char == '"':
+            count += 1
+    return count
+
+
+def css_string_sanity_guards() -> None:
+    failures: list[str] = []
+    css_paths = sorted((ROOT / "dev").glob("*.css")) + [ROOT / "theme.css"]
+    for path in css_paths:
+        rel = path.relative_to(ROOT).as_posix()
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            if "content:" not in line:
+                continue
+            if _unescaped_quote_count(line) % 2:
+                failures.append(f"{rel}:{lineno}: unbalanced quote in CSS content declaration")
+    if failures:
+        fail("CSS string sanity guards failed:\n" + "\n".join(failures))
+    ok("CSS string sanity guards clean")
+
+
+def generated_text_sanity_guards() -> None:
+    failures: list[str] = []
+    paths = sorted((ROOT / "dev").glob("*.css")) + [ROOT / "dev" / "README.md", ROOT / "theme.css"]
+    broken_tokens = ("\ufffd", "沅", "蹂", "寃")
+    for path in paths:
+        rel = path.relative_to(ROOT).as_posix()
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            if any(token in line for token in broken_tokens):
+                failures.append(f"{rel}:{lineno}: mojibake marker found")
+            if "??" in line and ("/*" in line or line.strip().startswith("*") or line.strip().startswith("-")):
+                failures.append(f"{rel}:{lineno}: suspicious replacement marker in comment")
+    if failures:
+        fail("Generated text sanity guards failed:\n" + "\n".join(failures))
+    ok("generated text sanity guards clean")
 
 
 def css_complexity_inventory() -> None:
@@ -551,9 +614,18 @@ def css_complexity_inventory() -> None:
     theme_lines = theme.count("\n") + 1
     important_count = theme.count("!important")
     module_summaries: list[tuple[int, str, int]] = []
+    failures: list[str] = []
     for path in sorted((ROOT / "dev").glob("*.css")):
         content = path.read_text(encoding="utf-8")
-        module_summaries.append((content.count("\n") + 1, path.name, content.count("!important")))
+        line_count = content.count("\n") + 1
+        module_important = content.count("!important")
+        module_summaries.append((line_count, path.name, module_important))
+        if line_count > MAX_DEV_MODULE_LINES:
+            failures.append(f"{path.name}: {line_count} lines exceeds budget {MAX_DEV_MODULE_LINES}")
+        if module_important > MAX_DEV_MODULE_IMPORTANT:
+            failures.append(f"{path.name}: {module_important} !important exceeds budget {MAX_DEV_MODULE_IMPORTANT}")
+    if failures:
+        fail("CSS complexity budget exceeded:\n" + "\n".join(failures))
     largest = ", ".join(
         f"{name}={lines} lines/{important} !important"
         for lines, name, important in sorted(module_summaries, reverse=True)[:3]
@@ -698,6 +770,8 @@ def main() -> int:
     css_print_ownership_guards()
     css_risk_inventory()
     css_variable_usage_guards()
+    css_string_sanity_guards()
+    generated_text_sanity_guards()
     css_complexity_inventory()
     contrast_audit()
     release_zip_if_present(version)

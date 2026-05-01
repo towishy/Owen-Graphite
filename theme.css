@@ -315,6 +315,10 @@ settings:
   --ogd-fp-label-color: #6b7280;
   --ogd-title-rule-start: #0f766e;
   --ogd-title-rule-end: #0284c7;
+  --ogd-glass-surface-bg: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50));
+  --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55));
+  --ogd-glass-control-bg: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22));
+  --ogd-glass-control-hover-bg: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55));
   --ogd-hover-lift: translateY(-1px);
   --ogd-hover-lift-subtle: translateY(-0.5px);
   --ogd-hover-shift: translateX(1px);
@@ -3676,7 +3680,7 @@ body.theme-dark.ogd-eye-care {
 }
 
 /* =====================================================================
-   v1.6.0 — Polish patches
+  v1.6.0 - Polish patches
    - Mermaid dark text fill
    - Reading view internal-link chip (parity with Live Preview)
    - Code language label vs copy button collision fix
@@ -3757,11 +3761,11 @@ body.theme-dark.ogd-eye-care {
 }
 
 /* ============================================================
-   v1.7.0 — UX, Accessibility, Print, Mobile improvements
+  v1.7.0 - UX, Accessibility, Print, Mobile improvements
    All rules are ADDITIVE (no changes to existing selectors)
    ============================================================ */
 
-/* #3 — Mobile (.is-mobile) refinements */
+/* #3 - Mobile (.is-mobile) refinements */
 .is-mobile .view-header {
   padding: 6px 8px;
 }
@@ -3785,7 +3789,7 @@ body.theme-dark.ogd-eye-care {
   display: none !important;
 }
 
-/* #5 — PDF footer page numbers (v1.7.2: right-only, no prefix) */
+/* #5 - PDF footer page numbers (v1.7.2: right-only, no prefix) */
 @media print {
   @page {
     margin: 18mm 16mm 22mm 16mm;
@@ -3798,7 +3802,7 @@ body.theme-dark.ogd-eye-care {
   }
 }
 
-/* #6 — Graph view tonal alignment */
+/* #6 - Graph view tonal alignment */
 .graph-view.color-fill {
   color: var(--text-normal);
 }
@@ -3812,7 +3816,7 @@ body.theme-dark.ogd-eye-care {
   color: rgba(255, 255, 255, 0.12);
 }
 
-/* #7 — Search result highlight boost */
+/* #7 - Search result highlight boost */
 .search-result-file-match-text,
 .suggestion-highlight {
   background: rgba(255, 214, 102, 0.35);
@@ -3825,7 +3829,7 @@ body.theme-dark.ogd-eye-care {
   background: rgba(255, 214, 102, 0.22);
 }
 
-/* #8 — Embedded note left accent */
+/* #8 - Embedded note left accent */
 .markdown-embed,
 .internal-embed.markdown-embed-content {
   border-left: 3px solid var(--interactive-accent);
@@ -3840,7 +3844,7 @@ body.theme-dark.ogd-eye-care {
   margin-bottom: 4px;
 }
 
-/* #9 — Custom checkbox states (Minimal-style) */
+/* #9 - Custom checkbox states (Minimal-style) */
 input[data-task="x"]:checked,
 li[data-task="x"] > input:checked,
 li[data-task="x"] > p > input:checked { --checkbox-color: #10b981; }
@@ -3866,7 +3870,7 @@ ul > li.task-list-item[data-task="x"] {
   text-decoration-color: rgba(107, 114, 128, 0.5);
 }
 
-/* #10 — Tag chip hover feedback */
+/* #10 - Tag chip hover feedback */
 a.tag {
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
@@ -3877,7 +3881,7 @@ a.tag:hover {
   color: var(--text-on-accent);
 }
 
-/* #11 — Unified :focus-visible (WCAG 2.4.7) */
+/* #11 - Unified :focus-visible (WCAG 2.4.7) */
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
@@ -3892,7 +3896,7 @@ a.external-link:focus-visible,
 }
 *:focus:not(:focus-visible) { outline: none; }
 
-/* #12 — High-contrast mode */
+/* #12 - High-contrast mode */
 @media (prefers-contrast: more) {
   :root {
     --background-modifier-border: #555;
@@ -3911,9 +3915,9 @@ a.external-link:focus-visible,
 }
 
 /* ============================================================
-   v1.7.5 — Mermaid label sizing & color unification
+  v1.7.5 - Mermaid label sizing & color unification
    - Rect fill is the ONLY source of node color (label bg = transparent)
-   - Labels stay INSIDE the rect (no overflow) — shrink font instead
+  - Labels stay INSIDE the rect (no overflow) - shrink font instead
    - Use flex centering so multi-line text is vertically centered
    ============================================================ */
 
@@ -4003,9 +4007,9 @@ a.external-link:focus-visible,
 }
 
 /* ============================================================
-   v1.7.9 — Extra breathing room before headings that follow content
+  v1.7.9 - Extra breathing room before headings that follow content
    Use sibling selectors so heading margin-top only grows when
-   actually preceded by paragraph/list/quote/table — keeps
+  actually preceded by paragraph/list/quote/table - keeps
    consecutive headings tight.
    ============================================================ */
 .markdown-rendered :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 {
@@ -4023,10 +4027,10 @@ a.external-link:focus-visible,
 }
 
 /* ============================================================
-   v1.7.10 — Custom callout: [!conclusion] (Soft Sky)
+  v1.7.10 - Custom callout: [!conclusion] (Soft Sky)
    Usage in markdown:
-     > [!conclusion] 권장 결론
-     > 본문...
+    > [!conclusion] Recommended conclusion
+    > Body text...
    ============================================================ */
 .markdown-rendered .callout[data-callout="conclusion"] {
   --callout-color: 14, 165, 233; /* #0ea5e9 */
@@ -4070,7 +4074,7 @@ a.external-link:focus-visible,
 }
 
 /* ============================================================
-   v1.8.0 — Report quality bundle
+  v1.8.0 - Report quality bundle
    - PDF block split hardening
    - Purpose-based callout palette
    - Modern table polish
@@ -4234,7 +4238,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.1 — Properties card + mobile overflow stability
+  v1.8.1 - Properties card + mobile overflow stability
    - Modernizes Obsidian Properties / YAML frontmatter panels
    - Prevents wide tables and Mermaid diagrams from breaking mobile layout
    ============================================================ */
@@ -4319,7 +4323,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.2 — Workspace navigation + task states + search/highlight
+  v1.8.2 - Workspace navigation + task states + search/highlight
    - File explorer gains clearer hierarchy, hover, and active states
    - Special task checkboxes become semantic status markers
    - Search results and ==highlight== get a modern, readable treatment
@@ -4452,12 +4456,12 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   background: #fffbeb !important;
   border-color: #f59e0b !important;
 }
-.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"]::after { content: "…" !important; color: #1d4ed8 !important; left: 2px !important; top: -5px !important; }
-.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"]::after { content: "›" !important; color: #1d4ed8 !important; left: 3px !important; top: -3px !important; font-size: 15px !important; }
+.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"]::after { content: "/" !important; color: #1d4ed8 !important; left: 3px !important; top: -3px !important; }
+.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"]::after { content: ">" !important; color: #1d4ed8 !important; left: 3px !important; top: -3px !important; font-size: 13px !important; }
 .markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"]::after { content: "!" !important; color: #b91c1c !important; left: 4px !important; top: -2px !important; }
 .markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"]::after { content: "?" !important; color: #be185d !important; left: 3px !important; top: -2px !important; }
-.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"]::after { content: "–" !important; color: #374151 !important; left: 2px !important; top: -4px !important; }
-.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"]::after { content: "★" !important; color: #b45309 !important; left: 1px !important; top: -3px !important; font-size: 10px !important; }
+.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"]::after { content: "-" !important; color: #374151 !important; left: 3px !important; top: -3px !important; }
+.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"]::after { content: "*" !important; color: #b45309 !important; left: 3px !important; top: -3px !important; font-size: 12px !important; }
 .theme-dark .markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"],
 .theme-dark .markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"] { background: #1e3a8a !important; border-color: #60a5fa !important; }
 .theme-dark .markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"] { background: #7f1d1d !important; border-color: #f87171 !important; }
@@ -4510,7 +4514,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.3 — Overlay UI + Popover + Dataview parity
+  v1.8.3 - Overlay UI + Popover + Dataview parity
    - Command palette / modal / menu surfaces match Graphite tone
    - Hover previews feel like lightweight document cards
    - Dataview tables inherit the modern table language from v1.8.0
@@ -4701,7 +4705,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.4 — Settings + controls polish
+  v1.8.4 - Settings + controls polish
    - Style Settings panels inherit the calm Graphite report tone
    - Toggles, dropdowns, sliders, color pickers, and buttons align
    - Focus states stay visible without adding visual noise
@@ -4946,7 +4950,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.5 — Canvas + Graph + Link panes polish
+  v1.8.5 - Canvas + Graph + Link panes polish
    - Canvas nodes and controls inherit the document-card language
    - Graph view colors become quieter and easier to scan
    - Backlinks, outgoing links, search results, and tag panes align
@@ -5213,7 +5217,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 
 /* ============================================================
-   v1.8.6 — Parity cleanup + mobile stability
+  v1.8.6 - Parity cleanup + mobile stability
    - Live Preview embeds/tables/callouts align more closely with Reading View
    - Mobile panes and wide content avoid viewport push-out
    - Outline, Bookmarks, Bases, embeds, and status bar inherit v1.8.5 tone
@@ -6673,8 +6677,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .cm-editor .editing-toolbar,
   body:not(.is-mobile) .markdown-source-view .editing-toolbar,
   body:not(.is-mobile) .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile) #editingToolbarModalBar,
   body:not(.is-mobile) .editing-toolbar {
-    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)) !important;
+    background: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55))) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     border-bottom: 1px solid rgba(148,163,184,0.22) !important;
@@ -6688,8 +6693,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .cm-editor .editing-toolbar,
   body:not(.is-mobile).theme-dark .markdown-source-view .editing-toolbar,
   body:not(.is-mobile).theme-dark .markdown-preview-view .editing-toolbar,
+  body:not(.is-mobile).theme-dark #editingToolbarModalBar,
   body:not(.is-mobile).theme-dark .editing-toolbar {
-    background: linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55)) !important;
+    background: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55))) !important;
     border-bottom-color: rgba(203,213,225,0.18) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.08),
@@ -6701,8 +6707,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .editing-toolbar .editing-toolbar-button,
   body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button,
   body:not(.is-mobile) .editing-toolbar button,
+  body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton),
   body:not(.is-mobile) .editing-toolbar .clickable-icon {
-    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22)) !important;
+    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22))) !important;
     border: 1px solid rgba(148,163,184,0.18) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.75),
@@ -6713,8 +6720,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .editing-toolbar .editing-toolbar-button:hover,
   body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button:hover,
   body:not(.is-mobile) .editing-toolbar button:hover,
+  body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile) .editing-toolbar .clickable-icon:hover {
-    background: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55)) !important;
+    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.95),
       inset 0 -1px 0 rgba(14,165,233,0.30),
@@ -6724,8 +6732,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button,
   body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button,
   body:not(.is-mobile).theme-dark .editing-toolbar button,
+  body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton),
   body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon {
-    background: linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)) !important;
+    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30))) !important;
     border-color: rgba(148,163,184,0.22) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.06),
@@ -6734,8 +6743,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button:hover,
   body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button:hover,
   body:not(.is-mobile).theme-dark .editing-toolbar button:hover,
+  body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon:hover {
-    background: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18)) !important;
+    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(56,189,248,0.45),
@@ -6759,7 +6769,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) [class*="cMenuToolbar"][class*="Popup"],
   body:not(.is-mobile) [class*="editing-toolbar"][class*="submenu"],
   body:not(.is-mobile) [class*="editing-toolbar"][class*="Submenu"] {
-    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)) !important;
+    background: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55))) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
@@ -6780,7 +6790,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Popup"],
   body:not(.is-mobile).theme-dark [class*="editing-toolbar"][class*="submenu"],
   body:not(.is-mobile).theme-dark [class*="editing-toolbar"][class*="Submenu"] {
-    background: linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55)) !important;
+    background: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55))) !important;
     border-color: rgba(203,213,225,0.18) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.08),
@@ -6796,7 +6806,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .editing-toolbar-popover .clickable-icon,
   body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] button,
   body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon {
-    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22)) !important;
+    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22))) !important;
     border: 1px solid rgba(148,163,184,0.18) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.75),
@@ -6810,7 +6820,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .editing-toolbar-popover .clickable-icon:hover,
   body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] button:hover,
   body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon:hover {
-    background: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55)) !important;
+    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.95),
       inset 0 -1px 0 rgba(14,165,233,0.30),
@@ -6823,7 +6833,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon,
   body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] button,
   body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon {
-    background: linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)) !important;
+    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30))) !important;
     border-color: rgba(148,163,184,0.22) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.06),
@@ -6835,7 +6845,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon:hover,
   body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] button:hover,
   body:not(.is-mobile).theme-dark [class*="cMenuToolbar"][class*="Submenu"] .clickable-icon:hover {
-    background: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18)) !important;
+    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18))) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(56,189,248,0.45),
@@ -6852,7 +6862,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
 @media (min-width: 701px) {
   body:not(.is-mobile) .menu {
-    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50)) !important;
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50))) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
@@ -6888,7 +6898,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile).theme-dark .menu {
-    background: linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58)) !important;
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58))) !important;
     border-color: rgba(203,213,225,0.18) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.08),
@@ -6925,7 +6935,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .tooltip.mod-bottom,
   body:not(.is-mobile) .tooltip.mod-left,
   body:not(.is-mobile) .tooltip.mod-right {
-    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50)) !important;
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50))) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     color: #0f172a !important;
@@ -6949,7 +6959,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .tooltip.mod-bottom,
   body:not(.is-mobile).theme-dark .tooltip.mod-left,
   body:not(.is-mobile).theme-dark .tooltip.mod-right {
-    background: linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58)) !important;
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58))) !important;
     color: #f8fafc !important;
     border-color: rgba(203,213,225,0.18) !important;
     box-shadow:
@@ -7329,6 +7339,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.52));
     --ogd-glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.66));
     --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55));
+    --ogd-glass-surface-bg: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50));
+    --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55));
+    --ogd-glass-control-bg: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22));
+    --ogd-glass-control-hover-bg: linear-gradient(180deg, rgba(224,242,254,0.92), rgba(186,230,253,0.55));
     --ogd-glass-border: rgba(148, 163, 184, 0.24);
     --ogd-glass-border-hover: rgba(100, 116, 139, 0.34);
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(148, 163, 184, 0.14), 0 14px 32px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(15, 23, 42, 0.07);
@@ -7339,6 +7353,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.58));
     --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.68));
     --ogd-glass-bg-hover: linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45));
+    --ogd-glass-surface-bg: linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58));
+    --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55));
+    --ogd-glass-control-bg: linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30));
+    --ogd-glass-control-hover-bg: linear-gradient(180deg, rgba(56,189,248,0.30), rgba(14,165,233,0.18));
     --ogd-glass-border: rgba(203, 213, 225, 0.18);
     --ogd-glass-border-hover: rgba(203, 213, 225, 0.24);
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.35), 0 14px 32px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.30);
@@ -7350,6 +7368,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       --ogd-glass-bg: var(--background-primary) !important;
       --ogd-glass-bg-strong: var(--background-primary) !important;
       --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-surface-bg: var(--background-primary) !important;
+      --ogd-glass-toolbar-bg: var(--background-primary) !important;
+      --ogd-glass-control-bg: var(--background-primary-alt) !important;
+      --ogd-glass-control-hover-bg: var(--background-modifier-hover) !important;
       --ogd-glass-filter: none !important;
       --ogd-glass-filter-soft: none !important;
       --ogd-glass-filter-control: none !important;
@@ -7361,6 +7383,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       --ogd-glass-bg: var(--background-primary) !important;
       --ogd-glass-bg-strong: var(--background-primary) !important;
       --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-surface-bg: var(--background-primary) !important;
+      --ogd-glass-toolbar-bg: var(--background-primary) !important;
+      --ogd-glass-control-bg: var(--background-primary-alt) !important;
+      --ogd-glass-control-hover-bg: var(--background-modifier-hover) !important;
       --ogd-glass-shadow: 0 10px 28px rgba(0, 0, 0, 0.38) !important;
       --ogd-glass-shadow-hover: 0 5px 14px rgba(0, 0, 0, 0.30) !important;
     }
@@ -7728,7 +7754,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.38) !important;
   }
 
-  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) {
+  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) {
     -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
     backdrop-filter: var(--ogd-glass-filter) !important;
   }
@@ -7787,7 +7813,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: rgba(15, 23, 42, 0.34) !important;
   }
 
-  body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
+  body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
   body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -7800,6 +7826,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .nav-file-title:hover,
     .nav-folder-title:hover,
     .tree-item-self:hover,
+    #editingToolbarModalBar,
     .editingToolbarModalBar,
     .editingToolbarPopover,
     .editingToolbarPopoverItems,
@@ -8494,7 +8521,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 }
 
 /* ============================================================
-   v1.8.54 — Real Obsidian report surface polish
+  v1.8.54 - Real Obsidian report surface polish
    - Calmer report tables for actual editing screens
    - Softer spellcheck underline noise in Live Preview
    - Better heading rhythm and active-file focus balance
@@ -8650,7 +8677,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 }
 
 /* ============================================================
-   v1.8.55 — Writing noise reduction polish
+  v1.8.55 - Writing noise reduction polish
    - H1 lead paragraph, status badges, soft rules
    - Quieter sidebar hierarchy and clearer link grammar
    - Slightly more air between H2 sections and tables
@@ -8887,7 +8914,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 }
 
 /* ============================================================
-   v1.8.56 — Overlay interaction polish
+  v1.8.56 - Overlay interaction polish
    - Search focus, command palette, tooltip/popover, empty states, and keyboard focus align
    ============================================================ */
 
@@ -9234,7 +9261,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 }
 
 /* ============================================================
-   v1.8.58 — Reading View block width hotfix
+  v1.8.58 - Reading View block width hotfix
    - Fresh Obsidian installs can render preview blocks as shrink-to-fit flex items.
      Keep block wrappers full-width so Korean body text never collapses to a one-character column.
    ============================================================ */
@@ -9272,7 +9299,7 @@ body .markdown-reading-view .markdown-rendered p {
 }
 
 /* ============================================================
-   v1.8.59 — Live Preview editor width hotfix
+  v1.8.59 - Live Preview editor width hotfix
    - Keep the CM6 editing surface stretched across the readable column so
      clicks in the writing area focus the document instead of only the text glyphs.
    ============================================================ */
@@ -9296,7 +9323,7 @@ body .markdown-source-view.mod-cm6.is-readable-line-width .CodeMirror-sizer {
 }
 
 /* ============================================================
-   v1.8.60 — Readable column left alignment
+  v1.8.60 - Readable column left alignment
    - Avoid an oversized leading blank area on fresh Windows installs by anchoring
      the readable Markdown column to the pane's left edge instead of centering it.
    ============================================================ */
@@ -9312,7 +9339,7 @@ body .markdown-rendered.is-readable-line-width {
 }
 
 /* ============================================================
-   v1.8.61 — Broad readable line-width override
+  v1.8.61 - Broad readable line-width override
    - Obsidian can attach readable-line-width classes to different view wrappers
      between Reading View and Live Preview. Normalize every Markdown sizer layer.
    ============================================================ */
@@ -9345,10 +9372,10 @@ body .markdown-source-view.mod-cm6 .cm-line {
 
 
 /* ============================================================================
- * v1.8.66 — Polish pack
+ * v1.8.66 - Polish pack
  * Dark mode, mobile, tabs, callouts, code labels, links, headings, search,
  * status bar, frontmatter readability.
- * Isolated block — only additive overrides; never weakens existing rules.
+ * Isolated block - only additive overrides; never weakens existing rules.
  * ========================================================================== */
 
 /* --- 1. Dark mode parity for v1.8.6x components --------------------------- */
@@ -9376,7 +9403,7 @@ body.theme-dark .markdown-preview-view h1::before {
   color: #94a3b8 !important;
 }
 
-/* --- 2. Mobile responsive (≤768px) ---------------------------------------- */
+/* --- 2. Mobile responsive (<=768px) --------------------------------------- */
 @media (max-width: 768px) {
   .markdown-rendered h1,
   .markdown-preview-view h1 {
@@ -9545,7 +9572,7 @@ body.theme-dark .markdown-rendered a.external-link:visited {
   }
 }
 
-/* --- 9. Status bar — monospace unification ------------------------------- */
+/* --- 9. Status bar - monospace unification ------------------------------- */
 .status-bar,
 .status-bar .status-bar-item {
   font-family: var(--font-monospace-theme, "JetBrains Mono", monospace) !important;
@@ -9596,7 +9623,7 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 /* End of v1.8.66 polish pack ============================================== */
 
 /* ============================================================
-   v2.22.14-hotfix — Live Preview table row inflation guard
+  v2.22.14-hotfix - Live Preview table row inflation guard
    Prevent global CM6 min-height rules from expanding table-cell editors.
    ============================================================ */
 
