@@ -278,7 +278,7 @@
   body:not(.is-mobile) .mod-root .view-header-title-container {
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 6px !important;
     min-width: 0 !important;
   }
 
@@ -286,8 +286,8 @@
     display: inline-flex !important;
     align-items: center !important;
     box-sizing: border-box !important;
-    min-height: 34px !important;
-    padding: 6px 16px !important;
+    min-height: 30px !important;
+    padding: 4px 13px !important;
     border: 1px solid rgba(148, 163, 184, 0.22) !important;
     border-radius: var(--ogd-radius-pill, 999px) !important;
     background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.62), rgba(241,245,249,0.26))) !important;
@@ -298,10 +298,10 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.86),
       inset 0 -1px 0 rgba(148, 163, 184, 0.10),
       inset 0 0 10px rgba(255, 255, 255, 0.18),
-      0 5px 16px rgba(15, 23, 42, 0.08) !important;
-    font-size: 14.6px !important;
+      0 4px 12px rgba(15, 23, 42, 0.07) !important;
+    font-size: 14px !important;
     font-weight: 650 !important;
-    line-height: 1.25 !important;
+    line-height: 1.18 !important;
     max-width: min(34vw, 260px) !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -317,9 +317,9 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.94),
       inset 0 -1px 0 rgba(15, 23, 42, 0.06),
       inset 0 0 12px rgba(255, 255, 255, 0.24),
-      0 8px 22px rgba(15, 23, 42, 0.12),
-      0 0 0 1px rgba(125, 211, 252, 0.14) !important;
-    font-size: 15.2px !important;
+      0 6px 16px rgba(15, 23, 42, 0.10),
+      inset 0 0 0 1px rgba(125, 211, 252, 0.12) !important;
+    font-size: 14.6px !important;
     font-weight: 780 !important;
   }
 
@@ -327,13 +327,17 @@
     background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255,255,255,0.90), rgba(248,250,252,0.52))) !important;
     border-color: var(--ogd-glass-border-hover, rgba(100, 116, 139, 0.34)) !important;
     color: var(--ogd-text-strong, #111827) !important;
-    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255,255,255,0.94), inset 0 -1px 0 rgba(15,23,42,0.06), 0 6px 16px rgba(15,23,42,0.12)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.94),
+      inset 0 -1px 0 rgba(15,23,42,0.06),
+      inset 0 0 0 1px rgba(125, 211, 252, 0.10),
+      0 5px 14px rgba(15,23,42,0.10) !important;
     transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
 
   body:not(.is-mobile) :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
     color: rgba(100, 116, 139, 0.58) !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-weight: 360 !important;
   }
 
@@ -345,7 +349,7 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.10),
       inset 0 -1px 0 rgba(0, 0, 0, 0.24),
       inset 0 0 10px rgba(148, 163, 184, 0.08),
-      0 5px 16px rgba(0, 0, 0, 0.26) !important;
+      0 4px 12px rgba(0, 0, 0, 0.24) !important;
   }
 
   body:not(.is-mobile).theme-dark .view-header-title {
@@ -356,15 +360,19 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.14),
       inset 0 -1px 0 rgba(0, 0, 0, 0.26),
       inset 0 0 12px rgba(148, 163, 184, 0.10),
-      0 8px 22px rgba(0, 0, 0, 0.34),
-      0 0 0 1px rgba(56, 189, 248, 0.12) !important;
+      0 6px 16px rgba(0, 0, 0, 0.30),
+      inset 0 0 0 1px rgba(56, 189, 248, 0.10) !important;
   }
 
   body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
     background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(51,65,85,0.74), rgba(15,23,42,0.42))) !important;
     border-color: var(--ogd-glass-border-hover, rgba(203, 213, 225, 0.24)) !important;
     color: var(--ogd-text-inverted, #f8fafc) !important;
-    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(0,0,0,0.24), 0 8px 22px rgba(0,0,0,0.34)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.24),
+      inset 0 0 0 1px rgba(56, 189, 248, 0.10),
+      0 5px 14px rgba(0,0,0,0.30) !important;
   }
 
   body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
