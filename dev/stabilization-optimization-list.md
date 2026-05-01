@@ -38,6 +38,13 @@ This list is the operating checklist for changes under `dev/`. Use it before bro
 - Readable column width and mobile layout guards.
 - Direct `backdrop-filter`, direct transform motion, and unguarded `:has()` selectors.
 
+## Web Liquid Glass Applicability
+
+- Applicable: tokenized blur/saturate filters, translucent overlay color, inset specular highlights, layered shadows, and conservative hover lift.
+- Partially applicable: separate overlay/specular layers can be represented through background, border, outline, and box-shadow tokens because Obsidian theme CSS cannot add stable wrapper DOM.
+- Not applied to Obsidian: SVG lens/displacement filters such as `filter: url(#lensFilter)` and animated background dependency. They are fragile in Electron theme CSS, expensive on broad UI chrome, and risky for menus, popovers, and right-click surfaces.
+- Reuse guidance: Owen Editor can implement the fuller web pattern when it owns the DOM; Owen Graphite should keep the CSS-only tokenized version for vault stability.
+
 ## Module Focus Map
 
 - `01-tokens.css`: add or refine shared tokens before repeating literal values elsewhere.
