@@ -37,13 +37,10 @@
 }
 .theme-dark .kanban-plugin__lane { background: #1a1b20 !important; border-color: #2a2c33 !important; }
 .theme-dark .kanban-plugin__item { background: #25272d !important; border-color: #353841 !important; }
-.theme-dark .excalidraw-host,
-.theme-dark .excalidraw,
-.theme-dark .excalidraw-svg { background: #1a1b20 !important; border-color: #353841 !important; }
+.theme-dark :is(.excalidraw-host, .excalidraw, .excalidraw-svg) { background: #1a1b20 !important; border-color: #353841 !important; }
 .theme-dark .bases-card { background: #1a1b20 !important; border-color: #353841 !important; }
 .theme-dark .bases-table th { background: #25272d !important; border-bottom-color: #6b7280 !important; }
-.theme-dark .nav-folder-title[data-path^="outputs"] .nav-folder-title-content,
-.theme-dark .nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content { color: #f9fafb !important; font-weight: 700; }
+.theme-dark .nav-folder-title:is([data-path^="outputs"], [data-path^="raw/obsidian/outputs"]) .nav-folder-title-content { color: #f9fafb !important; font-weight: 700; }
 .theme-dark .nav-folder-title[data-path^="wiki"] .nav-folder-title-content { color: #93c5fd !important; }
 .theme-dark .nav-folder-title[data-path^="raw"] .nav-folder-title-content { color: #9ca3af !important; }
 .theme-dark .nav-folder-title[data-path^="scripts"] .nav-folder-title-content { color: #6ee7b7 !important; }
@@ -299,25 +296,25 @@ a.external-link:focus-visible,
    ============================================================ */
 
 /* Label backgrounds: always transparent so rect fill shows through */
-.markdown-rendered .mermaid svg .node foreignObject,
-.markdown-rendered .mermaid svg .node foreignObject > div,
-.markdown-rendered .mermaid svg .node foreignObject > div > span,
-.markdown-rendered .mermaid svg .nodeLabel,
-.markdown-rendered .mermaid svg .nodeLabel > span,
-.markdown-rendered .mermaid svg .nodeLabel > p,
-.markdown-rendered .mermaid svg .label foreignObject,
-.markdown-rendered .mermaid svg .label foreignObject > div {
+.markdown-rendered .mermaid svg :is(
+  .node foreignObject,
+  .node foreignObject > div,
+  .node foreignObject > div > span,
+  .nodeLabel,
+  .nodeLabel > span,
+  .nodeLabel > p,
+  .label foreignObject,
+  .label foreignObject > div
+) {
   background: var(--ogd-surface-transparent, transparent) !important;
   background-color: var(--ogd-surface-transparent, transparent) !important;
 }
 
 /* Keep labels INSIDE rect (no visible overflow seam) */
-.markdown-rendered .mermaid svg .node foreignObject,
-.markdown-rendered .mermaid svg .label foreignObject {
+.markdown-rendered .mermaid svg :is(.node, .label) foreignObject {
   overflow: hidden !important;
 }
-.markdown-rendered .mermaid svg .node foreignObject > div,
-.markdown-rendered .mermaid svg .label foreignObject > div {
+.markdown-rendered .mermaid svg :is(.node, .label) foreignObject > div {
   overflow: hidden !important;
   display: flex !important;
   align-items: center !important;
@@ -329,8 +326,7 @@ a.external-link:focus-visible,
 
 /* Smaller font so multi-line labels fit inside auto-measured rect */
 .markdown-rendered .mermaid svg .nodeLabel,
-.markdown-rendered .mermaid svg .nodeLabel span,
-.markdown-rendered .mermaid svg .nodeLabel p {
+.markdown-rendered .mermaid svg .nodeLabel :is(span, p) {
   font-size: 11px !important;
   line-height: 1.2 !important;
   white-space: normal !important;
@@ -343,11 +339,8 @@ a.external-link:focus-visible,
 
 /* Edge labels: opaque pill matching theme background */
 .markdown-rendered .mermaid svg .edgeLabel,
-.markdown-rendered .mermaid svg .edgeLabel rect,
-.markdown-rendered .mermaid svg .edgeLabel foreignObject,
-.markdown-rendered .mermaid svg .edgeLabel foreignObject > div,
-.markdown-rendered .mermaid svg .edgeLabel span,
-.markdown-rendered .mermaid svg .edgeLabel p {
+.markdown-rendered .mermaid svg .edgeLabel :is(rect, foreignObject, span, p),
+.markdown-rendered .mermaid svg .edgeLabel foreignObject > div {
   background: var(--background-primary) !important;
   background-color: var(--background-primary) !important;
   font-size: 10.5px !important;
