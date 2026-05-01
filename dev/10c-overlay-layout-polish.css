@@ -525,30 +525,16 @@ body.theme-dark .markdown-preview-view h1::before {
 }
 .markdown-rendered .callout[data-callout="note"]      { --callout-color: #3b82f6; }
 .markdown-rendered .callout[data-callout="info"]      { --callout-color: #0ea5e9; }
-.markdown-rendered .callout[data-callout="tip"],
-.markdown-rendered .callout[data-callout="hint"]      { --callout-color: #14b8a6; }
-.markdown-rendered .callout[data-callout="success"],
-.markdown-rendered .callout[data-callout="check"],
-.markdown-rendered .callout[data-callout="done"]      { --callout-color: #10b981; }
-.markdown-rendered .callout[data-callout="warning"],
-.markdown-rendered .callout[data-callout="caution"],
-.markdown-rendered .callout[data-callout="attention"] { --callout-color: #f59e0b; }
-.markdown-rendered .callout[data-callout="danger"],
-.markdown-rendered .callout[data-callout="error"],
-.markdown-rendered .callout[data-callout="failure"],
-.markdown-rendered .callout[data-callout="fail"],
-.markdown-rendered .callout[data-callout="missing"]   { --callout-color: #ef4444; }
+.markdown-rendered .callout:is([data-callout="tip"], [data-callout="hint"]) { --callout-color: #14b8a6; }
+.markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) { --callout-color: #10b981; }
+.markdown-rendered .callout:is([data-callout="warning"], [data-callout="caution"], [data-callout="attention"]) { --callout-color: #f59e0b; }
+.markdown-rendered .callout:is([data-callout="danger"], [data-callout="error"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"]) { --callout-color: #ef4444; }
 .markdown-rendered .callout[data-callout="bug"]       { --callout-color: #dc2626; }
 .markdown-rendered .callout[data-callout="example"]   { --callout-color: #8b5cf6; }
-.markdown-rendered .callout[data-callout="quote"],
-.markdown-rendered .callout[data-callout="cite"]      { --callout-color: #64748b; }
-.markdown-rendered .callout[data-callout="abstract"],
-.markdown-rendered .callout[data-callout="summary"],
-.markdown-rendered .callout[data-callout="tldr"]      { --callout-color: #06b6d4; }
+.markdown-rendered .callout:is([data-callout="quote"], [data-callout="cite"]) { --callout-color: #64748b; }
+.markdown-rendered .callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) { --callout-color: #06b6d4; }
 .markdown-rendered .callout[data-callout="todo"]      { --callout-color: #2563eb; }
-.markdown-rendered .callout[data-callout="question"],
-.markdown-rendered .callout[data-callout="help"],
-.markdown-rendered .callout[data-callout="faq"]       { --callout-color: #a855f7; }
+.markdown-rendered .callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"]) { --callout-color: #a855f7; }
 
 /* --- 5. Code block language label ---------------------------------------- */
 .markdown-rendered pre[class*="language-"] {
@@ -569,25 +555,16 @@ body.theme-dark .markdown-preview-view h1::before {
   opacity: 0.85;
 }
 /* Obsidian fills data-language only on copy-button host; mirror via class scan */
-.markdown-rendered pre.language-typescript::before,
-.markdown-rendered pre.language-ts::before { content: "TS"; }
-.markdown-rendered pre.language-javascript::before,
-.markdown-rendered pre.language-js::before { content: "JS"; }
-.markdown-rendered pre.language-python::before,
-.markdown-rendered pre.language-py::before { content: "PY"; }
-.markdown-rendered pre.language-bash::before,
-.markdown-rendered pre.language-sh::before,
-.markdown-rendered pre.language-shell::before,
-.markdown-rendered pre.language-zsh::before { content: "SH"; }
+.markdown-rendered pre:is(.language-typescript, .language-ts)::before { content: "TS"; }
+.markdown-rendered pre:is(.language-javascript, .language-js)::before { content: "JS"; }
+.markdown-rendered pre:is(.language-python, .language-py)::before { content: "PY"; }
+.markdown-rendered pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::before { content: "SH"; }
 .markdown-rendered pre.language-css::before { content: "CSS"; }
 .markdown-rendered pre.language-html::before { content: "HTML"; }
 .markdown-rendered pre.language-json::before { content: "JSON"; }
-.markdown-rendered pre.language-yaml::before,
-.markdown-rendered pre.language-yml::before { content: "YAML"; }
-.markdown-rendered pre.language-md::before,
-.markdown-rendered pre.language-markdown::before { content: "MD"; }
-.markdown-rendered pre.language-rust::before,
-.markdown-rendered pre.language-rs::before { content: "RS"; }
+.markdown-rendered pre:is(.language-yaml, .language-yml)::before { content: "YAML"; }
+.markdown-rendered pre:is(.language-md, .language-markdown)::before { content: "MD"; }
+.markdown-rendered pre:is(.language-rust, .language-rs)::before { content: "RS"; }
 .markdown-rendered pre.language-go::before { content: "GO"; }
 .markdown-rendered pre.language-sql::before { content: "SQL"; }
 
