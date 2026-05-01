@@ -38,6 +38,13 @@
     scroll-behavior: auto !important;
   }
 
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title)::before,
+  body:not(.is-mobile) .view-header-title::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
   body:not(.is-mobile) :is(
     .nav-file-title,
     .nav-folder-title,

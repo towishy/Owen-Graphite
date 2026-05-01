@@ -537,6 +537,11 @@
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
+
+  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(.view-header-breadcrumb, .view-header-title)::before {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
 }
 
 @media print {
