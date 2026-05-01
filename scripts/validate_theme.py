@@ -41,7 +41,6 @@ REQUIRED_FILES = [
     "scripts/sync_obsidian_theme.py",
     "scripts/visual_regression.py",
     "dev/README.md",
-    "dev/src/README.md",
     "dev/test-samples/owen-editor-feature-sample.md",
     "dev/test-samples/owen-graphite-sample.md",
     "dev/_order.txt",

@@ -49,7 +49,6 @@ Most splits are mechanical and order-preserving. Functional fixes should still h
 ## Support Artifacts
 
 - `MAP/`: generated CSS risk map and stabilization checklist.
-- `src/`: superseded modularization plan retained as historical planning context.
 - `test-samples/`: development and regression sample notes for Owen Graphite and Owen Editor design parity.
 
 ## Selector Notes
