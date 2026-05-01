@@ -4,8 +4,8 @@ Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 크기 | 모드 | 내용 |
 |------|------|------|------|
-| `light.png` | 512×288 (16:9) | Light | v1.8.51 기준: modern disclosure chevron·Style Settings groups·long-token table·report callout·liquid-glass chrome |
-| `dark.png`  | 512×288 (16:9) | Dark | 동일 레이아웃 다크 모드, slate gradient + cyan accent |
+| `light.png` | 512×288 (16:9) | Light | v2.22.21 기준: neutral liquid-glass chrome·active path·Live Preview parity |
+| `dark.png`  | 512×288 (16:9) | Dark | 동일 레이아웃 다크 모드, slate glass + shallow sky rim |
 | `report.png`| 512×288 (16:9) | Report | 보고서 모드 (자동 넘버링 + Side Bar 헤더 + serif 본문 + semantic callout) |
 | `snippet-design-8-improvements-preview.png` | 3096×3586 | Concept | Gray override snippet 8개 구조 개선 preview |
 | `table-sample.png` | — | Concept | 보고서형 테이블 클래스 디자인 샘플 |
@@ -14,7 +14,7 @@ Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 
 ## 재생성 방법
 
-v1.8.51 기준 mock-up 이미지는 Pillow로 직접 렌더링합니다. 한글은 Windows Malgun Gothic 또는 macOS 시스템 한글 폰트를 사용합니다.
+v2.22.21 기준 mock-up 이미지는 Pillow로 직접 렌더링합니다. 한글은 Windows Malgun Gothic 또는 macOS 시스템 한글 폰트를 사용합니다.
 
 ```bash
 python -m pip install pillow

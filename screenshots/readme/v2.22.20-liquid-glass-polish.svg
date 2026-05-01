@@ -7,13 +7,13 @@
       <stop offset="0.52" stop-color="#eef6ff"/>
       <stop offset="1" stop-color="#ecfeff"/>
     </linearGradient>
-    <radialGradient id="cyanGlow" cx="18%" cy="18%" r="62%">
-      <stop offset="0" stop-color="#7dd3fc" stop-opacity="0.34"/>
-      <stop offset="1" stop-color="#7dd3fc" stop-opacity="0"/>
+    <radialGradient id="rimGlow" cx="18%" cy="18%" r="62%">
+      <stop offset="0" stop-color="#93c5fd" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#93c5fd" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="warmGlow" cx="82%" cy="20%" r="52%">
-      <stop offset="0" stop-color="#fde68a" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#fde68a" stop-opacity="0"/>
+    <radialGradient id="topGlow" cx="82%" cy="20%" r="52%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
@@ -21,7 +21,7 @@
     </linearGradient>
     <linearGradient id="glassStrong" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.94"/>
-      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#f1f5f9" stop-opacity="0.62"/>
     </linearGradient>
     <linearGradient id="darkCode" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#1e293b"/>
@@ -38,8 +38,8 @@
   </defs>
 
   <rect width="1200" height="760" rx="28" fill="url(#page)"/>
-  <rect width="1200" height="760" rx="28" fill="url(#cyanGlow)"/>
-  <rect width="1200" height="760" rx="28" fill="url(#warmGlow)"/>
+  <rect width="1200" height="760" rx="28" fill="url(#rimGlow)"/>
+  <rect width="1200" height="760" rx="28" fill="url(#topGlow)"/>
 
   <text x="72" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">v2.22.20 Liquid Glass Recommended Polish Pack</text>
   <text x="74" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#475569">상태 표시, 모달 조작, Dataview 정보, 코드 읽기를 같은 glass 언어로 정리한 샘플</text>
@@ -47,7 +47,7 @@
   <rect x="68" y="144" width="1064" height="500" rx="22" fill="url(#glass)" stroke="#dbeafe" filter="url(#softShadow)"/>
 
   <!-- Status bar sample -->
-  <rect x="112" y="522" width="976" height="56" rx="28" fill="url(#glassStrong)" stroke="#bae6fd" filter="url(#liftShadow)"/>
+  <rect x="112" y="522" width="976" height="56" rx="28" fill="url(#glassStrong)" stroke="#cbd5e1" filter="url(#liftShadow)"/>
   <g font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#334155">
     <text x="154" y="557">124 단어</text>
     <text x="296" y="557">3분 읽기</text>
@@ -56,13 +56,13 @@
     <text x="806" y="557">Live Preview</text>
   </g>
   <g stroke-width="1" stroke-linecap="round">
-    <line x1="266" y1="537" x2="266" y2="563" stroke="#38bdf8" stroke-opacity="0.46"/>
-    <line x1="424" y1="537" x2="424" y2="563" stroke="#38bdf8" stroke-opacity="0.46"/>
-    <line x1="590" y1="537" x2="590" y2="563" stroke="#38bdf8" stroke-opacity="0.46"/>
-    <line x1="774" y1="537" x2="774" y2="563" stroke="#38bdf8" stroke-opacity="0.46"/>
+    <line x1="266" y1="537" x2="266" y2="563" stroke="#64748b" stroke-opacity="0.28"/>
+    <line x1="424" y1="537" x2="424" y2="563" stroke="#64748b" stroke-opacity="0.28"/>
+    <line x1="590" y1="537" x2="590" y2="563" stroke="#64748b" stroke-opacity="0.28"/>
+    <line x1="774" y1="537" x2="774" y2="563" stroke="#64748b" stroke-opacity="0.28"/>
   </g>
-  <rect x="436" y="534" width="118" height="32" rx="16" fill="#e0f2fe" stroke="#7dd3fc"/>
-  <text x="463" y="556" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#075985">Git 정상</text>
+  <rect x="436" y="534" width="118" height="32" rx="16" fill="#ffffff" fill-opacity="0.74" stroke="#cbd5e1"/>
+  <text x="463" y="556" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#334155">Git 정상</text>
   <rect x="604" y="534" width="128" height="32" rx="16" fill="#dcfce7" stroke="#86efac"/>
   <text x="634" y="556" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#166534">동기화됨</text>
 
@@ -79,12 +79,12 @@
   <rect x="466" y="188" width="310" height="210" rx="18" fill="#ffffff" fill-opacity="0.78" stroke="#cbd5e1" filter="url(#softShadow)"/>
   <text x="500" y="232" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f172a">Dataview 필드</text>
   <text x="500" y="282" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#334155">상태</text>
-  <rect x="558" y="259" width="74" height="32" rx="16" fill="#ccfbf1" stroke="#5eead4"/>
+  <rect x="558" y="259" width="74" height="32" rx="16" fill="#f0fdfa" stroke="#99f6e4"/>
   <text x="579" y="281" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#0f766e">담당</text>
   <rect x="640" y="259" width="88" height="32" rx="16" fill="#ffffff" fill-opacity="0.78" stroke="#cbd5e1"/>
   <text x="662" y="281" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#334155">Owen</text>
-  <rect x="500" y="316" width="72" height="32" rx="16" fill="#dbeafe" stroke="#93c5fd"/>
-  <text x="520" y="338" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#1d4ed8">기한</text>
+  <rect x="500" y="316" width="72" height="32" rx="16" fill="#ffffff" fill-opacity="0.76" stroke="#cbd5e1"/>
+  <text x="520" y="338" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#334155">기한</text>
   <rect x="580" y="316" width="124" height="32" rx="16" fill="#ffffff" fill-opacity="0.78" stroke="#cbd5e1"/>
   <text x="598" y="338" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#334155">2026-05-10</text>
   <text x="500" y="428" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" fill="#334155">Inline field chips</text>

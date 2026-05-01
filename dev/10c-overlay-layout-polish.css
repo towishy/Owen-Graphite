@@ -61,9 +61,9 @@
 .suggestion-highlight,
 .search-result-file-matched-text,
 .search-result-file-match-text {
-  background: #fef3c7 !important;
-  color: #78350f !important;
-  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.28) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(254, 243, 199, 0.30)) !important;
+  color: #92400e !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.22) !important;
 }
 
 .search-result-file-match.mod-current,
@@ -220,9 +220,9 @@
 .theme-dark .suggestion-highlight,
 .theme-dark .search-result-file-matched-text,
 .theme-dark .search-result-file-match-text {
-  background: rgba(120, 53, 15, 0.72) !important;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(120, 53, 15, 0.20)) !important;
   color: #fde68a !important;
-  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.34) !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.22) !important;
 }
 
 .theme-dark .search-result-file-match.mod-current,
@@ -454,7 +454,7 @@ body.theme-dark {
   --ogd-blockquote-bg-2: #252b34;
   --ogd-blockquote-bg-3: #2c333d;
   --ogd-inline-code-bg: #2a2f37;
-  --ogd-search-hl-bg: #5b4a14;
+  --ogd-search-hl-bg: rgba(251, 191, 36, 0.22);
   --ogd-search-hl-fg: #fde68a;
 }
 body.theme-dark .markdown-rendered blockquote,
@@ -633,12 +633,12 @@ body.theme-dark .markdown-rendered a.external-link:visited {
 .markdown-preview-view mark,
 .cm-search-match,
 .cm-search-match-selected {
-  background: var(--ogd-search-hl-bg, #fde68a) !important;
-  color: var(--ogd-search-hl-fg, #78350f) !important;
+  background: var(--ogd-search-hl-bg, linear-gradient(180deg, transparent 10%, rgba(254, 243, 199, 0.58) 10%, rgba(253, 230, 138, 0.46) 90%, transparent 90%)) !important;
+  color: var(--ogd-search-hl-fg, #92400e) !important;
   border-radius: 2px !important;
   padding: 0 0.15em !important;
   font-weight: 500 !important;
-  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35) !important;
+  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.20) !important;
 }
 
 /* --- 11. Frontmatter (YAML) readability ---------------------------------- */

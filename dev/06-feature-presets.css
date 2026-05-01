@@ -515,17 +515,26 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 /* E2. Kanban */
 .kanban-plugin__lane,
 .kanban-plugin .kanban-plugin__lane {
-  background: var(--ogd-surface-subtle, #f3f4f6) !important;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  background: radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.70), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.54)) !important;
+  border: 1px solid rgba(203, 213, 225, 0.62) !important;
   border-radius: var(--radius-m, 6px) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 2px 8px rgba(15, 23, 42, 0.05) !important;
 }
 .kanban-plugin__item,
 .kanban-plugin .kanban-plugin__item {
-  background: var(--ogd-surface-base, #ffffff) !important;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
-  border-left: 3px solid var(--header-accent) !important;
+  background: radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.76), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.58)) !important;
+  border: 1px solid rgba(203, 213, 225, 0.58) !important;
+  border-left: 3px solid rgba(148, 163, 184, 0.42) !important;
   border-radius: 4px !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease !important;
+}
+.kanban-plugin__item:hover,
+.kanban-plugin .kanban-plugin__item:hover {
+  border-color: rgba(96, 165, 250, 0.28) !important;
+  border-left-color: rgba(96, 165, 250, 0.42) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 5px 14px rgba(15, 23, 42, 0.09), 0 0 0 2px rgba(96, 165, 250, 0.04) !important;
+  transform: var(--ogd-hover-lift, translateY(-1px)) !important;
 }
 .kanban-plugin__lane-title {
   font-weight: 700 !important;
@@ -567,21 +576,29 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 }
 
 /* E5. Bases (Obsidian 1.7+) */
-:is(.base-view, .bases-table, .bases-card-view) {
-  border: 1px solid var(--background-modifier-border);
+:is(.bases-view, .base-view, .bases-table, .bases-card-view) {
+  border: 1px solid rgba(203, 213, 225, 0.62);
   border-radius: var(--radius-l, 8px);
-  background: var(--background-primary);
+  background: radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.66), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(248, 250, 252, 0.54));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 3px 10px rgba(15, 23, 42, 0.05);
 }
 .bases-table th {
-  background: var(--ogd-surface-subtle, #f3f4f6) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.56)) !important;
   font-weight: 700;
-  border-bottom: 2px solid #6b7280 !important;
+  border-bottom: 1px solid rgba(100, 116, 139, 0.34) !important;
 }
 .bases-card {
-  background: #fafbfc !important;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  background: radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.74), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.56)) !important;
+  border: 1px solid rgba(203, 213, 225, 0.58) !important;
   border-radius: var(--radius-m, 6px) !important;
   padding: 12px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease !important;
+}
+.bases-card:hover {
+  border-color: rgba(96, 165, 250, 0.28) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 5px 14px rgba(15, 23, 42, 0.09), 0 0 0 2px rgba(96, 165, 250, 0.04) !important;
+  transform: var(--ogd-hover-lift, translateY(-1px)) !important;
 }
 
 /* ---------- F. STYLE SETTINGS PRESETS ---------- */

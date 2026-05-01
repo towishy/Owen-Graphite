@@ -1,12 +1,11 @@
 """
-Owen Graphite v1.8.51 marketing screenshot generator (pure Pillow).
+Owen Graphite v2.22.21 marketing screenshot generator (pure Pillow).
 
 Renders three 1280x720 PNG mock-ups (light / dark / report) showcasing
-v1.8.51 report UX polish (modern disclosure chevrons, long-token tables,
-grouped Style Settings, semantic report callouts) plus liquid-glass desktop chrome (ribbon icons, sidebar toggle hover,
-nav file hover lift, tab list, breadcrumb, command palette, settings toggles,
-callout, table). Then
-downscales to 512x288 for the marketplace listing.
+the neutral liquid-glass baseline: graphite/gray frosted chrome at rest,
+shallow sky rim/line only on selected or hovered workspace controls, report
+layout parity, and stable readable content. Then downscales to 512x288 for
+the marketplace listing.
 
 Pure Pillow, no SVG. Uses Windows-installed Malgun Gothic for Korean
 and Batang for serif (report mode).
@@ -235,20 +234,19 @@ def render_variant(variant):
     od.rectangle((fx, 36, fx + fw, H), fill=p["panel"], outline=p["border"])
     text(d, fx + 16, 46, "FILES", 11, p["text_dim"], weight="bold")
     files = [
-        ("📁  outputs", True, False, False),
-        ("📄  q2-security-report.md", False, True, False),
-        ("📄  risk-matrix.md", False, False, False),
-        ("📁  raw/obsidian/outputs", True, False, False),
-        ("📄  reading-list.md", False, False, True),
-        ("📄  onboarding-checklist.md", False, False, False),
-        ("📁  archive", False, False, False),
+        ("Reports", True, False, False),
+        ("  FY26", True, False, False),
+        ("  POSCO - MDA.md", False, True, False),
+        ("  Board Brief.md", False, False, False),
+        ("Research Notes", True, False, True),
+        ("  Reading List.md", False, False, False),
+        ("Archive", False, False, False),
     ]
     for i, (name, bold, active, hover) in enumerate(files):
         ty = 80 + i * 30
         if active:
-            od.rounded_rectangle((fx + 8, ty - 4, fx + fw - 8, ty + 22), radius=6,
-                                 fill=p["accent_soft"], outline=p["accent"], width=1)
-            od.rectangle((fx + 8, ty - 4, fx + 11, ty + 22), fill=p["accent"])
+            rounded_glass(img, fx + 8, ty - 4, fw - 16, 26, p, hovered=True, radius=6)
+            od.line((fx + 28, ty + 20, fx + fw - 24, ty + 20), fill=lerp(p["accent"], p["border_strong"], 0.42), width=2)
         elif hover:
             rounded_glass(img, fx + 8, ty - 4, fw - 16, 26, p, hovered=False, radius=6)
         weight = "bold" if (bold or active) else "regular"
@@ -282,7 +280,7 @@ def render_variant(variant):
             text(d, bx + 7, bar_y + 8, labels[i], 11, p["text_muted"], weight="bold")
         body_top = ey + 76
     else:
-        od.rectangle((ex + 80, ey + 36, ex + 83, ey + 116), fill=p["accent"])
+        od.rectangle((ex + 80, ey + 36, ex + 83, ey + 116), fill=p["border_strong"])
         text(d, ex + 96, ey + 36, "PREPARED BY", 9, p["text_dim"], weight="bold")
         text(d, ex + 96, ey + 50, "Security Office", 12, p["text"], weight="bold", serif=serif)
         text(d, ex + 96, ey + 76, "CONFIDENTIAL", 9, p["text_dim"], weight="bold")
@@ -299,14 +297,14 @@ def render_variant(variant):
         d.line((h1_x + i, rule_y, h1_x + i, rule_y + 2), fill=c)
 
         sub = ("보고서 모드 · A3 가로 · 자동 넘버링 · 세리프 본문" if is_report
-            else "Modern chevrons · Style Settings groups · Live Preview parity")
+            else "Neutral glass chrome · Active path · Live Preview parity")
     text(d, h1_x, rule_y + 14, sub, 13, p["text_muted"], serif=serif)
 
     body_y = rule_y + 50
     body_lines = [
-        "그래파이트(Graphite) 톤의 보고서 지향 테마. 라이트/다크 위젯 패리티,",
-        "한국어 타이포그래피 보정(CJK +0.5px), 긴 식별자 표 스캔성,",
-        "그리고 v1.8.51에서 정리된 보고서형 callout 톤을 제공합니다.",
+        "그래파이트 톤의 neutral liquid-glass 테마. 반복해서 보는 chrome은",
+        "회색 frosted glass로 쉬게 두고, hover/active에서만 얕은 rim과 shadow를",
+        "더해 현재 위치와 조작 대상을 조용하게 드러냅니다.",
     ]
     for i, line in enumerate(body_lines):
         text(d, h1_x, body_y + i * 22, line, 13, p["text"], serif=serif)
@@ -330,9 +328,9 @@ def render_variant(variant):
     for cx, hdr in zip(col_x, headers):
         text(d, cx, ty + 6, hdr, 11, p["text_muted"], weight="bold")
     rows = [
-        ("Baseline", "기본 회색 보고서 톤", "95.2%"),
-        ("Liquid-glass chrome", "v1.8.36–39 ribbon · toggle · nav", "98.7%"),
-        ("PDF 첫 페이지 헤더", "Side Bar + Two-line", "100.0%"),
+        ("Baseline", "v2.22.21 롤백 기준", "Stable"),
+        ("Active path", "선택 문서 · 포함 폴더", "Glass"),
+        ("PDF 첫 페이지 헤더", "Side Bar + Two-line", "Ready"),
     ]
     for i, row in enumerate(rows):
         ry = ty + th_h + i * row_h
@@ -349,13 +347,13 @@ def render_variant(variant):
                              fill=p["panel_alt"], outline=p["border_strong"], width=1)
         text(d, px + 24, py + 39, "Search command...", 10, p["text_dim"])
         rounded_glass(img, px + 12, py + 68, 200, 26, p, hovered=True, radius=6)
-        od.rectangle((px + 12, py + 68, px + 15, py + 94), fill=p["accent"])
         text(d, px + 24, py + 74, "Toggle glass intensity", 10, p["text"])
+        od.line((px + 24, py + 92, px + 146, py + 92), fill=lerp(p["accent"], p["border_strong"], 0.45), width=2)
         text(d, px + 24, py + 104, "Settings glass", 10, p["text_muted"])
         toggle(img, px + 154, py + 99, p, enabled=True)
 
     od.rectangle((ribbon_w, H - 28, W, H), fill=p["panel_alt"], outline=p["border"])
-    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 1.8.51  ·  {variant.title()} mode",
+    text(d, ribbon_w + 16, H - 22, f"Owen Graphite 2.22.21  ·  {variant.title()} mode",
          11, p["text_dim"])
 
     big_path = OUT_DIR / f"_big-{variant}.png"

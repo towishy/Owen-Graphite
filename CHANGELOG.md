@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.21] — 2026-05-02 — Liquid glass baseline build
+
+### Added
+- 선택 문서와 그 문서가 포함된 폴더의 active path를 neutral graphite glass + 얕은 sky rim/line으로 재정리.
+- Ribbon active action과 Graph/local graph control cluster를 graphite glass control 언어와 맞춤.
+- Backlinks/outgoing links row hover와 count flair를 조용한 liquid-glass row/pill로 다듬어 반복 스캔성을 개선.
+
+### Documentation
+- README 신기능 섹션에 `v2.22.21` 베이스빌드 요약과 현재 디자인 원칙에 맞춘 리퀴드 글래스 샘플 이미지를 추가.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.20] — 2026-05-01 — Liquid glass recommended polish pack
 
 ### Added
