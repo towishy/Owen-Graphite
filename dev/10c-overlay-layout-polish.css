@@ -5,26 +5,17 @@
 
 /* Search and prompt focus: clear enough for action, quiet enough for writing */
 .search-input-container input,
-.workspace-leaf-content[data-type="search"] input[type="search"],
-.workspace-leaf-content[data-type="search"] input[type="text"],
 .prompt-input,
-.modal input[type="search"],
-.modal input[type="text"] {
+:is(.workspace-leaf-content[data-type="search"], .modal) :is(input[type="search"], input[type="text"]) {
   transition: border-color 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease !important;
 }
 
-.search-input-container input:focus,
-.search-input-container input:focus-visible,
-.workspace-leaf-content[data-type="search"] input[type="search"]:focus,
-.workspace-leaf-content[data-type="search"] input[type="search"]:focus-visible,
-.workspace-leaf-content[data-type="search"] input[type="text"]:focus,
-.workspace-leaf-content[data-type="search"] input[type="text"]:focus-visible,
-.prompt-input:focus,
-.prompt-input:focus-visible,
-.modal input[type="search"]:focus,
-.modal input[type="search"]:focus-visible,
-.modal input[type="text"]:focus,
-.modal input[type="text"]:focus-visible {
+:is(
+  .search-input-container input,
+  .prompt-input,
+  .workspace-leaf-content[data-type="search"] :is(input[type="search"], input[type="text"]),
+  .modal :is(input[type="search"], input[type="text"])
+):is(:focus, :focus-visible) {
   background: var(--ogd-surface-base, #ffffff) !important;
   border-color: #64748b !important;
   box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.16), inset 0 1px 1px rgba(15, 23, 42, 0.04) !important;
@@ -201,18 +192,12 @@
   outline: none !important;
 }
 
-.theme-dark .search-input-container input:focus,
-.theme-dark .search-input-container input:focus-visible,
-.theme-dark .workspace-leaf-content[data-type="search"] input[type="search"]:focus,
-.theme-dark .workspace-leaf-content[data-type="search"] input[type="search"]:focus-visible,
-.theme-dark .workspace-leaf-content[data-type="search"] input[type="text"]:focus,
-.theme-dark .workspace-leaf-content[data-type="search"] input[type="text"]:focus-visible,
-.theme-dark .prompt-input:focus,
-.theme-dark .prompt-input:focus-visible,
-.theme-dark .modal input[type="search"]:focus,
-.theme-dark .modal input[type="search"]:focus-visible,
-.theme-dark .modal input[type="text"]:focus,
-.theme-dark .modal input[type="text"]:focus-visible {
+.theme-dark :is(
+  .search-input-container input,
+  .prompt-input,
+  .workspace-leaf-content[data-type="search"] :is(input[type="search"], input[type="text"]),
+  .modal :is(input[type="search"], input[type="text"])
+):is(:focus, :focus-visible) {
   background: #0f172a !important;
   border-color: var(--ogd-line-faint, #94a3b8) !important;
   box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.18), inset 0 1px 1px rgba(0, 0, 0, 0.22) !important;
