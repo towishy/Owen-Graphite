@@ -160,9 +160,7 @@
   }
 }
 
-.markdown-rendered table,
-.markdown-preview-view table,
-.markdown-reading-view table {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
   margin-top: 1.1em !important;
   margin-bottom: 2.5em !important;
   width: auto !important;
@@ -184,9 +182,7 @@
   margin-top: 0.2em !important;
 }
 
-.markdown-rendered th,
-.markdown-preview-view th,
-.markdown-reading-view th {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) th {
   background-color: var(--ogd-text-inverted, #f8fafc) !important;
   color: var(--ogd-text-strong, #111827) !important;
   font-weight: 700 !important;
@@ -199,9 +195,7 @@
   border-right: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
 }
 
-.markdown-rendered td,
-.markdown-preview-view td,
-.markdown-reading-view td {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td {
   line-height: 1.6 !important;
   padding: 10px 20px !important;
   border-bottom: 1px solid #f1f5f9 !important;
@@ -228,25 +222,17 @@
   background-color: #fbfdff !important;
 }
 
-.markdown-rendered td:first-child,
-.markdown-preview-view td:first-child,
-.markdown-reading-view td:first-child {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td:first-child {
   color: var(--ogd-text-strong, #111827) !important;
   font-weight: 700 !important;
 }
 
-.markdown-rendered td code,
-.markdown-preview-view td code,
-.markdown-reading-view td code {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td code {
   white-space: nowrap !important;
 }
 
-.markdown-rendered blockquote,
-.markdown-preview-view blockquote,
-.markdown-reading-view blockquote,
-.workspace-leaf-content .markdown-rendered blockquote,
-.workspace-leaf-content .markdown-preview-view blockquote,
-.workspace-leaf-content .markdown-reading-view blockquote {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote,
+.workspace-leaf-content :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote {
   --blockquote-border-thickness: 0px !important;
   --blockquote-border-color: var(--ogd-surface-transparent, transparent) !important;
   box-sizing: border-box !important;
@@ -304,38 +290,21 @@ body .markdown-rendered blockquote blockquote blockquote {
 }
 
 /* Ensure blockquote children inherit inner spacing */
-.markdown-rendered blockquote > p,
-.markdown-rendered blockquote > ul,
-.markdown-rendered blockquote > ol,
-.markdown-rendered blockquote > div,
-.markdown-preview-view blockquote > p,
-.markdown-preview-view blockquote > ul,
-.markdown-preview-view blockquote > ol,
-.markdown-preview-view blockquote > div,
-.markdown-reading-view blockquote > p,
-.markdown-reading-view blockquote > ul,
-.markdown-reading-view blockquote > ol,
-.markdown-reading-view blockquote > div {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :is(p, ul, ol, div) {
   margin-left: 0.6em !important;
 }
 
-.markdown-rendered blockquote > :first-child,
-.markdown-preview-view blockquote > :first-child,
-.markdown-reading-view blockquote > :first-child,
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :first-child,
 .markdown-rendered .callout-content > :first-child {
   margin-top: 0 !important;
 }
 
-.markdown-rendered blockquote > :last-child,
-.markdown-preview-view blockquote > :last-child,
-.markdown-reading-view blockquote > :last-child,
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :last-child,
 .markdown-rendered .callout-content > :last-child {
   margin-bottom: 0 !important;
 }
 
-.markdown-rendered blockquote p,
-.markdown-preview-view blockquote p,
-.markdown-reading-view blockquote p {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote p {
   color: var(--ogd-text-secondary, #374151) !important;
   line-height: 1.75 !important;
   margin-bottom: 0.65em !important;
@@ -489,9 +458,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   background-color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 
-.markdown-rendered .callout-title,
-.markdown-preview-view .callout-title,
-.markdown-reading-view .callout-title {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
   display: flex !important;
   align-items: center !important;
   gap: 9px !important;
@@ -509,17 +476,13 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: var(--ogd-text-secondary, #374151) !important;
 }
 
-.markdown-rendered .callout-content,
-.markdown-preview-view .callout-content,
-.markdown-reading-view .callout-content {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
   margin-top: 0.35em !important;
   font-size: 0.95em !important;
   line-height: 1.62 !important;
 }
 
-.markdown-rendered .callout-icon,
-.markdown-preview-view .callout-icon,
-.markdown-reading-view .callout-icon {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -560,17 +523,13 @@ body .markdown-rendered blockquote blockquote blockquote {
   background: #047857 !important;
 }
 
-.markdown-rendered .callout-icon svg,
-.markdown-preview-view .callout-icon svg,
-.markdown-reading-view .callout-icon svg {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
   width: 14px !important;
   height: 14px !important;
   stroke-width: 2.4px !important;
 }
 
-.markdown-rendered pre,
-.markdown-preview-view pre,
-.markdown-reading-view pre,
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 .workspace-leaf-content .markdown-rendered pre {
   margin: 1.35em 0 1.8em !important;
   padding: 0 !important;
@@ -594,9 +553,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   text-transform: uppercase;
 }
 
-.markdown-rendered pre code,
-.markdown-preview-view pre code,
-.markdown-reading-view pre code,
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 .workspace-leaf-content .markdown-rendered pre code {
   display: block !important;
   padding: 14px 16px !important;
@@ -610,9 +567,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   overflow-wrap: anywhere !important;
 }
 
-.markdown-rendered code:not(pre code),
-.markdown-preview-view code:not(pre code),
-.markdown-reading-view code:not(pre code) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
   padding: 0.16em 0.38em !important;
   border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
   border-radius: 4px !important;
@@ -647,9 +602,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   padding-bottom: 10px !important;
 }
 
-.markdown-rendered ul,
-.markdown-preview-view ul,
-.markdown-reading-view ul {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul {
   padding-left: 20px !important;
   margin-top: 0.25em !important;
   margin-bottom: 0.55em !important;
@@ -657,32 +610,24 @@ body .markdown-rendered blockquote blockquote blockquote {
   border-left: none !important;
 }
 
-.markdown-rendered ol,
-.markdown-preview-view ol,
-.markdown-reading-view ol {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol {
   padding-left: 22px !important;
   margin-top: 0.25em !important;
   margin-bottom: 0.55em !important;
   margin-left: 8px !important;
 }
 
-.markdown-rendered li,
-.markdown-preview-view li,
-.markdown-reading-view li {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li {
   margin-bottom: 0.18em !important;
   line-height: 1.5 !important;
   list-style-type: disc !important;
 }
 
-.markdown-rendered li > p,
-.markdown-preview-view li > p,
-.markdown-reading-view li > p {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li > p {
   margin-bottom: 0.18em !important;
 }
 
-.markdown-rendered li::before,
-.markdown-preview-view li::before,
-.markdown-reading-view li::before {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li::before {
   display: none !important;
 }
 
@@ -699,15 +644,11 @@ body .markdown-rendered blockquote blockquote blockquote {
   text-decoration-color: #1d4ed8;
 }
 
-.markdown-rendered a.external-link,
-.markdown-preview-view a.external-link,
-.markdown-reading-view a.external-link,
-.markdown-rendered a[href^="http://"]:not(.internal-link),
-.markdown-preview-view a[href^="http://"]:not(.internal-link),
-.markdown-reading-view a[href^="http://"]:not(.internal-link),
-.markdown-rendered a[href^="https://"]:not(.internal-link),
-.markdown-preview-view a[href^="https://"]:not(.internal-link),
-.markdown-reading-view a[href^="https://"]:not(.internal-link) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a:is(
+  .external-link,
+  [href^="http://"]:not(.internal-link),
+  [href^="https://"]:not(.internal-link)
+) {
   color: #0f766e;
   font-weight: 760;
   text-decoration-line: underline;
@@ -718,15 +659,11 @@ body .markdown-rendered blockquote blockquote blockquote {
   border-bottom: 0;
 }
 
-.markdown-rendered a.external-link:hover,
-.markdown-preview-view a.external-link:hover,
-.markdown-reading-view a.external-link:hover,
-.markdown-rendered a[href^="http://"]:not(.internal-link):hover,
-.markdown-preview-view a[href^="http://"]:not(.internal-link):hover,
-.markdown-reading-view a[href^="http://"]:not(.internal-link):hover,
-.markdown-rendered a[href^="https://"]:not(.internal-link):hover,
-.markdown-preview-view a[href^="https://"]:not(.internal-link):hover,
-.markdown-reading-view a[href^="https://"]:not(.internal-link):hover {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a:is(
+  .external-link,
+  [href^="http://"]:not(.internal-link),
+  [href^="https://"]:not(.internal-link)
+):hover {
   color: #0d9488;
   text-decoration-color: #0f766e;
 }
@@ -739,9 +676,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   text-decoration-color: rgba(180, 83, 9, 0.55);
 }
 
-.markdown-rendered mark,
-.markdown-preview-view mark,
-.markdown-reading-view mark,
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) mark,
 .cm-highlight {
   padding: 0.05em 0.25em !important;
   border-radius: 3px !important;
@@ -750,9 +685,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.22) !important;
 }
 
-.markdown-rendered :is(.search-highlight, .search-hit, .is-search-match),
-.markdown-preview-view :is(.search-highlight, .search-hit, .is-search-match),
-.markdown-reading-view :is(.search-highlight, .search-hit, .is-search-match),
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.search-highlight, .search-hit, .is-search-match),
 :is(.search-result-file-matched-text, .suggestion-highlight) {
   padding: 0.05em 0.24em !important;
   border-radius: 3px !important;
