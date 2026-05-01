@@ -6458,36 +6458,105 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
 
 /* ============================================================
-   v1.8.36 — Breadcrumb hover glass
-   Apply nav-style glass hover to view-header breadcrumb segments.
+   v1.8.36 — Breadcrumb floating glass chips
+   Apply chip-style liquid glass to view-header breadcrumb segments.
    ============================================================ */
 
 @media (min-width: 701px) {
-  body:not(.is-mobile) .view-header-breadcrumb {
-    border-radius: var(--radius-m, 6px) !important;
-    padding: 2px 6px !important;
-    transition: background 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
-    border: 1px solid transparent !important;
+  body:not(.is-mobile) .mod-root .view-header-title-container {
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    min-width: 0 !important;
   }
-  body:not(.is-mobile) .view-header-breadcrumb:hover {
-    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.55)) !important;
-    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
-    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
-    border: 1px solid rgba(100,116,139,0.34) !important;
-    color: #0f172a !important;
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title) {
+    display: inline-flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    min-height: 34px !important;
+    padding: 6px 16px !important;
+    border: 1px solid rgba(148, 163, 184, 0.22) !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.62), rgba(241,245,249,0.26))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
+    color: var(--ogd-text-subtle, #475569) !important;
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.94),
-      inset 0 -1px 0 rgba(15,23,42,0.06),
-      0 6px 16px rgba(15,23,42,0.12) !important;
+      inset 0 1px 0 rgba(255, 255, 255, 0.86),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.10),
+      inset 0 0 10px rgba(255, 255, 255, 0.18),
+      0 5px 16px rgba(15, 23, 42, 0.08) !important;
+    font-size: 14.6px !important;
+    font-weight: 650 !important;
+    line-height: 1.25 !important;
+    max-width: min(34vw, 260px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease !important;
   }
-  body:not(.is-mobile).theme-dark .view-header-breadcrumb:hover {
-    background: linear-gradient(180deg, rgba(30,41,59,0.75), rgba(15,23,42,0.45)) !important;
-    border: 1px solid rgba(203,213,225,0.20) !important;
+
+  body:not(.is-mobile) .view-header-title {
+    background: var(--ogd-glass-bg-strong, linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,250,252,0.58))) !important;
+    border-color: rgba(14, 165, 233, 0.34) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.94),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.06),
+      inset 0 0 12px rgba(255, 255, 255, 0.24),
+      0 8px 22px rgba(15, 23, 42, 0.12),
+      0 0 0 1px rgba(125, 211, 252, 0.14) !important;
+    font-size: 15.2px !important;
+    font-weight: 780 !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
+    background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255,255,255,0.90), rgba(248,250,252,0.52))) !important;
+    border-color: var(--ogd-glass-border-hover, rgba(100, 116, 139, 0.34)) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255,255,255,0.94), inset 0 -1px 0 rgba(15,23,42,0.06), 0 6px 16px rgba(15,23,42,0.12)) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
+    color: rgba(100, 116, 139, 0.58) !important;
+    font-size: 18px !important;
+    font-weight: 360 !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb, .view-header-title) {
+    border-color: rgba(203, 213, 225, 0.16) !important;
+    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.52), rgba(30,41,59,0.26))) !important;
+    color: var(--ogd-line-strong, #cbd5e1) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.24),
+      inset 0 0 10px rgba(148, 163, 184, 0.08),
+      0 5px 16px rgba(0, 0, 0, 0.26) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .view-header-title {
+    background: var(--ogd-glass-bg-strong, linear-gradient(180deg, rgba(51,65,85,0.80), rgba(15,23,42,0.56))) !important;
+    border-color: rgba(56, 189, 248, 0.28) !important;
     color: var(--ogd-text-inverted, #f8fafc) !important;
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.10),
-      inset 0 -1px 0 rgba(0,0,0,0.24),
-      0 6px 16px rgba(0,0,0,0.32) !important;
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.26),
+      inset 0 0 12px rgba(148, 163, 184, 0.10),
+      0 8px 22px rgba(0, 0, 0, 0.34),
+      0 0 0 1px rgba(56, 189, 248, 0.12) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
+    background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(51,65,85,0.74), rgba(15,23,42,0.42))) !important;
+    border-color: var(--ogd-glass-border-hover, rgba(203, 213, 225, 0.24)) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(0,0,0,0.24), 0 8px 22px rgba(0,0,0,0.34)) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
+    color: rgba(203, 213, 225, 0.48) !important;
   }
 }
 
@@ -7325,6 +7394,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .menu .menu-item,
     .tooltip,
     .view-header-breadcrumb,
+    .view-header-title,
     .suggestion-container,
     .search-suggest-container,
     .search-suggestion-container
@@ -7339,6 +7409,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .editingToolbarButton,
     .menu .menu-item,
     .view-header-breadcrumb,
+    .view-header-title,
     .suggestion-item,
     .search-suggest-item
   ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
@@ -7907,6 +7978,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .nav-file-title,
     .nav-folder-title,
     .breadcrumb,
+    .view-header-breadcrumb,
+    .view-header-title,
     .menu-item,
     .suggestion-item,
     .search-suggest-item,
@@ -7933,6 +8006,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .nav-file-title,
     .nav-folder-title,
     .breadcrumb,
+    .view-header-breadcrumb,
+    .view-header-title,
     .menu-item,
     .suggestion-item,
     .search-suggest-item,
