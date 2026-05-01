@@ -3573,8 +3573,7 @@ body.ogd-auto-dark {
   background: #1a1b20 !important;
   border-color: #353841 !important;
 }
-.theme-dark .markdown-rendered .callout[data-callout="secret"],
-.theme-dark .markdown-rendered .callout[data-callout="hidden"] {
+.theme-dark .markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]) {
   background: #25272d !important;
   border-left-color: #6b7280 !important;
 }
@@ -3605,9 +3604,10 @@ body.theme-dark.ogd-eye-care {
   --background-primary-alt: #25221a;
   --background-secondary: #17150f;
 }
-.theme-dark .markdown-rendered .ogd-blur,
-.theme-dark .markdown-rendered .callout[data-callout="secret"] .callout-content,
-.theme-dark .markdown-rendered .callout[data-callout="hidden"] .callout-content {
+.theme-dark .markdown-rendered :is(
+  .ogd-blur,
+  .callout:is([data-callout="secret"], [data-callout="hidden"]) .callout-content
+) {
   filter: blur(5px);
 }
 
@@ -3620,14 +3620,11 @@ body.theme-dark.ogd-eye-care {
    ===================================================================== */
 
 /* Mermaid: SVG text was unreadable in dark mode (only container was tinted) */
-.theme-dark .markdown-rendered .mermaid svg text,
-.theme-dark .markdown-rendered .mermaid svg .nodeLabel,
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel {
+.theme-dark .markdown-rendered .mermaid svg :is(text, .nodeLabel, .edgeLabel) {
   fill: var(--ogd-line-soft, #e5e7eb) !important;
   color: var(--ogd-line-soft, #e5e7eb) !important;
 }
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel rect,
-.theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject {
+.theme-dark .markdown-rendered .mermaid svg .edgeLabel :is(rect, foreignObject) {
   background: var(--ogd-surface-transparent, transparent) !important;
   fill: var(--ogd-surface-transparent, transparent) !important;
 }
@@ -3921,19 +3918,11 @@ a.external-link:focus-visible,
     of stark white, keeping diagram visually consistent.
     No !important so classDef inline style still wins.
     ============================================================ */
-.markdown-rendered .mermaid svg .node rect,
-.markdown-rendered .mermaid svg .node polygon,
-.markdown-rendered .mermaid svg .node circle,
-.markdown-rendered .mermaid svg .node ellipse,
-.markdown-rendered .mermaid svg .node path {
+.markdown-rendered .mermaid svg .node :is(rect, polygon, circle, ellipse, path) {
   fill: #f4f4f9;
   stroke: #4c4c4c;
 }
-.theme-dark .markdown-rendered .mermaid svg .node rect,
-.theme-dark .markdown-rendered .mermaid svg .node polygon,
-.theme-dark .markdown-rendered .mermaid svg .node circle,
-.theme-dark .markdown-rendered .mermaid svg .node ellipse,
-.theme-dark .markdown-rendered .mermaid svg .node path {
+.theme-dark .markdown-rendered .mermaid svg .node :is(rect, polygon, circle, ellipse, path) {
   fill: #2d2d2d;
   stroke: #888;
 }
@@ -3981,9 +3970,7 @@ a.external-link:focus-visible,
 .markdown-rendered .callout[data-callout="conclusion"] .callout-title-inner {
   color: #0ea5e9 !important;
 }
-.markdown-rendered .callout[data-callout="conclusion"] p,
-.markdown-rendered .callout[data-callout="conclusion"] li,
-.markdown-rendered .callout[data-callout="conclusion"] strong {
+.markdown-rendered .callout[data-callout="conclusion"] :is(p, li, strong) {
   color: #0c4a6e !important;
 }
 
@@ -3994,14 +3981,10 @@ a.external-link:focus-visible,
   border-left: 4px solid #38bdf8 !important;
   color: #e0f2fe !important;
 }
-.theme-dark .markdown-rendered .callout[data-callout="conclusion"] .callout-title,
-.theme-dark .markdown-rendered .callout[data-callout="conclusion"] p,
-.theme-dark .markdown-rendered .callout[data-callout="conclusion"] li,
-.theme-dark .markdown-rendered .callout[data-callout="conclusion"] strong {
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] :is(.callout-title, p, li, strong) {
   color: #e0f2fe !important;
 }
-.theme-dark .markdown-rendered .callout[data-callout="conclusion"] .callout-icon svg,
-.theme-dark .markdown-rendered .callout[data-callout="conclusion"] .callout-title-inner {
+.theme-dark .markdown-rendered .callout[data-callout="conclusion"] :is(.callout-icon svg, .callout-title-inner) {
   color: #7dd3fc !important;
 }
 
@@ -4192,14 +4175,12 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 .metadata-container .metadata-property:last-child {
   border-bottom: 0 !important;
 }
-.metadata-container .metadata-property-key,
-.metadata-container .metadata-property-key-input {
+.metadata-container :is(.metadata-property-key, .metadata-property-key-input) {
   color: var(--ogd-text-subtle, #475569) !important;
   font-weight: 650 !important;
 }
 .metadata-container .metadata-property-value,
-.metadata-container .metadata-property-value input,
-.metadata-container .metadata-property-value textarea {
+.metadata-container .metadata-property-value :is(input, textarea) {
   color: var(--ogd-text-strong, #111827) !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
@@ -4218,13 +4199,11 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 .theme-dark .metadata-container .metadata-property {
   border-bottom-color: rgba(100, 116, 139, 0.32) !important;
 }
-.theme-dark .metadata-container .metadata-property-key,
-.theme-dark .metadata-container .metadata-property-key-input {
+.theme-dark .metadata-container :is(.metadata-property-key, .metadata-property-key-input) {
   color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 .theme-dark .metadata-container .metadata-property-value,
-.theme-dark .metadata-container .metadata-property-value input,
-.theme-dark .metadata-container .metadata-property-value textarea {
+.theme-dark .metadata-container .metadata-property-value :is(input, textarea) {
   color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
