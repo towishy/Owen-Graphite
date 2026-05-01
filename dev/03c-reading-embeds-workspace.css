@@ -184,8 +184,9 @@
    ===================================================================== */
 /* Apply focus ring ONLY to interactive elements; never on content containers */
 :is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
-  outline: 2px solid var(--header-accent) !important;
-  outline-offset: 2px !important;
+  outline: 1px solid rgba(100, 116, 139, 0.42) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10) !important;
 }
 /* Explicitly remove focus outline from content containers */
 .workspace-leaf,

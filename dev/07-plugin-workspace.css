@@ -301,8 +301,9 @@ select:focus-visible,
 a.internal-link:focus-visible,
 a.external-link:focus-visible,
 .workspace-tab-header:focus-visible {
-  outline: 2px solid var(--interactive-accent);
-  outline-offset: 2px;
+  outline: 1px solid rgba(100, 116, 139, 0.42);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10);
   border-radius: 3px;
 }
 *:focus:not(:focus-visible) { outline: none; }

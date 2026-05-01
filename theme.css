@@ -2000,8 +2000,9 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
    ===================================================================== */
 /* Apply focus ring ONLY to interactive elements; never on content containers */
 :is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
-  outline: 2px solid var(--header-accent) !important;
-  outline-offset: 2px !important;
+  outline: 1px solid rgba(100, 116, 139, 0.42) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10) !important;
 }
 /* Explicitly remove focus outline from content containers */
 .workspace-leaf,
@@ -3559,9 +3560,9 @@ body.ogd-eye-care.theme-light .markdown-rendered {
 
 /* G3. Strong focus ring — interactive elements only */
 :is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
-  outline: 3px solid var(--header-accent) !important;
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.18);
+  outline: 1px solid rgba(100, 116, 139, 0.42) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10) !important;
 }
 
 /* G4. CJK font boost */
@@ -3901,8 +3902,9 @@ select:focus-visible,
 a.internal-link:focus-visible,
 a.external-link:focus-visible,
 .workspace-tab-header:focus-visible {
-  outline: 2px solid var(--interactive-accent);
-  outline-offset: 2px;
+  outline: 1px solid rgba(100, 116, 139, 0.42);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10);
   border-radius: 3px;
 }
 *:focus:not(:focus-visible) { outline: none; }
