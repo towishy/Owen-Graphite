@@ -502,43 +502,31 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin-top: 0.82em !important;
   }
 
-  body .markdown-rendered table,
-  body .markdown-preview-view table,
-  body .markdown-reading-view table {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     line-height: 1.48 !important;
     table-layout: auto !important;
   }
 
-  body .markdown-rendered table :is(th, td),
-  body .markdown-preview-view table :is(th, td),
-  body .markdown-reading-view table :is(th, td) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
     vertical-align: top !important;
     word-break: keep-all !important;
     overflow-wrap: anywhere !important;
   }
 
-  body .markdown-rendered table thead,
-  body .markdown-preview-view table thead,
-  body .markdown-reading-view table thead {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table thead {
     display: table-header-group !important;
   }
 
-  body .markdown-rendered table tbody,
-  body .markdown-preview-view table tbody,
-  body .markdown-reading-view table tbody {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody {
     display: table-row-group !important;
   }
 
-  body .markdown-rendered table tr,
-  body .markdown-preview-view table tr,
-  body .markdown-reading-view table tr {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
 
-  body .markdown-rendered table td:first-child,
-  body .markdown-preview-view table td:first-child,
-  body .markdown-reading-view table td:first-child {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td:first-child {
     width: 18% !important;
     min-width: 26mm !important;
     max-width: 48mm !important;
@@ -645,9 +633,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     }
   }
 
-  body .markdown-rendered .ogd-status-badge,
-  body .markdown-preview-view .ogd-status-badge,
-  body .markdown-reading-view .ogd-status-badge {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge {
     display: inline-block !important;
     min-width: 20mm !important;
     padding: 0.18em 0.58em !important;
@@ -661,56 +647,38 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     white-space: nowrap !important;
   }
 
-  body .markdown-rendered .ogd-status-badge.is-e5,
-  body .markdown-preview-view .ogd-status-badge.is-e5,
-  body .markdown-reading-view .ogd-status-badge.is-e5 {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge.is-e5 {
     border-color: #99d6c9 !important;
     background: #f0fdfa !important;
     color: #0f766e !important;
   }
 
-  body .markdown-rendered .ogd-status-badge.is-payg,
-  body .markdown-preview-view .ogd-status-badge.is-payg,
-  body .markdown-reading-view .ogd-status-badge.is-payg {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge.is-payg {
     border-color: #f2c983 !important;
     background: #fffbeb !important;
     color: #92400e !important;
   }
 
-  body .markdown-rendered .ogd-status-badge.is-addon,
-  body .markdown-preview-view .ogd-status-badge.is-addon,
-  body .markdown-reading-view .ogd-status-badge.is-addon {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge.is-addon {
     border-color: #bfdbfe !important;
     background: #eff6ff !important;
     color: #1d4ed8 !important;
   }
 
-  body .markdown-rendered .ogd-executive-summary,
-  body .markdown-preview-view .ogd-executive-summary,
-  body .markdown-reading-view .ogd-executive-summary,
-  body .markdown-rendered .callout[data-callout="summary"],
-  body .markdown-preview-view .callout[data-callout="summary"],
-  body .markdown-reading-view .callout[data-callout="summary"] {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-executive-summary, .callout[data-callout="summary"]) {
     margin: 1.1em 0 1.35em !important;
     border-color: #cfe5e2 !important;
     border-left-color: #0f766e !important;
     background: linear-gradient(90deg, #effdfa, #f8fafc 92%) !important;
   }
 
-  body .markdown-rendered .ogd-action-summary,
-  body .markdown-preview-view .ogd-action-summary,
-  body .markdown-reading-view .ogd-action-summary,
-  body .markdown-rendered .callout[data-callout="action"],
-  body .markdown-preview-view .callout[data-callout="action"],
-  body .markdown-reading-view .callout[data-callout="action"] {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-action-summary, .callout[data-callout="action"]) {
     margin: 1.1em 0 1.35em !important;
     border-left-color: #2563eb !important;
     background: #f8fbff !important;
   }
 
-  body .markdown-rendered hr,
-  body .markdown-preview-view hr,
-  body .markdown-reading-view hr {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) hr {
     height: 1px !important;
     border: var(--ogd-border-none, 0) !important;
     background: #eef2f6 !important;
