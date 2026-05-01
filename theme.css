@@ -2895,13 +2895,11 @@ body.ogd-auto-number-headings .markdown-rendered h4::before {
 /* ---------- B. CONTENT EMPHASIS ---------- */
 
 /* B1. Spoiler / blur — `> [!secret]` callout or .ogd-blur class */
-.markdown-rendered .callout[data-callout="secret"],
-.markdown-rendered .callout[data-callout="hidden"] {
+.markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]) {
   border-left-color: #6b7280 !important;
   background: var(--ogd-surface-subtle, #f3f4f6) !important;
 }
-.markdown-rendered .callout[data-callout="secret"] .callout-content,
-.markdown-rendered .callout[data-callout="hidden"] .callout-content,
+.markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]) .callout-content,
 .markdown-rendered .ogd-blur {
   filter: blur(5px);
   transition: filter 0.2s ease;
@@ -2909,8 +2907,7 @@ body.ogd-auto-number-headings .markdown-rendered h4::before {
   -webkit-user-select: none;
   user-select: none;
 }
-.markdown-rendered .callout[data-callout="secret"]:hover .callout-content,
-.markdown-rendered .callout[data-callout="hidden"]:hover .callout-content,
+.markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]):hover .callout-content,
 .markdown-rendered .ogd-blur:hover {
   filter: blur(0);
   -webkit-user-select: text;
@@ -3290,8 +3287,7 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 .graph-view.color-arrow { color: var(--text-faint); }
 
 /* D7. Dataview table unification */
-.markdown-rendered .dataview.table-view-table,
-.markdown-rendered .dataview.dataview-table,
+.markdown-rendered .dataview:is(.table-view-table, .dataview-table),
 .block-language-dataview table {
   border-collapse: collapse !important;
   width: 100%;
@@ -3323,9 +3319,7 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 /* ---------- E. PLUGIN INTEGRATION ---------- */
 
 /* E1. Excalidraw */
-.excalidraw-host,
-.excalidraw,
-.excalidraw-svg {
+:is(.excalidraw-host, .excalidraw, .excalidraw-svg) {
   background: #fafbfc !important;
   border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
   border-radius: var(--radius-l, 8px);
@@ -3386,9 +3380,7 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 }
 
 /* E5. Bases (Obsidian 1.7+) */
-.base-view,
-.bases-table,
-.bases-card-view {
+:is(.base-view, .bases-table, .bases-card-view) {
   border: 1px solid var(--background-modifier-border);
   border-radius: var(--radius-l, 8px);
   background: var(--background-primary);
@@ -3412,8 +3404,7 @@ body.ogd-spacing-compact {
   --ogd-line-height: 1.4;
 }
 body.ogd-spacing-compact .markdown-rendered p { margin-bottom: 0.32em !important; }
-body.ogd-spacing-compact .markdown-rendered h1 { margin-top: 0.7em !important; }
-body.ogd-spacing-compact .markdown-rendered h2 { margin-top: 0.7em !important; }
+body.ogd-spacing-compact .markdown-rendered :is(h1, h2) { margin-top: 0.7em !important; }
 body.ogd-spacing-compact .markdown-rendered h3 { margin-top: 0.55em !important; }
 
 body.ogd-spacing-standard {
@@ -3494,8 +3485,7 @@ body.ogd-eye-care.theme-light .markdown-rendered {
     border-left-width: 6px !important;
   }
   .markdown-rendered table { border: 2px solid #000 !important; }
-  .markdown-rendered table th,
-  .markdown-rendered table td { border-color: #000 !important; }
+  .markdown-rendered table :is(th, td) { border-color: #000 !important; }
   .markdown-rendered a { text-decoration: underline !important; }
 }
 
@@ -3515,9 +3505,7 @@ body.ogd-eye-care.theme-light .markdown-rendered {
 }
 
 /* G4. CJK font boost */
-body.ogd-cjk-boost .markdown-rendered :lang(ko),
-body.ogd-cjk-boost .markdown-rendered :lang(ja),
-body.ogd-cjk-boost .markdown-rendered :lang(zh) {
+body.ogd-cjk-boost .markdown-rendered :is(:lang(ko), :lang(ja), :lang(zh)) {
   font-size: calc(var(--ogd-body-size, 15px) + 0.5px);
 }
 
