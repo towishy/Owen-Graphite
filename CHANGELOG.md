@@ -4,6 +4,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.18] — 2026-05-01 — Active document icon glow line hotfix
+
+### Fixed
+- 선택된 문서의 파일 탐색기 cyan glow line이 아이콘 아래에만 그려지던 문제를 수정해, header active underline과 같은 느낌으로 아이콘부터 문서 제목 끝까지 이어지도록 확장.
+
 ## [2.22.17] — 2026-05-01 — Liquid glass breadcrumb and tooltip polish release
 
 ### Added

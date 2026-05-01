@@ -1,7 +1,7 @@
 # CSS Stabilization Checklist (MAP-driven)
 
 ## Goal Gates
-- Rollback baseline: `v2.22.17` is the current retained release/tag baseline
+- Rollback baseline: `v2.22.18` is the current retained release/tag baseline
 - MAP gate: critical = 0, high = 0
 - Validation gate: `python scripts/validate_theme.py --ci` must pass
 - Build gate: `python scripts/build_release.py` must produce `dist/Owen-Graphite-<version>.zip`
