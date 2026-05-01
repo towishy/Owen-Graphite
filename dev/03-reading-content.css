@@ -488,7 +488,10 @@ body .markdown-rendered blockquote blockquote blockquote {
 }
 
 .markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
-  background: #047857 !important;
+  border: 1.5px solid #86efac !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: var(--ogd-surface-base, #ffffff) !important;
+  color: #166534 !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
