@@ -1,17 +1,17 @@
 {
   "source": "theme.css",
-  "generated_at": "2026-04-30T04:37:00.720578+00:00",
-  "rule_count": 1225,
-  "finding_count": 77,
+  "generated_at": "2026-05-01T05:15:24.878059+00:00",
+  "rule_count": 1221,
+  "finding_count": 78,
   "severity_counts": {
     "low": 12,
-    "info": 65
+    "info": 66
   },
   "findings": [
     {
       "severity": "low",
       "score": 17,
-      "line": 7908,
+      "line": 7941,
       "selector": "body:not(.is-mobile) .workspace-tab-header::before, body:not(.is-mobile) .workspace-tab-header::after, body:not(.is-mobile) .workspace-tab-header-inner::before, body:not(.is-mobile) .workspace-tab-header-inner::after",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -35,7 +35,7 @@
     {
       "severity": "low",
       "score": 16,
-      "line": 7890,
+      "line": 7923,
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -53,7 +53,7 @@
     {
       "severity": "low",
       "score": 16,
-      "line": 9397,
+      "line": 9438,
       "selector": ".workspace-tab-header:not(.is-active)",
       "context": "root",
       "block": "1. Dark mode parity for v1.8.6x components",
@@ -70,7 +70,7 @@
     {
       "severity": "low",
       "score": 16,
-      "line": 9401,
+      "line": 9442,
       "selector": ".workspace-tab-header:not(.is-active):hover",
       "context": "root",
       "block": "1. Dark mode parity for v1.8.6x components",
@@ -87,7 +87,7 @@
     {
       "severity": "low",
       "score": 14,
-      "line": 2450,
+      "line": 2511,
       "selector": ".workspace-ribbon, .workspace-tab-header-container, .status-bar, .titlebar, .copy-code-button, .markdown-rendered pre[class*=\"language-\"]::after",
       "context": "@media print",
       "block": "v1.8.65 — Footnotes section: keep at end, separate from body",
@@ -107,7 +107,7 @@
     {
       "severity": "info",
       "score": 13,
-      "line": 6470,
+      "line": 6477,
       "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.21 — Ribbon glass icons",
@@ -130,7 +130,7 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 6596,
+      "line": 6539,
       "selector": "body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.24 — Editing toolbar hover glass",
@@ -138,7 +138,7 @@
         ".clickable-icon"
       ],
       "risky_properties": [
-        "transform: translateY(-1px)"
+        "transform: var(--ogd-hover-lift, translateY(-1px))"
       ],
       "critical_properties": [],
       "decorative_properties": [
@@ -152,15 +152,15 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 6777,
-      "selector": "body:not(.is-mobile) .editing-toolbar .editing-toolbar-button:hover, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button:hover, body:not(.is-mobile) .editing-toolbar button:hover, body:not(.is-mobile) .editing-toolbar .clickable-icon:hover",
+      "line": 6724,
+      "selector": "body:not(.is-mobile) .editing-toolbar .editing-toolbar-button:hover, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button:hover, body:not(.is-mobile) .editing-toolbar button:hover, body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover, body:not(.is-mobile) .editing-toolbar .clickable-icon:hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
       "matched_selectors": [
         ".clickable-icon"
       ],
       "risky_properties": [
-        "transform: translateY(-0.5px) !important"
+        "transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important"
       ],
       "critical_properties": [],
       "decorative_properties": [
@@ -172,15 +172,15 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 6798,
-      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button:hover, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button:hover, body:not(.is-mobile).theme-dark .editing-toolbar button:hover, body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon:hover",
+      "line": 6747,
+      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button:hover, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button:hover, body:not(.is-mobile).theme-dark .editing-toolbar button:hover, body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover, body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon:hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
       "matched_selectors": [
         ".clickable-icon"
       ],
       "risky_properties": [
-        "transform: translateY(-0.5px) !important"
+        "transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important"
       ],
       "critical_properties": [],
       "decorative_properties": [
@@ -192,7 +192,7 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 6873,
+      "line": 6822,
       "selector": "body:not(.is-mobile) .editing-toolbar-modal button:hover, body:not(.is-mobile) .editing-toolbar-modal .clickable-icon:hover, body:not(.is-mobile) .editing-toolbar-popover button:hover, body:not(.is-mobile) .editing-toolbar-popover .clickable-icon:hover, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button:hover, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon:hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.33 — Editing toolbar submenu glass",
@@ -200,7 +200,7 @@
         ".clickable-icon"
       ],
       "risky_properties": [
-        "transform: translateY(-0.5px) !important"
+        "transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important"
       ],
       "critical_properties": [],
       "decorative_properties": [
@@ -212,7 +212,7 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 6898,
+      "line": 6847,
       "selector": "body:not(.is-mobile).theme-dark .editing-toolbar-modal button:hover, body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon:hover, body:not(.is-mobile).theme-dark .editing-toolbar-popover button:hover, body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon:hover, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button:hover, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon:hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.33 — Editing toolbar submenu glass",
@@ -220,7 +220,7 @@
         ".clickable-icon"
       ],
       "risky_properties": [
-        "transform: translateY(-0.5px) !important"
+        "transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important"
       ],
       "critical_properties": [],
       "decorative_properties": [
@@ -232,7 +232,7 @@
     {
       "severity": "info",
       "score": 13,
-      "line": 7078,
+      "line": 7029,
       "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.37 — macOS sidebar toggle reset",
@@ -253,7 +253,7 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 7471,
+      "line": 7459,
       "selector": "body:not(.is-mobile) :is(.canvas-control-item, .canvas-card-menu .clickable-icon):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.42 - Floating UI glass expansion",
@@ -261,7 +261,7 @@
         ".clickable-icon"
       ],
       "risky_properties": [
-        "transform: translateY(-1px) !important"
+        "transform: var(--ogd-hover-lift, translateY(-1px)) !important"
       ],
       "critical_properties": [],
       "decorative_properties": [
@@ -273,7 +273,7 @@
     {
       "severity": "low",
       "score": 13,
-      "line": 8429,
+      "line": 8466,
       "selector": "body:not(.is-mobile) :is( .nav-file-title, .nav-folder-title, .breadcrumb, .menu-item, .suggestion-item, .search-suggest-item, .search-input-container, .setting-item, .setting-item-control button, .checkbox-container, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar-item-segment, .metadata-property, .editingToolbarModalBar .clickable-icon, .editingToolbarPopover .clickable-icon, .editingToolbarButton ):is(:hover, :focus, :focus-visible, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (prefers-reduced-motion: reduce)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
@@ -290,7 +290,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 3519,
+      "line": 3579,
       "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
       "context": "root",
       "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
@@ -310,7 +310,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 6487,
+      "line": 6494,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.21 — Ribbon glass icons",
@@ -332,7 +332,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 6623,
+      "line": 6566,
       "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right, body:not(.is-mobile) .workspace-tab-header-tab-list, body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.25b — Exclude right sidebar toggle from glass",
@@ -353,7 +353,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 7095,
+      "line": 7046,
       "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.37 — macOS sidebar toggle reset",
@@ -373,7 +373,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 7108,
+      "line": 7059,
       "selector": "body.mod-macos:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.37 — macOS sidebar toggle reset",
@@ -393,7 +393,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 8475,
+      "line": 8512,
       "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
       "context": "@media (forced-colors: active)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
@@ -413,10 +413,10 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 9050,
+      "line": 9091,
       "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
       "context": "root",
-      "block": "v1.8.56 — Overlay interaction polish",
+      "block": "v1.8.56 - Overlay interaction polish",
       "matched_selectors": [
         "[role=tab]",
         ".workspace-tab-header",
@@ -433,10 +433,10 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 9216,
+      "line": 9257,
       "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
       "context": "@media (prefers-contrast: more), (forced-colors: active)",
-      "block": "v1.8.56 — Overlay interaction polish",
+      "block": "v1.8.56 - Overlay interaction polish",
       "matched_selectors": [
         "[role=tab]",
         ".workspace-tab-header",
@@ -453,7 +453,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 1963,
+      "line": 2024,
       "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
       "context": "root",
       "block": "Nested blockquote depth coloring — v1.8.65 tonal steps",
@@ -472,7 +472,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 6481,
+      "line": 6488,
       "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.21 — Ribbon glass icons",
@@ -493,7 +493,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 6494,
+      "line": 6501,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.21 — Ribbon glass icons",
@@ -514,7 +514,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 6635,
+      "line": 6578,
       "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right:hover, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right:hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.25b — Exclude right sidebar toggle from glass",
@@ -533,7 +533,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 7285,
+      "line": 7236,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-split.mod-root, .workspace-tabs.mod-active, .workspace-leaf.mod-active, .workspace-ribbon, .side-dock-ribbon)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.41 - Workspace frame cleanup",
@@ -554,7 +554,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 7944,
+      "line": 7977,
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -573,7 +573,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 7957,
+      "line": 7990,
       "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -592,7 +592,7 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 8440,
+      "line": 8477,
       "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
       "context": "@media (prefers-contrast: more)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
@@ -611,10 +611,10 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 9074,
+      "line": 9115,
       "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus:not(:focus-visible)",
       "context": "root",
-      "block": "v1.8.56 — Overlay interaction polish",
+      "block": "v1.8.56 - Overlay interaction polish",
       "matched_selectors": [
         "[role=tab]",
         ".workspace-tab-header",
@@ -630,10 +630,10 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 9192,
+      "line": 9233,
       "selector": ".theme-dark :is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
       "context": "root",
-      "block": "v1.8.56 — Overlay interaction polish",
+      "block": "v1.8.56 - Overlay interaction polish",
       "matched_selectors": [
         "[role=tab]",
         ".workspace-tab-header",
@@ -649,7 +649,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 450,
+      "line": 495,
       "selector": ".nav-file-title.is-active, .nav-folder-title.is-active, .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "context": "root",
       "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
@@ -667,10 +667,10 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 3832,
+      "line": 3892,
       "selector": "button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .clickable-icon:focus-visible, a.internal-link:focus-visible, a.external-link:focus-visible, .workspace-tab-header:focus-visible",
       "context": "root",
-      "block": "#5 — PDF footer page numbers (v1.7.2: right-only, no prefix)",
+      "block": "#5 - PDF footer page numbers (v1.7.2: right-only, no prefix)",
       "matched_selectors": [
         ".workspace-tab-header",
         ".clickable-icon"
@@ -686,7 +686,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 7277,
+      "line": 7228,
       "selector": "body:not(.is-mobile) :is(.workspace, .workspace-split, .workspace-tabs, .workspace-leaf, .workspace-leaf-content, .workspace-tab-container, .view-content)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.41 - Workspace frame cleanup",
@@ -706,7 +706,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 7919,
+      "line": 7952,
       "selector": "body:not(.is-mobile) .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -724,7 +724,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 8451,
+      "line": 8488,
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
       "context": "@media (prefers-contrast: more)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
@@ -742,7 +742,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 8480,
+      "line": 8517,
       "selector": "body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .checkbox-container, .setting-item, .suggestion-item, .status-bar-item-segment, .workspace-tab-header-inner, .search-input-container)",
       "context": "@media (forced-colors: active)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
@@ -760,7 +760,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 9393,
+      "line": 9434,
       "selector": ".workspace-tab-header.is-active",
       "context": "root",
       "block": "1. Dark mode parity for v1.8.6x components",
@@ -778,7 +778,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 9404,
+      "line": 9445,
       "selector": ".workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "context": "root",
       "block": "1. Dark mode parity for v1.8.6x components",
@@ -796,7 +796,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 430,
+      "line": 475,
       "selector": ".workspace, .workspace-split, .workspace-leaf, .workspace-tabs, .workspace-tab-header-container, .side-dock-ribbon, .mod-root .workspace-tab-header-container",
       "context": "root",
       "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
@@ -816,7 +816,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 444,
+      "line": 489,
       "selector": ".nav-file-title, .nav-folder-title, .tree-item-self, .workspace-tab-header-inner-title",
       "context": "root",
       "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
@@ -833,7 +833,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 458,
+      "line": 503,
       "selector": "button, .clickable-icon, .setting-item-control button, .modal button",
       "context": "root",
       "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
@@ -853,7 +853,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 1944,
+      "line": 2005,
       "selector": ".workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "context": "root",
       "block": "Nested blockquote depth coloring — v1.8.65 tonal steps",
@@ -870,7 +870,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 3262,
+      "line": 3323,
       "selector": ".workspace-tab-header[data-type=\"markdown\"] .workspace-tab-header-inner-icon",
       "context": "root",
       "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
@@ -887,7 +887,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 3265,
+      "line": 3326,
       "selector": ".workspace-tab-header[data-type=\"canvas\"] .workspace-tab-header-inner-icon",
       "context": "root",
       "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
@@ -904,7 +904,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 3268,
+      "line": 3329,
       "selector": ".workspace-tab-header[data-type=\"pdf\"] .workspace-tab-header-inner-icon",
       "context": "root",
       "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
@@ -921,7 +921,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 3271,
+      "line": 3332,
       "selector": ".workspace-tab-header[data-type=\"image\"] .workspace-tab-header-inner-icon",
       "context": "root",
       "block": "v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF)",
@@ -938,7 +938,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6508,
+      "line": 6515,
       "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.22 — Hover glass polish",
@@ -957,7 +957,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6514,
+      "line": 6521,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.22 — Hover glass polish",
@@ -976,7 +976,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6606,
+      "line": 6549,
       "selector": "body:not(.is-mobile).theme-dark :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.24 — Editing toolbar hover glass",
@@ -996,7 +996,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6650,
+      "line": 6593,
       "selector": "body:not(.is-mobile) .mod-root .workspace-tab-header-container, body:not(.is-mobile) .mod-root .view-header",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.28 — Subdue dark frame lines",
@@ -1014,8 +1014,8 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6765,
-      "selector": "body:not(.is-mobile) .editing-toolbar .editing-toolbar-button, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button, body:not(.is-mobile) .editing-toolbar button, body:not(.is-mobile) .editing-toolbar .clickable-icon",
+      "line": 6711,
+      "selector": "body:not(.is-mobile) .editing-toolbar .editing-toolbar-button, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button, body:not(.is-mobile) .editing-toolbar button, body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton), body:not(.is-mobile) .editing-toolbar .clickable-icon",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
       "matched_selectors": [
@@ -1034,7 +1034,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6859,
+      "line": 6808,
       "selector": "body:not(.is-mobile) .editing-toolbar-modal button, body:not(.is-mobile) .editing-toolbar-modal .clickable-icon, body:not(.is-mobile) .editing-toolbar-popover button, body:not(.is-mobile) .editing-toolbar-popover .clickable-icon, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button, body:not(.is-mobile) [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.33 — Editing toolbar submenu glass",
@@ -1054,7 +1054,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 7895,
+      "line": 7928,
       "selector": "body:not(.is-mobile) .workspace-tab-header",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -1071,7 +1071,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 7940,
+      "line": 7973,
       "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -1088,7 +1088,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 7965,
+      "line": 7998,
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -1107,7 +1107,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 468,
+      "line": 513,
       "selector": "button:hover, .clickable-icon:hover, .setting-item-control button:hover, .modal button:hover",
       "context": "root",
       "block": "v1.8.68 — Hide inline title by default (filename is shown in tab header).",
@@ -1126,7 +1126,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 1940,
+      "line": 2001,
       "selector": ".workspace-tab-header.is-active",
       "context": "root",
       "block": "Nested blockquote depth coloring — v1.8.65 tonal steps",
@@ -1141,7 +1141,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6656,
+      "line": 6599,
       "selector": "body:not(.is-mobile).theme-dark .mod-root .workspace-tab-header-container, body:not(.is-mobile).theme-dark .mod-root .view-header",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.28 — Subdue dark frame lines",
@@ -1157,7 +1157,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6662,
+      "line": 6605,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root, body:not(.is-mobile) .mod-root .workspace-leaf, body:not(.is-mobile) .mod-root .workspace-tabs",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.28 — Subdue dark frame lines",
@@ -1174,7 +1174,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6668,
+      "line": 6611,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root, body:not(.is-mobile).theme-dark .mod-root .workspace-leaf, body:not(.is-mobile).theme-dark .mod-root .workspace-tabs",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.28 — Subdue dark frame lines",
@@ -1191,8 +1191,8 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6788,
-      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button, body:not(.is-mobile).theme-dark .editing-toolbar button, body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon",
+      "line": 6736,
+      "selector": "body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button, body:not(.is-mobile).theme-dark .editing-toolbar button, body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton), body:not(.is-mobile).theme-dark .editing-toolbar .clickable-icon",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.32 — Editing toolbar glass surface + glass icons",
       "matched_selectors": [
@@ -1210,7 +1210,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6886,
+      "line": 6835,
       "selector": "body:not(.is-mobile).theme-dark .editing-toolbar-modal button, body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon, body:not(.is-mobile).theme-dark .editing-toolbar-popover button, body:not(.is-mobile).theme-dark .editing-toolbar-popover .clickable-icon, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] button, body:not(.is-mobile).theme-dark [class*=\"cMenuToolbar\"][class*=\"Submenu\"] .clickable-icon",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.33 — Editing toolbar submenu glass",
@@ -1229,7 +1229,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 7090,
+      "line": 7041,
       "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.37 — macOS sidebar toggle reset",
@@ -1244,7 +1244,24 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 7933,
+      "line": 7856,
+      "selector": "body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .nav-file-title.is-active, .nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu, .editingToolbarButton, .menu, .menu .menu-item, .tooltip, .view-header-breadcrumb, .suggestion-container, .search-suggest-container, .search-suggestion-container ), body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .nav-file-title.is-active, .nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover, .editingToolbarButton, .menu .menu-item, .view-header-breadcrumb, .suggestion-item, .search-suggest-item ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
+      "context": "@media (min-width: 701px)",
+      "block": "v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation.",
+      "matched_selectors": [
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 7966,
       "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active), body:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner, body:not(.is-mobile) .workspace-tab-header.is-active, body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -1259,7 +1276,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 7953,
+      "line": 7986,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -1274,7 +1291,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8368,
+      "line": 8401,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(.clickable-icon, button, .search-input-clear-button), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container + .clickable-icon, .search-input-container ~ .clickable-icon, .search-input-container + button, .search-input-container ~ button)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
@@ -1293,7 +1310,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 9387,
+      "line": 9428,
       "selector": ".workspace-tab-header-inner-title",
       "context": "@media (max-width: 768px)",
       "block": "1. Dark mode parity for v1.8.6x components",
@@ -1308,10 +1325,10 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 4951,
+      "line": 5011,
       "selector": ".canvas-control-item, .canvas-card-menu .clickable-icon",
       "context": "root",
-      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "block": "v1.8.5 - Canvas + Graph + Link panes polish",
       "matched_selectors": [
         ".clickable-icon"
       ],
@@ -1326,10 +1343,10 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 4956,
+      "line": 5016,
       "selector": ".canvas-control-item:hover, .canvas-card-menu .clickable-icon:hover",
       "context": "root",
-      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "block": "v1.8.5 - Canvas + Graph + Link panes polish",
       "matched_selectors": [
         ".clickable-icon"
       ],
@@ -1344,10 +1361,10 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 5092,
+      "line": 5152,
       "selector": ".theme-dark .canvas-control-item:hover, .theme-dark .canvas-card-menu .clickable-icon:hover",
       "context": "root",
-      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "block": "v1.8.5 - Canvas + Graph + Link panes polish",
       "matched_selectors": [
         ".clickable-icon"
       ],
@@ -1362,10 +1379,10 @@
     {
       "severity": "info",
       "score": 6,
-      "line": 5088,
+      "line": 5148,
       "selector": ".theme-dark .canvas-control-item, .theme-dark .canvas-card-menu .clickable-icon",
       "context": "root",
-      "block": "v1.8.5 — Canvas + Graph + Link panes polish",
+      "block": "v1.8.5 - Canvas + Graph + Link panes polish",
       "matched_selectors": [
         ".clickable-icon"
       ],
@@ -1379,7 +1396,7 @@
     {
       "severity": "info",
       "score": 6,
-      "line": 6591,
+      "line": 6534,
       "selector": "body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton)",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.24 — Editing toolbar hover glass",
@@ -1396,7 +1413,7 @@
     {
       "severity": "info",
       "score": 5,
-      "line": 7768,
+      "line": 7762,
       "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation.",
@@ -1411,8 +1428,8 @@
     {
       "severity": "info",
       "score": 5,
-      "line": 7823,
-      "selector": "body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu), body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
+      "line": 7817,
+      "selector": "body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu), body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation.",
       "matched_selectors": [
@@ -1426,7 +1443,7 @@
     {
       "severity": "info",
       "score": 5,
-      "line": 8404,
+      "line": 8441,
       "selector": "body:not(.is-mobile) :is( .nav-file-title, .nav-folder-title, .breadcrumb, .menu-item, .suggestion-item, .search-suggest-item, .search-input-container, .setting-item, .setting-item-control button, .checkbox-container, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar-item-segment, .metadata-property, .editingToolbarModalBar .clickable-icon, .editingToolbarPopover .clickable-icon, .editingToolbarButton ), body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice)",
       "context": "@media (prefers-reduced-motion: reduce)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
