@@ -148,7 +148,72 @@
     border: 1px solid transparent !important;
     border-radius: var(--ogd-radius-pill, 999px) !important;
     margin: 0 1px !important;
+    position: relative !important;
     transition: var(--ogd-glass-transition) !important;
+  }
+
+  body:not(.is-mobile) .status-bar .status-bar-item {
+    position: relative !important;
+  }
+
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
+    content: "" !important;
+    position: absolute !important;
+    left: -3px !important;
+    top: calc(50% - 6px) !important;
+    width: 1px !important;
+    height: 12px !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(14, 165, 233, 0.34), rgba(148, 163, 184, 0)) !important;
+    opacity: 0.72 !important;
+    pointer-events: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(125, 211, 252, 0.36), rgba(148, 163, 184, 0)) !important;
+    opacity: 0.82 !important;
+  }
+
+  body:not(.is-mobile) .modal .modal-close-button {
+    border: 1px solid transparent !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    color: var(--text-muted) !important;
+    transition: var(--ogd-glass-transition-control) !important;
+  }
+
+  body:not(.is-mobile) .modal .modal-close-button:is(:hover, :focus-visible) {
+    background: linear-gradient(180deg, rgba(255, 241, 242, 0.88), rgba(254, 226, 226, 0.56)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: rgba(251, 113, 133, 0.42) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 0 0 1px rgba(244, 63, 94, 0.14), 0 5px 14px rgba(190, 18, 60, 0.14) !important;
+    color: #be123c !important;
+  }
+
+  body:not(.is-mobile).theme-dark .modal .modal-close-button:is(:hover, :focus-visible) {
+    background: linear-gradient(180deg, rgba(127, 29, 29, 0.42), rgba(76, 5, 25, 0.30)) !important;
+    border-color: rgba(251, 113, 133, 0.32) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 0 0 1px rgba(251, 113, 133, 0.10), 0 7px 18px rgba(0, 0, 0, 0.30) !important;
+    color: #fda4af !important;
+  }
+
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="sync" i], [aria-label*="git" i], [data-tooltip*="sync" i], [data-tooltip*="git" i], [title*="sync" i], [title*="git" i]) {
+    border-color: rgba(14, 165, 233, 0.24) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(224, 242, 254, 0.34)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 2px 7px rgba(14, 165, 233, 0.10) !important;
+    color: var(--text-normal) !important;
+    font-variant-numeric: tabular-nums !important;
+    padding-inline: 7px !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="sync" i], [aria-label*="git" i], [data-tooltip*="sync" i], [data-tooltip*="git" i], [title*="sync" i], [title*="git" i]) {
+    border-color: rgba(125, 211, 252, 0.26) !important;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(12, 74, 110, 0.24)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 3px 9px rgba(0, 0, 0, 0.24) !important;
   }
 
   body:not(.is-mobile) .status-bar .status-bar-item-segment:hover {
@@ -437,7 +502,7 @@
     backdrop-filter: var(--ogd-glass-filter) !important;
   }
 
-  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
     backdrop-filter: var(--ogd-glass-filter-soft) !important;
   }
@@ -492,7 +557,7 @@
   }
 
   body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
-  body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+  body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }

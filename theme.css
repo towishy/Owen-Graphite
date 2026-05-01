@@ -1398,6 +1398,60 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   pointer-events: none;
   opacity: 0.8;
 }
+
+.markdown-rendered pre.line-numbers,
+.markdown-preview-view pre.line-numbers,
+.markdown-reading-view pre.line-numbers {
+  counter-reset: ogd-code-line;
+  padding-left: 3.4em !important;
+}
+
+.markdown-rendered pre.line-numbers::before,
+.markdown-preview-view pre.line-numbers::before,
+.markdown-reading-view pre.line-numbers::before {
+  content: "" !important;
+  position: absolute;
+  top: 0.75em;
+  bottom: 0.75em;
+  left: 2.72em;
+  width: 1px;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.40), rgba(148, 163, 184, 0));
+}
+
+.markdown-rendered pre.line-numbers code > :is(.line, .code-line, .token-line),
+.markdown-preview-view pre.line-numbers code > :is(.line, .code-line, .token-line),
+.markdown-reading-view pre.line-numbers code > :is(.line, .code-line, .token-line) {
+  counter-increment: ogd-code-line;
+  display: block;
+  position: relative;
+  min-height: 1.45em;
+}
+
+.markdown-rendered pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.markdown-preview-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.markdown-reading-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before {
+  content: counter(ogd-code-line);
+  position: absolute;
+  right: calc(100% + 1.15em);
+  width: 2.1em;
+  color: rgba(100, 116, 139, 0.76);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  user-select: none;
+}
+
+.theme-dark .markdown-rendered pre.line-numbers::before,
+.theme-dark .markdown-preview-view pre.line-numbers::before,
+.theme-dark .markdown-reading-view pre.line-numbers::before {
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(203, 213, 225, 0.30), rgba(148, 163, 184, 0));
+}
+
+.theme-dark .markdown-rendered pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.theme-dark .markdown-preview-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.theme-dark .markdown-reading-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before {
+  color: rgba(203, 213, 225, 0.62);
+}
 .markdown-rendered pre > code .token.deleted,
 .markdown-rendered pre > code .line-deleted {
   background: rgba(239, 68, 68, 0.12);
@@ -4564,6 +4618,66 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   background: #1b2330 !important;
 }
 
+/* Dataview inline fields: liquid-glass key/value chips. */
+.markdown-rendered :is(.dataview.inline-field, .dataview-inline-field),
+.markdown-preview-view :is(.dataview.inline-field, .dataview-inline-field),
+.markdown-reading-view :is(.dataview.inline-field, .dataview-inline-field) {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 0.22em !important;
+  max-width: 100% !important;
+  vertical-align: baseline !important;
+}
+
+.markdown-rendered :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.markdown-preview-view :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.markdown-reading-view :is(.dataview.inline-field-key, .dataview-inline-field-key) {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.35em !important;
+  padding: 0.05em 0.46em !important;
+  border: 1px solid rgba(14, 165, 233, 0.26) !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: linear-gradient(180deg, rgba(224, 242, 254, 0.72), rgba(186, 230, 253, 0.34)) !important;
+  color: #075985 !important;
+  font-size: 0.86em !important;
+  font-weight: 750 !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+}
+
+.markdown-rendered :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.markdown-preview-view :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.markdown-reading-view :is(.dataview.inline-field-value, .dataview-inline-field-value) {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.35em !important;
+  padding: 0.05em 0.5em !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.38)) !important;
+  color: var(--text-normal) !important;
+  font-variant-numeric: tabular-nums !important;
+  line-height: 1.25 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.theme-dark .markdown-rendered :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.theme-dark .markdown-preview-view :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.theme-dark .markdown-reading-view :is(.dataview.inline-field-key, .dataview-inline-field-key) {
+  border-color: rgba(125, 211, 252, 0.26) !important;
+  background: linear-gradient(180deg, rgba(12, 74, 110, 0.44), rgba(14, 116, 144, 0.22)) !important;
+  color: #bae6fd !important;
+}
+
+.theme-dark .markdown-rendered :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.theme-dark .markdown-preview-view :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.theme-dark .markdown-reading-view :is(.dataview.inline-field-value, .dataview-inline-field-value) {
+  border-color: rgba(203, 213, 225, 0.18) !important;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.54), rgba(15, 23, 42, 0.32)) !important;
+  color: var(--text-normal) !important;
+}
+
 /* ============================================================
   v1.8.4 - Settings + controls polish
    - Style Settings panels inherit the calm Graphite report tone
@@ -7089,7 +7203,72 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border: 1px solid transparent !important;
     border-radius: var(--ogd-radius-pill, 999px) !important;
     margin: 0 1px !important;
+    position: relative !important;
     transition: var(--ogd-glass-transition) !important;
+  }
+
+  body:not(.is-mobile) .status-bar .status-bar-item {
+    position: relative !important;
+  }
+
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
+    content: "" !important;
+    position: absolute !important;
+    left: -3px !important;
+    top: calc(50% - 6px) !important;
+    width: 1px !important;
+    height: 12px !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(14, 165, 233, 0.34), rgba(148, 163, 184, 0)) !important;
+    opacity: 0.72 !important;
+    pointer-events: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(125, 211, 252, 0.36), rgba(148, 163, 184, 0)) !important;
+    opacity: 0.82 !important;
+  }
+
+  body:not(.is-mobile) .modal .modal-close-button {
+    border: 1px solid transparent !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    color: var(--text-muted) !important;
+    transition: var(--ogd-glass-transition-control) !important;
+  }
+
+  body:not(.is-mobile) .modal .modal-close-button:is(:hover, :focus-visible) {
+    background: linear-gradient(180deg, rgba(255, 241, 242, 0.88), rgba(254, 226, 226, 0.56)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: rgba(251, 113, 133, 0.42) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 0 0 1px rgba(244, 63, 94, 0.14), 0 5px 14px rgba(190, 18, 60, 0.14) !important;
+    color: #be123c !important;
+  }
+
+  body:not(.is-mobile).theme-dark .modal .modal-close-button:is(:hover, :focus-visible) {
+    background: linear-gradient(180deg, rgba(127, 29, 29, 0.42), rgba(76, 5, 25, 0.30)) !important;
+    border-color: rgba(251, 113, 133, 0.32) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 0 0 1px rgba(251, 113, 133, 0.10), 0 7px 18px rgba(0, 0, 0, 0.30) !important;
+    color: #fda4af !important;
+  }
+
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="sync" i], [aria-label*="git" i], [data-tooltip*="sync" i], [data-tooltip*="git" i], [title*="sync" i], [title*="git" i]) {
+    border-color: rgba(14, 165, 233, 0.24) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(224, 242, 254, 0.34)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 2px 7px rgba(14, 165, 233, 0.10) !important;
+    color: var(--text-normal) !important;
+    font-variant-numeric: tabular-nums !important;
+    padding-inline: 7px !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="sync" i], [aria-label*="git" i], [data-tooltip*="sync" i], [data-tooltip*="git" i], [title*="sync" i], [title*="git" i]) {
+    border-color: rgba(125, 211, 252, 0.26) !important;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(12, 74, 110, 0.24)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 3px 9px rgba(0, 0, 0, 0.24) !important;
   }
 
   body:not(.is-mobile) .status-bar .status-bar-item-segment:hover {
@@ -7378,7 +7557,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     backdrop-filter: var(--ogd-glass-filter) !important;
   }
 
-  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
     backdrop-filter: var(--ogd-glass-filter-soft) !important;
   }
@@ -7433,7 +7612,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
-  body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+  body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }

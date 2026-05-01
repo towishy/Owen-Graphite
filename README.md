@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.19` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
+| **버전** | `2.22.20` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -171,7 +171,23 @@ fi
 
 ## 4. 테마 신기능
 
-아래 항목은 현재 DEV CSS에서 selector/토큰 구현이 확인된 범위만 기록합니다. 플러그인별 DOM 검증이 필요한 항목이나 설명 대비 구현 범위가 좁은 항목은 README에서 제외하고, 재도입 후보는 [docs/future-recommendations.md](docs/future-recommendations.md)에 분리했습니다.
+아래 항목은 현재 DEV CSS에서 selector/토큰 구현이 확인된 범위만 기록합니다. 플러그인별 DOM 검증이 필요한 항목이나 설명 대비 구현 범위가 좁은 항목은 README에서 제외했습니다.
+
+### ✨ v2.22.20 — Liquid Glass Recommended Polish Pack
+
+검증된 강력 추천 5개 항목을 실제 테마 CSS로 반영했습니다.
+
+![v2.22.20 — Liquid Glass Recommended Polish Pack](screenshots/readme/v2.22.20-liquid-glass-polish.svg)
+
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Status bar separator | 상태바 항목 사이에 layout shift 없는 cyan/graphite 미세 구분선 추가 |
+| 2 | Modal close chrome | `.modal-close-button` hover/focus에 rose tint + inset ring glass chrome 적용 |
+| 3 | Dataview inline field chip | Dataview inline field key/value를 본문 흐름에 맞는 glass chip으로 정리 |
+| 4 | Sync/Git status pill | sync/git status bar item을 attribute 기반으로 좁게 감지해 semantic glass pill 처리 |
+| 5 | Code block line numbers | `pre.line-numbers` opt-in 코드블록에 CSS counter 기반 line wrapper 행 번호 gutter 추가 |
+
+---
 
 ### ✨ v2.22.13 — Windows tab/button stable baseline
 
@@ -282,10 +298,11 @@ Task glyph · prompt/suggestion glass · Canvas controls · status bar segment h
 
 ## 5. Change Log
 
-현 롤백 베이스라인은 **v2.22.19**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 롤백 베이스라인은 **v2.22.20**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.20** | Liquid glass recommended polish pack — 상태바 separator · 모달 닫기 버튼 chrome · Dataview inline field chip · Sync/Git status pill · opt-in 코드 행 번호 추가 |
 | **v2.22.19** | File explorer active path release — 선택 문서의 최상위 폴더 glass selected state와 중간 경로 폴더 Path Rail 표시 추가 |
 | **v2.22.18** | Active document icon glow hotfix — 선택 문서 cyan underline을 아이콘 아래에서 제목 끝까지 확장 |
 | **v2.22.17** | Liquid glass polish release — glass token 정규화, active 문서 아이콘 강화, breadcrumb C안 centerline glow + hover glass icon, tooltip/nav proximity 보정 |

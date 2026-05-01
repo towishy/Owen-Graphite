@@ -4,6 +4,21 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.20] — 2026-05-01 — Liquid glass recommended polish pack
+
+### Added
+- 상태바 항목 사이에 layout shift 없는 cyan/graphite 미세 separator를 추가.
+- 모달 닫기 버튼에 rose hover/focus glass chrome을 추가해 닫기 동작을 더 명확하게 표시.
+- Dataview inline field key/value를 본문 흐름 안에서 읽기 쉬운 liquid-glass chip으로 정리.
+- Sync/Git status bar indicator를 attribute 기반으로 좁게 감지해 semantic glass pill로 표시.
+- `pre.line-numbers` opt-in 코드블록에 line wrapper(`.line`, `.code-line`, `.token-line`)가 있는 경우 CSS counter 기반 행 번호 gutter를 제공.
+
+### Changed
+- 구현 완료된 강력 추천 항목만 남기고 이전 future recommendations 문서/샘플 이미지는 제거.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.19] — 2026-05-01 — File explorer active path release
 
 ### Added

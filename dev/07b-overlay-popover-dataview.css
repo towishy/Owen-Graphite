@@ -189,3 +189,63 @@
   background: #1b2330 !important;
 }
 
+/* Dataview inline fields: liquid-glass key/value chips. */
+.markdown-rendered :is(.dataview.inline-field, .dataview-inline-field),
+.markdown-preview-view :is(.dataview.inline-field, .dataview-inline-field),
+.markdown-reading-view :is(.dataview.inline-field, .dataview-inline-field) {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 0.22em !important;
+  max-width: 100% !important;
+  vertical-align: baseline !important;
+}
+
+.markdown-rendered :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.markdown-preview-view :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.markdown-reading-view :is(.dataview.inline-field-key, .dataview-inline-field-key) {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.35em !important;
+  padding: 0.05em 0.46em !important;
+  border: 1px solid rgba(14, 165, 233, 0.26) !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: linear-gradient(180deg, rgba(224, 242, 254, 0.72), rgba(186, 230, 253, 0.34)) !important;
+  color: #075985 !important;
+  font-size: 0.86em !important;
+  font-weight: 750 !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+}
+
+.markdown-rendered :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.markdown-preview-view :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.markdown-reading-view :is(.dataview.inline-field-value, .dataview-inline-field-value) {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.35em !important;
+  padding: 0.05em 0.5em !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.38)) !important;
+  color: var(--text-normal) !important;
+  font-variant-numeric: tabular-nums !important;
+  line-height: 1.25 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.theme-dark .markdown-rendered :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.theme-dark .markdown-preview-view :is(.dataview.inline-field-key, .dataview-inline-field-key),
+.theme-dark .markdown-reading-view :is(.dataview.inline-field-key, .dataview-inline-field-key) {
+  border-color: rgba(125, 211, 252, 0.26) !important;
+  background: linear-gradient(180deg, rgba(12, 74, 110, 0.44), rgba(14, 116, 144, 0.22)) !important;
+  color: #bae6fd !important;
+}
+
+.theme-dark .markdown-rendered :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.theme-dark .markdown-preview-view :is(.dataview.inline-field-value, .dataview-inline-field-value),
+.theme-dark .markdown-reading-view :is(.dataview.inline-field-value, .dataview-inline-field-value) {
+  border-color: rgba(203, 213, 225, 0.18) !important;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.54), rgba(15, 23, 42, 0.32)) !important;
+  color: var(--text-normal) !important;
+}
+

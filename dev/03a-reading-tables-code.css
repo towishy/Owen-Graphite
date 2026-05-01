@@ -120,6 +120,60 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   pointer-events: none;
   opacity: 0.8;
 }
+
+.markdown-rendered pre.line-numbers,
+.markdown-preview-view pre.line-numbers,
+.markdown-reading-view pre.line-numbers {
+  counter-reset: ogd-code-line;
+  padding-left: 3.4em !important;
+}
+
+.markdown-rendered pre.line-numbers::before,
+.markdown-preview-view pre.line-numbers::before,
+.markdown-reading-view pre.line-numbers::before {
+  content: "" !important;
+  position: absolute;
+  top: 0.75em;
+  bottom: 0.75em;
+  left: 2.72em;
+  width: 1px;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.40), rgba(148, 163, 184, 0));
+}
+
+.markdown-rendered pre.line-numbers code > :is(.line, .code-line, .token-line),
+.markdown-preview-view pre.line-numbers code > :is(.line, .code-line, .token-line),
+.markdown-reading-view pre.line-numbers code > :is(.line, .code-line, .token-line) {
+  counter-increment: ogd-code-line;
+  display: block;
+  position: relative;
+  min-height: 1.45em;
+}
+
+.markdown-rendered pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.markdown-preview-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.markdown-reading-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before {
+  content: counter(ogd-code-line);
+  position: absolute;
+  right: calc(100% + 1.15em);
+  width: 2.1em;
+  color: rgba(100, 116, 139, 0.76);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  user-select: none;
+}
+
+.theme-dark .markdown-rendered pre.line-numbers::before,
+.theme-dark .markdown-preview-view pre.line-numbers::before,
+.theme-dark .markdown-reading-view pre.line-numbers::before {
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(203, 213, 225, 0.30), rgba(148, 163, 184, 0));
+}
+
+.theme-dark .markdown-rendered pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.theme-dark .markdown-preview-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before,
+.theme-dark .markdown-reading-view pre.line-numbers code > :is(.line, .code-line, .token-line)::before {
+  color: rgba(203, 213, 225, 0.62);
+}
 .markdown-rendered pre > code .token.deleted,
 .markdown-rendered pre > code .line-deleted {
   background: rgba(239, 68, 68, 0.12);
