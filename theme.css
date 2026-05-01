@@ -5527,9 +5527,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
    - Mobile scroll affordance for wide Markdown tables
    ============================================================ */
 
-.markdown-rendered table,
-.markdown-preview-view table,
-.markdown-reading-view table,
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
 .markdown-source-view.mod-cm6 .cm-table-widget,
 .markdown-source-view.mod-cm6 table.cm-table {
   --ogd-table-pad-y: 0.58em;
@@ -5537,36 +5535,25 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   --ogd-table-font-size: 0.96em;
   --ogd-table-line-height: 1.42;
 }
-.markdown-rendered table :is(th, td),
-.markdown-preview-view table :is(th, td),
-.markdown-reading-view table :is(th, td) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
   padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x) !important;
   font-size: var(--ogd-table-font-size) !important;
   line-height: var(--ogd-table-line-height) !important;
   vertical-align: top !important;
 }
-.markdown-rendered table :is(th, td),
-.markdown-preview-view table :is(th, td),
-.markdown-reading-view table :is(th, td),
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
 .markdown-source-view.mod-cm6 .cm-table-widget :is(th, td),
 .markdown-source-view.mod-cm6 table.cm-table :is(th, td) {
   word-break: keep-all !important;
   overflow-wrap: anywhere !important;
 }
-.markdown-rendered table :is(td, th) code,
-.markdown-preview-view table :is(td, th) code,
-.markdown-reading-view table :is(td, th) code {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(td, th) code {
   padding: 0.08em 0.32em !important;
   font-size: 0.88em !important;
   white-space: normal !important;
   overflow-wrap: anywhere !important;
 }
-.markdown-rendered table.nowrap-code-table :is(td, th) code,
-.markdown-preview-view table.nowrap-code-table :is(td, th) code,
-.markdown-reading-view table.nowrap-code-table :is(td, th) code,
-.markdown-rendered table.scroll-token-table :is(td, th) code,
-.markdown-preview-view table.scroll-token-table :is(td, th) code,
-.markdown-reading-view table.scroll-token-table :is(td, th) code {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.nowrap-code-table, .scroll-token-table) :is(td, th) code {
   display: inline-block !important;
   max-width: min(42ch, 100%) !important;
   white-space: nowrap !important;
@@ -5575,181 +5562,116 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   vertical-align: bottom !important;
 }
 @supports selector(td:has(code)) {
-  .markdown-rendered table.scroll-token-table :is(td, th):has(code),
-  .markdown-preview-view table.scroll-token-table :is(td, th):has(code),
-  .markdown-reading-view table.scroll-token-table :is(td, th):has(code) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.scroll-token-table :is(td, th):has(code) {
     min-width: 16ch !important;
   }
 }
-.markdown-rendered table.scroll-table,
-.markdown-preview-view table.scroll-table,
-.markdown-reading-view table.scroll-table {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.scroll-table {
   display: block !important;
   max-width: 100% !important;
   overflow-x: auto !important;
   table-layout: auto !important;
 }
 
-.markdown-rendered table.wide-table,
-.markdown-rendered table.print-fit-table,
-.markdown-preview-view table.wide-table,
-.markdown-preview-view table.print-fit-table,
-.markdown-reading-view table.wide-table,
-.markdown-reading-view table.print-fit-table {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table) {
   --ogd-table-pad-y: 0.44em;
   --ogd-table-pad-x: 0.56em;
   --ogd-table-font-size: 0.9em;
   --ogd-table-line-height: 1.34;
 }
-.markdown-rendered table.compact-table,
-.markdown-preview-view table.compact-table,
-.markdown-reading-view table.compact-table {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.compact-table {
   --ogd-table-pad-y: 0.34em;
   --ogd-table-pad-x: 0.48em;
   --ogd-table-font-size: 0.88em;
   --ogd-table-line-height: 1.28;
 }
-.markdown-rendered table.wrap-table,
-.markdown-preview-view table.wrap-table,
-.markdown-reading-view table.wrap-table {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table {
   table-layout: fixed !important;
   width: 100% !important;
 }
-.markdown-rendered table.wrap-table :is(th, td),
-.markdown-preview-view table.wrap-table :is(th, td),
-.markdown-reading-view table.wrap-table :is(th, td) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table :is(th, td) {
   word-break: break-word !important;
   overflow-wrap: anywhere !important;
 }
-.markdown-rendered table.numeric-table :is(td, th):not(:first-child),
-.markdown-preview-view table.numeric-table :is(td, th):not(:first-child),
-.markdown-reading-view table.numeric-table :is(td, th):not(:first-child),
-.markdown-rendered table :is(td.num, th.num),
-.markdown-preview-view table :is(td.num, th.num),
-.markdown-reading-view table :is(td.num, th.num) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.numeric-table :is(td, th):not(:first-child),
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(td.num, th.num) {
   text-align: right !important;
   font-variant-numeric: tabular-nums lining-nums !important;
 }
-.markdown-rendered table.comparison-table th:first-child,
-.markdown-rendered table.comparison-table td:first-child,
-.markdown-preview-view table.comparison-table th:first-child,
-.markdown-preview-view table.comparison-table td:first-child,
-.markdown-reading-view table.comparison-table th:first-child,
-.markdown-reading-view table.comparison-table td:first-child {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
   background: var(--ogd-surface-muted, #f8fafc) !important;
   color: var(--ogd-text-strong, #111827) !important;
   font-weight: 700 !important;
   box-shadow: 1px 0 0 #e5e7eb !important;
 }
-.markdown-rendered table.matrix-table :is(th, td),
-.markdown-preview-view table.matrix-table :is(th, td),
-.markdown-reading-view table.matrix-table :is(th, td) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.matrix-table :is(th, td) {
   text-align: center !important;
   vertical-align: middle !important;
 }
-.markdown-rendered table.matrix-table th:first-child,
-.markdown-rendered table.matrix-table td:first-child,
-.markdown-preview-view table.matrix-table th:first-child,
-.markdown-preview-view table.matrix-table td:first-child,
-.markdown-reading-view table.matrix-table th:first-child,
-.markdown-reading-view table.matrix-table td:first-child {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.matrix-table :is(th, td):first-child {
   text-align: left !important;
 }
 
-.markdown-rendered table.risk-table :is(td, th),
-.markdown-preview-view table.risk-table :is(td, th),
-.markdown-reading-view table.risk-table :is(td, th) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table :is(td, th) {
   vertical-align: middle !important;
 }
-.markdown-rendered table.risk-table td,
-.markdown-preview-view table.risk-table td,
-.markdown-reading-view table.risk-table td {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td {
   color: var(--ogd-text-secondary, #374151) !important;
 }
-.markdown-rendered table.risk-table td:is(:last-child),
-.markdown-preview-view table.risk-table td:is(:last-child),
-.markdown-reading-view table.risk-table td:is(:last-child) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:is(:last-child) {
   font-weight: 700 !important;
 }
-.markdown-rendered table.risk-table td:last-child:where(:not(:empty)),
-.markdown-preview-view table.risk-table td:last-child:where(:not(:empty)),
-.markdown-reading-view table.risk-table td:last-child:where(:not(:empty)) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:last-child:where(:not(:empty)) {
   border-radius: var(--radius-m, 6px) !important;
 }
-.markdown-rendered table.risk-table td:last-child,
-.markdown-preview-view table.risk-table td:last-child,
-.markdown-reading-view table.risk-table td:last-child {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:last-child {
   text-align: center !important;
   white-space: nowrap !important;
 }
 @supports selector(td:has(code)) {
-  .markdown-rendered table.risk-table td:last-child:has(code),
-  .markdown-preview-view table.risk-table td:last-child:has(code),
-  .markdown-reading-view table.risk-table td:last-child:has(code) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:last-child:has(code) {
     white-space: normal !important;
   }
 }
-.markdown-rendered table.risk-table .risk-high,
-.markdown-preview-view table.risk-table .risk-high,
-.markdown-reading-view table.risk-table .risk-high {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-high {
   color: #991b1b !important;
   background: #fee2e2 !important;
 }
-.markdown-rendered table.risk-table .risk-medium,
-.markdown-preview-view table.risk-table .risk-medium,
-.markdown-reading-view table.risk-table .risk-medium {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-medium {
   color: #92400e !important;
   background: #fef3c7 !important;
 }
-.markdown-rendered table.risk-table .risk-low,
-.markdown-preview-view table.risk-table .risk-low,
-.markdown-reading-view table.risk-table .risk-low,
-.markdown-rendered table.risk-table .risk-ok,
-.markdown-preview-view table.risk-table .risk-ok,
-.markdown-reading-view table.risk-table .risk-ok {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table :is(.risk-low, .risk-ok) {
   color: #065f46 !important;
   background: #d1fae5 !important;
 }
 
-.markdown-rendered .table-note,
-.markdown-rendered .table-source,
-.markdown-preview-view .table-note,
-.markdown-preview-view .table-source,
-.markdown-reading-view .table-note,
-.markdown-reading-view .table-source {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
   margin-top: -0.35em !important;
   margin-bottom: 1.1em !important;
   color: #64748b !important;
   font-size: 0.86em !important;
   line-height: 1.35 !important;
 }
-.markdown-rendered .table-note::before,
-.markdown-preview-view .table-note::before,
-.markdown-reading-view .table-note::before {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .table-note::before {
   content: "Note. ";
   font-weight: 700 !important;
   color: var(--ogd-text-subtle, #475569) !important;
 }
-.markdown-rendered .table-source::before,
-.markdown-preview-view .table-source::before,
-.markdown-reading-view .table-source::before {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .table-source::before {
   content: "Source. ";
   font-weight: 700 !important;
   color: var(--ogd-text-subtle, #475569) !important;
 }
 
-.markdown-rendered :is(ol, ul).ogd-reference-list,
-.markdown-preview-view :is(ol, ul).ogd-reference-list,
-.markdown-reading-view :is(ol, ul).ogd-reference-list {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list {
   margin: 0.8em 0 1.2em !important;
   padding: 0 !important;
   list-style: none !important;
   border-top: 1px solid rgba(148, 163, 184, 0.28) !important;
 }
 
-.markdown-rendered :is(ol, ul).ogd-reference-list > li,
-.markdown-preview-view :is(ol, ul).ogd-reference-list > li,
-.markdown-reading-view :is(ol, ul).ogd-reference-list > li {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list > li {
   display: grid !important;
   grid-template-columns: minmax(86px, 7.2em) minmax(0, 1fr) !important;
   gap: 0.7em !important;
@@ -5759,15 +5681,11 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   border-bottom: 1px solid rgba(148, 163, 184, 0.28) !important;
 }
 
-.markdown-rendered :is(ol, ul).ogd-reference-list > li::before,
-.markdown-preview-view :is(ol, ul).ogd-reference-list > li::before,
-.markdown-reading-view :is(ol, ul).ogd-reference-list > li::before {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list > li::before {
   display: none !important;
 }
 
-.markdown-rendered .ogd-reference-source,
-.markdown-preview-view .ogd-reference-source,
-.markdown-reading-view .ogd-reference-source {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-source {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -5783,42 +5701,29 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   white-space: nowrap !important;
 }
 
-.markdown-rendered .ogd-reference-main,
-.markdown-preview-view .ogd-reference-main,
-.markdown-reading-view .ogd-reference-main {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-main {
   min-width: 0 !important;
   color: #64748b !important;
   line-height: 1.48 !important;
 }
 
-.markdown-rendered .ogd-reference-title,
-.markdown-preview-view .ogd-reference-title,
-.markdown-reading-view .ogd-reference-title {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-title {
   display: inline !important;
   font-weight: 760 !important;
 }
 
-.markdown-rendered .ogd-reference-meta,
-.markdown-preview-view .ogd-reference-meta,
-.markdown-reading-view .ogd-reference-meta,
-.markdown-rendered .ogd-reference-note,
-.markdown-preview-view .ogd-reference-note,
-.markdown-reading-view .ogd-reference-note {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-reference-meta, .ogd-reference-note) {
   color: #64748b !important;
   font-size: 0.92em !important;
 }
 
-.markdown-rendered .ogd-reference-note,
-.markdown-preview-view .ogd-reference-note,
-.markdown-reading-view .ogd-reference-note {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-note {
   display: block !important;
   margin-top: 0.2em !important;
   line-height: 1.42 !important;
 }
 
-.markdown-rendered .ogd-reference-summary,
-.markdown-preview-view .ogd-reference-summary,
-.markdown-reading-view .ogd-reference-summary {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-summary {
   margin: 0.65em 0 1em !important;
   padding: 0.72em 0.9em !important;
   border-left: 3px solid #94a3b8 !important;
@@ -5828,168 +5733,95 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   line-height: 1.5 !important;
 }
 
-.theme-dark .markdown-rendered :is(ol, ul).ogd-reference-list,
-.theme-dark .markdown-preview-view :is(ol, ul).ogd-reference-list,
-.theme-dark .markdown-reading-view :is(ol, ul).ogd-reference-list,
-.theme-dark .markdown-rendered :is(ol, ul).ogd-reference-list > li,
-.theme-dark .markdown-preview-view :is(ol, ul).ogd-reference-list > li,
-.theme-dark .markdown-reading-view :is(ol, ul).ogd-reference-list > li {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(:is(ol, ul).ogd-reference-list, :is(ol, ul).ogd-reference-list > li) {
   border-color: rgba(203, 213, 225, 0.16) !important;
 }
 
-.theme-dark .markdown-rendered .ogd-reference-source,
-.theme-dark .markdown-preview-view .ogd-reference-source,
-.theme-dark .markdown-reading-view .ogd-reference-source {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-source {
   border-color: rgba(203, 213, 225, 0.24) !important;
   background: rgba(30, 41, 59, 0.74) !important;
   color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 
-.theme-dark .markdown-rendered .ogd-reference-main,
-.theme-dark .markdown-preview-view .ogd-reference-main,
-.theme-dark .markdown-reading-view .ogd-reference-main,
-.theme-dark .markdown-rendered .ogd-reference-meta,
-.theme-dark .markdown-preview-view .ogd-reference-meta,
-.theme-dark .markdown-reading-view .ogd-reference-meta,
-.theme-dark .markdown-rendered .ogd-reference-note,
-.theme-dark .markdown-preview-view .ogd-reference-note,
-.theme-dark .markdown-reading-view .ogd-reference-note {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-reference-main, .ogd-reference-meta, .ogd-reference-note) {
   color: var(--ogd-text-soft, #94a3b8) !important;
 }
 
-.theme-dark .markdown-rendered .ogd-reference-summary,
-.theme-dark .markdown-preview-view .ogd-reference-summary,
-.theme-dark .markdown-reading-view .ogd-reference-summary {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-summary {
   border-left-color: var(--ogd-text-soft, #94a3b8) !important;
   background: rgba(30, 41, 59, 0.56) !important;
   color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 
 @media (max-width: 700px) {
-  .markdown-rendered :is(ol, ul).ogd-reference-list > li,
-  .markdown-preview-view :is(ol, ul).ogd-reference-list > li,
-  .markdown-reading-view :is(ol, ul).ogd-reference-list > li {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list > li {
     grid-template-columns: 1fr !important;
     gap: 0.3em !important;
   }
 
-  .markdown-rendered .ogd-reference-source,
-  .markdown-preview-view .ogd-reference-source,
-  .markdown-reading-view .ogd-reference-source {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-source {
     justify-self: start !important;
   }
 
-  .markdown-rendered table,
-  .markdown-preview-view table,
-  .markdown-reading-view table {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     position: relative !important;
     box-shadow: inset -16px 0 14px -18px rgba(15, 23, 42, 0.42) !important;
   }
-  .markdown-rendered table.wide-table,
-  .markdown-rendered table.print-fit-table,
-  .markdown-rendered table.comparison-table,
-  .markdown-preview-view table.wide-table,
-  .markdown-preview-view table.print-fit-table,
-  .markdown-preview-view table.comparison-table,
-  .markdown-reading-view table.wide-table,
-  .markdown-reading-view table.print-fit-table,
-  .markdown-reading-view table.comparison-table {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table, .comparison-table) {
     min-width: 760px !important;
   }
 }
 
 @media print {
-  .markdown-rendered table,
-  .markdown-preview-view table,
-  .markdown-reading-view table {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     overflow: visible !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
-  .markdown-rendered table tr,
-  .markdown-preview-view table tr,
-  .markdown-reading-view table tr {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
-  .markdown-rendered table.print-fit-table,
-  .markdown-preview-view table.print-fit-table,
-  .markdown-reading-view table.print-fit-table,
-  .markdown-rendered table.wide-table,
-  .markdown-preview-view table.wide-table,
-  .markdown-reading-view table.wide-table {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.print-fit-table, .wide-table) {
     --ogd-table-pad-y: 0.28em;
     --ogd-table-pad-x: 0.42em;
     --ogd-table-font-size: 8.8pt;
     --ogd-table-line-height: 1.24;
   }
-  .markdown-rendered table.wrap-table,
-  .markdown-preview-view table.wrap-table,
-  .markdown-reading-view table.wrap-table {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table {
     table-layout: fixed !important;
   }
-  .markdown-rendered .table-note,
-  .markdown-rendered .table-source,
-  .markdown-preview-view .table-note,
-  .markdown-preview-view .table-source,
-  .markdown-reading-view .table-note,
-  .markdown-reading-view .table-source {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
     break-before: avoid !important;
     page-break-before: avoid !important;
     color: #4b5563 !important;
   }
 }
 
-.theme-dark .markdown-rendered table.comparison-table th:first-child,
-.theme-dark .markdown-rendered table.comparison-table td:first-child,
-.theme-dark .markdown-preview-view table.comparison-table th:first-child,
-.theme-dark .markdown-preview-view table.comparison-table td:first-child,
-.theme-dark .markdown-reading-view table.comparison-table th:first-child,
-.theme-dark .markdown-reading-view table.comparison-table td:first-child {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
   background: var(--ogd-surface-dark, #111827) !important;
   color: var(--ogd-text-inverted, #f8fafc) !important;
   box-shadow: 1px 0 0 #334155 !important;
 }
-.theme-dark .markdown-rendered table.risk-table td,
-.theme-dark .markdown-preview-view table.risk-table td,
-.theme-dark .markdown-reading-view table.risk-table td {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td {
   color: var(--ogd-line-strong, #cbd5e1) !important;
 }
-.theme-dark .markdown-rendered table.risk-table .risk-high,
-.theme-dark .markdown-preview-view table.risk-table .risk-high,
-.theme-dark .markdown-reading-view table.risk-table .risk-high {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-high {
   color: #fecaca !important;
   background: rgba(127, 29, 29, 0.58) !important;
 }
-.theme-dark .markdown-rendered table.risk-table .risk-medium,
-.theme-dark .markdown-preview-view table.risk-table .risk-medium,
-.theme-dark .markdown-reading-view table.risk-table .risk-medium {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-medium {
   color: #fde68a !important;
   background: rgba(120, 53, 15, 0.58) !important;
 }
-.theme-dark .markdown-rendered table.risk-table .risk-low,
-.theme-dark .markdown-preview-view table.risk-table .risk-low,
-.theme-dark .markdown-reading-view table.risk-table .risk-low,
-.theme-dark .markdown-rendered table.risk-table .risk-ok,
-.theme-dark .markdown-preview-view table.risk-table .risk-ok,
-.theme-dark .markdown-reading-view table.risk-table .risk-ok {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table :is(.risk-low, .risk-ok) {
   color: #a7f3d0 !important;
   background: rgba(6, 78, 59, 0.58) !important;
 }
-.theme-dark .markdown-rendered .table-note,
-.theme-dark .markdown-rendered .table-source,
-.theme-dark .markdown-preview-view .table-note,
-.theme-dark .markdown-preview-view .table-source,
-.theme-dark .markdown-reading-view .table-note,
-.theme-dark .markdown-reading-view .table-source {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
   color: var(--ogd-text-soft, #94a3b8) !important;
 }
-.theme-dark .markdown-rendered .table-note::before,
-.theme-dark .markdown-rendered .table-source::before,
-.theme-dark .markdown-preview-view .table-note::before,
-.theme-dark .markdown-preview-view .table-source::before,
-.theme-dark .markdown-reading-view .table-note::before,
-.theme-dark .markdown-reading-view .table-source::before {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source)::before {
   color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 
