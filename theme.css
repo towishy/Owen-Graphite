@@ -8239,6 +8239,19 @@ body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::before {
   opacity: 0.78 !important;
 }
 
+body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 12px !important;
+  bottom: 5px !important;
+  width: 16px !important;
+  height: 2px !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(125, 211, 252, 0.82), rgba(56, 189, 248, 0.12)) !important;
+  box-shadow: 0 0 7px rgba(56, 189, 248, 0.28) !important;
+  pointer-events: none !important;
+}
+
 .markdown-source-view.mod-cm6 ::spelling-error,
 .markdown-source-view.mod-cm6 ::grammar-error {
   text-decoration-line: underline !important;
@@ -8301,6 +8314,11 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(125, 211, 252, 0.64)) !important;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.34)) drop-shadow(0 0 6px rgba(56, 189, 248, 0.28)) !important;
   opacity: 0.82 !important;
+}
+
+body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-content::after {
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.10), rgba(125, 211, 252, 0.74), rgba(56, 189, 248, 0.10)) !important;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.34) !important;
 }
 
 .theme-dark .markdown-source-view.mod-cm6 ::spelling-error,

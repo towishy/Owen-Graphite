@@ -8,7 +8,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Added
 - Breadcrumb/header를 C안 **Minimal Centerline With Active Glow**로 전환: 현재 문서는 cyan glow underline으로 표시하고, breadcrumb segment hover/focus 시에만 작은 liquid-glass folder/document icon tile이 나타나도록 구성.
-- Active document icon glass를 더 선명하게 조정해 파일 탐색기 현재 문서 인식성을 강화.
+- Active document icon glass를 더 선명하게 조정하고 header active underline과 같은 cyan glow line을 아이콘 하단에 반영해 현재 문서 인식성을 강화.
 
 ### Changed
 - Web Liquid Glass 레퍼런스 감각을 Obsidian CSS-only 제약 안에서 재현하도록 `--ogd-glass-*` 토큰 계열의 tint, rim, shadow, blur 사용을 정리.
