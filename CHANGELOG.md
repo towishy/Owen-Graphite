@@ -552,7 +552,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **사용자 클래스 표 확장** — `.cover-page` `.cover-meta` `.cover-rule` `.ogd-mini-toc` v2.0.0 옵인 클래스 도쇄.
 - **파일 구조 광명** — `CONTRIBUTING.md`, `LICENSE`, `.github/workflows/`, `src/` 신규 항목 표시 및 theme.css 라인 그급 명시.
 - **변경 이력 최신화** — v1.8.65 / v1.8.66 / v1.9.0 / v2.0.0 요약 추가.
-- **기여 섹션** — CONTRIBUTING.md / src/README.md 참조 링크 추가.
+- **기여 섹션** — CONTRIBUTING.md / dev/src/README.md 참조 링크 추가.
 
 ## [2.0.1] — 2026-04-29 — README 종합 정리
 
@@ -563,7 +563,7 @@ v2.0.0 시점의 기능·파일 구조·사용자 클래스를 README에 종합 
 - **사용자 클래스 표 확장** — `.cover-page` `.cover-meta` `.cover-rule` `.ogd-mini-toc` v2.0.0 옵인 클래스 도쇄.
 - **파일 구조 광멵** — `CONTRIBUTING.md`, `LICENSE`, `.github/workflows/`, `src/` 신규 항목 표시 및 theme.css 라인 그기 명시.
 - **변경 이력 최신화** — v1.8.65 / v1.8.66 / v1.9.0 / v2.0.0 요약 추가.
-- **기여 섹션** — CONTRIBUTING.md / src/README.md 참조 링크 추가.
+- **기여 섹션** — CONTRIBUTING.md / dev/src/README.md 참조 링크 추가.
 
 ### Notes
 - CSS 변경 없음. v2.0.0 완전 동일.
@@ -578,11 +578,11 @@ v2.0.0 시점의 기능·파일 구조·사용자 클래스를 README에 종합 
 - **File explorer 폴더 컬러 큐** — 온톨로지 경로 패턴(`raw/`, `wiki/`, `outputs/`, `reports/`, `presentations/`, `Clippings/`, `Attachments/`, `Templates/`, `archive/`, `drafts/`)에 3px 좌측 틴트.
 - **Reading view mini TOC** — `.ogd-mini-toc` 옵인 클래스. 우측 sticky TOC, 모바일 자동 인라인, 프린트에서 숨김, `:target` hover 강조.
 - **Print 표지 페이지** — `cover-page` 옵인 클래스. 세로로 중앙 정렬, H1 확대, `.cover-meta`·`.cover-rule` 서브클래스, 출력 시 자동 페이지 분할.
-- **`src/README.md`** — v2.1.0 이후 도입할 모듈 분할 구조, 빌드 파이프라인, 마이그레이션 원칙 정리.
+- **`dev/src/README.md`** — v2.1.0 이후 도입할 모듈 분할 구조, 빌드 파이프라인, 마이그레이션 원칙 정리.
 
 ### Notes
 - **파괴적 변경 없음** (v1.x 사용자 안전). 새 기능은 전부 opt-in(에 대한 클래스 적용) 또는 경로 자동 감지 방식. v2.0.0 bump는 새 면적의 수(workspace surfaces)와 모듈화 로드맵 공식화를 반영.
-- `theme.css` 실제 모듈 분할은 v2.1.0 부터 단계적으로 진행 예정 (`src/README.md` 참조).
+- `theme.css` 실제 모듈 분할은 v2.1.0 부터 단계적으로 진행 예정 (`dev/src/README.md` 참조).
 
 ## [1.9.0] — 2026-04-29 — Maintainability Pass
 

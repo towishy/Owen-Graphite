@@ -1,4 +1,4 @@
-# `src/` — Superseded Modularization Plan
+# `dev/src/` - Superseded Modularization Plan
 
 > **Status**: Superseded by the active `dev/` CSS module workflow.
 
@@ -6,12 +6,12 @@ The theme now uses `dev/` as the development source folder. Edit the CSS modules
 
 The notes below are retained as historical planning context only.
 
-`theme.css`는 v1.x 동안 누적된 패치 블록을 포함해 약 9,900줄에 달합니다. v2.0.0에서는 안정성을 우선해 단일 파일을 유지하되, **다음 마이너 릴리즈(v2.1.0+)부터 모듈 분할 빌드 도입을 예정**합니다.
+`theme.css`는 v1.x 동안 누적된 패치 블록을 포함해 약 9,900줄에 달했습니다. v2.0.0에서는 안정성을 우선해 단일 파일을 유지하되, **다음 마이너 릴리즈(v2.1.0+)부터 모듈 분할 빌드 도입을 예정**했습니다.
 
 ## 제안 구조
 
 ```
-src/
+dev/src/
   00-meta.css           # @settings YAML metadata
   01-tokens.css         # CSS variables, Graphite palette
   02-typography.css     # headings, links, lists, body
@@ -42,8 +42,8 @@ src/
 ## 빌드 방식 (제안)
 
 `scripts/bundle_theme.py` (신규):
-1. `src/*.css`를 정렬된 순서로 concat
-2. `src/patches/*.css`를 버전 순으로 append
+1. `dev/src/*.css`를 정렬된 순서로 concat
+2. `dev/src/patches/*.css`를 버전 순으로 append
 3. 결과를 `theme.css`로 출력
 4. brace balance + validate 자동 실행
 
@@ -63,6 +63,6 @@ src/
 
 ## 진행 시점
 
-- **v2.1.0**: `src/00-meta.css`, `src/01-tokens.css`만 추출하여 빌드 파이프라인 검증
+- **v2.1.0**: `dev/src/00-meta.css`, `dev/src/01-tokens.css`만 추출하여 빌드 파이프라인 검증
 - **v2.2.0**: typography / callout / code / table 추출
 - **v2.3.0**: workspace / pdf / mobile / a11y 추출 — 분할 완료

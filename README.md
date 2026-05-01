@@ -354,7 +354,7 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 - 이슈: [GitHub Issues](https://github.com/towishy/Owen-Graphite/issues)
 - 토론: [Discussions](https://github.com/towishy/Owen-Graphite/discussions)
 - 기여 가이드: [CONTRIBUTING.md](CONTRIBUTING.md)
-- 모듈화 로드맵: [src/README.md](src/README.md)
+- 모듈화 로드맵: [dev/src/README.md](dev/src/README.md)
 
 ### 📁 파일 구조
 
@@ -367,6 +367,8 @@ Owen Graphite/
 ├── CONTRIBUTING.md   # 기여 가이드
 ├── LICENSE           # MIT
 ├── docs/ai-document-guide.md # AI/LLM-WIKI 문서 작성 가이드
+├── dev/src/         # 과거 src 모듈화 계획 문서
+├── dev/test-samples/ # 개발/검증용 샘플 문서
 ├── dev/MAP/          # dev CSS 기준 theme.css risk map 산출물
 ├── screenshots/      # README/마켓 이미지
 └── scripts/          # Python 검증/릴리즈 스크립트
