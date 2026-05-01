@@ -15,7 +15,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+EXPECTED_STYLE_SETTINGS_OPTIONS = 28
 DEFAULT_TARGETS = [
+    Path(r"H:\Obsidian\.obsidian\themes\Owen Graphite"),
     Path(r"D:\JAELE\Obsidian\.obsidian\themes\Owen Graphite"),
     Path.home() / "Work" / "Obsidian" / ".obsidian" / "themes" / "Owen Graphite",
     Path.home() / "work" / "Obsidian" / ".obsidian" / "themes" / "Owen Graphite",
@@ -28,12 +30,32 @@ REQUIRED_FILES = [
     "CHANGELOG.md",
     "LICENSE",
     "docs/ai-document-guide.md",
+    "docs/qa-checklist.md",
     "docs/MAP/theme-css-risk-map.html",
     "docs/MAP/theme-css-risk-map.json",
     "docs/style-settings.md",
     "scripts/analyze_theme_css.py",
+    "scripts/bundle_theme.py",
     "scripts/contrast_audit.py",
+    "scripts/sync_obsidian_theme.py",
     "scripts/visual_regression.py",
+    "dev/README.md",
+    "dev/_order.txt",
+    "dev/00-settings.css",
+    "dev/01-tokens.css",
+    "dev/02-base-workspace.css",
+    "dev/03-reading-content.css",
+    "dev/04-dark-mode.css",
+    "dev/04-print-base.css",
+    "dev/05-live-preview.css",
+    "dev/06-feature-presets.css",
+    "dev/07-plugin-workspace.css",
+    "dev/08-report-print-polish.css",
+    "dev/09a-nav-ribbon-glass.css",
+    "dev/09b-editing-menu-tooltip-glass.css",
+    "dev/09c-floating-ui-glass-system.css",
+    "dev/09d-tabs-file-explorer-search.css",
+    "dev/10-a11y-regression-hotfixes.css",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
@@ -62,6 +84,7 @@ RELEASE_ASSETS = [
     "CHANGELOG.md",
     "LICENSE",
     "docs/ai-document-guide.md",
+    "docs/qa-checklist.md",
     "docs/MAP/theme-css-risk-map.html",
     "docs/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
@@ -117,6 +140,15 @@ REQUIRED_TABLE_INFLATION_GUARDS = [
     ".cm-active.cm-line:empty",
     "line-height: 0 !important",
 ]
+
+PRINT_BLOCK_OWNERSHIP = {
+    "dev/04-print-base.css": 1,
+    "dev/06-feature-presets.css": 3,
+    "dev/07-plugin-workspace.css": 3,
+    "dev/08-report-print-polish.css": 2,
+    "dev/09c-floating-ui-glass-system.css": 1,
+    "dev/10-a11y-regression-hotfixes.css": 3,
+}
 
 
 def fail(message: str) -> None:
@@ -244,11 +276,48 @@ def style_settings_count() -> None:
             continue
         option_ids.append(id_match.group(1))
     option_count = len(set(option_ids))
-    if option_count != 27:
-        fail(f"expected 27 Style Settings options, got {option_count}")
-    if "27개 옵션" not in readme or "27%20options" not in readme:
-        fail("README missing 27 options text/badge")
+    if option_count != EXPECTED_STYLE_SETTINGS_OPTIONS:
+        fail(f"expected {EXPECTED_STYLE_SETTINGS_OPTIONS} Style Settings options, got {option_count}")
+    if f"{EXPECTED_STYLE_SETTINGS_OPTIONS}개 옵션" not in readme or f"{EXPECTED_STYLE_SETTINGS_OPTIONS}%20options" not in readme:
+        fail(f"README missing {EXPECTED_STYLE_SETTINGS_OPTIONS} options text/badge")
     ok(f"Style Settings option count={option_count} (YAML lint clean)")
+
+
+def style_settings_binding_guards() -> None:
+    theme = read_text("theme.css")
+    settings_match = re.search(r"/\* @settings(?P<body>.*?)\*/", theme, flags=re.S)
+    if not settings_match:
+        fail("theme.css missing Style Settings block")
+    settings_body = settings_match.group("body")
+    css_body = theme[: settings_match.start()] + theme[settings_match.end() :]
+
+    failures: list[str] = []
+    blocks = re.split(r"\n\s*-\s*\n", settings_body)
+    for block in blocks:
+        id_match = re.search(r"^\s*id:\s*([a-zA-Z0-9_-]+)", block, flags=re.M)
+        type_match = re.search(r"^\s*type:\s*([a-zA-Z0-9_-]+)", block, flags=re.M)
+        if not id_match or not type_match:
+            continue
+        setting_id = id_match.group(1)
+        setting_type = type_match.group(1)
+        if setting_id == "owen-graphite-document" or setting_type == "heading":
+            continue
+
+        if setting_type == "class-toggle":
+            if f".{setting_id}" not in css_body:
+                failures.append(f"{setting_id}: class-toggle has no CSS selector")
+        elif setting_type == "class-select":
+            values = re.findall(r"^\s*value:\s*([a-zA-Z0-9_-]+)", block, flags=re.M)
+            missing = [value for value in values if f".{value}" not in css_body]
+            if missing:
+                failures.append(f"{setting_id}: class-select values missing CSS selectors: {', '.join(missing)}")
+        elif setting_type.startswith("variable-"):
+            if f"--{setting_id}" not in css_body:
+                failures.append(f"{setting_id}: variable setting has no CSS variable usage")
+
+    if failures:
+        fail("Style Settings binding guards failed:\n" + "\n".join(failures))
+    ok("Style Settings bindings clean")
 
 
 def png_dimensions() -> None:
@@ -291,6 +360,205 @@ def python_only_scripts() -> None:
     if missing:
         fail(f".gitignore missing Python/release artifacts: {', '.join(missing)}")
     ok("scripts are Python-only and local artifacts are ignored")
+
+
+def dev_bundle_current() -> None:
+    script = ROOT / "scripts" / "bundle_theme.py"
+    spec = importlib.util.spec_from_file_location("bundle_theme", script)
+    if spec is None or spec.loader is None:
+        fail("unable to load scripts/bundle_theme.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    if (ROOT / "theme.css").read_bytes() != module.bundle_bytes():
+        fail("theme.css is not up to date with dev CSS modules; run scripts/bundle_theme.py")
+    ok("dev CSS bundle matches theme.css")
+
+
+def dev_css_module_set_clean() -> None:
+    script = ROOT / "scripts" / "bundle_theme.py"
+    spec = importlib.util.spec_from_file_location("bundle_theme", script)
+    if spec is None or spec.loader is None:
+        fail("unable to load scripts/bundle_theme.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+
+    ordered_paths = module.ordered_module_paths()
+    ordered_rel = [path.relative_to(ROOT).as_posix() for path in ordered_paths]
+    duplicate_rel = sorted({path for path in ordered_rel if ordered_rel.count(path) > 1})
+    if duplicate_rel:
+        fail(f"duplicate CSS modules in dev/_order.txt: {', '.join(duplicate_rel)}")
+
+    listed = set(ordered_rel)
+    actual = sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "dev").glob("*.css"))
+    orphan = [path for path in actual if path not in listed]
+    if orphan:
+        fail(f"dev CSS files not listed in dev/_order.txt: {', '.join(orphan)}")
+    ok(f"dev CSS module set clean ({len(ordered_rel)} modules)")
+
+
+def css_regression_guards() -> None:
+    css_paths = sorted((ROOT / "dev").glob("*.css")) + [ROOT / "theme.css"]
+    forbidden = [
+        (re.compile(r"\.theme-dark\s+body\."), "invalid .theme-dark body.* selector"),
+        (re.compile(r"transition\s*:\s*all\b", re.I), "transition: all"),
+        (re.compile(r"transform\s*:\s*translateY\(-(?:1|0\.5)px\)"), "direct hover lift transform; use --ogd-hover-lift variables"),
+        (re.compile(r"transform\s*:\s*translateX\((?:1|0\.5)px\)"), "direct hover shift transform; use --ogd-hover-shift variables"),
+        (re.compile(r"transform\s*:\s*translateY\(0\)\s*scale\(0\.99\)"), "direct press lift transform; use --ogd-press-lift"),
+    ]
+    failures: list[str] = []
+    for path in css_paths:
+        rel = path.relative_to(ROOT).as_posix()
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            for pattern, description in forbidden:
+                if pattern.search(line):
+                    failures.append(f"{rel}:{lineno}: {description}")
+    if failures:
+        fail("CSS regression guards failed:\n" + "\n".join(failures))
+    ok("CSS regression guards clean")
+
+
+def css_has_guards() -> None:
+    css_paths = sorted((ROOT / "dev").glob("*.css")) + [ROOT / "theme.css"]
+    failures: list[str] = []
+    for path in css_paths:
+        rel = path.relative_to(ROOT).as_posix()
+        support_stack: list[bool] = []
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            has_support_header = "@supports" in line and "selector(" in line and ":has(" in line
+            if ":has(" in line and not has_support_header and not any(support_stack):
+                failures.append(f"{rel}:{lineno}: :has() selector must be wrapped in @supports selector(...)")
+
+            next_open_support = has_support_header
+            for char in line:
+                if char == "{":
+                    inherited = support_stack[-1] if support_stack else False
+                    support_stack.append(next_open_support or inherited)
+                    next_open_support = False
+                elif char == "}" and support_stack:
+                    support_stack.pop()
+
+    if failures:
+        fail("CSS :has() guards failed:\n" + "\n".join(failures))
+    ok("CSS :has() guards clean")
+
+
+def css_print_ownership_guards() -> None:
+    css_paths = sorted((ROOT / "dev").glob("*.css"))
+    failures: list[str] = []
+    total_blocks = 0
+    for path in css_paths:
+        rel = path.relative_to(ROOT).as_posix()
+        content = path.read_text(encoding="utf-8")
+        print_count = len(re.findall(r"@media\s+print\b", content))
+        total_blocks += print_count
+        expected = PRINT_BLOCK_OWNERSHIP.get(rel, 0)
+        if print_count != expected:
+            if expected:
+                failures.append(f"{rel}: expected {expected} @media print block(s), found {print_count}")
+            elif print_count:
+                failures.append(f"{rel}: unexpected @media print block(s); use an approved print owner module")
+
+    missing_owner_files = [rel for rel in PRINT_BLOCK_OWNERSHIP if not (ROOT / rel).is_file()]
+    if missing_owner_files:
+        failures.extend(f"{rel}: print owner file is missing" for rel in missing_owner_files)
+
+    theme_count = len(re.findall(r"@media\s+print\b", read_text("theme.css")))
+    if theme_count != total_blocks:
+        failures.append(f"theme.css: expected {total_blocks} bundled @media print block(s), found {theme_count}")
+
+    if failures:
+        fail("CSS print ownership guards failed:\n" + "\n".join(failures))
+    ok(f"CSS print ownership clean ({total_blocks} blocks)")
+
+
+def css_risk_inventory() -> None:
+    module_paths = sorted((ROOT / "dev").glob("*.css"))
+    direct_backdrop = 0
+    has_selectors = 0
+    has_support_probes = 0
+    print_blocks: list[str] = []
+    for path in module_paths:
+        content = path.read_text(encoding="utf-8")
+        direct_backdrop += sum(
+            len(re.findall(r"backdrop-filter\s*:\s*blur\(", line))
+            for line in content.splitlines()
+            if "@supports" not in line
+        )
+        has_selectors += sum(line.count(":has(") for line in content.splitlines() if "@supports" not in line)
+        has_support_probes += sum(line.count(":has(") for line in content.splitlines() if "@supports" in line)
+        print_count = len(re.findall(r"@media\s+print\b", content))
+        if print_count:
+            print_blocks.append(f"{path.name}={print_count}")
+
+    theme = read_text("theme.css")
+    required_glass_guards = [
+        "body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced)",
+        ".menu .menu-item",
+        ".tooltip",
+        ".suggestion-container",
+        "backdrop-filter: none !important",
+    ]
+    missing = [guard for guard in required_glass_guards if guard not in theme]
+    if missing:
+        fail(f"theme.css missing glass fallback guards: {', '.join(missing)}")
+
+    print_summary = ", ".join(print_blocks) if print_blocks else "none"
+    ok(
+        "CSS risk inventory: "
+        f"direct backdrop-filter={direct_backdrop}, "
+        f":has()={has_selectors}, "
+        f":has supports={has_support_probes}, "
+        f"print blocks=({print_summary})"
+    )
+
+
+def css_variable_usage_guards() -> None:
+    failures: list[str] = []
+    glass_paths = sorted((ROOT / "dev").glob("09*.css")) + [ROOT / "theme.css"]
+    for path in glass_paths:
+        rel = path.relative_to(ROOT).as_posix()
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            stripped = line.strip()
+            if "backdrop-filter:" not in stripped or "@supports" in stripped:
+                continue
+            if "none" in stripped or "var(--ogd-glass-filter" in stripped:
+                continue
+            failures.append(f"{rel}:{lineno}: backdrop-filter must use --ogd-glass-filter variables or none")
+
+    theme = read_text("theme.css")
+    required_motion_tokens = [
+        "--ogd-hover-lift:",
+        "--ogd-hover-lift-subtle:",
+        "--ogd-hover-shift:",
+        "--ogd-press-lift:",
+        "body.ogd-motion-off",
+        "body.ogd-motion-subtle",
+        "body.ogd-motion-standard",
+    ]
+    missing = [token for token in required_motion_tokens if token not in theme]
+    if missing:
+        failures.append(f"theme.css missing motion tokens/classes: {', '.join(missing)}")
+
+    if failures:
+        fail("CSS variable usage guards failed:\n" + "\n".join(failures))
+    ok("CSS variable usage guards clean")
+
+
+def css_complexity_inventory() -> None:
+    theme = read_text("theme.css")
+    theme_lines = theme.count("\n") + 1
+    important_count = theme.count("!important")
+    module_summaries: list[tuple[int, str, int]] = []
+    for path in sorted((ROOT / "dev").glob("*.css")):
+        content = path.read_text(encoding="utf-8")
+        module_summaries.append((content.count("\n") + 1, path.name, content.count("!important")))
+    largest = ", ".join(
+        f"{name}={lines} lines/{important} !important"
+        for lines, name, important in sorted(module_summaries, reverse=True)[:3]
+    )
+    ok(f"CSS complexity inventory: theme={theme_lines} lines, !important={important_count}, largest modules=({largest})")
 
 
 def contrast_audit() -> None:
@@ -403,7 +671,7 @@ def release_checklist(version: str, ci: bool) -> None:
     print("\nRelease checklist")
     print(f"- version: {version}")
     print("- required files: present")
-    print("- Style Settings: 27 functional options")
+    print(f"- Style Settings: {EXPECTED_STYLE_SETTINGS_OPTIONS} functional options")
     print("- screenshots: dimensions verified")
     print(f"- release ZIP: {'present' if zip_path.exists() else 'not built yet'}")
     print("- target vault sync: skipped in CI" if ci else "- target vault sync: checked when target exists")
@@ -419,9 +687,18 @@ def main() -> int:
     version = manifest_and_versions()
     no_stale_legacy_markers()
     style_settings_count()
+    style_settings_binding_guards()
     png_dimensions()
     release_workflow_assets()
     python_only_scripts()
+    dev_bundle_current()
+    dev_css_module_set_clean()
+    css_regression_guards()
+    css_has_guards()
+    css_print_ownership_guards()
+    css_risk_inventory()
+    css_variable_usage_guards()
+    css_complexity_inventory()
     contrast_audit()
     release_zip_if_present(version)
     live_preview_guards()

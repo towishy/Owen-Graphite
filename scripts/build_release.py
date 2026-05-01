@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
+import sys
 import zipfile
 from pathlib import Path
 
@@ -17,6 +19,7 @@ DEFAULT_FILES = [
     "CHANGELOG.md",
     "LICENSE",
     "docs/ai-document-guide.md",
+    "docs/qa-checklist.md",
     "docs/MAP/theme-css-risk-map.html",
     "docs/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
@@ -29,7 +32,19 @@ def version() -> str:
     return json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))["version"]
 
 
+def bundle_theme() -> None:
+    script = ROOT / "scripts" / "bundle_theme.py"
+    spec = importlib.util.spec_from_file_location("bundle_theme", script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("unable to load scripts/bundle_theme.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    module.write_bundle()
+
+
 def build(output_dir: Path) -> Path:
+    bundle_theme()
     release_version = version()
     output_dir.mkdir(parents=True, exist_ok=True)
     zip_path = output_dir / f"Owen-Graphite-{release_version}.zip"

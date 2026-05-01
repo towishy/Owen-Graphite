@@ -1,6 +1,10 @@
-# `src/` — Future Modularization Plan
+# `src/` — Superseded Modularization Plan
 
-> **Status**: Planning only — not yet active in build.
+> **Status**: Superseded by the active `dev/` CSS module workflow.
+
+The theme now uses `dev/` as the development source folder. Edit the CSS modules in `dev/`, then run `python scripts/bundle_theme.py` to regenerate the Obsidian entrypoint `theme.css`.
+
+The notes below are retained as historical planning context only.
 
 `theme.css`는 v1.x 동안 누적된 패치 블록을 포함해 약 9,900줄에 달합니다. v2.0.0에서는 안정성을 우선해 단일 파일을 유지하되, **다음 마이너 릴리즈(v2.1.0+)부터 모듈 분할 빌드 도입을 예정**합니다.
 

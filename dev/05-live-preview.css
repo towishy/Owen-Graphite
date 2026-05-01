@@ -1,0 +1,318 @@
+/* =====================================================================
+   v1.3.1 — Live Preview ↔ Reading View parity (12-point upgrade)
+   Goal: minimize visual jump when toggling ⌘E between Source/Reading.
+   ===================================================================== */
+
+/* (1) CM6 header line-height per level — override generic .cm-line 1.45 */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
+  line-height: 1.2 !important;
+  padding-top: 0.42em !important;
+  padding-bottom: 0.42em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  line-height: 1.25 !important;
+  padding-top: 0.18em !important;
+  padding-bottom: 0.32em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+  position: static !important;
+  z-index: auto !important;
+  line-height: 1.42 !important;
+  padding-top: 0.18em !important;
+  padding-bottom: 0.3em !important;
+  padding-left: 0.08em !important;
+  padding-right: 0 !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
+  position: static !important;
+  z-index: auto !important;
+  line-height: 1.5 !important;
+  padding-top: 0.24em !important;
+  padding-bottom: 0.42em !important;
+  padding-left: 0.08em !important;
+  padding-right: 0 !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+  position: static !important;
+  z-index: auto !important;
+  line-height: 1.45 !important;
+  padding-top: 0.16em !important;
+  padding-bottom: 0.28em !important;
+  padding-left: 0.08em !important;
+}
+/* HyperMD inline header text size — CM6 needs explicit per-level */
+.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 2.05em !important; font-weight: 850 !important; }
+.markdown-source-view.mod-cm6 .cm-header-2 { font-size: 1.6em  !important; font-weight: 780 !important; }
+.markdown-source-view.mod-cm6 .cm-header-3 { font-size: 1.3em  !important; font-weight: 720 !important; color: var(--header-accent-dark) !important; }
+.markdown-source-view.mod-cm6 .cm-header-4 { font-size: 1.12em !important; font-weight: 700 !important; color: var(--header-accent-dark) !important; }
+.markdown-source-view.mod-cm6 .cm-header-5 { font-size: 1.0em  !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.04em; color: var(--header-muted) !important; }
+.markdown-source-view.mod-cm6 .cm-header-6 { font-size: 0.92em !important; font-weight: 700 !important; color: var(--header-muted) !important; }
+/* Heading hash markers (#, ##, ###) — soft, like Reading-view absent */
+.markdown-source-view.mod-cm6 .cm-formatting-header {
+  color: #cbd5e1 !important;
+  font-weight: 400 !important;
+  opacity: 0.7;
+}
+
+/* (2) Codeblock middle lines — add side borders for full box look */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  border-left: 1px solid #d1d5db !important;
+  border-right: 1px solid #d1d5db !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+/* Re-apply rounded radii for begin/end after middle override */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-radius: 6px 6px 0 0 !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-radius: 0 0 6px 6px !important;
+}
+/* Code fence ``` markers — dim */
+.markdown-source-view.mod-cm6 .cm-formatting-code-block,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .cm-formatting-code,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-end .cm-formatting-code {
+  color: #9ca3af !important;
+  opacity: 0.7;
+}
+
+/* (3) Wikilink chip in CM6 — match Reading view's [[link]] */
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link,
+.markdown-source-view.mod-cm6 .cm-link.cm-hmd-internal-link {
+  background: rgba(29, 78, 216, 0.07) !important;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
+  background: rgba(180, 83, 9, 0.08) !important;
+}
+
+/* (4) Tag chip in CM6 — pill shape */
+.markdown-source-view.mod-cm6 .cm-hashtag,
+.markdown-source-view.mod-cm6 .cm-hashtag-begin,
+.markdown-source-view.mod-cm6 .cm-hashtag-end {
+  background: #eef2f7 !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+  font-size: 0.82em !important;
+  font-weight: 600 !important;
+  padding: 1px 0 !important;
+}
+.markdown-source-view.mod-cm6 .cm-hashtag-begin {
+  border-right: 0 !important;
+  border-radius: 999px 0 0 999px !important;
+  padding-left: 8px !important;
+}
+.markdown-source-view.mod-cm6 .cm-hashtag-end {
+  border-left: 0 !important;
+  border-radius: 0 999px 999px 0 !important;
+  padding-right: 8px !important;
+}
+
+/* (5) Inline code in CM6 — match Reading view */
+.markdown-source-view.mod-cm6 .cm-inline-code {
+  background: var(--code-background) !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 3px;
+  padding: 0 4px;
+  font-family: var(--font-monospace-theme) !important;
+  font-size: 0.92em !important;
+}
+/* Hide the surrounding backticks visually but keep them readable */
+.markdown-source-view.mod-cm6 .cm-formatting-code {
+  color: #cbd5e1 !important;
+  opacity: 0.6;
+}
+
+/* (6) Strong / em explicit weight & style */
+.markdown-source-view.mod-cm6 .cm-strong {
+  font-weight: 700 !important;
+  color: var(--text-normal) !important;
+}
+.markdown-source-view.mod-cm6 .cm-em {
+  font-style: italic !important;
+}
+.markdown-source-view.mod-cm6 .cm-strong.cm-em {
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+/* Strikethrough */
+.markdown-source-view.mod-cm6 .cm-strikethrough {
+  text-decoration: line-through;
+  text-decoration-color: rgba(107, 114, 128, 0.6);
+  color: #9ca3af !important;
+}
+
+/* (7) Checkbox alignment in CM6 */
+.markdown-source-view.mod-cm6 .HyperMD-list-line .task-list-label,
+.markdown-source-view.mod-cm6 .HyperMD-task-line {
+  display: inline;
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line input[type="checkbox"] {
+  margin-right: 6px !important;
+  margin-left: 0 !important;
+  vertical-align: -2px !important;
+  position: relative;
+  top: 0 !important;
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line .cm-formatting-task {
+  color: transparent !important;
+  font-size: 0 !important;
+  width: 0 !important;
+  display: inline-block;
+}
+
+/* (8) Callout widget in Live Preview — share Reading view styling */
+.markdown-source-view.mod-cm6 .cm-callout,
+.markdown-source-view.mod-cm6 .HyperMD-callout {
+  border-radius: var(--callout-radius, 6px) !important;
+  padding: 8px 12px !important;
+  margin: 0.4em 0 !important;
+}
+.markdown-source-view.mod-cm6 .HyperMD-callout .cm-formatting-quote {
+  display: none !important;
+}
+/* Callout fold widget visibility */
+.markdown-source-view.mod-cm6 .cm-callout-fold {
+  opacity: 0.6;
+}
+.markdown-source-view.mod-cm6 .cm-callout:hover .cm-callout-fold {
+  opacity: 1;
+}
+
+/* (9) Table widget in Live Preview */
+.markdown-source-view.mod-cm6 .cm-table-widget,
+.markdown-source-view.mod-cm6 .HyperMD-table-row,
+.markdown-source-view.mod-cm6 table.cm-table {
+  border-collapse: collapse !important;
+  width: 100%;
+  margin: 0.4em 0 !important;
+  font-variant-numeric: tabular-nums;
+}
+.markdown-source-view.mod-cm6 .cm-table-widget th,
+.markdown-source-view.mod-cm6 table.cm-table th {
+  background: #f3f4f6 !important;
+  border-bottom: 2px solid #6b7280 !important;
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
+  padding: 6px 10px !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.markdown-source-view.mod-cm6 .cm-table-widget td,
+.markdown-source-view.mod-cm6 table.cm-table td {
+  border: 1px solid #e5e7eb !important;
+  padding: 5px 10px !important;
+  vertical-align: top;
+}
+.markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
+.markdown-source-view.mod-cm6 table.cm-table tr:hover td {
+  background: #f5f7fa !important;
+}
+/* Pipe `|` separators in source mode — dim */
+.markdown-source-view.mod-cm6 .cm-hmd-table-sep {
+  color: #cbd5e1 !important;
+  opacity: 0.6;
+}
+
+/* (10) — covered above in (2) */
+
+/* (11) List markers in CM6 — color & weight */
+.markdown-source-view.mod-cm6 .cm-formatting-list,
+.markdown-source-view.mod-cm6 .cm-formatting-list-ul,
+.markdown-source-view.mod-cm6 .cm-formatting-list-ol {
+  color: var(--header-accent) !important;
+  font-weight: 700 !important;
+}
+/* List indent guide in CM6 */
+.markdown-source-view.mod-cm6 .HyperMD-list-line-2,
+.markdown-source-view.mod-cm6 .HyperMD-list-line-3,
+.markdown-source-view.mod-cm6 .HyperMD-list-line-4 {
+  border-left: 1px dotted #e5e7eb;
+  padding-left: 4px;
+}
+
+/* (12) Frontmatter box — round first/last lines */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1 {
+  border: 1px solid #e5e7eb !important;
+  border-bottom: 0 !important;
+  border-radius: 6px 6px 0 0 !important;
+  padding-top: 4px !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end {
+  border: 1px solid #e5e7eb !important;
+  border-top: 0 !important;
+  border-radius: 0 0 6px 6px !important;
+  padding-bottom: 4px !important;
+  margin-bottom: 0.6em !important;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter:not(.HyperMD-frontmatter-1):not(.HyperMD-frontmatter-end) {
+  border-left: 1px solid #e5e7eb !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+/* =====================================================================
+   v1.3.1 — Dark mode parity for CM6 widgets
+   ===================================================================== */
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-header,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-list,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-quote,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-link,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-code,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-table-sep {
+  color: #4a4d57 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  background: rgba(147, 197, 253, 0.10) !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
+  background: rgba(251, 191, 36, 0.10) !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag-begin,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag-end {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #cbd5e1 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-inline-code {
+  background: #25272d !important;
+  border-color: #353841 !important;
+  color: #f3f4f6 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  background: #14151a !important;
+  border-color: #353841 !important;
+  color: #e5e7eb !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget th,
+.theme-dark .markdown-source-view.mod-cm6 table.cm-table th {
+  background: #25272d !important;
+  border-bottom-color: #6b7280 !important;
+  border-left-color: #353841 !important;
+  border-right-color: #353841 !important;
+  color: #f3f4f6 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget td,
+.theme-dark .markdown-source-view.mod-cm6 table.cm-table td {
+  border-color: #2a2c33 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
+.theme-dark .markdown-source-view.mod-cm6 table.cm-table tr:hover td {
+  background: #2a2c33 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1,
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end {
+  background: #1a1b20 !important;
+  border-color: #2a2c33 !important;
+  color: #9ca3af !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-strikethrough {
+  color: #6b7280 !important;
+}
+

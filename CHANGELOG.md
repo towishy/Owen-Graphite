@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.16] — 2026-05-01 — Dev CSS stabilization and motion guard release
+
+### Fixed
+- `ogd-motion-off`가 파일 탐색기 hover의 수평 이동까지 완전히 제거하도록 `--ogd-hover-shift` 토큰을 추가하고 legacy `translateX(1px)` hover를 변수화.
+- 이미지 hover transition에서 실제 사용하지 않는 `transform` transition을 제거해 motion 옵션과 reduced-motion 동작을 더 예측 가능하게 정리.
+
+### Changed
+- 파일 탐색기 hover/active glass의 최종 소유권을 `dev/09d-tabs-file-explorer-search.css`로 정리하고, `dev/09a-nav-ribbon-glass.css`에 남아 있던 오래된 nav hover/active 중복 규칙을 제거.
+- `dev/06-feature-presets.css`의 reduced-motion 전역 reset을 이미지 hover 표면으로 축소하고, 광범위한 UI motion 제어는 late a11y hotfix 계층이 담당하도록 정리.
+
+### Validation
+- `scripts/validate_theme.py`에 raw horizontal hover transform guard를 추가해 `translateX(1px)`/`translateX(0.5px)`가 motion 변수 없이 재도입되는 것을 차단.
+- `scripts/validate_theme.py --ci` 전체 통과. 번들 기준 `theme.css`는 9703 lines, `!important`는 3027개로 축소.
+
 ## [2.22.15] — 2026-04-30 — Live Preview table inflation regression hotfix
 
 ### Fixed

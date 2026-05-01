@@ -1,0 +1,170 @@
+@media print {
+  @page {
+    size: A3 landscape;
+    margin: 15mm;
+  }
+
+  body {
+    width: 420mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .markdown-preview-view,
+  .markdown-rendered {
+    font-size: 11pt !important;
+  }
+
+  .markdown-rendered h1 { break-before: page; page-break-before: always; }
+  .markdown-rendered h1:first-child { break-before: avoid; page-break-before: avoid; }
+  .markdown-rendered :is(h1, h2, h3, h4) {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* v1.8.67 — PDF: enlarge H1 for stronger visual hierarchy */
+  .markdown-rendered h1,
+  .markdown-preview-view.markdown-rendered h1,
+  .markdown-reading-view .markdown-rendered h1 {
+    font-size: 2.8em !important;
+    line-height: 1.1 !important;
+    margin-top: 1.2em !important;
+    margin-bottom: 0.7em !important;
+  }
+  .markdown-rendered h1::before,
+  .markdown-preview-view.markdown-rendered h1::before,
+  .markdown-reading-view .markdown-rendered h1::before {
+    font-size: 0.32em !important;
+    margin-bottom: 0.7em !important;
+  }
+
+  /* v1.8.65 — PDF readability micro-tuning */
+  .markdown-rendered p,
+  .markdown-rendered li,
+  .markdown-preview-view p,
+  .markdown-preview-view li {
+    line-height: 1.55 !important;
+  }
+  .markdown-rendered table,
+  .markdown-preview-view table {
+    line-height: 1.45 !important;
+  }
+
+  /* v1.8.65 — Repeat table headers across PDF pages (Chromium native) */
+  .markdown-rendered table thead,
+  .markdown-preview-view table thead,
+  .markdown-reading-view table thead {
+    display: table-header-group !important;
+  }
+  .markdown-rendered table tfoot,
+  .markdown-preview-view table tfoot,
+  .markdown-reading-view table tfoot {
+    display: table-footer-group !important;
+  }
+
+  /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
+  .markdown-rendered h1 {
+    -webkit-column-break-before: page !important;
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+  .markdown-rendered h1:first-of-type,
+  .markdown-rendered > h1:first-child {
+    -webkit-column-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+  }
+
+  /* v1.8.65 — Footnotes section: keep at end, separate from body */
+  .markdown-rendered .footnotes,
+  .markdown-rendered section.footnotes,
+  .markdown-rendered .footnote-section {
+    margin-top: 2.5em !important;
+    padding-top: 1em !important;
+    border-top: 1px solid #cbd5e1 !important;
+    font-size: 0.88em !important;
+    color: #4b5563 !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
+  .markdown-rendered .footnotes ol,
+  .markdown-rendered .footnote-section ol {
+    padding-left: 1.4em !important;
+  }
+
+  img,
+  tr,
+  li,
+  pre,
+  blockquote,
+  table,
+  .callout,
+  figure {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .markdown-rendered a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.78em;
+    color: #6b7280;
+    word-break: break-all;
+  }
+
+  .markdown-rendered .callout,
+  .markdown-rendered blockquote,
+  .markdown-rendered th,
+  .markdown-rendered tr:nth-child(even) td {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Restore blockquote left bar for PDF output */
+  .markdown-rendered blockquote,
+  .markdown-preview-view blockquote,
+  .markdown-reading-view blockquote {
+    border-left: 3px solid #6b7280 !important;
+    border-inline-start: 3px solid #6b7280 !important;
+    padding-left: 1.2em !important;
+    padding-inline-start: 1.2em !important;
+    background: linear-gradient(90deg, #f8fafc 0, transparent 88%) !important;
+  }
+
+  /* Hide UI chrome in print */
+  .workspace-ribbon,
+  .workspace-tab-header-container,
+  .status-bar,
+  .titlebar,
+  .copy-code-button,
+  .markdown-rendered pre[class*="language-"]::after {
+    display: none !important;
+  }
+
+  .markdown-rendered th,
+  .markdown-preview-view th,
+  .markdown-reading-view th {
+    background-color: #f8fafc !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+  }
+
+  /* Snippet-merged: additional print break avoidance */
+  dl,
+  .definition-list,
+  .toc,
+  .report-toc,
+  .table-of-contents,
+  .mermaid,
+  .diagram-frame,
+  .svg-frame,
+  .footnotes,
+  .footnote-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+

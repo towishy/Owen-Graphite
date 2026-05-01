@@ -9,7 +9,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-27%20options-0d9488?style=flat-square)](#-스타일-설정-style-settings)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-28%20options-0d9488?style=flat-square)](#-스타일-설정-style-settings)
 
 ---
 
@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.15` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
+| **버전** | `2.22.16` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -54,13 +54,13 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 - **자동 분할 회피** — callout·표·Mermaid·코드·이미지
 
 ### ⚙️ 사용자 커스터마이징
-- **Style Settings 27종** — 폰트·간격·컬러·보고서 모드 등 UI 토글
+- **Style Settings 28종** — 폰트·간격·컬러·보고서 모드 등 UI 토글
 - **사용자 클래스** — `.ogd-blur`·`.ogd-cover`·테이블 유틸리티·callout 14종
 - **시선 보호 모드** · **OS 다크 모드 자동 추종** · **CJK +0.5px 자동 보정**
 
 ### 📋 Style Settings (Style Settings)
 
-플러그인 설치 후 사이드바에서 토글로 즉시 적용. 전체 27개 옵션:
+플러그인 설치 후 사이드바에서 토글로 즉시 적용. 전체 28개 옵션:
 
 | 분류 | 대표 옵션 |
 |------|----------|
@@ -68,7 +68,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **표** | zebra 줄무늬·모던 스타일·sticky header |
 | **보고서** | 보고서 모드·헤더 자동 넘버링·드롭 캡·간격 프리셋 |
 | **PDF** | 페이지 크기·블록 분할 방지·첫 페이지 모던 헤더 (좌/우 라벨·본문·사이드바 색) |
-| **컬러** | 액센트 프리셋·코드블록 테마·시선 보호·OS 다크 모드 추종·Glass 강도 변수 `--og-glass-blur` |
+| **컬러/모션** | 액센트 프리셋·코드블록 테마·시선 보호·OS 다크 모드 추종·Glass 강도·Hover 움직임 |
 
 > 전체 옵션 표는 [docs/style-settings.md](docs/style-settings.md) 또는 플러그인 UI에서 확인할 수 있습니다.
 > AI 문서 생성 규칙은 [docs/ai-document-guide.md](docs/ai-document-guide.md)에서 확인할 수 있습니다.
@@ -165,7 +165,7 @@ fi
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 27개 옵션을 사이드바 UI에서 토글할 수 있습니다.
+> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 28개 옵션을 사이드바 UI에서 토글할 수 있습니다.
 
 ---
 
@@ -324,11 +324,12 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 롤백 베이스라인은 **v2.22.15**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 롤백 베이스라인은 **v2.22.16**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
-| **v2.22.15** | Live Preview table inflation regression hotfix — 표 셀 편집 행 팽창 차단, `v2.22.15`를 최종 롤백 베이스라인으로 고정 |
+| **v2.22.16** | Dev CSS stabilization release — motion-off horizontal hover shift 누락 수정, file explorer glass 소유권 정리, reduced-motion scope 축소, raw transform validator guard 추가 |
+| **v2.22.15** | Live Preview table inflation regression hotfix — 표 셀 편집 행 팽창 차단, `v2.22.15`를 안정 롤백 베이스라인으로 고정 |
 | **v2.22.13** | Windows tab/button stable baseline — 검증된 v1.8.66 CSS baseline으로 복원, 중간 테스트 chrome 강제 레이어 제거 |
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
 | **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |

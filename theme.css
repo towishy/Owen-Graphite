@@ -220,6 +220,22 @@ settings:
         label: Strong
         value: ogd-glass-strong
   -
+    id: ogd-motion-intensity
+    title: 데스크톱 Hover 움직임
+    description: 버튼, 메뉴 항목, 설정 row의 hover/press lift 움직임을 조정합니다. Off는 움직임 없이 색과 그림자만 유지합니다.
+    type: class-select
+    default: ogd-motion-standard
+    options:
+      -
+        label: Off
+        value: ogd-motion-off
+      -
+        label: Subtle
+        value: ogd-motion-subtle
+      -
+        label: Standard
+        value: ogd-motion-standard
+  -
     id: ogd-cjk-boost
     title: 한글/CJK 폰트 +0.5px 자동 보정
     type: class-toggle
@@ -299,6 +315,10 @@ settings:
   --ogd-fp-label-color: #6b7280;
   --ogd-title-rule-start: #0f766e;
   --ogd-title-rule-end: #0284c7;
+  --ogd-hover-lift: translateY(-1px);
+  --ogd-hover-lift-subtle: translateY(-0.5px);
+  --ogd-hover-shift: translateX(1px);
+  --ogd-press-lift: translateY(0) scale(0.99);
 }
 
 .theme-light,
@@ -410,6 +430,27 @@ body {
   background: var(--background-secondary);
   color: var(--text-normal);
   font-family: var(--font-interface-theme);
+}
+
+body.ogd-motion-off {
+  --ogd-hover-lift: none;
+  --ogd-hover-lift-subtle: none;
+  --ogd-hover-shift: none;
+  --ogd-press-lift: none;
+}
+
+body.ogd-motion-subtle {
+  --ogd-hover-lift: translateY(-0.5px);
+  --ogd-hover-lift-subtle: translateY(-0.25px);
+  --ogd-hover-shift: translateX(0.5px);
+  --ogd-press-lift: translateY(0) scale(0.995);
+}
+
+body.ogd-motion-standard {
+  --ogd-hover-lift: translateY(-1px);
+  --ogd-hover-lift-subtle: translateY(-0.5px);
+  --ogd-hover-shift: translateX(1px);
+  --ogd-press-lift: translateY(0) scale(0.99);
 }
 
 /* v1.8.68 — Hide inline title by default (filename is shown in tab header).
@@ -551,8 +592,7 @@ button.mod-warning,
    An "empty" cm-line is a literal blank line between paragraphs; by
    default it claims a full line-height which makes Live Preview look
    far airier than the PDF/Reading view. */
-.markdown-source-view.mod-cm6 .cm-line:empty,
-.markdown-source-view.mod-cm6 .cm-line:has(br:only-child) {
+.markdown-source-view.mod-cm6 .cm-line:empty {
   line-height: 0.45em !important;
   min-height: 0.45em !important;
   height: 0.45em !important;
@@ -560,13 +600,28 @@ button.mod-warning,
   margin: 0 !important;
 }
 
-.markdown-source-view.mod-cm6 .cm-line:empty:has(+ .HyperMD-header),
-.markdown-source-view.mod-cm6 .cm-line:has(br:only-child):has(+ .HyperMD-header),
-.markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:empty,
-.markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:has(br:only-child) {
+.markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:empty {
   line-height: 1.05em !important;
   min-height: 1.05em !important;
   height: 1.05em !important;
+}
+
+@supports selector(.cm-line:has(br:only-child)) {
+  .markdown-source-view.mod-cm6 .cm-line:has(br:only-child) {
+    line-height: 0.45em !important;
+    min-height: 0.45em !important;
+    height: 0.45em !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .markdown-source-view.mod-cm6 .cm-line:empty:has(+ .HyperMD-header),
+  .markdown-source-view.mod-cm6 .cm-line:has(br:only-child):has(+ .HyperMD-header),
+  .markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:has(br:only-child) {
+    line-height: 1.05em !important;
+    min-height: 1.05em !important;
+    height: 1.05em !important;
+  }
 }
 
 /* Reading view: tighten consecutive paragraph stacks. */
@@ -684,13 +739,15 @@ button.mod-warning,
   border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
 }
 
-.markdown-rendered h1:has(+ table),
-.markdown-rendered h1:has(+ .table-wrapper),
-.markdown-rendered h2:has(+ table),
-.markdown-rendered h2:has(+ .table-wrapper),
-.markdown-rendered h3:has(+ table),
-.markdown-rendered h3:has(+ .table-wrapper) {
-  margin-bottom: 0.2em !important;
+@supports selector(.markdown-rendered h1:has(+ table)) {
+  .markdown-rendered h1:has(+ table),
+  .markdown-rendered h1:has(+ .table-wrapper),
+  .markdown-rendered h2:has(+ table),
+  .markdown-rendered h2:has(+ .table-wrapper),
+  .markdown-rendered h3:has(+ table),
+  .markdown-rendered h3:has(+ .table-wrapper) {
+    margin-bottom: 0.2em !important;
+  }
 }
 
 .markdown-rendered table,
@@ -2090,7 +2147,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .theme-dark .markdown-rendered tr:hover td {
   background-color: #2a2c33 !important;
 }
-.theme-dark body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
+body.theme-dark.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   background-color: #25272d !important;
 }
 .theme-dark .markdown-rendered table.sticky-first-col td:first-child,
@@ -2944,7 +3001,7 @@ kbd {
 /* B5. Image zoom hint */
 .markdown-rendered img:not(.emoji):not(.callout-icon img) {
   cursor: zoom-in;
-  transition: filter 0.15s ease, transform 0.15s ease;
+  transition: filter 0.15s ease;
 }
 .markdown-rendered img:not(.emoji):not(.callout-icon img):hover {
   filter: brightness(1.04);
@@ -3508,9 +3565,8 @@ body.ogd-eye-care.theme-light .markdown-rendered {
 
 /* G2. Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  .markdown-rendered img:not(.emoji):not(.callout-icon img) {
     transition: none !important;
-    animation-duration: 0.001s !important;
   }
   .markdown-rendered img:hover { filter: none !important; transform: none !important; }
 }
@@ -3608,7 +3664,7 @@ body.ogd-auto-dark {
 .theme-dark .nav-folder-title[data-path^="wiki"] .nav-folder-title-content { color: #93c5fd !important; }
 .theme-dark .nav-folder-title[data-path^="raw"] .nav-folder-title-content { color: #9ca3af !important; }
 .theme-dark .nav-folder-title[data-path^="scripts"] .nav-folder-title-content { color: #6ee7b7 !important; }
-.theme-dark body.ogd-eye-care {
+body.theme-dark.ogd-eye-care {
   --background-primary: #1f1d18;
   --background-primary-alt: #25221a;
   --background-secondary: #17150f;
@@ -3815,7 +3871,7 @@ a.tag {
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
 a.tag:hover {
-  transform: translateY(-1px);
+  transform: var(--ogd-hover-lift, translateY(-1px));
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   background-color: var(--interactive-accent-hover, var(--interactive-accent));
   color: var(--text-on-accent);
@@ -4149,31 +4205,31 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   font-weight: 600 !important;
 }
 
-.theme-dark body.ogd-modern-tables .markdown-rendered table,
+body.theme-dark.ogd-modern-tables .markdown-rendered table,
 .theme-dark .markdown-rendered table {
   border-color: #374151 !important;
   box-shadow: none !important;
 }
-.theme-dark body.ogd-modern-tables .markdown-rendered table th,
+body.theme-dark.ogd-modern-tables .markdown-rendered table th,
 .theme-dark .markdown-rendered table th {
   background: #1f2937 !important;
   color: #f3f4f6 !important;
   border-color: #374151 !important;
 }
-.theme-dark body.ogd-modern-tables .markdown-rendered table td,
+body.theme-dark.ogd-modern-tables .markdown-rendered table td,
 .theme-dark .markdown-rendered table td {
   border-color: #2f3744 !important;
 }
-.theme-dark body.ogd-modern-tables .markdown-rendered table tbody tr:nth-child(even) td,
-.theme-dark body.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.theme-dark.ogd-modern-tables .markdown-rendered table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
   background: #151a22 !important;
 }
-.theme-dark body.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
+body.theme-dark.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
 .theme-dark .markdown-rendered table tbody tr:hover td {
   background: #1b2330 !important;
 }
-.theme-dark body.ogd-modern-tables .markdown-rendered table td:first-child,
-.theme-dark body.ogd-modern-tables .markdown-rendered table th:first-child {
+body.theme-dark.ogd-modern-tables .markdown-rendered table td:first-child,
+body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   color: #f9fafb !important;
 }
 
@@ -4282,7 +4338,7 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 .nav-file-title:hover {
   background: #f3f4f6 !important;
   color: #111827 !important;
-  transform: translateX(1px);
+  transform: var(--ogd-hover-shift, translateX(1px));
 }
 .nav-file-title.is-active {
   background: #eef2ff !important;
@@ -4715,7 +4771,7 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
 .setting-item-control button:hover,
 .modal .setting-item-control button:hover {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08) !important;
-  transform: translateY(-1px);
+  transform: var(--ogd-hover-lift, translateY(-1px));
 }
 .setting-item-control button.mod-cta,
 .modal .setting-item-control button.mod-cta {
@@ -5494,10 +5550,12 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   text-overflow: ellipsis !important;
   vertical-align: bottom !important;
 }
-.markdown-rendered table.scroll-token-table :is(td, th):has(code),
-.markdown-preview-view table.scroll-token-table :is(td, th):has(code),
-.markdown-reading-view table.scroll-token-table :is(td, th):has(code) {
-  min-width: 16ch !important;
+@supports selector(td:has(code)) {
+  .markdown-rendered table.scroll-token-table :is(td, th):has(code),
+  .markdown-preview-view table.scroll-token-table :is(td, th):has(code),
+  .markdown-reading-view table.scroll-token-table :is(td, th):has(code) {
+    min-width: 16ch !important;
+  }
 }
 .markdown-rendered table.scroll-table,
 .markdown-preview-view table.scroll-table,
@@ -5600,10 +5658,12 @@ body.ogd-modern-tables .markdown-rendered table th:first-child {
   text-align: center !important;
   white-space: nowrap !important;
 }
-.markdown-rendered table.risk-table td:last-child:has(code),
-.markdown-preview-view table.risk-table td:last-child:has(code),
-.markdown-reading-view table.risk-table td:last-child:has(code) {
-  white-space: normal !important;
+@supports selector(td:has(code)) {
+  .markdown-rendered table.risk-table td:last-child:has(code),
+  .markdown-preview-view table.risk-table td:last-child:has(code),
+  .markdown-reading-view table.risk-table td:last-child:has(code) {
+    white-space: normal !important;
+  }
 }
 .markdown-rendered table.risk-table .risk-high,
 .markdown-preview-view table.risk-table .risk-high,
@@ -6312,21 +6372,23 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     color: #3730a3 !important;
   }
 
-  body .markdown-rendered table + p:has(> strong:first-child),
-  body .markdown-preview-view table + p:has(> strong:first-child),
-  body .markdown-reading-view table + p:has(> strong:first-child),
-  body .markdown-rendered .table-wrapper + p:has(> strong:first-child),
-  body .markdown-preview-view .table-wrapper + p:has(> strong:first-child),
-  body .markdown-reading-view .table-wrapper + p:has(> strong:first-child) {
-    margin: 1.05em 0 1.35em !important;
-    padding: 0.72em 0.9em !important;
-    border: 1px solid #d7e4ec !important;
-    border-left: 4px solid #2563eb !important;
-    border-radius: 6px !important;
-    background: #f8fbff !important;
-    line-height: 1.56 !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
+  @supports selector(p:has(> strong:first-child)) {
+    body .markdown-rendered table + p:has(> strong:first-child),
+    body .markdown-preview-view table + p:has(> strong:first-child),
+    body .markdown-reading-view table + p:has(> strong:first-child),
+    body .markdown-rendered .table-wrapper + p:has(> strong:first-child),
+    body .markdown-preview-view .table-wrapper + p:has(> strong:first-child),
+    body .markdown-reading-view .table-wrapper + p:has(> strong:first-child) {
+      margin: 1.05em 0 1.35em !important;
+      padding: 0.72em 0.9em !important;
+      border: 1px solid #d7e4ec !important;
+      border-left: 4px solid #2563eb !important;
+      border-radius: 6px !important;
+      background: #f8fbff !important;
+      line-height: 1.56 !important;
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
   }
 
   body .markdown-rendered .ogd-status-badge,
@@ -6403,65 +6465,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 }
 
 /* ============================================================
-
-
-/* ============================================================
-   v1.8.20 — Nav hover & active file polish
-   File explorer hover frame and selected document glass effect.
-   ============================================================ */
-
-@media (min-width: 701px) {
-  body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
-    background: rgba(15, 23, 42, 0.06) !important;
-    border: 1px solid rgba(15, 23, 42, 0.18) !important;
-    border-radius: 4px !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
-  }
-
-  body:not(.is-mobile).theme-dark :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
-    background: rgba(226, 232, 240, 0.08) !important;
-    border: 1px solid rgba(226, 232, 240, 0.22) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
-  }
-
-  body:not(.is-mobile) .nav-file-title.is-active {
-    position: relative;
-    overflow: hidden !important;
-    border-left: 0 !important;
-    padding-left: 8px !important;
-    border-radius: 4px !important;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.68)) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
-    backdrop-filter: blur(16px) saturate(140%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 7px 18px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(100, 116, 139, 0.34) !important;
-    color: #111827 !important;
-    font-weight: 800 !important;
-  }
-
-  body:not(.is-mobile) .nav-file-title.is-active::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  body:not(.is-mobile).theme-dark .nav-file-title.is-active {
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.42)) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.24), 0 0 0 1px rgba(203, 213, 225, 0.16) !important;
-    color: #f8fafc !important;
-  }
-
-  body:not(.is-mobile).theme-dark .nav-file-title.is-active::after {
-    content: none !important;
-    display: none !important;
-  }
-}
-
-
-/* ============================================================
    v1.8.21 — Ribbon glass icons
    Translucent glass effect for left ribbon icons only.
    ============================================================ */
@@ -6472,8 +6475,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border: 1px solid rgba(100, 116, 139, 0.34) !important;
     border-radius: 8px !important;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.55)) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
     color: #334155 !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
   }
@@ -6506,8 +6509,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
 @media (min-width: 701px) {
   body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%));
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 8px 22px rgba(15, 23, 42, 0.18) !important;
   }
 
@@ -6515,70 +6518,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 8px 22px rgba(0, 0, 0, 0.42) !important;
   }
 
-  body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    backdrop-filter: blur(12px) saturate(140%);
-    border: 1px solid rgba(100, 116, 139, 0.34) !important;
-    border-radius: 6px !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12) !important;
-  }
-
-  body:not(.is-mobile).theme-dark :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)) !important;
-    border: 1px solid rgba(203, 213, 225, 0.20) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32) !important;
-  }
-}
-
-
-/* ============================================================
-   v1.8.23 — Active file deeper glass
-   Stronger translucent glass + drop shadow for selected document.
-   ============================================================ */
-
-@media (min-width: 701px) {
-  body:not(.is-mobile) .nav-file-title.is-active {
-    position: relative;
-    overflow: hidden !important;
-    border-left: 0 !important;
-    padding-left: 10px !important;
-    border-radius: 8px !important;
-    border: 1px solid rgba(71, 85, 105, 0.50) !important;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.62)) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(170%);
-    backdrop-filter: blur(20px) saturate(170%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(15, 23, 42, 0.10), 0 14px 30px rgba(15, 23, 42, 0.22), 0 4px 10px rgba(15, 23, 42, 0.14) !important;
-    color: #0f172a !important;
-    font-weight: 800 !important;
-  }
-
-  body:not(.is-mobile) .nav-file-title.is-active::before {
-    content: "";
-    position: absolute;
-    inset: 2px 2px auto 2px;
-    height: 50%;
-    border-radius: 6px 6px 0 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), transparent);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  body:not(.is-mobile).theme-dark .nav-file-title.is-active {
-    border: 1px solid rgba(203, 213, 225, 0.30) !important;
-    background: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(15, 23, 42, 0.55)) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.32), 0 14px 30px rgba(0, 0, 0, 0.50), 0 4px 10px rgba(0, 0, 0, 0.32) !important;
-    color: #f8fafc !important;
-  }
-
-  body:not(.is-mobile).theme-dark .nav-file-title.is-active::before {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent);
-  }
 }
 
 
@@ -6590,17 +6529,17 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 @media (min-width: 701px) {
   body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton) {
     border-radius: 6px !important;
-    transition: all 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.15s ease;
   }
 
   body:not(.is-mobile) :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(150%));
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(150%));
     border: 1px solid rgba(100, 116, 139, 0.34) !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.07), 0 6px 16px rgba(15, 23, 42, 0.16) !important;
     color: #0f172a !important;
-    transform: translateY(-1px);
+    transform: var(--ogd-hover-lift, translateY(-1px));
   }
 
   body:not(.is-mobile).theme-dark :is(.editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) :is(.clickable-icon, button, .editingToolbarButton):hover {
@@ -6736,8 +6675,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .markdown-preview-view .editing-toolbar,
   body:not(.is-mobile) .editing-toolbar {
     background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-    backdrop-filter: blur(18px) saturate(160%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     border-bottom: 1px solid rgba(148,163,184,0.22) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.85),
@@ -6780,7 +6719,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       inset 0 1px 0 rgba(255,255,255,0.95),
       inset 0 -1px 0 rgba(14,165,233,0.30),
       0 4px 10px rgba(14,165,233,0.18) !important;
-    transform: translateY(-0.5px) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
   body:not(.is-mobile).theme-dark .editing-toolbar .editing-toolbar-button,
   body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button,
@@ -6801,7 +6740,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(56,189,248,0.45),
       0 4px 10px rgba(56,189,248,0.22) !important;
-    transform: translateY(-0.5px) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
 }
 
@@ -6821,8 +6760,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) [class*="editing-toolbar"][class*="submenu"],
   body:not(.is-mobile) [class*="editing-toolbar"][class*="Submenu"] {
     background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-    backdrop-filter: blur(18px) saturate(160%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
     border-radius: 12px !important;
     box-shadow:
@@ -6876,7 +6815,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       inset 0 1px 0 rgba(255,255,255,0.95),
       inset 0 -1px 0 rgba(14,165,233,0.30),
       0 4px 10px rgba(14,165,233,0.18) !important;
-    transform: translateY(-0.5px) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
   body:not(.is-mobile).theme-dark .editing-toolbar-modal button,
   body:not(.is-mobile).theme-dark .editing-toolbar-modal .clickable-icon,
@@ -6901,7 +6840,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(56,189,248,0.45),
       0 4px 10px rgba(56,189,248,0.22) !important;
-    transform: translateY(-0.5px) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
 }
 
@@ -6914,8 +6853,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 @media (min-width: 701px) {
   body:not(.is-mobile) .menu {
     background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50)) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
-    backdrop-filter: blur(16px) saturate(160%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
     border-radius: 10px !important;
     box-shadow:
@@ -6926,16 +6865,18 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     padding: 6px !important;
   }
   body:not(.is-mobile) .menu .menu-item {
+    box-sizing: border-box !important;
+    border: 1px solid transparent !important;
     border-radius: 8px !important;
-    transition: background 140ms ease, box-shadow 140ms ease !important;
+    transition: background 140ms ease, border-color 140ms ease, box-shadow 140ms ease, color 140ms ease !important;
   }
   body:not(.is-mobile) .menu .menu-item:hover,
   body:not(.is-mobile) .menu .menu-item.selected,
   body:not(.is-mobile) .menu .menu-item:focus {
     background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.55)) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-    backdrop-filter: blur(12px) saturate(140%) !important;
-    border: 1px solid rgba(100,116,139,0.34) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    border-color: rgba(100,116,139,0.34) !important;
     color: #0f172a !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.94),
@@ -6959,7 +6900,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile).theme-dark .menu .menu-item.selected,
   body:not(.is-mobile).theme-dark .menu .menu-item:focus {
     background: linear-gradient(180deg, rgba(30,41,59,0.75), rgba(15,23,42,0.45)) !important;
-    border: 1px solid rgba(203,213,225,0.20) !important;
+    border-color: rgba(203,213,225,0.20) !important;
     color: #f8fafc !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.10),
@@ -6985,8 +6926,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .tooltip.mod-left,
   body:not(.is-mobile) .tooltip.mod-right {
     background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50)) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
-    backdrop-filter: blur(16px) saturate(160%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     color: #0f172a !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
     border-radius: 8px !important;
@@ -7039,8 +6980,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
   body:not(.is-mobile) .view-header-breadcrumb:hover {
     background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.55)) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-    backdrop-filter: blur(12px) saturate(140%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
     border: 1px solid rgba(100,116,139,0.34) !important;
     color: #0f172a !important;
     box-shadow:
@@ -7095,8 +7036,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55)) !important;
     border: 1px solid rgba(100, 116, 139, 0.34) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
-    backdrop-filter: blur(12px) saturate(150%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.95),
       inset 0 -1px 0 rgba(15, 23, 42, 0.07),
@@ -7135,14 +7076,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item:hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55)) !important;
     border: 1px solid rgba(100, 116, 139, 0.34) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
-    backdrop-filter: blur(12px) saturate(150%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.95),
       inset 0 -1px 0 rgba(15, 23, 42, 0.07),
       0 6px 16px rgba(15, 23, 42, 0.14) !important;
     color: #111827 !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   /* Active stays distinct (slightly stronger sky tint) */
@@ -7175,13 +7116,13 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item:hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(248, 250, 252, 0.45)) !important;
     border: 1px solid rgba(100, 116, 139, 0.22) !important;
-    -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
-    backdrop-filter: blur(10px) saturate(140%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%)) !important;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.92),
       inset 0 -1px 0 rgba(15, 23, 42, 0.06),
       0 4px 12px rgba(15, 23, 42, 0.10) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   /* Right pane setting-item hover (dark) */
@@ -7204,8 +7145,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 @media (min-width: 701px) {
   body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.50)) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
-    backdrop-filter: blur(16px) saturate(160%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
     border: 1px solid rgba(148, 163, 184, 0.22) !important;
     border-radius: 12px !important;
     box-shadow:
@@ -7225,15 +7166,15 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-    backdrop-filter: blur(12px) saturate(140%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
     border-color: rgba(100, 116, 139, 0.34) !important;
     color: #0f172a !important;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.94),
       inset 0 -1px 0 rgba(15, 23, 42, 0.06),
       0 6px 16px rgba(15, 23, 42, 0.12) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
@@ -7404,10 +7345,31 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32);
   }
 
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    body:not(.is-mobile) {
+      --ogd-glass-bg: var(--background-primary) !important;
+      --ogd-glass-bg-strong: var(--background-primary) !important;
+      --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-filter: none !important;
+      --ogd-glass-filter-soft: none !important;
+      --ogd-glass-filter-control: none !important;
+      --ogd-glass-shadow: 0 8px 22px rgba(15, 23, 42, 0.12) !important;
+      --ogd-glass-shadow-hover: 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+    }
+
+    body:not(.is-mobile).theme-dark {
+      --ogd-glass-bg: var(--background-primary) !important;
+      --ogd-glass-bg-strong: var(--background-primary) !important;
+      --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-shadow: 0 10px 28px rgba(0, 0, 0, 0.38) !important;
+      --ogd-glass-shadow-hover: 0 5px 14px rgba(0, 0, 0, 0.30) !important;
+    }
+  }
+
   body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice) {
     background: var(--ogd-glass-bg) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-    backdrop-filter: blur(18px) saturate(160%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
     border: 1px solid var(--ogd-glass-border) !important;
     box-shadow: var(--ogd-glass-shadow) !important;
   }
@@ -7432,17 +7394,17 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
     background: var(--ogd-glass-bg-hover) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-    backdrop-filter: blur(12px) saturate(140%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
     border-color: var(--ogd-glass-border-hover) !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile) :is(.metadata-container, .metadata-properties-heading) {
     background: var(--ogd-glass-bg-strong) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(145%) !important;
-    backdrop-filter: blur(14px) saturate(145%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(145%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(145%)) !important;
     border-color: var(--ogd-glass-border) !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 4px 14px rgba(15, 23, 42, 0.08) !important;
   }
@@ -7462,8 +7424,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) :is(.canvas-controls, .canvas-card-menu) {
     background: var(--ogd-glass-bg) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(155%) !important;
-    backdrop-filter: blur(16px) saturate(155%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(155%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(155%)) !important;
     border-color: var(--ogd-glass-border) !important;
     box-shadow: var(--ogd-glass-shadow) !important;
   }
@@ -7471,7 +7433,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) :is(.canvas-control-item, .canvas-card-menu .clickable-icon):hover {
     background: var(--ogd-glass-bg-hover) !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile) .status-bar .status-bar-item-segment {
@@ -7483,12 +7445,12 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) .status-bar .status-bar-item-segment:hover {
     background: var(--ogd-glass-bg-hover) !important;
-    -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
-    backdrop-filter: blur(10px) saturate(140%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%)) !important;
     border-color: var(--ogd-glass-border-hover) !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
     color: var(--text-normal) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 }
 
@@ -7508,19 +7470,19 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within),
   body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within) {
     background: var(--ogd-glass-bg-hover) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(145%) !important;
-    backdrop-filter: blur(12px) saturate(145%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(145%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(145%)) !important;
     border-color: transparent !important;
     outline: 1px solid var(--ogd-glass-border-hover) !important;
     outline-offset: -1px !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile) .checkbox-container {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(203, 213, 225, 0.58)) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(145%) !important;
-    backdrop-filter: blur(12px) saturate(145%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(145%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(145%)) !important;
     border: 1px solid rgba(148, 163, 184, 0.42) !important;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.88),
@@ -7540,7 +7502,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .checkbox-container:is(:hover, :focus-visible) {
     border-color: var(--ogd-glass-border-hover) !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile) .checkbox-container.is-enabled {
@@ -7594,8 +7556,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item:is(:hover, :focus-within) {
     background: rgba(255, 255, 255, 0.46) !important;
-    -webkit-backdrop-filter: blur(10px) saturate(135%) !important;
-    backdrop-filter: blur(10px) saturate(135%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
     outline-color: rgba(148, 163, 184, 0.28) !important;
     box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08) !important;
     transform: none !important;
@@ -7610,8 +7572,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown),
   body:not(.is-mobile) .modal .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown) {
     background: rgba(255, 255, 255, 0.66) !important;
-    -webkit-backdrop-filter: blur(10px) saturate(135%) !important;
-    backdrop-filter: blur(10px) saturate(135%) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
     border-color: rgba(148, 163, 184, 0.34) !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 1px 3px rgba(15, 23, 42, 0.06) !important;
     transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease !important;
@@ -7669,7 +7631,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) .status-bar .status-bar-item-segment:hover {
     box-shadow: 0 3px 10px rgba(15, 23, 42, 0.10) !important;
-    transform: translateY(-0.5px) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
   }
 
   body:not(.is-mobile).theme-dark .status-bar .status-bar-item-segment:hover {
@@ -7719,6 +7681,12 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(241, 245, 249, 0.68)) !important;
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 8px 20px rgba(15, 23, 42, 0.10) !important;
     --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile).ogd-glass-standard {
+    --ogd-glass-filter: blur(18px) saturate(160%);
+    --ogd-glass-filter-soft: blur(12px) saturate(145%);
+    --ogd-glass-filter-control: blur(10px) saturate(135%);
   }
 
   body:not(.is-mobile).ogd-glass-strong {
@@ -7786,7 +7754,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .setting-item-control :is(input[type="color"], .pickr .pcr-button):is(:hover, :focus-visible) {
     border-color: var(--ogd-glass-border-hover) !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container):disabled,
@@ -7800,7 +7768,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile) .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active,
   body:not(.is-mobile) .modal .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active {
-    transform: translateY(0) scale(0.99) !important;
+    transform: var(--ogd-press-lift, translateY(0) scale(0.99)) !important;
     box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.20) !important;
   }
 
@@ -7821,6 +7789,44 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
   body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(
+    .workspace-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .nav-file-title.is-active,
+    .nav-file-title:hover,
+    .nav-folder-title:hover,
+    .tree-item-self:hover,
+    .editingToolbarModalBar,
+    .editingToolbarPopover,
+    .editingToolbarPopoverItems,
+    .editingToolbarSubmenu,
+    .editingToolbarMenu,
+    .editingToolbarButton,
+    .menu,
+    .menu .menu-item,
+    .tooltip,
+    .view-header-breadcrumb,
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container
+  ),
+  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(
+    .workspace-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .nav-file-title.is-active,
+    .nav-file-title:hover,
+    .nav-folder-title:hover,
+    .tree-item-self:hover,
+    .editingToolbarButton,
+    .menu .menu-item,
+    .view-header-breadcrumb,
+    .suggestion-item,
+    .search-suggest-item
+  ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
@@ -8130,7 +8136,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-color: transparent !important;
     box-shadow: none !important;
     color: #111827 !important;
-    transform: translateX(1px) !important;
+    transform: var(--ogd-hover-shift, translateX(1px)) !important;
   }
 
   body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
@@ -8142,7 +8148,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12)) !important;
     color: #111827 !important;
     font-size: 13.4px !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]):hover,
@@ -8251,7 +8257,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32)) !important;
     color: #f8fafc !important;
     font-size: 13.4px !important;
-    transform: translateY(-1px) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*="/"]):hover,
@@ -8380,6 +8386,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-glass-filter: none !important;
     --ogd-glass-filter-soft: none !important;
     --ogd-glass-filter-control: none !important;
+    --ogd-hover-lift: none !important;
+    --ogd-hover-lift-subtle: none !important;
+    --ogd-hover-shift: none !important;
+    --ogd-press-lift: none !important;
   }
 
   body:not(.is-mobile) :is(
@@ -8597,7 +8607,7 @@ body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::before {
 .theme-dark .markdown-rendered table tbody tr:nth-child(even) td,
 .theme-dark .markdown-preview-view table tbody tr:nth-child(even) td,
 .theme-dark .markdown-reading-view table tbody tr:nth-child(even) td,
-.theme-dark body.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.theme-dark.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
   background: #1b222c !important;
 }
 
@@ -8771,15 +8781,17 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     font-weight: 780 !important;
   }
 
-  body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title,
-  body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self {
-    color: #1f2937 !important;
-  }
+  @supports selector(.nav-folder:has(.nav-file-title.is-active)) {
+    body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title,
+    body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self {
+      color: #1f2937 !important;
+    }
 
-  body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
-  body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner {
-    color: #1f2937 !important;
-    font-weight: 820 !important;
+    body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
+    body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner {
+      color: #1f2937 !important;
+      font-weight: 820 !important;
+    }
   }
 }
 
@@ -8857,9 +8869,11 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     color: #cbd5e1 !important;
   }
 
-  body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
-  body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner {
-    color: #f8fafc !important;
+  @supports selector(.nav-folder:has(.nav-file-title.is-active)) {
+    body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
+    body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner {
+      color: #f8fafc !important;
+    }
   }
 }
 
@@ -9658,9 +9672,7 @@ body .markdown-source-view.mod-cm6 :is(
   .cm-embed-block table
 ) td :is(
   .cm-line:empty,
-  .cm-active.cm-line:empty,
-  .cm-line:has(br:only-child),
-  .cm-active.cm-line:has(br:only-child)
+  .cm-active.cm-line:empty
 ) {
   display: none !important;
   min-height: 0 !important;
@@ -9668,4 +9680,23 @@ body .markdown-source-view.mod-cm6 :is(
   line-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+@supports selector(.cm-line:has(br:only-child)) {
+  body .markdown-source-view.mod-cm6 :is(
+    .cm-table-widget,
+    .cm-embed-block.cm-table-widget,
+    table.cm-table,
+    .cm-embed-block table
+  ) td :is(
+  .cm-line:has(br:only-child),
+  .cm-active.cm-line:has(br:only-child)
+  ) {
+    display: none !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
