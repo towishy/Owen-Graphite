@@ -171,6 +171,8 @@ fi
 
 ## 4. 테마 신기능
 
+아래 항목은 현재 DEV CSS 기준으로 구현 증거가 확인된 기능만 유지합니다. 오래된 preview 이미지 중 일부 구현이 빠졌거나 selector 증거가 약한 항목은 README에서 제거하고, 재도입 후보는 [docs/future-recommendations.md](docs/future-recommendations.md)에 분리했습니다.
+
 ### ✨ v2.22.13 — Windows tab/button stable baseline
 
 Windows Obsidian에서 상단 탭과 titlebar 버튼이 정상 표시되도록 검증된 `v1.8.66` CSS baseline으로 복원했습니다. 중간 테스트 빌드의 Windows chrome 강제 레이어는 제거했고, macOS/Windows 공통 데스크톱 탭 구조는 Obsidian 기본 동작에 맡깁니다.
@@ -210,51 +212,29 @@ Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token
 
 ---
 
-### ✨ v2.18.0 — All-A Surface Sweep (5종)
+### ✨ v2.18.0 — Surface Divider Polish
 
-Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar separator · Modal close (×) 일괄 정비.
-
-#### 라이트 모드
-
-![v2.18.0 — Light](screenshots/readme/v2.18-preview-light.png)
-
-#### 다크 모드
-
-![v2.18.0 — Dark](screenshots/readme/v2.18-preview-dark.png)
+워크스페이스 split divider의 hover affordance를 정리했습니다.
 
 | # | 항목 | 내용 |
 |---|------|------|
 | 1 | Workspace split divider | hover 시 1→2px brand fade + glow + resize cursor (전체 라인) |
-| 2 | Drag preview ghost glass | `.is-being-dragged` opacity 0.85 + rotate(1deg) + lift shadow + blur(10) |
-| 3 | Vault switcher 모달 | glass card + row hover lift + active pill (settings row 패턴 재사용) |
-| 4 | Status bar separator | item 사이 1×12px separator + hover tint (좌측 라인 정책 예외 — 구분용) |
-| 5 | Modal close (×) chrome | hover 시 rose tint + inset ring (destructive 액션 구분) |
 
 ---
 
-### ✨ v2.13.0 — Reading Polish & Surfaces (9종)
+### ✨ v2.13.0 — Reading Polish & Surfaces
 
-읽기/검색/그래프/모바일 표면 일괄 정리.
-
-#### 라이트 모드
-
-![v2.13.0 — Light](screenshots/readme/v2.13-preview-light.png)
-
-#### 다크 모드
-
-![v2.13.0 — Dark](screenshots/readme/v2.13-preview-dark.png)
+읽기/검색/그래프/플러그인 표면 중 현재 구현이 확인된 항목입니다.
 
 | # | 항목 | 내용 |
 |---|------|------|
 | 1 | Search 결과 패널 Polish | row glass + hover lift + match HL underline-gradient |
 | 2 | Graph view legend / control | 우상단 controls glass card (blur·border·shadow) |
-| 3 | Mobile bottom toolbar | floating glass + `safe-area-inset-bottom` 보강 |
-| 4 | Print TOC 유틸리티 | `.ogd-print-toc` — A3 PDF cover 다음 자동 목차 페이지 |
-| 5 | Footnote 패널 Polish | 글래스 카드 + 번호 알약(pill) + ref pill 일관 |
-| 6 | Inline tag pill v2 | 본문 `#tag` 도 tag-pane 알약 디자인으로 통일 |
-| 7 | Callout 다크 패리티 재감사 | note/warning/danger/success 다크 대비 보강 |
-| 8 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
-| 9 | docs/style-settings.md | Style Settings 풀 레퍼런스 문서 신설 |
+| 3 | Footnote 패널 Polish | 글래스 카드 + 번호 알약(pill) + ref pill 일관 |
+| 4 | Inline tag pill v2 | 본문 `#tag` 도 tag-pane 알약 디자인으로 통일 |
+| 5 | Callout 다크 패리티 재감사 | note/warning/danger/success 다크 대비 보강 |
+| 6 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
+| 7 | docs/style-settings.md | Style Settings 풀 레퍼런스 문서 신설 |
 
 ---
 
@@ -281,44 +261,30 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ---
 
-### ✨ v2.11.0 — Reading & Properties Polish (5종)
-
-#### 라이트 모드
-
-![v2.11.0 — Light](screenshots/readme/v2.11-preview-light.png)
-
-#### 다크 모드
-
-![v2.11.0 — Dark](screenshots/readme/v2.11-preview-dark.png)
+### ✨ v2.11.0 — Reading & Properties Polish
 
 | # | 항목 | 내용 |
 |---|------|------|
 | 1 | Properties 패널 Glass | `.metadata-container` 카드형 glass + tabular-nums |
 | 2 | 본문 강조 종류별 차등 | strong/em/mark/del 톤·굵기·배경 분리 (CM6 포함) |
 | 3 | 인용문 좌측 라인 대체 | 배경 tint + radius + 코너 글리프(") |
-| 4 | Reading view 진행률 | scroll-driven 2px 그라디언트 sticky 바 |
-| 5 | Code block 언어 + copy 일체화 | data-lang ::before + .copy-code-button 단일 chrome |
+| 4 | Code block 언어 + copy 일체화 | data-lang ::before + .copy-code-button 단일 chrome |
 
 ---
 
-### ✨ v2.10.0 — 12 Improvements Pack
+### ✨ v2.10.0 — Improvements Pack
 
-#### 라이트 모드
-
-![v2.10.0 — Light](screenshots/readme/v2.10-improvements-light.png)
-
-#### 다크 모드
-
-![v2.10.0 — Dark](screenshots/readme/v2.10-improvements-dark.png)
-
-| # | 항목 | # | 항목 |
-|---|------|---|------|
-| 1 | Quick Switcher / Command Palette Glass | 7 | 본문 색상 swatch (opt-in) |
-| 2 | Notice / Toast (좌측 라인 없이) | 8 | 각주 dotted hover hint |
-| 3 | Note Hover Popover Glass | 9 | Diff 코드블록 색상 |
-| 4 | Outline 레벨별 위계 강화 | 10 | Selection 색조 통일 |
-| 5 | Tag pane 카운트 알약 | 11 | 링크 hover ↗ 인디케이터 |
-| 6 | 폴더 노트 수 카운트 | 12 | Status bar 단어수/읽기시간 tabular-nums |
+| # | 항목 | 내용 |
+|---|------|------|
+| 1 | Quick Switcher / Command Palette Glass | prompt/suggestion surface glass |
+| 2 | Notice / Toast | 좌측 라인 없이 floating notice glass |
+| 3 | Note Hover Popover Glass | hover popover surface 통일 |
+| 4 | Outline 레벨별 위계 강화 | outline/bookmarks pane hierarchy polish |
+| 5 | Tag pane 카운트 알약 | tag count/tree-item flair pill |
+| 6 | 각주 dotted hover hint | footnote ref/link hover polish |
+| 7 | Diff 코드블록 색상 | inserted/deleted line tint |
+| 8 | Selection 색조 통일 | selection tint |
+| 9 | 링크 hover 인디케이터 | internal/external link hover treatment |
 
 ---
 
@@ -337,15 +303,15 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 | **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
 | **v2.20.0** | Inputs & System Surfaces — Toggle switch · Search input + chips · Community cards · Pane count badges · Drop snap target (5종) |
 | **v2.19.0** | Editor Depth, System Cleanup & Glass Surface Sweep — Task glyph · Heading anchor copy · Templater glass · Nested tag pill · Token v2 · PDF · Media · Canvas · Floating status bar · Date/Color picker (10종) |
-| **v2.18.0** | All-A Surface Sweep — Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar separator · Modal close (×) |
+| **v2.18.0** | Surface divider polish — Workspace split divider hover affordance |
 | **v2.17.0** | Surface Gaps & Tokenization — Scrollbar polish · Empty state 일러스트 · Wiki-link unresolved 톤 · Calendar today/active · CSS 토큰화 v2 |
 | **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |
-| **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · CM6 fold gutter · Dataview inline chip · reduced-motion 안전망 · high-contrast 대응 |
-| **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Ribbon active pill · Mermaid card · Tasks 플러그인 · Focus-visible 링 |
-| **v2.14.0** | Chrome & Indicator Polish — Sync pill · Settings 검색 강조 · Heading anchor `#` · Popover favicon · Properties focus ring |
-| **v2.13.0** | Reading Polish & Surfaces — Search row glass · Graph controls · Mobile toolbar · Print TOC · Footnote pill · Tag pill v2 · Callout dark 재감사 · Dataview 자동 · docs/style-settings.md |
+| **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · reduced-motion 안전망 · high-contrast 대응 |
+| **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Mermaid card · Tasks 플러그인 · Focus-visible 링 |
+| **v2.14.0** | Chrome & Indicator Polish — Settings 검색 강조 · Heading anchor `#` · Popover favicon · Properties focus ring |
+| **v2.13.0** | Reading Polish & Surfaces — Search row glass · Graph controls · Footnote pill · Tag pill v2 · Callout dark 재감사 · Dataview 자동 · docs/style-settings.md |
 | **v2.12.0** | Panels & Code Polish — Tab underline · Backlinks lift · Table zebra+sticky · Code line numbers · Embed card · Glass 강도 변수 |
-| **v2.11.0** | Reading & Properties Polish — Properties Glass · 강조 차등 · 인용문 no-left-line · 진행률 바 · Code chrome |
+| **v2.11.0** | Reading & Properties Polish — Properties Glass · 강조 차등 · 인용문 no-left-line · Code chrome |
 
 > 전체 릴리즈 노트 → [CHANGELOG.md](CHANGELOG.md)
 

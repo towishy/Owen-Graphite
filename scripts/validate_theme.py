@@ -75,16 +75,8 @@ REQUIRED_FILES = [
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
-    "screenshots/readme/v2.10-improvements-light.png",
-    "screenshots/readme/v2.10-improvements-dark.png",
-    "screenshots/readme/v2.11-preview-light.png",
-    "screenshots/readme/v2.11-preview-dark.png",
     "screenshots/readme/v2.12-preview-light.png",
     "screenshots/readme/v2.12-preview-dark.png",
-    "screenshots/readme/v2.13-preview-light.png",
-    "screenshots/readme/v2.13-preview-dark.png",
-    "screenshots/readme/v2.14-preview-light.png",
-    "screenshots/readme/v2.14-preview-dark.png",
 ]
 
 PNG_SIZES = {
