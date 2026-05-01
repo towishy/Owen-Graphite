@@ -141,6 +141,12 @@
     line-height: 1.35 !important;
   }
 
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] :is(.nav-folder-title[data-path*="/"], .nav-file-title[data-path]) {
+    flex: 0 1 auto !important;
+    width: fit-content !important;
+    max-width: calc(100% - 10px) !important;
+  }
+
   body:not(.is-mobile) .nav-folder-title {
     font-size: 13.5px !important;
   }
