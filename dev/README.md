@@ -49,6 +49,7 @@ Most splits are mechanical and order-preserving. Functional fixes should still h
 ## Support Artifacts
 
 - `MAP/`: generated CSS risk map and stabilization checklist.
+- `temp/`: temporary request artifacts such as generated draft documents or sample images. Contents are ignored by default; keep the folder empty in commits.
 - `test-samples/`: development and regression sample notes for Owen Graphite and Owen Editor design parity.
 
 ## Selector Notes

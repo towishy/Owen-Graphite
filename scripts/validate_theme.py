@@ -41,6 +41,7 @@ REQUIRED_FILES = [
     "scripts/sync_obsidian_theme.py",
     "scripts/visual_regression.py",
     "dev/README.md",
+    "dev/temp/.gitignore",
     "dev/test-samples/owen-editor-feature-sample.md",
     "dev/test-samples/owen-graphite-sample.md",
     "dev/_order.txt",
@@ -374,11 +375,28 @@ def python_only_scripts() -> None:
     if ruby_scripts:
         fail(f"Ruby scripts are not allowed: {', '.join(ruby_scripts)}")
     gitignore = read_text(".gitignore")
-    required_ignores = ["dist/", ".venv/", "__pycache__/", "*.py[cod]"]
+    required_ignores = ["dist/", ".venv/", "__pycache__/", "*.py[cod]", "dev/temp/*", "!dev/temp/.gitignore"]
     missing = [item for item in required_ignores if item not in gitignore]
     if missing:
         fail(f".gitignore missing Python/release artifacts: {', '.join(missing)}")
     ok("scripts are Python-only and local artifacts are ignored")
+
+
+def dev_temp_policy() -> None:
+    temp_ignore = read_text("dev/temp/.gitignore")
+    required_rules = ["*", "!.gitignore"]
+    missing = [rule for rule in required_rules if rule not in temp_ignore.splitlines()]
+    if missing:
+        fail(f"dev/temp/.gitignore missing temp cleanup rules: {', '.join(missing)}")
+    result = subprocess.run(["git", "ls-files", "dev/temp"], cwd=ROOT, text=True, capture_output=True, check=False)
+    if result.returncode != 0:
+        fail(f"unable to inspect tracked dev/temp files:\n{result.stdout}{result.stderr}")
+    allowed = {"dev/temp/.gitignore"}
+    tracked = {line.strip().replace("\\", "/") for line in result.stdout.splitlines() if line.strip()}
+    extra = sorted(tracked - allowed)
+    if extra:
+        fail(f"dev/temp must stay empty in commits: {', '.join(extra)}")
+    ok("dev/temp request artifact policy clean")
 
 
 def dev_bundle_current() -> None:
@@ -769,6 +787,7 @@ def main() -> int:
     png_dimensions()
     release_workflow_assets()
     python_only_scripts()
+    dev_temp_policy()
     dev_bundle_current()
     dev_css_module_set_clean()
     css_regression_guards()

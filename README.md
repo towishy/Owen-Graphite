@@ -369,6 +369,7 @@ Owen Graphite/
 ├── docs/ai-document-guide.md # AI/LLM-WIKI 문서 작성 가이드
 ├── dev/test-samples/ # 개발/검증용 샘플 문서
 ├── dev/MAP/          # dev CSS 기준 theme.css risk map 산출물
+├── dev/temp/         # 임시 요청 산출물 보관소 (내용물은 커밋 제외)
 ├── screenshots/      # README/마켓 이미지
 └── scripts/          # Python 검증/릴리즈 스크립트
 ```
