@@ -40,10 +40,11 @@ This list is the operating checklist for changes under `dev/`. Use it before bro
 
 ## Web Liquid Glass Applicability
 
-- Applicable: tokenized blur/saturate filters, translucent overlay color, inset specular highlights, layered shadows, and conservative hover lift.
+- Applicable: tokenized blur/saturate/brightness filters, radial liquid tint, translucent overlay color, inset specular highlights, layered shadows, and conservative hover lift.
 - Partially applicable: separate overlay/specular layers can be represented through background, border, outline, and box-shadow tokens because Obsidian theme CSS cannot add stable wrapper DOM.
 - Not applied to Obsidian: SVG lens/displacement filters such as `filter: url(#lensFilter)` and animated background dependency. They are fragile in Electron theme CSS, expensive on broad UI chrome, and risky for menus, popovers, and right-click surfaces.
 - Reuse guidance: Owen Editor can implement the fuller web pattern when it owns the DOM; Owen Graphite should keep the CSS-only tokenized version for vault stability.
+- Closest CSS-only target: enrich `--ogd-glass-bg*`, `--ogd-glass-filter*`, and `--ogd-glass-shadow*` before adding pseudo-element overlays.
 
 ## Module Focus Map
 
