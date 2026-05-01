@@ -784,15 +784,8 @@ button.mod-warning,
   border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
 }
 
-.markdown-rendered h1 + table,
-.markdown-rendered h2 + table,
-.markdown-rendered h3 + table,
-.markdown-rendered h1 + .table-wrapper,
-.markdown-rendered h2 + .table-wrapper,
-.markdown-rendered h3 + .table-wrapper,
-.markdown-rendered h1 + .table-wrapper table,
-.markdown-rendered h2 + .table-wrapper table,
-.markdown-rendered h3 + .table-wrapper table {
+.markdown-rendered :is(h1, h2, h3) + :is(table, .table-wrapper),
+.markdown-rendered :is(h1, h2, h3) + .table-wrapper table {
   margin-top: 0.2em !important;
 }
 
@@ -1008,52 +1001,37 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: var(--ogd-text-secondary, #374151) !important;
 }
 
-.markdown-rendered div.callout[data-callout="warning"],
-.markdown-rendered div.callout[data-callout="attention"],
-.markdown-rendered div.callout[data-callout="caution"] {
+.markdown-rendered div.callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) {
   border-left-color: #92400e !important;
   background: #fffbeb !important;
   background-color: #fffbeb !important;
 }
 
-.markdown-rendered div.callout[data-callout="failure"],
-.markdown-rendered div.callout[data-callout="fail"],
-.markdown-rendered div.callout[data-callout="missing"],
-.markdown-rendered div.callout[data-callout="danger"],
-.markdown-rendered div.callout[data-callout="error"],
-.markdown-rendered div.callout[data-callout="bug"] {
+.markdown-rendered div.callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
   border-left-color: #b91c1c !important;
   background: #fef2f2 !important;
   background-color: #fef2f2 !important;
 }
 
-.markdown-rendered div.callout[data-callout="success"],
-.markdown-rendered div.callout[data-callout="check"],
-.markdown-rendered div.callout[data-callout="done"] {
+.markdown-rendered div.callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) {
   border-left-color: #047857 !important;
   background: #f0fdf4 !important;
   background-color: #f0fdf4 !important;
 }
 
-.markdown-rendered div.callout[data-callout="tip"],
-.markdown-rendered div.callout[data-callout="hint"],
-.markdown-rendered div.callout[data-callout="important"] {
+.markdown-rendered div.callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) {
   border-left-color: #0f766e !important;
   background: #f0fdfa !important;
   background-color: #f0fdfa !important;
 }
 
-.markdown-rendered div.callout[data-callout="abstract"],
-.markdown-rendered div.callout[data-callout="summary"],
-.markdown-rendered div.callout[data-callout="tldr"] {
+.markdown-rendered div.callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) {
   border-left-color: var(--ogd-text-slate, #334155) !important;
   background: var(--ogd-surface-muted, #f8fafc) !important;
   background-color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 
-.markdown-rendered div.callout[data-callout="question"],
-.markdown-rendered div.callout[data-callout="help"],
-.markdown-rendered div.callout[data-callout="faq"] {
+.markdown-rendered div.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
   border-left-color: #7c3aed !important;
   background: #faf5ff !important;
   background-color: #faf5ff !important;
@@ -1065,8 +1043,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   background-color: #f5f3ff !important;
 }
 
-.markdown-rendered div.callout[data-callout="quote"],
-.markdown-rendered div.callout[data-callout="cite"] {
+.markdown-rendered div.callout:is([data-callout="quote"], [data-callout="cite"]) {
   border-left-color: #64748b !important;
   background: var(--ogd-surface-muted, #f8fafc) !important;
   background-color: var(--ogd-text-inverted, #f8fafc) !important;
@@ -1110,30 +1087,21 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: var(--ogd-text-subtle, #475569) !important;
 }
 
-.markdown-rendered .callout[data-callout="warning"] .callout-icon,
-.markdown-rendered .callout[data-callout="attention"] .callout-icon,
-.markdown-rendered .callout[data-callout="caution"] .callout-icon {
+.markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) .callout-icon {
   border: 1.5px solid #fcd34d !important;
   border-radius: var(--ogd-radius-pill, 999px) !important;
   background: var(--ogd-surface-base, #ffffff) !important;
   color: #92400e !important;
 }
 
-.markdown-rendered .callout[data-callout="failure"] .callout-icon,
-.markdown-rendered .callout[data-callout="fail"] .callout-icon,
-.markdown-rendered .callout[data-callout="missing"] .callout-icon,
-.markdown-rendered .callout[data-callout="danger"] .callout-icon,
-.markdown-rendered .callout[data-callout="error"] .callout-icon,
-.markdown-rendered .callout[data-callout="bug"] .callout-icon {
+.markdown-rendered .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) .callout-icon {
   border: 1.5px solid #fca5a5 !important;
   border-radius: var(--ogd-radius-pill, 999px) !important;
   background: var(--ogd-surface-base, #ffffff) !important;
   color: #b91c1c !important;
 }
 
-.markdown-rendered .callout[data-callout="success"] .callout-icon,
-.markdown-rendered .callout[data-callout="check"] .callout-icon,
-.markdown-rendered .callout[data-callout="done"] .callout-icon {
+.markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
   background: #047857 !important;
 }
 
