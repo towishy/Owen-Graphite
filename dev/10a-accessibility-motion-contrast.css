@@ -102,12 +102,12 @@
 
   :is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
     outline: 2px solid Highlight !important;
-    box-shadow: none !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
   }
 
   body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .checkbox-container, .setting-item, .suggestion-item, .status-bar-item-segment, .workspace-tab-header-inner, .search-input-container) {
     border-color: ButtonBorder !important;
-    box-shadow: none !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
   }
 }
 

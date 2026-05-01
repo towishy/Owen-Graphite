@@ -9,7 +9,7 @@
 ## Daily Workflow
 1. Refresh MAP baseline.
    - Command: `/Users/owen/Work/owen-graphite/.venv/bin/python scripts/analyze_theme_css.py`
-2. Review top findings in `docs/MAP/theme-css-risk-map.html`.
+2. Review top findings in `dev/MAP/theme-css-risk-map.html`.
 3. Patch only high-impact blocks first.
    - Prefer removing structural overrides from core chrome selectors.
 4. Re-run MAP and compare severity counts.
@@ -24,7 +24,7 @@
 - Do not use broad selectors on critical chrome areas (`[role="tab"]`, tab header containers, titlebar, sidebar toggles).
 
 ## Pre-release Quick Checks
-- `docs/MAP/theme-css-risk-map.json` has zero critical/high.
+- `dev/MAP/theme-css-risk-map.json` has zero critical/high.
 - `scripts/validate_theme.py --ci` is green.
 - `scripts/validate_theme.py --ci` must report `table inflation guards clean`.
 - `dist/Owen-Graphite-<version>.zip` exists and opens correctly.

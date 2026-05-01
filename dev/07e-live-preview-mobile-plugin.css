@@ -12,7 +12,7 @@
 .markdown-source-view.mod-cm6 .cm-embed-block,
 .markdown-source-view.mod-cm6 .cm-html-embed,
 .markdown-source-view.mod-cm6 .cm-table-widget {
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
 }
 .markdown-source-view.mod-cm6 .cm-embed-block,
 .markdown-source-view.mod-cm6 .cm-html-embed {
@@ -21,7 +21,7 @@
 }
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link,
 .markdown-source-view.mod-cm6 .cm-hashtag {
-  border-radius: 999px !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
   padding: 0.02em 0.28em !important;
 }
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
@@ -29,8 +29,8 @@
   color: #3730a3 !important;
 }
 .markdown-source-view.mod-cm6 .cm-hashtag {
-  background: #f3f4f6 !important;
-  color: #475569 !important;
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
+  color: var(--ogd-text-subtle, #475569) !important;
 }
 .markdown-source-view.mod-cm6 .cm-formatting-highlight,
 .markdown-source-view.mod-cm6 .cm-highlight {
@@ -70,27 +70,27 @@
 .bookmarks-view,
 .workspace-leaf-content[data-type="outline"],
 .workspace-leaf-content[data-type="bookmarks"] {
-  color: #374151 !important;
+  color: var(--ogd-text-secondary, #374151) !important;
 }
 .outline .tree-item-self,
 .outline-view .tree-item-self,
 .bookmarks-view .tree-item-self,
 .workspace-leaf-content[data-type="outline"] .tree-item-self,
 .workspace-leaf-content[data-type="bookmarks"] .tree-item-self {
-  border-radius: 6px !important;
+  border-radius: var(--radius-m, 6px) !important;
 }
 .outline .tree-item-self:hover,
 .outline-view .tree-item-self:hover,
 .bookmarks-view .tree-item-self:hover,
 .workspace-leaf-content[data-type="outline"] .tree-item-self:hover,
 .workspace-leaf-content[data-type="bookmarks"] .tree-item-self:hover {
-  background: #f3f4f6 !important;
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
 }
 .outline .tree-item-self.is-active,
 .outline-view .tree-item-self.is-active,
 .bookmarks-view .tree-item-self.is-active {
   background: #eef2ff !important;
-  color: #111827 !important;
+  color: var(--ogd-text-strong, #111827) !important;
   font-weight: 650 !important;
 }
 
@@ -109,7 +109,7 @@
   border-collapse: separate !important;
   border-spacing: 0 !important;
   overflow: hidden !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
 }
 .bases-view th,
 .bases-view td,
@@ -119,13 +119,13 @@
 .bases-table td,
 .base-table th,
 .base-table td {
-  border-color: #e5e7eb !important;
+  border-color: var(--ogd-line-soft, #e5e7eb) !important;
 }
 .bases-view tr:hover td,
 .base-view tr:hover td,
 .bases-table tr:hover td,
 .base-table tr:hover td {
-  background: #f8fafc !important;
+  background: var(--ogd-surface-muted, #f8fafc) !important;
 }
 
 /* Embedded media and workspace chrome */
@@ -141,20 +141,20 @@
 .markdown-preview-view video,
 .markdown-reading-view video {
   border: 1px solid #dbe2ea !important;
-  border-radius: 8px !important;
-  background: #ffffff !important;
+  border-radius: var(--radius-l, 8px) !important;
+  background: var(--ogd-surface-base, #ffffff) !important;
 }
 .status-bar {
   background: rgba(255, 255, 255, 0.94) !important;
-  border-top: 1px solid #e5e7eb !important;
+  border-top: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
   color: #64748b !important;
 }
 .status-bar-item {
-  border-radius: 6px !important;
+  border-radius: var(--radius-m, 6px) !important;
 }
 .status-bar-item:hover {
-  background: #f3f4f6 !important;
-  color: #111827 !important;
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
+  color: var(--ogd-text-strong, #111827) !important;
 }
 
 @media (max-width: 700px) {
@@ -213,7 +213,7 @@
 }
 .theme-dark .markdown-source-view.mod-cm6 .cm-hashtag {
   background: #1f2937 !important;
-  color: #cbd5e1 !important;
+  color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-highlight,
 .theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
@@ -225,7 +225,7 @@
 .theme-dark .bookmarks-view,
 .theme-dark .workspace-leaf-content[data-type="outline"],
 .theme-dark .workspace-leaf-content[data-type="bookmarks"] {
-  color: #cbd5e1 !important;
+  color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 .theme-dark .outline .tree-item-self:hover,
 .theme-dark .outline-view .tree-item-self:hover,
@@ -238,14 +238,14 @@
 .theme-dark .outline-view .tree-item-self.is-active,
 .theme-dark .bookmarks-view .tree-item-self.is-active {
   background: #1e1b4b !important;
-  color: #f8fafc !important;
+  color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 .theme-dark .bases-view,
 .theme-dark .base-view,
 .theme-dark .metadata-container,
 .theme-dark .metadata-properties,
 .theme-dark .metadata-property {
-  border-color: #334155 !important;
+  border-color: var(--ogd-line-dark, #334155) !important;
 }
 .theme-dark .bases-view th,
 .theme-dark .bases-view td,
@@ -255,13 +255,13 @@
 .theme-dark .bases-table td,
 .theme-dark .base-table th,
 .theme-dark .base-table td {
-  border-color: #334155 !important;
+  border-color: var(--ogd-line-dark, #334155) !important;
 }
 .theme-dark .bases-view tr:hover td,
 .theme-dark .base-view tr:hover td,
 .theme-dark .bases-table tr:hover td,
 .theme-dark .base-table tr:hover td {
-  background: #111827 !important;
+  background: var(--ogd-surface-dark, #111827) !important;
 }
 .theme-dark .markdown-rendered iframe,
 .theme-dark .markdown-preview-view iframe,
@@ -269,16 +269,16 @@
 .theme-dark .markdown-rendered video,
 .theme-dark .markdown-preview-view video,
 .theme-dark .markdown-reading-view video {
-  border-color: #334155 !important;
+  border-color: var(--ogd-line-dark, #334155) !important;
   background: #0f172a !important;
 }
 .theme-dark .status-bar {
   background: rgba(15, 23, 42, 0.94) !important;
-  border-top-color: #334155 !important;
-  color: #94a3b8 !important;
+  border-top-color: var(--ogd-text-slate, #334155) !important;
+  color: var(--ogd-text-soft, #94a3b8) !important;
 }
 .theme-dark .status-bar-item:hover {
   background: #1f2937 !important;
-  color: #f8fafc !important;
+  color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 

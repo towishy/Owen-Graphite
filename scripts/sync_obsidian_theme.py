@@ -21,11 +21,14 @@ RELEASE_ASSETS = [
     "LICENSE",
     "docs/ai-document-guide.md",
     "docs/qa-checklist.md",
-    "docs/MAP/theme-css-risk-map.html",
-    "docs/MAP/theme-css-risk-map.json",
+    "dev/MAP/theme-css-risk-map.html",
+    "dev/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
+]
+LEGACY_ASSET_PATHS = [
+    "docs/MAP",
 ]
 DEFAULT_VAULTS = [
     Path(r"H:\Obsidian"),
@@ -76,6 +79,14 @@ def bundle_theme() -> None:
 
 
 def copy_assets(target: Path, dry_run: bool) -> None:
+    for rel in LEGACY_ASSET_PATHS:
+        legacy = target / rel
+        if not legacy.exists():
+            continue
+        print(f"{'DRY-RUN' if dry_run else 'REMOVE'}: legacy {legacy}")
+        if not dry_run:
+            shutil.rmtree(legacy) if legacy.is_dir() else legacy.unlink()
+
     for rel in RELEASE_ASSETS:
         source = ROOT / rel
         if not source.is_file() or source.stat().st_size == 0:

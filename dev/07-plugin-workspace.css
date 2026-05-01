@@ -6,7 +6,7 @@
   border-bottom-color: #6b7280 !important;
   border-left-color: #353841 !important;
   border-right-color: #353841 !important;
-  color: #f3f4f6 !important;
+  color: var(--ogd-surface-subtle, #f3f4f6) !important;
 }
 .theme-dark .markdown-rendered .dataview.table-view-table td,
 .theme-dark .block-language-dataview table td {
@@ -28,7 +28,7 @@
 }
 .theme-dark kbd {
   background: linear-gradient(180deg, #2a2c33, #1f2024) !important;
-  color: #f3f4f6 !important;
+  color: var(--ogd-surface-subtle, #f3f4f6) !important;
   border-color: #4a4d57 !important;
 }
 .theme-dark .metadata-container,
@@ -71,13 +71,13 @@ body.theme-dark.ogd-eye-care {
 .theme-dark .markdown-rendered .mermaid svg text,
 .theme-dark .markdown-rendered .mermaid svg .nodeLabel,
 .theme-dark .markdown-rendered .mermaid svg .edgeLabel {
-  fill: #e5e7eb !important;
-  color: #e5e7eb !important;
+  fill: var(--ogd-line-soft, #e5e7eb) !important;
+  color: var(--ogd-line-soft, #e5e7eb) !important;
 }
 .theme-dark .markdown-rendered .mermaid svg .edgeLabel rect,
 .theme-dark .markdown-rendered .mermaid svg .edgeLabel foreignObject {
-  background: transparent !important;
-  fill: transparent !important;
+  background: var(--ogd-surface-transparent, transparent) !important;
+  fill: var(--ogd-surface-transparent, transparent) !important;
 }
 .theme-dark .markdown-rendered .mermaid svg .cluster rect {
   fill: #25272d !important;
@@ -310,8 +310,8 @@ a.external-link:focus-visible,
 .markdown-rendered .mermaid svg .nodeLabel > p,
 .markdown-rendered .mermaid svg .label foreignObject,
 .markdown-rendered .mermaid svg .label foreignObject > div {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: var(--ogd-surface-transparent, transparent) !important;
+  background-color: var(--ogd-surface-transparent, transparent) !important;
 }
 
 /* Keep labels INSIDE rect (no visible overflow seam) */
@@ -418,7 +418,7 @@ a.external-link:focus-visible,
   background: #f0f9ff !important;
   border: 1px solid #bae6fd !important;
   border-left: 4px solid #0ea5e9 !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
   color: #0c4a6e !important;
 }
 .markdown-rendered .callout[data-callout="conclusion"] .callout-title {
@@ -489,7 +489,7 @@ a.external-link:focus-visible,
   background: #ecfdf5 !important;
   border: 1px solid #a7f3d0 !important;
   border-left: 4px solid #10b981 !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
   color: #064e3b !important;
 }
 .markdown-rendered .callout[data-callout="risk"] {
@@ -498,7 +498,7 @@ a.external-link:focus-visible,
   background: #fffbeb !important;
   border: 1px solid #fde68a !important;
   border-left: 4px solid #f59e0b !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
   color: #78350f !important;
 }
 .markdown-rendered .callout[data-callout="action"] {
@@ -507,17 +507,17 @@ a.external-link:focus-visible,
   background: #eef2ff !important;
   border: 1px solid #c7d2fe !important;
   border-left: 4px solid #6366f1 !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
   color: #312e81 !important;
 }
 .markdown-rendered .callout[data-callout="decision"] {
   --callout-color: 75, 85, 99;
   --callout-icon: lucide-gavel;
-  background: #f3f4f6 !important;
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
   border: 1px solid #d1d5db !important;
   border-left: 4px solid #4b5563 !important;
-  border-radius: 8px !important;
-  color: #111827 !important;
+  border-radius: var(--radius-l, 8px) !important;
+  color: var(--ogd-text-strong, #111827) !important;
 }
 
 .markdown-rendered .callout:is(
@@ -551,7 +551,7 @@ a.external-link:focus-visible,
   background: #1f2937 !important;
   border-color: #4b5563 !important;
   border-left-color: #9ca3af !important;
-  color: #f3f4f6 !important;
+  color: var(--ogd-surface-subtle, #f3f4f6) !important;
 }
 
 /* Modern table polish: default-on, Style Settings class keeps it explicit */
@@ -559,17 +559,17 @@ body.ogd-modern-tables .markdown-rendered table,
 .markdown-rendered table {
   border-collapse: separate !important;
   border-spacing: 0 !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 7px !important;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
   overflow: hidden !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
 }
 body.ogd-modern-tables .markdown-rendered table th,
 .markdown-rendered table th {
-  background: #f3f4f6 !important;
-  color: #374151 !important;
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
+  color: var(--ogd-text-secondary, #374151) !important;
   font-weight: 700 !important;
-  border-color: #e5e7eb !important;
+  border-color: var(--ogd-line-soft, #e5e7eb) !important;
 }
 body.ogd-modern-tables .markdown-rendered table td,
 .markdown-rendered table td {
@@ -581,24 +581,24 @@ body.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
 }
 body.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
 .markdown-rendered table tbody tr:hover td {
-  background: #f8fafc !important;
+  background: var(--ogd-surface-muted, #f8fafc) !important;
 }
 body.ogd-modern-tables .markdown-rendered table td:first-child,
 body.ogd-modern-tables .markdown-rendered table th:first-child {
-  color: #111827 !important;
+  color: var(--ogd-text-strong, #111827) !important;
   font-weight: 600 !important;
 }
 
 body.theme-dark.ogd-modern-tables .markdown-rendered table,
 .theme-dark .markdown-rendered table {
-  border-color: #374151 !important;
-  box-shadow: none !important;
+  border-color: var(--ogd-line-contrast, #374151) !important;
+  box-shadow: var(--ogd-shadow-none, none) !important;
 }
 body.theme-dark.ogd-modern-tables .markdown-rendered table th,
 .theme-dark .markdown-rendered table th {
   background: #1f2937 !important;
-  color: #f3f4f6 !important;
-  border-color: #374151 !important;
+  color: var(--ogd-surface-subtle, #f3f4f6) !important;
+  border-color: var(--ogd-line-contrast, #374151) !important;
 }
 body.theme-dark.ogd-modern-tables .markdown-rendered table td,
 .theme-dark .markdown-rendered table td {
@@ -625,10 +625,10 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 
 /* Properties / Frontmatter: quieter report-card surface */
 .metadata-container {
-  background: #f8fafc !important;
+  background: var(--ogd-surface-muted, #f8fafc) !important;
   border: 1px solid #e2e8f0 !important;
   border-left: 4px solid #94a3b8 !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-l, 8px) !important;
   padding: 10px 12px !important;
   margin: 0.6em 0 1.0em !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
@@ -642,42 +642,42 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 .metadata-container .metadata-property-key,
 .metadata-container .metadata-property-key-input {
-  color: #475569 !important;
+  color: var(--ogd-text-subtle, #475569) !important;
   font-weight: 650 !important;
 }
 .metadata-container .metadata-property-value,
 .metadata-container .metadata-property-value input,
 .metadata-container .metadata-property-value textarea {
-  color: #111827 !important;
+  color: var(--ogd-text-strong, #111827) !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
-  background: #f8fafc !important;
-  color: #475569 !important;
+  background: var(--ogd-surface-muted, #f8fafc) !important;
+  color: var(--ogd-text-subtle, #475569) !important;
   border-left: 3px solid #cbd5e1 !important;
   padding-left: 8px !important;
 }
 
 .theme-dark .metadata-container {
-  background: #111827 !important;
-  border-color: #334155 !important;
+  background: var(--ogd-surface-dark, #111827) !important;
+  border-color: var(--ogd-line-dark, #334155) !important;
   border-left-color: #64748b !important;
-  box-shadow: none !important;
+  box-shadow: var(--ogd-shadow-none, none) !important;
 }
 .theme-dark .metadata-container .metadata-property {
   border-bottom-color: rgba(100, 116, 139, 0.32) !important;
 }
 .theme-dark .metadata-container .metadata-property-key,
 .theme-dark .metadata-container .metadata-property-key-input {
-  color: #cbd5e1 !important;
+  color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 .theme-dark .metadata-container .metadata-property-value,
 .theme-dark .metadata-container .metadata-property-value input,
 .theme-dark .metadata-container .metadata-property-value textarea {
-  color: #f8fafc !important;
+  color: var(--ogd-text-inverted, #f8fafc) !important;
 }
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
-  background: #111827 !important;
-  color: #cbd5e1 !important;
+  background: var(--ogd-surface-dark, #111827) !important;
+  color: var(--ogd-line-strong, #cbd5e1) !important;
   border-left-color: #64748b !important;
 }
 

@@ -41,7 +41,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Changed
 - `scripts/validate_theme.py`의 stale marker 스캔 범위를 최적화 (`.venv`/`dist`/cache 디렉터리 및 대용량 파일 제외)하여 검증 시간을 단축.
-- MAP 운영 체크리스트 문서 추가: `docs/MAP/css-stabilization-checklist.md`.
+- MAP 운영 체크리스트 문서 추가: `dev/MAP/css-stabilization-checklist.md`.
 
 ## [2.22.13] — 2026-04-30 — Windows tab and titlebar button baseline
 

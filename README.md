@@ -367,7 +367,7 @@ Owen Graphite/
 ├── CONTRIBUTING.md   # 기여 가이드
 ├── LICENSE           # MIT
 ├── docs/ai-document-guide.md # AI/LLM-WIKI 문서 작성 가이드
-├── docs/MAP/         # theme.css risk map 산출물
+├── dev/MAP/          # dev CSS 기준 theme.css risk map 산출물
 ├── screenshots/      # README/마켓 이미지
 └── scripts/          # Python 검증/릴리즈 스크립트
 ```

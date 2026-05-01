@@ -85,7 +85,7 @@
 
   body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item) {
     border: 1px solid transparent !important;
-    border-radius: 8px !important;
+    border-radius: var(--radius-l, 8px) !important;
     transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease !important;
   }
 
@@ -112,7 +112,7 @@
 
   body:not(.is-mobile) .metadata-container .metadata-property:is(:hover, :focus-within) {
     background: rgba(255, 255, 255, 0.58) !important;
-    border-radius: 6px !important;
+    border-radius: var(--radius-m, 6px) !important;
   }
 
   body:not(.is-mobile).theme-dark .metadata-container .metadata-property:is(:hover, :focus-within) {
@@ -135,7 +135,7 @@
 
   body:not(.is-mobile) .status-bar .status-bar-item-segment {
     border: 1px solid transparent !important;
-    border-radius: 999px !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
     margin: 0 1px !important;
     transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease !important;
   }
@@ -169,7 +169,7 @@
     background: var(--ogd-glass-bg-hover) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(145%)) !important;
     backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(145%)) !important;
-    border-color: transparent !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
     outline: 1px solid var(--ogd-glass-border-hover) !important;
     outline-offset: -1px !important;
     box-shadow: var(--ogd-glass-shadow-hover) !important;
@@ -246,7 +246,7 @@
 /* v1.8.42 - Glass control polish and selected-state clarity. */
 @media (min-width: 701px) {
   body:not(.is-mobile) .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item {
-    border-radius: 8px !important;
+    border-radius: var(--radius-l, 8px) !important;
     padding: 9px 12px !important;
     margin: 1px 0 !important;
   }
@@ -460,7 +460,7 @@
     opacity: 0.54 !important;
     filter: saturate(0.72) !important;
     transform: none !important;
-    box-shadow: none !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
   }
 
   body:not(.is-mobile) .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active,
@@ -476,7 +476,7 @@
   }
 
   body:not(.is-mobile) .metadata-container .metadata-property-value:is(:hover, :focus-within) {
-    border-radius: 6px !important;
+    border-radius: var(--radius-m, 6px) !important;
     background: rgba(255, 255, 255, 0.42) !important;
   }
 
@@ -532,9 +532,9 @@
 
 @media print {
   body {
-    --ogd-glass-bg: transparent !important;
-    --ogd-glass-bg-strong: transparent !important;
-    --ogd-glass-bg-hover: transparent !important;
+    --ogd-glass-bg: var(--ogd-surface-transparent, transparent) !important;
+    --ogd-glass-bg-strong: var(--ogd-surface-transparent, transparent) !important;
+    --ogd-glass-bg-hover: var(--ogd-surface-transparent, transparent) !important;
     --ogd-glass-shadow: none !important;
     --ogd-glass-shadow-hover: none !important;
     --ogd-glass-filter: none !important;

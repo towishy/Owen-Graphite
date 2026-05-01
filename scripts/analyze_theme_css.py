@@ -15,9 +15,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CSS = ROOT / "theme.css"
-DEFAULT_OUTPUT_DIR = ROOT / "docs" / "MAP"
+DEFAULT_OUTPUT_DIR = ROOT / "dev" / "MAP"
 DEFAULT_HTML = DEFAULT_OUTPUT_DIR / "theme-css-risk-map.html"
 DEFAULT_JSON = DEFAULT_OUTPUT_DIR / "theme-css-risk-map.json"
+DEV_ORDER = ROOT / "dev" / "_order.txt"
 
 CORE_SELECTOR_PATTERNS = [
     ("[role=tab]", re.compile(r"\[\s*role\s*=\s*['\"]?tab['\"]?\s*\]", re.I), 10),
@@ -117,6 +118,7 @@ class Finding:
     severity: str
     score: int
     line: int
+    module: str
     selector: str
     context: str
     block: str
@@ -185,6 +187,39 @@ def block_for_line(blocks: list[tuple[int, str]], line: int) -> str:
     return current
 
 
+def relative_label(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def dev_module_ranges(order_file: Path = DEV_ORDER) -> list[tuple[int, int, str]]:
+    if not order_file.is_file():
+        return []
+    start_line = 1
+    ranges: list[tuple[int, int, str]] = []
+    for raw_line in order_file.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        path = order_file.parent / line
+        if not path.is_file():
+            continue
+        line_count = len(path.read_text(encoding="utf-8").splitlines())
+        end_line = start_line + max(line_count, 1) - 1
+        ranges.append((start_line, end_line, f"dev/{line}"))
+        start_line = end_line + 1
+    return ranges
+
+
+def module_for_line(ranges: list[tuple[int, int, str]], line: int) -> str:
+    for start_line, end_line, module in ranges:
+        if start_line <= line <= end_line:
+            return module
+    return "theme.css"
+
+
 def parse_declarations(source: str, body_start: int, body: str) -> list[Declaration]:
     declarations = []
     for match in re.finditer(r"(?P<property>-{0,2}[\w-]+)\s*:\s*(?P<value>[^;{}]+)", body):
@@ -234,7 +269,7 @@ def matched_core_selectors(selector: str) -> list[tuple[str, int]]:
     return matches
 
 
-def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]]) -> list[Finding]:
+def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]], module_ranges: list[tuple[int, int, str]]) -> list[Finding]:
     findings = []
     for rule in rules:
         selector_matches = matched_core_selectors(rule.selector)
@@ -284,6 +319,7 @@ def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]]) -> list[
                 severity=severity,
                 score=score,
                 line=rule.line,
+                module=module_for_line(module_ranges, rule.line),
                 selector=rule.selector,
                 context=rule.context,
                 block=block_for_line(blocks, rule.line),
@@ -311,11 +347,21 @@ def top_blocks(findings: list[Finding], limit: int = 14) -> list[tuple[str, int,
     return sorted(((block, scores[block], counts[block]) for block in scores), key=lambda item: item[1], reverse=True)[:limit]
 
 
+def top_modules(findings: list[Finding], limit: int = 14) -> list[tuple[str, int, int]]:
+    scores: dict[str, int] = defaultdict(int)
+    counts: dict[str, int] = defaultdict(int)
+    for finding in findings:
+        scores[finding.module] += finding.score
+        counts[finding.module] += 1
+    return sorted(((module, scores[module], counts[module]) for module in scores), key=lambda item: item[1], reverse=True)[:limit]
+
+
 def finding_to_dict(finding: Finding) -> dict[str, object]:
     return {
         "severity": finding.severity,
         "score": finding.score,
         "line": finding.line,
+        "module": finding.module,
         "selector": finding.selector,
         "context": finding.context,
         "block": finding.block,
@@ -336,6 +382,7 @@ def render_chips(items: list[str]) -> str:
 def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json_path: Path) -> str:
     counts = severity_counts(findings)
     blocks = top_blocks(findings)
+    modules = top_modules(findings)
     selector_counts = Counter(label for finding in findings for label in finding.matched_selectors)
     property_counts = Counter(
         item.split(":", 1)[0]
@@ -351,6 +398,7 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
             f'<td><span class="badge {finding.severity}">{finding.severity}</span></td>'
             f"<td>{finding.score}</td>"
             f"<td>{finding.line}</td>"
+            f"<td><code>{html.escape(finding.module)}</code></td>"
             f"<td><code>{html.escape(finding.selector)}</code><small>{html.escape(finding.context)}</small></td>"
             f"<td>{render_chips(finding.matched_selectors)}</td>"
             f"<td>{render_chips((finding.risky_properties or finding.decorative_properties)[:8])}</td>"
@@ -367,10 +415,21 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
             f"<div class=\"block-meta\">score {score} / {count} findings</div>"
             "</div>"
         )
+    module_rows = []
+    max_module_score = max((score for _, score, _ in modules), default=1)
+    for module, score, count in modules:
+        width = max(4, int(score / max_module_score * 100))
+        module_rows.append(
+            "<div class=\"block-row\">"
+            f"<div class=\"block-title\">{html.escape(module)}</div>"
+            f"<div class=\"bar\"><span style=\"width:{width}%\"></span></div>"
+            f"<div class=\"block-meta\">score {score} / {count} findings</div>"
+            "</div>"
+        )
     selector_items = "".join(f"<li><code>{html.escape(name)}</code><strong>{count}</strong></li>" for name, count in selector_counts.most_common())
     property_items = "".join(f"<li><code>{html.escape(name)}</code><strong>{count}</strong></li>" for name, count in property_counts.most_common(16))
-    css_label = html.escape(str(css_path.relative_to(ROOT)))
-    json_label = html.escape(str(json_path.relative_to(ROOT)))
+    css_label = html.escape(relative_label(css_path))
+    json_label = html.escape(relative_label(json_path))
     return f"""<!doctype html>
 <html lang="ko">
 <head>
@@ -430,6 +489,8 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
     <div class="note">This report is a triage map, not a failure gate. Review findings that combine core chrome selectors with structural properties before shipping a Windows test ZIP.</div>
     <section class="grid">
       <div class="panel">
+        <h2>Dev Module Heatmap</h2>
+        {''.join(module_rows) if module_rows else '<p>No core chrome findings.</p>'}
         <h2>Patch Block Heatmap</h2>
         {''.join(block_rows) if block_rows else '<p>No core chrome findings.</p>'}
       </div>
@@ -443,8 +504,8 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
     <section>
       <h2>Top Findings</h2>
       <table>
-        <thead><tr><th>Severity</th><th>Score</th><th>Line</th><th>Selector</th><th>Matched</th><th>Risky Properties</th><th>Block</th></tr></thead>
-        <tbody>{''.join(finding_rows) if finding_rows else '<tr><td colspan="7">No findings.</td></tr>'}</tbody>
+        <thead><tr><th>Severity</th><th>Score</th><th>Line</th><th>Module</th><th>Selector</th><th>Matched</th><th>Risky Properties</th><th>Block</th></tr></thead>
+        <tbody>{''.join(finding_rows) if finding_rows else '<tr><td colspan="8">No findings.</td></tr>'}</tbody>
       </table>
     </section>
   </main>
@@ -457,11 +518,17 @@ def write_outputs(css_path: Path, html_path: Path, json_path: Path) -> list[Find
     source = css_path.read_text(encoding="utf-8")
     blocks = extract_version_blocks(source)
     rules = parse_rules(source)
-    findings = classify_findings(rules, blocks)
+    module_ranges = dev_module_ranges()
+    findings = classify_findings(rules, blocks, module_ranges)
     html_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "source": str(css_path.relative_to(ROOT)),
+        "source": relative_label(css_path),
+        "module_order": relative_label(DEV_ORDER),
+        "source_modules": [
+            {"start_line": start_line, "end_line": end_line, "module": module}
+            for start_line, end_line, module in module_ranges
+        ],
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "rule_count": len(rules),
         "finding_count": len(findings),
@@ -486,8 +553,8 @@ def main() -> int:
     json_path = args.json.resolve()
     findings = write_outputs(css_path, html_path, json_path)
     counts = severity_counts(findings)
-    print(f"OK: wrote {html_path.relative_to(ROOT)}")
-    print(f"OK: wrote {json_path.relative_to(ROOT)}")
+    print(f"OK: wrote {relative_label(html_path)}")
+    print(f"OK: wrote {relative_label(json_path)}")
     print(
         "OK: CSS risk map findings="
         f"{len(findings)} critical={counts.get('critical', 0)} "
