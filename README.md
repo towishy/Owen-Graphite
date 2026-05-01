@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.16` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
+| **버전** | `2.22.17` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -324,10 +324,11 @@ Workspace split divider · Drag ghost · Vault switcher 모달 · Status bar sep
 
 ## 5. Change Log
 
-현 롤백 베이스라인은 **v2.22.16**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 롤백 베이스라인은 **v2.22.17**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.17** | Liquid glass polish release — glass token 정규화, active 문서 아이콘 강화, breadcrumb C안 centerline glow + hover glass icon, tooltip/nav proximity 보정 |
 | **v2.22.16** | Dev CSS stabilization release — motion-off horizontal hover shift 누락 수정, file explorer glass 소유권 정리, reduced-motion scope 축소, raw transform validator guard 추가 |
 | **v2.22.15** | Live Preview table inflation regression hotfix — 표 셀 편집 행 팽창 차단, `v2.22.15`를 안정 롤백 베이스라인으로 고정 |
 | **v2.22.13** | Windows tab/button stable baseline — 검증된 v1.8.66 CSS baseline으로 복원, 중간 테스트 chrome 강제 레이어 제거 |

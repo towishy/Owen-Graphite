@@ -4,6 +4,24 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.17] — 2026-05-01 — Liquid glass breadcrumb and tooltip polish release
+
+### Added
+- Breadcrumb/header를 C안 **Minimal Centerline With Active Glow**로 전환: 현재 문서는 cyan glow underline으로 표시하고, breadcrumb segment hover/focus 시에만 작은 liquid-glass folder/document icon tile이 나타나도록 구성.
+- Active document icon glass를 더 선명하게 조정해 파일 탐색기 현재 문서 인식성을 강화.
+
+### Changed
+- Web Liquid Glass 레퍼런스 감각을 Obsidian CSS-only 제약 안에서 재현하도록 `--ogd-glass-*` 토큰 계열의 tint, rim, shadow, blur 사용을 정리.
+- Breadcrumb B안 floating chips에서 발생하던 과한 chip/icon 돌출감을 제거하고, 텍스트 중심의 조용한 header 스타일로 회귀.
+- File explorer/nav item tooltip이 항목 바로 옆에 뜨도록 tooltip 방향별 offset과 nested nav item hover anchor 폭을 보정.
+
+### Fixed
+- Amber/yellow tint가 search/settings glass surfaces에서 과하게 보이던 문제를 완화.
+- Breadcrumb chip border/glow가 header boundary 밖으로 튀어나와 보이던 회귀를 C안 전환으로 제거.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, `scripts/build_release.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.16] — 2026-05-01 — Dev CSS stabilization and motion guard release
 
 ### Fixed
