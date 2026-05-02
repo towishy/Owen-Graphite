@@ -88,12 +88,29 @@
 }
 
 .tooltip {
-  background: rgba(30, 41, 59, 0.94) !important;
-  color: var(--ogd-text-inverted, #f8fafc) !important;
+  background: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.74), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.74)) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(150%) brightness(1.03)) !important;
+  backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(150%) brightness(1.03)) !important;
+  border: 1px solid rgba(186, 230, 253, 0.54) !important;
   border-radius: var(--ogd-radius-control, 7px) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(148, 163, 184, 0.10), 0 14px 30px rgba(15, 23, 42, 0.13), 0 4px 10px rgba(56, 189, 248, 0.08) !important;
+  color: var(--ogd-text-strong, #111827) !important;
   font-size: 12px !important;
   font-weight: 620 !important;
   letter-spacing: 0 !important;
+  line-height: 1.35 !important;
+  padding: 8px 12px !important;
+}
+
+.tooltip :is(.tooltip-content, .tooltip-inner) {
+  color: inherit !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42) !important;
+}
+
+.tooltip .tooltip-arrow {
+  border-top-color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.92) !important;
+  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.10)) !important;
 }
 
 .popover.hover-popover .markdown-preview-view,
@@ -246,8 +263,22 @@
 }
 
 .theme-dark .tooltip {
-  background: rgba(248, 250, 252, 0.94) !important;
-  color: var(--ogd-text-strong, #111827) !important;
+  background: radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.16), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.64)) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(150%) brightness(1.02)) !important;
+  backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(150%) brightness(1.02)) !important;
+  border-color: rgba(203, 213, 225, 0.20) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.28), 0 16px 34px rgba(0, 0, 0, 0.46), 0 4px 10px rgba(15, 23, 42, 0.24) !important;
+  color: var(--ogd-text-inverted, #f8fafc) !important;
+}
+
+.theme-dark .tooltip :is(.tooltip-content, .tooltip-inner) {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.34) !important;
+}
+
+.theme-dark .tooltip .tooltip-arrow {
+  border-top-color: rgba(30, 41, 59, 0.82) !important;
+  border-bottom-color: rgba(30, 41, 59, 0.82) !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.42)) !important;
 }
 
 .theme-dark .popover.hover-popover .markdown-preview-view,
@@ -506,11 +537,11 @@ body.theme-dark .markdown-preview-view h1::before {
   box-shadow: inset 0 2px 0 0 var(--interactive-accent, #475569) !important;
 }
 .workspace-tab-header:not(.is-active) {
-  opacity: 0.78;
-  transition: opacity 0.15s ease;
+  color: var(--text-muted) !important;
+  transition: color 0.15s ease;
 }
 .workspace-tab-header:not(.is-active):hover {
-  opacity: 1;
+  color: var(--text-normal) !important;
 }
 .workspace-tab-header.is-active .workspace-tab-header-inner-title {
   font-weight: 600 !important;

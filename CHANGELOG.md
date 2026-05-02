@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.23] — 2026-05-02 — File explorer hierarchy stabilization
+
+### Changed
+- 선택 문서의 직접 부모 폴더 halo를 light/dark 변수 기반 규칙으로 정리해 active hierarchy selector 유지보수성을 개선.
+- 코드블록 opt-in line number와 print H1 break 규칙의 CSS compatibility 경고를 정리.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.22] — 2026-05-02 — README image refresh release
 
 ### Documentation

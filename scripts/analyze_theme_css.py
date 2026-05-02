@@ -269,6 +269,17 @@ def matched_core_selectors(selector: str) -> list[tuple[str, int]]:
     return matches
 
 
+def is_intentional_context_guard(rule: Rule, risky: list[str]) -> bool:
+    if not risky:
+        return False
+    declarations = [(item.split(":", 1)[0], item.split(":", 1)[1].strip()) for item in risky]
+    if "@media print" in rule.context:
+        return all(property_name == "display" and re.search(r"\bnone\b", value, re.I) for property_name, value in declarations)
+    if "prefers-reduced-motion" in rule.context and "reduce" in rule.context:
+        return all(property_name in {"transform", "translate", "scale"} and re.search(r"\bnone\b", value, re.I) for property_name, value in declarations)
+    return False
+
+
 def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]], module_ranges: list[tuple[int, int, str]]) -> list[Finding]:
     findings = []
     for rule in rules:
@@ -292,6 +303,7 @@ def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]], module_r
                 decorative.append(property_name)
         if not selector_matches:
             continue
+        is_context_guard = is_intentional_context_guard(rule, risky)
         selector_score = max(weight for _, weight in selector_matches)
         score = selector_score + property_score + min(len(selector_matches), 4)
         if any(label == "[role=tab]" for label, _ in selector_matches):
@@ -300,9 +312,13 @@ def classify_findings(rules: list[Rule], blocks: list[tuple[int, str]], module_r
             score = min(score, 17)
         if is_print_context and not critical:
             score = min(score, 14)
+        if is_context_guard and not critical:
+            score = min(score, 12)
         if not risky:
             severity = "info"
             score = selector_score + len(decorative)
+        elif is_context_guard and not critical:
+            severity = "info"
         elif critical:
             severity = "critical"
         elif score >= 28:

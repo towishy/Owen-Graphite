@@ -48,7 +48,6 @@
 
   body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
     gap: 8px !important;
-    overflow: visible !important;
   }
 
   body:not(.is-mobile) .workspace-tab-header {
@@ -63,14 +62,12 @@
 
   body:not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner)::before,
   body:not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner)::after {
-    display: none !important;
     background: var(--ogd-surface-transparent, transparent) !important;
     background-color: var(--ogd-surface-transparent, transparent) !important;
     border: var(--ogd-border-none, 0) !important;
     border-color: var(--ogd-surface-transparent, transparent) !important;
     box-shadow: var(--ogd-shadow-none, none) !important;
     content: none !important;
-    width: 0 !important;
   }
 
   body:not(.is-mobile) .workspace-tab-header-inner {

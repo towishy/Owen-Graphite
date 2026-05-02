@@ -64,13 +64,11 @@
 
   /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
   .markdown-rendered h1 {
-    -webkit-column-break-before: page !important;
     break-before: page !important;
     page-break-before: always !important;
   }
   .markdown-rendered h1:first-of-type,
   .markdown-rendered > h1:first-child {
-    -webkit-column-break-before: avoid !important;
     break-before: avoid !important;
     page-break-before: avoid !important;
   }

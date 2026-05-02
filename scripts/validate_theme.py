@@ -433,7 +433,7 @@ def css_regression_guards() -> None:
     forbidden = [
         (re.compile(r"\.theme-dark\s+body\."), "invalid .theme-dark body.* selector"),
         (re.compile(r"transition\s*:\s*all\b", re.I), "transition: all"),
-        (re.compile(r"transform\s*:\s*translateY\(-(?:1|0\.5)px\)"), "direct hover lift transform; use --ogd-hover-lift variables"),
+        (re.compile(r"transform\s*:\s*translateY\(-(?:2|1|0\.5)px\)"), "direct hover lift transform; use --ogd-hover-lift variables"),
         (re.compile(r"transform\s*:\s*translateX\((?:1|0\.5)px\)"), "direct hover shift transform; use --ogd-hover-shift variables"),
         (re.compile(r"transform\s*:\s*translateY\(0\)\s*scale\(0\.99\)"), "direct press lift transform; use --ogd-press-lift"),
     ]

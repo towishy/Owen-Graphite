@@ -44,6 +44,7 @@
   --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55));
   --ogd-glass-control-bg: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22));
   --ogd-glass-control-hover-bg: radial-gradient(circle at 74% 24%, rgba(255,255,255,0.72), transparent 36%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.54));
+  --ogd-hover-lift-strong: translateY(-2px);
   --ogd-hover-lift: translateY(-1px);
   --ogd-hover-lift-subtle: translateY(-0.5px);
   --ogd-hover-shift: translateX(1px);
@@ -162,6 +163,7 @@ body {
 }
 
 body.ogd-motion-off {
+  --ogd-hover-lift-strong: none;
   --ogd-hover-lift: none;
   --ogd-hover-lift-subtle: none;
   --ogd-hover-shift: none;
@@ -169,6 +171,7 @@ body.ogd-motion-off {
 }
 
 body.ogd-motion-subtle {
+  --ogd-hover-lift-strong: translateY(-0.75px);
   --ogd-hover-lift: translateY(-0.5px);
   --ogd-hover-lift-subtle: translateY(-0.25px);
   --ogd-hover-shift: translateX(0.5px);
@@ -176,6 +179,7 @@ body.ogd-motion-subtle {
 }
 
 body.ogd-motion-standard {
+  --ogd-hover-lift-strong: translateY(-2px);
   --ogd-hover-lift: translateY(-1px);
   --ogd-hover-lift-subtle: translateY(-0.5px);
   --ogd-hover-shift: translateX(1px);

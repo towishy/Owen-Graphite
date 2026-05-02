@@ -63,7 +63,7 @@ Use `:has()` only for progressive enhancement. Rules that depend on parent looku
 
 - Menu and right-click regressions should be checked first in `09b-editing-menu-tooltip-glass.css`. Keep `.menu .menu-item` dimensions stable between rest and hover states.
 - Glass intensity and shared glass backgrounds are centralized in `09c-floating-ui-glass-system.css`. Use `--ogd-glass-bg*`, `--ogd-glass-surface-bg`, `--ogd-glass-toolbar-bg`, and `--ogd-glass-control-*` tokens for repeated glass surfaces.
-- Hover/press motion is centralized through `--ogd-hover-lift`, `--ogd-hover-lift-subtle`, `--ogd-hover-shift`, and `--ogd-press-lift`. Use the `ogd-motion-*` classes instead of direct lift/shift transforms.
+- Hover/press motion is centralized through `--ogd-hover-lift-strong`, `--ogd-hover-lift`, `--ogd-hover-lift-subtle`, `--ogd-hover-shift`, and `--ogd-press-lift`. Use the `ogd-motion-*` classes instead of direct lift/shift transforms.
 - Repeated surface, text, radius, border reset, and shadow reset values should use the `--ogd-surface-*`, `--ogd-text-*`, `--ogd-radius-*`, `--ogd-border-none`, and `--ogd-shadow-none` tokens from `01-tokens.css`.
 - Print rules are intentionally split by purpose. `04-print-base.css` owns base page setup; `06-feature-presets.css` owns report/preset print features; `07-plugin-workspace.css` and `07e-live-preview-mobile-plugin.css` own plugin/workspace print behavior; `08-report-print-polish.css` owns report/PDF output polish; `09c-floating-ui-glass-system.css` owns print glass isolation after glass variables are declared; `10b-late-reading-nav-polish.css` and `10c-overlay-layout-polish.css` own late print polish.
 
