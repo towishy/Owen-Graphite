@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.22] — 2026-05-02 — README image refresh release
+
+### Documentation
+- README 첫 번째 knowledge work stack 이미지를 Owen Editor 기준 SVG로 교체.
+- 동일 파일명 SVG가 미리보기/GitHub 캐시에 남지 않도록 README 이미지 참조에 릴리즈 버전 캐시 버스터를 적용.
+
+### Validation
+- `scripts/validate_theme.py`, local Obsidian vault sync 기준 검증 통과.
+
 ## [2.22.21] — 2026-05-02 — Liquid glass baseline build
 
 ### Added
