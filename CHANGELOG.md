@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.24] — 2026-05-02 — MAP-driven liquid glass stabilization
+
+### Changed
+- Liquid Glass 구현 원칙을 문서화하고, 공통 glass token과 suggestion/search/file explorer active surface의 rim, shine, shadow를 더 선명한 CSS-only 패턴으로 조정.
+- Ribbon, macOS sidebar toggle, workspace tab, focus-visible, graph control 계열의 반복 장식 선언을 변수 기반 상태로 정리해 MAP finding을 축소.
+- 선택 문서의 직접 부모 폴더 halo가 아이콘 경계와 부딪히지 않도록 세로 높이와 내부 여백을 보정.
+
+### Validation
+- MAP 기준 `critical=0`, `high=0`, `medium=0`, `low=0`, `info=82`.
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.23] — 2026-05-02 — File explorer hierarchy stabilization
 
 ### Changed

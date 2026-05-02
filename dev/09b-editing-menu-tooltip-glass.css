@@ -447,14 +447,18 @@
 
 @media (min-width: 701px) {
   body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    --ogd-macos-toggle-border: var(--ogd-border-none, 0);
+    --ogd-macos-toggle-bg: var(--ogd-surface-transparent, transparent);
+    --ogd-macos-toggle-shadow: var(--ogd-shadow-none, none);
+    --ogd-macos-toggle-color: var(--icon-color, var(--text-muted));
     padding: 4px !important;
-    border: var(--ogd-border-none, 0) !important;
+    border: var(--ogd-macos-toggle-border) !important;
     border-radius: var(--clickable-icon-radius, 6px) !important;
-    background: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-macos-toggle-bg) !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    box-shadow: var(--ogd-shadow-none, none) !important;
-    color: var(--icon-color, var(--text-muted)) !important;
+    box-shadow: var(--ogd-macos-toggle-shadow) !important;
+    color: var(--ogd-macos-toggle-color) !important;
     transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease !important;
   }
 
@@ -464,26 +468,26 @@
 
   /* Liquid-glass hover (light) */
   body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55)) !important;
-    border: 1px solid rgba(100, 116, 139, 0.34) !important;
-    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
-    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
-    box-shadow:
+    --ogd-macos-toggle-border: 1px solid rgba(100, 116, 139, 0.34);
+    --ogd-macos-toggle-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55));
+    --ogd-macos-toggle-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.95),
       inset 0 -1px 0 rgba(15, 23, 42, 0.07),
-      0 6px 16px rgba(15, 23, 42, 0.14) !important;
-    color: var(--ogd-text-strong, #111827) !important;
+      0 6px 16px rgba(15, 23, 42, 0.14);
+    --ogd-macos-toggle-color: var(--ogd-text-strong, #111827);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
   }
 
   /* Liquid-glass hover (dark) */
   body.mod-macos:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
-    background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55)) !important;
-    border: 1px solid rgba(203, 213, 225, 0.22) !important;
-    box-shadow:
+    --ogd-macos-toggle-border: 1px solid rgba(203, 213, 225, 0.22);
+    --ogd-macos-toggle-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55));
+    --ogd-macos-toggle-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.12),
       inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-      0 6px 16px rgba(0, 0, 0, 0.36) !important;
-    color: var(--ogd-text-inverted, #f8fafc) !important;
+      0 6px 16px rgba(0, 0, 0, 0.36);
+    --ogd-macos-toggle-color: var(--ogd-text-inverted, #f8fafc);
   }
 }
 
@@ -576,16 +580,17 @@
 
 @media (min-width: 701px) {
   body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.50)) !important;
-    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
-    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
-    border: 1px solid rgba(148, 163, 184, 0.22) !important;
+    background: var(--ogd-glass-surface-bg, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.64), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.50))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07)) !important;
+    border: 1px solid var(--ogd-glass-border, rgba(148, 163, 184, 0.30)) !important;
     border-radius: 12px !important;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.85),
-      inset 0 -1px 0 rgba(148, 163, 184, 0.14),
-      0 14px 32px rgba(15, 23, 42, 0.14),
-      0 4px 12px rgba(15, 23, 42, 0.07) !important;
+      inset 0 1px 0 rgba(255, 255, 255, 0.96),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.16),
+      inset 0 0 18px rgba(255, 255, 255, 0.26),
+      0 20px 40px rgba(15, 23, 42, 0.16),
+      0 6px 14px rgba(15, 23, 42, 0.09) !important;
     padding: 6px !important;
   }
 
@@ -597,36 +602,41 @@
   }
 
   body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)) !important;
-    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
-    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
-    border-color: rgba(100, 116, 139, 0.34) !important;
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.56))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05)) !important;
+    border-color: var(--ogd-glass-border-hover, rgba(125, 211, 252, 0.60)) !important;
     color: #0f172a !important;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.94),
-      inset 0 -1px 0 rgba(15, 23, 42, 0.06),
-      0 6px 16px rgba(15, 23, 42, 0.12) !important;
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(14, 165, 233, 0.10),
+      inset 0 0 16px rgba(255, 255, 255, 0.28),
+      0 10px 22px rgba(15, 23, 42, 0.14),
+      0 3px 10px rgba(56, 189, 248, 0.10) !important;
     transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
   body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.58)) !important;
-    border-color: rgba(203, 213, 225, 0.18) !important;
+    background: var(--ogd-glass-surface-bg, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.16), transparent 35%), linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.58))) !important;
+    border-color: var(--ogd-glass-border, rgba(203, 213, 225, 0.22)) !important;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.13),
       inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-      0 14px 32px rgba(0, 0, 0, 0.45),
+      inset 0 0 18px rgba(148, 163, 184, 0.08),
+      0 18px 38px rgba(0, 0, 0, 0.48),
       0 4px 12px rgba(0, 0, 0, 0.30) !important;
   }
 
   body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)) !important;
-    border-color: rgba(203, 213, 225, 0.20) !important;
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.19), transparent 35%), linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45))) !important;
+    border-color: var(--ogd-glass-border-hover, rgba(186, 230, 253, 0.30)) !important;
     color: var(--ogd-text-inverted, #f8fafc) !important;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
       inset 0 -1px 0 rgba(0, 0, 0, 0.24),
-      0 6px 16px rgba(0, 0, 0, 0.32) !important;
+      inset 0 0 14px rgba(148, 163, 184, 0.10),
+      0 10px 24px rgba(0, 0, 0, 0.36),
+      0 3px 10px rgba(56, 189, 248, 0.06) !important;
   }
 }
 

@@ -2,7 +2,7 @@
 
 ## Goal Gates
 
-- Rollback baseline: `v2.22.23` is the current retained release/tag baseline
+- Rollback baseline: `v2.22.24` is the current retained release/tag baseline
 - MAP gate: critical = 0, high = 0, medium = 0
 - MAP intentionally classifies print-only chrome hiding and reduced-motion transform resets as info-level guards.
 - Validation gate: `python scripts/validate_theme.py --ci` must pass

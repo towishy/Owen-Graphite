@@ -331,16 +331,17 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
       --ogd-direct-parent-folder-icon: #64748b;
-      --ogd-direct-parent-folder-icon-opacity: 0.58;
-      --ogd-direct-parent-folder-halo-border: rgba(186, 230, 253, 0.56);
-      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 24%, rgba(255, 255, 255, 0.78), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(240, 249, 255, 0.46));
-      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(125, 211, 252, 0.10), 0 3px 8px rgba(56, 189, 248, 0.10);
-      padding-left: 36px !important;
+      --ogd-direct-parent-folder-icon-opacity: 0.64;
+      --ogd-direct-parent-folder-halo-border: rgba(125, 211, 252, 0.74);
+      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.92), transparent 38%), radial-gradient(circle at 30% 74%, rgba(186, 230, 253, 0.28), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(240, 249, 255, 0.54));
+      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(125, 211, 252, 0.16), inset 0 0 10px rgba(255, 255, 255, 0.30), 0 5px 12px rgba(56, 189, 248, 0.14);
+      min-height: 31px !important;
+      padding: 6px 14px 6px 38px !important;
       isolation: isolate !important;
     }
 
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before {
-      left: 8px !important;
+      left: 9px !important;
       z-index: 1 !important;
       opacity: var(--ogd-direct-parent-folder-icon-opacity, 0.58) !important;
       background-color: var(--ogd-direct-parent-folder-icon, #64748b) !important;
@@ -349,10 +350,10 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after {
       content: "" !important;
       position: absolute !important;
-      left: 3px !important;
+      left: 2px !important;
       top: 50% !important;
-      width: 25px !important;
-      height: 25px !important;
+      width: 27px !important;
+      height: 27px !important;
       border: 1px solid var(--ogd-direct-parent-folder-halo-border, rgba(186, 230, 253, 0.56)) !important;
       border-radius: var(--ogd-radius-pill, 999px) !important;
       background: var(--ogd-direct-parent-folder-halo-bg, radial-gradient(circle at 68% 24%, rgba(255, 255, 255, 0.78), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(240, 249, 255, 0.46))) !important;
@@ -490,9 +491,9 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
       --ogd-direct-parent-folder-icon: #cbd5e1;
       --ogd-direct-parent-folder-icon-opacity: 0.68;
-      --ogd-direct-parent-folder-halo-border: rgba(203, 213, 225, 0.18);
-      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 24%, rgba(255, 255, 255, 0.10), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.46), rgba(15, 23, 42, 0.28));
-      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22), 0 3px 8px rgba(0, 0, 0, 0.24);
+      --ogd-direct-parent-folder-halo-border: rgba(186, 230, 253, 0.30);
+      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.14), transparent 38%), radial-gradient(circle at 30% 74%, rgba(56, 189, 248, 0.08), transparent 40%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.32));
+      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.24), inset 0 0 9px rgba(148, 163, 184, 0.08), 0 5px 12px rgba(0, 0, 0, 0.30);
     }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content,

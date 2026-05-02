@@ -701,13 +701,6 @@ body.ogd-eye-care.theme-light .markdown-rendered {
   .markdown-rendered img:hover { filter: none !important; transform: none !important; }
 }
 
-/* G3. Strong focus ring — interactive elements only */
-:is(button, a, input, textarea, select, [role="button"], [role="link"], [role="tab"], [role="menuitem"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible {
-  outline: 1px solid rgba(100, 116, 139, 0.42) !important;
-  outline-offset: 1px !important;
-  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10) !important;
-}
-
 /* G4. CJK font boost */
 body.ogd-cjk-boost .markdown-rendered :is(:lang(ko), :lang(ja), :lang(zh)) {
   font-size: calc(var(--ogd-body-size, 15px) + 0.5px);

@@ -31,6 +31,17 @@ Hover의 핵심은 `더 파랗게`가 아니라 `더 밝고, 더 떠 있고, 더
 
 이 세 레이어가 같이 있어야 영상처럼 `플라스틱 버튼`이 아니라 `가벼운 유리 버튼`으로 보인다.
 
+## 3-1. Liquid Glass 구현 체크리스트
+
+새 Liquid Glass 표면을 만들거나 기존 표면을 강화할 때는 다음 원칙을 우선 적용한다.
+
+- 패널 rim은 기본 상태에서도 유리 경계가 읽히도록 선명하게 둔다.
+- 상단 shine 곡선은 DOM/CSS 제약이 허용되는 요소에 추가한다.
+- 카드 shadow는 작고 진한 그림자보다 넓고 부드러운 하강 그림자로 만든다.
+- 내부 glass 반사 레이어를 radial highlight 또는 inset shine으로 추가한다.
+- active 카드는 sky tint와 glass border를 resting/hover보다 더 또렷하게 둔다.
+- 좌측 세로 라인/rail은 사용하지 않는다. 계층, 선택, 강조는 border, halo, icon, chip, surface state로 표현한다.
+
 ## 4. 색상 패턴은 pastel rim 방식으로 통일한다
 
 기본 상태는 색상이 아니라 graphite/gray frosted glass다. 아이콘별 색상 차이는 평소에 드러내지 않고, hover/active 순간에도 반복 chrome에서는 최대한 slate 계열로 남겨야 Owen Graphite의 차분한 문서 UI와 충돌하지 않는다.
