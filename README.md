@@ -70,8 +70,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **PDF** | 페이지 크기·블록 분할 방지·첫 페이지 모던 헤더 (좌/우 라벨·본문·사이드바 색) |
 | **컬러/모션** | 액센트 프리셋·코드블록 테마·시선 보호·OS 다크 모드 추종·Glass 강도·Hover 움직임 |
 
-> 전체 옵션 표는 [docs/style-settings.md](docs/style-settings.md) 또는 플러그인 UI에서 확인할 수 있습니다.
-> AI 문서 생성 규칙은 [docs/ai-document-guide.md](docs/ai-document-guide.md)에서 확인할 수 있습니다.
+> 전체 옵션은 Style Settings 플러그인 UI에서 확인할 수 있습니다.
+> AI 문서 생성 규칙과 내부 참고 문서는 로컬 `docs/` 작업 폴더에서 별도로 관리합니다.
 
 ---
 
@@ -265,7 +265,7 @@ Task glyph · prompt/suggestion glass · Canvas controls · status bar segment h
 | 4 | Inline tag pill v2 | 본문 `#tag` / CM6 hashtag pill 스타일 통일 |
 | 5 | Callout 다크 패리티 재감사 | note/warning/danger/success 다크 대비 보강 |
 | 6 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
-| 7 | docs/style-settings.md | Style Settings 풀 레퍼런스 문서 신설 |
+| 7 | Style Settings reference | Style Settings 풀 레퍼런스 문서 신설 |
 
 ---
 
@@ -378,7 +378,6 @@ Owen Graphite/
 ├── CHANGELOG.md      # 전체 릴리즈 노트
 ├── CONTRIBUTING.md   # 기여 가이드
 ├── LICENSE           # MIT
-├── docs/ai-document-guide.md # AI/LLM-WIKI 문서 작성 가이드
 ├── dev/test-samples/ # 개발/검증용 샘플 문서
 ├── dev/MAP/          # dev CSS 기준 theme.css risk map 산출물
 ├── dev/temp/         # 임시 요청 산출물 보관소 (내용물은 커밋 제외)

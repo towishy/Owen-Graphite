@@ -19,12 +19,6 @@ RELEASE_ASSETS = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "docs/ai-document-guide.md",
-    "docs/qa-checklist.md",
-    "docs/fixtures/README.md",
-    "docs/fixtures/liquid-glass-core-state-matrix.html",
-    "docs/fixtures/refero-inspired-glass-states.html",
-    "docs/liquid-glass-hover-study-sample.html",
     "dev/MAP/map-info-classification.md",
     "dev/MAP/theme-css-risk-map.html",
     "dev/MAP/theme-css-risk-map.json",
@@ -33,6 +27,7 @@ RELEASE_ASSETS = [
     "screenshots/report.png",
 ]
 LEGACY_ASSET_PATHS = [
+    "docs",
     "docs/MAP",
 ]
 DEFAULT_VAULTS = [

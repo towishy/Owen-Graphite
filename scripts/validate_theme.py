@@ -29,17 +29,10 @@ REQUIRED_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "docs/ai-document-guide.md",
-    "docs/qa-checklist.md",
-    "docs/fixtures/README.md",
-    "docs/fixtures/liquid-glass-core-state-matrix.html",
-    "docs/fixtures/refero-inspired-glass-states.html",
-    "docs/liquid-glass-hover-study-sample.html",
     "dev/MAP/css-stabilization-checklist.md",
     "dev/MAP/map-info-classification.md",
     "dev/MAP/theme-css-risk-map.html",
     "dev/MAP/theme-css-risk-map.json",
-    "docs/style-settings.md",
     "scripts/analyze_theme_css.py",
     "scripts/bundle_theme.py",
     "scripts/contrast_audit.py",
@@ -97,12 +90,6 @@ RELEASE_ASSETS = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "docs/ai-document-guide.md",
-    "docs/qa-checklist.md",
-    "docs/fixtures/README.md",
-    "docs/fixtures/liquid-glass-core-state-matrix.html",
-    "docs/fixtures/refero-inspired-glass-states.html",
-    "docs/liquid-glass-hover-study-sample.html",
     "dev/MAP/map-info-classification.md",
     "dev/MAP/theme-css-risk-map.html",
     "dev/MAP/theme-css-risk-map.json",
@@ -112,7 +99,7 @@ RELEASE_ASSETS = [
 ]
 
 RELEASE_WORKFLOW_ASSETS = [
-    asset for asset in RELEASE_ASSETS if asset != "docs/fixtures/README.md"
+    asset for asset in RELEASE_ASSETS
 ]
 
 FORBIDDEN_LIVE_PREVIEW_RULES = {
