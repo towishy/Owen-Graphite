@@ -129,15 +129,20 @@
     },
     {
       "start_line": 10049,
-      "end_line": 10153,
+      "end_line": 10251,
+      "module": "dev/10d-liquid-glass-core.css"
+    },
+    {
+      "start_line": 10252,
+      "end_line": 10356,
       "module": "dev/10-a11y-regression-hotfixes.css"
     }
   ],
-  "generated_at": "2026-05-03T14:11:41.283961+00:00",
-  "rule_count": 1319,
-  "finding_count": 70,
+  "generated_at": "2026-05-03T14:50:47.867469+00:00",
+  "rule_count": 1336,
+  "finding_count": 77,
   "severity_counts": {
-    "info": 70
+    "info": 77
   },
   "findings": [
     {
@@ -351,6 +356,68 @@
         "box-shadow"
       ],
       "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 10154,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):focus-visible",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "border-color",
+        "box-shadow",
+        "outline"
+      ],
+      "summary": ".workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by border-color, outline, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 10190,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by border-color, background, box-shadow"
+    },
+    {
+      "severity": "info",
+      "score": 11,
+      "line": 10197,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "background",
+        "border-color",
+        "box-shadow"
+      ],
+      "summary": ".workspace-tab-header touched by border-color, background, box-shadow"
     },
     {
       "severity": "info",
@@ -869,6 +936,24 @@
     },
     {
       "severity": "info",
+      "score": 9,
+      "line": 10204,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) .workspace-tab-header:focus-within .workspace-tab-header-inner",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-tab-header"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [
+        "outline"
+      ],
+      "summary": ".workspace-tab-header touched by outline"
+    },
+    {
+      "severity": "info",
       "score": 8,
       "line": 537,
       "module": "dev/02-base-workspace.css",
@@ -1234,6 +1319,60 @@
       "critical_properties": [],
       "decorative_properties": [],
       "summary": ".workspace-tab-header touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 10136,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action)",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 10142,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by "
+    },
+    {
+      "severity": "info",
+      "score": 8,
+      "line": 10148,
+      "module": "dev/10d-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):is(.is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"])",
+      "context": "root",
+      "block": "v2.22.29 - Owen Graphite Liquid Glass core",
+      "matched_selectors": [
+        ".workspace-ribbon",
+        ".side-dock-ribbon",
+        ".clickable-icon"
+      ],
+      "risky_properties": [],
+      "critical_properties": [],
+      "decorative_properties": [],
+      "summary": ".workspace-ribbon, .side-dock-ribbon, .clickable-icon touched by "
     },
     {
       "severity": "info",

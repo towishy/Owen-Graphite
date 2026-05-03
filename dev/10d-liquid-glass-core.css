@@ -1,0 +1,203 @@
+/* ============================================================
+  v2.22.29 - Owen Graphite Liquid Glass core
+   - Promotes the approved state matrix into shared chrome tokens.
+   - Uses Mist Blue for active rims and Frost Aqua for focus halos.
+    - Keeps workspace tabs neutral because their shape already signals state.
+   ============================================================ */
+
+  body:not(.is-mobile) {
+}
+    --ogd-lg-mist-rim: rgba(186, 230, 253, 0.76);
+    --ogd-lg-mist-rim-dark: rgba(186, 230, 253, 0.42);
+    --ogd-lg-mist-fill: rgba(224, 242, 254, 0.50);
+    --ogd-lg-mist-glow: rgba(186, 230, 253, 0.16);
+    --ogd-lg-mist-line: rgba(125, 211, 252, 0.30);
+    --ogd-lg-frost-rim: rgba(103, 232, 249, 0.62);
+    --ogd-lg-frost-halo: rgba(103, 232, 249, 0.15);
+    --ogd-lg-frost-outline: rgba(103, 232, 249, 0.24);
+    --ogd-lg-surface-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.62), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.44), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.28) 54%, rgba(248, 250, 252, 0.18));
+    --ogd-lg-surface-bg-hover: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.68), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.46), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.32) 54%, rgba(248, 250, 252, 0.20));
+    --ogd-lg-surface-bg-active: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.68), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.46), transparent 32%), linear-gradient(180deg, var(--ogd-lg-mist-fill), rgba(255, 255, 255, 0.28) 54%, rgba(248, 250, 252, 0.18));
+    --ogd-lg-control-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.58), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(241, 245, 249, 0.24));
+    --ogd-lg-edge: rgba(255, 255, 255, 0.72);
+    --ogd-lg-edge-low: rgba(100, 116, 139, 0.24);
+    --ogd-lg-border: rgba(203, 213, 225, 0.34);
+    --ogd-lg-border-hover: rgba(147, 197, 253, 0.54);
+    --ogd-lg-shadow: 0 18px 44px rgba(15, 23, 42, 0.18), 0 6px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-hover: 0 28px 64px rgba(15, 23, 42, 0.24), 0 10px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-active: 0 22px 52px rgba(15, 23, 42, 0.22), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-focus: 0 18px 44px rgba(15, 23, 42, 0.18), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-tab-border: var(--ogd-surface-transparent, transparent);
+    --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.34);
+    --ogd-lg-tab-focus-outline: rgba(100, 116, 139, 0.20);
+    --ogd-lg-tab-shadow: 0 16px 36px rgba(15, 23, 42, 0.16), 0 5px 12px rgba(15, 23, 42, 0.10), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-tab-shadow-hover: 0 22px 48px rgba(15, 23, 42, 0.20), 0 7px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.58), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.38), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 250, 252, 0.28));
+    --ogd-lg-row-active-shadow: 0 18px 44px rgba(15, 23, 42, 0.15), 0 6px 16px rgba(15, 23, 42, 0.09);
+    --ogd-glass-filter: blur(28px) saturate(180%) contrast(106%) brightness(1.03);
+    --ogd-glass-filter-soft: blur(18px) saturate(170%) contrast(104%) brightness(1.02);
+    --ogd-glass-filter-control: blur(12px) saturate(152%) contrast(103%) brightness(1.02);
+    --ogd-glass-bg: var(--ogd-lg-surface-bg);
+    --ogd-glass-bg-strong: var(--ogd-lg-surface-bg-active);
+    --ogd-glass-bg-hover: var(--ogd-lg-surface-bg-hover);
+    --ogd-glass-surface-bg: var(--ogd-lg-surface-bg);
+    --ogd-glass-toolbar-bg: var(--ogd-lg-surface-bg);
+    --ogd-glass-control-bg: var(--ogd-lg-control-bg);
+    --ogd-glass-control-hover-bg: var(--ogd-lg-surface-bg-hover);
+    --ogd-glass-border: var(--ogd-lg-border);
+    --ogd-glass-border-hover: var(--ogd-lg-border-hover);
+    --ogd-glass-shadow: var(--ogd-lg-shadow);
+    --ogd-glass-shadow-hover: var(--ogd-lg-shadow-hover);
+    --ogd-glass-control-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-tab-glass-bg: var(--ogd-lg-surface-bg-active);
+    --ogd-tab-glass-bg-hover: var(--ogd-lg-surface-bg-hover);
+    --ogd-tab-glass-border: var(--ogd-lg-tab-border);
+    --ogd-tab-glass-border-hover: var(--ogd-lg-tab-border-hover);
+    --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent);
+    --ogd-tab-glass-shadow: var(--ogd-lg-tab-shadow);
+    --ogd-tab-glass-shadow-hover: var(--ogd-lg-tab-shadow-hover);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-lg-mist-fill: rgba(14, 116, 144, 0.20);
+    --ogd-lg-mist-glow: rgba(186, 230, 253, 0.10);
+    --ogd-lg-mist-line: rgba(125, 211, 252, 0.22);
+    --ogd-lg-frost-rim: rgba(103, 232, 249, 0.42);
+    --ogd-lg-frost-halo: rgba(103, 232, 249, 0.10);
+    --ogd-lg-frost-outline: rgba(103, 232, 249, 0.18);
+    --ogd-lg-surface-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.14), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(71, 85, 105, 0.58), rgba(30, 41, 59, 0.30) 54%, rgba(15, 23, 42, 0.22));
+    --ogd-lg-surface-bg-hover: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.16), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.12), transparent 32%), linear-gradient(180deg, rgba(71, 85, 105, 0.68), rgba(30, 41, 59, 0.36) 54%, rgba(15, 23, 42, 0.26));
+    --ogd-lg-surface-bg-active: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.14), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.11), transparent 32%), linear-gradient(180deg, rgba(14, 116, 144, 0.20), rgba(30, 41, 59, 0.30) 54%, rgba(15, 23, 42, 0.22));
+    --ogd-lg-control-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.12), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.09), transparent 32%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(30, 41, 59, 0.30));
+    --ogd-lg-edge: rgba(255, 255, 255, 0.18);
+    --ogd-lg-edge-low: rgba(15, 23, 42, 0.64);
+    --ogd-lg-border: rgba(203, 213, 225, 0.18);
+    --ogd-lg-border-hover: rgba(186, 230, 253, 0.30);
+    --ogd-lg-shadow: 0 18px 46px rgba(0, 0, 0, 0.46), 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-hover: 0 30px 72px rgba(0, 0, 0, 0.56), 0 12px 28px rgba(0, 0, 0, 0.38), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-active: 0 22px 54px rgba(0, 0, 0, 0.54), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-focus: 0 18px 46px rgba(0, 0, 0, 0.46), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.18);
+    --ogd-lg-tab-focus-outline: rgba(203, 213, 225, 0.14);
+    --ogd-lg-tab-shadow: 0 16px 38px rgba(0, 0, 0, 0.42), 0 5px 14px rgba(0, 0, 0, 0.28), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-tab-shadow-hover: 0 24px 54px rgba(0, 0, 0, 0.50), 0 8px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.08), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.24));
+    --ogd-lg-row-active-shadow: 0 18px 46px rgba(0, 0, 0, 0.42), 0 6px 18px rgba(0, 0, 0, 0.30);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action) {
+    --ogd-ribbon-icon-border: var(--ogd-surface-transparent, transparent);
+    --ogd-ribbon-icon-bg: var(--ogd-lg-control-bg);
+    --ogd-ribbon-icon-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
+    --ogd-ribbon-icon-border: var(--ogd-lg-border-hover);
+    --ogd-ribbon-icon-bg: var(--ogd-lg-surface-bg-hover);
+    --ogd-ribbon-icon-shadow: var(--ogd-lg-shadow-hover);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):is(.is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"]) {
+    --ogd-ribbon-icon-border: var(--ogd-lg-mist-rim);
+    --ogd-ribbon-icon-bg: var(--ogd-lg-surface-bg-active);
+    --ogd-ribbon-icon-shadow: var(--ogd-lg-shadow-active);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):focus-visible {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .menu, .suggestion-container, .tooltip, .notice, .notice-container .notice) {
+    background: var(--ogd-lg-surface-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
+    backdrop-filter: var(--ogd-glass-filter) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-lg-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-lg-surface-bg-active) !important;
+    border-color: var(--ogd-lg-mist-rim) !important;
+    box-shadow: var(--ogd-lg-shadow-active) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown) {
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):is(:focus, :focus-visible, :focus-within) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
+    border-color: var(--ogd-lg-tab-border) !important;
+    border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-lg-surface-bg-active) !important;
+    box-shadow: var(--ogd-lg-tab-shadow) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    border-color: var(--ogd-lg-tab-border-hover) !important;
+    border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    box-shadow: var(--ogd-lg-tab-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header:focus-within .workspace-tab-header-inner {
+    outline: 1px solid var(--ogd-lg-tab-focus-outline) !important;
+    outline-offset: 2px !important;
+  }
+
+  body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    border-color: var(--ogd-lg-border-hover) !important;
+    box-shadow: var(--ogd-lg-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
+    border: 1px solid var(--ogd-surface-transparent, transparent) !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
+    border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-lg-row-active-bg) !important;
+    box-shadow: var(--ogd-lg-row-active-shadow) !important;
+    text-decoration: none !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
+    content: none !important;
+  }
+
+  body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-visible :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+}
+
+
+@media (min-width: 701px) {
+  body:not(.is-mobile).ogd-glass-off {
+    --ogd-lg-surface-bg: var(--background-primary);
+    --ogd-lg-surface-bg-hover: var(--background-modifier-hover);
+    --ogd-lg-surface-bg-active: var(--background-primary);
+    --ogd-lg-control-bg: var(--background-primary-alt);
+    --ogd-lg-shadow: none;
+    --ogd-lg-shadow-hover: none;
+    --ogd-lg-shadow-active: none;
+    --ogd-lg-shadow-focus: 0 0 0 2px var(--ogd-lg-frost-outline);
+    --ogd-glass-filter: none;
+    --ogd-glass-filter-soft: none;
+    --ogd-glass-filter-control: none;
+  }
+}

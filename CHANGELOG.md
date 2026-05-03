@@ -4,6 +4,21 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.29] — 2026-05-03 — Liquid Glass core state rollout
+
+### Added
+- Added the approved Liquid Glass core state matrix fixture as the representative design reference for ribbon icons, workspace tabs, file rows, command palette, popovers, tooltips, modals, and sidebar toggles.
+- Added `dev/10d-liquid-glass-core.css` as a late-loading core glass module that promotes the approved state tokens into actual desktop chrome surfaces.
+
+### Changed
+- Active and focus states now use Mist Blue and Frost Aqua glass language while preserving the permanent left-line ban.
+- Workspace tabs use neutral glass rims because tab shape already communicates active state.
+- Active file rows use a dedicated no-line glass background and shadow so the file name area does not show a hard underline.
+- Release ZIP, GitHub workflow assets, validation requirements, and local Obsidian sync include the new core state fixture and CSS module.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/build_release.py`, `scripts/validate_theme.py --ci`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.28] — 2026-05-03 — Guard and QA hardening
 
 ### Added

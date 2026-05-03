@@ -21,6 +21,7 @@ DEFAULT_FILES = [
     "docs/ai-document-guide.md",
     "docs/qa-checklist.md",
     "docs/fixtures/README.md",
+    "docs/fixtures/liquid-glass-core-state-matrix.html",
     "docs/fixtures/refero-inspired-glass-states.html",
     "docs/liquid-glass-hover-study-sample.html",
     "dev/MAP/map-info-classification.md",
