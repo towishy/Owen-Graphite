@@ -20,6 +20,7 @@ This list is the operating checklist for changes under `dev/`. Use it before bro
 - Prefer deleting obsolete fallback rules only when validation and surrounding history make ownership clear.
 - Keep one optimization pass focused on one module or one behavior family.
 - Regenerate generated artifacts in the same commit as the dev CSS change.
+- Treat the `v2.22.26` MAP `info=70` count as a monitored baseline: reduce only clear duplicate ownership or policy violations, not intentional accessibility/print guards.
 
 ## Safe Compaction Patterns
 
@@ -37,6 +38,13 @@ This list is the operating checklist for changes under `dev/`. Use it before bro
 - Workspace tab/header layout in `09d-tabs-file-explorer-search.css`.
 - Readable column width and mobile layout guards.
 - Direct `backdrop-filter`, direct transform motion, and unguarded `:has()` selectors.
+
+## v2.22.26 Safe Follow-up Scope
+
+- Allowed: replacing chrome left-edge active accents with full-surface border/ring treatments.
+- Allowed: documenting intentional MAP info findings and refreshing retained baseline references.
+- Allowed: creating preview-only fixtures under `docs/fixtures/` before any new visual direction is applied.
+- Defer: broad tab/ribbon/sidebar structural changes, right-click menu positioning changes, and new glass density changes without a fixture review.
 
 ## Web Liquid Glass Applicability
 

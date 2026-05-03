@@ -422,12 +422,14 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
             "</tr>"
         )
     block_rows = []
+    width_classes = set()
     for block, score, count in blocks:
         width = max(4, int(score / max_block_score * 100))
+        width_classes.add(width)
         block_rows.append(
             "<div class=\"block-row\">"
             f"<div class=\"block-title\">{html.escape(block)}</div>"
-            f"<div class=\"bar\"><span style=\"width:{width}%\"></span></div>"
+            f"<div class=\"bar\"><span class=\"w-{width}\"></span></div>"
             f"<div class=\"block-meta\">score {score} / {count} findings</div>"
             "</div>"
         )
@@ -435,13 +437,15 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
     max_module_score = max((score for _, score, _ in modules), default=1)
     for module, score, count in modules:
         width = max(4, int(score / max_module_score * 100))
+        width_classes.add(width)
         module_rows.append(
             "<div class=\"block-row\">"
             f"<div class=\"block-title\">{html.escape(module)}</div>"
-            f"<div class=\"bar\"><span style=\"width:{width}%\"></span></div>"
+            f"<div class=\"bar\"><span class=\"w-{width}\"></span></div>"
             f"<div class=\"block-meta\">score {score} / {count} findings</div>"
             "</div>"
         )
+    width_rules = "\n".join(f"    .w-{width} {{ width:{width}%; }}" for width in sorted(width_classes))
     selector_items = "".join(f"<li><code>{html.escape(name)}</code><strong>{count}</strong></li>" for name, count in selector_counts.most_common())
     property_items = "".join(f"<li><code>{html.escape(name)}</code><strong>{count}</strong></li>" for name, count in property_counts.most_common(16))
     css_label = html.escape(relative_label(css_path))
@@ -473,6 +477,7 @@ def render_html(findings: list[Finding], rules: list[Rule], css_path: Path, json
     .block-meta {{ color:var(--muted); font-size:12px; text-align:right; }}
     .bar {{ height:9px; background:#e5e7eb; border-radius:999px; overflow:hidden; }}
     .bar span {{ display:block; height:100%; background:linear-gradient(90deg,#0f766e,#f59e0b,#b91c1c); border-radius:inherit; }}
+{width_rules}
     ul.compact {{ list-style:none; padding:0; margin:0; display:grid; gap:7px; }}
     ul.compact li {{ display:flex; justify-content:space-between; gap:12px; border-bottom:1px solid #edf2f7; padding-bottom:6px; }}
     table {{ width:100%; border-collapse:separate; border-spacing:0; background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 8px 24px rgba(15,23,42,.06); }}

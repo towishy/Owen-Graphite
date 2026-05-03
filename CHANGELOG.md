@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.26] — 2026-05-03 — Core glass sample and left-accent cleanup
+
+### Changed
+- File explorer, overlay, bookmark/outline, floating suggestion, and high-contrast selected states now use full-surface inset rings instead of left-edge inset accents.
+- MAP stabilization docs now classify `info=70` findings into preserved guards and safe reduction candidates for future passes.
+- Added `docs/fixtures/refero-inspired-glass-states.html` as an approved Owen Graphite core design implementation sample for light/dark glass states, active rings, and transparent glass+shadow surfaces.
+- MAP HTML generation now emits width classes instead of inline `style=` attributes so generated reports stay clean in editor diagnostics.
+
+### Validation
+- MAP 기준 `critical=0`, `high=0`, `medium=0`, `low=0`, `info=70`.
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, `scripts/build_release.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.25] — 2026-05-03 — MAP info reduction stabilization
 
 ### Changed

@@ -2,7 +2,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.25)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.26)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.25` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
+| **버전** | `2.22.26` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -312,10 +312,11 @@ Task glyph · prompt/suggestion glass · Canvas controls · status bar segment h
 
 ## 5. Change Log
 
-현 롤백 베이스라인은 **v2.22.25**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 롤백 베이스라인은 **v2.22.26**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.26** | Core glass sample and left-accent cleanup — chrome active/selected 좌측 inset accent를 전체 ring으로 정리, MAP info 보존/감축 기준 문서화, 승인된 glass state fixture와 MAP HTML 진단 개선 추가 |
 | **v2.22.25** | MAP info reduction stabilization — overlay/search/graph 좌측 accent 잔여 표현을 전체 ring/border로 정리, tab/focus/workspace frame 중복 소유권 축소, MAP `info=70` 안정화 |
 | **v2.22.24** | MAP-driven liquid glass stabilization — ribbon/toggle/tab/focus/graph control 소유권 정리, 직접 부모 폴더 halo 세로 여백 보정, MAP `info=82` 안정화 |
 | **v2.22.23** | File explorer hierarchy stabilization — 직접 부모 폴더 halo를 변수 기반으로 정리하고 CSS compatibility 경고를 제거 |
