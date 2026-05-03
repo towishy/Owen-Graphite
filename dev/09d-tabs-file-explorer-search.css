@@ -85,18 +85,6 @@
     transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
   }
 
-  body:not(.is-mobile) .workspace-tab-header:is(:not(.is-active), .is-active),
-  body:not(.is-mobile) .workspace-tab-header:is(:not(.is-active), .is-active) .workspace-tab-header-inner {
-    border-left-color: var(--ogd-surface-transparent, transparent) !important;
-    border-right-color: var(--ogd-surface-transparent, transparent) !important;
-    border-inline-start-color: var(--ogd-surface-transparent, transparent) !important;
-    border-inline-end-color: var(--ogd-surface-transparent, transparent) !important;
-  }
-
-  body:not(.is-mobile) .workspace-tab-header:not(.is-active) {
-    box-shadow: var(--ogd-shadow-none, none) !important;
-  }
-
   body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
     --ogd-tab-header-bg: var(--ogd-tab-glass-bg);
     --ogd-tab-header-border-color: var(--ogd-tab-glass-border);

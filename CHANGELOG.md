@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.25] — 2026-05-03 — MAP info reduction stabilization
+
+### Changed
+- Overlay selection, search match active states, and graph/search pane borders no longer rely on left-edge accent coloring; emphasis now uses full-surface border/ring treatments aligned with the permanent left-line ban.
+- Workspace frame cleanup and tab glass rules were compacted to reduce duplicate chrome ownership while preserving existing glass/shadow behavior.
+- Overlay focus ownership was narrowed away from core tab/clickable chrome so accessibility focus handling remains centralized in the dedicated contrast/motion layer.
+
+### Validation
+- MAP 기준 `critical=0`, `high=0`, `medium=0`, `low=0`, `info=70`.
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, `scripts/build_release.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.24] — 2026-05-02 — MAP-driven liquid glass stabilization
 
 ### Changed

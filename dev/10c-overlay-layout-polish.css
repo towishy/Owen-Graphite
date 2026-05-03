@@ -48,7 +48,7 @@
 .menu .menu-item.selected {
   background: var(--ogd-overlay-selected-bg) !important;
   color: var(--ogd-overlay-selected-text) !important;
-  box-shadow: inset 3px 0 0 var(--ogd-overlay-selected-line) !important;
+  box-shadow: inset 0 0 0 1px var(--ogd-overlay-selected-line) !important;
 }
 
 .suggestion-item.is-selected .suggestion-title,
@@ -70,7 +70,7 @@
 .search-result-file-match.is-active,
 .search-result-file-match:hover {
   background: var(--ogd-surface-muted, #f8fafc) !important;
-  border-left-color: #64748b !important;
+  border-color: rgba(100, 116, 139, 0.42) !important;
 }
 
 /* Tooltip and popover surfaces: one low-noise floating surface language */
@@ -171,12 +171,9 @@
   a,
   [role="button"],
   [role="link"],
-  [role="tab"],
   [role="menuitem"],
-  .clickable-icon,
   .nav-file-title,
   .nav-folder-title,
-  .workspace-tab-header,
   .suggestion-item,
   .menu-item,
   .tree-item-self,
@@ -195,12 +192,9 @@
   a,
   [role="button"],
   [role="link"],
-  [role="tab"],
   [role="menuitem"],
-  .clickable-icon,
   .nav-file-title,
   .nav-folder-title,
-  .workspace-tab-header,
   .suggestion-item,
   .menu-item,
   .tree-item-self,
@@ -246,7 +240,7 @@
 .theme-dark .search-result-file-match.is-active,
 .theme-dark .search-result-file-match:hover {
   background: var(--ogd-surface-dark, #111827) !important;
-  border-left-color: var(--ogd-line-strong, #cbd5e1) !important;
+  border-color: rgba(203, 213, 225, 0.30) !important;
 }
 
 .theme-dark .tooltip,
@@ -321,12 +315,9 @@
   a,
   [role="button"],
   [role="link"],
-  [role="tab"],
   [role="menuitem"],
-  .clickable-icon,
   .nav-file-title,
   .nav-folder-title,
-  .workspace-tab-header,
   .suggestion-item,
   .menu-item,
   .tree-item-self,
@@ -345,12 +336,9 @@
     a,
     [role="button"],
     [role="link"],
-    [role="tab"],
     [role="menuitem"],
-    .clickable-icon,
     .nav-file-title,
     .nav-folder-title,
-    .workspace-tab-header,
     .suggestion-item,
     .menu-item,
     .tree-item-self,
@@ -531,24 +519,7 @@ body.theme-dark .markdown-preview-view h1::before {
   }
 }
 
-/* --- 3. Tab active/inactive contrast -------------------------------------- */
-.workspace-tab-header.is-active {
-  background: var(--background-primary) !important;
-  box-shadow: inset 0 2px 0 0 var(--interactive-accent, #475569) !important;
-}
-.workspace-tab-header:not(.is-active) {
-  color: var(--text-muted) !important;
-  transition: color 0.15s ease;
-}
-.workspace-tab-header:not(.is-active):hover {
-  color: var(--text-normal) !important;
-}
-.workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  font-weight: 600 !important;
-  color: var(--text-normal) !important;
-}
-
-/* --- 4. Callout left color stripe (type-aware) ---------------------------- */
+/* --- 3. Callout left color stripe (type-aware) ---------------------------- */
 .markdown-rendered .callout {
   position: relative;
   border-left: 4px solid var(--callout-color, #94a3b8) !important;

@@ -94,50 +94,50 @@
     },
     {
       "start_line": 6476,
-      "end_line": 6714,
+      "end_line": 6708,
       "module": "dev/09a-nav-ribbon-glass.css"
     },
     {
-      "start_line": 6715,
-      "end_line": 7550,
+      "start_line": 6709,
+      "end_line": 7553,
       "module": "dev/09b-editing-menu-tooltip-glass.css"
     },
     {
-      "start_line": 7551,
-      "end_line": 8174,
+      "start_line": 7554,
+      "end_line": 8177,
       "module": "dev/09c-floating-ui-glass-system.css"
     },
     {
-      "start_line": 8175,
-      "end_line": 8708,
+      "start_line": 8178,
+      "end_line": 8699,
       "module": "dev/09d-tabs-file-explorer-search.css"
     },
     {
-      "start_line": 8709,
-      "end_line": 8844,
+      "start_line": 8700,
+      "end_line": 8835,
       "module": "dev/10a-accessibility-motion-contrast.css"
     },
     {
-      "start_line": 8845,
-      "end_line": 9384,
+      "start_line": 8836,
+      "end_line": 9375,
       "module": "dev/10b-late-reading-nav-polish.css"
     },
     {
-      "start_line": 9385,
-      "end_line": 10086,
+      "start_line": 9376,
+      "end_line": 10048,
       "module": "dev/10c-overlay-layout-polish.css"
     },
     {
-      "start_line": 10087,
-      "end_line": 10191,
+      "start_line": 10049,
+      "end_line": 10153,
       "module": "dev/10-a11y-regression-hotfixes.css"
     }
   ],
-  "generated_at": "2026-05-02T14:04:29.054813+00:00",
-  "rule_count": 1327,
-  "finding_count": 82,
+  "generated_at": "2026-05-03T13:45:11.981352+00:00",
+  "rule_count": 1319,
+  "finding_count": 70,
   "severity_counts": {
-    "info": 82
+    "info": 70
   },
   "findings": [
     {
@@ -167,7 +167,7 @@
     {
       "severity": "info",
       "score": 13,
-      "line": 7163,
+      "line": 7157,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)",
       "context": "@media (min-width: 701px)",
@@ -232,7 +232,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 8246,
+      "line": 8249,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
@@ -253,7 +253,7 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 8788,
+      "line": 8779,
       "module": "dev/10a-accessibility-motion-contrast.css",
       "selector": "body:not(.is-mobile) :is( .nav-file-title, .nav-folder-title, .breadcrumb, .view-header-breadcrumb, .view-header-title, .menu-item, .suggestion-item, .search-suggest-item, .search-input-container, .setting-item, .setting-item-control button, .checkbox-container, .canvas-control-item, .canvas-card-menu .clickable-icon, .workspace-leaf-content[data-type=\"graph\"] .clickable-icon, .workspace-leaf-content[data-type=\"localgraph\"] .clickable-icon, .workspace-leaf-content[data-type=\"backlink\"] .tree-item-self, .workspace-leaf-content[data-type=\"outgoing-link\"] .tree-item-self, .backlink-pane .tree-item-self, .outgoing-link-pane .tree-item-self, .status-bar-item-segment, .metadata-property, .editingToolbarModalBar .clickable-icon, .editingToolbarPopover .clickable-icon, .editingToolbarButton ):is(:hover, :focus, :focus-visible, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (prefers-reduced-motion: reduce)",
@@ -271,53 +271,11 @@
     {
       "severity": "info",
       "score": 12,
-      "line": 8834,
+      "line": 8825,
       "module": "dev/10a-accessibility-motion-contrast.css",
       "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
       "context": "@media (forced-colors: active)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
-      "matched_selectors": [
-        "[role=tab]",
-        ".workspace-tab-header",
-        ".clickable-icon"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "box-shadow",
-        "outline"
-      ],
-      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline, box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 12,
-      "line": 9568,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
-      "context": "root",
-      "block": "v1.8.56 - Overlay interaction polish",
-      "matched_selectors": [
-        "[role=tab]",
-        ".workspace-tab-header",
-        ".clickable-icon"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "box-shadow",
-        "outline"
-      ],
-      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline, box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 12,
-      "line": 9742,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
-      "context": "@media (prefers-contrast: more), (forced-colors: active)",
-      "block": "v1.8.56 - Overlay interaction polish",
       "matched_selectors": [
         "[role=tab]",
         ".workspace-tab-header",
@@ -354,13 +312,14 @@
     {
       "severity": "info",
       "score": 11,
-      "line": 7382,
+      "line": 7383,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
-      "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-split.mod-root, .workspace-tabs.mod-active, .workspace-leaf.mod-active, .workspace-ribbon, .side-dock-ribbon)",
+      "selector": "body:not(.is-mobile) :is( .workspace, .workspace-split, .workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-split.mod-root, .workspace-tabs, .workspace-tabs.mod-active, .workspace-leaf, .workspace-leaf.mod-active, .workspace-leaf-content, .workspace-tab-container, .workspace-ribbon, .side-dock-ribbon, .view-content )",
       "context": "@media (min-width: 701px)",
       "block": "v1.8.41 - Workspace frame cleanup",
       "matched_selectors": [
         ".workspace-tabs",
+        ".workspace-tab-container",
         ".workspace-ribbon",
         ".side-dock-ribbon"
       ],
@@ -371,56 +330,16 @@
         "box-shadow",
         "outline"
       ],
-      "summary": ".workspace-tabs, .workspace-ribbon, .side-dock-ribbon touched by border, box-shadow, outline"
+      "summary": ".workspace-tabs, .workspace-tab-container, .workspace-ribbon, .side-dock-ribbon touched by border, outline, box-shadow"
     },
     {
       "severity": "info",
       "score": 11,
-      "line": 8799,
+      "line": 8790,
       "module": "dev/10a-accessibility-motion-contrast.css",
       "selector": ":is(button, a, input, textarea, select, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item):focus-visible",
       "context": "@media (prefers-contrast: more)",
       "block": "v1.8.46 - Accessibility hardening for glass UI and motion-sensitive users.",
-      "matched_selectors": [
-        "[role=tab]",
-        ".workspace-tab-header",
-        ".clickable-icon"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "box-shadow"
-      ],
-      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 11,
-      "line": 9592,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ":is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus:not(:focus-visible)",
-      "context": "root",
-      "block": "v1.8.56 - Overlay interaction polish",
-      "matched_selectors": [
-        "[role=tab]",
-        ".workspace-tab-header",
-        ".clickable-icon"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "outline"
-      ],
-      "summary": "[role=tab], .workspace-tab-header, .clickable-icon touched by outline"
-    },
-    {
-      "severity": "info",
-      "score": 11,
-      "line": 9718,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ".theme-dark :is( button, input, textarea, select, a, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [role=\"menuitem\"], .clickable-icon, .nav-file-title, .nav-folder-title, .workspace-tab-header, .suggestion-item, .menu-item, .tree-item-self, .empty-state-action ):focus-visible",
-      "context": "root",
-      "block": "v1.8.56 - Overlay interaction polish",
       "matched_selectors": [
         "[role=tab]",
         ".workspace-tab-header",
@@ -499,28 +418,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 7374,
-      "module": "dev/09b-editing-menu-tooltip-glass.css",
-      "selector": "body:not(.is-mobile) :is(.workspace, .workspace-split, .workspace-tabs, .workspace-leaf, .workspace-leaf-content, .workspace-tab-container, .view-content)",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.41 - Workspace frame cleanup",
-      "matched_selectors": [
-        ".workspace-tabs",
-        ".workspace-tab-container"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "border",
-        "box-shadow",
-        "outline"
-      ],
-      "summary": ".workspace-tabs, .workspace-tab-container touched by border, outline, box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 10,
-      "line": 7434,
+      "line": 7437,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header-container",
       "context": "@media (min-width: 701px)",
@@ -540,7 +438,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 7463,
+      "line": 7466,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header-container",
       "context": "@media (min-width: 701px)",
@@ -560,7 +458,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 8810,
+      "line": 8801,
       "module": "dev/10a-accessibility-motion-contrast.css",
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
       "context": "@media (prefers-contrast: more)",
@@ -579,7 +477,7 @@
     {
       "severity": "info",
       "score": 10,
-      "line": 8839,
+      "line": 8830,
       "module": "dev/10a-accessibility-motion-contrast.css",
       "selector": "body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, .checkbox-container, .setting-item, .suggestion-item, .status-bar-item-segment, .workspace-tab-header-inner, .search-input-container)",
       "context": "@media (forced-colors: active)",
@@ -594,44 +492,6 @@
         "box-shadow"
       ],
       "summary": ".workspace-tab-header touched by border-color, box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 10,
-      "line": 9919,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ".workspace-tab-header.is-active",
-      "context": "root",
-      "block": "1. Dark mode parity for v1.8.6x components",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "background",
-        "box-shadow"
-      ],
-      "summary": ".workspace-tab-header touched by background, box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 10,
-      "line": 9930,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ".workspace-tab-header.is-active .workspace-tab-header-inner-title",
-      "context": "root",
-      "block": "1. Dark mode parity for v1.8.6x components",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "color",
-        "font-weight"
-      ],
-      "summary": ".workspace-tab-header touched by font-weight, color"
     },
     {
       "severity": "info",
@@ -910,7 +770,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6754,
+      "line": 6748,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon), body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton), body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button",
       "context": "@media (min-width: 701px)",
@@ -931,7 +791,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 6834,
+      "line": 6828,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*=\"cMenuToolbar\"][class*=\"Submenu\"]) :is(button, .clickable-icon)",
       "context": "@media (min-width: 701px)",
@@ -952,7 +812,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 7424,
+      "line": 7427,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile) .workspace-split.mod-left-split :is(.workspace-tabs, .workspace-leaf, .workspace-leaf-content, .workspace-tab-container, .view-content), body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] :is(.view-content, .nav-files-container)",
       "context": "@media (min-width: 701px)",
@@ -972,7 +832,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 8231,
+      "line": 8234,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) .workspace-tab-header",
       "context": "@media (min-width: 701px)",
@@ -990,25 +850,7 @@
     {
       "severity": "info",
       "score": 9,
-      "line": 8270,
-      "module": "dev/09d-tabs-file-explorer-search.css",
-      "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active)",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "box-shadow"
-      ],
-      "summary": ".workspace-tab-header touched by box-shadow"
-    },
-    {
-      "severity": "info",
-      "score": 9,
-      "line": 8291,
+      "line": 8282,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon.mod-new-tab)",
       "context": "@media (min-width: 701px)",
@@ -1024,42 +866,6 @@
         "border-radius"
       ],
       "summary": ".workspace-tab-header-container, .workspace-tab-header, .clickable-icon touched by border-radius"
-    },
-    {
-      "severity": "info",
-      "score": 9,
-      "line": 9923,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ".workspace-tab-header:not(.is-active)",
-      "context": "root",
-      "block": "1. Dark mode parity for v1.8.6x components",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "color"
-      ],
-      "summary": ".workspace-tab-header touched by color"
-    },
-    {
-      "severity": "info",
-      "score": 9,
-      "line": 9927,
-      "module": "dev/10c-overlay-layout-polish.css",
-      "selector": ".workspace-tab-header:not(.is-active):hover",
-      "context": "root",
-      "block": "1. Dark mode parity for v1.8.6x components",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "color"
-      ],
-      "summary": ".workspace-tab-header touched by color"
     },
     {
       "severity": "info",
@@ -1225,25 +1031,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6687,
-      "module": "dev/09a-nav-ribbon-glass.css",
-      "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root, body:not(.is-mobile).theme-dark .mod-root .workspace-leaf, body:not(.is-mobile).theme-dark .mod-root .workspace-tabs",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.28 — Subdue dark frame lines",
-      "matched_selectors": [
-        ".workspace-tabs"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [
-        "border-color"
-      ],
-      "summary": ".workspace-tabs touched by border-color"
-    },
-    {
-      "severity": "info",
-      "score": 8,
-      "line": 6774,
+      "line": 6768,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile).theme-dark .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon), body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton), body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button",
       "context": "@media (min-width: 701px)",
@@ -1263,7 +1051,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 6850,
+      "line": 6844,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*=\"cMenuToolbar\"][class*=\"Submenu\"]) :is(button, .clickable-icon)",
       "context": "@media (min-width: 701px)",
@@ -1283,7 +1071,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 7179,
+      "line": 7173,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after",
       "context": "@media (min-width: 701px)",
@@ -1299,7 +1087,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 7184,
+      "line": 7178,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
       "context": "@media (min-width: 701px)",
@@ -1315,7 +1103,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 7197,
+      "line": 7191,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body.mod-macos:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover",
       "context": "@media (min-width: 701px)",
@@ -1331,7 +1119,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8151,
+      "line": 8154,
       "module": "dev/09c-floating-ui-glass-system.css",
       "selector": "body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .nav-file-title.is-active, .nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu, .editingToolbarButton, .menu, .menu .menu-item, .tooltip, .view-header-breadcrumb, .view-header-title, .suggestion-container, .search-suggest-container, .search-suggestion-container ), body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .nav-file-title.is-active, .nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover, .editingToolbarButton, .menu .menu-item, .view-header-breadcrumb, .view-header-title, .suggestion-item, .search-suggest-item ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (min-width: 701px)",
@@ -1349,7 +1137,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8227,
+      "line": 8230,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner)",
       "context": "@media (min-width: 701px)",
@@ -1366,7 +1154,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8242,
+      "line": 8245,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner)::before, body:not(.is-mobile) :is(.workspace-tab-header, .workspace-tab-header-inner)::after",
       "context": "@media (min-width: 701px)",
@@ -1382,23 +1170,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8263,
-      "module": "dev/09d-tabs-file-explorer-search.css",
-      "selector": "body:not(.is-mobile) .workspace-tab-header:is(:not(.is-active), .is-active), body:not(.is-mobile) .workspace-tab-header:is(:not(.is-active), .is-active) .workspace-tab-header-inner",
-      "context": "@media (min-width: 701px)",
-      "block": "v1.8.47 - Square workspace tab glass, scoped to the inner tab surface.",
-      "matched_selectors": [
-        ".workspace-tab-header"
-      ],
-      "risky_properties": [],
-      "critical_properties": [],
-      "decorative_properties": [],
-      "summary": ".workspace-tab-header touched by "
-    },
-    {
-      "severity": "info",
-      "score": 8,
-      "line": 8274,
+      "line": 8265,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
@@ -1414,7 +1186,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8283,
+      "line": 8274,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "context": "@media (min-width: 701px)",
@@ -1430,7 +1202,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 8700,
+      "line": 8691,
       "module": "dev/09d-tabs-file-explorer-search.css",
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(.clickable-icon, button, .search-input-clear-button), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container + .clickable-icon, .search-input-container ~ .clickable-icon, .search-input-container + button, .search-input-container ~ button)",
       "context": "@media (min-width: 701px)",
@@ -1450,7 +1222,7 @@
     {
       "severity": "info",
       "score": 8,
-      "line": 9913,
+      "line": 9892,
       "module": "dev/10c-overlay-layout-polish.css",
       "selector": ".workspace-tab-header-inner-title",
       "context": "@media (max-width: 768px)",
@@ -1485,7 +1257,7 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 6765,
+      "line": 6759,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover, body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover, body:not(.is-mobile) .editing-toolbar [class*=\"editing-toolbar\"] button:hover",
       "context": "@media (min-width: 701px)",
@@ -1504,7 +1276,7 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 6783,
+      "line": 6777,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile).theme-dark .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover, body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover, body:not(.is-mobile).theme-dark .editing-toolbar [class*=\"editing-toolbar\"] button:hover",
       "context": "@media (min-width: 701px)",
@@ -1523,7 +1295,7 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 6843,
+      "line": 6837,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*=\"cMenuToolbar\"][class*=\"Submenu\"]) :is(button, .clickable-icon):hover",
       "context": "@media (min-width: 701px)",
@@ -1542,7 +1314,7 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 6857,
+      "line": 6851,
       "module": "dev/09b-editing-menu-tooltip-glass.css",
       "selector": "body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*=\"cMenuToolbar\"][class*=\"Submenu\"]) :is(button, .clickable-icon):hover",
       "context": "@media (min-width: 701px)",
@@ -1561,7 +1333,7 @@
     {
       "severity": "info",
       "score": 7,
-      "line": 7691,
+      "line": 7694,
       "module": "dev/09c-floating-ui-glass-system.css",
       "selector": "body:not(.is-mobile) :is(.canvas-control-item, .canvas-card-menu .clickable-icon):hover",
       "context": "@media (min-width: 701px)",
@@ -1646,7 +1418,7 @@
     {
       "severity": "info",
       "score": 5,
-      "line": 8054,
+      "line": 8057,
       "module": "dev/09c-floating-ui-glass-system.css",
       "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (min-width: 701px)",
@@ -1662,7 +1434,7 @@
     {
       "severity": "info",
       "score": 5,
-      "line": 8110,
+      "line": 8113,
       "module": "dev/09c-floating-ui-glass-system.css",
       "selector": "body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu), body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "context": "@media (min-width: 701px)",
@@ -1678,7 +1450,7 @@
     {
       "severity": "info",
       "score": 5,
-      "line": 8748,
+      "line": 8739,
       "module": "dev/10a-accessibility-motion-contrast.css",
       "selector": "body:not(.is-mobile) :is( .nav-file-title, .nav-folder-title, .breadcrumb, .view-header-breadcrumb, .view-header-title, .menu-item, .suggestion-item, .search-suggest-item, .search-input-container, .setting-item, .setting-item-control button, .checkbox-container, .canvas-control-item, .canvas-card-menu .clickable-icon, .workspace-leaf-content[data-type=\"graph\"] .clickable-icon, .workspace-leaf-content[data-type=\"localgraph\"] .clickable-icon, .workspace-leaf-content[data-type=\"backlink\"] .tree-item-self, .workspace-leaf-content[data-type=\"outgoing-link\"] .tree-item-self, .backlink-pane .tree-item-self, .outgoing-link-pane .tree-item-self, .status-bar-item-segment, .metadata-property, .editingToolbarModalBar .clickable-icon, .editingToolbarPopover .clickable-icon, .editingToolbarButton ), body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice)",
       "context": "@media (prefers-reduced-motion: reduce)",
