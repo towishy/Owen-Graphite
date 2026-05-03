@@ -31,7 +31,11 @@ REQUIRED_FILES = [
     "LICENSE",
     "docs/ai-document-guide.md",
     "docs/qa-checklist.md",
+    "docs/fixtures/README.md",
+    "docs/fixtures/refero-inspired-glass-states.html",
+    "docs/liquid-glass-hover-study-sample.html",
     "dev/MAP/css-stabilization-checklist.md",
+    "dev/MAP/map-info-classification.md",
     "dev/MAP/theme-css-risk-map.html",
     "dev/MAP/theme-css-risk-map.json",
     "docs/style-settings.md",
@@ -93,6 +97,10 @@ RELEASE_ASSETS = [
     "LICENSE",
     "docs/ai-document-guide.md",
     "docs/qa-checklist.md",
+    "docs/fixtures/README.md",
+    "docs/fixtures/refero-inspired-glass-states.html",
+    "docs/liquid-glass-hover-study-sample.html",
+    "dev/MAP/map-info-classification.md",
     "dev/MAP/theme-css-risk-map.html",
     "dev/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
@@ -148,6 +156,58 @@ REQUIRED_TABLE_INFLATION_GUARDS = [
     ".cm-active.cm-line:empty",
     "line-height: 0 !important",
 ]
+
+EDITABLE_TABLE_SAMPLE_SECTIONS = [
+    "Risk Matrix",
+    "Numeric Metrics",
+]
+
+CORE_CHROME_PROTECTED_SELECTOR_LABELS = {
+    "[role=tab]",
+    ".workspace-tabs",
+    ".workspace-tab-header-container",
+    ".workspace-tab-header",
+    ".workspace-tab-container",
+    ".titlebar",
+    ".titlebar-button",
+    ".sidebar-toggle-button",
+    ".workspace-ribbon",
+    ".workspace-ribbon-collapse-btn",
+    ".side-dock-ribbon",
+}
+
+CORE_CHROME_STRUCTURAL_PROPERTIES = {
+    "display",
+    "visibility",
+    "opacity",
+    "height",
+    "width",
+    "min-height",
+    "max-height",
+    "min-width",
+    "max-width",
+    "overflow",
+    "overflow-x",
+    "overflow-y",
+    "position",
+    "top",
+    "right",
+    "bottom",
+    "left",
+    "inset",
+    "z-index",
+    "transform",
+    "translate",
+    "scale",
+    "pointer-events",
+    "flex",
+    "flex-direction",
+    "flex-basis",
+    "flex-grow",
+    "flex-shrink",
+    "order",
+    "grid-area",
+}
 
 PRINT_BLOCK_OWNERSHIP = {
     "dev/04-print-base.css": 1,
@@ -449,6 +509,42 @@ def css_regression_guards() -> None:
     ok("CSS regression guards clean")
 
 
+def core_chrome_structure_guards() -> None:
+    script = ROOT / "scripts" / "analyze_theme_css.py"
+    spec = importlib.util.spec_from_file_location("analyze_theme_css", script)
+    if spec is None or spec.loader is None:
+        fail("unable to load scripts/analyze_theme_css.py")
+    analyzer = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = analyzer
+    spec.loader.exec_module(analyzer)
+
+    failures: list[str] = []
+    for path in sorted((ROOT / "dev").glob("*.css")):
+        rel = path.relative_to(ROOT).as_posix()
+        rules = analyzer.parse_rules(path.read_text(encoding="utf-8"))
+        for rule in rules:
+            if "@media print" in rule.context:
+                continue
+            if "prefers-reduced-motion" in rule.context and "reduce" in rule.context:
+                continue
+            selector_labels = {label for label, _ in analyzer.matched_core_selectors(rule.selector)}
+            protected_labels = selector_labels & CORE_CHROME_PROTECTED_SELECTOR_LABELS
+            if not protected_labels:
+                continue
+            for declaration in rule.declarations:
+                if declaration.property_name not in CORE_CHROME_STRUCTURAL_PROPERTIES:
+                    continue
+                failures.append(
+                    f"{rel}:{declaration.line}: {', '.join(sorted(protected_labels))} "
+                    f"must not set {declaration.property_name}: {declaration.value} "
+                    f"in selector {rule.selector!r}"
+                )
+
+    if failures:
+        fail("core chrome structure guards failed:\n" + "\n".join(failures))
+    ok("core chrome structure guards clean")
+
+
 def css_has_guards() -> None:
     css_paths = sorted((ROOT / "dev").glob("*.css")) + [ROOT / "theme.css"]
     failures: list[str] = []
@@ -731,6 +827,24 @@ def table_inflation_guards() -> None:
     ok("table inflation guards clean")
 
 
+def editable_table_sample_guards() -> None:
+    sample = read_text("dev/test-samples/owen-editor-feature-sample.md")
+    failures = []
+    for section in EDITABLE_TABLE_SAMPLE_SECTIONS:
+        match = re.search(rf"^## {re.escape(section)}\n(?P<body>.*?)(?=^## |\Z)", sample, re.M | re.S)
+        if not match:
+            failures.append(f"missing section: {section}")
+            continue
+        body = match.group("body")
+        if "<table" in body.lower():
+            failures.append(f"{section} uses HTML table instead of editable Markdown table")
+        if not re.search(r"^\|.+\|\s*$", body, re.M) or not re.search(r"^\|\s*:?-{3,}:?", body, re.M):
+            failures.append(f"{section} missing Markdown table header/alignment rows")
+    if failures:
+        fail("editable table sample guards failed:\n" + "\n".join(failures))
+    ok("editable table sample guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -784,6 +898,7 @@ def main() -> int:
     dev_bundle_current()
     dev_css_module_set_clean()
     css_regression_guards()
+    core_chrome_structure_guards()
     css_has_guards()
     css_print_ownership_guards()
     css_risk_inventory()
@@ -798,6 +913,7 @@ def main() -> int:
     live_preview_width_guards()
     readable_column_guards()
     table_inflation_guards()
+    editable_table_sample_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)

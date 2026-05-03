@@ -129,6 +129,13 @@ AI는 callout을 장식용으로 남발하지 말고, 문서의 의미를 구분
 
 Live Preview에서 셀을 직접 클릭해 수정해야 하는 표는 Markdown table을 우선 사용한다. Obsidian은 HTML `<table>` 블록을 클릭하면 원본 HTML 소스를 활성화하므로, 편집 중인 숫자표·매트릭스·간단 비교표는 아래처럼 Markdown alignment row로 정렬을 표현한다.
 
+| 작성 단계 | 권장 형식 | 기준 |
+|---|---|---|
+| 초안 작성·리뷰 | Markdown table | 셀 단위 클릭 수정과 빠른 행/열 편집이 필요할 때 |
+| 숫자표·매트릭스·간단 비교 | Markdown table | 우측 정렬은 alignment row(`---:`)로 표현 |
+| 최종 보고서/PDF | HTML table utility | `wide-table`, `risk-table`, `print-fit-table` 등 class 기반 출력 품질이 필요할 때 |
+| 긴 URL·토큰·복합 셀 | HTML table utility 또는 본문 분리 | 줄바꿈/스크롤/배지 class 제어가 편집성보다 중요할 때 |
+
 ```markdown
 | 월 | 생성 문서 | 검증 완료 | 성공률 |
 |---|---:|---:|---:|

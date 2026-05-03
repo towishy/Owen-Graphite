@@ -22,9 +22,21 @@ Use this checklist after CSS changes, before syncing a build to Obsidian or cutt
 ## Reading And Editing Checks
 
 - Live Preview remains editable across blank lines, headings, tables, callouts, embeds, and code blocks.
+- In `dev/test-samples/owen-editor-feature-sample.md`, click cells under `Risk Matrix` and `Numeric Metrics`; the table should remain a Markdown table widget and allow cell-level editing.
+- Click a deliberate HTML `<table>` utility sample; raw HTML activation is expected Obsidian behavior and should be treated as output-focused, not cell-editable, table usage.
 - Reading View and Live Preview have comparable paragraph, heading, and table rhythm.
 - Long URLs, code tokens, and table cells wrap or scroll without expanding the document column unexpectedly.
 - Dataview, Canvas, Graph, Bookmarks, Outline, and Search panes keep usable spacing and contrast.
+
+## Test Sample Smoke Matrix
+
+| Sample | Sections | Expected Result |
+|---|---|---|
+| `dev/test-samples/owen-editor-feature-sample.md` | `Risk Matrix`, `Numeric Metrics` | Markdown table widget stays editable cell by cell in Live Preview |
+| `dev/test-samples/owen-editor-feature-sample.md` | `Feature Coverage Snapshot`, `Risk Register`, `Decision Matrix` | HTML utility tables render as output-focused tables; raw HTML activation on click is expected |
+| `dev/test-samples/owen-editor-feature-sample.md` | `Callout Gallery`, `Status Badges`, `Highlight Palette` | Callouts, badges, marks, keyboard tags, and blur spans keep spacing and contrast |
+| `dev/test-samples/owen-graphite-sample.md` | `Table Utility Samples` | Markdown, comparison, compact, numeric, risk, wrap, token, and scroll table variants remain visually distinct |
+| `dev/test-samples/owen-graphite-sample.md` | `Mermaid Sample`, `Code Blocks`, `Print/PDF Checks` | Mermaid, code labels, report spacing, and PDF-friendly utilities render without width inflation |
 
 ## Print/PDF Checks
 
@@ -39,4 +51,6 @@ Use this checklist after CSS changes, before syncing a build to Obsidian or cutt
 - Search suggestion selected row contrast.
 - File explorer active-file visibility in light and dark modes.
 - Table widget editability in Live Preview.
+- Editable sample tables accidentally converted back to HTML `<table>` blocks.
+- Core chrome selectors gaining non-print structural CSS properties such as `display`, `position`, `width`, `height`, `overflow`, `transform`, `pointer-events`, or `z-index`.
 - PDF page breaks around tables, callouts, and headings.

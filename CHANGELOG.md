@@ -4,6 +4,21 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.28] — 2026-05-03 — Guard and QA hardening
+
+### Added
+- Added a validator guard that fails if editable sample tables under `Risk Matrix` or `Numeric Metrics` are converted back to HTML `<table>` blocks.
+- Added a core chrome structure guard that blocks non-print structural CSS properties on tabs, titlebar, sidebar toggles, and ribbon selectors.
+- Added an approved design fixture index with the Liquid Glass Hover Study as the primary core design reference.
+- Added a MAP `info=70` classification report and a test-samples smoke matrix for manual Live Preview, Reading View, and PDF checks.
+
+### Changed
+- AI document and QA guidance now make the editable Markdown table vs output-focused HTML table distinction explicit.
+- Release ZIP, GitHub release assets, and local Obsidian sync now include the approved fixture index, core liquid glass sample, and MAP classification report.
+
+### Validation
+- `scripts/validate_theme.py --ci`, `scripts/build_release.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.27] — 2026-05-03 — Live Preview editable table sample hotfix
 
 ### Changed
