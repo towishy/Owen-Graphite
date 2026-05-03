@@ -111,6 +111,10 @@ RELEASE_ASSETS = [
     "screenshots/report.png",
 ]
 
+RELEASE_WORKFLOW_ASSETS = [
+    asset for asset in RELEASE_ASSETS if asset != "docs/fixtures/README.md"
+]
+
 FORBIDDEN_LIVE_PREVIEW_RULES = {
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-line\s*\{[^}]*margin-(?:top|bottom)\s*:\s*(?:[1-9]|0\.[1-9]|[a-zA-Z_-])[^;}]*", re.S): "non-zero margin on CM6 .cm-line",
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-line\s*\{[^}]*line-height\s*:\s*(?:[0-9]|var\(|calc\(|normal\b)[^;}]+", re.S): "global line-height override on CM6 .cm-line",
@@ -410,9 +414,11 @@ def png_dimensions() -> None:
 def release_workflow_assets() -> None:
     workflow = read_text(".github/workflows/release.yml")
     validate_workflow = read_text(".github/workflows/validate.yml")
-    missing = [asset for asset in RELEASE_ASSETS if not re.search(rf"^\s+{re.escape(asset)}\s*$", workflow, flags=re.M)]
+    missing = [asset for asset in RELEASE_WORKFLOW_ASSETS if not re.search(rf"^\s+{re.escape(asset)}\s*$", workflow, flags=re.M)]
     if missing:
         fail(f"release workflow missing assets: {', '.join(missing)}")
+    if re.search(r"^\s+docs/fixtures/README\.md\s*$", workflow, flags=re.M):
+        fail("release workflow must not upload docs/fixtures/README.md separately because it collides with README.md")
     if "dist/Owen-Graphite-*.zip" not in workflow:
         fail("release workflow missing generated zip asset")
     if "python scripts/validate_theme.py --ci" not in workflow:
