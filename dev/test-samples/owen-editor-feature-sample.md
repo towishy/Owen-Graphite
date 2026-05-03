@@ -277,40 +277,19 @@ cover: true
 
 ## Risk Matrix
 
-<table class="matrix-table compact-table">
-  <thead>
-    <tr>
-      <th>영향도 \ 가능성</th>
-      <th>Low</th>
-      <th>Medium</th>
-      <th>High</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>High</td><td class="risk-medium">M</td><td class="risk-high">H</td><td class="risk-high">H</td></tr>
-    <tr><td>Medium</td><td class="risk-low">L</td><td class="risk-medium">M</td><td class="risk-high">H</td></tr>
-    <tr><td>Low</td><td class="risk-low">L</td><td class="risk-low">L</td><td class="risk-medium">M</td></tr>
-  </tbody>
-</table>
+| 영향도 \ 가능성 | Low | Medium | High |
+|---|---:|---:|---:|
+| High | M | H | H |
+| Medium | L | M | H |
+| Low | L | L | M |
 
 ## Numeric Metrics
 
-<table class="numeric-table print-fit-table">
-  <thead>
-    <tr>
-      <th>월</th>
-      <th>생성 문서</th>
-      <th>검증 완료</th>
-      <th>성공률</th>
-      <th>평균 수정 횟수</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>2026-01</td><td class="num">42</td><td class="num">39</td><td class="num">92.86%</td><td class="num">1.8</td></tr>
-    <tr><td>2026-02</td><td class="num">58</td><td class="num">56</td><td class="num">96.55%</td><td class="num">1.4</td></tr>
-    <tr><td>2026-03</td><td class="num">61</td><td class="num">60</td><td class="num">98.36%</td><td class="num">1.2</td></tr>
-  </tbody>
-</table>
+| 월 | 생성 문서 | 검증 완료 | 성공률 | 평균 수정 횟수 |
+|---|---:|---:|---:|---:|
+| 2026-01 | 42 | 39 | 92.86% | 1.8 |
+| 2026-02 | 58 | 56 | 96.55% | 1.4 |
+| 2026-03 | 61 | 60 | 98.36% | 1.2 |
 
 ## Decision Matrix
 

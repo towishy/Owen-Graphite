@@ -96,6 +96,8 @@ Style Settings 옵션과 별개로, 노트 안에서 직접 부여하는 유틸�
 | `scroll-token-table` | `<table>` | 코드 토큰 셀 폭을 보존해 행 높이 급증 완화 |
 | `scroll-table` | `<table>` | 화면에서는 표 자체를 가로 스크롤 |
 
+Live Preview에서 셀을 직접 클릭해 수정할 표는 Markdown table을 사용하세요. HTML `<table>` utility는 Obsidian이 클릭 시 raw HTML 소스를 활성화하므로, 최종 보고서/PDF 출력이나 class 기반 정밀 스타일이 필요한 표에만 사용합니다.
+
 > Dataview 표는 v2.13.0부터 자동으로 sticky header + zebra + tabular-nums 가 적용됩니다 (`.block-language-dataview table`).
 
 ---

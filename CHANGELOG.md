@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.27] — 2026-05-03 — Live Preview editable table sample hotfix
+
+### Changed
+- The Owen Editor sample `Risk Matrix` and `Numeric Metrics` tables now use Markdown table syntax so Live Preview keeps the table widget and supports cell-level editing instead of activating raw HTML source.
+- AI document and Style Settings docs now distinguish editable Markdown tables from static HTML table utilities: use Markdown while editing, and reserve HTML `<table>` classes for final report/PDF output that needs precise Owen Graphite utility styling.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, `scripts/build_release.py`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.26] — 2026-05-03 — Core glass sample and left-accent cleanup
 
 ### Changed

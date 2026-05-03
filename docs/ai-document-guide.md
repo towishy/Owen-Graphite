@@ -127,7 +127,19 @@ AI는 callout을 장식용으로 남발하지 말고, 문서의 의미를 구분
 | PDF에 맞춰야 하는 표 | `print-fit-table` | 인쇄 시 폰트/패딩 축소 |
 | 넓은 표 | `scroll-table` | 화면 가로 스크롤 |
 
+Live Preview에서 셀을 직접 클릭해 수정해야 하는 표는 Markdown table을 우선 사용한다. Obsidian은 HTML `<table>` 블록을 클릭하면 원본 HTML 소스를 활성화하므로, 편집 중인 숫자표·매트릭스·간단 비교표는 아래처럼 Markdown alignment row로 정렬을 표현한다.
+
+```markdown
+| 월 | 생성 문서 | 검증 완료 | 성공률 |
+|---|---:|---:|---:|
+| 2026-01 | 42 | 39 | 92.86% |
+| 2026-02 | 58 | 56 | 96.55% |
+```
+
 HTML table이 필요한 경우:
+
+- 최종 보고서/PDF 출력에서 `wide-table`, `risk-table`, `print-fit-table` 같은 Owen Graphite table utility가 반드시 필요할 때
+- 셀 단위 Live Preview 편집보다 출력 품질과 세부 class 제어가 더 중요할 때
 
 ```html
 <table class="wide-table comparison-table print-fit-table">
