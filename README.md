@@ -2,7 +2,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.30)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.31)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.30` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
+| **버전** | `2.22.31` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -321,10 +321,11 @@ Task glyph · prompt/suggestion glass · Canvas controls · status bar segment h
 
 ## 5. Change Log
 
-현 롤백 베이스라인은 **v2.22.30**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+현 롤백 베이스라인은 **v2.22.31**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.31** | README screenshot and install notes refresh — 실제 적용 화면 기반 light/dark/report 이미지를 512px 폭으로 통일하고, ZIP 수동 설치를 Git 설치보다 먼저 안내 |
 | **v2.22.30** | Tab rim and active file row hotfix — 탭 focus의 검은 라인처럼 보이는 outline을 제거하고, 선택 문서 row는 좌측 라인 없이 Mist Blue 전체 halo로 다시 강화 |
 | **v2.22.29** | Liquid Glass core state rollout — 승인된 core state matrix를 실제 chrome 토큰으로 이식하고, 탭은 neutral rim으로 조정하며, active file row의 글 밑 라인처럼 보이는 내부 경계를 제거 |
 | **v2.22.28** | Guard and QA hardening — editable table guard를 CI에 고정하고, core chrome 구조 변경 금지 validator, 승인된 design fixture 인덱스, MAP info 분류 리포트, test-samples smoke matrix를 추가 |

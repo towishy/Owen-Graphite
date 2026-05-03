@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.31] — 2026-05-04 — README screenshot and install notes refresh
+
+### Documentation
+- Replaced README light, dark, and report screenshots with real Obsidian capture-based images so the marketplace preview matches the applied theme more closely.
+- Updated screenshot generation to derive `light.png`, `dark.png`, and `report.png` from the same capture for consistent layout and alignment.
+- Moved ZIP manual installation above Git manual installation in the README and refreshed the Git install/update scripts.
+
+### Validation
+- `scripts/generate_screenshots.py`, PowerShell Git install/update/backup reinstall smoke paths, and screenshot dimension checks 통과.
+
 ## [2.22.30] — 2026-05-03 — Tab rim and active file row hotfix
 
 ### Changed

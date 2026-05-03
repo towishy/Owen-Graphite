@@ -86,9 +86,9 @@ REQUIRED_FILES = [
 ]
 
 PNG_SIZES = {
-    "screenshots/light.png": (512, 288),
-    "screenshots/dark.png": (512, 288),
-    "screenshots/report.png": (512, 288),
+    "screenshots/light.png": (512, 438),
+    "screenshots/dark.png": (512, 438),
+    "screenshots/report.png": (512, 438),
 }
 
 RELEASE_ASSETS = [
