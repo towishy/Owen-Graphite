@@ -3,10 +3,10 @@
 Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 크기 | 모드 | 내용 |
-|------|------|------|------|
-| `light.png` | 512×288 (16:9) | Light | v2.22.21 기준: neutral liquid-glass chrome·active path·Live Preview parity |
-| `dark.png`  | 512×288 (16:9) | Dark | 동일 레이아웃 다크 모드, slate glass + shallow sky rim |
-| `report.png`| 512×288 (16:9) | Report | 보고서 모드 (자동 넘버링 + Side Bar 헤더 + serif 본문 + semantic callout) |
+| --- | --- | --- | --- |
+| `light.png` | 512×438 | Light | 실제 Obsidian 적용 화면을 축소한 README 대표 이미지 |
+| `dark.png` | 512×438 | Dark | 동일 캡처를 기반으로 가공한 다크 모드 대표 이미지 |
+| `report.png` | 512×438 | Report | 동일 캡처를 기반으로 가공한 보고서/인쇄 톤 대표 이미지 |
 | `snippet-design-8-improvements-preview.png` | 3096×3586 | Concept | Gray override snippet 8개 구조 개선 preview |
 | `table-sample.png` | — | Concept | 보고서형 테이블 클래스 디자인 샘플 |
 
@@ -14,14 +14,14 @@ Owen Graphite 테마의 마켓플레이스 등록용 스크린샷.
 
 ## 재생성 방법
 
-v2.22.21 기준 mock-up 이미지는 Pillow로 직접 렌더링합니다. 한글은 Windows Malgun Gothic 또는 macOS 시스템 한글 폰트를 사용합니다.
+`light.png`는 실제 Obsidian 적용 화면 캡처를 축소해 만듭니다. 원본 캡처가 `dev/temp/light-screenshot.png`에 있으면 그 파일을 사용하고, 없으면 기존 `screenshots/light.png`를 기준으로 `dark.png`와 `report.png`를 다시 가공합니다.
 
 ```bash
 python -m pip install pillow
 python scripts/generate_screenshots.py
 ```
 
-스크립트는 1280×720 원본을 렌더링하고 LANCZOS로 512×288에 다운스케일합니다.
+스크립트는 원본 비율을 유지하면서 가로 512px로 다운스케일합니다.
 
 ### 이전 SVG 기반 렌더러 (deprecated)
 
@@ -57,11 +57,14 @@ pngquant --quality=70-85 screenshots/*.png --ext .png --force
 ## 직접 캡처하고 싶다면
 
 ### macOS
+
 1. Obsidian 사이드바 모두 접기 (`⌘ ⌥ ←/→`)
 2. `⌘ ⇧ 5` → 창 캡처 → 1280×720 비율로 자르기
 
 ### Windows
+
 - `Win + Shift + S` → 영역 캡처
 
-### 권장 비율
-- **16:9** (512×288 lightweight preview, 1280×720 full preview)
+### 권장 크기
+
+- README 대표 이미지는 실제 적용 화면 비율을 유지한 **512px 폭**을 권장합니다.

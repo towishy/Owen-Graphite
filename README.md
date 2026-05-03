@@ -77,9 +77,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 
 ## 3. 테마 설치 방법
 
-> 💡 **2026-04-29 업데이트** — 옵션 B(Git) 설치 명령이 **idempotent** 하게 개선되었습니다.
+> 💡 **2026-04-29 업데이트** — Git 설치 명령이 **idempotent** 하게 개선되었습니다.
 >
-> 이제 폴더가 이미 존재해도 **같은 스크립트를 다시 실행하면 자동 업데이트**됩니다. 수동 ZIP 설치 등 비-Git 폴더는 자동로 백업(`*.backup-YYYYMMDD-HHMMSS`) 후 재설치됩니다. 이전의 *"destination path already exists"* 오류가 해소됩니다.
+> 이제 폴더가 이미 존재해도 **같은 스크립트를 다시 실행하면 자동 업데이트**됩니다. 수동 ZIP 설치 등 비-Git 폴더는 자동으로 백업(`*.backup-YYYYMMDD-HHMMSS`) 후 재설치됩니다. 이전의 *"destination path already exists"* 오류가 해소됩니다.
 
 ### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
 
@@ -87,12 +87,25 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 2. 검색: `Owen Graphite`
 3. 설치 → 사용
 
-### 옵션 B — Git 수동 설치 / 업데이트
+### 옵션 B — ZIP 수동 설치
 
-Obsidian vault의 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. **같은 명령을 다시 실행하면 자동으로 업데이트**됩니다 (이미 클론된 폴더는 `git pull --ff-only`).
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-<version>.zip`** 을 다운로드해 압축 해제합니다.
+
+> **⚠️ 주의** Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-<version>.zip` 을 받으세요.
+
+| 플랫폼 | 테마 대상 경로 |
+| --- | --- |
+| Windows | `<YourVault>\.obsidian\themes\Owen Graphite\` |
+| macOS / Linux | `<YourVault>/.obsidian/themes/Owen Graphite/` |
+
+설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
+
+### 옵션 C — Git 수동 설치 / 업데이트
+
+Obsidian vault의 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. **같은 명령을 다시 실행하면 자동으로 업데이트**됩니다. 이미 클론된 폴더는 `fetch → reset --hard origin/main → clean` 순서로 최신 릴리스 상태를 맞춥니다.
 
 | 플랫폼 | Git 설치 | 설치 / 업데이트 명령 |
-|--------|----------|-----------|
+| --- | --- | --- |
 | Windows | `winget install --id Git.Git -e --source winget` | PowerShell 스크립트 (아래) |
 | macOS | `brew install git` | bash 스크립트 (아래) |
 | Linux | `sudo apt install git` (또는 `dnf install git`) | macOS와 동일 |
@@ -101,19 +114,27 @@ Obsidian vault의 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. *
 
 ```powershell
 $ErrorActionPreference = "Stop"
-cd "D:\Path\To\YourVault"
-New-Item -ItemType Directory -Force ".obsidian\themes" | Out-Null
-$ThemeDir = ".obsidian\themes\Owen Graphite"
+$Vault = "D:\Path\To\YourVault"    # vault 경로로 교체
 $Repo = "https://github.com/towishy/Owen-Graphite.git"
-if (Test-Path "$ThemeDir\.git") {
-    git -C $ThemeDir fetch --quiet origin main
-    git -C $ThemeDir reset --quiet --hard origin/main
-} elseif (Test-Path $ThemeDir) {
-    throw "Owen Graphite folder already exists but is not a Git clone."
+$ThemesDir = Join-Path $Vault ".obsidian\themes"
+$ThemeDir = Join-Path $ThemesDir "Owen Graphite"
+
+New-Item -ItemType Directory -Force -Path $ThemesDir | Out-Null
+
+if (Test-Path -LiteralPath (Join-Path $ThemeDir ".git")) {
+  git -C "$ThemeDir" fetch --quiet origin main
+  git -C "$ThemeDir" reset --quiet --hard origin/main
+  git -C "$ThemeDir" clean -qfd
+  Write-Host "OK: Owen Graphite updated."
+} elseif (Test-Path -LiteralPath $ThemeDir) {
+  $Backup = "${ThemeDir}.backup-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+  Move-Item -LiteralPath $ThemeDir -Destination $Backup
+  git clone --quiet $Repo "$ThemeDir"
+  Write-Host "OK: Owen Graphite reinstalled. Backup: $Backup"
 } else {
-    git clone --quiet $Repo $ThemeDir
+  git clone --quiet $Repo "$ThemeDir"
+  Write-Host "OK: Owen Graphite installed."
 }
-Write-Host "OK: Owen Graphite installed or updated."
 ```
 
 #### macOS / Linux (bash)
@@ -147,23 +168,11 @@ else
 fi
 ```
 
-> **한 줄 버전** (이미 vault 경로에서 실행 중일 때):
-> ```bash
-> THEME_DIR=".obsidian/themes/Owen Graphite"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main; else git clone -q https://github.com/towishy/Owen-Graphite.git "$THEME_DIR"; fi && echo "OK"
-> ```
+**한 줄 버전** (이미 vault 경로에서 실행 중일 때):
 
-### 옵션 C — ZIP 수동 설치
-
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-<version>.zip`** 을 다운로드해 압축 해제합니다.
-
-> **⚠️ 주의** Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-<version>.zip` 을 받으세요.
-
-| 플랫폼 | 테마 대상 경로 |
-|--------|----------------|
-| Windows | `<YourVault>\.obsidian\themes\Owen Graphite\` |
-| macOS / Linux | `<YourVault>/.obsidian/themes/Owen Graphite/` |
-
-설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
+```bash
+THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owen-Graphite.git"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main && git -C "$THEME_DIR" clean -qfd; else if [ -e "$THEME_DIR" ]; then mv "$THEME_DIR" "$THEME_DIR.backup-$(date +%Y%m%d-%H%M%S)"; fi; git clone -q "$REPO" "$THEME_DIR"; fi && echo "OK"
+```
 
 > [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 28개 옵션을 사이드바 UI에서 토글할 수 있습니다.
 
