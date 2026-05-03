@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.30] — 2026-05-03 — Tab rim and active file row hotfix
+
+### Changed
+- Removed the neutral focus outline from workspace tabs so focused tabs no longer show a hard black rim.
+- Restored the selected document visual signal with a full-surface Mist Blue glass halo, stronger active text, and a clearer file icon treatment without using left accents or underline-like borders.
+- Repaired the Liquid Glass core module wrapper so all token definitions stay inside the intended desktop media scope.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/build_release.py`, `scripts/validate_theme.py --ci`, local Obsidian vault sync 전체 통과.
+
 ## [2.22.29] — 2026-05-03 — Liquid Glass core state rollout
 
 ### Added

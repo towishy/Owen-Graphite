@@ -10047,14 +10047,14 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 /* End of v1.8.66 polish pack ============================================== */
 
 /* ============================================================
-  v2.22.29 - Owen Graphite Liquid Glass core
+  v2.22.30 - Owen Graphite Liquid Glass core tab rim hotfix
    - Promotes the approved state matrix into shared chrome tokens.
    - Uses Mist Blue for active rims and Frost Aqua for focus halos.
     - Keeps workspace tabs neutral because their shape already signals state.
    ============================================================ */
 
+@media (min-width: 701px) {
   body:not(.is-mobile) {
-}
     --ogd-lg-mist-rim: rgba(186, 230, 253, 0.76);
     --ogd-lg-mist-rim-dark: rgba(186, 230, 253, 0.42);
     --ogd-lg-mist-fill: rgba(224, 242, 254, 0.50);
@@ -10077,11 +10077,11 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     --ogd-lg-shadow-focus: 0 18px 44px rgba(15, 23, 42, 0.18), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-tab-border: var(--ogd-surface-transparent, transparent);
     --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.34);
-    --ogd-lg-tab-focus-outline: rgba(100, 116, 139, 0.20);
+    --ogd-lg-tab-focus-outline: var(--ogd-surface-transparent, transparent);
     --ogd-lg-tab-shadow: 0 16px 36px rgba(15, 23, 42, 0.16), 0 5px 12px rgba(15, 23, 42, 0.10), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-tab-shadow-hover: 0 22px 48px rgba(15, 23, 42, 0.20), 0 7px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
-    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.58), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.38), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 250, 252, 0.28));
-    --ogd-lg-row-active-shadow: 0 18px 44px rgba(15, 23, 42, 0.15), 0 6px 16px rgba(15, 23, 42, 0.09);
+    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.68), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.44), transparent 34%), linear-gradient(180deg, rgba(224, 242, 254, 0.68), rgba(240, 249, 255, 0.44));
+    --ogd-lg-row-active-shadow: 0 20px 46px rgba(15, 23, 42, 0.16), 0 7px 18px rgba(15, 23, 42, 0.10), 0 0 0 1px rgba(125, 211, 252, 0.36), 0 0 0 4px rgba(186, 230, 253, 0.14);
     --ogd-glass-filter: blur(28px) saturate(180%) contrast(106%) brightness(1.03);
     --ogd-glass-filter-soft: blur(18px) saturate(170%) contrast(104%) brightness(1.02);
     --ogd-glass-filter-control: blur(12px) saturate(152%) contrast(103%) brightness(1.02);
@@ -10126,11 +10126,11 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     --ogd-lg-shadow-active: 0 22px 54px rgba(0, 0, 0, 0.54), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-focus: 0 18px 46px rgba(0, 0, 0, 0.46), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.18);
-    --ogd-lg-tab-focus-outline: rgba(203, 213, 225, 0.14);
+    --ogd-lg-tab-focus-outline: var(--ogd-surface-transparent, transparent);
     --ogd-lg-tab-shadow: 0 16px 38px rgba(0, 0, 0, 0.42), 0 5px 14px rgba(0, 0, 0, 0.28), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-tab-shadow-hover: 0 24px 54px rgba(0, 0, 0, 0.50), 0 8px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 var(--ogd-lg-edge);
-    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.08), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.24));
-    --ogd-lg-row-active-shadow: 0 18px 46px rgba(0, 0, 0, 0.42), 0 6px 18px rgba(0, 0, 0, 0.30);
+    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.14), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.09), transparent 34%), linear-gradient(180deg, rgba(14, 116, 144, 0.34), rgba(15, 23, 42, 0.32));
+    --ogd-lg-row-active-shadow: 0 20px 48px rgba(0, 0, 0, 0.44), 0 7px 20px rgba(0, 0, 0, 0.30), 0 0 0 1px rgba(125, 211, 252, 0.24), 0 0 0 4px rgba(186, 230, 253, 0.08);
   }
 
   body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action) {
@@ -10192,6 +10192,8 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
     background: var(--ogd-lg-surface-bg-active) !important;
     box-shadow: var(--ogd-lg-tab-shadow) !important;
+    outline: none !important;
+    outline-offset: 0 !important;
   }
 
   body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
@@ -10202,8 +10204,8 @@ body.theme-dark .metadata-property .metadata-property-key-input {
   }
 
   body:not(.is-mobile) .workspace-tab-header:focus-within .workspace-tab-header-inner {
-    outline: 1px solid var(--ogd-lg-tab-focus-outline) !important;
-    outline-offset: 2px !important;
+    outline: none !important;
+    outline-offset: 0 !important;
   }
 
   body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
@@ -10218,7 +10220,14 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
     background: var(--ogd-lg-row-active-bg) !important;
     box-shadow: var(--ogd-lg-row-active-shadow) !important;
+    color: var(--text-normal) !important;
+    font-weight: 850 !important;
     text-decoration: none !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::before {
+    opacity: 1 !important;
+    background-color: rgba(71, 85, 105, 0.84) !important;
   }
 
   body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
