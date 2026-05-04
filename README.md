@@ -20,10 +20,10 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.31` (Obsidian 1.6.0+ · 현 롤백 베이스라인) |
+| **버전** | `2.22.31` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
-| **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
+| **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
 
 ![Owen Graphite Liquid Glass Overview](screenshots/readme/v2.22.31-liquid-glass-overview.svg)
 
@@ -40,49 +40,20 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 
 ## 2. 테마 기능 요약
 
-### 🎨 디자인 코어
-- **Graphite 톤** — 차분한 그레이 베이스 + accent 컬러 프리셋 (Graphite/Blue/Teal/Violet/Amber)
-- **Liquid-glass chrome** — ribbon·사이드바·탭·툴바·command palette·tooltip 전반에 backdrop-blur (강도 변수 `--og-glass-blur`)
-- **Table mode split** — 위키형 표는 가벼운 glass surface, 보고서형 표는 PDF 친화 contrast/rule 중심으로 분리
-- **Frost Aqua focus** — 키보드 focus 상태에 layout shift 없는 aqua rim + soft halo 적용
-- **좌측 라인 영구 밴** — chrome 영역 좌측 4px bar 디자인 사용 금지 (callout/quote 등 본문은 예외)
-- **Workspace Surfaces Pack** — Graph view·Canvas·Folder cues·Mini TOC·Cover page
-- **Polish Pack** — Dark parity·Mobile 반응형·Tab 대비·코드 라벨·Heading anchor·Search HL
-
-### 📑 보고서·인쇄
-- **A3 PDF Export** — 가로 / 15mm 여백 / H1마다 페이지 분할
-- **PDF 첫 페이지 모던 헤더** — Side Bar + Two-line (라벨/본문/사이드바 색 커스터마이징)
-- **헤더 자동 넘버링** — 1. / 1.1 / 1.1.1
-- **표지 페이지 유틸리티** — `.cover-page` / `.cover-meta` / `.cover-rule`
-- **자동 분할 회피** — callout·표·Mermaid·코드·이미지
-
-### ⚙️ 사용자 커스터마이징
-- **Style Settings 28종** — 폰트·간격·컬러·보고서 모드 등 UI 토글
-- **사용자 클래스** — `.ogd-blur`·`.ogd-cover`·테이블 유틸리티·callout 14종
-- **시선 보호 모드** · **OS 다크 모드 자동 추종** · **CJK +0.5px 자동 보정**
-
-### 📋 Style Settings (Style Settings)
-
-플러그인 설치 후 사이드바에서 토글로 즉시 적용. 전체 28개 옵션:
-
-| 분류 | 대표 옵션 |
-|------|----------|
-| **타이포** | 본문 폰트 크기·줄간격·최대 폭·세리프 본문·CJK 보정 |
-| **표** | zebra 줄무늬·모던 스타일·sticky header |
-| **보고서** | 보고서 모드·헤더 자동 넘버링·드롭 캡·간격 프리셋 |
-| **PDF** | 페이지 크기·블록 분할 방지·첫 페이지 모던 헤더 (좌/우 라벨·본문·사이드바 색) |
-| **컬러/모션** | 액센트 프리셋·코드블록 테마·시선 보호·OS 다크 모드 추종·Glass 강도·Hover 움직임 |
-
-> 전체 옵션은 Style Settings 플러그인 UI에서 확인할 수 있습니다.
-> AI 문서 생성 규칙과 내부 참고 문서는 로컬 `docs/` 작업 폴더에서 별도로 관리합니다.
+| 분류 | 주요 기능 | 요약 |
+|------|----------|------|
+| **디자인 코어** | Graphite 톤 · Liquid-glass chrome | 차분한 graphite 기반에 ribbon·사이드바·탭·툴바·command palette·tooltip glass surface 적용 |
+| **상태 표현** | Table mode split · Frost Aqua focus | 위키형/보고서형 표를 분리하고 focus 상태는 aqua rim + soft halo로 표시 |
+| **워크스페이스** | Workspace Surfaces Pack · Polish Pack | Graph view·Canvas·Folder cues·Mini TOC·Cover page·Dark parity·Mobile·Tab·Search HL 정리 |
+| **보고서·인쇄** | A3 PDF Export · 모던 헤더 · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할, 표지 유틸리티 지원 |
+| **분할 안정성** | 자동 분할 회피 | callout·표·Mermaid·코드·이미지가 PDF에서 중간 분할되지 않도록 보정 |
+| **커스터마이징** | Style Settings 28종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
+| **접근성·환경** | 시선 보호 · OS 다크 모드 · CJK 보정 | 시선 보호 모드, OS 다크 모드 자동 추종, CJK +0.5px 자동 보정 지원 |
+| **Style Settings 분류** | 타이포 · 표 · 보고서 · PDF · 컬러/모션 | Style Settings 플러그인에서 전체 옵션을 사이드바 UI로 조정 |
 
 ---
 
 ## 3. 테마 설치 방법
-
-> 💡 **2026-04-29 업데이트** — Git 설치 명령이 **idempotent** 하게 개선되었습니다.
->
-> 이제 폴더가 이미 존재해도 **같은 스크립트를 다시 실행하면 자동 업데이트**됩니다. 수동 ZIP 설치 등 비-Git 폴더는 자동으로 백업(`*.backup-YYYYMMDD-HHMMSS`) 후 재설치됩니다. 이전의 *"destination path already exists"* 오류가 해소됩니다.
 
 ### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
 
@@ -183,8 +154,6 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 ## 4. 테마 신기능
 
-아래 항목은 현재 DEV CSS에서 selector/토큰 구현이 확인된 범위만 기록합니다. 플러그인별 DOM 검증이 필요한 항목이나 설명 대비 구현 범위가 좁은 항목은 README에서 제외했습니다.
-
 ### ✨ v2.22.21 — Liquid Glass Baseline Build
 
 선택 문서와 포함 폴더, Ribbon, Graph, Backlinks/Outgoing links처럼 반복적으로 보는 workspace control을 neutral graphite glass 기준으로 맞췄습니다.
@@ -199,165 +168,24 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 ---
 
-### ✨ v2.22.20 — Liquid Glass Recommended Polish Pack
-
-검증된 강력 추천 5개 항목을 실제 테마 CSS로 반영했습니다.
-
-![v2.22.20 — Liquid Glass Recommended Polish Pack](screenshots/readme/v2.22.20-liquid-glass-polish.svg)
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Status bar separator | 상태바 항목 사이에 layout shift 없는 graphite 미세 구분선 추가 |
-| 2 | Modal close chrome | `.modal-close-button` hover/focus에 rose tint + inset ring glass chrome 적용 |
-| 3 | Dataview inline field chip | Dataview inline field key/value를 본문 흐름에 맞는 glass chip으로 정리 |
-| 4 | Sync/Git status pill | sync/git status bar item을 attribute 기반으로 좁게 감지해 semantic glass pill 처리 |
-| 5 | Code block line numbers | `pre.line-numbers` opt-in 코드블록에 CSS counter 기반 line wrapper 행 번호 gutter 추가 |
-
----
-
-### ✨ v2.22.13 — Windows tab/button stable baseline
-
-Windows Obsidian에서 상단 탭과 titlebar 버튼이 정상 표시되도록 검증된 `v1.8.66` CSS baseline으로 복원했습니다. 중간 테스트 빌드의 Windows chrome 강제 레이어는 제거했고, macOS/Windows 공통 데스크톱 탭 구조는 Obsidian 기본 동작에 맡깁니다.
-
----
-
-### ✨ v2.20.0 — Inputs & Settings Controls
-
-Toggle switch · Search input control glass.
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Toggle switch glass | `.checkbox-container` glass track + thumb + hover/focus lift |
-| 2 | Search input control glass | `.search-input-container` glass surface + 검색 아이콘/clear 버튼 control glass |
-
----
-
-### ✨ v2.19.0 — Editor Depth & Glass Surface Sweep
-
-Task glyph · prompt/suggestion glass · Canvas controls · status bar segment hover · color picker controls.
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Task checkbox glyphs | `[x]` `[/]` `[?]` `[!]` `[>]` `[-]` `[*]` 등 task 상태별 색상/글리프 |
-| 2 | Prompt / suggestion glass | `.prompt`, `.suggestion-container`, `.suggestion-item.is-selected` glass surface |
-| 3 | Canvas node/control cards | `.canvas-node` hover lift + selected/focused ring + controls glass |
-| 4 | Status bar segment hover | `.status-bar-item-segment` hover glass + lift |
-| 5 | Color picker controls | `input[type="color"]`, `.pickr .pcr-button` control surface 통일 |
-
----
-
-### ✨ v2.18.0 — Surface Divider Polish
-
-워크스페이스 split divider의 hover affordance를 정리했습니다.
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Workspace split divider | 기본 divider line 제거 + resize handle hover 시 subtle tint 표시 |
-
----
-
-### ✨ v2.13.0 — Reading Polish & Surfaces
-
-읽기/검색/그래프/플러그인 표면 중 현재 구현이 확인된 항목입니다.
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Search 결과 패널 Polish | row glass + hover lift + match HL underline-gradient |
-| 2 | Graph view legend / control | 우상단 controls glass card (blur·border·shadow) |
-| 3 | Footnote compact refs | footnote ref/backref 크기·weight·hover hint 정리 |
-| 4 | Inline tag pill v2 | 본문 `#tag` / CM6 hashtag pill 스타일 통일 |
-| 5 | Callout 다크 패리티 재감사 | note/warning/danger/success 다크 대비 보강 |
-| 6 | Dataview 표 자동 매핑 | sticky header + zebra + tabular-nums (`@media print` sticky off) |
-| 7 | Style Settings reference | Style Settings 풀 레퍼런스 문서 신설 |
-
----
-
-### ✨ v2.12.0 — Panels & Code Polish (6종)
-
-우측 패널 가시성 + 코드/테이블 사용성 강화.
-
-#### 라이트 모드
-
-![v2.12.0 — Light](screenshots/readme/v2.12-preview-light.png)
-
-#### 다크 모드
-
-![v2.12.0 — Dark](screenshots/readme/v2.12-preview-dark.png)
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Tab bar 활성 탭 underline | 그라디언트 underline + soft shadow (좌측 라인 X) |
-| 2 | Backlinks / Outgoing card lift | 우측 패널 padded glass row + hover transform |
-| 3 | 테이블 zebra + sticky | 짝수행 미세 톤 + sticky header (accent underline) |
-| 4 | Code block language/copy chrome | language badge + copy button contrast/collision 보정 |
-| 5 | Embed 노트 카드 Polish | `.markdown-embed` / internal embed surface 정리 |
-| 6 | Glass 강도 변수 | `--og-glass-blur` CSS 변수 (8/12/16/20px override) |
-
----
-
-### ✨ v2.11.0 — Reading & Properties Polish
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Properties 패널 Glass | `.metadata-container` 카드형 glass + tabular-nums |
-| 2 | 본문 강조 종류별 차등 | strong/em/mark/del 톤·굵기·배경 분리 (CM6 포함) |
-| 3 | 인용문 좌측 라인 대체 | 배경 tint + radius + 코너 글리프(") |
-| 4 | Code block 언어 + copy 일체화 | data-lang ::before + .copy-code-button 단일 chrome |
-
----
-
-### ✨ v2.10.0 — Improvements Pack
-
-| # | 항목 | 내용 |
-|---|------|------|
-| 1 | Quick Switcher / Command Palette Glass | prompt/suggestion surface glass |
-| 2 | Notice / Toast | 좌측 라인 없이 floating notice glass |
-| 3 | Note Hover Popover Glass | hover popover surface 통일 |
-| 4 | Outline 레벨별 위계 강화 | outline/bookmarks pane hierarchy polish |
-| 5 | Tag pane 카운트 알약 | tag count/tree-item flair pill |
-| 6 | 각주 dotted hover hint | footnote ref/link hover polish |
-| 7 | Diff 코드블록 색상 | inserted/deleted line tint |
-| 8 | Selection 색조 통일 | selection tint |
-| 9 | 링크 hover 인디케이터 | internal/external link hover treatment |
-
----
-
 ## 5. Change Log
 
-현 롤백 베이스라인은 **v2.22.31**입니다. 베이스라인 이후 변경만 요약하며, 이전 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전체 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
-| **v2.22.31** | README screenshot and install notes refresh — 실제 적용 화면 기반 light/dark/report 이미지를 512px 폭으로 통일하고, ZIP 수동 설치를 Git 설치보다 먼저 안내 |
-| **v2.22.30** | Tab rim and active file row hotfix — 탭 focus의 검은 라인처럼 보이는 outline을 제거하고, 선택 문서 row는 좌측 라인 없이 Mist Blue 전체 halo로 다시 강화 |
-| **v2.22.29** | Liquid Glass core state rollout — 승인된 core state matrix를 실제 chrome 토큰으로 이식하고, 탭은 neutral rim으로 조정하며, active file row의 글 밑 라인처럼 보이는 내부 경계를 제거 |
-| **v2.22.28** | Guard and QA hardening — editable table guard를 CI에 고정하고, core chrome 구조 변경 금지 validator, 승인된 design fixture 인덱스, MAP info 분류 리포트, test-samples smoke matrix를 추가 |
-| **v2.22.27** | Live Preview editable table sample hotfix — Owen Editor 샘플의 Risk/Numeric 표를 Markdown table로 전환하고, 편집용 Markdown table vs 출력용 HTML utility table 기준을 문서화 |
-| **v2.22.26** | Core glass sample and left-accent cleanup — chrome active/selected 좌측 inset accent를 전체 ring으로 정리, MAP info 보존/감축 기준 문서화, 승인된 glass state fixture와 MAP HTML 진단 개선 추가 |
-| **v2.22.25** | MAP info reduction stabilization — overlay/search/graph 좌측 accent 잔여 표현을 전체 ring/border로 정리, tab/focus/workspace frame 중복 소유권 축소, MAP `info=70` 안정화 |
-| **v2.22.24** | MAP-driven liquid glass stabilization — ribbon/toggle/tab/focus/graph control 소유권 정리, 직접 부모 폴더 halo 세로 여백 보정, MAP `info=82` 안정화 |
-| **v2.22.23** | File explorer hierarchy stabilization — 직접 부모 폴더 halo를 변수 기반으로 정리하고 CSS compatibility 경고를 제거 |
-| **v2.22.22** | README knowledge work stack 이미지 교체 — Owen Editor 기준 SVG로 첫 번째 README 이미지를 갱신하고 캐시 버스터를 적용 |
-| **v2.22.21** | Liquid glass baseline build — 선택 문서/포함 폴더 active path · Ribbon/Graph controls · Backlinks/Outgoing row v2를 neutral graphite glass 원칙으로 정리 |
-| **v2.22.20** | Liquid glass recommended polish pack — 상태바 separator · 모달 닫기 버튼 chrome · Dataview inline field chip · Sync/Git status pill · opt-in 코드 행 번호 추가 |
-| **v2.22.19** | File explorer active path release — 선택 문서의 최상위 폴더 glass selected state와 중간 경로 폴더 Path Rail 표시 추가 |
-| **v2.22.18** | Active document icon glow hotfix — 선택 문서 cyan underline을 아이콘 아래에서 제목 끝까지 확장 |
-| **v2.22.17** | Liquid glass polish release — glass token 정규화, active 문서 아이콘 강화, breadcrumb C안 centerline glow + hover glass icon, tooltip/nav proximity 보정 |
-| **v2.22.16** | Dev CSS stabilization release — motion-off horizontal hover shift 누락 수정, file explorer glass 소유권 정리, reduced-motion scope 축소, raw transform validator guard 추가 |
-| **v2.22.15** | Live Preview table inflation regression hotfix — 표 셀 편집 행 팽창 차단, `v2.22.15`를 안정 롤백 베이스라인으로 고정 |
-| **v2.22.13** | Windows tab/button stable baseline — 검증된 v1.8.66 CSS baseline으로 복원, 중간 테스트 chrome 강제 레이어 제거 |
-| **v2.20.1** | Hotfix — search-input 이중 ring/아이콘 오버랩 수정 |
-| **v2.20.0** | Inputs & Settings Controls — Toggle switch · Search input control glass |
-| **v2.19.0** | Editor Depth & Glass Surface Sweep — Task glyph · Prompt glass · Canvas controls · Status bar segment hover · Color picker controls |
-| **v2.18.0** | Surface divider polish — Workspace divider line removal and resize handle hover tint |
-| **v2.17.0** | Surface Gaps & Tokenization — Scrollbar polish · Empty state 일러스트 · Wiki-link unresolved 톤 · Calendar today/active · CSS 토큰화 v2 |
-| **docs** (2026-04-29) | 맥OS/Linux 설치 명령 idempotent 보강 — 폴더 존재 시 자동 업데이트 · 비-Git 폴더는 백업 후 재클론 · 한 줄 버전 제공 |
-| **v2.16.0** | Interaction & A11y Deep Polish — Bookmarks chrome · reduced-motion 안전망 · high-contrast 대응 |
-| **v2.15.0** | Surfaces & A11y Polish — Context menu glass · Mermaid card · Tasks 플러그인 · Focus-visible 링 |
-| **v2.14.0** | Chrome & Indicator Polish — Settings 검색 강조 · Heading anchor `#` · Popover favicon · Properties focus ring |
-| **v2.13.0** | Reading Polish & Surfaces — Search row glass · Graph controls · Footnote ref polish · Tag pill v2 · Callout dark 재감사 · Dataview 자동 · docs/style-settings.md |
-| **v2.12.0** | Panels & Code Polish — Tab underline · Backlinks lift · Table zebra+sticky · Code language/copy chrome · Embed card · Glass 강도 변수 |
-| **v2.11.0** | Reading & Properties Polish — Properties Glass · 강조 차등 · 인용문 no-left-line · Code chrome |
+| **v2.22.31** | README 대표 이미지, 표 모드 분리, Frost Aqua focus 정리 |
+| **v2.22.30** | 탭 rim과 active file row focus hotfix |
+| **v2.22.29** | core state matrix 기반 liquid glass 토큰 적용 |
+| **v2.22.28** | CSS guard, QA, fixture 검증 체계 강화 |
+| **v2.22.27** | Live Preview editable table 샘플 hotfix |
+| **v2.22.26** | core glass sample 반영과 active/selected rim 정리 |
+| **v2.22.25** | MAP info 축소 및 overlay/search/graph 안정화 |
+| **v2.22.24** | ribbon/toggle/tab/focus/graph control 소유권 정리 |
+| **v2.22.23** | file explorer hierarchy와 compatibility warning 정리 |
+| **v2.22.22** | README knowledge work stack 이미지 교체 |
+| **v2.22.21** | active path, ribbon/graph, backlink row liquid glass baseline |
+| **v2.22.20** | 상태바, modal close, Dataview chip, sync/git pill polish |
 
 > 전체 릴리즈 노트 → [CHANGELOG.md](CHANGELOG.md)
 
