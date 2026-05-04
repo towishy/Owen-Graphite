@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Right Sidebar Pane Glass</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #eef2f7;
+      --ink: #172033;
+      --muted: #667085;
+      --line: rgba(148, 163, 184, 0.26);
+      --line-strong: rgba(100, 116, 139, 0.34);
+      --surface: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.62), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.44), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.28) 54%, rgba(248, 250, 252, 0.18));
+      --surface-hover: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.68), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.46), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.32) 54%, rgba(248, 250, 252, 0.20));
+      --control: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.58), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(241, 245, 249, 0.24));
+      --shadow: 0 18px 44px rgba(15, 23, 42, 0.18), 0 6px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      --control-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(226, 232, 240, 0.44)),
+        repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 34px),
+        repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.03) 0 1px, transparent 1px 34px),
+        var(--page);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1120px, calc(100vw - 36px));
+      display: grid;
+      gap: 16px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 25px;
+      line-height: 1.18;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .workspace {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(22px) saturate(155%);
+      backdrop-filter: blur(22px) saturate(155%);
+    }
+
+    .editor {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.20);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.44);
+    }
+
+    .editor h2 {
+      font-size: 17px;
+    }
+
+    .line {
+      height: 10px;
+      max-width: 620px;
+      border-radius: 999px;
+      background: rgba(100, 116, 139, 0.15);
+    }
+
+    .line.short {
+      max-width: 360px;
+    }
+
+    .right-pane {
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 10px 24px rgba(15, 23, 42, 0.08);
+      -webkit-backdrop-filter: blur(18px) saturate(170%);
+      backdrop-filter: blur(18px) saturate(170%);
+    }
+
+    .pane-tabs {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 8px;
+      border-bottom: 1px solid var(--line);
+      background: var(--control);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 6px 14px rgba(15, 23, 42, 0.06);
+    }
+
+    .tab,
+    .icon-button {
+      min-height: 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--control);
+      box-shadow: var(--control-shadow);
+      color: #475569;
+      font-size: 12px;
+      font-weight: 720;
+    }
+
+    .tab {
+      padding: 0 10px;
+    }
+
+    .tab.active {
+      border-color: rgba(147, 197, 253, 0.54);
+      color: var(--ink);
+    }
+
+    .icon-button {
+      width: 28px;
+      margin-left: auto;
+    }
+
+    .pane-body {
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .section-card,
+    .result-card,
+    .empty-card {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--control);
+      box-shadow: var(--control-shadow);
+      color: var(--muted);
+    }
+
+    .section-card {
+      padding: 8px 10px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .section-card .tree-item-inner {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .result-card {
+      display: grid;
+      gap: 7px;
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    .result-card.hovered {
+      border-color: rgba(147, 197, 253, 0.54);
+      background: var(--surface-hover);
+    }
+
+    .result-title {
+      color: var(--ink);
+      font-weight: 730;
+    }
+
+    .match {
+      padding: 7px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.34);
+      color: var(--muted);
+    }
+
+    .empty-card {
+      padding: 12px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mode-card {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface);
+      box-shadow: var(--control-shadow);
+    }
+
+    .mode-card h3 {
+      font-size: 13px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #111827;
+        --ink: #f8fafc;
+        --muted: #a9b5c9;
+        --line: rgba(148, 163, 184, 0.22);
+        --line-strong: rgba(203, 213, 225, 0.28);
+        --surface: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.14), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(71, 85, 105, 0.58), rgba(30, 41, 59, 0.30) 54%, rgba(15, 23, 42, 0.22));
+        --surface-hover: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.16), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.12), transparent 32%), linear-gradient(180deg, rgba(71, 85, 105, 0.68), rgba(30, 41, 59, 0.36) 54%, rgba(15, 23, 42, 0.26));
+        --control: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.12), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.09), transparent 32%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(30, 41, 59, 0.30));
+        --shadow: 0 18px 46px rgba(0, 0, 0, 0.46), 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        --control-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      }
+
+      .editor,
+      .match {
+        background: rgba(15, 23, 42, 0.36);
+      }
+
+      .tab,
+      .icon-button {
+        color: #cbd5e1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main data-smoke="right-sidebar-pane-glass">
+    <header>
+      <h1>오른쪽 pane glass parity</h1>
+      <p class="caption">백링크 설명 카드, Outline, Bookmarks, Tags, Search pane은 같은 resting glass surface와 dark parity를 유지해야 합니다.</p>
+    </header>
+
+    <section class="workspace" aria-label="오른쪽 사이드 pane glass fixture">
+      <article class="editor">
+        <h2>Daily report</h2>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line short"></div>
+        <p class="caption">본문 영역 옆에서 side pane chrome이 흰 기본 카드 없이 조용히 떠 있어야 합니다.</p>
+        <div class="mode-grid">
+          <section class="mode-card">
+            <h3>Light parity</h3>
+            <p class="caption">resting glass surface</p>
+          </section>
+          <section class="mode-card">
+            <h3>Dark parity</h3>
+            <p class="caption">same hierarchy</p>
+          </section>
+        </div>
+      </article>
+
+      <aside class="right-pane" aria-label="Backlinks pane">
+        <div class="pane-tabs">
+          <span class="tab active">Backlinks</span>
+          <span class="tab">Outline</span>
+          <span class="icon-button" aria-hidden="true">+</span>
+        </div>
+        <div class="pane-body">
+          <div class="section-card"><span class="tree-item-inner">백링크 설명 카드</span></div>
+          <article class="result-card hovered">
+            <span class="result-title">Project index</span>
+            <span class="match">Nested row stays transparent over parent glass.</span>
+          </article>
+          <article class="result-card">
+            <span class="result-title">Search pane result</span>
+            <span class="match">No left rail, no opaque white card.</span>
+          </article>
+          <div class="empty-card">Empty states reuse the same control glass instead of default white surfaces.</div>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
