@@ -10,6 +10,8 @@
 
 ## CSS Token Mapping
 
+CSS owner: `dev/10d-liquid-glass-core.css`. Generated bundle: `theme.css`. Validator coverage: `scripts/validate_theme.py`의 liquid glass documentation, focus, sample guards.
+
 | 상태 | 기준 토큰 | CSS 변수 | 적용 원칙 |
 |------|-----------|----------|-----------|
 | Resting surface | white frosted surface | `--ogd-lg-surface-bg`, `--ogd-lg-control-bg` | graphite/white glass를 기본으로 두고 의미색을 면 전체에 칠하지 않는다 |

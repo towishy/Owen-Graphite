@@ -168,6 +168,23 @@ LIQUID_GLASS_SMOKE_SECTIONS = [
 
 README_REPRESENTATIVE_SVG = "screenshots/readme/v2.22.31-liquid-glass-overview.svg"
 
+LIQUID_GLASS_FOCUS_GUARDS = [
+    ".clickable-icon",
+    ".view-action",
+    ".editingToolbarButton",
+    ".document-search-container",
+    ".workspace-tab-header",
+    ".nav-file-title",
+    ".nav-folder-title",
+    ".tree-item-self",
+    ".vertical-tab-nav-item",
+    ".setting-item",
+    ".metadata-property",
+    "--ogd-lg-frost-rim",
+    "--ogd-lg-frost-halo",
+    "--ogd-lg-shadow-focus",
+]
+
 CORE_CHROME_PROTECTED_SELECTOR_LABELS = {
     "[role=tab]",
     ".workspace-tabs",
@@ -441,6 +458,22 @@ def readme_svg_asset_guards() -> None:
     if failures:
         fail("README SVG guards failed:\n" + "\n".join(failures))
     ok(f"README SVG guards clean ({len(set(links))} SVG links)")
+
+
+def visual_regression_script_guards() -> None:
+    script = read_text("scripts/visual_regression.py")
+    required_tokens = [
+        README_REPRESENTATIVE_SVG,
+        "README_SVG_REQUIRED_TEXT",
+        "smoke_svg_page",
+        "위키형 표",
+        "보고서형 표",
+        "프로스트 아쿠아 포커스",
+    ]
+    missing = [token for token in required_tokens if token not in script]
+    if missing:
+        fail(f"scripts/visual_regression.py missing README SVG smoke guards: {', '.join(missing)}")
+    ok("visual regression README SVG smoke guards clean")
 
 
 def release_workflow_assets() -> None:
@@ -795,6 +828,14 @@ def liquid_glass_documentation_guards() -> None:
     ok("liquid glass documentation guards clean")
 
 
+def liquid_glass_focus_guards() -> None:
+    theme = read_text("theme.css")
+    missing = [token for token in LIQUID_GLASS_FOCUS_GUARDS if token not in theme]
+    if missing:
+        fail(f"theme.css missing liquid glass focus guards: {', '.join(missing)}")
+    ok("liquid glass focus sweep guards clean")
+
+
 def css_complexity_inventory() -> None:
     theme = read_text("theme.css")
     theme_lines = theme.count("\n") + 1
@@ -985,6 +1026,7 @@ def main() -> int:
     style_settings_binding_guards()
     png_dimensions()
     readme_svg_asset_guards()
+    visual_regression_script_guards()
     release_workflow_assets()
     python_only_scripts()
     dev_temp_policy()
@@ -999,6 +1041,7 @@ def main() -> int:
     css_string_sanity_guards()
     generated_text_sanity_guards()
     liquid_glass_documentation_guards()
+    liquid_glass_focus_guards()
     css_complexity_inventory()
     contrast_audit()
     release_zip_if_present(version)

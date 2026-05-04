@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_FIXTURES = [
+    "screenshots/readme/v2.22.31-liquid-glass-overview.svg",
     "docs/fixtures/table-preview.html",
     "docs/fixtures/callout-preview.html",
     "docs/fixtures/search-input-glass-preview.html",
@@ -24,9 +25,36 @@ DEFAULT_FIXTURES = [
     "docs/fixtures/reference-list-polish-preview.html",
 ]
 
+README_SVG_REQUIRED_TEXT = [
+    "Owen Graphite",
+    "위키형 표",
+    "보고서형 표",
+    "프로스트 아쿠아 포커스",
+]
+
 
 def fixture_url(path: Path) -> str:
     return path.resolve().as_uri()
+
+
+def smoke_svg_page(page, rel: str, screenshot_bytes: bytes) -> list[str]:
+    failures: list[str] = []
+    svg = page.locator("svg").first
+    if svg.count() == 0:
+        return [f"{rel}: missing rendered <svg> root"]
+
+    box = svg.bounding_box()
+    if not box or box["width"] < 100 or box["height"] < 100:
+        failures.append(f"{rel}: rendered SVG bounds are too small")
+    if len(screenshot_bytes) < 5000:
+        failures.append(f"{rel}: screenshot is unexpectedly small")
+
+    page_text = page.locator("body").inner_text()
+    if rel.endswith("v2.22.31-liquid-glass-overview.svg"):
+        missing = [text for text in README_SVG_REQUIRED_TEXT if text not in page_text]
+        if missing:
+            failures.append(f"{rel}: missing rendered labels: {', '.join(missing)}")
+    return failures
 
 
 def main() -> int:
@@ -56,7 +84,14 @@ def main() -> int:
                 continue
             page.goto(fixture_url(source), wait_until="networkidle")
             output = args.output_dir / f"{source.stem}-{args.width}x{args.height}.png"
-            page.screenshot(path=output, full_page=True)
+            screenshot_bytes = page.screenshot(path=output, full_page=True)
+            if source.suffix.lower() == ".svg":
+                failures = smoke_svg_page(page, rel, screenshot_bytes)
+                if failures:
+                    for failure in failures:
+                        print(f"ERROR: {failure}")
+                    browser.close()
+                    return 1
             print(f"OK: captured {rel} -> {output.relative_to(ROOT)}")
         browser.close()
     return 0

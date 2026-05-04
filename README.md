@@ -162,10 +162,10 @@ README 대표 이미지와 실제 테마 CSS를 같은 liquid glass 기준으로
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | README 대표 이미지 | 작업공간 chrome, 위키형 표, 보고서형 표, Frost Aqua focus를 한 장에 요약 |
-| 2 | Table mode split | 위키형 표는 glass surface, 보고서형 표는 PDF 친화 contrast/rule 중심으로 분리 |
-| 3 | Frost Aqua focus | 키보드 focus를 layout shift 없는 aqua rim + soft halo로 통일 |
-| 4 | Liquid glass 기준 고정 | 1순위 hover sample, 2순위 state matrix 기준으로 rim/shadow/focus 계층 정리 |
+| 1 | README 대표 이미지 | 실제 작업공간 chrome, 위키형 표, 보고서형 표, Frost Aqua focus를 한 장에 요약 |
+| 2 | Table mode split | 위키형 표는 airy glass surface, 보고서형 표는 PDF 친화 contrast/rule 중심으로 분리 |
+| 3 | Frost Aqua focus | ribbon, nav, tab, search/modal, settings focus를 aqua rim + soft halo로 통일 |
+| 4 | QA guard | README SVG, liquid glass token map, table/focus smoke sample을 validator로 보호 |
 
 ---
 
