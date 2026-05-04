@@ -28,6 +28,8 @@
     --ogd-lg-shadow-hover: 0 28px 64px rgba(15, 23, 42, 0.24), 0 10px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-active: 0 22px 52px rgba(15, 23, 42, 0.22), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-focus: 0 18px 44px rgba(15, 23, 42, 0.18), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-pane-shell-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 24px rgba(15, 23, 42, 0.08);
+    --ogd-lg-pane-header-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 6px 14px rgba(15, 23, 42, 0.06);
     --ogd-lg-tab-border: var(--ogd-surface-transparent, transparent);
     --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.34);
     --ogd-lg-tab-focus-outline: var(--ogd-surface-transparent, transparent);
@@ -78,6 +80,8 @@
     --ogd-lg-shadow-hover: 0 30px 72px rgba(0, 0, 0, 0.56), 0 12px 28px rgba(0, 0, 0, 0.38), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-active: 0 22px 54px rgba(0, 0, 0, 0.54), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-focus: 0 18px 46px rgba(0, 0, 0, 0.46), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-pane-shell-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 26px rgba(0, 0, 0, 0.30);
+    --ogd-lg-pane-header-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 7px 16px rgba(0, 0, 0, 0.24);
     --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.18);
     --ogd-lg-tab-focus-outline: var(--ogd-surface-transparent, transparent);
     --ogd-lg-tab-shadow: 0 16px 38px rgba(0, 0, 0, 0.42), 0 5px 14px rgba(0, 0, 0, 0.28), inset 0 1px 0 var(--ogd-lg-edge);
@@ -144,6 +148,7 @@
     box-shadow: var(--ogd-lg-shadow-focus) !important;
   }
 
+  /* Final floating-surface owner: earlier modules keep legacy baselines, this block wins the live chrome. */
   body:not(.is-mobile) :is(.prompt, .modal, .popover, .popover.hover-popover, .hover-popover .markdown-embed, .hover-popover .markdown-embed-content, .menu, [role="menu"], .suggestion-container, .tooltip, [role="tooltip"], .notice, .notice-container .notice) {
     --background-modifier-message: var(--ogd-surface-transparent, transparent) !important;
     --text-on-accent: var(--text-normal) !important;
@@ -181,6 +186,7 @@
     filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.14)) !important;
   }
 
+  /* Final side-pane owner: shell, header, row, and inner-label layers stay in one late cascade group. */
   body:not(.is-mobile) :is(
     .workspace-split.mod-left-split .workspace-leaf,
     .workspace-split.mod-right-split .workspace-leaf,
@@ -206,7 +212,7 @@
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
     backdrop-filter: var(--ogd-glass-filter-soft) !important;
     border-color: var(--ogd-lg-border) !important;
-    box-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+    box-shadow: var(--ogd-lg-pane-shell-shadow) !important;
   }
 
   body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.view-header, .workspace-tab-header-container) {
@@ -214,7 +220,7 @@
     -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
     backdrop-filter: var(--ogd-glass-filter-control) !important;
     border-bottom-color: var(--ogd-lg-border) !important;
-    box-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 6px 14px rgba(15, 23, 42, 0.06) !important;
+    box-shadow: var(--ogd-lg-pane-header-shadow) !important;
   }
 
   body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),

@@ -10,7 +10,7 @@ This directory tracks approved visual references used before changing Owen Graph
 | [Liquid Glass Core State Matrix](liquid-glass-core-state-matrix.html) | Approved Owen Graphite Liquid Glass core reference | Comparing lens depth, rim light, refraction illusion, ribbon, tab, file row, command palette, popover, tooltip, modal, and sidebar toggle states before CSS implementation |
 | [Refero Inspired Glass States](refero-inspired-glass-states.html) | Approved state comparison fixture | Comparing default, hover, active, selected, and dark/light glass state treatments |
 | [Community Theme Search Focus](community-theme-search-focus.html) | Modal search focus regression fixture | Checking that community theme browser search stays visually calm while general search focus remains visible |
-| [Right Sidebar Pane Glass](right-sidebar-pane-glass.html) | Side pane glass parity regression fixture | Checking backlink explanation cards, outline/bookmark/tag/search rows, empty states, and dark parity |
+| [Right Sidebar Pane Glass](right-sidebar-pane-glass.html) | Side pane glass parity regression fixture | Checking backlink explanation cards, outline/bookmark/tag/search rows, empty states, explicit light/dark parity, and dark parity |
 
 ## Review Rules
 

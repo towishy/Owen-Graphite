@@ -48,6 +48,8 @@ HTML_FIXTURE_REQUIRED_TEXT = {
         "백링크 설명 카드",
         "resting glass surface",
         "Dark parity",
+        "Explicit Light",
+        "Explicit Dark",
     ],
 }
 

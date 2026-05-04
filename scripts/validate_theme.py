@@ -45,9 +45,14 @@ REQUIRED_FILES = [
     "dev/test-samples/owen-editor-feature-sample.md",
     "dev/test-samples/owen-graphite-sample.md",
     "docs/css-important-audit.md",
+    "docs/fixtures/README.md",
     "docs/fixtures/community-theme-search-focus.html",
+    "docs/fixtures/liquid-glass-core-state-matrix.html",
+    "docs/fixtures/refero-inspired-glass-states.html",
     "docs/fixtures/right-sidebar-pane-glass.html",
+    "docs/liquid-glass-core-principles.md",
     "docs/liquid-glass-token-map.md",
+    "docs/qa-checklist.md",
     "dev/_order.txt",
     "dev/00-settings.css",
     "dev/01-tokens.css",
@@ -292,6 +297,8 @@ def manifest_and_versions() -> str:
         fail("README missing top-level version row")
     if readme_match.group(1) != version:
         fail(f"README version {readme_match.group(1)} does not match manifest {version}")
+    if f"| **v{version}** |" not in readme:
+        fail(f"README change log table missing latest row for v{version}")
     ok("version markers aligned")
     return version
 
@@ -479,6 +486,8 @@ def visual_regression_script_guards() -> None:
         "커뮤니티 테마 검색 calm focus",
         "오른쪽 pane glass parity",
         "백링크 설명 카드",
+        "Explicit Light",
+        "Explicit Dark",
     ]
     missing = [token for token in required_tokens if token not in script]
     if missing:
@@ -543,6 +552,44 @@ def dev_temp_policy() -> None:
     if extra:
         fail(f"dev/temp must stay empty in commits: {', '.join(extra)}")
     ok("dev/temp request artifact policy clean")
+
+
+def git_tracking_policy() -> None:
+    if not (ROOT / ".git").exists():
+        ok("git tracking policy skipped")
+        return
+
+    result = subprocess.run(["git", "ls-files"], cwd=ROOT, text=True, capture_output=True, check=False)
+    if result.returncode != 0:
+        fail(f"unable to inspect tracked files:\n{result.stdout}{result.stderr}")
+    tracked = {line.strip().replace("\\", "/") for line in result.stdout.splitlines() if line.strip()}
+    missing_required = [path for path in REQUIRED_FILES if path not in tracked]
+    if missing_required:
+        fail("required files must be tracked by Git: " + ", ".join(missing_required))
+
+    required_gitignore_exceptions = [
+        "!docs/fixtures/**",
+        "!docs/qa-checklist.md",
+        "!docs/css-important-audit.md",
+        "!docs/liquid-glass-token-map.md",
+    ]
+    gitignore = read_text(".gitignore")
+    missing_exceptions = [item for item in required_gitignore_exceptions if item not in gitignore]
+    if missing_exceptions:
+        fail(".gitignore missing docs fixture exceptions: " + ", ".join(missing_exceptions))
+
+    probe = subprocess.run(
+        ["git", "check-ignore", "-q", "--", "docs/fixtures/new-fixture-policy-probe.html"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if probe.returncode == 0:
+        fail("docs/fixtures/*.html must not be ignored; new fixtures should not require git add -f")
+    if probe.returncode not in {0, 1}:
+        fail(f"unable to check docs fixture ignore policy:\n{probe.stdout}{probe.stderr}")
+    ok("git tracking and docs fixture ignore policy clean")
 
 
 def dev_bundle_current() -> None:
@@ -905,12 +952,15 @@ def release_zip_if_present(version: str) -> None:
     expected = [f"Owen Graphite/{asset}" for asset in RELEASE_ASSETS]
     with zipfile.ZipFile(zip_path) as archive:
         names = archive.namelist()
+        zipped_manifest = json.loads(archive.read("Owen Graphite/manifest.json").decode("utf-8"))
     missing = [name for name in expected if name not in names]
     extra = [name for name in names if name not in expected]
     if missing:
         fail(f"release ZIP missing assets: {', '.join(missing)}")
     if extra:
         fail(f"release ZIP has unexpected assets: {', '.join(extra)}")
+    if zipped_manifest.get("version") != version:
+        fail(f"release ZIP manifest version {zipped_manifest.get('version')} does not match {version}")
     ok("release ZIP contents match expected manual install package")
 
 
@@ -997,6 +1047,25 @@ def liquid_glass_sample_guards() -> None:
     ok("liquid glass table/focus sample guards clean")
 
 
+def qa_checklist_guards() -> None:
+    checklist = read_text("docs/qa-checklist.md")
+    required_tokens = [
+        "## Side Pane Smoke Matrix",
+        "Backlinks",
+        "Outgoing links",
+        "Outline",
+        "Bookmarks",
+        "Tags",
+        "Search",
+        "docs/fixtures/right-sidebar-pane-glass.html",
+        "git add -f",
+    ]
+    missing = [token for token in required_tokens if token not in checklist]
+    if missing:
+        fail("QA checklist missing side pane smoke guards: " + ", ".join(missing))
+    ok("QA checklist side pane smoke guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -1049,6 +1118,7 @@ def main() -> int:
     release_workflow_assets()
     python_only_scripts()
     dev_temp_policy()
+    git_tracking_policy()
     dev_bundle_current()
     dev_css_module_set_clean()
     css_regression_guards()
@@ -1071,6 +1141,7 @@ def main() -> int:
     table_inflation_guards()
     editable_table_sample_guards()
     liquid_glass_sample_guards()
+    qa_checklist_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)

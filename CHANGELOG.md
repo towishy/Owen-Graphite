@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.37] — 2026-05-04 — Release guard and side pane QA hardening
+
+### Changed
+- Unblocked tracked QA fixtures under `docs/fixtures/` so new visual fixtures no longer require forced Git adds.
+- Added validator guards for required file tracking, docs fixture ignore policy, README latest release rows, release ZIP manifest freshness, and side pane QA checklist coverage.
+- Expanded the right sidebar pane fixture with explicit light/dark mini pane comparisons.
+- Documented the actual Obsidian side pane smoke matrix for Backlinks, Outgoing links, Outline, Bookmarks, Tags, and Search.
+- Clarified late Liquid Glass owner boundaries for floating surfaces and side pane chrome in `dev/10d-liquid-glass-core.css`.
+
+### Validation
+- `scripts/visual_regression.py docs/fixtures/right-sidebar-pane-glass.html`, `scripts/analyze_theme_css.py`, `scripts/build_release.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 대상.
+
 ## [2.22.36] — 2026-05-04 — Side pane glass parity QA
 
 ### Changed

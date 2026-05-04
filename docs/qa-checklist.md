@@ -19,6 +19,21 @@ Use this checklist after CSS changes, before syncing a build to Obsidian or cutt
 - Toggle Desktop Hover motion: Off, Subtle, Standard.
 - Enable OS reduced motion, then confirm hover/press movement is removed while colors and focus states remain visible.
 
+## Side Pane Smoke Matrix
+
+Open each pane in both Light and Dark mode after pane chrome changes. Every pane should use a quiet graphite glass surface, and no row should show a plain opaque white card.
+
+| Pane | Light | Dark | Expected Result |
+|------|-------|------|-----------------|
+| Backlinks | Pass / Fail | Pass / Fail | Section labels and backlink explanation cards stay transparent over the parent glass surface |
+| Outgoing links | Pass / Fail | Pass / Fail | Collapsible rows, result rows, and empty states share the same control glass |
+| Outline | Pass / Fail | Pass / Fail | Active/hover rows use shallow glass without left vertical rails |
+| Bookmarks | Pass / Fail | Pass / Fail | Bookmark rows keep stable height and do not resize on hover |
+| Tags | Pass / Fail | Pass / Fail | Tag pills and counts keep readable contrast without saturated color fill |
+| Search | Pass / Fail | Pass / Fail | Search result titles, matches, and empty states stay aligned with side pane glass |
+
+Use [docs/fixtures/right-sidebar-pane-glass.html](fixtures/right-sidebar-pane-glass.html) as the fixture baseline, then confirm against real Obsidian DOM.
+
 ## Liquid Glass Focus Sweep
 
 - Use keyboard Tab navigation through ribbon icons, workspace tabs, file explorer rows, Settings vertical tabs, document search, command palette, and modal inputs.
@@ -42,6 +57,8 @@ Result template for local records under `dev/temp/focus-sweep-YYYYMMDD.md`:
 - Default output path: `dev/temp/visual-regression/`.
 - Treat generated captures as local QA artifacts. Commit only promoted README/release images under `screenshots/readme/` or release screenshot paths.
 - The README liquid glass SVG should render non-empty and include `Owen Graphite`, `위키형 표`, `보고서형 표`, and `프로스트 아쿠아 포커스` labels.
+- Right sidebar fixture smoke: `python scripts/visual_regression.py docs/fixtures/right-sidebar-pane-glass.html`.
+- When adding a new fixture under `docs/fixtures/`, it must be tracked by Git without `git add -f`.
 
 ## Reading And Editing Checks
 

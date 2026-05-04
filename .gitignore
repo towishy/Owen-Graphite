@@ -29,8 +29,14 @@ build/
 dev/temp/*
 !dev/temp/.gitignore
 
-# Local documentation workspace (not synced to GitHub)
-docs/
+# Local documentation workspace (allow QA fixtures and validator-owned docs)
+docs/*
+!docs/fixtures/
+!docs/fixtures/**
+!docs/qa-checklist.md
+!docs/css-important-audit.md
+!docs/liquid-glass-token-map.md
+!docs/liquid-glass-core-principles.md
 
 # Local screenshots draft (final ones live in screenshots/)
 screenshots-raw/

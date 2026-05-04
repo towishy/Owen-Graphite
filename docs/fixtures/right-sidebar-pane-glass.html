@@ -230,6 +230,63 @@
       font-size: 13px;
     }
 
+    .parity-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini-pane {
+      display: grid;
+      gap: 7px;
+      padding: 10px;
+      border: 1px solid var(--mini-line);
+      border-radius: 8px;
+      background: var(--mini-surface);
+      box-shadow: var(--mini-shadow);
+    }
+
+    .mini-pane.light {
+      --mini-line: rgba(148, 163, 184, 0.26);
+      --mini-surface: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.62), transparent 0 28%), linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(248, 250, 252, 0.28));
+      --mini-control: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.58), transparent 0 28%), linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(241, 245, 249, 0.24));
+      --mini-shadow: 0 10px 24px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      --mini-ink: #172033;
+      --mini-muted: #667085;
+    }
+
+    .mini-pane.dark {
+      --mini-line: rgba(148, 163, 184, 0.22);
+      --mini-surface: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.14), transparent 0 28%), linear-gradient(180deg, rgba(71, 85, 105, 0.58), rgba(15, 23, 42, 0.22));
+      --mini-control: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.12), transparent 0 28%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(30, 41, 59, 0.30));
+      --mini-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      --mini-ink: #f8fafc;
+      --mini-muted: #a9b5c9;
+    }
+
+    .mini-pane h3 {
+      color: var(--mini-ink);
+      font-size: 12px;
+    }
+
+    .mini-row,
+    .mini-empty {
+      padding: 7px 8px;
+      border: 1px solid var(--mini-line);
+      border-radius: 7px;
+      background: var(--mini-control);
+      box-shadow: var(--mini-shadow);
+      color: var(--mini-muted);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .mini-row strong {
+      display: block;
+      color: var(--mini-ink);
+      font-size: 11px;
+    }
+
     @media (prefers-color-scheme: dark) {
       :root {
         --page: #111827;
@@ -278,6 +335,18 @@
           <section class="mode-card">
             <h3>Dark parity</h3>
             <p class="caption">same hierarchy</p>
+          </section>
+        </div>
+        <div class="parity-strip" aria-label="명시 light dark parity">
+          <section class="mini-pane light">
+            <h3>Explicit Light</h3>
+            <div class="mini-row"><strong>Backlinks</strong>section label transparent</div>
+            <div class="mini-empty">empty state control glass</div>
+          </section>
+          <section class="mini-pane dark">
+            <h3>Explicit Dark</h3>
+            <div class="mini-row"><strong>Search</strong>result row hierarchy</div>
+            <div class="mini-empty">dark parity surface</div>
           </section>
         </div>
       </article>
