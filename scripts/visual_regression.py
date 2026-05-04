@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_FIXTURES = [
     "screenshots/readme/v2.22.31-liquid-glass-overview.svg",
     "docs/fixtures/community-theme-search-focus.html",
+    "docs/fixtures/right-sidebar-pane-glass.html",
     "docs/fixtures/table-preview.html",
     "docs/fixtures/callout-preview.html",
     "docs/fixtures/search-input-glass-preview.html",
@@ -41,6 +42,12 @@ HTML_FIXTURE_REQUIRED_TEXT = {
         "커뮤니티 테마 탐색 검색 포커스",
         "커뮤니티 테마 검색 calm focus",
         "resting glass state",
+    ],
+    "docs/fixtures/right-sidebar-pane-glass.html": [
+        "오른쪽 pane glass parity",
+        "백링크 설명 카드",
+        "resting glass surface",
+        "Dark parity",
     ],
 }
 

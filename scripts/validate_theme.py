@@ -46,6 +46,7 @@ REQUIRED_FILES = [
     "dev/test-samples/owen-graphite-sample.md",
     "docs/css-important-audit.md",
     "docs/fixtures/community-theme-search-focus.html",
+    "docs/fixtures/right-sidebar-pane-glass.html",
     "docs/liquid-glass-token-map.md",
     "dev/_order.txt",
     "dev/00-settings.css",
@@ -466,6 +467,7 @@ def visual_regression_script_guards() -> None:
     required_tokens = [
         README_REPRESENTATIVE_SVG,
         "docs/fixtures/community-theme-search-focus.html",
+        "docs/fixtures/right-sidebar-pane-glass.html",
         "README_SVG_REQUIRED_TEXT",
         "HTML_FIXTURE_REQUIRED_TEXT",
         "dev/temp/visual-regression",
@@ -475,6 +477,8 @@ def visual_regression_script_guards() -> None:
         "보고서형 표",
         "프로스트 아쿠아 포커스",
         "커뮤니티 테마 검색 calm focus",
+        "오른쪽 pane glass parity",
+        "백링크 설명 카드",
     ]
     missing = [token for token in required_tokens if token not in script]
     if missing:

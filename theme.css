@@ -10225,14 +10225,25 @@ body.theme-dark .metadata-property .metadata-property-key-input {
   }
 
   body:not(.is-mobile) :is(
-    .workspace-split.mod-right-split .workspace-tabs,
+    .workspace-split.mod-left-split .workspace-leaf,
     .workspace-split.mod-right-split .workspace-leaf,
+    .workspace-split.mod-left-split .workspace-leaf-content,
     .workspace-split.mod-right-split .workspace-leaf-content,
+    .workspace-split.mod-left-split .view-content,
     .workspace-split.mod-right-split .view-content,
     .workspace-leaf-content[data-type="backlink"],
     .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
     .backlink-pane,
-    .outgoing-link-pane
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
   ) {
     background: var(--ogd-lg-surface-bg) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
@@ -10241,7 +10252,7 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     box-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 24px rgba(15, 23, 42, 0.08) !important;
   }
 
-  body:not(.is-mobile) .workspace-split.mod-right-split :is(.view-header, .workspace-tab-header-container) {
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.view-header, .workspace-tab-header-container) {
     background: var(--ogd-lg-control-bg) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
     backdrop-filter: var(--ogd-glass-filter-control) !important;
@@ -10249,8 +10260,8 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     box-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 6px 14px rgba(15, 23, 42, 0.06) !important;
   }
 
-  body:not(.is-mobile) .workspace-split.mod-right-split .workspace-tab-header :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),
-  body:not(.is-mobile) .workspace-split.mod-right-split :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-right) {
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
     background: var(--ogd-lg-control-bg) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
     backdrop-filter: var(--ogd-glass-filter-control) !important;
@@ -10259,15 +10270,29 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     color: var(--icon-color, var(--text-muted)) !important;
   }
 
-  body:not(.is-mobile) .workspace-split.mod-right-split .workspace-tab-header:is(:hover, :focus-within, .is-active) :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),
-  body:not(.is-mobile) .workspace-split.mod-right-split :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-right):is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]) {
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header:is(:hover, :focus-within, .is-active) :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]) {
     background: var(--ogd-lg-surface-bg-hover) !important;
     border-color: var(--ogd-lg-border-hover) !important;
     box-shadow: var(--ogd-glass-control-shadow) !important;
     color: var(--text-normal) !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(.search-empty-state, .empty-state, .empty-state-container) {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.search-empty-state, .empty-state, .empty-state-container) {
     background: var(--ogd-lg-control-bg) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
     backdrop-filter: var(--ogd-glass-filter-control) !important;
@@ -10277,9 +10302,20 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     color: var(--text-muted) !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"]) :is(
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
     .backlink-pane,
     .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
     .search-result-container,
     .search-results-children,
     .search-result-file-matches,
@@ -10290,11 +10326,28 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     box-shadow: var(--ogd-shadow-none, none) !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(
     .tree-item-self.is-clickable,
     .tree-item-self.mod-collapsible,
     .tree-item-self.is-collapsed,
+    .tree-item-self.is-active,
+    .tag-pane-tag,
     .search-result-file-title,
+    .search-result-file-match,
     .search-empty-state,
     .empty-state,
     .empty-state-container
@@ -10308,10 +10361,26 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     color: var(--text-muted) !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(
     .tree-item-self.is-clickable,
     .tree-item-self.mod-collapsible,
     .tree-item-self.is-collapsed,
+    .tree-item-self.is-active,
+    .tag-pane-tag,
     .search-result-file-title
   ):is(:hover, :focus-within, .is-active, .mod-current) {
     background: var(--ogd-lg-surface-bg-hover) !important;
@@ -10320,7 +10389,21 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     color: var(--text-normal) !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(.tree-item-inner, .tree-item-flair, .search-result-file-title, .search-empty-state) {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.tree-item-inner, .tree-item-flair, .search-result-file-title, .search-empty-state) {
     color: inherit !important;
   }
 
@@ -10372,8 +10455,36 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     box-shadow: var(--ogd-lg-shadow-hover) !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(.tree-item-self.is-clickable, .tree-item-self.mod-collapsible, .tree-item-self.is-collapsed) > .tree-item-inner,
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(.tree-item-self.is-clickable, .tree-item-self.mod-collapsible, .tree-item-self.is-collapsed):is(:hover, :focus-within) > .tree-item-inner {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.tree-item-self.is-clickable, .tree-item-self.mod-collapsible, .tree-item-self.is-collapsed, .tree-item-self.is-active) > .tree-item-inner,
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.tree-item-self.is-clickable, .tree-item-self.mod-collapsible, .tree-item-self.is-collapsed, .tree-item-self.is-active):is(:hover, :focus-within) > .tree-item-inner {
     background: var(--ogd-surface-transparent, transparent) !important;
     border-color: var(--ogd-surface-transparent, transparent) !important;
     box-shadow: var(--ogd-shadow-none, none) !important;
@@ -10382,7 +10493,21 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     text-shadow: none !important;
   }
 
-  body:not(.is-mobile) :is(.workspace-leaf-content[data-type="backlink"], .workspace-leaf-content[data-type="outgoing-link"], .backlink-pane, .outgoing-link-pane) :is(.search-empty-state, .empty-state, .empty-state-container) {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.search-empty-state, .empty-state, .empty-state-container) {
     background: var(--ogd-lg-control-bg) !important;
     border-color: var(--ogd-lg-border) !important;
     box-shadow: var(--ogd-glass-control-shadow) !important;

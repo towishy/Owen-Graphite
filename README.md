@@ -2,7 +2,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.35)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.36)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.35` |
+| **버전** | `2.22.36` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -180,6 +180,7 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.36** | 사이드 pane glass parity와 회귀 fixture 보강 |
 | **v2.22.35** | 백링크 설명 카드와 오른쪽 pane glass surface 정렬 |
 | **v2.22.34** | 우상단 view header action 버튼 glass surface 정렬 |
 | **v2.22.33** | toolbar/plugin token 정리와 community theme search fixture guard 추가 |

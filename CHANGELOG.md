@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.36] — 2026-05-04 — Side pane glass parity QA
+
+### Changed
+- Extended the late Liquid Glass core pane treatment from backlink/outgoing-link panes to Outline, Bookmarks, Tags, and Search pane rows, empty states, headers, and tab controls.
+- Kept side pane section labels transparent over their parent glass surface so hover states do not create nested white cards.
+- Consolidated side pane chrome ownership in `dev/10d-liquid-glass-core.css` while leaving earlier overlay modules as legacy/token baselines.
+
+### Validation
+- Added `docs/fixtures/right-sidebar-pane-glass.html` and visual regression smoke guards for right-side pane parity, backlink explanation cards, resting glass surface, and dark parity.
+- `scripts/visual_regression.py docs/fixtures/right-sidebar-pane-glass.html`, `scripts/analyze_theme_css.py`, `scripts/build_release.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.35] — 2026-05-04 — Backlink pane glass card hotfix
 
 ### Fixed
