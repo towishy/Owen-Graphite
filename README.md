@@ -9,7 +9,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-28%20options-0d9488?style=flat-square)](#-스타일-설정-style-settings)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-28%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
 
 ---
 
@@ -154,17 +154,18 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 ## 4. 테마 신기능
 
-### ✨ v2.22.21 — Liquid Glass Baseline Build
+### ✨ v2.22.31 — README Liquid Glass Overview
 
-선택 문서와 포함 폴더, Ribbon, Graph, Backlinks/Outgoing links처럼 반복적으로 보는 workspace control을 neutral graphite glass 기준으로 맞췄습니다.
+README 대표 이미지와 실제 테마 CSS를 같은 liquid glass 기준으로 맞추고, 표와 focus 상태의 최신 시각 기준을 정리했습니다.
 
-![v2.22.21 — Liquid Glass Baseline Build](screenshots/readme/v2.22.21-workspace-controls-polish.svg)
+![Owen Graphite Liquid Glass Overview](screenshots/readme/v2.22.31-liquid-glass-overview.svg)
 
 | # | 항목 | 내용 |
 |---|------|------|
-| 1 | Active Document Path | 선택 문서와 포함 폴더를 neutral glass + 얕은 sky rim/line으로 정리 |
-| 2 | Ribbon / Graph Controls | 활성 ribbon action과 Graph/local graph controls를 graphite glass control cluster로 정리 |
-| 3 | Backlinks / Outgoing Row v2 | backlink/outgoing row hover와 count flair를 조용한 glass row/pill로 개선 |
+| 1 | README 대표 이미지 | 작업공간 chrome, 위키형 표, 보고서형 표, Frost Aqua focus를 한 장에 요약 |
+| 2 | Table mode split | 위키형 표는 glass surface, 보고서형 표는 PDF 친화 contrast/rule 중심으로 분리 |
+| 3 | Frost Aqua focus | 키보드 focus를 layout shift 없는 aqua rim + soft halo로 통일 |
+| 4 | Liquid glass 기준 고정 | 1순위 hover sample, 2순위 state matrix 기준으로 rim/shadow/focus 계층 정리 |
 
 ---
 
@@ -203,13 +204,14 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 ```
 Owen Graphite/
-├── theme.css         # 테마 본체 (~13,300줄)
+├── theme.css         # 테마 본체 (~10,600줄)
 ├── manifest.json     # Obsidian 테마 메타데이터
 ├── README.md         # 본 문서
 ├── CHANGELOG.md      # 전체 릴리즈 노트
 ├── CONTRIBUTING.md   # 기여 가이드
 ├── LICENSE           # MIT
 ├── dev/test-samples/ # 개발/검증용 샘플 문서
+├── docs/             # 디자인 기준, QA, 토큰 매핑 문서
 ├── dev/MAP/          # dev CSS 기준 theme.css risk map 산출물
 ├── dev/temp/         # 임시 요청 산출물 보관소 (내용물은 커밋 제외)
 ├── screenshots/      # README/마켓 이미지

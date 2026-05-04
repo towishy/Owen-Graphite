@@ -41,8 +41,11 @@ REQUIRED_FILES = [
     "dev/README.md",
     "dev/stabilization-optimization-list.md",
     "dev/temp/.gitignore",
+    "dev/test-samples/liquid-glass-table-focus-sample.md",
     "dev/test-samples/owen-editor-feature-sample.md",
     "dev/test-samples/owen-graphite-sample.md",
+    "docs/css-important-audit.md",
+    "docs/liquid-glass-token-map.md",
     "dev/_order.txt",
     "dev/00-settings.css",
     "dev/01-tokens.css",
@@ -74,6 +77,7 @@ REQUIRED_FILES = [
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
+    "screenshots/readme/v2.22.31-liquid-glass-overview.svg",
     "screenshots/readme/v2.12-preview-light.png",
     "screenshots/readme/v2.12-preview-dark.png",
 ]
@@ -155,6 +159,14 @@ EDITABLE_TABLE_SAMPLE_SECTIONS = [
     "Risk Matrix",
     "Numeric Metrics",
 ]
+
+LIQUID_GLASS_SMOKE_SECTIONS = [
+    "Wiki Table Baseline",
+    "Report Table Baseline",
+    "Frost Aqua Focus Sweep",
+]
+
+README_REPRESENTATIVE_SVG = "screenshots/readme/v2.22.31-liquid-glass-overview.svg"
 
 CORE_CHROME_PROTECTED_SELECTOR_LABELS = {
     "[role=tab]",
@@ -396,6 +408,39 @@ def png_dimensions() -> None:
         if (width, height) != expected:
             fail(f"{path} expected {expected[0]}x{expected[1]}, got {width}x{height}")
     ok("screenshot PNG dimensions match expected sizes")
+
+
+def readme_svg_asset_guards() -> None:
+    readme = read_text("README.md")
+    links = re.findall(r"!\[[^\]]+\]\((screenshots/readme/[^)\s]+?\.svg)(?:\?[^)]*)?\)", readme)
+    if README_REPRESENTATIVE_SVG not in links:
+        fail(f"README missing representative SVG: {README_REPRESENTATIVE_SVG}")
+
+    failures: list[str] = []
+    for rel in sorted(set(links)):
+        path = ROOT / rel
+        if not path.is_file():
+            failures.append(f"{rel}: referenced SVG is missing")
+            continue
+        content = path.read_text(encoding="utf-8")
+        if "<svg" not in content[:300]:
+            failures.append(f"{rel}: missing <svg> root near start")
+        if not re.search(r"\bwidth=\"\d+\"", content) or not re.search(r"\bheight=\"\d+\"", content):
+            failures.append(f"{rel}: missing numeric width/height")
+        if "viewBox=" not in content:
+            failures.append(f"{rel}: missing viewBox")
+        if re.search(r"\brx=\"[^\"]*\s+[^\"]*\"", content):
+            failures.append(f"{rel}: rx must not use CSS shorthand values")
+
+    representative = read_text(README_REPRESENTATIVE_SVG)
+    required_labels = ["<title", "<desc", "위키형 표", "보고서형 표", "프로스트 아쿠아 포커스"]
+    missing_labels = [label for label in required_labels if label not in representative]
+    if missing_labels:
+        failures.append(f"{README_REPRESENTATIVE_SVG}: missing labels: {', '.join(missing_labels)}")
+
+    if failures:
+        fail("README SVG guards failed:\n" + "\n".join(failures))
+    ok(f"README SVG guards clean ({len(set(links))} SVG links)")
 
 
 def release_workflow_assets() -> None:
@@ -718,6 +763,38 @@ def generated_text_sanity_guards() -> None:
     ok("generated text sanity guards clean")
 
 
+def liquid_glass_documentation_guards() -> None:
+    token_map = read_text("docs/liquid-glass-token-map.md")
+    important_audit = read_text("docs/css-important-audit.md")
+    failures: list[str] = []
+
+    token_requirements = [
+        "liquid-glass-hover-study-sample.html",
+        "fixtures/liquid-glass-core-state-matrix.html",
+        "--ogd-lg-surface-bg",
+        "--ogd-lg-shadow-focus",
+        "--ogd-table-surface",
+        "Frost Aqua Focus Sweep",
+    ]
+    for token in token_requirements:
+        if token not in token_map:
+            failures.append(f"docs/liquid-glass-token-map.md missing {token}")
+
+    audit_requirements = [
+        "dev/09b-editing-menu-tooltip-glass.css",
+        "dev/06-feature-presets.css",
+        "dev/07-plugin-workspace.css",
+        "dev/10d-liquid-glass-core.css",
+    ]
+    for token in audit_requirements:
+        if token not in important_audit:
+            failures.append(f"docs/css-important-audit.md missing {token}")
+
+    if failures:
+        fail("liquid glass documentation guards failed:\n" + "\n".join(failures))
+    ok("liquid glass documentation guards clean")
+
+
 def css_complexity_inventory() -> None:
     theme = read_text("theme.css")
     theme_lines = theme.count("\n") + 1
@@ -841,6 +918,25 @@ def editable_table_sample_guards() -> None:
     ok("editable table sample guards clean")
 
 
+def liquid_glass_sample_guards() -> None:
+    sample = read_text("dev/test-samples/liquid-glass-table-focus-sample.md")
+    failures: list[str] = []
+    for section in LIQUID_GLASS_SMOKE_SECTIONS:
+        if not re.search(rf"^## {re.escape(section)}$", sample, re.M):
+            failures.append(f"missing section: {section}")
+    if "ogd-report-mode" not in sample:
+        failures.append("missing report-mode toggle guidance")
+    if "document-search-container" not in sample:
+        failures.append("missing document search focus target")
+    if len(re.findall(r"^\|.+\|\s*$", sample, re.M)) < 8:
+        failures.append("missing Markdown table smoke rows")
+    if "좌측 세로 line/rail" not in sample:
+        failures.append("missing no-left-rail regression note")
+    if failures:
+        fail("liquid glass sample guards failed:\n" + "\n".join(failures))
+    ok("liquid glass table/focus sample guards clean")
+
+
 def diff_check() -> None:
     result = subprocess.run(["git", "diff", "--check"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
@@ -888,6 +984,7 @@ def main() -> int:
     style_settings_count()
     style_settings_binding_guards()
     png_dimensions()
+    readme_svg_asset_guards()
     release_workflow_assets()
     python_only_scripts()
     dev_temp_policy()
@@ -901,6 +998,7 @@ def main() -> int:
     css_variable_usage_guards()
     css_string_sanity_guards()
     generated_text_sanity_guards()
+    liquid_glass_documentation_guards()
     css_complexity_inventory()
     contrast_audit()
     release_zip_if_present(version)
@@ -910,6 +1008,7 @@ def main() -> int:
     readable_column_guards()
     table_inflation_guards()
     editable_table_sample_guards()
+    liquid_glass_sample_guards()
     diff_check()
     target_sync_check(args.target, args.ci)
     release_checklist(version, args.ci)

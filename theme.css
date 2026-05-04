@@ -10416,10 +10416,12 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
     .setting-item,
     .metadata-property,
     .search-input-container,
+    .document-search-container,
     .workspace-tab-header,
     .nav-file-title,
     .nav-folder-title,
-    .tree-item-self
+    .tree-item-self,
+    .vertical-tab-nav-item
   ):focus-within {
     border-color: var(--ogd-lg-frost-rim) !important;
     outline: 1px solid var(--ogd-lg-frost-outline) !important;
@@ -10442,7 +10444,7 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
     box-shadow: var(--ogd-lg-shadow-focus) !important;
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):focus-within {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):focus-within {
     background: var(--ogd-lg-control-bg) !important;
     border-color: var(--ogd-lg-frost-rim) !important;
     outline: 1px solid var(--ogd-lg-frost-outline) !important;
