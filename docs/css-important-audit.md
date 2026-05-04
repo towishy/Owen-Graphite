@@ -42,6 +42,15 @@
 | Plugin workspace row state 공통화 | `07`의 row hover/focus 중복 감소 | search/backlinks/graph sample 확인 |
 | Liquid glass focus selector matrix 유지 | 새 focus 대상 누락 방지 | token map + validator guard |
 
+## 09b First Cleanup Slice
+
+| selector group | 현재 상태 | 다음 조사 |
+|----------------|-----------|-----------|
+| `#editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton)` | base/hover/dark hover가 `--ogd-glass-control-*` token을 반복 사용 | light/dark 공통 declaration을 token owner로 접을 수 있는지 확인 |
+| `.editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover` | hover background/shadow가 modal bar hover와 유사 | hover shadow를 shared control shadow 변수로 합칠 후보 |
+| `.editing-toolbar-modal`, `.editing-toolbar-popover`, `[class*="cMenuToolbar"]` | floating toolbar surface와 button state가 반복 | surface owner와 control owner를 분리해 중복 선언 축소 후보 |
+| `.menu .menu-item:hover` | menu row 안정성을 위해 `!important`가 집중 | row height/hit target이 유지되는지 확인 전 제거 금지 |
+
 ## Do Not Start With
 
 - `dev/10d-liquid-glass-core.css`의 최신 focus/table override를 먼저 제거하지 않는다.

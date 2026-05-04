@@ -7,6 +7,9 @@ Install Playwright separately when visual regression snapshots are needed:
     python -m pip install playwright
     python -m playwright install chromium
     python scripts/visual_regression.py
+
+Captured files are local QA artifacts. The default output directory is
+dev/temp/visual-regression, which is intentionally ignored by Git.
 """
 
 from __future__ import annotations
@@ -59,7 +62,7 @@ def smoke_svg_page(page, rel: str, screenshot_bytes: bytes) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "screenshots" / "fixture-regression")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "dev" / "temp" / "visual-regression")
     parser.add_argument("--width", type=int, default=1280)
     parser.add_argument("--height", type=int, default=900)
     parser.add_argument("fixtures", nargs="*", help="Fixture HTML paths relative to the repository root.")
@@ -84,14 +87,21 @@ def main() -> int:
                 continue
             page.goto(fixture_url(source), wait_until="networkidle")
             output = args.output_dir / f"{source.stem}-{args.width}x{args.height}.png"
-            screenshot_bytes = page.screenshot(path=output, full_page=True)
             if source.suffix.lower() == ".svg":
+                svg = page.locator("svg").first
+                if svg.count() == 0:
+                    print(f"ERROR: {rel}: missing rendered <svg> root")
+                    browser.close()
+                    return 1
+                screenshot_bytes = svg.screenshot(path=output, timeout=10000)
                 failures = smoke_svg_page(page, rel, screenshot_bytes)
                 if failures:
                     for failure in failures:
                         print(f"ERROR: {failure}")
                     browser.close()
                     return 1
+            else:
+                screenshot_bytes = page.screenshot(path=output, full_page=True, timeout=10000)
             print(f"OK: captured {rel} -> {output.relative_to(ROOT)}")
         browser.close()
     return 0

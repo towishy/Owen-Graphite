@@ -20,7 +20,7 @@ pip install -r scripts/requirements.txt 2>/dev/null || true
 
 ```bash
 rsync -a --delete \
-  --exclude='.git/' --exclude='.DS_Store' \
+  --exclude='.git/' --exclude='.venv/' --exclude='dist/' --exclude='dev/temp/' --exclude='.DS_Store' \
   /path/to/Owen-Graphite/ \
   "/path/to/YourVault/.obsidian/themes/Owen Graphite/"
 ```
@@ -43,6 +43,29 @@ python3 scripts/validate_theme.py
 - Live Preview / Reading View 가드 룰 (편집성·레이아웃 보호)
 - 색상 대비 (WCAG AA, 13쌍)
 - 릴리즈 ZIP 자산 유효성
+
+선택 visual regression:
+
+```powershell
+# Windows PowerShell
+.\.venv\Scripts\python.exe -m pip install playwright
+.\.venv\Scripts\python.exe -m playwright install chromium
+.\.venv\Scripts\python.exe scripts\visual_regression.py
+```
+
+```bash
+# macOS / Linux
+.venv/bin/python -m pip install playwright
+.venv/bin/python -m playwright install chromium
+.venv/bin/python scripts/visual_regression.py
+```
+
+기본 캡처 출력은 `dev/temp/visual-regression/`에 저장되며 커밋하지 않습니다. README나 마켓에 쓰는 대표 이미지만 `screenshots/readme/` 같은 추적 경로로 승격합니다.
+
+문서 정책:
+- `docs/`는 로컬 작업 문서가 많아 기본 ignore 대상입니다.
+- `scripts/validate_theme.py` 또는 release 안내가 요구하는 문서는 `git add -f`로 명시적으로 추적합니다.
+- 추적되는 docs 파일을 추가할 때는 validator guard나 README/dev 문서의 책임 설명도 함께 맞춥니다.
 
 추가 점검:
 ```bash

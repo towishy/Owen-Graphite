@@ -465,6 +465,7 @@ def visual_regression_script_guards() -> None:
     required_tokens = [
         README_REPRESENTATIVE_SVG,
         "README_SVG_REQUIRED_TEXT",
+        "dev/temp/visual-regression",
         "smoke_svg_page",
         "위키형 표",
         "보고서형 표",
@@ -515,6 +516,15 @@ def dev_temp_policy() -> None:
     missing = [rule for rule in required_rules if rule not in temp_ignore.splitlines()]
     if missing:
         fail(f"dev/temp/.gitignore missing temp cleanup rules: {', '.join(missing)}")
+    visual_output = ROOT / "dev" / "temp" / "visual-regression"
+    if visual_output.exists():
+        leftovers = sorted(
+            path.relative_to(ROOT).as_posix()
+            for path in visual_output.rglob("*")
+            if path.is_file()
+        )
+        if leftovers:
+            fail("visual regression temp output must be cleaned before validation: " + ", ".join(leftovers))
     result = subprocess.run(["git", "ls-files", "dev/temp"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
         fail(f"unable to inspect tracked dev/temp files:\n{result.stdout}{result.stderr}")

@@ -74,7 +74,10 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-### 옵션 C — Git 수동 설치 / 업데이트
+<details>
+<summary>옵션 C — Git 수동 설치 / 업데이트</summary>
+
+#### Git 수동 설치 / 업데이트
 
 Obsidian vault의 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. **같은 명령을 다시 실행하면 자동으로 업데이트**됩니다. 이미 클론된 폴더는 `fetch → reset --hard origin/main → clean` 순서로 최신 릴리스 상태를 맞춥니다.
 
@@ -149,6 +152,8 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 ```
 
 > [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 28개 옵션을 사이드바 UI에서 토글할 수 있습니다.
+
+</details>
 
 ---
 

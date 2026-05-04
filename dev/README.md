@@ -53,6 +53,10 @@ Most splits are mechanical and order-preserving. Functional fixes should still h
 - `temp/`: temporary request artifacts such as generated draft documents or sample images. Contents are ignored by default; keep the folder empty in commits.
 - `test-samples/`: development and regression sample notes for Owen Graphite and Owen Editor design parity.
 
+Visual regression captures from `scripts/visual_regression.py` default to `dev/temp/visual-regression/`. Treat them as local QA artifacts unless a specific screenshot is promoted into `screenshots/readme/` or another tracked release path.
+
+`docs/` is ignored by default for local workspace notes. If a document is required by `scripts/validate_theme.py` or release guidance, add it intentionally with `git add -f` and keep the validator guard aligned with that decision.
+
 ## Selector Notes
 
 Obsidian usually applies theme and Style Settings classes to `body`. Combine those classes on the same selector, for example `body.theme-dark.ogd-zebra`, not `.theme-dark body.ogd-zebra`.
@@ -72,3 +76,4 @@ Use `:has()` only for progressive enhancement. Rules that depend on parent looku
 `scripts/validate_theme.py` fails on orphan `dev/*.css` files, duplicate module order entries, `.theme-dark body.*` selectors, `transition: all`, unguarded `:has()` selectors, print blocks outside the approved owner modules, broken Style Settings bindings, and glass/motion rules that bypass central variables.
 It also reports direct `backdrop-filter`, guarded `:has()`, print-block counts, and CSS complexity so risky areas stay visible before larger design changes.
 The validator fails if any single dev module grows beyond the current complexity budget, so broad CSS changes should either stay focused or create a new owner module.
+Liquid glass guard coverage also checks the README SVG smoke contract, token-map documentation, focus selector sweep, and table/focus sample note.

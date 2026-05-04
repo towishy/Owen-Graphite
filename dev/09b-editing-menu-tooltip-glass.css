@@ -4,6 +4,14 @@
    ============================================================ */
 
 @media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --ogd-09b-control-hover-shadow: inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(15,23,42,0.07), 0 8px 18px rgba(15,23,42,0.13);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-09b-control-hover-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(203,213,225,0.08), 0 8px 20px rgba(0,0,0,0.34);
+  }
+
   body:not(.is-mobile) :is(.cm-editor, .markdown-source-view, .markdown-preview-view) .editing-toolbar,
   body:not(.is-mobile) #editingToolbarModalBar,
   body:not(.is-mobile) .editing-toolbar {
@@ -50,10 +58,7 @@
   body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button:hover {
     background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(15,23,42,0.07),
-      0 8px 18px rgba(15,23,42,0.13) !important;
+    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
   }
   body:not(.is-mobile).theme-dark .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon),
   body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton),
@@ -68,10 +73,7 @@
   body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button:hover {
     background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.18),
-      inset 0 -1px 0 rgba(203,213,225,0.08),
-      0 8px 20px rgba(0,0,0,0.34) !important;
+    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
   }
 }
 
@@ -128,10 +130,7 @@
   }
   body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
     background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(15,23,42,0.07),
-      0 8px 18px rgba(15,23,42,0.13) !important;
+    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
   }
   body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon) {
     background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30))) !important;
@@ -142,10 +141,7 @@
   }
   body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
     background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.18),
-      inset 0 -1px 0 rgba(203,213,225,0.08),
-      0 8px 20px rgba(0,0,0,0.34) !important;
+    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
   }
 }
 
