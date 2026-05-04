@@ -10154,6 +10154,39 @@ body.theme-dark .metadata-property .metadata-property-key-input {
     box-shadow: var(--ogd-lg-shadow-focus) !important;
   }
 
+  body:not(.is-mobile) .view-header .view-actions {
+    gap: 4px !important;
+    align-items: center !important;
+  }
+
+  body:not(.is-mobile) .view-header :is(.view-action, .clickable-icon, button.clickable-icon) {
+    padding: 5px !important;
+    border: 1px solid var(--ogd-surface-transparent, transparent) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    color: var(--icon-color, var(--text-muted)) !important;
+    transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
+  }
+
+  body:not(.is-mobile) .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]) {
+    border-color: var(--ogd-lg-border-hover) !important;
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) .view-header :is(.view-action, .clickable-icon, button.clickable-icon):focus-visible {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
   body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .menu, .suggestion-container, .tooltip, .notice, .notice-container .notice) {
     background: var(--ogd-lg-surface-bg) !important;
     -webkit-backdrop-filter: var(--ogd-glass-filter) !important;

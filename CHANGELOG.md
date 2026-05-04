@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.34] — 2026-05-04 — View header action glass hotfix
+
+### Fixed
+- Scoped the liquid glass control treatment to top-right view header action buttons so hover/open states align with surrounding chrome instead of showing plain default button surfaces.
+- Kept the fix free of structural width/height overrides after MAP review so core chrome risk remains info-only.
+
+### Validation
+- `scripts/analyze_theme_css.py`, `scripts/build_release.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.33] — 2026-05-04 — Toolbar token cleanup and visual QA fixture
 
 ### Changed

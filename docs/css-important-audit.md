@@ -4,8 +4,8 @@
 
 | 항목 | 값 |
 |------|----|
-| Theme size | 약 10,560 lines |
-| `!important` count | 약 3,456 |
+| Theme size | 약 10,590 lines |
+| `!important` count | 약 3,477 |
 | Audit 기준 | `scripts/validate_theme.py`의 CSS complexity inventory |
 
 ## First Pass Counts
@@ -25,6 +25,14 @@
 | `dev/09b-editing-menu-tooltip-glass.css` lines | 842 | 820 | selector target은 유지하고 light/dark 중복 선언만 축소 |
 | `dev/09b-editing-menu-tooltip-glass.css` `!important` | 312 | 302 | context menu row state는 실제 DOM 확인 전 유지 |
 | Visual QA fixture | - | 추가 | community theme browser search calm focus smoke fixture 추가 |
+
+## v2.22.34 Header Action Hotfix Note
+
+| 항목 | 값 | 메모 |
+|------|---:|------|
+| 전체 `!important` | 3,477 | 우상단 view header action glass surface 보정 후 수치 |
+| `dev/10d-liquid-glass-core.css` | 440 lines / 113 `!important` | late core owner에 scoped header action treatment 추가 |
+| MAP risk | medium=0, low=0, info=79 | width/height 구조 고정은 제거하고 surface state만 유지 |
 
 ## Highest Priority Modules
 
