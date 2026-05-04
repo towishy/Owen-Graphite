@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.35] — 2026-05-04 — Backlink pane glass card hotfix
+
+### Fixed
+- Promoted right-sidebar backlink/outgoing-link pane surfaces, section headers, empty states, and hover cards into the Liquid Glass core layer so they no longer show plain white default Obsidian cards.
+- Kept backlink section labels as transparent text layers over the parent glass surface so hover states do not create nested white cards.
+- Expanded tooltip/popover inner surface coverage for right-side chrome while preserving non-structural selector changes.
+
+### Validation
+- Local Obsidian visual check confirmed the backlink explanation card issue is gone.
+- `scripts/analyze_theme_css.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.34] — 2026-05-04 — View header action glass hotfix
 
 ### Fixed
