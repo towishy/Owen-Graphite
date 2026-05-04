@@ -3027,6 +3027,7 @@ kbd {
 }
 
 /* ---------- C. REPORT FEATURES ---------- */
+/* Ownership: early report presets live here; late table mode visuals live in 10d. */
 
 /* C1. Cover page — frontmatter `cover: true` adds .ogd-cover class via
        Dataview/Templater; pure-CSS hook on body class as fallback */
@@ -3335,6 +3336,7 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 .graph-view.color-arrow { color: var(--text-faint); }
 
 /* D7. Dataview table unification */
+/* Ownership: baseline Dataview compatibility only; liquid glass table states are late-owned by 10d. */
 .markdown-rendered .dataview:is(.table-view-table, .dataview-table),
 .block-language-dataview table {
   border-collapse: collapse !important;
@@ -3598,6 +3600,15 @@ body.ogd-auto-dark {
 /* =====================================================================
    Dark mode parity for v1.4.0 additions
    ===================================================================== */
+.theme-dark {
+  --ogd-plugin-dark-surface-bg: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.11), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.34));
+  --ogd-plugin-dark-surface-border: rgba(203, 213, 225, 0.14);
+  --ogd-plugin-dark-surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 14px rgba(0, 0, 0, 0.24);
+  --ogd-plugin-dark-card-bg: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.12), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.36));
+  --ogd-plugin-dark-card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.26);
+  --ogd-plugin-dark-card-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 8px 18px rgba(0, 0, 0, 0.34), 0 0 0 2px rgba(147, 197, 253, 0.04);
+}
+
 .theme-dark .markdown-rendered .dataview.table-view-table th,
 .theme-dark .block-language-dataview table th {
   background: #25272d !important;
@@ -3634,35 +3645,35 @@ body.ogd-auto-dark {
   border-color: rgba(203, 213, 225, 0.16) !important;
 }
 .theme-dark .kanban-plugin__lane {
-  background: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.11), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.34)) !important;
-  border-color: rgba(203, 213, 225, 0.14) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 14px rgba(0, 0, 0, 0.24) !important;
+  background: var(--ogd-plugin-dark-surface-bg) !important;
+  border-color: var(--ogd-plugin-dark-surface-border) !important;
+  box-shadow: var(--ogd-plugin-dark-surface-shadow) !important;
 }
 .theme-dark .kanban-plugin__item {
-  background: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.12), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.64), rgba(15, 23, 42, 0.38)) !important;
+  background: var(--ogd-plugin-dark-card-bg) !important;
   border-color: rgba(203, 213, 225, 0.16) !important;
   border-left-color: rgba(148, 163, 184, 0.40) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.26) !important;
+  box-shadow: var(--ogd-plugin-dark-card-shadow) !important;
 }
 .theme-dark .kanban-plugin__item:hover {
   border-color: rgba(203, 213, 225, 0.22) !important;
   border-left-color: rgba(147, 197, 253, 0.22) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 8px 18px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(147, 197, 253, 0.04) !important;
+  box-shadow: var(--ogd-plugin-dark-card-hover-shadow) !important;
 }
 .theme-dark :is(.excalidraw-host, .excalidraw, .excalidraw-svg) { background: #1a1b20 !important; border-color: #353841 !important; }
 .theme-dark :is(.bases-view, .base-view, .bases-table, .bases-card-view) {
-  background: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.11), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.34)) !important;
-  border-color: rgba(203, 213, 225, 0.14) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 14px rgba(0, 0, 0, 0.24) !important;
+  background: var(--ogd-plugin-dark-surface-bg) !important;
+  border-color: var(--ogd-plugin-dark-surface-border) !important;
+  box-shadow: var(--ogd-plugin-dark-surface-shadow) !important;
 }
 .theme-dark .bases-card {
-  background: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.12), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.36)) !important;
+  background: var(--ogd-plugin-dark-card-bg) !important;
   border-color: rgba(203, 213, 225, 0.16) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.26) !important;
+  box-shadow: var(--ogd-plugin-dark-card-shadow) !important;
 }
 .theme-dark .bases-card:hover {
   border-color: rgba(147, 197, 253, 0.24) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 8px 18px rgba(0, 0, 0, 0.34), 0 0 0 2px rgba(147, 197, 253, 0.04) !important;
+  box-shadow: var(--ogd-plugin-dark-card-hover-shadow) !important;
 }
 .theme-dark .bases-table th {
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.38)) !important;
@@ -6713,10 +6724,18 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
 @media (min-width: 701px) {
   body:not(.is-mobile) {
+    --ogd-09b-control-bg: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22)));
+    --ogd-09b-control-border: rgba(148,163,184,0.18);
+    --ogd-09b-control-shadow: inset 0 1px 0 rgba(255,255,255,0.75), inset 0 -1px 0 rgba(148,163,184,0.12);
+    --ogd-09b-control-hover-bg: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52)));
     --ogd-09b-control-hover-shadow: inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(15,23,42,0.07), 0 8px 18px rgba(15,23,42,0.13);
   }
 
   body:not(.is-mobile).theme-dark {
+    --ogd-09b-control-bg: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)));
+    --ogd-09b-control-border: rgba(148,163,184,0.22);
+    --ogd-09b-control-shadow: inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.30);
+    --ogd-09b-control-hover-bg: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40)));
     --ogd-09b-control-hover-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(203,213,225,0.08), 0 8px 20px rgba(0,0,0,0.34);
   }
 
@@ -6754,33 +6773,16 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon),
   body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton),
   body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button {
-    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22))) !important;
-    border: 1px solid rgba(148,163,184,0.18) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.75),
-      inset 0 -1px 0 rgba(148,163,184,0.12) !important;
+    background: var(--ogd-09b-control-bg) !important;
+    border: 1px solid var(--ogd-09b-control-border) !important;
+    box-shadow: var(--ogd-09b-control-shadow) !important;
     border-radius: var(--radius-l, 8px) !important;
     transition: background 160ms ease, box-shadow 160ms ease !important;
   }
   body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover,
   body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
   body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button:hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
-    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
-  }
-  body:not(.is-mobile).theme-dark .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon),
-  body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton),
-  body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button {
-    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30))) !important;
-    border-color: rgba(148,163,184,0.22) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.06),
-      inset 0 -1px 0 rgba(0,0,0,0.30) !important;
-  }
-  body:not(.is-mobile).theme-dark .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover,
-  body:not(.is-mobile).theme-dark #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
-  body:not(.is-mobile).theme-dark .editing-toolbar [class*="editing-toolbar"] button:hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
+    background: var(--ogd-09b-control-hover-bg) !important;
     box-shadow: var(--ogd-09b-control-hover-shadow) !important;
   }
 }
@@ -6828,27 +6830,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   /* Buttons inside submenu inherit the same glass icon style */
   body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon) {
-    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22))) !important;
-    border: 1px solid rgba(148,163,184,0.18) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.75),
-      inset 0 -1px 0 rgba(148,163,184,0.12) !important;
+    background: var(--ogd-09b-control-bg) !important;
+    border: 1px solid var(--ogd-09b-control-border) !important;
+    box-shadow: var(--ogd-09b-control-shadow) !important;
     border-radius: var(--radius-l, 8px) !important;
     transition: background 160ms ease, box-shadow 160ms ease !important;
   }
   body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52))) !important;
-    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
-  }
-  body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon) {
-    background: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30))) !important;
-    border-color: rgba(148,163,184,0.22) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.06),
-      inset 0 -1px 0 rgba(0,0,0,0.30) !important;
-  }
-  body:not(.is-mobile).theme-dark :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
-    background: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40))) !important;
+    background: var(--ogd-09b-control-hover-bg) !important;
     box-shadow: var(--ogd-09b-control-hover-shadow) !important;
   }
 }

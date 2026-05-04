@@ -166,6 +166,7 @@ kbd {
 }
 
 /* ---------- C. REPORT FEATURES ---------- */
+/* Ownership: early report presets live here; late table mode visuals live in 10d. */
 
 /* C1. Cover page — frontmatter `cover: true` adds .ogd-cover class via
        Dataview/Templater; pure-CSS hook on body class as fallback */
@@ -474,6 +475,7 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 .graph-view.color-arrow { color: var(--text-faint); }
 
 /* D7. Dataview table unification */
+/* Ownership: baseline Dataview compatibility only; liquid glass table states are late-owned by 10d. */
 .markdown-rendered .dataview:is(.table-view-table, .dataview-table),
 .block-language-dataview table {
   border-collapse: collapse !important;

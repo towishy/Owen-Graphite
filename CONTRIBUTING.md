@@ -133,9 +133,17 @@ Live Preview (CM6) 편집성을 해치는 다음 규칙은 금지됩니다 (vali
 
 ## 릴리즈 절차 (메인테이너)
 
+릴리즈 전에는 같은 버전 태그가 이미 있는지 먼저 확인합니다.
+
+```bash
+git tag --list "vX.Y.Z"
+gh release view vX.Y.Z --json tagName,name,isDraft,isPrerelease,publishedAt
+```
+
 ```bash
 # 1. manifest.json + README + CHANGELOG 버전 동기화
-# 2. 검증 + 빌드
+# 2. MAP + 검증 + 빌드
+python3 scripts/analyze_theme_css.py
 python3 scripts/validate_theme.py
 python3 scripts/build_release.py
 

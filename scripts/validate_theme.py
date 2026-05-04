@@ -45,6 +45,7 @@ REQUIRED_FILES = [
     "dev/test-samples/owen-editor-feature-sample.md",
     "dev/test-samples/owen-graphite-sample.md",
     "docs/css-important-audit.md",
+    "docs/fixtures/community-theme-search-focus.html",
     "docs/liquid-glass-token-map.md",
     "dev/_order.txt",
     "dev/00-settings.css",
@@ -464,12 +465,16 @@ def visual_regression_script_guards() -> None:
     script = read_text("scripts/visual_regression.py")
     required_tokens = [
         README_REPRESENTATIVE_SVG,
+        "docs/fixtures/community-theme-search-focus.html",
         "README_SVG_REQUIRED_TEXT",
+        "HTML_FIXTURE_REQUIRED_TEXT",
         "dev/temp/visual-regression",
         "smoke_svg_page",
+        "smoke_html_page",
         "위키형 표",
         "보고서형 표",
         "프로스트 아쿠아 포커스",
+        "커뮤니티 테마 검색 calm focus",
     ]
     missing = [token for token in required_tokens if token not in script]
     if missing:

@@ -4,8 +4,8 @@
 
 | 항목 | 값 |
 |------|----|
-| Theme size | 약 10,600 lines |
-| `!important` count | 약 3,461 |
+| Theme size | 약 10,560 lines |
+| `!important` count | 약 3,456 |
 | Audit 기준 | `scripts/validate_theme.py`의 CSS complexity inventory |
 
 ## First Pass Counts
@@ -16,6 +16,15 @@
 | `dev/07-plugin-workspace.css` | 204 | plugin row/card state 공통화 후보 |
 | `dev/06-feature-presets.css` | 170 | report/table preset 책임 분리 후보 |
 | `dev/10d-liquid-glass-core.css` | 92 | 최신 liquid glass token owner, 제거보다 기준 고정 우선 |
+
+## v2.22.33 Cleanup Result
+
+| 항목 | 이전 | 이후 | 메모 |
+|------|------:|------:|------|
+| 전체 `!important` | 3,466 | 3,456 | `09b` toolbar/submenu control rest/hover 값을 shared token으로 접음 |
+| `dev/09b-editing-menu-tooltip-glass.css` lines | 842 | 820 | selector target은 유지하고 light/dark 중복 선언만 축소 |
+| `dev/09b-editing-menu-tooltip-glass.css` `!important` | 312 | 302 | context menu row state는 실제 DOM 확인 전 유지 |
+| Visual QA fixture | - | 추가 | community theme browser search calm focus smoke fixture 추가 |
 
 ## Highest Priority Modules
 

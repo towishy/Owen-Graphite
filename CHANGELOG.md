@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.33] — 2026-05-04 — Toolbar token cleanup and visual QA fixture
+
+### Changed
+- Folded repeated Editing Toolbar button rest/hover declarations into shared `09b` control tokens while preserving the existing toolbar and submenu selector targets.
+- Added shared dark plugin surface tokens for Kanban and Bases cards so repeated row/card state values have one owner.
+- Documented `06` report/table ownership boundaries before deeper feature preset cleanup.
+
+### Validation
+- Added a community theme browser search focus fixture to the optional Playwright smoke path and validator guards.
+- `scripts/visual_regression.py docs/fixtures/community-theme-search-focus.html`, `scripts/analyze_theme_css.py`, `scripts/build_release.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.32] — 2026-05-04 — Community theme browser focus polish
 
 ### Changed

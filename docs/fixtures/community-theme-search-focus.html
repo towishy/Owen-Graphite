@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Community Theme Search Focus</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #eef2f7;
+      --ink: #172033;
+      --muted: #667085;
+      --line: rgba(148, 163, 184, 0.26);
+      --glass: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.52));
+      --control: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(241, 245, 249, 0.48));
+      --shadow: 0 28px 72px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+      --control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 2px 7px rgba(15, 23, 42, 0.08);
+      --focus-rim: rgba(103, 232, 249, 0.56);
+      --focus-halo: rgba(103, 232, 249, 0.16);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(226, 232, 240, 0.44)),
+        repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 34px),
+        repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.03) 0 1px, transparent 1px 34px),
+        var(--page);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1040px, calc(100vw - 36px));
+      display: grid;
+      gap: 18px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 26px;
+      line-height: 1.18;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .modal {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--glass);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(22px) saturate(155%);
+      backdrop-filter: blur(22px) saturate(155%);
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .modal-title {
+      font-weight: 760;
+      font-size: 15px;
+    }
+
+    .close {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 7px;
+      background: var(--control);
+      color: #475569;
+      box-shadow: var(--control-shadow);
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .panel {
+      min-height: 330px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.20);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.44);
+    }
+
+    .panel h2 {
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 36px;
+      padding: 0 10px;
+      border: 1px solid rgba(148, 163, 184, 0.30);
+      border-radius: 8px;
+      background: var(--control);
+      box-shadow: var(--control-shadow);
+    }
+
+    .search-wrap svg {
+      width: 15px;
+      height: 15px;
+      color: #64748b;
+      flex: none;
+    }
+
+    input {
+      min-width: 0;
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .global-focus .search-wrap {
+      border-color: var(--focus-rim);
+      box-shadow: 0 0 0 3px var(--focus-halo), var(--control-shadow);
+    }
+
+    .community-calm .search-wrap {
+      border-color: rgba(148, 163, 184, 0.30);
+      box-shadow: var(--control-shadow);
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .theme-card {
+      min-height: 88px;
+      padding: 10px;
+      border: 1px solid rgba(203, 213, 225, 0.72);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.48));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76), 0 3px 9px rgba(15, 23, 42, 0.06);
+    }
+
+    .thumb {
+      height: 36px;
+      margin-bottom: 8px;
+      border-radius: 5px;
+      background:
+        linear-gradient(135deg, rgba(148, 163, 184, 0.22), transparent 46%),
+        linear-gradient(180deg, #f8fafc, #e2e8f0);
+      border: 1px solid rgba(148, 163, 184, 0.20);
+    }
+
+    .theme-card strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .theme-card span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #111827;
+        --ink: #f8fafc;
+        --muted: #a9b5c9;
+        --line: rgba(148, 163, 184, 0.22);
+        --glass: linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.52));
+        --control: linear-gradient(180deg, rgba(51, 65, 85, 0.52), rgba(30, 41, 59, 0.32));
+        --shadow: 0 28px 76px rgba(0, 0, 0, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        --control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 3px 9px rgba(0, 0, 0, 0.24);
+      }
+
+      .panel {
+        background: rgba(15, 23, 42, 0.36);
+      }
+
+      .theme-card {
+        border-color: rgba(148, 163, 184, 0.20);
+        background: linear-gradient(180deg, rgba(30, 41, 59, 0.60), rgba(15, 23, 42, 0.38));
+      }
+
+      .thumb {
+        background:
+          linear-gradient(135deg, rgba(148, 163, 184, 0.18), transparent 46%),
+          linear-gradient(180deg, #334155, #111827);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main data-smoke="community-theme-search-focus">
+    <header>
+      <h1>커뮤니티 테마 탐색 검색 포커스</h1>
+      <p class="caption">검색창은 입력 중에도 resting glass 상태를 유지하고, 전체 모달에는 과한 focus halo가 번지지 않아야 합니다.</p>
+    </header>
+
+    <section class="modal" aria-label="테마 탐색 모달 비교">
+      <div class="modal-head">
+        <span class="modal-title">테마 탐색</span>
+        <span class="close" aria-hidden="true">×</span>
+      </div>
+      <div class="modal-body">
+        <article class="panel global-focus">
+          <h2>일반 검색 focus 기준</h2>
+          <label class="search-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.5 3a6.5 6.5 0 0 1 5.18 10.43l4.45 4.44-1.26 1.26-4.44-4.45A6.5 6.5 0 1 1 9.5 3Zm0 1.8a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/></svg>
+            <input value="graphite" aria-label="일반 검색 focus 예시">
+          </label>
+          <p class="caption">문서 검색과 command palette에서는 Frost Aqua rim과 soft halo가 유지됩니다.</p>
+          <div class="theme-grid">
+            <div class="theme-card"><div class="thumb"></div><strong>Document Search</strong><span>focus halo retained</span></div>
+            <div class="theme-card"><div class="thumb"></div><strong>Command Palette</strong><span>keyboard focus visible</span></div>
+          </div>
+        </article>
+
+        <article class="panel community-calm">
+          <h2>커뮤니티 테마 검색 calm focus</h2>
+          <label class="search-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.5 3a6.5 6.5 0 0 1 5.18 10.43l4.45 4.44-1.26 1.26-4.44-4.45A6.5 6.5 0 1 1 9.5 3Zm0 1.8a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/></svg>
+            <input value="minimal" aria-label="커뮤니티 테마 검색 calm focus 예시" autofocus>
+          </label>
+          <p class="caption">테마 카드 목록을 탐색할 때 검색 입력은 조용한 resting glass surface로 남습니다.</p>
+          <div class="theme-grid">
+            <div class="theme-card"><div class="thumb"></div><strong>Minimal</strong><span>installed theme card</span></div>
+            <div class="theme-card"><div class="thumb"></div><strong>Blue Topaz</strong><span>community theme card</span></div>
+            <div class="theme-card"><div class="thumb"></div><strong>Things</strong><span>community theme card</span></div>
+            <div class="theme-card"><div class="thumb"></div><strong>Owen Graphite</strong><span>resting glass state</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
