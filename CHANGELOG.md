@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.32] — 2026-05-04 — Community theme browser focus polish
+
+### Changed
+- Kept the community theme browser search field visually calm while typing so it stays in the resting glass state instead of showing the stronger global search focus halo.
+
+### Validation
+- `scripts/build_release.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.31] — 2026-05-04 — README screenshot and install notes refresh
 
 ### Documentation
