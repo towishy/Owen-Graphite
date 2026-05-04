@@ -25,11 +25,12 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | 좌측 라인 영구 밴 · Glass+Shadow 코어 · 샘플-우선 워크플로우 |
 
-![Light Mode](screenshots/light.png)
+![Owen Graphite Liquid Glass Overview](screenshots/readme/v2.22.31-liquid-glass-overview.svg)
 
 <details>
-<summary>📷 Dark / Report 모드 스크린샷</summary>
+<summary>📷 Light / Dark / Report 모드 스크린샷</summary>
 
+![Light Mode](screenshots/light.png)
 ![Dark Mode](screenshots/dark.png)
 ![Report Mode (auto-numbering + serif body + cover page)](screenshots/report.png)
 
@@ -42,6 +43,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 ### 🎨 디자인 코어
 - **Graphite 톤** — 차분한 그레이 베이스 + accent 컬러 프리셋 (Graphite/Blue/Teal/Violet/Amber)
 - **Liquid-glass chrome** — ribbon·사이드바·탭·툴바·command palette·tooltip 전반에 backdrop-blur (강도 변수 `--og-glass-blur`)
+- **Table mode split** — 위키형 표는 가벼운 glass surface, 보고서형 표는 PDF 친화 contrast/rule 중심으로 분리
+- **Frost Aqua focus** — 키보드 focus 상태에 layout shift 없는 aqua rim + soft halo 적용
 - **좌측 라인 영구 밴** — chrome 영역 좌측 4px bar 디자인 사용 금지 (callout/quote 등 본문은 예외)
 - **Workspace Surfaces Pack** — Graph view·Canvas·Folder cues·Mini TOC·Cover page
 - **Polish Pack** — Dark parity·Mobile 반응형·Tab 대비·코드 라벨·Heading anchor·Search HL
