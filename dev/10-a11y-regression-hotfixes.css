@@ -103,3 +103,91 @@ body .markdown-source-view.mod-cm6 :is(
     padding: 0 !important;
   }
 }
+
+
+/* ============================================================
+  v2.22.47-hotfix - Style Settings color picker swatch guard
+   Keep native/Pickr color swatches controlled by their selected value,
+   not by the shared glass-control background used for text inputs.
+   ============================================================ */
+
+body:not(.is-mobile) .setting-item-control input[type="color"],
+body:not(.is-mobile) .modal .setting-item-control input[type="color"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+body:not(.is-mobile) .setting-item-control input[type="color"]::-webkit-color-swatch-wrapper,
+body:not(.is-mobile) .modal .setting-item-control input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+body:not(.is-mobile) .setting-item-control input[type="color"]::-webkit-color-swatch,
+body:not(.is-mobile) .modal .setting-item-control input[type="color"]::-webkit-color-swatch {
+  border: 0 !important;
+  border-radius: calc(var(--ogd-radius-control, 7px) - 2px) !important;
+}
+
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button {
+  background: transparent !important;
+  background-color: transparent !important;
+  overflow: hidden !important;
+}
+
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before,
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after {
+  border-radius: calc(var(--ogd-radius-control, 7px) - 2px) !important;
+  inset: 2px !important;
+}
+
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after {
+  background: var(--pcr-color) !important;
+}
+
+
+/* ============================================================
+  v2.22.48-hotfix - Style Settings Pickr per-setting swatch values
+   Style Settings stores Pickr's preview color on a shared section
+   container before the hidden picker app initializes. Bind each
+   color control button back to its own theme variable so closed
+   swatches do not inherit the last rendered color in the section.
+   ============================================================ */
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-accent"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-accent, #4b5563);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-first-page-header-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-first-page-header-color, #111827);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-first-page-header-left-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-first-page-header-left-color, #0ea5e9);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-fp-label-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-fp-label-color, #6b7280);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-last-page-footer-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-last-page-footer-color, #0ea5e9);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-last-page-footer-label-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-last-page-footer-label-color, #64748b);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-last-page-footer-title-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-last-page-footer-title-color, #0f172a);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-last-page-footer-text-color"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-last-page-footer-text-color, #334155);
+}

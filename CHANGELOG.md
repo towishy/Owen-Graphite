@@ -4,6 +4,72 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.49] — 2026-05-06 — PDF footer title color isolation hotfix
+
+### Fixed
+- Rendered the PDF last-page footer title and body through separate generated-content paint layers so the title color matches the Style Settings value during Chromium PDF export.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.48] — 2026-05-06 — Style Settings Pickr persistence display hotfix
+
+### Fixed
+- Bound each Owen Graphite `variable-color` Style Settings Pickr button to its own CSS variable so closed swatches reopen with their saved color instead of inheriting the last rendered color from the shared Style Settings section container.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.47] — 2026-05-06 — Style Settings color picker hotfix
+
+### Fixed
+- Prevented Owen Graphite glass-control backgrounds from overriding Style Settings color picker swatches, so footer color controls display and reopen with the selected color instead of a gray square.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.46] — 2026-05-06 — PDF footer label alignment hotfix
+
+### Fixed
+- Kept the PDF last-page footer label text horizontal while vertically centering it inside the label cell.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.45] — 2026-05-06 — PDF footer notice hairline hotfix
+
+### Fixed
+- Removed the horizontal hairline/shadow under the PDF last-page footer NOTICE label while preserving the vertical notice bar and footer color controls.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.44] — 2026-05-06 — PDF footer color setting hotfix
+
+### Fixed
+- Reconnected the PDF last-page footer label, title, and body color controls to generated footer layers so Style Settings color changes no longer appear to reset to defaults.
+- Kept the PDF-safe rendering path that avoids `background-clip:text` gray block artifacts.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.43] — 2026-05-06 — PDF footer vertical accent restore
+
+### Fixed
+- Restored the PDF last-page footer accent as a vertical notice bar while keeping the PDF-safe plain text rendering that prevents the gray block artifact.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
+## [2.22.42] — 2026-05-06 — PDF footer print hotfix
+
+### Fixed
+- Prevented the PDF last-page footer from leaking its text color background into a large gray block during Chromium PDF export.
+- Moved the footer accent from a left vertical stripe to a horizontal top rule so the footer follows the no-left-line theme policy.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
 ## [2.22.41] — 2026-05-06 — PDF last-page footer controls
 
 ### Added

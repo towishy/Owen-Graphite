@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.41` |
+| **버전** | `2.22.49` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -161,7 +161,7 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 ### ✨ v2.22.41 — PDF 마지막 페이지 Footer
 
-PDF export 마지막 페이지에 H3 헤더형 confidential footer를 추가했습니다. Style Settings에서 첫 페이지 Header와 마지막 페이지 Footer의 PDF 출력 여부, 라벨, 제목, 본문, 사이드바 색상, 라벨 색상, 제목 색상, 본문 색상을 조정할 수 있습니다.
+PDF export 마지막 페이지에 H3 헤더형 confidential footer를 추가했습니다. Style Settings에서 첫 페이지 Header와 마지막 페이지 Footer의 PDF 출력 여부, 라벨, 제목, 본문, 세로바 색상, 라벨 색상, 제목 색상, 본문 색상을 조정할 수 있습니다.
 
 ![PDF 마지막 페이지 Footer H3 예제](screenshots/readme/v2.22.41-pdf-footer-header-like.svg)
 
@@ -188,6 +188,14 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.49** | PDF 마지막 페이지 footer 제목 색상이 설정값과 다르게 출력되던 문제 수정 |
+| **v2.22.48** | Style Settings Pickr swatch가 같은 섹션의 마지막 색상으로 초기화되어 보이던 문제 수정 |
+| **v2.22.47** | Style Settings color picker swatch가 회색으로 고정되어 보이던 문제 수정 |
+| **v2.22.46** | PDF 마지막 페이지 footer 라벨 문구를 가로 유지하고 라벨 칸 세로 중앙 정렬 |
+| **v2.22.45** | PDF 마지막 페이지 footer NOTICE 아래 가로 라인 제거 |
+| **v2.22.44** | PDF 마지막 페이지 footer 라벨·제목·본문 색상 설정 초기화처럼 보이던 문제 수정 |
+| **v2.22.43** | PDF 마지막 페이지 footer의 세로 notice bar 복원과 회색 배경 번짐 방지 유지 |
+| **v2.22.42** | PDF 마지막 페이지 footer의 회색 배경 번짐 hotfix와 좌측 세로 accent 제거 |
 | **v2.22.41** | PDF 마지막 페이지 H3 헤더형 confidential footer와 Style Settings 옵션 추가 |
 | **v2.22.40** | Live Preview 표 헤더 인라인 편집 높이 팽창 hotfix |
 | **v2.22.39** | Mermaid 진단용 control fixture의 DOM-only 상태 명확화 |
