@@ -57,6 +57,107 @@
 .markdown-reading-view .mermaid svg {
   max-width: none !important;
 }
+
+@supports selector(.cm-embed-block:has(.mermaid)) {
+  /* Live Preview Mermaid controls must remain visible inside the diagram frame. */
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) {
+    position: relative;
+    overflow: visible !important;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) .mermaid {
+    position: relative;
+    overflow: visible !important;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) {
+    position: absolute !important;
+    inset: 8px auto auto 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 3px !important;
+    border: 1px solid rgba(203, 213, 225, 0.56) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    background: var(--ogd-glass-toolbar-bg, rgba(255, 255, 255, 0.86)) !important;
+    box-shadow: var(--ogd-glass-control-shadow, 0 8px 18px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82)) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon) {
+    min-width: 26px !important;
+    min-height: 26px !important;
+    padding: 4px !important;
+    border: 1px solid rgba(203, 213, 225, 0.48) !important;
+    border-radius: 6px !important;
+    background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70)) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 11 !important;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon):is(:hover, :focus-visible) {
+    background: var(--ogd-glass-control-hover-bg, rgba(255, 255, 255, 0.92)) !important;
+    border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.42)) !important;
+    box-shadow: var(--ogd-lg-shadow-focus, 0 10px 24px rgba(15, 23, 42, 0.16)) !important;
+  }
+}
+.markdown-rendered .ogd-mermaid-control-fixture,
+.markdown-preview-view .ogd-mermaid-control-fixture,
+.markdown-reading-view .ogd-mermaid-control-fixture {
+  position: relative;
+  margin: 0.8em 0 1em;
+  overflow: visible !important;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid {
+  position: relative;
+  overflow: visible !important;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid svg,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid svg,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid svg {
+  display: block;
+  width: 100%;
+  max-width: 100% !important;
+  height: auto;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid-controls,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid-controls,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid-controls {
+  position: absolute !important;
+  inset: 8px auto auto 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 3px !important;
+  border: 1px solid rgba(203, 213, 225, 0.56) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  background: var(--ogd-glass-toolbar-bg, rgba(255, 255, 255, 0.86)) !important;
+  box-shadow: var(--ogd-glass-control-shadow, 0 8px 18px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82)) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 10 !important;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid-button,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid-button,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid-button {
+  min-width: 26px !important;
+  min-height: 26px !important;
+  padding: 4px !important;
+  border: 1px solid rgba(203, 213, 225, 0.48) !important;
+  border-radius: 6px !important;
+  background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70)) !important;
+  color: var(--ogd-text-strong, #111827) !important;
+  font: 600 12px/1 var(--font-interface-theme, inherit) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 11 !important;
+}
 .markdown-rendered .mermaid svg .edgeLabel,
 .markdown-rendered .mermaid svg .edgeLabel span,
 .markdown-rendered .mermaid svg .edgeLabel p {
