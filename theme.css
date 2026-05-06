@@ -5613,6 +5613,9 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
     border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.42)) !important;
     box-shadow: var(--ogd-lg-shadow-focus, 0 10px 24px rgba(15, 23, 42, 0.16)) !important;
   }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon):active {
+    transform: var(--ogd-press-lift, translateY(0) scale(0.99)) !important;
+  }
 }
 .markdown-rendered .ogd-mermaid-control-fixture,
 .markdown-preview-view .ogd-mermaid-control-fixture,
@@ -5653,6 +5656,17 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   pointer-events: auto !important;
   z-index: 10 !important;
 }
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid-controls::after,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid-controls::after,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid-controls::after {
+  content: "DOM only";
+  align-self: center;
+  padding: 0 5px;
+  color: var(--ogd-text-muted, #64748b);
+  font: 650 10px/1 var(--font-interface-theme, inherit);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
 .markdown-rendered .ogd-mermaid-control-fixture .mermaid-button,
 .markdown-preview-view .ogd-mermaid-control-fixture .mermaid-button,
 .markdown-reading-view .ogd-mermaid-control-fixture .mermaid-button {
@@ -5667,6 +5681,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+  cursor: default !important;
   z-index: 11 !important;
 }
 .markdown-rendered .mermaid svg .edgeLabel,

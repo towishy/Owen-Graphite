@@ -54,7 +54,7 @@ flowchart LR
 
 ### Control DOM Fixture
 
-아래 블록은 실제 Mermaid 기능과 연결되지 않은 테스트용 DOM이다. 버튼이 보이면 테마 CSS가 컨트롤 DOM을 화면에 표시할 수 있다는 뜻이고, 실제 Mermaid 블록에서 안 보이면 Obsidian 또는 플러그인이 컨트롤 DOM을 생성하지 않는 상태로 판단한다.
+아래 블록은 실제 Mermaid 기능과 연결되지 않은 테스트용 DOM이다. 버튼은 클릭해도 확대/축소되지 않는다. 버튼이 보이면 테마 CSS가 컨트롤 DOM을 화면에 표시할 수 있다는 뜻이고, 실제 Mermaid 블록에서 안 보이면 Obsidian 또는 플러그인이 컨트롤 DOM을 생성하지 않는 상태로 판단한다.
 
 <div class="cm-embed-block ogd-mermaid-control-fixture">
   <div class="mermaid" aria-label="Mermaid control fixture">
@@ -76,9 +76,9 @@ flowchart LR
     </svg>
   </div>
   <div class="mermaid-controls" aria-label="Test Mermaid controls">
-    <button class="mermaid-button clickable-icon" type="button" aria-label="확대">+</button>
-    <button class="mermaid-button clickable-icon" type="button" aria-label="축소">-</button>
-    <button class="mermaid-button clickable-icon" type="button" aria-label="초기화">1:1</button>
+    <button class="mermaid-button clickable-icon" type="button" aria-label="확대 DOM 표시 테스트" aria-disabled="true" title="진단용 DOM - 실제 확대 기능 없음">+</button>
+    <button class="mermaid-button clickable-icon" type="button" aria-label="축소 DOM 표시 테스트" aria-disabled="true" title="진단용 DOM - 실제 축소 기능 없음">-</button>
+    <button class="mermaid-button clickable-icon" type="button" aria-label="초기화 DOM 표시 테스트" aria-disabled="true" title="진단용 DOM - 실제 초기화 기능 없음">1:1</button>
   </div>
 </div>
 

@@ -4,6 +4,15 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.39] — 2026-05-06 — Mermaid fixture affordance hotfix
+
+### Fixed
+- Clarified that the Mermaid control fixture buttons are DOM-only diagnostics and do not provide real zoom behavior.
+- Added inactive affordance details to the fixture buttons while preserving active press feedback for real Mermaid control DOM supplied by plugins or host integrations.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.38] — 2026-05-06 — Mermaid Live Preview control fixture
 
 ### Fixed

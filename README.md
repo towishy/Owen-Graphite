@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.38` |
+| **버전** | `2.22.39` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -180,6 +180,7 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.39** | Mermaid 진단용 control fixture의 DOM-only 상태 명확화 |
 | **v2.22.38** | Mermaid Live Preview control DOM 표시 fix와 진단 샘플 추가 |
 | **v2.22.37** | fixture 추적 정책, 릴리즈 guard, side pane QA matrix 보강 |
 | **v2.22.36** | 사이드 pane glass parity와 회귀 fixture 보강 |
