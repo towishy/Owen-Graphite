@@ -163,8 +163,6 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 PDF export 마지막 페이지에 H3 헤더형 confidential footer를 추가했습니다. Style Settings에서 첫 페이지 Header와 마지막 페이지 Footer의 PDF 출력 여부, 라벨, 제목, 본문, 세로바 색상, 라벨 색상, 제목 색상, 본문 색상을 조정할 수 있습니다.
 
-![PDF 마지막 페이지 Footer H3 예제](screenshots/readme/v2.22.41-pdf-footer-header-like.svg)
-
 ![Style Settings PDF Header Footer 설정 화면](screenshots/readme/v2.22.41-style-settings-pdf-controls.svg)
 
 ### ✨ v2.22.31 — README Liquid Glass Overview
