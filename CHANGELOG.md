@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.40] — 2026-05-06 — Live Preview table header edit hotfix
+
+### Fixed
+- Extended the Live Preview table inflation guard from body cells to header cells so inline editing a Markdown table header no longer expands the row height or pushes text downward.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/build_release.py`, `scripts/validate_theme.py`, and local Obsidian vault sync 통과.
+
 ## [2.22.39] — 2026-05-06 — Mermaid fixture affordance hotfix
 
 ### Fixed
