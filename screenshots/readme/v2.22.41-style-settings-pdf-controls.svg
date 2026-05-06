@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Style Settings PDF Header Footer controls</title>
+  <desc id="desc">Style Settings 플러그인에서 Owen Graphite PDF 첫 페이지 Header와 마지막 페이지 Footer를 토글하고 문구와 색상을 설정하는 화면 예시입니다.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.56" stop-color="#eef3f9"/>
+      <stop offset="1" stop-color="#e6edf6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="18%" cy="6%" r="72%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="row" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#f1f5f9" stop-opacity="0.62"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-14%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f172a" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.07"/>
+    </filter>
+    <filter id="soft" x="-8%" y="-18%" width="116%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <g id="toggleOn">
+      <rect width="48" height="26" rx="13" fill="#64748b"/>
+      <circle cx="35" cy="13" r="10" fill="#ffffff"/>
+    </g>
+    <g id="resetIcon" fill="none" stroke="#64748b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 7a8 8 0 1 1-6.2-2.2"/>
+      <path d="M10.8 1.8v5.4H5.4"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="760" rx="30" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="30" fill="url(#glow)"/>
+
+  <text x="70" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="850" fill="#0f172a">Style Settings에서 PDF Header/Footer 설정</text>
+  <text x="70" y="106" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="15" fill="#475569">플러그인을 설치하면 PDF 출력 토글, 라벨, 제목, 본문, 색상을 사이드바에서 직접 조정할 수 있습니다.</text>
+
+  <g transform="translate(70 138)" filter="url(#shadow)">
+    <rect width="1060" height="560" rx="20" fill="url(#panel)" stroke="#dbe7f1"/>
+    <g transform="translate(28 30)" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif">
+      <text x="0" y="0" font-size="13" font-weight="800" fill="#64748b">커뮤니티 플러그인</text>
+      <rect x="0" y="18" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="16" y="40" font-size="14" font-weight="760" fill="#0f172a">Style Settings</text>
+      <text x="250" y="12" font-size="16" font-weight="850" fill="#0f172a">PDF 첫 페이지 Header</text>
+      <text x="250" y="298" font-size="16" font-weight="850" fill="#0f172a">PDF 마지막 페이지 Footer</text>
+    </g>
+
+    <g transform="translate(280 72)" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif">
+      <g filter="url(#soft)">
+        <rect width="720" height="62" rx="10" fill="url(#row)"/>
+        <text x="20" y="24" font-size="14" font-weight="800" fill="#0f172a">PDF 첫 페이지 Header 표시</text>
+        <text x="20" y="43" font-size="11" fill="#64748b">첫 페이지 Header 라벨과 본문을 출력합니다.</text>
+        <g transform="translate(642 18)"><use href="#toggleOn"/></g>
+        <g transform="translate(696 20)"><use href="#resetIcon"/></g>
+      </g>
+      <g transform="translate(0 76)" filter="url(#soft)">
+        <rect width="720" height="62" rx="10" fill="url(#row)"/>
+        <text x="20" y="24" font-size="14" font-weight="800" fill="#0f172a">PDF 첫 페이지 우측 상단 문구</text>
+        <text x="20" y="43" font-size="11" fill="#64748b">기본값은 공백이며 필요한 문구만 입력합니다.</text>
+        <rect x="472" y="17" width="168" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+        <g transform="translate(696 20)"><use href="#resetIcon"/></g>
+      </g>
+      <g transform="translate(0 152)" filter="url(#soft)">
+        <rect width="720" height="62" rx="10" fill="url(#row)"/>
+        <text x="20" y="24" font-size="14" font-weight="800" fill="#0f172a">첫 페이지 좌·우 라벨/색상</text>
+        <text x="20" y="43" font-size="11" fill="#64748b">라벨도 공백 기본값이며 사이드바 색상만 기본 색상을 제공합니다.</text>
+        <rect x="576" y="18" width="26" height="26" rx="4" fill="#0ea5e9"/>
+        <rect x="612" y="18" width="26" height="26" rx="4" fill="#111827"/>
+        <g transform="translate(696 20)"><use href="#resetIcon"/></g>
+      </g>
+    </g>
+
+    <g transform="translate(280 358)" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif">
+      <g filter="url(#soft)">
+        <rect width="720" height="62" rx="10" fill="url(#row)"/>
+        <text x="20" y="24" font-size="14" font-weight="800" fill="#0f172a">PDF 마지막 페이지 Footer 표시</text>
+        <text x="20" y="43" font-size="11" fill="#64748b">문서 마지막 콘텐츠 뒤에 H3 헤더형 footer notice를 표시합니다.</text>
+        <g transform="translate(642 18)"><use href="#toggleOn"/></g>
+        <g transform="translate(696 20)"><use href="#resetIcon"/></g>
+      </g>
+      <g transform="translate(0 76)" filter="url(#soft)">
+        <rect width="720" height="62" rx="10" fill="url(#row)"/>
+        <text x="20" y="24" font-size="14" font-weight="800" fill="#0f172a">Footer 라벨 / 제목 / 색상</text>
+        <text x="20" y="43" font-size="11" fill="#64748b">기본값은 공백입니다. 라벨과 제목 색상을 각각 지정할 수 있습니다.</text>
+        <rect x="472" y="17" width="168" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+        <rect x="650" y="18" width="14" height="26" rx="3" fill="#64748b"/>
+        <rect x="670" y="18" width="14" height="26" rx="3" fill="#0f172a"/>
+        <g transform="translate(696 20)"><use href="#resetIcon"/></g>
+      </g>
+      <g transform="translate(0 152)" filter="url(#soft)">
+        <rect width="720" height="62" rx="10" fill="url(#row)"/>
+        <text x="20" y="24" font-size="14" font-weight="800" fill="#0f172a">Footer 본문 / 사이드바 / 본문 색상</text>
+        <text x="20" y="43" font-size="11" fill="#64748b">본문도 공백 기본값이며 수직 라인과 본문 색상도 조정합니다.</text>
+        <rect x="576" y="18" width="26" height="26" rx="4" fill="#0ea5e9"/>
+        <rect x="612" y="18" width="26" height="26" rx="4" fill="#334155"/>
+        <g transform="translate(696 20)"><use href="#resetIcon"/></g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Header-like PDF confidential footer examples</title>
+  <desc id="desc">기존 PDF 첫 페이지 헤더와 더 비슷한 라벨, 본문, 세로 accent bar 중심의 confidential footer 예제입니다.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.58" stop-color="#eef3f9"/>
+      <stop offset="1" stop-color="#e6edf6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="18%" cy="7%" r="70%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#f1f5f9" stop-opacity="0.54"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#0284c7" stop-opacity="0.78"/>
+    </linearGradient>
+    <linearGradient id="barAqua" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0284c7" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0.70"/>
+    </linearGradient>
+    <filter id="pageShadow" x="-10%" y="-18%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0f172a" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.07"/>
+    </filter>
+    <filter id="softShadow" x="-12%" y="-32%" width="124%" height="176%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.10"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0284c7" flood-opacity="0.05"/>
+    </filter>
+    <filter id="ruleShadowSoft" x="0" y="-500%" width="100%" height="1200%">
+      <feDropShadow dx="0" dy="1.4" stdDeviation="1.1" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <g id="legalBody" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, Arial, sans-serif" font-size="8.1">
+      <text x="0" y="0" fill="currentColor">
+        <tspan x="0" dy="0">본 이메일(첨부 파일 포함, 이하 동일)은 Microsoft의 영업비밀을 포함하고 있습니다.</tspan>
+        <tspan x="0" dy="11">본 이메일은 합리적으로 보아 귀사 내부에서 알아야 할 필요가 있는 담당자만이 접근할 수 있으며, Microsoft가 동의하지 않는 한 제3자에게 제공, 공유하거나 복제할 수 없습니다.</tspan>
+        <tspan x="0" dy="11">본 이메일은 정보제공만을 목적으로 하며, 포함된 모든 정보는 발송 시점의 Microsoft의 견해를 반영한 것입니다. 내용은 변경될 수 있습니다.</tspan>
+        <tspan x="0" dy="11">Microsoft는 본 이메일에 포함된 내용에 대하여 명시적, 묵시적 또는 법적인 보증을 하지 않습니다. Microsoft Corporation. All rights reserved.</tspan>
+      </text>
+    </g>
+  </defs>
+
+  <rect width="1200" height="820" rx="30" fill="url(#bg)"/>
+  <rect width="1200" height="820" rx="30" fill="url(#glow)"/>
+  <text x="70" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="850" fill="#0f172a">헤더 스타일에 더 가까운 Footer 예제</text>
+  <text x="70" y="106" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569">기존 PDF 첫 페이지 헤더의 라벨, 본문, 세로 accent bar 문법을 마지막 페이지 footer로 확장</text>
+
+  <g transform="translate(70 142)">
+    <g filter="url(#pageShadow)">
+      <rect width="1060" height="178" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">H1. Native Header Footer</text>
+      <text x="30" y="62" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#64748b">기존 헤더와 가장 유사. 박스 없이 우측 정렬, 세로 bar, 두 줄 타이포만 사용.</text>
+      <rect x="30" y="88" width="520" height="6" rx="3" fill="#eef2f7"/>
+      <rect x="30" y="108" width="440" height="6" rx="3" fill="#f1f5f9"/>
+      <g transform="translate(610 40)">
+        <rect x="398" y="0" width="3" height="78" rx="1.5" fill="url(#bar)"/>
+        <text x="388" y="15" font-family="Segoe UI, Arial, sans-serif" font-size="7.5" font-weight="800" letter-spacing="1.8" fill="#64748b" text-anchor="end">FINAL PAGE NOTICE</text>
+        <text x="388" y="36" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="900" letter-spacing="1.1" fill="#0f172a" text-anchor="end">MICROSOFT CONFIDENTIAL</text>
+        <g transform="translate(8 58) scale(0.62)">
+          <use href="#legalBody" color="#475569"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(0 220)" filter="url(#pageShadow)">
+      <rect width="1060" height="178" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">H2. Header Glass Backplate</text>
+      <text x="30" y="62" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#64748b">헤더 타이포 구조를 유지하되, 긴 법무 문구 뒤에만 아주 옅은 glass backplate를 추가.</text>
+      <rect x="30" y="88" width="500" height="6" rx="3" fill="#eef2f7"/>
+      <rect x="30" y="108" width="470" height="6" rx="3" fill="#f1f5f9"/>
+      <g filter="url(#softShadow)">
+        <rect x="610" y="42" width="410" height="98" rx="12" fill="url(#glass)" stroke="#dbe7f1"/>
+        <rect x="1005" y="54" width="3" height="74" rx="1.5" fill="url(#bar)"/>
+        <text x="988" y="67" font-family="Segoe UI, Arial, sans-serif" font-size="7.3" font-weight="800" letter-spacing="1.7" fill="#64748b" text-anchor="end">DOCUMENT NOTICE</text>
+        <text x="988" y="88" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="900" letter-spacing="1.1" fill="#0f172a" text-anchor="end">MICROSOFT CONFIDENTIAL</text>
+        <g transform="translate(632 110) scale(0.58)">
+          <use href="#legalBody" color="#334155"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(0 440)" filter="url(#pageShadow)">
+      <rect width="1060" height="178" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">H3. Left Header Mirror</text>
+      <text x="30" y="62" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#64748b">첫 페이지 좌측 헤더처럼 왼쪽 bar를 사용. footer가 본문 주석처럼 차분하게 붙음.</text>
+      <rect x="30" y="88" width="480" height="6" rx="3" fill="#eef2f7"/>
+      <rect x="30" y="108" width="510" height="6" rx="3" fill="#f1f5f9"/>
+      <g transform="translate(0 36)">
+        <rect x="0" y="0" width="1060" height="1" fill="#cbd5e1" opacity="0.44" filter="url(#ruleShadowSoft)"/>
+      </g>
+      <g transform="translate(610 56)">
+        <rect x="0" y="0" width="3" height="82" rx="1.5" fill="url(#barAqua)"/>
+        <text x="16" y="15" font-family="Segoe UI, Arial, sans-serif" font-size="8.6" font-weight="800" letter-spacing="1.35" fill="#64748b">NOTICE</text>
+        <text x="16" y="37" font-family="Segoe UI, Arial, sans-serif" font-size="12.2" font-weight="900" letter-spacing="0.7" fill="#0f172a">MICROSOFT CONFIDENTIAL</text>
+        <g transform="translate(16 58) scale(0.66)">
+          <use href="#legalBody" color="#475569"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <text x="70" y="788" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#64748b">추천: 기존 헤더와 가장 비슷한 것은 H1, 긴 문구 안정성은 H2, 좌측 헤더와 맞추려면 H3.</text>
+</svg>

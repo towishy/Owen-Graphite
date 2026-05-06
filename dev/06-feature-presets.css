@@ -231,8 +231,8 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     position: relative;
   }
   /* ---------- LABELS (top row, small caps, accent color) ---------- */
-  body::before,
-  body::after {
+  body.ogd-first-page-header-enabled::before,
+  body.ogd-first-page-header-enabled::after {
     position: absolute !important;
     top: 2px !important;
     font-family: "Pretendard Variable", "Pretendard",
@@ -250,11 +250,11 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 9999 !important;
     pointer-events: none !important;
   }
-  body::before {
+  body.ogd-first-page-header-enabled::before {
     content: var(--ogd-fp-right-label, "") !important;
     right: 13px !important;
   }
-  body::after {
+  body.ogd-first-page-header-enabled::after {
     content: var(--ogd-fp-left-label, "") !important;
     left: 13px !important;
   }
@@ -264,14 +264,14 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
      attached to 5 containers as a defensive fallback; reduced in v1.6.0
      after extensive PDF export validation. */
   /* v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF) */
-  .markdown-preview-sizer::before,
-  .markdown-preview-view::before,
-  .markdown-preview-section::before,
-  .markdown-rendered::before,
-  .markdown-preview-sizer::after,
-  .markdown-preview-view::after,
-  .markdown-preview-section::after,
-  .markdown-rendered::after {
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
+  body.ogd-first-page-header-enabled .markdown-preview-view::before,
+  body.ogd-first-page-header-enabled .markdown-preview-section::before,
+  body.ogd-first-page-header-enabled .markdown-rendered::before,
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::after,
+  body.ogd-first-page-header-enabled .markdown-preview-view::after,
+  body.ogd-first-page-header-enabled .markdown-preview-section::after,
+  body.ogd-first-page-header-enabled .markdown-rendered::after {
     position: absolute !important;
     top: 0 !important;
     font-family: "Pretendard Variable", "Pretendard",
@@ -290,19 +290,19 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 9999 !important;
     pointer-events: none !important;
   }
-  .markdown-preview-sizer::before,
-  .markdown-preview-view::before,
-  .markdown-preview-section::before,
-  .markdown-rendered::before {
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
+  body.ogd-first-page-header-enabled .markdown-preview-view::before,
+  body.ogd-first-page-header-enabled .markdown-preview-section::before,
+  body.ogd-first-page-header-enabled .markdown-rendered::before {
     content: var(--ogd-first-page-header, "") !important;
     right: 0 !important;
     padding: 16px 10px 0 0 !important;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827) !important;
   }
-  .markdown-preview-sizer::after,
-  .markdown-preview-view::after,
-  .markdown-preview-section::after,
-  .markdown-rendered::after {
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::after,
+  body.ogd-first-page-header-enabled .markdown-preview-view::after,
+  body.ogd-first-page-header-enabled .markdown-preview-section::after,
+  body.ogd-first-page-header-enabled .markdown-rendered::after {
     content: var(--ogd-first-page-header-left, "") !important;
     left: 0 !important;
     padding: 16px 0 0 10px !important;
@@ -313,6 +313,88 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     margin-bottom: 30px !important;
     padding-bottom: 26px !important;
     string-set: ogd-doc-title content();
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child {
+    position: relative !important;
+    margin-bottom: 54mm !important;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before,
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    position: absolute !important;
+    left: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    display: block !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    color: var(--ogd-last-page-footer-text-color, #334155) !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
+    pointer-events: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before {
+    content: "" !important;
+    top: calc(100% + 11mm) !important;
+    border-top: 1px solid rgba(203, 213, 225, 0.44) !important;
+    box-shadow: 0 1.4px 1.1px rgba(15, 23, 42, 0.10) !important;
+    min-height: 0 !important;
+    height: 0 !important;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    content: var(--ogd-last-page-footer-label, "") "\A" var(--ogd-last-page-footer-title, "") "\A\A" var(--ogd-last-page-footer-body, "") !important;
+    top: calc(100% + 17mm) !important;
+    min-height: 0 !important;
+    padding-left: 7mm !important;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
+    font-size: 8.8pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.42 !important;
+    text-transform: none !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    background-image: linear-gradient(
+      to bottom,
+      var(--ogd-last-page-footer-label-color, #64748b) 0,
+      var(--ogd-last-page-footer-label-color, #64748b) 1.42em,
+      var(--ogd-last-page-footer-title-color, #0f172a) 1.42em,
+      var(--ogd-last-page-footer-title-color, #0f172a) 2.84em,
+      transparent 2.84em,
+      transparent 4.26em,
+      var(--ogd-last-page-footer-text-color, #334155) 4.26em,
+      var(--ogd-last-page-footer-text-color, #334155) 100%
+    ) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
   }
 }
 

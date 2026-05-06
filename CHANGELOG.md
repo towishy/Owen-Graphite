@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.41] — 2026-05-06 — PDF last-page footer controls
+
+### Added
+- Added an H3-style PDF last-page confidential footer that mirrors the existing first-page header language with a small label, title/body text, and a left accent bar.
+- Added Style Settings controls for first-page Header output visibility and last-page Footer visibility, label, title, body, accent color, label color, title color, and body color.
+- Added README sample SVGs for PDF confidential footer exploration and the selected header-like footer direction.
+
+### Changed
+- Refined the PDF last-page footer with the selected G1 faint gray hairline top rule, a continuous content-height left accent bar, larger text, and a bold footer title block.
+- Cleared the default Header/Footer text examples so Style Settings starts with blank text inputs.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py`, release ZIP build, and local Obsidian vault sync 통과.
+
 ## [2.22.40] — 2026-05-06 — Live Preview table header edit hotfix
 
 ### Fixed

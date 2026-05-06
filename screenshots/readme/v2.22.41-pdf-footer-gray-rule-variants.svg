@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">PDF footer gray top rule variants</title>
+  <desc id="desc">PDF 마지막 페이지 footer 위 가로 라인을 희미한 회색계열과 그림자 라인으로 처리한 네 가지 시안입니다.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.58" stop-color="#eef3f8"/>
+      <stop offset="1" stop-color="#e7edf5"/>
+    </linearGradient>
+    <radialGradient id="wash" cx="18%" cy="7%" r="72%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="barAqua" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0284c7" stop-opacity="0.76"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0.68"/>
+    </linearGradient>
+    <filter id="pageShadow" x="-10%" y="-18%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.11"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+    <filter id="ruleShadowSoft" x="0" y="-500%" width="100%" height="1200%">
+      <feDropShadow dx="0" dy="1.4" stdDeviation="1.1" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <filter id="ruleShadowMedium" x="0" y="-600%" width="100%" height="1400%">
+      <feDropShadow dx="0" dy="1.6" stdDeviation="1.2" flood-color="#0f172a" flood-opacity="0.15"/>
+      <feDropShadow dx="0" dy="-0.7" stdDeviation="0.7" flood-color="#ffffff" flood-opacity="0.70"/>
+    </filter>
+    <filter id="ruleShadowDeep" x="0" y="-700%" width="100%" height="1600%">
+      <feDropShadow dx="0" dy="2.2" stdDeviation="1.8" flood-color="#0f172a" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="-0.8" stdDeviation="0.9" flood-color="#ffffff" flood-opacity="0.80"/>
+    </filter>
+    <g id="bodyText" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, Arial, sans-serif" font-size="8.4" font-weight="690">
+      <text x="0" y="0" fill="currentColor">
+        <tspan x="0" dy="0">본 이메일(첨부 파일 포함, 이하 동일)은 Microsoft의 영업비밀을 포함하고 있습니다. 본 이메일은 합리적으로 보아 귀사 내부에서 알아야 할 필요가 있는 담당자만이 접근할 수 있으며,</tspan>
+        <tspan x="0" dy="12">Microsoft가 동의하지 않는 한 제3자에게 제공, 공유하거나 복제할 수 없습니다. 본 이메일은 정보제공만을 목적으로 하며, 포함된 모든 정보는 발송 시점의 견해를 반영한 것입니다.</tspan>
+        <tspan x="0" dy="12">본 이메일에 포함된 내용은 변경될 수 있습니다. Microsoft는 본 이메일에 포함된 내용에 대하여 명시적, 묵시적 또는 법적인 보증을 하지 않습니다. Microsoft Corporation. All rights reserved.</tspan>
+      </text>
+    </g>
+    <g id="footerText" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, Arial, sans-serif">
+      <text x="0" y="0" font-size="8.8" font-weight="820" letter-spacing="1.35" fill="#64748b">NOTICE</text>
+      <text x="0" y="23" font-size="12.4" font-weight="900" letter-spacing="0.7" fill="#0f172a">MICROSOFT CONFIDENTIAL</text>
+      <g transform="translate(0 46) scale(0.64)">
+        <use href="#bodyText" color="#334155"/>
+      </g>
+    </g>
+  </defs>
+
+  <rect width="1200" height="900" rx="30" fill="url(#bg)"/>
+  <rect width="1200" height="900" rx="30" fill="url(#wash)"/>
+  <text x="70" y="70" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="850" fill="#0f172a">Footer 상단 Gray Rule 시안</text>
+  <text x="70" y="104" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="15" fill="#475569">가로 라인은 Notice와 떨어뜨리고, 세로 라인은 본문 줄 수만큼 이어지는 구조 유지</text>
+
+  <g transform="translate(70 136)">
+    <g filter="url(#pageShadow)">
+      <rect width="1060" height="154" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="36" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">G1. Mist Hairline</text>
+      <text x="30" y="58" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="10.5" fill="#64748b">가장 얇고 조용한 회색 라인. PDF에 거의 배경 경계처럼 보임.</text>
+      <rect x="30" y="76" width="1000" height="1" fill="#cbd5e1" opacity="0.44" filter="url(#ruleShadowSoft)"/>
+      <g transform="translate(30 96)">
+        <rect x="0" y="0" width="3" height="48" rx="1.5" fill="url(#barAqua)"/>
+        <g transform="translate(18 1)"><use href="#footerText"/></g>
+      </g>
+    </g>
+
+    <g transform="translate(0 182)" filter="url(#pageShadow)">
+      <rect width="1060" height="154" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="36" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">G2. Soft Graphite Shadow</text>
+      <text x="30" y="58" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="10.5" fill="#64748b">얇은 graphite 라인 아래에 아주 약한 그림자를 둔 균형형.</text>
+      <rect x="30" y="76" width="1000" height="1.2" rx="0.6" fill="#94a3b8" opacity="0.42" filter="url(#ruleShadowMedium)"/>
+      <g transform="translate(30 96)">
+        <rect x="0" y="0" width="3" height="48" rx="1.5" fill="url(#barAqua)"/>
+        <g transform="translate(18 1)"><use href="#footerText"/></g>
+      </g>
+    </g>
+
+    <g transform="translate(0 364)" filter="url(#pageShadow)">
+      <rect width="1060" height="154" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="36" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">G3. Paper Edge Double Line</text>
+      <text x="30" y="58" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="10.5" fill="#64748b">위쪽 white highlight와 아래쪽 gray shadow를 겹친 종이 단면 느낌.</text>
+      <rect x="30" y="75" width="1000" height="1" fill="#ffffff" opacity="0.78"/>
+      <rect x="30" y="77" width="1000" height="1.2" rx="0.6" fill="#64748b" opacity="0.30" filter="url(#ruleShadowMedium)"/>
+      <g transform="translate(30 98)">
+        <rect x="0" y="0" width="3" height="48" rx="1.5" fill="url(#barAqua)"/>
+        <g transform="translate(18 1)"><use href="#footerText"/></g>
+      </g>
+    </g>
+
+    <g transform="translate(0 546)" filter="url(#pageShadow)">
+      <rect width="1060" height="154" rx="18" fill="url(#paper)" stroke="#d7dee8"/>
+      <text x="30" y="36" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="14" font-weight="850" fill="#0f172a">G4. Low Relief Divider</text>
+      <text x="30" y="58" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="10.5" fill="#64748b">가장 또렷하지만 색은 회색으로 절제. 긴 보고서에서 구분감이 좋음.</text>
+      <rect x="30" y="75" width="1000" height="1.6" rx="0.8" fill="#64748b" opacity="0.34" filter="url(#ruleShadowDeep)"/>
+      <rect x="30" y="73" width="1000" height="0.8" fill="#ffffff" opacity="0.72"/>
+      <g transform="translate(30 98)">
+        <rect x="0" y="0" width="3" height="48" rx="1.5" fill="url(#barAqua)"/>
+        <g transform="translate(18 1)"><use href="#footerText"/></g>
+      </g>
+    </g>
+  </g>
+
+  <text x="70" y="866" font-family="Segoe UI, Malgun Gothic, Arial, sans-serif" font-size="12" fill="#64748b">추천: G2가 가장 균형형입니다. 더 인쇄물 같은 단면감은 G3, 구분감을 더 원하면 G4가 좋습니다.</text>
+</svg>

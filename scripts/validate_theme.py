@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_STYLE_SETTINGS_OPTIONS = 28
+EXPECTED_STYLE_SETTINGS_OPTIONS = 37
 DEFAULT_TARGETS = [
     Path(r"H:\Obsidian\.obsidian\themes\Owen Graphite"),
     Path(r"D:\JAELE\Obsidian\.obsidian\themes\Owen Graphite"),
@@ -161,6 +161,30 @@ REQUIRED_TABLE_INFLATION_GUARDS = [
     ".cm-active.cm-line:empty",
     "line-height: 0 !important",
 ]
+
+TABLE_INFLATION_HEADER_GUARD_PATTERNS = {
+    re.compile(
+        r"\)\s*:is\(\s*td\s*,\s*th\s*\)\s*:is\(\s*"
+        r"\.table-cell-wrapper\s*,\s*\.cm-editor\s*,\s*\.cm-scroller\s*,\s*"
+        r"\.cm-content\s*,\s*\.cm-line\s*,\s*\.cm-active\.cm-line",
+        re.S,
+    ): "editable table body/header cell editor chain reset",
+    re.compile(
+        r"\)\s*:is\(\s*table\s*,\s*thead\s*,\s*tbody\s*,\s*tr\s*,\s*td\s*,\s*th\s*\)\s*\{\s*"
+        r"min-height:\s*0\s*!important;\s*height:\s*auto\s*!important;",
+        re.S,
+    ): "table structure reset includes thead/th",
+    re.compile(
+        r"\)\s*:is\(\s*td\s*,\s*th\s*\)\s*:is\(\s*"
+        r"\.cm-line:empty\s*,\s*\.cm-active\.cm-line:empty",
+        re.S,
+    ): "empty trailing line reset covers body/header cells",
+    re.compile(
+        r"\)\s*:is\(\s*td\s*,\s*th\s*\)\s*:is\(\s*"
+        r"\.cm-line:has\(br:only-child\)\s*,\s*\.cm-active\.cm-line:has\(br:only-child\)",
+        re.S,
+    ): "br-only trailing line reset covers body/header cells",
+}
 
 EDITABLE_TABLE_SAMPLE_SECTIONS = [
     "Risk Matrix",
@@ -1007,6 +1031,13 @@ def table_inflation_guards() -> None:
     missing = [guard for guard in REQUIRED_TABLE_INFLATION_GUARDS if guard not in theme]
     if missing:
         fail(f"theme.css missing table inflation guards: {', '.join(missing)}")
+    missing_header_guards = [
+        description
+        for pattern, description in TABLE_INFLATION_HEADER_GUARD_PATTERNS.items()
+        if not pattern.search(theme)
+    ]
+    if missing_header_guards:
+        fail("theme.css missing table header inflation guards: " + ", ".join(missing_header_guards))
     ok("table inflation guards clean")
 
 

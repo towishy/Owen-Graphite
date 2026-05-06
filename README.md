@@ -9,7 +9,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-28%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-37%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
 
 ---
 
@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.40` |
+| **버전** | `2.22.41` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -47,7 +47,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **워크스페이스** | Workspace Surfaces Pack · Polish Pack | Graph view·Canvas·Folder cues·Mini TOC·Cover page·Dark parity·Mobile·Tab·Search HL 정리 |
 | **보고서·인쇄** | A3 PDF Export · 모던 헤더 · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할, 표지 유틸리티 지원 |
 | **분할 안정성** | 자동 분할 회피 | callout·표·Mermaid·코드·이미지가 PDF에서 중간 분할되지 않도록 보정 |
-| **커스터마이징** | Style Settings 28종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
+| **커스터마이징** | Style Settings 37종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
 | **접근성·환경** | 시선 보호 · OS 다크 모드 · CJK 보정 | 시선 보호 모드, OS 다크 모드 자동 추종, CJK +0.5px 자동 보정 지원 |
 | **Style Settings 분류** | 타이포 · 표 · 보고서 · PDF · 컬러/모션 | Style Settings 플러그인에서 전체 옵션을 사이드바 UI로 조정 |
 
@@ -151,13 +151,21 @@ fi
 THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owen-Graphite.git"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main && git -C "$THEME_DIR" clean -qfd; else if [ -e "$THEME_DIR" ]; then mv "$THEME_DIR" "$THEME_DIR.backup-$(date +%Y%m%d-%H%M%S)"; fi; git clone -q "$REPO" "$THEME_DIR"; fi && echo "OK"
 ```
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 28개 옵션을 사이드바 UI에서 토글할 수 있습니다.
+> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 37개 옵션을 사이드바 UI에서 토글하고, PDF Header/Footer 문구와 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
 
 </details>
 
 ---
 
 ## 4. 테마 신기능
+
+### ✨ v2.22.41 — PDF 마지막 페이지 Footer
+
+PDF export 마지막 페이지에 H3 헤더형 confidential footer를 추가했습니다. Style Settings에서 첫 페이지 Header와 마지막 페이지 Footer의 PDF 출력 여부, 라벨, 제목, 본문, 사이드바 색상, 라벨 색상, 제목 색상, 본문 색상을 조정할 수 있습니다.
+
+![PDF 마지막 페이지 Footer H3 예제](screenshots/readme/v2.22.41-pdf-footer-header-like.svg)
+
+![Style Settings PDF Header Footer 설정 화면](screenshots/readme/v2.22.41-style-settings-pdf-controls.svg)
 
 ### ✨ v2.22.31 — README Liquid Glass Overview
 
@@ -180,6 +188,7 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.41** | PDF 마지막 페이지 H3 헤더형 confidential footer와 Style Settings 옵션 추가 |
 | **v2.22.40** | Live Preview 표 헤더 인라인 편집 높이 팽창 hotfix |
 | **v2.22.39** | Mermaid 진단용 control fixture의 DOM-only 상태 명확화 |
 | **v2.22.38** | Mermaid Live Preview control DOM 표시 fix와 진단 샘플 추가 |
