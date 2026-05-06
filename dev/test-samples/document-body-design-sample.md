@@ -36,6 +36,14 @@ H4 이하 제목은 강조보다 정렬감이 중요하다. 굵기와 크기를 
 
 > 인용문은 본문보다 한 단계 낮은 목소리로 보이는 것이 좋다. 왼쪽 세로 장식에 의존하기보다, 배경과 테두리의 미묘한 차이로 보조 정보임을 표현한다.
 
+### 1.2 아주 긴 제목이 들어왔을 때 줄바꿈과 하단 rule이 본문을 밀어내지 않는지 확인하는 스트레스 테스트
+
+긴 제목은 실제 보고서에서 자주 나온다. 제목이 두 줄 이상으로 접힐 때 하단 rule, 번호, 접기 아이콘, 다음 문단의 첫 줄이 서로 겹치지 않아야 한다. 모바일 폭에서는 제목이 자연스럽게 줄바꿈되고, Reading View와 Live Preview의 줄 높이가 크게 달라지지 않는지도 확인한다.
+
+#### 1.2.1 H4에서도 길이가 긴 보조 제목이 들어올 때 계층은 유지하되 본문보다 과하게 커지지 않는지 확인
+
+보조 제목은 문서의 깊이를 보여주지만, 본문보다 더 큰 시각적 소음을 만들면 안 된다. 이 문단은 H4 아래에서 본문이 바로 따라올 때 위쪽 여백과 아래쪽 여백이 안정적인지 확인하기 위한 문장이다.
+
 ## 2. Callout은 정보 박스가 아니라 문서 구조다
 
 Callout은 색상으로만 구분하면 문서 전체가 산만해진다. Owen Graphite에서는 기본 표면을 흰색/회색 frosted glass로 유지하고, 의미색은 얕은 rim, chip, icon, halo 수준에서만 드러나는 방향이 적합하다.
@@ -51,6 +59,11 @@ Callout은 색상으로만 구분하면 문서 전체가 산만해진다. Owen G
 
 > [!success] 완료 기준
 > callout의 역할이 제목만 보고도 구분되고, 본문으로 돌아왔을 때 문서 흐름이 끊기지 않으면 성공이다.
+
+> [!risk] 긴 callout 스트레스 테스트
+> 긴 callout은 PDF 출력에서 중간 분할 위험이 높고, Live Preview에서는 접기 아이콘과 본문 줄 간격이 어긋날 수 있다. 이 샘플은 두 문단 이상으로 이어지는 callout이 표면, 테두리, 제목, 본문 간격을 안정적으로 유지하는지 확인하기 위한 것이다.
+>
+> 두 번째 문단에서는 실제 보고서의 위험 설명처럼 문장이 길어지는 상황을 가정한다. 의미색은 강조를 돕는 수준에 머물러야 하며, callout 전체가 강한 색 면으로 보이면 Owen Graphite의 차분한 문서 톤과 맞지 않는다.
 
 ## 3. 표와 캡션
 
@@ -102,9 +115,44 @@ Callout은 색상으로만 구분하면 문서 전체가 산만해진다. Owen G
 
 <p class="table-caption">표 2. 본문 패턴별 사용 기준</p>
 
+### 3.2 긴 셀과 줄바꿈 샘플
+
+긴 식별자, 정책명, 설명 문장이 표 안에 들어오면 셀 높이가 커지고 모바일 폭에서 레이아웃이 흔들릴 수 있다. 아래 표는 `wrap-table`과 `print-fit-table`을 함께 확인하기 위한 스트레스 샘플이다.
+
+<table class="wide-table comparison-table wrap-table print-fit-table">
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>긴 설명</th>
+      <th>식별자</th>
+      <th>확인 포인트</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>보고서 섹션</td>
+      <td>PDF 출력 전 마지막 검토 단계에서 본문 문단, callout, 표, Mermaid, 이미지 캡션이 같은 간격 체계로 이어지는지 확인한다.</td>
+      <td><code>ogd-document-body-rhythm-balanced-report-reading-check</code></td>
+      <td>긴 코드 토큰이 셀 밖으로 밀려나지 않는가</td>
+    </tr>
+    <tr>
+      <td>위키 노트</td>
+      <td>짧은 항목을 빠르게 스캔하는 문서에서도 제목과 표가 과하게 벌어지지 않고, 리스트가 본문 폭 안에서 자연스럽게 중첩되는지 확인한다.</td>
+      <td><code>owen-graphite-wiki-note-compact-navigation-context</code></td>
+      <td>문장 줄바꿈과 행 높이가 안정적인가</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="table-caption">표 3. 긴 표 셀과 코드 토큰 줄바꿈 점검</p>
+
 ## 4. 이미지와 다이어그램 캡션
 
 이미지나 Mermaid 다이어그램은 본문보다 먼저 시선을 끌기 때문에 주변 여백과 캡션이 중요하다. 캡션은 작고 차분해야 하며, 이미지와는 가깝게, 다음 문단과는 조금 멀게 배치되는 것이 좋다.
+
+![](../../screenshots/readme/v2.22.31-liquid-glass-overview.svg)
+
+<p class="figure-caption">그림 1. README liquid glass overview 이미지 임베드</p>
 
 ```mermaid
 flowchart LR
@@ -114,7 +162,7 @@ flowchart LR
   D --> E[PDF 출력 확인]
 ```
 
-<p class="figure-caption">그림 1. 본문 문서 디자인 점검 흐름</p>
+<p class="figure-caption">그림 2. 본문 문서 디자인 점검 흐름</p>
 
 다이어그램 뒤 문단은 그림에서 말하지 않은 해석을 제공해야 한다. 단순히 그림 내용을 반복하기보다, 다음 단계에서 무엇을 확인할지 안내하는 문장이 좋다.
 
@@ -133,6 +181,38 @@ flowchart LR
 }
 ```
 
+```ts
+type DocumentSurface = "reading" | "live-preview" | "pdf";
+
+interface BodyDesignCheck {
+  surface: DocumentSurface;
+  headingRhythm: "stable" | "too-tight" | "too-loose";
+  calloutTone: "neutral-glass" | "too-colorful";
+  captionFlow: "clear" | "missing" | "overlapping";
+}
+
+const checks: BodyDesignCheck[] = [
+  {
+    surface: "reading",
+    headingRhythm: "stable",
+    calloutTone: "neutral-glass",
+    captionFlow: "clear",
+  },
+  {
+    surface: "live-preview",
+    headingRhythm: "stable",
+    calloutTone: "neutral-glass",
+    captionFlow: "clear",
+  },
+];
+
+const needsFollowUp = checks.some((check) =>
+  check.headingRhythm !== "stable" ||
+  check.calloutTone !== "neutral-glass" ||
+  check.captionFlow !== "clear"
+);
+```
+
 인라인 코드인 `ogd-spacing-relaxed`, `comparison-table`, `print-fit-table`은 본문 안에서 튀지 않아야 한다. 배경은 충분히 구분되되, 문장 리듬을 끊을 만큼 진하면 안 된다.
 
 ## 6. 체크리스트와 실행 항목
@@ -145,10 +225,49 @@ flowchart LR
 - [ ] 이미지와 표 caption 패턴 CSS 적용
 - [ ] Reading View, Live Preview, PDF 출력 비교
 
+중첩 리스트는 위키 문서에서 자주 나온다. 들여쓰기 guide가 너무 강하면 본문이 복잡해 보이고, 너무 약하면 구조가 흐려진다.
+
+- 문서 구조 점검
+  - 제목 계층
+    - H2는 섹션 시작점
+    - H3는 본문 안의 안내자
+  - 본문 흐름
+    - 문단 간격
+    - 표 뒤 해석 문단
+- 출력 안정성 점검
+  - PDF 분할 회피
+  - 모바일 폭 줄바꿈
+  - 다크 모드 대비
+
 > [!todo] 다음 개선 단위
 > 1차 구현은 문단 리듬과 제목 계층부터 시작한다. 그 다음 callout, 표/이미지 caption, 코드 블록, 체크리스트 순서로 적용하면 회귀 범위를 좁게 유지할 수 있다.
 
-## 7. 출력 점검 메모
+## 7. 다크 모드 확인 메모
+
+다크 모드에서는 흰색 glass surface를 그대로 반전시키면 검은 카드처럼 보일 수 있다. Owen Graphite의 다크 모드는 pure black보다 slate glass와 낮은 contrast rim을 중심으로 유지하는 편이 안정적이다.
+
+> [!note] 다크 모드 점검
+> callout, inline code, caption, table header, task checkbox가 모두 같은 어두운 graphite 계열 안에서 읽혀야 한다. warning이나 success 같은 의미색도 배경 면 전체가 아니라 테두리와 icon chip에 얕게 남는 것이 좋다.
+
+| 점검 대상 | 기대 상태 | 위험 신호 |
+| --- | --- | --- |
+| Caption | 낮은 채도의 slate text | 본문보다 더 강하게 보임 |
+| Code block | graphite panel + 읽기 쉬운 대비 | pure black에 가까운 과한 대비 |
+| Callout | 얕은 의미색 rim | warning/error가 강한 색 카드처럼 보임 |
+| Checkbox | frost aqua focus가 얕게 보임 | 체크 표시가 흐리거나 너무 밝음 |
+
+## 8. PDF 분할 스트레스 샘플
+
+아래 callout은 의도적으로 길게 작성한 PDF 분할 점검용 블록이다. 출력 시 한 페이지 하단에서 제목만 남거나, 테두리와 그림자가 다음 페이지로 어색하게 넘어가지 않는지 확인한다.
+
+> [!warning] 긴 PDF 분할 점검 블록
+> PDF 출력에서 문서 요소가 페이지 하단에 걸리면 읽기 흐름이 쉽게 깨진다. 특히 callout, 표, 코드 블록, Mermaid 다이어그램은 내부 요소가 여러 줄로 구성되어 있어서 분할 회피 규칙이 실제로 잘 작동하는지 확인해야 한다.
+>
+> 이 문단은 두 번째 단락이다. 긴 설명이 들어가도 callout 내부 line-height가 안정적이어야 하며, title 영역과 content 영역의 간격이 지나치게 벌어지면 안 된다.
+>
+> 이 문단은 세 번째 단락이다. 다크 모드와 라이트 모드 모두에서 의미색이 얕은 테두리와 icon chip 수준으로 제한되는지, 본문 가독성이 충분한지 확인한다.
+
+## 9. 출력 점검 메모
 
 이 샘플 문서를 실제 개선 작업의 smoke sample로 사용할 때는 다음 순서로 확인한다.
 
@@ -156,6 +275,7 @@ flowchart LR
 2. Live Preview에서 표와 callout 높이가 과하게 팽창하지 않는지 확인한다.
 3. PDF 출력에서 callout, 표, Mermaid가 중간 분할되지 않는지 확인한다.
 4. 모바일 폭에서 제목, 표, 코드 블록이 본문 폭을 밀어내지 않는지 확인한다.
+5. 다크 모드에서 caption, inline code, checklist, warning callout의 대비가 안정적인지 확인한다.
 
 > [!conclusion] 결론
 > Owen Graphite의 본문 디자인 강화는 새로운 장식을 추가하는 작업이 아니라, 문서의 읽기 리듬과 정보 위계를 더 분명하게 만드는 작업이다. 이 샘플은 그 방향을 실제 Markdown 문서로 검토하기 위한 기준점이다.

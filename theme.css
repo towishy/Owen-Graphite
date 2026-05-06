@@ -2929,6 +2929,198 @@ body.theme-dark.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 }
 
 /* =====================================================================
+   v2.22.50 - Relaxed document Live Preview parity
+   Keeps CM6 editing stable while matching the Reading View body sample.
+   ===================================================================== */
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 {
+  --ogd-lp-doc-rim: rgba(203, 213, 225, 0.72);
+  --ogd-lp-doc-rim-soft: rgba(226, 232, 240, 0.82);
+  --ogd-lp-doc-glass-bg: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.78), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.70));
+  --ogd-lp-doc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.05), 0 8px 18px rgba(15, 23, 42, 0.07);
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line:not(:empty):not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-table-row):not(.HyperMD-callout):not(.HyperMD-list-line):not(.HyperMD-quote):not(.HyperMD-frontmatter) {
+  line-height: 1.74 !important;
+  padding-top: 0.04em !important;
+  padding-bottom: 0.04em !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  line-height: 1.28 !important;
+  padding-top: 0.58em !important;
+  padding-bottom: 0.34em !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.34) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+  line-height: 1.34 !important;
+  padding-top: 0.46em !important;
+  padding-bottom: 0.22em !important;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.72) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
+  line-height: 1.38 !important;
+  padding-top: 0.34em !important;
+  padding-bottom: 0.18em !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.88) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-2 {
+  font-size: 1.64em !important;
+  line-height: 1.24 !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-3 {
+  font-size: 1.26em !important;
+  font-weight: 760 !important;
+  color: var(--ogd-text-slate, #334155) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-4 {
+  font-size: 1.08em !important;
+  font-weight: 760 !important;
+  color: var(--ogd-text-slate, #334155) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.HyperMD-callout) {
+  margin: 0.18em 0 !important;
+  padding: 0.22em 0.9em !important;
+  border: 1px solid var(--ogd-lp-doc-rim-soft) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  background: var(--ogd-lp-doc-glass-bg) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88) !important;
+  font-style: normal !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout) {
+  margin: 1.05em 0 1.2em !important;
+  padding: 13px 15px !important;
+  border: 1px solid var(--ogd-lp-doc-rim) !important;
+  border-left-width: 1px !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  background: var(--ogd-lp-doc-glass-bg) !important;
+  box-shadow: var(--ogd-lp-doc-glass-shadow) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  margin-left: 0 !important;
+  padding-top: 0.2em !important;
+  padding-bottom: 0.2em !important;
+  line-height: 1.66 !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.46)) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  border-left: 1px solid rgba(30, 41, 59, 0.18) !important;
+  border-right: 1px solid rgba(30, 41, 59, 0.18) !important;
+  background: linear-gradient(180deg, #172033, #111827) !important;
+  color: var(--ogd-line-soft, #e5e7eb) !important;
+  line-height: 1.62 !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  margin-top: 1.05em !important;
+  border-top: 1px solid rgba(30, 41, 59, 0.18) !important;
+  border-radius: var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) 0 0 !important;
+  padding-top: 0.72em !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  margin-bottom: 1.35em !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.18) !important;
+  border-radius: 0 0 var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) !important;
+  padding-bottom: 0.72em !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
+  padding: 0.08em 0.34em !important;
+  border: 1px solid rgba(203, 213, 225, 0.82) !important;
+  border-radius: 4px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.68)) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  margin: 0.8em 0 1.35em !important;
+  border: 1px solid rgba(203, 213, 225, 0.76) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  background: #f4f6f8 !important;
+  border-color: #e2e8f0 !important;
+  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8) !important;
+  color: #1f2937 !important;
+  font-weight: 760 !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  border-color: #edf2f7 !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  line-height: 1.6 !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .HyperMD-list-line {
+  line-height: 1.66 !important;
+  padding-top: 0.04em !important;
+  padding-bottom: 0.04em !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD-list-line-3, .HyperMD-list-line-4) {
+  border-left-color: rgba(203, 213, 225, 0.82) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .HyperMD-list-line input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 5px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.72)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .HyperMD-list-line input[type="checkbox"]:checked {
+  border-color: rgba(103, 232, 249, 0.70) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 0 0 3px rgba(103, 232, 249, 0.12) !important;
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 {
+  --ogd-lp-doc-rim: rgba(51, 65, 85, 0.92);
+  --ogd-lp-doc-rim-soft: rgba(51, 65, 85, 0.78);
+  --ogd-lp-doc-glass-bg: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.10), transparent 0 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54));
+  --ogd-lp-doc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 10px 24px rgba(0, 0, 0, 0.30);
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-line.HyperMD-header-3, .cm-line.HyperMD-header-4) {
+  border-bottom-color: rgba(51, 65, 85, 0.92) !important;
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
+  color: var(--ogd-line-strong, #cbd5e1) !important;
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout, .cm-line.HyperMD-quote:not(.HyperMD-callout), .cm-table-widget, table.cm-table) {
+  border-color: var(--ogd-lp-doc-rim) !important;
+  background: var(--ogd-lp-doc-glass-bg) !important;
+  box-shadow: var(--ogd-lp-doc-glass-shadow) !important;
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.36)) !important;
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
+  border-color: rgba(51, 65, 85, 0.92) !important;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54)) !important;
+  color: var(--ogd-line-soft, #e5e7eb) !important;
+}
+
+/* =====================================================================
    v1.4.0 — 33-point comprehensive upgrade
    A. Typography  B. Content emphasis  C. Report features
    D. UI polish  E. Plugin integration  F. Style Settings presets

@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.50] — 2026-05-06 — Document body Live Preview parity
+
+### Added
+- Expanded the document body design sample with long heading, callout, table, image, code, nested list, dark-mode, and PDF split stress cases.
+
+### Changed
+- Added `ogd-spacing-relaxed` Live Preview parity polish for CM6 headings, body rhythm, quotes, callouts, code, tables, lists, checkboxes, and dark-mode glass surfaces.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py`, release ZIP build, and local Obsidian vault sync 통과.
+
 ## [2.22.49] — 2026-05-06 — PDF footer title color isolation hotfix
 
 ### Fixed
