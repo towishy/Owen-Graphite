@@ -678,6 +678,21 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: #f8fbff !important;
   }
 
+  /* v2.22.51-hotfix - PDF footer body full-width print line.
+     Let the last-page footer body use the full printable content width
+     instead of the older 148mm cap on wide PDF exports. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    right: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    inline-size: auto !important;
+    max-inline-size: none !important;
+  }
+
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) hr {
     height: 1px !important;
     border: var(--ogd-border-none, 0) !important;

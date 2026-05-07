@@ -4,6 +4,14 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.51] — 2026-05-07 — PDF footer body width hotfix
+
+### Fixed
+- Removed the 148mm print width cap from the PDF last-page footer body so long confidential notice text can use the full printable content width on wide exports.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, and release ZIP build 대상.
+
 ## [2.22.50] — 2026-05-06 — Document body Live Preview parity
 
 ### Added
