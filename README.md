@@ -9,7 +9,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-37%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-40%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
 
 ---
 
@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.51` |
+| **버전** | `2.22.62` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -45,9 +45,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **디자인 코어** | Graphite 톤 · Liquid-glass chrome | 차분한 graphite 기반에 ribbon·사이드바·탭·툴바·command palette·tooltip glass surface 적용 |
 | **상태 표현** | Table mode split · Frost Aqua focus | 위키형/보고서형 표를 분리하고 focus 상태는 aqua rim + soft halo로 표시 |
 | **워크스페이스** | Workspace Surfaces Pack · Polish Pack | Graph view·Canvas·Folder cues·Mini TOC·Cover page·Dark parity·Mobile·Tab·Search HL 정리 |
-| **보고서·인쇄** | A3 PDF Export · 모던 헤더 · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할, 표지 유틸리티 지원 |
+| **보고서·인쇄** | A3 PDF Export · 페이지 경계 가이드 · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할, Live Preview PDF 경계 예측 지원 |
 | **분할 안정성** | 자동 분할 회피 | callout·표·Mermaid·코드·이미지가 PDF에서 중간 분할되지 않도록 보정 |
-| **커스터마이징** | Style Settings 37종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
+| **커스터마이징** | Style Settings 40종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
 | **접근성·환경** | 시선 보호 · OS 다크 모드 · CJK 보정 | 시선 보호 모드, OS 다크 모드 자동 추종, CJK +0.5px 자동 보정 지원 |
 | **Style Settings 분류** | 타이포 · 표 · 보고서 · PDF · 컬러/모션 | Style Settings 플러그인에서 전체 옵션을 사이드바 UI로 조정 |
 
@@ -151,13 +151,21 @@ fi
 THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owen-Graphite.git"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main && git -C "$THEME_DIR" clean -qfd; else if [ -e "$THEME_DIR" ]; then mv "$THEME_DIR" "$THEME_DIR.backup-$(date +%Y%m%d-%H%M%S)"; fi; git clone -q "$REPO" "$THEME_DIR"; fi && echo "OK"
 ```
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 37개 옵션을 사이드바 UI에서 토글하고, PDF Header/Footer 문구와 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
+> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 40개 옵션을 사이드바 UI에서 토글하고, PDF Header/Footer 문구와 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
 
 </details>
 
 ---
 
 ## 4. 테마 신기능
+
+### ✨ v2.22.52 — PDF 페이지 경계 가이드
+
+Live Preview와 Reading View에서 A4/A3 PDF 출력 기준의 연한 페이지 경계선, printable width 힌트, 표·Mermaid·이미지·코드블록 위험 outline을 Style Settings 토글로 미리 확인할 수 있습니다.
+
+![PDF 페이지 경계 가이드 Live Preview 샘플](screenshots/readme/v2.22.52-pdf-page-guide-preview.png)
+
+미리보기 샘플: [docs/fixtures/pdf-page-guide-preview.html](docs/fixtures/pdf-page-guide-preview.html)
 
 ### ✨ v2.22.41 — PDF 마지막 페이지 Footer
 
@@ -186,6 +194,17 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.62** | PDF 경계 Page 13~24 배지를 Page 2~12와 같은 pill 규격으로 통일하고 첫 배지 잘림 보정 |
+| **v2.22.61** | PDF 경계 fallback Page 마커가 Page 2~24 번호 배지와 중복 표시되던 문제 수정 |
+| **v2.22.60** | 24페이지 이후에도 PDF 경계 아이콘이 반복 표시되도록 fallback Page 마커 추가 |
+| **v2.22.59** | report callout 정렬과 긴 inline code chip 줄바꿈 보정 |
+| **v2.22.58** | 긴 문서용 PDF 페이지 배지를 Page 24까지 확장하고 13페이지 이후 누락 수정 |
+| **v2.22.57** | PDF 페이지 배지를 Liquid Glass 원칙에 맞게 soft shadow/rim-light 톤으로 보정 |
+| **v2.22.56** | PDF 페이지 경계 가이드의 Page 3 이후 배지가 보이지 않던 문제 수정 |
+| **v2.22.55** | callout 박스·아이콘·제목 정렬 흔들림과 긴 inline code overflow 보정 |
+| **v2.22.54** | PDF 페이지 배지가 세로 띠처럼 커지던 문제를 수정하고 경계 점선 위 작은 pill로 축소 |
+| **v2.22.53** | PDF 페이지 경계 가이드를 푸른 실선형 그림자에서 연한 점선으로 조정하고 Page 번호 배지 추가 |
+| **v2.22.52** | Live Preview/Reading View용 PDF 페이지 경계 가이드, 폭 미리보기, 위험 블록 표시 토글 추가 |
 | **v2.22.51** | PDF 마지막 페이지 footer 본문이 넓은 페이지 폭을 충분히 쓰지 못하던 문제 수정 |
 | **v2.22.50** | 문서 본문 샘플 강화와 `ogd-spacing-relaxed` Live Preview 패리티 보강 |
 | **v2.22.49** | PDF 마지막 페이지 footer 제목 색상이 설정값과 다르게 출력되던 문제 수정 |

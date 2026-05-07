@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_STYLE_SETTINGS_OPTIONS = 37
+EXPECTED_STYLE_SETTINGS_OPTIONS = 40
 DEFAULT_TARGETS = [
     Path(r"H:\Obsidian\.obsidian\themes\Owen Graphite"),
     Path(r"D:\JAELE\Obsidian\.obsidian\themes\Owen Graphite"),

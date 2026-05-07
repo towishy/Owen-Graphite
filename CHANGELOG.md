@@ -4,6 +4,110 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.62] — 2026-05-07 — PDF page guide numbered badge parity hotfix
+
+### Fixed
+- Unified `Page 13` through `Page 24` PDF guide badges with the same 20px pill shape used by `Page 2` through `Page 12`.
+- Moved all numbered page badges onto the same pseudo-element layer so they share one consistent shadow/filter treatment.
+- Placed numbered badges lower below the dotted page boundary to avoid clipping on the first visible guide marker.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.61] — 2026-05-07 — PDF page guide fallback overlap hotfix
+
+### Fixed
+- Moved the generic repeated `Page` fallback marker so it starts after the numbered `Page 2` through `Page 24` badge range.
+- Prevented numbered page badges from rendering with a duplicate generic `Page` label on the same dotted guide line.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.60] — 2026-05-07 — Infinite PDF page guide marker fallback
+
+### Fixed
+- Added a repeating Liquid Glass `Page` marker fallback so very long documents still show a page-boundary icon after the finite numbered badge range.
+- Kept numbered badges through `Page 24`; later page boundaries use the generic fallback marker because CSS cannot dynamically generate incrementing page numbers without plugin-side DOM/JS.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.59] — 2026-05-07 — Report callout alignment hotfix
+
+### Fixed
+- Removed leftover report-callout horizontal offsets for conclusion/recommendation/risk/action/decision callouts.
+- Allowed long inline code chips inside report callouts to wrap in both Reading View and Live Preview.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.58] — 2026-05-07 — PDF page guide long-document badge hotfix
+
+### Fixed
+- Extended PDF page guide badges from `Page 13` through `Page 24` for long report documents such as `mde-wsl-plugin-architecture-and-os-info`.
+- Kept the original `Page 2` through `Page 12` layer intact and added the later badges on the dotted guide layer to reduce regression risk.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.57] — 2026-05-07 — Liquid Glass page guide badge polish
+
+### Changed
+- Polished PDF page guide badges with Liquid Glass-style soft depth, rim-light, and dark-mode shadow treatment.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.56] — 2026-05-07 — PDF page guide badge continuation hotfix
+
+### Fixed
+- Restored visible page guide badges after `Page 2` by rendering `Page 2` through `Page 12` as anchored SVG background layers.
+- Kept each badge as a small pill on the dotted page boundary, avoiding the previous tall overlay regression.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.55] — 2026-05-07 — Callout alignment hotfix
+
+### Fixed
+- Normalized callout box sizing, width, and margins so adjacent callout blocks align consistently across custom callout types.
+- Stabilized callout title rows with a fixed icon column and flexible title column.
+- Allowed long inline code chips inside callouts to wrap instead of pushing the callout layout sideways.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.54] — 2026-05-07 — PDF page badge size hotfix
+
+### Fixed
+- Reduced the Live Preview PDF page badge to a small pill anchored on the dotted page boundary so it no longer renders as a tall blue overlay band.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.53] — 2026-05-07 — PDF page guide dotted-line hotfix
+
+### Fixed
+- Changed the Live Preview PDF page guide from a blue gradient line to a faint dotted guide so it no longer reads as a shadowed blue rule.
+
+### Added
+- Added lightweight `Page 2` through `Page 6` guide badges beside the preview page boundaries.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.52] — 2026-05-07 — PDF page guide preview
+
+### Added
+- Added Style Settings toggles for Live Preview/Reading View PDF page boundary guides, printable width preview, and large-block risk outlines.
+- Added an approval fixture for the PDF page guide design at `docs/fixtures/pdf-page-guide-preview.html`.
+
+### Changed
+- Updated the Style Settings option count to 40 and documented the PDF page guide in the README feature summary.
+
+### Validation
+- `scripts/bundle_theme.py --check`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
 ## [2.22.51] — 2026-05-07 — PDF footer body width hotfix
 
 ### Fixed
