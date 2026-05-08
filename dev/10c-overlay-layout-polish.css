@@ -629,6 +629,95 @@ body.theme-dark .markdown-rendered a.external-link:visited {
   .markdown-rendered h4::after {
     display: none !important;
   }
+
+  /* v2.22.77 - PDF code block export polish */
+  @supports selector(.markdown-rendered div:has(> pre)) {
+    body :is(.markdown-preview-section, .markdown-rendered) > div:has(> pre) {
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
+  body .workspace-leaf-content .markdown-rendered pre {
+    box-sizing: border-box !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0.72em 0 1.05em !important;
+    padding: 10pt 12pt !important;
+    border: 1px solid #d8dee8 !important;
+    border-radius: 5px !important;
+    background: #f8fafc !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+  body .workspace-leaf-content .markdown-rendered pre code {
+    box-sizing: border-box !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #111827 !important;
+    font-family: var(--font-monospace-theme, "JetBrains Mono", "SFMono-Regular", Consolas, monospace) !important;
+    font-size: 8.8pt !important;
+    line-height: 1.5 !important;
+    white-space: pre-wrap !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* v2.22.78 - Hide document frontmatter/properties from PDF export */
+  body :is(
+    .metadata-container,
+    .metadata-properties,
+    .metadata-properties-container,
+    .metadata-properties-heading,
+    .frontmatter,
+    .frontmatter-container,
+    .frontmatter-section
+  ),
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(
+    [class*="frontmatter"],
+    [data-type="frontmatter"],
+    [data-callout-metadata="frontmatter"]
+  ),
+  body .markdown-source-view.mod-cm6 :is(
+    .HyperMD-frontmatter,
+    .cm-line.HyperMD-frontmatter,
+    .HyperMD-codeblock-frontmatter,
+    .cm-line.HyperMD-codeblock-frontmatter-bg
+  ) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+  }
 }
 
 /* --- 9. Status bar - monospace unification ------------------------------- */

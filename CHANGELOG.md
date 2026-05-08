@@ -4,6 +4,24 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.78] — 2026-05-08 — PDF frontmatter export guard
+
+### Fixed
+- Hid Obsidian frontmatter/properties surfaces from PDF export so raw YAML metadata no longer appears on the first page.
+- Covered both Reading View metadata containers and Live Preview/source-mode frontmatter lines without changing normal on-screen editing.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
+## [2.22.77] — 2026-05-08 — PDF code block export polish
+
+### Fixed
+- Removed the oversized gray wrapper effect around fenced code blocks in Chromium PDF export.
+- Reset print-only code block wrappers, screen-only language badges, padding, and wrapping so exported code stays compact and readable.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
 ## [2.22.76] — 2026-05-08 — Live Preview editing comfort pack
 
 ### Changed
