@@ -504,8 +504,6 @@
     box-shadow: var(--ogd-lg-shadow-focus) !important;
   }
 }
-
-
 @media (min-width: 701px) {
   body:not(.is-mobile).ogd-glass-off {
     --ogd-lg-surface-bg: var(--background-primary);
@@ -713,5 +711,518 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
     outline: 1px solid var(--ogd-lg-frost-outline) !important;
     outline-offset: 2px !important;
     box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+}
+
+
+/* ============================================================
+  Seven-direction Liquid Glass refinement pass
+   - Side panes, hover material, focus, floating UI, active rows,
+     and reading rhythm follow the approved overview fixture.
+   - Active/current states use full-surface rim and halo, never a left rail.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --ogd-lg-refined-rest-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.72), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(248, 250, 252, 0.34));
+    --ogd-lg-refined-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.86), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.50), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46));
+    --ogd-lg-refined-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.86), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.50), transparent 34%), linear-gradient(180deg, rgba(224, 242, 254, 0.62), rgba(248, 250, 252, 0.42));
+    --ogd-lg-refined-border: rgba(203, 213, 225, 0.52);
+    --ogd-lg-refined-border-hover: rgba(125, 211, 252, 0.54);
+    --ogd-lg-refined-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.05), 0 8px 20px rgba(15, 23, 42, 0.09);
+    --ogd-lg-refined-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(14, 165, 233, 0.08), 0 16px 34px rgba(15, 23, 42, 0.15), 0 0 0 3px rgba(186, 230, 253, 0.10);
+    --ogd-lg-refined-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 14px 32px rgba(15, 23, 42, 0.14), 0 0 0 3px var(--ogd-lg-frost-halo);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-lg-refined-rest-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.13), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.08), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.34));
+    --ogd-lg-refined-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.17), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.62), rgba(15, 23, 42, 0.42));
+    --ogd-lg-refined-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.16), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(14, 116, 144, 0.26), rgba(15, 23, 42, 0.44));
+    --ogd-lg-refined-border: rgba(203, 213, 225, 0.20);
+    --ogd-lg-refined-border-hover: rgba(186, 230, 253, 0.30);
+    --ogd-lg-refined-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.28), 0 10px 24px rgba(0, 0, 0, 0.30);
+    --ogd-lg-refined-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.26), 0 18px 40px rgba(0, 0, 0, 0.42), 0 0 0 3px rgba(186, 230, 253, 0.08);
+    --ogd-lg-refined-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 16px 38px rgba(0, 0, 0, 0.40), 0 0 0 3px var(--ogd-lg-frost-halo);
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container) {
+    background: var(--ogd-lg-refined-rest-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border: 1px solid var(--ogd-lg-refined-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    box-shadow: var(--ogd-lg-refined-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected="true"]) {
+    background: var(--ogd-lg-refined-hover-bg) !important;
+    border-color: var(--ogd-lg-refined-border-hover) !important;
+    box-shadow: var(--ogd-lg-refined-shadow-hover) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:focus-visible, :focus-within) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-refined-focus-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]) {
+    background: var(--ogd-lg-refined-rest-bg) !important;
+    border: 1px solid var(--ogd-lg-refined-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    box-shadow: var(--ogd-lg-refined-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-lg-refined-active-bg) !important;
+    border-color: var(--ogd-lg-mist-rim) !important;
+    box-shadow: var(--ogd-lg-refined-shadow-hover) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title.is-active .nav-file-title-content) {
+    border-color: var(--ogd-lg-refined-border) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner,
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
+    background: var(--ogd-lg-refined-active-bg) !important;
+    border-color: var(--ogd-lg-mist-rim) !important;
+    box-shadow: var(--ogd-lg-refined-shadow-hover) !important;
+    color: var(--text-normal) !important;
+    font-weight: 850 !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title-content, .nav-folder-title-content, .tree-item-inner):is(:focus-visible, :focus-within) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-refined-focus-shadow) !important;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre),
+  .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table, .cm-embed-block pre) {
+    border-color: var(--ogd-lg-refined-border) !important;
+    box-shadow: var(--ogd-table-shadow, var(--ogd-lg-refined-shadow)) !important;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+  .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
+  .markdown-source-view.mod-cm6 .cm-embed-block pre {
+    background: var(--ogd-lg-refined-rest-bg) !important;
+    border: 1px solid var(--ogd-lg-refined-border) !important;
+    border-radius: var(--radius-l, 8px) !important;
+  }
+}
+/* ============================================================
+  Quiet menu and top chrome reduction
+   - Context menu rows keep surface feedback without visible outline/rim.
+   - Top tab/button chrome drops the recent halo and glass rim effects.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]),
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]),
+  body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-tab-header-inner,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .workspace-tab-header-container .clickable-icon,
+    .view-header .view-action,
+    .view-header .clickable-icon,
+    .view-header button.clickable-icon,
+    .view-actions .view-action,
+    .view-actions .clickable-icon,
+    .view-header-nav-buttons .clickable-icon
+  ),
+  body:not(.is-mobile) :is(
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon,
+    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
+  ) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+/* ============================================================
+  Quiet ribbon and sidebar toggle reduction
+   - Removes glass boxes from ribbon icons and sidebar toggle buttons.
+   - Keeps only the icon glyph color change supplied by Obsidian/core theme.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .workspace-tab-header-container .clickable-icon,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .sidebar-toggle-button,
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right
+  ),
+  body:not(.is-mobile) :is(
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .workspace-tab-header-container .clickable-icon,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .sidebar-toggle-button,
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right
+  ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+/* ============================================================
+  Simple menu core sheet
+   - The menu container is the only glass surface.
+    - Resting rows stay quiet; hovered rows borrow the side-pane rim treatment.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.menu, [role="menu"]) {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(248, 250, 252, 0.64) 58%, rgba(238, 242, 247, 0.48)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(150%) brightness(1.02)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(150%) brightness(1.02)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.42) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.70) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.menu, [role="menu"]) {
+    background: linear-gradient(180deg, rgba(38, 50, 68, 0.88), rgba(23, 32, 51, 0.84) 58%, rgba(16, 24, 39, 0.86)) !important;
+    border-color: rgba(100, 116, 139, 0.32) !important;
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+
+  body:not(.is-mobile) :is(.menu .menu-item, [role="menu"] [role="menuitem"]) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) :is(.menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.84), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46)) !important;
+    border-color: rgba(125, 211, 252, 0.66) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(15, 23, 42, 0.38)) !important;
+    border-color: rgba(186, 230, 253, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile) :is(.menu-separator, .menu .menu-separator, [role="menu"] .menu-separator, [role="separator"]) {
+    border-color: rgba(203, 213, 225, 0.72) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.menu-separator, .menu .menu-separator, [role="menu"] .menu-separator, [role="separator"]) {
+    border-color: rgba(100, 116, 139, 0.44) !important;
+  }
+}
+
+
+/* ============================================================
+  Top icon soft glass slot refinement
+   - Resting top icons stay bare.
+   - Hovered and active icons use one small soft glass slot with an aqua rim.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-tab-header-inner,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .workspace-tab-header-container .clickable-icon,
+    .view-header .view-action,
+    .view-header .clickable-icon,
+    .view-header button.clickable-icon,
+    .view-actions .view-action,
+    .view-actions .clickable-icon,
+    .view-header-nav-buttons .clickable-icon,
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .sidebar-toggle-button,
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right
+  ) {
+    background: transparent !important;
+    border-color: transparent !important;
+    border-radius: 8px !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
+    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
+  ) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.78), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(224, 242, 254, 0.44)) !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 8px 16px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
+    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
+  ) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.54), rgba(15, 23, 42, 0.38)) !important;
+    box-shadow: inset 0 0 0 1px rgba(186, 230, 253, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 20px rgba(0, 0, 0, 0.26) !important;
+  }
+}
+
+
+/* ============================================================
+  Side pane and search suggestion simple sheet refinement
+   - Pane and suggestion containers carry the glass surface.
+   - Resting rows are plain list items; hovered rows match the menu treatment.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .tree-item-self,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match,
+    .search-info-container,
+    .search-empty-state,
+    .empty-state,
+    .empty-state-container
+  ),
+  body:not(.is-mobile) :is(
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container,
+    .prompt-results
+  ) :is(.suggestion-item, .search-suggest-item),
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content) {
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .tree-item-self,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match
+  ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected="true"]),
+  body:not(.is-mobile) :is(
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container,
+    .prompt-results
+  ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.84), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46)) !important;
+    border-color: rgba(125, 211, 252, 0.66) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10) !important;
+    transform: none !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .tree-item-self,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match
+  ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected="true"]),
+  body:not(.is-mobile).theme-dark :is(
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container,
+    .prompt-results
+  ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(15, 23, 42, 0.38)) !important;
+    border-color: rgba(186, 230, 253, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+    color: var(--text-normal) !important;
+  }
+}
+
+
+/* ============================================================
+  Attached soft tab refinement
+   - Inactive tabs stay muted and flat.
+   - The active tab reads as the current document without becoming a toolbar button.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
+    background: rgba(255, 255, 255, 0.20) !important;
+    border-color: rgba(203, 213, 225, 0.24) !important;
+    border-radius: 13px !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: rgba(255, 255, 255, 0.42) !important;
+    border-color: rgba(203, 213, 225, 0.42) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 10px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.82), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(240, 249, 255, 0.56)) !important;
+    border-color: rgba(125, 211, 252, 0.70) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title {
+    color: var(--text-muted) !important;
+    font-weight: 620 !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--text-normal) !important;
+    font-weight: 800 !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header :is(.workspace-tab-header-inner-close-button, .workspace-tab-header-inner-icon) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
+    background: rgba(15, 23, 42, 0.20) !important;
+    border-color: rgba(148, 163, 184, 0.16) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: rgba(51, 65, 85, 0.34) !important;
+    border-color: rgba(148, 163, 184, 0.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 5px 12px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), rgba(15, 23, 42, 0.42)) !important;
+    border-color: rgba(186, 230, 253, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title {
+    color: var(--text-muted) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--text-normal) !important;
   }
 }

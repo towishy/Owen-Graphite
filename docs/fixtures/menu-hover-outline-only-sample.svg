@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="900" viewBox="0 0 1280 900" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite menu hover outline only sample</title>
+  <desc id="desc">Preview showing context menu rows without visible resting outlines and with outline only on hover.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.48" stop-color="#eef6f8"/>
+      <stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <linearGradient id="glassPanel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="0.62" stop-color="#f8fafc" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="#e2e8f0" stop-opacity="0.32"/>
+    </linearGradient>
+    <linearGradient id="rowRest" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.56"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.34"/>
+    </linearGradient>
+    <linearGradient id="rowHover" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="0.66" stop-color="#f8fafc" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0.52"/>
+    </linearGradient>
+    <linearGradient id="darkPanel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155" stop-opacity="0.86"/>
+      <stop offset="0.62" stop-color="#1e293b" stop-opacity="0.80"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="darkRowRest" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="darkRowHover" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#475569" stop-opacity="0.70"/>
+      <stop offset="0.70" stop-color="#1e293b" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.72"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="78%" cy="16%" r="52%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.84"/>
+      <stop offset="0.44" stop-color="#ffffff" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="panelShadow" x="-16%" y="-16%" width="132%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.15"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="rowShadow" x="-10%" y="-18%" width="120%" height="142%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <filter id="hoverShadow" x="-10%" y="-22%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#67e8f9" flood-opacity="0.48"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+    <filter id="darkShadow" x="-16%" y="-16%" width="132%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.36"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.20"/>
+    </filter>
+    <style>
+      .title { font: 800 42px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .subtitle { font: 600 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; letter-spacing: 0; }
+      .h { font: 800 22px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .hd { fill: #e2e8f0; }
+      .label { font: 720 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; letter-spacing: 0; }
+      .labelDark { fill: #e2e8f0; }
+      .meta { font: 650 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: 0; }
+      .metaDark { fill: #94a3b8; }
+      .note { font: 700 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0369a1; letter-spacing: 0; }
+      .icon { fill: none; stroke: #6b7280; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .iconDark { stroke: #cbd5e1; }
+      .cursor { fill: #0f172a; stroke: #ffffff; stroke-width: 5; stroke-linejoin: round; filter: drop-shadow(0 6px 5px rgba(15,23,42,.28)); }
+    </style>
+  </defs>
+  <rect width="1280" height="900" fill="url(#page)"/>
+  <circle cx="1080" cy="118" r="205" fill="#bae6fd" opacity="0.28"/>
+  <circle cx="140" cy="760" r="240" fill="#ddd6fe" opacity="0.22"/>
+  <text x="66" y="82" class="title">메뉴 hover outline only 샘플</text>
+  <text x="68" y="118" class="subtitle">평상시 row 외곽선은 숨기고, 마우스오버/선택 순간에만 Frost Aqua 외곽선을 표시</text>
+
+  <g transform="translate(72 170)">
+    <rect width="520" height="600" rx="26" fill="url(#glassPanel)" stroke="#cbd5e1" stroke-opacity="0.38" filter="url(#panelShadow)"/>
+    <rect width="520" height="600" rx="26" fill="url(#shine)" opacity="0.50"/>
+    <text x="32" y="48" class="h">Light mode</text>
+    <text x="34" y="78" class="meta">기본 row: border transparent / hover row: border visible</text>
+
+    <g transform="translate(28 112)">
+      <rect width="464" height="64" rx="14" fill="url(#rowRest)" stroke="transparent" filter="url(#rowShadow)"/>
+      <path class="icon" d="M35 22l20 20M55 22L35 42M70 24h44M70 40h34"/>
+      <text x="90" y="41" class="label">문서 내 백링크</text>
+    </g>
+    <g transform="translate(28 186)">
+      <rect width="464" height="64" rx="14" fill="url(#rowRest)" stroke="transparent" filter="url(#rowShadow)"/>
+      <path class="icon" d="M35 20h38v32H35zM54 20v32"/>
+      <text x="90" y="41" class="label">읽기 화면</text>
+    </g>
+    <line x1="28" y1="280" x2="492" y2="280" stroke="#cbd5e1" stroke-opacity="0.58"/>
+    <g transform="translate(28 312)">
+      <rect width="464" height="64" rx="14" fill="url(#rowRest)" stroke="transparent" filter="url(#rowShadow)"/>
+      <path class="icon" d="M38 20l-12 24M64 20l12 24M48 28h18"/>
+      <text x="90" y="41" class="label">이름 변경</text>
+    </g>
+    <g transform="translate(28 386)">
+      <rect width="464" height="64" rx="14" fill="url(#rowHover)" stroke="#67e8f9" stroke-width="2" filter="url(#hoverShadow)"/>
+      <path class="icon" d="M36 20h16l8 8h20v28H36zM48 42h10M70 42h10"/>
+      <text x="90" y="41" class="label">파일을 다음으로 이동...</text>
+      <path class="cursor" d="M214 38l74 74l-39 4l20 46l-25 11l-20-48l-30 28z" transform="translate(0 -10) scale(.72)"/>
+    </g>
+    <g transform="translate(28 460)">
+      <rect width="464" height="64" rx="14" fill="url(#rowRest)" stroke="transparent" filter="url(#rowShadow)"/>
+      <path class="icon" d="M40 22h30v36H40zM48 30h14M48 44h14"/>
+      <text x="90" y="41" class="label">PDF로 내보내기</text>
+    </g>
+    <text x="34" y="562" class="note">Default rows keep glass/shadow, but no visible outline.</text>
+  </g>
+
+  <g transform="translate(688 170)">
+    <rect width="520" height="600" rx="26" fill="url(#darkPanel)" stroke="#64748b" stroke-opacity="0.24" filter="url(#darkShadow)"/>
+    <rect width="520" height="600" rx="26" fill="url(#shine)" opacity="0.14"/>
+    <text x="32" y="48" class="h hd">Dark mode</text>
+    <text x="34" y="78" class="meta metaDark">기본 row는 테두리 없이 표면감만, hover에서만 rim/halo</text>
+
+    <g transform="translate(28 112)">
+      <rect width="464" height="64" rx="14" fill="url(#darkRowRest)" stroke="transparent" filter="url(#darkShadow)"/>
+      <path class="icon iconDark" d="M35 22l20 20M55 22L35 42M70 24h44M70 40h34"/>
+      <text x="90" y="41" class="label labelDark">문서 내 백링크</text>
+    </g>
+    <g transform="translate(28 186)">
+      <rect width="464" height="64" rx="14" fill="url(#darkRowRest)" stroke="transparent" filter="url(#darkShadow)"/>
+      <path class="icon iconDark" d="M35 20h38v32H35zM54 20v32"/>
+      <text x="90" y="41" class="label labelDark">읽기 화면</text>
+    </g>
+    <line x1="28" y1="280" x2="492" y2="280" stroke="#64748b" stroke-opacity="0.44"/>
+    <g transform="translate(28 312)">
+      <rect width="464" height="64" rx="14" fill="url(#darkRowRest)" stroke="transparent" filter="url(#darkShadow)"/>
+      <path class="icon iconDark" d="M38 20l-12 24M64 20l12 24M48 28h18"/>
+      <text x="90" y="41" class="label labelDark">이름 변경</text>
+    </g>
+    <g transform="translate(28 386)">
+      <rect width="464" height="64" rx="14" fill="url(#darkRowHover)" stroke="#67e8f9" stroke-width="2" filter="url(#hoverShadow)"/>
+      <path class="icon iconDark" d="M36 20h16l8 8h20v28H36zM48 42h10M70 42h10"/>
+      <text x="90" y="41" class="label labelDark">파일을 다음으로 이동...</text>
+      <path class="cursor" d="M214 38l74 74l-39 4l20 46l-25 11l-20-48l-30 28z" transform="translate(0 -10) scale(.72)"/>
+    </g>
+    <g transform="translate(28 460)">
+      <rect width="464" height="64" rx="14" fill="url(#darkRowRest)" stroke="transparent" filter="url(#darkShadow)"/>
+      <path class="icon iconDark" d="M40 22h30v36H40zM48 30h14M48 44h14"/>
+      <text x="90" y="41" class="label labelDark">PDF로 내보내기</text>
+    </g>
+    <text x="34" y="562" class="note" fill="#67e8f9">Hover keeps the visible outline and soft aqua halo.</text>
+  </g>
+</svg>

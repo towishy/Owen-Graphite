@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite simple core menu design sample</title>
+  <desc id="desc">A simplified Owen Graphite context menu proposal using one glass sheet, quiet rows, subtle dividers, and no per-row outlines.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.48" stop-color="#eef7f8"/>
+      <stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.84"/>
+      <stop offset="0.62" stop-color="#f8fafc" stop-opacity="0.64"/>
+      <stop offset="1" stop-color="#e2e8f0" stop-opacity="0.40"/>
+    </linearGradient>
+    <linearGradient id="sheetDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155" stop-opacity="0.76"/>
+      <stop offset="0.62" stop-color="#1e293b" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="hover" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.64"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0.36"/>
+    </linearGradient>
+    <linearGradient id="hoverDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#475569" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#0e7490" stop-opacity="0.16"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="76%" cy="12%" r="52%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.68"/>
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softSheetShadow" x="-14%" y="-10%" width="128%" height="124%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f172a" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+    <filter id="darkSheetShadow" x="-14%" y="-10%" width="128%" height="124%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#000000" flood-opacity="0.34"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.20"/>
+    </filter>
+    <style>
+      .title { font: 800 46px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .sub { font: 600 19px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; letter-spacing: 0; }
+      .caption { font: 760 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .captionDark { fill: #e2e8f0; }
+      .row { font: 700 23px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; letter-spacing: 0; }
+      .rowDark { fill: #dbeafe; }
+      .muted { font: 650 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: 0; }
+      .mutedDark { fill: #94a3b8; }
+      .note { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0369a1; letter-spacing: 0; }
+      .icon { fill: none; stroke: #6b7280; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .iconDark { stroke: #cbd5e1; }
+      .dangerIcon { stroke: #e11d48; }
+      .dangerText { fill: #be123c; }
+      .num { font: 900 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0284c7; letter-spacing: 0; }
+      .chip { font: 750 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="980" fill="url(#page)"/>
+  <circle cx="1210" cy="118" r="230" fill="#bae6fd" opacity="0.26"/>
+  <circle cx="176" cy="825" r="260" fill="#ddd6fe" opacity="0.22"/>
+  <circle cx="980" cy="872" r="230" fill="#ccfbf1" opacity="0.18"/>
+
+  <text x="72" y="84" class="title">단순 메뉴 코어 디자인 샘플</text>
+  <text x="74" y="122" class="sub">개별 row 박스 제거 · 하나의 glass sheet · 얇은 그룹 구분선 · hover는 외곽선 없는 은은한 tint</text>
+
+  <g transform="translate(76 174)">
+    <rect width="596" height="704" rx="26" fill="url(#sheet)" stroke="#cbd5e1" stroke-opacity="0.42" filter="url(#softSheetShadow)"/>
+    <rect width="596" height="704" rx="26" fill="url(#shine)" opacity="0.48"/>
+    <text x="34" y="50" class="caption">Light menu</text>
+    <text x="36" y="80" class="muted">Menu sheet only: rows are not cards.</text>
+
+    <g transform="translate(30 110)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon" d="M33 17c8-8 20-8 28 0M43 27l-10 10c-8 8-8 20 0 28s20 8 28 0l10-10M57 31l10-10c8-8 20-8 28 0s8 20 0 28L85 59" transform="scale(.62) translate(22 4)"/>
+      <text x="76" y="37" class="row">문서 내 백링크</text>
+    </g>
+    <g transform="translate(30 168)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon" d="M24 18h34v34H24zM58 18h34v34H58zM58 18v34" transform="scale(.62) translate(24 4)"/>
+      <text x="76" y="37" class="row">읽기 화면</text>
+    </g>
+    <g transform="translate(30 226)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon" d="M26 52l18-34M72 18L54 52M50 28h12" transform="scale(.70) translate(22 2)"/>
+      <text x="76" y="37" class="row">원본 모드</text>
+    </g>
+
+    <line x1="30" y1="304" x2="566" y2="304" stroke="#cbd5e1" stroke-opacity="0.72"/>
+
+    <g transform="translate(30 326)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon" d="M26 22l14 14M40 36L26 50M66 22L52 36M52 36l14 14" transform="scale(.72) translate(20 0)"/>
+      <text x="76" y="37" class="row">우측 분할</text>
+    </g>
+    <g transform="translate(30 384)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon" d="M26 32h38M44 18l-14 14 14 14M74 18l14 14-14 14" transform="scale(.62) translate(24 4) rotate(90 56 32)"/>
+      <text x="76" y="37" class="row">하단 분할</text>
+    </g>
+    <g transform="translate(30 442)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon" d="M24 24h28v28H24zM52 38h28v28H52z" transform="scale(.62) translate(24 4)"/>
+      <text x="76" y="37" class="row">새 창에서 열기</text>
+    </g>
+
+    <line x1="30" y1="520" x2="566" y2="520" stroke="#cbd5e1" stroke-opacity="0.72"/>
+
+    <g transform="translate(30 542)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="url(#hover)"/>
+      <path class="icon" d="M30 52l30-30 12 12-30 30H30zM62 20l8-8 12 12-8 8" transform="scale(.62) translate(22 6)"/>
+      <text x="76" y="37" class="row">이름 변경</text>
+    </g>
+    <g transform="translate(30 600)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon dangerIcon" d="M30 30h48M42 30v44M66 30v44M38 30l4-10h24l4 10M36 30l4 52h28l4-52" transform="scale(.58) translate(28 6)"/>
+      <text x="76" y="37" class="row dangerText">파일 삭제</text>
+    </g>
+  </g>
+
+  <g transform="translate(768 174)">
+    <rect width="596" height="704" rx="26" fill="url(#sheetDark)" stroke="#64748b" stroke-opacity="0.24" filter="url(#darkSheetShadow)"/>
+    <rect width="596" height="704" rx="26" fill="url(#shine)" opacity="0.12"/>
+    <text x="34" y="50" class="caption captionDark">Dark menu</text>
+    <text x="36" y="80" class="muted mutedDark">Same structure, no per-row outline or glow.</text>
+
+    <g transform="translate(30 110)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon iconDark" d="M33 17c8-8 20-8 28 0M43 27l-10 10c-8 8-8 20 0 28s20 8 28 0l10-10M57 31l10-10c8-8 20-8 28 0s8 20 0 28L85 59" transform="scale(.62) translate(22 4)"/>
+      <text x="76" y="37" class="row rowDark">문서 내 백링크</text>
+    </g>
+    <g transform="translate(30 168)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon iconDark" d="M24 18h34v34H24zM58 18h34v34H58zM58 18v34" transform="scale(.62) translate(24 4)"/>
+      <text x="76" y="37" class="row rowDark">읽기 화면</text>
+    </g>
+    <g transform="translate(30 226)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon iconDark" d="M26 52l18-34M72 18L54 52M50 28h12" transform="scale(.70) translate(22 2)"/>
+      <text x="76" y="37" class="row rowDark">원본 모드</text>
+    </g>
+
+    <line x1="30" y1="304" x2="566" y2="304" stroke="#64748b" stroke-opacity="0.44"/>
+
+    <g transform="translate(30 326)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon iconDark" d="M26 22l14 14M40 36L26 50M66 22L52 36M52 36l14 14" transform="scale(.72) translate(20 0)"/>
+      <text x="76" y="37" class="row rowDark">우측 분할</text>
+    </g>
+    <g transform="translate(30 384)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon iconDark" d="M26 32h38M44 18l-14 14 14 14M74 18l14 14-14 14" transform="scale(.62) translate(24 4) rotate(90 56 32)"/>
+      <text x="76" y="37" class="row rowDark">하단 분할</text>
+    </g>
+    <g transform="translate(30 442)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon iconDark" d="M24 24h28v28H24zM52 38h28v28H52z" transform="scale(.62) translate(24 4)"/>
+      <text x="76" y="37" class="row rowDark">새 창에서 열기</text>
+    </g>
+
+    <line x1="30" y1="520" x2="566" y2="520" stroke="#64748b" stroke-opacity="0.44"/>
+
+    <g transform="translate(30 542)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="url(#hoverDark)"/>
+      <path class="icon iconDark" d="M30 52l30-30 12 12-30 30H30zM62 20l8-8 12 12-8 8" transform="scale(.62) translate(22 6)"/>
+      <text x="76" y="37" class="row rowDark">이름 변경</text>
+    </g>
+    <g transform="translate(30 600)">
+      <rect x="0" y="0" width="536" height="58" rx="13" fill="transparent"/>
+      <path class="icon dangerIcon" d="M30 30h48M42 30v44M66 30v44M38 30l4-10h24l4 10M36 30l4 52h28l4-52" transform="scale(.58) translate(28 6)"/>
+      <text x="76" y="37" class="row dangerText">파일 삭제</text>
+    </g>
+  </g>
+
+  <g transform="translate(76 910)">
+    <rect width="1288" height="1" fill="#cbd5e1" opacity="0.72"/>
+    <text x="0" y="38" class="note">Core proposal: sheet-level glass + group dividers + text/icon hierarchy. No row outlines, no row shadow, no blue halo.</text>
+  </g>
+</svg>

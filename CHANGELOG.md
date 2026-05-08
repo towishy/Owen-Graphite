@@ -4,6 +4,16 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.75] — 2026-05-08 — Simplify Liquid Glass chrome interactions
+
+### Changed
+- Simplified menu, side pane, search suggestion, top icon, and tab chrome around a quieter container-level Liquid Glass sheet.
+- Reduced always-on row/card outlines so default lists stay calm while hover and active states retain a restrained aqua rim, tint, and shadow.
+- Added approved design proposal fixtures for the seven-part polish pass, simple menu core, top icon slots, and attached soft tabs.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
 ## [2.22.74] — 2026-05-08 — Remove PDF page guide feature
 
 ### Removed

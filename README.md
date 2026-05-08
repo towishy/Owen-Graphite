@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.74` |
+| **버전** | `2.22.75` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -45,9 +45,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **디자인 코어** | Graphite 톤 · Liquid-glass chrome | 차분한 graphite 기반에 ribbon·사이드바·탭·툴바·command palette·tooltip glass surface 적용 |
 | **상태 표현** | Table mode split · Frost Aqua focus | 위키형/보고서형 표를 분리하고 focus 상태는 aqua rim + soft halo로 표시 |
 | **워크스페이스** | Workspace Surfaces Pack · Polish Pack | Graph view·Canvas·Folder cues·Mini TOC·Cover page·Dark parity·Mobile·Tab·Search HL 정리 |
-| **보고서·인쇄** | A3 PDF Export · 자동 넘벍링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할 |
+| **보고서·인쇄** | A3 PDF Export · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할 |
 | **분할 안정성** | 자동 분할 회피 | callout·표·Mermaid·코드·이미지가 PDF에서 중간 분할되지 않도록 보정 |
-| **커스터마이징** | Style Settings 40종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
+| **커스터마이징** | Style Settings 36종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
 | **접근성·환경** | 시선 보호 · OS 다크 모드 · CJK 보정 | 시선 보호 모드, OS 다크 모드 자동 추종, CJK +0.5px 자동 보정 지원 |
 | **Style Settings 분류** | 타이포 · 표 · 보고서 · PDF · 컬러/모션 | Style Settings 플러그인에서 전체 옵션을 사이드바 UI로 조정 |
 
@@ -186,6 +186,7 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.75** | 메뉴·사이드 pane·검색 제안·상단 아이콘·탭을 단순한 컨테이너형 Liquid Glass로 정리하고, 기본 상태의 복잡한 외곽 효과를 줄임 |
 | **v2.22.74** | PDF 페이지 경계 가이드 기능(`ogd-pdf-page-guides`, `ogd-pdf-width-preview`, `ogd-pdf-risk-hints`, `ogd-page-size`) 전면 제거 — Live Preview와 실제 PDF 페이지 나뉘의 구조적 불일치로 혼선만 주던 풌 정리 |
 | **v2.22.55** | callout 박스·아이콘·제목 정렬 흔들림과 긴 inline code overflow 보정 |
 | **v2.22.51** | PDF 마지막 페이지 footer 본문이 넓은 페이지 폭을 충분히 쓰지 못하던 문제 수정 |

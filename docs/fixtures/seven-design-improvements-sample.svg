@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite seven design improvement sample</title>
+  <desc id="desc">Seven proposed Liquid Glass design improvements for Owen Graphite, shown as light and dark UI samples.</desc>
+  <defs>
+    <linearGradient id="pageBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.44" stop-color="#eef6f8"/>
+      <stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <linearGradient id="darkBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172033"/>
+      <stop offset="0.54" stop-color="#101826"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="glassLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="0.56" stop-color="#f8fafc" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#e2e8f0" stop-opacity="0.38"/>
+    </linearGradient>
+    <linearGradient id="glassDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155" stop-opacity="0.78"/>
+      <stop offset="0.58" stop-color="#1e293b" stop-opacity="0.74"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="hoverLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="0.62" stop-color="#f8fafc" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0.46"/>
+    </linearGradient>
+    <linearGradient id="hoverDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#475569" stop-opacity="0.86"/>
+      <stop offset="0.64" stop-color="#1e293b" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.82"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="74%" cy="20%" r="46%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.84"/>
+      <stop offset="0.44" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.16"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="darkShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.38"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+    <filter id="focusHalo" x="-16%" y="-22%" width="132%" height="144%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#67e8f9" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .title { font: 800 42px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .subtitle { font: 500 19px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; letter-spacing: 0; }
+      .sectionTitle { font: 760 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .sectionTitleDark { fill: #e2e8f0; }
+      .label { font: 650 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; letter-spacing: 0; }
+      .labelDark { fill: #cbd5e1; }
+      .muted { font: 500 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: 0; }
+      .mutedDark { fill: #94a3b8; }
+      .tiny { font: 650 11px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: 0; }
+      .tinyDark { fill: #94a3b8; }
+      .num { font: 800 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0369a1; letter-spacing: 0; }
+      .numDark { fill: #67e8f9; }
+      .chip { font: 700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0369a1; letter-spacing: 0; }
+      .mono { font: 650 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #475569; letter-spacing: 0; }
+      .monoDark { fill: #cbd5e1; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1120" fill="url(#pageBg)"/>
+  <circle cx="1350" cy="130" r="210" fill="#bae6fd" opacity="0.30"/>
+  <circle cx="180" cy="1010" r="260" fill="#ddd6fe" opacity="0.26"/>
+  <circle cx="1050" cy="980" r="210" fill="#ccfbf1" opacity="0.22"/>
+
+  <text x="72" y="78" class="title">Owen Graphite 디자인 개선 샘플 7</text>
+  <text x="72" y="112" class="subtitle">실제 CSS 적용 전 검토용 이미지 · 좌측 라인 없이 Glass + Shadow + Frost Aqua focus로 통일</text>
+  <text x="1240" y="78" class="muted">Preview fixture</text>
+  <text x="1240" y="102" class="mono">docs/fixtures</text>
+
+  <g transform="translate(72 155)">
+    <rect x="0" y="0" width="686" height="258" rx="18" fill="url(#glassLight)" stroke="#cbd5e1" stroke-opacity="0.72" filter="url(#softShadow)"/>
+    <rect x="0" y="0" width="686" height="258" rx="18" fill="url(#shine)" opacity="0.72"/>
+    <text x="26" y="40" class="num">1</text>
+    <text x="56" y="40" class="sectionTitle">사이드 패널 glass 정리</text>
+    <text x="56" y="64" class="muted">Backlinks · Outline · Tags · Search를 같은 조용한 graphite glass 표면으로 통일</text>
+    <rect x="30" y="92" width="202" height="130" rx="12" fill="#ffffff" fill-opacity="0.48" stroke="#cbd5e1"/>
+    <text x="50" y="120" class="label">Outline</text>
+    <rect x="48" y="140" width="150" height="25" rx="8" fill="#f8fafc" fill-opacity="0.70" stroke="#e2e8f0"/>
+    <text x="64" y="157" class="tiny">Heading overview</text>
+    <rect x="48" y="173" width="162" height="29" rx="9" fill="url(#hoverLight)" stroke="#7dd3fc" stroke-opacity="0.66"/>
+    <text x="64" y="192" class="tiny">Active section</text>
+    <rect x="268" y="92" width="378" height="130" rx="12" fill="#ffffff" fill-opacity="0.36" stroke="#cbd5e1"/>
+    <text x="292" y="122" class="label">Search results</text>
+    <rect x="292" y="144" width="310" height="22" rx="8" fill="#ffffff" fill-opacity="0.56"/>
+    <rect x="292" y="178" width="250" height="22" rx="8" fill="#ffffff" fill-opacity="0.44"/>
+    <text x="300" y="159" class="tiny">결과 행은 높이 변화 없이 hover만 밝아짐</text>
+    <text x="300" y="193" class="tiny">설명 카드도 opaque white 대신 투명 표면</text>
+  </g>
+
+  <g transform="translate(842 155)">
+    <rect x="0" y="0" width="686" height="258" rx="18" fill="url(#darkBg)" stroke="#334155" filter="url(#darkShadow)"/>
+    <rect x="24" y="24" width="638" height="210" rx="16" fill="url(#glassDark)" stroke="#64748b" stroke-opacity="0.46"/>
+    <rect x="24" y="24" width="638" height="210" rx="16" fill="url(#shine)" opacity="0.18"/>
+    <text x="50" y="64" class="numDark">2</text>
+    <text x="80" y="64" class="sectionTitle sectionTitleDark">hover는 색보다 물성 변화</text>
+    <text x="80" y="88" class="muted mutedDark">더 파랗게 칠하지 않고 shine · rim · soft shadow · 1px lift로 반응</text>
+    <rect x="64" y="122" width="162" height="54" rx="13" fill="url(#glassDark)" stroke="#64748b" stroke-opacity="0.42"/>
+    <text x="92" y="153" class="labelDark label">Default</text>
+    <rect x="258" y="112" width="186" height="64" rx="15" fill="url(#hoverDark)" stroke="#bae6fd" stroke-opacity="0.48" filter="url(#darkShadow)"/>
+    <rect x="258" y="112" width="186" height="64" rx="15" fill="url(#shine)" opacity="0.22"/>
+    <text x="314" y="149" class="labelDark label">Hover</text>
+    <path d="M236 150 C246 146 248 142 252 134" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" opacity="0.68"/>
+    <rect x="478" y="122" width="100" height="54" rx="13" fill="#0f172a" fill-opacity="0.34" stroke="#64748b"/>
+    <text x="503" y="153" class="tinyDark tiny">No rail</text>
+  </g>
+
+  <g transform="translate(72 449)">
+    <rect x="0" y="0" width="450" height="254" rx="18" fill="url(#glassLight)" stroke="#cbd5e1" stroke-opacity="0.72" filter="url(#softShadow)"/>
+    <rect x="0" y="0" width="450" height="254" rx="18" fill="url(#shine)" opacity="0.58"/>
+    <text x="26" y="40" class="num">3</text>
+    <text x="56" y="40" class="sectionTitle">Frost Aqua focus</text>
+    <text x="56" y="64" class="muted">키보드 탐색 상태를 같은 rim/halo 언어로 정리</text>
+    <rect x="44" y="103" width="360" height="44" rx="12" fill="#ffffff" fill-opacity="0.58" stroke="#cbd5e1"/>
+    <text x="64" y="131" class="label">Normal row</text>
+    <rect x="44" y="166" width="360" height="48" rx="13" fill="url(#hoverLight)" stroke="#67e8f9" stroke-width="2" filter="url(#focusHalo)"/>
+    <text x="64" y="196" class="label">Focused row · size stable</text>
+  </g>
+
+  <g transform="translate(575 449)">
+    <rect x="0" y="0" width="450" height="254" rx="18" fill="url(#darkBg)" stroke="#334155" filter="url(#darkShadow)"/>
+    <rect x="36" y="32" width="378" height="190" rx="17" fill="url(#glassDark)" stroke="#64748b" stroke-opacity="0.48" filter="url(#darkShadow)"/>
+    <rect x="36" y="32" width="378" height="190" rx="17" fill="url(#shine)" opacity="0.16"/>
+    <text x="60" y="72" class="numDark">4</text>
+    <text x="90" y="72" class="sectionTitle sectionTitleDark">Floating UI 통일</text>
+    <text x="90" y="96" class="muted mutedDark">Command palette · menu · popover · tooltip</text>
+    <rect x="70" y="120" width="310" height="34" rx="10" fill="#e0f2fe" fill-opacity="0.12" stroke="#67e8f9" stroke-opacity="0.36"/>
+    <text x="88" y="142" class="tinyDark tiny">Open recent note</text>
+    <rect x="70" y="165" width="250" height="28" rx="9" fill="#ffffff" fill-opacity="0.08" stroke="#64748b" stroke-opacity="0.30"/>
+    <text x="88" y="184" class="tinyDark tiny">Stable menu row height</text>
+  </g>
+
+  <g transform="translate(1078 449)">
+    <rect x="0" y="0" width="450" height="254" rx="18" fill="url(#glassLight)" stroke="#cbd5e1" stroke-opacity="0.72" filter="url(#softShadow)"/>
+    <rect x="0" y="0" width="450" height="254" rx="18" fill="url(#shine)" opacity="0.56"/>
+    <text x="26" y="40" class="num">5</text>
+    <text x="56" y="40" class="sectionTitle">탭/파일 active 상태</text>
+    <text x="56" y="64" class="muted">좌측 rail 없이 full border · surface tint · font weight</text>
+    <rect x="46" y="104" width="104" height="43" rx="12" fill="#ffffff" fill-opacity="0.54" stroke="#cbd5e1"/>
+    <text x="70" y="131" class="tiny">Draft.md</text>
+    <rect x="164" y="96" width="134" height="51" rx="13" fill="url(#hoverLight)" stroke="#38bdf8" stroke-opacity="0.64" filter="url(#softShadow)"/>
+    <text x="190" y="127" class="label">Active.md</text>
+    <rect x="46" y="174" width="332" height="34" rx="11" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
+    <circle cx="70" cy="191" r="5" fill="#38bdf8" opacity="0.74"/>
+    <text x="88" y="196" class="tiny">아이콘/텍스트/전체 둘레로 현재 위치 표시</text>
+  </g>
+
+  <g transform="translate(72 739)">
+    <rect x="0" y="0" width="686" height="276" rx="18" fill="url(#glassLight)" stroke="#cbd5e1" stroke-opacity="0.72" filter="url(#softShadow)"/>
+    <rect x="0" y="0" width="686" height="276" rx="18" fill="url(#shine)" opacity="0.50"/>
+    <text x="26" y="42" class="num">6</text>
+    <text x="56" y="42" class="sectionTitle">본문 표/코드 rhythm 개선</text>
+    <text x="56" y="66" class="muted">glass는 chrome에, 본문은 가독성과 편집 안정성을 우선</text>
+    <rect x="42" y="100" width="294" height="126" rx="13" fill="#ffffff" fill-opacity="0.58" stroke="#cbd5e1"/>
+    <rect x="42" y="100" width="294" height="32" rx="13" fill="#e0f2fe" fill-opacity="0.48"/>
+    <line x1="42" y1="132" x2="336" y2="132" stroke="#cbd5e1"/>
+    <line x1="42" y1="164" x2="336" y2="164" stroke="#e2e8f0"/>
+    <line x1="42" y1="196" x2="336" y2="196" stroke="#e2e8f0"/>
+    <line x1="160" y1="100" x2="160" y2="226" stroke="#e2e8f0"/>
+    <text x="62" y="121" class="tiny">Metric</text>
+    <text x="182" y="121" class="tiny">Result</text>
+    <text x="62" y="154" class="tiny">Long URL</text>
+    <text x="182" y="154" class="tiny">wraps cleanly</text>
+    <text x="62" y="186" class="tiny">Table edit</text>
+    <text x="182" y="186" class="tiny">keeps widget</text>
+    <rect x="376" y="100" width="260" height="126" rx="13" fill="#0f172a" fill-opacity="0.86" stroke="#334155"/>
+    <rect x="394" y="121" width="96" height="20" rx="7" fill="#334155"/>
+    <text x="408" y="136" class="tinyDark tiny">CSS</text>
+    <text x="394" y="169" class="monoDark mono">--ogd-glass-bg</text>
+    <text x="394" y="195" class="monoDark mono">border: 1px solid</text>
+  </g>
+
+  <g transform="translate(842 739)">
+    <rect x="0" y="0" width="686" height="276" rx="18" fill="url(#darkBg)" stroke="#334155" filter="url(#darkShadow)"/>
+    <rect x="30" y="28" width="626" height="220" rx="17" fill="url(#glassDark)" stroke="#64748b" stroke-opacity="0.42"/>
+    <rect x="30" y="28" width="626" height="220" rx="17" fill="url(#shine)" opacity="0.15"/>
+    <text x="56" y="68" class="numDark">7</text>
+    <text x="86" y="68" class="sectionTitle sectionTitleDark">모바일/overlay polish</text>
+    <text x="86" y="92" class="muted mutedDark">드로어 · 검색 · 설정 overlay는 겹침 방지와 touch target을 우선</text>
+    <rect x="72" y="120" width="166" height="96" rx="18" fill="#0f172a" fill-opacity="0.46" stroke="#64748b"/>
+    <rect x="96" y="140" width="118" height="11" rx="5" fill="#94a3b8" opacity="0.75"/>
+    <rect x="96" y="162" width="96" height="11" rx="5" fill="#64748b" opacity="0.72"/>
+    <rect x="96" y="184" width="128" height="15" rx="7" fill="#67e8f9" fill-opacity="0.14" stroke="#67e8f9" stroke-opacity="0.42"/>
+    <rect x="282" y="118" width="306" height="40" rx="13" fill="#ffffff" fill-opacity="0.09" stroke="#64748b" stroke-opacity="0.38"/>
+    <text x="304" y="143" class="tinyDark tiny">Touch targets stay readable and separated</text>
+    <rect x="282" y="176" width="248" height="40" rx="13" fill="#67e8f9" fill-opacity="0.12" stroke="#67e8f9" stroke-opacity="0.40"/>
+    <text x="304" y="201" class="tinyDark tiny">Overlay glass without layout shift</text>
+  </g>
+
+  <g transform="translate(72 1046)">
+    <rect x="0" y="0" width="1456" height="1" fill="#cbd5e1" opacity="0.78"/>
+    <text x="0" y="36" class="muted">검토 포인트: 실제 적용 전 각 영역별 fixture를 라이트/다크/default/hover/active/focus 상태로 분리해 승인 후 dev CSS에 반영</text>
+  </g>
+</svg>

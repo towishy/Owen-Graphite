@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite simple menu core overview</title>
+  <desc id="desc">Compact overview of a simplified context menu design using one glass sheet, unboxed rows, quiet dividers, and no glow.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="0.55" stop-color="#eef7f8"/><stop offset="1" stop-color="#f6f7fb"/></linearGradient>
+    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.84"/><stop offset="0.62" stop-color="#f8fafc" stop-opacity="0.66"/><stop offset="1" stop-color="#eef2f7" stop-opacity="0.48"/></linearGradient>
+    <linearGradient id="sheetDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#263244" stop-opacity="0.88"/><stop offset="0.62" stop-color="#172033" stop-opacity="0.86"/><stop offset="1" stop-color="#101827" stop-opacity="0.88"/></linearGradient>
+    <linearGradient id="hover" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e0f2fe" stop-opacity="0.52"/><stop offset="0.72" stop-color="#f8fafc" stop-opacity="0.32"/><stop offset="1" stop-color="#fff" stop-opacity="0.14"/></linearGradient>
+    <linearGradient id="hoverDark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#164e63" stop-opacity="0.34"/><stop offset="0.72" stop-color="#1e293b" stop-opacity="0.24"/><stop offset="1" stop-color="#0f172a" stop-opacity="0.12"/></linearGradient>
+    <radialGradient id="glint" cx="78%" cy="10%" r="56%"><stop offset="0" stop-color="#fff" stop-opacity="0.42"/><stop offset="0.44" stop-color="#fff" stop-opacity="0.10"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <filter id="shadow" x="-12%" y="-10%" width="124%" height="124%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0f172a" flood-opacity="0.13"/><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.06"/></filter>
+    <filter id="darkShadow" x="-12%" y="-10%" width="124%" height="124%"><feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#000" flood-opacity="0.32"/><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.18"/></filter>
+    <style>
+      .title{font:800 46px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a;letter-spacing:0}.sub{font:600 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#475569;letter-spacing:0}.h{font:800 21px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a;letter-spacing:0}.hd{fill:#e5edf7}.row{font:700 24px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#25364d;letter-spacing:0}.rd{fill:#dbe6f3}.muted{font:650 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#64748b;letter-spacing:0}.md{fill:#94a3b8}.label{font:760 16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#334155;letter-spacing:0}.small{font:640 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#64748b;letter-spacing:0}.icon{fill:none;stroke:#788396;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.id{stroke:#aab6c7}.bad{stroke:#e11d48}.badText{fill:#be123c}.check{fill:#ecfeff;stroke:#67e8f9;stroke-opacity:.38}.x{fill:#f8fafc;stroke:#cbd5e1;stroke-opacity:.62}
+    </style>
+  </defs>
+  <rect width="1400" height="920" fill="url(#page)"/>
+  <circle cx="1210" cy="116" r="210" fill="#bae6fd" opacity="0.22"/><circle cx="160" cy="810" r="250" fill="#ccfbf1" opacity="0.18"/>
+  <text x="66" y="78" class="title">단순 메뉴 코어 디자인</text>
+  <text x="68" y="114" class="sub">row 박스·외곽선·개별 그림자 제거, 하나의 glass sheet와 얇은 divider만 남기는 방향</text>
+
+  <g transform="translate(74 164)">
+    <rect width="538" height="612" rx="24" fill="url(#sheet)" stroke="#d8e0ea" stroke-opacity="0.46" filter="url(#shadow)"/>
+    <rect width="538" height="612" rx="24" fill="url(#glint)"/>
+    <text x="30" y="46" class="h">Light</text><text x="30" y="72" class="muted">No per-row container</text>
+    <g transform="translate(36 106)">
+      <g><path class="icon" d="M18 15l18 18M36 15L18 33M56 18h86M56 34h62"/><text x="72" y="38" class="row">문서 내 백링크</text></g>
+      <g transform="translate(0 64)"><path class="icon" d="M18 13h34v32H18zM35 13v32"/><text x="72" y="38" class="row">읽기 화면</text></g>
+      <g transform="translate(0 128)"><path class="icon" d="M20 36l16-25M52 11l16 25M42 18h7"/><text x="72" y="38" class="row">원본 모드</text></g>
+      <line x1="0" y1="194" x2="466" y2="194" stroke="#cbd5e1" stroke-opacity="0.72"/>
+      <g transform="translate(0 226)"><path class="icon" d="M24 12v40M13 33l11 11 11-11M56 14h80"/><text x="72" y="38" class="row">우측 분할</text></g>
+      <g transform="translate(0 290)"><path class="icon" d="M18 18h28v26H18zM54 30h22v18H54z"/><text x="72" y="38" class="row">새 창에서 열기</text></g>
+      <line x1="0" y1="356" x2="466" y2="356" stroke="#cbd5e1" stroke-opacity="0.72"/>
+      <g transform="translate(-16 388)"><rect x="0" y="-12" width="498" height="58" rx="14" fill="url(#hover)"/><path class="icon" d="M39 9L20 38v11h11l29-20M53 15l9 9"/><text x="88" y="31" class="row">이름 변경</text></g>
+      <g transform="translate(0 452)"><path class="icon" d="M20 12h15l8 8h28v32H20zM36 42h13"/><text x="72" y="38" class="row">파일 이동...</text></g>
+      <g transform="translate(0 516)"><path class="bad icon" d="M20 20h34M28 20l3-8h12l3 8M28 28v28M46 28v28M17 28h40"/><text x="72" y="38" class="row badText">파일 삭제</text></g>
+    </g>
+  </g>
+
+  <g transform="translate(694 164)">
+    <rect width="538" height="612" rx="24" fill="url(#sheetDark)" stroke="#46566b" stroke-opacity="0.32" filter="url(#darkShadow)"/>
+    <rect width="538" height="612" rx="24" fill="url(#glint)" opacity="0.18"/>
+    <text x="30" y="46" class="h hd">Dark</text><text x="30" y="72" class="muted md">Same rhythm, no glow</text>
+    <g transform="translate(36 106)">
+      <g><path class="icon id" d="M18 15l18 18M36 15L18 33M56 18h86M56 34h62"/><text x="72" y="38" class="row rd">문서 내 백링크</text></g>
+      <g transform="translate(0 64)"><path class="icon id" d="M18 13h34v32H18zM35 13v32"/><text x="72" y="38" class="row rd">읽기 화면</text></g>
+      <g transform="translate(0 128)"><path class="icon id" d="M20 36l16-25M52 11l16 25M42 18h7"/><text x="72" y="38" class="row rd">원본 모드</text></g>
+      <line x1="0" y1="194" x2="466" y2="194" stroke="#64748b" stroke-opacity="0.44"/>
+      <g transform="translate(0 226)"><path class="icon id" d="M24 12v40M13 33l11 11 11-11M56 14h80"/><text x="72" y="38" class="row rd">우측 분할</text></g>
+      <g transform="translate(0 290)"><path class="icon id" d="M18 18h28v26H18zM54 30h22v18H54z"/><text x="72" y="38" class="row rd">새 창에서 열기</text></g>
+      <line x1="0" y1="356" x2="466" y2="356" stroke="#64748b" stroke-opacity="0.44"/>
+      <g transform="translate(-16 388)"><rect x="0" y="-12" width="498" height="58" rx="14" fill="url(#hoverDark)"/><path class="icon id" d="M39 9L20 38v11h11l29-20M53 15l9 9"/><text x="88" y="31" class="row rd">이름 변경</text></g>
+      <g transform="translate(0 452)"><path class="icon id" d="M20 12h15l8 8h28v32H20zM36 42h13"/><text x="72" y="38" class="row rd">파일 이동...</text></g>
+      <g transform="translate(0 516)"><path class="bad icon" d="M20 20h34M28 20l3-8h12l3 8M28 28v28M46 28v28M17 28h40"/><text x="72" y="38" class="row badText">파일 삭제</text></g>
+    </g>
+  </g>
+
+  <g transform="translate(74 820)">
+    <rect width="1158" height="72" rx="16" fill="#ffffff" fill-opacity="0.48" stroke="#dbe4ee" stroke-opacity="0.64"/>
+    <g transform="translate(28 20)"><rect class="check" width="28" height="28" rx="7"/><text x="42" y="20" class="label">유지</text><text x="86" y="20" class="small">sheet glass, panel shadow, icon hierarchy, group dividers, subtle hover band</text></g>
+    <g transform="translate(606 20)"><rect class="x" width="28" height="28" rx="7"/><text x="42" y="20" class="label">제거</text><text x="86" y="20" class="small">row outline, row shadow, blue halo, boxed hover, per-item card treatment</text></g>
+  </g>
+</svg>
