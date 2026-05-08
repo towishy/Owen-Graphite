@@ -439,17 +439,6 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   }
 }
 
-/* C5. Page size presets — preview width hint only.
-   NOTE: CSS `@page { size: ... }` cannot be conditioned on a body class
-   (Chromium evaluates @page before body class is known). Users must set
-   the actual PDF page size in Obsidian's Export dialog. The width
-   overrides below only prevent preview overflow before export. */
-@media print {
-  body.ogd-page-a4-port { width: 210mm !important; }
-  body.ogd-page-a4-land { width: 297mm !important; }
-  body.ogd-page-a3-land { width: 420mm !important; }
-}
-
 @media print {
   .markdown-rendered h1,
   .markdown-preview-view.markdown-rendered h1,

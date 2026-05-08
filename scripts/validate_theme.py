@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_STYLE_SETTINGS_OPTIONS = 40
+EXPECTED_STYLE_SETTINGS_OPTIONS = 36
 DEFAULT_TARGETS = [
     Path(r"H:\Obsidian\.obsidian\themes\Owen Graphite"),
     Path(r"D:\JAELE\Obsidian\.obsidian\themes\Owen Graphite"),
@@ -265,7 +265,7 @@ CORE_CHROME_STRUCTURAL_PROPERTIES = {
 
 PRINT_BLOCK_OWNERSHIP = {
     "dev/04-print-base.css": 1,
-    "dev/06-feature-presets.css": 3,
+    "dev/06-feature-presets.css": 2,
     "dev/07-plugin-workspace.css": 2,
     "dev/07e-live-preview-mobile-plugin.css": 1,
     "dev/08-report-print-polish.css": 2,

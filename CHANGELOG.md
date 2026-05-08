@@ -4,6 +4,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.74] — 2026-05-08 — Remove PDF page guide feature
+
+### Removed
+- Removed the entire PDF page guide feature: Style Settings options `ogd-page-size`, `ogd-pdf-page-guides`, `ogd-pdf-width-preview`, `ogd-pdf-risk-hints`.
+- Removed all related body classes, CSS variables, badge SVG layers, and dotted boundary backgrounds from `dev/10-a11y-regression-hotfixes.css` and the page-size width hint block from `dev/06-feature-presets.css`.
+- Deleted `screenshots/readme/v2.22.52-pdf-page-guide-preview.png` and `docs/fixtures/pdf-page-guide-preview.html`.
+- Updated `EXPECTED_STYLE_SETTINGS_OPTIONS` from 40 to 36 in `scripts/validate_theme.py`.
+
+### Rationale
+- Live Preview is a continuous-scroll editor with no page concept, while Chromium PDF page breaks are content-dependent. Exact alignment between the in-editor guide and the exported PDF is structurally impossible; iterative calibration (v2.22.52–v2.22.73) only swapped one boundary error for another. Removing the feature is preferable to keeping a misleading approximation.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, local vault rsync.
+
 ## [2.22.62] — 2026-05-07 — PDF page guide numbered badge parity hotfix
 
 ### Fixed
