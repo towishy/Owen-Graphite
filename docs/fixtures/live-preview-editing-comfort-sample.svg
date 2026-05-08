@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite Live Preview Editing Comfort sample</title>
+  <desc id="desc">A Live Preview editing comfort proposal for Owen Graphite showing soft active block focus, table cell focus, calm code block editing, and long token wrapping in light and dark modes.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.56" stop-color="#eef6f8"/>
+      <stop offset="1" stop-color="#f6f3ff"/>
+    </linearGradient>
+    <linearGradient id="darkPage" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172033"/>
+      <stop offset="0.55" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#182234"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.88"/>
+      <stop offset="0.62" stop-color="#f8fafc" stop-opacity="0.66"/>
+      <stop offset="1" stop-color="#e2e8f0" stop-opacity="0.42"/>
+    </linearGradient>
+    <linearGradient id="darkGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155" stop-opacity="0.74"/>
+      <stop offset="0.6" stop-color="#1e293b" stop-opacity="0.76"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="active" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0.34"/>
+    </linearGradient>
+    <linearGradient id="activeDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#475569" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#0e7490" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="78%" cy="10%" r="52%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.62"/>
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sheetShadow" x="-12%" y="-10%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0f172a" flood-opacity="0.13"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+    <filter id="darkShadow" x="-12%" y="-10%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#000000" flood-opacity="0.36"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+    <filter id="focusGlow" x="-8%" y="-22%" width="116%" height="144%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#67e8f9" flood-opacity="0.42"/>
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.1"/>
+    </filter>
+    <style>
+      .title { font: 800 42px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .subtitle { font: 560 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; letter-spacing: 0; }
+      .panelTitle { font: 780 20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .panelTitleDark { fill: #e2e8f0; }
+      .h1 { font: 820 28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; letter-spacing: 0; }
+      .h1Dark { fill: #f8fafc; }
+      .body { font: 540 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; letter-spacing: 0; }
+      .bodyDark { fill: #cbd5e1; }
+      .muted { font: 600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: 0; }
+      .mutedDark { fill: #94a3b8; }
+      .mono { font: 650 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; letter-spacing: 0; }
+      .monoDark { fill: #dbeafe; }
+      .smallMono { font: 650 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #64748b; letter-spacing: 0; }
+      .smallMonoDark { fill: #a5b4fc; }
+      .cell { font: 650 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; letter-spacing: 0; }
+      .cellDark { fill: #cbd5e1; }
+      .marker { font: 760 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0369a1; letter-spacing: 0; }
+      .markerDark { fill: #67e8f9; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="980" fill="url(#page)"/>
+  <text x="72" y="76" class="title">Live Preview Editing Comfort Pack</text>
+  <text x="72" y="112" class="subtitle">편집 중인 위치만 조용하게 드러내고, 기본 문서 화면은 단순하게 유지하는 샘플</text>
+  <text x="1120" y="78" class="muted">Preview fixture</text>
+  <text x="1120" y="102" class="smallMono">docs/fixtures/live-preview-editing-comfort-sample.svg</text>
+
+  <g transform="translate(72 160)">
+    <rect width="622" height="720" rx="28" fill="url(#glass)" stroke="#cbd5e1" stroke-opacity="0.46" filter="url(#sheetShadow)"/>
+    <rect width="622" height="720" rx="28" fill="url(#shine)" opacity="0.45"/>
+    <text x="32" y="46" class="panelTitle">Light Live Preview</text>
+    <text x="32" y="76" class="muted">No per-line cards. Focus appears only around the active editing surface.</text>
+
+    <g transform="translate(36 112)">
+      <text x="0" y="0" class="h1">Project note</text>
+      <text x="0" y="38" class="body">문단과 리스트는 평상시에는 일반 문서처럼 조용하게 유지됩니다.</text>
+      <rect x="-14" y="58" width="550" height="92" rx="16" fill="url(#active)" stroke="#67e8f9" stroke-opacity="0.58" filter="url(#focusGlow)"/>
+      <text x="8" y="89" class="marker">ACTIVE BLOCK</text>
+      <text x="8" y="119" class="body">현재 커서가 있는 블록만 aqua rim과 얕은 유리 표면으로 표시합니다.</text>
+      <text x="8" y="146" class="muted">좌측 라인 없이 전체 표면으로만 상태를 표현</text>
+    </g>
+
+    <g transform="translate(36 312)">
+      <text x="0" y="0" class="panelTitle">Markdown table focus</text>
+      <rect x="0" y="28" width="548" height="160" rx="14" fill="#ffffff" fill-opacity="0.58" stroke="#dbe3ec"/>
+      <rect x="0" y="28" width="548" height="40" rx="14" fill="#f1f5f9" fill-opacity="0.82"/>
+      <line x1="0" y1="68" x2="548" y2="68" stroke="#cbd5e1"/>
+      <line x1="0" y1="108" x2="548" y2="108" stroke="#e2e8f0"/>
+      <line x1="0" y1="148" x2="548" y2="148" stroke="#e2e8f0"/>
+      <line x1="174" y1="28" x2="174" y2="188" stroke="#e2e8f0"/>
+      <line x1="358" y1="28" x2="358" y2="188" stroke="#e2e8f0"/>
+      <text x="18" y="54" class="cell">Area</text><text x="194" y="54" class="cell">State</text><text x="378" y="54" class="cell">Action</text>
+      <text x="18" y="94" class="cell">Risk Matrix</text><text x="194" y="94" class="cell">Editing</text><text x="378" y="94" class="cell">Stable height</text>
+      <rect x="186" y="114" width="160" height="28" rx="8" fill="#e0f2fe" fill-opacity="0.66" stroke="#67e8f9" stroke-opacity="0.72"/>
+      <text x="18" y="134" class="cell">Numeric Metrics</text><text x="194" y="134" class="cell">Cell focus</text><text x="378" y="134" class="cell">No row inflation</text>
+      <text x="18" y="174" class="cell">Wrap Tokens</text><text x="194" y="174" class="cell">Long value</text><text x="378" y="174" class="cell">Soft wrap</text>
+    </g>
+
+    <g transform="translate(36 552)">
+      <rect width="548" height="112" rx="15" fill="#0f172a" fill-opacity="0.9" stroke="#334155"/>
+      <text x="18" y="30" class="smallMonoDark">```css</text>
+      <text x="18" y="58" class="monoDark">.markdown-source-view.mod-cm6 .cm-active {</text>
+      <text x="36" y="84" class="monoDark">outline: 1px solid rgba(103, 232, 249, .52);</text>
+      <text x="18" y="106" class="smallMonoDark">```</text>
+      <text x="0" y="146" class="muted">Fence markers stay muted, code area keeps a calm stable box.</text>
+    </g>
+  </g>
+
+  <g transform="translate(746 160)">
+    <rect width="622" height="720" rx="28" fill="url(#darkPage)" filter="url(#darkShadow)"/>
+    <rect x="20" y="20" width="582" height="680" rx="24" fill="url(#darkGlass)" stroke="#475569" stroke-opacity="0.54"/>
+    <text x="52" y="66" class="panelTitle panelTitleDark">Dark Live Preview</text>
+    <text x="52" y="96" class="muted mutedDark">Same hierarchy, lower contrast glow, no decorative row stacking.</text>
+
+    <g transform="translate(56 132)">
+      <text x="0" y="0" class="h1 h1Dark">Research draft</text>
+      <text x="0" y="38" class="body bodyDark">기본 문단은 어둡고 평온한 표면 위에서 그대로 읽힙니다.</text>
+      <rect x="-14" y="58" width="530" height="92" rx="16" fill="url(#activeDark)" stroke="#67e8f9" stroke-opacity="0.46" filter="url(#focusGlow)"/>
+      <text x="8" y="89" class="marker markerDark">ACTIVE BLOCK</text>
+      <text x="8" y="119" class="body bodyDark">현재 편집 블록만 아주 낮은 aqua rim으로 위치를 알려줍니다.</text>
+      <text x="8" y="146" class="muted mutedDark">hover 효과보다 caret 중심 상태를 우선</text>
+    </g>
+
+    <g transform="translate(56 332)">
+      <text x="0" y="0" class="panelTitle panelTitleDark">Callout and long token comfort</text>
+      <rect x="0" y="28" width="530" height="128" rx="16" fill="#0f172a" fill-opacity="0.42" stroke="#475569"/>
+      <rect x="18" y="48" width="494" height="34" rx="9" fill="#334155" fill-opacity="0.42" stroke="#64748b" stroke-opacity="0.42"/>
+      <text x="34" y="70" class="body bodyDark">[!important] Live Preview keeps title rhythm stable</text>
+      <text x="34" y="104" class="muted mutedDark">긴 토큰은 column 폭을 밀지 않고 wrap 또는 scroll 영역으로 제한합니다.</text>
+      <rect x="34" y="118" width="410" height="24" rx="7" fill="#0f172a" fill-opacity="0.68" stroke="#334155"/>
+      <text x="46" y="135" class="smallMono smallMonoDark">insert-graphite-live-preview-comfort-pack...</text>
+    </g>
+
+    <g transform="translate(56 532)">
+      <rect width="530" height="132" rx="15" fill="#020617" fill-opacity="0.78" stroke="#334155"/>
+      <text x="18" y="32" class="smallMonoDark">```markdown</text>
+      <text x="18" y="62" class="monoDark">| Metric | Value | Note |</text>
+      <rect x="16" y="74" width="496" height="36" rx="9" fill="#0e7490" fill-opacity="0.18" stroke="#67e8f9" stroke-opacity="0.38"/>
+      <text x="30" y="98" class="monoDark">| Focus | Cell | editable without height jump |</text>
+      <text x="18" y="122" class="smallMonoDark">```</text>
+      <text x="0" y="166" class="muted mutedDark">Table editing stays visible without changing row height.</text>
+    </g>
+  </g>
+
+  <g transform="translate(72 910)">
+    <rect width="1296" height="1" fill="#cbd5e1" opacity="0.72"/>
+    <text x="0" y="34" class="muted">Implementation guard: no left accent rail, no structural CM6 layout changes, table editability and wrapping must pass validation samples.</text>
+  </g>
+</svg>

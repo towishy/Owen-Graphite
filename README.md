@@ -20,7 +20,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.75` |
+| **버전** | `2.22.76` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -186,6 +186,7 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.76** | Live Preview 편집 중인 라인·Markdown 표 셀 focus·긴 inline token wrapping을 조용한 Frost Aqua 상태로 보강 |
 | **v2.22.75** | 메뉴·사이드 pane·검색 제안·상단 아이콘·탭을 단순한 컨테이너형 Liquid Glass로 정리하고, 기본 상태의 복잡한 외곽 효과를 줄임 |
 | **v2.22.74** | PDF 페이지 경계 가이드 기능(`ogd-pdf-page-guides`, `ogd-pdf-width-preview`, `ogd-pdf-risk-hints`, `ogd-page-size`) 전면 제거 — Live Preview와 실제 PDF 페이지 나뉘의 구조적 불일치로 혼선만 주던 풌 정리 |
 | **v2.22.55** | callout 박스·아이콘·제목 정렬 흔들림과 긴 inline code overflow 보정 |

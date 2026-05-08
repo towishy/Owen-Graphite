@@ -12080,6 +12080,60 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
     color: var(--text-normal) !important;
   }
 }
+
+
+/* ============================================================
+  Live Preview editing comfort pack
+   - Active editing surfaces get a quiet Frost Aqua state.
+   - Markdown table cell focus stays visible without row-height changes.
+   - Long inline tokens wrap inside the readable column.
+   ============================================================ */
+
+.markdown-source-view.mod-cm6 {
+  --ogd-lp-focus-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(224, 242, 254, 0.22));
+  --ogd-lp-focus-rim: rgba(103, 232, 249, 0.50);
+  --ogd-lp-focus-outline: rgba(103, 232, 249, 0.34);
+  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 0 0 1px rgba(103, 232, 249, 0.10), 0 6px 14px rgba(15, 23, 42, 0.055);
+  --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(240, 249, 255, 0.72), rgba(224, 242, 254, 0.46));
+}
+
+.theme-dark .markdown-source-view.mod-cm6 {
+  --ogd-lp-focus-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.34), rgba(14, 116, 144, 0.16));
+  --ogd-lp-focus-rim: rgba(103, 232, 249, 0.42);
+  --ogd-lp-focus-outline: rgba(103, 232, 249, 0.28);
+  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 0 0 1px rgba(103, 232, 249, 0.08), 0 8px 18px rgba(0, 0, 0, 0.22);
+  --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(14, 116, 144, 0.20), rgba(15, 23, 42, 0.14));
+}
+
+.markdown-source-view.mod-cm6 .cm-focused .cm-active.cm-line:not(:empty):not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-table-row):not(.HyperMD-frontmatter) {
+  background: var(--ogd-lp-focus-bg) !important;
+  border-radius: 12px !important;
+  outline: 1px solid var(--ogd-lp-focus-outline) !important;
+  outline-offset: 1px !important;
+  box-shadow: var(--ogd-lp-focus-shadow) !important;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within {
+  background: var(--ogd-lp-cell-focus-bg) !important;
+  outline: 1px solid var(--ogd-lp-focus-rim) !important;
+  outline-offset: -2px !important;
+  box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.18), var(--ogd-lp-focus-shadow) !important;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within :is(.table-cell-wrapper, .cm-editor, .cm-scroller, .cm-content, .cm-line) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) :is(.cm-inline-code, .cm-url, .cm-link) {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
+  opacity: 0.52 !important;
+}
 /* ============================================================
   v2.22.14-hotfix - Live Preview table row inflation guard
    Prevent global CM6 min-height rules from expanding table-cell editors.

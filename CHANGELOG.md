@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.76] — 2026-05-08 — Live Preview editing comfort pack
+
+### Changed
+- Added a conservative Live Preview editing comfort pass with soft Frost Aqua feedback for the active editing line.
+- Added Markdown table cell focus treatment that improves edit targeting without changing row height or table structure.
+- Improved Live Preview inline token wrapping for long code, URL, and link text within the readable column.
+- Added a visual proposal fixture for the Live Preview editing comfort states.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, release ZIP build, ZIP validation, and local Obsidian vault sync 대상.
+
 ## [2.22.75] — 2026-05-08 — Simplify Liquid Glass chrome interactions
 
 ### Changed
