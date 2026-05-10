@@ -184,7 +184,7 @@ README 대표 이미지와 실제 테마 CSS를 같은 liquid glass 기준으로
 
 ## 5. Change Log
 
-README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전체 이력은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+README에는 **최근 10개 릴리즈**만 간략히 요약합니다. 전체 변경 이력과 상세 검증 내역은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
@@ -198,78 +198,8 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 | **v2.22.113** | PDF export 추가 보정: `language-text`/`language-kusto` 코드블럭 라벨을 `TEXT`/`KUSTO`로 정리하고, PDF 테이블이 Live Preview의 report sheet 계열과 맞도록 gradient header, outer rim, cell border, row tone을 재조정. risk-table 마지막 열의 과한 per-cell rounded box도 print에서 평탄화 |
 | **v2.22.112** | 코드블럭 디자인 cascade 보정: late overlay/print 규칙 때문에 `LANGUAGE-POWERSHELL` 같은 raw class label이 노출되고 회색 wrapper 띠가 생기던 문제를 마지막 CSS 레이어에서 수정. Reading View/PDF 모두 readable language label, Candidate C header/rim/gradient, 투명 wrapper 유지 |
 | **v2.22.111** | PDF export 코드블럭이 화면용 Candidate C와 다른 Candidate D fallback으로 보이던 문제 수정. `@media print`에서도 frosted glass gradient, rim shadow, header divider, 코드 본문 padding을 C 스타일에 맞춰 적용하되 Chromium print가 `backdrop-filter`를 평탄화해도 gradient/rim으로 디자인 정체성이 유지되도록 보강 |
-| **v2.22.110** | 코드블럭 디자인을 승인된 Candidate C(Frosted Glass + Rim)로 갱신: Reading View fenced code block에 glass surface/rim/header row/copy button/token 색상 적용, print/PDF는 Candidate D 기반의 조용한 outline fallback 적용. `.HyperMD-codeblock*`도 hit-routing 가드에 추가하고 기존 Live Preview codeblock begin/end 수직 margin/padding 제거 |
-| **v2.22.109** | 회귀 방지 인프라 전면 구축: `live_preview_hit_routing_audit`에 active-line/embed BFC/pointer-events 카테고리 추가, `scripts/diff_guard.py` + `scripts/hooks/pre-commit` (패치 단위 감사), `scripts/build_selector_provenance.py` + `scripts/who_added.py` (셀렉터 도입 이력), `scripts/changelog_lint.py` (버전/셀렉터 토큰 강제), `dev/MAP/cm6-hit-routing-contract.md` 원칙 문서, `dev/test-samples/click-to-edit-regression.md` 시나리오 샘플, `scripts/hit_routing_probe.py` stub. CSS 모듈 상단에 FORBIDDEN 고지 주석 추가 |
-| **v2.22.108** | Live Preview hit-routing 재발 방지 가드 추가: `scripts/validate_theme.py`에 CM6 block widget(`.cm-callout`/`.cm-table-widget`/`.cm-embed-block.cm-callout`) 수직 margin과 HyperMD-* `.cm-line` 수직 margin/padding 감지 패턴 추가. 가드가 즉시 잡은 `ogd-spacing-relaxed` preset의 callout/table widget margin 및 HyperMD-callout cm-line 수직 padding 제거 |
-| **v2.22.107** | Live Preview callout 위 단락 클릭 라우팅 수정: v2.22.83 Report Notice callout이 `.cm-callout` widget에 적용하던 `margin: 1em 0 1.15em` 제거. v2.22.106 표 widget과 동일한 hitbox bleeding 패턴 |
-| **v2.22.106** | Live Preview 표 위 단락 클릭 잔존 문제 해결: `.cm-embed-block`의 `overflow-x:auto + max-width` BFC 강제 룰 제거, `.cm-table-widget`의 `margin: 0.4em 0` 제거. 표 위 hit-routing이 vanilla로 환원 |
-| **v2.22.105** | Live Preview 표 위 단락 클릭 라우팅 root cause 수정: `.HyperMD-table-row`(표 source `.cm-line`)에 `margin: 0.4em 0` 적용하던 구문을 제거. 그 margin이 cm-line hitbox를 위로 확장해 위 단락 클릭을 가로채던 문제 해결 |
-| **v2.22.104** | Live Preview active 라인 glass focus visual 제거. outline+shadow+background 페인트가 인접 라인 클릭 hit-testing을 가리던 문제 해결. table cell focus는 유지 |
-| **v2.22.103** | Live Preview 빈 줄 강제 압축(0.45em) 제거. native CM6 line-height(약 1.5em)로 환원해 마우스 클릭 hit-target 확보. 화살표키는 되면서 마우스 클릭은 안 되던 증상 해결 |
-| **v2.22.102** | Live Preview EOF pointer-events isolation block 제거. `.cm-line *` 강제 override가 active 라인의 list marker/widget hit 라우팅을 가로채고 다른 줄 선택을 막던 문제 해결. native CM6 동작으로 환원 |
-| **v2.22.101** | Live Preview 헤더 클릭 라우팅 root cause 수정: heading `.cm-line`의 padding-top/bottom을 0으로 환원해 hitbox를 시각 텍스트와 일치시킴 (vanilla parity) |
-| **v2.22.100** | 헤더 인접 빈 줄 hitbox를 0.45em로 통일해 헤더-빈줄-헤더 클릭 라우팅 침범을 줄이고, Live Preview EOF isolation을 native pointer 경로 단일 가드로 단순화 |
-| **v2.22.99** | Live Preview v2.22.84~98 실험 체인을 물리 제거하고, 비활성 rendered span 클릭을 CM6 line box로 넘기는 native edit isolation 적용 |
-| **v2.22.98** | v2.22.97 복구 블록이 실패 블록보다 앞에 삽입된 cascade 오류를 수정하고, Live Preview v2.22.76 row model 복구를 실제 EOF 최종 승자로 재적용 |
-| **v2.22.97** | Live Preview 편집성 관계 맵을 추가하고 v2.22.84~96 실험층으로 오염된 빈 줄/헤더/포인터 이벤트 관계를 v2.22.76 row model로 최종 복원 |
-| **v2.22.96** | Live Preview 헤더 `.cm-line`의 margin/padding 기반 spacing을 제거하고 CM6 native row hit-test를 복원해 인접 헤더·문단 선택/편집 불가 문제 보정 |
-| **v2.22.95** | Live Preview CSS 맵을 추가하고 헤더 하단 spacing을 padding에서 margin으로 이동해 active heading hitbox가 아래 문단 선택·편집을 가로막는 문제 보정 |
-| **v2.22.94** | Live Preview 텍스트 span click-through 실험을 마지막 cascade에서 제거하고 헤더 line box를 기본 크기로 복원해 헤더 아래 문단 편집 진입 문제 보정 |
-| **v2.22.93** | Live Preview 렌더 span hit-test 정책을 정리해 일반 헤더/문단 텍스트 클릭은 CodeMirror 줄 컨테이너가 받고 링크·위젯만 직접 클릭 가능하도록 보정 |
-| **v2.22.92** | Live Preview 헤더와 바로 아래 문단 사이의 안전 간격을 복원해 active heading hitbox가 다음 줄 선택·편집을 막는 현상 보정 |
-| **v2.22.91** | Live Preview 헤더 인접 빈 줄의 hitbox를 접고 텍스트 span 선택 동작을 기본값으로 복원해 빈 줄 클릭 후 아래 헤더/문단 편집 불가 현상 보정 |
-| **v2.22.90** | Live Preview 빈 줄 Aqua focus 박스를 고 specificity로 제거하고 heading/문단 렌더 span 클릭이 CodeMirror 편집 진입을 막지 않도록 보정 |
-| **v2.22.89** | Rendered/Live Preview 텍스트 선택·클릭 경로를 기본 동작으로 되돌리고 heading 장식 pseudo-element가 선택을 가로채지 않도록 보정 |
-| **v2.22.88** | Live Preview active-line Aqua 박스가 일반 heading/paragraph 선택·편집을 방해할 수 있어 active-line 장식을 제거하고 기본 hit-test를 복구 |
-| **v2.22.87** | Live Preview의 렌더된 일반 문단/목록 span이 클릭을 가로채 편집 진입을 막는 문제를 보정 |
-| **v2.22.86** | Live Preview에서 활성 heading 아래 문단이 클릭/편집되지 않는 hit-test 겹침 문제를 보정 |
-| **v2.22.85** | PDF Export에서도 B. Report Notice callout이 유지되도록 print cascade의 예전 좌측 stripe 규칙을 덮음 |
-| **v2.22.84** | Live Preview 빈 줄 active focus 박스와 마우스 선택 불안정성을 보정해 편집 화면 선택성을 복구 |
-| **v2.22.83** | Live Preview 편집 DOM에도 B. Report Notice callout 스타일을 적용해 기존 문서 편집 화면의 좌측 stripe 잔상을 제거 |
-| **v2.22.82** | 기본 callout을 승인된 B. Report Notice 디자인으로 변경해 전체 테두리, paper surface, 원형 아이콘 배지 중심으로 정리 |
-| **v2.22.81** | 기본 Markdown table을 승인된 B. Report Sheet 디자인으로 변경해 헤더 대비와 grid 가시성을 강화 |
-| **v2.22.80** | PDF 링크 출력 방식을 Inline URL / Clean Reading / Reference First로 분리하고 figure caption 인쇄 스타일을 추가 |
-| **v2.22.79** | PDF Compact Report 토글을 추가해 제목·본문·callout·표·참고 문헌의 인쇄 간격을 압축하고 정보 밀도를 높임 |
-| **v2.22.78** | PDF Export 첫 페이지에 YAML frontmatter/properties 원문이 출력되는 문제를 인쇄 전용으로 숨김 |
-| **v2.22.77** | PDF Export 코드블럭의 과도한 회색 외곽 박스와 화면용 배지를 제거하고 인쇄용 여백·줄바꿈을 정리 |
-| **v2.22.76** | Live Preview 편집 중인 라인·Markdown 표 셀 focus·긴 inline token wrapping을 조용한 Frost Aqua 상태로 보강 |
-| **v2.22.75** | 메뉴·사이드 pane·검색 제안·상단 아이콘·탭을 단순한 컨테이너형 Liquid Glass로 정리하고, 기본 상태의 복잡한 외곽 효과를 줄임 |
-| **v2.22.74** | PDF 페이지 경계 가이드 기능(`ogd-pdf-page-guides`, `ogd-pdf-width-preview`, `ogd-pdf-risk-hints`, `ogd-page-size`) 전면 제거 — Live Preview와 실제 PDF 페이지 나뉘의 구조적 불일치로 혼선만 주던 풌 정리 |
-| **v2.22.55** | callout 박스·아이콘·제목 정렬 흔들림과 긴 inline code overflow 보정 |
-| **v2.22.51** | PDF 마지막 페이지 footer 본문이 넓은 페이지 폭을 충분히 쓰지 못하던 문제 수정 |
-| **v2.22.50** | 문서 본문 샘플 강화와 `ogd-spacing-relaxed` Live Preview 패리티 보강 |
-| **v2.22.49** | PDF 마지막 페이지 footer 제목 색상이 설정값과 다르게 출력되던 문제 수정 |
-| **v2.22.48** | Style Settings Pickr swatch가 같은 섹션의 마지막 색상으로 초기화되어 보이던 문제 수정 |
-| **v2.22.47** | Style Settings color picker swatch가 회색으로 고정되어 보이던 문제 수정 |
-| **v2.22.46** | PDF 마지막 페이지 footer 라벨 문구를 가로 유지하고 라벨 칸 세로 중앙 정렬 |
-| **v2.22.45** | PDF 마지막 페이지 footer NOTICE 아래 가로 라인 제거 |
-| **v2.22.44** | PDF 마지막 페이지 footer 라벨·제목·본문 색상 설정 초기화처럼 보이던 문제 수정 |
-| **v2.22.43** | PDF 마지막 페이지 footer의 세로 notice bar 복원과 회색 배경 번짐 방지 유지 |
-| **v2.22.42** | PDF 마지막 페이지 footer의 회색 배경 번짐 hotfix와 좌측 세로 accent 제거 |
-| **v2.22.41** | PDF 마지막 페이지 H3 헤더형 confidential footer와 Style Settings 옵션 추가 |
-| **v2.22.40** | Live Preview 표 헤더 인라인 편집 높이 팽창 hotfix |
-| **v2.22.39** | Mermaid 진단용 control fixture의 DOM-only 상태 명확화 |
-| **v2.22.38** | Mermaid Live Preview control DOM 표시 fix와 진단 샘플 추가 |
-| **v2.22.37** | fixture 추적 정책, 릴리즈 guard, side pane QA matrix 보강 |
-| **v2.22.36** | 사이드 pane glass parity와 회귀 fixture 보강 |
-| **v2.22.35** | 백링크 설명 카드와 오른쪽 pane glass surface 정렬 |
-| **v2.22.34** | 우상단 view header action 버튼 glass surface 정렬 |
-| **v2.22.33** | toolbar/plugin token 정리와 community theme search fixture guard 추가 |
-| **v2.22.32** | 커뮤니티 테마 탐색 검색창 focus 하이라이트 완화 |
-| **v2.22.31** | README 대표 이미지, 표 모드 분리, Frost Aqua focus 정리 |
-| **v2.22.30** | 탭 rim과 active file row focus hotfix |
-| **v2.22.29** | core state matrix 기반 liquid glass 토큰 적용 |
-| **v2.22.28** | CSS guard, QA, fixture 검증 체계 강화 |
-| **v2.22.27** | Live Preview editable table 샘플 hotfix |
-| **v2.22.26** | core glass sample 반영과 active/selected rim 정리 |
-| **v2.22.25** | MAP info 축소 및 overlay/search/graph 안정화 |
-| **v2.22.24** | ribbon/toggle/tab/focus/graph control 소유권 정리 |
-| **v2.22.23** | file explorer hierarchy와 compatibility warning 정리 |
-| **v2.22.22** | README knowledge work stack 이미지 교체 |
-| **v2.22.21** | active path, ribbon/graph, backlink row liquid glass baseline |
-| **v2.22.20** | 상태바, modal close, Dataview chip, sync/git pill polish |
 
-> 전체 릴리즈 노트 → [CHANGELOG.md](CHANGELOG.md)
+> 전체 릴리즈 노트와 상세 변경 내역 → [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
