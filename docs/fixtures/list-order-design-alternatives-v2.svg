@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1180" viewBox="0 0 1800 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite list and order design alternatives v2</title>
+  <desc id="desc">Four alternative list marker designs optimized for readability, Live Preview parity, and lower PDF export risk.</desc>
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+    <filter id="darkShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="20" stdDeviation="26" flood-color="#020617" flood-opacity="0.46"/>
+    </filter>
+    <linearGradient id="pageBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.46" stop-color="#eef7fb"/>
+      <stop offset="1" stop-color="#f6f3ff"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="darkPanel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e293b" stop-opacity="0.86"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0.72"/>
+    </linearGradient>
+    <radialGradient id="chipA" cx="34%" cy="22%" r="82%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="0.42" stop-color="#ecfeff" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.62"/>
+    </radialGradient>
+    <radialGradient id="chipDark" cx="34%" cy="22%" r="82%">
+      <stop offset="0" stop-color="#f8fafc" stop-opacity="0.24"/>
+      <stop offset="0.45" stop-color="#164e63" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.70"/>
+    </radialGradient>
+    <style>
+      .bg { fill: url(#pageBg); }
+      .title { font: 800 40px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
+      .subtitle { font: 500 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; }
+      .panel { fill: url(#panel); stroke: rgba(148,163,184,0.34); stroke-width: 1.2; filter: url(#softShadow); }
+      .dark-panel { fill: url(#darkPanel); stroke: rgba(148,163,184,0.26); stroke-width: 1.2; filter: url(#darkShadow); }
+      .panel-title { font: 800 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #111827; }
+      .panel-title-dark { font: 800 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; }
+      .meta { font: 600 14px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; }
+      .meta-dark { font: 600 14px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #a7b6ca; }
+      .line { font: 600 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1f2937; }
+      .line-dark { font: 600 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; }
+      .small { font: 500 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748b; }
+      .small-dark { font: 500 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; }
+      .mono { font: 600 20px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; fill: #1e293b; }
+      .mono-dark { font: 600 20px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; fill: #dbeafe; }
+      .tag { fill: rgba(255,255,255,0.70); stroke: rgba(148,163,184,0.36); stroke-width: 1; }
+      .tag-dark { fill: rgba(15,23,42,0.58); stroke: rgba(148,163,184,0.24); stroke-width: 1; }
+      .native-num { font: 850 23px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0e7490; }
+      .native-dot { fill: #0e7490; }
+      .pill { fill: url(#chipA); stroke: rgba(14,165,233,0.48); stroke-width: 1.3; }
+      .pill-dark { fill: url(#chipDark); stroke: rgba(186,230,253,0.34); stroke-width: 1.3; }
+      .pill-text { font: 850 17px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #075985; }
+      .pill-text-dark { font: 850 17px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #bae6fd; }
+      .badge { fill: rgba(240,249,255,0.78); stroke: rgba(14,165,233,0.34); stroke-width: 1.2; }
+      .badge-dark { fill: rgba(14,116,144,0.26); stroke: rgba(186,230,253,0.22); stroke-width: 1.2; }
+      .badge-text { font: 850 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f766e; }
+      .rule { stroke: rgba(203,213,225,0.70); stroke-width: 1; }
+      .rule-dark { stroke: rgba(148,163,184,0.22); stroke-width: 1; }
+      .note { font: 700 15px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f766e; }
+      .risk { font: 700 15px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #b45309; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1800" height="1180"/>
+  <circle cx="220" cy="120" r="180" fill="#bae6fd" opacity="0.30"/>
+  <circle cx="1520" cy="190" r="240" fill="#ddd6fe" opacity="0.28"/>
+  <circle cx="1360" cy="960" r="260" fill="#bbf7d0" opacity="0.22"/>
+
+  <text x="72" y="72" class="title">List and Order Design Alternatives v2</text>
+  <text x="72" y="108" class="subtitle">PDF 깨짐을 피하기 위해 marker는 작게, 본문 flow는 넓게 유지하는 후보들입니다. 구현 전 선택용 샘플 이미지입니다.</text>
+
+  <!-- Candidate A -->
+  <g transform="translate(72 158)">
+    <rect class="panel" width="800" height="430" rx="20"/>
+    <text x="34" y="52" class="panel-title">A. Native Accent Marker</text>
+    <text x="34" y="82" class="meta">가장 PDF 안전 - ::marker 색상/굵기 중심, 본문 폭을 건드리지 않음</text>
+    <line x1="34" y1="106" x2="766" y2="106" class="rule"/>
+
+    <text x="42" y="154" class="native-num">01</text>
+    <text x="92" y="154" class="line">Windows 호스트가 Defender for Endpoint Plan 2 테넌트에 온보딩된다.</text>
+    <text x="42" y="210" class="native-num">02</text>
+    <text x="92" y="210" class="line">Defender portal의</text>
+    <rect x="268" y="184" width="92" height="34" rx="7" class="tag"/>
+    <text x="282" y="209" class="mono">Settings</text>
+    <text x="372" y="210" class="line">-&gt;</text>
+    <rect x="410" y="184" width="106" height="34" rx="7" class="tag"/>
+    <text x="424" y="209" class="mono">Endpoints</text>
+    <text x="530" y="210" class="line">에서 MSI를 확보한다.</text>
+    <circle cx="53" cy="260" r="6" class="native-dot"/>
+    <text x="92" y="268" class="line">긴 inline code가 있어도 본문 줄 안에서 정상적으로 이어진다.</text>
+    <rect x="92" y="289" width="306" height="34" rx="7" class="tag"/>
+    <text x="106" y="314" class="mono">DeviceInfo.HostDeviceId</text>
+    <text x="410" y="314" class="small">mapping key remains readable</text>
+    <text x="34" y="372" class="note">추천도: 높음</text>
+    <text x="152" y="372" class="risk">표현력: 낮음, 안정성: 높음</text>
+  </g>
+
+  <!-- Candidate B -->
+  <g transform="translate(928 158)">
+    <rect class="panel" width="800" height="430" rx="20"/>
+    <text x="34" y="52" class="panel-title">B. Soft Gutter Capsule</text>
+    <text x="34" y="82" class="meta">작은 glass capsule만 gutter에 배치 - 본문은 일반 list flow 유지</text>
+    <line x1="34" y1="106" x2="766" y2="106" class="rule"/>
+
+    <rect x="34" y="132" width="44" height="28" rx="14" class="pill"/>
+    <text x="46" y="153" class="pill-text">01</text>
+    <text x="96" y="154" class="line">Windows 호스트가 Plan 2 테넌트에 온보딩된다.</text>
+    <rect x="34" y="188" width="44" height="28" rx="14" class="pill"/>
+    <text x="46" y="209" class="pill-text">02</text>
+    <text x="96" y="210" class="line">Settings -&gt; Endpoints -&gt; Onboarding 경로에서 MSI를 확보한다.</text>
+    <circle cx="56" cy="260" r="7" class="pill"/>
+    <text x="96" y="268" class="line">중첩 bullet은 작은 bead만 사용한다.</text>
+    <circle cx="56" cy="314" r="5" fill="#ccfbf1" stroke="#14b8a6"/>
+    <text x="96" y="322" class="line">좌측 라인 없이도 깊이를 구분한다.</text>
+    <text x="34" y="372" class="note">추천도: 중상</text>
+    <text x="152" y="372" class="risk">표현력: 중간, PDF risk: 중간 이하</text>
+  </g>
+
+  <!-- Candidate C -->
+  <g transform="translate(72 642)">
+    <rect class="dark-panel" width="800" height="430" rx="20"/>
+    <text x="34" y="52" class="panel-title-dark">C. Step Label Marker</text>
+    <text x="34" y="82" class="meta-dark">숫자보다 의미 라벨을 강조 - 긴 문장/코드가 많은 기술 문서에 적합</text>
+    <line x1="34" y1="106" x2="766" y2="106" class="rule-dark"/>
+
+    <rect x="34" y="128" width="82" height="34" rx="17" class="badge-dark"/>
+    <text x="52" y="153" class="pill-text-dark">STEP 1</text>
+    <text x="132" y="154" class="line-dark">호스트 onboarding 상태를 먼저 확인한다.</text>
+    <rect x="34" y="184" width="82" height="34" rx="17" class="badge-dark"/>
+    <text x="52" y="209" class="pill-text-dark">STEP 2</text>
+    <text x="132" y="210" class="line-dark">Defender portal 경로와 MSI 설치 상태를 검증한다.</text>
+    <rect x="132" y="232" width="318" height="34" rx="7" class="tag-dark"/>
+    <text x="146" y="257" class="mono-dark">Windows Subsystem for Linux 2</text>
+    <text x="462" y="257" class="small-dark">does not collapse into a narrow column</text>
+    <circle cx="75" cy="315" r="6" fill="#67e8f9" opacity="0.72"/>
+    <text x="132" y="322" class="line-dark">일반 bullet은 낮은 채도의 dot로 처리한다.</text>
+    <text x="34" y="372" class="note">추천도: 중간</text>
+    <text x="152" y="372" class="risk">보고서 느낌 강함, 일반 목록에는 다소 무거움</text>
+  </g>
+
+  <!-- Candidate D -->
+  <g transform="translate(928 642)">
+    <rect class="dark-panel" width="800" height="430" rx="20"/>
+    <text x="34" y="52" class="panel-title-dark">D. Quiet Glass Dot + Strong Text</text>
+    <text x="34" y="82" class="meta-dark">가시성은 텍스트 weight로 확보, marker는 작고 조용하게 유지</text>
+    <line x1="34" y1="106" x2="766" y2="106" class="rule-dark"/>
+
+    <circle cx="54" cy="145" r="10" class="pill-dark"/>
+    <text x="92" y="154" class="line-dark">Windows 호스트 onboarding</text>
+    <text x="92" y="185" class="small-dark">중요 구간은 marker가 아니라 본문 강조와 code chip으로 구분</text>
+    <circle cx="54" cy="238" r="10" class="pill-dark"/>
+    <text x="92" y="247" class="line-dark">Advanced Hunting mapping</text>
+    <rect x="92" y="269" width="306" height="34" rx="7" class="tag-dark"/>
+    <text x="106" y="294" class="mono-dark">DeviceInfo.HostDeviceId</text>
+    <text x="410" y="294" class="small-dark">keeps full line width</text>
+    <circle cx="54" cy="342" r="7" fill="#c4b5fd" opacity="0.72"/>
+    <text x="92" y="350" class="line-dark">PDF에서는 native marker fallback과 가장 잘 맞는다.</text>
+    <text x="34" y="392" class="note">추천도: 높음</text>
+    <text x="152" y="392" class="risk">표현력: 중간, 장문 가독성: 높음</text>
+  </g>
+
+  <text x="72" y="1132" class="subtitle">우선순위 제안: A 또는 D를 기본으로, B는 화면용 강조 옵션으로만 제한. C는 report preset 전용 후보.</text>
+  </svg>

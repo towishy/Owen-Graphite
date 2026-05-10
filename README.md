@@ -20,9 +20,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.120` |
-| **기본 릴리즈** | `v2.22.120` |
-| **롤백 베이스라인** | `v2.22.120` |
+| **버전** | `2.22.126` |
+| **기본 릴리즈** | `v2.22.126` |
+| **롤백 베이스라인** | `v2.22.126` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -188,6 +188,12 @@ README에는 **최근 10개 릴리즈**만 간략히 요약합니다. 전체 변
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.126** | Native ordered-list counter restore: 이전 glass marker용 custom counter가 native list numbering과 `start` 처리에 간섭하지 않도록 ordered list counter를 브라우저/Obsidian 기본값으로 되돌리고, 하이라이트로 깨진 문단 fallback의 과한 들여쓰기를 제거 |
+| **v2.22.125** | PDF checklist flattening: PDF Export에서 체크리스트가 회색 행/카드처럼 깨져 보이지 않도록 task-list surface와 row border를 print에서 평탄화하고 native checkbox flow를 복원 |
+| **v2.22.124** | Highlighted list alignment guard: 리스트 항목 내부 하이라이트가 gutter/본문 정렬을 흔들지 않도록 `mark`/CM6 highlight span을 inline flow로 고정하고 PDF fallback도 같은 방향으로 보정 |
+| **v2.22.123** | Native accent list markers: PDF에서 긴 inline code가 깨지지 않도록 custom chip/grid list marker를 끄고, `::marker` 색상·굵기 중심의 안정적인 A안으로 전환 |
+| **v2.22.122** | List marker parity hotfix: Live Preview의 CodeMirror list marker span에도 glass marker를 직접 적용하고, PDF export의 page-break 구간에서 native marker 색으로 되돌아가는 현상을 줄이기 위해 print grid fallback을 추가 |
+| **v2.22.121** | Liquid list marker redesign: ordered list는 glass number chip, unordered list는 pearl marker, task list는 상태별 compact glass checkbox로 정리. PDF export에서도 print-safe fallback을 적용해 Live Preview와 최대한 비슷한 리스트 인상을 유지 |
 | **v2.22.120** | PDF table header 색감 추가 보정: Chromium print에서 header 배경이 Live Preview보다 진한 회청색으로 보이던 문제를 줄이기 위해 PDF fallback을 더 밝은 Frosted Ledger 표면/헤더/경계선 토큰으로 조정 |
 | **v2.22.119** | PDF table parity 보정: A Frosted Ledger 적용 후 PDF 표 글자가 Live Preview보다 작고 진하게 보이던 문제를 수정. PDF table font/padding/line-height와 header/body slate 색상, frosted tint를 Live Preview 기준으로 재조정 |
 | **v2.22.118** | Markdown table 기본 디자인을 승인된 A Frosted Ledger 방향으로 전환. Reading View, Live Preview CM6 table widget, PDF export가 같은 frosted surface/header/grid/hover 토큰을 공유하도록 보정 |

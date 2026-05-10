@@ -4,6 +4,92 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.126] — 2026-05-11 — Native ordered-list counter restore
+
+### Fixed
+- Ordered lists now restore browser/Obsidian native counters after the removed glass-chip counter, reducing cases where a following item is renumbered visually after a highlighted marker breaks list parsing.
+- Ordered list markers now use normal decimal numbering instead of forcing `decimal-leading-zero`, keeping Markdown numbering closer to Obsidian defaults.
+- The malformed highlighted-paragraph fallback no longer adds extra indentation, so lines like `==3. text==` do not look doubly shifted even though they remain Markdown paragraphs rather than semantic list items.
+
+### Known limitation
+- CSS cannot convert `==3. item==` into a real ordered-list item. Use `3. ==item==` when the number itself must stay part of the list sequence.
+
+### Selectors touched
+- `.markdown-rendered ol`, `.markdown-rendered ol > li`, `@media print ol`, `:has(> mark:first-child)` highlighted paragraph fallback.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build.
+
+## [2.22.125] — 2026-05-11 — PDF checklist flattening
+
+### Fixed
+- PDF export now flattens task-list surfaces so checklists render as normal document lists instead of grey row/card bands.
+- Print-only checkbox sizing, border, and checked glyph positioning were reset to stay aligned with checklist text.
+- Checklist items now avoid page breaks per item without forcing the whole checklist into a framed block.
+
+### Selectors touched
+- `@media print .contains-task-list`, `@media print .task-list-item`, `@media print input[type="checkbox"]`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to the macOS Owen Graphite theme target.
+
+## [2.22.124] — 2026-05-11 — Highlighted list alignment guard
+
+### Fixed
+- Highlighted text inside ordered and unordered list items now stays in normal inline flow, preventing the highlight box from making the list gutter appear shifted.
+- Live Preview highlight spans inside `.HyperMD-list-line` now keep inline dimensions instead of altering CodeMirror row rhythm.
+- PDF export uses the same inline mark fallback for highlighted list text while preserving native list markers.
+
+### Known limitation
+- If the Markdown source wraps the list marker itself, for example `==3. item==`, Obsidian parses that line as a highlighted paragraph rather than a list item. Use `3. ==item==` to keep list numbering semantic.
+
+### Selectors touched
+- `.markdown-rendered :is(ol, ul) > li mark`, `.markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-highlight`, `.cm-formatting-highlight`, `@media print li mark`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build.
+
+## [2.22.123] — 2026-05-11 — Native accent list markers
+
+### Changed
+- Replaced the liquid list chip treatment with the approved A. Native Accent Marker direction, using native `::marker` color and weight instead of custom `li::before` chips.
+- Live Preview list source markers now use inline text styling instead of inline-grid glass capsules, preserving CodeMirror line flow and edit hit boxes.
+
+### Fixed
+- PDF export no longer uses the v2.22.122 list-marker grid fallback that could force long inline code into a narrow marker column and break text vertically.
+
+### Selectors touched
+- `.markdown-rendered :is(ol, ul) > li::marker`, `.markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-list-*`, `@media print` list marker fallback.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to the macOS Owen Graphite theme target.
+
+## [2.22.122] — 2026-05-10 — List marker parity hotfix
+
+### Fixed
+- Live Preview now styles CodeMirror list marker spans directly, so ordered and unordered list markers receive the same compact glass treatment instead of staying as plain bold source markers.
+- PDF export now uses a print-specific grid fallback for list markers, reducing Chromium page-break color/layout drift where one item could fall back to a differently colored native marker.
+
+### Selectors touched
+- `.markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-list-ol`, `.markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-list-ul`, `@media print li::before` list marker fallback.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to the macOS Owen Graphite theme target.
+
+## [2.22.121] — 2026-05-10 — Liquid list marker redesign
+
+### Changed
+- Markdown ordered lists now use compact liquid-glass number chips, while unordered lists use small pearl markers instead of flat default bullets.
+- Nested list depth no longer relies on a left rail; it uses smaller bead markers so the design stays aligned with the permanent no-left-accent rule.
+- Task list checkboxes now share the same glass marker language across Reading View and Live Preview, with status-aware border colors for common task states.
+- PDF export now uses print-safe list marker fallbacks, exact color adjustment, and flattened task-list glass surfaces so exported PDFs stay visually close to Live Preview.
+
+### Selectors touched
+- `.markdown-rendered :is(ol, ul)`, `.markdown-rendered ol > li::before`, `.markdown-rendered ul > li::before`, `.contains-task-list`, `.markdown-source-view.mod-cm6 .cm-formatting-list`, `@media print list/task-list markers`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to the macOS Owen Graphite theme target.
+
 ## [2.22.120] — 2026-05-10 — PDF table header tint parity
 
 ### Fixed
