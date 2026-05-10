@@ -891,3 +891,20 @@ body.theme-dark .workspace-leaf-content .markdown-rendered table :is(th, td),
 body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
   color: var(--ogd-line-soft, #e5e7eb) !important;
 }
+
+/* ============================================================
+  v2.22.120-hotfix - Rendered heading breathing room
+   Improve section separation after dense content without touching CM6 rows.
+   ============================================================ */
+
+body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 {
+  margin-top: 2.05em !important;
+}
+
+body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 {
+  margin-top: 1.62em !important;
+}
+
+body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 {
+  margin-top: 1.34em !important;
+}
