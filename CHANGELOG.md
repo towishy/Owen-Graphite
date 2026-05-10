@@ -4,6 +4,17 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.127] — 2026-05-11 — PDF table color parity
+
+### Fixed
+- PDF export now maps table surfaces, table rim lines, and captions to low-alpha print-safe sRGB tints while preserving semantic callout colors.
+
+### Selectors touched
+- `@media print table`, `.table-caption`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build.
+
 ## [2.22.126] — 2026-05-11 — Native ordered-list counter restore
 
 ### Fixed

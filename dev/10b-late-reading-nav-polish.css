@@ -172,6 +172,85 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     background: #f4f6f8 !important;
     border-bottom: 1px solid var(--ogd-text-soft, #94a3b8) !important;
   }
+
+  /* PDF color parity: use low-alpha sRGB tints in place of screen glass gradients. */
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) {
+    --ogd-print-table-bg: rgba(255, 255, 255, 0.72);
+    --ogd-print-table-head-bg: rgba(248, 250, 252, 0.54);
+    --ogd-print-table-cell-bg: rgba(255, 255, 255, 0.38);
+    --ogd-print-table-zebra-bg: rgba(236, 254, 255, 0.16);
+    --ogd-print-table-first-col-bg: rgba(248, 250, 252, 0.34);
+    --ogd-print-table-border: rgba(203, 213, 225, 0.40);
+    --ogd-print-table-strong-border: rgba(148, 163, 184, 0.46);
+    --ogd-print-table-text: #334155;
+    --ogd-print-table-strong-text: #1f2937;
+    --ogd-print-caption-text: #475569;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, table *) {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table {
+    --ogd-table-bg: var(--ogd-print-table-bg);
+    --ogd-table-surface: var(--ogd-print-table-bg);
+    --ogd-table-head-bg: var(--ogd-print-table-head-bg);
+    --ogd-table-border: var(--ogd-print-table-border);
+    --ogd-table-cell-border: var(--ogd-print-table-border);
+    --ogd-table-row-even: var(--ogd-print-table-zebra-bg);
+    --ogd-table-shadow: none;
+    border-color: var(--ogd-print-table-border) !important;
+    background: var(--ogd-print-table-bg) !important;
+    background-color: var(--ogd-print-table-bg) !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table :is(th, td) {
+    border-color: var(--ogd-print-table-border) !important;
+    color: var(--ogd-print-table-text) !important;
+    background-clip: padding-box !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table th {
+    border-bottom-color: var(--ogd-print-table-strong-border) !important;
+    background: var(--ogd-print-table-head-bg) !important;
+    background-color: var(--ogd-print-table-head-bg) !important;
+    color: var(--ogd-print-table-strong-text) !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table td {
+    background: var(--ogd-print-table-cell-bg) !important;
+    background-color: var(--ogd-print-table-cell-bg) !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
+  body.ogd-zebra:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+    background: var(--ogd-print-table-zebra-bg) !important;
+    background-color: var(--ogd-print-table-zebra-bg) !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child,
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table.comparison-table :is(th, td):first-child {
+    background: var(--ogd-print-table-first-col-bg) !important;
+    background-color: var(--ogd-print-table-first-col-bg) !important;
+    color: var(--ogd-print-table-strong-text) !important;
+    box-shadow: 1px 0 0 var(--ogd-print-table-border) !important;
+  }
+
+  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-caption, .table-caption, .figure-caption, .media-caption) {
+    color: var(--ogd-print-caption-text) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
 }
 
 /* ============================================================

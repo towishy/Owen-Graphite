@@ -20,9 +20,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.126` |
-| **기본 릴리즈** | `v2.22.126` |
-| **롤백 베이스라인** | `v2.22.126` |
+| **버전** | `2.22.127` |
+| **기본 릴리즈** | `v2.22.127` |
+| **롤백 베이스라인** | `v2.22.127` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -188,6 +188,7 @@ README에는 **최근 10개 릴리즈**만 간략히 요약합니다. 전체 변
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.127** | PDF table color parity: PDF export에서 table surface, rim line, caption을 low-alpha print-safe sRGB tint로 매핑해 화면과 더 가까운 투명하고 연한 표 인상을 유지하면서 callout semantic color는 보존 |
 | **v2.22.126** | Native ordered-list counter restore: 이전 glass marker용 custom counter가 native list numbering과 `start` 처리에 간섭하지 않도록 ordered list counter를 브라우저/Obsidian 기본값으로 되돌리고, 하이라이트로 깨진 문단 fallback의 과한 들여쓰기를 제거 |
 | **v2.22.125** | PDF checklist flattening: PDF Export에서 체크리스트가 회색 행/카드처럼 깨져 보이지 않도록 task-list surface와 row border를 print에서 평탄화하고 native checkbox flow를 복원 |
 | **v2.22.124** | Highlighted list alignment guard: 리스트 항목 내부 하이라이트가 gutter/본문 정렬을 흔들지 않도록 `mark`/CM6 highlight span을 inline flow로 고정하고 PDF fallback도 같은 방향으로 보정 |
