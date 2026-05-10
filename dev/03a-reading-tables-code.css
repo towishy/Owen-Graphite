@@ -202,3 +202,157 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   font-weight: 600;
 }
 
+/* ============================================================
+  v2.22.110 - Code Block Candidate C: Frosted Glass + Rim
+   Approved SVG sample: docs/fixtures/code-block-candidate-c-frosted-rim.svg
+   Reading View only. Live Preview geometry is handled separately in
+   dev/05-live-preview.css to avoid CM6 hit-target regressions.
+   ============================================================ */
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
+.workspace-leaf-content .markdown-rendered pre {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(241, 245, 249, 0.62));
+  --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
+  --ogd-codeblock-rim: rgba(255, 255, 255, 0.88);
+  --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.42);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.28);
+  position: relative !important;
+  margin: 1.28em 0 1.62em !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--ogd-codeblock-border) !important;
+  border-radius: var(--ogd-radius-control, 10px) !important;
+  background: var(--ogd-codeblock-bg) !important;
+  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 14px 28px rgba(15, 23, 42, 0.10) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+.workspace-leaf-content .markdown-rendered pre::before {
+  content: "CODE" !important;
+  display: block !important;
+  min-height: 2.7em !important;
+  padding: 0.74em 5.5em 0.64em 1.18em !important;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border) !important;
+  background: var(--ogd-codeblock-header-bg) !important;
+  color: var(--ogd-text-subtle, #475569) !important;
+  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 0.72em !important;
+  font-weight: 760 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::before,
+.workspace-leaf-content .markdown-rendered pre[class*="language-"]::before {
+  content: attr(class) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
+.workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
+  content: none !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+.workspace-leaf-content .markdown-rendered pre code {
+  display: block !important;
+  max-width: 100% !important;
+  padding: 1em 1.1em 1.05em !important;
+  overflow-x: auto !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+  background: transparent !important;
+  font-size: 0.9em !important;
+  line-height: 1.62 !important;
+  white-space: pre !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
+.workspace-leaf-content .markdown-rendered pre .copy-code-button {
+  top: 0.55em !important;
+  right: 0.75em !important;
+  min-width: 4.4em !important;
+  min-height: 1.8em !important;
+  padding: 0.2em 0.72em !important;
+  border: 1px solid rgba(148, 163, 184, 0.45) !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  color: var(--ogd-text-subtle, #64748b) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
+  font-size: 0.72em !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
+  --ogd-codeblock-border: rgba(71, 85, 105, 0.78);
+  --ogd-codeblock-rim: rgba(255, 255, 255, 0.12);
+  --ogd-codeblock-header-bg: rgba(15, 23, 42, 0.28);
+  --ogd-codeblock-header-border: rgba(71, 85, 105, 0.62);
+  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 14px 28px rgba(0, 0, 0, 0.32) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre::before {
+  color: var(--ogd-line-soft, #cbd5e1) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
+  color: var(--ogd-line-soft, #e2e8f0) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre .copy-code-button {
+  border-color: rgba(71, 85, 105, 0.70) !important;
+  background: rgba(15, 23, 42, 0.62) !important;
+  color: var(--ogd-line-soft, #cbd5e1) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
+.workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
+  color: #6d28d9 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
+.workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
+  color: #b45309 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
+.workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
+  color: #0f766e !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
+.workspace-leaf-content .markdown-rendered pre :is(.token.comment, .token.prolog, .token.doctype) {
+  color: #94a3b8 !important;
+  font-style: italic !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
+body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
+  color: #c4b5fd !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
+body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
+  color: #fcd34d !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
+body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
+  color: #5eead4 !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
+body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.comment, .token.prolog, .token.doctype) {
+  color: #64748b !important;
+}
+

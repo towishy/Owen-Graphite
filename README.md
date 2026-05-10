@@ -9,7 +9,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-36%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-38%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
 
 ---
 
@@ -20,7 +20,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.78` |
+| **버전** | `2.22.120` |
+| **기본 릴리즈** | `v2.22.120` |
+| **롤백 베이스라인** | `v2.22.120` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -43,11 +45,11 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분류 | 주요 기능 | 요약 |
 |------|----------|------|
 | **디자인 코어** | Graphite 톤 · Liquid-glass chrome | 차분한 graphite 기반에 ribbon·사이드바·탭·툴바·command palette·tooltip glass surface 적용 |
-| **상태 표현** | Table mode split · Frost Aqua focus | 위키형/보고서형 표를 분리하고 focus 상태는 aqua rim + soft halo로 표시 |
+| **상태 표현** | Frosted Ledger tables · Report Notice callouts | 기본 Markdown 표와 callout을 선명한 문서형 스타일로 정리하고 focus 상태는 aqua rim + soft halo로 표시 |
 | **워크스페이스** | Workspace Surfaces Pack · Polish Pack | Graph view·Canvas·Folder cues·Mini TOC·Cover page·Dark parity·Mobile·Tab·Search HL 정리 |
 | **보고서·인쇄** | A3 PDF Export · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할 |
 | **분할 안정성** | 자동 분할 회피 | callout·표·Mermaid·코드·이미지가 PDF에서 중간 분할되지 않도록 보정 |
-| **커스터마이징** | Style Settings 36종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
+| **커스터마이징** | Style Settings 38종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드·PDF Compact Report·PDF 링크 출력 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
 | **접근성·환경** | 시선 보호 · OS 다크 모드 · CJK 보정 | 시선 보호 모드, OS 다크 모드 자동 추종, CJK +0.5px 자동 보정 지원 |
 | **Style Settings 분류** | 타이포 · 표 · 보고서 · PDF · 컬러/모션 | Style Settings 플러그인에서 전체 옵션을 사이드바 UI로 조정 |
 
@@ -151,7 +153,7 @@ fi
 THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owen-Graphite.git"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main && git -C "$THEME_DIR" clean -qfd; else if [ -e "$THEME_DIR" ]; then mv "$THEME_DIR" "$THEME_DIR.backup-$(date +%Y%m%d-%H%M%S)"; fi; git clone -q "$REPO" "$THEME_DIR"; fi && echo "OK"
 ```
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 36개 옵션을 사이드바 UI에서 토글하고, PDF Header/Footer 문구와 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
+> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 38개 옵션을 사이드바 UI에서 토글하고, PDF Compact Report, PDF 링크 출력 방식, PDF Header/Footer 문구 및 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
 
 </details>
 
@@ -186,6 +188,48 @@ README에는 **v2.22.20 이상** 주요 변경만 간략히 요약합니다. 전
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.120** | PDF table header 색감 추가 보정: Chromium print에서 header 배경이 Live Preview보다 진한 회청색으로 보이던 문제를 줄이기 위해 PDF fallback을 더 밝은 Frosted Ledger 표면/헤더/경계선 토큰으로 조정 |
+| **v2.22.119** | PDF table parity 보정: A Frosted Ledger 적용 후 PDF 표 글자가 Live Preview보다 작고 진하게 보이던 문제를 수정. PDF table font/padding/line-height와 header/body slate 색상, frosted tint를 Live Preview 기준으로 재조정 |
+| **v2.22.118** | Markdown table 기본 디자인을 승인된 A Frosted Ledger 방향으로 전환. Reading View, Live Preview CM6 table widget, PDF export가 같은 frosted surface/header/grid/hover 토큰을 공유하도록 보정 |
+| **v2.22.117** | callout 내부 체크리스트 보정: 중첩 task-list 카드 프레임을 제거해 하단 잔여선과 checkbox 잘림을 줄이고, Live Preview callout task line에서 `- [ ]` 원문 marker가 과하게 드러나는 상태를 정리 |
+| **v2.22.116** | callout 바로 뒤 Markdown 수평선이 PDF뿐 아니라 Reading View/Live Preview에서도 잔여 회색 라인처럼 보이던 문제 수정. 일반 `hr`는 유지하고, `.callout + hr` 및 Live Preview의 callout widget 직후 `.HyperMD-hr`만 숨김 |
+| **v2.22.115** | PDF Compact Report에서 callout 바로 뒤 Markdown 수평선이 잔여 회색 라인처럼 보이던 문제 수정. 일반 `hr`는 유지하되 `.callout + hr`만 PDF에서 숨김 |
+| **v2.22.114** | PDF export 세부 보정: 긴 코드블럭이 페이지에서 분할될 때 배경/토큰 색이 어긋나지 않도록 print code surface와 token palette를 고정하고 `box-decoration-break`를 적용. 중첩 code wrapper의 회색 림 제거 범위를 확대하고, PDF 테이블 글자 크기를 본문에 더 가깝게 상향 |
+| **v2.22.113** | PDF export 추가 보정: `language-text`/`language-kusto` 코드블럭 라벨을 `TEXT`/`KUSTO`로 정리하고, PDF 테이블이 Live Preview의 report sheet 계열과 맞도록 gradient header, outer rim, cell border, row tone을 재조정. risk-table 마지막 열의 과한 per-cell rounded box도 print에서 평탄화 |
+| **v2.22.112** | 코드블럭 디자인 cascade 보정: late overlay/print 규칙 때문에 `LANGUAGE-POWERSHELL` 같은 raw class label이 노출되고 회색 wrapper 띠가 생기던 문제를 마지막 CSS 레이어에서 수정. Reading View/PDF 모두 readable language label, Candidate C header/rim/gradient, 투명 wrapper 유지 |
+| **v2.22.111** | PDF export 코드블럭이 화면용 Candidate C와 다른 Candidate D fallback으로 보이던 문제 수정. `@media print`에서도 frosted glass gradient, rim shadow, header divider, 코드 본문 padding을 C 스타일에 맞춰 적용하되 Chromium print가 `backdrop-filter`를 평탄화해도 gradient/rim으로 디자인 정체성이 유지되도록 보강 |
+| **v2.22.110** | 코드블럭 디자인을 승인된 Candidate C(Frosted Glass + Rim)로 갱신: Reading View fenced code block에 glass surface/rim/header row/copy button/token 색상 적용, print/PDF는 Candidate D 기반의 조용한 outline fallback 적용. `.HyperMD-codeblock*`도 hit-routing 가드에 추가하고 기존 Live Preview codeblock begin/end 수직 margin/padding 제거 |
+| **v2.22.109** | 회귀 방지 인프라 전면 구축: `live_preview_hit_routing_audit`에 active-line/embed BFC/pointer-events 카테고리 추가, `scripts/diff_guard.py` + `scripts/hooks/pre-commit` (패치 단위 감사), `scripts/build_selector_provenance.py` + `scripts/who_added.py` (셀렉터 도입 이력), `scripts/changelog_lint.py` (버전/셀렉터 토큰 강제), `dev/MAP/cm6-hit-routing-contract.md` 원칙 문서, `dev/test-samples/click-to-edit-regression.md` 시나리오 샘플, `scripts/hit_routing_probe.py` stub. CSS 모듈 상단에 FORBIDDEN 고지 주석 추가 |
+| **v2.22.108** | Live Preview hit-routing 재발 방지 가드 추가: `scripts/validate_theme.py`에 CM6 block widget(`.cm-callout`/`.cm-table-widget`/`.cm-embed-block.cm-callout`) 수직 margin과 HyperMD-* `.cm-line` 수직 margin/padding 감지 패턴 추가. 가드가 즉시 잡은 `ogd-spacing-relaxed` preset의 callout/table widget margin 및 HyperMD-callout cm-line 수직 padding 제거 |
+| **v2.22.107** | Live Preview callout 위 단락 클릭 라우팅 수정: v2.22.83 Report Notice callout이 `.cm-callout` widget에 적용하던 `margin: 1em 0 1.15em` 제거. v2.22.106 표 widget과 동일한 hitbox bleeding 패턴 |
+| **v2.22.106** | Live Preview 표 위 단락 클릭 잔존 문제 해결: `.cm-embed-block`의 `overflow-x:auto + max-width` BFC 강제 룰 제거, `.cm-table-widget`의 `margin: 0.4em 0` 제거. 표 위 hit-routing이 vanilla로 환원 |
+| **v2.22.105** | Live Preview 표 위 단락 클릭 라우팅 root cause 수정: `.HyperMD-table-row`(표 source `.cm-line`)에 `margin: 0.4em 0` 적용하던 구문을 제거. 그 margin이 cm-line hitbox를 위로 확장해 위 단락 클릭을 가로채던 문제 해결 |
+| **v2.22.104** | Live Preview active 라인 glass focus visual 제거. outline+shadow+background 페인트가 인접 라인 클릭 hit-testing을 가리던 문제 해결. table cell focus는 유지 |
+| **v2.22.103** | Live Preview 빈 줄 강제 압축(0.45em) 제거. native CM6 line-height(약 1.5em)로 환원해 마우스 클릭 hit-target 확보. 화살표키는 되면서 마우스 클릭은 안 되던 증상 해결 |
+| **v2.22.102** | Live Preview EOF pointer-events isolation block 제거. `.cm-line *` 강제 override가 active 라인의 list marker/widget hit 라우팅을 가로채고 다른 줄 선택을 막던 문제 해결. native CM6 동작으로 환원 |
+| **v2.22.101** | Live Preview 헤더 클릭 라우팅 root cause 수정: heading `.cm-line`의 padding-top/bottom을 0으로 환원해 hitbox를 시각 텍스트와 일치시킴 (vanilla parity) |
+| **v2.22.100** | 헤더 인접 빈 줄 hitbox를 0.45em로 통일해 헤더-빈줄-헤더 클릭 라우팅 침범을 줄이고, Live Preview EOF isolation을 native pointer 경로 단일 가드로 단순화 |
+| **v2.22.99** | Live Preview v2.22.84~98 실험 체인을 물리 제거하고, 비활성 rendered span 클릭을 CM6 line box로 넘기는 native edit isolation 적용 |
+| **v2.22.98** | v2.22.97 복구 블록이 실패 블록보다 앞에 삽입된 cascade 오류를 수정하고, Live Preview v2.22.76 row model 복구를 실제 EOF 최종 승자로 재적용 |
+| **v2.22.97** | Live Preview 편집성 관계 맵을 추가하고 v2.22.84~96 실험층으로 오염된 빈 줄/헤더/포인터 이벤트 관계를 v2.22.76 row model로 최종 복원 |
+| **v2.22.96** | Live Preview 헤더 `.cm-line`의 margin/padding 기반 spacing을 제거하고 CM6 native row hit-test를 복원해 인접 헤더·문단 선택/편집 불가 문제 보정 |
+| **v2.22.95** | Live Preview CSS 맵을 추가하고 헤더 하단 spacing을 padding에서 margin으로 이동해 active heading hitbox가 아래 문단 선택·편집을 가로막는 문제 보정 |
+| **v2.22.94** | Live Preview 텍스트 span click-through 실험을 마지막 cascade에서 제거하고 헤더 line box를 기본 크기로 복원해 헤더 아래 문단 편집 진입 문제 보정 |
+| **v2.22.93** | Live Preview 렌더 span hit-test 정책을 정리해 일반 헤더/문단 텍스트 클릭은 CodeMirror 줄 컨테이너가 받고 링크·위젯만 직접 클릭 가능하도록 보정 |
+| **v2.22.92** | Live Preview 헤더와 바로 아래 문단 사이의 안전 간격을 복원해 active heading hitbox가 다음 줄 선택·편집을 막는 현상 보정 |
+| **v2.22.91** | Live Preview 헤더 인접 빈 줄의 hitbox를 접고 텍스트 span 선택 동작을 기본값으로 복원해 빈 줄 클릭 후 아래 헤더/문단 편집 불가 현상 보정 |
+| **v2.22.90** | Live Preview 빈 줄 Aqua focus 박스를 고 specificity로 제거하고 heading/문단 렌더 span 클릭이 CodeMirror 편집 진입을 막지 않도록 보정 |
+| **v2.22.89** | Rendered/Live Preview 텍스트 선택·클릭 경로를 기본 동작으로 되돌리고 heading 장식 pseudo-element가 선택을 가로채지 않도록 보정 |
+| **v2.22.88** | Live Preview active-line Aqua 박스가 일반 heading/paragraph 선택·편집을 방해할 수 있어 active-line 장식을 제거하고 기본 hit-test를 복구 |
+| **v2.22.87** | Live Preview의 렌더된 일반 문단/목록 span이 클릭을 가로채 편집 진입을 막는 문제를 보정 |
+| **v2.22.86** | Live Preview에서 활성 heading 아래 문단이 클릭/편집되지 않는 hit-test 겹침 문제를 보정 |
+| **v2.22.85** | PDF Export에서도 B. Report Notice callout이 유지되도록 print cascade의 예전 좌측 stripe 규칙을 덮음 |
+| **v2.22.84** | Live Preview 빈 줄 active focus 박스와 마우스 선택 불안정성을 보정해 편집 화면 선택성을 복구 |
+| **v2.22.83** | Live Preview 편집 DOM에도 B. Report Notice callout 스타일을 적용해 기존 문서 편집 화면의 좌측 stripe 잔상을 제거 |
+| **v2.22.82** | 기본 callout을 승인된 B. Report Notice 디자인으로 변경해 전체 테두리, paper surface, 원형 아이콘 배지 중심으로 정리 |
+| **v2.22.81** | 기본 Markdown table을 승인된 B. Report Sheet 디자인으로 변경해 헤더 대비와 grid 가시성을 강화 |
+| **v2.22.80** | PDF 링크 출력 방식을 Inline URL / Clean Reading / Reference First로 분리하고 figure caption 인쇄 스타일을 추가 |
+| **v2.22.79** | PDF Compact Report 토글을 추가해 제목·본문·callout·표·참고 문헌의 인쇄 간격을 압축하고 정보 밀도를 높임 |
 | **v2.22.78** | PDF Export 첫 페이지에 YAML frontmatter/properties 원문이 출력되는 문제를 인쇄 전용으로 숨김 |
 | **v2.22.77** | PDF Export 코드블럭의 과도한 회색 외곽 박스와 화면용 배지를 제거하고 인쇄용 여백·줄바꿈을 정리 |
 | **v2.22.76** | Live Preview 편집 중인 라인·Markdown 표 셀 focus·긴 inline token wrapping을 조용한 Frost Aqua 상태로 보강 |

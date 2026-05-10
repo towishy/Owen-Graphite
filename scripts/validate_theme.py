@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_STYLE_SETTINGS_OPTIONS = 36
+EXPECTED_STYLE_SETTINGS_OPTIONS = 38
 DEFAULT_TARGETS = [
     Path(r"H:\Obsidian\.obsidian\themes\Owen Graphite"),
     Path(r"D:\JAELE\Obsidian\.obsidian\themes\Owen Graphite"),
@@ -120,6 +120,326 @@ FORBIDDEN_LIVE_PREVIEW_RULES = {
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+\.cm-content\s*\{[^}]*word-break\s*:\s*keep-all", re.S): "word-break:keep-all on CM6 .cm-content",
     re.compile(r"(?:body\s+)?\.markdown-source-view\.mod-cm6\s+[^{}]*HyperMD-header-[3-6][^{}]*\{[^}]*z-index\s*:\s*(?:-?\d+|var\()[^;}]+", re.S): "stacking z-index on Live Preview H3-H6",
 }
+
+# v2.22.101-108 hit-routing regression family. CM6 block widgets and
+# HyperMD-* `.cm-line` variants extend their hit-target across any
+# vertical margin/padding — paragraph clicks land in that gap and the
+# caret routes to the widget instead of the paragraph. Forbid non-zero
+# vertical margin on block widgets and non-zero vertical margin/padding
+# on HyperMD-* cm-line variants. The selector must target the element
+# DIRECTLY (descendant rules like `.cm-callout .callout-content` are
+# allowed to set margin freely).
+LIVE_PREVIEW_WIDGET_DIRECT_TOKENS = (
+    ".cm-callout",
+    ".cm-table-widget",
+    ".cm-embed-block.cm-callout",
+)
+LIVE_PREVIEW_HYPERMD_DIRECT_TOKENS = (
+    ".HyperMD-table-row",
+    ".HyperMD-callout",
+    ".HyperMD-codeblock",
+    ".HyperMD-codeblock-begin",
+    ".HyperMD-codeblock-end",
+    ".HyperMD-header-1",
+    ".HyperMD-header-2",
+    ".HyperMD-header-3",
+    ".HyperMD-header-4",
+    ".HyperMD-header-5",
+    ".HyperMD-header-6",
+)
+_RULE_RE = re.compile(r"([^{}]+?)\{([^{}]*)\}", re.S)
+_NONZERO_VALUE_RE = re.compile(r"^\s*(?!0(?:\s|;|$|!|px|em|rem|%))[^;]+")
+
+
+def _split_top_level_commas(selector_list: str) -> list[str]:
+    """Split a comma-separated selector list, ignoring commas inside
+    parentheses (e.g. inside `:is(...)` or `:where(...)`)."""
+    parts = []
+    depth = 0
+    current = []
+    for ch in selector_list:
+        if ch == "(":
+            depth += 1
+            current.append(ch)
+        elif ch == ")":
+            depth -= 1
+            current.append(ch)
+        elif ch == "," and depth == 0:
+            parts.append("".join(current))
+            current = []
+        else:
+            current.append(ch)
+    if current:
+        parts.append("".join(current))
+    return parts
+
+
+def _selector_targets_token_directly(selector_list: str, token: str) -> bool:
+    """Return True if any top-level comma-separated selector targets `token`
+    directly — i.e. the selector ends with the token (with optional `:pseudo`
+    / `.class` / `[attr]` modifiers) at the top level, OR ends with a
+    positive `:is(...)`/`:where(...)`/`:matches(...)` group that contains the
+    token. Occurrences inside `:not(...)` (negation) or followed by a
+    descendant combinator are NOT counted."""
+    pseudo_tail_re = re.compile(r"(?:\.[\w-]+|:[\w-]+(?:\([^)]*\))?|\[[^\]]+\])*")
+    for sel in _split_top_level_commas(selector_list):
+        sel = sel.strip()
+        if token not in sel:
+            continue
+        # Walk char by char tracking a stack of paren contexts. Each entry on
+        # the stack is the pseudo-class function name preceding the `(`, or
+        # None if the `(` is not directly preceded by `:fname`.
+        stack: list[str | None] = []
+        i = 0
+        n = len(sel)
+        last_top_level_end = -1
+        # For tracking `:is(...)`-at-tail: record (close_pos, accepts) for each
+        # closed positive group containing the token.
+        positive_group_closes: list[int] = []
+        positive_group_open_at: dict[int, int] = {}
+        while i < n:
+            ch = sel[i]
+            if ch == "(":
+                # Find pseudo-class name preceding this paren.
+                j = i - 1
+                while j >= 0 and (sel[j].isalnum() or sel[j] in "-_"):
+                    j -= 1
+                fname = sel[j + 1 : i] if j + 1 < i and j >= 0 and sel[j] == ":" else None
+                stack.append(fname)
+                if fname in ("is", "where", "matches"):
+                    positive_group_open_at[len(stack) - 1] = i
+                i += 1
+                continue
+            if ch == ")":
+                if stack:
+                    depth_idx = len(stack) - 1
+                    fname = stack.pop()
+                    # Nothing else to record here.
+                i += 1
+                continue
+            if sel.startswith(token, i) and (
+                token.startswith(".") or i == 0 or not (sel[i - 1].isalnum() or sel[i - 1] in "-_")
+            ):
+                end = i + len(token)
+                # Only count if every enclosing paren context is positive
+                # (`:is`/`:where`/`:matches`). If any enclosing context is
+                # `:not` or a non-pseudo paren, skip.
+                if all(name in ("is", "where", "matches") for name in stack):
+                    if not stack:
+                        last_top_level_end = end
+                    else:
+                        # Inside a positive group — the group's closing paren
+                        # must terminate the selector (with only pseudo tail).
+                        # We'll evaluate after the loop using positive_group_open_at.
+                        # Mark the outermost positive group containing this token.
+                        outermost = 0
+                        positive_group_closes.append(outermost)  # placeholder; recomputed below
+                i = end
+                continue
+            i += 1
+        if last_top_level_end >= 0:
+            tail = sel[last_top_level_end:]
+            if pseudo_tail_re.fullmatch(tail):
+                return True
+        # Fallback: detect `...:is(... token ...)<pseudo-tail>$` pattern by a
+        # second, simpler scan — find each `:is(...)`/`:where(...)`/`:matches(...)`
+        # group at the outermost level, check if it contains the token (outside
+        # `:not`), and if its close is followed only by a pseudo tail.
+        for grp_match in re.finditer(r":(?:is|where|matches)\(", sel):
+            start = grp_match.end() - 1  # position of `(`
+            depth = 1
+            j = start + 1
+            while j < n and depth > 0:
+                if sel[j] == "(":
+                    depth += 1
+                elif sel[j] == ")":
+                    depth -= 1
+                j += 1
+            if depth != 0:
+                continue
+            close_pos = j  # position right after `)`
+            inner = sel[start + 1 : close_pos - 1]
+            # Strip out `:not(...)` sub-groups inside `inner` to avoid matching
+            # negated tokens.
+            inner_stripped = re.sub(r":not\([^)]*\)", "", inner)
+            # Check that any top-level comma-separated alt in inner ends with token.
+            for alt in _split_top_level_commas(inner_stripped):
+                alt = alt.strip()
+                if token not in alt:
+                    continue
+                # alt ends with token + pseudo tail?
+                idx = alt.rfind(token)
+                tail = alt[idx + len(token) :]
+                if pseudo_tail_re.fullmatch(tail):
+                    # And the `:is(...)` group must terminate the selector.
+                    selector_tail = sel[close_pos:]
+                    if pseudo_tail_re.fullmatch(selector_tail):
+                        return True
+    return False
+
+
+def _has_nonzero_vertical_box(body: str, properties: tuple) -> str | None:
+    """Return the offending property declaration if `body` declares a non-zero
+    vertical margin/padding among `properties`, else None."""
+    for decl in body.split(";"):
+        decl = decl.strip()
+        if not decl or ":" not in decl:
+            continue
+        prop, _, value = decl.partition(":")
+        prop = prop.strip().lower()
+        value = value.strip()
+        if prop not in properties:
+            continue
+        # margin/padding shorthand: top is value[0], bottom is value[2] (or [0])
+        # We flag if any of top/bottom is non-zero.
+        if prop in ("margin", "padding"):
+            tokens = [t for t in re.split(r"\s+", value) if t and not t.startswith("!")]
+            if not tokens:
+                continue
+            top = tokens[0]
+            bottom = tokens[2] if len(tokens) >= 3 else top
+            if _is_nonzero(top) or _is_nonzero(bottom):
+                return decl
+        else:
+            value_no_bang = value.split("!")[0].strip()
+            if _is_nonzero(value_no_bang):
+                return decl
+    return None
+
+
+def _is_nonzero(value: str) -> bool:
+    value = value.strip()
+    if not value:
+        return False
+    if value in ("0", "auto"):
+        return False
+    if re.fullmatch(r"0(?:px|em|rem|%|vh|vw|pt)", value):
+        return False
+    return True
+
+
+def live_preview_hit_routing_audit(content: str, source_label: str) -> None:
+    """Scan top-level CSS rules and flag any rule whose selector targets a
+    Live Preview block widget or HyperMD-* cm-line variant directly and
+    declares a non-zero vertical margin (widgets) or non-zero vertical
+    margin/padding (cm-line variants).
+
+    Additional categories codify recurring CM6 hit-routing regressions
+    (v2.22.99–108):
+      - active line: `.cm-active.cm-line`, `.cm-focused .cm-active` must
+        not declare `outline`, `box-shadow`, `transform`, vertical
+        padding — these all extend the hit-target or create visual
+        overlays that capture clicks.
+      - embed BFC: `.cm-embed-block`, `.cm-html-embed` must not declare
+        the lethal `overflow-x:auto + max-width:100%` BFC pair, which
+        creates a hit-target gap above tables/embeds.
+      - content overflow: `.cm-content`, `.cm-line` must not be forced
+        to `pointer-events:none` (kills click-to-edit on rendered text).
+
+    Multiple violations are accumulated and reported together so a single
+    pass surfaces every regression a patch introduces.
+    """
+    margin_props = (
+        "margin", "margin-top", "margin-bottom", "margin-block",
+        "margin-block-start", "margin-block-end",
+    )
+    margin_padding_props = margin_props + (
+        "padding", "padding-top", "padding-bottom", "padding-block",
+        "padding-block-start", "padding-block-end",
+    )
+    failures: list[str] = []
+    for match in _RULE_RE.finditer(content):
+        selectors = match.group(1)
+        body = match.group(2)
+        # Only consider rules anchored to the CM6 editor scope.
+        if "markdown-source-view.mod-cm6" not in selectors:
+            continue
+        # Category 1: block widget — non-zero vertical margin.
+        for token in LIVE_PREVIEW_WIDGET_DIRECT_TOKENS:
+            if _selector_targets_token_directly(selectors, token):
+                offender = _has_nonzero_vertical_box(body, margin_props)
+                if offender:
+                    failures.append(
+                        f"non-zero vertical margin on CM6 block widget ({token}) — "
+                        f"bleeds hit-target. Body: `{offender}`. Move spacing to "
+                        f"the natural blank `.cm-line` between blocks."
+                    )
+                break
+        # Category 2: HyperMD-* cm-line variant — non-zero vertical margin/padding.
+        for token in LIVE_PREVIEW_HYPERMD_DIRECT_TOKENS:
+            if _selector_targets_token_directly(selectors, token):
+                offender = _has_nonzero_vertical_box(body, margin_padding_props)
+                if offender:
+                    failures.append(
+                        f"non-zero vertical margin/padding on HyperMD-* cm-line "
+                        f"({token}) — bleeds hit-target. Body: `{offender}`."
+                    )
+                break
+        # Category 3: active line — outline/box-shadow/transform forbidden.
+        for token in (".cm-active.cm-line", ".cm-active .cm-line"):
+            if _selector_targets_token_directly(selectors, token):
+                bad = _declares_any(
+                    body,
+                    ("outline", "box-shadow", "transform",
+                     "padding", "padding-top", "padding-bottom"),
+                )
+                if bad:
+                    failures.append(
+                        f"forbidden visual on active CM6 line ({token}) — "
+                        f"`{bad}`. Active line outline/shadow/transform/vertical "
+                        f"padding extends the hit-target and steals clicks "
+                        f"(v2.22.104 regression)."
+                    )
+                break
+        # Category 4: embed BFC pair on .cm-embed-block.
+        for token in (".cm-embed-block", ".cm-html-embed"):
+            if _selector_targets_token_directly(selectors, token):
+                if _declares_pair(body, "overflow-x", "auto") and \
+                        _declares_pair(body, "max-width", "100%"):
+                    failures.append(
+                        f"lethal BFC pair on embed wrapper ({token}) — "
+                        f"`overflow-x:auto + max-width:100%`. Creates the "
+                        f"v2.22.106 hit-target gap above tables/embeds."
+                    )
+                break
+        # Category 5: pointer-events:none on .cm-content / .cm-line text.
+        for token in (".cm-content", ".cm-line"):
+            if _selector_targets_token_directly(selectors, token):
+                if re.search(r"pointer-events\s*:\s*none\b", body):
+                    failures.append(
+                        f"pointer-events:none on rendered CM6 text ({token}) — "
+                        f"kills click-to-edit. Use native `.cm-line * {{ pointer-events: auto }}` instead."
+                    )
+                break
+    if failures:
+        joined = "\n  - ".join(failures)
+        fail(f"{source_label}: Live Preview hit-routing regressions:\n  - {joined}")
+
+
+def _declares_any(body: str, properties: tuple) -> str | None:
+    """Return the first declaration whose property is in `properties` and
+    whose value is non-zero / non-`none`."""
+    for decl in body.split(";"):
+        decl = decl.strip()
+        if not decl or ":" not in decl:
+            continue
+        prop, _, value = decl.partition(":")
+        prop = prop.strip().lower()
+        if prop not in properties:
+            continue
+        value_no_bang = value.split("!")[0].strip()
+        if value_no_bang in ("", "0", "none", "auto", "unset", "initial", "revert"):
+            continue
+        if re.fullmatch(r"0(?:px|em|rem|%|vh|vw|pt)?", value_no_bang):
+            continue
+        return decl
+    return None
+
+
+def _declares_pair(body: str, prop: str, value_token: str) -> bool:
+    """Check if `body` declares `prop: ...value_token...`."""
+    pattern = re.compile(rf"\b{re.escape(prop)}\s*:\s*[^;]*\b{re.escape(value_token)}\b")
+    return bool(pattern.search(body))
 
 FORBIDDEN_READING_VIEW_RULES = {
     re.compile(r"\.markdown-rendered\s*\{[^}]*overflow-wrap\s*:\s*anywhere", re.S): "overflow-wrap:anywhere on global .markdown-rendered",
@@ -996,6 +1316,7 @@ def live_preview_guards() -> None:
         for pattern, description in FORBIDDEN_LIVE_PREVIEW_RULES.items():
             if pattern.search(content):
                 fail(f"{path}: {description}")
+        live_preview_hit_routing_audit(content, path)
     ok("Live Preview editability guards clean")
 
 

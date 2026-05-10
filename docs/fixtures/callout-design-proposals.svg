@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Owen Graphite Callout Design Proposals</title>
+  <desc id="desc">Four proposed callout designs for Owen Graphite, showing glass, report, semantic header, and compact note styles in light and dark contexts.</desc>
+  <defs>
+    <linearGradient id="pageBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.48" stop-color="#edf3f8"/>
+      <stop offset="1" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="glassPanel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.56"/>
+    </linearGradient>
+    <linearGradient id="darkPanel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f2937" stop-opacity="0.90"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.78"/>
+    </linearGradient>
+    <linearGradient id="glassCallout" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.68"/>
+    </linearGradient>
+    <linearGradient id="tealWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#ccfbf1" stop-opacity="0.76"/>
+    </linearGradient>
+    <linearGradient id="amberWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#fef3c7" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="blueWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#dbeafe" stop-opacity="0.78"/>
+    </linearGradient>
+    <filter id="panelShadow" x="-12%" y="-16%" width="124%" height="136%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0f172a" flood-opacity="0.09"/>
+    </filter>
+    <filter id="softShadow" x="-10%" y="-14%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#94a3b8" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <style>
+      .sans { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .title { fill: #0f172a; font-size: 42px; font-weight: 830; letter-spacing: 0; }
+      .subtitle { fill: #64748b; font-size: 18px; font-weight: 520; letter-spacing: 0; }
+      .token-title { fill: #0f172a; font-size: 18px; font-weight: 830; }
+      .token-copy { fill: #64748b; font-size: 12px; font-weight: 620; }
+      .panel-title { fill: #0f172a; font-size: 21px; font-weight: 820; letter-spacing: 0; }
+      .panel-copy { fill: #64748b; font-size: 13px; font-weight: 560; letter-spacing: 0; }
+      .callout-title { fill: #0f172a; font-size: 15px; font-weight: 820; letter-spacing: 0; }
+      .callout-body { fill: #334155; font-size: 12px; font-weight: 560; letter-spacing: 0; }
+      .callout-meta { fill: #64748b; font-size: 10px; font-weight: 700; letter-spacing: 0; }
+      .dark-title { fill: #f8fafc; }
+      .dark-copy { fill: #a8b5c7; }
+      .dark-body { fill: #dbe5f0; }
+      .dark-muted { fill: #94a3b8; }
+      .small { font-size: 11px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1180" fill="url(#pageBg)"/>
+  <rect width="1600" height="1180" fill="url(#grid)"/>
+
+  <g class="sans">
+    <text x="64" y="74" class="title">Callout Design Proposals</text>
+    <text x="64" y="108" class="subtitle">Obsidian callout을 더 선명하고 고급스럽게 만드는 4가지 후보. 좌측 강조선보다 전체 테두리, 아이콘 배지, 헤더 대비를 중심으로 비교합니다.</text>
+
+    <g filter="url(#panelShadow)">
+      <rect x="64" y="140" width="338" height="86" rx="8" fill="url(#glassPanel)" stroke="#cbd5e1"/>
+      <rect x="424" y="140" width="338" height="86" rx="8" fill="url(#glassPanel)" stroke="#cbd5e1"/>
+      <rect x="784" y="140" width="338" height="86" rx="8" fill="url(#glassPanel)" stroke="#cbd5e1"/>
+      <rect x="1144" y="140" width="338" height="86" rx="8" fill="url(#glassPanel)" stroke="#cbd5e1"/>
+    </g>
+    <text x="90" y="176" class="token-title">A. Glass Badge</text>
+    <text x="90" y="203" class="token-copy">추천 후보. 투명 표면 + 아이콘 배지</text>
+    <text x="450" y="176" class="token-title">B. Report Notice</text>
+    <text x="450" y="203" class="token-copy">PDF/보고서에 좋은 paper callout</text>
+    <text x="810" y="176" class="token-title">C. Header Band</text>
+    <text x="810" y="203" class="token-copy">타입별 헤더 영역을 또렷하게 분리</text>
+    <text x="1170" y="176" class="token-title">D. Compact Chip</text>
+    <text x="1170" y="203" class="token-copy">짧은 note와 dense 문서에 적합</text>
+
+    <g transform="translate(64 266)">
+      <g filter="url(#panelShadow)"><rect width="720" height="392" rx="12" fill="url(#glassPanel)" stroke="#cbd5e1"/></g>
+      <text x="30" y="44" class="panel-title">A. Glass Badge</text>
+      <text x="30" y="70" class="panel-copy">Owen Graphite의 glass+shadow 언어를 가장 잘 살리는 기본 callout 후보.</text>
+
+      <g transform="translate(30 104)" filter="url(#softShadow)">
+        <rect width="660" height="94" rx="8" fill="url(#tealWash)" stroke="#99f6e4"/>
+        <circle cx="34" cy="32" r="15" fill="#ffffff" stroke="#5eead4" stroke-width="1.5"/>
+        <path d="M27 32l5 5 10-11" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="60" y="31" class="callout-title">Recommendation</text>
+        <rect x="180" y="15" width="82" height="24" rx="12" fill="#ecfeff" stroke="#67e8f9"/>
+        <text x="198" y="31" class="callout-meta" fill="#0e7490">ACTION</text>
+        <text x="60" y="58" class="callout-body">결론을 먼저 보여주고, 근거 표와 action item은 바로 아래에 붙입니다.</text>
+      </g>
+
+      <g transform="translate(30 222)" filter="url(#softShadow)">
+        <rect width="660" height="94" rx="8" fill="url(#amberWash)" stroke="#fde68a"/>
+        <circle cx="34" cy="32" r="15" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+        <path d="M34 23l10 18H24z" fill="none" stroke="#b45309" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M34 29v5M34 38h.1" stroke="#b45309" stroke-width="2.2" stroke-linecap="round"/>
+        <text x="60" y="31" class="callout-title">Risk</text>
+        <rect x="108" y="15" width="92" height="24" rx="12" fill="#fffbeb" stroke="#fcd34d"/>
+        <text x="126" y="31" class="callout-meta" fill="#92400e">REVIEW</text>
+        <text x="60" y="58" class="callout-body">긴 URL과 코드 토큰은 callout 안에서도 줄바꿈과 폭 제한을 유지해야 합니다.</text>
+      </g>
+      <text x="30" y="366" class="callout-meta">인상: 가장 Graphite답고, 화면 노트/위키 문서에서 고급스러움이 좋음.</text>
+    </g>
+
+    <g transform="translate(816 266)">
+      <g filter="url(#panelShadow)"><rect width="720" height="392" rx="12" fill="url(#glassPanel)" stroke="#cbd5e1"/></g>
+      <text x="30" y="44" class="panel-title">B. Report Notice</text>
+      <text x="30" y="70" class="panel-copy">보고서/PDF 가독성을 우선하는 선명한 paper callout 후보.</text>
+
+      <g transform="translate(30 104)" filter="url(#softShadow)">
+        <rect width="660" height="92" rx="6" fill="#ffffff" stroke="#bcc9d8"/>
+        <rect x="16" y="16" width="28" height="28" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+        <path d="M30 23v14M23 30h14" stroke="#2563eb" stroke-width="2.1" stroke-linecap="round"/>
+        <text x="60" y="31" class="callout-title">Summary</text>
+        <text x="60" y="58" class="callout-body">핵심 판단을 본문보다 조금 진하게 두고, 전체 테두리로 문단 경계를 명확히 합니다.</text>
+      </g>
+
+      <g transform="translate(30 222)" filter="url(#softShadow)">
+        <rect width="660" height="92" rx="6" fill="#fffdf7" stroke="#e8c56e"/>
+        <rect x="16" y="16" width="28" height="28" rx="14" fill="#fffbeb" stroke="#fcd34d"/>
+        <path d="M30 23l8 15H22z" fill="none" stroke="#b45309" stroke-width="2" stroke-linejoin="round"/>
+        <text x="60" y="31" class="callout-title">Caution</text>
+        <text x="60" y="58" class="callout-body">인쇄 출력에서는 흐린 glass보다 명확한 border와 paper surface가 더 안정적입니다.</text>
+      </g>
+      <text x="30" y="366" class="callout-meta">인상: 가장 읽기 쉽고 PDF 안정성이 좋음. 화면에서는 A보다 조금 문서형.</text>
+    </g>
+
+    <g transform="translate(64 700)">
+      <g filter="url(#panelShadow)"><rect width="720" height="392" rx="12" fill="url(#darkPanel)" stroke="#334155"/></g>
+      <text x="30" y="44" class="panel-title dark-title">C. Header Band</text>
+      <text x="30" y="70" class="panel-copy dark-copy">callout 제목부를 별도 band로 분리해, 타입 식별을 빠르게 만드는 후보.</text>
+
+      <g transform="translate(30 104)" filter="url(#softShadow)">
+        <rect width="660" height="108" rx="8" fill="#111827" stroke="#334155"/>
+        <rect width="660" height="42" rx="8" fill="#1e3a8a" fill-opacity="0.34" stroke="#60a5fa" stroke-opacity="0.42"/>
+        <circle cx="34" cy="21" r="13" fill="#1d4ed8" fill-opacity="0.20" stroke="#60a5fa"/>
+        <path d="M34 15v12M28 21h12" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round"/>
+        <text x="58" y="27" class="callout-title dark-title">Decision</text>
+        <text x="22" y="72" class="callout-body dark-body">제목과 본문 경계가 명확해서 회의록, 판단 로그, research note에 잘 맞습니다.</text>
+        <text x="22" y="92" class="callout-meta dark-muted">Best for: decision / summary / action</text>
+      </g>
+
+      <g transform="translate(30 238)" filter="url(#softShadow)">
+        <rect width="660" height="82" rx="8" fill="#111827" stroke="#334155"/>
+        <rect width="660" height="38" rx="8" fill="#064e3b" fill-opacity="0.38" stroke="#2dd4bf" stroke-opacity="0.36"/>
+        <circle cx="34" cy="19" r="12" fill="#0f766e" fill-opacity="0.22" stroke="#5eead4"/>
+        <path d="M28 19l4 4 8-9" fill="none" stroke="#99f6e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="58" y="25" class="callout-title dark-title">Success</text>
+        <text x="22" y="64" class="callout-body dark-body">짧은 완료 상태나 QA 결과를 빠르게 구분합니다.</text>
+      </g>
+      <text x="30" y="366" class="callout-meta dark-muted">인상: 타입 구분이 가장 빠름. 다만 기본 callout 전체에 적용하면 조금 강할 수 있음.</text>
+    </g>
+
+    <g transform="translate(816 700)">
+      <g filter="url(#panelShadow)"><rect width="720" height="392" rx="12" fill="url(#darkPanel)" stroke="#334155"/></g>
+      <text x="30" y="44" class="panel-title dark-title">D. Compact Chip</text>
+      <text x="30" y="70" class="panel-copy dark-copy">짧은 note, source note, checklist 주변에 어울리는 저밀도 후보.</text>
+
+      <g transform="translate(30 104)" filter="url(#softShadow)">
+        <rect width="660" height="68" rx="7" fill="#111827" stroke="#475569"/>
+        <rect x="16" y="17" width="92" height="28" rx="14" fill="#0e7490" fill-opacity="0.20" stroke="#67e8f9" stroke-opacity="0.42"/>
+        <circle cx="32" cy="31" r="7" fill="#67e8f9" fill-opacity="0.28" stroke="#67e8f9"/>
+        <text x="46" y="35" class="callout-meta dark-title">NOTE</text>
+        <text x="126" y="36" class="callout-body dark-body">짧은 보조 설명은 한 줄 chip callout으로 본문 흐름을 방해하지 않습니다.</text>
+      </g>
+
+      <g transform="translate(30 196)" filter="url(#softShadow)">
+        <rect width="660" height="104" rx="7" fill="#111827" stroke="#475569"/>
+        <rect x="16" y="17" width="104" height="28" rx="14" fill="#78350f" fill-opacity="0.24" stroke="#fbbf24" stroke-opacity="0.42"/>
+        <path d="M32 23l8 14H24z" fill="none" stroke="#fde68a" stroke-width="1.8" stroke-linejoin="round"/>
+        <text x="48" y="35" class="callout-meta dark-title">WARNING</text>
+        <text x="138" y="34" class="callout-title dark-title small">Compact Warning</text>
+        <text x="22" y="70" class="callout-body dark-body">문장 수가 많아지면 일반 callout보다 답답할 수 있어, 보조 메모 중심으로 쓰는 편이 좋습니다.</text>
+      </g>
+      <text x="30" y="366" class="callout-meta dark-muted">인상: 정보 밀도는 좋지만 대표 callout 디자인으로는 존재감이 약함.</text>
+    </g>
+
+    <g transform="translate(64 1130)">
+      <rect width="1472" height="2" rx="1" fill="#0f766e" opacity="0.48"/>
+      <text x="0" y="28" class="callout-meta">제안: 기본 callout은 A Glass Badge 또는 B Report Notice가 안정적입니다. 화면 중심이면 A, PDF/보고서 중심이면 B가 더 적합합니다.</text>
+    </g>
+  </g>
+</svg>

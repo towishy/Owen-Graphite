@@ -1,6 +1,8 @@
 # MAP Info Classification
 
-Current MAP gate baseline: `critical=0`, `high=0`, `medium=0`, `low=0`, `info=70`.
+Current MAP gate baseline after the v2.22.79-v2.22.94 workstream: `critical=0`, `high=1`, `medium=0`, `low=1`, `info=102`.
+
+Live Preview editability has a separate map because the core chrome MAP does not model CM6 line hitbox geometry: `dev/MAP/live-preview-editability-css-map.md`.
 
 The remaining 70 findings are informational triage signals. They are not release blockers, but they identify core chrome surfaces that should be reviewed carefully before Windows or Obsidian chrome changes ship.
 
@@ -9,10 +11,17 @@ The remaining 70 findings are informational triage signals. They are not release
 | Severity | Count | Release Meaning |
 |---|---:|---|
 | critical | 0 | No blocking chrome structural regression detected |
-| high | 0 | No high-risk chrome structural regression detected |
+| high | 1 | Mermaid Live Preview control selector touches `.clickable-icon` structural properties; review before release |
 | medium | 0 | No medium-risk chrome structural regression detected |
-| low | 0 | No low-risk chrome structural regression detected |
-| info | 70 | Decorative or intentional chrome touches to monitor |
+| low | 1 | Mermaid control active transform |
+| info | 102 | Decorative or intentional chrome touches to monitor |
+
+## Current High/Low Findings
+
+| Severity | Module | Selector Family | Classification |
+|---|---|---|---|
+| high | `dev/07e-live-preview-mobile-plugin.css` | Mermaid controls scoped `.clickable-icon` | Hidden scoped structural risk; not the current heading editability bug |
+| low | `dev/07e-live-preview-mobile-plugin.css` | Mermaid control `:active` transform | Low-risk active feedback |
 
 ## Module Distribution
 

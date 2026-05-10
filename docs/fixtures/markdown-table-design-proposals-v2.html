@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Table Design Proposals v2</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #64748b;
+      --line: rgba(148, 163, 184, 0.42);
+      --line-strong: rgba(100, 116, 139, 0.58);
+      --paper: rgba(255, 255, 255, 0.86);
+      --soft: rgba(248, 250, 252, 0.72);
+      --cyan: #0891b2;
+      --blue: #2563eb;
+      --green: #0f766e;
+      --rose: #be123c;
+      --amber: #b45309;
+      --shadow: 0 18px 42px rgba(15, 23, 42, 0.12), 0 5px 14px rgba(15, 23, 42, 0.08);
+      --inner-rim: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 1160px;
+      background:
+        linear-gradient(120deg, rgba(8, 145, 178, 0.06), transparent 28%),
+        linear-gradient(180deg, #f8fafc 0%, #eef4f8 48%, #e8eef4 100%);
+      color: var(--ink);
+    }
+
+    .page {
+      width: 1440px;
+      margin: 0 auto;
+      padding: 48px 52px 64px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 920px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .decision {
+      width: 360px;
+      padding: 16px 18px;
+      border: 1px solid rgba(125, 211, 252, 0.55);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(236, 254, 255, 0.54));
+      box-shadow: var(--shadow), var(--inner-rim);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .decision strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #0f172a;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .decision span {
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .candidate {
+      min-height: 520px;
+      padding: 22px;
+      border: 1px solid rgba(203, 213, 225, 0.78);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.54));
+      box-shadow: var(--shadow), var(--inner-rim);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+    }
+
+    .candidate.dark {
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.78));
+      border-color: rgba(71, 85, 105, 0.84);
+      color: #f8fafc;
+      box-shadow: 0 18px 42px rgba(15, 23, 42, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+    }
+
+    .candidate-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      min-height: 82px;
+      margin-bottom: 18px;
+    }
+
+    .candidate h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .candidate p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.48;
+    }
+
+    .dark p { color: #a8b5c7; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border: 1px solid rgba(14, 165, 233, 0.42);
+      border-radius: 999px;
+      background: rgba(236, 254, 255, 0.64);
+      color: #075985;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .dark .badge {
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(8, 47, 73, 0.34);
+      color: #bae6fd;
+    }
+
+    .table-wrap {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08), var(--inner-rim);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 14px;
+      line-height: 1.42;
+    }
+
+    th, td {
+      padding: 11px 13px;
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    th {
+      font-size: 12px;
+      font-weight: 820;
+      color: #334155;
+      letter-spacing: 0;
+    }
+
+    td { color: #334155; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .status { font-weight: 740; }
+    .ok { color: var(--green); }
+    .warn { color: var(--amber); }
+    .bad { color: var(--rose); }
+
+    .notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .note {
+      min-height: 74px;
+      padding: 12px;
+      border: 1px solid rgba(203, 213, 225, 0.62);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.54);
+      color: #475569;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .dark .note {
+      border-color: rgba(71, 85, 105, 0.72);
+      background: rgba(15, 23, 42, 0.28);
+      color: #cbd5e1;
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #0f172a;
+      font-size: 12px;
+    }
+
+    .dark .note strong { color: #f8fafc; }
+
+    .a .table-wrap {
+      border: 1px solid rgba(148, 163, 184, 0.44);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(248, 250, 252, 0.56));
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .a th {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(241, 245, 249, 0.62));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.52);
+    }
+
+    .a td {
+      border-bottom: 1px solid rgba(226, 232, 240, 0.86);
+      background: rgba(255, 255, 255, 0.36);
+    }
+
+    .a tr:nth-child(even) td { background: rgba(236, 254, 255, 0.26); }
+    .a tbody tr.hover td { background: rgba(224, 242, 254, 0.62); }
+    .a th + th, .a td + td { border-left: 1px solid rgba(226, 232, 240, 0.76); }
+
+    .b .table-wrap {
+      border: 1px solid rgba(188, 201, 216, 0.92);
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.07);
+    }
+
+    .b th {
+      padding-top: 10px;
+      padding-bottom: 9px;
+      background: linear-gradient(180deg, #f8fafc, #eef2f7);
+      border-bottom: 2px solid rgba(100, 116, 139, 0.58);
+    }
+
+    .b td {
+      background: #ffffff;
+      border-bottom: 1px solid rgba(219, 227, 238, 0.95);
+    }
+
+    .b tbody tr.hover td { background: #f1f7fb; }
+    .b th + th, .b td + td { border-left: 1px solid rgba(219, 227, 238, 0.92); }
+
+    .c .table-wrap {
+      border: 1px solid rgba(51, 65, 85, 0.92);
+      background: rgba(15, 23, 42, 0.64);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .c th {
+      background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(30, 41, 59, 0.74));
+      border-bottom: 1px solid rgba(100, 116, 139, 0.76);
+      color: #e5edf7;
+    }
+
+    .c td {
+      color: #dbe7f3;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.92);
+      background: rgba(15, 23, 42, 0.18);
+    }
+
+    .c tr:nth-child(even) td { background: rgba(30, 41, 59, 0.44); }
+    .c tbody tr.hover td { background: rgba(8, 145, 178, 0.22); }
+    .c th + th, .c td + td { border-left: 1px solid rgba(51, 65, 85, 0.82); }
+    .c .ok { color: #5eead4; }
+    .c .warn { color: #fbbf24; }
+    .c .bad { color: #fb7185; }
+
+    .d .table-wrap {
+      border: 1px solid rgba(71, 85, 105, 0.92);
+      background: #111827;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26);
+    }
+
+    .d table { font-size: 13px; line-height: 1.34; }
+    .d th, .d td { padding: 8px 10px; }
+    .d th {
+      background: #1f2937;
+      color: #e5edf7;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.58);
+    }
+
+    .d td {
+      color: #dbe7f3;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.96);
+      background: #111827;
+    }
+
+    .d tbody tr.hover td { background: rgba(30, 64, 175, 0.22); }
+    .d th + th, .d td + td { border-left: 1px solid rgba(51, 65, 85, 0.96); }
+    .d code {
+      padding: 1px 5px;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 4px;
+      background: rgba(15, 23, 42, 0.54);
+      color: #f1f5f9;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    .footer {
+      margin-top: 26px;
+      padding: 18px 20px;
+      border: 1px solid rgba(203, 213, 225, 0.76);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: var(--inner-rim);
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="topbar">
+      <div>
+        <h1>Markdown Table Design Proposals v2</h1>
+        <p class="lead">현재 결과물이 너무 평면적이거나 보고서 표처럼 느껴질 수 있어서, 기본 Markdown table 후보를 다시 잡았습니다. 이번 샘플은 “읽기 편한 기본값”과 “용도별 utility 후보”를 분리해서 비교합니다.</p>
+      </div>
+      <aside class="decision">
+        <strong>내 추천</strong>
+        <span>기본값은 A 또는 B. 문서 감성은 A, PDF 안정성과 전문 보고서 느낌은 B가 더 좋습니다. C/D는 전체 기본값보다 class 옵션이 어울립니다.</span>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article class="candidate a">
+        <div class="candidate-header">
+          <div>
+            <h2>A. Frosted Ledger</h2>
+            <p>Owen Graphite의 glass+shadow 언어를 표에도 가장 자연스럽게 가져오는 후보. 너무 장식적이지 않게 grid를 얇게 유지합니다.</p>
+          </div>
+          <span class="badge">추천 기본값</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>항목</th><th>상태</th><th class="num">수치</th><th>메모</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>문서 구조</td><td class="status ok">완료</td><td class="num">96%</td><td>첫 화면 결론 우선</td></tr>
+              <tr class="hover"><td>표 가독성</td><td class="status warn">조정</td><td class="num">1.42</td><td>hover row preview</td></tr>
+              <tr><td>긴 셀 처리</td><td class="status ok">wrap</td><td class="num">42ch</td><td>URL/토큰은 utility 권장</td></tr>
+              <tr><td>PDF 출력</td><td class="status ok">안정</td><td class="num">A-</td><td>그라디언트는 print fallback 필요</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes">
+          <div class="note"><strong>좋은 점</strong>테마 정체성이 가장 잘 살아납니다. 본문 표가 카드처럼 과하게 뜨지 않고, callout/codeblock과도 자연스럽습니다.</div>
+          <div class="note"><strong>주의</strong>PDF에서는 blur가 평면화되므로 print 전용 색상 고정이 필요합니다.</div>
+        </div>
+      </article>
+
+      <article class="candidate b">
+        <div class="candidate-header">
+          <div>
+            <h2>B. Editorial Sheet</h2>
+            <p>보고서와 PDF에 강한 후보. 헤더와 grid를 또렷하게 두고, 데이터 비교가 많은 문서에서 안정적으로 보입니다.</p>
+          </div>
+          <span class="badge">PDF 최강</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>섹션</th><th>판단</th><th class="num">점수</th><th>결론</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Executive</td><td>첫 화면 결론 우선</td><td class="num">A</td><td class="status ok">유지</td></tr>
+              <tr class="hover"><td>Evidence</td><td>근거를 주장 아래 배치</td><td class="num">A-</td><td class="status ok">강화</td></tr>
+              <tr><td>Table</td><td>header 대비를 조금 더 높임</td><td class="num">B+</td><td class="status warn">선택</td></tr>
+              <tr><td>Source</td><td>표 밖 note와 궁합 좋음</td><td class="num">A</td><td class="status ok">명확</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes">
+          <div class="note"><strong>좋은 점</strong>가장 안정적입니다. PDF, 긴 문서, 업무 보고서에서 예측 가능한 결과가 나옵니다.</div>
+          <div class="note"><strong>주의</strong>현재 느낌과 가장 가까워서 “새로움”은 A/C보다 약합니다.</div>
+        </div>
+      </article>
+
+      <article class="candidate dark c">
+        <div class="candidate-header">
+          <div>
+            <h2>C. Scan Zebra</h2>
+            <p>행 단위 스캔을 빠르게 하는 후보. task/log/checklist류 표가 많은 문서에서 읽는 속도가 좋아집니다.</p>
+          </div>
+          <span class="badge">class 옵션 추천</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>작업</th><th>담당</th><th>상태</th><th>마감</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>샘플 검토</td><td>Design</td><td class="status ok">Ready</td><td>오늘</td></tr>
+              <tr class="hover"><td>CSS 적용</td><td>Theme</td><td class="status warn">Next</td><td>승인 후</td></tr>
+              <tr><td>PDF smoke</td><td>Build</td><td class="status ok">Pass</td><td>릴리즈</td></tr>
+              <tr><td>긴 로그 행</td><td>QA</td><td class="status warn">Watch</td><td>wrap 확인</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes">
+          <div class="note"><strong>좋은 점</strong>행 추적이 매우 쉽습니다. 운영 체크리스트와 로그 표에 잘 맞습니다.</div>
+          <div class="note"><strong>주의</strong>기본값으로 쓰면 일반 산문 문서에서는 표가 조금 바빠 보일 수 있습니다.</div>
+        </div>
+      </article>
+
+      <article class="candidate dark d">
+        <div class="candidate-header">
+          <div>
+            <h2>D. Dense Matrix</h2>
+            <p>숫자와 상태 비교가 많은 표를 위한 촘촘한 후보. 기본 table보다 compact-table/numeric-table에 적합합니다.</p>
+          </div>
+          <span class="badge">utility 추천</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Metric</th><th class="num">Current</th><th class="num">Target</th><th>Delta</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rows / page</td><td class="num">28</td><td class="num">34</td><td class="status ok">+21%</td></tr>
+              <tr class="hover"><td>Cell padding</td><td class="num">0.58em</td><td class="num">0.44em</td><td class="status warn">-24%</td></tr>
+              <tr><td>Line height</td><td class="num">1.42</td><td class="num">1.34</td><td class="status ok">stable</td></tr>
+              <tr><td><code>NO_WSL_DISTRO_FOUND</code></td><td class="num">12</td><td class="num">0</td><td class="status bad">alert</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes">
+          <div class="note"><strong>좋은 점</strong>대시보드, 수치 비교, 리스크 매트릭스에 좋습니다. 한 페이지에 더 많은 행이 들어갑니다.</div>
+          <div class="note"><strong>주의</strong>기본 Markdown table 전체에 적용하면 너무 조밀합니다.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="footer">
+      <strong>적용 범위 제안:</strong> A 또는 B를 기본 Markdown table로 선택하고, C는 <code>compact-table</code>/<code>task-table</code>, D는 <code>numeric-table</code>/<code>matrix-table</code> 계열 utility에 적용하는 구성이 가장 안전합니다. Live Preview/PDF parity는 선택한 후보에 맞춰 별도 print fallback을 같이 설계해야 합니다.
+    </section>
+  </main>
+</body>
+</html>

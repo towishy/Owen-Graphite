@@ -1,6 +1,15 @@
 /* ============================================================
   v2.22.14-hotfix - Live Preview table row inflation guard
    Prevent global CM6 min-height rules from expanding table-cell editors.
+
+   FORBIDDEN in this module (CM6 hit-routing contract — see
+   dev/MAP/cm6-hit-routing-contract.md). New hotfix blocks must be
+   appended at EOF and must NOT introduce:
+     - non-zero vertical margin on CM6 block widgets
+     - non-zero vertical margin/padding on HyperMD-* .cm-line variants
+     - active-line outline/box-shadow/transform/vertical padding
+     - .cm-embed-block overflow-x:auto + max-width:100%
+     - pointer-events:none on .cm-content / .cm-line
    ============================================================ */
 
 body .markdown-source-view.mod-cm6 :is(
@@ -320,4 +329,565 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   white-space: normal !important;
   overflow-wrap: anywhere !important;
   word-break: break-word !important;
+}
+
+/* ============================================================
+  v2.22.82 - Report Notice default callout refresh
+   Full-frame paper callouts with semantic icon badges.
+   ============================================================ */
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
+  --ogd-callout-accent: #475569;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
+  --ogd-callout-border: rgba(188, 201, 216, 0.92);
+  --ogd-callout-icon-bg: #f8fafc;
+  margin: 1em 0 1.15em !important;
+  padding: 0.86em 1em 0.9em !important;
+  border: 1px solid var(--ogd-callout-border) !important;
+  border-left: 1px solid var(--ogd-callout-border) !important;
+  border-radius: 6px !important;
+  background: var(--ogd-callout-bg) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="conclusion"], [data-callout="decision"]) {
+  --ogd-callout-accent: #475569;
+  --ogd-callout-border: rgba(188, 201, 216, 0.92);
+  --ogd-callout-icon-bg: #f8fafc;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
+  --ogd-callout-accent: #047857;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.92));
+  --ogd-callout-border: #bbf7d0;
+  --ogd-callout-icon-bg: #f0fdf4;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
+  --ogd-callout-accent: #b45309;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 235, 0.94));
+  --ogd-callout-border: #e8c56e;
+  --ogd-callout-icon-bg: #fffbeb;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+  --ogd-callout-accent: #b91c1c;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.94));
+  --ogd-callout-border: #fecdd3;
+  --ogd-callout-icon-bg: #fff1f2;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
+  --ogd-callout-accent: #6d28d9;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 243, 255, 0.94));
+  --ogd-callout-border: #c4b5fd;
+  --ogd-callout-icon-bg: #f5f3ff;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="action"], [data-callout="todo"]) {
+  --ogd-callout-accent: #0e7490;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 254, 255, 0.94));
+  --ogd-callout-border: #a5f3fc;
+  --ogd-callout-icon-bg: #ecfeff;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
+  color: var(--ogd-text-strong, #111827) !important;
+  font-size: 0.98em !important;
+  font-weight: 820 !important;
+  line-height: 1.32 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title-inner {
+  color: inherit !important;
+  font-weight: 820 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
+  border: 1.5px solid var(--ogd-callout-border) !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: var(--ogd-callout-icon-bg) !important;
+  color: var(--ogd-callout-accent) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
+  color: inherit !important;
+  stroke-width: 2.15px !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
+  margin-top: 0.52em !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  font-size: 0.96em !important;
+  line-height: 1.58 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content > :first-child { margin-top: 0 !important; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content > :last-child { margin-bottom: 0 !important; }
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
+  --ogd-callout-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64));
+  --ogd-callout-border: rgba(71, 85, 105, 0.76);
+  --ogd-callout-icon-bg: rgba(15, 23, 42, 0.42);
+  color: var(--text-normal, #e5edf7) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.30) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.callout-title, .callout-title-inner, .callout-content) {
+  color: var(--text-normal, #e5edf7) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
+  --ogd-callout-accent: #99f6e4;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(17, 94, 89, 0.40), rgba(15, 23, 42, 0.60));
+  --ogd-callout-border: rgba(45, 212, 191, 0.46);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
+  --ogd-callout-accent: #fde68a;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(120, 53, 15, 0.36), rgba(15, 23, 42, 0.60));
+  --ogd-callout-border: rgba(251, 191, 36, 0.48);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+  --ogd-callout-accent: #fecdd3;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(127, 29, 29, 0.34), rgba(15, 23, 42, 0.60));
+  --ogd-callout-border: rgba(251, 113, 133, 0.46);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
+  --ogd-callout-accent: #ddd6fe;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(76, 29, 149, 0.32), rgba(15, 23, 42, 0.60));
+  --ogd-callout-border: rgba(167, 139, 250, 0.44);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="action"], [data-callout="todo"]) {
+  --ogd-callout-accent: #a5f3fc;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(14, 116, 144, 0.32), rgba(15, 23, 42, 0.60));
+  --ogd-callout-border: rgba(103, 232, 249, 0.44);
+}
+
+/* ============================================================
+  v2.22.83 - Live Preview Report Notice callout parity
+   Apply the approved callout treatment inside the CM6 editor DOM.
+   v2.22.107: vertical margin removed. The original `margin: 1em 0
+   1.15em !important` produced the same hitbox bleeding as the table
+   widget did before v2.22.106 - paragraph clicks landed in that gap
+   and routed to the callout widget. Vertical rhythm is now provided
+   by the natural blank `.cm-line` that always sits between a
+   paragraph and a callout block.
+   ============================================================ */
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) {
+  --ogd-callout-accent: #475569;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
+  --ogd-callout-border: rgba(188, 201, 216, 0.92);
+  --ogd-callout-icon-bg: #f8fafc;
+  margin: 0 !important;
+  padding: 0.86em 1em 0.9em !important;
+  border: 1px solid var(--ogd-callout-border) !important;
+  border-left: 1px solid var(--ogd-callout-border) !important;
+  border-radius: 6px !important;
+  background: var(--ogd-callout-bg) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="conclusion"], [data-callout="decision"]) {
+  --ogd-callout-accent: #475569;
+  --ogd-callout-border: rgba(188, 201, 216, 0.92);
+  --ogd-callout-icon-bg: #f8fafc;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
+  --ogd-callout-accent: #047857;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.92));
+  --ogd-callout-border: #bbf7d0;
+  --ogd-callout-icon-bg: #f0fdf4;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
+  --ogd-callout-accent: #b45309;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 235, 0.94));
+  --ogd-callout-border: #e8c56e;
+  --ogd-callout-icon-bg: #fffbeb;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+  --ogd-callout-accent: #b91c1c;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.94));
+  --ogd-callout-border: #fecdd3;
+  --ogd-callout-icon-bg: #fff1f2;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
+  --ogd-callout-accent: #6d28d9;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 243, 255, 0.94));
+  --ogd-callout-border: #c4b5fd;
+  --ogd-callout-icon-bg: #f5f3ff;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="action"], [data-callout="todo"]) {
+  --ogd-callout-accent: #0e7490;
+  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 254, 255, 0.94));
+  --ogd-callout-border: #a5f3fc;
+  --ogd-callout-icon-bg: #ecfeff;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) :is(.callout-title, .callout-title-inner) {
+  color: var(--ogd-text-strong, #111827) !important;
+  font-size: 0.98em !important;
+  font-weight: 820 !important;
+  line-height: 1.32 !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) .callout-icon {
+  border: 1.5px solid var(--ogd-callout-border) !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: var(--ogd-callout-icon-bg) !important;
+  color: var(--ogd-callout-accent) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) .callout-content {
+  margin-top: 0.52em !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  font-size: 0.96em !important;
+  line-height: 1.58 !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  --ogd-callout-border: rgba(188, 201, 216, 0.92);
+  margin-left: 0 !important;
+  padding-left: 1em !important;
+  border-left: 1px solid var(--ogd-callout-border) !important;
+  border-inline-start: 1px solid var(--ogd-callout-border) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) {
+  --ogd-callout-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64));
+  --ogd-callout-border: rgba(71, 85, 105, 0.76);
+  --ogd-callout-icon-bg: rgba(15, 23, 42, 0.42);
+  color: var(--text-normal, #e5edf7) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.30) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) :is(.callout-title, .callout-title-inner, .callout-content),
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  color: var(--text-normal, #e5edf7) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  --ogd-callout-border: rgba(71, 85, 105, 0.76);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+/* ============================================================
+  v2.22.102 - Remove forced Live Preview pointer-events guard
+   The previous EOF block forced pointer-events:auto on every
+   .cm-line descendant. That overrode CM6's native hit routing
+   for list markers, widgets and decorations, trapping clicks on
+   the currently active line. Native CM6 behaviour (matching the
+   vanilla theme) is restored by deleting that block entirely.
+   ============================================================ */
+
+/* ============================================================
+  v2.22.112/114 - Code block Candidate C cascade repair
+   Keep late overlay/print rules from reverting the approved codeblock
+   into a gray wrapper with raw language-* class labels.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .el-pre,
+body .workspace-leaf-content .markdown-rendered .el-pre {
+  margin: var(--ogd-codeblock-wrapper-margin, 1.28em 0 1.62em) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@supports selector(.markdown-rendered div:has(> pre)) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) > div:has(> pre),
+  body .workspace-leaf-content .markdown-rendered > div:has(> pre),
+  body :is(.markdown-preview-section, .markdown-rendered, .markdown-preview-view, .markdown-reading-view) div:has(> pre),
+  body .workspace-leaf-content .markdown-rendered div:has(> pre) {
+    margin-inline: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: var(--ogd-codeblock-margin, 0) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--ogd-codeblock-border, rgba(148, 163, 184, 0.42)) !important;
+  border-radius: var(--ogd-codeblock-radius, var(--ogd-radius-control, 10px)) !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(241, 245, 249, 0.64))) !important;
+  box-shadow: var(--ogd-codeblock-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09)) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+body .workspace-leaf-content .markdown-rendered pre::before {
+  content: "CODE" !important;
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  min-height: 0 !important;
+  padding: var(--ogd-codeblock-header-padding, 0.7em 5.5em 0.62em 1.12em) !important;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
+  background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.42)) !important;
+  color: var(--ogd-text-subtle, #475569) !important;
+  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: var(--ogd-codeblock-header-font-size, 0.72em) !important;
+  font-weight: 760 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.08em !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
+body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
+  content: none !important;
+  display: none !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::before { content: "POWERSHELL" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::before { content: "SHELL" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-python, .language-py)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-python, .language-py)::before { content: "PYTHON" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-javascript, .language-js)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-javascript, .language-js)::before { content: "JAVASCRIPT" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-typescript, .language-ts)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-typescript, .language-ts)::before { content: "TYPESCRIPT" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-json::before,
+body .workspace-leaf-content .markdown-rendered pre.language-json::before { content: "JSON" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-yaml, .language-yml)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-yaml, .language-yml)::before { content: "YAML" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-md, .language-markdown)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-md, .language-markdown)::before { content: "MARKDOWN" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-css::before,
+body .workspace-leaf-content .markdown-rendered pre.language-css::before { content: "CSS" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-html::before,
+body .workspace-leaf-content .markdown-rendered pre.language-html::before { content: "HTML" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-sql::before,
+body .workspace-leaf-content .markdown-rendered pre.language-sql::before { content: "SQL" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::before { content: "TEXT" !important; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-kusto, .language-kql)::before,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-kusto, .language-kql)::before { content: "KUSTO" !important; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body .workspace-leaf-content .markdown-rendered pre code {
+  display: block !important;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: var(--ogd-codeblock-code-padding, 1em 1.1em 1.05em) !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+  font-size: 0.9em !important;
+  line-height: 1.62 !important;
+  white-space: var(--ogd-codeblock-code-white-space, pre) !important;
+  word-break: normal !important;
+  overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, normal) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
+  --ogd-codeblock-border: rgba(71, 85, 105, 0.78);
+  --ogd-codeblock-header-bg: rgba(15, 23, 42, 0.28);
+  --ogd-codeblock-header-border: rgba(71, 85, 105, 0.62);
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 12px 24px rgba(0, 0, 0, 0.30);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre::before,
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
+  color: var(--ogd-line-soft, #e2e8f0) !important;
+}
+
+/* ============================================================
+  v2.22.116 - Hide decorative separators immediately after callouts
+   Scoped to callout-adjacent rules so ordinary horizontal rules remain visible.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout + hr,
+body .workspace-leaf-content .markdown-rendered .callout + hr {
+  display: none !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) + .cm-line.HyperMD-hr {
+  height: 0 !important;
+  min-height: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+  color: transparent !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) + .cm-line.HyperMD-hr :is(hr, .cm-hr, .cm-formatting-hr) {
+  display: none !important;
+}
+
+/* ============================================================
+  v2.22.117 - Callout checklist clipping and Live Preview marker repair
+   Keep callout task checkboxes inside the card and collapse raw task syntax.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout .contains-task-list > .task-list-item {
+  padding: 0.48em 0.18em !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout .contains-task-list {
+  margin: 0.52em 0 0.16em !important;
+  padding-left: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout .contains-task-list > .task-list-item > input[type="checkbox"] {
+  margin-left: 0 !important;
+  margin-right: 0.58em !important;
+  position: relative !important;
+  top: 0.12em !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout.HyperMD-task-line input[type="checkbox"],
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .task-list-label input[type="checkbox"] {
+  margin-left: 0 !important;
+  margin-right: 0.48em !important;
+  vertical-align: -0.12em !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout :is(.cm-formatting-list, .cm-formatting-list-ul, .cm-formatting-task) {
+  color: transparent !important;
+  display: inline-block !important;
+  width: 0 !important;
+  font-size: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ============================================================
+  v2.22.118 - Table Candidate A: Frosted Ledger parity
+   Apply the approved frosted table language across Reading and Live Preview.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body .workspace-leaf-content .markdown-rendered table,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.66));
+  --ogd-table-border: rgba(148, 163, 184, 0.46);
+  --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
+  --ogd-table-row-even: rgba(236, 254, 255, 0.28);
+  --ogd-table-row-hover: rgba(224, 242, 254, 0.62);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 12px 24px rgba(15, 23, 42, 0.08);
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--ogd-table-border) !important;
+  border-radius: 8px !important;
+  background: var(--ogd-table-bg) !important;
+  box-shadow: var(--ogd-table-shadow) !important;
+  overflow: hidden !important;
+  font-variant-numeric: tabular-nums !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+body .workspace-leaf-content .markdown-rendered table :is(th, td),
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+  padding: 0.62em 0.78em !important;
+  border-color: var(--ogd-table-cell-border) !important;
+  border-width: 0 0 1px 1px !important;
+  background-clip: padding-box !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  line-height: 1.42 !important;
+  vertical-align: top !important;
+  overflow-wrap: anywhere !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr > :is(th, td):first-child,
+body .workspace-leaf-content .markdown-rendered table tr > :is(th, td):first-child,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tr > :is(th, td):first-child {
+  border-left-width: 0 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:last-child > td,
+body .workspace-leaf-content .markdown-rendered table tbody tr:last-child > td,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:last-child > td {
+  border-bottom-width: 0 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+body .workspace-leaf-content .markdown-rendered table th,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  background: var(--ogd-table-head-bg) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  font-size: 0.88em !important;
+  font-weight: 820 !important;
+  text-align: left !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+body .workspace-leaf-content .markdown-rendered table td,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td,
+body.ogd-zebra :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+  background: var(--ogd-table-row-even) !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
+body .workspace-leaf-content .markdown-rendered table tbody tr:hover td,
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+  background: var(--ogd-table-row-hover) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body.theme-dark .workspace-leaf-content .markdown-rendered table,
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.10), transparent 0 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.72));
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(30, 41, 59, 0.70));
+  --ogd-table-border: rgba(71, 85, 105, 0.86);
+  --ogd-table-cell-border: rgba(51, 65, 85, 0.88);
+  --ogd-table-row-even: rgba(30, 41, 59, 0.44);
+  --ogd-table-row-hover: rgba(8, 145, 178, 0.22);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.28), 0 14px 28px rgba(0, 0, 0, 0.26);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+body.theme-dark .workspace-leaf-content .markdown-rendered table :is(th, td),
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+  color: var(--ogd-line-soft, #e5e7eb) !important;
 }

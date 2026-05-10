@@ -1,38 +1,9 @@
-/* Compact empty paragraph break in Live Preview to match PDF spacing.
-   An "empty" cm-line is a literal blank line between paragraphs; by
-   default it claims a full line-height which makes Live Preview look
-   far airier than the PDF/Reading view. */
-.markdown-source-view.mod-cm6 .cm-line:empty {
-  line-height: 0.45em !important;
-  min-height: 0.45em !important;
-  height: 0.45em !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:empty {
-  line-height: 1.05em !important;
-  min-height: 1.05em !important;
-  height: 1.05em !important;
-}
-
-@supports selector(.cm-line:has(br:only-child)) {
-  .markdown-source-view.mod-cm6 .cm-line:has(br:only-child) {
-    line-height: 0.45em !important;
-    min-height: 0.45em !important;
-    height: 0.45em !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .markdown-source-view.mod-cm6 .cm-line:empty:has(+ .HyperMD-header),
-  .markdown-source-view.mod-cm6 .cm-line:has(br:only-child):has(+ .HyperMD-header),
-  .markdown-source-view.mod-cm6 .HyperMD-header + .cm-line:has(br:only-child) {
-    line-height: 1.05em !important;
-    min-height: 1.05em !important;
-    height: 1.05em !important;
-  }
-}
+/* v2.22.103: empty Live Preview lines now follow CM6 native line-height.
+   Earlier 0.45em compaction shrank the click hitbox to ~7px and made the
+   blank row impossible to mouse-target (arrow keys still worked because
+   they only need a line index). Reading view paragraph spacing is
+   handled below; Live Preview compactness is recovered through other
+   spacing presets, not by collapsing the blank line itself. */
 
 /* Reading view: tighten consecutive paragraph stacks. */
 .markdown-rendered p + p {
@@ -562,7 +533,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   border-left: 1px solid #d1d5db !important;
   border-right: 1px solid #d1d5db !important;
   border-radius: var(--ogd-radius-top, 6px 6px 0 0) !important;
-  padding-top: 10px !important;
+  padding-top: 0 !important;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
@@ -570,7 +541,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   border-left: 1px solid #d1d5db !important;
   border-right: 1px solid #d1d5db !important;
   border-radius: 0 0 6px 6px !important;
-  padding-bottom: 10px !important;
+  padding-bottom: 0 !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul {

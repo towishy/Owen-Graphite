@@ -1,25 +1,42 @@
 /* =====================================================================
    v1.3.1 — Live Preview ↔ Reading View parity (12-point upgrade)
    Goal: minimize visual jump when toggling ⌘E between Source/Reading.
+
+   FORBIDDEN in this module (enforced by scripts/validate_theme.py
+   `live_preview_hit_routing_audit` and scripts/diff_guard.py):
+     - non-zero vertical margin on .cm-callout / .cm-table-widget /
+       .cm-embed-block.cm-callout (block widgets)
+     - non-zero vertical margin OR padding on .HyperMD-* .cm-line
+       variants (table-row / callout / header-1..6)
+     - outline / box-shadow / transform / vertical padding on
+       .cm-active.cm-line (active line)
+     - overflow-x:auto + max-width:100% pair on .cm-embed-block
+     - pointer-events:none on .cm-content / .cm-line
+   See: dev/MAP/cm6-hit-routing-contract.md
    ===================================================================== */
 
-/* (1) CM6 header line-height per level — override generic .cm-line 1.45 */
+/* (1) CM6 header line-height per level — override generic .cm-line 1.45
+   v2.22.101: heading .cm-line padding is forced to 0 so the line's hitbox
+   matches its visible text. Earlier 0.16~0.42em padding extended the click
+   target into adjacent rows and trapped cursor placement on neighbour
+   headings/blank rows. Visual rhythm is now owned by line-height and the
+   header-adjacent blank row in 03-reading-content.css. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
   line-height: 1.2 !important;
-  padding-top: 0.42em !important;
-  padding-bottom: 0.42em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
   line-height: 1.25 !important;
-  padding-top: 0.18em !important;
-  padding-bottom: 0.32em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
   position: static !important;
   z-index: auto !important;
   line-height: 1.42 !important;
-  padding-top: 0.18em !important;
-  padding-bottom: 0.3em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   padding-left: 0.08em !important;
   padding-right: 0 !important;
 }
@@ -27,8 +44,8 @@
   position: static !important;
   z-index: auto !important;
   line-height: 1.5 !important;
-  padding-top: 0.24em !important;
-  padding-bottom: 0.42em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   padding-left: 0.08em !important;
   padding-right: 0 !important;
 }
@@ -37,8 +54,8 @@
   position: static !important;
   z-index: auto !important;
   line-height: 1.45 !important;
-  padding-top: 0.16em !important;
-  padding-bottom: 0.28em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   padding-left: 0.08em !important;
 }
 /* HyperMD inline header text size — CM6 needs explicit per-level */
@@ -174,12 +191,22 @@
   display: inline-block;
 }
 
-/* (8) Callout widget in Live Preview — share Reading view styling */
-.markdown-source-view.mod-cm6 .cm-callout,
-.markdown-source-view.mod-cm6 .HyperMD-callout {
+/* (8) Callout widget in Live Preview — share Reading view styling
+   v2.22.108: dropped the legacy `margin: 0.4em 0 !important` and split
+   the padding rule. The block widget (`.cm-callout`) keeps the full
+   8px/12px padding because its hit-target is the whole widget bbox;
+   the source-line variant (`.HyperMD-callout`) only takes the
+   horizontal padding because vertical padding on a `.cm-line` extends
+   its hit-target into adjacent paragraphs (same regression as
+   v2.22.106/107). */
+.markdown-source-view.mod-cm6 .cm-callout {
   border-radius: var(--callout-radius, 6px) !important;
   padding: 8px 12px !important;
-  margin: 0.4em 0 !important;
+}
+.markdown-source-view.mod-cm6 .HyperMD-callout {
+  border-radius: var(--callout-radius, 6px) !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
 }
 .markdown-source-view.mod-cm6 .HyperMD-callout .cm-formatting-quote {
   display: none !important;
@@ -192,13 +219,17 @@
   opacity: 1;
 }
 
-/* (9) Table widget in Live Preview */
+/* (9) Table widget in Live Preview
+   v2.22.105: removed `.HyperMD-table-row` from this selector group.
+   v2.22.106: dropped the leftover `margin: 0.4em 0 !important` on the
+   widget itself. The blank `.cm-line` between paragraph and table is
+   already enough vertical rhythm; the extra widget margin produced a
+   gap that paragraph clicks could land in but where caret routing
+   defaulted to the table widget. */
 .markdown-source-view.mod-cm6 .cm-table-widget,
-.markdown-source-view.mod-cm6 .HyperMD-table-row,
 .markdown-source-view.mod-cm6 table.cm-table {
   border-collapse: collapse !important;
   width: 100%;
-  margin: 0.4em 0 !important;
   font-variant-numeric: tabular-nums;
 }
 .markdown-source-view.mod-cm6 .cm-table-widget th,
@@ -354,22 +385,22 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line:not(:empty):not(
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
   line-height: 1.28 !important;
-  padding-top: 0.58em !important;
-  padding-bottom: 0.34em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   border-bottom: 1px solid rgba(148, 163, 184, 0.34) !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
   line-height: 1.34 !important;
-  padding-top: 0.46em !important;
-  padding-bottom: 0.22em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   border-bottom: 1px solid rgba(203, 213, 225, 0.72) !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
   line-height: 1.38 !important;
-  padding-top: 0.34em !important;
-  padding-bottom: 0.18em !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   border-bottom: 1px solid rgba(226, 232, 240, 0.88) !important;
 }
 
@@ -401,7 +432,9 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:no
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout) {
-  margin: 1.05em 0 1.2em !important;
+  /* v2.22.108: vertical margin removed to match v2.22.107 hit-routing rule.
+     Vertical rhythm comes from the natural blank `.cm-line` between blocks. */
+  margin: 0 !important;
   padding: 13px 15px !important;
   border: 1px solid var(--ogd-lp-doc-rim) !important;
   border-left-width: 1px !important;
@@ -411,9 +444,9 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embe
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  /* v2.22.108: vertical padding removed; was 0.2em top/bottom which extended
+     the cm-line hit-target into adjacent paragraphs. */
   margin-left: 0 !important;
-  padding-top: 0.2em !important;
-  padding-bottom: 0.2em !important;
   line-height: 1.66 !important;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.46)) !important;
 }
@@ -429,17 +462,17 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  margin-top: 1.05em !important;
+  margin-top: 0 !important;
   border-top: 1px solid rgba(30, 41, 59, 0.18) !important;
   border-radius: var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) 0 0 !important;
-  padding-top: 0.72em !important;
+  padding-top: 0 !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  margin-bottom: 1.35em !important;
+  margin-bottom: 0 !important;
   border-bottom: 1px solid rgba(30, 41, 59, 0.18) !important;
   border-radius: 0 0 var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) !important;
-  padding-bottom: 0.72em !important;
+  padding-bottom: 0 !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
@@ -451,7 +484,8 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  margin: 0.8em 0 1.35em !important;
+  /* v2.22.108: vertical margin removed; same hit-routing fix as v2.22.106. */
+  margin: 0 !important;
   border: 1px solid rgba(203, 213, 225, 0.76) !important;
   border-radius: var(--ogd-radius-control, 7px) !important;
   overflow: hidden !important;
@@ -524,5 +558,81 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
   border-color: rgba(51, 65, 85, 0.92) !important;
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54)) !important;
   color: var(--ogd-line-soft, #e5e7eb) !important;
+}
+
+/* ============================================================
+  v2.22.110 - Live Preview codeblock C parity without hitbox bleed
+   Mirrors Candidate C (Frosted Glass + Rim) while preserving CM6 line
+   geometry. Do not add vertical margin/padding to HyperMD-codeblock
+   lines; only horizontal padding and borders are used here.
+   ============================================================ */
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  --ogd-lp-code-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.12), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(241, 245, 249, 0.54));
+  --ogd-lp-code-border: rgba(148, 163, 184, 0.42);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  border-inline: 1px solid var(--ogd-lp-code-border) !important;
+  background: var(--ogd-lp-code-bg) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+  font-family: var(--font-monospace-theme) !important;
+  line-height: 1.62 !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42)) !important;
+  border-radius: var(--ogd-radius-control, 10px) var(--ogd-radius-control, 10px) 0 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 10px 20px rgba(15, 23, 42, 0.07) !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42)) !important;
+  border-radius: 0 0 var(--ogd-radius-control, 10px) var(--ogd-radius-control, 10px) !important;
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 10px 20px rgba(15, 23, 42, 0.07) !important;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
+  padding-inline: 0.32em !important;
+  border-radius: 4px !important;
+  color: var(--ogd-text-subtle, #64748b) !important;
+  background: rgba(255, 255, 255, 0.38) !important;
+  opacity: 1 !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  --ogd-lp-code-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
+  --ogd-lp-code-border: rgba(71, 85, 105, 0.78);
+  color: var(--ogd-line-soft, #e2e8f0) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 10px 20px rgba(0, 0, 0, 0.26) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 10px 20px rgba(0, 0, 0, 0.26) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
+  color: var(--ogd-line-soft, #cbd5e1) !important;
+  background: rgba(15, 23, 42, 0.38) !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 

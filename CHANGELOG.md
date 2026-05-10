@@ -4,6 +4,498 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.120] — 2026-05-10 — PDF table header tint parity
+
+### Fixed
+- PDF table headers now use a brighter Frosted Ledger fallback so Chromium print no longer makes the header background look noticeably darker than Live Preview.
+- PDF table surface, borders, and zebra rows were softened to stay closer to the white-glass Live Preview appearance.
+
+### Baseline
+- `v2.22.120` is the current base release and rollback baseline. Previous public releases/tags should be removed after publishing this release so `v2.22.120` remains the only retained release.
+
+### Selectors touched
+- `@media print table` design tokens.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.119] — 2026-05-10 — PDF table type and color parity
+
+### Fixed
+- PDF tables now better match Live Preview after the Frosted Ledger redesign by increasing table font size, restoring the same row padding/line-height proportions, and softening header text from near-black to the shared slate tone.
+- PDF table tint, borders, and alternate rows now use the same Frosted Ledger color family as Live Preview, reducing the flat gray report-table look.
+
+### Selectors touched
+- `@media print table`, `@media print table :is(th, td)`, `@media print table th`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.118] — 2026-05-10 — Frosted Ledger table redesign
+
+### Changed
+- Default Markdown tables now use the approved A Frosted Ledger design: translucent glass surface, soft rim, subtle shadow, frosted header, cyan-tinted alternate rows, and matching hover state.
+- Reading View, Live Preview CM6 table widgets, and PDF export now share the same table design tokens, with PDF using a print-safe flat fallback for blur-sensitive effects.
+
+### Selectors touched
+- `.markdown-rendered table`, `.workspace-leaf-content .markdown-rendered table`, `.markdown-source-view.mod-cm6 .cm-table-widget`, `.markdown-source-view.mod-cm6 table.cm-table`, `@media print table`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.117] — 2026-05-10 — Callout checklist clipping repair
+
+### Fixed
+- Callout-contained task lists now flatten their nested card frame, removing the stray bottom border line and preventing task checkboxes from clipping against the left edge in Reading View and PDF-style rendering.
+- Live Preview callout task lines now collapse raw `- [ ]` formatting markers inside callouts so the checklist reads closer to the rendered view while preserving editability.
+
+### Selectors touched
+- `.callout .contains-task-list`, `.callout .contains-task-list > .task-list-item`, `.callout .contains-task-list input[type="checkbox"]`, `.cm-line.HyperMD-callout.HyperMD-task-line`, `.cm-line.HyperMD-callout .cm-formatting-task`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.116] — 2026-05-10 — Live Preview callout separator cleanup
+
+### Fixed
+- Reading View and Live Preview now also hide a Markdown horizontal rule immediately following a callout, matching the PDF cleanup from v2.22.115.
+- Ordinary horizontal rules remain visible; the rule is scoped to `.callout + hr` and callout-widget-adjacent `.HyperMD-hr` only.
+
+### Selectors touched
+- `.callout + hr`, `.cm-embed-block.cm-callout + .cm-line.HyperMD-hr`, `.cm-line.HyperMD-hr :is(hr, .cm-hr, .cm-formatting-hr)`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.115] — 2026-05-10 — PDF callout separator cleanup
+
+### Fixed
+- PDF Compact Report now hides a Markdown horizontal rule immediately following a callout, removing the stray gray separator line that looked like an unwanted callout artifact.
+- General PDF horizontal rules remain visible; the cleanup is scoped to `.callout + hr` only.
+
+### Selectors touched
+- `body.ogd-pdf-compact .callout + hr`, `body.ogd-pdf-compact hr`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.114] — 2026-05-10 — PDF code color and table sizing repair
+
+### Fixed
+- PDF export code blocks keep a stable Candidate C print surface when a long block is split across pages. `box-decoration-break: clone` and a printable fallback background prevent the continuation fragment from losing the intended color treatment.
+- PDF code token colors are pinned to the approved screen codeblock palette so PowerShell/Kusto snippets do not drift into an inconsistent print-only palette.
+- Nested Obsidian code wrappers that are not direct children are now cleared as well, removing the remaining gray rim around PDF code blocks.
+- PDF tables use larger text and spacing so table body text sits closer to the following paragraph size.
+
+### Selectors touched
+- `div:has(> pre)`, `@media print pre`, `@media print pre::before`, `@media print pre .token.*`, `@media print table`, `@media print table :is(th, td)`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.113] — 2026-05-10 — PDF code and table parity repair
+
+### Fixed
+- PDF export code blocks now map `language-text` and `language-kusto` to readable `TEXT` and `KUSTO` labels instead of leaking raw `LANGUAGE-*` class names.
+- PDF export tables now follow the Live Preview report sheet family more closely: gradient header, outer rim, subtle cell grid, row tone, and compact print sizing are aligned with the current table tokens.
+- `risk-table` PDF output no longer turns the last column into overly rounded per-cell boxes; mitigation cells stay part of the table grid.
+
+### Selectors touched
+- `pre.language-text`, `pre.language-kusto`, `@media print table`, `@media print table th`, `@media print table td`, `@media print table.risk-table td:last-child`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.112] — 2026-05-10 — Code block cascade repair
+
+### Fixed
+- Reading View and PDF export code blocks no longer expose raw `language-*` class labels such as `LANGUAGE-POWERSHELL`; late cascade rules now restore readable labels like `POWERSHELL` while preserving the approved Candidate C frosted glass header.
+- Removed the gray wrapper effect around rendered code blocks by clearing Obsidian code wrapper backgrounds/padding in the final cascade layer.
+- PDF export keeps the same Candidate C family treatment without the extra gray band: printable gradient surface, rim shadow, header divider, and matched code padding remain active.
+
+### Selectors touched
+- `.el-pre`, `div:has(> pre)`, `pre`, `pre::before`, `pre::after`, `pre code`, `pre.language-powershell`, `@media print pre`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.111] — 2026-05-10 — PDF code block parity hotfix
+
+### Fixed
+- PDF export / print no longer falls back to the quieter Candidate D codeblock treatment. The `@media print` cascade now keeps the approved Candidate C frosted glass identity through gradient surface, rim shadow, header divider, and matching code padding.
+- Chromium print can flatten `backdrop-filter`, so the PDF rule does not rely on blur alone; the visible glass treatment survives through printable gradients and inset rim shadows.
+
+### Selectors touched
+- `@media print pre`, `@media print pre::before`, `@media print pre code`, `body.ogd-pdf-compact pre`, `body.theme-dark pre`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.110] — 2026-05-10 — Frosted code block refresh
+
+### Added
+- **Approved Candidate C code block design** — promoted `docs/fixtures/code-block-candidate-c-frosted-rim.svg` into the theme: Reading View fenced code blocks now use frosted glass, rim highlights, a compact header row, refined copy button styling, and light/dark token color parity.
+- **Print/PDF fallback** — `@media print` / `ogd-pdf-compact` code blocks use the quieter Candidate D outline fallback so PDF output stays ink-light and stable.
+- **Codeblock hit-routing guard coverage** — `.HyperMD-codeblock`, `.HyperMD-codeblock-begin`, and `.HyperMD-codeblock-end` are now part of `live_preview_hit_routing_audit`, `diff_guard.py`, and `changelog_lint.py` watchlists.
+- **SVG review fixtures** — added four high-quality SVG candidate previews using gradients, rim layers, turbulence grain/noise, blur halos, and geometric text/shape rendering hints.
+
+### Fixed
+- Removed existing Live Preview codeblock vertical margin/padding on `.HyperMD-codeblock-begin` / `.HyperMD-codeblock-end` so the new design cannot reintroduce the click-to-edit hit-target bleed class fixed in v2.22.101–109.
+
+### Selectors touched
+- `.markdown-rendered pre`, `.markdown-rendered pre::before`, `.markdown-rendered pre code`, `.copy-code-button`, `.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock`, `.HyperMD-codeblock`, `.HyperMD-codeblock-begin`, `.HyperMD-codeblock-end`, `.cm-formatting-code-block`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/diff_guard.py --files dev/05-live-preview.css`, `scripts/changelog_lint.py`, codeblock guard negative probe (`.HyperMD-codeblock-begin { padding-top: 1em }` correctly fails), release ZIP build, vault sync to both macOS Owen Graphite theme targets.
+
+## [2.22.109] — 2026-05-10 — Regression-prevention infrastructure
+
+### Added
+- **`scripts/validate_theme.py` `live_preview_hit_routing_audit`** — expanded with three new categories on top of the v2.22.108 base:
+  - active line: forbids `outline`, non-zero `box-shadow`, `transform`, vertical `padding` on `.cm-active.cm-line` (codifies v2.22.104).
+  - embed BFC: forbids the `overflow-x:auto + max-width:100%` pair on `.cm-embed-block` / `.cm-html-embed` (codifies v2.22.106).
+  - rendered text: forbids `pointer-events:none` on `.cm-content` / `.cm-line` (codifies the v2.22.102 lesson).
+  - All categories now accumulate failures and report them together so a single run lists every regression a patch introduces.
+- **`scripts/diff_guard.py`** — extracts the rules altered by `git diff` (or `--staged`) and runs the same audit only on changed rules. Designed for fast pre-commit feedback.
+- **`scripts/hooks/pre-commit`** — wires `diff_guard.py` and `changelog_lint.py` into git so commits cannot ship a known regression silently. Install with `ln -sf ../../scripts/hooks/pre-commit .git/hooks/pre-commit`.
+- **`scripts/build_selector_provenance.py` + `scripts/who_added.py`** — walk `git log` for `dev/*.css` and emit `dev/MAP/selector-provenance.json`, mapping every selector to the commit / version that introduced or last touched it. Collapses regression archaeology from "grep + git log -p + CHANGELOG" to a single command.
+- **`scripts/changelog_lint.py`** — enforces (a) `CHANGELOG.md` topmost entry matches `manifest.json` `version`, (b) the entry has at least one `### Fixed/Added/Changed` block, (c) high-risk selector tokens (`.cm-callout`, `.cm-table-widget`, `.HyperMD-*`, `.cm-active`, `.cm-line`, etc.) touched by the diff are mentioned in the latest entry. Runs in CI and pre-commit.
+- **`dev/MAP/cm6-hit-routing-contract.md`** — single-page contract that codifies the v2.22.99–108 lessons. New CM6 chrome rules must read it before adding margin/padding to widgets or `.cm-line` variants.
+- **`dev/test-samples/click-to-edit-regression.md`** — manual smoke test covering all seven historical regression scenarios (heading→paragraph, blank line, paragraph above table, paragraph above callout, active line, embed above paragraph, spacing-relaxed preset).
+- **`scripts/hit_routing_probe.py`** (STUB) and **`docs/fixtures/vanilla-cm6-baseline.placeholder.md`** — documented rollout plan for headless Playwright probe and computed-style baseline (planned for v2.22.110+).
+- **CSS module headers** — `dev/05-live-preview.css`, `dev/07e-live-preview-mobile-plugin.css`, `dev/10-a11y-regression-hotfixes.css`, `dev/10d-liquid-glass-core.css` now declare a FORBIDDEN list at the top so future patches encounter the rules before adding new code.
+
+### Selectors touched
+- `.cm-callout`, `.cm-table-widget`, `.cm-embed-block.cm-callout`, `.cm-active.cm-line`, `.cm-embed-block`, `.cm-html-embed`, `.cm-content`, `.cm-line`, `.HyperMD-table-row`, `.HyperMD-callout`, `.HyperMD-header-1..6` (validator only — no theme.css selector logic changed in this release).
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, `scripts/diff_guard.py --files dev/05-live-preview.css`, `scripts/build_selector_provenance.py` (5440 entries), release ZIP build, vault sync to both Owen Graphite targets.
+
+## [2.22.108] — 2026-05-10 — Hit-routing regression guard
+
+### Added
+- `scripts/validate_theme.py` `FORBIDDEN_LIVE_PREVIEW_RULES` now flags non-zero vertical `margin` on CM6 block widgets (`.cm-callout`, `.cm-table-widget`, `.cm-embed-block.cm-callout`) and non-zero vertical `margin`/`padding` on `.HyperMD-table-row`, `.HyperMD-callout`, `.HyperMD-header*` `.cm-line` variants. Codifies the v2.22.101–107 lesson: any such vertical box on a CM6 widget or HyperMD `.cm-line` extends its hit-target and steals click-to-edit from adjacent paragraphs.
+
+### Fixed
+- The new guard immediately surfaced three remaining bleeders inside the `body.ogd-spacing-relaxed` Style Settings preset (`dev/05-live-preview.css`):
+  - `.cm-callout` / `.cm-embed-block.cm-callout`: `margin: 1.05em 0 1.2em` → `margin: 0`.
+  - `.cm-table-widget`, `table.cm-table`: `margin: 0.8em 0 1.35em` → `margin: 0`.
+  - `.cm-line.HyperMD-callout`: removed `padding-top: 0.2em` and `padding-bottom: 0.2em`.
+- Visual rhythm in the relaxed preset now relies on the natural blank `.cm-line` between blocks, matching the default preset behaviour.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci` (new guard reports clean against the patched theme), release ZIP build, vault sync to both Owen Graphite targets.
+
+## [2.22.107] — 2026-05-10 — Drop callout widget vertical margin
+
+### Fixed
+- Removed `margin: 1em 0 1.15em !important` from the v2.22.83 Live Preview Report Notice callout rule (`body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout)`). Same hitbox bleeding pattern as the table widget before v2.22.106 — the widget's top margin produced a gap that paragraph clicks landed in but where caret routing defaulted to the callout widget. Vertical rhythm is provided by the natural blank `.cm-line` that always exists between a paragraph and a callout block.
+- This is part of a sweep of recent table/callout design rules (v2.22.81/82/83) that introduced cm-line / widget margins matching the heading padding regression in v2.22.101.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, local Obsidian vault sync.
+
+## [2.22.106] — 2026-05-10 — Drop embed-block BFC and table widget margin
+
+### Fixed
+- Removed `.cm-embed-block, .cm-html-embed { overflow-x: auto !important; max-width: 100% !important }` from `dev/07e-live-preview-mobile-plugin.css`. Forcing a BFC + scroll container on the table embed wrapper suppressed margin collapse with the paragraph above and broke mouse hit-routing for that paragraph (still required 2+ blank lines to make the paragraph clickable).
+- Removed the residual `.cm-table-widget, table.cm-table { margin: 0.4em 0 !important }` from `dev/05-live-preview.css`. Vertical rhythm is now provided by the natural blank `.cm-line` between paragraph and table.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, local Obsidian vault sync.
+
+## [2.22.105] — 2026-05-10 — Stop table cm-line margin bleeding
+
+### Fixed
+- Removed `.HyperMD-table-row` from the table-widget selector group in `dev/05-live-preview.css`. That class is on the source `.cm-line` for the markdown row text. Applying `margin: 0.4em 0 !important` to it expanded the line's hit-target by ~0.4em above and below, which made the paragraph directly above a Markdown table un-clickable until the user manually inserted multiple blank lines.
+- The styling is now scoped to the actual rendered table (`.cm-table-widget`, `table.cm-table`) only. Same root cause class as the heading padding regression in v2.22.101.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, local Obsidian vault sync.
+
+## [2.22.104] — 2026-05-10 — Remove active line glass focus visual
+
+### Fixed
+- Removed `.markdown-source-view.mod-cm6 .cm-focused .cm-active.cm-line:not(...)` glass focus rule from `dev/10d-liquid-glass-core.css`. It painted an `outline: 1px / outline-offset: 1px` plus `box-shadow` plus gradient background on the active line. With other Live Preview interactions in play, that visual sat on the seam between the active row and the next row and confused mouse hit-testing for adjacent paragraphs.
+- Vanilla parity restored. Table cell focus visual (`:is(.cm-table-widget, table.cm-table) :is(td, th):focus-within`) is unchanged.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, local Obsidian vault sync.
+
+## [2.22.103] — 2026-05-10 — Restore native blank line height
+
+### Fixed
+- Removed the `0.45em` forced compaction on `.cm-line:empty`, `.HyperMD-header + .cm-line:empty`, and the `:has(br:only-child)` mirror in `dev/03-reading-content.css`. Blank Live Preview rows now follow CM6's native line-height (~1.5em).
+- Root cause for the "마우스 클릭은 안 되고 화살표키만 되는" symptom: the blank row hitbox was ~7px tall, too small to mouse-target precisely. Arrow-key navigation only needs a line index so it kept working, masking the regression as an editability bug.
+- Reading view paragraph spacing (`.markdown-rendered p + p`) is unchanged.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, local Obsidian vault sync.
+
+## [2.22.102] — 2026-05-10 — Remove forced pointer-events guard
+
+### Fixed
+- Removed the v2.22.99–101 EOF isolation block that forced `pointer-events: auto` on every `.cm-line` descendant. The override was meant to keep clicks routable but actually trapped clicks on the active line because it overrode CM6's native pointer-events handling on list markers, widgets and decorations. With the heading padding fix in v2.22.101 already restoring vanilla parity, this guard became unnecessary noise.
+- Native CM6 hit-routing is restored. The blank-row hitbox sizing in `dev/03-reading-content.css` and the heading line padding fix in `dev/05-live-preview.css` remain.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, local Obsidian vault sync.
+
+## [2.22.101] — 2026-05-10 — Live Preview heading hitbox parity
+
+### Fixed
+- Root cause for the heading-to-paragraph and blank-row-to-heading click routing failures: heading `.cm-line` (`HyperMD-header-1..6`) had 0.16~0.42em `padding-top/bottom` that extended the row's hit area into adjacent rows. CM6 routes a click on a `.cm-line`'s padding to that line, so clicking the visible top/bottom of a paragraph or blank row landed on the neighbouring header.
+- Forced heading `.cm-line` `padding-top/bottom` to 0 in both default and `ogd-spacing-relaxed` variants. Visual rhythm is now owned by `line-height` and the header-adjacent blank row in `dev/03-reading-content.css`.
+- Confirmed against vanilla theme parity. The earlier "CSS-only structural limit" diagnosis is withdrawn — it was a theme regression introduced by heading line padding.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync.
+
+## [2.22.100] — 2026-05-10 — Live Preview hitbox simplification
+
+### Fixed
+- Reduced header-adjacent blank Live Preview row from `1.05em` to `0.45em` so the active blank row no longer extends into the next heading hit area.
+- Simplified the v2.22.99 EOF isolation block to a single native pointer guard. Removed the inactive-span `pointer-events: none` rule that added a second hit-test variable.
+
+### Notes
+- After confirmed structural limitation of CSS-only fixes for CM6 row mapping, this patch follows the user-mandated pre-limit policy and stops further row-geometry calibration. If the symptom persists, the bug is treated as a CM6/Obsidian-side hit-routing limit, not a theme bug.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync 대상.
+
+## [2.22.99] — 2026-05-10 — Live Preview native edit isolation
+
+### Fixed
+- Removed the accumulated v2.22.84-v2.22.98 Live Preview experiment chain from the final hotfix cascade.
+- Added one final Live Preview native edit isolation rule: inactive rendered text spans pass click hit-testing back to the CM6 line box, while active rows, links, widgets, and fold/callout controls remain interactive.
+
+### Notes
+- This patch stops geometry calibration and treats the bug as a rendered-span hit-test routing issue after field tests showed row-model restoration alone did not change the symptom.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync 대상.
+
+## [2.22.98] — 2026-05-10 — Live Preview true EOF row-model restore
+
+### Fixed
+- Corrected the v2.22.97 cascade placement error: the baseline restore block had been inserted before later v2.22.90-v2.22.96 Live Preview experiment blocks, so the failed geometry-neutral rules still won at EOF.
+- Re-applied the historical v2.22.76 heading and blank-row model as the actual final Live Preview row owner.
+
+### Notes
+- The remaining root cleanup is to physically remove the v2.22.84-v2.22.97 experiment chain after the field fix is confirmed in Obsidian.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync 대상.
+
+## [2.22.97] — 2026-05-10 — Live Preview row-model baseline restore
+
+### Added
+- Added `dev/MAP/live-preview-editability-relation-map.md` to reverse-trace Live Preview editability regressions by module, selector, and patch version.
+
+### Fixed
+- Restored the historical v2.22.76 Live Preview row model in the final cascade for headings, ordinary blank rows, and heading-adjacent blank rows.
+- Reverted the effective result of the v2.22.84-v2.22.96 experiment layer for `.cm-active.cm-line:empty`, `.HyperMD-header + .cm-line:empty`, and rendered span pointer routing.
+- Preserved table inflation guards while returning non-table CM6 rows to native interactive text behavior.
+
+### Notes
+- Root-cause analysis now identifies the accumulated Live Preview experiment layer as the regression source, not the original v2.22.76 heading padding or empty-row defaults.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync 대상.
+
+## [2.22.96] — 2026-05-10 — Live Preview CM6 native row hit-test restore
+
+### Fixed
+- Removed final-cascade vertical `margin`/`padding` geometry from Live Preview heading `.cm-line` rows so CM6 mouse coordinates stay aligned with visible headings.
+- Restored native pointer hit-testing on `.cm-line` children after earlier span click-through experiments.
+- Returned heading-adjacent blank CM6 rows to interactive text rows instead of non-interactive collapsed hitbox gaps.
+
+### Notes
+- This intentionally prioritizes Live Preview editability over extra heading spacing. CM6 editor rows should not be spaced with `.cm-line` margin/padding because it can desync visible row positions from CodeMirror row hit-testing.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync 대상.
+
+## [2.22.95] — 2026-05-10 — Live Preview heading hitbox geometry fix
+
+### Added
+- Added `dev/MAP/live-preview-editability-css-map.md` to map CM6 Live Preview event routing, line geometry, late cascade ownership, and hidden editability risks.
+
+### Fixed
+- Moved Live Preview heading bottom rhythm out of heading `padding-bottom` and into `margin-bottom`, preventing the active heading line-box from covering the paragraph below.
+- Reduced heading-adjacent blank row hitboxes and made them non-interactive so they cannot intercept paragraph selection or click-to-edit.
+- Documented the separate hidden Mermaid control `.clickable-icon` HIGH finding in the CSS MAP classification.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, CSS risk map refresh, and local Obsidian vault sync 대상.
+
+## [2.22.94] — 2026-05-10 — Live Preview native text hit-test restore
+
+### Fixed
+- Removed the final-cascade click-through experiment that forced ordinary CM6 rendered text spans to `pointer-events: none` and could prevent paragraph text below headings from entering edit mode.
+- Restored native pointer targets on `.cm-line *` so Obsidian/CodeMirror receives the same event path as the default Live Preview editor.
+- Reverted the enlarged Live Preview heading bottom padding/margins added during debugging so active heading line boxes do not extend toward the paragraph below.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.93] — 2026-05-10 — Live Preview rendered span hit-test source of truth
+
+### Fixed
+- Removed the conflicting Live Preview hit-test cascade where later rollback blocks restored `pointer-events: auto` on rendered inline spans and prevented paragraph clicks below active headings from reaching the CodeMirror line box.
+- Re-established a single rule: ordinary rendered heading/paragraph spans pass through mouse events, while the CM6 line box remains the editable hit target.
+- Preserved direct pointer targets for interactive inline elements such as links, URLs, form controls, fold placeholders, widget buffers, and callout folds.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.92] — 2026-05-10 — Live Preview heading paragraph clearance restore
+
+### Fixed
+- Restored a small safe clearance below Live Preview headings after the previous blank-line collapse made the following paragraph sit too close to the active heading hitbox.
+- Changed heading-adjacent blank rows from fully collapsed `0` height to a compact `0.35em` spacer so they remain visually tight without covering the next editable line.
+- Added per-level heading bottom padding/margin adjustments for H1-H6 in CM6 Live Preview.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.91] — 2026-05-10 — Live Preview header-adjacent blank-line hitbox collapse
+
+### Fixed
+- Collapsed blank CM6 Live Preview rows immediately before or after headings so a clicked blank line cannot cover the next heading or paragraph hit target.
+- Restored ordinary text span pointer handling to `auto` so heading and paragraph text can be selected normally.
+- Covered both literal empty CM6 rows and blank rows rendered with `br:only-child`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.90] — 2026-05-10 — Live Preview blank-line focus and rendered-row edit fix
+
+### Fixed
+- Removed the blank-line Aqua focus plate with a selector that beats the original Liquid Glass active-line rule, including CM6 blank lines rendered with `br:only-child`.
+- Restored click-to-edit for rendered Live Preview heading and paragraph rows by routing ordinary text span clicks back to the CodeMirror line container.
+- Preserved pointer targets for interactive widgets such as inputs, links, fold placeholders, widget buffers, and callout folds.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.89] — 2026-05-10 — Rendered text selection and editability rollback
+
+### Fixed
+- Restored native text hit-testing across rendered Markdown and CM6 Live Preview text after previous pointer-event fixes did not resolve heading, paragraph, and list selection/edit entry issues.
+- Forced decorative heading and line pseudo-elements out of mouse selection/click paths so visual chrome cannot cover document text.
+- Kept CodeMirror overlay layers non-interactive while leaving content rows and text spans selectable.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.88] — 2026-05-10 — Live Preview active-line hit-test reset
+
+### Fixed
+- Removed the full-width Frost Aqua active-line plate in Live Preview after reports that rendered headings, paragraphs, and list rows still could not be selected or clicked into edit mode.
+- Restored default pointer hit-testing on CM6 text spans so CodeMirror can handle cursor placement through its native event path.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.87] — 2026-05-10 — Live Preview rendered-span click-through fix
+
+### Fixed
+- Let ordinary rendered Markdown spans in Live Preview pass mouse clicks back to their CodeMirror row, restoring click-to-edit for non-active paragraphs and list items.
+- Reverted the overly broad `.cm-line *` pointer target from v2.22.86 while keeping interactive widgets such as checkboxes, fold placeholders, and callout folds clickable.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.86] — 2026-05-10 — Live Preview paragraph click-through guard
+
+### Fixed
+- Restored click-to-edit behavior for paragraph rows directly below active headings in Live Preview by making CM6 text rows explicit pointer targets.
+- Lowered active heading line hit-test priority below ordinary paragraph rows so decorative heading/focus chrome does not block the next line.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.85] — 2026-05-10 — PDF Report Notice callout parity
+
+### Fixed
+- Kept the approved `B. Report Notice` callout treatment in Obsidian PDF Export by overriding the older print/report left-stripe callout cascade.
+- Added print-specific semantic callout variables, full-frame borders, icon badge styling, and compact PDF-safe spacing inside the existing print ownership block.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.84] — 2026-05-10 — Live Preview selection stability
+
+### Fixed
+- Prevented empty CM6 Live Preview rows from rendering the full-width Frost Aqua active-line focus box when Obsidian represents blank lines with a lone `br`.
+- Added a final selection guard for CM6 editor content so theme decoration does not interfere with mouse text selection.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.83] — 2026-05-10 — Live Preview Report Notice callouts
+
+### Fixed
+- Applied the approved `B. Report Notice` callout treatment inside the CM6 Live Preview editor DOM, where existing notes were still using the older left-stripe callout styling.
+- Added a line-level `HyperMD-callout` fallback so Live Preview callout rows no longer keep the old 4px stripe when Obsidian renders them outside the ordinary `.callout` container.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.82] — 2026-05-10 — Report Notice default callouts
+
+### Changed
+- Applied the approved `B. Report Notice` visual direction to ordinary Obsidian callouts.
+- Replaced left-stripe emphasis with a full-frame paper callout treatment using clearer borders, semantic icon badges, subtle shadows, and stronger title hierarchy.
+- Added dark-mode callout palettes that keep semantic color visible without overwhelming the document body.
+
+### Added
+- Added `docs/fixtures/callout-design-proposals.svg` as the approved visual proposal board for callout design comparison.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.81] — 2026-05-10 — Report Sheet default Markdown tables
+
+### Changed
+- Applied the approved `B. Report Sheet` visual direction to ordinary Markdown tables in Reading View and Live Preview table widgets.
+- Strengthened paper-like table contrast with clearer header hierarchy, crisper grid lines, subtle zebra rows, and quiet hover state.
+- Left report-mode and PDF table fallback rules under their existing print/report owners.
+
+### Added
+- Added `docs/fixtures/markdown-table-design-proposals.svg` as the approved visual proposal board for table design comparison.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.80] — 2026-05-10 — PDF reference-first link and figure captions
+
+### Added
+- Added the `ogd-pdf-link-mode` Style Settings selector with Inline URL, Clean Reading, and Reference First PDF link output modes.
+- Added print styling for `figure`, `.ogd-figure`, `.figure-block`, `figcaption`, `.figure-caption`, `.ogd-figure-caption`, `.figure-source`, and `.ogd-figure-source`.
+- Added `docs/fixtures/pdf-reference-caption-preview.html` and `docs/fixtures/pdf-reference-caption-preview.svg` to preview the approved reference/caption direction.
+
+### Changed
+- Kept inline URL output as the default behavior while allowing clean body copy or reference-first output for polished PDF reports.
+- Strengthened explicit reference-list print styling under Reference First without attempting automatic URL collection.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
+## [2.22.79] — 2026-05-10 — PDF Compact Report density preset
+
+### Added
+- Added the `ogd-pdf-compact` Style Settings toggle for denser PDF report exports.
+- Included a preview fixture for the approved compact report direction in `docs/fixtures/pdf-compact-report-preview.html` and `docs/fixtures/pdf-compact-report-preview.svg`.
+
+### Changed
+- Tightened print-only heading rhythm, paragraph/list spacing, callout padding, table density, reference-list spacing, code block spacing, and large media height under the opt-in compact PDF class.
+- Kept `@page` sizing and pagination hints conservative so the preset improves density without reintroducing page-guide assumptions.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, release ZIP build, and local Obsidian vault sync 대상.
+
 ## [2.22.78] — 2026-05-08 — PDF frontmatter export guard
 
 ### Fixed

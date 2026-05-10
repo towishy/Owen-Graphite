@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 460" width="1040" height="460"
+     font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+     text-rendering="geometricPrecision" shape-rendering="geometricPrecision">
+  <title>Owen Graphite — Code Block Candidate C · Frosted Glass + Rim (recommended)</title>
+  <desc>Owen Graphite core glass language: rim light, header row with lang+copy, soft shadow.</desc>
+
+  <defs>
+    <linearGradient id="surfLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f9fc"/><stop offset="100%" stop-color="#eef2f7"/>
+    </linearGradient>
+    <linearGradient id="surfDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/><stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <!-- Glass body, light -->
+    <linearGradient id="glassL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#f1f5f9" stop-opacity="0.62"/>
+    </linearGradient>
+    <radialGradient id="glassLTint" cx="78%" cy="16%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.28"/>
+      <stop offset="38%" stop-color="#7dd3fc" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glass body, dark -->
+    <linearGradient id="glassD" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.58"/>
+    </linearGradient>
+    <radialGradient id="glassDTint" cx="78%" cy="16%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.18"/>
+      <stop offset="36%" stop-color="#7dd3fc" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Rim highlights -->
+    <linearGradient id="rimTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimBot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="rimTopD" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimBotD" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.32"/>
+    </linearGradient>
+
+    <!-- Soft shadow -->
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9"/>
+      <feOffset dx="0" dy="14" result="off"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.16"/></feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="off" operator="over"/>
+    </filter>
+
+    <!-- Glass micro grain (very subtle) -->
+    <filter id="glassNoise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.05" numOctaves="2" seed="11"/>
+      <feColorMatrix values="0 0 0 0 1
+                             0 0 0 0 1
+                             0 0 0 0 1
+                             0 0 0 0.018 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Backdrop blur halo behind card to suggest backdrop-filter -->
+    <filter id="halo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+
+    <style>
+      .lbl  { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-size: 11px; letter-spacing: 0.10em; }
+      .lblL { fill: #64748b; }   .lblD { fill: #94a3b8; }
+      .head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-size: 17px; font-weight: 650; letter-spacing: -0.005em; fill: #0f172a; }
+      .sub  { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-size: 12px; fill: #64748b; }
+
+      .lang { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; }
+      .langL { fill: #475569; }  .langD { fill: #cbd5e1; }
+      .copy { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-size: 10.5px; }
+      .copyL { fill: #64748b; }  .copyD { fill: #cbd5e1; }
+
+      .mono { font-size: 12.5px; }
+      .kL { fill: #6d28d9; }     .kD { fill: #c4b5fd; }
+      .sL { fill: #b45309; }     .sD { fill: #fcd34d; }
+      .vL { fill: #0f766e; }     .vD { fill: #5eead4; }
+      .cL { fill: #94a3b8; font-style: italic; }
+      .cD { fill: #64748b; font-style: italic; }
+      .txL { fill: #1e293b; }    .txD { fill: #e2e8f0; }
+    </style>
+  </defs>
+
+  <rect width="1040" height="60" fill="#eef1f5"/>
+  <text x="28" y="30" class="head">Candidate C · Frosted Glass + Rim   <tspan font-weight="600" fill="#0ea5e9" font-size="12">★ recommended</tspan></text>
+  <text x="28" y="48" class="sub">Owen Graphite 코어 디자인 언어 그대로 — rim light, glass tint, header row(lang + copy), soft shadow</text>
+
+  <!-- LIGHT -->
+  <g transform="translate(20,80)">
+    <rect width="490" height="360" rx="14" fill="url(#surfLight)"/>
+    <text x="14" y="22" class="lbl lblL">LIGHT</text>
+
+    <!-- soft halo behind card -->
+    <ellipse cx="245" cy="200" rx="200" ry="60" fill="#7dd3fc" opacity="0.18" filter="url(#halo)"/>
+
+    <g transform="translate(28,46)" filter="url(#cardShadow)">
+      <!-- glass body -->
+      <rect width="434" height="290" rx="12" fill="url(#glassL)"/>
+      <rect width="434" height="290" rx="12" fill="url(#glassLTint)"/>
+      <rect width="434" height="290" rx="12" filter="url(#glassNoise)"/>
+      <!-- rim -->
+      <rect x="0.5" y="0.5" width="433" height="289" rx="11.5" fill="none"
+            stroke="rgba(148,163,184,0.42)" stroke-width="1"/>
+      <rect x="1" y="1" width="432" height="22" rx="10" fill="url(#rimTop)" opacity="0.85"/>
+      <rect x="1" y="266" width="432" height="22" rx="10" fill="url(#rimBot)"/>
+
+      <!-- header row -->
+      <line x1="14" y1="36" x2="420" y2="36" stroke="rgba(148,163,184,0.32)"/>
+      <text x="20" y="22" class="lang langL">POWERSHELL</text>
+      <g transform="translate(360,9)">
+        <rect width="60" height="18" rx="6" fill="rgba(255,255,255,0.62)" stroke="rgba(148,163,184,0.45)"/>
+        <text x="30" y="13" text-anchor="middle" class="copy copyL">⧉ Copy</text>
+      </g>
+
+      <!-- code -->
+      <g class="mono" transform="translate(20,62)">
+        <text y="0"><tspan class="cL"># 1. publisher 기반 deny rule 생성</tspan></text>
+        <text y="22"><tspan class="vL">$DenyRules</tspan><tspan class="txL"> = </tspan><tspan class="vL">@</tspan><tspan class="txL">()</tspan></text>
+        <text y="44"><tspan class="vL">$DenyRules</tspan><tspan class="txL"> += </tspan><tspan class="kL">New-CIPolicyRule</tspan><tspan class="txL"> `</tspan></text>
+        <text y="66"><tspan class="txL">  </tspan><tspan class="kL">-Level</tspan><tspan class="txL"> FilePublisher `</tspan></text>
+        <text y="88"><tspan class="txL">  </tspan><tspan class="kL">-DriverFilePath</tspan><tspan class="txL"> </tspan><tspan class="vL">$TargetBinary</tspan><tspan class="txL"> `</tspan></text>
+        <text y="110"><tspan class="txL">  </tspan><tspan class="kL">-Fallback</tspan><tspan class="txL"> </tspan><tspan class="sL">"SignedVersion,Publisher,Hash"</tspan></text>
+        <text y="132"><tspan class="txL">  </tspan><tspan class="kL">-Deny</tspan></text>
+        <text y="166"><tspan class="cL"># 2. AllowAll template과 merge</tspan></text>
+        <text y="188"><tspan class="kL">Merge-CIPolicy</tspan><tspan class="txL"> </tspan><tspan class="kL">-PolicyPaths</tspan><tspan class="txL"> </tspan><tspan class="vL">$AllowAllPolicy</tspan></text>
+      </g>
+    </g>
+  </g>
+
+  <!-- DARK -->
+  <g transform="translate(530,80)">
+    <rect width="490" height="360" rx="14" fill="url(#surfDark)"/>
+    <text x="14" y="22" class="lbl lblD">DARK</text>
+
+    <ellipse cx="245" cy="200" rx="200" ry="60" fill="#7dd3fc" opacity="0.10" filter="url(#halo)"/>
+
+    <g transform="translate(28,46)" filter="url(#cardShadow)">
+      <rect width="434" height="290" rx="12" fill="url(#glassD)"/>
+      <rect width="434" height="290" rx="12" fill="url(#glassDTint)"/>
+      <rect width="434" height="290" rx="12" filter="url(#glassNoise)"/>
+      <rect x="0.5" y="0.5" width="433" height="289" rx="11.5" fill="none"
+            stroke="rgba(71,85,105,0.78)" stroke-width="1"/>
+      <rect x="1" y="1" width="432" height="22" rx="10" fill="url(#rimTopD)"/>
+      <rect x="1" y="266" width="432" height="22" rx="10" fill="url(#rimBotD)"/>
+
+      <line x1="14" y1="36" x2="420" y2="36" stroke="rgba(71,85,105,0.6)"/>
+      <text x="20" y="22" class="lang langD">POWERSHELL</text>
+      <g transform="translate(360,9)">
+        <rect width="60" height="18" rx="6" fill="rgba(15,23,42,0.62)" stroke="rgba(71,85,105,0.7)"/>
+        <text x="30" y="13" text-anchor="middle" class="copy copyD">⧉ Copy</text>
+      </g>
+
+      <g class="mono" transform="translate(20,62)">
+        <text y="0"><tspan class="cD"># 1. publisher 기반 deny rule 생성</tspan></text>
+        <text y="22"><tspan class="vD">$DenyRules</tspan><tspan class="txD"> = </tspan><tspan class="vD">@</tspan><tspan class="txD">()</tspan></text>
+        <text y="44"><tspan class="vD">$DenyRules</tspan><tspan class="txD"> += </tspan><tspan class="kD">New-CIPolicyRule</tspan><tspan class="txD"> `</tspan></text>
+        <text y="66"><tspan class="txD">  </tspan><tspan class="kD">-Level</tspan><tspan class="txD"> FilePublisher `</tspan></text>
+        <text y="88"><tspan class="txD">  </tspan><tspan class="kD">-DriverFilePath</tspan><tspan class="txD"> </tspan><tspan class="vD">$TargetBinary</tspan><tspan class="txD"> `</tspan></text>
+        <text y="110"><tspan class="txD">  </tspan><tspan class="kD">-Fallback</tspan><tspan class="txD"> </tspan><tspan class="sD">"SignedVersion,Publisher,Hash"</tspan></text>
+        <text y="132"><tspan class="txD">  </tspan><tspan class="kD">-Deny</tspan></text>
+        <text y="166"><tspan class="cD"># 2. AllowAll template과 merge</tspan></text>
+        <text y="188"><tspan class="kD">Merge-CIPolicy</tspan><tspan class="txD"> </tspan><tspan class="kD">-PolicyPaths</tspan><tspan class="txD"> </tspan><tspan class="vD">$AllowAllPolicy</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

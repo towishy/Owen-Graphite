@@ -3,6 +3,12 @@
    - Promotes the approved state matrix into shared chrome tokens.
    - Uses Mist Blue for active rims and Frost Aqua for focus halos.
     - Keeps workspace tabs neutral because their shape already signals state.
+
+   FORBIDDEN — CM6 hit-routing contract:
+     - .cm-active.cm-line { outline | box-shadow with offset | transform | vertical padding }
+     - .cm-callout / .cm-table-widget direct vertical margin
+     - .HyperMD-* .cm-line direct vertical margin/padding
+   See: dev/MAP/cm6-hit-routing-contract.md
    ============================================================ */
 
 @media (min-width: 701px) {
@@ -1251,13 +1257,13 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
   --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(14, 116, 144, 0.20), rgba(15, 23, 42, 0.14));
 }
 
-.markdown-source-view.mod-cm6 .cm-focused .cm-active.cm-line:not(:empty):not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-table-row):not(.HyperMD-frontmatter) {
-  background: var(--ogd-lp-focus-bg) !important;
-  border-radius: 12px !important;
-  outline: 1px solid var(--ogd-lp-focus-outline) !important;
-  outline-offset: 1px !important;
-  box-shadow: var(--ogd-lp-focus-shadow) !important;
-}
+/* v2.22.104: removed the .cm-focused .cm-active.cm-line glass focus
+   visual. Its outline + box-shadow + gradient background painted on
+   top of the active row and confused mouse hit-testing on adjacent
+   lines (clicking the line directly below the active row sometimes
+   landed on this paint instead of the target line). Vanilla theme has
+   no such visual; we now match that behaviour. The cell focus visual
+   for table widgets is preserved. */
 
 .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within {
   background: var(--ogd-lp-cell-focus-bg) !important;
@@ -1279,4 +1285,73 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
 
 .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
   opacity: 0.52 !important;
+}
+
+/* ============================================================
+  v2.22.81 - Report Sheet default Markdown table refresh
+   - Uses the approved B-type sample for ordinary Markdown tables.
+   - Prioritizes crisp paper contrast and stronger grid readability.
+   - Leaves report-mode/PDF table fallback rules to their existing owners.
+   ============================================================ */
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
+  --ogd-table-head-bg: linear-gradient(180deg, #eef2f7, #e8eef6);
+  --ogd-table-border: rgba(148, 163, 184, 0.72);
+  --ogd-table-cell-border: rgba(203, 213, 225, 0.92);
+  --ogd-table-row-hover: #f8fafc;
+  --ogd-table-row-even: #fbfdff;
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 2px 6px rgba(15, 23, 42, 0.06);
+  border-color: var(--ogd-table-border) !important;
+  border-radius: 5px !important;
+  background: var(--ogd-table-surface) !important;
+  box-shadow: var(--ogd-table-shadow) !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  border-color: var(--ogd-table-cell-border) !important;
+  border-bottom-color: rgba(148, 163, 184, 0.66) !important;
+  background: var(--ogd-table-head-bg) !important;
+  color: var(--ogd-text-strong, #111827) !important;
+  font-weight: 820 !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  border-color: var(--ogd-table-cell-border) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+  background: var(--ogd-table-row-even) !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+  background: var(--ogd-table-row-hover) !important;
+}
+
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64));
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.86), rgba(30, 41, 59, 0.76));
+  --ogd-table-border: rgba(203, 213, 225, 0.30);
+  --ogd-table-cell-border: rgba(71, 85, 105, 0.74);
+  --ogd-table-row-hover: rgba(51, 65, 85, 0.52);
+  --ogd-table-row-even: rgba(15, 23, 42, 0.36);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.30);
+}
+
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  border-bottom-color: rgba(148, 163, 184, 0.34) !important;
+  color: var(--text-normal, #e5edf7) !important;
+}
+
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  color: var(--text-normal, #e5edf7) !important;
 }

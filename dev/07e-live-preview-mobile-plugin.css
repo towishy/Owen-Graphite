@@ -3,6 +3,12 @@
    - Live Preview embeds/tables/callouts align more closely with Reading View
    - Mobile panes and wide content avoid viewport push-out
    - Outline, Bookmarks, Bases, embeds, and status bar inherit v1.8.5 tone
+
+   FORBIDDEN — CM6 hit-routing contract:
+     - .cm-embed-block { overflow-x: auto + max-width: 100% } pair (v2.22.106)
+     - non-zero vertical margin on .cm-callout / .cm-table-widget
+     - pointer-events:none on .cm-content / .cm-line
+   See: dev/MAP/cm6-hit-routing-contract.md
    ============================================================ */
 
 /* Live Preview parity: chips, embeds, and editing widgets.
@@ -14,11 +20,13 @@
 .markdown-source-view.mod-cm6 .cm-table-widget {
   border-radius: var(--radius-l, 8px) !important;
 }
-.markdown-source-view.mod-cm6 .cm-embed-block,
-.markdown-source-view.mod-cm6 .cm-html-embed {
-  overflow-x: auto !important;
-  max-width: 100% !important;
-}
+/* v2.22.106: removed `.cm-embed-block, .cm-html-embed { overflow-x: auto;
+   max-width: 100% }`. The forced BFC + scroll container suppressed margin
+   collapse with the paragraph cm-line directly above the table embed and
+   appeared to alter mouse hit-routing for that paragraph. Wide table
+   horizontal scroll is provided by the table-level rules in 08-report-print
+   and 10d-liquid-glass-core; the embed-block container itself can stay
+   visible/static like vanilla. */
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link,
 .markdown-source-view.mod-cm6 .cm-hashtag {
   border-radius: var(--ogd-radius-pill, 999px) !important;

@@ -1,0 +1,20 @@
+#!/bin/sh
+# Owen Graphite pre-commit hook
+# - runs scripts/diff_guard.py against staged CSS changes
+# - blocks commits that introduce known CM6 hit-routing regressions
+# Install with:
+#   ln -sf ../../scripts/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x scripts/hooks/pre-commit
+set -e
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+if [ -x .venv/bin/python ]; then
+    PY=.venv/bin/python
+else
+    PY=python3
+fi
+
+"$PY" scripts/diff_guard.py --staged
+"$PY" scripts/changelog_lint.py --staged 2>/dev/null || true

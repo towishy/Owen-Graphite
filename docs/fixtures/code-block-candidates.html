@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>Owen Graphite — Code Block Design Candidates (v2.22.110 proposal)</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  body { font-family: var(--font-sans); margin: 0; padding: 36px 28px 80px; background: #eef1f5; color: #0f172a; }
+  h1 { font-size: 22px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { color: #475569; margin: 0 0 28px; font-size: 13.5px; line-height: 1.55; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; max-width: 1280px; }
+  .card { display: flex; flex-direction: column; gap: 10px; }
+  .card h2 { font-size: 14px; margin: 0; letter-spacing: -0.005em; color: #0f172a; }
+  .card .meta { font-size: 11.5px; color: #64748b; margin: -4px 0 6px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .frame { border-radius: 14px; padding: 18px; min-height: 180px; }
+  .frame.light { background: linear-gradient(180deg, #f7f9fc, #eef2f7); }
+  .frame.dark  { background: linear-gradient(180deg, #1f2937, #111827); }
+  .frame .label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(15,23,42,.55); margin-bottom: 10px; }
+  .frame.dark .label { color: rgba(226,232,240,.55); }
+
+  /* ============================================================
+     Candidate A — Glass Terminal (macOS traffic-light, frosted)
+     ============================================================ */
+  .a { position: relative; border-radius: 11px; padding: 36px 16px 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.62;
+       background: linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.78));
+       color: #e5e7eb; backdrop-filter: blur(10px);
+       box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 14px 28px rgba(15,23,42,.18); border: 1px solid rgba(148,163,184,.18); }
+  .frame.light .a { background: linear-gradient(180deg, rgba(30,41,59,.96), rgba(15,23,42,.86)); }
+  .a::before { content:""; position:absolute; top:12px; left:14px; width:11px; height:11px; border-radius:50%; background:#fb7185; box-shadow: 17px 0 0 #fbbf24, 34px 0 0 #34d399; }
+  .a .lang { position:absolute; top:11px; right:12px; font-size:10px; padding:2px 8px; border-radius:999px; background:rgba(148,163,184,.18); color:#cbd5e1; letter-spacing:.04em; }
+  .a .k { color:#93c5fd; }
+  .a .s { color:#fcd34d; }
+  .a .c { color:#94a3b8; font-style: italic; }
+  .a .v { color:#f9a8d4; }
+
+  /* ============================================================
+     Candidate B — Paper Code (light cream, near-flat, refined)
+     ============================================================ */
+  .b { border-radius: 9px; padding: 14px 16px 14px 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.62;
+       background: linear-gradient(180deg, #fdfcf8, #f6f3ec);
+       color: #1f2937; border: 1px solid rgba(203,213,225,.78);
+       box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 6px 14px rgba(15,23,42,.05); position:relative; }
+  .frame.dark .b { background: linear-gradient(180deg, rgba(30,41,59,.86), rgba(15,23,42,.66)); color:#e5e7eb; border-color: rgba(71,85,105,.7); box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 8px 18px rgba(0,0,0,.32); }
+  .b .lang { position:absolute; top:10px; right:12px; font-size:10px; color:#94a3b8; letter-spacing:.06em; text-transform:uppercase; }
+  .b .ln { display:inline-block; width:22px; color:#cbd5e1; user-select:none; text-align:right; padding-right:10px; border-right:1px solid rgba(203,213,225,.5); margin-right:10px; }
+  .frame.dark .b .ln { color:#475569; border-color: rgba(71,85,105,.5); }
+  .b .k { color:#7c3aed; }
+  .b .s { color:#b45309; }
+  .b .c { color:#94a3b8; font-style: italic; }
+  .b .v { color:#0f766e; }
+  .frame.dark .b .k { color:#c4b5fd; }
+  .frame.dark .b .s { color:#fcd34d; }
+  .frame.dark .b .v { color:#5eead4; }
+
+  /* ============================================================
+     Candidate C — Frosted Glass with Rim (Owen Graphite hero)
+     ============================================================ */
+  .c { border-radius: 12px; padding: 16px 16px 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.62; position:relative;
+       background: radial-gradient(circle at 78% 16%, rgba(125,211,252,.14), transparent 38%), linear-gradient(180deg, rgba(255,255,255,.78), rgba(241,245,249,.62));
+       color:#1e293b; border: 1px solid rgba(148,163,184,.42); backdrop-filter: blur(12px) saturate(1.1);
+       box-shadow: inset 0 1px 0 rgba(255,255,255,.92), inset 0 -1px 0 rgba(15,23,42,.06), 0 14px 28px rgba(15,23,42,.10); }
+  .frame.dark .c { background: radial-gradient(circle at 78% 16%, rgba(125,211,252,.10), transparent 36%), linear-gradient(180deg, rgba(30,41,59,.78), rgba(15,23,42,.58));
+                   color:#e2e8f0; border-color: rgba(71,85,105,.78);
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 -1px 0 rgba(0,0,0,.3), 0 14px 28px rgba(0,0,0,.32); }
+  .c .head { display:flex; align-items:center; justify-content:space-between; margin: -2px -2px 10px; padding: 4px 6px 8px; border-bottom: 1px solid rgba(148,163,184,.28); }
+  .c .head .lang { font-size:10.5px; letter-spacing:.06em; color:#475569; text-transform:uppercase; font-family: var(--font-sans); font-weight:600; }
+  .frame.dark .c .head .lang { color:#cbd5e1; }
+  .c .head .copy { font-size:10.5px; color:#64748b; padding: 2px 8px; border-radius:6px; border:1px solid rgba(148,163,184,.4); background: rgba(255,255,255,.6); font-family: var(--font-sans); }
+  .frame.dark .c .head .copy { color:#cbd5e1; background: rgba(30,41,59,.6); border-color: rgba(71,85,105,.6); }
+  .c .k { color:#7c3aed; }
+  .c .s { color:#b45309; }
+  .c .c { color:#94a3b8; font-style: italic; }
+  .c .v { color:#0f766e; }
+  .frame.dark .c .k { color:#c4b5fd; }
+  .frame.dark .c .s { color:#fcd34d; }
+  .frame.dark .c .v { color:#5eead4; }
+  .frame.dark .c .c { color:#64748b; }
+
+  /* ============================================================
+     Candidate D — Minimal Outlined (no chrome, ultra-quiet)
+     ============================================================ */
+  .d { border-radius: 7px; padding: 12px 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6;
+       background: rgba(241,245,249,.7); color:#1f2937; border: 1px solid rgba(203,213,225,.7); box-shadow: none; position:relative; }
+  .frame.dark .d { background: rgba(30,41,59,.55); color:#e5e7eb; border-color: rgba(71,85,105,.6); }
+  .d .lang { position:absolute; top:-9px; left:12px; font-size:10px; padding: 1px 7px; background: #f1f5f9; border:1px solid rgba(203,213,225,.7); border-radius: 4px; color:#475569; font-family: var(--font-sans); letter-spacing:.05em; }
+  .frame.dark .d .lang { background: #1e293b; color:#cbd5e1; border-color: rgba(71,85,105,.6); }
+  .d .k { color:#7c3aed; }
+  .d .s { color:#b45309; }
+  .d .c { color:#94a3b8; font-style: italic; }
+  .d .v { color:#0f766e; }
+  .frame.dark .d .k { color:#c4b5fd; }
+  .frame.dark .d .s { color:#fcd34d; }
+  .frame.dark .d .v { color:#5eead4; }
+  .frame.dark .d .c { color:#64748b; }
+
+  .pros { font-size: 12px; line-height:1.55; color:#334155; margin-top: 4px; }
+  .pros b { color:#0f172a; }
+  hr.sep { border:0; border-top: 1px dashed rgba(148,163,184,.5); margin: 26px 0 18px; }
+
+  .legend { display:flex; gap:14px; margin: 10px 0 22px; font-size:11.5px; color:#475569; flex-wrap:wrap; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; padding: 3px 10px; border-radius:999px; background:#fff; border:1px solid rgba(203,213,225,.7); }
+  .legend i { width:9px; height:9px; border-radius:50%; }
+
+  @media (prefers-color-scheme: dark) {
+    body { background:#0b1220; color:#e2e8f0; }
+    .lede { color:#94a3b8; }
+    .card h2 { color:#f1f5f9; }
+    .legend { color:#cbd5e1; }
+    .legend span { background:#1f2937; border-color: rgba(71,85,105,.7); }
+    .pros { color:#cbd5e1; }
+    .pros b { color:#f1f5f9; }
+  }
+</style>
+</head>
+<body>
+  <h1>Owen Graphite — Code Block Design Candidates</h1>
+  <p class="lede">
+    v2.22.110 proposal. Light/Dark 동시 비교. Owen Graphite 코어 원칙(Glass+Shadow,
+    좌측 라인 금지, refero glass tone)을 준수합니다. PowerShell 입력 코드를 통일된 데모 콘텐츠로 사용.
+    <b>승인 후</b> theme.css 패치를 진행합니다.
+  </p>
+
+  <div class="legend">
+    <span><i style="background:#7c3aed"></i>keyword</span>
+    <span><i style="background:#b45309"></i>string</span>
+    <span><i style="background:#0f766e"></i>variable</span>
+    <span><i style="background:#94a3b8"></i>comment</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- A -->
+    <div class="card">
+      <h2>A · Glass Terminal</h2>
+      <div class="meta">macOS traffic-light, dark only frosted, language pill</div>
+      <div class="pair">
+        <div class="frame light"><div class="label">Light</div>
+          <div class="a">
+            <span class="lang">PowerShell</span>
+<span class="c"># 1. 가능하면 publisher 기반 deny rule 생성</span>
+<span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+  <span class="k">-Level</span> FilePublisher `
+  <span class="k">-DriverFilePath</span> <span class="v">$TargetBinary</span> `
+  <span class="k">-Deny</span></div></div>
+        <div class="frame dark"><div class="label">Dark</div>
+          <div class="a">
+            <span class="lang">PowerShell</span>
+<span class="c"># 1. 가능하면 publisher 기반 deny rule 생성</span>
+<span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+  <span class="k">-Level</span> FilePublisher `
+  <span class="k">-DriverFilePath</span> <span class="v">$TargetBinary</span> `
+  <span class="k">-Deny</span></div></div>
+      </div>
+      <p class="pros"><b>장점</b> 강한 캐릭터, 터미널 친숙도 ↑ · <b>리스크</b> light 모드에서도 어두워서 본문 톤과 대비, document body 가독성 정책과 약한 충돌</p>
+    </div>
+
+    <!-- B -->
+    <div class="card">
+      <h2>B · Paper Code</h2>
+      <div class="meta">light=크림 종이, dark=차분한 슬레이트, line numbers, chrome 최소</div>
+      <div class="pair">
+        <div class="frame light"><div class="label">Light</div>
+          <div class="b">
+            <span class="lang">ps1</span>
+<span class="ln">1</span><span class="c"># 가능하면 publisher 기반 deny rule</span>
+<span class="ln">2</span><span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="ln">3</span><span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+<span class="ln">4</span>  <span class="k">-Level</span> FilePublisher `
+<span class="ln">5</span>  <span class="k">-DriverFilePath</span> <span class="v">$TargetBinary</span> `
+<span class="ln">6</span>  <span class="k">-Deny</span></div></div>
+        <div class="frame dark"><div class="label">Dark</div>
+          <div class="b">
+            <span class="lang">ps1</span>
+<span class="ln">1</span><span class="c"># 가능하면 publisher 기반 deny rule</span>
+<span class="ln">2</span><span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="ln">3</span><span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+<span class="ln">4</span>  <span class="k">-Level</span> FilePublisher `
+<span class="ln">5</span>  <span class="k">-DriverFilePath</span> <span class="v">$TargetBinary</span> `
+<span class="ln">6</span>  <span class="k">-Deny</span></div></div>
+      </div>
+      <p class="pros"><b>장점</b> 본문과 가장 자연스럽게 어울림 · 보고서/문서형에 강함 · <b>리스크</b> 캐릭터 다소 약함, 강한 demo 영상에서 평면적</p>
+    </div>
+
+    <!-- C -->
+    <div class="card">
+      <h2>C · Frosted Glass + Rim · <b>추천</b></h2>
+      <div class="meta">Owen Graphite 코어 디자인 언어 그대로, 헤더에 lang+copy, rim light</div>
+      <div class="pair">
+        <div class="frame light"><div class="label">Light</div>
+          <div class="c">
+            <div class="head"><span class="lang">PowerShell</span><span class="copy">⧉ Copy</span></div>
+<span class="c"># 1. 가능하면 publisher 기반 deny rule 생성</span>
+<span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+  <span class="k">-Level</span> FilePublisher `
+  <span class="k">-DriverFilePath</span> <span class="v">$TargetBinary</span> `
+  <span class="k">-Deny</span></div></div>
+        <div class="frame dark"><div class="label">Dark</div>
+          <div class="c">
+            <div class="head"><span class="lang">PowerShell</span><span class="copy">⧉ Copy</span></div>
+<span class="c"># 1. 가능하면 publisher 기반 deny rule 생성</span>
+<span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+  <span class="k">-Level</span> FilePublisher `
+  <span class="k">-DriverFilePath</span> <span class="v">$TargetBinary</span> `
+  <span class="k">-Deny</span></div></div>
+      </div>
+      <p class="pros"><b>장점</b> Glass+Shadow + rim light 디자인 언어 100% 일치 · 리포트/Live Preview/Reading 모두에서 일관 · <b>리스크</b> backdrop-blur 비용(이미 ogd-glass 토글로 제어 중)</p>
+    </div>
+
+    <!-- D -->
+    <div class="card">
+      <h2>D · Minimal Outlined</h2>
+      <div class="meta">chrome 거의 없음, lang 태그만 cap-bar 형태로 노출</div>
+      <div class="pair">
+        <div class="frame light"><div class="label">Light</div>
+          <div class="d">
+            <span class="lang">ps1</span>
+<span class="c"># 가능하면 publisher 기반 deny rule</span>
+<span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+  <span class="k">-Level</span> FilePublisher `
+  <span class="k">-Deny</span></div></div>
+        <div class="frame dark"><div class="label">Dark</div>
+          <div class="d">
+            <span class="lang">ps1</span>
+<span class="c"># 가능하면 publisher 기반 deny rule</span>
+<span class="v">$DenyRules</span> = <span class="v">@</span>()
+<span class="v">$DenyRules</span> += <span class="k">New-CIPolicyRule</span> `
+  <span class="k">-Level</span> FilePublisher `
+  <span class="k">-Deny</span></div></div>
+      </div>
+      <p class="pros"><b>장점</b> 가장 가벼움, 인쇄/PDF에서 잉크 절약 · <b>리스크</b> 디자인 언어 일치도 가장 약함, 캐릭터 부족</p>
+    </div>
+
+  </div>
+
+  <hr class="sep" />
+
+  <h2 style="font-size:15px;margin:0 0 6px">권장</h2>
+  <p class="pros" style="max-width:780px">
+    <b>C (Frosted Glass + Rim)</b> 를 메인으로, <b>D (Minimal Outlined)</b>를 인쇄/PDF용 보조로 채택 권장. C는
+    Owen Graphite의 Glass+Shadow 언어와 완전 일치하고, 상단 헤더 row(lang pill + copy)로
+    inline → fenced 전환을 시각적으로 명확히 합니다. D는 `body.ogd-pdf-compact` 또는 print 미디어에서만
+    적용해 잉크/지면을 아끼고 본문 가독성을 유지합니다.
+  </p>
+  <p class="pros" style="max-width:780px">
+    승인하시면 다음 patch로 진행:
+    <br/>1) <code>dev/03a-reading-tables-code.css</code>에 C 스타일 fenced code block 룰 추가 (Reading)
+    <br/>2) <code>dev/05-live-preview.css</code>에 동일 톤 LP fenced 코드 룰 추가 — <b>주의</b>: <code>.HyperMD-codeblock</code> cm-line에는 vertical padding 금지(hit-routing contract)
+    <br/>3) <code>dev/08-report-print-polish.css</code> @print 영역에 D 스타일 폴백
+    <br/>4) <code>scripts/diff_guard.py</code> + <code>validate_theme.py</code>가 hit-routing 위반 자동 차단
+  </p>
+</body>
+</html>

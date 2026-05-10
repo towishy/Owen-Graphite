@@ -2,7 +2,7 @@
 
 ## Goal Gates
 
-- Rollback baseline: `v2.22.26` is the current retained release/tag baseline
+- Rollback baseline: `v2.22.120` is the current retained release/tag baseline
 - MAP gate: critical = 0, high = 0, medium = 0
 - Current MAP baseline: `info=70`; remaining info findings are allowed only when they are documented chrome guards or accessibility fallbacks.
 - MAP intentionally classifies print-only chrome hiding and reduced-motion transform resets as info-level guards.
@@ -39,8 +39,11 @@
 ## Regression Watchlist
 
 - Live Preview table cell editor chain (`td > .table-cell-wrapper > .cm-editor > .cm-scroller > .cm-content > .cm-line/.cm-active.cm-line`)
+- Live Preview heading/paragraph editability map: `dev/MAP/live-preview-editability-css-map.md`
+- Live Preview heading rhythm must not be created by expanding active heading line-box padding; use hitbox-external spacing.
 - Embedded table paragraph margin reset (`.cm-embed-block table :is(td, th) > p`)
 - Empty trailing table lines (`.cm-active.cm-line:empty`, `br:only-child`)
+- Rendered CM6 text spans should not be broadly forced to `pointer-events: none` without DOM verification.
 - Ribbon icon blocks
 - Sidebar toggle reset blocks (macOS and desktop)
 - Workspace tab header shaping blocks
