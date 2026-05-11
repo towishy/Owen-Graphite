@@ -332,64 +332,89 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 }
 
 /* ============================================================
-  v2.22.82 - Report Notice default callout refresh
-   Full-frame paper callouts with semantic icon badges.
+  v2.22.82 - Liquid Glass default callout refresh
+   Full-frame frosted callouts with shallow semantic rims and icon badges.
    ============================================================ */
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
   --ogd-callout-accent: #475569;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
-  --ogd-callout-border: rgba(188, 201, 216, 0.92);
-  --ogd-callout-icon-bg: #f8fafc;
+  --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+  --ogd-callout-border: rgba(203, 213, 225, 0.52);
+  --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
+  --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.64), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.50)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
+  --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.88), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.62));
+  --ogd-callout-shadow: 0 8px 20px rgba(15, 23, 42, 0.055), 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --ogd-callout-shadow-focus: 0 10px 24px rgba(15, 23, 42, 0.075), 0 0 0 4px rgba(186, 230, 253, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  position: relative !important;
+  overflow: hidden !important;
   margin: 1em 0 1.15em !important;
   padding: 0.86em 1em 0.9em !important;
   border: 1px solid var(--ogd-callout-border) !important;
   border-left: 1px solid var(--ogd-callout-border) !important;
-  border-radius: 6px !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
   background: var(--ogd-callout-bg) !important;
   color: var(--ogd-text-slate, #334155) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+  box-shadow: var(--ogd-callout-shadow) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+  backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 1em !important;
+  right: 1em !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.96), transparent) !important;
+  pointer-events: none !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(:hover, :focus-within) {
+  border-color: rgba(125, 211, 252, 0.46) !important;
+  box-shadow: var(--ogd-callout-shadow-focus) !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="conclusion"], [data-callout="decision"]) {
   --ogd-callout-accent: #475569;
-  --ogd-callout-border: rgba(188, 201, 216, 0.92);
-  --ogd-callout-icon-bg: #f8fafc;
+  --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+  --ogd-callout-border: rgba(203, 213, 225, 0.52);
+  --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
   --ogd-callout-accent: #047857;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.92));
-  --ogd-callout-border: #bbf7d0;
-  --ogd-callout-icon-bg: #f0fdf4;
+  --ogd-callout-tint: rgba(94, 234, 212, 0.18);
+  --ogd-callout-border: rgba(20, 184, 166, 0.34);
+  --ogd-callout-icon-ring: rgba(94, 234, 212, 0.20);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
   --ogd-callout-accent: #b45309;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 235, 0.94));
-  --ogd-callout-border: #e8c56e;
-  --ogd-callout-icon-bg: #fffbeb;
+  --ogd-callout-tint: rgba(252, 211, 77, 0.20);
+  --ogd-callout-border: rgba(217, 119, 6, 0.30);
+  --ogd-callout-icon-ring: rgba(252, 211, 77, 0.22);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
   --ogd-callout-accent: #b91c1c;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.94));
-  --ogd-callout-border: #fecdd3;
-  --ogd-callout-icon-bg: #fff1f2;
+  --ogd-callout-tint: rgba(251, 113, 133, 0.16);
+  --ogd-callout-border: rgba(225, 29, 72, 0.28);
+  --ogd-callout-icon-ring: rgba(251, 113, 133, 0.18);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
   --ogd-callout-accent: #6d28d9;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 243, 255, 0.94));
-  --ogd-callout-border: #c4b5fd;
-  --ogd-callout-icon-bg: #f5f3ff;
+  --ogd-callout-tint: rgba(196, 181, 253, 0.18);
+  --ogd-callout-border: rgba(124, 58, 237, 0.26);
+  --ogd-callout-icon-ring: rgba(196, 181, 253, 0.20);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="action"], [data-callout="todo"]) {
   --ogd-callout-accent: #0e7490;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 254, 255, 0.94));
-  --ogd-callout-border: #a5f3fc;
-  --ogd-callout-icon-bg: #ecfeff;
+  --ogd-callout-tint: rgba(125, 211, 252, 0.18);
+  --ogd-callout-border: rgba(14, 165, 233, 0.30);
+  --ogd-callout-icon-ring: rgba(125, 211, 252, 0.20);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
@@ -409,7 +434,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   border-radius: var(--ogd-radius-pill, 999px) !important;
   background: var(--ogd-callout-icon-bg) !important;
   color: var(--ogd-callout-accent) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 0 0 4px var(--ogd-callout-icon-ring), 0 5px 13px rgba(15, 23, 42, 0.08) !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
@@ -428,11 +453,14 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content > :last-child { margin-bottom: 0 !important; }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
-  --ogd-callout-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64));
-  --ogd-callout-border: rgba(71, 85, 105, 0.76);
-  --ogd-callout-icon-bg: rgba(15, 23, 42, 0.42);
+  --ogd-callout-tint: rgba(148, 163, 184, 0.08);
+  --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.56)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
+  --ogd-callout-border: rgba(203, 213, 225, 0.18);
+  --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), rgba(15, 23, 42, 0.40));
+  --ogd-callout-shadow: 0 8px 22px rgba(0, 0, 0, 0.26), 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --ogd-callout-shadow-focus: 0 10px 26px rgba(0, 0, 0, 0.32), 0 0 0 4px rgba(103, 232, 249, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   color: var(--text-normal, #e5edf7) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.30) !important;
+  box-shadow: var(--ogd-callout-shadow) !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.callout-title, .callout-title-inner, .callout-content) {
@@ -441,32 +469,37 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
   --ogd-callout-accent: #99f6e4;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(17, 94, 89, 0.40), rgba(15, 23, 42, 0.60));
-  --ogd-callout-border: rgba(45, 212, 191, 0.46);
+  --ogd-callout-tint: rgba(20, 184, 166, 0.18);
+  --ogd-callout-border: rgba(45, 212, 191, 0.32);
+  --ogd-callout-icon-ring: rgba(45, 212, 191, 0.12);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
   --ogd-callout-accent: #fde68a;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(120, 53, 15, 0.36), rgba(15, 23, 42, 0.60));
-  --ogd-callout-border: rgba(251, 191, 36, 0.48);
+  --ogd-callout-tint: rgba(217, 119, 6, 0.18);
+  --ogd-callout-border: rgba(251, 191, 36, 0.32);
+  --ogd-callout-icon-ring: rgba(251, 191, 36, 0.12);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
   --ogd-callout-accent: #fecdd3;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(127, 29, 29, 0.34), rgba(15, 23, 42, 0.60));
-  --ogd-callout-border: rgba(251, 113, 133, 0.46);
+  --ogd-callout-tint: rgba(225, 29, 72, 0.16);
+  --ogd-callout-border: rgba(251, 113, 133, 0.30);
+  --ogd-callout-icon-ring: rgba(251, 113, 133, 0.11);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
   --ogd-callout-accent: #ddd6fe;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(76, 29, 149, 0.32), rgba(15, 23, 42, 0.60));
-  --ogd-callout-border: rgba(167, 139, 250, 0.44);
+  --ogd-callout-tint: rgba(124, 58, 237, 0.16);
+  --ogd-callout-border: rgba(167, 139, 250, 0.28);
+  --ogd-callout-icon-ring: rgba(167, 139, 250, 0.11);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is([data-callout="action"], [data-callout="todo"]) {
   --ogd-callout-accent: #a5f3fc;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(14, 116, 144, 0.32), rgba(15, 23, 42, 0.60));
-  --ogd-callout-border: rgba(103, 232, 249, 0.44);
+  --ogd-callout-tint: rgba(14, 165, 233, 0.17);
+  --ogd-callout-border: rgba(103, 232, 249, 0.30);
+  --ogd-callout-icon-ring: rgba(103, 232, 249, 0.11);
 }
 
 /* ============================================================
@@ -482,58 +515,77 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) {
   --ogd-callout-accent: #475569;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
-  --ogd-callout-border: rgba(188, 201, 216, 0.92);
-  --ogd-callout-icon-bg: #f8fafc;
+  --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+  --ogd-callout-border: rgba(203, 213, 225, 0.52);
+  --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
+  --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.64), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.50)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
+  --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.88), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.62));
+  --ogd-callout-shadow: 0 8px 20px rgba(15, 23, 42, 0.055), 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  position: relative !important;
+  overflow: hidden !important;
   margin: 0 !important;
   padding: 0.86em 1em 0.9em !important;
   border: 1px solid var(--ogd-callout-border) !important;
   border-left: 1px solid var(--ogd-callout-border) !important;
-  border-radius: 6px !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
   background: var(--ogd-callout-bg) !important;
   color: var(--ogd-text-slate, #334155) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+  box-shadow: var(--ogd-callout-shadow) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+  backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 1em !important;
+  right: 1em !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.96), transparent) !important;
+  pointer-events: none !important;
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="conclusion"], [data-callout="decision"]) {
   --ogd-callout-accent: #475569;
-  --ogd-callout-border: rgba(188, 201, 216, 0.92);
-  --ogd-callout-icon-bg: #f8fafc;
+  --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+  --ogd-callout-border: rgba(203, 213, 225, 0.52);
+  --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
   --ogd-callout-accent: #047857;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.92));
-  --ogd-callout-border: #bbf7d0;
-  --ogd-callout-icon-bg: #f0fdf4;
+  --ogd-callout-tint: rgba(94, 234, 212, 0.18);
+  --ogd-callout-border: rgba(20, 184, 166, 0.34);
+  --ogd-callout-icon-ring: rgba(94, 234, 212, 0.20);
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
   --ogd-callout-accent: #b45309;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 235, 0.94));
-  --ogd-callout-border: #e8c56e;
-  --ogd-callout-icon-bg: #fffbeb;
+  --ogd-callout-tint: rgba(252, 211, 77, 0.20);
+  --ogd-callout-border: rgba(217, 119, 6, 0.30);
+  --ogd-callout-icon-ring: rgba(252, 211, 77, 0.22);
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
   --ogd-callout-accent: #b91c1c;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.94));
-  --ogd-callout-border: #fecdd3;
-  --ogd-callout-icon-bg: #fff1f2;
+  --ogd-callout-tint: rgba(251, 113, 133, 0.16);
+  --ogd-callout-border: rgba(225, 29, 72, 0.28);
+  --ogd-callout-icon-ring: rgba(251, 113, 133, 0.18);
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
   --ogd-callout-accent: #6d28d9;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 243, 255, 0.94));
-  --ogd-callout-border: #c4b5fd;
-  --ogd-callout-icon-bg: #f5f3ff;
+  --ogd-callout-tint: rgba(196, 181, 253, 0.18);
+  --ogd-callout-border: rgba(124, 58, 237, 0.26);
+  --ogd-callout-icon-ring: rgba(196, 181, 253, 0.20);
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="action"], [data-callout="todo"]) {
   --ogd-callout-accent: #0e7490;
-  --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 254, 255, 0.94));
-  --ogd-callout-border: #a5f3fc;
-  --ogd-callout-icon-bg: #ecfeff;
+  --ogd-callout-tint: rgba(125, 211, 252, 0.18);
+  --ogd-callout-border: rgba(14, 165, 233, 0.30);
+  --ogd-callout-icon-ring: rgba(125, 211, 252, 0.20);
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) :is(.callout-title, .callout-title-inner) {
@@ -548,7 +600,7 @@ body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm
   border-radius: var(--ogd-radius-pill, 999px) !important;
   background: var(--ogd-callout-icon-bg) !important;
   color: var(--ogd-callout-accent) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 0 0 4px var(--ogd-callout-icon-ring), 0 5px 13px rgba(15, 23, 42, 0.08) !important;
 }
 
 body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) .callout-content {
@@ -559,22 +611,24 @@ body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
-  --ogd-callout-border: rgba(188, 201, 216, 0.92);
+  --ogd-callout-border: rgba(203, 213, 225, 0.52);
   margin-left: 0 !important;
   padding-left: 1em !important;
   border-left: 1px solid var(--ogd-callout-border) !important;
   border-inline-start: 1px solid var(--ogd-callout-border) !important;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.44)) !important;
   color: var(--ogd-text-slate, #334155) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88) !important;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) {
-  --ogd-callout-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64));
-  --ogd-callout-border: rgba(71, 85, 105, 0.76);
-  --ogd-callout-icon-bg: rgba(15, 23, 42, 0.42);
+  --ogd-callout-tint: rgba(148, 163, 184, 0.08);
+  --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.56)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
+  --ogd-callout-border: rgba(203, 213, 225, 0.18);
+  --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), rgba(15, 23, 42, 0.40));
+  --ogd-callout-shadow: 0 8px 22px rgba(0, 0, 0, 0.26), 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
   color: var(--text-normal, #e5edf7) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.30) !important;
+  box-shadow: var(--ogd-callout-shadow) !important;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) :is(.callout-title, .callout-title-inner, .callout-content),
@@ -582,9 +636,44 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
   color: var(--text-normal, #e5edf7) !important;
 }
 
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
+  --ogd-callout-accent: #99f6e4;
+  --ogd-callout-tint: rgba(20, 184, 166, 0.18);
+  --ogd-callout-border: rgba(45, 212, 191, 0.32);
+  --ogd-callout-icon-ring: rgba(45, 212, 191, 0.12);
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
+  --ogd-callout-accent: #fde68a;
+  --ogd-callout-tint: rgba(217, 119, 6, 0.18);
+  --ogd-callout-border: rgba(251, 191, 36, 0.32);
+  --ogd-callout-icon-ring: rgba(251, 191, 36, 0.12);
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+  --ogd-callout-accent: #fecdd3;
+  --ogd-callout-tint: rgba(225, 29, 72, 0.16);
+  --ogd-callout-border: rgba(251, 113, 133, 0.30);
+  --ogd-callout-icon-ring: rgba(251, 113, 133, 0.11);
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
+  --ogd-callout-accent: #ddd6fe;
+  --ogd-callout-tint: rgba(124, 58, 237, 0.16);
+  --ogd-callout-border: rgba(167, 139, 250, 0.28);
+  --ogd-callout-icon-ring: rgba(167, 139, 250, 0.11);
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout):is([data-callout="action"], [data-callout="todo"]) {
+  --ogd-callout-accent: #a5f3fc;
+  --ogd-callout-tint: rgba(14, 165, 233, 0.17);
+  --ogd-callout-border: rgba(103, 232, 249, 0.30);
+  --ogd-callout-icon-ring: rgba(103, 232, 249, 0.11);
+}
+
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
-  --ogd-callout-border: rgba(71, 85, 105, 0.76);
-  background: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64)) !important;
+  --ogd-callout-border: rgba(203, 213, 225, 0.18);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.38)) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
 }
 

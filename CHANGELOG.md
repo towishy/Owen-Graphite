@@ -4,6 +4,19 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.128] — 2026-05-11 — PDF and table Liquid Glass parity
+
+### Changed
+- Default Markdown tables now use the Liquid Glass frosted surface, rim, header shine, and shallow row tint language in Reading View and Live Preview.
+- PDF export now maps callouts and Markdown tables to low-alpha print-safe Liquid Glass tints while preserving semantic callout colors.
+- Legacy report callout rail styling was reduced to icon aliases so the late Liquid Glass callout owner controls the final surface consistently.
+
+### Selectors touched
+- `@media print table`, `@media print .callout`, `.markdown-rendered table`, `.cm-table-widget`, `table.cm-table`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, `scripts/analyze_theme_css.py`, release ZIP build, vault sync to the Windows Owen Graphite theme target.
+
 ## [2.22.127] — 2026-05-11 — PDF table color parity
 
 ### Fixed

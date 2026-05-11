@@ -1288,34 +1288,39 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
 }
 
 /* ============================================================
-  v2.22.81 - Report Sheet default Markdown table refresh
-   - Uses the approved B-type sample for ordinary Markdown tables.
-   - Prioritizes crisp paper contrast and stronger grid readability.
+  v2.22.81 - Liquid Glass default Markdown table refresh
+   - Keeps ordinary Markdown tables aligned with callout glass surfaces.
+   - Uses clear rims, top shine, and shallow row tint without saturated fill.
    - Leaves report-mode/PDF table fallback rules to their existing owners.
    ============================================================ */
 
 body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
-  --ogd-table-head-bg: linear-gradient(180deg, #eef2f7, #e8eef6);
-  --ogd-table-border: rgba(148, 163, 184, 0.72);
-  --ogd-table-cell-border: rgba(203, 213, 225, 0.92);
-  --ogd-table-row-hover: #f8fafc;
-  --ogd-table-row-even: #fbfdff;
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 2px 6px rgba(15, 23, 42, 0.06);
+  --ogd-table-tint: rgba(125, 211, 252, 0.10);
+  --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
+  --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68));
+  --ogd-table-border: rgba(203, 213, 225, 0.24);
+  --ogd-table-cell-border: rgba(226, 232, 240, 0.72);
+  --ogd-table-row-hover: rgba(240, 249, 255, 0.58);
+  --ogd-table-row-even: rgba(248, 250, 252, 0.58);
+  --ogd-table-shadow: 0 8px 20px rgba(15, 23, 42, 0.045), 0 2px 6px rgba(15, 23, 42, 0.032), inset 0 1px 0 rgba(255, 255, 255, 0.90);
+  overflow: hidden !important;
   border-color: var(--ogd-table-border) !important;
-  border-radius: 5px !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
   background: var(--ogd-table-surface) !important;
   box-shadow: var(--ogd-table-shadow) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+  backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
 }
 
 body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
   border-color: var(--ogd-table-cell-border) !important;
-  border-bottom-color: rgba(148, 163, 184, 0.66) !important;
+  border-bottom-color: rgba(148, 163, 184, 0.46) !important;
   background: var(--ogd-table-head-bg) !important;
   color: var(--ogd-text-strong, #111827) !important;
   font-weight: 820 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16) !important;
 }
 
 body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
@@ -1336,13 +1341,14 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, t
 
 body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.64));
-  --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.86), rgba(30, 41, 59, 0.76));
-  --ogd-table-border: rgba(203, 213, 225, 0.30);
-  --ogd-table-cell-border: rgba(71, 85, 105, 0.74);
-  --ogd-table-row-hover: rgba(51, 65, 85, 0.52);
-  --ogd-table-row-even: rgba(15, 23, 42, 0.36);
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.30);
+  --ogd-table-tint: rgba(14, 165, 233, 0.10);
+  --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
+  --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58));
+  --ogd-table-border: rgba(203, 213, 225, 0.20);
+  --ogd-table-cell-border: rgba(71, 85, 105, 0.58);
+  --ogd-table-row-hover: rgba(51, 65, 85, 0.44);
+  --ogd-table-row-even: rgba(15, 23, 42, 0.28);
+  --ogd-table-shadow: 0 8px 22px rgba(0, 0, 0, 0.24), 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
 body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,

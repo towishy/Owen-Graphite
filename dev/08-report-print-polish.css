@@ -306,116 +306,12 @@
   color: var(--ogd-line-strong, #cbd5e1) !important;
 }
 
-/* ============================================================
-   v1.8.50 — Report UX refinements
-   - Grouped Style Settings headings keep the 27 controls easier to scan
-   - Modern disclosure chevrons replace the plain folder arrow treatment
-   - Reading/Live Preview content gets a little more left breathing room
-   - Long table code tokens can be ellipsized instead of forcing tall rows
-   - Report callouts share a quieter semantic outline language
-   ============================================================ */
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) {
-  --ogd-report-callout-accent: #64748b;
-  --ogd-report-callout-bg: var(--ogd-surface-muted, #f8fafc);
-  --ogd-report-callout-border: var(--ogd-line-strong, #cbd5e1);
-  margin-left: 0.45em !important;
-  padding: 0.82em 1em 0.84em 1.08em !important;
-  border: 1px solid var(--ogd-report-callout-border) !important;
-  border-left: 4px solid var(--ogd-report-callout-accent) !important;
-  border-radius: var(--radius-l, 8px) !important;
-  background: var(--ogd-report-callout-bg) !important;
-  color: var(--ogd-text-slate, #334155) !important;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="conclusion"] {
-  --callout-icon: lucide-clipboard-check;
-  --ogd-report-callout-accent: var(--ogd-text-subtle, #475569);
-  --ogd-report-callout-bg: var(--ogd-surface-muted, #f8fafc);
-  --ogd-report-callout-border: var(--ogd-line-strong, #cbd5e1);
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="recommendation"] {
-  --callout-icon: lucide-badge-check;
-  --ogd-report-callout-accent: #047857;
-  --ogd-report-callout-bg: #f0fdf4;
-  --ogd-report-callout-border: #bbf7d0;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="risk"] {
-  --callout-icon: lucide-shield-alert;
-  --ogd-report-callout-accent: #b45309;
-  --ogd-report-callout-bg: #fffbeb;
-  --ogd-report-callout-border: #fde68a;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="action"] {
-  --callout-icon: lucide-list-todo;
-  --ogd-report-callout-accent: #0e7490;
-  --ogd-report-callout-bg: #ecfeff;
-  --ogd-report-callout-border: #a5f3fc;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="decision"] {
-  --callout-icon: lucide-scale;
-  --ogd-report-callout-accent: #4b5563;
-  --ogd-report-callout-bg: var(--ogd-surface-subtle, #f3f4f6);
-  --ogd-report-callout-border: #d1d5db;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) .callout-icon {
-  width: 24px !important;
-  height: 24px !important;
-  border: 1.5px solid var(--ogd-report-callout-border) !important;
-  border-radius: var(--ogd-radius-pill, 999px) !important;
-  background: var(--ogd-surface-base, #ffffff) !important;
-  color: var(--ogd-report-callout-accent) !important;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) :is(.callout-title, .callout-title-inner, .callout-content, p, li, strong) {
-  color: inherit !important;
-}
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
-  margin-left: 0.45em !important;
-}
-
-.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) {
-  --ogd-report-callout-border: var(--ogd-line-dark, #334155);
-  background: var(--ogd-surface-dark, #111827) !important;
-  border-color: var(--ogd-report-callout-border) !important;
-  border-left-color: var(--ogd-report-callout-accent) !important;
-  color: var(--ogd-line-soft, #e5e7eb) !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
-}
-.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout:is(
-  [data-callout="conclusion"],
-  [data-callout="recommendation"],
-  [data-callout="risk"],
-  [data-callout="action"],
-  [data-callout="decision"]
-) .callout-icon {
-  border-color: var(--ogd-report-callout-accent) !important;
-  background: #0f172a !important;
-  color: var(--ogd-line-soft, #e5e7eb) !important;
-}
+/* Report callout icon aliases; final surfaces are owned by the late Liquid Glass block. */
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="conclusion"] { --callout-icon: lucide-clipboard-check; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="recommendation"] { --callout-icon: lucide-badge-check; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="risk"] { --callout-icon: lucide-shield-alert; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="action"] { --callout-icon: lucide-list-todo; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="decision"] { --callout-icon: lucide-scale; }
 
 /* ============================================================
   v1.8.19 — PDF report readability polish marker
@@ -506,14 +402,35 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+    --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.62), transparent 0 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.84));
+    --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.82));
+    --ogd-table-border: rgba(203, 213, 225, 0.24);
+    --ogd-table-cell-border: rgba(203, 213, 225, 0.78);
+    --ogd-table-row-even: rgba(248, 250, 252, 0.68);
     line-height: 1.48 !important;
     table-layout: auto !important;
+    border: 1px solid var(--ogd-table-border) !important;
+    border-radius: 7px !important;
+    background: var(--ogd-table-surface) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 1px 2px rgba(15, 23, 42, 0.025) !important;
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
     vertical-align: top !important;
     word-break: keep-all !important;
     overflow-wrap: anywhere !important;
+    border-color: var(--ogd-table-cell-border) !important;
+    color: #334155 !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
+    background: var(--ogd-table-head-bg) !important;
+    color: #111827 !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16) !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+    background: var(--ogd-table-row-even) !important;
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table thead {
@@ -556,8 +473,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     width: 22% !important;
     min-width: 38mm !important;
     max-width: 54mm !important;
-    background: var(--ogd-surface-muted, #f8fafc) !important;
-    box-shadow: inset 4px 0 0 #94a3b8 !important;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.72)) !important;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
     color: var(--ogd-text-strong, #111827) !important;
     line-height: 1.38 !important;
   }
@@ -568,8 +485,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child,
   body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child,
   body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child {
-    background: #f0fdfa !important;
-    box-shadow: inset 4px 0 0 #0f766e !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 250, 0.74)) !important;
+    box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
     color: #0f766e !important;
   }
 
@@ -579,8 +496,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child,
   body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child,
   body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child {
-    background: #eff6ff !important;
-    box-shadow: inset 4px 0 0 #0284c7 !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.74)) !important;
+    box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
     color: #1d4ed8 !important;
   }
 
@@ -590,8 +507,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child,
   body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child,
   body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child {
-    background: #fffbeb !important;
-    box-shadow: inset 4px 0 0 #f59e0b !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 251, 235, 0.78)) !important;
+    box-shadow: inset 0 0 0 1px rgba(217, 119, 6, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
     color: #92400e !important;
   }
 
@@ -601,8 +518,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child,
   body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child,
   body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child {
-    background: #fff1f2 !important;
-    box-shadow: inset 4px 0 0 #f43f5e !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 242, 0.76)) !important;
+    box-shadow: inset 0 0 0 1px rgba(225, 29, 72, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
     color: #b91c1c !important;
   }
 
@@ -612,8 +529,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child,
   body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child,
   body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child {
-    background: #eef2ff !important;
-    box-shadow: inset 4px 0 0 #6366f1 !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(238, 242, 255, 0.76)) !important;
+    box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
     color: #3730a3 !important;
   }
 
@@ -826,7 +743,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin-bottom: 0.86em !important;
     padding: 0.58em 0.76em !important;
     border-radius: 6px !important;
-    box-shadow: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 1px 2px rgba(15, 23, 42, 0.035) !important;
     line-height: 1.42 !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
@@ -875,9 +792,15 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     --ogd-table-pad-x: 0.42em;
     --ogd-table-font-size: 9.1pt;
     --ogd-table-line-height: 1.28;
+    --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.56), transparent 0 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.82));
+    --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.82));
+    --ogd-table-border: rgba(203, 213, 225, 0.24);
+    --ogd-table-cell-border: rgba(203, 213, 225, 0.78);
     margin-top: 0.62em !important;
     margin-bottom: 0.72em !important;
     line-height: var(--ogd-table-line-height) !important;
+    border-color: var(--ogd-table-border) !important;
+    background: var(--ogd-table-surface) !important;
   }
 
   body.ogd-pdf-compact :is(
@@ -908,7 +831,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) table th {
     color: #0f172a !important;
-    background: #f1f5f9 !important;
+    background: var(--ogd-table-head-bg) !important;
   }
 
   body.ogd-pdf-compact :is(
@@ -1355,8 +1278,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     overflow-wrap: anywhere !important;
   }
 
-  /* v2.22.85 - PDF Report Notice callout parity.
-     Keep PDF export aligned with the approved full-frame callout style and
+  /* v2.22.85 - PDF Liquid Glass callout parity.
+     Keep PDF export aligned with the full-frame frosted callout style and
      suppress legacy left-stripe report callouts in Chromium print cascade. */
   body :is(
     .markdown-rendered,
@@ -1364,17 +1287,19 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout {
     --ogd-callout-accent: #475569;
-    --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
-    --ogd-callout-border: rgba(188, 201, 216, 0.92);
-    --ogd-callout-icon-bg: #f8fafc;
+    --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+    --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.56), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.84)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
+    --ogd-callout-border: rgba(203, 213, 225, 0.62);
+    --ogd-callout-icon-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.72));
+    --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
     margin: 0.86em 0 1.02em !important;
     padding: 0.7em 0.84em 0.74em !important;
     border: 1px solid var(--ogd-callout-border) !important;
     border-left: 1px solid var(--ogd-callout-border) !important;
-    border-radius: 6px !important;
+    border-radius: 7px !important;
     background: var(--ogd-callout-bg) !important;
     color: #334155 !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 1px 2px rgba(15, 23, 42, 0.025) !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
@@ -1385,8 +1310,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout:is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="conclusion"], [data-callout="decision"]) {
     --ogd-callout-accent: #475569;
-    --ogd-callout-border: rgba(188, 201, 216, 0.92);
-    --ogd-callout-icon-bg: #f8fafc;
+    --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+    --ogd-callout-border: rgba(203, 213, 225, 0.62);
+    --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
   }
 
   body :is(
@@ -1395,9 +1321,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
     --ogd-callout-accent: #047857;
-    --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 244, 0.92));
-    --ogd-callout-border: #bbf7d0;
-    --ogd-callout-icon-bg: #f0fdf4;
+    --ogd-callout-tint: rgba(94, 234, 212, 0.18);
+    --ogd-callout-border: rgba(20, 184, 166, 0.34);
+    --ogd-callout-icon-ring: rgba(94, 234, 212, 0.18);
   }
 
   body :is(
@@ -1406,9 +1332,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
     --ogd-callout-accent: #b45309;
-    --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 235, 0.94));
-    --ogd-callout-border: #e8c56e;
-    --ogd-callout-icon-bg: #fffbeb;
+    --ogd-callout-tint: rgba(252, 211, 77, 0.20);
+    --ogd-callout-border: rgba(217, 119, 6, 0.30);
+    --ogd-callout-icon-ring: rgba(252, 211, 77, 0.20);
   }
 
   body :is(
@@ -1417,9 +1343,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
     --ogd-callout-accent: #b91c1c;
-    --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.94));
-    --ogd-callout-border: #fecdd3;
-    --ogd-callout-icon-bg: #fff1f2;
+    --ogd-callout-tint: rgba(251, 113, 133, 0.16);
+    --ogd-callout-border: rgba(225, 29, 72, 0.28);
+    --ogd-callout-icon-ring: rgba(251, 113, 133, 0.16);
   }
 
   body :is(
@@ -1428,9 +1354,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout:is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
     --ogd-callout-accent: #6d28d9;
-    --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 243, 255, 0.94));
-    --ogd-callout-border: #c4b5fd;
-    --ogd-callout-icon-bg: #f5f3ff;
+    --ogd-callout-tint: rgba(196, 181, 253, 0.18);
+    --ogd-callout-border: rgba(124, 58, 237, 0.26);
+    --ogd-callout-icon-ring: rgba(196, 181, 253, 0.18);
   }
 
   body :is(
@@ -1439,9 +1365,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) .callout:is([data-callout="action"], [data-callout="todo"]) {
     --ogd-callout-accent: #0e7490;
-    --ogd-callout-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(236, 254, 255, 0.94));
-    --ogd-callout-border: #a5f3fc;
-    --ogd-callout-icon-bg: #ecfeff;
+    --ogd-callout-tint: rgba(125, 211, 252, 0.18);
+    --ogd-callout-border: rgba(14, 165, 233, 0.30);
+    --ogd-callout-icon-ring: rgba(125, 211, 252, 0.18);
   }
 
   body :is(
@@ -1475,7 +1401,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-radius: 999px !important;
     background: var(--ogd-callout-icon-bg) !important;
     color: var(--ogd-callout-accent) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 0 0 3px var(--ogd-callout-icon-ring) !important;
   }
 
   body :is(
