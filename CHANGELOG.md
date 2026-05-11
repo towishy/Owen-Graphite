@@ -19,6 +19,10 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 - `ogd-no-h1-number` can be applied as a cssclass/body class to hide the H1 number kicker while keeping the same H1 glass/rule treatment.
 
+### Baseline
+- `v2.22.131` is the current base release, default release, rollback baseline, and only retained public release/tag.
+- Previous public releases and tags were removed after publishing this release; historical notes remain in this changelog for audit context only.
+
 ### Selectors touched
 - `.markdown-rendered h1`, `.markdown-rendered h2`, `.markdown-rendered h3`, `.markdown-rendered h4`, `.cm-header-1`, `.cm-header-2`, `.cm-header-3`, `.cm-header-4`, `@media print h1`, `@media print h2`, `@media print h3`, `@media print h4`.
 
@@ -171,7 +175,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - PDF table surface, borders, and zebra rows were softened to stay closer to the white-glass Live Preview appearance.
 
 ### Baseline
-- `v2.22.120` is the current base release and rollback baseline. Previous public releases/tags should be removed after publishing this release so `v2.22.120` remains the only retained release.
+- At publication time, `v2.22.120` was promoted as the retained rollback baseline. It has since been superseded by `v2.22.131`, which is now the only retained public release/tag.
 
 ### Selectors touched
 - `@media print table` design tokens.

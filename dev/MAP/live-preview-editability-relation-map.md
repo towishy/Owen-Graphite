@@ -1,8 +1,8 @@
 # Live Preview Editability Relation Map
 
 Generated: 2026-05-10  
-Baseline: `v2.22.120`  
-Rollback baseline: `v2.22.120`  
+Baseline: `v2.22.131`
+Rollback baseline: `v2.22.131`
 Historical comparison point: `v2.22.76`
 
 ## Why This Map Exists
@@ -10,7 +10,7 @@ Historical comparison point: `v2.22.76`
 The repeated heading and paragraph editability failures were not solved by final `pointer-events` or heading spacing overrides. User screenshots showed three related symptoms:
 
 | Symptom | Trigger | Broken Target |
-|---|---|---|
+| --- | --- | --- |
 | Header selected | Click paragraph below | Paragraph does not enter edit mode |
 | Paragraph selected | Click header above | Header does not enter edit mode |
 | Blank row below header selected | Click list items below | List rows do not enter edit mode |
@@ -20,7 +20,7 @@ This means the problem is not a single visible heading style. It is a relationsh
 ## Load Order Map
 
 | Order | Module | Relationship To Bug |
-|---:|---|---|
+| ---: | --- | --- |
 | 03 | `dev/03-reading-content.css` | Defines baseline Live Preview empty-row rhythm: `.cm-line:empty` and `.HyperMD-header + .cm-line:empty`. |
 | 05 | `dev/05-live-preview.css` | Defines baseline Live Preview heading line-height and padding. Also includes relaxed spacing variants. |
 | 10d | `dev/10d-liquid-glass-core.css` | Owns Liquid Glass active-row visuals; older notes compare against the historical v2.22.76 snapshot. |
@@ -28,10 +28,10 @@ This means the problem is not a single visible heading style. It is a relationsh
 
 ## Historical Comparison Relationship
 
-`v2.22.76` is now a historical comparison point. The current retained baseline is `v2.22.120`, but the older snapshot already had these Live Preview defaults:
+`v2.22.76` is now a historical comparison point. The current retained baseline is `v2.22.131`, but the older snapshot already had these Live Preview defaults:
 
 | Owner | Selector | Baseline Behavior |
-|---|---|---|
+| --- | --- | --- |
 | 03 | `.cm-line:empty` | `0.45em` compact blank line, no pointer override |
 | 03 | `.HyperMD-header + .cm-line:empty` | `1.05em` safe blank gap below headings, no pointer override |
 | 05 | `.cm-line.HyperMD-header-1` | `line-height: 1.2`, top/bottom padding |
@@ -45,7 +45,7 @@ Important correction: heading padding and the 1.05em heading-adjacent blank row 
 All rows below were introduced after `v2.22.76` in `dev/10-a11y-regression-hotfixes.css`.
 
 | Version | Touched Relationship | Risk |
-|---|---|---|
+| --- | --- | --- |
 | v2.22.84 | `.cm-active.cm-line:empty`, `:has(br:only-child)` active empty rows | Changes active blank row visuals after click. |
 | v2.22.87 | `.cm-line:not(... ) span { pointer-events: none }` | Makes rendered text spans click-through. Failed experiment. |
 | v2.22.88 | `.cm-active.cm-line` global visual reset | Removes active-row plate broadly. |
@@ -103,7 +103,7 @@ This did not delete the older experiment blocks yet, but made the final cascade 
 
 Field testing showed v2.22.97 did not fix the issue. The map found a cascade placement error: the v2.22.97 restore block was inserted after v2.22.89, but before v2.22.90-v2.22.96. Therefore the failed geometry-neutral v2.22.96 rules still won at EOF.
 
-v2.22.98 re-applied the historical v2.22.76 row model at the true EOF position. The current retained release and rollback baseline is now `v2.22.120`.
+v2.22.98 re-applied the historical v2.22.76 row model at the true EOF position. The current retained release and rollback baseline is now `v2.22.131`.
 
 ## v2.22.99 Correction
 
@@ -119,6 +119,7 @@ v2.22.99 physically removes the obsolete v2.22.84-v2.22.98 experiment chain and 
 - non-active rendered text spans pass hit-testing through to their `.cm-line`;
 - active rows, links, widgets, fold placeholders, callout controls, and form controls remain interactive;
 - CM6 selection/cursor/measure layers and line pseudo-elements remain non-interactive.
+
 ## v2.22.100 Update
 
 - Header-adjacent blank `.cm-line:empty` and `:has(br:only-child)` mirror reduced to `0.45em` to remove the wide hitbox that overlapped the next heading's click target.

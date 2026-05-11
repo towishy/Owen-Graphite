@@ -186,30 +186,11 @@ README 대표 이미지와 실제 테마 CSS를 같은 liquid glass 기준으로
 
 ## 5. Change Log
 
-README에는 **최근 10개 릴리즈**만 간략히 요약합니다. 전체 변경 이력과 상세 검증 내역은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
+README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이전 공개 릴리즈와 태그는 정리되었으며, 전체 변경 이력과 상세 검증 내역은 [CHANGELOG.md](CHANGELOG.md)에서 확인할 수 있습니다.
 
 | 버전 | 핵심 변경 |
 |------|----------|
 | **v2.22.131** | H1-H4 recommended heading hierarchy: H1/H2는 neutral Liquid Glass surface와 aqua ledger rule을 사용하고, H3/H4는 짧은 graphite rule로 정리. PDF export는 blur/shadow 없이 print-safe rule 중심으로 평탄화하며 `ogd-no-h1-number`로 H1 number kicker를 끌 수 있음 |
-| **v2.22.130** | Mermaid control MAP stabilization: Live Preview Mermaid 컨트롤에서 공용 `.clickable-icon` 구조 보정을 분리해 CSS MAP의 high/low finding을 0으로 낮추고, 버튼의 glass hover/focus 장식은 유지 |
-| **v2.22.129** | Quiet table and callout outer shadows: Markdown table과 callout의 외곽 drop-shadow를 제거하고, 내부 텍스트·grid line·row fill·semantic color·inset shine은 유지해 표면을 더 차분하게 정리 |
-| **v2.22.128** | PDF and table Liquid Glass parity: 기본 Markdown table은 Reading View/Live Preview에서 frosted surface, rim, header shine, 얕은 row tint를 공유하고, PDF export의 callout/table도 print-safe Liquid Glass tint와 semantic color를 유지하도록 보정 |
-| **v2.22.127** | PDF table color parity: PDF export에서 table surface, rim line, caption을 low-alpha print-safe sRGB tint로 매핑해 화면과 더 가까운 투명하고 연한 표 인상을 유지하면서 callout semantic color는 보존 |
-| **v2.22.126** | Native ordered-list counter restore: 이전 glass marker용 custom counter가 native list numbering과 `start` 처리에 간섭하지 않도록 ordered list counter를 브라우저/Obsidian 기본값으로 되돌리고, 하이라이트로 깨진 문단 fallback의 과한 들여쓰기를 제거 |
-| **v2.22.125** | PDF checklist flattening: PDF Export에서 체크리스트가 회색 행/카드처럼 깨져 보이지 않도록 task-list surface와 row border를 print에서 평탄화하고 native checkbox flow를 복원 |
-| **v2.22.124** | Highlighted list alignment guard: 리스트 항목 내부 하이라이트가 gutter/본문 정렬을 흔들지 않도록 `mark`/CM6 highlight span을 inline flow로 고정하고 PDF fallback도 같은 방향으로 보정 |
-| **v2.22.123** | Native accent list markers: PDF에서 긴 inline code가 깨지지 않도록 custom chip/grid list marker를 끄고, `::marker` 색상·굵기 중심의 안정적인 A안으로 전환 |
-| **v2.22.122** | List marker parity hotfix: Live Preview의 CodeMirror list marker span에도 glass marker를 직접 적용하고, PDF export의 page-break 구간에서 native marker 색으로 되돌아가는 현상을 줄이기 위해 print grid fallback을 추가 |
-| **v2.22.121** | Liquid list marker redesign: ordered list는 glass number chip, unordered list는 pearl marker, task list는 상태별 compact glass checkbox로 정리. PDF export에서도 print-safe fallback을 적용해 Live Preview와 최대한 비슷한 리스트 인상을 유지 |
-| **v2.22.120** | PDF table header 색감 추가 보정: Chromium print에서 header 배경이 Live Preview보다 진한 회청색으로 보이던 문제를 줄이기 위해 PDF fallback을 더 밝은 Frosted Ledger 표면/헤더/경계선 토큰으로 조정 |
-| **v2.22.118** | Markdown table 기본 디자인을 승인된 A Frosted Ledger 방향으로 전환. Reading View, Live Preview CM6 table widget, PDF export가 같은 frosted surface/header/grid/hover 토큰을 공유하도록 보정 |
-| **v2.22.117** | callout 내부 체크리스트 보정: 중첩 task-list 카드 프레임을 제거해 하단 잔여선과 checkbox 잘림을 줄이고, Live Preview callout task line에서 `- [ ]` 원문 marker가 과하게 드러나는 상태를 정리 |
-| **v2.22.116** | callout 바로 뒤 Markdown 수평선이 PDF뿐 아니라 Reading View/Live Preview에서도 잔여 회색 라인처럼 보이던 문제 수정. 일반 `hr`는 유지하고, `.callout + hr` 및 Live Preview의 callout widget 직후 `.HyperMD-hr`만 숨김 |
-| **v2.22.115** | PDF Compact Report에서 callout 바로 뒤 Markdown 수평선이 잔여 회색 라인처럼 보이던 문제 수정. 일반 `hr`는 유지하되 `.callout + hr`만 PDF에서 숨김 |
-| **v2.22.114** | PDF export 세부 보정: 긴 코드블럭이 페이지에서 분할될 때 배경/토큰 색이 어긋나지 않도록 print code surface와 token palette를 고정하고 `box-decoration-break`를 적용. 중첩 code wrapper의 회색 림 제거 범위를 확대하고, PDF 테이블 글자 크기를 본문에 더 가깝게 상향 |
-| **v2.22.113** | PDF export 추가 보정: `language-text`/`language-kusto` 코드블럭 라벨을 `TEXT`/`KUSTO`로 정리하고, PDF 테이블이 Live Preview의 report sheet 계열과 맞도록 gradient header, outer rim, cell border, row tone을 재조정. risk-table 마지막 열의 과한 per-cell rounded box도 print에서 평탄화 |
-| **v2.22.112** | 코드블럭 디자인 cascade 보정: late overlay/print 규칙 때문에 `LANGUAGE-POWERSHELL` 같은 raw class label이 노출되고 회색 wrapper 띠가 생기던 문제를 마지막 CSS 레이어에서 수정. Reading View/PDF 모두 readable language label, Candidate C header/rim/gradient, 투명 wrapper 유지 |
-| **v2.22.111** | PDF export 코드블럭이 화면용 Candidate C와 다른 Candidate D fallback으로 보이던 문제 수정. `@media print`에서도 frosted glass gradient, rim shadow, header divider, 코드 본문 padding을 C 스타일에 맞춰 적용하되 Chromium print가 `backdrop-filter`를 평탄화해도 gradient/rim으로 디자인 정체성이 유지되도록 보강 |
 
 > 전체 릴리즈 노트와 상세 변경 내역 → [CHANGELOG.md](CHANGELOG.md)
 

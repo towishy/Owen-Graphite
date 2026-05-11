@@ -136,7 +136,7 @@ The v2.22.96 correction changes the safe model:
 
 The v2.22.96 correction still failed in user testing. A reverse comparison against the historical `v2.22.76` snapshot showed that those older styles already had heading padding and `1.05em` heading-adjacent blank rows. Therefore those values were not the primary regression source.
 
-The v2.22.97 patch treats the accumulated `v2.22.84-v2.22.96` Live Preview experiment layer as the regression source and restores the historical v2.22.76 row model in the final cascade. The current retained release and rollback baseline is now `v2.22.120`:
+The v2.22.97 patch treats the accumulated `v2.22.84-v2.22.96` Live Preview experiment layer as the regression source and restores the historical v2.22.76 row model in the final cascade. The current retained release and rollback baseline is now `v2.22.131`:
 
 - ordinary blank rows: `0.45em`, interactive;
 - heading-adjacent blank rows: `1.05em`, interactive;
