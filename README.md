@@ -4,7 +4,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.1)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.2)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -22,8 +22,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.30.1` |
-| **기본 릴리즈** | `v2.30.1` |
+| **버전** | `2.30.2` |
+| **기본 릴리즈** | `v2.30.2` |
 | **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
@@ -163,6 +163,10 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 ## 4. 테마 신기능
 
+### ✨ v2.30.2 — 코드블럭 헤더 라벨 정리
+
+Live Preview와 PDF Export 코드블럭의 상단 헤더 라벨을 같은 구조로 정리했습니다. `PowerShell`, `KUSTO/KQL`, shell, Python, JavaScript, TypeScript, JSON, YAML, Markdown, CSS, HTML, SQL, text 코드블럭이 헤더 라인 안에 언어명을 안정적으로 표시하고, PDF에서는 divider 라인과 첫 코드 줄 사이 여백을 보강했습니다.
+
 ### ✨ v2.30.1 — Topbar 버튼 hover 정리
 
 상단 탭바의 추가/목록 버튼 hover 상태를 전용 neutral token으로 분리해 일반 버튼 chrome에서 파란 rim이나 외곽선이 다시 나타나지 않도록 안정화했습니다. 반복 chrome은 색상보다 밝기와 얕은 그림자로 반응하고, 의미색은 선택 문서/tab 같은 명확한 상태에만 남깁니다.
@@ -205,6 +209,7 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.30.2** | Live Preview와 PDF Export 코드블럭 헤더 라벨을 통일하고, KUSTO/KQL 등 언어별 라벨 mapping과 PDF 첫 줄 여백을 보정 |
 | **v2.30.1** | 상단 탭바 추가/목록 버튼 hover를 전용 neutral token으로 분리하고, hover 외곽선/rim 없이 밝기와 그림자만 남도록 정리 |
 | **v2.30** | 전체 디자인 통일 베이스: 본문/제목/PDF heading, root tab, titlebar icon slot, side pane top icon을 하나의 Liquid Glass 기준으로 정리. 공유 아이콘은 중립 outline glass를 유지하고 선택된 문서/tab만 frosted sky-rim pill을 사용 |
 

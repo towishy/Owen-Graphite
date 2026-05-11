@@ -6,6 +6,29 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.2] — 2026-05-11 — Codeblock header label parity
+
+### Changed
+- Reworked the codeblock header layer so Live Preview, Reading View, and exported PDF use the same top header label model while preserving the Candidate C glass/rim shape.
+- Kept the header divider as the `pre::before` layer and moved rendered language names to the label layer so language text no longer competes with the divider line.
+
+### Fixed
+- Restored exported PDF language labels for Kusto/KQL fences and kept PowerShell labels aligned inside the codeblock header.
+- Added explicit language label mappings for PowerShell, Kusto/KQL, shell, Python, JavaScript, TypeScript, JSON, YAML, Markdown, CSS, HTML, SQL, and text fences.
+- Added PDF-specific first-line top spacing so the code body no longer sits against the header divider.
+- Targeted Obsidian's actual Live Preview `.code-block-flair` element so the visible language label is styled directly instead of relying only on pseudo-elements.
+
+### Selectors touched
+- `pre[class*="language-"]::before`, `pre[class*="language-"]::after`, `.code-block-flair`, `.cm-preview-code-block`, `.cm-hmd-codeblock`, `.cm-line`, `.HyperMD-codeblock`, `.HyperMD-codeblock-begin`, `.HyperMD-codeblock-end`, `.language-powershell`, `.language-ps1`, `.language-pwsh`, `.language-kusto`, `.language-kql`, `.language-kql-query`.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/bundle_theme.py --check`
+- `scripts/changelog_lint.py`
+- `scripts/validate_theme.py --ci`
+- `scripts/build_release.py`
+- Vault sync verified to both macOS Owen Graphite theme targets.
+
 ## [2.30.1] — 2026-05-11 — Topbar hover token hotfix
 
 ### Changed
