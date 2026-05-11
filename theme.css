@@ -1547,6 +1547,7 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.88);
   --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.42);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.28);
+  --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
   position: relative !important;
   margin: 1.28em 0 1.62em !important;
   padding: 0 !important;
@@ -1562,11 +1563,17 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 .workspace-leaf-content .markdown-rendered pre::before {
   content: "CODE" !important;
-  display: block !important;
-  min-height: 2.7em !important;
-  padding: 0.74em 5.5em 0.64em 1.18em !important;
-  border-bottom: 1px solid var(--ogd-codeblock-header-border) !important;
-  background: var(--ogd-codeblock-header-bg) !important;
+  position: absolute !important;
+  top: 0.62em !important;
+  right: 4.9em !important;
+  z-index: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.55em !important;
+  padding: 0.16em 0.62em !important;
+  border: 1px solid var(--ogd-codeblock-header-border) !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, 0.58) !important;
   color: var(--ogd-text-subtle, #475569) !important;
   font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   font-size: 0.72em !important;
@@ -1574,6 +1581,10 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   line-height: 1.1 !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
+  pointer-events: none !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::before,
@@ -1583,14 +1594,25 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
 .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
-  content: none !important;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1 !important;
+  display: block !important;
+  height: 2.7em !important;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22)) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 .workspace-leaf-content .markdown-rendered pre code {
   display: block !important;
   max-width: 100% !important;
-  padding: 1em 1.1em 1.05em !important;
+  padding: var(--ogd-codeblock-code-padding, 2.9em 1.1em 1.05em) !important;
   overflow-x: auto !important;
   color: var(--ogd-text-slate, #1e293b) !important;
   background: transparent !important;
@@ -1620,30 +1642,31 @@ body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
-  --ogd-codeblock-border: rgba(71, 85, 105, 0.78);
-  --ogd-codeblock-rim: rgba(255, 255, 255, 0.12);
-  --ogd-codeblock-header-bg: rgba(15, 23, 42, 0.28);
-  --ogd-codeblock-header-border: rgba(71, 85, 105, 0.62);
-  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 14px 28px rgba(0, 0, 0, 0.32) !important;
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
+  --ogd-codeblock-rim: rgba(255, 255, 255, 0.82);
+  --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
+  --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
+  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 14px 28px rgba(0, 0, 0, 0.18) !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre::before {
-  color: var(--ogd-line-soft, #cbd5e1) !important;
+  color: var(--ogd-text-subtle, #475569) !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
-  color: var(--ogd-line-soft, #e2e8f0) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre .copy-code-button {
-  border-color: rgba(71, 85, 105, 0.70) !important;
-  background: rgba(15, 23, 42, 0.62) !important;
-  color: var(--ogd-line-soft, #cbd5e1) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(148, 163, 184, 0.48) !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+  color: var(--ogd-text-subtle, #475569) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88) !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
@@ -1669,17 +1692,17 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre .copy-code-button
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
-  color: #c4b5fd !important;
+  color: #6d28d9 !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
-  color: #fcd34d !important;
+  color: #b45309 !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
-  color: #5eead4 !important;
+  color: #0f766e !important;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
@@ -2431,11 +2454,11 @@ body.theme-dark.ogd-zebra .markdown-rendered tr:nth-child(even) td {
   color: #bbf7d0 !important;
 }
 .theme-dark .markdown-rendered pre {
-  background: #14151a !important;
-  border-color: #353841 !important;
+  background: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78)) !important;
+  border-color: rgba(203, 213, 225, 0.68) !important;
 }
 .theme-dark .markdown-rendered pre code {
-  color: var(--ogd-line-soft, #e5e7eb) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 .theme-dark .markdown-rendered code:not(pre code) {
   background: #25272d !important;
@@ -3096,9 +3119,9 @@ body.theme-dark.ogd-zebra .markdown-rendered tr:nth-child(even) td {
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin,
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  background: #14151a !important;
-  border-color: #353841 !important;
-  color: var(--ogd-line-soft, #e5e7eb) !important;
+  background: rgba(248, 250, 252, 0.84) !important;
+  border-color: rgba(203, 213, 225, 0.68) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 .theme-dark .markdown-source-view.mod-cm6 .cm-table-widget th,
 .theme-dark .markdown-source-view.mod-cm6 table.cm-table th {
@@ -3370,22 +3393,22 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  --ogd-lp-code-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
-  --ogd-lp-code-border: rgba(71, 85, 105, 0.78);
-  color: var(--ogd-line-soft, #e2e8f0) !important;
+  --ogd-lp-code-bg: rgba(248, 250, 252, 0.84);
+  --ogd-lp-code-border: rgba(203, 213, 225, 0.68);
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 10px 20px rgba(0, 0, 0, 0.26) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 10px 20px rgba(0, 0, 0, 0.18) !important;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 10px 20px rgba(0, 0, 0, 0.26) !important;
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 10px 20px rgba(0, 0, 0, 0.18) !important;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
-  color: var(--ogd-line-soft, #cbd5e1) !important;
-  background: rgba(15, 23, 42, 0.38) !important;
+  color: var(--ogd-text-subtle, #64748b) !important;
+  background: rgba(255, 255, 255, 0.52) !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
@@ -4206,7 +4229,7 @@ body.ogd-accent-amber    { --ogd-accent: #b45309; }
 
 /* F6. Code themes */
 body.ogd-code-light .markdown-rendered pre {
-  background: var(--ogd-surface-muted, #f8fafc) !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70))) !important;
 }
 
 body.ogd-code-solarized .markdown-rendered pre,
@@ -4221,8 +4244,8 @@ body.ogd-code-solarized .markdown-rendered pre .token.comment { color: #93a1a1 !
 
 body.ogd-code-nord .markdown-rendered pre,
 body.ogd-code-nord .markdown-source-view.mod-cm6 .HyperMD-codeblock {
-  background: #2e3440 !important;
-  color: #d8dee9 !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70))) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 body.ogd-code-nord .markdown-rendered pre .token.keyword { color: #81a1c1 !important; }
 body.ogd-code-nord .markdown-rendered pre .token.string  { color: #a3be8c !important; }
@@ -4231,8 +4254,8 @@ body.ogd-code-nord .markdown-rendered pre .token.comment { color: #4c566a !impor
 
 body.ogd-code-dracula .markdown-rendered pre,
 body.ogd-code-dracula .markdown-source-view.mod-cm6 .HyperMD-codeblock {
-  background: #282a36 !important;
-  color: #f8f8f2 !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70))) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 body.ogd-code-dracula .markdown-rendered pre .token.keyword { color: #ff79c6 !important; }
 body.ogd-code-dracula .markdown-rendered pre .token.string  { color: #f1fa8c !important; }
@@ -4303,7 +4326,7 @@ body.ogd-auto-dark {
   body.ogd-auto-dark .markdown-rendered { color: var(--ogd-line-soft, #e5e7eb); }
   body.ogd-auto-dark .markdown-rendered table th { background: #25272d !important; color: var(--ogd-surface-subtle, #f3f4f6) !important; }
   body.ogd-auto-dark .markdown-rendered table td { border-color: #2a2c33 !important; }
-  body.ogd-auto-dark .markdown-rendered pre { background: #14151a !important; border-color: #353841 !important; }
+  body.ogd-auto-dark .markdown-rendered pre { background: rgba(248, 250, 252, 0.92) !important; border-color: rgba(203, 213, 225, 0.68) !important; }
   body.ogd-auto-dark .markdown-rendered code:not(pre code) { background: #25272d !important; color: var(--ogd-surface-subtle, #f3f4f6) !important; }
   body.ogd-auto-dark .markdown-rendered a { color: #93c5fd !important; }
   body.ogd-auto-dark kbd { background: linear-gradient(180deg, #2a2c33, #1f2024); color: var(--ogd-surface-subtle, #f3f4f6); border-color: #4a4d57; }
@@ -14544,13 +14567,17 @@ body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 body .workspace-leaf-content .markdown-rendered pre::before {
   content: "CODE" !important;
-  position: static !important;
-  inset: auto !important;
-  display: block !important;
-  min-height: 0 !important;
-  padding: var(--ogd-codeblock-header-padding, 0.7em 5.5em 0.62em 1.12em) !important;
-  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
-  background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.42)) !important;
+  position: absolute !important;
+  top: 0.62em !important;
+  right: 4.9em !important;
+  z-index: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.55em !important;
+  padding: 0.16em 0.62em !important;
+  border: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
+  border-radius: 6px !important;
+  background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.58)) !important;
   color: var(--ogd-text-subtle, #475569) !important;
   font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   font-size: var(--ogd-codeblock-header-font-size, 0.72em) !important;
@@ -14560,13 +14587,26 @@ body .workspace-leaf-content .markdown-rendered pre::before {
   text-align: left !important;
   text-transform: uppercase !important;
   opacity: 1 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
   pointer-events: none !important;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
 body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
-  content: none !important;
-  display: none !important;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1 !important;
+  display: block !important;
+  height: 2.7em !important;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22)) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::before,
@@ -14615,18 +14655,52 @@ body .workspace-leaf-content .markdown-rendered pre code {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
-  --ogd-codeblock-border: rgba(71, 85, 105, 0.78);
-  --ogd-codeblock-header-bg: rgba(15, 23, 42, 0.28);
-  --ogd-codeblock-header-border: rgba(71, 85, 105, 0.62);
-  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 12px 24px rgba(0, 0, 0, 0.30);
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
+  --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre::before,
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
-  color: var(--ogd-line-soft, #e2e8f0) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+}
+
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-light .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70));
+  --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
+  --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.50);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.30);
+  --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09);
+  background: var(--ogd-codeblock-bg) !important;
+  border-color: var(--ogd-codeblock-border) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+}
+
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-light .workspace-leaf-content .markdown-rendered pre code,
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code > :is(.line, .code-line, .token-line),
+body.theme-light .workspace-leaf-content .markdown-rendered pre code > :is(.line, .code-line, .token-line),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered pre code {
+  background: transparent !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .markdown-source-view.mod-cm6 :is(.HyperMD-codeblock, .cm-line.HyperMD-codeblock) {
+  --ogd-lp-code-bg: rgba(248, 250, 252, 0.86);
+  --ogd-lp-code-border: rgba(148, 163, 184, 0.46);
+  background: var(--ogd-lp-code-bg) !important;
+  border-color: var(--ogd-lp-code-border) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 
 /* ============================================================

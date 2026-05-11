@@ -806,7 +806,7 @@ body.ogd-accent-amber    { --ogd-accent: #b45309; }
 
 /* F6. Code themes */
 body.ogd-code-light .markdown-rendered pre {
-  background: var(--ogd-surface-muted, #f8fafc) !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70))) !important;
 }
 
 body.ogd-code-solarized .markdown-rendered pre,
@@ -821,8 +821,8 @@ body.ogd-code-solarized .markdown-rendered pre .token.comment { color: #93a1a1 !
 
 body.ogd-code-nord .markdown-rendered pre,
 body.ogd-code-nord .markdown-source-view.mod-cm6 .HyperMD-codeblock {
-  background: #2e3440 !important;
-  color: #d8dee9 !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70))) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 body.ogd-code-nord .markdown-rendered pre .token.keyword { color: #81a1c1 !important; }
 body.ogd-code-nord .markdown-rendered pre .token.string  { color: #a3be8c !important; }
@@ -831,8 +831,8 @@ body.ogd-code-nord .markdown-rendered pre .token.comment { color: #4c566a !impor
 
 body.ogd-code-dracula .markdown-rendered pre,
 body.ogd-code-dracula .markdown-source-view.mod-cm6 .HyperMD-codeblock {
-  background: #282a36 !important;
-  color: #f8f8f2 !important;
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70))) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 body.ogd-code-dracula .markdown-rendered pre .token.keyword { color: #ff79c6 !important; }
 body.ogd-code-dracula .markdown-rendered pre .token.string  { color: #f1fa8c !important; }
@@ -903,7 +903,7 @@ body.ogd-auto-dark {
   body.ogd-auto-dark .markdown-rendered { color: var(--ogd-line-soft, #e5e7eb); }
   body.ogd-auto-dark .markdown-rendered table th { background: #25272d !important; color: var(--ogd-surface-subtle, #f3f4f6) !important; }
   body.ogd-auto-dark .markdown-rendered table td { border-color: #2a2c33 !important; }
-  body.ogd-auto-dark .markdown-rendered pre { background: #14151a !important; border-color: #353841 !important; }
+  body.ogd-auto-dark .markdown-rendered pre { background: rgba(248, 250, 252, 0.92) !important; border-color: rgba(203, 213, 225, 0.68) !important; }
   body.ogd-auto-dark .markdown-rendered code:not(pre code) { background: #25272d !important; color: var(--ogd-surface-subtle, #f3f4f6) !important; }
   body.ogd-auto-dark .markdown-rendered a { color: #93c5fd !important; }
   body.ogd-auto-dark kbd { background: linear-gradient(180deg, #2a2c33, #1f2024); color: var(--ogd-surface-subtle, #f3f4f6); border-color: #4a4d57; }

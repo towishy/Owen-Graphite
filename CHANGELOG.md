@@ -18,6 +18,10 @@ this project normally follows patch-level release numbering; explicitly requeste
 ### Added
 - Documented the top chrome icon/background safety contract so future titlebar, tab, and side pane icon changes can follow the confirmed surface-layer implementation path.
 
+### Fixed
+- Code blocks now keep the bright Liquid Glass rim/header/chip treatment in light mode even when auto-dark or alternate code theme classes are active.
+- Live Preview code blocks no longer fall back to the old near-black repeated line background while preserving CM6 hitbox-safe geometry.
+
 ### Baseline
 - `v2.30` is the current main release, default release, rollback baseline, and only retained public release/tag after this cleanup.
 - Previous public releases and tags are removed after publishing this release; historical notes remain in this changelog for audit context only.

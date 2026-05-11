@@ -733,13 +733,17 @@ body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 body .workspace-leaf-content .markdown-rendered pre::before {
   content: "CODE" !important;
-  position: static !important;
-  inset: auto !important;
-  display: block !important;
-  min-height: 0 !important;
-  padding: var(--ogd-codeblock-header-padding, 0.7em 5.5em 0.62em 1.12em) !important;
-  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
-  background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.42)) !important;
+  position: absolute !important;
+  top: 0.62em !important;
+  right: 4.9em !important;
+  z-index: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 1.55em !important;
+  padding: 0.16em 0.62em !important;
+  border: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
+  border-radius: 6px !important;
+  background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.58)) !important;
   color: var(--ogd-text-subtle, #475569) !important;
   font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   font-size: var(--ogd-codeblock-header-font-size, 0.72em) !important;
@@ -749,13 +753,26 @@ body .workspace-leaf-content .markdown-rendered pre::before {
   text-align: left !important;
   text-transform: uppercase !important;
   opacity: 1 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+  backdrop-filter: var(--ogd-glass-filter-control) !important;
   pointer-events: none !important;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
 body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
-  content: none !important;
-  display: none !important;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1 !important;
+  display: block !important;
+  height: 2.7em !important;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28)) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22)) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::before,
@@ -804,18 +821,52 @@ body .workspace-leaf-content .markdown-rendered pre code {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
-  --ogd-codeblock-border: rgba(71, 85, 105, 0.78);
-  --ogd-codeblock-header-bg: rgba(15, 23, 42, 0.28);
-  --ogd-codeblock-header-border: rgba(71, 85, 105, 0.62);
-  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 12px 24px rgba(0, 0, 0, 0.30);
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
+  --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre::before,
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
-  color: var(--ogd-line-soft, #e2e8f0) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+}
+
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-light .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70));
+  --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
+  --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.50);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.30);
+  --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09);
+  background: var(--ogd-codeblock-bg) !important;
+  border-color: var(--ogd-codeblock-border) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+}
+
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-light .workspace-leaf-content .markdown-rendered pre code,
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code > :is(.line, .code-line, .token-line),
+body.theme-light .workspace-leaf-content .markdown-rendered pre code > :is(.line, .code-line, .token-line),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered pre code {
+  background: transparent !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .markdown-source-view.mod-cm6 :is(.HyperMD-codeblock, .cm-line.HyperMD-codeblock) {
+  --ogd-lp-code-bg: rgba(248, 250, 252, 0.86);
+  --ogd-lp-code-border: rgba(148, 163, 184, 0.46);
+  background: var(--ogd-lp-code-bg) !important;
+  border-color: var(--ogd-lp-code-border) !important;
+  color: var(--ogd-text-slate, #1e293b) !important;
 }
 
 /* ============================================================
