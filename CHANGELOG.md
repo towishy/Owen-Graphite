@@ -14,9 +14,11 @@ this project normally follows patch-level release numbering; explicitly requeste
 - Active root tabs now use the selected-document frosted pill treatment with a shallow sky rim.
 - Left and right side pane top icon slots now share neutral outline-only glass treatment for rest, hover, focus, pressed, and expanded states.
 - Selected left side pane tab icons now use the same frosted document-selection pill language as active root tabs while generic hover/focus states remain neutral.
+- HTML table utility classes and captioned HTML tables now use the selected Glass Ledger surface with a caption band, refined rim, and quiet first-column axis treatment.
 
 ### Added
 - Documented the top chrome icon/background safety contract so future titlebar, tab, and side pane icon changes can follow the confirmed surface-layer implementation path.
+- Added `.ogd-html-table` as an explicit opt-in class for output-focused HTML tables that need the refined Liquid Glass table treatment.
 
 ### Fixed
 - Code blocks now keep the bright Liquid Glass rim/header/chip treatment in light mode even when auto-dark or alternate code theme classes are active.

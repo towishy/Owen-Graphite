@@ -93,6 +93,7 @@ Style Settings 옵션과 별개로, 노트 안에서 직접 부여하는 유틸�
 | `.ogd-mini-toc` | YAML cssclasses 또는 div wrapper | Reading view 우측 sticky mini TOC, 모바일 자동 인라인 |
 | `.ogd-print-toc` | div wrapper | **(v2.13.0+)** A3 PDF 자동 목차 페이지 (cover 다음, dotted leader) |
 | `sticky-first-col` | `<table>` | 첫 컬럼 sticky scroll |
+| `.ogd-html-table` | `<table>` | 출력용 HTML 표에 Glass Ledger 기본 표면 적용 |
 | `.num` | th/td | 숫자 우측정렬 + tabular-nums |
 | `wide-table` | `<table>` | 열이 많은 표의 폰트/간격 압축 |
 | `compact-table` | `<table>` | 로그/체크리스트용 조밀한 표 |
@@ -106,7 +107,7 @@ Style Settings 옵션과 별개로, 노트 안에서 직접 부여하는 유틸�
 | `scroll-token-table` | `<table>` | 코드 토큰 셀 폭을 보존해 행 높이 급증 완화 |
 | `scroll-table` | `<table>` | 화면에서는 표 자체를 가로 스크롤 |
 
-기본 위키형 표는 light glass surface와 얕은 hover tint를 사용합니다. `ogd-report-mode`가 적용된 문서의 표는 PDF와 보고서 스캔에 맞춰 더 또렷한 header rule, border, 첫 컬럼 weight를 사용합니다.
+기본 위키형 표는 light glass surface와 얕은 hover tint를 사용합니다. `caption`이 있는 HTML 표와 HTML table utility class가 적용된 표는 더 선명한 Glass Ledger 표면, caption band, 첫 컬럼 axis 처리를 사용합니다. `ogd-report-mode`가 적용된 문서의 표는 PDF와 보고서 스캔에 맞춰 더 또렷한 header rule, border, 첫 컬럼 weight를 사용합니다.
 
 Live Preview에서 셀을 직접 클릭해 수정할 표는 Markdown table을 사용하세요. HTML `<table>` utility는 Obsidian이 클릭 시 raw HTML 소스를 활성화하므로, 최종 보고서/PDF 출력이나 class 기반 정밀 스타일이 필요한 표에만 사용합니다.
 
