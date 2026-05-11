@@ -1,8 +1,22 @@
 # Changelog
 
+<!-- markdownlint-disable MD022 MD024 MD032 MD036 -->
+
 All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.22.130] — 2026-05-11 — Mermaid control MAP stabilization
+
+### Fixed
+- Live Preview Mermaid controls no longer apply structural sizing, visibility, pointer routing, z-index, or active transform rules directly to Obsidian's shared `.clickable-icon` selector.
+- Mermaid control buttons keep the same neutral glass rest surface and shallow hover/focus rim while reducing the CSS MAP from `high=1, low=1` to `high=0, low=0`.
+
+### Selectors touched
+- `.cm-embed-block:has(.mermaid)`, `.mermaid-controls`, `.mermaid-control`, `.mermaid-toolbar`, `.mermaid-button`, `button`, `.clickable-icon`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/analyze_theme_css.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build.
 
 ## [2.22.129] — 2026-05-11 — Quiet table and callout outer shadows
 

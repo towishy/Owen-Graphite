@@ -1,5 +1,7 @@
 # Live Preview Editability CSS Map
 
+<!-- markdownlint-disable MD060 -->
+
 Generated: 2026-05-10  
 Applied fix: v2.22.97  
 Scope: Obsidian CM6 Live Preview click-to-edit, text selection, active-line geometry, and hidden structural risks.
@@ -36,7 +38,7 @@ mindmap
       paragraph below cannot be selected
       click remains inside heading hitbox
     Hidden Risks
-      Mermaid controls clickable-icon HIGH
+      Mermaid controls decorative-only clickable-icon
       table editor inflation guards
       accumulated v2.22.84-94 overrides
 ```
@@ -85,7 +87,7 @@ The safe model is:
 | LP-02 | Contradictory span pointer-events across v2.22.87-v2.22.94 | `dev/10-a11y-regression-hotfixes.css` | Active risk | Stop adding broad span click-through rules; keep native pointer route unless verified by DOM test. |
 | LP-03 | Blank heading-adjacent rows alternate between `0`, `0.35em`, `1.05em`, and pointer `none/auto` | `dev/03-reading-content.css`, `dev/10-a11y-regression-hotfixes.css` | Active risk | Use one compact value and avoid making blank rows the primary heading spacing mechanism. |
 | LP-04 | Active-line glass focus can visually mask row boundaries | `dev/10d-liquid-glass-core.css` | Mitigated | Keep v2.22.88+ reset, but do not rely on it to fix geometry. |
-| LP-05 | Mermaid Live Preview controls touch `.clickable-icon` with structural properties | `dev/07e-live-preview-mobile-plugin.css` | Hidden HIGH | Either narrow the selector away from `.clickable-icon` or classify it explicitly if retained. |
+| LP-05 | Mermaid Live Preview controls previously touched `.clickable-icon` with structural properties | `dev/07e-live-preview-mobile-plugin.css` | Resolved in v2.22.130 | Structural sizing/visibility/pointer/z-index/active transform rules now avoid the shared `.clickable-icon`; only decorative glass styling remains on that selector. |
 | LP-06 | Table editor inflation guards use structural resets on nested CM6 editors | `dev/10-a11y-regression-hotfixes.css` | Necessary risk | Preserve; validator depends on table inflation guards. |
 
 ## Existing Risk Map Delta
@@ -95,10 +97,10 @@ After running `scripts/analyze_theme_css.py` on v2.22.94-era CSS:
 | Severity | Count | Interpretation |
 |---|---:|---|
 | critical | 0 | No core chrome blocker detected. |
-| high | 1 | Mermaid Live Preview `.clickable-icon` scoped structural rule. |
+| high | 0 | Mermaid Live Preview `.clickable-icon` structural rule resolved in v2.22.130. |
 | medium | 0 | No medium core chrome finding. |
-| low | 1 | Mermaid active transform. |
-| info | 102 | Mostly decorative chrome findings. |
+| low | 0 | Mermaid `.clickable-icon` active transform finding resolved in v2.22.130. |
+| info | 103 | Mostly decorative chrome findings. |
 
 This means the general risk map sees one hidden high-risk scoped control issue, but it still does not detect LP-01 because LP-01 is about editor row hitboxes rather than core chrome selector families.
 

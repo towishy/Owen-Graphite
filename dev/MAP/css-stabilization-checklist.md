@@ -4,7 +4,7 @@
 
 - Rollback baseline: `v2.22.120` is the current retained release/tag baseline
 - MAP gate: critical = 0, high = 0, medium = 0
-- Current MAP baseline: `info=70`; remaining info findings are allowed only when they are documented chrome guards or accessibility fallbacks.
+- Current MAP baseline: `critical=0`, `high=0`, `medium=0`, `low=0`, `info=103`; remaining info findings are allowed only when they are documented chrome guards or accessibility fallbacks.
 - MAP intentionally classifies print-only chrome hiding and reduced-motion transform resets as info-level guards.
 - Validation gate: `python scripts/validate_theme.py --ci` must pass
 - Build gate: `python scripts/build_release.py` must produce `dist/Owen-Graphite-<version>.zip`

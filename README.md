@@ -1,5 +1,7 @@
 # Owen Graphite — Obsidian Theme
 
+<!-- markdownlint-disable MD022 MD032 MD033 MD040 MD060 -->
+
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
 ![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.37)
@@ -20,9 +22,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.129` |
-| **기본 릴리즈** | `v2.22.129` |
-| **롤백 베이스라인** | `v2.22.129` |
+| **버전** | `2.22.130` |
+| **기본 릴리즈** | `v2.22.130` |
+| **롤백 베이스라인** | `v2.22.130` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -188,6 +190,7 @@ README에는 **최근 10개 릴리즈**만 간략히 요약합니다. 전체 변
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.22.130** | Mermaid control MAP stabilization: Live Preview Mermaid 컨트롤에서 공용 `.clickable-icon` 구조 보정을 분리해 CSS MAP의 high/low finding을 0으로 낮추고, 버튼의 glass hover/focus 장식은 유지 |
 | **v2.22.129** | Quiet table and callout outer shadows: Markdown table과 callout의 외곽 drop-shadow를 제거하고, 내부 텍스트·grid line·row fill·semantic color·inset shine은 유지해 표면을 더 차분하게 정리 |
 | **v2.22.128** | PDF and table Liquid Glass parity: 기본 Markdown table은 Reading View/Live Preview에서 frosted surface, rim, header shine, 얕은 row tint를 공유하고, PDF export의 callout/table도 print-safe Liquid Glass tint와 semantic color를 유지하도록 보정 |
 | **v2.22.127** | PDF table color parity: PDF export에서 table surface, rim line, caption을 low-alpha print-safe sRGB tint로 매핑해 화면과 더 가까운 투명하고 연한 표 인상을 유지하면서 callout semantic color는 보존 |

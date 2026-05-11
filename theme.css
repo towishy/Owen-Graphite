@@ -6315,7 +6315,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
     pointer-events: auto !important;
     z-index: 10 !important;
   }
-  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon) {
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button:not([class~="clickable-icon"]), button:not([class~="clickable-icon"])) {
     min-width: 26px !important;
     min-height: 26px !important;
     padding: 4px !important;
@@ -6328,12 +6328,18 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
     pointer-events: auto !important;
     z-index: 11 !important;
   }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) .clickable-icon {
+    border: 1px solid rgba(203, 213, 225, 0.48) !important;
+    border-radius: 6px !important;
+    background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70)) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+  }
   .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon):is(:hover, :focus-visible) {
     background: var(--ogd-glass-control-hover-bg, rgba(255, 255, 255, 0.92)) !important;
     border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.42)) !important;
     box-shadow: var(--ogd-lg-shadow-focus, 0 10px 24px rgba(15, 23, 42, 0.16)) !important;
   }
-  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon):active {
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button:not([class~="clickable-icon"]), button:not([class~="clickable-icon"])):active {
     transform: var(--ogd-press-lift, translateY(0) scale(0.99)) !important;
   }
 }
