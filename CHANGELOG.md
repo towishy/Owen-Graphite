@@ -4,6 +4,18 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.129] — 2026-05-11 — Quiet table and callout outer shadows
+
+### Changed
+- Markdown tables and callouts now remove outer drop-shadow spread while keeping internal text, grid lines, row fills, semantic callout colors, and subtle inset shine unchanged.
+- PDF export uses the same no-drop-shadow treatment for table and callout frames so printed surfaces stay calm and border-led.
+
+### Selectors touched
+- `.markdown-rendered table`, `.cm-table-widget`, `table.cm-table`, `.callout`, `.cm-callout`, `@media print table`, `@media print .callout`.
+
+### Validation
+- `scripts/bundle_theme.py`, `scripts/validate_theme.py --ci`, `scripts/changelog_lint.py`, release ZIP build, vault sync to the Windows Owen Graphite theme target.
+
 ## [2.22.128] — 2026-05-11 — PDF and table Liquid Glass parity
 
 ### Changed

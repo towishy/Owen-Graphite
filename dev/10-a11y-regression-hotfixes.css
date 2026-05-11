@@ -343,8 +343,8 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
   --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.64), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.50)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
   --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.88), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.62));
-  --ogd-callout-shadow: 0 8px 20px rgba(15, 23, 42, 0.055), 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.88);
-  --ogd-callout-shadow-focus: 0 10px 24px rgba(15, 23, 42, 0.075), 0 0 0 4px rgba(186, 230, 253, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  --ogd-callout-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --ogd-callout-shadow-focus: 0 0 0 4px rgba(186, 230, 253, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.92);
   position: relative !important;
   overflow: hidden !important;
   margin: 1em 0 1.15em !important;
@@ -457,8 +457,8 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
   --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.56)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
   --ogd-callout-border: rgba(203, 213, 225, 0.18);
   --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), rgba(15, 23, 42, 0.40));
-  --ogd-callout-shadow: 0 8px 22px rgba(0, 0, 0, 0.26), 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
-  --ogd-callout-shadow-focus: 0 10px 26px rgba(0, 0, 0, 0.32), 0 0 0 4px rgba(103, 232, 249, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --ogd-callout-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --ogd-callout-shadow-focus: 0 0 0 4px rgba(103, 232, 249, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   color: var(--text-normal, #e5edf7) !important;
   box-shadow: var(--ogd-callout-shadow) !important;
 }
@@ -520,7 +520,7 @@ body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm
   --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
   --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.64), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.50)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
   --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.88), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.62));
-  --ogd-callout-shadow: 0 8px 20px rgba(15, 23, 42, 0.055), 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --ogd-callout-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
   position: relative !important;
   overflow: hidden !important;
   margin: 0 !important;
@@ -626,7 +626,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-emb
   --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.56)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
   --ogd-callout-border: rgba(203, 213, 225, 0.18);
   --ogd-callout-icon-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), rgba(15, 23, 42, 0.40));
-  --ogd-callout-shadow: 0 8px 22px rgba(0, 0, 0, 0.26), 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --ogd-callout-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
   color: var(--text-normal, #e5edf7) !important;
   box-shadow: var(--ogd-callout-shadow) !important;
 }
@@ -896,7 +896,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
   --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
   --ogd-table-row-even: rgba(236, 254, 255, 0.28);
   --ogd-table-row-hover: rgba(224, 242, 254, 0.62);
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 12px 24px rgba(15, 23, 42, 0.08);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
   border-collapse: separate !important;
   border-spacing: 0 !important;
   border: 1px solid var(--ogd-table-border) !important;
@@ -972,7 +972,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-tab
   --ogd-table-cell-border: rgba(51, 65, 85, 0.88);
   --ogd-table-row-even: rgba(30, 41, 59, 0.44);
   --ogd-table-row-hover: rgba(8, 145, 178, 0.22);
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.28), 0 14px 28px rgba(0, 0, 0, 0.26);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.28);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
