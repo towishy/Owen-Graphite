@@ -6,6 +6,24 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.1] — 2026-05-11 — Topbar hover token hotfix
+
+### Changed
+- Split topbar icon hover material into `--ogd-topbar-icon-hover-bg` and `--ogd-topbar-icon-hover-shadow` tokens so root tabbar add/list buttons can keep neutral glass feedback without inheriting cyan rim effects.
+
+### Fixed
+- Removed the remaining hover outline/rim line from the top tabbar add button while preserving the soft brightness and shadow response.
+
+### Selectors touched
+- `.workspace-tab-header-new-tab`, `.workspace-tab-header-tab-list`, `.workspace-tab-header-container .clickable-icon`, `.view-header .clickable-icon`, `.view-actions .clickable-icon`, `.sidebar-toggle-button.mod-left`, `.sidebar-toggle-button.mod-right`.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/changelog_lint.py`
+- `scripts/validate_theme.py`
+- `scripts/build_release.py`
+- Vault sync verified by `scripts/validate_theme.py` target asset check.
+
 ## [2.30] — 2026-05-11 — Unified design baseline
 
 ### Changed
