@@ -621,8 +621,9 @@ def required_files() -> None:
 def manifest_and_versions() -> str:
     manifest = json.loads(read_text("manifest.json"))
     version = manifest.get("version", "")
-    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
-        fail(f"manifest version must be semver, got {version!r}")
+    version_re = r"\d+\.\d+(?:\.\d+)?"
+    if not re.fullmatch(version_re, version):
+        fail(f"manifest version must be X.Y or X.Y.Z, got {version!r}")
     if manifest.get("name") != "Owen Graphite":
         fail("manifest name mismatch")
     if not manifest.get("minAppVersion"):
@@ -631,12 +632,12 @@ def manifest_and_versions() -> str:
 
     changelog = read_text("CHANGELOG.md")
     readme = read_text("README.md")
-    changelog_match = re.search(r"^## \[(\d+\.\d+\.\d+)\]", changelog, flags=re.M)
+    changelog_match = re.search(rf"^## \[({version_re})\]", changelog, flags=re.M)
     if not changelog_match:
         fail("CHANGELOG missing latest version header")
     if changelog_match.group(1) != version:
         fail(f"CHANGELOG latest header {changelog_match.group(1)} does not match manifest {version}")
-    readme_match = re.search(r"\| \*\*버전\*\* \| `(\d+\.\d+\.\d+)`", readme)
+    readme_match = re.search(rf"\| \*\*버전\*\* \| `({version_re})`", readme)
     if not readme_match:
         fail("README missing top-level version row")
     if readme_match.group(1) != version:

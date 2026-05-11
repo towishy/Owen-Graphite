@@ -4,7 +4,33 @@
 
 All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
-this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
+
+## [2.30] — 2026-05-11 — Unified design baseline
+
+### Changed
+- Promoted the completed visual unification pass as the new main and rollback baseline for Owen Graphite.
+- Root tab strip and view header surfaces now match the document surface, reducing OS/titlebar tint bleed without touching icon glyph rules.
+- Active root tabs now use the selected-document frosted pill treatment with a shallow sky rim.
+- Left and right side pane top icon slots now share neutral outline-only glass treatment for rest, hover, focus, pressed, and expanded states.
+- Selected left side pane tab icons now use the same frosted document-selection pill language as active root tabs while generic hover/focus states remain neutral.
+
+### Added
+- Documented the top chrome icon/background safety contract so future titlebar, tab, and side pane icon changes can follow the confirmed surface-layer implementation path.
+
+### Baseline
+- `v2.30` is the current main release, default release, rollback baseline, and only retained public release/tag after this cleanup.
+- Previous public releases and tags are removed after publishing this release; historical notes remain in this changelog for audit context only.
+
+### Selectors touched
+- `.workspace-split.mod-root`, `.workspace-tab-header-container`, `.workspace-tabs`, `.workspace-tab-header.is-active`, `.workspace-tab-header-inner`, `.workspace-split.mod-left-split`, `.workspace-split.mod-right-split`, `.workspace-tab-header-new-tab`, `.workspace-tab-header-tab-list`, `.clickable-icon`, `.sidebar-toggle-button.mod-left`, `.sidebar-toggle-button.mod-right`.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/changelog_lint.py`
+- `scripts/validate_theme.py`
+- `scripts/build_release.py`
+- Vault sync verified by `scripts/validate_theme.py` target asset check.
 
 ## [2.22.131] — 2026-05-11 — Recommended heading hierarchy
 
@@ -20,7 +46,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `ogd-no-h1-number` can be applied as a cssclass/body class to hide the H1 number kicker while keeping the same H1 glass/rule treatment.
 
 ### Baseline
-- `v2.22.131` is the current base release, default release, rollback baseline, and only retained public release/tag.
+- At publication time, `v2.22.131` was the base release, default release, rollback baseline, and only retained public release/tag. It has since been superseded by `v2.30`.
 - Previous public releases and tags were removed after publishing this release; historical notes remain in this changelog for audit context only.
 
 ### Selectors touched

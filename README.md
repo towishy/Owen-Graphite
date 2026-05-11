@@ -4,7 +4,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.22.37)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -22,9 +22,9 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.22.131` |
-| **기본 릴리즈** | `v2.22.131` |
-| **롤백 베이스라인** | `v2.22.131` |
+| **버전** | `2.30` |
+| **기본 릴리즈** | `v2.30` |
+| **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Glass+Shadow 코어 · 샘플-우선 워크플로우 |
@@ -163,6 +163,17 @@ THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owe
 
 ## 4. 테마 신기능
 
+### ✨ v2.30 — 전체 디자인 통일 베이스
+
+문서 본문, 제목 계층, PDF 출력, 상단 titlebar/tab chrome, 좌우 side pane top icon slot까지 Owen Graphite의 Liquid Glass 디자인 언어를 하나의 기준으로 정리했습니다. 공유 상단 아이콘은 중립 outline-only glass로 안정화하고, 선택된 문서/tab 상태만 frosted document-selection pill과 얕은 sky rim을 사용합니다.
+
+| 영역 | 정리 내용 |
+|------|----------|
+| 본문/제목 | H1-H4 계층과 PDF heading rule을 문장 길이 기준으로 정리하고, H1 number kicker는 선택적으로 숨길 수 있게 유지 |
+| 상단 chrome | root tab strip/view header 배경을 문서 표면과 맞추고, active tab은 선택 문서 pill 스타일로 통일 |
+| side pane icon | 좌우 side pane top slot은 중립 outline parity를 유지하고, 선택된 왼쪽 tab icon만 문서 선택 pill 스타일 적용 |
+| 안정화 문서 | top chrome icon/background contract를 문서화해 다음 변경 시 SVG/color/opacity 복구 패치를 피하도록 기준화 |
+
 ### ✨ v2.22.41 — PDF 마지막 페이지 Footer
 
 PDF export 마지막 페이지에 H3 헤더형 confidential footer를 추가했습니다. Style Settings에서 첫 페이지 Header와 마지막 페이지 Footer의 PDF 출력 여부, 라벨/제목/본문 문구, 각 색상 옵션을 조정할 수 있습니다.
@@ -190,7 +201,7 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
-| **v2.22.131** | H1-H4 recommended heading hierarchy: H1/H2는 neutral Liquid Glass surface와 aqua ledger rule을 사용하고, H3/H4는 짧은 graphite rule로 정리. PDF export는 blur/shadow 없이 print-safe rule 중심으로 평탄화하며 `ogd-no-h1-number`로 H1 number kicker를 끌 수 있음 |
+| **v2.30** | 전체 디자인 통일 베이스: 본문/제목/PDF heading, root tab, titlebar icon slot, side pane top icon을 하나의 Liquid Glass 기준으로 정리. 공유 아이콘은 중립 outline glass를 유지하고 선택된 문서/tab만 frosted sky-rim pill을 사용 |
 
 > 전체 릴리즈 노트와 상세 변경 내역 → [CHANGELOG.md](CHANGELOG.md)
 

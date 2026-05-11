@@ -5,7 +5,8 @@ the staged/branch CSS diff.
 Why:
   Past sweeps lost track of which selectors a release touched. This lint
   enforces three rules:
-    1. The top-most `## [X.Y.Z]` entry in CHANGELOG.md must match
+     1. The top-most `## [X.Y.Z]` or explicitly requested `## [X.Y]`
+         entry in CHANGELOG.md must match
        `manifest.json` `version`.
     2. The latest entry must declare a `### Selectors touched` (or
        `### Affected selectors`) section listing changed selector tokens.
@@ -40,9 +41,9 @@ def _git(args: list[str]) -> str:
 
 
 def _latest_entry() -> tuple[str, str]:
-    """Return (version, entry_body) for the topmost `## [X.Y.Z]` block."""
+    """Return (version, entry_body) for the topmost release block."""
     text = CHANGELOG.read_text(encoding="utf-8")
-    matches = list(re.finditer(r"^## \[(\d+\.\d+\.\d+)\][^\n]*\n", text, re.M))
+    matches = list(re.finditer(r"^## \[(\d+\.\d+(?:\.\d+)?)\][^\n]*\n", text, re.M))
     if not matches:
         return "", ""
     first = matches[0]
