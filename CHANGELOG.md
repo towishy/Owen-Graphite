@@ -6,6 +6,30 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.131] — 2026-05-11 — Recommended heading hierarchy
+
+### Changed
+- H1 and H2 now use the approved neutral Liquid Glass heading surface with shallow aqua ledger rules, while H3 and H4 use quieter graphite text hierarchy with short rules and no left rails.
+- H1 now uses a text-length aqua underline instead of a fixed short pseudo-element rule, so the line ends with the heading sentence.
+- H1 number kickers now sit outside the underline flow, keeping the small counter clean while the title text keeps its aqua underline.
+- PDF export now flattens the heading treatment into print-safe borders, low-alpha surfaces, and ledger rules without blur or drop-shadow dependency.
+- PDF H3/H4 headings now use a text-length underline so the rule ends with the heading sentence instead of becoming a fixed-width decorative segment.
+- Live Preview heading parity now styles only inline `.cm-header-*` spans so CM6 header row hitboxes remain untouched.
+
+### Added
+- `ogd-no-h1-number` can be applied as a cssclass/body class to hide the H1 number kicker while keeping the same H1 glass/rule treatment.
+
+### Selectors touched
+- `.markdown-rendered h1`, `.markdown-rendered h2`, `.markdown-rendered h3`, `.markdown-rendered h4`, `.cm-header-1`, `.cm-header-2`, `.cm-header-3`, `.cm-header-4`, `@media print h1`, `@media print h2`, `@media print h3`, `@media print h4`.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/analyze_theme_css.py` — CSS risk map remains `critical=0`, `high=0`, `medium=0`, `low=0`.
+- `scripts/changelog_lint.py`
+- `scripts/validate_theme.py`
+- `scripts/build_release.py`
+- Vault sync verified by `scripts/validate_theme.py` target asset check.
+
 ## [2.22.130] — 2026-05-11 — Mermaid control MAP stabilization
 
 ### Fixed

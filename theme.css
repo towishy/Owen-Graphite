@@ -11883,6 +11883,251 @@ body.theme-dark .markdown-rendered a.external-link:visited {
   pointer-events: none;
   font-size: 0.85em;
 }
+/* ============================================================
+  v2.22.131 - H1-H4 recommended heading hierarchy
+   Final owner for the E + C + optional A heading direction:
+   neutral glass H1/H2, print-safe ledger rules, optional H1 kicker,
+   and Live Preview-safe inline heading parity without CM6 row geometry.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-h1-bg: radial-gradient(circle at 78% 18%, rgba(125, 211, 252, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.62));
+  --ogd-heading-h2-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(248, 250, 252, 0.46));
+  --ogd-heading-border: rgba(203, 213, 225, 0.68);
+  --ogd-heading-border-soft: rgba(226, 232, 240, 0.82);
+  --ogd-heading-rule: linear-gradient(90deg, rgba(103, 232, 249, 0.72), rgba(203, 213, 225, 0.58), transparent);
+  --ogd-heading-rule-soft: linear-gradient(90deg, rgba(148, 163, 184, 0.56), rgba(226, 232, 240, 0.20), transparent);
+  --ogd-heading-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-h1-bg: radial-gradient(circle at 78% 18%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48));
+  --ogd-heading-h2-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.60), rgba(15, 23, 42, 0.38));
+  --ogd-heading-border: rgba(203, 213, 225, 0.18);
+  --ogd-heading-border-soft: rgba(71, 85, 105, 0.62);
+  --ogd-heading-rule: linear-gradient(90deg, rgba(103, 232, 249, 0.46), rgba(71, 85, 105, 0.62), transparent);
+  --ogd-heading-rule-soft: linear-gradient(90deg, rgba(203, 213, 225, 0.34), rgba(71, 85, 105, 0.16), transparent);
+  --ogd-heading-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  display: block !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin-top: 1.42em !important;
+  margin-bottom: 0.78em !important;
+  padding: 1.36em 0.68em 0.72em !important;
+  border: 1px solid var(--ogd-heading-border) !important;
+  border-left: 1px solid var(--ogd-heading-border) !important;
+  border-bottom: 1px solid var(--ogd-heading-border) !important;
+  border-radius: var(--ogd-radius-panel, 10px) !important;
+  background: var(--ogd-heading-h1-bg) !important;
+  box-shadow: var(--ogd-heading-shadow) !important;
+  color: var(--header-text, var(--ogd-text-strong, #111827)) !important;
+  font-size: 2.12em !important;
+  font-weight: 860 !important;
+  line-height: 1.14 !important;
+  letter-spacing: 0 !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: rgba(103, 232, 249, 0.72) !important;
+  text-decoration-style: solid !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.20em !important;
+  text-decoration-skip-ink: none !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero) !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0.58em !important;
+  left: 0.68em !important;
+  margin: 0 !important;
+  color: var(--ogd-text-muted, #64748b) !important;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono", "D2Coding", Consolas, "Courier New", monospace !important;
+  font-size: 0.32em !important;
+  font-weight: 760 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1 !important;
+  text-decoration-line: none !important;
+  text-shadow: none !important;
+  pointer-events: none !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.ogd-no-h1-number :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
+.markdown-rendered.ogd-no-h1-number h1::before,
+.markdown-preview-view.ogd-no-h1-number.markdown-rendered h1::before,
+.markdown-reading-view.ogd-no-h1-number .markdown-rendered h1::before {
+  content: none !important;
+  display: none !important;
+}
+
+body.ogd-no-h1-number :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1,
+.markdown-rendered.ogd-no-h1-number h1,
+.markdown-preview-view.ogd-no-h1-number.markdown-rendered h1,
+.markdown-reading-view.ogd-no-h1-number .markdown-rendered h1 {
+  padding-top: 0.58em !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: block !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  margin-top: 1.26em !important;
+  margin-bottom: 0.76em !important;
+  padding: 0.42em 0.58em 0.46em !important;
+  border: 1px solid var(--ogd-heading-border-soft) !important;
+  border-left: 1px solid var(--ogd-heading-border-soft) !important;
+  border-bottom: 1px solid var(--ogd-heading-border-soft) !important;
+  border-radius: var(--ogd-radius-control, 8px) !important;
+  background: var(--ogd-heading-h2-bg) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 8px 18px rgba(15, 23, 42, 0.055) !important;
+  color: var(--header-text, var(--ogd-text-strong, #111827)) !important;
+  font-size: 1.56em !important;
+  font-weight: 800 !important;
+  line-height: 1.23 !important;
+  letter-spacing: 0 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0.58em !important;
+  right: auto !important;
+  bottom: -0.43em !important;
+  width: min(280px, 44%) !important;
+  height: 1.5px !important;
+  border: 0 !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: var(--ogd-heading-rule) !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  display: block !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  letter-spacing: 0 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+  margin-top: 1.04em !important;
+  margin-bottom: 0.46em !important;
+  padding: 0.06em 0 0.34em !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  font-size: 1.28em !important;
+  font-weight: 760 !important;
+  line-height: 1.28 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::after,
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: auto !important;
+  bottom: 0 !important;
+  transform: none !important;
+  height: 1px !important;
+  border: 0 !important;
+  border-radius: var(--ogd-radius-pill, 999px) !important;
+  background: var(--ogd-heading-rule-soft) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::after {
+  width: min(190px, 28%) !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  margin-top: 0.86em !important;
+  margin-bottom: 0.34em !important;
+  padding: 0.02em 0 0.28em !important;
+  color: var(--ogd-text-subtle, #475569) !important;
+  font-size: 1.06em !important;
+  font-weight: 760 !important;
+  line-height: 1.30 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::after {
+  width: min(128px, 20%) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h1, h2) {
+  color: var(--ogd-text-inverted, #f8fafc) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  text-decoration-color: rgba(103, 232, 249, 0.46) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  color: var(--ogd-text-soft, #94a3b8) !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+  color: var(--ogd-line-soft, #e5e7eb) !important;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
+  color: var(--ogd-text-strong, #111827) !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: rgba(103, 232, 249, 0.55) !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.20em !important;
+  text-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-header-1 { font-weight: 860 !important; }
+body .markdown-source-view.mod-cm6 .cm-header-2 { font-weight: 800 !important; }
+
+body .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
+  color: var(--ogd-text-slate, #334155) !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: rgba(203, 213, 225, 0.72) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 0.18em !important;
+}
+
+body .markdown-source-view.mod-cm6 .cm-header-3 { font-weight: 760 !important; }
+body .markdown-source-view.mod-cm6 .cm-header-4 { color: var(--ogd-text-subtle, #475569) !important; font-weight: 760 !important; }
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
+  color: var(--ogd-text-inverted, #f8fafc) !important;
+  text-decoration-color: rgba(103, 232, 249, 0.42) !important;
+  text-shadow: none !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
+  color: var(--ogd-line-soft, #e5e7eb) !important;
+  text-decoration-color: rgba(71, 85, 105, 0.80) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
+  color: var(--ogd-text-soft, #94a3b8) !important;
+}
+
 @media print {
   .markdown-rendered h2::after,
   .markdown-rendered h3::after,
@@ -11977,6 +12222,69 @@ body.theme-dark .markdown-rendered a.external-link:visited {
     background: transparent !important;
     box-shadow: none !important;
     overflow: hidden !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
+    --ogd-heading-h1-bg: rgba(248, 250, 252, 0.34) !important;
+    --ogd-heading-h2-bg: rgba(248, 250, 252, 0.28) !important;
+    --ogd-heading-border: rgba(203, 213, 225, 0.48) !important;
+    --ogd-heading-border-soft: rgba(203, 213, 225, 0.40) !important;
+    --ogd-heading-rule: linear-gradient(90deg, rgba(14, 165, 233, 0.64), rgba(148, 163, 184, 0.50), transparent) !important;
+    --ogd-heading-rule-soft: linear-gradient(90deg, rgba(148, 163, 184, 0.58), rgba(203, 213, 225, 0.22), transparent) !important;
+    --ogd-heading-shadow: none !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h1, h2) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    padding: 1.20em 0.56em 0.64em !important;
+    border: 1px solid var(--ogd-heading-border) !important;
+    background: var(--ogd-heading-h1-bg) !important;
+    color: #111827 !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    top: 0.42em !important;
+  }
+
+  body.ogd-no-h1-number :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1,
+  .markdown-rendered.ogd-no-h1-number h1,
+  .markdown-preview-view.ogd-no-h1-number.markdown-rendered h1,
+  .markdown-reading-view.ogd-no-h1-number .markdown-rendered h1 {
+    padding-top: 0.42em !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
+    padding: 0.34em 0.48em 0.38em !important;
+    border: 1px solid var(--ogd-heading-border-soft) !important;
+    background: var(--ogd-heading-h2-bg) !important;
+    color: #1f2937 !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
+    text-decoration-line: underline !important;
+    text-decoration-color: rgba(148, 163, 184, 0.58) !important;
+    text-decoration-style: solid !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 0.22em !important;
+    text-decoration-skip-ink: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h2, h3, h4)::after {
+    content: none !important;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 }
 
@@ -13507,7 +13815,6 @@ body .markdown-source-view.mod-cm6 :is(
     padding: 0 !important;
   }
 }
-
 
 /* ============================================================
   v2.22.47-hotfix - Style Settings color picker swatch guard
