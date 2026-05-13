@@ -80,6 +80,7 @@ REQUIRED_FILES = [
     "dev/10b-late-reading-nav-polish.css",
     "dev/10c-overlay-layout-polish.css",
     "dev/10d-liquid-glass-core.css",
+    "dev/10e-html-table-live-preview-glass.css",
     "dev/10-a11y-regression-hotfixes.css",
     "screenshots/light.png",
     "screenshots/dark.png",

@@ -6,6 +6,30 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.9] — 2026-05-13 — HTML table Live Preview parity polish
+
+### Changed
+- Split Live Preview HTML table Liquid Glass rules into `dev/10e-html-table-live-preview-glass.css`, keeping `dev/10d-liquid-glass-core.css` under the validator line-budget while preserving bundle order after the core Liquid Glass module.
+- Tightened HTML table selector scope so raw `<table>` blocks inside Live Preview HTML embeds match markdown table widgets without leaking into `.cm-table-widget` markdown tables or callout containers.
+- Rebalanced HTML table visuals against markdown table widgets:
+  - Body cells are pure white in light mode at rest.
+  - Row hover restores the visible light-blue highlight.
+  - Header divider is softened to normal grid weight.
+  - Outer perimeter uses a visible outline/ring while inner grid lines stay quiet.
+  - Header font size/weight and cell border tones now mirror the markdown widget stack more closely.
+- Increased codeblock body top padding so the visible language/header label has more breathing room before the first code line.
+
+### Fixed
+- Fixed HTML table body white overrides hiding the row hover state.
+- Fixed wrapperless HTML table embeds missing the parity selectors that were intended for `.cm-html-embed` / `.cm-embed-block` containers.
+- Fixed HTML utility-class tables (`.wide-table`, `.comparison-table`, `.print-fit-table`, `.wrap-table`, etc.) retaining older captioned/reading-view table styling in Live Preview.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+- `scripts/build_release.py`
+
 ## [2.30.8] — 2026-05-13 — Settings hover shadow root cause fix
 
 ### Fixed

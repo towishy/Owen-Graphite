@@ -4,7 +4,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.8)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.9)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -22,8 +22,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.30.8` |
-| **기본 릴리즈** | `v2.30.8` |
+| **버전** | `2.30.9` |
+| **기본 릴리즈** | `v2.30.9` |
 | **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
@@ -209,6 +209,7 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.30.9** | Live Preview HTML 테이블 패리티 정리 — 전용 `dev/10e` 모듈로 분리하고, 본문 흰 배경/파란 hover/외곽 outline/header divider/utility-class 테이블을 markdown table widget 톤에 맞게 보정. 코드블록 헤더 라벨과 첫 코드 줄 사이 여백도 확대 |
 | **v2.30.8** | Settings hover 그림자 근본 원인 수정 — dev/09c의 `.setting-item:hover` `var(--ogd-glass-shadow-hover)` (10d 에서 `0 28px 64px` halo) 교체 → hairline `0 1px 2px /.04~12`. v2.30.6/30.7 변경은 09b를 다뤄다줬으나 09c 우선이어서 실제 표시 변화 없었음 |
 | **v2.30.7** | Settings 모달 hover 그림자 더 연하고 좋게 축소 — left nav `0 3px 8px /.08` → `0 1px 3px /.05`, right pane row `0 2px 6px /.06` → `0 1px 2px /.04` (다크 모드 동일 비율로 축소) |
 | **v2.30.6** | Settings 모달 hover 그림자 랜드 완화 — left nav `0 6px 16px /.14` → `0 3px 8px /.08`, right pane row `0 4px 12px /.10` → `0 2px 6px /.06` (다크 모드 동일 비율로 축소) |

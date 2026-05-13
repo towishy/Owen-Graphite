@@ -1227,27 +1227,28 @@ body .markdown-rendered blockquote blockquote blockquote {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul {
   padding-left: 20px !important;
-  margin-top: 0.25em !important;
-  margin-bottom: 0.55em !important;
+  margin-top: 0.4em !important;
+  margin-bottom: 0.8em !important;
   margin-left: 8px !important;
   border-left: none !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol {
   padding-left: 22px !important;
-  margin-top: 0.25em !important;
-  margin-bottom: 0.55em !important;
+  margin-top: 0.4em !important;
+  margin-bottom: 0.8em !important;
   margin-left: 8px !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li {
-  margin-bottom: 0.18em !important;
-  line-height: 1.5 !important;
+  margin-bottom: 0.65em !important;
+  line-height: 1.78 !important;
   list-style-type: disc !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li > p {
-  margin-bottom: 0.18em !important;
+  margin-bottom: 0.65em !important;
+  line-height: 1.78 !important;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li::before {
@@ -3280,10 +3281,19 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, tab
   line-height: 1.6 !important;
 }
 
+/* v2.30.12 — default list line spacing parity with reading view; safe for CM6 hit-routing (small padding, line-height only).
+   v2.30.19 — bumped line-height 1.7 -> 1.85 and padding 0.05em -> 0.08em for clearer
+   bullet/numbered list rhythm (matches reading-view li margin-bottom 0.65em + line-height 1.78). */
+.markdown-source-view.mod-cm6 .HyperMD-list-line {
+  line-height: 1.85 !important;
+  padding-top: 0.08em !important;
+  padding-bottom: 0.08em !important;
+}
+
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .HyperMD-list-line {
-  line-height: 1.66 !important;
-  padding-top: 0.04em !important;
-  padding-bottom: 0.04em !important;
+  line-height: 1.78 !important;
+  padding-top: 0.08em !important;
+  padding-bottom: 0.08em !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD-list-line-3, .HyperMD-list-line-4) {
@@ -3457,6 +3467,84 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin >
   color: #475569 !important;
 }
 
+
+/* =====================================================================
+   v2.30.9 — HTML <table> in Live Preview parity (HTML-only; does NOT
+   touch markdown table widgets). Mirrors the .cm-table-widget /
+   table.cm-table declarations above so HTML tables embedded via
+   raw <table>...</table> blocks adopt the same baseline shape, padding,
+   borders and dark-mode rules. Liquid glass tokens for HTML tables
+   live in dev/10d-liquid-glass-core.css.
+   ===================================================================== */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  border-collapse: collapse !important;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
+  border-bottom: 2px solid #6b7280 !important;
+  border-left: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  border-right: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  padding: 6px 10px !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  padding: 5px 10px !important;
+  vertical-align: top;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+  background: #f5f7fa !important;
+}
+/* Inline code in HTML <table> cells: keep behavior aligned with Reading view */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td code {
+  white-space: nowrap;
+}
+
+/* Dark mode parity for HTML <table> in Live Preview */
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+  background: #25272d !important;
+  border-bottom-color: #6b7280 !important;
+  border-left-color: #353841 !important;
+  border-right-color: #353841 !important;
+  color: var(--ogd-surface-subtle, #f3f4f6) !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border-color: #2a2c33 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+  background: #2a2c33 !important;
+}
+
+/* Relaxed-spacing parity (light + dark) */
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  margin: 0 !important;
+  border: 1px solid rgba(203, 213, 225, 0.76) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035) !important;
+}
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+  background: #f4f6f8 !important;
+  border-color: #e2e8f0 !important;
+  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8) !important;
+  color: #1f2937 !important;
+  font-weight: 760 !important;
+}
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border-color: #edf2f7 !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  line-height: 1.6 !important;
+}
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  border-color: var(--ogd-lp-doc-rim) !important;
+  background: var(--ogd-lp-doc-glass-bg) !important;
+  box-shadow: var(--ogd-lp-doc-glass-shadow) !important;
+}
 /* =====================================================================
    v1.4.0 — 33-point comprehensive upgrade
    A. Typography  B. Content emphasis  C. Report features
@@ -14191,6 +14279,300 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
   color: var(--text-normal, #e5edf7) !important;
 }
 /* ============================================================
+  v2.30.9 — HTML <table> in Live Preview liquid glass parity
+  HTML-only; does NOT touch markdown table widgets.
+  Mirrors the markdown-table-widget token blocks defined in
+  dev/10d-liquid-glass-core.css. Selector intentionally excludes
+  `.cm-callout` containers AND the markdown widget's inner
+  `<table class="cm-table">`, so markdown tables never receive
+  these declarations.
+
+  Loaded after 10d-liquid-glass-core.css per dev/_order.txt so its
+  late position keeps the cascade ordering identical to vanilla 10d.
+   ============================================================ */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface) !important; border-color: var(--ogd-table-border) !important; box-shadow: var(--ogd-table-shadow) !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg) !important; color: var(--ogd-text-slate, #334155) !important; border-color: var(--ogd-table-cell-border) !important; border-bottom-color: rgba(148, 163, 184, 0.58) !important; font-weight: 780 !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: var(--ogd-table-cell-border) !important; color: var(--ogd-text-slate, #334155) !important; }
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td { background: var(--ogd-table-row-even) !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover) !important; }
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.56); --ogd-table-row-hover: rgba(51, 65, 85, 0.42); --ogd-table-row-even: rgba(15, 23, 42, 0.26); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62)); --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74)); --ogd-table-border: rgba(203, 213, 225, 0.28); --ogd-table-cell-border: rgba(71, 85, 105, 0.72); --ogd-table-row-hover: rgba(51, 65, 85, 0.50); --ogd-table-row-even: rgba(15, 23, 42, 0.36); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34) !important; color: var(--text-normal, #e5edf7) !important; }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { color: var(--text-normal, #e5edf7) !important; }
+
+
+/* v2.30.10 reading-view neutralizer for HTML tables in Live Preview */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { margin: 0 !important; width: 100% !important; max-width: 100% !important; font-size: 1em !important; border-collapse: collapse !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { padding: 6px 10px !important; text-align: left !important; vertical-align: top !important; white-space: normal !important; background-color: var(--ogd-surface-subtle, #f3f4f6) !important; border-bottom: 2px solid #6b7280 !important; border-left: 1px solid var(--ogd-line-soft, #e5e7eb) !important; border-right: 1px solid var(--ogd-line-soft, #e5e7eb) !important; font-weight: 700 !important; color: var(--ogd-text-slate, #334155) !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { padding: 5px 10px !important; line-height: normal !important; vertical-align: top !important; text-align: left !important; border: 1px solid var(--ogd-line-soft, #e5e7eb) !important; color: var(--ogd-text-slate, #334155) !important; word-break: keep-all !important; overflow-wrap: anywhere !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td:first-child { color: inherit !important; font-weight: inherit !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: #f5f7fa !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background-color: #25272d !important; color: var(--ogd-surface-subtle, #f3f4f6) !important; border-bottom-color: #6b7280 !important; border-left-color: #353841 !important; border-right-color: #353841 !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: #2a2c33 !important; color: var(--text-normal, #e5edf7) !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: #2a2c33 !important; }
+
+
+/* v2.30.13 align HTML table tone with markdown widget tokens (PDF / Live Preview parity) */
+/* Drops the v2.30.11 backdrop-filter / drop shadow / bespoke gradient that
+   made HTML tables look heavier than the markdown widget. The parent
+   `:is(.markdown-rendered,...) table` rule in dev/10d already supplies
+   --ogd-table-surface / --ogd-table-shadow, so we only need to
+   neutralize the v2.30.10 solid `background-color` on <th>/<td> and
+   restore markdown-widget hover, in light + dark. */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg) !important; background-color: transparent !important; color: var(--ogd-text-slate, #334155) !important; border-bottom-color: rgba(148, 163, 184, 0.58) !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { background: transparent !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: transparent !important; background: var(--ogd-table-row-hover) !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg) !important; background-color: transparent !important; color: var(--text-normal, #e5edf7) !important; border-bottom-color: rgba(148, 163, 184, 0.34) !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: transparent !important; background: var(--ogd-table-row-hover) !important; }
+
+
+/* v2.30.14 neutralize HTML utility-class table styling in Live Preview (PDF parity) */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) { border-collapse: collapse !important; border-spacing: 0 !important; border-radius: 0 !important; border-color: var(--ogd-table-border) !important; background: var(--ogd-table-surface) !important; box-shadow: var(--ogd-table-shadow) !important; overflow: visible !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) thead th { background: var(--ogd-table-head-bg) !important; background-color: transparent !important; border-color: var(--ogd-table-cell-border) !important; border-bottom: 2px solid #6b7280 !important; color: var(--ogd-text-slate, #334155) !important; font-weight: 700 !important; text-align: left !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody td:first-child { background: transparent !important; color: inherit !important; font-weight: inherit !important; box-shadow: none !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) caption { display: none !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) { border-color: var(--ogd-table-border) !important; background: var(--ogd-table-surface) !important; box-shadow: var(--ogd-table-shadow) !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) thead th { background: var(--ogd-table-head-bg) !important; background-color: transparent !important; color: var(--text-normal, #e5edf7) !important; border-bottom-color: #6b7280 !important; }
+
+
+/* v2.30.15 align HTML table cell borders with markdown widget tone (--ogd-table-cell-border) */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-color: var(--ogd-table-cell-border) !important; border-left-color: var(--ogd-table-cell-border) !important; border-right-color: var(--ogd-table-cell-border) !important; border-bottom-color: rgba(148, 163, 184, 0.58) !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: var(--ogd-table-cell-border) !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-color: rgba(71, 85, 105, 0.56) !important; border-left-color: rgba(71, 85, 105, 0.56) !important; border-right-color: rgba(71, 85, 105, 0.56) !important; border-bottom-color: rgba(148, 163, 184, 0.34) !important; }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: rgba(71, 85, 105, 0.56) !important; }
+
+
+/* v2.30.16 mirror dev/10d Liquid Glass markdown table block onto HTML tables in Live Preview */
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden !important; border-color: var(--ogd-table-border) !important; border-radius: var(--ogd-radius-control, 7px) !important; background: var(--ogd-table-surface) !important; box-shadow: var(--ogd-table-shadow) !important; -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important; backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important; }
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-color: var(--ogd-table-cell-border) !important; border-bottom-color: rgba(148, 163, 184, 0.46) !important; background: var(--ogd-table-head-bg) !important; color: var(--ogd-text-strong, #111827) !important; font-weight: 820 !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16) !important; }
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { border-color: var(--ogd-table-cell-border) !important; color: var(--ogd-text-slate, #334155) !important; }
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover) !important; }
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td { background: var(--ogd-table-row-even) !important; }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.34) !important; color: var(--text-normal, #e5edf7) !important; }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { color: var(--text-normal, #e5edf7) !important; }
+
+
+/* v2.30.17 align HTML table (Live Preview) cell line-height + report-mode header weight with markdown widget */
+/* Cell line-height parity with markdown widget (.cm-table-widget td inherits ~1.5 from .cm-line; v2.30.10 forces `normal` ~1.2 on HTML td). Apply to all HTML tables in Live Preview, regardless of report-mode. */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { line-height: var(--line-height-normal, 1.5) !important; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { line-height: var(--line-height-normal, 1.5) !important; }
+/* Report-mode header weight parity: dev/10d:537 sets font-weight 780 on markdown widget th; v2.30.14 sets 700 on HTML utility-class. v2.30.16 already covers non-report-mode (font-weight 820, Liquid Glass parity). */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { font-weight: 780 !important; }
+
+
+/* v2.30.18 soften HTML table thead bottom-line color in report-mode to match markdown widget */
+/* HTML utility-class thead th border-bottom is forced to `2px solid #6b7280` by v2.30.14 (specificity 0,8,3); v2.30.13/15/17 carry only 0,7,2 so their tone overrides lose the cascade. Restate the color at report-mode specificity (0,8,4) — width stays 2px to match the markdown widget (dev/10d:537 + dev/05:229). */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.58) !important; }
+/* Dark mode parity (markdown widget dark uses 0.34 from dev/10d:1490 in non-report-mode; v2.30.14 dark thead th sets `border-bottom-color: #6b7280` which still reads heavier than the widget). */
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.34) !important; }
+
+
+/* v2.30.20 thin out HTML table thead bottom-line width (2px -> 1px) and ease color to match markdown widget Liquid Glass parity */
+/* v2.30.10/14 force `border-bottom: 2px solid #6b7280` shorthand on HTML utility-class thead th; v2.30.18 only restated the color. The markdown widget side renders with effective width 1px and alpha 0.46 (light) / 0.34 (dark) after dev/10d:1452. Restate width + color at higher specificity (0,8,4) so HTML thead matches the lighter markdown widget rendering in both report-mode and default Liquid Glass. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(148, 163, 184, 0.46) !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(148, 163, 184, 0.46) !important;
+}
+/* Dark mode parity (markdown widget dark sits at alpha 0.34 in dev/10d:1490). */
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-color: rgba(148, 163, 184, 0.34) !important;
+}
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-color: rgba(148, 163, 184, 0.34) !important;
+}
+
+
+/* v2.30.21 normalize HTML table outer border to match markdown widget exactly (cell-only outer line) */
+/* The visible outer line should come from collapsed cell borders only, like the markdown widget. v2.30.14 sets `border-color` on the outer <table> without an explicit `border-style`, which can leave a hairline at certain zoom levels. Force `border: 0` on the outer table and `border-top: 0` on thead/th so the outer box never paints — exactly matching the markdown widget rendering (dev/05:236 + dev/10d:537/602 stack). */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  border-style: none !important;
+  border-width: 0 !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  border-style: none !important;
+  border-width: 0 !important;
+}
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-top-width: 0 !important;
+  border-top-style: none !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-top-width: 0 !important;
+  border-top-style: none !important;
+}
+/* Cell border color parity with markdown widget (--ogd-table-cell-border resolves to rgba(203, 213, 225, 0.92) in report-mode via dev/10d:602 + dev/10e:18). Re-state explicitly on td to override v2.30.10's `border: 1px solid #e5e7eb` shorthand color in case any cascade ordering still leaves the opaque #e5e7eb on a sub-edge. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--ogd-table-cell-border) !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--ogd-table-cell-border) !important;
+}
+
+
+/* v2.30.22 mirror dev/10-a11y markdown widget td/th rules onto HTML tables (white row overlay + smaller/denser header) */
+/* dev/10-a11y:996-1006 sets `td { background: rgba(255, 255, 255, 0.28) }` and `th { font-size: 0.88em; font-weight: 820 }` for cm-table-widget only. HTML tables in Live Preview never received these, so their rows pick up the table surface gradient (faint grey) and their headers render larger/heavier than the markdown widget side-by-side. Restate both at matching specificity for HTML tables, in both report-mode and non-report-mode. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  font-size: 0.88em !important;
+  font-weight: 820 !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  font-size: 0.88em !important;
+  font-weight: 820 !important;
+}
+/* Dark mode parity: dev/10-a11y has no dark override, so same overlay/font apply. The white overlay reads correctly on dark surface (subtle highlight without flipping rows white). */
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+
+/* v2.30.23 restore HTML thead bottom-line to exact markdown widget value (2px @ alpha 0.58 / dark 0.34) */
+/* v2.30.20 trimmed this to 1px @ 0.46 which now reads as a much weaker outer rectangle than the markdown widget when the two are stacked. Markdown widget retains the dev/05:236 baseline (2px solid) with only color swapped via dev/10d:544 (rgba(148, 163, 184, 0.58)). Restore identical width AND color so the visual outer-line strength is matched. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(148, 163, 184, 0.58) !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(148, 163, 184, 0.58) !important;
+}
+/* Dark mode parity (markdown widget dark uses alpha 0.34 via dev/10d:1490) */
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(148, 163, 184, 0.34) !important;
+}
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(148, 163, 184, 0.34) !important;
+}
+
+
+/* v2.30.24 soften HTML thead divider to normal cell grid weight */
+/* v2.30.23 restored the header separator to 2px, but side-by-side review shows it still reads as a thick line below the header. Keep only a normal 1px grid divider and remove the header inset shadow so the line cannot visually double. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.92) !important;
+  box-shadow: none !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.92) !important;
+  box-shadow: none !important;
+}
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom: 1px solid rgba(71, 85, 105, 0.58) !important;
+  box-shadow: none !important;
+}
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  border-bottom: 1px solid rgba(71, 85, 105, 0.58) !important;
+  box-shadow: none !important;
+}
+
+
+/* v2.30.25 strengthen HTML table outer ring only */
+/* Keep v2.30.24's softened header divider and normal inner grid. Add a table-level ring so only the outside perimeter reads closer to the markdown table outline. Use box-shadow rather than a real border to avoid collapsed-border side effects. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+}
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+
+/* v2.30.26 make HTML table outer outline visibly strong */
+/* v2.30.25's box-shadow ring can be visually lost on collapsed HTML tables. Add a real outline on both generic HTML tables and utility-class tables; outline does not affect collapsed cell borders, so only the perimeter gets stronger. */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+  outline: 1.5px solid rgba(148, 163, 184, 0.72) !important;
+  outline-offset: -1px !important;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+  outline: 1.5px solid rgba(148, 163, 184, 0.64) !important;
+  outline-offset: -1px !important;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+}
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+  outline: 1.5px solid rgba(148, 163, 184, 0.40) !important;
+  outline-offset: -1px !important;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+  outline: 1.5px solid rgba(148, 163, 184, 0.34) !important;
+  outline-offset: -1px !important;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+
+/* v2.30.27 force HTML table body cells to pure white */
+/* Keep the v2.30.26 outer outline and the existing header tone. Remove the remaining glass tint from body rows by forcing table body surfaces and cells to pure white in light mode only. */
+body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget),
+body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+  --ogd-table-surface: #ffffff !important;
+  background: #ffffff !important;
+}
+
+body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
+body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
+body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
+body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td) {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+
+/* v2.30.28 restore visible blue hover on HTML table body rows */
+/* v2.30.27's white body-cell override is intentionally strong, but it also wins over older hover rules. Put the hover state back after it: white at rest, blue on hover. */
+body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
+  background: rgba(224, 242, 254, 0.72) !important;
+  background-color: rgba(224, 242, 254, 0.72) !important;
+}
+
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
+  background: rgba(8, 145, 178, 0.22) !important;
+  background-color: rgba(8, 145, 178, 0.22) !important;
+}
+/* ============================================================
   v2.22.14-hotfix - Live Preview table row inflation guard
    Prevent global CM6 min-height rules from expanding table-cell editors.
 
@@ -15674,11 +16056,11 @@ body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .la
 body pre:is(.language-powershell, .language-ps1, .language-pwsh)::after { content: "PowerShell" !important; }
 
 body pre code {
-  padding: 3.36em 1.1em 1.05em !important;
+  padding: 4em 1.1em 1.05em !important;
 }
 
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre code {
-  padding: 3.36em 1.1em 1.05em !important;
+  padding: 4em 1.1em 1.05em !important;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {

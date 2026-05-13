@@ -506,10 +506,19 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, tab
   line-height: 1.6 !important;
 }
 
+/* v2.30.12 — default list line spacing parity with reading view; safe for CM6 hit-routing (small padding, line-height only).
+   v2.30.19 — bumped line-height 1.7 -> 1.85 and padding 0.05em -> 0.08em for clearer
+   bullet/numbered list rhythm (matches reading-view li margin-bottom 0.65em + line-height 1.78). */
+.markdown-source-view.mod-cm6 .HyperMD-list-line {
+  line-height: 1.85 !important;
+  padding-top: 0.08em !important;
+  padding-bottom: 0.08em !important;
+}
+
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .HyperMD-list-line {
-  line-height: 1.66 !important;
-  padding-top: 0.04em !important;
-  padding-bottom: 0.04em !important;
+  line-height: 1.78 !important;
+  padding-top: 0.08em !important;
+  padding-bottom: 0.08em !important;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD-list-line-3, .HyperMD-list-line-4) {
@@ -683,3 +692,81 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin >
   color: #475569 !important;
 }
 
+
+/* =====================================================================
+   v2.30.9 — HTML <table> in Live Preview parity (HTML-only; does NOT
+   touch markdown table widgets). Mirrors the .cm-table-widget /
+   table.cm-table declarations above so HTML tables embedded via
+   raw <table>...</table> blocks adopt the same baseline shape, padding,
+   borders and dark-mode rules. Liquid glass tokens for HTML tables
+   live in dev/10d-liquid-glass-core.css.
+   ===================================================================== */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  border-collapse: collapse !important;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+  background: var(--ogd-surface-subtle, #f3f4f6) !important;
+  border-bottom: 2px solid #6b7280 !important;
+  border-left: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  border-right: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  padding: 6px 10px !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  padding: 5px 10px !important;
+  vertical-align: top;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+  background: #f5f7fa !important;
+}
+/* Inline code in HTML <table> cells: keep behavior aligned with Reading view */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td code {
+  white-space: nowrap;
+}
+
+/* Dark mode parity for HTML <table> in Live Preview */
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+  background: #25272d !important;
+  border-bottom-color: #6b7280 !important;
+  border-left-color: #353841 !important;
+  border-right-color: #353841 !important;
+  color: var(--ogd-surface-subtle, #f3f4f6) !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border-color: #2a2c33 !important;
+}
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+  background: #2a2c33 !important;
+}
+
+/* Relaxed-spacing parity (light + dark) */
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  margin: 0 !important;
+  border: 1px solid rgba(203, 213, 225, 0.76) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035) !important;
+}
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+  background: #f4f6f8 !important;
+  border-color: #e2e8f0 !important;
+  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8) !important;
+  color: #1f2937 !important;
+  font-weight: 760 !important;
+}
+body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  border-color: #edf2f7 !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  line-height: 1.6 !important;
+}
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  border-color: var(--ogd-lp-doc-rim) !important;
+  background: var(--ogd-lp-doc-glass-bg) !important;
+  box-shadow: var(--ogd-lp-doc-glass-shadow) !important;
+}
