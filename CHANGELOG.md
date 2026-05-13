@@ -6,6 +6,88 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.8] — 2026-05-13 — Settings hover shadow root cause fix
+
+### Fixed
+- v2.30.6/v2.30.7 reduced `dev/09b` `.setting-item:hover` shadow but had no visible effect because `dev/09c` (later in cascade, equal specificity) was applying the much larger `var(--ogd-glass-shadow-hover)` token — ultimately resolved by `dev/10d` `--ogd-lg-shadow-hover` to `0 28px 64px /.24, 0 10px 24px /.16`. That huge halo was the actual shadow showing in the user's screenshots.
+
+### Changed
+- `dev/09c` `.modal.mod-settings .setting-item:is(:hover, :focus-within)` (right pane row, top-level): box-shadow `var(--ogd-glass-shadow-hover)` (28px+64px halo) → hairline `0 1px 2px rgba(15, 23, 42, 0.04)` (light), `0 1px 2px rgba(0, 0, 0, 0.12)` (dark, new selector).
+- `dev/09c` `.setting-item .setting-item:is(:hover, :focus-within)` (nested style-settings sub-item): box-shadow `0 3px 10px /.08` → `0 1px 2px /.04` (light), `0 4px 12px /.24` → `0 1px 2px /.12` (dark).
+- Glass background, backdrop-filter, outline rim, and lift transform left intact.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+
+## [2.30.7] — 2026-05-13 — Settings hover shadow softened (round 2)
+
+### Changed
+- Further reduced Settings modal hover drop-shadow blur radius and opacity — lift is now barely-there, just a hairline shadow under the row:
+  - `.vertical-tab-nav-item:hover` (left nav): light `0 3px 8px /.08` → `0 1px 3px /.05`, dark `0 3px 8px /.22` → `0 1px 3px /.14`.
+  - `.setting-item:hover` (right pane): light `0 2px 6px /.06` → `0 1px 2px /.04`, dark `0 2px 6px /.18` → `0 1px 2px /.12`.
+- Inset rim, border, glass background, lift transform and `is-active` ring still untouched.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+
+## [2.30.6] — 2026-05-13 — Settings hover shadow softened
+
+### Changed
+- Reduced hover drop-shadow blur radius and opacity on Settings modal rows so mouseover lift feels lighter and less heavy:
+  - `.vertical-tab-nav-item:hover` (left nav): light `0 6px 16px /.14` → `0 3px 8px /.08`, dark `0 6px 16px /.36` → `0 3px 8px /.22`.
+  - `.setting-item:hover` (right pane): light `0 4px 12px /.10` → `0 2px 6px /.06`, dark `0 4px 12px /.30` → `0 2px 6px /.18`.
+- Inset rim highlights, border, lift transform, glass background and `is-active` ring left untouched — selection state still reads strongly versus hover state.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+
+## [2.30.5] — 2026-05-13 — Codeblock label mapping for config/data formats
+
+### Added
+- New PDF/Reading view codeblock header labels for previously-empty config and data formats:
+  - **Config**: `ini`, `cfg`, `conf`, `config`, `properties`, `prop`, `toml`, `env`, `dotenv`, `wslconfig`, `editorconfig`, `gitconfig`, `gitignore`, `gitattributes`
+  - **Server config**: `nginx`, `apache`, `systemd`, `haproxy`, `caddyfile`, `traefik`
+  - **Dockerfile**: `dockerfile`, `docker`, `containerfile`
+  - **Makefile**: `makefile`, `make`, `cmake`
+  - **XML**: `xml`, `svg`, `plist`, `xaml`
+  - **Data**: `csv`, `tsv`
+  - **Diff**: `diff`, `patch`
+  - **Regex**: `regex`, `regexp`
+- All new labels use the same PascalCase styling as the v2.30.2 PowerShell label and reuse the existing `pre[class*="language-"]::after` glass header strip — no new visual primitive added.
+
+### Notes
+- Fence info string filenames (e.g. `\`\`\`ini wsl.conf`) cannot be auto-extracted via CSS only; for filename headers, place a separate caption line immediately above the codeblock (e.g. `**.wslconfig** (Windows 11)`).
+- Cascade target: `dev/10c-overlay-layout-polish.css` end (`v2.30.5` block) — overrides `dev/10-a11y-regression-hotfixes.css` mapping table without modifying it.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+
+## [2.30.4] — 2026-05-13 — Forbidden left vertical bar removal
+
+### Removed
+- Eliminated all strong-color left vertical accent bars on headings (h1-h6), callouts, blockquotes, TOC containers, and PDF report sections across screen, Live Preview, and PDF/print outputs.
+- Removed callout type-aware `border-left` color stripe (10c) and reading view blockquote/TOC left bars (03/03b/04-print-base).
+
+### Changed
+- Added a global force-disable override block in 10b (screen) and 08-report-print-polish (print) that neutralizes both `border-left`/`border-inline-start` and pseudo-element (`::before`) left accents (border-image, box-shadow, background-image) while preserving auto-number content (counter text) on report-mode headings.
+- PDF table zebra is now force-transparent in the print scope as a defense-in-depth measure on top of the previously dead-coded zebra rules.
+
+### Selectors touched
+- `.markdown-rendered .callout`, `.markdown-rendered blockquote`, `.markdown-rendered :is(h1, h2, h3, h4, h5, h6)`, `nav.toc`, `.table-of-contents`, `.toc`, `.report-toc`, `.ogd-executive-summary`, `.ogd-action-summary`, plus their `::before` pseudo-elements; print scope mirrors all of the above plus `table tbody tr:nth-child(even) td`/`:nth-child(odd) td`.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+
 ## [2.30.2] — 2026-05-11 — Codeblock header label parity
 
 ### Changed

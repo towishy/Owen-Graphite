@@ -636,3 +636,50 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
   padding-bottom: 0 !important;
 }
 
+/* ============================================================
+  v2.30.3 - Live Preview codeblock PDF parity (flat header bar + lang label)
+   Brings the CM6 Live Preview code block visually closer to the PDF /
+   Reading View Candidate C aesthetic: a tinted header bar on the
+   opening fence line and a flat uppercase language label (no badge
+   chrome) for the language identifier, matching
+   `--ogd-codeblock-header-*` tokens used by the PDF pipeline in
+   08-report-print-polish.css. Vertical margin/padding on
+   HyperMD-codeblock* lines stays at 0 per the CM6 hit-routing contract
+   enforced by validate_theme.py. Border-radius / border-bottom color on
+   the begin line are owned by v2.30.2 in 10-a11y-regression-hotfixes.css
+   and intentionally left untouched here.
+   ============================================================ */
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06) !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-left: 0.32em !important;
+  color: #475569 !important;
+  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 0.78em !important;
+  font-weight: 760 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  vertical-align: baseline !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  background: linear-gradient(180deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.74)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 6px 14px rgba(0, 0, 0, 0.18) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+  color: #475569 !important;
+}
+

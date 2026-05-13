@@ -429,7 +429,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16) !important;
   }
 
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+  body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
     background: var(--ogd-table-row-even) !important;
   }
 
@@ -1076,17 +1076,12 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: transparent !important;
   }
 
-  body :is(
+  body.ogd-zebra-disabled-permanently :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) table tbody tr:nth-child(even) td,
-  body .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
-  body.ogd-zebra :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) table tbody tr:nth-child(even) td {
+  body.ogd-zebra-disabled-permanently .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td {
     background: var(--ogd-table-row-even) !important;
   }
 
@@ -1421,5 +1416,31 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.46em !important; }
   body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.22em !important; }
   body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 { margin-top: 1.02em !important; }
+
+  /* v2.30.4 - Forbidden left vertical bar removal (PDF/print parity).
+     Mirrors the screen-side global force-disable in 10b. */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
+    border-left: 0 !important;
+    border-inline-start: 0 !important;
+    border-left-width: 0 !important;
+  }
+
+  /* v2.30.4b - kill PDF pseudo-element left accent bars (preserve auto-number content) */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .ogd-executive-summary, .ogd-action-summary)::before {
+    border-left: 0 !important;
+    border-inline-start: 0 !important;
+    border-image: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+  }
+
+  /* v2.30.4 - Force PDF table zebra to transparent (defense in depth). */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(odd) td {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
 }
 

@@ -62,11 +62,6 @@ settings:
     type: heading
     level: 2
   -
-    id: ogd-zebra
-    title: 표 zebra 줄무늬
-    type: class-toggle
-    default: true
-  -
     id: ogd-modern-tables
     title: 표 모던 스타일 강화
     description: 표 헤더, 첫 컬럼, hover, PDF border를 보고서형 톤으로 강화
@@ -875,10 +870,6 @@ button.mod-warning,
   border-right: none !important;
 }
 
-.markdown-rendered tr:nth-child(even) {
-  background-color: #fbfdff !important;
-}
-
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td:first-child {
   color: var(--ogd-text-strong, #111827) !important;
   font-weight: 700 !important;
@@ -1039,10 +1030,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   box-sizing: border-box !important;
   margin: 1.05em 0 !important;
   padding: 11px 13px !important;
-  border-top: 1px solid #d1d5db !important;
-  border-right: 1px solid #d1d5db !important;
-  border-bottom: 1px solid #d1d5db !important;
-  border-left: 4px solid #64748b !important;
+  border: 1px solid #d1d5db !important;
   border-radius: var(--radius-m, 6px) !important;
   background: #fbfcfd !important;
   background-color: #fbfcfd !important;
@@ -1420,7 +1408,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   box-shadow: 1px 0 0 #e5e7eb;
 }
 /* zebra toggle via Style Settings class */
-body.ogd-zebra .markdown-rendered tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   background-color: #fafbfc !important;
 }
 
@@ -2035,14 +2023,15 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 
 /* =====================================================================
   Table of Contents - report navigation container
+  v2.30.4: removed forbidden left vertical accent bar; now uses full box.
    ===================================================================== */
 .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
 .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
 .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) {
   margin: 1.05em 0 1.45em !important;
-  padding: 0.85em 1em 0.85em 1.15em !important;
-  border-left: 4px solid #64748b !important;
-  border-radius: 0 6px 6px 0 !important;
+  padding: 0.85em 1em !important;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  border-radius: var(--radius-m, 6px) !important;
   background: var(--ogd-surface-muted, #f8fafc) !important;
   color: var(--ogd-text-subtle, #475569) !important;
 }
@@ -2359,7 +2348,7 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 .theme-dark .markdown-rendered tr:hover td {
   background-color: #2a2c33 !important;
 }
-body.theme-dark.ogd-zebra .markdown-rendered tr:nth-child(even) td {
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   background-color: #25272d !important;
 }
 .theme-dark .markdown-rendered table.sticky-first-col td:first-child,
@@ -2697,15 +2686,15 @@ body.theme-dark.ogd-zebra .markdown-rendered tr:nth-child(even) td {
     print-color-adjust: exact !important;
   }
 
-  /* Restore blockquote left bar for PDF output */
+  /* v2.30.4: removed forbidden PDF blockquote left bar; uses subtle full box. */
   .markdown-rendered blockquote,
   .markdown-preview-view blockquote,
   .markdown-reading-view blockquote {
-    border-left: 3px solid #6b7280 !important;
-    border-inline-start: 3px solid #6b7280 !important;
-    padding-left: 1.2em !important;
-    padding-inline-start: 1.2em !important;
-    background: linear-gradient(90deg, #f8fafc 0, transparent 88%) !important;
+    border: 1px solid #e5e7eb !important;
+    border-inline-start: 1px solid #e5e7eb !important;
+    border-radius: 4px !important;
+    padding: 0.5em 0.9em !important;
+    background: #f8fafc !important;
   }
 
   /* Hide UI chrome in print */
@@ -3419,6 +3408,53 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
+}
+
+/* ============================================================
+  v2.30.3 - Live Preview codeblock PDF parity (flat header bar + lang label)
+   Brings the CM6 Live Preview code block visually closer to the PDF /
+   Reading View Candidate C aesthetic: a tinted header bar on the
+   opening fence line and a flat uppercase language label (no badge
+   chrome) for the language identifier, matching
+   `--ogd-codeblock-header-*` tokens used by the PDF pipeline in
+   08-report-print-polish.css. Vertical margin/padding on
+   HyperMD-codeblock* lines stays at 0 per the CM6 hit-routing contract
+   enforced by validate_theme.py. Border-radius / border-bottom color on
+   the begin line are owned by v2.30.2 in 10-a11y-regression-hotfixes.css
+   and intentionally left untouched here.
+   ============================================================ */
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06) !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-left: 0.32em !important;
+  color: #475569 !important;
+  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 0.78em !important;
+  font-weight: 760 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  vertical-align: baseline !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  background: linear-gradient(180deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.74)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 6px 14px rgba(0, 0, 0, 0.18) !important;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+  color: #475569 !important;
 }
 
 /* =====================================================================
@@ -4917,8 +4953,7 @@ body.ogd-modern-tables .markdown-rendered table td,
 .markdown-rendered table td {
   border-color: #eef2f7 !important;
 }
-body.ogd-modern-tables .markdown-rendered table tbody tr:nth-child(even) td,
-body.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td {
   background: #fafafa !important;
 }
 body.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
@@ -4946,8 +4981,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table td,
 .theme-dark .markdown-rendered table td {
   border-color: #2f3744 !important;
 }
-body.theme-dark.ogd-modern-tables .markdown-rendered table tbody tr:nth-child(even) td,
-body.theme-dark.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td {
   background: #151a22 !important;
 }
 body.theme-dark.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
@@ -5339,9 +5373,9 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   padding: 6px 10px !important;
   vertical-align: top !important;
 }
-.markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td,
-.markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td,
-.block-language-dataview table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-child(even) td {
   background: #fafafa !important;
 }
 .markdown-rendered .dataview.table-view-table tr:hover td,
@@ -5412,9 +5446,9 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 .theme-dark .dataview.dataview-table td {
   border-color: #2f3744 !important;
 }
-.theme-dark .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td,
-.theme-dark .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td,
-.theme-dark .block-language-dataview table tbody tr:nth-child(even) td {
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-child(even) td {
   background: #151a22 !important;
 }
 .theme-dark .markdown-rendered .dataview.table-view-table tr:hover td,
@@ -7126,7 +7160,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16) !important;
   }
 
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+  body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
     background: var(--ogd-table-row-even) !important;
   }
 
@@ -7773,17 +7807,12 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: transparent !important;
   }
 
-  body :is(
+  body.ogd-zebra-disabled-permanently :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) table tbody tr:nth-child(even) td,
-  body .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
-  body.ogd-zebra :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) table tbody tr:nth-child(even) td {
+  body.ogd-zebra-disabled-permanently .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td {
     background: var(--ogd-table-row-even) !important;
   }
 
@@ -8118,6 +8147,32 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.46em !important; }
   body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.22em !important; }
   body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 { margin-top: 1.02em !important; }
+
+  /* v2.30.4 - Forbidden left vertical bar removal (PDF/print parity).
+     Mirrors the screen-side global force-disable in 10b. */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
+    border-left: 0 !important;
+    border-inline-start: 0 !important;
+    border-left-width: 0 !important;
+  }
+
+  /* v2.30.4b - kill PDF pseudo-element left accent bars (preserve auto-number content) */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .ogd-executive-summary, .ogd-action-summary)::before {
+    border-left: 0 !important;
+    border-inline-start: 0 !important;
+    border-image: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+  }
+
+  /* v2.30.4 - Force PDF table zebra to transparent (defense in depth). */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(odd) td {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
 }
 
 /* ============================================================
@@ -8824,7 +8879,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.95),
       inset 0 -1px 0 rgba(15, 23, 42, 0.07),
-      0 6px 16px rgba(15, 23, 42, 0.14) !important;
+      0 1px 3px rgba(15, 23, 42, 0.05) !important;
     color: var(--ogd-text-strong, #111827) !important;
     transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
@@ -8845,7 +8900,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.12),
       inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-      0 6px 16px rgba(0, 0, 0, 0.36) !important;
+      0 1px 3px rgba(0, 0, 0, 0.14) !important;
     color: var(--ogd-text-inverted, #f8fafc) !important;
   }
 
@@ -8866,7 +8921,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.92),
       inset 0 -1px 0 rgba(15, 23, 42, 0.06),
-      0 4px 12px rgba(15, 23, 42, 0.10) !important;
+      0 1px 2px rgba(15, 23, 42, 0.04) !important;
     transform: var(--ogd-hover-lift, translateY(-1px)) !important;
   }
 
@@ -8877,7 +8932,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.10),
       inset 0 -1px 0 rgba(0, 0, 0, 0.24),
-      0 4px 12px rgba(0, 0, 0, 0.30) !important;
+      0 1px 2px rgba(0, 0, 0, 0.12) !important;
   }
 }
 
@@ -9401,8 +9456,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-color: var(--ogd-surface-transparent, transparent) !important;
     outline: 1px solid var(--ogd-glass-border-hover) !important;
     outline-offset: -1px !important;
-    box-shadow: var(--ogd-glass-shadow-hover) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
     transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  /* v2.30.8 - dark theme override for the hairline shadow above */
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within),
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within) {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
   }
 
   body:not(.is-mobile) .checkbox-container {
@@ -9485,14 +9546,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
     backdrop-filter: var(--ogd-glass-filter-control) !important;
     outline-color: rgba(148, 163, 184, 0.28) !important;
-    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
     transform: none !important;
   }
 
   body:not(.is-mobile).theme-dark .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item:is(:hover, :focus-within) {
     background: rgba(30, 41, 59, 0.42) !important;
     outline-color: rgba(203, 213, 225, 0.16) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
   }
 
   body:not(.is-mobile) .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown),
@@ -10466,10 +10527,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   border-color: #edf2f7 !important;
 }
 
-.markdown-rendered table tbody tr:nth-child(even) td,
-.markdown-preview-view table tbody tr:nth-child(even) td,
-.markdown-reading-view table tbody tr:nth-child(even) td,
-body.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-preview-view table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-child(even) td {
   background: #fbfcfd !important;
 }
 
@@ -10559,10 +10619,9 @@ body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
   border-color: #2c3542 !important;
 }
 
-.theme-dark .markdown-rendered table tbody tr:nth-child(even) td,
-.theme-dark .markdown-preview-view table tbody tr:nth-child(even) td,
-.theme-dark .markdown-reading-view table tbody tr:nth-child(even) td,
-body.theme-dark.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-preview-view table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-child(even) td {
   background: #1b222c !important;
 }
 
@@ -10666,9 +10725,8 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     background-color: var(--ogd-print-table-cell-bg) !important;
   }
 
-  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
-  body.ogd-zebra:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+  body.ogd-zebra-disabled-permanently:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+  body.ogd-zebra-disabled-permanently:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td {
     background: var(--ogd-print-table-zebra-bg) !important;
     background-color: var(--ogd-print-table-zebra-bg) !important;
   }
@@ -11281,6 +11339,40 @@ body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-vi
   color: var(--ogd-line-soft, #e5e7eb) !important;
 }
 
+/* =====================================================================
+   v2.30.4 — Forbidden Left Vertical Bar Removal (global force-disable)
+   Policy: NO strong-color left accent bars on headings, callouts,
+   blockquotes, TOC, or PDF report sections. Box outlines + bottom
+   underline allowed; left bars are not.
+   Also force PDF table zebra to transparent (defense in depth).
+   ===================================================================== */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-left-width: 0 !important;
+}
+/* v2.30.4b - kill pseudo-element left accent bars (preserve content like auto-number text) */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, .ogd-executive-summary, .ogd-action-summary)::before {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-image: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.markdown-source-view.mod-cm6 :is(.cm-callout, .HyperMD-callout, .HyperMD-quote, blockquote) {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+}
+.markdown-source-view.mod-cm6 :is(.cm-callout, .HyperMD-callout, .HyperMD-quote, blockquote)::before {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-image: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
 /* ============================================================
   v1.8.56 - Overlay interaction polish
    - Search focus, command palette, tooltip/popover, empty states, and keyboard focus align
@@ -11812,10 +11904,12 @@ body.theme-dark .markdown-preview-view h1::before {
   }
 }
 
-/* --- 3. Callout left color stripe (type-aware) ---------------------------- */
+/* --- 3. Callout box (v2.30.4: forbidden left color stripe removed) -------- */
 .markdown-rendered .callout {
   position: relative;
-  border-left: 4px solid var(--callout-color, #94a3b8) !important;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
   padding-left: 1.1em !important;
 }
 .markdown-rendered .callout[data-callout="note"]      { --callout-color: #3b82f6; }
@@ -12009,13 +12103,13 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   box-sizing: border-box !important;
   margin-top: 1.26em !important;
   margin-bottom: 0.76em !important;
-  padding: 0.42em 0.58em 0.46em !important;
-  border: 1px solid var(--ogd-heading-border-soft) !important;
-  border-left: 1px solid var(--ogd-heading-border-soft) !important;
+  padding: 0.42em 0 0.46em !important;
+  border: 0 !important;
+  border-left: 0 !important;
   border-bottom: 1px solid var(--ogd-heading-border-soft) !important;
-  border-radius: var(--ogd-radius-control, 8px) !important;
-  background: var(--ogd-heading-h2-bg) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 8px 18px rgba(15, 23, 42, 0.055) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
   color: var(--header-text, var(--ogd-text-strong, #111827)) !important;
   font-size: 1.56em !important;
   font-weight: 800 !important;
@@ -12027,7 +12121,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   content: "" !important;
   display: block !important;
   position: absolute !important;
-  left: 0.58em !important;
+  left: 0 !important;
   right: auto !important;
   bottom: -0.43em !important;
   width: min(280px, 44%) !important;
@@ -12547,6 +12641,54 @@ body.theme-dark .metadata-property-key,
 body.theme-dark .metadata-property .metadata-property-key-input {
   color: var(--ogd-text-soft, #94a3b8) !important;
 }
+
+/* ============================================================
+   v2.30.5 - Codeblock label mapping for config / data formats
+   매핑 안 된 코드블록(ini, conf, toml, env, dockerfile 등)이 빈 헤더
+   strip만 보이는 문제 해결. dev/10-a11y 의 v2.30.2 PowerShell PascalCase
+   override 와 같은 셀렉터 형식으로 cascade 마지막에 라벨 추가.
+   라벨은 PowerShell 과 동일한 PascalCase 로 통일.
+   주: CSS 만으로는 fence info string 의 파일명(예: ```ini wsl.conf)을
+   자동 추출할 수 없으므로 형식 고정 라벨로 처리한다. 파일명을 헤더에
+   표시하려면 코드블록 직전에 별도 캡션 줄을 두는 것을 권장.
+   ============================================================ */
+
+/* Config / settings file formats (ini, toml, env, .wslconfig, dotfiles ...) */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after,
+body pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after { content: "Config" !important; }
+
+/* Server / daemon config (nginx, apache, systemd ...) */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after,
+body pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after { content: "Server config" !important; }
+
+/* Container / build files */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after,
+body pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after { content: "Dockerfile" !important; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-makefile, .language-make, .language-cmake)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-makefile, .language-make, .language-cmake)::after,
+body pre:is(.language-makefile, .language-make, .language-cmake)::after { content: "Makefile" !important; }
+
+/* Data / markup formats */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after,
+body pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after { content: "XML" !important; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-csv, .language-tsv)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-csv, .language-tsv)::after,
+body pre:is(.language-csv, .language-tsv)::after { content: "Data" !important; }
+
+/* Diff / patch / regex */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-diff, .language-patch)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-diff, .language-patch)::after,
+body pre:is(.language-diff, .language-patch)::after { content: "Diff" !important; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-regex, .language-regexp)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-regex, .language-regexp)::after,
+body pre:is(.language-regex, .language-regexp)::after { content: "Regex" !important; }
 
 /* End of v1.8.66 polish pack ============================================== */
 
@@ -13114,9 +13256,8 @@ body.theme-dark .metadata-property .metadata-property-key-input {
   color: var(--ogd-text-slate, #334155) !important;
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body.ogd-zebra :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even) !important;
 }
 
@@ -14017,8 +14158,8 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, t
   color: var(--ogd-text-slate, #334155) !important;
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even) !important;
 }
 
@@ -15051,10 +15192,9 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
   background: rgba(255, 255, 255, 0.28) !important;
 }
 
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td,
-body.ogd-zebra :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even) !important;
 }
 

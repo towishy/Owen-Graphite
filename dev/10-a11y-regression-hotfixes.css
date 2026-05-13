@@ -1000,10 +1000,9 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
   background: rgba(255, 255, 255, 0.28) !important;
 }
 
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td,
-body.ogd-zebra :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even) !important;
 }
 

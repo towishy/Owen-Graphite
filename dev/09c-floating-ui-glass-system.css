@@ -247,8 +247,14 @@
     border-color: var(--ogd-surface-transparent, transparent) !important;
     outline: 1px solid var(--ogd-glass-border-hover) !important;
     outline-offset: -1px !important;
-    box-shadow: var(--ogd-glass-shadow-hover) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
     transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  /* v2.30.8 - dark theme override for the hairline shadow above */
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within),
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within) {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
   }
 
   body:not(.is-mobile) .checkbox-container {
@@ -331,14 +337,14 @@
     -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
     backdrop-filter: var(--ogd-glass-filter-control) !important;
     outline-color: rgba(148, 163, 184, 0.28) !important;
-    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
     transform: none !important;
   }
 
   body:not(.is-mobile).theme-dark .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item:is(:hover, :focus-within) {
     background: rgba(30, 41, 59, 0.42) !important;
     outline-color: rgba(203, 213, 225, 0.16) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
   }
 
   body:not(.is-mobile) .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown),

@@ -562,9 +562,8 @@
   color: var(--ogd-text-slate, #334155) !important;
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body.ogd-zebra :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even) !important;
 }
 
@@ -1465,8 +1464,8 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, t
   color: var(--ogd-text-slate, #334155) !important;
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even) !important;
 }
 

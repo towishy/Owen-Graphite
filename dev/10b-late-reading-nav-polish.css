@@ -30,10 +30,9 @@
   border-color: #edf2f7 !important;
 }
 
-.markdown-rendered table tbody tr:nth-child(even) td,
-.markdown-preview-view table tbody tr:nth-child(even) td,
-.markdown-reading-view table tbody tr:nth-child(even) td,
-body.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-preview-view table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-child(even) td {
   background: #fbfcfd !important;
 }
 
@@ -123,10 +122,9 @@ body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
   border-color: #2c3542 !important;
 }
 
-.theme-dark .markdown-rendered table tbody tr:nth-child(even) td,
-.theme-dark .markdown-preview-view table tbody tr:nth-child(even) td,
-.theme-dark .markdown-reading-view table tbody tr:nth-child(even) td,
-body.theme-dark.ogd-zebra .markdown-rendered table tbody tr:nth-child(even) td {
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-preview-view table tbody tr:nth-child(even) td,
+body.theme-dark.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-child(even) td {
   background: #1b222c !important;
 }
 
@@ -230,9 +228,8 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     background-color: var(--ogd-print-table-cell-bg) !important;
   }
 
-  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-  body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td,
-  body.ogd-zebra:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+  body.ogd-zebra-disabled-permanently:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+  body.ogd-zebra-disabled-permanently:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td {
     background: var(--ogd-print-table-zebra-bg) !important;
     background-color: var(--ogd-print-table-zebra-bg) !important;
   }
@@ -843,5 +840,39 @@ body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-vi
   border-color: rgba(51, 65, 85, 0.92) !important;
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54)) !important;
   color: var(--ogd-line-soft, #e5e7eb) !important;
+}
+
+/* =====================================================================
+   v2.30.4 — Forbidden Left Vertical Bar Removal (global force-disable)
+   Policy: NO strong-color left accent bars on headings, callouts,
+   blockquotes, TOC, or PDF report sections. Box outlines + bottom
+   underline allowed; left bars are not.
+   Also force PDF table zebra to transparent (defense in depth).
+   ===================================================================== */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-left-width: 0 !important;
+}
+/* v2.30.4b - kill pseudo-element left accent bars (preserve content like auto-number text) */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, .ogd-executive-summary, .ogd-action-summary)::before {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-image: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.markdown-source-view.mod-cm6 :is(.cm-callout, .HyperMD-callout, .HyperMD-quote, blockquote) {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+}
+.markdown-source-view.mod-cm6 :is(.cm-callout, .HyperMD-callout, .HyperMD-quote, blockquote)::before {
+  border-left: 0 !important;
+  border-inline-start: 0 !important;
+  border-image: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
 }
 

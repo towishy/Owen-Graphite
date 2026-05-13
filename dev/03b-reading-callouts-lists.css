@@ -323,14 +323,15 @@
 
 /* =====================================================================
   Table of Contents - report navigation container
+  v2.30.4: removed forbidden left vertical accent bar; now uses full box.
    ===================================================================== */
 .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
 .markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
 .markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) {
   margin: 1.05em 0 1.45em !important;
-  padding: 0.85em 1em 0.85em 1.15em !important;
-  border-left: 4px solid #64748b !important;
-  border-radius: 0 6px 6px 0 !important;
+  padding: 0.85em 1em !important;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  border-radius: var(--radius-m, 6px) !important;
   background: var(--ogd-surface-muted, #f8fafc) !important;
   color: var(--ogd-text-subtle, #475569) !important;
 }

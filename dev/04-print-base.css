@@ -117,15 +117,15 @@
     print-color-adjust: exact !important;
   }
 
-  /* Restore blockquote left bar for PDF output */
+  /* v2.30.4: removed forbidden PDF blockquote left bar; uses subtle full box. */
   .markdown-rendered blockquote,
   .markdown-preview-view blockquote,
   .markdown-reading-view blockquote {
-    border-left: 3px solid #6b7280 !important;
-    border-inline-start: 3px solid #6b7280 !important;
-    padding-left: 1.2em !important;
-    padding-inline-start: 1.2em !important;
-    background: linear-gradient(90deg, #f8fafc 0, transparent 88%) !important;
+    border: 1px solid #e5e7eb !important;
+    border-inline-start: 1px solid #e5e7eb !important;
+    border-radius: 4px !important;
+    padding: 0.5em 0.9em !important;
+    background: #f8fafc !important;
   }
 
   /* Hide UI chrome in print */

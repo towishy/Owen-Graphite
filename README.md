@@ -4,14 +4,14 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.2)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.8)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![Style Settings](https://img.shields.io/badge/Style%20Settings-38%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
+[![Style Settings](https://img.shields.io/badge/Style%20Settings-37%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
 
 ---
 
@@ -22,8 +22,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.30.2` |
-| **기본 릴리즈** | `v2.30.2` |
+| **버전** | `2.30.8` |
+| **기본 릴리즈** | `v2.30.8` |
 | **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
@@ -155,7 +155,7 @@ fi
 THEME_DIR=".obsidian/themes/Owen Graphite"; REPO="https://github.com/towishy/Owen-Graphite.git"; mkdir -p "$(dirname "$THEME_DIR")"; if [ -d "$THEME_DIR/.git" ]; then git -C "$THEME_DIR" fetch -q origin main && git -C "$THEME_DIR" reset -q --hard origin/main && git -C "$THEME_DIR" clean -qfd; else if [ -e "$THEME_DIR" ]; then mv "$THEME_DIR" "$THEME_DIR.backup-$(date +%Y%m%d-%H%M%S)"; fi; git clone -q "$REPO" "$THEME_DIR"; fi && echo "OK"
 ```
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 38개 옵션을 사이드바 UI에서 토글하고, PDF Compact Report, PDF 링크 출력 방식, PDF Header/Footer 문구 및 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
+> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 37개 옵션을 사이드바 UI에서 토글하고, PDF Compact Report, PDF 링크 출력 방식, PDF Header/Footer 문구 및 색상도 입력창에서 바로 설정할 수 있습니다. Header/Footer 텍스트 기본값은 비워져 있으므로 필요한 문구만 직접 입력해 사용합니다.
 
 </details>
 
@@ -209,6 +209,11 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.30.8** | Settings hover 그림자 근본 원인 수정 — dev/09c의 `.setting-item:hover` `var(--ogd-glass-shadow-hover)` (10d 에서 `0 28px 64px` halo) 교체 → hairline `0 1px 2px /.04~12`. v2.30.6/30.7 변경은 09b를 다뤄다줬으나 09c 우선이어서 실제 표시 변화 없었음 |
+| **v2.30.7** | Settings 모달 hover 그림자 더 연하고 좋게 축소 — left nav `0 3px 8px /.08` → `0 1px 3px /.05`, right pane row `0 2px 6px /.06` → `0 1px 2px /.04` (다크 모드 동일 비율로 축소) |
+| **v2.30.6** | Settings 모달 hover 그림자 랜드 완화 — left nav `0 6px 16px /.14` → `0 3px 8px /.08`, right pane row `0 4px 12px /.10` → `0 2px 6px /.06` (다크 모드 동일 비율로 축소) |
+| **v2.30.5** | 빈 코드블록 헤더 strip 에 PascalCase 라벨 매핑 추가 — Config(ini/conf/toml/env/.wslconfig 등), Server config(nginx/apache/systemd 등), Dockerfile, Makefile, XML, Data(csv/tsv), Diff, Regex |
+| **v2.30.4** | 헤딩(h1-h6)·callout·blockquote·TOC의 좌측 강조 세로 바를 screen·LP·PDF 모두에서 전수 제거 (border-left + ::before 가짜 막대 차단), PDF 테이블 zebra 강제 transparent 보강 |
 | **v2.30.2** | Live Preview와 PDF Export 코드블럭 헤더 라벨을 통일하고, KUSTO/KQL 등 언어별 라벨 mapping과 PDF 첫 줄 여백을 보정 |
 | **v2.30.1** | 상단 탭바 추가/목록 버튼 hover를 전용 neutral token으로 분리하고, hover 외곽선/rim 없이 밝기와 그림자만 남도록 정리 |
 | **v2.30** | 전체 디자인 통일 베이스: 본문/제목/PDF heading, root tab, titlebar icon slot, side pane top icon을 하나의 Liquid Glass 기준으로 정리. 공유 아이콘은 중립 outline glass를 유지하고 선택된 문서/tab만 frosted sky-rim pill을 사용 |
