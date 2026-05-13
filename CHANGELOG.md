@@ -6,6 +6,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.11] — 2026-05-13 — Theme manifest schema cleanup
+
+### Fixed
+- Removed the plugin-only `isDesktopOnly` field from `manifest.json` so the new Obsidian community theme registration validator stops emitting the `Manifest contains unknown field` warning. Themes are CSS-only and apply on every platform, so the flag had no effect; this aligns the manifest with the official theme schema (`name`, `version`, `minAppVersion`, `author`, `authorUrl`).
+
 ## [2.30.10] — 2026-05-13 — Workflow polish and sponsor metadata
 
 ### Added
