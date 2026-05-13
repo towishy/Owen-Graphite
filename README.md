@@ -254,6 +254,14 @@ Owen Graphite/
 - **Noto Serif KR** / **나눔명조** — 보고서 모드 (serif)
 - **JetBrains Mono** / **D2Coding** — 코드 (mono)
 
+### ☕ 후원
+
+<p align="center">
+  <a href="https://github.com/sponsors/towishy">
+    <img src="screenshots/readme/sponsor-coffee.svg" alt="커피 한 잔으로 Owen Graphite 응원하기" width="560">
+  </a>
+</p>
+
 ### 📜 라이선스
 [MIT License](LICENSE) © 2026 Owen ([@towishy](https://github.com/towishy))
 
