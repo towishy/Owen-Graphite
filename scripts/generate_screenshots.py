@@ -23,6 +23,12 @@ SOURCE_CANDIDATES = [
 ]
 
 TARGET_WIDTH = 512
+README_SVG_SMOKE_FILES = [
+    ROOT / "screenshots" / "readme" / "owen-knowledge-work-stack.svg",
+    ROOT / "screenshots" / "readme" / "owen-ai-document-stack.svg",
+    ROOT / "screenshots" / "readme" / "v2.22.31-liquid-glass-overview.svg",
+    ROOT / "screenshots" / "readme" / "sponsor-coffee.svg",
+]
 
 
 def resize_to_width(image: Image.Image, width: int = TARGET_WIDTH) -> Image.Image:
@@ -121,6 +127,17 @@ def report_from_light(image: Image.Image) -> Image.Image:
     return ImageEnhance.Sharpness(softened).enhance(1.05)
 
 
+def smoke_check_readme_svgs(paths: list[Path] = README_SVG_SMOKE_FILES) -> None:
+    for path in paths:
+        if not path.is_file():
+            raise FileNotFoundError(f"README SVG missing: {path.relative_to(ROOT)}")
+        text = path.read_text(encoding="utf-8")
+        if "<svg" not in text or "</svg>" not in text:
+            raise ValueError(f"README SVG is not well-formed enough for smoke check: {path.relative_to(ROOT)}")
+        if len(text.strip()) < 200:
+            raise ValueError(f"README SVG looks unexpectedly small: {path.relative_to(ROOT)}")
+
+
 def main() -> int:
     source_path = next((path for path in SOURCE_CANDIDATES if path.exists()), None)
     if source_path is None:
@@ -142,10 +159,13 @@ def main() -> int:
     report_path = OUT_DIR / "report.png"
     report.save(report_path, "PNG", optimize=True)
 
+    smoke_check_readme_svgs()
+
     print(f"[OK] source -> {source_path}")
     print(f"[OK] light -> {light_path} ({light.width}x{light.height}, {light_path.stat().st_size // 1024} KB)")
     print(f"[OK] dark -> {dark_path} ({dark.width}x{dark.height}, {dark_path.stat().st_size // 1024} KB)")
     print(f"[OK] report -> {report_path} ({report.width}x{report.height}, {report_path.stat().st_size // 1024} KB)")
+    print(f"[OK] README SVG smoke -> {len(README_SVG_SMOKE_FILES)} files")
     return 0
 
 

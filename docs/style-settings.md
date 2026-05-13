@@ -1,8 +1,8 @@
 # Owen Graphite — Style Settings 옵션 풀 레퍼런스
 
-[Style Settings 플러그인](https://github.com/mgmeyers/obsidian-style-settings)을 설치하면 사이드바에서 38개 옵션을 토글로 즉시 적용할 수 있습니다. 본 문서는 README의 분류 표를 보강하는 풀 레퍼런스입니다.
+[Style Settings 플러그인](https://github.com/mgmeyers/obsidian-style-settings)을 설치하면 사이드바에서 37개 옵션을 토글로 즉시 적용할 수 있습니다. 본 문서는 README의 분류 표를 보강하는 풀 레퍼런스입니다.
 
-> 베이스라인: **v2.22.131**
+> 베이스라인: **v2.30.10**
 
 ---
 
@@ -17,13 +17,28 @@
 
 ---
 
-## 📊 표 (3종)
+## 추천 프리셋 가이드
+
+Style Settings는 단일 preset 버튼 대신 여러 옵션을 조합하는 방식입니다. 아래 조합을 시작점으로 삼으면 목적별로 빠르게 맞출 수 있습니다.
+
+| 목적 | 권장 조합 | 사용 상황 |
+| ---- | -------- | -------- |
+| Writer | 표준 간격 + Graphite accent + Light code | 일반 위키, 기술 노트, 긴 문서 초안 |
+| Report | 보고서 모드 + PDF Compact Report + A3 가로 | 내부/외부 보고서, PDF export |
+| Compact | 컴팩트 간격 + 본문 최대 폭 297mm | 작은 화면, 빠른 검토, 회의 노트 |
+| Low Motion | Glass Reduced + Hover 움직임 Off | 배터리/저성능 환경, motion 민감 사용자 |
+| High Contrast | Glass Subtle + 다크 모드 수동 선택 | 어두운 환경, 장시간 읽기 |
+
+---
+
+## 📊 표와 코드 (2종 + 관련 선택 옵션)
 
 | 항목 | 종류 | 기본값 | 설명 |
 | ---- | ---- | ------ | ---- |
-| 표 zebra 줄무늬 | 토글 | ON | 짝수 행 옅은 배경 |
 | 표 모던 스타일 강화 | 토글 | ON | 위키형 glass 표와 보고서형 PDF 표의 헤더/첫 컬럼/hover/border 강화 |
 | PDF 블록 분할 방지 강화 | 토글 | ON | callout/표/Mermaid/코드/이미지 분할 완화 |
+
+관련 선택 옵션은 워크스페이스와 접근성 그룹의 `액센트 컬러 프리셋`, `코드블록 테마`를 함께 조정합니다.
 
 ---
 
@@ -99,6 +114,8 @@ Style Settings 옵션과 별개로, 노트 안에서 직접 부여하는 유틸�
 | `compact-table` | `<table>` | 로그/체크리스트용 조밀한 표 |
 | `numeric-table` | `<table>` | 숫자 중심 표 우측 정렬 |
 | `comparison-table` | `<table>` | 비교표 첫 컬럼/헤더 강조 |
+| `ogd-wiki-table` | `<table>` | 일반 위키형 표의 airy glass rhythm 명시 |
+| `ogd-report-table` / `report-table` | `<table>` | 제출용 보고서 표의 헤더 rule, 밀도, 대문자 헤더 강화 |
 | `risk-table` | `<table>` | 위험도/상태 badge 스타일 (`.risk-high`, `.risk-medium`, `.risk-low`, `.risk-ok`) |
 | `matrix-table` | `<table>` | 매트릭스형 표 중앙 정렬 |
 | `print-fit-table` | `<table>` | PDF 출력 시 폰트/패딩 축소 |
@@ -107,7 +124,7 @@ Style Settings 옵션과 별개로, 노트 안에서 직접 부여하는 유틸�
 | `scroll-token-table` | `<table>` | 코드 토큰 셀 폭을 보존해 행 높이 급증 완화 |
 | `scroll-table` | `<table>` | 화면에서는 표 자체를 가로 스크롤 |
 
-기본 위키형 표는 light glass surface와 얕은 hover tint를 사용합니다. `caption`이 있는 HTML 표와 HTML table utility class가 적용된 표는 더 선명한 Glass Ledger 표면, caption band, 첫 컬럼 axis 처리를 사용합니다. `ogd-report-mode`가 적용된 문서의 표는 PDF와 보고서 스캔에 맞춰 더 또렷한 header rule, border, 첫 컬럼 weight를 사용합니다.
+기본 위키형 표는 light glass surface와 얕은 hover tint를 사용합니다. `ogd-wiki-table`은 이 기본 리듬을 명시적으로 유지할 때 사용하고, `ogd-report-table`은 제출용 표처럼 header rule과 정보 밀도를 더 또렷하게 가져갈 때 사용합니다. `caption`이 있는 HTML 표와 HTML table utility class가 적용된 표는 더 선명한 Glass Ledger 표면, caption band, 첫 컬럼 axis 처리를 사용합니다. `ogd-report-mode`가 적용된 문서의 표는 PDF와 보고서 스캔에 맞춰 더 또렷한 header rule, border, 첫 컬럼 weight를 사용합니다.
 
 Live Preview에서 셀을 직접 클릭해 수정할 표는 Markdown table을 사용하세요. HTML `<table>` utility는 Obsidian이 클릭 시 raw HTML 소스를 활성화하므로, 최종 보고서/PDF 출력이나 class 기반 정밀 스타일이 필요한 표에만 사용합니다.
 

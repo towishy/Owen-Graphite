@@ -6,8 +6,9 @@ Use this checklist after CSS changes, before syncing a build to Obsidian or cutt
 
 1. Run `python scripts/bundle_theme.py --check`.
 2. Run `python scripts/validate_theme.py`.
-3. Run `python scripts/build_release.py`.
-4. If testing in a local vault, run `python scripts/sync_obsidian_theme.py`.
+3. Run `python scripts/generate_screenshots.py` when README screenshots or README SVG assets changed.
+4. Run `python scripts/build_release.py`.
+5. If testing in a local vault, run `python scripts/sync_obsidian_theme.py`.
 
 ## Obsidian Interaction Checks
 
@@ -69,6 +70,18 @@ Result template for local records under `dev/temp/focus-sweep-YYYYMMDD.md`:
 - Long URLs, code tokens, and table cells wrap or scroll without expanding the document column unexpectedly.
 - Dataview, Canvas, Graph, Bookmarks, Outline, and Search panes keep usable spacing and contrast.
 
+## Plugin Compatibility Smoke Matrix
+
+Use [plugin-compatibility.md](plugin-compatibility.md) as the reference table.
+
+| Area | Light | Dark | Expected Result |
+|---|---|---|---|
+| Style Settings | Pass / Fail | Pass / Fail | 37 options render without clipped labels or unstable rows |
+| Dataview | Pass / Fail | Pass / Fail | Generated tables keep sticky header, zebra, numeric alignment, and readable contrast |
+| Tasks | Pass / Fail | Pass / Fail | Checkboxes and task rows align inside body and callouts |
+| Canvas / Graph | Pass / Fail | Pass / Fail | Controls remain distinct from pane chrome without saturated fill |
+| Search / Bookmarks / Outline | Pass / Fail | Pass / Fail | Hover/focus rows remain stable and readable |
+
 ## Test Sample Smoke Matrix
 
 | Sample | Sections | Expected Result |
@@ -78,12 +91,19 @@ Result template for local records under `dev/temp/focus-sweep-YYYYMMDD.md`:
 | `dev/test-samples/owen-editor-feature-sample.md` | `Callout Gallery`, `Status Badges`, `Highlight Palette` | Callouts, badges, marks, keyboard tags, and blur spans keep spacing and contrast |
 | `dev/test-samples/owen-graphite-sample.md` | `Table Utility Samples` | Markdown, comparison, compact, numeric, risk, wrap, token, and scroll table variants remain visually distinct |
 | `dev/test-samples/owen-graphite-sample.md` | `Mermaid Sample`, `Code Blocks`, `Print/PDF Checks` | Mermaid, code labels, report spacing, and PDF-friendly utilities render without width inflation |
+| `dev/test-samples/pdf-export-qa-sample.md` | Full document | A3/PDF export covers long headings, callouts, 3 table classes, Mermaid, code blocks, image, and footnote |
 
 ## Print/PDF Checks
 
-- Export a short report to PDF using A3 landscape and confirm H1 page breaks, repeated table headers, and first-page header labels.
+- Export `dev/test-samples/pdf-export-qa-sample.md` to PDF using A3 landscape and confirm H1 page breaks, repeated table headers, and first-page header labels.
 - Check report tables, risk tables, status badges, callouts, Mermaid blocks, code blocks, images, and footnotes.
 - Confirm print output has no glass blur, decorative hover transforms, or UI chrome.
+
+## README Screenshot Automation
+
+- `python scripts/generate_screenshots.py` should regenerate `screenshots/light.png`, `screenshots/dark.png`, and `screenshots/report.png` from the current source capture.
+- The script also smoke-checks README SVG assets so empty or malformed SVGs fail early.
+- When adding README images, keep permanent assets under `screenshots/readme/` and local preview files under `.temp/` or `dev/temp/`.
 
 ## Regression Watchlist
 

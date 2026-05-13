@@ -16069,3 +16069,125 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin { border-radius: 12px 12px 0 0 !important; border-bottom: 1px solid rgba(148, 163, 184, 0.28) !important; }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end { border-radius: 0 0 12px 12px !important; }
+/* ============================================================
+  v2.30.10 - Workflow polish sweep
+   Compact README-facing refinements: mobile density, explicit report
+   table class, callout title rhythm, dark muted contrast, and copy
+   button affordance. Kept as its own late module to respect CSS
+   complexity budgets and preserve CM6 hit routing.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
+  scroll-margin-top: 18px !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
+  align-items: center !important;
+  gap: 0.48em !important;
+  min-height: 1.75em !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title-inner {
+  overflow-wrap: anywhere !important;
+  word-break: keep-all !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-report-table,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.report-table {
+  --ogd-table-pad-y: 0.42em;
+  --ogd-table-pad-x: 0.58em;
+  --ogd-table-font-size: 0.91em;
+  --ogd-table-line-height: 1.32;
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(226, 232, 240, 0.82));
+  --ogd-table-row-hover: rgba(224, 242, 254, 0.72);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-report-table th,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.report-table th {
+  color: var(--ogd-text-strong, #111827) !important;
+  font-size: 0.84em !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-wiki-table {
+  --ogd-table-pad-y: 0.62em;
+  --ogd-table-pad-x: 0.82em;
+  --ogd-table-font-size: 0.96em;
+  --ogd-table-line-height: 1.46;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-report-table,
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.report-table {
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(71, 85, 105, 0.82), rgba(30, 41, 59, 0.76));
+  --ogd-table-row-hover: rgba(14, 165, 233, 0.26);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-report-table th,
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.report-table th {
+  color: #f8fafc !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(caption, figcaption, .table-note, .table-source, .footnote, .footnotes) {
+  color: #cbd5e1 !important;
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.callout-content, .callout-content p, .callout-content li) {
+  color: #e5edf7 !important;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body .workspace-leaf-content .markdown-rendered pre code {
+  overflow-x: auto !important;
+  scrollbar-gutter: stable both-edges;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button:is(:hover, :focus-visible),
+body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover, :focus-visible) {
+  border-color: rgba(14, 165, 233, 0.44) !important;
+  background: rgba(240, 249, 255, 0.86) !important;
+  color: var(--ogd-text-strong, #111827) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 0 0 3px rgba(14, 165, 233, 0.10) !important;
+}
+
+@media (max-width: 700px) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
+    padding: 0.76em 0.82em 0.82em !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
+    font-size: 0.94em !important;
+    line-height: 1.52 !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+    --ogd-table-pad-y: 0.42em;
+    --ogd-table-pad-x: 0.52em;
+    --ogd-table-font-size: 0.86em;
+    --ogd-table-line-height: 1.34;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre) {
+    --ogd-codeblock-code-padding: 3.1em 0.82em 0.88em;
+    border-radius: 9px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78) !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
+  body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
+    left: 0.82em !important;
+    max-width: calc(100% - 7em) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
+  body .workspace-leaf-content .markdown-rendered pre .copy-code-button {
+    right: 0.52em !important;
+    min-width: 3.6em !important;
+    padding-inline: 0.52em !important;
+  }
+}

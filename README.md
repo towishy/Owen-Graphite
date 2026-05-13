@@ -4,7 +4,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.9)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.10)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -12,6 +12,14 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 [![GitHub License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian Downloads](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
 [![Style Settings](https://img.shields.io/badge/Style%20Settings-37%20options-0d9488?style=flat-square)](#2-테마-기능-요약)
+
+**Owen Graphite**는 한국어 기술 문서와 보고서 작성에 맞춘 Obsidian 테마입니다. 넓은 A3/PDF 출력, Live Preview와 Reading View의 시각 패리티, 차분한 Liquid Glass workspace chrome을 한 흐름으로 묶습니다.
+
+| 핵심 사용처 | 바로 얻는 효과 |
+| --- | --- |
+| 한국어 위키·기술 문서 | CJK 가독성, 긴 표·코드·callout 안정화 |
+| A3/PDF 보고서 | 표지, 목차, 자동 넘버링, 페이지 분할 완화 |
+| 반복 작성 워크스페이스 | 탭·사이드바·검색·설정 UI의 얕은 glass polish |
 
 ---
 
@@ -22,8 +30,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.30.9` |
-| **기본 릴리즈** | `v2.30.9` |
+| **버전** | `2.30.10` |
+| **기본 릴리즈** | `v2.30.10` |
 | **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
@@ -51,7 +59,7 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | **워크스페이스** | Workspace Surfaces Pack · Polish Pack | Graph view·Canvas·Folder cues·Mini TOC·Cover page·Dark parity·Mobile·Tab·Search HL 정리 |
 | **보고서·인쇄** | A3 PDF Export · 자동 넘버링 | A3 가로/15mm 여백, 첫 페이지 헤더, H1 페이지 분할 |
 | **분할 안정성** | 자동 분할 회피 | callout·표·Mermaid·코드·이미지가 PDF에서 중간 분할되지 않도록 보정 |
-| **커스터마이징** | Style Settings 38종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드·PDF Compact Report·PDF 링크 출력 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
+| **커스터마이징** | Style Settings 37종 · 사용자 클래스 | 폰트·간격·컬러·보고서 모드·PDF Compact Report·PDF 링크 출력 토글과 `.ogd-blur`·`.ogd-cover`·테이블/callout 유틸리티 제공 |
 | **접근성·환경** | 시선 보호 · OS 다크 모드 · CJK 보정 | 시선 보호 모드, OS 다크 모드 자동 추종, CJK +0.5px 자동 보정 지원 |
 | **Style Settings 분류** | 타이포 · 표 · 보고서 · PDF · 컬러/모션 | Style Settings 플러그인에서 전체 옵션을 사이드바 UI로 조정 |
 
@@ -209,6 +217,7 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.30.10** | 문서/워크플로우 polish — README 첫인상 정리, Style Settings 37개 정합성, 후원 manifest URL, 플러그인 호환성 문서, PDF QA 샘플, README SVG smoke 자동화, 모바일·다크·callout·표·코드블록 late polish 모듈 추가 |
 | **v2.30.9** | Live Preview HTML 테이블 패리티 정리 — 전용 `dev/10e` 모듈로 분리하고, 본문 흰 배경/파란 hover/외곽 outline/header divider/utility-class 테이블을 markdown table widget 톤에 맞게 보정. 코드블록 헤더 라벨과 첫 코드 줄 사이 여백도 확대 |
 | **v2.30.8** | Settings hover 그림자 근본 원인 수정 — dev/09c의 `.setting-item:hover` `var(--ogd-glass-shadow-hover)` (10d 에서 `0 28px 64px` halo) 교체 → hairline `0 1px 2px /.04~12`. v2.30.6/30.7 변경은 09b를 다뤄다줬으나 09c 우선이어서 실제 표시 변화 없었음 |
 | **v2.30.7** | Settings 모달 hover 그림자 더 연하고 좋게 축소 — left nav `0 3px 8px /.08` → `0 1px 3px /.05`, right pane row `0 2px 6px /.06` → `0 1px 2px /.04` (다크 모드 동일 비율로 축소) |
@@ -253,6 +262,10 @@ Owen Graphite/
 - **Pretendard** / **Noto Sans KR** — 본문 (sans)
 - **Noto Serif KR** / **나눔명조** — 보고서 모드 (serif)
 - **JetBrains Mono** / **D2Coding** — 코드 (mono)
+
+### 🔌 플러그인 호환성
+- 기본 점검 대상: Style Settings, Dataview, Tasks, Canvas, Graph view, Search, Bookmarks, Outline
+- 자세한 호환성 표와 회귀 점검 포인트는 [docs/plugin-compatibility.md](docs/plugin-compatibility.md)를 확인하세요.
 
 ### ☕ 후원
 

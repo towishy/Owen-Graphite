@@ -241,6 +241,41 @@ cssclasses:
   </tbody>
 </table>
 
+### Report Table
+
+제출용 표는 `ogd-report-table`을 사용해 헤더 rule과 행 밀도를 더 또렷하게 만든다. 일반 위키형 표와 달리 빠른 스캔, PDF 출력, 숫자 비교에 초점을 둔다.
+
+<table class="ogd-report-table print-fit-table">
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Current</th>
+      <th>Target</th>
+      <th>Decision</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PDF page break</td>
+      <td class="num">Stable</td>
+      <td class="num">Stable</td>
+      <td>Keep</td>
+    </tr>
+    <tr>
+      <td>Dark contrast</td>
+      <td class="num">AA</td>
+      <td class="num">AA</td>
+      <td>Pass</td>
+    </tr>
+    <tr>
+      <td>Mobile density</td>
+      <td class="num">Compact</td>
+      <td class="num">Compact</td>
+      <td>Review on device</td>
+    </tr>
+  </tbody>
+</table>
+
 ### Risk Table
 
 위험도 표는 `risk-table`과 `.risk-high`, `.risk-medium`, `.risk-low`, `.risk-ok`를 함께 사용한다.

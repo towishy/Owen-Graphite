@@ -6,6 +6,28 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.10] — 2026-05-13 — Workflow polish and sponsor metadata
+
+### Added
+- Added a compact GitHub Sponsors banner to the README and set `fundingUrl` in `manifest.json` to `https://github.com/sponsors/towishy`.
+- Added `dev/10f-workflow-polish.css` as a separate late module for mobile density, callout title rhythm, dark muted contrast, report table utility classes, and code copy-button affordance without growing the existing hotfix module past its complexity budget.
+- Added `docs/plugin-compatibility.md` with a smoke matrix for Style Settings, Dataview, Tasks, Canvas, Graph, Search, Bookmarks, and Outline.
+- Added `dev/test-samples/pdf-export-qa-sample.md` to cover A3/PDF export checks for long headings, callout chains, Markdown/report/risk tables, Mermaid, code blocks, images, and footnotes.
+
+### Changed
+- Refined the README first impression section with a concise use-case/effect table for Korean technical writing, A3/PDF reports, and repeated workspace use.
+- Corrected Style Settings documentation and README wording to the actual 37 functional options counted by the validator.
+- Documented purpose-based Style Settings combinations for Writer, Report, Compact, Low Motion, and High Contrast workflows.
+- Extended `docs/qa-checklist.md` with plugin compatibility, PDF QA, and README screenshot automation checks.
+- Extended `scripts/generate_screenshots.py` with README SVG smoke checks so malformed or empty README graphics fail earlier.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/generate_screenshots.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py`
+- `scripts/build_release.py`
+
 ## [2.30.9] — 2026-05-13 — HTML table Live Preview parity polish
 
 ### Changed
