@@ -4,7 +4,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.11)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.12)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -30,8 +30,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.30.11` |
-| **기본 릴리즈** | `2.30.11` |
+| **버전** | `2.30.12` |
+| **기본 릴리즈** | `2.30.12` |
 | **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
@@ -217,6 +217,7 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.30.12** | Theme manifest `fundingUrl` 제거 — 비활성 GitHub Sponsors URL이 Obsidian 커뮤니티 테마 등록 검증에서 `fetch failed`로 격상돼 머지 차단 사유가 되던 문제를 manifest에서 해당 필드 제거로 해소 (스폰서 링크는 README에 유지) |
 | **v2.30.11** | Theme manifest 스키마 정리 — 플러그인 전용 `isDesktopOnly` 필드를 `manifest.json`에서 제거해 Obsidian 커뮤니티 테마 등록 검증의 unknown-field 경고 해소 |
 | **v2.30.10** | 문서/워크플로우 polish — README 첫인상 정리, Style Settings 37개 정합성, 후원 manifest URL, 플러그인 호환성 문서, PDF QA 샘플, README SVG smoke 자동화, 모바일·다크·callout·표·코드블록 late polish 모듈 추가 |
 | **v2.30.9** | Live Preview HTML 테이블 패리티 정리 — 전용 `dev/10e` 모듈로 분리하고, 본문 흰 배경/파란 hover/외곽 outline/header divider/utility-class 테이블을 markdown table widget 톤에 맞게 보정. 코드블록 헤더 라벨과 첫 코드 줄 사이 여백도 확대 |

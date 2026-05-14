@@ -6,6 +6,11 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.12] — 2026-05-14 — Theme manifest fundingUrl removal
+
+### Fixed
+- Removed the `fundingUrl` field from `manifest.json` so the Obsidian community theme registration validator stops failing the manifest review with `fundingUrl is not reachable: fetch failed`. The referenced GitHub Sponsors page is not active for the maintainer account, so the validator could not fetch it and escalated the warning to a hard failure. The manifest now keeps only the official theme schema fields (`name`, `version`, `minAppVersion`, `author`, `authorUrl`); sponsor links remain in the README for users who want to support the project.
+
 ## [2.30.11] — 2026-05-13 — Theme manifest schema cleanup
 
 ### Fixed
