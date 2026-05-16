@@ -3815,16 +3815,11 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
     box-shadow: none;
     color: var(--ogd-last-page-footer-title-color, #0f172a);
-    background-image: linear-gradient(
-      to bottom,
-      var(--ogd-last-page-footer-color, #0ea5e9) 0,
-      var(--ogd-last-page-footer-color, #0ea5e9) 30%,
-      var(--ogd-last-page-footer-title-color, #0f172a) 30%,
-      var(--ogd-last-page-footer-title-color, #0f172a) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
     font-size: 9.2pt;
     font-weight: 600;
     letter-spacing: 0;
