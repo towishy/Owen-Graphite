@@ -71,6 +71,10 @@ def build(output_dir: Path, skip_bundle: bool = False) -> Path:
             archive.write(source, Path("Owen Graphite") / rel)
 
     print(f"OK: built {zip_path} ({zip_path.stat().st_size // 1024} KB)")
+    for old_zip in output_dir.glob("Owen-Graphite-*.zip"):
+        if old_zip != zip_path:
+            old_zip.unlink()
+            print(f"OK: removed old release ZIP {old_zip}")
     return zip_path
 
 
