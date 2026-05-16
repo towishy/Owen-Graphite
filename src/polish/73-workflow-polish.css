@@ -618,3 +618,198 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     border-left: 3px solid var(--ogd-first-page-header-left-color, #111827);
   }
 }
+
+/* ============================================================
+   v3.1.10 — PDF print hotfix: fresh paint slots via html::before
+   and html::after gated by :has(), to bypass Chromium PDF culling
+   of pseudo-elements on page-spanning content elements
+   (`:last-child`, `.markdown-*::after`).
+
+   Empirical findings from v3.1.5 → v3.1.9 testing:
+   - `body::after` multi-line content (LABEL "\A" VALUE) paints
+     reliably in PDF (verified — top-left of first page shows
+     CONFIDENTIAL + Microsoft Security on two lines).
+   - `:last-child::before` multi-line content paints ONLY the
+     first line in PDF (verified — only "END OF DOCUMENT : NOTICE"
+     label shows, TITLE + BODY appended via "\A\A" + "\A" do not
+     paint).
+   - `:last-child::after` generated content is culled entirely in
+     PDF (verified in v3.1.9 — separate ::after for TITLE + BODY
+     did not paint at all).
+   - `::first-line { color }` is not honoured in Chromium PDF for
+     these generated-content pseudos (verified — label/value on
+     LEFT header could not be coloured separately via ::first-line).
+
+   Strategy:
+   - Use `html::before` (LEFT VALUE) and `html::after` (FOOTER) as
+     fresh paint slots. `html` is the root element, position
+     context is the initial containing block, and abspos boxes on
+     `html::*` should paint per page-flow position. By analogy
+     with the verified-working `body::after`, root-level pseudos
+     should be reliable.
+   - Gate via `:has(body.ogd-first-page-header-enabled)` and
+     `:has(body.ogd-last-page-footer)` so the slots only paint
+     when the corresponding Style Settings toggle is on. `:has()`
+     is supported in Chromium ≥ 105 (Obsidian uses Electron with
+     modern Chromium).
+   - Narrow `body::after` to LABEL only — value moves to
+     `html::before`. Separate pseudos → each can paint its own
+     colour (no `::first-line { color }` dependency).
+   - Neutralise `:last-child::before` and `:last-child::after` so
+     they cannot leak the broken paint attempts.
+   ============================================================ */
+@media print {
+  /* (1) LEFT HEADER LABEL — narrow body::after content to LABEL only
+         (single-line). Value moves to html::before below. */
+  body.ogd-first-page-header-enabled::after {
+    content: var(--ogd-fp-left-label, "");
+    white-space: nowrap;
+    font-size: 8.8pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: var(--ogd-fp-label-color, #279DF5);
+    -webkit-text-fill-color: var(--ogd-fp-label-color, #279DF5);
+    padding: 0 0 0 10px;
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #279DF5);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+  }
+
+  /* (2) LEFT HEADER VALUE — fresh paint slot via html::before, scoped
+         via :has() to only paint when the first-page header toggle is
+         on. Positioned absolutely just below the LABEL line. Painted
+         in --ogd-text-strong (dark) so it visually contrasts with the
+         label-color even when the user has set the two Style Settings
+         pickers to the same hue. */
+  html:has(body.ogd-first-page-header-enabled)::before {
+    position: absolute;
+    top: 14mm;
+    left: 13px;
+    box-sizing: border-box;
+    display: block;
+    content: var(--ogd-first-page-header-left, "");
+    padding: 0 0 0 10px;
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #279DF5);
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5pt;
+    font-weight: 500;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.18;
+    color: var(--ogd-text-strong, #111827);
+    -webkit-text-fill-color: var(--ogd-text-strong, #111827);
+    white-space: nowrap;
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+    z-index: 9998;
+    pointer-events: none;
+  }
+
+  /* (3) FOOTER (LABEL + TITLE + BODY) — fresh paint slot via
+         html::after, scoped via :has() to only paint when the
+         last-page footer toggle is on. Anchored to the bottom of the
+         document (= bottom of last page in print). Multi-line content
+         via "\A" newlines + white-space: pre-wrap. */
+  html:has(body.ogd-last-page-footer)::after {
+    position: absolute;
+    bottom: 18mm;
+    left: 18mm;
+    right: 18mm;
+    box-sizing: border-box;
+    display: block;
+    content:
+      var(--ogd-last-page-footer-label, "") "\A\A"
+      var(--ogd-last-page-footer-title, "") "\A"
+      var(--ogd-last-page-footer-body, "");
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.8pt;
+    font-weight: 500;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    padding: 0 0 0 7mm;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  /* ::first-line override for the LABEL line of the footer block.
+     Where Chromium honours ::first-line color, the LABEL picks up
+     its dedicated colour. Where it does not, typography
+     differentiates (small-caps, tracked, uppercase). */
+  html:has(body.ogd-last-page-footer)::after::first-line {
+    font-size: 8.8pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ogd-last-page-footer-label-color, #0ea5e9);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #0ea5e9);
+  }
+
+  /* (4) Neutralise broken :last-child::before and :last-child::after
+         paint attempts — html::after now carries the entire footer.
+         Override all prior cascade entries (base, v2.22.46, v2.22.49,
+         v3.1.6, v3.1.7, v3.1.8, v3.1.9). */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before,
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    content: none;
+    display: none;
+    border-left: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Suppress the v2.22.49 ::marker title trick (in case the cascade
+     attempts it elsewhere). */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after::marker {
+    content: none;
+  }
+}

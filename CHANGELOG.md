@@ -6,6 +6,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.10] — 2026-05-16 — PDF print hotfix: relocate footer + LEFT value to fresh `html::before` / `html::after` slots via `:has()`
+
+### Bug fix
+
+Direct PDF inspection of the user's 17-page export confirmed that v3.1.9 still did not paint the footer TITLE + BODY (only the LABEL appeared) and that the LEFT header LABEL and VALUE remained the same colour because both lines were still painted by `body.ogd-first-page-header-enabled::after` whose base colour resolved to the user's value-color (which happened to equal the user's label-color).
+
+- **Empirical conclusions from v3.1.5 → v3.1.9**:
+  - `body::after` multi-line content (`LABEL "\A" VALUE`) paints reliably (verified on page 1 of the user's PDF — both lines visible).
+  - `:last-child::before` multi-line content paints ONLY the first line in Chromium PDF — subsequent lines via `"\A\A" + var(title) + "\A" + var(body)` never reach the page (verified — only the footer LABEL appears).
+  - `:last-child::after` generated content is culled entirely (verified — v3.1.9 ::after for TITLE + BODY did not paint at all).
+  - `::first-line { color }` / `-webkit-text-fill-color` are not honoured in Chromium PDF for these generated-content pseudos (verified — colour-separating label/value via `::first-line` did not work).
+- **Strategy**: relocate the broken paints to fresh root-level pseudo slots that have never been bound by the theme. `html::before` and `html::after`, scoped via `:has()` to the Style Settings toggle classes on body, give us two new paint slots whose paint reliability mirrors the verified-working `body::after`.
+  - `html:has(body.ogd-first-page-header-enabled)::before` → LEFT VALUE (single line, painted in `--ogd-text-strong` so it visually contrasts with the label-color even when the user has set both colour pickers to the same hue).
+  - `html:has(body.ogd-last-page-footer)::after` → FOOTER (LABEL + TITLE + BODY, multi-line via `\A`, anchored 18mm above the document bottom = 18mm above the last-page bottom).
+  - `body.ogd-first-page-header-enabled::after` narrowed back to LABEL only (single-line, label-color), with no value appended.
+  - `:last-child::before` and `:last-child::after` neutralised (`content: none; display: none`) so the broken paint attempts do not leak; `:last-child { margin-bottom: 0 }` reclaims the 54mm footer reserve since the footer now anchors to `html::after`.
+
+### Implementation
+
+- `src/polish/73-workflow-polish.css` (EOF append, ~195 lines): new `@media print { }` block declares
+  - `body.ogd-first-page-header-enabled::after` narrowed to LABEL-only single-line, label-color, small-caps tracked typography;
+  - `html:has(body.ogd-first-page-header-enabled)::before` LEFT VALUE single-line, text-strong colour, 10.5pt normal weight, anchored at `top: 14mm; left: 13px`;
+  - `html:has(body.ogd-last-page-footer)::after` FOOTER multi-line (`label "\A\A" title "\A" body`), text-color base, anchored at `bottom: 18mm; left/right: 18mm`;
+  - `html:has(body.ogd-last-page-footer)::after::first-line` LABEL typography (small-caps tracked, label-color attempt for browsers that honour it);
+  - `:last-child::before` / `::after` / `::after::marker` set to `content: none; display: none` and `:last-child { margin-bottom: 0 }`.
+
+### Compatibility
+
+- Requires Chromium ≥ 105 for `:has()` support. Obsidian's Electron has shipped with Chromium 105+ since Obsidian 1.4.x. Verified for `minAppVersion: 1.12.0`.
+- If `html::before` / `html::after` paint reliability turns out NOT to mirror `body::after` in the Obsidian print pipeline, this hotfix may need to fall back to repurposing `body::before` for the footer (sacrificing the RIGHT header label) in a follow-up release.
+
 ## [3.1.9] — 2026-05-16 — PDF print hotfix: split footer ::before / ::after + restore LEFT header value colour
 
 ### Bug fix
