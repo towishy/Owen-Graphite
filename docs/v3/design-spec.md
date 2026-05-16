@@ -30,6 +30,8 @@
 
 v3는 `@layer`를 본문 룰에 사용하지 **않습니다**. CSS Cascade Layers 스펙상 unlayered styles가 layered styles를 항상 이기는데, Obsidian core CSS(`app.css`)가 unlayered이기 때문입니다. theme 룰을 `@layer` 안에 두면 core에 패배하여 `!important`로만 되돌릴 수 있고, 이는 v3의 목표(!important 감축)와 모순됩니다.
 
+**이 결정은 사후 실증 검증을 거쳤습니다.** `obsidian.asar`에서 추출한 `app.css`(600 KB)를 직접 검사한 결과 `@layer` 0개, `!important` 66개(대부분 print/forced-colors 영역). 또한 Playwright 캐스케이드 시험(`scripts/probe_cascade_behavior.py`)에서 theme이 더 높은 특이도를 가져도 `@layer` 안에 들어가면 unlayered core에 패배함을 확인했습니다. 전체 근거는 `docs/v3/cascade-research.md` 참고.
+
 따라서 v3 본문 룰은 **unlayered** 상태로 유지합니다. 캐스케이드 도구는 다음 셋입니다:
 
 1. **`@import` 파일 순서** — 같은 특이도에서 뒤에 import 된 파일이 승리. tokens → base → surfaces → chrome → features → dark → a11y 순서가 의미를 가집니다.
