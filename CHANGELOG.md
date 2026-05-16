@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.17] — 2026-05-16 — PDF footer line wrapping and size fix
+
+### Fix
+
+- Split the last-page footer into three forced rows: `LABEL`, `TITLE`, then `BODY`, instead of keeping title and body on one very long line.
+- Remove `word-break: keep-all`, which prevented Korean legal text from wrapping and caused the footer to be clipped horizontally.
+- Increase footer body text from `7.4pt` to `8.6pt` and the NOTICE label from `9.2pt` to `10.4pt`.
+- Increase the reserved footer area to `104mm` so the larger three-row footer has room to print.
+
 ## [3.1.16] — 2026-05-16 — PDF footer NOTICE label separation
 
 ### Fix
