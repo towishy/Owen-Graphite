@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.8] — 2026-05-16 — Doc + tooling polish
+
+### Changed
+
+- **번들 헤더 문구 갱신** — `dist/theme-v3.css` 헤더의 v3-rewrite 시점 잔존 문구("not a drop-in replacement … keeps theme.css on v2.30.14 until S11 swap is approved")를 정식 출시 후 사실관계에 맞게 정리하고 dedup 패스 위치를 안내하도록 다듬었습니다.
+- **pre-commit 후크에 결정성 검증 연결** — `scripts/hooks/pre-commit` 이 `bundle_v3.py --check` 로 바뀌었습니다. 소스만 수정하고 `dist/theme-v3.css` 재빌드/스테이징을 빠뜨린 커밋을 사전 차단합니다.
+
+### Notes
+
+- 디자인·런타임·산출물 동작 변동 없습니다. v3.0.7 사용자는 업데이트 없이도 동일하게 작동합니다.
+
 ## [3.0.7] — 2026-05-16 — Source dedup follow-up + bundle `--check` mode
 
 ### Changed
