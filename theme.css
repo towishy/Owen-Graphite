@@ -1252,21 +1252,37 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: var(--ogd-text-secondary, #374151);
 }
 
-.markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) .callout-icon {
+/* v3.1.5: callout-icon rules expanded from `.callout:is(...)` to explicit
+   comma-lists so the community-theme reviewer's CSS parser (which strips
+   `:is(...)` argument content during selector comparison and reports them
+   all as the literal token `.callout:is .callout-icon`) no longer treats
+   these three semantically-distinct rules as duplicate selectors. The
+   selector specificity is unchanged: each comma-arm still resolves to
+   (0,2,2) just like the `:is()` form did. */
+.markdown-rendered .callout[data-callout="warning"] .callout-icon,
+.markdown-rendered .callout[data-callout="attention"] .callout-icon,
+.markdown-rendered .callout[data-callout="caution"] .callout-icon {
   border: 1.5px solid #fcd34d;
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-surface-base, #ffffff);
   color: #92400e;
 }
 
-.markdown-rendered .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) .callout-icon {
+.markdown-rendered .callout[data-callout="failure"] .callout-icon,
+.markdown-rendered .callout[data-callout="fail"] .callout-icon,
+.markdown-rendered .callout[data-callout="missing"] .callout-icon,
+.markdown-rendered .callout[data-callout="danger"] .callout-icon,
+.markdown-rendered .callout[data-callout="error"] .callout-icon,
+.markdown-rendered .callout[data-callout="bug"] .callout-icon {
   border: 1.5px solid #fca5a5;
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-surface-base, #ffffff);
   color: #b91c1c;
 }
 
-.markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
+.markdown-rendered .callout[data-callout="success"] .callout-icon,
+.markdown-rendered .callout[data-callout="check"] .callout-icon,
+.markdown-rendered .callout[data-callout="done"] .callout-icon {
   border: 1.5px solid #86efac;
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-surface-base, #ffffff);
@@ -2238,12 +2254,10 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 /* =====================================================================
   Workspace polish - sidebar, tabs, status bar, search
    ===================================================================== */
-.nav-file-title,
-.nav-folder-title {
-  padding: 3px 8px;
-  font-size: 0.92em;
-  line-height: 1.4;
-}
+/* v3.1.5: the duplicate `.nav-file-title, .nav-folder-title` rule that
+   used to set padding/font-size/line-height here has been folded into the
+   single consolidated rule in chrome/31-navigation-tasks-search.css. The
+   `.is-active` override below is kept (different selector). */
 .nav-file-title.is-active,
 .nav-folder-title.is-active {
   background: #eef2f7;
@@ -2413,23 +2427,48 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 .theme-dark .markdown-rendered .callout .callout-icon {
   background: var(--ogd-surface-dark, #111827);
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="note"], [data-callout="info"], [data-callout="quote"], [data-callout="cite"]) .callout-icon {
+/* v3.1.5: dark-mode callout-icon rules expanded from `.callout:is(...)`
+   to explicit comma-lists so the community-theme reviewer's CSS parser
+   stops collapsing them all to `.theme-dark .callout :is .callout-icon`
+   and flagging them as duplicate selectors. Specificity unchanged. */
+.theme-dark .markdown-rendered .callout[data-callout="note"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="info"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="quote"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="cite"] .callout-icon {
   border-color: #64748b;
   color: var(--ogd-line-strong, #cbd5e1);
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="tip"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="hint"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="important"] .callout-icon {
   border-color: #22d3ee;
   color: #a5f3fc;
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="abstract"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="summary"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="tldr"] .callout-icon {
   border-color: #a78bfa;
   color: #ddd6fe;
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"], [data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="warning"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="attention"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="caution"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="failure"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="fail"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="missing"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="danger"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="error"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="bug"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="example"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="question"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="help"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="faq"] .callout-icon {
   border-color: #f59e0b;
   color: #fde68a;
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="success"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="check"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="done"] .callout-icon {
   border-color: #34d399;
   color: #bbf7d0;
 }
@@ -3844,7 +3883,6 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     background-image: none;
     -webkit-background-clip: border-box;
     background-clip: border-box;
-    -webkit-text-fill-color: currentColor;
   
     display: list-item;
     list-style-position: inside;
@@ -5127,13 +5165,21 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
    - Search results and ==highlight== get a modern, readable treatment
    ============================================================ */
 
-/* Sidebar / File Explorer */
+/* Sidebar / File Explorer
+   v3.1.5: consolidated the duplicate-selector rule that previously lived in
+   surfaces/22-reading-embeds-workspace.css (padding/font-size/line-height)
+   into this single block so the community-theme reviewer no longer flags
+   `.nav-folder-title, .nav-file-title` as a duplicate selector. Cascade
+   outcome unchanged: this file imports after surfaces/22, so its values
+   already won at the cascade layer; folding them in here removes the
+   second source rule entirely. */
 .nav-folder-title,
 .nav-file-title {
   border-radius: var(--radius-m, 6px);
   margin: 1px 6px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px 8px;
+  font-size: 0.92em;
+  line-height: 1.4;
   transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
 }
 .nav-folder-title:hover,

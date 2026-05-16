@@ -5,13 +5,21 @@
    - Search results and ==highlight== get a modern, readable treatment
    ============================================================ */
 
-/* Sidebar / File Explorer */
+/* Sidebar / File Explorer
+   v3.1.5: consolidated the duplicate-selector rule that previously lived in
+   surfaces/22-reading-embeds-workspace.css (padding/font-size/line-height)
+   into this single block so the community-theme reviewer no longer flags
+   `.nav-folder-title, .nav-file-title` as a duplicate selector. Cascade
+   outcome unchanged: this file imports after surfaces/22, so its values
+   already won at the cascade layer; folding them in here removes the
+   second source rule entirely. */
 .nav-folder-title,
 .nav-file-title {
   border-radius: var(--radius-m, 6px);
   margin: 1px 6px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px 8px;
+  font-size: 0.92em;
+  line-height: 1.4;
   transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
 }
 .nav-folder-title:hover,

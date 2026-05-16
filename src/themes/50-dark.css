@@ -153,23 +153,48 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 .theme-dark .markdown-rendered .callout .callout-icon {
   background: var(--ogd-surface-dark, #111827);
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="note"], [data-callout="info"], [data-callout="quote"], [data-callout="cite"]) .callout-icon {
+/* v3.1.5: dark-mode callout-icon rules expanded from `.callout:is(...)`
+   to explicit comma-lists so the community-theme reviewer's CSS parser
+   stops collapsing them all to `.theme-dark .callout :is .callout-icon`
+   and flagging them as duplicate selectors. Specificity unchanged. */
+.theme-dark .markdown-rendered .callout[data-callout="note"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="info"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="quote"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="cite"] .callout-icon {
   border-color: #64748b;
   color: var(--ogd-line-strong, #cbd5e1);
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="tip"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="hint"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="important"] .callout-icon {
   border-color: #22d3ee;
   color: #a5f3fc;
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="abstract"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="summary"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="tldr"] .callout-icon {
   border-color: #a78bfa;
   color: #ddd6fe;
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"], [data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="warning"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="attention"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="caution"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="failure"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="fail"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="missing"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="danger"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="error"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="bug"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="example"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="question"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="help"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="faq"] .callout-icon {
   border-color: #f59e0b;
   color: #fde68a;
 }
-.theme-dark .markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
+.theme-dark .markdown-rendered .callout[data-callout="success"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="check"] .callout-icon,
+.theme-dark .markdown-rendered .callout[data-callout="done"] .callout-icon {
   border-color: #34d399;
   color: #bbf7d0;
 }

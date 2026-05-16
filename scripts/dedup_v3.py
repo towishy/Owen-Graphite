@@ -309,7 +309,7 @@ def _merge_bodies(bodies: list[str]) -> str:
     return f"\n  {inner}\n"
 
 
-_PROP_NAME_RE = re.compile(r"\s*(--[A-Za-z0-9_-]+|[A-Za-z_][A-Za-z0-9_-]*)\s*$")
+_PROP_NAME_RE = re.compile(r"\s*(--[A-Za-z0-9_-]+|-?[A-Za-z_][A-Za-z0-9_-]*)\s*$")
 
 
 def _split_declarations(body: str) -> list[tuple[str, str]]:

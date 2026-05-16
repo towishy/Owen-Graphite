@@ -6,6 +6,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.5] — 2026-05-16 — Lint cleanup #2: minAppVersion 1.12.0 + selector deduplication
+
+### Manifest
+
+- `minAppVersion`: **1.10.0 → 1.12.0**. Closes the entire `text-decoration` / `css-text-indent` partial-support warning category (115+ warnings) by excluding Obsidian 1.11.x builds whose Chromium predates the required feature levels. Obsidian 1.12.0 ships Chromium ≥ 130, where all `text-decoration-*` shorthand and longhand forms are fully supported.
+
+### Tooling
+
+- **`scripts/dedup_v3.py`** — Property-name regex now accepts vendor-prefixed identifiers (`-webkit-text-fill-color` etc.). Previously the leading `-` blocked the match and let vendor-prefixed duplicates slip past the build-time dedup. The lint warning `Unexpected duplicate "-webkit-text-fill-color"` is now closed by the build pass.
+
+### Selector refactors (community-theme reviewer false-positives)
+
+The reviewer's CSS parser strips `:is(...)` argument content when comparing selectors, so semantically distinct rules collapse to the same token and get flagged as duplicates. Refactored to explicit comma-lists in:
+
+- **`src/base/12-reading-content.css`** — three light-mode callout-icon color rules (warning/failure/success groups).
+- **`src/themes/50-dark.css`** — five dark-mode callout-icon color rules (note/tip/abstract/warning/success groups).
+- **`src/chrome/31-navigation-tasks-search.css` + `src/surfaces/22-reading-embeds-workspace.css`** — consolidated the two `.nav-folder-title, .nav-file-title` rules into a single block (padding/font-size/line-height/margin/border-radius/transition together).
+
+Selector specificity is unchanged in every case: each comma-arm resolves to the same (0,2,2) / (0,3,2) the `:is()` form did, so cascade outcome is preserved bit-for-bit.
+
+### Visual impact
+
+Zero. All edits are textual representation changes that produce the same computed style.
+
+### Build impact
+
+- `dist/theme-v3.css`: 16,254 lines / `!important`=4 / dedup_merges=112
+- `--check` PASS / hit-routing audit clean / 0 intra-rule duplicate properties / 0 `.callout:is(...) ... .callout-icon` selectors
+
+### Remaining advisory (non-blocking)
+
+- `:has()` performance advisory — Chromium 105+ baseline (Obsidian 1.12+ ships Chromium 130+); our usages are narrowly scoped.
+
 ## [3.1.4] — 2026-05-16 — Lint cleanup: duplicate properties + text-decoration shorthand + minAppVersion bump
 
 ### Manifest

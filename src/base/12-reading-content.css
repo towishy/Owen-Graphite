@@ -437,21 +437,37 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: var(--ogd-text-subtle, #475569);
 }
 
-.markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) .callout-icon {
+/* v3.1.5: callout-icon rules expanded from `.callout:is(...)` to explicit
+   comma-lists so the community-theme reviewer's CSS parser (which strips
+   `:is(...)` argument content during selector comparison and reports them
+   all as the literal token `.callout:is .callout-icon`) no longer treats
+   these three semantically-distinct rules as duplicate selectors. The
+   selector specificity is unchanged: each comma-arm still resolves to
+   (0,2,2) just like the `:is()` form did. */
+.markdown-rendered .callout[data-callout="warning"] .callout-icon,
+.markdown-rendered .callout[data-callout="attention"] .callout-icon,
+.markdown-rendered .callout[data-callout="caution"] .callout-icon {
   border: 1.5px solid #fcd34d;
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-surface-base, #ffffff);
   color: #92400e;
 }
 
-.markdown-rendered .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) .callout-icon {
+.markdown-rendered .callout[data-callout="failure"] .callout-icon,
+.markdown-rendered .callout[data-callout="fail"] .callout-icon,
+.markdown-rendered .callout[data-callout="missing"] .callout-icon,
+.markdown-rendered .callout[data-callout="danger"] .callout-icon,
+.markdown-rendered .callout[data-callout="error"] .callout-icon,
+.markdown-rendered .callout[data-callout="bug"] .callout-icon {
   border: 1.5px solid #fca5a5;
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-surface-base, #ffffff);
   color: #b91c1c;
 }
 
-.markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
+.markdown-rendered .callout[data-callout="success"] .callout-icon,
+.markdown-rendered .callout[data-callout="check"] .callout-icon,
+.markdown-rendered .callout[data-callout="done"] .callout-icon {
   border: 1.5px solid #86efac;
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-surface-base, #ffffff);
