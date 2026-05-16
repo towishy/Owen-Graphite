@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.19] — 2026-05-16 — PDF footer wider content and larger notice
+
+### Fix
+
+- Expand the generated PDF footer from the previous `172mm` cap to `calc(100vw - 28mm)` so the legal notice uses nearly the full printable horizontal width.
+- Increase footer body/title text from `8.2pt` to `9pt` and raise the NOTICE label line from `9.8pt` to `11.2pt`.
+- Keep the compact two-row footer structure so the label remains visible without reintroducing the page-boundary split from the taller three-row version.
+
 ## [3.1.18] — 2026-05-16 — PDF footer compact block pagination fix
 
 ### Fix
