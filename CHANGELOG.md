@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.16] — 2026-05-16 — PDF footer NOTICE label separation
+
+### Fix
+
+- Separate the last-page footer label from the title/body line: `LABEL \A\A TITLE BODY`.
+- Emphasise the footer label line with larger, heavier, uppercased typography so `NOTICE` reads as a distinct label instead of disappearing into the legal text.
+
+### Scope
+
+Footer-only patch. The single-pseudo PDF fallback is preserved because it is still the most reliable paint path in Obsidian's Chromium PDF exporter.
+
 ## [3.1.15] — 2026-05-16 — PDF header split-colour fallback + visible footer notice
 
 ### Fix

@@ -336,7 +336,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before {
-    content: var(--ogd-last-page-footer-label, "") "  " var(--ogd-last-page-footer-title, "") "  " var(--ogd-last-page-footer-body, "");
+    content: var(--ogd-last-page-footer-label, "") "\A\A" var(--ogd-last-page-footer-title, "") "  " var(--ogd-last-page-footer-body, "");
     top: calc(100% + 6mm);
     min-height: 0;
     padding: 0 0 0 7mm;
@@ -356,6 +356,17 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     max-height: none;
     overflow: visible;
     z-index: 2;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before::first-line {
+    font-size: 9.2pt;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
 
   /* PDF guard: these routes were proven unreliable in Obsidian's Chromium exporter. */
