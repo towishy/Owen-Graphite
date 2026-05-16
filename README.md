@@ -38,37 +38,7 @@
 
 ---
 
-## 2. v3.0.0 핵심 변경
-
-### Zero `!important`, 동일 픽셀
-
-v2.30.14는 `dev/*` 16,000+ 줄에 `!important`가 5,816개 누적되어 있었습니다. v3.0.0은 `src/` 폴더에 처음부터 다시 작성하고 — **선언 수준 `!important` 0개**, computed-style fingerprint 0 diff(Light/Dark 양쪽)를 달성했습니다.
-
-| 측정 | v2.30.14 | v3.0.0 |
-| --- | --- | --- |
-| `dist/*.css` 줄 수 | 16,000+ | 16,509 |
-| 선언 수준 `!important` | 5,816 | **0** |
-| computed-style fingerprint diff | — | **0** (Light · Dark) |
-| Live Preview hit-routing 감사 | clean | **clean** |
-
-상세 절차·실증·휴리스틱은 [docs/v3/cascade-research.md](docs/v3/cascade-research.md), 보존 계약·검증은 [docs/v3/design-spec.md](docs/v3/design-spec.md), 릴리즈 순서는 [docs/v3/release-plan.md](docs/v3/release-plan.md) 참조.
-
-### 토큰 우선 설계
-
-모든 색·간격·그림자·필터는 `var(--ogd-*)` 토큰을 통과합니다. 색 한 개를 바꾸려면 `src/tokens/01-colors.css` 한 줄만 수정. v2.30.14의 255개 토큰 이름을 그대로 유지하므로 Style Settings 옵션은 그대로 동작합니다.
-
-### Liquid Glass core
-
-- **Rest** — graphite/gray frosted glass, 좌측 vertical rail 없음
-- **Hover** — 살짝 밝아지고 들어올림, 부드러운 wide downward shadow, 얕은 pastel tone
-- **Active** — sky tint + glass border, 명확한 선택 상태
-- **분리 규칙** — 의미색은 선택 문서/탭 같은 명확한 상태에만, 반복 chrome은 밝기·그림자로만 반응
-
-자세한 내용은 [docs/v3/surface-state-matrix.md](docs/v3/surface-state-matrix.md).
-
----
-
-## 3. 테마 설치
+## 2. 테마 설치
 
 ### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
 
@@ -149,7 +119,7 @@ fi
 
 ---
 
-## 4. 개발자 워크플로우
+## 3. 개발자 워크플로우
 
 v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → features → themes → plugins → polish 순서로 분리되어 있습니다. 빌드/감사는 `scripts/` 의 v3 도구만 사용합니다.
 
@@ -168,6 +138,48 @@ v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → featur
 
 ---
 
-## 5. 라이선스
+## 4. 후원
+
+<p align="center">
+  <a href="https://github.com/sponsors/towishy">
+    <img src="screenshots/readme/sponsor-coffee.svg" alt="커피 한 잔으로 Owen Graphite 응원하기" width="560">
+  </a>
+</p>
+
+Owen Graphite는 무료/오픈소스입니다. 한국어 보고서·위키 작성 환경 유지에 도움이 되셨다면 [GitHub Sponsors](https://github.com/sponsors/towishy)에서 커피 한 잔으로 응원해 주세요.
+
+---
+
+## 5. v3.0.0 핵심 변경
+
+### Zero `!important`, 동일 픽셀
+
+v2.30.14는 `dev/*` 16,000+ 줄에 `!important`가 5,816개 누적되어 있었습니다. v3.0.0은 `src/` 폴더에 처음부터 다시 작성하고 — **선언 수준 `!important` 0개**, computed-style fingerprint 0 diff(Light/Dark 양쪽)를 달성했습니다.
+
+| 측정 | v2.30.14 | v3.0.0 |
+| --- | --- | --- |
+| `dist/*.css` 줄 수 | 16,000+ | 16,509 |
+| 선언 수준 `!important` | 5,816 | **0** |
+| computed-style fingerprint diff | — | **0** (Light · Dark) |
+| Live Preview hit-routing 감사 | clean | **clean** |
+
+상세 절차·실증·휴리스틱은 [docs/v3/cascade-research.md](docs/v3/cascade-research.md), 보존 계약·검증은 [docs/v3/design-spec.md](docs/v3/design-spec.md), 릴리즈 순서는 [docs/v3/release-plan.md](docs/v3/release-plan.md) 참조.
+
+### 토큰 우선 설계
+
+모든 색·간격·그림자·필터는 `var(--ogd-*)` 토큰을 통과합니다. 색 한 개를 바꾸려면 `src/tokens/01-colors.css` 한 줄만 수정. v2.30.14의 255개 토큰 이름을 그대로 유지하므로 Style Settings 옵션은 그대로 동작합니다.
+
+### Liquid Glass core
+
+- **Rest** — graphite/gray frosted glass, 좌측 vertical rail 없음
+- **Hover** — 살짝 밝아지고 들어올림, 부드러운 wide downward shadow, 얕은 pastel tone
+- **Active** — sky tint + glass border, 명확한 선택 상태
+- **분리 규칙** — 의미색은 선택 문서/탭 같은 명확한 상태에만, 반복 chrome은 밝기·그림자로만 반응
+
+자세한 내용은 [docs/v3/surface-state-matrix.md](docs/v3/surface-state-matrix.md).
+
+---
+
+## 6. 라이선스
 
 MIT — [LICENSE](LICENSE)
