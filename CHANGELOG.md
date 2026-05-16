@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.5] — 2026-05-16 — Scanner warnings: column-gap → gap
+
+### Changed
+
+- **커뮤니티 스캐너 multicolumn 워닝 2건 제거** — `src/features/43-print-base.css` 의 `column-gap` 2건을 표준 `gap`(L1 속기) 으로 교체. 그리드 컬럼 장면이라 동작 100% 동일.
+- 단축형 `text-decoration` multi-value 27건, `:has()` 성능 권고, 의도된 중복 selector 워닝은 디자인·기능 핵심 의존성으로 유지.
+
 ## [3.0.4] — 2026-05-16 — Scanner warnings: text-decoration shorthand sweep
 
 ### Changed
@@ -89,6 +96,7 @@ Owen Graphite v3.0.0은 v2.30.14의 픽셀 결과를 보존한 채 16,000+ 줄 C
 | Live Preview hit-routing | `scripts/audit_v3_hit_routing.py` | clean |
 | Release ZIP | `scripts/build_release.py` | `dist/Owen-Graphite-3.0.0.zip` (265 KB) |
 
+[3.0.5]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.5
 [3.0.4]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.4
 [3.0.3]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.3
 [3.0.0]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.0
