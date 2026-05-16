@@ -43,7 +43,7 @@
   --ogd-hover-shift: translateX(1px);
   --ogd-press-lift: translateY(0) scale(0.99);
 
-  /* PDF Marginalia — first page header / last page footer Glass Pill.
+  /* PDF Marginalia — print-only first page header / last page footer microlabels.
    * Driven by Style Settings (ogd-pdf-header / ogd-pdf-footer).
    * Anchor pseudo paint surface — see src/features/41-feature-presets.css C3. */
   --ogd-pdf-header-text: "";
@@ -52,6 +52,22 @@
   --ogd-pdf-marginalia-bg: rgba(39, 157, 245, 0.06);
   --ogd-pdf-marginalia-border: rgba(39, 157, 245, 0.22);
   --ogd-pdf-marginalia-shadow: none;
+  --ogd-pdf-header-top: 11mm;
+  --ogd-pdf-header-right: 13mm;
+  --ogd-pdf-header-left: auto;
+  --ogd-pdf-header-transform: none;
+  --ogd-pdf-header-font-size: 7.5pt;
+  --ogd-pdf-footer-font-size: 8pt;
+  --ogd-pdf-label-letter-spacing: 1.2px;
+  --ogd-pdf-label-line-height: 1.2;
+  --ogd-pdf-label-radius: 4px;
+  --ogd-pdf-header-pad-y: 4px;
+  --ogd-pdf-header-pad-x: 10px;
+  --ogd-pdf-footer-pad-y: 5px;
+  --ogd-pdf-footer-pad-x: 14px;
+  --ogd-pdf-footer-reserve: 28mm;
+  --ogd-pdf-footer-offset: -22mm;
+  --ogd-pdf-footer-max-width: 90%;
 }
 
 .theme-light,

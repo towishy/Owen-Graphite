@@ -17,8 +17,8 @@ Live Preview routes mouse clicks through CSS box geometry. Rules that add vertic
 Run:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\audit_v3_hit_routing.py
-.\.venv\Scripts\python.exe scripts\build_src_map.py
+.\.venv\Scripts\python.exe dev\scripts\audit_v3_hit_routing.py
+.\.venv\Scripts\python.exe dev\scripts\build_src_map.py
 ```
 
 Any MAP finding in the `cm6-hit-routing-sensitive` category must be checked against this contract before release.

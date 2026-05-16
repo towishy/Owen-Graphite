@@ -194,7 +194,7 @@ kbd {
 /* ============================================================================
    C3. PDF Marginalia — Uppercase Microlabel (v3.1.32, Option D)
    ============================================================================
-   목적: PDF/Reading View 첫 페이지 우측 상단 + 마지막 페이지 중앙 하단에
+  목적: PDF 첫 페이지 우측 상단 + 마지막 페이지 중앙 하단에
    사용자 문구를 작은 uppercase microlabel(자간 강조)로 표시.
 
    v3.1.31 → v3.1.32 변경: 평이한 글라스 pill(흰색 톤 + blur)에서 액센트-틴트
@@ -216,13 +216,17 @@ kbd {
    !important 0개 (v3 cascade S11.5 계약 준수).
    v3.1.28 [R1]·[R2]·[R5]·[R7] 핵심 안전망만 유지.
 
-   Style Settings 슬롯 (총 5개)
+   Style Settings 슬롯 (총 9개)
    ────────────────────────────
+     ogd-pdf-marginalia-preset  (class-select, quick text defaults)
      ogd-pdf-header-enabled     (class-toggle on body)
      --ogd-pdf-header-text      (variable-text, single line)
      ogd-pdf-footer-enabled     (class-toggle on body)
      --ogd-pdf-footer-text      (variable-text, single line)
-     --ogd-pdf-marginalia-accent(variable-color, 두 pill 공통 글자색)
+     --ogd-pdf-marginalia-accent(variable-color, 두 라벨 공통 글자색)
+     ogd-pdf-marginalia-style   (class-select: minimal/bordered/filled)
+     ogd-pdf-marginalia-size    (class-select: compact/standard)
+     ogd-pdf-header-position    (class-select: top-right/top-center)
 
    Anchor / Layer 매핑
    ───────────────────
@@ -243,7 +247,7 @@ kbd {
    - background: rgba(accent, 0.06) (light) / rgba(accent, 0.10) (dark)
    - border: 1px solid rgba(accent, 0.22) (light) / 0.32 (dark)
    - border-radius: 4px, box-shadow: none, backdrop-filter 없음
-   - 인쇄/화면 동일 톤 — Chromium printToPDF 무시 항목(backdrop-filter)을
+   - 인쇄 전용 톤 — Chromium printToPDF 무시 항목(backdrop-filter)을
      아예 사용하지 않아 graceful degradation이 필요 없음.
 
    구조 규칙 (v3.1.28 carry-over)
@@ -266,6 +270,54 @@ kbd {
    - 4개 이상의 anchor pseudo 사용 금지 (header 1 + footer 1만)
    ============================================================================ */
 
+body.ogd-pdf-preset-prepared-confidential {
+  --ogd-pdf-header-text: "Prepared Document";
+  --ogd-pdf-footer-text: "Confidential - End of Document";
+}
+
+body.ogd-pdf-preset-draft-internal {
+  --ogd-pdf-header-text: "Draft";
+  --ogd-pdf-footer-text: "Internal Use Only";
+}
+
+body.ogd-pdf-preset-final-end {
+  --ogd-pdf-header-text: "Final";
+  --ogd-pdf-footer-text: "End of Document";
+}
+
+body.ogd-pdf-label-minimal {
+  --ogd-pdf-marginalia-bg: transparent;
+  --ogd-pdf-marginalia-border: transparent;
+}
+
+body.ogd-pdf-label-filled {
+  --ogd-pdf-marginalia-bg: rgba(39, 157, 245, 0.12);
+  --ogd-pdf-marginalia-border: rgba(39, 157, 245, 0.28);
+}
+
+body.theme-dark.ogd-pdf-label-filled {
+  --ogd-pdf-marginalia-bg: rgba(56, 189, 248, 0.16);
+  --ogd-pdf-marginalia-border: rgba(56, 189, 248, 0.38);
+}
+
+body.ogd-pdf-label-compact {
+  --ogd-pdf-header-font-size: 6.8pt;
+  --ogd-pdf-footer-font-size: 7.2pt;
+  --ogd-pdf-label-letter-spacing: 1px;
+  --ogd-pdf-header-pad-y: 3px;
+  --ogd-pdf-header-pad-x: 8px;
+  --ogd-pdf-footer-pad-y: 4px;
+  --ogd-pdf-footer-pad-x: 10px;
+  --ogd-pdf-footer-reserve: 24mm;
+  --ogd-pdf-footer-offset: -19mm;
+}
+
+body.ogd-pdf-header-top-center {
+  --ogd-pdf-header-left: 50%;
+  --ogd-pdf-header-right: auto;
+  --ogd-pdf-header-transform: translateX(-50%);
+}
+
 /* v3.1.33 hotfix: 전체 블록을 @media print 안으로 격리.
    v3.1.32에서는 화면 전역 규칙으로 작성되어 Live Preview/Reading View에도
    anchor pseudo가 그려져 사용자 문구가 노출되는 회귀가 있었음.
@@ -280,28 +332,30 @@ kbd {
     position: relative;
   }
 
-  /* HEADER — 첫 페이지 우측 상단 microlabel pill (v3.1.32 Option D: Uppercase Microlabel) */
+  /* HEADER — 첫 페이지 microlabel (v3.1.32 Option D: Uppercase Microlabel) */
   body.ogd-pdf-header-enabled .markdown-rendered::before {
     content: var(--ogd-pdf-header-text, "");
     position: absolute;
-    top: 11mm;
-    right: 13mm;
+    top: var(--ogd-pdf-header-top, 11mm);
+    right: var(--ogd-pdf-header-right, 13mm);
+    left: var(--ogd-pdf-header-left, auto);
+    transform: var(--ogd-pdf-header-transform, none);
     z-index: 9999;
     pointer-events: none;
     display: inline-block;
     max-width: calc(100% - 26mm);
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: var(--ogd-pdf-header-pad-y, 4px) var(--ogd-pdf-header-pad-x, 10px);
+    border-radius: var(--ogd-pdf-label-radius, 4px);
     background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
     font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
-    font-size: 7.5pt;
+    font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 700;
     font-style: normal;
-    letter-spacing: 1.2px;
+    letter-spacing: var(--ogd-pdf-label-letter-spacing, 1.2px);
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: var(--ogd-pdf-label-line-height, 1.2);
     color: var(--ogd-pdf-marginalia-accent, #279DF5);
     -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
     white-space: nowrap;
@@ -311,33 +365,33 @@ kbd {
     print-color-adjust: exact;
   }
 
-  /* FOOTER — 마지막 페이지 중앙 하단 microlabel pill */
+  /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
     position: relative;
-    margin-bottom: 28mm;
+    margin-bottom: var(--ogd-pdf-footer-reserve, 28mm);
   }
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
     left: 50%;
-    bottom: -22mm;
+    bottom: var(--ogd-pdf-footer-offset, -22mm);
     transform: translateX(-50%);
     z-index: 9999;
     pointer-events: none;
     display: inline-block;
-    max-width: 90%;
-    padding: 5px 14px;
-    border-radius: 4px;
+    max-width: var(--ogd-pdf-footer-max-width, 90%);
+    padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 14px);
+    border-radius: var(--ogd-pdf-label-radius, 4px);
     background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
     font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
-    font-size: 8pt;
+    font-size: var(--ogd-pdf-footer-font-size, 8pt);
     font-weight: 700;
     font-style: normal;
-    letter-spacing: 1.2px;
+    letter-spacing: var(--ogd-pdf-label-letter-spacing, 1.2px);
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: var(--ogd-pdf-label-line-height, 1.2);
     color: var(--ogd-pdf-marginalia-accent, #279DF5);
     -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
     white-space: nowrap;

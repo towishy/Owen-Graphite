@@ -258,6 +258,7 @@ def analyze_module(module_info: dict[str, object]) -> tuple[dict[str, object], l
     has_count = 0
     high_specificity_count = 0
     live_preview_sensitive_count = 0
+    pdf_header_footer_sensitive_count = 0
     max_specificity = (0, 0, 0)
     property_counter: Counter[str] = Counter()
     selector_counter: Counter[str] = Counter()
@@ -316,6 +317,26 @@ def analyze_module(module_info: dict[str, object]) -> tuple[dict[str, object], l
                         "message": "CM6 rule declares vertical box or overlay-sensitive properties",
                     }
                 )
+        pdf_terms = (
+            "ogd-pdf-header-enabled",
+            "ogd-pdf-footer-enabled",
+            "--ogd-pdf-header-text",
+            "--ogd-pdf-footer-text",
+            "--ogd-pdf-marginalia",
+            "@page",
+        )
+        if any(term in rule.selector or term in rule.body or term in rule.at_context for term in pdf_terms):
+            pdf_header_footer_sensitive_count += 1
+            findings.append(
+                {
+                    "severity": "low",
+                    "category": "pdf-header-footer-sensitive",
+                    "module": module_info["module"],
+                    "line": rule.line,
+                    "selector": rule.selector,
+                    "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md",
+                }
+            )
         for property_name, value in declarations(rule.body):
             property_counter[property_name] += 1
             if "!important" in value:
@@ -345,6 +366,7 @@ def analyze_module(module_info: dict[str, object]) -> tuple[dict[str, object], l
         + important_count * 15
         + high_specificity_count * 3
         + live_preview_sensitive_count * 3
+        + pdf_header_footer_sensitive_count * 2
         + has_count * 2
         + repeated_in_file
     )
@@ -357,6 +379,8 @@ def analyze_module(module_info: dict[str, object]) -> tuple[dict[str, object], l
         reasons.append("high-specificity")
     if live_preview_sensitive_count:
         reasons.append("cm6-hit-routing-sensitive")
+    if pdf_header_footer_sensitive_count:
+        reasons.append("pdf-header-footer-sensitive")
     if has_count:
         reasons.append("has-selector")
     if repeated_in_file:
@@ -371,6 +395,7 @@ def analyze_module(module_info: dict[str, object]) -> tuple[dict[str, object], l
         "has_selector_count": has_count,
         "high_specificity_selector_count": high_specificity_count,
         "live_preview_sensitive_rule_count": live_preview_sensitive_count,
+        "pdf_header_footer_sensitive_rule_count": pdf_header_footer_sensitive_count,
         "repeated_selector_extra_count": repeated_in_file,
         "max_specificity": max_specificity,
         "top_properties": property_counter.most_common(12),
@@ -478,6 +503,7 @@ def checklist(payload: dict[str, object]) -> str:
             "- Finding `high` must not increase unless a release note explains the Obsidian core conflict.",
             "- CM6 hit-routing sensitive findings must be reviewed against `dev/MAP/cm6-hit-routing-contract.md`.",
             "- Top chrome/icon changes must be reviewed against `dev/MAP/top-chrome-icon-background-contract.md`.",
+            "- PDF header/footer sensitive findings must be reviewed against `dev/MAP/pdf-header-footer-contract.md`.",
             "",
             "## Current Finding Baseline",
             "",
@@ -498,7 +524,7 @@ def checklist(payload: dict[str, object]) -> str:
             "## Regenerate",
             "",
             "```powershell",
-            r".\.venv\Scripts\python.exe scripts\build_src_map.py",
+            r".\.venv\Scripts\python.exe dev\scripts\build_src_map.py",
             "```",
             "",
         ]

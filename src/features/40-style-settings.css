@@ -243,14 +243,33 @@ settings:
     default: true
   -
     id: ogd-settings-pdf-marginalia
-    title: PDF 헤더/풋터 (Glass Pill)
-    description: PDF 첫 페이지 우측 상단과 마지막 페이지 중앙 하단에 반투명 글라스 pill로 사용자 문구를 표시합니다. Reading View에서도 동일하게 보이며 PDF export 시 backdrop-filter는 단색 fallback으로 자연 degrade 됩니다.
+    title: PDF 헤더/풋터 microlabel
+    description: PDF 출력에서 첫 페이지 우측 상단과 마지막 페이지 중앙 하단에 한 줄 microlabel을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
     type: heading
     level: 2
   -
+    id: ogd-pdf-marginalia-preset
+    title: 헤더/풋터 빠른 문구
+    description: 문구 입력을 비워둘 때 사용할 기본 조합입니다. 직접 입력한 문구가 있으면 입력값이 우선됩니다.
+    type: class-select
+    default: ogd-pdf-preset-custom
+    options:
+      -
+        label: 직접 입력
+        value: ogd-pdf-preset-custom
+      -
+        label: Prepared + Confidential
+        value: ogd-pdf-preset-prepared-confidential
+      -
+        label: Draft + Internal
+        value: ogd-pdf-preset-draft-internal
+      -
+        label: Final + End
+        value: ogd-pdf-preset-final-end
+  -
     id: ogd-pdf-header-enabled
-    title: 첫 페이지 헤더 pill 표시
-    description: PDF/Reading View 첫 페이지 우측 상단에 글라스 pill로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    title: 첫 페이지 헤더 microlabel 표시
+    description: PDF 첫 페이지 우측 상단에 한 줄 microlabel로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
@@ -262,8 +281,8 @@ settings:
     quotes: true
   -
     id: ogd-pdf-footer-enabled
-    title: 마지막 페이지 풋터 pill 표시
-    description: PDF/Reading View 마지막 콘텐츠 아래 중앙에 글라스 pill로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    title: 마지막 페이지 풋터 microlabel 표시
+    description: PDF 마지막 콘텐츠 아래 중앙에 한 줄 microlabel로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
@@ -276,9 +295,51 @@ settings:
   -
     id: ogd-pdf-marginalia-accent
     title: 헤더/풋터 글자 색상
-    description: 두 pill 공통 글자 색상. 라이트 모드 기본 #279DF5, 다크 모드 기본 #38bdf8 (다크 토큰에서 자동 override).
+    description: 두 microlabel 공통 글자 색상. 라이트 모드 기본 #279DF5, 다크 모드 기본 #38bdf8 (다크 토큰에서 자동 override).
     type: variable-color
     format: hex
     default: '#279DF5'
+  -
+    id: ogd-pdf-marginalia-style
+    title: 헤더/풋터 라벨 스타일
+    description: PDF 엔진에서 안정적인 범위 안에서 라벨 표면만 바꿉니다.
+    type: class-select
+    default: ogd-pdf-label-bordered
+    options:
+      -
+        label: Minimal
+        value: ogd-pdf-label-minimal
+      -
+        label: Bordered
+        value: ogd-pdf-label-bordered
+      -
+        label: Filled
+        value: ogd-pdf-label-filled
+  -
+    id: ogd-pdf-marginalia-size
+    title: 헤더/풋터 라벨 크기
+    description: 라벨 글자와 내부 여백을 조정합니다. 레이아웃 안정성을 위해 두 단계만 제공합니다.
+    type: class-select
+    default: ogd-pdf-label-standard
+    options:
+      -
+        label: Compact
+        value: ogd-pdf-label-compact
+      -
+        label: Standard
+        value: ogd-pdf-label-standard
+  -
+    id: ogd-pdf-header-position
+    title: 첫 페이지 헤더 위치
+    description: 첫 페이지 헤더 라벨 위치를 선택합니다. 마지막 페이지 풋터는 안정성을 위해 중앙 하단으로 고정됩니다.
+    type: class-select
+    default: ogd-pdf-header-top-right
+    options:
+      -
+        label: 우측 상단
+        value: ogd-pdf-header-top-right
+      -
+        label: 중앙 상단
+        value: ogd-pdf-header-top-center
 */
 

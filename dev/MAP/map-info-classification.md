@@ -7,18 +7,18 @@ Canonical MAP location: `dev/MAP`.
 - Version: `3.1.34`
 - Source: `src/entry.css`
 - Modules: 30
-- Selectors: 2024
-- Findings: 510
-- Finding severity counts: critical=0, high=0, medium=465, low=45, info=0
-- Module severity counts: critical=0, high=16, medium=9, low=2, info=3
+- Selectors: 2032
+- Findings: 521
+- Finding severity counts: critical=0, high=0, medium=465, low=56, info=0
+- Module severity counts: critical=0, high=17, medium=8, low=4, info=1
 
 ## Module Risk Table
 
 | Severity | Score | Module | Selectors | !important | :has | Reasons |
 |---|---:|---|---:|---:|---:|---|
 | info | 0 | `src/features/40-style-settings.css` | 0 | 0 | 0 | - |
-| info | 0 | `src/tokens/00-light-tokens.css` | 6 | 0 | 0 | - |
-| info | 0 | `src/tokens/01-dark-tokens.css` | 7 | 0 | 0 | - |
+| low | 2 | `src/tokens/00-light-tokens.css` | 6 | 0 | 0 | pdf-header-footer-sensitive |
+| low | 2 | `src/tokens/01-dark-tokens.css` | 7 | 0 | 0 | pdf-header-footer-sensitive |
 | medium | 18 | `src/base/10-base-workspace.css` | 17 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive |
 | high | 63 | `src/base/12-reading-content.css` | 65 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector |
 | medium | 18 | `src/surfaces/20-reading-tables-code.css` | 45 | 0 | 0 | high-specificity |
@@ -27,7 +27,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 60 | `src/themes/50-dark.css` | 45 | 0 | 0 | high-specificity |
 | medium | 25 | `src/features/43-print-base.css` | 47 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 166 | `src/base/13-live-preview.css` | 113 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| medium | 19 | `src/features/41-feature-presets.css` | 127 | 0 | 0 | high-specificity, repeated-selector-in-file |
+| high | 37 | `src/features/41-feature-presets.css` | 135 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
 | medium | 23 | `src/chrome/30-workspace.css` | 122 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 31 | 0 | 0 | high-specificity |

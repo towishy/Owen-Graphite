@@ -3,6 +3,7 @@
 # - verifies dist/theme-v3.css matches a fresh bundle of src/ (--check)
 #   * if stale, aborts the commit so the dev can rebuild + restage
 # - runs the Live Preview hit-routing audit
+# - runs the PDF header/footer marginalia audit
 # - runs the duplicate-selector audit (informational)
 # Install with:
 #   ln -sf ../../dev/scripts/hooks/pre-commit .git/hooks/pre-commit
@@ -22,5 +23,6 @@ fi
 
 "$PY" dev/scripts/bundle_v3.py --check
 "$PY" dev/scripts/audit_v3_hit_routing.py
+"$PY" dev/scripts/audit_pdf_header_footer.py
 "$PY" dev/scripts/v3_audit_duplicate_selectors.py >/dev/null || true
 

@@ -287,14 +287,33 @@ settings:
     default: true
   -
     id: ogd-settings-pdf-marginalia
-    title: PDF 헤더/풋터 (Glass Pill)
-    description: PDF 첫 페이지 우측 상단과 마지막 페이지 중앙 하단에 반투명 글라스 pill로 사용자 문구를 표시합니다. Reading View에서도 동일하게 보이며 PDF export 시 backdrop-filter는 단색 fallback으로 자연 degrade 됩니다.
+    title: PDF 헤더/풋터 microlabel
+    description: PDF 출력에서 첫 페이지 우측 상단과 마지막 페이지 중앙 하단에 한 줄 microlabel을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
     type: heading
     level: 2
   -
+    id: ogd-pdf-marginalia-preset
+    title: 헤더/풋터 빠른 문구
+    description: 문구 입력을 비워둘 때 사용할 기본 조합입니다. 직접 입력한 문구가 있으면 입력값이 우선됩니다.
+    type: class-select
+    default: ogd-pdf-preset-custom
+    options:
+      -
+        label: 직접 입력
+        value: ogd-pdf-preset-custom
+      -
+        label: Prepared + Confidential
+        value: ogd-pdf-preset-prepared-confidential
+      -
+        label: Draft + Internal
+        value: ogd-pdf-preset-draft-internal
+      -
+        label: Final + End
+        value: ogd-pdf-preset-final-end
+  -
     id: ogd-pdf-header-enabled
-    title: 첫 페이지 헤더 pill 표시
-    description: PDF/Reading View 첫 페이지 우측 상단에 글라스 pill로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    title: 첫 페이지 헤더 microlabel 표시
+    description: PDF 첫 페이지 우측 상단에 한 줄 microlabel로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
@@ -306,8 +325,8 @@ settings:
     quotes: true
   -
     id: ogd-pdf-footer-enabled
-    title: 마지막 페이지 풋터 pill 표시
-    description: PDF/Reading View 마지막 콘텐츠 아래 중앙에 글라스 pill로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    title: 마지막 페이지 풋터 microlabel 표시
+    description: PDF 마지막 콘텐츠 아래 중앙에 한 줄 microlabel로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
@@ -320,10 +339,52 @@ settings:
   -
     id: ogd-pdf-marginalia-accent
     title: 헤더/풋터 글자 색상
-    description: 두 pill 공통 글자 색상. 라이트 모드 기본 #279DF5, 다크 모드 기본 #38bdf8 (다크 토큰에서 자동 override).
+    description: 두 microlabel 공통 글자 색상. 라이트 모드 기본 #279DF5, 다크 모드 기본 #38bdf8 (다크 토큰에서 자동 override).
     type: variable-color
     format: hex
     default: '#279DF5'
+  -
+    id: ogd-pdf-marginalia-style
+    title: 헤더/풋터 라벨 스타일
+    description: PDF 엔진에서 안정적인 범위 안에서 라벨 표면만 바꿉니다.
+    type: class-select
+    default: ogd-pdf-label-bordered
+    options:
+      -
+        label: Minimal
+        value: ogd-pdf-label-minimal
+      -
+        label: Bordered
+        value: ogd-pdf-label-bordered
+      -
+        label: Filled
+        value: ogd-pdf-label-filled
+  -
+    id: ogd-pdf-marginalia-size
+    title: 헤더/풋터 라벨 크기
+    description: 라벨 글자와 내부 여백을 조정합니다. 레이아웃 안정성을 위해 두 단계만 제공합니다.
+    type: class-select
+    default: ogd-pdf-label-standard
+    options:
+      -
+        label: Compact
+        value: ogd-pdf-label-compact
+      -
+        label: Standard
+        value: ogd-pdf-label-standard
+  -
+    id: ogd-pdf-header-position
+    title: 첫 페이지 헤더 위치
+    description: 첫 페이지 헤더 라벨 위치를 선택합니다. 마지막 페이지 풋터는 안정성을 위해 중앙 하단으로 고정됩니다.
+    type: class-select
+    default: ogd-pdf-header-top-right
+    options:
+      -
+        label: 우측 상단
+        value: ogd-pdf-header-top-right
+      -
+        label: 중앙 상단
+        value: ogd-pdf-header-top-center
 */
 
 /* <<< src/features/40-style-settings.css */
@@ -374,7 +435,7 @@ settings:
   --ogd-hover-shift: translateX(1px);
   --ogd-press-lift: translateY(0) scale(0.99);
 
-  /* PDF Marginalia — first page header / last page footer Glass Pill.
+  /* PDF Marginalia — print-only first page header / last page footer microlabels.
    * Driven by Style Settings (ogd-pdf-header / ogd-pdf-footer).
    * Anchor pseudo paint surface — see src/features/41-feature-presets.css C3. */
   --ogd-pdf-header-text: "";
@@ -383,6 +444,22 @@ settings:
   --ogd-pdf-marginalia-bg: rgba(39, 157, 245, 0.06);
   --ogd-pdf-marginalia-border: rgba(39, 157, 245, 0.22);
   --ogd-pdf-marginalia-shadow: none;
+  --ogd-pdf-header-top: 11mm;
+  --ogd-pdf-header-right: 13mm;
+  --ogd-pdf-header-left: auto;
+  --ogd-pdf-header-transform: none;
+  --ogd-pdf-header-font-size: 7.5pt;
+  --ogd-pdf-footer-font-size: 8pt;
+  --ogd-pdf-label-letter-spacing: 1.2px;
+  --ogd-pdf-label-line-height: 1.2;
+  --ogd-pdf-label-radius: 4px;
+  --ogd-pdf-header-pad-y: 4px;
+  --ogd-pdf-header-pad-x: 10px;
+  --ogd-pdf-footer-pad-y: 5px;
+  --ogd-pdf-footer-pad-x: 14px;
+  --ogd-pdf-footer-reserve: 28mm;
+  --ogd-pdf-footer-offset: -22mm;
+  --ogd-pdf-footer-max-width: 90%;
 }
 
 .theme-light,
@@ -664,7 +741,7 @@ body:not(.is-mobile).theme-dark {
   --ogd-topbar-icon-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.54), rgba(15, 23, 42, 0.38));
   --ogd-topbar-icon-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 20px rgba(0, 0, 0, 0.26);
 
-  /* PDF Marginalia (Glass Pill) — dark mode overrides. See src/features/41 C3. */
+  /* PDF Marginalia — dark mode microlabel overrides. See src/features/41 C3. */
   --ogd-pdf-marginalia-accent: #38bdf8;
   --ogd-pdf-marginalia-bg: rgba(56, 189, 248, 0.10);
   --ogd-pdf-marginalia-border: rgba(56, 189, 248, 0.32);
@@ -3660,7 +3737,7 @@ kbd {
 /* ============================================================================
    C3. PDF Marginalia — Uppercase Microlabel (v3.1.32, Option D)
    ============================================================================
-   목적: PDF/Reading View 첫 페이지 우측 상단 + 마지막 페이지 중앙 하단에
+  목적: PDF 첫 페이지 우측 상단 + 마지막 페이지 중앙 하단에
    사용자 문구를 작은 uppercase microlabel(자간 강조)로 표시.
 
    v3.1.31 → v3.1.32 변경: 평이한 글라스 pill(흰색 톤 + blur)에서 액센트-틴트
@@ -3682,13 +3759,17 @@ kbd {
    !important 0개 (v3 cascade S11.5 계약 준수).
    v3.1.28 [R1]·[R2]·[R5]·[R7] 핵심 안전망만 유지.
 
-   Style Settings 슬롯 (총 5개)
+   Style Settings 슬롯 (총 9개)
    ────────────────────────────
+     ogd-pdf-marginalia-preset  (class-select, quick text defaults)
      ogd-pdf-header-enabled     (class-toggle on body)
      --ogd-pdf-header-text      (variable-text, single line)
      ogd-pdf-footer-enabled     (class-toggle on body)
      --ogd-pdf-footer-text      (variable-text, single line)
-     --ogd-pdf-marginalia-accent(variable-color, 두 pill 공통 글자색)
+     --ogd-pdf-marginalia-accent(variable-color, 두 라벨 공통 글자색)
+     ogd-pdf-marginalia-style   (class-select: minimal/bordered/filled)
+     ogd-pdf-marginalia-size    (class-select: compact/standard)
+     ogd-pdf-header-position    (class-select: top-right/top-center)
 
    Anchor / Layer 매핑
    ───────────────────
@@ -3709,7 +3790,7 @@ kbd {
    - background: rgba(accent, 0.06) (light) / rgba(accent, 0.10) (dark)
    - border: 1px solid rgba(accent, 0.22) (light) / 0.32 (dark)
    - border-radius: 4px, box-shadow: none, backdrop-filter 없음
-   - 인쇄/화면 동일 톤 — Chromium printToPDF 무시 항목(backdrop-filter)을
+   - 인쇄 전용 톤 — Chromium printToPDF 무시 항목(backdrop-filter)을
      아예 사용하지 않아 graceful degradation이 필요 없음.
 
    구조 규칙 (v3.1.28 carry-over)
@@ -3732,6 +3813,54 @@ kbd {
    - 4개 이상의 anchor pseudo 사용 금지 (header 1 + footer 1만)
    ============================================================================ */
 
+body.ogd-pdf-preset-prepared-confidential {
+  --ogd-pdf-header-text: "Prepared Document";
+  --ogd-pdf-footer-text: "Confidential - End of Document";
+}
+
+body.ogd-pdf-preset-draft-internal {
+  --ogd-pdf-header-text: "Draft";
+  --ogd-pdf-footer-text: "Internal Use Only";
+}
+
+body.ogd-pdf-preset-final-end {
+  --ogd-pdf-header-text: "Final";
+  --ogd-pdf-footer-text: "End of Document";
+}
+
+body.ogd-pdf-label-minimal {
+  --ogd-pdf-marginalia-bg: transparent;
+  --ogd-pdf-marginalia-border: transparent;
+}
+
+body.ogd-pdf-label-filled {
+  --ogd-pdf-marginalia-bg: rgba(39, 157, 245, 0.12);
+  --ogd-pdf-marginalia-border: rgba(39, 157, 245, 0.28);
+}
+
+body.theme-dark.ogd-pdf-label-filled {
+  --ogd-pdf-marginalia-bg: rgba(56, 189, 248, 0.16);
+  --ogd-pdf-marginalia-border: rgba(56, 189, 248, 0.38);
+}
+
+body.ogd-pdf-label-compact {
+  --ogd-pdf-header-font-size: 6.8pt;
+  --ogd-pdf-footer-font-size: 7.2pt;
+  --ogd-pdf-label-letter-spacing: 1px;
+  --ogd-pdf-header-pad-y: 3px;
+  --ogd-pdf-header-pad-x: 8px;
+  --ogd-pdf-footer-pad-y: 4px;
+  --ogd-pdf-footer-pad-x: 10px;
+  --ogd-pdf-footer-reserve: 24mm;
+  --ogd-pdf-footer-offset: -19mm;
+}
+
+body.ogd-pdf-header-top-center {
+  --ogd-pdf-header-left: 50%;
+  --ogd-pdf-header-right: auto;
+  --ogd-pdf-header-transform: translateX(-50%);
+}
+
 /* v3.1.33 hotfix: 전체 블록을 @media print 안으로 격리.
    v3.1.32에서는 화면 전역 규칙으로 작성되어 Live Preview/Reading View에도
    anchor pseudo가 그려져 사용자 문구가 노출되는 회귀가 있었음.
@@ -3746,28 +3875,30 @@ kbd {
     position: relative;
   }
 
-  /* HEADER — 첫 페이지 우측 상단 microlabel pill (v3.1.32 Option D: Uppercase Microlabel) */
+  /* HEADER — 첫 페이지 microlabel (v3.1.32 Option D: Uppercase Microlabel) */
   body.ogd-pdf-header-enabled .markdown-rendered::before {
     content: var(--ogd-pdf-header-text, "");
     position: absolute;
-    top: 11mm;
-    right: 13mm;
+    top: var(--ogd-pdf-header-top, 11mm);
+    right: var(--ogd-pdf-header-right, 13mm);
+    left: var(--ogd-pdf-header-left, auto);
+    transform: var(--ogd-pdf-header-transform, none);
     z-index: 9999;
     pointer-events: none;
     display: inline-block;
     max-width: calc(100% - 26mm);
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: var(--ogd-pdf-header-pad-y, 4px) var(--ogd-pdf-header-pad-x, 10px);
+    border-radius: var(--ogd-pdf-label-radius, 4px);
     background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
     font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
-    font-size: 7.5pt;
+    font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 700;
     font-style: normal;
-    letter-spacing: 1.2px;
+    letter-spacing: var(--ogd-pdf-label-letter-spacing, 1.2px);
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: var(--ogd-pdf-label-line-height, 1.2);
     color: var(--ogd-pdf-marginalia-accent, #279DF5);
     -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
     white-space: nowrap;
@@ -3777,33 +3908,33 @@ kbd {
     print-color-adjust: exact;
   }
 
-  /* FOOTER — 마지막 페이지 중앙 하단 microlabel pill */
+  /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
     position: relative;
-    margin-bottom: 28mm;
+    margin-bottom: var(--ogd-pdf-footer-reserve, 28mm);
   }
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
     left: 50%;
-    bottom: -22mm;
+    bottom: var(--ogd-pdf-footer-offset, -22mm);
     transform: translateX(-50%);
     z-index: 9999;
     pointer-events: none;
     display: inline-block;
-    max-width: 90%;
-    padding: 5px 14px;
-    border-radius: 4px;
+    max-width: var(--ogd-pdf-footer-max-width, 90%);
+    padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 14px);
+    border-radius: var(--ogd-pdf-label-radius, 4px);
     background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
     font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
-    font-size: 8pt;
+    font-size: var(--ogd-pdf-footer-font-size, 8pt);
     font-weight: 700;
     font-style: normal;
-    letter-spacing: 1.2px;
+    letter-spacing: var(--ogd-pdf-label-letter-spacing, 1.2px);
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: var(--ogd-pdf-label-line-height, 1.2);
     color: var(--ogd-pdf-marginalia-accent, #279DF5);
     -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
     white-space: nowrap;

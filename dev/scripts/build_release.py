@@ -60,6 +60,19 @@ def build_src_map() -> None:
     module.main()
 
 
+def audit_pdf_header_footer() -> None:
+    script = ROOT / "dev" / "scripts" / "audit_pdf_header_footer.py"
+    spec = importlib.util.spec_from_file_location("audit_pdf_header_footer", script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("unable to load dev/scripts/audit_pdf_header_footer.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    result = module.main()
+    if result:
+        raise RuntimeError("PDF header/footer audit failed")
+
+
 def promote_to_theme_css(bundle: Path) -> None:
     target = ROOT / "theme.css"
     if not bundle.is_file():
@@ -73,6 +86,7 @@ def build(output_dir: Path, skip_bundle: bool = False) -> Path:
         bundle = bundle_v3()
         promote_to_theme_css(bundle)
     build_src_map()
+    audit_pdf_header_footer()
     release_version = version()
     output_dir.mkdir(parents=True, exist_ok=True)
     zip_path = output_dir / f"Owen-Graphite-{release_version}.zip"

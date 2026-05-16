@@ -116,7 +116,7 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `print-default-light` | 기본 PDF 출력 | `@media print` |
 | `print-report-mode` | report-mode PDF | `ogd-report-mode=on`, print |
 | `print-compact` | compact PDF | `ogd-pdf-compact=on`, print |
-| `print-last-page-footer` | 마지막 페이지 footer | `ogd-last-page-footer=on`, print |
+| `print-last-page-footer` | 마지막 페이지 footer | `ogd-pdf-footer-enabled=on`, print |
 
 ## 총 시나리오 수
 

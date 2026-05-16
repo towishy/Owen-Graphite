@@ -1,13 +1,12 @@
 ﻿# v3 Style Settings Contract (extracted from v2.30.14)
 
-이 문서는 `dev/scripts/extract_style_settings.py`가 자동 생성합니다.
-v3-rewrite는 아래 모든 기능 옵션의 `id`/`type`/`default`/`title`을 그대로 유지해야 합니다.
-사용자 vault에 저장된 기존 설정이 v3.0 설치 후에도 동일하게 적용됩니다.
+이 문서는 v3 Style Settings 계약입니다.
+아래 기능 옵션의 `id`/`type`/`default`/`title`은 사용자 vault 설정 호환성에 직접 영향을 줍니다.
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **76**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **37**
+- 전체 엔트리(heading 포함): **35**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **30**
 
 ## 기능 옵션 목록
 
@@ -34,22 +33,15 @@ v3-rewrite는 아래 모든 기능 옵션의 `id`/`type`/`default`/`title`을 �
 | `ogd-glass-intensity` | `class-select` | `ogd-glass-standard` | 데스크톱 Glass 강도 |
 | `ogd-motion-intensity` | `class-select` | `ogd-motion-standard` | 데스크톱 Hover 움직임 |
 | `ogd-cjk-boost` | `class-toggle` | `true` | 한글/CJK 폰트 +0.5px 자동 보정 |
-| `ogd-first-page-header-enabled` | `class-toggle` | `true` | PDF 첫 페이지 Header 표시 |
-| `ogd-first-page-header` | `variable-text` | `` | PDF 첫 페이지 우측 상단 문구 (본문) |
-| `ogd-first-page-header-color` | `variable-color` | `#111827` | 첫 페이지 우측 본문 사이드바 색상 |
-| `ogd-fp-right-label` | `variable-text` | `` | 첫 페이지 우측 상단 라벨 (소문자) |
-| `ogd-first-page-header-left` | `variable-text` | `` | PDF 첫 페이지 좌측 상단 문구 (본문) |
-| `ogd-first-page-header-left-color` | `variable-color` | `#0ea5e9` | 첫 페이지 좌측 본문 사이드바 색상 |
-| `ogd-fp-left-label` | `variable-text` | `` | 첫 페이지 좌측 상단 라벨 (소문자) |
-| `ogd-fp-label-color` | `variable-color` | `#6b7280` | 첫 페이지 좌·우 라벨 공통 색상 |
-| `ogd-last-page-footer` | `class-toggle` | `false` | PDF 마지막 페이지 Footer 표시 |
-| `ogd-last-page-footer-label` | `variable-text` | `` | PDF 마지막 페이지 Footer 라벨 |
-| `ogd-last-page-footer-title` | `variable-text` | `` | PDF 마지막 페이지 Footer 제목 |
-| `ogd-last-page-footer-body` | `variable-text` | `` | PDF 마지막 페이지 Footer 본문 |
-| `ogd-last-page-footer-color` | `variable-color` | `#0ea5e9` | PDF 마지막 페이지 Footer 세로바 색상 |
-| `ogd-last-page-footer-label-color` | `variable-color` | `#64748b` | PDF 마지막 페이지 Footer 라벨 색상 |
-| `ogd-last-page-footer-title-color` | `variable-color` | `#0f172a` | PDF 마지막 페이지 Footer 제목 색상 |
-| `ogd-last-page-footer-text-color` | `variable-color` | `#334155` | PDF 마지막 페이지 Footer 본문 색상 |
+| `ogd-pdf-marginalia-preset` | `class-select` | `ogd-pdf-preset-custom` | 헤더/풋터 빠른 문구 |
+| `ogd-pdf-header-enabled` | `class-toggle` | `false` | 첫 페이지 헤더 microlabel 표시 |
+| `ogd-pdf-header-text` | `variable-text` | `` | 첫 페이지 헤더 문구 |
+| `ogd-pdf-footer-enabled` | `class-toggle` | `false` | 마지막 페이지 풋터 microlabel 표시 |
+| `ogd-pdf-footer-text` | `variable-text` | `` | 마지막 페이지 풋터 문구 |
+| `ogd-pdf-marginalia-accent` | `variable-color` | `#279DF5` | 헤더/풋터 글자 색상 |
+| `ogd-pdf-marginalia-style` | `class-select` | `ogd-pdf-label-bordered` | 헤더/풋터 라벨 스타일 |
+| `ogd-pdf-marginalia-size` | `class-select` | `ogd-pdf-label-standard` | 헤더/풋터 라벨 크기 |
+| `ogd-pdf-header-position` | `class-select` | `ogd-pdf-header-top-right` | 첫 페이지 헤더 위치 |
 
 ## 비기능 엔트리 (heading / info)
 
@@ -92,5 +84,4 @@ v3-rewrite는 아래 모든 기능 옵션의 `id`/`type`/`default`/`title`을 �
 | `—` | `—` | — |
 | `—` | `—` | — |
 | `—` | `—` | — |
-| `ogd-settings-first-page` | `heading` | PDF 첫 페이지 헤더 |
-| `ogd-settings-last-page-footer` | `heading` | PDF 마지막 페이지 Footer |
+| `ogd-settings-pdf-marginalia` | `heading` | PDF 헤더/풋터 microlabel |
