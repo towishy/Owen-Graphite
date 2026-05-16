@@ -3678,24 +3678,80 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   top: -3px;
 }
 
-/* C3+C4. Print header/footer + chapter counters
-   v3.1.27 — TRUE byte-for-byte copy of the v2.30.8 working baseline.
-   v3.1.26 attempted the same restoration but dropped two things that turn
-   out to be load-bearing:
-     (1) the abs containing-block rule
-         `body, .print, .markdown-preview-view, .markdown-preview-sizer,
-          .markdown-preview-section, .markdown-rendered { position: relative }`
-         Without it, position:absolute pseudos resolve against the viewport
-         or some unrelated ancestor and the footer ::after is silently
-         culled in Chromium PDF.
-     (2) the shared abs block for `:last-child::before, :last-child::after`
-         (left:0; width:100%; display:block; pointer-events:none; etc.).
-         v3.1.26 inlined the abs properties into the LABEL and BODY rules
-         separately and lost the geometry that makes ::after::marker print.
-   v3.1.27 restores the v2.30.8 print block verbatim. No font-size /
-   color tweaks — those were drift introduced during v3.0 and are not
-   needed for the layout to work. */
+/* ============================================================================
+   C3. PDF Header & Footer (v3.1.28 — clean layered rewrite from scratch)
+   ============================================================================
+   목적: PDF 첫 페이지 헤더(4 슬롯) + 마지막 페이지 풋터(3 슬롯) 표시.
+
+   설계 원칙
+   ─────────
+   "1 정보 = 1 abs pseudo layer." 각 layer는 단일 색·굵기·크기·위치를
+   가지며 anchor element와 z-index만 다름. v3.0~v3.1.27의 회귀 원인
+   (컨테이너 누락, shared rule 분해, list-style outside, ::marker cull
+    등)을 전부 회피하기 위해 list-item / ::marker / @page conditional
+   같은 fragile 트릭은 일절 사용하지 않음.
+
+   Style Settings 슬롯 (v3 contract, 사용자 vault 호환)
+   ────────────────────────────────────────────────────
+   헤더 토글 : body.ogd-first-page-header-enabled
+   헤더 텍스트:
+     --ogd-fp-right-label              (우측 small caps 라벨)
+     --ogd-fp-left-label               (좌측 small caps 라벨)
+     --ogd-first-page-header           (우측 본문 값)
+     --ogd-first-page-header-left      (좌측 본문 값)
+   헤더 색상  :
+     --ogd-fp-label-color              (좌·우 라벨 공통)
+     --ogd-first-page-header-color     (우측 값 + 우측 바)
+     --ogd-first-page-header-left-color(좌측 값 + 좌측 바)
+
+   풋터 토글 : body.ogd-last-page-footer
+   풋터 텍스트:
+     --ogd-last-page-footer-label      (상단 라벨)
+     --ogd-last-page-footer-title      (제목)
+     --ogd-last-page-footer-body       (본문)
+   풋터 색상  :
+     --ogd-last-page-footer-color      (좌측 세로 바)
+     --ogd-last-page-footer-label-color(라벨)
+     --ogd-last-page-footer-title-color(제목)
+     --ogd-last-page-footer-text-color (본문)
+
+   Anchor / Layer 매핑
+   ───────────────────
+   ┌───────────────────────────────────────────────────────────────────┐
+   │ HEADER (첫 페이지, body 기준 abs)                                 │
+   │   H-L1  body::before               → 우측 라벨                    │
+   │   H-L2  body::after                → 좌측 라벨                    │
+   │   H-L3  .markdown-rendered::before → 우측 본문값 + 우측 세로 바   │
+   │   H-L4  .markdown-rendered::after  → 좌측 본문값 + 좌측 세로 바   │
+   ├───────────────────────────────────────────────────────────────────┤
+   │ FOOTER (마지막 페이지, :last-child 기준 abs)                      │
+   │   F-L1  :last-child::before        → LABEL                        │
+   │   F-L2  :last-child::after         → TITLE "\A\A" BODY 한 layer   │
+   │           ::first-line             → TITLE 색 sub-zone            │
+   └───────────────────────────────────────────────────────────────────┘
+
+   구조 규칙 (회귀 방지)
+   ─────────────────────
+   [R1] body / .markdown-* / .markdown-rendered { position: relative }
+        → 헤더·풋터 abs pseudo의 containing-block 안전 확보.
+          v3.0~v3.1.26 사고의 핵심 원인.
+   [R2] :last-child { position: relative; margin-bottom: 54mm }
+        → 풋터 영역 reserve + 풋터 abs containing-block.
+   [R3] 풋터 ::before / ::after는 반드시 SHARED selector group으로
+        공통 abs(position, left, width, display, box-sizing, font-family,
+        font-style, font-synthesis, pointer-events, print-color-adjust)
+        선언. 분해해서 개별 규칙에 inline하면 ::after geometry가 깨져
+        Chromium PDF가 cull. (v3.1.26 사고 원인 #2)
+   [R4] list-item / ::marker / list-style-position outside 트릭 금지.
+        Chromium PDF가 abs container 안에서 marker를 cull. (v3.1.26 #3)
+        TITLE/BODY 색 분리는 ::first-line으로만 수행.
+   [R5] 모든 print pseudo: z-index 9999, pointer-events none,
+        print-color-adjust exact, white-space pre-wrap (multiline 안전).
+   [R6] 헤더 anchor는 .markdown-rendered 단 하나만 사용. sizer / view /
+        section pseudo는 일부러 비워두어 풋터/플러그인 충돌 방지.
+   ============================================================================ */
 @media print {
+  /* @page margin boxes — 모든 페이지 상단 중앙 / 하단 우측 */
   body { counter-reset: ogd-page; }
   .markdown-rendered h1 { counter-reset: ogd-page-in-chapter; }
   @page {
@@ -3710,24 +3766,37 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       color: #6b7280;
     }
   }
-  /* First page only — Design ③ Side Bar + Two-line.
-     LABELS render via body::before/::after (top, small caps).
-     VALUES render via .markdown-preview-sizer/.markdown-preview-view/.markdown-rendered
-     ::before/::after (below labels, larger, with vertical accent bar).
-     Position:absolute renders only on first page in Chromium pagination.
-     Both label and value default to empty — show only when user fills them.
-     CRITICAL: the relative-positioning rule below is what makes every
-     absolute pseudo below resolve against the correct ancestor. */
-  body, .print, .markdown-preview-view, .markdown-preview-sizer,
-  .markdown-preview-section, .markdown-rendered {
+
+  /* [R1] abs containing-block 확보 — print pseudo가 viewport로 떠
+     Chromium PDF에서 cull되는 사고를 막는 단일 안전망. */
+  body,
+  .print,
+  .markdown-preview-view,
+  .markdown-preview-sizer,
+  .markdown-preview-section,
+  .markdown-rendered {
     position: relative;
   }
 
-  /* ---------- LABELS (top row, small caps, accent color) ---------- */
+  /* 첫 H1을 문서 제목으로 string-set → @top-center 사용 */
+  .markdown-rendered h1:first-of-type {
+    margin-top: 6mm;
+    margin-bottom: 10mm;
+    padding-bottom: 4mm;
+    string-set: ogd-doc-title content();
+  }
+
+  /* ==========================================================================
+     HEADER — 첫 페이지, 4 layer
+     ========================================================================== */
+
+  /* H-L1, H-L2 : 좌·우 라벨 (body::before/::after, small caps) */
   body.ogd-first-page-header-enabled::before,
   body.ogd-first-page-header-enabled::after {
     position: absolute !important;
-    top: 2px !important;
+    top: 13mm !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
@@ -3738,31 +3807,31 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     font-synthesis: weight style !important;
     text-transform: uppercase !important;
     letter-spacing: 1.8px !important;
+    line-height: 1 !important;
     color: var(--ogd-fp-label-color, #6b7280) !important;
+    -webkit-text-fill-color: var(--ogd-fp-label-color, #6b7280) !important;
+    background: transparent !important;
     white-space: nowrap !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
   body.ogd-first-page-header-enabled::before {
     content: var(--ogd-fp-right-label, "") !important;
-    right: 13px !important;
+    right: 13mm !important;
   }
   body.ogd-first-page-header-enabled::after {
     content: var(--ogd-fp-left-label, "") !important;
-    left: 13px !important;
+    left: 13mm !important;
   }
 
-  /* ---------- VALUES (below labels, larger, accent bar) ---------- */
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
-  body.ogd-first-page-header-enabled .markdown-preview-view::before,
-  body.ogd-first-page-header-enabled .markdown-preview-section::before,
+  /* H-L3, H-L4 : 좌·우 본문값 + 세로 사이드 바
+     anchor는 .markdown-rendered 단 하나 [R6]. */
   body.ogd-first-page-header-enabled .markdown-rendered::before,
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::after,
-  body.ogd-first-page-header-enabled .markdown-preview-view::after,
-  body.ogd-first-page-header-enabled .markdown-preview-section::after,
   body.ogd-first-page-header-enabled .markdown-rendered::after {
     position: absolute !important;
     top: 0 !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
@@ -3774,38 +3843,35 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     text-transform: none !important;
     letter-spacing: 0 !important;
     line-height: 1.1 !important;
-    color: var(--ogd-text-strong, #111827) !important;
     white-space: nowrap !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
+    background: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  /* RIGHT header value */
   body.ogd-first-page-header-enabled .markdown-rendered::before {
     content: var(--ogd-first-page-header, "") !important;
     right: 0 !important;
     padding: 16px 10px 0 0 !important;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827) !important;
+    color: var(--ogd-first-page-header-color, #111827) !important;
+    -webkit-text-fill-color: var(--ogd-first-page-header-color, #111827) !important;
+    text-align: right !important;
   }
-  /* LEFT header value */
   body.ogd-first-page-header-enabled .markdown-rendered::after {
     content: var(--ogd-first-page-header-left, "") !important;
     left: 0 !important;
     padding: 16px 0 0 10px !important;
     border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9) !important;
+    color: var(--ogd-first-page-header-left-color, #0ea5e9) !important;
+    -webkit-text-fill-color: var(--ogd-first-page-header-left-color, #0ea5e9) !important;
+    text-align: left !important;
   }
 
-  .markdown-rendered h1:first-of-type {
-    margin-top: 6mm;
-    margin-bottom: 10mm;
-    padding-bottom: 4mm;
-    string-set: ogd-doc-title content();
-  }
+  /* ==========================================================================
+     FOOTER — 마지막 페이지, 2 layer + 1 sub-zone
+     ========================================================================== */
 
-  /* ---------- FOOTER ---------- :last-child is the relative containing
-     block for the abs LABEL (::before) and TITLE+BODY (::after).
-     The shared abs block below sets the geometry that makes the marker
-     and content render in Chromium PDF — do NOT inline these into the
-     specific rules below (v3.1.26 did and the ::after was culled). */
+  /* [R2] :last-child를 풋터 abs containing-block + 영역 reserve */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -3815,6 +3881,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     margin-bottom: 54mm !important;
   }
 
+  /* [R3] 풋터 ::before / ::after — SHARED abs group (분해 금지!) */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -3827,22 +3894,24 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   ) > :last-child::after {
     position: absolute !important;
     left: 0 !important;
-    box-sizing: border-box !important;
     width: 100% !important;
     display: block !important;
+    box-sizing: border-box !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif !important;
-    color: var(--ogd-last-page-footer-text-color, #334155) !important;
     font-style: normal !important;
     font-synthesis: weight style !important;
-    pointer-events: none !important;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
+    background: transparent !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* FOOTER LABEL (uppercase small caps, left accent bar) */
+  /* F-L1 : LABEL — 상단 small caps 박스 */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -3850,59 +3919,57 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   ) > :last-child::before {
     content: var(--ogd-last-page-footer-label, "") !important;
     top: calc(100% + 11mm) !important;
-    min-height: 0 !important;
     height: 10.5mm !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
     padding: 0 0 0 7mm !important;
-    border-top: 0 !important;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
-    box-shadow: none !important;
     color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    font-size: 8.8pt !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
+    font-size: 9pt !important;
     font-weight: 700 !important;
-    letter-spacing: 0 !important;
-    line-height: 1.42 !important;
-    text-transform: none !important;
+    letter-spacing: 1.5px !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
     white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
   }
 
-  /* FOOTER BODY + TITLE (TITLE via ::marker for color/weight split).
-     NO `top:` override — inherits abs from the shared block above, which
-     in v2.30.8 caused the BODY/TITLE to stack right below the LABEL
-     because the marker `\A\A` line-breaks push it down naturally. */
+  /* F-L2 : TITLE + BODY 한 layer.
+     content는 TITLE "\A\A" BODY로 한 pseudo에 묶고 ::first-line으로
+     TITLE 색만 분리. [R4]에 따라 list-item / ::marker 사용 금지. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::after {
-    display: list-item !important;
-    list-style-position: inside !important;
-    list-style-type: "" !important;
-    content: var(--ogd-last-page-footer-body, "") !important;
-    top: calc(100% + 21.5mm) !important;
-    padding-left: 7mm !important;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
+    content: var(--ogd-last-page-footer-title, "")
+             "\A\A"
+             var(--ogd-last-page-footer-body, "") !important;
+    top: calc(100% + 23mm) !important;
+    padding: 0 0 0 7mm !important;
     color: var(--ogd-last-page-footer-text-color, #334155) !important;
     -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
     font-size: 9.5pt !important;
     font-weight: 500 !important;
+    letter-spacing: 0 !important;
     line-height: 1.5 !important;
+    text-transform: none !important;
     white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
   }
+
+  /* TITLE 색 sub-zone (F-L2 첫 줄에만 적용).
+     ::first-line은 Chromium에서 color / -webkit-text-fill-color /
+     font-weight를 안정적으로 지원. font-size 변경은 PDF에서 불안정해
+     사용하지 않음. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
-  ) > :last-child::after::marker {
-    content: var(--ogd-last-page-footer-title, "") "\A\A" !important;
+  ) > :last-child::after::first-line {
     color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
     -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
     font-weight: 700 !important;
-    white-space: pre-wrap !important;
   }
 }
 
