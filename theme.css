@@ -2755,7 +2755,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
        .cm-active.cm-line (active line)
      - overflow-x:auto + max-width:100% pair on .cm-embed-block
      - pointer-events:none on .cm-content / .cm-line
-   See: dev/MAP/cm6-hit-routing-contract.md
+  See: dev/MAP/cm6-hit-routing-contract.md
    ===================================================================== */
 
 /* (1) CM6 header line-height per level — override generic .cm-line 1.45
@@ -6166,7 +6166,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
      - .cm-embed-block { overflow-x: auto + max-width: 100% } pair (v2.22.106)
      - non-zero vertical margin on .cm-callout / .cm-table-widget
      - pointer-events:none on .cm-content / .cm-line
-   See: dev/MAP/cm6-hit-routing-contract.md
+  See: dev/MAP/cm6-hit-routing-contract.md
    ============================================================ */
 
 /* Live Preview parity: chips, embeds, and editing widgets.
@@ -12612,7 +12612,7 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
      - .cm-active.cm-line { outline | box-shadow with offset | transform | vertical padding }
      - .cm-callout / .cm-table-widget direct vertical margin
      - .HyperMD-* .cm-line direct vertical margin/padding
-   See: dev/MAP/cm6-hit-routing-contract.md
+  See: dev/MAP/cm6-hit-routing-contract.md
    ============================================================ */
 
 @media (min-width: 701px) {
@@ -14369,7 +14369,7 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
    Prevent global CM6 min-height rules from expanding table-cell editors.
 
    FORBIDDEN in this module (CM6 hit-routing contract — see
-   dev/MAP/cm6-hit-routing-contract.md). New hotfix blocks must be
+  dev/MAP/cm6-hit-routing-contract.md). New hotfix blocks must be
    appended at EOF and must NOT introduce:
      - non-zero vertical margin on CM6 block widgets
      - non-zero vertical margin/padding on HyperMD-* .cm-line variants

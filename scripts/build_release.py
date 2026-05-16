@@ -23,6 +23,10 @@ DEFAULT_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
+    "dev/MAP/map-info-classification.md",
+    "dev/MAP/theme-css-risk-map.html",
+    "dev/MAP/theme-css-risk-map.json",
+    "dev/MAP/selector-provenance.json",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
@@ -45,6 +49,17 @@ def bundle_v3() -> Path:
     return ROOT / "dist" / "theme-v3.css"
 
 
+def build_src_map() -> None:
+    script = ROOT / "scripts" / "build_src_map.py"
+    spec = importlib.util.spec_from_file_location("build_src_map", script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("unable to load scripts/build_src_map.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    module.main()
+
+
 def promote_to_theme_css(bundle: Path) -> None:
     target = ROOT / "theme.css"
     if not bundle.is_file():
@@ -57,6 +72,7 @@ def build(output_dir: Path, skip_bundle: bool = False) -> Path:
     if not skip_bundle:
         bundle = bundle_v3()
         promote_to_theme_css(bundle)
+    build_src_map()
     release_version = version()
     output_dir.mkdir(parents=True, exist_ok=True)
     zip_path = output_dir / f"Owen-Graphite-{release_version}.zip"

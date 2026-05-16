@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Source MAP Risk Map</title>
+  <style>
+    body { margin:0; background:#f8fafc; color:#111827; font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:1180px; margin:0 auto; padding:28px 20px 48px; }
+    h1 { margin:0 0 8px; font-size:28px; letter-spacing:0; }
+    p { margin:0 0 18px; color:#64748b; }
+    .summary { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:18px 0; }
+    .metric, table { background:rgba(255,255,255,.9); border:1px solid #dbe3ef; border-radius:8px; box-shadow:0 8px 24px rgba(15,23,42,.06); }
+    .metric { padding:12px; } .metric b { display:block; font-size:24px; } .metric span { color:#64748b; font-size:12px; font-weight:700; text-transform:uppercase; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; }
+    th, td { text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid #edf2f7; } th { background:#eef2f7; color:#334155; font-size:12px; } tr:last-child td { border-bottom:0; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.92em; }
+    .badge { display:inline-block; min-width:64px; text-align:center; border-radius:999px; padding:2px 8px; color:white; font-weight:700; font-size:12px; }
+    .critical { background:#b91c1c; } .high { background:#c2410c; } .medium { background:#a16207; } .low { background:#2563eb; } .info { background:#475569; }
+    @media (max-width: 760px) { .summary { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Owen Graphite Source MAP Risk Map</h1>
+    <p>Canonical MAP root: <code>dev/MAP</code>. Source: <code>src/entry.css</code>. Version: <code>3.1.34</code>.</p>
+  <section class="summary">
+    <div class="metric"><b>30</b><span>modules</span></div>
+    <div class="metric"><b>2024</b><span>selectors</span></div>
+    <div class="metric"><b>509</b><span>findings</span></div>
+    <div class="metric"><b>0</b><span>critical findings</span></div>
+    <div class="metric"><b>0</b><span>high findings</span></div>
+  </section>
+  <table>
+    <thead><tr><th>Severity</th><th>Score</th><th>Module</th><th>Selectors</th><th>Reasons</th></tr></thead>
+    <tbody><tr><td><span class='badge info'>info</span></td><td>0</td><td><code>src/features/40-style-settings.css</code></td><td>0</td><td>-</td></tr><tr><td><span class='badge info'>info</span></td><td>0</td><td><code>src/tokens/00-light-tokens.css</code></td><td>6</td><td>-</td></tr><tr><td><span class='badge info'>info</span></td><td>0</td><td><code>src/tokens/01-dark-tokens.css</code></td><td>7</td><td>-</td></tr><tr><td><span class='badge medium'>medium</span></td><td>18</td><td><code>src/base/10-base-workspace.css</code></td><td>17</td><td>high-specificity, cm6-hit-routing-sensitive</td></tr><tr><td><span class='badge high'>high</span></td><td>63</td><td><code>src/base/12-reading-content.css</code></td><td>65</td><td>high-specificity, cm6-hit-routing-sensitive, has-selector</td></tr><tr><td><span class='badge medium'>medium</span></td><td>18</td><td><code>src/surfaces/20-reading-tables-code.css</code></td><td>45</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>30</td><td><code>src/surfaces/21-reading-callouts-lists.css</code></td><td>38</td><td>high-specificity</td></tr><tr><td><span class='badge medium'>medium</span></td><td>15</td><td><code>src/surfaces/22-reading-embeds-workspace.css</code></td><td>30</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>60</td><td><code>src/themes/50-dark.css</code></td><td>45</td><td>high-specificity</td></tr><tr><td><span class='badge medium'>medium</span></td><td>25</td><td><code>src/features/43-print-base.css</code></td><td>47</td><td>high-specificity, repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>163</td><td><code>src/base/13-live-preview.css</code></td><td>113</td><td>high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file</td></tr><tr><td><span class='badge medium'>medium</span></td><td>19</td><td><code>src/features/41-feature-presets.css</code></td><td>127</td><td>high-specificity, repeated-selector-in-file</td></tr><tr><td><span class='badge medium'>medium</span></td><td>23</td><td><code>src/chrome/30-workspace.css</code></td><td>122</td><td>high-specificity, repeated-selector-in-file</td></tr><tr><td><span class='badge medium'>medium</span></td><td>18</td><td><code>src/chrome/31-navigation-tasks-search.css</code></td><td>40</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>66</td><td><code>src/chrome/32-overlay-popover-dataview.css</code></td><td>31</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>39</td><td><code>src/chrome/33-settings-controls.css</code></td><td>52</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>54</td><td><code>src/plugins/60-canvas-graph-link-panes.css</code></td><td>64</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>98</td><td><code>src/plugins/61-live-preview-mobile-plugin.css</code></td><td>56</td><td>high-specificity, cm6-hit-routing-sensitive, has-selector</td></tr><tr><td><span class='badge high'>high</span></td><td>67</td><td><code>src/features/42-report-print-polish.css</code></td><td>170</td><td>high-specificity, has-selector, repeated-selector-in-file</td></tr><tr><td><span class='badge medium'>medium</span></td><td>18</td><td><code>src/chrome/34-nav-ribbon-glass.css</code></td><td>21</td><td>high-specificity</td></tr><tr><td><span class='badge high'>high</span></td><td>43</td><td><code>src/chrome/35-editing-menu-tooltip-glass.css</code></td><td>78</td><td>high-specificity, repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>36</td><td><code>src/chrome/36-floating-ui-glass-system.css</code></td><td>74</td><td>high-specificity, repeated-selector-in-file</td></tr><tr><td><span class='badge medium'>medium</span></td><td>24</td><td><code>src/chrome/37-tabs-file-explorer-search.css</code></td><td>66</td><td>high-specificity</td></tr><tr><td><span class='badge low'>low</span></td><td>3</td><td><code>src/themes/51-accessibility-motion-contrast.css</code></td><td>12</td><td>repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>165</td><td><code>src/polish/70-late-reading-nav-polish.css</code></td><td>111</td><td>high-specificity, has-selector, repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>157</td><td><code>src/polish/71-overlay-layout-polish.css</code></td><td>173</td><td>high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>99</td><td><code>src/surfaces/23-liquid-glass-core.css</code></td><td>143</td><td>high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>137</td><td><code>src/surfaces/24-html-table-live-preview-glass.css</code></td><td>80</td><td>high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file</td></tr><tr><td><span class='badge high'>high</span></td><td>167</td><td><code>src/polish/72-a11y-regression-hotfixes.css</code></td><td>170</td><td>high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file</td></tr><tr><td><span class='badge low'>low</span></td><td>1</td><td><code>src/polish/73-workflow-polish.css</code></td><td>21</td><td>repeated-selector-in-file</td></tr></tbody>
+  </table>
+</main>
+</body>
+</html>
