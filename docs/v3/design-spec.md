@@ -104,11 +104,11 @@ Obsidian core CSS가 `!important`를 거는 곳을 이기기 위한 경우에만
 
 | 문서 | 책임 |
 | --- | --- |
-| [token-inventory.md](token-inventory.md) | v2.30.14 토큰 이름·기본값 contract |
-| `surface-state-matrix.md` (TODO) | Liquid Glass rest/hover/active/disabled 정의표 |
-| `style-settings-contract.md` (TODO) | Style Settings 37개 옵션 이름·동작 표 |
-| `live-preview-editability.md` (TODO) | hit-routing 보존 contract |
-| `golden-image-scenarios.md` (TODO) | 60+ 시각 회귀 시나리오 목록 |
+| [token-inventory.md](token-inventory.md) | v2.30.14 토큰 이름·기본값 contract (255 tokens) |
+| [style-settings-contract.md](style-settings-contract.md) | Style Settings 37개 옵션 이름·동작 표 |
+| [surface-state-matrix.md](surface-state-matrix.md) | Liquid Glass rest/hover/active/disabled 정의표 |
+| [live-preview-editability.md](live-preview-editability.md) | hit-routing 보존 contract |
+| [golden-image-scenarios.md](golden-image-scenarios.md) | 66 시각 회귀 시나리오 목록 |
 
 ## 진행 단계 (Phase / Step)
 
