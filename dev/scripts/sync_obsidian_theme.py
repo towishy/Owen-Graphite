@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Bundle and sync Owen Graphite v3 into an Obsidian theme folder.
 
 Re-bundles src/ via bundle_v3.py, promotes the bundle to theme.css, and
@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 THEME_FOLDER_NAME = "Owen Graphite"
 RELEASE_ASSETS = [
     "theme.css",
@@ -64,7 +64,7 @@ def find_target(explicit: Path | None) -> Path:
 
 
 def bundle_and_promote() -> None:
-    bundle = load_module("bundle_v3", ROOT / "scripts" / "bundle_v3.py")
+    bundle = load_module("bundle_v3", ROOT / "dev" / "scripts" / "bundle_v3.py")
     bundle.main()
     src = ROOT / "dist" / "theme-v3.css"
     dst = ROOT / "theme.css"

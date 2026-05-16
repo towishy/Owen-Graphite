@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Post-process pass on dist/theme-v3.css that merges duplicate selectors within
 the same @-rule context.
 
@@ -19,7 +19,7 @@ Strategy:
 Output overwrites dist/theme-v3.css in place. A summary line reports the merge
 count so the operator can sanity-check.
 
-Run after `scripts/bundle_v3.py`. The dedup is idempotent.
+Run after `dev/scripts/bundle_v3.py`. The dedup is idempotent.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ import argparse
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "dist" / "theme-v3.css"
 
 WS_RE = re.compile(r"\s+")

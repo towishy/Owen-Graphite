@@ -1,4 +1,4 @@
-"""Audit duplicate selectors across the v3 src/ tree.
+﻿"""Audit duplicate selectors across the v3 src/ tree.
 
 Produces two reports:
 
@@ -14,8 +14,8 @@ Produces two reports:
 Read-only: never edits files.
 
 Usage:
-    python scripts/v3_audit_duplicate_selectors.py
-    python scripts/v3_audit_duplicate_selectors.py --threshold 4
+    python dev/scripts/v3_audit_duplicate_selectors.py
+    python dev/scripts/v3_audit_duplicate_selectors.py --threshold 4
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = ROOT / "src"
 
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Build source-adjacent MAP artifacts for the Owen Graphite src/ tree.
 
 The MAP lives under dev/MAP so investigation artifacts stay separate from the
@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = ROOT / "src"
 ENTRY = SRC_DIR / "entry.css"
 MAP_DIR = ROOT / "dev" / "MAP"

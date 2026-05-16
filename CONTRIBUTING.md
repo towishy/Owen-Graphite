@@ -1,4 +1,4 @@
-# Contributing to Owen Graphite v3
+﻿# Contributing to Owen Graphite v3
 
 Owen Graphite v3 (현재 안정 릴리즈 v3.1.5)은 처음부터 다시 작성된 코드베이스입니다. 본 문서는 v3 기여자가 따라야 할 워크플로우와 검증 절차를 정리합니다.
 
@@ -37,15 +37,15 @@ src/
 
 1. **분기**: `git checkout -b feature/<name>` (베이스: `main`)
 2. **편집**: `src/` 안에서만 수정. `theme.css` 는 직접 편집하지 않습니다.
-3. **번들**: `python scripts/bundle_v3.py`
+3. **번들**: `python dev/scripts/bundle_v3.py`
 4. **승격**: `Copy-Item dist\theme-v3.css theme.css -Force` (또는 macOS/Linux `cp`)
 5. **감사**:
-   - `python scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
-   - `python scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
+   - `python dev/scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
+   - `python dev/scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
 6. **시각 회귀 (선택)**:
-   - `python scripts/capture_computed_fingerprint.py --build v3 --theme light`
-   - `python scripts/capture_computed_fingerprint.py --build v3 --theme dark`
-   - `python scripts/fp_diff_summary.py [--theme dark]` — 베이스라인과 0 diff 유지
+   - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme light`
+   - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme dark`
+   - `python dev/scripts/fp_diff_summary.py [--theme dark]` — 베이스라인과 0 diff 유지
 7. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
 
 ## 3. 보존 계약 (Preservation Contract)
@@ -54,8 +54,8 @@ v3는 v2.30.14의 픽셀 결과를 **보존**합니다. 모든 변경은 다음�
 
 | 계약 | 도구 | 통과 기준 |
 | --- | --- | --- |
-| C1 시각 | `scripts/capture_computed_fingerprint.py` + `fp_diff_summary.py` | Light/Dark diff = 0 |
-| C2 Live Preview 편집성 | `scripts/audit_v3_hit_routing.py` | violations = 0 |
+| C1 시각 | `dev/scripts/capture_computed_fingerprint.py` + `fp_diff_summary.py` | Light/Dark diff = 0 |
+| C2 Live Preview 편집성 | `dev/scripts/audit_v3_hit_routing.py` | violations = 0 |
 | C3 Style Settings 옵션 | 수동 토글 매트릭스 | 37 옵션 × ON/OFF 동일 |
 | C4 PDF 출력 | `@media print` 시나리오 수동 비교 | 페이지 수·레이아웃·footer 동일 |
 
@@ -69,7 +69,7 @@ declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 2. 그래도 필요하다면 PR 본문에 "defeats core <selector>" 형태로 사유 명시
 3. CSS 주석에 동일한 사유 인라인 명시
 
-자동 제거 도구 `scripts/v3_strip_important_src.py` 는 주석 안의 `!important` 토큰은 건드리지 않습니다.
+자동 제거 도구 `dev/scripts/v3_strip_important_src.py` 는 주석 안의 `!important` 토큰은 건드리지 않습니다.
 
 ## 5. 디자인 가이드라인 (Liquid Glass core)
 
@@ -84,8 +84,8 @@ declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 ## 6. Pre-commit hook (선택)
 
 ```bash
-ln -sf ../../scripts/hooks/pre-commit .git/hooks/pre-commit
-chmod +x scripts/hooks/pre-commit
+ln -sf ../../dev/scripts/hooks/pre-commit .git/hooks/pre-commit
+chmod +x dev/scripts/hooks/pre-commit
 ```
 
 Windows에서는 hook 내용을 `.git/hooks/pre-commit.ps1` 로 직접 옮기거나, WSL/Git Bash 환경에서 실행하세요. Hook은 번들 + hit-routing 감사를 강제합니다.
@@ -98,5 +98,5 @@ Windows에서는 hook 내용을 `.git/hooks/pre-commit.ps1` 로 직접 옮기거
 
 1. `manifest.json` 의 `version` 갱신
 2. `CHANGELOG.md` 에 새 섹션 추가
-3. `python scripts/build_release.py` → `dist/Owen-Graphite-<version>.zip`
+3. `python dev/scripts/build_release.py` → `dist/Owen-Graphite-<version>.zip`
 4. `git tag <version>` + `git push origin <version>` (CI가 GitHub Release 생성)

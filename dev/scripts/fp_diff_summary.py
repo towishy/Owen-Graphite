@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Summarize the v3 fingerprint diff by element.
 
 Reads both the v2.30.14 baseline and the freshly captured v3 candidate from
@@ -6,8 +6,8 @@ Reads both the v2.30.14 baseline and the freshly captured v3 candidate from
 count of mismatching properties. Useful for tracking S3-S6 closure progress.
 
 Usage:
-    python scripts/fp_diff_summary.py
-    python scripts/fp_diff_summary.py --theme dark
+    python dev/scripts/fp_diff_summary.py
+    python dev/scripts/fp_diff_summary.py --theme dark
 """
 
 import argparse
@@ -15,7 +15,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def main() -> int:

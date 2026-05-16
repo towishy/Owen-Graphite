@@ -1,4 +1,4 @@
-"""Live Preview hit-routing audit for dist/theme-v3.css.
+﻿"""Live Preview hit-routing audit for dist/theme-v3.css.
 
 Scans top-level CSS rules and flags any rule whose selector targets a Live
 Preview block widget or HyperMD-* cm-line variant directly and declares a
@@ -27,7 +27,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 LIVE_PREVIEW_WIDGET_DIRECT_TOKENS = (
     ".cm-callout",

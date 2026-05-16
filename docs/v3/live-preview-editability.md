@@ -1,6 +1,6 @@
-# v3 Live Preview Editability Contract
+﻿# v3 Live Preview Editability Contract
 
-이 문서는 v3-rewrite가 Live Preview(CodeMirror 6, `.markdown-source-view.mod-cm6`)에서 **클릭→편집 라우팅**을 보존하기 위해 반드시 지켜야 하는 CSS 규칙의 요약이며, `scripts/audit_v3_hit_routing.py`가 자동으로 강제합니다.
+이 문서는 v3-rewrite가 Live Preview(CodeMirror 6, `.markdown-source-view.mod-cm6`)에서 **클릭→편집 라우팅**을 보존하기 위해 반드시 지켜야 하는 CSS 규칙의 요약이며, `dev/scripts/audit_v3_hit_routing.py`가 자동으로 강제합니다.
 
 ## 왜 이게 중요한가
 
@@ -10,7 +10,7 @@ v2.22.99~108 사이에 같은 원인으로 7번 패치가 나갔습니다. v3-re
 
 ## 금지 카테고리 (Hard ERROR)
 
-다음은 절대 위반하면 안 됩니다. `scripts/audit_v3_hit_routing.py`가 강제합니다.
+다음은 절대 위반하면 안 됩니다. `dev/scripts/audit_v3_hit_routing.py`가 강제합니다.
 
 ### F1. 블록 위젯의 vertical margin
 
@@ -67,13 +67,13 @@ v3 작업자가 새 CSS를 작성할 때 다음을 확인해야 합니다.
 | Overlay layer에 `pointer-events: none` | `grep -B 3 '::before\|::after' src/` 검토 |
 | vertical transform 없음 | `grep -E 'transform:\s*translate(Y)?\([^,)]+,\s*-?[0-9]' src/` |
 
-이 4개 자동 검사가 `scripts/audit_v3_hit_routing.py`의 `live_preview_hit_routing_audit`에 이미 구현되어 있어, v3 작업도 동일 검증을 통과해야 합니다.
+이 4개 자동 검사가 `dev/scripts/audit_v3_hit_routing.py`의 `live_preview_hit_routing_audit`에 이미 구현되어 있어, v3 작업도 동일 검증을 통과해야 합니다.
 
 ## 검증 도구
 
 ### C4 보존 계약 (Live Preview hit-routing)
 
-- `scripts/audit_v3_hit_routing.py` (v3) — `dist/theme-v3.css` 번들을 파싱해서 위 금지 카테고리를 자동 검사. CI와 pre-commit hook에서 모두 실행.
+- `dev/scripts/audit_v3_hit_routing.py` (v3) — `dist/theme-v3.css` 번들을 파싱해서 위 금지 카테고리를 자동 검사. CI와 pre-commit hook에서 모두 실행.
 - (선택) 수동 세션: light/dark × report-mode on/off 조합으로 콜아웃·표·코드블록 위/아래 단락에서 클릭→caret 위치 육안 확인.
 
 ### 회귀 매트릭스
@@ -93,4 +93,4 @@ v3 작업자가 새 CSS를 작성할 때 다음을 확인해야 합니다.
 ## 비고
 
 - v2.30.x에서 누적된 hit-routing hotfix는 모두 위 금지 카테고리를 **사후 보정**한 결과입니다. v3-rewrite는 이를 **사전 회피**하므로 hotfix 자체가 발생하지 않아야 합니다.
-- 만약 v3에서 새로운 hit-routing 회귀가 발생한다면, 그것은 위 contract가 불완전하다는 증거이므로 **본 문서와 `scripts/audit_v3_hit_routing.py` 명세를 동시에 업데이트**해야 합니다.
+- 만약 v3에서 새로운 hit-routing 회귀가 발생한다면, 그것은 위 contract가 불완전하다는 증거이므로 **본 문서와 `dev/scripts/audit_v3_hit_routing.py` 명세를 동시에 업데이트**해야 합니다.

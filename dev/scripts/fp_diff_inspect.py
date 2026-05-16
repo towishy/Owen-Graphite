@@ -1,19 +1,19 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Print every property diff for a single fingerprint element.
 
 Useful when fp_diff_summary.py points to a hot spot and you want to see which
 specific computed properties drifted. Defaults to the light theme.
 
 Usage:
-    python scripts/fp_diff_inspect.py reading-h1
-    python scripts/fp_diff_inspect.py callout-warning --theme dark
+    python dev/scripts/fp_diff_inspect.py reading-h1
+    python dev/scripts/fp_diff_inspect.py callout-warning --theme dark
 """
 
 import argparse
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def main() -> int:

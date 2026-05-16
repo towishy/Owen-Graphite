@@ -5,8 +5,8 @@
 # - runs the Live Preview hit-routing audit
 # - runs the duplicate-selector audit (informational)
 # Install with:
-#   ln -sf ../../scripts/hooks/pre-commit .git/hooks/pre-commit
-#   chmod +x scripts/hooks/pre-commit
+#   ln -sf ../../dev/scripts/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x dev/scripts/hooks/pre-commit
 set -e
 
 repo_root=$(git rev-parse --show-toplevel)
@@ -20,7 +20,7 @@ else
     PY=python3
 fi
 
-"$PY" scripts/bundle_v3.py --check
-"$PY" scripts/audit_v3_hit_routing.py
-"$PY" scripts/v3_audit_duplicate_selectors.py >/dev/null || true
+"$PY" dev/scripts/bundle_v3.py --check
+"$PY" dev/scripts/audit_v3_hit_routing.py
+"$PY" dev/scripts/v3_audit_duplicate_selectors.py >/dev/null || true
 

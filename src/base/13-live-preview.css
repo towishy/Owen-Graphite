@@ -1,9 +1,9 @@
-/* =====================================================================
+﻿/* =====================================================================
    v1.3.1 — Live Preview ↔ Reading View parity (12-point upgrade)
    Goal: minimize visual jump when toggling ⌘E between Source/Reading.
 
-   FORBIDDEN in this module (enforced by scripts/validate_theme.py
-   `live_preview_hit_routing_audit` and scripts/diff_guard.py):
+  FORBIDDEN in this module (enforced by
+  dev/scripts/audit_v3_hit_routing.py):
      - non-zero vertical margin on .cm-callout / .cm-table-widget /
        .cm-embed-block.cm-callout (block widgets)
      - non-zero vertical margin OR padding on .HyperMD-* .cm-line
@@ -654,7 +654,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
    `--ogd-codeblock-header-*` tokens used by the PDF pipeline in
    08-report-print-polish.css. Vertical margin/padding on
    HyperMD-codeblock* lines stays at 0 per the CM6 hit-routing contract
-   enforced by validate_theme.py. Border-radius / border-bottom color on
+  enforced by dev/scripts/audit_v3_hit_routing.py. Border-radius / border-bottom color on
    the begin line are owned by v2.30.2 in 10-a11y-regression-hotfixes.css
    and intentionally left untouched here.
    ============================================================ */

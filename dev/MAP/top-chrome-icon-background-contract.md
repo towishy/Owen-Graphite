@@ -1,4 +1,4 @@
-# Top Chrome Icon And Background Contract
+﻿# Top Chrome Icon And Background Contract
 
 This is the MAP contract for top chrome changes.
 
@@ -20,4 +20,4 @@ Top chrome includes root tab strips, view headers, side pane headers, tab button
 - `src/surfaces/23-liquid-glass-core.css`: final liquid glass surface and top chrome ownership.
 - `src/polish/73-workflow-polish.css`: late workflow polish after core glass ownership.
 
-Run `scripts/build_src_map.py` after broad top chrome edits so `dev/MAP/theme-css-risk-map.json` records the changed risk surface.
+Run `dev/scripts/build_src_map.py` after broad top chrome edits so `dev/MAP/theme-css-risk-map.json` records the changed risk surface.

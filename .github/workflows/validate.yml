@@ -1,4 +1,4 @@
-name: Validate
+﻿name: Validate
 
 on:
   pull_request:
@@ -29,4 +29,7 @@ jobs:
         run: python -c "import json; json.load(open('manifest.json'))"
 
       - name: Run theme validation
-        run: python scripts/validate_theme.py --ci
+        run: |
+          python dev/scripts/bundle_v3.py --check
+          python dev/scripts/audit_v3_hit_routing.py
+          python dev/scripts/v3_audit_duplicate_selectors.py --threshold 10

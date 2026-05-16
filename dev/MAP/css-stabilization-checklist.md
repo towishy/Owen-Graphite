@@ -11,7 +11,7 @@
 
 - critical=0
 - high=0
-- medium=464
+- medium=465
 - low=45
 - info=0
 

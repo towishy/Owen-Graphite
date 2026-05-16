@@ -1,7 +1,7 @@
-"""Strip every `!important` token from all src/*.css files in-place.
+﻿"""Strip every `!important` token from all src/*.css files in-place.
 
 Rationale (S11.5):
-- The strip-all sanity test (scripts/v3_strip_important.py against the bundle)
+- The strip-all sanity test (dev/scripts/v3_strip_important.py against the bundle)
   showed that removing all 5,821 `!important` tokens changes only 9 computed
   cells in the harness fingerprint, and all 9 belonged to `a.external-link`.
 - The conflict was traced to a teal resting-state rule in src/base/12 that
@@ -15,7 +15,7 @@ This script edits src/ in place. Always commit before running so the change
 is reviewable. After running, re-bundle and re-verify the fingerprint.
 
 Usage:
-    python scripts/v3_strip_important_src.py
+    python dev/scripts/v3_strip_important_src.py
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "src"
 
 # Match `!important` (with optional whitespace) and the whitespace immediately

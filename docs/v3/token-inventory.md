@@ -1,6 +1,6 @@
-# v3 Token Inventory (extracted from v2.30.14)
+﻿# v3 Token Inventory (extracted from v2.30.14)
 
-이 문서는 `scripts/extract_token_inventory.py`가 자동 생성합니다.
+이 문서는 `dev/scripts/extract_token_inventory.py`가 자동 생성합니다.
 v3-rewrite는 아래 모든 토큰 이름을 동일하게 선언하고, light/dark default 값이 일치해야 합니다.
 
 - 총 토큰: **255**

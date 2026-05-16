@@ -1,4 +1,4 @@
-# Owen Graphite — Obsidian Theme
+﻿# Owen Graphite — Obsidian Theme
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
@@ -121,18 +121,18 @@ fi
 
 ## 3. 개발자 워크플로우
 
-v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → features → themes → plugins → polish 순서로 분리되어 있습니다. 빌드/감사는 `scripts/` 의 v3 도구만 사용합니다.
+v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → features → themes → plugins → polish 순서로 분리되어 있습니다. 빌드/감사는 `dev/scripts/` 의 v3 도구만 사용합니다.
 
 | 작업 | 명령 |
 | --- | --- |
-| 번들 빌드 | `python scripts/bundle_v3.py` → `dist/theme-v3.css` |
+| 번들 빌드 | `python dev/scripts/bundle_v3.py` → `dist/theme-v3.css` |
 | `theme.css` 갱신 | `Copy-Item dist/theme-v3.css theme.css -Force` (Windows) 또는 동등 명령 |
-| Live Preview hit-routing 감사 | `python scripts/audit_v3_hit_routing.py` |
-| 중복 selector 감사(참고용) | `python scripts/v3_audit_duplicate_selectors.py` |
-| computed-style fingerprint 캡처 | `python scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}` |
-| fingerprint diff | `python scripts/fp_diff_summary.py [--theme dark]` |
-| Release ZIP | `python scripts/build_release.py` |
-| Obsidian vault 동기화 | `python scripts/sync_obsidian_theme.py` |
+| Live Preview hit-routing 감사 | `python dev/scripts/audit_v3_hit_routing.py` |
+| 중복 selector 감사(참고용) | `python dev/scripts/v3_audit_duplicate_selectors.py` |
+| computed-style fingerprint 캡처 | `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}` |
+| fingerprint diff | `python dev/scripts/fp_diff_summary.py [--theme dark]` |
+| Release ZIP | `python dev/scripts/build_release.py` |
+| Obsidian vault 동기화 | `python dev/scripts/sync_obsidian_theme.py` |
 
 자세한 기여 가이드는 [CONTRIBUTING.md](CONTRIBUTING.md), 변경 이력은 [CHANGELOG.md](CHANGELOG.md), 보존·검증 계약은 [docs/v3/design-spec.md](docs/v3/design-spec.md) 참조.
 

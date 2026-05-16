@@ -1,4 +1,4 @@
-"""Sanity test: strip ALL !important from v3 bundle and capture fingerprint.
+﻿"""Sanity test: strip ALL !important from v3 bundle and capture fingerprint.
 
 This is the first step of S11.5 (!important reduction). It answers:
   "How many of the 5,821 !important declarations actually MATTER at the
@@ -22,7 +22,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def strip_important(css: str) -> str:

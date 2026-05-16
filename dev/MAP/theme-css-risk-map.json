@@ -187,10 +187,10 @@
   "summary": {
     "module_count": 30,
     "selector_count": 2024,
-    "finding_count": 509,
+    "finding_count": 510,
     "cross_file_selector_group_count": 77,
     "finding_severity_counts": {
-      "medium": 464,
+      "medium": 465,
       "low": 45
     },
     "module_severity_counts": {
@@ -311,8 +311,8 @@
       "repeated_selector_extra_count": 0,
       "max_specificity": [
         0,
-        3,
-        0
+        4,
+        63
       ],
       "top_properties": [
         [
@@ -900,13 +900,13 @@
       "declaration_count": 377,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 19,
+      "high_specificity_selector_count": 20,
       "live_preview_sensitive_rule_count": 33,
       "repeated_selector_extra_count": 7,
       "max_specificity": [
         0,
-        24,
-        0
+        31,
+        110
       ],
       "top_properties": [
         [
@@ -958,7 +958,7 @@
           12
         ]
       ],
-      "risk_score": 163,
+      "risk_score": 166,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -2581,17 +2581,25 @@
     },
     {
       "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/base/13-live-preview.css",
+      "line": 25,
+      "selector": "﻿/* ===================================================================== v1.3.1 — Live Preview ↔ Reading View parity (12-point upgrade) Goal: minimize visual jump when toggling ⌘E between Source/Reading. FORBIDDEN in this module (enforced by dev/scripts/audit_v3_hit_routing.py): - non-zero vertical margin on .cm-callout / .cm-table-widget / .cm-embed-block.cm-callout (block widgets) - non-zero vertical margin OR padding on .HyperMD-* .cm-line variants (table-row / callout / header-1..6) - outline / box-shadow / transform / vertical padding on .cm-active.cm-line (active line) - overflow-x:auto + max-width:100% pair on .cm-embed-block - pointer-events:none on .cm-content / .cm-line See: dev/MAP/cm6-hit-routing-contract.md ===================================================================== */ /* (1) CM6 header line-height per level — override generic .cm-line 1.45 v2.22.101: heading .cm-line padding is forced to 0 so the line's hitbox matches its visible text. Earlier 0.16~0.42em padding extended the click target into adjacent rows and trapped cursor placement on neighbour headings/blank rows. Visual rhythm is now owned by line-height and the header-adjacent blank row in 03-reading-content.css. */ .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1",
+      "message": "specificity=(0, 31, 110)"
+    },
+    {
+      "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 28,
-      "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1",
+      "line": 25,
+      "selector": "﻿/* ===================================================================== v1.3.1 — Live Preview ↔ Reading View parity (12-point upgrade) Goal: minimize visual jump when toggling ⌘E between Source/Reading. FORBIDDEN in this module (enforced by dev/scripts/audit_v3_hit_routing.py): - non-zero vertical margin on .cm-callout / .cm-table-widget / .cm-embed-block.cm-callout (block widgets) - non-zero vertical margin OR padding on .HyperMD-* .cm-line variants (table-row / callout / header-1..6) - outline / box-shadow / transform / vertical padding on .cm-active.cm-line (active line) - overflow-x:auto + max-width:100% pair on .cm-embed-block - pointer-events:none on .cm-content / .cm-line See: dev/MAP/cm6-hit-routing-contract.md ===================================================================== */ /* (1) CM6 header line-height per level — override generic .cm-line 1.45 v2.22.101: heading .cm-line padding is forced to 0 so the line's hitbox matches its visible text. Earlier 0.16~0.42em padding extended the click target into adjacent rows and trapped cursor placement on neighbour headings/blank rows. Visual rhythm is now owned by line-height and the header-adjacent blank row in 03-reading-content.css. */ .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
     {
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 33,
+      "line": 30,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2599,7 +2607,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 42,
+      "line": 39,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2607,7 +2615,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 51,
+      "line": 48,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2615,7 +2623,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 59,
+      "line": 56,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5, .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6",
       "message": "specificity=(0, 8, 0)"
     },
@@ -2623,7 +2631,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 59,
+      "line": 56,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5, .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2631,7 +2639,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 92,
+      "line": 89,
       "selector": ".markdown-source-view.mod-cm6 .cm-formatting-code-block, .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .cm-formatting-code, .markdown-source-view.mod-cm6 .HyperMD-codeblock-end .cm-formatting-code",
       "message": "specificity=(0, 11, 0)"
     },
@@ -2639,7 +2647,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 102,
+      "line": 99,
       "selector": ".markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link.cm-hmd-internal-link",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2647,7 +2655,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 108,
+      "line": 105,
       "selector": ".markdown-source-view.mod-cm6 .cm-hmd-internal-link:hover, .markdown-source-view.mod-cm6 .cm-link.cm-hmd-internal-link:hover",
       "message": "specificity=(0, 9, 0)"
     },
@@ -2655,7 +2663,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 121,
+      "line": 118,
       "selector": ".markdown-source-view.mod-cm6 .cm-hashtag, .markdown-source-view.mod-cm6 .cm-hashtag-begin, .markdown-source-view.mod-cm6 .cm-hashtag-end",
       "message": "specificity=(0, 9, 0)"
     },
@@ -2663,7 +2671,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 121,
+      "line": 118,
       "selector": ".markdown-source-view.mod-cm6 .cm-hashtag, .markdown-source-view.mod-cm6 .cm-hashtag-begin, .markdown-source-view.mod-cm6 .cm-hashtag-end",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2671,7 +2679,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 142,
+      "line": 139,
       "selector": ".markdown-source-view.mod-cm6 .cm-inline-code",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2679,7 +2687,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 197,
+      "line": 194,
       "selector": ".markdown-source-view.mod-cm6 .cm-callout",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2687,7 +2695,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 234,
+      "line": 231,
       "selector": ".markdown-source-view.mod-cm6 .cm-table-widget th, .markdown-source-view.mod-cm6 table.cm-table th",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2695,7 +2703,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 239,
+      "line": 236,
       "selector": ".markdown-source-view.mod-cm6 .cm-table-widget td, .markdown-source-view.mod-cm6 table.cm-table td",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2703,7 +2711,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 242,
+      "line": 239,
       "selector": ".markdown-source-view.mod-cm6 .cm-table-widget tr:hover td, .markdown-source-view.mod-cm6 table.cm-table tr:hover td",
       "message": "specificity=(0, 8, 3)"
     },
@@ -2711,7 +2719,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 255,
+      "line": 252,
       "selector": ".markdown-source-view.mod-cm6 .cm-formatting-list, .markdown-source-view.mod-cm6 .cm-formatting-list-ul, .markdown-source-view.mod-cm6 .cm-formatting-list-ol",
       "message": "specificity=(0, 9, 0)"
     },
@@ -2719,7 +2727,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 260,
+      "line": 257,
       "selector": ".markdown-source-view.mod-cm6 .HyperMD-list-line-2, .markdown-source-view.mod-cm6 .HyperMD-list-line-3, .markdown-source-view.mod-cm6 .HyperMD-list-line-4",
       "message": "specificity=(0, 9, 0)"
     },
@@ -2727,7 +2735,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 268,
+      "line": 265,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2735,7 +2743,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 275,
+      "line": 272,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2743,7 +2751,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 286,
+      "line": 283,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-formatting-header, .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-list, .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-quote, .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-link, .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-code, .theme-dark .markdown-source-view.mod-cm6 .cm-hmd-table-sep",
       "message": "specificity=(0, 24, 0)"
     },
@@ -2751,7 +2759,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 305,
+      "line": 302,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-hashtag, .theme-dark .markdown-source-view.mod-cm6 .cm-hashtag-begin, .theme-dark .markdown-source-view.mod-cm6 .cm-hashtag-end",
       "message": "specificity=(0, 12, 0)"
     },
@@ -2759,7 +2767,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 315,
+      "line": 312,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock, .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin, .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end",
       "message": "specificity=(0, 15, 0)"
     },
@@ -2767,7 +2775,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 322,
+      "line": 319,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-table-widget th, .theme-dark .markdown-source-view.mod-cm6 table.cm-table th",
       "message": "specificity=(0, 8, 3)"
     },
@@ -2775,7 +2783,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 325,
+      "line": 322,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-table-widget td, .theme-dark .markdown-source-view.mod-cm6 table.cm-table td",
       "message": "specificity=(0, 8, 3)"
     },
@@ -2783,7 +2791,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 328,
+      "line": 325,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-table-widget tr:hover td, .theme-dark .markdown-source-view.mod-cm6 table.cm-table tr:hover td",
       "message": "specificity=(0, 10, 3)"
     },
@@ -2791,7 +2799,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 333,
+      "line": 330,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter, .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1, .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end",
       "message": "specificity=(0, 15, 0)"
     },
@@ -2799,7 +2807,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 354,
+      "line": 351,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line:not(:empty):not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-table-row):not(.HyperMD-callout):not(.HyperMD-list-line):not(.HyperMD-quote):not(.HyperMD-frontmatter)",
       "message": "specificity=(0, 12, 0)"
     },
@@ -2807,7 +2815,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 354,
+      "line": 351,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line:not(:empty):not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-table-row):not(.HyperMD-callout):not(.HyperMD-list-line):not(.HyperMD-quote):not(.HyperMD-frontmatter)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2815,7 +2823,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 361,
+      "line": 358,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2823,7 +2831,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 368,
+      "line": 365,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2831,7 +2839,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 375,
+      "line": 372,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2839,7 +2847,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 402,
+      "line": 399,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.HyperMD-callout)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2847,7 +2855,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 414,
+      "line": 411,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2855,7 +2863,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 439,
+      "line": 436,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2863,7 +2871,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 446,
+      "line": 443,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2871,7 +2879,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 454,
+      "line": 451,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2879,7 +2887,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 486,
+      "line": 483,
       "selector": ".markdown-source-view.mod-cm6 .HyperMD-list-line",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2887,7 +2895,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 492,
+      "line": 489,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .HyperMD-list-line",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2895,7 +2903,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 563,
+      "line": 560,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2903,7 +2911,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 571,
+      "line": 568,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2911,7 +2919,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 579,
+      "line": 576,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2919,7 +2927,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 611,
+      "line": 608,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2927,7 +2935,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 616,
+      "line": 613,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2935,7 +2943,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 652,
+      "line": 649,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block), .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*=\"formatting\"]):not(.cm-fold-indicator)",
       "message": "specificity=(0, 14, 0)"
     },
@@ -2943,7 +2951,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 652,
+      "line": 649,
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block), .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*=\"formatting\"]):not(.cm-fold-indicator)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2951,7 +2959,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 661,
+      "line": 658,
       "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block), body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*=\"formatting\"]):not(.cm-fold-indicator)",
       "message": "specificity=(0, 16, 0)"
     },
@@ -2959,7 +2967,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 685,
+      "line": 682,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2967,7 +2975,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 692,
+      "line": 689,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2975,7 +2983,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 714,
+      "line": 711,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td",
       "message": "specificity=(0, 8, 0)"
     },
@@ -2983,7 +2991,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/base/13-live-preview.css",
-      "line": 723,
+      "line": 720,
       "selector": "body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -2991,7 +2999,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/base/13-live-preview.css",
-      "line": 740,
+      "line": 737,
       "selector": "body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -6535,7 +6543,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 155
+          "line": 153
         },
         {
           "module": "src/chrome/35-editing-menu-tooltip-glass.css",
@@ -6573,7 +6581,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 692
+          "line": 689
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -6607,7 +6615,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 685
+          "line": 682
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -6646,15 +6654,15 @@
         },
         {
           "module": "src/base/13-live-preview.css",
-          "line": 84
+          "line": 81
         },
         {
           "module": "src/base/13-live-preview.css",
-          "line": 571
+          "line": 568
         },
         {
           "module": "src/base/13-live-preview.css",
-          "line": 635
+          "line": 632
         },
         {
           "module": "src/polish/72-a11y-regression-hotfixes.css",
@@ -6677,42 +6685,15 @@
         },
         {
           "module": "src/base/13-live-preview.css",
-          "line": 87
+          "line": 84
         },
         {
           "module": "src/base/13-live-preview.css",
-          "line": 579
+          "line": 576
         },
         {
           "module": "src/polish/72-a11y-regression-hotfixes.css",
           "line": 1318
-        }
-      ]
-    },
-    {
-      "selector": ".theme-dark",
-      "occurrences": 4,
-      "modules": [
-        "src/chrome/30-workspace.css",
-        "src/themes/50-dark.css",
-        "src/tokens/01-dark-tokens.css"
-      ],
-      "lines": [
-        {
-          "module": "src/tokens/01-dark-tokens.css",
-          "line": 72
-        },
-        {
-          "module": "src/themes/50-dark.css",
-          "line": 59
-        },
-        {
-          "module": "src/chrome/30-workspace.css",
-          "line": 11
-        },
-        {
-          "module": "src/chrome/30-workspace.css",
-          "line": 299
         }
       ]
     },
@@ -6726,7 +6707,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 708
+          "line": 705
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -6864,11 +6845,11 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 80
+          "line": 77
         },
         {
           "module": "src/base/13-live-preview.css",
-          "line": 563
+          "line": 560
         },
         {
           "module": "src/polish/72-a11y-regression-hotfixes.css",
@@ -6886,7 +6867,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 676
+          "line": 673
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -6908,7 +6889,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 695
+          "line": 692
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -6917,6 +6898,28 @@
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
           "line": 45
+        }
+      ]
+    },
+    {
+      "selector": ".theme-dark",
+      "occurrences": 3,
+      "modules": [
+        "src/chrome/30-workspace.css",
+        "src/themes/50-dark.css"
+      ],
+      "lines": [
+        {
+          "module": "src/themes/50-dark.css",
+          "line": 59
+        },
+        {
+          "module": "src/chrome/30-workspace.css",
+          "line": 11
+        },
+        {
+          "module": "src/chrome/30-workspace.css",
+          "line": 299
         }
       ]
     },
@@ -6930,7 +6933,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 711
+          "line": 708
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -6952,7 +6955,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 714
+          "line": 711
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
@@ -7223,7 +7226,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 169
+          "line": 167
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -7371,7 +7374,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 587
+          "line": 584
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7497,7 +7500,7 @@
       "lines": [
         {
           "module": "src/base/13-live-preview.css",
-          "line": 292
+          "line": 289
         },
         {
           "module": "src/plugins/61-live-preview-mobile-plugin.css",
@@ -7713,7 +7716,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 199
+          "line": 197
         },
         {
           "module": "src/polish/71-overlay-layout-polish.css",
@@ -7731,7 +7734,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 79
+          "line": 77
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -8055,7 +8058,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 189
+          "line": 187
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -8073,7 +8076,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 178
+          "line": 176
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",

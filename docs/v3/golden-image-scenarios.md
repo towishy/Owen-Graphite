@@ -1,4 +1,4 @@
-# v3 Golden Image Scenarios
+﻿# v3 Golden Image Scenarios
 
 S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 각 시나리오에서 v2.30.14 baseline과 픽셀 단위로 일치해야 합니다.
 
@@ -136,8 +136,8 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 
 v3는 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다 (최초 v3.0.0 릴리즈 시점에 0 diff 달성, 이후 v3.0.x → v3.1.x 체인은 디자인 표면을 건드리지 않음).
 
-- 캡처: scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}
-- diff: scripts/fp_diff_summary.py [--theme dark]
+- 캡처: dev/scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}
+- diff: dev/scripts/fp_diff_summary.py [--theme dark]
 - 하네스: docs/v3/research/golden-rig/obsidian-harness.html
 - 베이스라인: docs/v3/computed-fingerprint-v3.0.0-{light,dark}.json (v3 최초 캡처 원본 — 파일명 그대로 유지)
 - 결과: 모두 0 diff

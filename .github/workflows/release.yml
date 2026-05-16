@@ -1,4 +1,4 @@
-name: Release
+﻿name: Release
 
 # Trigger when you push a tag matching the manifest version (e.g., 1.4.1 or v2.6.0)
 on:
@@ -34,10 +34,13 @@ jobs:
           fi
 
       - name: Validate theme package
-        run: python scripts/validate_theme.py --ci
+        run: |
+          python dev/scripts/bundle_v3.py --check
+          python dev/scripts/audit_v3_hit_routing.py
+          python dev/scripts/v3_audit_duplicate_selectors.py --threshold 10
 
       - name: Build manual install ZIP
-        run: python scripts/build_release.py
+        run: python dev/scripts/build_release.py
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

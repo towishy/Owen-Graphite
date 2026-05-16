@@ -1,6 +1,6 @@
-# v3 Style Settings Contract (extracted from v2.30.14)
+﻿# v3 Style Settings Contract (extracted from v2.30.14)
 
-이 문서는 `scripts/extract_style_settings.py`가 자동 생성합니다.
+이 문서는 `dev/scripts/extract_style_settings.py`가 자동 생성합니다.
 v3-rewrite는 아래 모든 기능 옵션의 `id`/`type`/`default`/`title`을 그대로 유지해야 합니다.
 사용자 vault에 저장된 기존 설정이 v3.0 설치 후에도 동일하게 적용됩니다.
 

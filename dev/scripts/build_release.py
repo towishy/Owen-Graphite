@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Build a manual-install release ZIP for Owen Graphite v3.
 
 Bundles src/ via bundle_v3.py, promotes the result to theme.css, and packages
@@ -16,7 +16,7 @@ import zipfile
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_FILES = [
     "theme.css",
     "manifest.json",
@@ -38,10 +38,10 @@ def version() -> str:
 
 
 def bundle_v3() -> Path:
-    script = ROOT / "scripts" / "bundle_v3.py"
+    script = ROOT / "dev" / "scripts" / "bundle_v3.py"
     spec = importlib.util.spec_from_file_location("bundle_v3", script)
     if spec is None or spec.loader is None:
-        raise RuntimeError("unable to load scripts/bundle_v3.py")
+        raise RuntimeError("unable to load dev/scripts/bundle_v3.py")
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
@@ -50,10 +50,10 @@ def bundle_v3() -> Path:
 
 
 def build_src_map() -> None:
-    script = ROOT / "scripts" / "build_src_map.py"
+    script = ROOT / "dev" / "scripts" / "build_src_map.py"
     spec = importlib.util.spec_from_file_location("build_src_map", script)
     if spec is None or spec.loader is None:
-        raise RuntimeError("unable to load scripts/build_src_map.py")
+        raise RuntimeError("unable to load dev/scripts/build_src_map.py")
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)

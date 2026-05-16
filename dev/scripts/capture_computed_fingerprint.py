@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Capture a computed-style fingerprint of the Owen Graphite theme.
 
 For every element in docs/v3/research/golden-rig/obsidian-harness.html that carries a
@@ -13,9 +13,9 @@ harness file. Any diff is a candidate visual regression.
 Usage:
     python -m pip install playwright
     python -m playwright install chromium
-    python scripts/capture_computed_fingerprint.py
-    python scripts/capture_computed_fingerprint.py --theme dark
-    python scripts/capture_computed_fingerprint.py --diff baseline.json
+    python dev/scripts/capture_computed_fingerprint.py
+    python dev/scripts/capture_computed_fingerprint.py --theme dark
+    python dev/scripts/capture_computed_fingerprint.py --diff baseline.json
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 HARNESS = ROOT / "docs" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
 MANIFEST = ROOT / "manifest.json"
 

@@ -1,4 +1,4 @@
-"""Cascade behavior verification harness.
+﻿"""Cascade behavior verification harness.
 
 Tests four scenarios with Playwright Chromium:
 
@@ -24,7 +24,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = ROOT / "dev" / "v3" / "cascade-probe"
 
 

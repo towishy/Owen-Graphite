@@ -1,4 +1,4 @@
-# 캐스케이드 전략 검증 — Obsidian core 대 v3 theme
+﻿# 캐스케이드 전략 검증 — Obsidian core 대 v3 theme
 
 **작성일**: S3.1 직후 (피벗 사후 검증).
 **상태**: 확정. 실증적 근거 확보.
@@ -15,7 +15,7 @@
 
 **결론**: Obsidian core CSS는 **unlayered**이며, **!important 사용량이 극히 적다(66)**. 5,816개 !important를 쓰는 v2.30.14는 core와 싸우는 것이 아니라 **자기 자신과 싸우고 있다**.
 
-검증 스크립트: `scripts/probe_cascade_behavior.py`.
+검증 스크립트: `dev/scripts/probe_cascade_behavior.py`.
 
 ## 2. CSS Cascading Level 5 — 정확한 규칙
 
@@ -35,7 +35,7 @@
 
 ## 3. 실증 — Playwright 행동 시험
 
-`scripts/probe_cascade_behavior.py`가 6개 시나리오를 측정한다. core를 흉내낸 fake CSS는 unlayered로, theme은 각 시나리오마다 다르게 구성한다.
+`dev/scripts/probe_cascade_behavior.py`가 6개 시나리오를 측정한다. core를 흉내낸 fake CSS는 unlayered로, theme은 각 시나리오마다 다르게 구성한다.
 
 | # | 시나리오 | font-size 결과 | color 결과 | 승자 |
 |---|---|---|---|---|
@@ -65,7 +65,7 @@
 
 S11.5에서 §4의 휴리스틱을 자동화하여 일괄 적용했다.
 
-**자동화 절차** (`scripts/v3_strip_important.py`, `scripts/v3_strip_important_src.py`):
+**자동화 절차** (`dev/scripts/v3_strip_important.py`, `dev/scripts/v3_strip_important_src.py`):
 
 1. **번들 sanity 테스트**: `dist/theme-v3.css`에서 모든 `!important` 5,821개를 정규식으로 제거 → 임시 번들 생성.
 2. **fingerprint 측정**: 55 element × 51 property × {light, dark} = 5,610 cell.

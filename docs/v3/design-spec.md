@@ -1,4 +1,4 @@
-# Owen Graphite v3.0 Design Spec
+﻿# Owen Graphite v3.0 Design Spec
 
 이 문서는 Owen Graphite v3.0 **from-scratch 재작성**의 단일 진실 공급원(single source of truth)입니다. v3-rewrite 브랜치에서 작성되는 모든 CSS는 이 문서의 **보존 계약**을 통과해야 합니다.
 
@@ -16,10 +16,10 @@
 
 | # | 계약 | 검증 도구 | 통과 기준 |
 | --- | --- | --- | --- |
-| C1 | 시각 (Liquid Glass + 일반 surface) | `scripts/capture_computed_fingerprint.py` + `scripts/fp_diff_summary.py` | computed-style fingerprint diff = 0 (Light / Dark) |
+| C1 | 시각 (Liquid Glass + 일반 surface) | `dev/scripts/capture_computed_fingerprint.py` + `dev/scripts/fp_diff_summary.py` | computed-style fingerprint diff = 0 (Light / Dark) |
 | C2 | 색 대비 (WCAG) | 수동 샘플 + Style Settings 토글 매트릭스 | 30+ 쌍 모두 AA 이상 (베이스라인 v2.30.14와 동일) |
 | C3 | Style Settings 동작 | 토글 매트릭스 캡처 | 37개 옵션 × ON/OFF = 74 cell 동일 |
-| C4 | Live Preview 편집성 | `scripts/audit_v3_hit_routing.py` | violations = 0 |
+| C4 | Live Preview 편집성 | `dev/scripts/audit_v3_hit_routing.py` | violations = 0 |
 | C5 | PDF 출력 | print 시나리오 PDF 비교 | 페이지 수·레이아웃·footer 동일 |
 
 각 계약의 매트릭스는 별도 문서에 상세화됩니다 (아래 "참조 문서" 표 참고).
@@ -30,7 +30,7 @@
 
 v3는 `@layer`를 본문 룰에 사용하지 **않습니다**. CSS Cascade Layers 스펙상 unlayered styles가 layered styles를 항상 이기는데, Obsidian core CSS(`app.css`)가 unlayered이기 때문입니다. theme 룰을 `@layer` 안에 두면 core에 패배하여 `!important`로만 되돌릴 수 있고, 이는 v3의 목표(!important 감축)와 모순됩니다.
 
-**이 결정은 사후 실증 검증을 거쳤습니다.** `obsidian.asar`에서 추출한 `app.css`(600 KB)를 직접 검사한 결과 `@layer` 0개, `!important` 66개(대부분 print/forced-colors 영역). 또한 Playwright 캐스케이드 시험(`scripts/probe_cascade_behavior.py`)에서 theme이 더 높은 특이도를 가져도 `@layer` 안에 들어가면 unlayered core에 패배함을 확인했습니다. 전체 근거는 `docs/v3/cascade-research.md` 참고.
+**이 결정은 사후 실증 검증을 거쳤습니다.** `obsidian.asar`에서 추출한 `app.css`(600 KB)를 직접 검사한 결과 `@layer` 0개, `!important` 66개(대부분 print/forced-colors 영역). 또한 Playwright 캐스케이드 시험(`dev/scripts/probe_cascade_behavior.py`)에서 theme이 더 높은 특이도를 가져도 `@layer` 안에 들어가면 unlayered core에 패배함을 확인했습니다. 전체 근거는 `docs/v3/cascade-research.md` 참고.
 
 따라서 v3 본문 룰은 **unlayered** 상태로 유지합니다. 캐스케이드 도구는 다음 셋입니다:
 
@@ -95,7 +95,7 @@ src/
 
 **토큰 이름 contract**: v2.30.14의 255개 토큰 이름을 그대로 유지합니다 (Style Settings 마이그레이션을 위해). 신규 토큰 추가는 OK, 기존 이름 변경은 금지.
 
-기존 토큰 인벤토리: [token-inventory.md](token-inventory.md) (255 tokens, scripts/extract_token_inventory.py로 자동 생성)
+기존 토큰 인벤토리: [token-inventory.md](token-inventory.md) (255 tokens, dev/scripts/extract_token_inventory.py로 자동 생성)
 
 ### `!important` 정책
 
@@ -193,4 +193,4 @@ src/
 - [release-plan.md](release-plan.md) — v3 릴리즈 기록·툴체인·절차 (현재 안정 v3.1.5)
 - [cascade-research.md](cascade-research.md) — unlayered 캐스케이드 실증·S11.5 `!important` 일괄 제거 결과
 - [surface-state-matrix.md](surface-state-matrix.md) — Liquid Glass rest/hover/active/disabled 정의
-- [live-preview-editability.md](live-preview-editability.md) — hit-routing 계약 (v3 구현: `scripts/audit_v3_hit_routing.py`)
+- [live-preview-editability.md](live-preview-editability.md) — hit-routing 계약 (v3 구현: `dev/scripts/audit_v3_hit_routing.py`)
