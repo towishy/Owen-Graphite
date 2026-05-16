@@ -132,9 +132,9 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | Print / PDF | 4 |
 | **합계** | **66** |
 
-## v3 결과 검증 스크립트 (최신 v3.0.3 기준)
+## v3 결과 검증 스크립트 (최신 v3.1.5 기준)
 
-v3는 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다 (최초 v3.0.0 릴리즈 시점에 0 diff 달성, 이후 v3.0.1~v3.0.3 hotfix 체인은 디자인 표면을 건드리지 않음).
+v3는 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다 (최초 v3.0.0 릴리즈 시점에 0 diff 달성, 이후 v3.0.x → v3.1.x 체인은 디자인 표면을 건드리지 않음).
 
 - 캡처: scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}
 - diff: scripts/fp_diff_summary.py [--theme dark]

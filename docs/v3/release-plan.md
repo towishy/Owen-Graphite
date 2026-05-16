@@ -1,18 +1,18 @@
-# v3 Release Record (latest: v3.0.3)
+# v3 Release Record (latest: v3.1.5)
 
-**Status**: Current stable / rollback baseline = `v3.0.3` (2026-05-16). Original v3.0.0 from-scratch rewrite shipped 2026-05-16, superseded by v3.0.1 → v3.0.2 → v3.0.3 hotfix chain (file-explorer hover, scanner multicolumn cleanup). v2 source/scripts/docs/screenshots remain fully purged.
+**Status**: Current stable / rollback baseline = `v3.1.5` (2026-05-16). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF specificity hardening, build-time dedup, lint warning cleanup, minAppVersion 1.12.0). v2 source/scripts/docs/screenshots remain fully purged.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.0.3` |
+| `manifest.json` version | `3.1.5` |
 | `minAppVersion` | `1.6.0` (unchanged) |
 | `dist/theme-v3.css` lines / declaration-level `!important` | 16,479 / 0 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.0.3.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.5.zip` |
 
 ## What was removed
 
