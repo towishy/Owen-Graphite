@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.2] — 2026-05-16 — Hotfix: PDF H1 actually applies the size bump
+
+### Fixed
+
+- **PDF/인쇄 H1이 실제 적용되도록 specificity 보정** — v3.1.1 의 인쇄 H1 변경(`.markdown-rendered h1 … 3.4em`)이 specificity (0,1,1 ~ 0,2,1) 때문에 데스크탑 winner `body :is(...) h1` (0,2,2)에 밀려 PDF에서 적용되지 않던 문제를 수정했습니다. `src/polish/73-workflow-polish.css` 마지막에 winner와 같은 specificity의 `@media print` 블록을 추가해 PDF/인쇄 시점에 H1이 **3.4em**(compact 모드 **2.85em**)으로 실제 변환됩니다.
+- kicker(`::before`) 0.30em, line-height 1.08, 여백 변경도 동일 블록에서 함께 적용됩니다.
+
+### Notes
+
+- Reading / Live Preview / Mobile / H2~H6 / 다른 디자인 요소는 변동 없습니다.
+
 ## [3.1.1] — 2026-05-16 — PDF H1 enlarged as document title
 
 ### Changed
