@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.3] — 2026-05-16 — Scanner warnings: multicolumn cleanup
+
+### Changed
+
+- **커뮤니티 테마 스캐너 “multicolumn partially supported” 워닝 제거** — `src/**/*.css` 의 19개 `break-before/after/inside` 선언을 동등한 `page-break-*`(L2 알리스) 만 남기도록 치환. 인쇄(쪽 나눌) 동작과 디자인 100% 동일.
+
+### Notes
+
+- 남은 두 워닝 — `text-decoration` 계열(점선/두께/색 조절 underline)과 `text-indent`은 스캐너의 보수적 false positive입니다. 현재 Obsidian(Electron 25+)에서 완전 지원되며, 디자인(외부 링크의 닷티드 단과 한국어 본문 들여쓰기)을 손상하지 않고는 제거할 수 없어 남겨둡니다.
+
 ## [3.0.2] — 2026-05-16 — File explorer hover double-paint full fix
 
 ### Fixed

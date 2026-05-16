@@ -256,11 +256,9 @@
 @media print {
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     overflow: visible;
-    break-inside: auto;
     page-break-inside: auto;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.print-fit-table, .wide-table) {
@@ -273,7 +271,6 @@
     table-layout: fixed;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
-    break-before: avoid;
     page-break-before: avoid;
     color: #4b5563;
   }
@@ -442,7 +439,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -548,7 +544,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       border-radius: var(--radius-m, 6px);
       background: #f8fbff;
       line-height: 1.56;
-      break-inside: avoid;
       page-break-inside: avoid;
     }
   }
@@ -666,7 +661,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) :is(h1, h2, h3, h4) {
     color: #0f172a;
-    break-after: avoid;
     page-break-after: avoid;
   }
 
@@ -745,7 +739,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-radius: 6px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 1px 2px rgba(15, 23, 42, 0.035);
     line-height: 1.42;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -1135,7 +1128,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     color: #334155;
     font-size: 9.4pt;
     line-height: 1.36;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -1162,7 +1154,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin: 0;
     padding: 0.44em 0;
     border-bottom: 1px solid #d7e4ec;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -1222,7 +1213,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) :is(figure, .ogd-figure, .figure-block) {
     margin: 0.88em 0 1.05em;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -1246,7 +1236,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     font-size: 8.8pt;
     line-height: 1.32;
     text-align: center;
-    break-before: avoid;
     page-break-before: avoid;
   }
 
@@ -1295,7 +1284,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: var(--ogd-callout-bg);
     color: #334155;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 

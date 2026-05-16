@@ -473,19 +473,16 @@ a.tag:hover {
 @media print {
   body.ogd-print-avoid-breaks .markdown-rendered :is(.callout, blockquote, table, pre, figure, img, .mermaid, .markdown-embed),
   .markdown-rendered :is(.callout, blockquote, table, pre, figure, img, .mermaid, .markdown-embed) {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
   body.ogd-print-avoid-breaks .markdown-rendered :is(h2, h3, h4),
   .markdown-rendered :is(h2, h3, h4) {
-    break-after: avoid;
     page-break-after: avoid;
   }
 
   body.ogd-print-avoid-breaks .markdown-rendered :is(h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table),
   .markdown-rendered :is(h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table) {
-    break-before: avoid;
     page-break-before: avoid;
   }
 }
