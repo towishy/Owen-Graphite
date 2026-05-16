@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.8] — 2026-05-16 — PDF print hotfix follow-up: release footer multi-line content + unify LEFT header colour
+
+### Bug fix
+
+After v3.1.7 the LEFT header value started rendering but the colour was not reflected, and the footer LABEL rendered while the appended TITLE and BODY lines still did not paint.
+
+- **Footer TITLE + BODY missing**: an earlier `v2.22.46-hotfix` print block on the same selector (`> :last-child::before`) declares `display: flex; height: 10.5mm; align-items: center` for label-only vertical centering. Because `dedup_v3` only merges within a single `@media` scope, that block lives in a separate `@media print { }` and is not merged with our v3.1.7 EOF override. The multi-line content was therefore squashed into a 10.5mm flex box and the title/body lines were clipped. v3.1.8 explicitly resets `display`, `height`, `min-height`, `max-height`, `align-items`, `justify-content`, re-applies the accent padding (`padding-left: 7mm`) and re-asserts the accent border so multi-line text can flow.
+- **LEFT header colour**: Chromium's PDF pipeline honours `::first-line { font-size / letter-spacing / text-transform }` (so the label small-caps look did render) but does *not* reliably honour `::first-line { color }` / `-webkit-text-fill-color`. v3.1.8 sets the base color on `body::after` directly to `--ogd-fp-label-color` so both the label line and the appended value line paint in the user's label colour. The user's left value-color and label-color default to the same value in Style Settings, so unification is visually correct for the common case.
+
+### Trade-offs
+
+- LEFT header label and value share a single colour (`--ogd-fp-label-color`). The separate `--ogd-first-page-header-left-color` only controls the accent border.
+- Footer title and body share the footer text-color, and the label keeps the footer label-color (the label-line colour separation still relies on `::first-line` font sizing where Chromium honours it; if a future Chromium version starts dropping that too, we will need a different element).
+
+### Files
+
+- `src/polish/73-workflow-polish.css` — additional EOF block appended after v3.1.7.
+- `theme.css` — rebundled from `src/`.
+- `manifest.json` — `3.1.7 → 3.1.8`.
+
 ## [3.1.7] — 2026-05-16 — PDF print hotfix: extend verified-working paint slots (LEFT label + footer label) to also carry the missing value/title/body
 
 ### Bug fix

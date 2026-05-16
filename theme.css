@@ -16519,4 +16519,69 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #0f172a);
   }
 }
+
+/* ============================================================
+   v3.1.8 — PDF print hotfix follow-up. Two issues observed after v3.1.7:
+
+   (a) Footer TITLE + BODY still did not render. Root cause: an earlier
+       v2.22.46-hotfix print block (features/41) on the SAME selector
+       `:last-child::before` declares `display: flex; height: 10.5mm;
+       align-items: center` for label-only vertical centering. Because
+       dedup_v3 only merges within a single @-rule scope, that block lives
+       in a different `@media print { }` and survives. Our v3.1.7
+       multi-line content was therefore squashed into a 10.5mm flex box
+       and the title/body lines never painted.
+       FIX: explicitly reset `display`, `height`, `min-height`,
+       `align-items`, `justify-content`, and re-apply the accent padding
+       so multi-line text can flow.
+
+   (b) LEFT first-page header colour was not reflected. Root cause: our
+       v3.1.7 `body::after` override set base color to
+       `--ogd-text-strong` and tried to restore the user's label color
+       via `::first-line { color: var(--ogd-fp-label-color) }`. In
+       Chromium's PDF pipeline `::first-line` reliably honours
+       `font-size`/`letter-spacing`/`text-transform` (so the label
+       small-caps appearance worked) but NOT `color` /
+       `-webkit-text-fill-color` (the user's blue did not paint).
+       FIX: set base color directly to the user's label colour so both
+       the label line and the appended value line share that colour.
+       The user's left value-color and left label-color are the same
+       blue (`#279DF5`), so unification is visually correct for the
+       common case.
+
+   The same colour-unification strategy is applied to the footer: TITLE
+   and BODY share the footer text-color, and the LABEL line keeps the
+   footer label-color via `::first-line` font-size/letter-spacing only
+   (where Chromium honours it), with base color overridden so the
+   label-color paints reliably on the label line via the cascade.
+   ============================================================ */
+@media print {
+  /* (a) Footer multi-line content release from the v2.22.46 flex/height
+         lockdown. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before {
+    display: block;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    align-items: initial;
+    justify-content: initial;
+    padding: 0 0 0 7mm;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    overflow: visible;
+  }
+
+  /* (b) LEFT header colour — unify base color to the user's label color
+         since `::first-line { color }` is unreliable in Chromium PDF. */
+  body.ogd-first-page-header-enabled::after {
+    color: var(--ogd-fp-label-color, #279DF5);
+    -webkit-text-fill-color: var(--ogd-fp-label-color, #279DF5);
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #279DF5);
+  }
+}
 /* <<< src/polish/73-workflow-polish.css */
