@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.5)
+﻿# v3 Release Record (latest: v3.1.34)
 
-**Status**: Current stable / rollback baseline = `v3.1.5` (2026-05-16). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF specificity hardening, build-time dedup, lint warning cleanup, minAppVersion 1.12.0). v2 source/dev/scripts/docs/screenshots remain fully purged.
+**Status**: Current stable / rollback baseline = `v3.1.34` (2026-05-17). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, minAppVersion 1.12.0). v2 source/dev/scripts/docs/screenshots remain fully purged.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.5` |
-| `minAppVersion` | `1.6.0` (unchanged) |
-| `dist/theme-v3.css` lines / declaration-level `!important` | 16,479 / 0 |
+| `manifest.json` version | `3.1.34` |
+| `minAppVersion` | `1.12.0` |
+| `dist/theme-v3.css` lines / declaration-level `!important` | 16,169 / 0 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.5.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.34.zip` |
 
 ## What was removed
 
@@ -35,21 +35,23 @@
 | Strip `!important` from src/ | `dev/scripts/v3_strip_important_src.py` (comment-safe) |
 | Build release ZIP | `dev/scripts/build_release.py` |
 | Sync to Obsidian vault | `dev/scripts/sync_obsidian_theme.py` |
-| Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle + hit-routing) |
+| Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle + hit-routing + PDF marginalia) |
 
 ## Release procedure for future v3.x.y
 
 1. Edit `src/` only. Never hand-edit `theme.css`.
 2. `python dev/scripts/bundle_v3.py` — must end with `OK: bundled ... !important=N` where N is only comment-counts.
 3. `python dev/scripts/audit_v3_hit_routing.py` — must be clean.
-4. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
-5. Bump `manifest.json` version, add `CHANGELOG.md` entry.
-6. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
-7. Commit, tag `<version>` (and optionally `v<version>`), push tag.
-8. CI (`.github/workflows/release.yml`) builds the GitHub Release.
+4. `python dev/scripts/audit_pdf_header_footer.py` — must be clean after any print/report/PDF settings change.
+5. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
+6. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
+7. Bump `manifest.json` version, add `CHANGELOG.md` entry.
+8. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
+9. Commit, tag `<version>` (and optionally `v<version>`), push tag.
+10. CI (`.github/workflows/release.yml`) builds the GitHub Release.
 
 ## Style Settings + minAppVersion
 
-- 37 Style Settings option names unchanged from v2.30.14 — Style Settings configs migrate without user action.
-- Token contract: 255 `--ogd-*` token names preserved.
-- `minAppVersion: 1.6.0` unchanged.
+- Current v3 Style Settings contract is recorded in `docs/v3/style-settings-contract.md`.
+- Current token inventory is recorded in `docs/v3/token-inventory.md`.
+- `minAppVersion: 1.12.0`.
