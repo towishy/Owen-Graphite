@@ -1,0 +1,195 @@
+:root {
+  --ogd-body-size: 15px;
+  --ogd-line-height: 1.5;
+  --ogd-max-width: 420mm;
+  --ogd-accent: #4b5563;
+  --ogd-surface-base: #ffffff;
+  --ogd-surface-muted: #f8fafc;
+  --ogd-surface-subtle: #f3f4f6;
+  --ogd-surface-dark: #111827;
+  --ogd-surface-dark-muted: #374151;
+  --ogd-surface-dark-subtle: #334155;
+  --ogd-surface-transparent: transparent;
+  --ogd-line-soft: #e5e7eb;
+  --ogd-line-strong: #cbd5e1;
+  --ogd-line-ink: #111827;
+  --ogd-line-contrast: #374151;
+  --ogd-line-dark: #334155;
+  --ogd-line-muted: #475569;
+  --ogd-line-faint: #94a3b8;
+  --ogd-text-strong: #111827;
+  --ogd-text-inverted: #f8fafc;
+  --ogd-text-secondary: #374151;
+  --ogd-text-subtle: #475569;
+  --ogd-text-soft: #94a3b8;
+  --ogd-text-slate: #334155;
+  --ogd-text-body: #1a1a1a;
+  --ogd-text-muted: #64748b;
+  --ogd-border-none: 0;
+  --ogd-shadow-none: none;
+  --ogd-radius-control: 7px;
+  --ogd-radius-pill: 999px;
+  --ogd-radius-top: var(--radius-m, 6px) var(--radius-m, 6px) 0 0;
+  --ogd-radius-pill-left: var(--ogd-radius-pill, 999px) 0 0 var(--ogd-radius-pill, 999px);
+  --ogd-first-page-header: "";
+  --ogd-first-page-header-color: #111827;
+  --ogd-first-page-header-left: "";
+  --ogd-first-page-header-left-color: #0ea5e9;
+  --ogd-fp-right-label: "";
+  --ogd-fp-left-label: "";
+  --ogd-fp-label-color: #6b7280;
+  --ogd-last-page-footer-label: "";
+  --ogd-last-page-footer-title: "";
+  --ogd-last-page-footer-body: "";
+  --ogd-last-page-footer-color: #0ea5e9;
+  --ogd-last-page-footer-label-color: #64748b;
+  --ogd-last-page-footer-title-color: #0f172a;
+  --ogd-last-page-footer-text-color: #334155;
+  --ogd-title-rule-start: #0f766e;
+  --ogd-title-rule-end: #0284c7;
+  --ogd-glass-surface-bg: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50));
+  --ogd-glass-toolbar-bg: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55));
+  --ogd-glass-control-bg: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22));
+  --ogd-glass-control-hover-bg: radial-gradient(circle at 74% 24%, rgba(255,255,255,0.72), transparent 36%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.54));
+  --ogd-hover-lift-strong: translateY(-2px);
+  --ogd-hover-lift: translateY(-1px);
+  --ogd-hover-lift-subtle: translateY(-0.5px);
+  --ogd-hover-shift: translateX(1px);
+  --ogd-press-lift: translateY(0) scale(0.99);
+}
+
+.theme-light,
+.theme-dark {
+  --font-interface-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono",
+    "Cascadia Code", "Consolas", "D2Coding", "Menlo", "Courier New", monospace;
+
+  --background-primary: #ffffff;
+  --background-primary-alt: #f9fafb;
+  --background-secondary: #eef2f7;
+  --background-secondary-alt: #e5e7eb;
+  --background-modifier-border: #d1d5db;
+  --background-modifier-border-hover: #9ca3af;
+  --background-modifier-hover: #f3f4f6;
+  --background-modifier-active-hover: #e5e7eb;
+
+  --text-normal: #1a1a1a;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+  --text-accent: #374151;
+  --text-accent-hover: #111827;
+  --text-on-accent: #ffffff;
+  --text-on-accent-inverted: #111827;
+  --text-selection: rgba(75, 85, 99, 0.18);
+
+  --interactive-normal: #f3f4f6;
+  --interactive-hover: #e5e7eb;
+  --interactive-accent: #4b5563;
+  --interactive-accent-rgb: 75, 85, 99;
+  --interactive-accent-hover: #374151;
+  --interactive-success: #047857;
+
+  --titlebar-background: #eef2f7;
+  --titlebar-background-focused: #eef2f7;
+  --ribbon-background: #eef2f7;
+  --tab-container-background: #eef2f7;
+  --tab-background-active: #ffffff;
+  --tab-outline-color: #d1d5db;
+
+  --divider-color: #d1d5db;
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: #cbd5e1;
+  --scrollbar-active-thumb-bg: #9ca3af;
+
+  --header-accent: var(--ogd-accent, #4b5563);
+  --header-accent-dark: #374151;
+  --header-text: #111827;
+  --header-muted: #6b7280;
+  --header-line: #d1d5db;
+  --header-bg-soft: #f3f4f6;
+
+  --blockquote-border-color: #6b7280;
+  --blockquote-border-thickness: 3px;
+  --blockquote-background-color: transparent;
+  --blockquote-color: #374151;
+  --blockquote-font-style: normal;
+  --blockquote-content-padding: 0.6em 0 0.6em 1.2em;
+
+  --callout-border-width: 0px;
+  --callout-border-opacity: 1;
+  --callout-radius: 6px;
+  --callout-blend-mode: normal;
+  --callout-title-color: #1f2937;
+  --callout-content-color: #374151;
+  --callout-info: 75, 85, 99;
+  --callout-note: 75, 85, 99;
+  --callout-tip: 75, 85, 99;
+  --callout-abstract: 75, 85, 99;
+  --callout-summary: 75, 85, 99;
+  --callout-tldr: 75, 85, 99;
+  --callout-question: 75, 85, 99;
+  --callout-help: 75, 85, 99;
+  --callout-faq: 75, 85, 99;
+  --callout-warning: 146, 64, 14;
+  --callout-attention: 146, 64, 14;
+  --callout-caution: 146, 64, 14;
+  --callout-failure: 146, 64, 14;
+  --callout-fail: 146, 64, 14;
+  --callout-missing: 146, 64, 14;
+  --callout-danger: 146, 64, 14;
+  --callout-error: 146, 64, 14;
+  --callout-bug: 146, 64, 14;
+  --callout-success: 4, 120, 87;
+  --callout-check: 4, 120, 87;
+  --callout-done: 4, 120, 87;
+
+  --code-background: #f8fafc;
+  --code-normal: #111827;
+  --code-comment: #6b7280;
+  --code-function: #1d4ed8;
+  --code-important: #374151;
+  --code-keyword: #374151;
+  --code-property: #1d4ed8;
+  --code-punctuation: #4b5563;
+  --code-string: #047857;
+  --code-tag: #1d4ed8;
+  --code-value: #047857;
+
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+}
+
+body {
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-family: var(--font-interface-theme);
+}
+
+body.ogd-motion-off {
+  --ogd-hover-lift-strong: none;
+  --ogd-hover-lift: none;
+  --ogd-hover-lift-subtle: none;
+  --ogd-hover-shift: none;
+  --ogd-press-lift: none;
+}
+
+body.ogd-motion-subtle {
+  --ogd-hover-lift-strong: translateY(-0.75px);
+  --ogd-hover-lift: translateY(-0.5px);
+  --ogd-hover-lift-subtle: translateY(-0.25px);
+  --ogd-hover-shift: translateX(0.5px);
+  --ogd-press-lift: translateY(0) scale(0.995);
+}
+
+body.ogd-motion-standard {
+  --ogd-hover-lift-strong: translateY(-2px);
+  --ogd-hover-lift: translateY(-1px);
+  --ogd-hover-lift-subtle: translateY(-0.5px);
+  --ogd-hover-shift: translateX(1px);
+  --ogd-press-lift: translateY(0) scale(0.99);
+}
+
