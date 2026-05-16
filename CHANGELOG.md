@@ -6,6 +6,20 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.13] — 2026-05-16 — Community scanner hex normalization
+
+### Fixed
+- Expanded the remaining 3-digit hex literals to the full 6-digit form in `dev/06-feature-presets.css` (print/forced-colors table borders) and `dev/07-plugin-workspace.css` (high-contrast `prefers-contrast: more` border/text-muted overrides for both light and dark, and the Mermaid dark-mode default node stroke). This clears the seven `Use the full 6-digit hex format for consistency.` warnings the Obsidian community theme scanner raised on v2.30.12 without changing any rendered color or theme behavior. No design tokens, selectors, cascade, or feature surfaces were touched.
+
+### Added
+- `screenshots/readme/v2.30-cover-1200x800.svg` and the rendered `screenshots/readme/v2.30-cover-1200x800.png` for the community listing cover, built from authentic Owen Graphite liquid glass tokens (rest = white/gray frosted glass, single sky pastel active surface, 1px graphite rim, top white shine, wide soft shadow, no left vertical rail).
+- `scripts/render_cover_image.py` Playwright helper that rasterizes the cover SVG to a 1200×800 PNG.
+
+### Validation
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py`
+- `scripts/sync_obsidian_theme.py` (robocopy /MIR to Obsidian vault)
+
 ## [2.30.12] — 2026-05-14 — Theme manifest fundingUrl removal
 
 ### Fixed

@@ -4410,8 +4410,8 @@ body.ogd-eye-care.theme-light .markdown-rendered {
     border-bottom-width: 2px !important;
     border-left-width: 6px !important;
   }
-  .markdown-rendered table { border: 2px solid #000 !important; }
-  .markdown-rendered table :is(th, td) { border-color: #000 !important; }
+  .markdown-rendered table { border: 2px solid #000000 !important; }
+  .markdown-rendered table :is(th, td) { border-color: #000000 !important; }
   .markdown-rendered a { text-decoration: underline !important; }
 }
 
@@ -4763,12 +4763,12 @@ a.tag:hover {
 /* #12 - High-contrast mode */
 @media (prefers-contrast: more) {
   :root {
-    --background-modifier-border: #555;
-    --text-muted: #333;
+    --background-modifier-border: #555555;
+    --text-muted: #333333;
   }
   .theme-dark {
-    --background-modifier-border: #aaa;
-    --text-muted: #ccc;
+    --background-modifier-border: #aaaaaa;
+    --text-muted: #cccccc;
   }
   a, a.internal-link, a.tag {
     text-decoration: underline;
@@ -4855,7 +4855,7 @@ a.tag:hover {
 }
 .theme-dark .markdown-rendered .mermaid svg .node :is(rect, polygon, circle, ellipse, path) {
   fill: #2d2d2d;
-  stroke: #888;
+  stroke: #888888;
 }
 
 /* ============================================================
