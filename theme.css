@@ -16402,4 +16402,121 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     -webkit-text-fill-color: inherit;
   }
 }
+
+/* ============================================================
+   v3.1.7 — PDF print hotfix (final strategy: extend the VERIFIED-WORKING
+   paint slots' content instead of opening new ones).
+
+   After v3.1.4 (re-assertion) and v3.1.6 (fresh `.workspace-leaf-content`
+   pseudo slots) both failed to land the LEFT header value and the footer
+   title+body in PDF, the only paint surfaces that remain reliably visible
+   are the slots that are *already* painting correctly:
+
+   - `body.ogd-first-page-header-enabled::after`           (LEFT label)
+   - `body.ogd-last-page-footer :is(...) > :last-child::before` (footer LABEL)
+
+   Strategy: keep those rules' positioning intact (don't touch top/left)
+   and OVERRIDE only `content` to inline-append the missing value/title/body
+   with `\A` newlines, then style the label-portion via `::first-line` so
+   the label keeps its small-caps look while the appended value uses normal
+   body type. Per user direction (2026-05-16) title and body may share a
+   single color so the missing pieces actually render.
+
+   Side effects:
+   - v3.1.6 `.workspace-leaf-content::before` / `::after` rules are
+     neutralised (content: none) so they cannot ghost-paint anywhere.
+   - The LEFT-value box now sits visually attached to the LEFT label
+     (one combined two-line stack) instead of being a separate box below
+     the label. This is the trade-off we accept for guaranteed rendering.
+   - The footer becomes a three-line stack: LABEL / TITLE / BODY in a
+     single ::before box, with the existing accent border continuing
+     along the full block.
+   ============================================================ */
+@media print {
+  /* (1) Neutralise the v3.1.6 leaf-content attempts so they cannot leak. */
+  body.ogd-first-page-header-enabled .workspace-leaf-content::before,
+  body.ogd-last-page-footer .workspace-leaf-content::after {
+    content: none;
+    border-left: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  /* (2) LEFT header VALUE — append the value to the LEFT label box that
+         is already painting. ::first-line keeps label small-caps; the
+         appended value line picks up the rule body's normal type. */
+  body.ogd-first-page-header-enabled::after {
+    content: var(--ogd-fp-left-label, "CONFIDENTIAL") "\A" var(--ogd-first-page-header-left, "");
+    white-space: pre;
+    font-size: 10.5pt;
+    font-weight: 500;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.18;
+    color: var(--ogd-text-strong, #111827);
+    -webkit-text-fill-color: var(--ogd-text-strong, #111827);
+    padding: 0 0 0 10px;
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+  }
+
+  body.ogd-first-page-header-enabled::after::first-line {
+    font-size: 8.8pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ogd-fp-label-color, #475569);
+    -webkit-text-fill-color: var(--ogd-fp-label-color, #475569);
+  }
+
+  /* (3) Last-page footer TITLE + BODY — append both lines to the footer
+         LABEL box that is already painting. Single color for title+body
+         (per user direction) so the combined block renders reliably. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before {
+    content:
+      var(--ogd-last-page-footer-label, "") "\A\A"
+      var(--ogd-last-page-footer-title, "") "\A"
+      var(--ogd-last-page-footer-body, "");
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    font-size: 8.8pt;
+    font-weight: 700;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.42;
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before::first-line {
+    font-size: 8.8pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ogd-last-page-footer-label-color, #0f172a);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #0f172a);
+  }
+}
 /* <<< src/polish/73-workflow-polish.css */

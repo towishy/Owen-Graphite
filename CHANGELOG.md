@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.7] — 2026-05-16 — PDF print hotfix: extend verified-working paint slots (LEFT label + footer label) to also carry the missing value/title/body
+
+### Bug fix
+
+- After v3.1.4 (re-asserting the same `::after` rules) and v3.1.6 (re-routing to fresh `.workspace-leaf-content::before`/`::after` slots) both failed to land the LEFT first-page header value and the last-page footer title+body in PDF export, the only remaining reliable strategy is to extend the slots that *are* painting today: `body::after` (LEFT label) and `:last-child::before` (footer label). Both are verified visible on the user's PDF.
+
+### Fix
+
+- `body.ogd-first-page-header-enabled::after` content is overridden to inline the missing LEFT value after the existing label with a `\A` newline. `::first-line` keeps the label small-caps/letter-spacing/label-color; the rest of the box (the value line) inherits the rule body's normal-weight value type. The accent border continues along both lines.
+- `body.ogd-last-page-footer :is(...) > :last-child::before` content is overridden to a three-line stack: LABEL `\A\A` TITLE `\A` BODY. `::first-line` keeps the footer label style; title and body share a single color (`--ogd-last-page-footer-text-color`) per user direction so the combined block renders reliably.
+- The v3.1.6 `.workspace-leaf-content::before`/`::after` rules are neutralised (`content: none`) to remove the dead paint attempt.
+
+### Trade-offs
+
+- LEFT side header now visually presents as a single two-line box (label on top, value below) instead of two separate boxes. The RIGHT side keeps the previous two-element layout (label via `body::before`, value via `.markdown-preview-sizer::before`) because that path is already known to paint.
+- Footer title and body share one color (text-color). The title-color slot is now only honoured on the label line via `::first-line`.
+
+### Files
+
+- `src/polish/73-workflow-polish.css` — additional EOF block appended after the v3.1.6 block (no existing src selectors edited).
+- `theme.css` — rebundled from `src/`.
+- `manifest.json` — `3.1.6 → 3.1.7`.
+
 ## [3.1.6] — 2026-05-16 — PDF print hotfix: re-route LEFT header value + footer title/body to fresh paint slots
 
 ### Bug fix
