@@ -205,7 +205,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
 }
 
 /* ============================================================================
-   C3. PDF Header & Footer (v3.1.28 — clean layered rewrite from scratch)
+   C3. PDF Header & Footer (v3.1.29 — BODY를 ::after로 분리)
    ============================================================================
    목적: PDF 첫 페이지 헤더(4 슬롯) + 마지막 페이지 풋터(3 슬롯) 표시.
 
@@ -251,9 +251,12 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
    │   H-L4  .markdown-rendered::after  → 좌측 본문값 + 좌측 세로 바   │
    ├───────────────────────────────────────────────────────────────────┤
    │ FOOTER (마지막 페이지, :last-child 기준 abs)                      │
-   │   F-L1  :last-child::before        → LABEL                        │
-   │   F-L2  :last-child::after         → TITLE "\A\A" BODY 한 layer   │
-   │           ::first-line             → TITLE 색 sub-zone            │
+   │   F-L1  :last-child::before        → LABEL "\A\A" TITLE (한 layer)    │
+   │           ::first-line             → LABEL 형식 sub-zone (첫 줄)      │
+   │   F-L2  :last-child::after         → BODY (단일 string, ::first-line X) │
+   │   v3.1.29: v3.1.28처럼 ::after에 multiline concat + ::first-line을    │
+   │   쓰면 Chromium PDF가 ::after 본문을 무조건 cull. TITLE을 ::before로 │
+   │   옮기고 ::after는 BODY 단일 string으로 단순화 (R7).             │
    └───────────────────────────────────────────────────────────────────┘
 
    구조 규칙 (회귀 방지)
@@ -261,8 +264,9 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
    [R1] body / .markdown-* / .markdown-rendered { position: relative }
         → 헤더·풋터 abs pseudo의 containing-block 안전 확보.
           v3.0~v3.1.26 사고의 핵심 원인.
-   [R2] :last-child { position: relative; margin-bottom: 54mm }
+   [R2] :last-child { position: relative; margin-bottom: 80mm }
         → 풋터 영역 reserve + 풋터 abs containing-block.
+          v3.1.29에서 LABEL+TITLE+BODY 3 zone를 모두 담기 위해 80mm.
    [R3] 풋터 ::before / ::after는 반드시 SHARED selector group으로
         공통 abs(position, left, width, display, box-sizing, font-family,
         font-style, font-synthesis, pointer-events, print-color-adjust)
@@ -270,7 +274,11 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
         Chromium PDF가 cull. (v3.1.26 사고 원인 #2)
    [R4] list-item / ::marker / list-style-position outside 트릭 금지.
         Chromium PDF가 abs container 안에서 marker를 cull. (v3.1.26 #3)
-        TITLE/BODY 색 분리는 ::first-line으로만 수행.
+   [R7] ::after에 multiline content concat ("\A\A")과 ::first-line을
+        동시에 쓰지 말 것. Chromium PDF가 조합을 cull. 색 분리는
+        멀티 zone을 ::before에 모아놓고(::first-line으로 첫 줄만
+        override), ::after는 언제나 단일 형식 단일 string만 허용.
+        (v3.1.28 사고 근거)
    [R5] 모든 print pseudo: z-index 9999, pointer-events none,
         print-color-adjust exact, white-space pre-wrap (multiline 안전).
    [R6] 헤더 anchor는 .markdown-rendered 단 하나만 사용. sizer / view /
@@ -397,14 +405,15 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
      FOOTER — 마지막 페이지, 2 layer + 1 sub-zone
      ========================================================================== */
 
-  /* [R2] :last-child를 풋터 abs containing-block + 영역 reserve */
+  /* [R2] :last-child를 풋터 abs containing-block + 영역 reserve.
+     v3.1.29: BODY를 ::after로 분리하면서 reserve를 80mm로 늘림. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child {
     position: relative !important;
-    margin-bottom: 54mm !important;
+    margin-bottom: 80mm !important;
   }
 
   /* [R3] 풋터 ::before / ::after — SHARED abs group (분해 금지!) */
@@ -437,41 +446,61 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     print-color-adjust: exact !important;
   }
 
-  /* F-L1 : LABEL — 상단 small caps 박스 */
+  /* F-L1 : LABEL + TITLE 한 layer (v3.1.29 재설계).
+     v3.1.28까지는 LABEL만 ::before, TITLE+BODY는 ::after에 묶었으나
+     Chromium PDF가 (abs ::after + ::first-line + multiline `\A\A` concat)
+     조합에서 ::after 본문을 무조건 cull하는 버그가 확인됨 (page 1 헤더는
+     같은 메커니즘인데 ::first-line이 없어 정상 렌더됨이 증거).
+     해결: TITLE을 LABEL과 같은 ::before에 합치고 ::first-line으로 LABEL
+     형식만 분리. ::after는 BODY 단일 string으로 단순화. [R4] 유지. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before {
-    content: var(--ogd-last-page-footer-label, "") !important;
+    content: var(--ogd-last-page-footer-label, "")
+             "\A\A"
+             var(--ogd-last-page-footer-title, "") !important;
     top: calc(100% + 11mm) !important;
-    height: 10.5mm !important;
-    display: flex !important;
-    align-items: center !important;
+    min-height: 10.5mm !important;
     padding: 0 0 0 7mm !important;
-    color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    font-size: 9pt !important;
+    /* BASE = TITLE 형식 (큰 dark bold) — ::first-line이 첫 줄(LABEL)만 덮음 */
+    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
+    font-size: 11pt !important;
     font-weight: 700 !important;
-    letter-spacing: 1.5px !important;
-    line-height: 1 !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0 !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
     white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
   }
 
-  /* F-L2 : TITLE + BODY 한 layer.
-     content는 TITLE "\A\A" BODY로 한 pseudo에 묶고 ::first-line으로
-     TITLE 색만 분리. [R4]에 따라 list-item / ::marker 사용 금지. */
+  /* LABEL 형식 sub-zone — ::before 첫 줄에만 적용.
+     LABEL은 "End of Document : NOTICE" 같이 짧아 한 줄에 들어감을 가정. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before::first-line {
+    color: var(--ogd-last-page-footer-label-color, #64748b) !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+  }
+
+  /* F-L2 : BODY 단일 layer (v3.1.29).
+     ::after는 단순 string 하나만 — ::first-line 없음, multiline `\A\A`
+     concat 없음. page 1 헤더 ::before/::after와 동일한 단순 메커니즘
+     이므로 Chromium PDF에서 cull 없이 확실히 렌더. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::after {
-    content: var(--ogd-last-page-footer-title, "")
-             "\A\A"
-             var(--ogd-last-page-footer-body, "") !important;
-    top: calc(100% + 23mm) !important;
+    content: var(--ogd-last-page-footer-body, "") !important;
+    top: calc(100% + 36mm) !important;
     padding: 0 0 0 7mm !important;
     color: var(--ogd-last-page-footer-text-color, #334155) !important;
     -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
@@ -482,20 +511,6 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     text-transform: none !important;
     white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
-  }
-
-  /* TITLE 색 sub-zone (F-L2 첫 줄에만 적용).
-     ::first-line은 Chromium에서 color / -webkit-text-fill-color /
-     font-weight를 안정적으로 지원. font-size 변경은 PDF에서 불안정해
-     사용하지 않음. */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after::first-line {
-    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    font-weight: 700 !important;
   }
 }
 
