@@ -4061,14 +4061,13 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 2 !important;
   }
 
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after::first-line {
-    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-  }
+  /* Note: the ::first-line title color rule is declared once earlier in
+     this print media block (see the matching `> :last-child::after::first-line`
+     declaration paired with --ogd-last-page-footer-title-color). The
+     v2.22.49-hotfix ::marker rule below provides the actual paint isolation
+     because ::first-line on ::after is unreliable in Chromium. v2.30.13:
+     removed redundant duplicate of the ::first-line declaration here per the
+     community-scanner duplicate-selector cleanup; design output unchanged. */
 }
 
 /* C6. Report metadata block — frontmatter rendered nicely */
@@ -14293,12 +14292,11 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface) !important; border-color: var(--ogd-table-border) !important; box-shadow: var(--ogd-table-shadow) !important; }
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg) !important; color: var(--ogd-text-slate, #334155) !important; border-color: var(--ogd-table-cell-border) !important; border-bottom-color: rgba(148, 163, 184, 0.58) !important; font-weight: 780 !important; }
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: var(--ogd-table-cell-border) !important; color: var(--ogd-text-slate, #334155) !important; }
-body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td { background: var(--ogd-table-row-even) !important; }
+/* v2.30.13: removed two byte-identical duplicates that were also restated in the v2.30.16 block below (zebra-disabled-permanently :nth-child(even) td background, and theme-dark:not(.ogd-report-mode) table token block). v2.30.16 is the consolidated owner; cascade outcome unchanged. */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover) !important; }
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto !important; }
 .theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.56); --ogd-table-row-hover: rgba(51, 65, 85, 0.42); --ogd-table-row-even: rgba(15, 23, 42, 0.26); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
 .theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62)); --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74)); --ogd-table-border: rgba(203, 213, 225, 0.28); --ogd-table-cell-border: rgba(71, 85, 105, 0.72); --ogd-table-row-hover: rgba(51, 65, 85, 0.50); --ogd-table-row-even: rgba(15, 23, 42, 0.36); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34) !important; color: var(--text-normal, #e5edf7) !important; }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { color: var(--text-normal, #e5edf7) !important; }
 
@@ -14366,8 +14364,7 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 /* v2.30.18 soften HTML table thead bottom-line color in report-mode to match markdown widget */
 /* HTML utility-class thead th border-bottom is forced to `2px solid #6b7280` by v2.30.14 (specificity 0,8,3); v2.30.13/15/17 carry only 0,7,2 so their tone overrides lose the cascade. Restate the color at report-mode specificity (0,8,4) — width stays 2px to match the markdown widget (dev/10d:537 + dev/05:229). */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.58) !important; }
-/* Dark mode parity (markdown widget dark uses 0.34 from dev/10d:1490 in non-report-mode; v2.30.14 dark thead th sets `border-bottom-color: #6b7280` which still reads heavier than the widget). */
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.34) !important; }
+/* v2.30.13: removed the v2.30.18 dark-mode duplicate (`body.theme-dark :is(body.ogd-report-mode ...) thead th { border-bottom-color: rgba(148, 163, 184, 0.34) !important; }`); the v2.30.20 block below already restates the identical declaration on the same selector, so the cascade outcome is unchanged. */
 
 
 /* v2.30.20 thin out HTML table thead bottom-line width (2px -> 1px) and ease color to match markdown widget Liquid Glass parity */

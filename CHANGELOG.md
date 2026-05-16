@@ -6,6 +6,25 @@ All notable changes to **Owen Graphite** are recorded here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 this project normally follows patch-level release numbering; explicitly requested baseline jumps may use a shorter `X.Y` tag.
 
+## [2.30.14] — 2026-05-16 — Community scanner duplicate-selector cleanup + acknowledgments docs
+
+### Fixed
+- Removed four byte-identical duplicate selector blocks that were redundant inside their owning module:
+  - `dev/06-feature-presets.css`: dropped the second occurrence of `body.ogd-last-page-footer ... > :last-child::after::first-line` inside the `@media print` block. The matching declaration earlier in the same `@media print` block is the canonical owner; the v2.22.49-hotfix `::marker` rule below continues to provide the actual paint isolation because Chromium does not reliably honour `::first-line` on `::after`.
+  - `dev/10e-html-table-live-preview-glass.css`: dropped three v2.30.9 / v2.30.18 duplicates that were already restated by the v2.30.16 / v2.30.20 blocks below them (zebra-disabled `tbody tr:nth-child(even) td` background, `body.theme-dark:not(.ogd-report-mode) table` token block, and the dark report-mode `thead th { border-bottom-color: rgba(148, 163, 184, 0.34) }`). Cascade owner is the later block; rendered output is identical.
+- Each removal satisfied all three safety conditions: same module, same selector with same body, same enclosing at-rule context, and no intermediate redeclaration of the same property. Bundle `!important` count moved 5,819 → 5,816.
+
+### Added
+- `scripts/find_safe_duplicate_selectors.py` — CSS tokenizer that yields `(selector, body, at-context, line)` tuples per `dev/*.css` module and reports byte-identical duplicate groups. Reports only; never mutates source. Used to gate any future "duplicate selector" community-scanner cleanup.
+- `docs/community-scanner-acknowledgments.md` — categorised explanation of every remaining Obsidian community-scanner warning (`!important`, intended duplicate selectors across light/dark/print/a11y, `:has()`, partial-support properties), with a per-selector responsibility matrix (`.markdown-rendered table`, `.callout`, `.workspace-tab-header`, `.cm-callout`, `body.ogd-report-mode .metadata-container`) showing which module owns which layer.
+- `docs/layer-migration-roadmap.md` — long-term `@layer obsidian, owen-base, owen-glass, owen-features, owen-darkmode, owen-print, owen-a11y, owen-hotfix;` migration plan for a future v3.0. Phase 0 (regression-test guard build-out) → Phase 7 (`owen-hotfix` layer drain) with risk matrix and target metric `!important` < 1,500.
+
+### Validation
+- `scripts/find_safe_duplicate_selectors.py` (0 safe duplicates remaining)
+- `scripts/bundle_theme.py`
+- `scripts/validate_theme.py` (print ownership = 12 blocks, contrast = 13 pairs, vault sync OK, complexity inventory `!important=5816`)
+- `scripts/sync_obsidian_theme.py` (robocopy /MIR to Obsidian vault)
+
 ## [2.30.13] — 2026-05-16 — Community scanner hex normalization
 
 ### Fixed

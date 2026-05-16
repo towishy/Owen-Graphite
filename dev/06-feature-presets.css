@@ -514,14 +514,13 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 2 !important;
   }
 
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after::first-line {
-    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-  }
+  /* Note: the ::first-line title color rule is declared once earlier in
+     this print media block (see the matching `> :last-child::after::first-line`
+     declaration paired with --ogd-last-page-footer-title-color). The
+     v2.22.49-hotfix ::marker rule below provides the actual paint isolation
+     because ::first-line on ::after is unreliable in Chromium. v2.30.13:
+     removed redundant duplicate of the ::first-line declaration here per the
+     community-scanner duplicate-selector cleanup; design output unchanged. */
 }
 
 /* C6. Report metadata block — frontmatter rendered nicely */

@@ -4,7 +4,7 @@
 
 Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian 보고서 작성, Markdown 편집 UI까지 이어지는 Owen의 지식 작업 스택입니다.
 
-![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.13)
+![Owen Markdown 지식 작업 스택](screenshots/readme/owen-knowledge-work-stack.svg?v=2.30.14)
 
 ![Owen AI 문서 제작 병합 모델](screenshots/readme/owen-ai-document-stack.svg)
 
@@ -30,8 +30,8 @@ Owen WIKI, Owen Graphite, Owen Editor는 LLM 기반 지식 정리부터 Obsidian
 | 분야 | 내용 |
 |------|------|
 | **타깃** | 보고서·기술 문서·위키 작성자 (특히 한국어) |
-| **버전** | `2.30.13` |
-| **기본 릴리즈** | `2.30.13` |
+| **버전** | `2.30.14` |
+| **기본 릴리즈** | `2.30.14` |
 | **롤백 베이스라인** | `v2.30` |
 | **모드 지원** | ✅ Light / Dark / Report — 모든 위젯 패리티 보장 |
 | **플랫폼** | ✅ Desktop & Mobile |
@@ -217,6 +217,7 @@ README에는 현재 보존된 기본 릴리즈만 간략히 요약합니다. 이
 
 | 버전 | 핵심 변경 |
 |------|----------|
+| **v2.30.14** | 커뮤니티 스캐너 잔여 경고 정리 — `scripts/find_safe_duplicate_selectors.py` 신규 추가로 같은 모듈·같은 selector·같은 body·같은 at-rule context를 전부 만족하는 진짜 무해 중복만 자동 탐지하고, `dev/06-feature-presets.css` 1건과 `dev/10e-html-table-live-preview-glass.css` 3건(총 4건)을 제거. `!important` 5,819 → 5,816, 렌더 결과 동일. 의도된 다른 경고(`!important`, `:has()`, partial support, 4단 계층 override)는 새 문서 `docs/community-scanner-acknowledgments.md` 로 책임 매트릭스를 명시하고, 장기 `@layer` 도입 로드맵은 `docs/layer-migration-roadmap.md` 로 분리 |
 | **v2.30.13** | 커뮤니티 스캐너 hex 정규화 — `dev/06`/`dev/07` 의 print/forced-colors·high-contrast·Mermaid dark 노드 stroke 등 7곳의 3자리 hex(`#000/#555/#333/#aaa/#ccc/#888`)를 6자리로 확장해 Obsidian 커뮤니티 스캐너의 `Use the full 6-digit hex format for consistency.` 경고 7건을 해소. 색·디자인 토큰·캐스케이드·기능 표면은 변경 없음. 추가로 1200×800 커뮤니티 커버 SVG/PNG(`screenshots/readme/v2.30-cover-1200x800.*`)와 Playwright 기반 렌더 헬퍼 `scripts/render_cover_image.py` 동봉 |
 | **v2.30.12** | Theme manifest `fundingUrl` 제거 — 비활성 GitHub Sponsors URL이 Obsidian 커뮤니티 테마 등록 검증에서 `fetch failed`로 격상돼 머지 차단 사유가 되던 문제를 manifest에서 해당 필드 제거로 해소 (스폰서 링크는 README에 유지) |
 | **v2.30.11** | Theme manifest 스키마 정리 — 플러그인 전용 `isDesktopOnly` 필드를 `manifest.json`에서 제거해 Obsidian 커뮤니티 테마 등록 검증의 unknown-field 경고 해소 |
