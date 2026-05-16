@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.0.0** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. v2.30.14의 픽셀 결과를 그대로 보존한 채 16,000+ 줄 CSS를 처음부터 다시 작성하고, declaration-level `!important`를 **5,816개 → 0개**로 줄였습니다.
+**Owen Graphite v3.0.0** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. v2.30 디자인과 기능을 그대로 보존한 채 16,000+ CSS를 처음부터 다시 작성하였습니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
