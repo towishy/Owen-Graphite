@@ -1,0 +1,229 @@
+  padding-left: 1.35em !important;
+}
+
+.markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li {
+  margin-bottom: 0.35em !important;
+  color: var(--ogd-text-subtle, #475569) !important;
+  font-size: 0.92em !important;
+  line-height: 1.55 !important;
+}
+
+/* =====================================================================
+  Definition list - dl/dt/dd grid layout
+   ===================================================================== */
+.markdown-rendered dl,
+.markdown-preview-view dl,
+.markdown-reading-view dl,
+.markdown-rendered .definition-list,
+.markdown-preview-view .definition-list,
+.markdown-reading-view .definition-list {
+  margin: 1em 0 1.45em !important;
+  border-top: 1px solid #d8e1ea !important;
+  border-bottom: 1px solid #d8e1ea !important;
+}
+
+.markdown-rendered :is(dt, .definition-row),
+.markdown-preview-view :is(dt, .definition-row),
+.markdown-reading-view :is(dt, .definition-row) {
+  color: var(--ogd-text-slate, #334155) !important;
+  font-weight: 800 !important;
+}
+
+.markdown-rendered dt {
+  padding-top: 0.75em !important;
+}
+
+.markdown-rendered dd {
+  margin: 0.25em 0 0 !important;
+  padding: 0 0 0.75em 0 !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  color: var(--ogd-text-subtle, #475569) !important;
+  line-height: 1.62 !important;
+}
+
+.markdown-rendered dd:last-child {
+  border-bottom: 0 !important;
+}
+
+.markdown-rendered .definition-row {
+  display: grid !important;
+  grid-template-columns: minmax(120px, 0.24fr) 1fr !important;
+  gap: 0.9em !important;
+  padding: 0.75em 0 !important;
+  border-bottom: 1px solid #eef2f7 !important;
+}
+
+.markdown-rendered .definition-row:last-child {
+  border-bottom: 0 !important;
+}
+
+/* =====================================================================
+  Task list container - card-style checklist
+   ===================================================================== */
+.markdown-rendered .contains-task-list {
+  margin: 1em 0 1.45em !important;
+  padding-left: 0 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  overflow: hidden !important;
+}
+
+.markdown-rendered .contains-task-list > .task-list-item {
+  margin: 0 !important;
+  padding: 0.62em 0.8em !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  list-style: none !important;
+}
+
+.markdown-rendered .contains-task-list > .task-list-item:last-child {
+  border-bottom: 0 !important;
+}
+
+.markdown-rendered .task-list-item.is-checked {
+  background: #fbfdff !important;
+}
+
+/* =====================================================================
+  Keyboard caps - <kbd> enhanced styling (from snippet)
+   ===================================================================== */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
+  color: #6b7280 !important;
+  font-size: 0.88em !important;
+  font-family: var(--font-monospace-theme) !important;
+  background: #fafbfc !important;
+}
+.metadata-container {
+  background: #fafbfc;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-radius: var(--radius-m, 6px);
+  padding: 8px 12px;
+  margin: 0.4em 0 0.8em;
+}
+
+/* =====================================================================
+  Images & embeds - figure caption, shadows
+   ===================================================================== */
+.markdown-rendered img:not(.emoji) {
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+.markdown-rendered p > img + em,
+.markdown-rendered figcaption {
+  display: block;
+  text-align: center;
+  font-size: 0.86em;
+  color: #6b7280;
+  margin-top: 4px;
+  font-style: normal;
+}
+.markdown-rendered .internal-embed iframe,
+.markdown-rendered .external-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: var(--ogd-border-none, 0);
+  border-radius: var(--radius-m, 6px);
+}
+.markdown-rendered .pdf-embed {
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-m, 6px);
+  overflow: hidden;
+}
+
+/* =====================================================================
+  Live Preview to Reading view parity helpers
+   ===================================================================== */
+.markdown-source-view.mod-cm6 .cm-formatting-header,
+.markdown-source-view.mod-cm6 .cm-formatting-list,
+.markdown-source-view.mod-cm6 .cm-formatting-quote {
+  color: var(--ogd-line-strong, #cbd5e1) !important;
+  font-weight: 400 !important;
+}
+.markdown-source-view.mod-cm6 .cm-formatting-link,
+.markdown-source-view.mod-cm6 .cm-formatting-link-string,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-formatting-link {
+  color: var(--ogd-line-strong, #cbd5e1) !important;
+}
+
+/* =====================================================================
+  Workspace polish - sidebar, tabs, status bar, search
+   ===================================================================== */
+.nav-file-title,
+.nav-folder-title {
+  padding: 3px 8px !important;
+  font-size: 0.92em !important;
+  line-height: 1.4 !important;
+}
+.nav-file-title.is-active,
+.nav-folder-title.is-active {
+  background: #eef2f7 !important;
+  border-radius: 4px;
+}
+.workspace-tab-header.is-active {
+  border-top: 2px solid var(--header-accent) !important;
+  margin-top: -1px;
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--ogd-text-strong, #111827) !important;
+}
+.status-bar {
+  font-size: 0.8em !important;
+  padding: 2px 10px !important;
+}
+.search-result-file-matched-text,
+.suggestion-highlight {
+  background: #fef3c7 !important;
+  color: var(--ogd-text-strong, #111827) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* =====================================================================
+   Focus & scrollbar (accessibility)
+   ===================================================================== */
+/* Explicitly remove focus outline from content containers */
+.workspace-leaf,
+.workspace-leaf-content,
+.view-content,
+.markdown-source-view,
+.markdown-reading-view,
+.markdown-preview-view,
+.cm-editor,
+.cm-scroller,
+.cm-content {
+  outline: none !important;
+  box-shadow: var(--ogd-shadow-none, none) !important;
+}
+.workspace-leaf:focus,
+.workspace-leaf:focus-visible,
+.workspace-leaf-content:focus,
+.workspace-leaf-content:focus-visible,
+.view-content:focus,
+.view-content:focus-visible,
+.markdown-source-view:focus,
+.markdown-source-view:focus-visible,
+.markdown-reading-view:focus,
+.markdown-reading-view:focus-visible,
+.cm-editor:focus,
+.cm-editor:focus-visible,
+.cm-scroller:focus,
+.cm-scroller:focus-visible,
+.cm-content:focus,
+.cm-content:focus-visible {
+  outline: none !important;
+  box-shadow: var(--ogd-shadow-none, none) !important;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border: 3px solid var(--background-primary);
+  border-radius: var(--ogd-radius-pill, 999px);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-active-thumb-bg);
+}
+

@@ -1,0 +1,1498 @@
+/* ============================================================
+  v2.22.30 - Owen Graphite Liquid Glass core tab rim hotfix
+   - Promotes the approved state matrix into shared chrome tokens.
+   - Uses Mist Blue for active rims and Frost Aqua for focus halos.
+    - Keeps workspace tabs neutral because their shape already signals state.
+
+   FORBIDDEN — CM6 hit-routing contract:
+     - .cm-active.cm-line { outline | box-shadow with offset | transform | vertical padding }
+     - .cm-callout / .cm-table-widget direct vertical margin
+     - .HyperMD-* .cm-line direct vertical margin/padding
+   See: dev/MAP/cm6-hit-routing-contract.md
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    /* Token map: docs/liquid-glass-token-map.md. Reference order: hover sample first, state matrix second. */
+    --ogd-lg-mist-rim: rgba(186, 230, 253, 0.76);
+    --ogd-lg-mist-rim-dark: rgba(186, 230, 253, 0.42);
+    --ogd-lg-mist-fill: rgba(224, 242, 254, 0.50);
+    --ogd-lg-mist-glow: rgba(186, 230, 253, 0.16);
+    --ogd-lg-mist-line: rgba(125, 211, 252, 0.30);
+    --ogd-lg-frost-rim: rgba(103, 232, 249, 0.62);
+    --ogd-lg-frost-halo: rgba(103, 232, 249, 0.15);
+    --ogd-lg-frost-outline: rgba(103, 232, 249, 0.24);
+    --ogd-lg-surface-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.62), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.44), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.28) 54%, rgba(248, 250, 252, 0.18));
+    --ogd-lg-surface-bg-hover: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.68), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.46), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.32) 54%, rgba(248, 250, 252, 0.20));
+    --ogd-lg-surface-bg-active: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.68), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.46), transparent 32%), linear-gradient(180deg, var(--ogd-lg-mist-fill), rgba(255, 255, 255, 0.28) 54%, rgba(248, 250, 252, 0.18));
+    --ogd-lg-control-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.58), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(241, 245, 249, 0.24));
+    --ogd-lg-edge: rgba(255, 255, 255, 0.72);
+    --ogd-lg-edge-low: rgba(100, 116, 139, 0.24);
+    --ogd-lg-border: rgba(203, 213, 225, 0.34);
+    --ogd-lg-border-hover: rgba(147, 197, 253, 0.54);
+    --ogd-lg-shadow: 0 18px 44px rgba(15, 23, 42, 0.18), 0 6px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-hover: 0 28px 64px rgba(15, 23, 42, 0.24), 0 10px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-active: 0 22px 52px rgba(15, 23, 42, 0.22), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-focus: 0 18px 44px rgba(15, 23, 42, 0.18), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-pane-shell-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 24px rgba(15, 23, 42, 0.08);
+    --ogd-lg-pane-header-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 6px 14px rgba(15, 23, 42, 0.06);
+    --ogd-lg-tab-border: var(--ogd-surface-transparent, transparent);
+    --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.34);
+    --ogd-lg-tab-focus-outline: var(--ogd-surface-transparent, transparent);
+    --ogd-lg-tab-shadow: 0 16px 36px rgba(15, 23, 42, 0.16), 0 5px 12px rgba(15, 23, 42, 0.10), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-tab-shadow-hover: 0 22px 48px rgba(15, 23, 42, 0.20), 0 7px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge); --ogd-topbar-icon-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.78), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(248, 250, 252, 0.52)); --ogd-topbar-icon-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 8px 16px rgba(15, 23, 42, 0.10);
+    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.68), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.44), transparent 34%), linear-gradient(180deg, rgba(224, 242, 254, 0.68), rgba(240, 249, 255, 0.44));
+    --ogd-lg-row-active-shadow: 0 20px 46px rgba(15, 23, 42, 0.16), 0 7px 18px rgba(15, 23, 42, 0.10), 0 0 0 1px rgba(125, 211, 252, 0.36), 0 0 0 4px rgba(186, 230, 253, 0.14);
+    --ogd-glass-filter: blur(28px) saturate(180%) contrast(106%) brightness(1.03);
+    --ogd-glass-filter-soft: blur(18px) saturate(170%) contrast(104%) brightness(1.02);
+    --ogd-glass-filter-control: blur(12px) saturate(152%) contrast(103%) brightness(1.02);
+    --ogd-glass-bg: var(--ogd-lg-surface-bg);
+    --ogd-glass-bg-strong: var(--ogd-lg-surface-bg-active);
+    --ogd-glass-bg-hover: var(--ogd-lg-surface-bg-hover);
+    --ogd-glass-surface-bg: var(--ogd-lg-surface-bg);
+    --ogd-glass-toolbar-bg: var(--ogd-lg-surface-bg);
+    --ogd-glass-control-bg: var(--ogd-lg-control-bg);
+    --ogd-glass-control-hover-bg: var(--ogd-lg-surface-bg-hover);
+    --ogd-glass-border: var(--ogd-lg-border);
+    --ogd-glass-border-hover: var(--ogd-lg-border-hover);
+    --ogd-glass-shadow: var(--ogd-lg-shadow);
+    --ogd-glass-shadow-hover: var(--ogd-lg-shadow-hover);
+    --ogd-glass-control-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-tab-glass-bg: var(--ogd-lg-surface-bg-active);
+    --ogd-tab-glass-bg-hover: var(--ogd-lg-surface-bg-hover);
+    --ogd-tab-glass-border: var(--ogd-lg-tab-border);
+    --ogd-tab-glass-border-hover: var(--ogd-lg-tab-border-hover);
+    --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent);
+    --ogd-tab-glass-shadow: var(--ogd-lg-tab-shadow);
+    --ogd-tab-glass-shadow-hover: var(--ogd-lg-tab-shadow-hover);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-lg-mist-fill: rgba(14, 116, 144, 0.20);
+    --ogd-lg-mist-glow: rgba(186, 230, 253, 0.10);
+    --ogd-lg-mist-line: rgba(125, 211, 252, 0.22);
+    --ogd-lg-frost-rim: rgba(103, 232, 249, 0.42);
+    --ogd-lg-frost-halo: rgba(103, 232, 249, 0.10);
+    --ogd-lg-frost-outline: rgba(103, 232, 249, 0.18);
+    --ogd-lg-surface-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.14), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 32%), linear-gradient(180deg, rgba(71, 85, 105, 0.58), rgba(30, 41, 59, 0.30) 54%, rgba(15, 23, 42, 0.22));
+    --ogd-lg-surface-bg-hover: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.16), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.12), transparent 32%), linear-gradient(180deg, rgba(71, 85, 105, 0.68), rgba(30, 41, 59, 0.36) 54%, rgba(15, 23, 42, 0.26));
+    --ogd-lg-surface-bg-active: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.14), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.11), transparent 32%), linear-gradient(180deg, rgba(14, 116, 144, 0.20), rgba(30, 41, 59, 0.30) 54%, rgba(15, 23, 42, 0.22));
+    --ogd-lg-control-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.12), transparent 0 28%), linear-gradient(142deg, rgba(255, 255, 255, 0.09), transparent 32%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(30, 41, 59, 0.30));
+    --ogd-lg-edge: rgba(255, 255, 255, 0.18);
+    --ogd-lg-edge-low: rgba(15, 23, 42, 0.64);
+    --ogd-lg-border: rgba(203, 213, 225, 0.18);
+    --ogd-lg-border-hover: rgba(186, 230, 253, 0.30);
+    --ogd-lg-shadow: 0 18px 46px rgba(0, 0, 0, 0.46), 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-hover: 0 30px 72px rgba(0, 0, 0, 0.56), 0 12px 28px rgba(0, 0, 0, 0.38), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-active: 0 22px 54px rgba(0, 0, 0, 0.54), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-focus: 0 18px 46px rgba(0, 0, 0, 0.46), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-pane-shell-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 26px rgba(0, 0, 0, 0.30);
+    --ogd-lg-pane-header-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 7px 16px rgba(0, 0, 0, 0.24);
+    --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.18);
+    --ogd-lg-tab-focus-outline: var(--ogd-surface-transparent, transparent);
+    --ogd-lg-tab-shadow: 0 16px 38px rgba(0, 0, 0, 0.42), 0 5px 14px rgba(0, 0, 0, 0.28), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-tab-shadow-hover: 0 24px 54px rgba(0, 0, 0, 0.50), 0 8px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 var(--ogd-lg-edge); --ogd-topbar-icon-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.54), rgba(15, 23, 42, 0.38)); --ogd-topbar-icon-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 20px rgba(0, 0, 0, 0.26);
+    --ogd-lg-row-active-bg: radial-gradient(circle at 42% 16%, rgba(255, 255, 255, 0.14), transparent 0 30%), linear-gradient(142deg, rgba(255, 255, 255, 0.09), transparent 34%), linear-gradient(180deg, rgba(14, 116, 144, 0.34), rgba(15, 23, 42, 0.32));
+    --ogd-lg-row-active-shadow: 0 20px 48px rgba(0, 0, 0, 0.44), 0 7px 20px rgba(0, 0, 0, 0.30), 0 0 0 1px rgba(125, 211, 252, 0.24), 0 0 0 4px rgba(186, 230, 253, 0.08);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action) {
+    --ogd-ribbon-icon-border: var(--ogd-surface-transparent, transparent);
+    --ogd-ribbon-icon-bg: var(--ogd-lg-control-bg);
+    --ogd-ribbon-icon-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover {
+    --ogd-ribbon-icon-border: var(--ogd-lg-border-hover);
+    --ogd-ribbon-icon-bg: var(--ogd-lg-surface-bg-hover);
+    --ogd-ribbon-icon-shadow: var(--ogd-lg-shadow-hover);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):is(.is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"]) {
+    --ogd-ribbon-icon-border: var(--ogd-lg-mist-rim);
+    --ogd-ribbon-icon-bg: var(--ogd-lg-surface-bg-active);
+    --ogd-ribbon-icon-shadow: var(--ogd-lg-shadow-active);
+  }
+
+  body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):focus-visible {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header .view-actions, .view-actions, .view-header-nav-buttons) {
+    gap: 4px !important;
+    align-items: center !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header, .view-actions, .view-header-nav-buttons) :is(.view-action, .clickable-icon, button.clickable-icon) {
+    padding: 5px !important;
+    border: 1px solid var(--ogd-lg-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--icon-color, var(--text-muted)) !important;
+    transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header, .view-actions, .view-header-nav-buttons) :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]) {
+    border-color: var(--ogd-lg-border-hover) !important;
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header, .view-actions, .view-header-nav-buttons) :is(.view-action, .clickable-icon, button.clickable-icon):focus-visible {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  /* Final floating-surface owner: earlier modules keep legacy baselines, this block wins the live chrome. */
+  body:not(.is-mobile) :is(.prompt, .modal, .popover, .popover.hover-popover, .hover-popover .markdown-embed, .hover-popover .markdown-embed-content, .menu, [role="menu"], .suggestion-container, .tooltip, [role="tooltip"], .notice, .notice-container .notice) {
+    --background-modifier-message: var(--ogd-surface-transparent, transparent) !important;
+    --text-on-accent: var(--text-normal) !important;
+    background: var(--ogd-lg-surface-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
+    backdrop-filter: var(--ogd-glass-filter) !important;
+    border: 1px solid var(--ogd-lg-border) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-lg-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.tooltip, [role="tooltip"]) {
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(.tooltip, [role="tooltip"]) :is(.tooltip-content, .tooltip-inner, .tooltip-title, .tooltip-description),
+  body:not(.is-mobile) :is(.popover, .popover.hover-popover) :is(.popover-content, .markdown-embed, .markdown-embed-content, .markdown-preview-view, .markdown-rendered) {
+    background: var(--ogd-surface-transparent, transparent) !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    color: inherit !important;
+  }
+
+  body:not(.is-mobile) :is(.tooltip, [role="tooltip"]) :is(.tooltip-title, .tooltip-content strong, .tooltip-inner strong),
+  body:not(.is-mobile) :is(.popover, .popover.hover-popover) :is(.markdown-embed-title, .inline-title, h1, h2, h3) {
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) .tooltip .tooltip-arrow {
+    border-top-color: rgba(255, 255, 255, 0.66) !important;
+    border-right-color: rgba(255, 255, 255, 0.66) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.66) !important;
+    border-left-color: rgba(255, 255, 255, 0.66) !important;
+    filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.14)) !important;
+  }
+
+  /* Final side-pane owner: shell, header, row, and inner-label layers stay in one late cascade group. */
+  body:not(.is-mobile) :is(
+    .workspace-split.mod-left-split .workspace-leaf,
+    .workspace-split.mod-right-split .workspace-leaf,
+    .workspace-split.mod-left-split .workspace-leaf-content,
+    .workspace-split.mod-right-split .workspace-leaf-content,
+    .workspace-split.mod-left-split .view-content,
+    .workspace-split.mod-right-split .view-content,
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) {
+    background: var(--ogd-lg-surface-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-lg-pane-shell-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.view-header, .workspace-tab-header-container) {
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-bottom-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-lg-pane-header-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--icon-color, var(--text-muted)) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header:is(:hover, :focus-within, .is-active) :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon),
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.workspace-tab-header-new-tab, .workspace-tab-header-container .clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]) {
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    border-color: var(--ogd-lg-border-hover) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.search-empty-state, .empty-state, .empty-state-container) {
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border: 1px solid var(--ogd-lg-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-muted) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container,
+    .search-results-children,
+    .search-result-file-matches,
+    .tree-item-children
+  ) {
+    background: var(--ogd-surface-transparent, transparent) !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(
+    .tree-item-self.is-clickable,
+    .tree-item-self.mod-collapsible,
+    .tree-item-self.is-collapsed,
+    .tree-item-self.is-active,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match,
+    .search-empty-state,
+    .empty-state,
+    .empty-state-container
+  ) {
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border: 1px solid var(--ogd-lg-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-muted) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(
+    .tree-item-self.is-clickable,
+    .tree-item-self.mod-collapsible,
+    .tree-item-self.is-collapsed,
+    .tree-item-self.is-active,
+    .tag-pane-tag,
+    .search-result-file-title
+  ):is(:hover, :focus-within, .is-active, .mod-current) {
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    border-color: var(--ogd-lg-border-hover) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.tree-item-inner, .tree-item-flair, .search-result-file-title, .search-empty-state) {
+    color: inherit !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-lg-surface-bg-active) !important;
+    border-color: var(--ogd-lg-mist-rim) !important;
+    box-shadow: var(--ogd-lg-shadow-active) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown) {
+    background: var(--ogd-lg-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):is(:focus, :focus-visible, :focus-within) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
+    border-color: var(--ogd-lg-tab-border) !important;
+    border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-lg-surface-bg-active) !important;
+    box-shadow: var(--ogd-lg-tab-shadow) !important;
+    outline: none !important;
+    outline-offset: 0 !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    border-color: var(--ogd-lg-tab-border-hover) !important;
+    border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    box-shadow: var(--ogd-lg-tab-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header:focus-within .workspace-tab-header-inner {
+    outline: none !important;
+    outline-offset: 0 !important;
+  }
+
+  body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    border-color: var(--ogd-lg-border-hover) !important;
+    box-shadow: var(--ogd-lg-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.tree-item-self.is-clickable, .tree-item-self.mod-collapsible, .tree-item-self.is-collapsed, .tree-item-self.is-active) > .tree-item-inner,
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.tree-item-self.is-clickable, .tree-item-self.mod-collapsible, .tree-item-self.is-collapsed, .tree-item-self.is-active):is(:hover, :focus-within) > .tree-item-inner {
+    background: var(--ogd-surface-transparent, transparent) !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    color: var(--text-normal) !important;
+    font-weight: 720 !important;
+    text-shadow: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"],
+    .backlink-pane,
+    .outgoing-link-pane,
+    .outline,
+    .outline-view,
+    .bookmarks-view,
+    .tag-container,
+    .search-result-container
+  ) :is(.search-empty-state, .empty-state, .empty-state-container) {
+    background: var(--ogd-lg-control-bg) !important;
+    border-color: var(--ogd-lg-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    color: var(--text-muted) !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
+    border: 1px solid var(--ogd-surface-transparent, transparent) !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
+    border-bottom-color: var(--ogd-surface-transparent, transparent) !important;
+    background: var(--ogd-lg-row-active-bg) !important;
+    box-shadow: var(--ogd-lg-row-active-shadow) !important;
+    color: var(--text-normal) !important;
+    font-weight: 850 !important;
+    text-decoration: none !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::before {
+    opacity: 1 !important;
+    background-color: rgba(71, 85, 105, 0.84) !important;
+  }
+
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
+    content: none !important;
+  }
+
+  body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-visible :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+}
+@media (min-width: 701px) {
+  body:not(.is-mobile).ogd-glass-off {
+    --ogd-lg-surface-bg: var(--background-primary);
+    --ogd-lg-surface-bg-hover: var(--background-modifier-hover);
+    --ogd-lg-surface-bg-active: var(--background-primary);
+    --ogd-lg-control-bg: var(--background-primary-alt);
+    --ogd-lg-shadow: none;
+    --ogd-lg-shadow-hover: none;
+    --ogd-lg-shadow-active: none;
+    --ogd-lg-shadow-focus: 0 0 0 2px var(--ogd-lg-frost-outline);
+    --ogd-glass-filter: none;
+    --ogd-glass-filter-soft: none;
+    --ogd-glass-filter-control: none;
+  }
+}
+
+/* ============================================================
+  v2.22.31 - Table mode separation and focus halo polish
+   - Keeps default wiki tables airy and glass-like.
+   - Gives report-mode tables crisper document/PDF hierarchy.
+   - Promotes Frost Aqua focus as a visible, non-shifting glass state.
+   ============================================================ */
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54));
+  --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66));
+  --ogd-table-border: rgba(203, 213, 225, 0.58);
+  --ogd-table-cell-border: rgba(226, 232, 240, 0.84);
+  --ogd-table-row-hover: rgba(240, 249, 255, 0.54);
+  --ogd-table-row-even: rgba(248, 250, 252, 0.62);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  background: var(--ogd-table-surface) !important;
+  border-color: var(--ogd-table-border) !important;
+  box-shadow: var(--ogd-table-shadow) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  background: var(--ogd-table-head-bg) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+  border-color: var(--ogd-table-cell-border) !important;
+  border-bottom-color: rgba(148, 163, 184, 0.58) !important;
+  font-weight: 780 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  border-color: var(--ogd-table-cell-border) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+}
+
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+  background: var(--ogd-table-row-even) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+  background: var(--ogd-table-row-hover) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table) { --ogd-html-table-surface: radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.72), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.62)); --ogd-html-table-head-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.82), transparent 0 32%), linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(226, 232, 240, 0.72)); --ogd-html-table-axis-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.68)); --ogd-html-table-caption-bg: radial-gradient(circle at 82% 18%, rgba(224, 242, 254, 0.46), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.56)); --ogd-html-table-border: rgba(203, 213, 225, 0.72); --ogd-html-table-cell-border: rgba(226, 232, 240, 0.92); --ogd-html-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.035), 0 10px 28px rgba(15, 23, 42, 0.08); border-collapse: separate !important; border-spacing: 0 !important; border-color: var(--ogd-html-table-border) !important; border-radius: var(--radius-l, 8px) !important; background: var(--ogd-html-table-surface) !important; box-shadow: var(--ogd-html-table-shadow) !important; overflow: hidden !important; }
+@supports selector(table:has(caption)) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:has(caption) { --ogd-html-table-surface: radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.72), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.62)); --ogd-html-table-head-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.82), transparent 0 32%), linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(226, 232, 240, 0.72)); --ogd-html-table-axis-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.68)); --ogd-html-table-caption-bg: radial-gradient(circle at 82% 18%, rgba(224, 242, 254, 0.46), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.56)); --ogd-html-table-border: rgba(203, 213, 225, 0.72); --ogd-html-table-cell-border: rgba(226, 232, 240, 0.92); --ogd-html-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.035), 0 10px 28px rgba(15, 23, 42, 0.08); border-collapse: separate !important; border-spacing: 0 !important; border-color: var(--ogd-html-table-border) !important; border-radius: 0 0 var(--radius-l, 8px) var(--radius-l, 8px) !important; background: var(--ogd-html-table-surface) !important; box-shadow: var(--ogd-html-table-shadow) !important; overflow: hidden !important; }
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table) thead th { background: var(--ogd-html-table-head-bg, var(--ogd-table-head-bg)) !important; border-color: var(--ogd-html-table-cell-border, var(--ogd-table-cell-border)) !important; border-bottom-color: rgba(148, 163, 184, 0.62) !important; color: var(--ogd-text-slate, #334155) !important; font-weight: 800 !important; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table) thead th { text-align: left !important; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table) :is(th, td) { border-color: var(--ogd-html-table-cell-border, var(--ogd-table-cell-border)) !important; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.matrix-table) tbody td:first-child { background: var(--ogd-html-table-axis-bg, rgba(248, 250, 252, 0.72)) !important; color: var(--ogd-text-strong, #111827) !important; font-weight: 780 !important; box-shadow: 1px 0 0 rgba(203, 213, 225, 0.62) !important; }
+
+@supports selector(table:has(caption)) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:has(caption) thead th { background: var(--ogd-html-table-head-bg, var(--ogd-table-head-bg)) !important; border-color: var(--ogd-html-table-cell-border, var(--ogd-table-cell-border)) !important; border-bottom-color: rgba(148, 163, 184, 0.62) !important; color: var(--ogd-text-slate, #334155) !important; font-weight: 800 !important; }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:has(caption):not(.matrix-table) thead th { text-align: left !important; }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:has(caption) :is(th, td) { border-color: var(--ogd-html-table-cell-border, var(--ogd-table-cell-border)) !important; }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:has(caption):not(.matrix-table):not(.risk-table) tbody td:first-child { background: var(--ogd-html-table-axis-bg, rgba(248, 250, 252, 0.72)) !important; color: var(--ogd-text-strong, #111827) !important; font-weight: 780 !important; box-shadow: 1px 0 0 rgba(203, 213, 225, 0.62) !important; }
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption { caption-side: top !important; margin: 0 !important; padding: 0.7em 0.9em !important; border: 1px solid var(--ogd-html-table-border, var(--ogd-table-border, rgba(203, 213, 225, 0.72))) !important; border-bottom: 0 !important; border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0 !important; background: var(--ogd-html-table-caption-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.52))) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90) !important; color: var(--ogd-text-subtle, #475569) !important; font-size: 0.92em !important; font-weight: 780 !important; line-height: 1.35 !important; text-align: left !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { display: inline-flex !important; align-items: center !important; min-height: 1.55em !important; margin-left: 0.55em !important; padding: 0.12em 0.58em !important; border: 1px solid rgba(125, 211, 252, 0.48) !important; border-radius: var(--ogd-radius-pill, 999px) !important; background: linear-gradient(180deg, rgba(240, 249, 255, 0.92), rgba(224, 242, 254, 0.64)) !important; color: #0369a1 !important; font-size: 0.78em !important; font-weight: 780 !important; line-height: 1.2 !important; white-space: nowrap !important; }
+:is(
+  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
+  .markdown-rendered.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode,
+  .markdown-reading-view.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode .markdown-rendered,
+  .markdown-reading-view.ogd-report-mode .markdown-rendered
+) table,
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
+  --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6);
+  --ogd-table-border: rgba(148, 163, 184, 0.72);
+  --ogd-table-cell-border: rgba(203, 213, 225, 0.92);
+  --ogd-table-row-hover: #f8fafc;
+  --ogd-table-row-even: #fbfdff;
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  table-layout: auto !important;
+}
+
+:is(
+  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
+  .markdown-rendered.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode,
+  .markdown-reading-view.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode .markdown-rendered,
+  .markdown-reading-view.ogd-report-mode .markdown-rendered
+) table :is(th, td):first-child {
+  color: var(--ogd-text-strong, #111827) !important;
+  font-weight: 720 !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.76)) !important;
+  box-shadow: 1px 0 0 rgba(203, 213, 225, 0.72) !important;
+}
+
+:is(
+  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
+  .markdown-rendered.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode,
+  .markdown-reading-view.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode .markdown-rendered,
+  .markdown-reading-view.ogd-report-mode .markdown-rendered
+) table.comparison-table :is(th, td):first-child {
+  background: #eef2f7 !important;
+  box-shadow: 1px 0 0 rgba(148, 163, 184, 0.66) !important;
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48));
+  --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58));
+  --ogd-table-border: rgba(203, 213, 225, 0.20);
+  --ogd-table-cell-border: rgba(71, 85, 105, 0.56);
+  --ogd-table-row-hover: rgba(51, 65, 85, 0.42);
+  --ogd-table-row-even: rgba(15, 23, 42, 0.26);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table) { --ogd-html-table-surface: radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.13), transparent 0 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54)); --ogd-html-table-head-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.66)); --ogd-html-table-axis-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.50)); --ogd-html-table-caption-bg: radial-gradient(circle at 82% 18%, rgba(14, 165, 233, 0.18), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.70), rgba(15, 23, 42, 0.52)); --ogd-html-table-border: rgba(203, 213, 225, 0.26); --ogd-html-table-cell-border: rgba(71, 85, 105, 0.68); --ogd-html-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11), inset 0 -1px 0 rgba(0, 0, 0, 0.22), 0 12px 30px rgba(0, 0, 0, 0.30); }
+
+@supports selector(table:has(caption)) {
+  .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:has(caption) { --ogd-html-table-surface: radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.13), transparent 0 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54)); --ogd-html-table-head-bg: radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.66)); --ogd-html-table-axis-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.50)); --ogd-html-table-caption-bg: radial-gradient(circle at 82% 18%, rgba(14, 165, 233, 0.18), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.70), rgba(15, 23, 42, 0.52)); --ogd-html-table-border: rgba(203, 213, 225, 0.26); --ogd-html-table-cell-border: rgba(71, 85, 105, 0.68); --ogd-html-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11), inset 0 -1px 0 rgba(0, 0, 0, 0.22), 0 12px 30px rgba(0, 0, 0, 0.30); }
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption { color: var(--ogd-line-strong, #cbd5e1) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10) !important; }
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { border-color: rgba(186, 230, 253, 0.26) !important; background: linear-gradient(180deg, rgba(14, 116, 144, 0.34), rgba(15, 23, 42, 0.28)) !important; color: #bae6fd !important; }
+
+.theme-dark :is(
+  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
+  .markdown-rendered.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode,
+  .markdown-reading-view.ogd-report-mode,
+  .markdown-preview-view.ogd-report-mode .markdown-rendered,
+  .markdown-reading-view.ogd-report-mode .markdown-rendered
+) table,
+.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-table-widget, table.cm-table),
+body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62));
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74));
+  --ogd-table-border: rgba(203, 213, 225, 0.28);
+  --ogd-table-cell-border: rgba(71, 85, 105, 0.72);
+  --ogd-table-row-hover: rgba(51, 65, 85, 0.50);
+  --ogd-table-row-even: rgba(15, 23, 42, 0.36);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    button,
+    input,
+    textarea,
+    select,
+    [role="button"],
+    [role="tab"],
+    [role="menuitem"],
+    .clickable-icon,
+    .view-action,
+    .menu-item,
+    .suggestion-item,
+    .search-suggest-item,
+    .canvas-control-item,
+    .editingToolbarButton,
+    .editingToolbarModalBar .clickable-icon,
+    .editingToolbarPopover .clickable-icon,
+    .status-bar-item-segment,
+    .modal-close-button
+  ):focus-visible {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .setting-item,
+    .metadata-property,
+    .search-input-container,
+    .document-search-container,
+    .workspace-tab-header,
+    .nav-file-title,
+    .nav-folder-title,
+    .tree-item-self,
+    .vertical-tab-nav-item
+  ):focus-within {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-tab-header:focus-within .workspace-tab-header-inner, .workspace-tab-header-inner:focus-visible) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner) {
+    background: var(--ogd-lg-surface-bg-hover) !important;
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):focus-within {
+    background: var(--ogd-lg-control-bg) !important;
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-shadow-focus) !important;
+  }
+}
+
+
+/* ============================================================
+  Seven-direction Liquid Glass refinement pass
+   - Side panes, hover material, focus, floating UI, active rows,
+     and reading rhythm follow the approved overview fixture.
+   - Active/current states use full-surface rim and halo, never a left rail.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --ogd-lg-refined-rest-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.72), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(248, 250, 252, 0.34));
+    --ogd-lg-refined-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.86), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.50), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46));
+    --ogd-lg-refined-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.86), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.50), transparent 34%), linear-gradient(180deg, rgba(224, 242, 254, 0.62), rgba(248, 250, 252, 0.42));
+    --ogd-lg-refined-border: rgba(203, 213, 225, 0.52);
+    --ogd-lg-refined-border-hover: rgba(125, 211, 252, 0.54);
+    --ogd-lg-refined-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.05), 0 8px 20px rgba(15, 23, 42, 0.09);
+    --ogd-lg-refined-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(14, 165, 233, 0.08), 0 16px 34px rgba(15, 23, 42, 0.15), 0 0 0 3px rgba(186, 230, 253, 0.10);
+    --ogd-lg-refined-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 14px 32px rgba(15, 23, 42, 0.14), 0 0 0 3px var(--ogd-lg-frost-halo);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-lg-refined-rest-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.13), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.08), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.34));
+    --ogd-lg-refined-hover-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.17), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.62), rgba(15, 23, 42, 0.42));
+    --ogd-lg-refined-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.16), transparent 0 36%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(14, 116, 144, 0.26), rgba(15, 23, 42, 0.44));
+    --ogd-lg-refined-border: rgba(203, 213, 225, 0.20);
+    --ogd-lg-refined-border-hover: rgba(186, 230, 253, 0.30);
+    --ogd-lg-refined-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.28), 0 10px 24px rgba(0, 0, 0, 0.30);
+    --ogd-lg-refined-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.26), 0 18px 40px rgba(0, 0, 0, 0.42), 0 0 0 3px rgba(186, 230, 253, 0.08);
+    --ogd-lg-refined-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 16px 38px rgba(0, 0, 0, 0.40), 0 0 0 3px var(--ogd-lg-frost-halo);
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container) {
+    background: var(--ogd-lg-refined-rest-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border: 1px solid var(--ogd-lg-refined-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    box-shadow: var(--ogd-lg-refined-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected="true"]) {
+    background: var(--ogd-lg-refined-hover-bg) !important;
+    border-color: var(--ogd-lg-refined-border-hover) !important;
+    box-shadow: var(--ogd-lg-refined-shadow-hover) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:focus-visible, :focus-within) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-refined-focus-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]) {
+    background: var(--ogd-lg-refined-rest-bg) !important;
+    border: 1px solid var(--ogd-lg-refined-border) !important;
+    border-radius: var(--ogd-radius-control, 7px) !important;
+    box-shadow: var(--ogd-lg-refined-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-lg-refined-active-bg) !important;
+    border-color: var(--ogd-lg-mist-rim) !important;
+    box-shadow: var(--ogd-lg-refined-shadow-hover) !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title.is-active .nav-file-title-content) {
+    border-color: var(--ogd-lg-refined-border) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner,
+  body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
+    background: var(--ogd-lg-refined-active-bg) !important;
+    border-color: var(--ogd-lg-mist-rim) !important;
+    box-shadow: var(--ogd-lg-refined-shadow-hover) !important;
+    color: var(--text-normal) !important;
+    font-weight: 850 !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title-content, .nav-folder-title-content, .tree-item-inner):is(:focus-visible, :focus-within) {
+    border-color: var(--ogd-lg-frost-rim) !important;
+    outline: 1px solid var(--ogd-lg-frost-outline) !important;
+    outline-offset: 2px !important;
+    box-shadow: var(--ogd-lg-refined-focus-shadow) !important;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre),
+  .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table, .cm-embed-block pre) {
+    border-color: var(--ogd-lg-refined-border) !important;
+    box-shadow: var(--ogd-table-shadow, var(--ogd-lg-refined-shadow)) !important;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+  .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
+  .markdown-source-view.mod-cm6 .cm-embed-block pre {
+    background: var(--ogd-lg-refined-rest-bg) !important;
+    border: 1px solid var(--ogd-lg-refined-border) !important;
+    border-radius: var(--radius-l, 8px) !important;
+  }
+}
+/* ============================================================
+  Quiet menu and top chrome reduction
+   - Context menu rows keep surface feedback without visible outline/rim.
+   - Top tab/button chrome drops the recent halo and glass rim effects.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]),
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]),
+  body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-tab-header-inner,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .workspace-tab-header-container .clickable-icon,
+    .view-header .view-action,
+    .view-header .clickable-icon,
+    .view-header button.clickable-icon,
+    .view-actions .view-action,
+    .view-actions .clickable-icon,
+    .view-header-nav-buttons .clickable-icon
+  ),
+  body:not(.is-mobile) :is(
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon,
+    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
+  ) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+/* ============================================================
+  Quiet ribbon and sidebar toggle reduction
+   - Removes glass boxes from ribbon icons and sidebar toggle buttons.
+   - Keeps only the icon glyph color change supplied by Obsidian/core theme.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .workspace-tab-header-container .clickable-icon,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .sidebar-toggle-button,
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right
+  ),
+  body:not(.is-mobile) :is(
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .workspace-tab-header-container .clickable-icon,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .sidebar-toggle-button,
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right
+  ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+/* ============================================================
+  Simple menu core sheet
+   - The menu container is the only glass surface.
+    - Resting rows stay quiet; hovered rows borrow the side-pane rim treatment.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.menu, [role="menu"]) {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(248, 250, 252, 0.64) 58%, rgba(238, 242, 247, 0.48)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(150%) brightness(1.02)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(150%) brightness(1.02)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.42) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.70) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.menu, [role="menu"]) {
+    background: linear-gradient(180deg, rgba(38, 50, 68, 0.88), rgba(23, 32, 51, 0.84) 58%, rgba(16, 24, 39, 0.86)) !important;
+    border-color: rgba(100, 116, 139, 0.32) !important;
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+
+  body:not(.is-mobile) :is(.menu .menu-item, [role="menu"] [role="menuitem"]) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) :is(.menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.84), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46)) !important;
+    border-color: rgba(125, 211, 252, 0.66) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(15, 23, 42, 0.38)) !important;
+    border-color: rgba(186, 230, 253, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile) :is(.menu-separator, .menu .menu-separator, [role="menu"] .menu-separator, [role="separator"]) {
+    border-color: rgba(203, 213, 225, 0.72) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.menu-separator, .menu .menu-separator, [role="menu"] .menu-separator, [role="separator"]) {
+    border-color: rgba(100, 116, 139, 0.44) !important;
+  }
+}
+
+
+/* ============================================================
+  Top icon soft glass slot refinement
+   - Resting top icons stay bare.
+   - Hovered and active icons use one small soft glass slot with an aqua rim.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-tab-header-inner,
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .workspace-tab-header-container .clickable-icon,
+    .view-header .view-action,
+    .view-header .clickable-icon,
+    .view-header button.clickable-icon,
+    .view-actions .view-action,
+    .view-actions .clickable-icon,
+    .view-header-nav-buttons .clickable-icon,
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .sidebar-toggle-button,
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right
+  ) {
+    background: transparent !important;
+    border-color: transparent !important;
+    border-radius: 8px !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
+    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
+  ) {
+    background: var(--ogd-topbar-icon-hover-bg, radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.78), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(248, 250, 252, 0.52))) !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: var(--ogd-topbar-icon-hover-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 8px 16px rgba(15, 23, 42, 0.10)) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(
+    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
+    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
+    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
+    .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
+  ) {
+    background: var(--ogd-topbar-icon-hover-bg, radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.54), rgba(15, 23, 42, 0.38))) !important;
+    box-shadow: var(--ogd-topbar-icon-hover-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 20px rgba(0, 0, 0, 0.26)) !important;
+  }
+}
+
+
+/* ============================================================
+  Side pane and search suggestion simple sheet refinement
+   - Pane and suggestion containers carry the glass surface.
+   - Resting rows are plain list items; hovered rows match the menu treatment.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .tree-item-self,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match,
+    .search-info-container,
+    .search-empty-state,
+    .empty-state,
+    .empty-state-container
+  ),
+  body:not(.is-mobile) :is(
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container,
+    .prompt-results
+  ) :is(.suggestion-item, .search-suggest-item),
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content) {
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .tree-item-self,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match
+  ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected="true"]),
+  body:not(.is-mobile) :is(
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container,
+    .prompt-results
+  ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.84), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46)) !important;
+    border-color: rgba(125, 211, 252, 0.66) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10) !important;
+    transform: none !important;
+    color: var(--text-normal) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"],
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="bookmarks"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="search"]
+  ) :is(
+    .tree-item-self,
+    .tag-pane-tag,
+    .search-result-file-title,
+    .search-result-file-match
+  ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected="true"]),
+  body:not(.is-mobile).theme-dark :is(
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container,
+    .prompt-results
+  ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(15, 23, 42, 0.38)) !important;
+    border-color: rgba(186, 230, 253, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+    color: var(--text-normal) !important;
+  }
+}
+
+
+/* ============================================================
+  Attached soft tab refinement
+   - Inactive tabs stay muted and flat.
+   - The active tab reads as the current document without becoming a toolbar button.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
+    background: rgba(255, 255, 255, 0.20) !important;
+    border-color: rgba(203, 213, 225, 0.24) !important;
+    border-radius: 13px !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: rgba(255, 255, 255, 0.42) !important;
+    border-color: rgba(203, 213, 225, 0.42) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 10px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.82), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(240, 249, 255, 0.56)) !important;
+    border-color: rgba(125, 211, 252, 0.70) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title {
+    color: var(--text-muted) !important;
+    font-weight: 620 !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--text-normal) !important;
+    font-weight: 800 !important;
+  }
+
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header :is(.workspace-tab-header-inner-close-button, .workspace-tab-header-inner-icon) {
+    background: transparent !important;
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
+    background: rgba(15, 23, 42, 0.20) !important;
+    border-color: rgba(148, 163, 184, 0.16) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: rgba(51, 65, 85, 0.34) !important;
+    border-color: rgba(148, 163, 184, 0.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 5px 12px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), rgba(15, 23, 42, 0.42)) !important;
+    border-color: rgba(186, 230, 253, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title {
+    color: var(--text-muted) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--text-normal) !important;
+  }
+}
+
+/* Root top strip and active tab line cleanup; no icon selectors. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container,
+  body:not(.is-mobile) .workspace-split.mod-root .view-header {
+    background: var(--background-primary, #ffffff) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container {
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(248, 250, 252, 0.50)) !important;
+    border-color: rgba(148, 163, 184, 0.30) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 4px 10px rgba(15, 23, 42, 0.055) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.46), rgba(15, 23, 42, 0.30)) !important;
+    border-color: rgba(148, 163, 184, 0.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 5px 12px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active {
+    border-top-color: transparent !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.62))) !important;
+    border-color: rgba(125, 211, 252, 0.58) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(14, 165, 233, 0.10), 0 10px 22px rgba(15, 23, 42, 0.11), 0 3px 10px rgba(56, 189, 248, 0.08) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: #0f172a !important;
+    font-weight: 850 !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.18), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(15, 23, 42, 0.56))) !important;
+    border-color: rgba(186, 230, 253, 0.30) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 10px 22px rgba(0, 0, 0, 0.30) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+    font-weight: 850 !important;
+  }
+}
+
+/* Side top strip parity and neutral outline-only top slots. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container {
+    background: var(--background-primary, #ffffff) !important;
+    border-bottom-color: rgba(203, 213, 225, 0.22) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container {
+    background: var(--background-primary, #0f172a) !important;
+    border-bottom-color: rgba(100, 116, 139, 0.22) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon),
+  body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action) {
+    background: transparent !important;
+    border-color: rgba(148, 163, 184, 0.34) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.46) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded="true"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded="true"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed="true"], [aria-expanded="true"])),
+  body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]) {
+    background: transparent !important;
+    border-color: rgba(100, 116, 139, 0.42) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.58), 0 3px 8px rgba(15, 23, 42, 0.045) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon),
+  body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action) {
+    border-color: rgba(148, 163, 184, 0.24) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded="true"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded="true"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed="true"], [aria-expanded="true"])),
+  body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]) {
+    border-color: rgba(148, 163, 184, 0.34) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.10), 0 4px 10px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.62))) !important;
+    border-color: rgba(125, 211, 252, 0.58) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(14, 165, 233, 0.10), 0 10px 22px rgba(15, 23, 42, 0.11), 0 3px 10px rgba(56, 189, 248, 0.08) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.18), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(15, 23, 42, 0.56))) !important;
+    border-color: rgba(186, 230, 253, 0.30) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 10px 22px rgba(0, 0, 0, 0.30) !important;
+  }
+}
+
+
+/* ============================================================
+  Live Preview editing comfort pack
+   - Active editing surfaces get a quiet Frost Aqua state.
+   - Markdown table cell focus stays visible without row-height changes.
+   - Long inline tokens wrap inside the readable column.
+   ============================================================ */
+
+.markdown-source-view.mod-cm6 {
+  --ogd-lp-focus-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(224, 242, 254, 0.22));
+  --ogd-lp-focus-rim: rgba(103, 232, 249, 0.50);
+  --ogd-lp-focus-outline: rgba(103, 232, 249, 0.34);
+  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 0 0 1px rgba(103, 232, 249, 0.10), 0 6px 14px rgba(15, 23, 42, 0.055);
+  --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(240, 249, 255, 0.72), rgba(224, 242, 254, 0.46));
+}
+
+.theme-dark .markdown-source-view.mod-cm6 {
+  --ogd-lp-focus-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.34), rgba(14, 116, 144, 0.16));
+  --ogd-lp-focus-rim: rgba(103, 232, 249, 0.42);
+  --ogd-lp-focus-outline: rgba(103, 232, 249, 0.28);
+  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 0 0 1px rgba(103, 232, 249, 0.08), 0 8px 18px rgba(0, 0, 0, 0.22);
+  --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(14, 116, 144, 0.20), rgba(15, 23, 42, 0.14));
+}
+
+/* v2.22.104: removed the .cm-focused .cm-active.cm-line glass focus
+   visual. Its outline + box-shadow + gradient background painted on
+   top of the active row and confused mouse hit-testing on adjacent
+   lines (clicking the line directly below the active row sometimes
+   landed on this paint instead of the target line). Vanilla theme has
+   no such visual; we now match that behaviour. The cell focus visual
+   for table widgets is preserved. */
+
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within {
+  background: var(--ogd-lp-cell-focus-bg) !important;
+  outline: 1px solid var(--ogd-lp-focus-rim) !important;
+  outline-offset: -2px !important;
+  box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.18), var(--ogd-lp-focus-shadow) !important;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within :is(.table-cell-wrapper, .cm-editor, .cm-scroller, .cm-content, .cm-line) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) :is(.cm-inline-code, .cm-url, .cm-link) {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
+  opacity: 0.52 !important;
+}
+
+/* ============================================================
+  v2.22.81 - Liquid Glass default Markdown table refresh
+   - Keeps ordinary Markdown tables aligned with callout glass surfaces.
+   - Uses clear rims, top shine, and shallow row tint without saturated fill.
+   - Leaves report-mode/PDF table fallback rules to their existing owners.
+   ============================================================ */
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-tint: rgba(125, 211, 252, 0.10);
+  --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
+  --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68));
+  --ogd-table-border: rgba(203, 213, 225, 0.24);
+  --ogd-table-cell-border: rgba(226, 232, 240, 0.72);
+  --ogd-table-row-hover: rgba(240, 249, 255, 0.58);
+  --ogd-table-row-even: rgba(248, 250, 252, 0.58);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90);
+  overflow: hidden !important;
+  border-color: var(--ogd-table-border) !important;
+  border-radius: var(--ogd-radius-control, 7px) !important;
+  background: var(--ogd-table-surface) !important;
+  box-shadow: var(--ogd-table-shadow) !important;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+  backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)) !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  border-color: var(--ogd-table-cell-border) !important;
+  border-bottom-color: rgba(148, 163, 184, 0.46) !important;
+  background: var(--ogd-table-head-bg) !important;
+  color: var(--ogd-text-strong, #111827) !important;
+  font-weight: 820 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16) !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  border-color: var(--ogd-table-cell-border) !important;
+  color: var(--ogd-text-slate, #334155) !important;
+}
+
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+  background: var(--ogd-table-row-even) !important;
+}
+
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+  background: var(--ogd-table-row-hover) !important;
+}
+
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-tint: rgba(14, 165, 233, 0.10);
+  --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
+  --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58));
+  --ogd-table-border: rgba(203, 213, 225, 0.20);
+  --ogd-table-cell-border: rgba(71, 85, 105, 0.58);
+  --ogd-table-row-hover: rgba(51, 65, 85, 0.44);
+  --ogd-table-row-even: rgba(15, 23, 42, 0.28);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  border-bottom-color: rgba(148, 163, 184, 0.34) !important;
+  color: var(--text-normal, #e5edf7) !important;
+}
+
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  color: var(--text-normal, #e5edf7) !important;
+}
