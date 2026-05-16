@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.6] — 2026-05-16 — PDF print hotfix: re-route LEFT header value + footer title/body to fresh paint slots
+
+### Bug fix
+
+- **PDF first-page LEFT header value** (`--ogd-first-page-header-left`) and **last-page footer title + body** (`--ogd-last-page-footer-title`, `--ogd-last-page-footer-body`) failed to render in Chromium's print-to-PDF pipeline even when Style Settings values were correctly set. The v3.1.4 re-assertion fix did not help because the cascade was already correct — Chromium was silently dropping the paint of absolutely-positioned `::after` generated content on the markdown page containers and on `> :last-child`, while the symmetric `::before` paints rendered normally.
+
+### Fix
+
+- Re-route both broken paints to fresh, previously-unused pseudo-element slots on `.workspace-leaf-content` (the stable Obsidian wrapper for the markdown view):
+  - `.workspace-leaf-content::before` now carries the LEFT header value.
+  - `.workspace-leaf-content::after` now carries the footer TITLE + BODY, anchored to the bottom of the leaf so it lands in the footer band of the last page.
+- The original broken `.markdown-*::after` and `:last-child::after` paints are explicitly neutralised (`content: none`) so no ghost borders leak if Chromium later starts honouring them.
+- The v2.22.49 `::after::marker` title trick is suppressed for the same reason.
+- Title vs body color: `::after::first-line` is used to keep the dedicated `--ogd-last-page-footer-title-color` on the title line where Chromium honours it, with body falling back to `--ogd-last-page-footer-text-color`.
+
+### Files
+
+- `src/polish/73-workflow-polish.css` — EOF-appended hotfix block (no existing selectors modified).
+- `theme.css` — rebundled from `src/`.
+- `manifest.json` — `3.1.5 → 3.1.6`.
+
 ## [3.1.5] — 2026-05-16 — Lint cleanup #2: minAppVersion 1.12.0 + selector deduplication
 
 ### Manifest

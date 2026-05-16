@@ -16261,4 +16261,145 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     margin-bottom: 0.42em;
   }
 }
+
+/* ============================================================
+   v3.1.6 — PDF print hotfix (re-routing first-page LEFT header value
+   + last-page footer title/body to fresh pseudo-element paint slots).
+
+   ROOT CAUSE (empirical, post v3.1.4 attempt that did not help):
+   In Chromium's print-to-PDF pipeline, absolutely-positioned `::after`
+   generated content on the markdown page containers (`.markdown-rendered`,
+   `.markdown-preview-sizer`, `.markdown-preview-view`, `.markdown-preview-section`)
+   and on the page-spanning `> :last-child` block is *culled* when the
+   same element also carries a `::before` paint at the same coordinates,
+   while `::before` itself paints normally. Symptom: RIGHT header value
+   (via `::before`) renders, LEFT header value (via `::after`) does not;
+   footer LABEL (via `::before`) renders, footer TITLE+BODY (via `::after`)
+   do not — across every container we have tried (sizer/view/section/
+   rendered/:last-child). Re-asserting the rule (v3.1.4) did not help
+   because the cascade was never wrong — Chromium simply drops the paint.
+
+   FIX: route the broken paints to FRESH pseudo-element slots on a
+   different element (`.workspace-leaf-content`) that no existing rule
+   binds. `.workspace-leaf-content` is the stable Obsidian wrapper for
+   the markdown view; its `::before` and `::after` are currently unused
+   and reliably paint in PDF export.
+
+   For the footer we share a single color across title+body
+   (--ogd-last-page-footer-text-color) per user direction 2026-05-16
+   ("같은 색이어도 OK, 안정성 우선"). Title uses
+   --ogd-last-page-footer-title-color via ::first-line so the bold first
+   line still gets the dedicated accent when Chromium honors it.
+
+   We also suppress the v2.22.49 ::after::marker layer so leftover
+   title text from that broken trick does not paint twice on platforms
+   where ::after::marker DOES start working.
+   ============================================================ */
+@media print {
+  /* (A) LEFT header VALUE — repaint via .workspace-leaf-content::before
+        (a previously unused pseudo slot). */
+  body.ogd-first-page-header-enabled .workspace-leaf-content::before {
+    position: absolute;
+    top: 18px;
+    left: 16mm;
+    content: var(--ogd-first-page-header-left, "");
+    padding: 0 0 0 10px;
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9);
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5pt;
+    font-weight: 500;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.1;
+    color: var(--ogd-text-strong, #111827);
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    background: transparent;
+    background-image: none;
+  }
+
+  /* (B) Last-page footer TITLE + BODY — repaint via
+        .workspace-leaf-content::after, anchored to the bottom of the
+        leaf area so it lands in the footer band of the last page. */
+  body.ogd-last-page-footer .workspace-leaf-content::after {
+    position: absolute;
+    bottom: 18mm;
+    left: 16mm;
+    right: 16mm;
+    width: auto;
+    max-width: calc(100% - 32mm);
+    content: var(--ogd-last-page-footer-title, "") "\A\A" var(--ogd-last-page-footer-body, "");
+    padding: 0 0 0 7mm;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.8pt;
+    font-weight: 700;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.42;
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    z-index: 9999;
+    pointer-events: none;
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+  }
+
+  body.ogd-last-page-footer .workspace-leaf-content::after::first-line {
+    color: var(--ogd-last-page-footer-title-color, #0f172a);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
+  }
+
+  /* (C) Suppress the original broken paints so they cannot leak. The
+        broken `.markdown-*::after` left-value box, the broken
+        `:last-child::after` footer box, and the broken
+        `::after::marker` title layer all get content:none so neither
+        ghost borders nor double-paint artefacts can show up. */
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::after,
+  body.ogd-first-page-header-enabled .markdown-preview-view::after,
+  body.ogd-first-page-header-enabled .markdown-preview-section::after,
+  body.ogd-first-page-header-enabled .markdown-rendered::after {
+    content: none;
+    border-left: 0;
+    padding: 0;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    content: none;
+    display: block;
+    list-style: none;
+    border-left: 0;
+    padding: 0;
+  }
+
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after::marker {
+    content: none;
+    color: inherit;
+    -webkit-text-fill-color: inherit;
+  }
+}
 /* <<< src/polish/73-workflow-polish.css */
