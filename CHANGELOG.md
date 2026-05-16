@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.9] — 2026-05-16 — PDF print hotfix: split footer ::before / ::after + restore LEFT header value colour
+
+### Bug fix
+
+After v3.1.8 the user reported that the footer LABEL still rendered alone (TITLE + BODY missing) and that the LEFT header LABEL and value lines now shared a single colour.
+
+- **Footer TITLE + BODY missing — root cause refinement**: even after v3.1.8 released the v2.22.46 flex/height lockdown on `:last-child::before`, only the *first* line of the multi-line `content: var(--label) "\A\A" var(--title) "\A" var(--body)` chain painted in Chromium's PDF pipeline. The pseudo-element's box, white-space, and display were all correct in the cascade, yet lines 2+ never reached the page. This points to a Chromium PDF quirk where multi-line generated content on the absolutely-positioned `:last-child::before` of a page-spanning element is truncated after the first painted line.
+  - **Fix**: revert to the original footer architecture — `:last-child::before` paints the LABEL on a single 10.5mm strip, `:last-child::after` (which v3.1.6 had neutralised with `content: none`) paints the TITLE + BODY in a separate box anchored 23mm below the last-child bottom. The new `::after` uses plain `display: block` + `\A` newlines + `white-space: pre-wrap`; the v2.22.49-era `display: list-item` / `::marker` trick (which was the actual source of the original PDF cull) is no longer used. TITLE picks up `--ogd-last-page-footer-title-color` via `::first-line`.
+- **LEFT header LABEL + value identical colour**: v3.1.8 unified the base `color` and `-webkit-text-fill-color` on `body.ogd-first-page-header-enabled::after` to `--ogd-fp-label-color`, which obliterated the user's separate `--ogd-first-page-header-left-color` choice for the value line. v3.1.9 reverts the base colour to `--ogd-first-page-header-left-color`, so the two Style Settings colour pickers are honoured independently. Where Chromium honours `::first-line { color }` the LABEL still picks up `--ogd-fp-label-color`; where it does not, both lines paint in value-color but remain typographically differentiated via font-size, weight, letter-spacing and text-transform on `::first-line`. If a user wants visible LEFT-header colour distinction in PDF, the two colour pickers must be set to different hues.
+
+### Implementation
+
+- `src/polish/73-workflow-polish.css` (EOF append, ~140 lines): new `@media print { }` block declares
+  - `:last-child::before` narrowed to single-line label (10.5mm height, line-height 10.5mm, white-space nowrap, overflow hidden, label typography);
+  - `:last-child::after` re-enabled with explicit `position`, `top: calc(100% + 23mm)`, `display: block`, `content: title "\A" body`, `white-space: pre-wrap`, body typography;
+  - `:last-child::after::first-line` paints the title in title-color, bold;
+  - `body.ogd-first-page-header-enabled::after` `color` / `-webkit-text-fill-color` / `border-left` reverted to `--ogd-first-page-header-left-color`.
+
 ## [3.1.8] — 2026-05-16 — PDF print hotfix follow-up: release footer multi-line content + unify LEFT header colour
 
 ### Bug fix

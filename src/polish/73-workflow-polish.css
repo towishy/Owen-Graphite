@@ -478,3 +478,143 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     border-left: 3px solid var(--ogd-first-page-header-left-color, #279DF5);
   }
 }
+/* ============================================================
+   v3.1.9 — PDF print hotfix: split footer back into ::before (LABEL)
+   and ::after (TITLE + BODY), restore LEFT header value color.
+
+   Observed after v3.1.8: footer's ::before still rendered ONLY the
+   first line (the label) — additional lines via `"\A\A" var(title)
+   "\A" var(body)` did not paint. White-space, display:block, and
+   height:auto were all in the cascade per audit, yet only line 1
+   reached the page. This points to a Chromium PDF quirk where
+   multi-line generated content on the absolutely-positioned
+   `:last-child::before` of a page-spanning element is truncated
+   after the first painted line.
+
+   Fix:
+   (1) Narrow `:last-child::before` back to a single-line LABEL.
+       This restores the v2.22.46 vertical-strip label layout that
+       was empirically known to paint reliably.
+   (2) Re-enable `:last-child::after` (v3.1.6 had neutralised it to
+       `content: none`) as the TITLE + BODY box, positioned 23mm
+       below the last-child bottom (i.e. 12.5mm below the label
+       strip). Use plain `display: block` + multi-line content via
+       `\A` + `white-space: pre-wrap`. Avoid the original
+       `display: list-item` / `::marker` paint trick that made the
+       v2.22.49 ::after layer unreliable in PDF.
+
+   LEFT header colour: v3.1.8 unified base colour to
+   `--ogd-fp-label-color`, which obliterated the user's
+   `--ogd-first-page-header-left-color` choice for the value line.
+   Restore the base colour to the value-color so the user's two
+   colour pickers (label-color vs. value-color) are honoured
+   independently. If both are set to the same hue, the lines remain
+   typographically differentiated by font-size, weight,
+   letter-spacing and text-transform via `::first-line`.
+   ============================================================ */
+@media print {
+  /* (1) Footer ::before — re-narrow to LABEL only, single line. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before {
+    content: var(--ogd-last-page-footer-label, "");
+    display: block;
+    height: 10.5mm;
+    min-height: 0;
+    max-height: 10.5mm;
+    line-height: 10.5mm;
+    padding: 0 0 0 7mm;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
+    font-size: 8.8pt;
+    font-weight: 700;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+    overflow: hidden;
+    align-items: initial;
+    justify-content: initial;
+    color: var(--ogd-last-page-footer-label-color, #0f172a);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #0f172a);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+    z-index: 1;
+  }
+
+  /* (2) Footer ::after — TITLE + BODY in a separate box, anchored
+         12.5mm below the label strip so it sits in the page's
+         bottom band. Plain block layout, multi-line via \A,
+         pre-wrap so newlines render. Overrides the v3.1.6
+         `content: none` neutralisation. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    position: absolute;
+    top: calc(100% + 23mm);
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    list-style: none;
+    list-style-type: none;
+    content:
+      var(--ogd-last-page-footer-title, "") "\A"
+      var(--ogd-last-page-footer-body, "");
+    padding: 0 0 0 7mm;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.8pt;
+    font-weight: 500;
+    font-style: normal;
+    font-synthesis: weight style;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    text-shadow: none;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* (3) Footer ::after::first-line — title in title-color, bold. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after::first-line {
+    color: var(--ogd-last-page-footer-title-color, #0f172a);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* (4) LEFT first-page header — restore VALUE color independently
+         from LABEL color. v3.1.8 had unified both to label-color;
+         revert base color to value-color so the two Style Settings
+         pickers are honoured separately. */
+  body.ogd-first-page-header-enabled::after {
+    color: var(--ogd-first-page-header-left-color, #111827);
+    -webkit-text-fill-color: var(--ogd-first-page-header-left-color, #111827);
+    border-left: 3px solid var(--ogd-first-page-header-left-color, #111827);
+  }
+}
