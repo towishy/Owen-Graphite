@@ -266,79 +266,86 @@ kbd {
    - 4개 이상의 anchor pseudo 사용 금지 (header 1 + footer 1만)
    ============================================================================ */
 
-/* [R1] abs containing-block 안전망 (print + 화면 공통) */
-body,
-.markdown-preview-view,
-.markdown-preview-sizer,
-.markdown-rendered {
-  position: relative;
-}
+/* v3.1.33 hotfix: 전체 블록을 @media print 안으로 격리.
+   v3.1.32에서는 화면 전역 규칙으로 작성되어 Live Preview/Reading View에도
+   anchor pseudo가 그려져 사용자 문구가 노출되는 회귀가 있었음.
+   Obsidian "Export to PDF"는 Chromium printToPDF로 print media를 적용하므로
+   PDF 출력에는 영향 없음. */
+@media print {
+  /* [R1] abs containing-block 안전망 (print 전용) */
+  body,
+  .markdown-preview-view,
+  .markdown-preview-sizer,
+  .markdown-rendered {
+    position: relative;
+  }
 
-/* HEADER — 첫 페이지 우측 상단 microlabel pill (v3.1.32 Option D: Uppercase Microlabel) */
-body.ogd-pdf-header-enabled .markdown-rendered::before {
-  content: var(--ogd-pdf-header-text, "");
-  position: absolute;
-  top: 11mm;
-  right: 13mm;
-  z-index: 9999;
-  pointer-events: none;
-  display: inline-block;
-  max-width: calc(100% - 26mm);
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
-  border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
-  box-shadow: var(--ogd-pdf-marginalia-shadow, none);
-  font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
-  font-size: 7.5pt;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--ogd-pdf-marginalia-accent, #279DF5);
-  -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
+  /* HEADER — 첫 페이지 우측 상단 microlabel pill (v3.1.32 Option D: Uppercase Microlabel) */
+  body.ogd-pdf-header-enabled .markdown-rendered::before {
+    content: var(--ogd-pdf-header-text, "");
+    position: absolute;
+    top: 11mm;
+    right: 13mm;
+    z-index: 9999;
+    pointer-events: none;
+    display: inline-block;
+    max-width: calc(100% - 26mm);
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
+    border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
+    box-shadow: var(--ogd-pdf-marginalia-shadow, none);
+    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-size: 7.5pt;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--ogd-pdf-marginalia-accent, #279DF5);
+    -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-/* FOOTER — 마지막 페이지 중앙 하단 글라스 pill */
-body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
-  position: relative;
-  margin-bottom: 28mm;
-}
-body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
-  content: var(--ogd-pdf-footer-text, "");
-  position: absolute;
-  left: 50%;
-  bottom: -22mm;
-  transform: translateX(-50%);
-  z-index: 9999;
-  pointer-events: none;
-  display: inline-block;
-  max-width: 90%;
-  padding: 5px 14px;
-  border-radius: 4px;
-  background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
-  border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
-  box-shadow: var(--ogd-pdf-marginalia-shadow, none);
-  font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
-  font-size: 8pt;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--ogd-pdf-marginalia-accent, #279DF5);
-  -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+  /* FOOTER — 마지막 페이지 중앙 하단 microlabel pill */
+  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
+    position: relative;
+    margin-bottom: 28mm;
+  }
+  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
+    content: var(--ogd-pdf-footer-text, "");
+    position: absolute;
+    left: 50%;
+    bottom: -22mm;
+    transform: translateX(-50%);
+    z-index: 9999;
+    pointer-events: none;
+    display: inline-block;
+    max-width: 90%;
+    padding: 5px 14px;
+    border-radius: 4px;
+    background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
+    border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
+    box-shadow: var(--ogd-pdf-marginalia-shadow, none);
+    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-size: 8pt;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--ogd-pdf-marginalia-accent, #279DF5);
+    -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 
 @media print {
