@@ -3778,9 +3778,11 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-reading-view .markdown-rendered
   ) > :last-child {
     position: relative;
-    margin-bottom: 104mm;
+    margin-bottom: 46mm;
     overflow: visible;
     isolation: isolate;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   body.ogd-last-page-footer :is(
@@ -3792,7 +3794,8 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     position: absolute;
     left: 0;
     box-sizing: border-box;
-    width: 100%;
+    width: min(172mm, 100%);
+    max-width: calc(100vw - 36mm);
     display: block;
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
@@ -3804,8 +3807,8 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   
-    content: var(--ogd-last-page-footer-label, "") "\A\A" var(--ogd-last-page-footer-title, "") "\A" var(--ogd-last-page-footer-body, "");
-    top: calc(100% + 4mm);
+    content: var(--ogd-last-page-footer-label, "") "\A" var(--ogd-last-page-footer-title, "") "  " var(--ogd-last-page-footer-body, "");
+    top: calc(100% + 7mm);
     min-height: 0;
     padding: 0 0 0 7mm;
     border-top: 0;
@@ -3813,15 +3816,17 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     box-shadow: none;
     color: var(--ogd-last-page-footer-title-color, #0f172a);
     -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
-    font-size: 8.6pt;
+    font-size: 8.2pt;
     font-weight: 500;
     letter-spacing: 0;
-    line-height: 1.46;
+    line-height: 1.34;
     text-transform: none;
     white-space: pre-line;
     overflow-wrap: anywhere;
     word-break: normal;
     line-break: loose;
+    break-inside: avoid;
+    page-break-inside: avoid;
     max-height: none;
     overflow: visible;
     z-index: 2;
@@ -3832,7 +3837,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before::first-line {
-    font-size: 10.4pt;
+    font-size: 9.8pt;
     font-weight: 800;
     letter-spacing: 0.03em;
     text-transform: uppercase;

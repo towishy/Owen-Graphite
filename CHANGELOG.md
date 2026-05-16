@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.18] — 2026-05-16 — PDF footer compact block pagination fix
+
+### Fix
+
+- Stop forcing the footer into a tall three-row generated block that can fragment across the page 16/17 boundary.
+- Reduce the reserved footer area from `104mm` to `46mm` so the footer stays close to the last content instead of creating a large split region.
+- Constrain footer width to `min(172mm, 100%)` with a viewport max so the legal text wraps inside the printable area rather than running horizontally off-page.
+- Use a compact two-row structure: `LABEL \A TITLE BODY`, keeping NOTICE visible while making the whole footer less likely to paginate mid-block.
+- Add `break-inside: avoid` / `page-break-inside: avoid` guards to the last content and generated footer.
+
 ## [3.1.17] — 2026-05-16 — PDF footer line wrapping and size fix
 
 ### Fix
