@@ -305,7 +305,7 @@ settings:
     quotes: true
   -
     id: ogd-first-page-header-color
-    title: 첫 페이지 우측 헤더 색상 (라벨·본문·세로바)
+    title: 첫 페이지 우측 본문·세로바 색상
     type: variable-color
     format: hex
     default: '#111827'
@@ -325,7 +325,7 @@ settings:
     quotes: true
   -
     id: ogd-first-page-header-left-color
-    title: 첫 페이지 좌측 헤더 색상 (라벨·본문·세로바)
+    title: 첫 페이지 좌측 본문·세로바 색상
     type: variable-color
     format: hex
     default: '#0ea5e9'
@@ -388,13 +388,13 @@ settings:
     default: '#64748b'
   -
     id: ogd-last-page-footer-title-color
-    title: PDF 마지막 페이지 Footer 제목 색상 (PDF 단일 pseudo 출력에서는 미사용)
+    title: PDF 마지막 페이지 Footer 텍스트 색상 (NOTICE·제목·본문)
     type: variable-color
     format: hex
     default: '#0f172a'
   -
     id: ogd-last-page-footer-text-color
-    title: PDF 마지막 페이지 Footer 본문 색상
+    title: PDF 마지막 페이지 Footer 본문 색상 (PDF 단일 pseudo 출력에서는 미사용)
     type: variable-color
     format: hex
     default: '#334155'
@@ -3735,7 +3735,16 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     padding-right: 10px;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827);
     color: var(--ogd-first-page-header-color, #111827);
-    -webkit-text-fill-color: var(--ogd-first-page-header-color, #111827);
+    background-image: linear-gradient(
+      to bottom,
+      var(--ogd-text-muted, #64748b) 0,
+      var(--ogd-text-muted, #64748b) 44%,
+      var(--ogd-first-page-header-color, #111827) 44%,
+      var(--ogd-first-page-header-color, #111827) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: right;
   }
   body.ogd-first-page-header-enabled::after {
@@ -3744,7 +3753,16 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     padding-left: 10px;
     border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9);
     color: var(--ogd-first-page-header-left-color, #0ea5e9);
-    -webkit-text-fill-color: var(--ogd-first-page-header-left-color, #0ea5e9);
+    background-image: linear-gradient(
+      to bottom,
+      var(--ogd-text-muted, #64748b) 0,
+      var(--ogd-text-muted, #64748b) 44%,
+      var(--ogd-first-page-header-left-color, #0ea5e9) 44%,
+      var(--ogd-first-page-header-left-color, #0ea5e9) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: left;
   }
   .markdown-rendered h1:first-of-type {
@@ -3793,10 +3811,10 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     border-top: 0;
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
     box-shadow: none;
-    color: var(--ogd-last-page-footer-text-color, #334155);
-    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    color: var(--ogd-last-page-footer-title-color, #0f172a);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
     font-size: 7.4pt;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
     line-height: 1.38;
     text-transform: none;

@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.15] — 2026-05-16 — PDF header split-colour fallback + visible footer notice
+
+### Fix
+
+- Restore visual colour separation in the first-page PDF header while staying inside the verified `body::before` / `body::after` paint slots. Header LABEL rows now use a muted text colour and VALUE rows use each side's Style Settings colour through text-clipped gradients.
+- Make the last-page footer notice visible by rendering the entire single-pseudo footer text with `--ogd-last-page-footer-title-color`, which is darker than the previous body-text colour in the user's settings. The vertical bar still uses `--ogd-last-page-footer-color`.
+
+### Note
+
+This keeps the CSS-only single-pseudo fallback. Exact per-token colour separation in the footer (NOTICE / title / body each with a different colour) still requires a real DOM node or print-time injector, because Obsidian's Chromium PDF export does not reliably paint the available extra pseudo slots.
+
 ## [3.1.14] — 2026-05-16 — PDF header colour hardening + footer clipping cleanup
 
 ### Fix
