@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.0.0** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. v2.30 디자인과 기능을 그대로 보존한 채 16,000+ CSS를 처음부터 다시 작성하였습니다.
+**Owen Graphite v3.0.3** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 16,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -21,8 +21,8 @@
 
 | 항목 | 내용 |
 |------|------|
-| **버전** | `3.0.0` |
-| **재작성 베이스라인** | `v2.30.14` (computed-style fingerprint 동일) |
+| **버전** | `3.0.3` |
+| **베이스라인 / 롤백 기준** | `v3.0.3` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -48,7 +48,7 @@
 
 ### 옵션 B — ZIP 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.0.0.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.0.3.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -57,7 +57,7 @@
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.0.0.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.0.3.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트
 
@@ -150,36 +150,6 @@ Owen Graphite는 무료/오픈소스입니다. 한국어 보고서·위키 작�
 
 ---
 
-## 5. v3.0.0 핵심 변경
-
-### Zero `!important`, 동일 픽셀
-
-v2.30.14는 `dev/*` 16,000+ 줄에 `!important`가 5,816개 누적되어 있었습니다. v3.0.0은 `src/` 폴더에 처음부터 다시 작성하고 — **선언 수준 `!important` 0개**, computed-style fingerprint 0 diff(Light/Dark 양쪽)를 달성했습니다.
-
-| 측정 | v2.30.14 | v3.0.0 |
-| --- | --- | --- |
-| `dist/*.css` 줄 수 | 16,000+ | 16,509 |
-| 선언 수준 `!important` | 5,816 | **0** |
-| computed-style fingerprint diff | — | **0** (Light · Dark) |
-| Live Preview hit-routing 감사 | clean | **clean** |
-
-상세 절차·실증·휴리스틱은 [docs/v3/cascade-research.md](docs/v3/cascade-research.md), 보존 계약·검증은 [docs/v3/design-spec.md](docs/v3/design-spec.md), 릴리즈 순서는 [docs/v3/release-plan.md](docs/v3/release-plan.md) 참조.
-
-### 토큰 우선 설계
-
-모든 색·간격·그림자·필터는 `var(--ogd-*)` 토큰을 통과합니다. 색 한 개를 바꾸려면 `src/tokens/01-colors.css` 한 줄만 수정. v2.30.14의 255개 토큰 이름을 그대로 유지하므로 Style Settings 옵션은 그대로 동작합니다.
-
-### Liquid Glass core
-
-- **Rest** — graphite/gray frosted glass, 좌측 vertical rail 없음
-- **Hover** — 살짝 밝아지고 들어올림, 부드러운 wide downward shadow, 얕은 pastel tone
-- **Active** — sky tint + glass border, 명확한 선택 상태
-- **분리 규칙** — 의미색은 선택 문서/탭 같은 명확한 상태에만, 반복 chrome은 밝기·그림자로만 반응
-
-자세한 내용은 [docs/v3/surface-state-matrix.md](docs/v3/surface-state-matrix.md).
-
----
-
-## 6. 라이선스
+## 5. 라이선스
 
 MIT — [LICENSE](LICENSE)

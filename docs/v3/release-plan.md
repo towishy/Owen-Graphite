@@ -1,19 +1,18 @@
-# v3.0.0 Release Record
+# v3 Release Record (latest: v3.0.3)
 
-**Status**: Released 2026-05-16 — direct `v3.0.0` (no beta), v2 source/scripts/docs/screenshots fully purged.
+**Status**: Current stable / rollback baseline = `v3.0.3` (2026-05-16). Original v3.0.0 from-scratch rewrite shipped 2026-05-16, superseded by v3.0.1 → v3.0.2 → v3.0.3 hotfix chain (file-explorer hover, scanner multicolumn cleanup). v2 source/scripts/docs/screenshots remain fully purged.
 
-## What shipped
+## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.0.0` |
+| `manifest.json` version | `3.0.3` |
 | `minAppVersion` | `1.6.0` (unchanged) |
-| `dist/theme-v3.css` lines / declaration-level `!important` | 16,509 / 0 |
+| `dist/theme-v3.css` lines / declaration-level `!important` | 16,479 / 0 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
-| Computed-style fingerprint diff vs v2.30.14 baseline | 0 / 0 (light / dark) |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.0.0.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.0.3.zip` |
 
 ## What was removed
 

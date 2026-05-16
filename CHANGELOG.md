@@ -78,4 +78,5 @@ Owen Graphite v3.0.0은 v2.30.14의 픽셀 결과를 보존한 채 16,000+ 줄 C
 | Live Preview hit-routing | `scripts/audit_v3_hit_routing.py` | clean |
 | Release ZIP | `scripts/build_release.py` | `dist/Owen-Graphite-3.0.0.zip` (265 KB) |
 
+[3.0.3]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.3
 [3.0.0]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.0
