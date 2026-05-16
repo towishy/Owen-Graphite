@@ -599,7 +599,7 @@ body.theme-dark .markdown-rendered code:not(pre code) {
 .markdown-rendered a.external-link:visited,
 .markdown-preview-view a.external-link:visited {
   color: #7c3aed;
-  text-decoration-color: rgba(124, 58, 237, 0.4);
+  text-decoration: underline dotted rgba(124, 58, 237, 0.4) 1.35px;
 }
 body.theme-dark .markdown-rendered a.external-link:visited {
   color: #c4b5fd;
@@ -672,10 +672,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-weight: 860;
   line-height: 1.14;
   letter-spacing: 0;
-  text-decoration-line: underline;
-  text-decoration-color: rgba(103, 232, 249, 0.72);
-  text-decoration-style: solid;
-  text-decoration-thickness: 2px;
+  text-decoration: underline solid rgba(103, 232, 249, 0.72) 2px;
   text-underline-offset: 0.20em;
   text-decoration-skip-ink: none;
 }
@@ -693,7 +690,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-weight: 760;
   letter-spacing: 0.08em;
   line-height: 1;
-  text-decoration-line: none;
+  text-decoration: none;
   text-shadow: none;
   pointer-events: none;
 }
@@ -820,7 +817,8 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
-  text-decoration-color: rgba(103, 232, 249, 0.46);
+  text-decoration: underline solid rgba(103, 232, 249, 0.46) 2px;
+  text-decoration-skip-ink: none;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
@@ -834,9 +832,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 
 body .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
   color: var(--ogd-text-strong, #111827);
-  text-decoration-line: underline;
-  text-decoration-color: rgba(103, 232, 249, 0.55);
-  text-decoration-thickness: 1.5px;
+  text-decoration: underline solid rgba(103, 232, 249, 0.55) 1.5px;
   text-underline-offset: 0.20em;
   text-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
 }
@@ -846,9 +842,7 @@ body .markdown-source-view.mod-cm6 .cm-header-2 { font-weight: 800; }
 
 body .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
   color: var(--ogd-text-slate, #334155);
-  text-decoration-line: underline;
-  text-decoration-color: rgba(203, 213, 225, 0.72);
-  text-decoration-thickness: 1px;
+  text-decoration: underline solid rgba(203, 213, 225, 0.72) 1px;
   text-underline-offset: 0.18em;
 }
 
@@ -857,13 +851,13 @@ body .markdown-source-view.mod-cm6 .cm-header-4 { color: var(--ogd-text-subtle, 
 
 body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
   color: var(--ogd-text-inverted, #f8fafc);
-  text-decoration-color: rgba(103, 232, 249, 0.42);
+  text-decoration: underline solid rgba(103, 232, 249, 0.42) 1.5px;
   text-shadow: none;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
   color: var(--ogd-line-soft, #e5e7eb);
-  text-decoration-color: rgba(71, 85, 105, 0.80);
+  text-decoration: underline solid rgba(71, 85, 105, 0.80) 1px;
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
@@ -1009,10 +1003,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
   }
 
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
-    text-decoration-line: underline;
-    text-decoration-color: rgba(148, 163, 184, 0.58);
-    text-decoration-style: solid;
-    text-decoration-thickness: 1px;
+    text-decoration: underline solid rgba(148, 163, 184, 0.58) 1px;
     text-underline-offset: 0.22em;
     text-decoration-skip-ink: none;
     -webkit-print-color-adjust: exact;

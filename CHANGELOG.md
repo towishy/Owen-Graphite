@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.4] — 2026-05-16 — Scanner warnings: text-decoration shorthand sweep
+
+### Changed
+
+- **커뮤니티 스캐너 `text-decoration partially supported` 워닝 일괄 정리** — `src/**/*.css`의 longhand `text-decoration-line/style/color/thickness` 42개 선언을 동등한 L1 `text-decoration` 단축형으로 조합. 링크 밑줄·스트라이크스루·철자 오류 수식 등 모든 표시는 100% 동일.
+- 남은 `text-decoration-skip-ink: none` 3건은 H1/H3/H4 밑줄이 g·p·q 등 descender를 관통하며 그려지도록 유지하는 의도적 디자인 함수로 유지.
+
+### Notes
+
+- `text-indent`(2건)과 남은 `text-decoration-skip-ink`(3건) 워닝은 스캐너의 보수적 false positive이며 현재 Obsidian Electron 25+에서 완전 지원됩니다.
+
 ## [3.0.3] — 2026-05-16 — Scanner warnings: multicolumn cleanup
 
 ### Changed
@@ -78,5 +89,6 @@ Owen Graphite v3.0.0은 v2.30.14의 픽셀 결과를 보존한 채 16,000+ 줄 C
 | Live Preview hit-routing | `scripts/audit_v3_hit_routing.py` | clean |
 | Release ZIP | `scripts/build_release.py` | `dist/Owen-Graphite-3.0.0.zip` (265 KB) |
 
+[3.0.4]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.4
 [3.0.3]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.3
 [3.0.0]: https://github.com/towishy/Owen-Graphite/releases/tag/3.0.0
