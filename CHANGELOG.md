@@ -6,6 +6,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.11] — 2026-05-16 — REVERT v3.1.6 → v3.1.10 PDF EOF hotfixes — restore original features/41 architecture
+
+### Why this revert
+
+The v3.1.6 → v3.1.10 EOF append campaign in `src/polish/73-workflow-polish.css` was layered on top of the canonical PDF header/footer architecture in `src/features/41-feature-presets.css` without first reading or respecting that original design. Each hotfix progressively overrode parts of the canonical architecture in an attempt to "fix" the PDF, but the canonical design already covered the relevant pseudo-element slots, and the EOF overrides ended up **breaking** the working pieces:
+
+- **Original LEFT VALUE** is painted by the 4-container `.markdown-preview-sizer/.markdown-preview-view/.markdown-preview-section/.markdown-rendered ::after` fallback chain in features/41 (border-left + text-strong colour). The EOF hotfixes neutralised it (v3.1.6: `content: none`) and tried to re-route through `.workspace-leaf-content::after`, then `body::after` multi-line, then `html::before` — none of these reliably replaced the original 4-container chain.
+- **Original FOOTER TITLE + BODY** is painted by `:last-child::after { display: list-item; list-style-type: ""; content: var(--body) }` combined with `:last-child::after::marker { content: var(--title) "\A\A" }` — a deliberately layered paint trick (v2.22.49 hotfix) that separates title-colour from body-colour via Chromium's marker paint pipeline. The EOF hotfixes repeatedly set `:last-child::after { content: none; display: none }` to "clean up" perceived breakage, which **destroyed the working ::marker title slot** every time and left only the LABEL visible.
+- **`html:has(body.ogd-...)::before / ::after`** (v3.1.10) attempted to introduce fresh paint slots. Direct PDF inspection confirmed they do not paint in Obsidian's PDF export pipeline.
+
+### What this release does
+
+- Truncate `src/polish/73-workflow-polish.css` to the pre-v3.1.6 baseline (158 lines). All six EOF hotfix blocks (v3.1.6, v3.1.7, v3.1.8, v3.1.9, v3.1.10, v3.1.11-containing-block-hoist) are removed.
+- No changes to `src/features/41-feature-presets.css` (canonical PDF header/footer architecture is untouched and remains in effect).
+- `manifest.json` bumped to `3.1.11`.
+
+### What stays the same
+
+- Canonical PDF first-page header (RIGHT label/value via `body::before` + `.markdown-*::before`, LEFT label/value via `body::after` + `.markdown-*::after`).
+- Canonical PDF last-page footer (LABEL via `:last-child::before`, TITLE via `:last-child::after::marker`, BODY via `:last-child::after { display: list-item }`).
+- v2.22.46-hotfix vertical-centering rules for the footer label.
+- v2.22.49-hotfix `::marker` title paint isolation.
+
+### Lesson recorded
+
+User memory updated: **PDF 헤더/푸터 변경/수정 전에 반드시 `src/features/41-feature-presets.css` 원본 구현을 먼저 읽고, 그 아키텍처를 존중한다. EOF append로 별도 슬롯을 새로 만들지 말 것.** Any future PDF regression must first diff against features/41 and the most recent EOF additions to `src/polish/73-workflow-polish.css` before introducing new overrides.
+
 ## [3.1.10] — 2026-05-16 — PDF print hotfix: relocate footer + LEFT value to fresh `html::before` / `html::after` slots via `:has()`
 
 ### Bug fix
