@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.2] — 2026-05-16 — File explorer hover double-paint full fix
+
+### Fixed
+
+- **파일 탐색기 hover 더블 페인트(완전 해결)** — v3.0.1에서 여전히 남아있던 근본 원인 2가지를 제거.
+  1. `src/chrome/37-tabs-file-explorer-search.css` 의 row hover 규칙이 `min-height` 24→32px, transform shift, inner pill padding을 동시에 키우면서 row와 pill이 겹쳐 두 겹으로 보이던 점프. → row는 transparent 고정, pill만 resting과 동일한 크기로 글래스 톤 적용.
+  2. Obsidian 코어의 `--nav-item-background-{hover,active,selected}` 토큰이 그대로 살아있어 row에 회색 박스를 그리던 경로. → file-explorer 스코프에서 세 토큰을 transparent로 덮어 코어 페인트 경로 완전 차단.
+- 최상위 root 폴더 hover는 resting pill 위에 글래스를 다시 얹는 대신 단일 톤(`rgba(255,255,255,0.92)` / dark 동등)으로 살짝 진해지게만 처리.
+
 ## [3.0.1] — 2026-05-16 — File explorer hotfix
 
 ### Fixed
