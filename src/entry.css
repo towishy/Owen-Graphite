@@ -1,23 +1,25 @@
 /* Owen Graphite v3 entry point.
  *
- * Cascade strategy: classic file-order + selector-specificity.
+ * Cascade strategy: classic file-order + selector-specificity. ZERO important.
  *
- * IMPORTANT — why we do NOT wrap imports in @layer:
+ * Why we do NOT wrap imports in @layer:
  *
  * Per CSS Cascade Layers spec, unlayered styles ALWAYS defeat layered styles,
  * regardless of specificity. Obsidian core CSS (app.css) is unlayered, so any
- * theme rule wrapped in @layer would lose to core, and the only way back would
- * be !important — defeating the purpose of v3 (which is to reduce !important).
+ * theme rule wrapped in @layer would lose to core. The only way back would be
+ * the important-flag, defeating the purpose of v3 (which is to eliminate it).
  *
- * Therefore v3 theme rules stay UNLAYERED. We rely on:
+ * v3 theme rules stay UNLAYERED. We rely on:
  *   1. File @import order — later wins on equal specificity. THIS ORDER IS
  *      AUTHORITATIVE; it mirrors dev/_order.txt one-to-one so the v3 build
  *      reproduces the exact same cascade resolution as v2.30.14.
  *   2. Selector specificity — high-specificity prefixes like `.theme-light`,
  *      `body.theme-light`, etc. beat Obsidian core's lower-specificity rules
- *      without needing !important.
- *   3. !important reserved for rules where Obsidian core itself uses
- *      !important. Reduction of this remainder is a S11 polish concern.
+ *      without needing any priority flag.
+ *   3. As of S11.5, the v3 bundle contains ZERO important-flagged
+ *      declarations. The harness fingerprint (55 elements x 51 properties,
+ *      light + dark) matches v2.30.14 exactly. See docs/v3/cascade-research.md
+ *      for the empirical study that justified removing all of them.
  *
  * The folder layout (tokens/ base/ surfaces/ chrome/ features/ themes/
  * plugins/ polish/) is an organizational convention for provenance audits.

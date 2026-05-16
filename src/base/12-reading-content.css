@@ -7,7 +7,7 @@
 
 /* Reading view: tighten consecutive paragraph stacks. */
 .markdown-rendered p + p {
-  margin-top: 0.18em !important;
+  margin-top: 0.18em;
 }
 
 /* H1 - Sample B: Editorial number kicker (auto-numbered chapter) */
@@ -20,53 +20,53 @@
 .markdown-rendered h1,
 .markdown-preview-view.markdown-rendered h1,
 .markdown-reading-view .markdown-rendered h1 {
-  display: block !important;
-  position: relative !important;
-  box-sizing: border-box !important;
-  width: auto !important;
-  max-width: 100% !important;
-  margin-top: 1.5em !important;
-  margin-bottom: 0.6em !important;
-  padding: 0.3em 0 0.2em !important;
-  font-size: 2.15em !important;
-  font-weight: 850 !important;
-  line-height: 1.15 !important;
-  letter-spacing: -0.01em !important;
-  color: var(--header-text) !important;
-  background: var(--ogd-surface-transparent, transparent) !important;
-  border: var(--ogd-border-none, 0) !important;
-  border-left: 0 !important;
-  border-bottom: 0 !important;
-  border-radius: 0 !important;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+  padding: 0.3em 0 0.2em;
+  font-size: 2.15em;
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--header-text);
+  background: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 0;
   counter-increment: ogd-h1-counter;
 }
 
 .markdown-rendered h1::before,
 .markdown-preview-view.markdown-rendered h1::before,
 .markdown-reading-view .markdown-rendered h1::before {
-  content: counter(ogd-h1-counter, decimal-leading-zero) !important;
-  display: block !important;
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  display: block;
   font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono",
-    "D2Coding", Consolas, "Courier New", monospace !important;
-  font-size: 0.5em !important;
-  font-weight: 700 !important;
-  letter-spacing: 2px !important;
-  color: var(--ogd-title-rule-start, #0f766e) !important;
-  margin-bottom: 0.5em !important;
-  line-height: 1 !important;
+    "D2Coding", Consolas, "Courier New", monospace;
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--ogd-title-rule-start, #0f766e);
+  margin-bottom: 0.5em;
+  line-height: 1;
 }
 
 /* Disable previous gradient underline */
 .markdown-rendered h1::after,
 .markdown-preview-view.markdown-rendered h1::after,
 .markdown-reading-view .markdown-rendered h1::after {
-  content: none !important;
-  display: none !important;
-  background: none !important;
-  background-image: none !important;
-  height: 0 !important;
-  border: var(--ogd-border-none, 0) !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
+  content: none;
+  display: none;
+  background: none;
+  background-image: none;
+  height: 0;
+  border: var(--ogd-border-none, 0);
+  box-shadow: var(--ogd-shadow-none, none);
 }
 
 .markdown-rendered h2,
@@ -74,15 +74,15 @@
 .markdown-reading-view .markdown-rendered h2 {
   position: relative;
   box-sizing: border-box;
-  margin-top: 0.95em !important;
-  margin-bottom: 0.3em !important;
-  padding-bottom: 0.22em !important;
-  font-size: 1.6em !important;
-  font-weight: 780 !important;
-  line-height: 1.25 !important;
-  letter-spacing: 0 !important;
-  color: var(--header-text) !important;
-  border-bottom: 1px solid var(--header-line) !important;
+  margin-top: 0.95em;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.22em;
+  font-size: 1.6em;
+  font-weight: 780;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--header-text);
+  border-bottom: 1px solid var(--header-line);
 }
 
 .markdown-rendered h2::after,
@@ -103,21 +103,21 @@
 .markdown-reading-view .markdown-rendered h3 {
   position: relative;
   box-sizing: border-box;
-  margin-top: 0.7em !important;
-  margin-bottom: 0.2em !important;
-  padding: 0.08em 0 0.22em 0 !important;
-  font-size: 1.3em !important;
-  font-weight: 720 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: var(--header-accent-dark) !important;
-  border-left: none !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  margin-top: 0.7em;
+  margin-bottom: 0.2em;
+  padding: 0.08em 0 0.22em 0;
+  font-size: 1.3em;
+  font-weight: 720;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--header-accent-dark);
+  border-left: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .theme-dark .markdown-rendered h3,
 .theme-dark .markdown-preview-view.markdown-rendered h3,
 .theme-dark .markdown-reading-view .markdown-rendered h3 {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 @supports selector(.markdown-rendered h1:has(+ table)) {
@@ -127,98 +127,98 @@
   .markdown-rendered h2:has(+ .table-wrapper),
   .markdown-rendered h3:has(+ table),
   .markdown-rendered h3:has(+ .table-wrapper) {
-    margin-bottom: 0.2em !important;
+    margin-bottom: 0.2em;
   }
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
-  margin-top: 1.1em !important;
-  margin-bottom: 2.5em !important;
-  width: auto !important;
-  max-width: 100% !important;
-  border-collapse: collapse !important;
-  font-size: 0.92em !important;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  margin-top: 1.1em;
+  margin-bottom: 2.5em;
+  width: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
 }
 
 .markdown-rendered :is(h1, h2, h3) + :is(table, .table-wrapper),
 .markdown-rendered :is(h1, h2, h3) + .table-wrapper table {
-  margin-top: 0.2em !important;
+  margin-top: 0.2em;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) th {
-  background-color: var(--ogd-text-inverted, #f8fafc) !important;
-  color: var(--ogd-text-strong, #111827) !important;
-  font-weight: 700 !important;
-  text-align: center !important;
-  vertical-align: middle !important;
-  padding: 12px 20px !important;
-  white-space: nowrap !important;
-  border-bottom: 1px solid var(--ogd-line-strong, #cbd5e1) !important;
-  border-left: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
-  border-right: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 20px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--ogd-line-strong, #cbd5e1);
+  border-left: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-right: 1px solid var(--ogd-line-soft, #e5e7eb);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td {
-  line-height: 1.6 !important;
-  padding: 10px 20px !important;
-  border-bottom: 1px solid #f1f5f9 !important;
-  border-left: 1px solid #f1f5f9 !important;
-  border-right: 1px solid #f1f5f9 !important;
-  vertical-align: middle !important;
-  text-align: left !important;
-  color: #1f2937 !important;
-  word-break: keep-all !important;
-  overflow-wrap: break-word !important;
+  line-height: 1.6;
+  padding: 10px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  border-left: 1px solid #f1f5f9;
+  border-right: 1px solid #f1f5f9;
+  vertical-align: middle;
+  text-align: left;
+  color: #1f2937;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .markdown-rendered th:first-child,
 .markdown-rendered td:first-child {
-  border-left: none !important;
+  border-left: none;
 }
 
 .markdown-rendered th:last-child,
 .markdown-rendered td:last-child {
-  border-right: none !important;
+  border-right: none;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td:first-child {
-  color: var(--ogd-text-strong, #111827) !important;
-  font-weight: 700 !important;
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td code {
-  white-space: nowrap !important;
+  white-space: nowrap;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote,
 .workspace-leaf-content :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote {
-  --blockquote-border-thickness: 0px !important;
-  --blockquote-border-color: var(--ogd-surface-transparent, transparent) !important;
-  box-sizing: border-box !important;
-  margin: 0.95em 0 !important;
-  padding: 0.6em 0.9em 0.6em 1em !important;
-  padding-inline-start: 1em !important;
-  border: var(--ogd-border-none, 0) !important;
-  border-left: 0 !important;
-  border-inline-start: 0 !important;
-  border-inline-start-width: 0 !important;
-  border-radius: var(--radius-m, 6px) !important;
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  background-color: var(--ogd-text-inverted, #f8fafc) !important;
-  color: var(--ogd-text-secondary, #374151) !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
-  font-style: italic !important;
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  box-sizing: border-box;
+  margin: 0.95em 0;
+  padding: 0.6em 0.9em 0.6em 1em;
+  padding-inline-start: 1em;
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-radius: var(--radius-m, 6px);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  color: var(--ogd-text-secondary, #374151);
+  box-shadow: var(--ogd-shadow-none, none);
+  font-style: italic;
 }
 
 /* Force blockquote inner spacing - high specificity to override Obsidian defaults */
 body .markdown-rendered blockquote,
 body .markdown-preview-view blockquote,
 body .markdown-reading-view blockquote {
-  border-left: 0 !important;
-  border-inline-start: 0 !important;
-  padding-left: 0.2em !important;
-  padding-inline-start: 0.2em !important;
+  border-left: 0;
+  border-inline-start: 0;
+  padding-left: 0.2em;
+  padding-inline-start: 0.2em;
 }
 
 /* v1.8.65 - Definitive blockquote border removal in Reading view.
@@ -230,107 +230,107 @@ body.theme-light .markdown-rendered blockquote,
 body.theme-dark .markdown-rendered blockquote,
 body .markdown-rendered blockquote blockquote,
 body .markdown-rendered blockquote blockquote blockquote {
-  --blockquote-border-thickness: 0px !important;
-  --blockquote-border-color: var(--ogd-surface-transparent, transparent) !important;
-  border: var(--ogd-border-none, 0) !important;
-  border-top: 0 !important;
-  border-right: 0 !important;
-  border-bottom: 0 !important;
-  border-left: 0 !important;
-  border-width: 0 !important;
-  border-left-width: 0 !important;
-  border-inline-start: 0 !important;
-  border-inline-start-width: 0 !important;
-  border-inline-end-width: 0 !important;
-  border-color: var(--ogd-surface-transparent, transparent) !important;
-  border-left-color: var(--ogd-surface-transparent, transparent) !important;
-  border-inline-start-color: var(--ogd-surface-transparent, transparent) !important;
-  outline: 0 !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-width: 0;
+  border-left-width: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-inline-end-width: 0;
+  border-color: var(--ogd-surface-transparent, transparent);
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  outline: 0;
+  box-shadow: var(--ogd-shadow-none, none);
 }
 
 /* Ensure blockquote children inherit inner spacing */
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :is(p, ul, ol, div) {
-  margin-left: 0.6em !important;
+  margin-left: 0.6em;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :first-child,
 .markdown-rendered .callout-content > :first-child {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :last-child,
 .markdown-rendered .callout-content > :last-child {
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote p {
-  color: var(--ogd-text-secondary, #374151) !important;
-  line-height: 1.75 !important;
-  margin-bottom: 0.65em !important;
+  color: var(--ogd-text-secondary, #374151);
+  line-height: 1.75;
+  margin-bottom: 0.65em;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
-  --blockquote-border-thickness: 0px !important;
-  --blockquote-border-color: var(--ogd-surface-transparent, transparent) !important;
-  box-sizing: border-box !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding: 0.05em 0.6em 0.05em 0.8em !important;
-  border: var(--ogd-border-none, 0) !important;
-  border-left: 0 !important;
-  border-inline-start: 0 !important;
-  border-inline-start-width: 0 !important;
-  border-left-width: 0 !important;
-  border-color: var(--ogd-surface-transparent, transparent) !important;
-  border-left-color: var(--ogd-surface-transparent, transparent) !important;
-  border-inline-start-color: var(--ogd-surface-transparent, transparent) !important;
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  background-color: var(--ogd-text-inverted, #f8fafc) !important;
-  color: var(--ogd-text-secondary, #374151) !important;
-  font-style: italic !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.05em 0.6em 0.05em 0.8em;
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-left-width: 0;
+  border-color: var(--ogd-surface-transparent, transparent);
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  color: var(--ogd-text-secondary, #374151);
+  font-style: italic;
+  box-shadow: var(--ogd-shadow-none, none);
 }
 
 /* v1.8.65 - Live Preview: also kill blockquote element rendered inside CM6 */
 .markdown-source-view.mod-cm6 blockquote,
 .markdown-source-view.mod-cm6 .cm-embed-block blockquote,
 .markdown-source-view.mod-cm6 .cm-content blockquote {
-  --blockquote-border-thickness: 0px !important;
-  --blockquote-border-color: var(--ogd-surface-transparent, transparent) !important;
-  border: var(--ogd-border-none, 0) !important;
-  border-left: 0 !important;
-  border-inline-start: 0 !important;
-  border-inline-start-width: 0 !important;
-  border-left-width: 0 !important;
-  border-color: var(--ogd-surface-transparent, transparent) !important;
-  border-left-color: var(--ogd-surface-transparent, transparent) !important;
-  border-inline-start-color: var(--ogd-surface-transparent, transparent) !important;
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  background-color: var(--ogd-text-inverted, #f8fafc) !important;
-  border-radius: var(--radius-m, 6px) !important;
-  padding: 0.4em 0.8em !important;
-  font-style: italic !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-left-width: 0;
+  border-color: var(--ogd-surface-transparent, transparent);
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  border-radius: var(--radius-m, 6px);
+  padding: 0.4em 0.8em;
+  font-style: italic;
+  box-shadow: var(--ogd-shadow-none, none);
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
     /* v1.8.65 - Hide the > marker; soft background tint already conveys quote.
       Fixes Windows font fallback rendering > as a protruding chevron glyph. */
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 0 !important;
-  color: var(--ogd-surface-transparent, transparent) !important;
-  opacity: 0 !important;
+  display: none;
+  visibility: hidden;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  color: var(--ogd-surface-transparent, transparent);
+  opacity: 0;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
-  color: var(--ogd-text-secondary, #374151) !important;
-  font-style: normal !important;
+  color: var(--ogd-text-secondary, #374151);
+  font-style: normal;
 }
 
 .markdown-rendered div.callout,
@@ -339,140 +339,140 @@ body .markdown-rendered blockquote blockquote blockquote {
 .markdown-reading-view .callout,
 .workspace-leaf-content .markdown-rendered div.callout,
 .workspace-leaf-content .markdown-rendered .callout {
-  box-sizing: border-box !important;
-  margin: 1.05em 0 !important;
-  padding: 11px 13px !important;
-  border: 1px solid #d1d5db !important;
-  border-radius: var(--radius-m, 6px) !important;
-  background: #fbfcfd !important;
-  background-color: #fbfcfd !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
-  mix-blend-mode: normal !important;
-  color: var(--ogd-text-secondary, #374151) !important;
+  box-sizing: border-box;
+  margin: 1.05em 0;
+  padding: 11px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-m, 6px);
+  background: #fbfcfd;
+  background-color: #fbfcfd;
+  box-shadow: var(--ogd-shadow-none, none);
+  mix-blend-mode: normal;
+  color: var(--ogd-text-secondary, #374151);
 }
 
 .markdown-rendered div.callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) {
-  border-left-color: #92400e !important;
-  background: #fffbeb !important;
-  background-color: #fffbeb !important;
+  border-left-color: #92400e;
+  background: #fffbeb;
+  background-color: #fffbeb;
 }
 
 .markdown-rendered div.callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
-  border-left-color: #b91c1c !important;
-  background: #fef2f2 !important;
-  background-color: #fef2f2 !important;
+  border-left-color: #b91c1c;
+  background: #fef2f2;
+  background-color: #fef2f2;
 }
 
 .markdown-rendered div.callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) {
-  border-left-color: #047857 !important;
-  background: #f0fdf4 !important;
-  background-color: #f0fdf4 !important;
+  border-left-color: #047857;
+  background: #f0fdf4;
+  background-color: #f0fdf4;
 }
 
 .markdown-rendered div.callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) {
-  border-left-color: #0f766e !important;
-  background: #f0fdfa !important;
-  background-color: #f0fdfa !important;
+  border-left-color: #0f766e;
+  background: #f0fdfa;
+  background-color: #f0fdfa;
 }
 
 .markdown-rendered div.callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) {
-  border-left-color: var(--ogd-text-slate, #334155) !important;
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  background-color: var(--ogd-text-inverted, #f8fafc) !important;
+  border-left-color: var(--ogd-text-slate, #334155);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
 }
 
 .markdown-rendered div.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
-  border-left-color: #7c3aed !important;
-  background: #faf5ff !important;
-  background-color: #faf5ff !important;
+  border-left-color: #7c3aed;
+  background: #faf5ff;
+  background-color: #faf5ff;
 }
 
 .markdown-rendered div.callout[data-callout="example"] {
-  border-left-color: #6d28d9 !important;
-  background: #f5f3ff !important;
-  background-color: #f5f3ff !important;
+  border-left-color: #6d28d9;
+  background: #f5f3ff;
+  background-color: #f5f3ff;
 }
 
 .markdown-rendered div.callout:is([data-callout="quote"], [data-callout="cite"]) {
-  border-left-color: #64748b !important;
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  background-color: var(--ogd-text-inverted, #f8fafc) !important;
+  border-left-color: #64748b;
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
-  display: flex !important;
-  align-items: center !important;
-  gap: 9px !important;
-  padding: 0 !important;
-  color: #1f2937 !important;
-  font-size: 0.98em !important;
-  font-weight: 800 !important;
-  line-height: 1.35 !important;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  color: #1f2937;
+  font-size: 0.98em;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .markdown-rendered .callout-title-inner,
 .markdown-rendered .callout-content,
 .markdown-preview-view .callout-title-inner,
 .markdown-preview-view .callout-content {
-  color: var(--ogd-text-secondary, #374151) !important;
+  color: var(--ogd-text-secondary, #374151);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
-  margin-top: 0.35em !important;
-  font-size: 0.95em !important;
-  line-height: 1.62 !important;
+  margin-top: 0.35em;
+  font-size: 0.95em;
+  line-height: 1.62;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex: 0 0 auto !important;
-  width: 22px !important;
-  height: 22px !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: var(--ogd-radius-pill, 999px) !important;
-  background: var(--ogd-surface-base, #ffffff) !important;
-  background-color: var(--ogd-surface-base, #ffffff) !important;
-  color: var(--ogd-text-subtle, #475569) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  background-color: var(--ogd-surface-base, #ffffff);
+  color: var(--ogd-text-subtle, #475569);
 }
 
 .markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) .callout-icon {
-  border: 1.5px solid #fcd34d !important;
-  border-radius: var(--ogd-radius-pill, 999px) !important;
-  background: var(--ogd-surface-base, #ffffff) !important;
-  color: #92400e !important;
+  border: 1.5px solid #fcd34d;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #92400e;
 }
 
 .markdown-rendered .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) .callout-icon {
-  border: 1.5px solid #fca5a5 !important;
-  border-radius: var(--ogd-radius-pill, 999px) !important;
-  background: var(--ogd-surface-base, #ffffff) !important;
-  color: #b91c1c !important;
+  border: 1.5px solid #fca5a5;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #b91c1c;
 }
 
 .markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
-  border: 1.5px solid #86efac !important;
-  border-radius: var(--ogd-radius-pill, 999px) !important;
-  background: var(--ogd-surface-base, #ffffff) !important;
-  color: #166534 !important;
+  border: 1.5px solid #86efac;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #166534;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
-  width: 14px !important;
-  height: 14px !important;
-  stroke-width: 2.4px !important;
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.4px;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 .workspace-leaf-content .markdown-rendered pre {
-  margin: 1.35em 0 1.8em !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border: 1px solid #d1d5db !important;
-  border-radius: var(--radius-m, 6px) !important;
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  box-shadow: var(--ogd-shadow-none, none) !important;
+  margin: 1.35em 0 1.8em;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-m, 6px);
+  background: var(--ogd-surface-muted, #f8fafc);
+  box-shadow: var(--ogd-shadow-none, none);
 }
 
 .markdown-rendered pre::before {
@@ -490,81 +490,81 @@ body .markdown-rendered blockquote blockquote blockquote {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 .workspace-leaf-content .markdown-rendered pre code {
-  display: block !important;
-  padding: 14px 16px !important;
-  color: var(--ogd-text-strong, #111827) !important;
-  background: var(--ogd-surface-transparent, transparent) !important;
-  font-family: var(--font-monospace-theme) !important;
-  font-size: 0.9em !important;
-  line-height: 1.65 !important;
-  white-space: pre-wrap !important;
-  word-break: normal !important;
-  overflow-wrap: anywhere !important;
+  display: block;
+  padding: 14px 16px;
+  color: var(--ogd-text-strong, #111827);
+  background: var(--ogd-surface-transparent, transparent);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
-  padding: 0.16em 0.38em !important;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb) !important;
-  border-radius: 4px !important;
-  background: var(--ogd-surface-subtle, #f3f4f6) !important;
-  color: var(--ogd-text-strong, #111827) !important;
-  font-family: var(--font-monospace-theme) !important;
-  font-size: 0.9em !important;
+  padding: 0.16em 0.38em;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-radius: 4px;
+  background: var(--ogd-surface-subtle, #f3f4f6);
+  color: var(--ogd-text-strong, #111827);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-codeblock,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  background: var(--ogd-surface-muted, #f8fafc) !important;
-  color: var(--ogd-text-strong, #111827) !important;
-  font-family: var(--font-monospace-theme) !important;
-  font-size: 0.9em !important;
-  line-height: 1.65 !important;
+  background: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-strong, #111827);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
+  line-height: 1.65;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  border-top: 1px solid #d1d5db !important;
-  border-left: 1px solid #d1d5db !important;
-  border-right: 1px solid #d1d5db !important;
-  border-radius: var(--ogd-radius-top, 6px 6px 0 0) !important;
-  padding-top: 0 !important;
+  border-top: 1px solid #d1d5db;
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  border-radius: var(--ogd-radius-top, 6px 6px 0 0);
+  padding-top: 0;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  border-bottom: 1px solid #d1d5db !important;
-  border-left: 1px solid #d1d5db !important;
-  border-right: 1px solid #d1d5db !important;
-  border-radius: 0 0 6px 6px !important;
-  padding-bottom: 0 !important;
+  border-bottom: 1px solid #d1d5db;
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  border-radius: 0 0 6px 6px;
+  padding-bottom: 0;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul {
-  padding-left: 20px !important;
-  margin-top: 0.4em !important;
-  margin-bottom: 0.8em !important;
-  margin-left: 8px !important;
-  border-left: none !important;
+  padding-left: 20px;
+  margin-top: 0.4em;
+  margin-bottom: 0.8em;
+  margin-left: 8px;
+  border-left: none;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol {
-  padding-left: 22px !important;
-  margin-top: 0.4em !important;
-  margin-bottom: 0.8em !important;
-  margin-left: 8px !important;
+  padding-left: 22px;
+  margin-top: 0.4em;
+  margin-bottom: 0.8em;
+  margin-left: 8px;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li {
-  margin-bottom: 0.65em !important;
-  line-height: 1.78 !important;
-  list-style-type: disc !important;
+  margin-bottom: 0.65em;
+  line-height: 1.78;
+  list-style-type: disc;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li > p {
-  margin-bottom: 0.65em !important;
-  line-height: 1.78 !important;
+  margin-bottom: 0.65em;
+  line-height: 1.78;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li::before {
-  display: none !important;
+  display: none;
 }
 
 .markdown-rendered a,
@@ -582,9 +582,9 @@ body .markdown-rendered blockquote blockquote blockquote {
 
 /* External-link resting state: align with v2.30.14 graphite baseline.
    v2 dev/10c (now polish/70) defines slate-700; this block previously
-   declared teal which only "lost" because the polish/70 rule used
-   !important. Aligning the resting state here removes the need for
-   !important entirely. The hover block below keeps the teal accent. */
+   declared teal which only "lost" because the polish/70 rule used the
+   important-flag. Aligning the resting state here removes the need for
+   that flag entirely. The hover block below keeps the teal accent. */
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a:is(
   .external-link,
   [href^="http://"]:not(.internal-link),
@@ -619,19 +619,19 @@ body .markdown-rendered blockquote blockquote blockquote {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) mark,
 .cm-highlight {
-  padding: 0.05em 0.25em !important;
-  border-radius: 3px !important;
-  background: #fef3c7 !important;
-  color: #78350f !important;
-  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.22) !important;
+  padding: 0.05em 0.25em;
+  border-radius: 3px;
+  background: #fef3c7;
+  color: #78350f;
+  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.22);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.search-highlight, .search-hit, .is-search-match),
 :is(.search-result-file-matched-text, .suggestion-highlight) {
-  padding: 0.05em 0.24em !important;
-  border-radius: 3px !important;
-  background: #fef3c7 !important;
-  color: #78350f !important;
-  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.24) !important;
+  padding: 0.05em 0.24em;
+  border-radius: 3px;
+  background: #fef3c7;
+  color: #78350f;
+  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.24);
 }
 

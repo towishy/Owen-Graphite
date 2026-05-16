@@ -4,42 +4,42 @@
 .markdown-rendered h4,
 .markdown-preview-view.markdown-rendered h4,
 .markdown-reading-view .markdown-rendered h4 {
-  margin-top: 0.6em !important;
-  margin-bottom: 0.18em !important;
-  padding: 0 0 0.18em 0 !important;
-  font-size: 1.12em !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  color: var(--header-accent-dark) !important;
-  border-left: none !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  margin-top: 0.6em;
+  margin-bottom: 0.18em;
+  padding: 0 0 0.18em 0;
+  font-size: 1.12em;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--header-accent-dark);
+  border-left: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .theme-dark .markdown-rendered h4,
 .theme-dark .markdown-preview-view.markdown-rendered h4,
 .theme-dark .markdown-reading-view .markdown-rendered h4 {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .markdown-rendered h5,
 .markdown-preview-view.markdown-rendered h5,
 .markdown-reading-view .markdown-rendered h5 {
-  margin-top: 0.55em !important;
-  margin-bottom: 0.14em !important;
-  font-size: 1.0em !important;
-  font-weight: 700 !important;
+  margin-top: 0.55em;
+  margin-bottom: 0.14em;
+  font-size: 1.0em;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em !important;
-  color: var(--header-muted) !important;
+  letter-spacing: 0.04em;
+  color: var(--header-muted);
 }
 
 .markdown-rendered h6,
 .markdown-preview-view.markdown-rendered h6,
 .markdown-reading-view .markdown-rendered h6 {
-  margin-top: 0.5em !important;
-  margin-bottom: 0.12em !important;
-  font-size: 0.92em !important;
-  font-weight: 700 !important;
-  color: var(--header-muted) !important;
+  margin-top: 0.5em;
+  margin-bottom: 0.12em;
+  font-size: 0.92em;
+  font-weight: 700;
+  color: var(--header-muted);
 }
 
 /* Anchor 짠 hint on heading hover (Reading view only) */
@@ -74,11 +74,11 @@
 }
 .markdown-rendered td.num,
 .markdown-rendered th.num {
-  text-align: right !important;
+  text-align: right;
   font-variant-numeric: tabular-nums;
 }
 .markdown-rendered tr:hover td {
-  background-color: #f5f7fa !important;
+  background-color: #f5f7fa;
 }
 .markdown-rendered table.sticky-first-col td:first-child,
 .markdown-rendered table.sticky-first-col th:first-child {
@@ -90,7 +90,7 @@
 }
 /* zebra toggle via Style Settings class */
 body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
-  background-color: #fafbfc !important;
+  background-color: #fafbfc;
 }
 
 /* =====================================================================
@@ -101,7 +101,7 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
 }
 .markdown-rendered pre::before {
   /* Hide the heavy header bar; replace with a small badge */
-  content: none !important;
+  content: none;
 }
 .markdown-rendered pre[class*="language-"]::after {
   content: attr(class);
@@ -125,13 +125,13 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
 .markdown-preview-view pre.line-numbers,
 .markdown-reading-view pre.line-numbers {
   counter-reset: ogd-code-line;
-  padding-left: 3.4em !important;
+  padding-left: 3.4em;
 }
 
 .markdown-rendered pre.line-numbers::before,
 .markdown-preview-view pre.line-numbers::before,
 .markdown-reading-view pre.line-numbers::before {
-  content: "" !important;
+  content: "";
   position: absolute;
   top: 0.75em;
   bottom: 0.75em;
@@ -196,9 +196,9 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
 
 /* Copy button contrast */
 .markdown-rendered pre .copy-code-button {
-  background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid var(--ogd-line-strong, #cbd5e1) !important;
-  color: var(--ogd-text-strong, #111827) !important;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--ogd-line-strong, #cbd5e1);
+  color: var(--ogd-text-strong, #111827);
   font-weight: 600;
 }
 
@@ -217,96 +217,96 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.42);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.28);
   --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
-  position: relative !important;
-  margin: 1.28em 0 1.62em !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border: 1px solid var(--ogd-codeblock-border) !important;
-  border-radius: var(--ogd-radius-control, 10px) !important;
-  background: var(--ogd-codeblock-bg) !important;
-  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 14px 28px rgba(15, 23, 42, 0.10) !important;
-  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
-  backdrop-filter: var(--ogd-glass-filter-control) !important;
+  position: relative;
+  margin: 1.28em 0 1.62em;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--ogd-codeblock-border);
+  border-radius: var(--ogd-radius-control, 10px);
+  background: var(--ogd-codeblock-bg);
+  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 14px 28px rgba(15, 23, 42, 0.10);
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 .workspace-leaf-content .markdown-rendered pre::before {
-  content: "CODE" !important;
-  position: absolute !important;
-  top: 0.62em !important;
-  right: 4.9em !important;
-  z-index: 2 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  min-height: 1.55em !important;
-  padding: 0.16em 0.62em !important;
-  border: 1px solid var(--ogd-codeblock-header-border) !important;
-  border-radius: 6px !important;
-  background: rgba(255, 255, 255, 0.58) !important;
-  color: var(--ogd-text-subtle, #475569) !important;
-  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-  font-size: 0.72em !important;
-  font-weight: 760 !important;
-  line-height: 1.1 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 7px rgba(15, 23, 42, 0.06) !important;
-  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
-  backdrop-filter: var(--ogd-glass-filter-control) !important;
-  pointer-events: none !important;
+  content: "CODE";
+  position: absolute;
+  top: 0.62em;
+  right: 4.9em;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55em;
+  padding: 0.16em 0.62em;
+  border: 1px solid var(--ogd-codeblock-header-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--ogd-text-subtle, #475569);
+  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72em;
+  font-weight: 760;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 7px rgba(15, 23, 42, 0.06);
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
+  pointer-events: none;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::before,
 .workspace-leaf-content .markdown-rendered pre[class*="language-"]::before {
-  content: attr(class) !important;
+  content: attr(class);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
 .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 1 !important;
-  display: block !important;
-  height: 2.7em !important;
-  border-bottom: 1px solid var(--ogd-codeblock-header-border) !important;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22)) !important;
-  opacity: 1 !important;
-  pointer-events: none !important;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  height: 2.7em;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22));
+  opacity: 1;
+  pointer-events: none;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 .workspace-leaf-content .markdown-rendered pre code {
-  display: block !important;
-  max-width: 100% !important;
-  padding: var(--ogd-codeblock-code-padding, 2.9em 1.1em 1.05em) !important;
-  overflow-x: auto !important;
-  color: var(--ogd-text-slate, #1e293b) !important;
-  background: transparent !important;
-  font-size: 0.9em !important;
-  line-height: 1.62 !important;
-  white-space: pre !important;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
+  display: block;
+  max-width: 100%;
+  padding: var(--ogd-codeblock-code-padding, 2.9em 1.1em 1.05em);
+  overflow-x: auto;
+  color: var(--ogd-text-slate, #1e293b);
+  background: transparent;
+  font-size: 0.9em;
+  line-height: 1.62;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
 .workspace-leaf-content .markdown-rendered pre .copy-code-button {
-  top: 0.55em !important;
-  right: 0.75em !important;
-  min-width: 4.4em !important;
-  min-height: 1.8em !important;
-  padding: 0.2em 0.72em !important;
-  border: 1px solid rgba(148, 163, 184, 0.45) !important;
-  border-radius: 6px !important;
-  background: rgba(255, 255, 255, 0.62) !important;
-  color: var(--ogd-text-subtle, #64748b) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84) !important;
-  -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
-  backdrop-filter: var(--ogd-glass-filter-control) !important;
-  font-size: 0.72em !important;
+  top: 0.55em;
+  right: 0.75em;
+  min-width: 4.4em;
+  min-height: 1.8em;
+  padding: 0.2em 0.72em;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--ogd-text-subtle, #64748b);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84);
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
+  font-size: 0.72em;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
@@ -317,65 +317,65 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre {
   --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
   --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
-  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 14px 28px rgba(0, 0, 0, 0.18) !important;
+  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre::before {
-  color: var(--ogd-text-subtle, #475569) !important;
+  color: var(--ogd-text-subtle, #475569);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
-  color: var(--ogd-text-slate, #1e293b) !important;
+  color: var(--ogd-text-slate, #1e293b);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre .copy-code-button {
-  border-color: rgba(148, 163, 184, 0.48) !important;
-  background: rgba(255, 255, 255, 0.68) !important;
-  color: var(--ogd-text-subtle, #475569) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(148, 163, 184, 0.48);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--ogd-text-subtle, #475569);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
 .workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
-  color: #6d28d9 !important;
+  color: #6d28d9;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
 .workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
-  color: #b45309 !important;
+  color: #b45309;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
 .workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
-  color: #0f766e !important;
+  color: #0f766e;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
 .workspace-leaf-content .markdown-rendered pre :is(.token.comment, .token.prolog, .token.doctype) {
-  color: #94a3b8 !important;
-  font-style: italic !important;
+  color: #94a3b8;
+  font-style: italic;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
-  color: #6d28d9 !important;
+  color: #6d28d9;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
-  color: #b45309 !important;
+  color: #b45309;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
-  color: #0f766e !important;
+  color: #0f766e;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.comment, .token.prolog, .token.doctype) {
-  color: #64748b !important;
+  color: #64748b;
 }
 

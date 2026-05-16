@@ -12,7 +12,7 @@
 
   .markdown-preview-view,
   .markdown-rendered {
-    font-size: 11pt !important;
+    font-size: 11pt;
   }
 
   .markdown-rendered h1 { break-before: page; page-break-before: always; }
@@ -26,16 +26,16 @@
   .markdown-rendered h1,
   .markdown-preview-view.markdown-rendered h1,
   .markdown-reading-view .markdown-rendered h1 {
-    font-size: 2.8em !important;
-    line-height: 1.1 !important;
-    margin-top: 1.2em !important;
-    margin-bottom: 0.7em !important;
+    font-size: 2.8em;
+    line-height: 1.1;
+    margin-top: 1.2em;
+    margin-bottom: 0.7em;
   }
   .markdown-rendered h1::before,
   .markdown-preview-view.markdown-rendered h1::before,
   .markdown-reading-view .markdown-rendered h1::before {
-    font-size: 0.32em !important;
-    margin-bottom: 0.7em !important;
+    font-size: 0.32em;
+    margin-bottom: 0.7em;
   }
 
   /* v1.8.65 — PDF readability micro-tuning */
@@ -43,51 +43,51 @@
   .markdown-rendered li,
   .markdown-preview-view p,
   .markdown-preview-view li {
-    line-height: 1.55 !important;
+    line-height: 1.55;
   }
   .markdown-rendered table,
   .markdown-preview-view table {
-    line-height: 1.45 !important;
+    line-height: 1.45;
   }
 
   /* v1.8.65 — Repeat table headers across PDF pages (Chromium native) */
   .markdown-rendered table thead,
   .markdown-preview-view table thead,
   .markdown-reading-view table thead {
-    display: table-header-group !important;
+    display: table-header-group;
   }
   .markdown-rendered table tfoot,
   .markdown-preview-view table tfoot,
   .markdown-reading-view table tfoot {
-    display: table-footer-group !important;
+    display: table-footer-group;
   }
 
   /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
   .markdown-rendered h1 {
-    break-before: page !important;
-    page-break-before: always !important;
+    break-before: page;
+    page-break-before: always;
   }
   .markdown-rendered h1:first-of-type,
   .markdown-rendered > h1:first-child {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
+    break-before: avoid;
+    page-break-before: avoid;
   }
 
   /* v1.8.65 — Footnotes section: keep at end, separate from body */
   .markdown-rendered .footnotes,
   .markdown-rendered section.footnotes,
   .markdown-rendered .footnote-section {
-    margin-top: 2.5em !important;
-    padding-top: 1em !important;
-    border-top: 1px solid var(--ogd-line-strong, #cbd5e1) !important;
-    font-size: 0.88em !important;
-    color: #4b5563 !important;
-    page-break-before: auto !important;
-    break-before: auto !important;
+    margin-top: 2.5em;
+    padding-top: 1em;
+    border-top: 1px solid var(--ogd-line-strong, #cbd5e1);
+    font-size: 0.88em;
+    color: #4b5563;
+    page-break-before: auto;
+    break-before: auto;
   }
   .markdown-rendered .footnotes ol,
   .markdown-rendered .footnote-section ol {
-    padding-left: 1.4em !important;
+    padding-left: 1.4em;
   }
 
   img,
@@ -113,19 +113,19 @@
   .markdown-rendered blockquote,
   .markdown-rendered th,
   .markdown-rendered tr:nth-child(even) td {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   /* v2.30.4: removed forbidden PDF blockquote left bar; uses subtle full box. */
   .markdown-rendered blockquote,
   .markdown-preview-view blockquote,
   .markdown-reading-view blockquote {
-    border: 1px solid #e5e7eb !important;
-    border-inline-start: 1px solid #e5e7eb !important;
-    border-radius: 4px !important;
-    padding: 0.5em 0.9em !important;
-    background: #f8fafc !important;
+    border: 1px solid #e5e7eb;
+    border-inline-start: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 0.5em 0.9em;
+    background: #f8fafc;
   }
 
   /* Hide UI chrome in print */
@@ -135,14 +135,14 @@
   .titlebar,
   .copy-code-button,
   .markdown-rendered pre[class*="language-"]::after {
-    display: none !important;
+    display: none;
   }
 
   .markdown-rendered th,
   .markdown-preview-view th,
   .markdown-reading-view th {
-    background-color: var(--ogd-text-inverted, #f8fafc) !important;
-    border-bottom: 1px solid var(--ogd-line-strong, #cbd5e1) !important;
+    background-color: var(--ogd-text-inverted, #f8fafc);
+    border-bottom: 1px solid var(--ogd-line-strong, #cbd5e1);
   }
 
   /* Snippet-merged: additional print break avoidance */
@@ -166,40 +166,40 @@
   }
 
   /* v2.22.121 - PDF parity for liquid list markers. */
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) { --ogd-list-marker-bg: linear-gradient(180deg, #ffffff, #f0f9ff) !important; --ogd-list-marker-bg-active: linear-gradient(180deg, #ffffff, #e0f2fe) !important; --ogd-list-marker-border: rgba(14, 165, 233, 0.46) !important; --ogd-list-marker-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 2px 5px rgba(15, 23, 42, 0.08) !important; --ogd-list-marker-shadow-active: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 3px 8px rgba(14, 165, 233, 0.12) !important; --ogd-list-nested-marker: rgba(14, 165, 233, 0.34) !important; --ogd-list-task-surface: linear-gradient(180deg, #ffffff, #f8fafc) !important; --ogd-list-task-border: rgba(203, 213, 225, 0.62) !important; --ogd-list-task-shadow: inset 0 1px 0 #ffffff, 0 3px 8px rgba(15, 23, 42, 0.06) !important; }
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { break-inside: avoid-page !important; }
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) input[type="checkbox"] { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) { --ogd-list-marker-bg: linear-gradient(180deg, #ffffff, #f0f9ff); --ogd-list-marker-bg-active: linear-gradient(180deg, #ffffff, #e0f2fe); --ogd-list-marker-border: rgba(14, 165, 233, 0.46); --ogd-list-marker-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 2px 5px rgba(15, 23, 42, 0.08); --ogd-list-marker-shadow-active: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 3px 8px rgba(14, 165, 233, 0.12); --ogd-list-nested-marker: rgba(14, 165, 233, 0.34); --ogd-list-task-surface: linear-gradient(180deg, #ffffff, #f8fafc); --ogd-list-task-border: rgba(203, 213, 225, 0.62); --ogd-list-task-shadow: inset 0 1px 0 #ffffff, 0 3px 8px rgba(15, 23, 42, 0.06); }
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { break-inside: avoid-page; }
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) input[type="checkbox"] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list { -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
   /* v2.22.122 - keep list chips stable across Chromium page breaks. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: grid !important; grid-template-columns: 2.28em minmax(0, 1fr) !important; column-gap: 0.36em !important; padding-inline-start: 0 !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { position: static !important; inset: auto !important; grid-column: 1 !important; grid-row: 1 !important; align-self: start !important; margin-top: 0.08em !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item)::marker { color: transparent !important; font-size: 0 !important; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: grid; grid-template-columns: 2.28em minmax(0, 1fr); column-gap: 0.36em; padding-inline-start: 0; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { position: static; inset: auto; grid-column: 1; grid-row: 1; align-self: start; margin-top: 0.08em; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item)::marker { color: transparent; font-size: 0; }
 
   /* v2.22.123 - PDF-safe native accent markers. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) { padding-inline-start: 1.62em !important; list-style-position: outside !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { list-style-type: decimal-leading-zero !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) { list-style-type: disc !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item !important; grid-template-columns: none !important; column-gap: normal !important; position: static !important; list-style: inherit !important; list-style-position: outside !important; padding-inline-start: 0.16em !important; break-inside: auto !important; page-break-inside: auto !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: decimal-leading-zero !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: disc !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { content: none !important; display: none !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::marker { color: #0e7490 !important; font-size: 0.92em !important; font-weight: 820 !important; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) { padding-inline-start: 1.62em; list-style-position: outside; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { list-style-type: decimal-leading-zero; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) { list-style-type: disc; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item; grid-template-columns: none; column-gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; break-inside: auto; page-break-inside: auto; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: decimal-leading-zero; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: disc; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { content: none; display: none; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::marker { color: #0e7490; font-size: 0.92em; font-weight: 820; }
 
   /* v2.22.124 - keep highlighted list text in the same inline flow. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) mark { display: inline !important; margin: 0 !important; padding-block: 0 !important; padding-inline: 0.12em !important; line-height: inherit !important; vertical-align: baseline !important; -webkit-box-decoration-break: clone !important; box-decoration-break: clone !important; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) mark { display: inline; margin: 0; padding-block: 0; padding-inline: 0.12em; line-height: inherit; vertical-align: baseline; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 
   /* v2.22.125 - PDF-safe checklist flattening. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list { margin-block: 0.28em 0.68em !important; padding-inline-start: 1.1em !important; border: 0 !important; background: transparent !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item { display: list-item !important; margin-block: 0.16em !important; padding: 0 !important; border: 0 !important; background: transparent !important; box-shadow: none !important; color: #1f2937 !important; line-height: 1.45 !important; break-inside: avoid-page !important; page-break-inside: avoid !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item::marker { color: transparent !important; font-size: 0 !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"] { position: static !important; display: inline-block !important; width: 0.86em !important; height: 0.86em !important; margin: 0 0.42em 0 0 !important; border: 1.2px solid #94a3b8 !important; border-radius: 3px !important; background: #ffffff !important; box-shadow: none !important; vertical-align: -0.12em !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked { border-color: #0e7490 !important; background: #ecfeff !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked::after { color: #0e7490 !important; top: -0.2em !important; left: 0.08em !important; font-size: 0.78em !important; line-height: 1 !important; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list { margin-block: 0.28em 0.68em; padding-inline-start: 1.1em; border: 0; background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item { display: list-item; margin-block: 0.16em; padding: 0; border: 0; background: transparent; box-shadow: none; color: #1f2937; line-height: 1.45; break-inside: avoid-page; page-break-inside: avoid; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item::marker { color: transparent; font-size: 0; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"] { position: static; display: inline-block; width: 0.86em; height: 0.86em; margin: 0 0.42em 0 0; border: 1.2px solid #94a3b8; border-radius: 3px; background: #ffffff; box-shadow: none; vertical-align: -0.12em; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked { border-color: #0e7490; background: #ecfeff; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked::after { color: #0e7490; top: -0.2em; left: 0.08em; font-size: 0.78em; line-height: 1; }
 
   /* v2.22.126 - restore native ordered-list numbering in PDF. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { counter-reset: revert !important; list-style-type: decimal !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { counter-increment: revert !important; list-style-type: decimal !important; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker { font-variant-numeric: tabular-nums !important; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { counter-reset: revert; list-style-type: decimal; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { counter-increment: revert; list-style-type: decimal; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker { font-variant-numeric: tabular-nums; }
 }
 

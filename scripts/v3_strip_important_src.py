@@ -25,7 +25,26 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
-PATTERN = re.compile(r"\s*!\s*important\b", re.IGNORECASE)
+
+# Match `!important` (with optional whitespace) and the whitespace immediately
+# before it. Use a re.split on CSS block comments so we never touch `!important`
+# tokens that appear inside /* ... */ documentation.
+IMPORTANT = re.compile(r"\s*!\s*important\b", re.IGNORECASE)
+COMMENT_SPLIT = re.compile(r"(/\*[\s\S]*?\*/)")
+
+
+def strip_outside_comments(css: str) -> tuple[str, int]:
+    parts = COMMENT_SPLIT.split(css)
+    removed = 0
+    for i, chunk in enumerate(parts):
+        # Even-indexed chunks are CSS code; odd-indexed chunks are full
+        # comments (kept verbatim).
+        if i % 2 == 0:
+            count = len(IMPORTANT.findall(chunk))
+            if count:
+                removed += count
+                parts[i] = IMPORTANT.sub("", chunk)
+    return "".join(parts), removed
 
 
 def main() -> int:
@@ -39,19 +58,18 @@ def main() -> int:
     for css in sorted(SRC.rglob("*.css")):
         total_files += 1
         original = css.read_text(encoding="utf-8")
-        count = len(PATTERN.findall(original))
-        if count == 0:
+        stripped, removed = strip_outside_comments(original)
+        if removed == 0:
             continue
-        stripped = PATTERN.sub("", original)
         css.write_text(stripped, encoding="utf-8")
         changed_files += 1
-        total_removed += count
+        total_removed += removed
         rel = css.relative_to(ROOT).as_posix()
-        print(f"  {rel:60s}  -{count}")
+        print(f"  {rel:60s}  -{removed}")
 
     print(
         f"\nOK: scanned {total_files} files; modified {changed_files}; "
-        f"removed {total_removed} !important tokens."
+        f"removed {total_removed} !important tokens (comments preserved)."
     )
     return 0
 
