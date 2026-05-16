@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.3] — 2026-05-16 — Hotfix#2: PDF H1 specificity push to (0,3,2)
+
+### Fixed
+
+- **PDF H1 사이즈 override가 여전히 적용 안 되던 문제** — v3.1.2의 print override가 (0,2,2) specificity로 작성됐지만 polish/71에 이미 사용 중인 이중-클래스 트릭(`.markdown-rendered.markdown-rendered`)이 같은 H1을 (0,3,2)로 잡고 있어 일부 환경에서 캐스케이드가 어긋났습니다. v3.1.3은 동일 트릭으로 print override의 specificity도 **(0,3,2)** 로 끌어올려 어떤 순서/캐스케이드에서도 PDF H1이 3.4em(compact 2.85em)으로 적용되도록 보장합니다.
+
+### How to verify
+
+1. Obsidian: 설정 → 외관 → 테마를 다른 테마로 잠시 바꿨다가 다시 **Owen Graphite** 로 선택 (테마 캐시 초기화).
+2. 노트를 닫았다가 다시 열기.
+3. PDF 내보내기 후 H1 크기 확인.
+
+### Unchanged
+
+- Reading / Live Preview / Mobile / H2~H6, 텍스트 데코, 카운터 kicker margin.
+
 ## [3.1.2] — 2026-05-16 — Hotfix: PDF H1 actually applies the size bump
 
 ### Fixed
