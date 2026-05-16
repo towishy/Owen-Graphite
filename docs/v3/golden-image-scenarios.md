@@ -132,14 +132,14 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | Print / PDF | 4 |
 | **합계** | **66** |
 
-## v3.0.0 결과 검증 스크립트
+## v3 결과 검증 스크립트 (최신 v3.0.3 기준)
 
-v3.0.0은 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다.
+v3는 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다 (최초 v3.0.0 릴리즈 시점에 0 diff 달성, 이후 v3.0.1~v3.0.3 hotfix 체인은 디자인 표면을 건드리지 않음).
 
 - 캡처: scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}
 - diff: scripts/fp_diff_summary.py [--theme dark]
 - 하네스: docs/v3/research/golden-rig/obsidian-harness.html
-- 베이스라인: docs/v3/computed-fingerprint-v3.0.0-{light,dark}.json
+- 베이스라인: docs/v3/computed-fingerprint-v3.0.0-{light,dark}.json (v3 최초 캡처 원본 — 파일명 그대로 유지)
 - 결과: 모두 0 diff
 
 실제 PNG 스크린샷은 screenshots/README.md 참고. 이 문서의 66 시나리오 목록은 향후 자동 시각 회귀 스위트를 도입할 때의 설계 문서로 남겨둡니다.
