@@ -16,10 +16,10 @@
 
 | # | 계약 | 검증 도구 | 통과 기준 |
 | --- | --- | --- | --- |
-| C1 | 시각 (Liquid Glass + 일반 surface) | `scripts/visual_regression.py` (확장) | 60+ 시나리오, 픽셀 diff < 1% |
-| C2 | 색 대비 (WCAG) | `scripts/contrast_audit.py` (확장) | 30+ 쌍 모두 AA 이상 |
+| C1 | 시각 (Liquid Glass + 일반 surface) | `scripts/capture_computed_fingerprint.py` + `scripts/fp_diff_summary.py` | computed-style fingerprint diff = 0 (Light / Dark) |
+| C2 | 색 대비 (WCAG) | 수동 샘플 + Style Settings 토글 매트릭스 | 30+ 쌍 모두 AA 이상 (베이스라인 v2.30.14와 동일) |
 | C3 | Style Settings 동작 | 토글 매트릭스 캡처 | 37개 옵션 × ON/OFF = 74 cell 동일 |
-| C4 | Live Preview 편집성 | `scripts/hit_routing_probe.py` | 클릭 좌표 → 동일 contenteditable 도달 |
+| C4 | Live Preview 편집성 | `scripts/audit_v3_hit_routing.py` | violations = 0 |
 | C5 | PDF 출력 | print 시나리오 PDF 비교 | 페이지 수·레이아웃·footer 동일 |
 
 각 계약의 매트릭스는 별도 문서에 상세화됩니다 (아래 "참조 문서" 표 참고).
@@ -190,7 +190,7 @@ src/
 
 ## 참고
 
-- [layer-migration-roadmap.md](layer-migration-roadmap.md) — 점진적 layer 도입 대안 (v3 from-scratch 채택으로 비활성화)
-- [community-scanner-acknowledgments.md](community-scanner-acknowledgments.md) — v2.30 스캐너 경고 책임 매트릭스
-- `dev/MAP/cm6-hit-routing-contract.md` — Live Preview hit-routing 계약 (S4의 기준)
-- `dev/MAP/css-stabilization-checklist.md` — 안정화 체크리스트
+- [release-plan.md](release-plan.md) — v3.0.0 릴리즈 기록·투체인·절차
+- [cascade-research.md](cascade-research.md) — unlayered 캐스케이드 실증·S11.5 `!important` 일괄 제거 결과
+- [surface-state-matrix.md](surface-state-matrix.md) — Liquid Glass rest/hover/active/disabled 정의
+- [live-preview-editability.md](live-preview-editability.md) — hit-routing 계약 (v3 구현: `scripts/audit_v3_hit_routing.py`)

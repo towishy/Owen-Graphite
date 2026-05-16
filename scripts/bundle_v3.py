@@ -3,13 +3,12 @@
 graph rooted at src/entry.css.
 
 Design notes:
-- This is the v3 bundler, intentionally separate from scripts/bundle_theme.py
-  which still owns the v2.30.x dev/ -> theme.css pipeline. v3-rewrite never
-  overwrites theme.css until S11 swaps them.
 - @import statements are inlined verbatim. v3 deliberately does NOT wrap
   imports in @layer because unlayered styles always beat layered ones, and
   Obsidian core CSS is unlayered. See src/entry.css for the full rationale.
 - Re-entrant imports are detected and refused.
+- The canonical bundle is dist/theme-v3.css; theme.css at the repo root is a
+  copy promoted by scripts/build_release.py or scripts/sync_obsidian_theme.py.
 """
 
 from __future__ import annotations

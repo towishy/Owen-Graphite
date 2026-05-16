@@ -1,7 +1,6 @@
-"""Audit duplicate selectors across the v3 src/ tree and the bundle.
+"""Audit duplicate selectors across the v3 src/ tree.
 
-This is the v3 analogue of `scripts/find_safe_duplicate_selectors.py`, which only
-scans `dev/` per-file. It produces two reports:
+Produces two reports:
 
 1. **Safe in-file duplicates** — same `src/*.css` file, same selector
    (whitespace-normalised), same declaration body, same enclosing at-rule
@@ -22,22 +21,148 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import re
 from collections import defaultdict
 from pathlib import Path
 
-import sys
-
-# Reuse the proven CSS tokenizer from the dev-side script
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "scripts"))
-
-from find_safe_duplicate_selectors import (  # type: ignore
-    scan_module,
-    tokenize_blocks,
-    normalize_ws,
-)
-
 SRC_DIR = ROOT / "src"
+
+
+def normalize_ws(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def tokenize_blocks(css: str):
+    """Yield (selector, body, at_context, line_no) for each top-level rule.
+
+    Handles nested at-rules (`@media`, `@supports`, `@layer`, `@container`)
+    by tracking the enclosing at-rule chain as `at_context`.
+    """
+    i = 0
+    n = len(css)
+    at_stack: list[str] = []
+    line = 1
+
+    def advance_lines(start: int, end: int) -> None:
+        nonlocal line
+        line += css.count("\n", start, end)
+
+    while i < n:
+        if css.startswith("/*", i):
+            j = css.find("*/", i + 2)
+            if j == -1:
+                return
+            advance_lines(i, j + 2)
+            i = j + 2
+            continue
+        ch = css[i]
+        if ch.isspace():
+            if ch == "\n":
+                line += 1
+            i += 1
+            continue
+        if ch == "@":
+            j = i
+            while j < n and css[j] not in "{;":
+                if css[j] == "\n":
+                    line += 1
+                j += 1
+            if j >= n:
+                return
+            if css[j] == ";":
+                i = j + 1
+                continue
+            header = normalize_ws(css[i:j])
+            at_stack.append(header)
+            i = j + 1
+            block_start = i
+            depth = 1
+            while i < n and depth > 0:
+                c = css[i]
+                if c == "/" and css.startswith("/*", i):
+                    end = css.find("*/", i + 2)
+                    if end == -1:
+                        return
+                    advance_lines(i, end + 2)
+                    i = end + 2
+                    continue
+                if c == "{":
+                    depth += 1
+                elif c == "}":
+                    depth -= 1
+                    if depth == 0:
+                        break
+                if c == "\n":
+                    line += 1
+                i += 1
+            inner = css[block_start:i]
+            inner_line_offset = css.count("\n", 0, block_start) + 1
+            for sel, body, inner_ctx, sub_line in tokenize_blocks(inner):
+                full_ctx = " >> ".join(at_stack[:-1] + [header] + ([inner_ctx] if inner_ctx else []))
+                yield sel, body, full_ctx, inner_line_offset + sub_line - 1
+            at_stack.pop()
+            i += 1
+            continue
+        sel_start = i
+        j = i
+        while j < n:
+            c = css[j]
+            if c == "/" and css.startswith("/*", j):
+                end = css.find("*/", j + 2)
+                if end == -1:
+                    return
+                advance_lines(j, end + 2)
+                j = end + 2
+                continue
+            if c in "{}":
+                break
+            j += 1
+        if j >= n or css[j] != "{":
+            i = j + 1
+            continue
+        selector = css[sel_start:j].strip()
+        advance_lines(i, j + 1)
+        i = j + 1
+        depth = 1
+        body_start = i
+        while i < n and depth > 0:
+            c = css[i]
+            if c == "/" and css.startswith("/*", i):
+                end = css.find("*/", i + 2)
+                if end == -1:
+                    return
+                advance_lines(i, end + 2)
+                i = end + 2
+                continue
+            if c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+            if c == "\n":
+                line += 1
+            i += 1
+        body = css[body_start:i]
+        at_context = " >> ".join(at_stack)
+        yield normalize_ws(selector), normalize_ws(body), at_context, line
+        i += 1
+
+
+def scan_module(path: Path):
+    css = path.read_text(encoding="utf-8")
+    by_key: dict[tuple[str, str, str], list[int]] = defaultdict(list)
+    for sel, body, ctx, line in tokenize_blocks(css):
+        if not sel or not body:
+            continue
+        key = (sel, body, ctx)
+        by_key[key].append(line)
+    candidates = []
+    for (sel, body, ctx), lines in by_key.items():
+        if len(lines) > 1:
+            candidates.append((sel, body, ctx, lines))
+    return candidates
 
 
 def cross_file_groups(src_dir: Path):

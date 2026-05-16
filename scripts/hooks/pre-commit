@@ -1,7 +1,8 @@
 #!/bin/sh
-# Owen Graphite pre-commit hook
-# - runs scripts/diff_guard.py against staged CSS changes
-# - blocks commits that introduce known CM6 hit-routing regressions
+# Owen Graphite v3 pre-commit hook
+# - rebuilds dist/theme-v3.css from src/
+# - runs the Live Preview hit-routing audit
+# - runs the duplicate-selector audit (informational)
 # Install with:
 #   ln -sf ../../scripts/hooks/pre-commit .git/hooks/pre-commit
 #   chmod +x scripts/hooks/pre-commit
@@ -12,9 +13,13 @@ cd "$repo_root"
 
 if [ -x .venv/bin/python ]; then
     PY=.venv/bin/python
+elif [ -x .venv/Scripts/python.exe ]; then
+    PY=.venv/Scripts/python.exe
 else
     PY=python3
 fi
 
-"$PY" scripts/diff_guard.py --staged
-"$PY" scripts/changelog_lint.py --staged 2>/dev/null || true
+"$PY" scripts/bundle_v3.py
+"$PY" scripts/audit_v3_hit_routing.py
+"$PY" scripts/v3_audit_duplicate_selectors.py >/dev/null || true
+

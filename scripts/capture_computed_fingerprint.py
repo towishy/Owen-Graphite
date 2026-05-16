@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Capture a computed-style fingerprint of the Owen Graphite theme.
 
-For every element in dev/v3/golden-rig/obsidian-harness.html that carries a
+For every element in docs/v3/research/golden-rig/obsidian-harness.html that carries a
 `data-fp-id` attribute, we record the value of a fixed list of CSS properties
 resolved by the browser. The result is written to
 `docs/v3/computed-fingerprint-<version>-<theme>.json`.
@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-HARNESS = ROOT / "dev" / "v3" / "golden-rig" / "obsidian-harness.html"
+HARNESS = ROOT / "docs" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
 MANIFEST = ROOT / "manifest.json"
 
 # Properties we sample per element. Kept small enough to stay readable in diff
@@ -210,7 +210,7 @@ def main() -> int:
         "--build",
         choices=["v2", "v3"],
         default="v2",
-        help="Which theme bundle to load in the harness. v2 = theme.css (default), v3 = dist/theme-v3.css.",
+        help="Which theme bundle to load in the harness. v3 = dist/theme-v3.css (default canonical), legacy = theme.css copy.",
     )
     parser.add_argument(
         "--out-dir",

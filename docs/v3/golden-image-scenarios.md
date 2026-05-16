@@ -132,29 +132,14 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | Print / PDF | 4 |
 | **합계** | **66** |
 
-## 캡처 스크립트 (S1 작업)
+## v3.0.0 결과 검증 스크립트
 
-- 신규: `scripts/capture_golden_images.py`
-  - Playwright 기반
-  - 입력: `docs/v3/golden-image-scenarios.md` (이 문서)의 표 파싱 + `dev/test-samples/` 안의 fixture 파일 매핑
-  - 출력: `screenshots/golden/v2.30.14/<id>.png`
-  - 옵션: `--check` 모드 — 기존 이미지와 새 캡처를 pixelmatch 비교, diff > 1% 시 실패
-- baseline 캡처: v2.30.14 빌드 1회
-- v3-rewrite 진행 중에는 동일 스크립트 `--check` 모드로 회귀 감지
+v3.0.0은 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다.
 
-## 시나리오별 fixture 매핑 (S1에서 결정)
+- 캡처: scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}
+- diff: scripts/fp_diff_summary.py [--theme dark]
+- 하네스: docs/v3/research/golden-rig/obsidian-harness.html
+- 베이스라인: docs/v3/computed-fingerprint-v3.0.0-{light,dark}.json
+- 결과: 모두 0 diff
 
-각 시나리오는 `dev/test-samples/` 안의 어느 마크다운 파일을 어떻게 렌더링할지 결정해야 합니다. 현재 `dev/test-samples/`에는 다음 카테고리의 fixture가 이미 존재합니다.
-
-- `callout-recommendation-samples.html`
-- `document-status-chips-samples.html`
-- `h1-h4-recommended-heading-sample.html`
-- `liquid-glass-core-state-matrix.html`
-- 기타 markdown sample
-
-S1 단계에서 각 시나리오 ↔ fixture를 1:1 매핑하는 표를 만들고 누락된 시나리오는 신규 fixture를 작성합니다.
-
-## 비고
-
-- 픽셀 100% 보존이 어려운 시나리오(예: `backdrop-filter`가 다른 GPU에서 미세 차이)는 **사용자가 명시적으로 허용한 시나리오 목록**에 추가하고 diff threshold를 별도 설정.
-- 골든 이미지는 git에 커밋합니다 (PNG, 약 30~50KB × 66 = 2~3MB 정도 예상). LFS는 사용하지 않습니다.
+실제 PNG 스크린샷은 screenshots/README.md 참고. 이 문서의 66 시나리오 목록은 향후 자동 시각 회귀 스위트를 도입할 때의 설계 문서로 남겨둡니다.
