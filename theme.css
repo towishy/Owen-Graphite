@@ -537,71 +537,6 @@ body.ogd-motion-standard {
  * Selector groups: 7.
  */
 
-.theme-dark {
-  /* core variable overrides */
-  --background-modifier-active-hover: #e5e7eb;
-  --background-modifier-border: #d1d5db;
-  --background-modifier-border-hover: #9ca3af;
-  --background-modifier-hover: #f3f4f6;
-  --background-primary: #ffffff;
-  --background-primary-alt: #f9fafb;
-  --background-secondary: #eef2f7;
-  --background-secondary-alt: #e5e7eb;
-  --blockquote-background-color: transparent;
-  --blockquote-border-color: #6b7280;
-  --blockquote-color: #374151;
-  --callout-content-color: #374151;
-  --callout-title-color: #1f2937;
-  --code-background: #f8fafc;
-  --code-comment: #6b7280;
-  --code-function: #1d4ed8;
-  --code-important: #374151;
-  --code-keyword: #374151;
-  --code-normal: #111827;
-  --code-property: #1d4ed8;
-  --code-punctuation: #4b5563;
-  --code-string: #047857;
-  --code-tag: #1d4ed8;
-  --code-value: #047857;
-  --divider-color: #d1d5db;
-  --header-accent: var(--ogd-accent, #4b5563);
-  --header-accent-dark: #374151;
-  --header-bg-soft: #f3f4f6;
-  --header-line: #d1d5db;
-  --header-muted: #6b7280;
-  --header-text: #111827;
-  --interactive-accent: #4b5563;
-  --interactive-accent-hover: #374151;
-  --interactive-accent-rgb: 75, 85, 99;
-  --interactive-hover: #e5e7eb;
-  --interactive-normal: #f3f4f6;
-  --interactive-success: #047857;
-  --ribbon-background: #eef2f7;
-  --scrollbar-active-thumb-bg: #9ca3af;
-  --scrollbar-bg: transparent;
-  --scrollbar-thumb-bg: #cbd5e1;
-  --tab-background-active: #ffffff;
-  --tab-container-background: #eef2f7;
-  --tab-outline-color: #d1d5db;
-  --text-accent: #374151;
-  --text-accent-hover: #111827;
-  --text-faint: #9ca3af;
-  --text-muted: #6b7280;
-  --text-normal: #1a1a1a;
-  --text-on-accent: #ffffff;
-  --text-on-accent-inverted: #111827;
-  --text-selection: rgba(75, 85, 99, 0.18);
-  --titlebar-background: #eef2f7;
-  --titlebar-background-focused: #eef2f7;
-}
-
-body.theme-dark.ogd-eye-care {
-  /* core variable overrides */
-  --background-primary: #1f1d18;
-  --background-primary-alt: #25221a;
-  --background-secondary: #17150f;
-}
-
 body:not(.is-mobile).theme-dark {
   /* --ogd-* tokens */
   --ogd-09b-control-bg: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)));
@@ -712,15 +647,6 @@ body:not(.is-mobile).theme-dark.ogd-glass-strong {
   --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 20px rgba(148, 163, 184, 0.14), 0 10px 28px rgba(0, 0, 0, 0.40);
 }
 
-body.theme-dark {
-  /* --ogd-* tokens */
-  --ogd-blockquote-bg-1: #1f242b;
-  --ogd-blockquote-bg-2: #252b34;
-  --ogd-blockquote-bg-3: #2c333d;
-  --ogd-inline-code-bg: #2a2f37;
-  --ogd-search-hl-bg: rgba(251, 191, 36, 0.22);
-  --ogd-search-hl-fg: #fde68a;
-}
 /* <<< src/tokens/01-dark-tokens.css */
 /* 02-base-workspace.css                        -> base/10 */
 /* >>> src/base/10-base-workspace.css */
@@ -931,22 +857,6 @@ button.mod-warning,
   height: 0;
   border: var(--ogd-border-none, 0);
   box-shadow: var(--ogd-shadow-none, none);
-}
-
-.markdown-rendered h2,
-.markdown-preview-view.markdown-rendered h2,
-.markdown-reading-view .markdown-rendered h2 {
-  position: relative;
-  box-sizing: border-box;
-  margin-top: 0.95em;
-  margin-bottom: 0.3em;
-  padding-bottom: 0.22em;
-  font-size: 1.6em;
-  font-weight: 780;
-  line-height: 1.25;
-  letter-spacing: 0;
-  color: var(--header-text);
-  border-bottom: 1px solid var(--header-line);
 }
 
 .markdown-rendered h2::after,
@@ -1263,42 +1173,11 @@ body .markdown-rendered blockquote blockquote blockquote {
   background-color: var(--ogd-text-inverted, #f8fafc);
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 0;
-  color: #1f2937;
-  font-size: 0.98em;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
 .markdown-rendered .callout-title-inner,
 .markdown-rendered .callout-content,
 .markdown-preview-view .callout-title-inner,
 .markdown-preview-view .callout-content {
   color: var(--ogd-text-secondary, #374151);
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
-  margin-top: 0.35em;
-  font-size: 0.95em;
-  line-height: 1.62;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: 22px;
-  height: 22px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: var(--ogd-radius-pill, 999px);
-  background: var(--ogd-surface-base, #ffffff);
-  background-color: var(--ogd-surface-base, #ffffff);
-  color: var(--ogd-text-subtle, #475569);
 }
 
 /* v3.1.5: callout-icon rules expanded from `.callout:is(...)` to explicit
@@ -1338,12 +1217,6 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: #166534;
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
-  width: 14px;
-  height: 14px;
-  stroke-width: 2.4px;
-}
-
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
   padding: 0.16em 0.38em;
   border: 1px solid var(--ogd-line-soft, #e5e7eb);
@@ -1361,22 +1234,6 @@ body .markdown-rendered blockquote blockquote blockquote {
   font-family: var(--font-monospace-theme);
   font-size: 0.9em;
   line-height: 1.65;
-}
-
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  border-top: 1px solid #d1d5db;
-  border-left: 1px solid #d1d5db;
-  border-right: 1px solid #d1d5db;
-  border-radius: var(--ogd-radius-top, 6px 6px 0 0);
-  padding-top: 0;
-}
-
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  border-bottom: 1px solid #d1d5db;
-  border-left: 1px solid #d1d5db;
-  border-right: 1px solid #d1d5db;
-  border-radius: 0 0 6px 6px;
-  padding-bottom: 0;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul {
@@ -1550,9 +1407,6 @@ body .markdown-rendered blockquote blockquote blockquote {
 /* =====================================================================
   Table refinements - tabular numerals, sticky first column, hover row
    ===================================================================== */
-.markdown-rendered table {
-  font-variant-numeric: tabular-nums;
-}
 .markdown-rendered td,
 .markdown-rendered th {
   word-break: keep-all;
@@ -1599,24 +1453,6 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   /* Hide the heavy header bar; replace with a small badge */
   content: none;
 }
-.markdown-rendered pre[class*="language-"]::after {
-  content: attr(class);
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  padding: 2px 8px;
-  background: rgba(75, 85, 99, 0.85);
-  color: var(--ogd-surface-base, #ffffff);
-  font-family: var(--font-monospace-theme);
-  font-size: 0.7em;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 4px;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
 .markdown-rendered pre.line-numbers,
 .markdown-preview-view pre.line-numbers,
 .markdown-reading-view pre.line-numbers {
@@ -1940,12 +1776,6 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
   color: var(--ogd-text-subtle, #475569);
 }
 
-.markdown-rendered .callout[data-callout="example"] {
-  --callout-icon: lucide-list-checks;
-  border-left-color: #6d28d9;
-  background: #f5f3ff;
-  background-color: #f5f3ff;
-}
 .markdown-rendered .callout[data-callout="example"] .callout-icon {
   border: 1.5px solid #c4b5fd;
   border-radius: var(--ogd-radius-pill, 999px);
@@ -2195,15 +2025,6 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 /* =====================================================================
   Horizontal rule - gradient accent
    ===================================================================== */
-.markdown-rendered hr,
-.markdown-preview-view hr,
-.markdown-reading-view hr {
-  margin: 1.7em 0;
-  height: 1px;
-  border: var(--ogd-border-none, 0);
-  background: linear-gradient(90deg, #475569 0 92px, #d1d5db 92px 100%);
-}
-
 /* =====================================================================
   Table of Contents - report navigation container
   v2.30.4: removed forbidden left vertical accent bar; now uses full box.
@@ -2226,8 +2047,12 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 /* <<< src/surfaces/21-reading-callouts-lists.css */
 /* 03c-reading-embeds-workspace.css             -> surfaces/22 */
 /* >>> src/surfaces/22-reading-embeds-workspace.css */
-  padding-left: 1.35em;
-}
+/* v3.1.34: removed orphan `padding-left: 1.35em; }` block that previously
+   sat at the top of this file with no matching opening selector. Browsers
+   tolerated the stray declaration + closing brace, but the new
+   community.obsidian.md CSS validator correctly reports it as
+   `Unexpected }` (theme.css:2230). Zero visual impact — the orphan
+   declaration was unreachable at runtime. */
 
 .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li {
   margin-bottom: 0.35em;
@@ -2315,20 +2140,6 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 /* =====================================================================
   Keyboard caps - <kbd> enhanced styling (from snippet)
    ===================================================================== */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
-  color: #6b7280;
-  font-size: 0.88em;
-  font-family: var(--font-monospace-theme);
-  background: #fafbfc;
-}
-.metadata-container {
-  background: #fafbfc;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb);
-  border-radius: var(--radius-m, 6px);
-  padding: 8px 12px;
-  margin: 0.4em 0 0.8em;
-}
-
 /* =====================================================================
   Images & embeds - figure caption, shadows
    ===================================================================== */
@@ -2393,10 +2204,6 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 .workspace-tab-header.is-active .workspace-tab-header-inner-title {
   color: var(--ogd-text-strong, #111827);
 }
-.status-bar {
-  font-size: 0.8em;
-  padding: 2px 10px;
-}
 .search-result-file-matched-text,
 .suggestion-highlight {
   background: #fef3c7;
@@ -2459,63 +2266,6 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
 /* =====================================================================
    DARK MODE
    ===================================================================== */
-.theme-dark {
-  --background-primary: #1f2024;
-  --background-primary-alt: #25272d;
-  --background-secondary: #17181c;
-  --background-secondary-alt: #14151a;
-  --background-modifier-border: #353841;
-  --background-modifier-border-hover: #4a4d57;
-  --background-modifier-hover: #2a2c33;
-  --background-modifier-active-hover: #34373f;
-
-  --text-normal: var(--ogd-line-soft, #e5e7eb);
-  --text-muted: #9ca3af;
-  --text-faint: #6b7280;
-  --text-accent: var(--ogd-line-strong, #cbd5e1);
-  --text-accent-hover: var(--ogd-surface-subtle, #f3f4f6);
-  --text-on-accent: var(--ogd-surface-base, #ffffff);
-  --text-selection: rgba(148, 163, 184, 0.28);
-
-  --interactive-normal: #2a2c33;
-  --interactive-hover: #353841;
-  --interactive-accent: var(--ogd-text-soft, #94a3b8);
-  --interactive-accent-rgb: 148, 163, 184;
-  --interactive-accent-hover: var(--ogd-line-strong, #cbd5e1);
-
-  --titlebar-background: #14151a;
-  --titlebar-background-focused: #14151a;
-  --ribbon-background: #14151a;
-  --tab-container-background: #14151a;
-  --tab-background-active: #1f2024;
-  --tab-outline-color: #353841;
-
-  --divider-color: #353841;
-  --scrollbar-thumb-bg: #3f424b;
-  --scrollbar-active-thumb-bg: #6b7280;
-
-  --header-accent: var(--ogd-accent, #94a3b8);
-  --header-accent-dark: var(--ogd-line-strong, #cbd5e1);
-  --header-text: var(--ogd-surface-subtle, #f3f4f6);
-  --header-muted: #9ca3af;
-  --header-line: #353841;
-  --header-bg-soft: #25272d;
-
-  --blockquote-background-color: #25272d;
-  --blockquote-color: var(--ogd-line-strong, #cbd5e1);
-
-  --code-background: #25272d;
-  --code-normal: var(--ogd-line-soft, #e5e7eb);
-  --code-comment: #6b7280;
-  --code-function: #93c5fd;
-  --code-keyword: var(--ogd-line-strong, #cbd5e1);
-  --code-property: #93c5fd;
-  --code-punctuation: #9ca3af;
-  --code-string: #6ee7b7;
-  --code-tag: #93c5fd;
-  --code-value: #6ee7b7;
-}
-
 .theme-dark .markdown-rendered p,
 .theme-dark .markdown-source-view.mod-cm6 .cm-content,
 .theme-dark .markdown-rendered {
@@ -2690,9 +2440,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   text-decoration-color: var(--ogd-line-strong, #cbd5e1);
   text-decoration-thickness: 1.5px;
 }
-.theme-dark .markdown-rendered a.internal-link.is-unresolved {
-  color: #fbbf24;
-}
 .theme-dark .markdown-rendered mark,
 .theme-dark .cm-highlight {
   background-color: #4d3a0a;
@@ -2738,11 +2485,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   background: rgba(120, 53, 15, 0.58);
   color: #fde68a;
   box-shadow: inset 0 -1px 0 rgba(253, 230, 138, 0.22);
-}
-.theme-dark .markdown-rendered hr,
-.theme-dark .markdown-preview-view hr,
-.theme-dark .markdown-reading-view hr {
-  background: linear-gradient(90deg, #94a3b8 0 92px, #334155 92px 100%);
 }
 .theme-dark .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
 .theme-dark .markdown-rendered :is(.mermaid, .diagram-frame, .svg-frame) {
@@ -2960,18 +2702,19 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list { -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
   /* v2.22.122 - keep list chips stable across Chromium page breaks. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: grid; grid-template-columns: 2.28em minmax(0, 1fr); gap: 0.36em; padding-inline-start: 0; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { position: static; inset: auto; grid-column: 1; grid-row: 1; align-self: start; margin-top: 0.08em; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item)::marker { color: transparent; font-size: 0; }
 
   /* v2.22.123 - PDF-safe native accent markers. */
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) { padding-inline-start: 1.62em; list-style-position: outside; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { list-style-type: decimal-leading-zero; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) { list-style-type: disc; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item; grid-template-columns: none; gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; page-break-inside: auto; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: decimal-leading-zero; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) {
+   display: list-item; grid-template-columns: none; gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; page-break-inside: auto;
+}
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: disc; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { content: none; display: none; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+   position: static; inset: auto; grid-column: 1; grid-row: 1; align-self: start; margin-top: 0.08em;
+   content: none; display: none;
+}
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::marker { color: #0e7490; font-size: 0.92em; font-weight: 820; }
 
   /* v2.22.124 - keep highlighted list text in the same inline flow. */
@@ -2986,8 +2729,12 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked::after { color: #0e7490; top: -0.2em; left: 0.08em; font-size: 0.78em; line-height: 1; }
 
   /* v2.22.126 - restore native ordered-list numbering in PDF. */
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { counter-reset: revert; list-style-type: decimal; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { counter-increment: revert; list-style-type: decimal; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) {
+   counter-reset: revert; list-style-type: decimal;
+}
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) {
+   counter-increment: revert; list-style-type: decimal;
+}
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker { font-variant-numeric: tabular-nums; }
 }
 
@@ -3069,19 +2816,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 }
 
 /* (2) Codeblock middle lines — add side borders for full box look */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  border-left: 1px solid #d1d5db;
-  border-right: 1px solid #d1d5db;
-  padding-left: 12px;
-  padding-right: 12px;
-}
 /* Re-apply rounded radii for begin/end after middle override */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  border-radius: var(--ogd-radius-top, 6px 6px 0 0);
-}
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  border-radius: 0 0 6px 6px;
-}
 /* Code fence ``` markers — dim */
 .markdown-source-view.mod-cm6 .cm-formatting-code-block,
 .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .cm-formatting-code,
@@ -3301,12 +3036,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 .theme-dark .markdown-source-view.mod-cm6 .cm-hmd-table-sep {
   color: #4a4d57;
 }
-.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
-  background: linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(15, 23, 42, 0.28));
-  border: 1px solid rgba(203, 213, 225, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  color: var(--ogd-line-strong, #cbd5e1);
-}
 .theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link:hover {
   background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.12), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.38));
   border-color: rgba(203, 213, 225, 0.22);
@@ -3457,20 +3186,6 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
   line-height: 1.62;
 }
 
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  margin-top: 0;
-  border-top: 1px solid rgba(30, 41, 59, 0.18);
-  border-radius: var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) 0 0;
-  padding-top: 0;
-}
-
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  margin-bottom: 0;
-  border-bottom: 1px solid rgba(30, 41, 59, 0.18);
-  border-radius: 0 0 var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px);
-  padding-bottom: 0;
-}
-
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
   padding: 0.08em 0.34em;
   border: 1px solid rgba(203, 213, 225, 0.82);
@@ -3572,54 +3287,10 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
    lines; only horizontal padding and borders are used here.
    ============================================================ */
 
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  --ogd-lp-code-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.12), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(241, 245, 249, 0.54));
-  --ogd-lp-code-border: rgba(148, 163, 184, 0.42);
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 14px;
-  padding-right: 14px;
-  border-inline: 1px solid var(--ogd-lp-code-border);
-  background: var(--ogd-lp-code-bg);
-  color: var(--ogd-text-slate, #1e293b);
-  font-family: var(--font-monospace-theme);
-  line-height: 1.62;
-}
-
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
-  border-radius: var(--ogd-radius-control, 10px) var(--ogd-radius-control, 10px) 0 0;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 10px 20px rgba(15, 23, 42, 0.07);
-}
-
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
-  border-radius: 0 0 var(--ogd-radius-control, 10px) var(--ogd-radius-control, 10px);
-  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 10px 20px rgba(15, 23, 42, 0.07);
-}
-
-.markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
-  padding-inline: 0.32em;
-  border-radius: 4px;
-  color: var(--ogd-text-subtle, #64748b);
-  background: rgba(255, 255, 255, 0.38);
-  opacity: 1;
-}
-
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   --ogd-lp-code-bg: rgba(248, 250, 252, 0.84);
   --ogd-lp-code-border: rgba(203, 213, 225, 0.68);
   color: var(--ogd-text-slate, #1e293b);
-}
-
-body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 10px 20px rgba(0, 0, 0, 0.18);
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
@@ -3632,11 +3303,17 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .Hy
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top: 1px solid rgba(30, 41, 59, 0.18);
+  border-radius: var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) 0 0;
+  
   margin-top: 0;
   padding-top: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom: 1px solid rgba(30, 41, 59, 0.18);
+  border-radius: 0 0 var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px);
+  
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -3654,11 +3331,6 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
    the begin line are owned by v2.30.2 in 10-a11y-regression-hotfixes.css
    and intentionally left untouched here.
    ============================================================ */
-
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06);
-}
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
@@ -3679,6 +3351,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
 }
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  
   background: linear-gradient(180deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.74));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 6px 14px rgba(0, 0, 0, 0.18);
 }
@@ -3697,50 +3370,12 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin >
    borders and dark-mode rules. Liquid glass tokens for HTML tables
    live in dev/10d-liquid-glass-core.css.
    ===================================================================== */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-  border-collapse: collapse;
-  width: 100%;
-  font-variant-numeric: tabular-nums;
-}
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
-  background: var(--ogd-surface-subtle, #f3f4f6);
-  border-bottom: 2px solid #6b7280;
-  border-left: 1px solid var(--ogd-line-soft, #e5e7eb);
-  border-right: 1px solid var(--ogd-line-soft, #e5e7eb);
-  padding: 6px 10px;
-  font-weight: 700;
-  text-align: left;
-}
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  border: 1px solid var(--ogd-line-soft, #e5e7eb);
-  padding: 5px 10px;
-  vertical-align: top;
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
-  background: #f5f7fa;
-}
 /* Inline code in HTML <table> cells: keep behavior aligned with Reading view */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td code {
   white-space: nowrap;
 }
 
 /* Dark mode parity for HTML <table> in Live Preview */
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
-  background: #25272d;
-  border-bottom-color: #6b7280;
-  border-left-color: #353841;
-  border-right-color: #353841;
-  color: var(--ogd-surface-subtle, #f3f4f6);
-}
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  border-color: #2a2c33;
-}
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
-  background: #2a2c33;
-}
-
 /* Relaxed-spacing parity (light + dark) */
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
   margin: 0;
@@ -3791,7 +3426,9 @@ body.ogd-drop-cap .markdown-rendered h1 + p::first-letter {
 }
 
 /* A2. Tabular numerals on tables (always-on, inherits from v1.3) */
-.markdown-rendered table { font-variant-numeric: tabular-nums lining-nums; }
+.markdown-rendered table {
+   font-variant-numeric: tabular-nums lining-nums;
+}
 
 /* A3. First-line indent (toggle: ogd-indent-paragraph) */
 body.ogd-indent-paragraph .markdown-rendered p {
@@ -4164,9 +3801,6 @@ body.ogd-report-mode .metadata-container .metadata-property {
 body.ogd-report-mode {
   /* Activate auto-numbering, indent, serif */
 }
-body.ogd-report-mode .markdown-rendered {
-  counter-reset: ogd-h2 ogd-h3 ogd-h4;
-}
 body.ogd-report-mode .markdown-rendered h2 {
   counter-increment: ogd-h2;
   counter-reset: ogd-h3 ogd-h4;
@@ -4196,6 +3830,9 @@ body.ogd-report-mode .markdown-rendered .callout p {
   text-indent: 0;
 }
 body.ogd-report-mode .markdown-rendered {
+  
+  counter-reset: ogd-h2 ogd-h3 ogd-h4;
+  
   font-family: "Noto Serif KR", "Nanum Myeongjo", "Source Serif Pro",
     Georgia, serif;
 }
@@ -4223,11 +3860,6 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 }
 
 /* D2. Active file 4px accent bar */
-.nav-file-title.is-active {
-  border-left: 4px solid var(--header-accent);
-  padding-left: 4px;
-}
-
 /* D3. Tab icon coloring by file type */
 .workspace-tab-header[data-type="markdown"] .workspace-tab-header-inner-icon {
   color: #1d4ed8;
@@ -4261,9 +3893,7 @@ body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 }
 
 /* D6. Graph view nodes by type tag */
-.graph-view.color-fill { color: var(--text-muted); }
 .graph-view.color-circle { color: var(--header-accent); }
-.graph-view.color-text { color: var(--text-normal); }
 .graph-view.color-arrow { color: var(--text-faint); }
 
 /* D7. Dataview table unification */
@@ -4535,6 +4165,71 @@ body.ogd-auto-dark {
    Dark mode parity for v1.4.0 additions
    ===================================================================== */
 .theme-dark {
+  
+  /* core variable overrides */
+  --blockquote-border-color: #6b7280;
+  --callout-content-color: #374151;
+  --callout-title-color: #1f2937;
+  --code-important: #374151;
+  --interactive-success: #047857;
+  --scrollbar-bg: transparent;
+  --text-on-accent-inverted: #111827;
+  
+  --background-primary: #1f2024;
+  --background-primary-alt: #25272d;
+  --background-secondary: #17181c;
+  --background-secondary-alt: #14151a;
+  --background-modifier-border: #353841;
+  --background-modifier-border-hover: #4a4d57;
+  --background-modifier-hover: #2a2c33;
+  --background-modifier-active-hover: #34373f;
+
+  --text-normal: var(--ogd-line-soft, #e5e7eb);
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+  --text-accent: var(--ogd-line-strong, #cbd5e1);
+  --text-accent-hover: var(--ogd-surface-subtle, #f3f4f6);
+  --text-on-accent: var(--ogd-surface-base, #ffffff);
+  --text-selection: rgba(148, 163, 184, 0.28);
+
+  --interactive-normal: #2a2c33;
+  --interactive-hover: #353841;
+  --interactive-accent: var(--ogd-text-soft, #94a3b8);
+  --interactive-accent-rgb: 148, 163, 184;
+  --interactive-accent-hover: var(--ogd-line-strong, #cbd5e1);
+
+  --titlebar-background: #14151a;
+  --titlebar-background-focused: #14151a;
+  --ribbon-background: #14151a;
+  --tab-container-background: #14151a;
+  --tab-background-active: #1f2024;
+  --tab-outline-color: #353841;
+
+  --divider-color: #353841;
+  --scrollbar-thumb-bg: #3f424b;
+  --scrollbar-active-thumb-bg: #6b7280;
+
+  --header-accent: var(--ogd-accent, #94a3b8);
+  --header-accent-dark: var(--ogd-line-strong, #cbd5e1);
+  --header-text: var(--ogd-surface-subtle, #f3f4f6);
+  --header-muted: #9ca3af;
+  --header-line: #353841;
+  --header-bg-soft: #25272d;
+
+  --blockquote-background-color: #25272d;
+  --blockquote-color: var(--ogd-line-strong, #cbd5e1);
+
+  --code-background: #25272d;
+  --code-normal: var(--ogd-line-soft, #e5e7eb);
+  --code-comment: #6b7280;
+  --code-function: #93c5fd;
+  --code-keyword: var(--ogd-line-strong, #cbd5e1);
+  --code-property: #93c5fd;
+  --code-punctuation: #9ca3af;
+  --code-string: #6ee7b7;
+  --code-tag: #93c5fd;
+  --code-value: #6ee7b7;
+  
   --ogd-plugin-dark-surface-bg: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.11), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.34));
   --ogd-plugin-dark-surface-border: rgba(203, 213, 225, 0.14);
   --ogd-plugin-dark-surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 14px rgba(0, 0, 0, 0.24);
@@ -4618,6 +4313,9 @@ body.ogd-auto-dark {
 .theme-dark .nav-folder-title[data-path^="raw"] .nav-folder-title-content { color: #9ca3af; }
 .theme-dark .nav-folder-title[data-path^="scripts"] .nav-folder-title-content { color: #6ee7b7; }
 body.theme-dark.ogd-eye-care {
+  
+  /* core variable overrides */
+  
   --background-primary: #1f1d18;
   --background-primary-alt: #25221a;
   --background-secondary: #17150f;
@@ -4679,16 +4377,33 @@ body.theme-dark.ogd-eye-care {
   border-color: rgba(147, 197, 253, 0.28);
 }
 .theme-dark .markdown-rendered a.internal-link.is-unresolved {
+  
+  color: #fbbf24;
+  
   background: rgba(251, 191, 36, 0.12);
 }
 
 /* Code: language badge moved left so it doesn't overlap the copy button.
    Default copy button sits at top:6px right:6px. Push badge to right:48px. */
-.markdown-rendered pre[class*="language-"]::after {
-  right: 48px;
-}
 /* Show badge only on hover to keep code blocks visually clean */
 .markdown-rendered pre[class*="language-"]::after {
+  
+  content: attr(class);
+  position: absolute;
+  top: 6px;
+  padding: 2px 8px;
+  background: rgba(75, 85, 99, 0.85);
+  color: var(--ogd-surface-base, #ffffff);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  pointer-events: none;
+  
+  right: 48px;
+  
   opacity: 0;
   transition: opacity 0.15s ease;
 }
@@ -4742,14 +4457,8 @@ body.theme-dark.ogd-eye-care {
 }
 
 /* #6 - Graph view tonal alignment */
-.graph-view.color-fill {
-  color: var(--text-normal);
-}
 .graph-view.color-line {
   color: var(--background-modifier-border);
-}
-.graph-view.color-text {
-  color: var(--text-muted);
 }
 .theme-dark .graph-view.color-line {
   color: rgba(255, 255, 255, 0.12);
@@ -5146,6 +4855,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 
 /* Properties / Frontmatter: quieter report-card surface */
 .metadata-container {
+  
   background: var(--ogd-surface-muted, #f8fafc);
   border: 1px solid #e2e8f0;
   border-left: 4px solid #94a3b8;
@@ -5170,6 +4880,9 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   color: var(--ogd-text-strong, #111827);
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
+  font-size: 0.88em;
+  font-family: var(--font-monospace-theme);
+  
   background: var(--ogd-surface-muted, #f8fafc);
   color: var(--ogd-text-subtle, #475569);
   border-left: 3px solid #cbd5e1;
@@ -5252,6 +4965,10 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   transform: var(--ogd-hover-shift, translateX(1px));
 }
 .nav-file-title.is-active {
+  
+  border-left: 4px solid var(--header-accent);
+  padding-left: 4px;
+  
   background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.72), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.58));
   color: var(--ogd-text-strong, #111827);
   box-shadow: inset 0 0 0 1px rgba(100, 116, 139, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 2px 7px rgba(15, 23, 42, 0.07);
@@ -5487,13 +5204,6 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 .popover.hover-popover h3 {
   color: var(--ogd-text-strong, #111827);
 }
-.popover.hover-popover .markdown-preview-view,
-.popover.hover-popover .markdown-rendered {
-  padding: 10px 12px;
-  font-size: 0.94em;
-  line-height: 1.55;
-}
-
 /* Dataview tables: full parity with modern table language */
 .markdown-rendered .dataview.table-view-table,
 .markdown-rendered .dataview.dataview-table,
@@ -6122,6 +5832,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 
 /* Graph view: quiet contrast for dense knowledge maps */
 .graph-view.color-fill {
+  
   color: #64748b;
 }
 .graph-view.color-fill-highlight,
@@ -6137,6 +5848,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   color: rgba(129, 140, 248, 0.74);
 }
 .graph-view.color-text {
+  
   color: var(--ogd-text-slate, #334155);
 }
 
@@ -6722,6 +6434,10 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   background: var(--ogd-surface-base, #ffffff);
 }
 .status-bar {
+  
+  font-size: 0.8em;
+  padding: 2px 10px;
+  
   background: rgba(255, 255, 255, 0.94);
   border-top: 1px solid var(--ogd-line-soft, #e5e7eb);
   color: #64748b;
@@ -6784,6 +6500,8 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 }
 
 .theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  border: 1px solid rgba(203, 213, 225, 0.16);
+  
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.42), rgba(15, 23, 42, 0.24));
   color: #bfdbfe;
   box-shadow: inset 0 -1px 0 rgba(147, 197, 253, 0.24);
@@ -6977,12 +6695,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(td.num, th.num) {
   text-align: right;
   font-variant-numeric: tabular-nums lining-nums;
-}
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
-  background: var(--ogd-surface-muted, #f8fafc);
-  color: var(--ogd-text-strong, #111827);
-  font-weight: 700;
-  box-shadow: 1px 0 0 #e5e7eb;
 }
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.matrix-table :is(th, td) {
   text-align: center;
@@ -7217,25 +6929,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 
 /* Final title-rule override for Obsidian PDF export cascade.
    v1.8.66 — Disabled for H1 (Sample B kicker style); kept for first-of-type H2. */
-body .markdown-rendered h2:first-of-type,
-body .markdown-preview-view.markdown-rendered h2:first-of-type,
-body .markdown-reading-view .markdown-rendered h2:first-of-type,
-body.ogd-report-mode .markdown-rendered > h2:first-of-type {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
-  padding-bottom: 0.52em;
-  border: var(--ogd-border-none, 0);
-  border-bottom: 4px solid #0f766e;
-  border-image-source: linear-gradient(90deg, #0f766e, #0284c7);
-  border-image-slice: 1;
-  border-image-width: 0 0 4px 0;
-  border-image-repeat: stretch;
-  background: var(--ogd-surface-transparent, transparent);
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-
 /* Reset H1 — Sample B kicker style takes precedence */
 body .markdown-rendered h1,
 body .markdown-preview-view.markdown-rendered h1,
@@ -7258,6 +6951,21 @@ body .markdown-rendered h2:first-of-type,
 body .markdown-preview-view.markdown-rendered h2:first-of-type,
 body .markdown-reading-view .markdown-rendered h2:first-of-type,
 body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+  
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  padding-bottom: 0.52em;
+  border: var(--ogd-border-none, 0);
+  border-bottom: 4px solid #0f766e;
+  border-image-source: linear-gradient(90deg, #0f766e, #0284c7);
+  border-image-slice: 1;
+  border-image-width: 0 0 4px 0;
+  border-image-repeat: stretch;
+  background: var(--ogd-surface-transparent, transparent);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  
   padding-top: 34px;
   border-top: 1px solid #edf2f7;
   box-shadow: 0 -1px 0 #f8fafc;
@@ -10712,6 +10420,17 @@ body.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-ch
 .markdown-rendered h2,
 .markdown-preview-view.markdown-rendered h2,
 .markdown-reading-view .markdown-rendered h2 {
+  
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 0.22em;
+  font-size: 1.6em;
+  font-weight: 780;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--header-text);
+  border-bottom: 1px solid var(--header-line);
+  
   margin-top: 1.08em;
   margin-bottom: 0.42em;
 }
@@ -10925,6 +10644,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 .markdown-rendered hr,
 .markdown-preview-view hr,
 .markdown-reading-view hr {
+  
   height: 1px;
   margin: 1.28em 0 1.5em;
   border: var(--ogd-border-none, 0);
@@ -11136,6 +10856,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 .theme-dark .markdown-rendered hr,
 .theme-dark .markdown-preview-view hr,
 .theme-dark .markdown-reading-view hr {
+  
   background: linear-gradient(90deg, rgba(51, 65, 85, 0), rgba(51, 65, 85, 0.92), rgba(51, 65, 85, 0));
 }
 
@@ -11666,6 +11387,9 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
 
 .popover.hover-popover .markdown-preview-view,
 .popover.hover-popover .markdown-rendered {
+  font-size: 0.94em;
+  line-height: 1.55;
+  
   padding: 12px 14px;
   color: var(--ogd-text-slate, #334155);
 }
@@ -12020,6 +11744,9 @@ body .markdown-source-view.mod-cm6 .cm-line {
 
 /* --- 1. Dark mode parity for v1.8.6x components --------------------------- */
 body.theme-dark {
+  
+  /* --ogd-* tokens */
+  
   --ogd-blockquote-bg-1: #1f242b;
   --ogd-blockquote-bg-2: #252b34;
   --ogd-blockquote-bg-3: #2c333d;
@@ -12085,7 +11812,14 @@ body.theme-dark .markdown-preview-view h1::before {
 .markdown-rendered .callout:is([data-callout="warning"], [data-callout="caution"], [data-callout="attention"]) { --callout-color: #f59e0b; }
 .markdown-rendered .callout:is([data-callout="danger"], [data-callout="error"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"]) { --callout-color: #ef4444; }
 .markdown-rendered .callout[data-callout="bug"]       { --callout-color: #dc2626; }
-.markdown-rendered .callout[data-callout="example"]   { --callout-color: #8b5cf6; }
+.markdown-rendered .callout[data-callout="example"]   {
+  
+  --callout-icon: lucide-list-checks;
+  border-left-color: #6d28d9;
+  background: #f5f3ff;
+  background-color: #f5f3ff;
+   --callout-color: #8b5cf6;
+}
 .markdown-rendered .callout:is([data-callout="quote"], [data-callout="cite"]) { --callout-color: #64748b; }
 .markdown-rendered .callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) { --callout-color: #06b6d4; }
 .markdown-rendered .callout[data-callout="todo"]      { --callout-color: #2563eb; }
@@ -12636,28 +12370,16 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
     print-color-adjust: exact;
   }
 
-  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
-  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
-    border-bottom-color: var(--ogd-codeblock-header-border);
-    background: var(--ogd-codeblock-header-bg);
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
-  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre code {
-    background: transparent;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
   /* v2.30.2 - PDF language label backing plate removal */
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  
     border-bottom-color: transparent;
     background: transparent;
     box-shadow: none;
-  }
+}
 
   /* v2.30.2 - PDF code header spacing final ownership */
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::before,
@@ -12770,8 +12492,13 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
 
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre code {
+  
+    background: transparent;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  
     padding: 24pt 9pt 8.5pt;
-  }
+}
 }
 
 /* --- 9. Status bar - monospace unification ------------------------------- */
@@ -13130,30 +12857,6 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
     .workspace-leaf-content[data-type="outline"],
     .workspace-leaf-content[data-type="bookmarks"],
     .workspace-leaf-content[data-type="tag"],
-    .workspace-leaf-content[data-type="search"],
-    .backlink-pane,
-    .outgoing-link-pane,
-    .outline,
-    .outline-view,
-    .bookmarks-view,
-    .tag-container,
-    .search-result-container
-  ) :is(.search-empty-state, .empty-state, .empty-state-container) {
-    background: var(--ogd-lg-control-bg);
-    -webkit-backdrop-filter: var(--ogd-glass-filter-control);
-    backdrop-filter: var(--ogd-glass-filter-control);
-    border: 1px solid var(--ogd-lg-border);
-    border-radius: var(--ogd-radius-control, 7px);
-    box-shadow: var(--ogd-glass-control-shadow);
-    color: var(--text-muted);
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-leaf-content[data-type="backlink"],
-    .workspace-leaf-content[data-type="outgoing-link"],
-    .workspace-leaf-content[data-type="outline"],
-    .workspace-leaf-content[data-type="bookmarks"],
-    .workspace-leaf-content[data-type="tag"],
     .workspace-leaf-content[data-type="search"]
   ) :is(
     .backlink-pane,
@@ -13354,11 +13057,16 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
     .tag-container,
     .search-result-container
   ) :is(.search-empty-state, .empty-state, .empty-state-container) {
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+    backdrop-filter: var(--ogd-glass-filter-control);
+    border: 1px solid var(--ogd-lg-border);
+    border-radius: var(--ogd-radius-control, 7px);
+  
     background: var(--ogd-lg-control-bg);
     border-color: var(--ogd-lg-border);
     box-shadow: var(--ogd-glass-control-shadow);
     color: var(--text-muted);
-  }
+}
 
   body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
     border: 1px solid var(--ogd-surface-transparent, transparent);
@@ -13500,6 +13208,9 @@ body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
+  
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.76));
   box-shadow: 1px 0 0 rgba(203, 213, 225, 0.72);
 }
@@ -14296,6 +14007,12 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
 }
 
 .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
+  
+  padding-inline: 0.32em;
+  border-radius: 4px;
+  color: var(--ogd-text-subtle, #64748b);
+  background: rgba(255, 255, 255, 0.38);
+  
   opacity: 0.52;
 }
 
@@ -14388,29 +14105,18 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
   Loaded after 10d-liquid-glass-core.css per dev/_order.txt so its
   late position keeps the cascade ordering identical to vanilla 10d.
    ============================================================ */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface); border-color: var(--ogd-table-border); box-shadow: var(--ogd-table-shadow); }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg); color: var(--ogd-text-slate, #334155); border-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.58); font-weight: 780; }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: var(--ogd-table-cell-border); color: var(--ogd-text-slate, #334155); }
 /* v2.30.13: removed two byte-identical duplicates that were also restated in the v2.30.16 block below (zebra-disabled-permanently :nth-child(even) td background, and theme-dark:not(.ogd-report-mode) table token block). v2.30.16 is the consolidated owner; cascade outcome unchanged. */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover); }
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto; }
 .theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.56); --ogd-table-row-hover: rgba(51, 65, 85, 0.42); --ogd-table-row-even: rgba(15, 23, 42, 0.26); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
 .theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62)); --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74)); --ogd-table-border: rgba(203, 213, 225, 0.28); --ogd-table-cell-border: rgba(71, 85, 105, 0.72); --ogd-table-row-hover: rgba(51, 65, 85, 0.50); --ogd-table-row-even: rgba(15, 23, 42, 0.36); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { color: var(--text-normal, #e5edf7); }
-
-
 /* v2.30.10 reading-view neutralizer for HTML tables in Live Preview */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { margin: 0; width: 100%; max-width: 100%; font-size: 1em; border-collapse: collapse; }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { padding: 6px 10px; text-align: left; vertical-align: top; white-space: normal; background-color: var(--ogd-surface-subtle, #f3f4f6); border-bottom: 2px solid #6b7280; border-left: 1px solid var(--ogd-line-soft, #e5e7eb); border-right: 1px solid var(--ogd-line-soft, #e5e7eb); font-weight: 700; color: var(--ogd-text-slate, #334155); }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { padding: 5px 10px; line-height: normal; vertical-align: top; text-align: left; border: 1px solid var(--ogd-line-soft, #e5e7eb); color: var(--ogd-text-slate, #334155); word-break: keep-all; overflow-wrap: anywhere; }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  font-variant-numeric: tabular-nums;
+   --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface); border-color: var(--ogd-table-border); box-shadow: var(--ogd-table-shadow);
+   margin: 0; width: 100%; max-width: 100%; font-size: 1em; border-collapse: collapse;
+}
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td:first-child { color: inherit; font-weight: inherit; }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: #f5f7fa; }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background-color: #25272d; color: var(--ogd-surface-subtle, #f3f4f6); border-bottom-color: #6b7280; border-left-color: #353841; border-right-color: #353841; }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: #2a2c33; color: var(--text-normal, #e5edf7); }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: #2a2c33; }
-
-
 /* v2.30.13 align HTML table tone with markdown widget tokens (PDF / Live Preview parity) */
 /* Drops the v2.30.11 backdrop-filter / drop shadow / bespoke gradient that
    made HTML tables look heavier than the markdown widget. The parent
@@ -14418,11 +14124,12 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
    --ogd-table-surface / --ogd-table-shadow, so we only need to
    neutralize the v2.30.10 solid `background-color` on <th>/<td> and
    restore markdown-widget hover, in light + dark. */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg); background-color: transparent; color: var(--ogd-text-slate, #334155); border-bottom-color: rgba(148, 163, 184, 0.58); }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { background: transparent; }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: transparent; background: var(--ogd-table-row-hover); }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { background: var(--ogd-table-head-bg); background-color: transparent; color: var(--text-normal, #e5edf7); border-bottom-color: rgba(148, 163, 184, 0.34); }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td { background-color: transparent; background: var(--ogd-table-row-hover); }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+   background-color: transparent; background: var(--ogd-table-row-hover);
+}
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+   background-color: transparent; background: var(--ogd-table-row-hover);
+}
 
 
 /* v2.30.14 neutralize HTML utility-class table styling in Live Preview (PDF parity) */
@@ -14435,154 +14142,128 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 
 /* v2.30.15 align HTML table cell borders with markdown widget tone (--ogd-table-cell-border) */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-color: var(--ogd-table-cell-border); border-left-color: var(--ogd-table-cell-border); border-right-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.58); }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: var(--ogd-table-cell-border); }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-color: rgba(71, 85, 105, 0.56); border-left-color: rgba(71, 85, 105, 0.56); border-right-color: rgba(71, 85, 105, 0.56); border-bottom-color: rgba(148, 163, 184, 0.34); }
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { border-color: rgba(71, 85, 105, 0.56); }
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+   background: var(--ogd-table-head-bg); background-color: transparent; color: var(--text-normal, #e5edf7);
+   border-color: rgba(71, 85, 105, 0.56); border-left-color: rgba(71, 85, 105, 0.56); border-right-color: rgba(71, 85, 105, 0.56); border-bottom-color: rgba(148, 163, 184, 0.34);
+}
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { color: var(--text-normal, #e5edf7);
+   border-color: rgba(71, 85, 105, 0.56);
+}
 
 
 /* v2.30.16 mirror dev/10d Liquid Glass markdown table block onto HTML tables in Live Preview */
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden; border-color: var(--ogd-table-border); border-radius: var(--ogd-radius-control, 7px); background: var(--ogd-table-surface); box-shadow: var(--ogd-table-shadow); -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); }
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.46); background: var(--ogd-table-head-bg); color: var(--ogd-text-strong, #111827); font-weight: 820; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16); }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { border-color: var(--ogd-table-cell-border); color: var(--ogd-text-slate, #334155); }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover); }
 body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td { background: var(--ogd-table-row-even); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7); }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { color: var(--text-normal, #e5edf7); }
 
 
 /* v2.30.17 align HTML table (Live Preview) cell line-height + report-mode header weight with markdown widget */
 /* Cell line-height parity with markdown widget (.cm-table-widget td inherits ~1.5 from .cm-line; v2.30.10 forces `normal` ~1.2 on HTML td). Apply to all HTML tables in Live Preview, regardless of report-mode. */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td { line-height: var(--line-height-normal, 1.5); }
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { line-height: var(--line-height-normal, 1.5); }
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+   padding: 5px 10px; vertical-align: top; text-align: left; border: 1px solid var(--ogd-line-soft, #e5e7eb); color: var(--ogd-text-slate, #334155); word-break: keep-all; overflow-wrap: anywhere;
+   background: transparent;
+   border-color: var(--ogd-table-cell-border);
+   line-height: var(--line-height-normal, 1.5);
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+   padding: 6px 10px; text-align: left; vertical-align: top; white-space: normal; border-bottom: 2px solid #6b7280; border-left: 1px solid var(--ogd-line-soft, #e5e7eb); border-right: 1px solid var(--ogd-line-soft, #e5e7eb); font-weight: 700;
+   background: var(--ogd-table-head-bg); background-color: transparent; color: var(--ogd-text-slate, #334155);
+   border-color: var(--ogd-table-cell-border); border-left-color: var(--ogd-table-cell-border); border-right-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.58);
+   line-height: var(--line-height-normal, 1.5);
+}
 /* Report-mode header weight parity: dev/10d:537 sets font-weight 780 on markdown widget th; v2.30.14 sets 700 on HTML utility-class. v2.30.16 already covers non-report-mode (font-weight 820, Liquid Glass parity). */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { font-weight: 780; }
-
-
 /* v2.30.18 soften HTML table thead bottom-line color in report-mode to match markdown widget */
 /* HTML utility-class thead th border-bottom is forced to `2px solid #6b7280` by v2.30.14 (specificity 0,8,3); v2.30.13/15/17 carry only 0,7,2 so their tone overrides lose the cascade. Restate the color at report-mode specificity (0,8,4) — width stays 2px to match the markdown widget (dev/10d:537 + dev/05:229). */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { border-bottom-color: rgba(148, 163, 184, 0.58); }
 /* v2.30.13: removed the v2.30.18 dark-mode duplicate (`body.theme-dark :is(body.ogd-report-mode ...) thead th { border-bottom-color: rgba(148, 163, 184, 0.34); }`); the v2.30.20 block below already restates the identical declaration on the same selector, so the cascade outcome is unchanged. */
 
 
 /* v2.30.20 thin out HTML table thead bottom-line width (2px -> 1px) and ease color to match markdown widget Liquid Glass parity */
 /* v2.30.10/14 force `border-bottom: 2px solid #6b7280` shorthand on HTML utility-class thead th; v2.30.18 only restated the color. The markdown widget side renders with effective width 1px and alpha 0.46 (light) / 0.34 (dark) after dev/10d:1452. Restate width + color at higher specificity (0,8,4) so HTML thead matches the lighter markdown widget rendering in both report-mode and default Liquid Glass. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.46);
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.46);
-}
 /* Dark mode parity (markdown widget dark sits at alpha 0.34 in dev/10d:1490). */
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-color: rgba(148, 163, 184, 0.34);
-}
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-color: rgba(148, 163, 184, 0.34);
-}
-
-
 /* v2.30.21 normalize HTML table outer border to match markdown widget exactly (cell-only outer line) */
 /* The visible outer line should come from collapsed cell borders only, like the markdown widget. v2.30.14 sets `border-color` on the outer <table> without an explicit `border-style`, which can leave a hairline at certain zoom levels. Force `border: 0` on the outer table and `border-top: 0` on thead/th so the outer box never paints — exactly matching the markdown widget rendering (dev/05:236 + dev/10d:537/602 stack). */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-  border-style: none;
-  border-width: 0;
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-  border-style: none;
-  border-width: 0;
-}
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-top-width: 0;
-  border-top-style: none;
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-top-width: 0;
-  border-top-style: none;
-}
 /* Cell border color parity with markdown widget (--ogd-table-cell-border resolves to rgba(203, 213, 225, 0.92) in report-mode via dev/10d:602 + dev/10e:18). Re-state explicitly on td to override v2.30.10's `border: 1px solid #e5e7eb` shorthand color in case any cascade ordering still leaves the opaque #e5e7eb on a sub-edge. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--ogd-table-cell-border);
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--ogd-table-cell-border);
-}
-
-
 /* v2.30.22 mirror dev/10-a11y markdown widget td/th rules onto HTML tables (white row overlay + smaller/denser header) */
 /* dev/10-a11y:996-1006 sets `td { background: rgba(255, 255, 255, 0.28) }` and `th { font-size: 0.88em; font-weight: 820 }` for cm-table-widget only. HTML tables in Live Preview never received these, so their rows pick up the table surface gradient (faint grey) and their headers render larger/heavier than the markdown widget side-by-side. Restate both at matching specificity for HTML tables, in both report-mode and non-report-mode. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--ogd-table-cell-border);
+  
   background: rgba(255, 255, 255, 0.28);
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--ogd-table-cell-border);
+  
   background: rgba(255, 255, 255, 0.28);
-}
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  font-size: 0.88em;
-  font-weight: 820;
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  font-size: 0.88em;
-  font-weight: 820;
 }
 /* Dark mode parity: dev/10-a11y has no dark override, so same overlay/font apply. The white overlay reads correctly on dark surface (subtle highlight without flipping rows white). */
 body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
   background: rgba(255, 255, 255, 0.04);
 }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+   color: var(--text-normal, #e5edf7);
+  
   background: rgba(255, 255, 255, 0.04);
 }
 
 
 /* v2.30.23 restore HTML thead bottom-line to exact markdown widget value (2px @ alpha 0.58 / dark 0.34) */
 /* v2.30.20 trimmed this to 1px @ 0.46 which now reads as a much weaker outer rectangle than the markdown widget when the two are stacked. Markdown widget retains the dev/05:236 baseline (2px solid) with only color swapped via dev/10d:544 (rgba(148, 163, 184, 0.58)). Restore identical width AND color so the visual outer-line strength is matched. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.58);
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.58);
-}
 /* Dark mode parity (markdown widget dark uses alpha 0.34 via dev/10d:1490) */
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.34);
-}
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.34);
-}
-
-
 /* v2.30.24 soften HTML thead divider to normal cell grid weight */
 /* v2.30.23 restored the header separator to 2px, but side-by-side review shows it still reads as a thick line below the header. Keep only a normal 1px grid divider and remove the header inset shadow so the line cannot visually double. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  
+  border-top-width: 0;
+  border-top-style: none;
+  
+  font-size: 0.88em;
+  font-weight: 820;
+  
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(148, 163, 184, 0.58);
+  
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+   border-color: var(--ogd-table-cell-border); background: var(--ogd-table-head-bg); color: var(--ogd-text-strong, #111827);
+  
+  border-top-width: 0;
+  border-top-style: none;
+  
+  font-size: 0.88em;
+  font-weight: 820;
+  
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(148, 163, 184, 0.58);
+  
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
 body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+  
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(148, 163, 184, 0.34);
+  
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
   box-shadow: none;
 }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { color: var(--text-normal, #e5edf7);
+  
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(148, 163, 184, 0.34);
+  
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
   box-shadow: none;
 }
@@ -14591,15 +14272,27 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 /* v2.30.25 strengthen HTML table outer ring only */
 /* Keep v2.30.24's softened header divider and normal inner grid. Add a table-level ring so only the outside perimeter reads closer to the markdown table outline. Use box-shadow rather than a real border to avoid collapsed-border side effects. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+   --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto;
+  
+  border-style: none;
+  border-width: 0;
+  
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.96);
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+   --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden; border-color: var(--ogd-table-border); border-radius: var(--ogd-radius-control, 7px); background: var(--ogd-table-surface); -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
+  
+  border-style: none;
+  border-width: 0;
+  
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.90);
 }
 body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+   --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
@@ -14852,44 +14545,6 @@ body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-a
    across custom callout types and report spacing presets.
    ============================================================ */
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  margin-left: 0;
-  margin-right: 0;
-  overflow: hidden;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-  width: 100%;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: center;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  margin: 0;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
-  display: block;
-  flex: 0 0 auto;
-}
-
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.callout-title-inner, .callout-content) {
   min-width: 0;
   max-width: 100%;
@@ -14958,15 +14613,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ca
   word-break: break-word;
 }
 
-body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
-  box-sizing: border-box;
-  max-width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   display: inline;
   max-width: 100%;
@@ -14981,6 +14627,15 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
    ============================================================ */
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
+  
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  
   --ogd-callout-accent: #475569;
   --ogd-callout-tint: rgba(148, 163, 184, 0.10);
   --ogd-callout-border: rgba(203, 213, 225, 0.52);
@@ -15062,6 +14717,16 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
+  padding: 0;
+  
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+  
   color: var(--ogd-text-strong, #111827);
   font-size: 0.98em;
   font-weight: 820;
@@ -15074,6 +14739,19 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
+  flex: 0 0 auto;
+  background-color: var(--ogd-surface-base, #ffffff);
+  
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  margin: 0;
+  
   border: 1.5px solid var(--ogd-callout-border);
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-callout-icon-bg);
@@ -15082,11 +14760,19 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
+  
+  width: 14px;
+  height: 14px;
+  
+  display: block;
+  flex: 0 0 auto;
+  
   color: inherit;
   stroke-width: 2.15px;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
+  
   margin-top: 0.52em;
   color: var(--ogd-text-slate, #334155);
   font-size: 0.96em;
@@ -15255,6 +14941,13 @@ body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-right: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  
   --ogd-callout-border: rgba(203, 213, 225, 0.52);
   margin-left: 0;
   padding-left: 1em;
@@ -15446,23 +15139,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre
 body .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after { content: "TEXT"; }
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-kusto, .language-kql, .language-kql-query)::after,
 body .workspace-leaf-content .markdown-rendered pre:is(.language-kusto, .language-kql, .language-kql-query)::after { content: "KUSTO"; }
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
-body .workspace-leaf-content .markdown-rendered pre code {
-  display: block;
-  box-sizing: border-box;
-  max-width: 100%;
-  margin: 0;
-  padding: var(--ogd-codeblock-code-padding, 1em 1.1em 1.05em);
-  border: 0;
-  background: transparent;
-  color: var(--ogd-text-slate, #1e293b);
-  font-size: 0.9em;
-  line-height: 1.62;
-  white-space: var(--ogd-codeblock-code-white-space, pre);
-  word-break: normal;
-  overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, normal);
-}
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
@@ -15722,38 +15398,6 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
   --ogd-list-task-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 24px rgba(0, 0, 0, 0.30);
 }
 
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) {
-  padding-inline-start: 1.7em;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ul ul, ul ol, ol ul, ol ol):not(.contains-task-list) {
-  margin-top: 0.18em;
-  margin-bottom: 0.18em;
-  padding-inline-start: 1.55em;
-  border-inline-start: 0;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) {
-  counter-reset: ogd-list-step;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) {
-  position: relative;
-  list-style: none;
-  margin-top: 0.24em;
-  margin-bottom: 0.24em;
-  padding-inline-start: 0.62em;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item) {
-  counter-increment: ogd-list-step;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::marker,
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::marker {
-  color: transparent;
-}
-
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::before {
   content: counter(ogd-list-step, decimal-leading-zero);
   position: absolute;
@@ -15935,12 +15579,9 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD
    ============================================================ */
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) {
+  
   padding-inline-start: 1.62em;
   list-style-position: outside;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) {
-  list-style-type: decimal-leading-zero;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) {
@@ -15948,6 +15589,10 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ul ul, ul ol, ol ul, ol ol):not(.contains-task-list) {
+  
+  margin-top: 0.18em;
+  margin-bottom: 0.18em;
+  
   padding-inline-start: 1.42em;
   margin-inline-start: 0;
   border-inline-start: 0;
@@ -15955,6 +15600,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) {
+  
   display: list-item;
   position: static;
   list-style: inherit;
@@ -15962,10 +15608,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
   margin-top: 0.22em;
   margin-bottom: 0.22em;
   padding-inline-start: 0.16em;
-}
-
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item) {
-  list-style-type: decimal-leading-zero;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item) {
@@ -15980,6 +15622,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::marker,
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::marker {
+  
   color: var(--header-accent, #0e7490);
   font-size: 0.92em;
   font-weight: 820;
@@ -16055,11 +15698,13 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
    ============================================================ */
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) {
+  
   counter-reset: revert;
   list-style-type: decimal;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item) {
+  
   counter-increment: revert;
   list-style-type: decimal;
 }
@@ -16135,11 +15780,46 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-inline: 1px solid var(--ogd-lp-code-border);
+  background: var(--ogd-lp-code-bg);
+  color: var(--ogd-text-slate, #1e293b);
+  font-family: var(--font-monospace-theme);
+  line-height: 1.62;
+  
   --ogd-lp-code-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.96));
   --ogd-lp-code-border: rgba(203, 213, 225, 0.78);
 }
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin { border-radius: 12px 12px 0 0; border-bottom: 1px solid rgba(148, 163, 184, 0.28); }
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end { border-radius: 0 0 12px 12px; }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
+  
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06);
+   border-radius: 12px 12px 0 0; border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 10px 20px rgba(15, 23, 42, 0.07);
+   border-radius: 0 0 12px 12px;
+}
 /* <<< src/polish/72-a11y-regression-hotfixes.css */
 /* 10f-workflow-polish.css                      -> polish/73 */
 /* >>> src/polish/73-workflow-polish.css */
@@ -16212,6 +15892,21 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body .workspace-leaf-content .markdown-rendered pre code {
+  
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  padding: var(--ogd-codeblock-code-padding, 1em 1.1em 1.05em);
+  border: 0;
+  background: transparent;
+  color: var(--ogd-text-slate, #1e293b);
+  font-size: 0.9em;
+  line-height: 1.62;
+  white-space: var(--ogd-codeblock-code-white-space, pre);
+  word-break: normal;
+  overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, normal);
+  
   overflow-x: auto;
   scrollbar-gutter: stable both-edges;
 }
