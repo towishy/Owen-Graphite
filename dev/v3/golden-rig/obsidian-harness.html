@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Harness</title>
+  <!-- Theme CSS is injected at runtime by capture scripts.
+       Theme class (theme-light / theme-dark) is set by capture script before goto. -->
+  <link id="theme-css" rel="stylesheet" href="../../../theme.css">
+  <style>
+    /* Harness-only baseline so the page paints something without Obsidian app shell.
+       This block is intentionally minimal and must not override theme tokens.
+       Every selector here is scoped to .harness-rig to avoid bleeding into theme tests. */
+    html, body { margin: 0; padding: 0; }
+    body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .harness-rig { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+    .harness-rig .rig-sidebar { border-right: 1px solid rgba(0,0,0,0.06); }
+    .harness-rig .rig-main { display: flex; flex-direction: column; }
+    .harness-section { padding: 24px 28px; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .harness-section h2.harness-label { font: 600 11px/1.4 system-ui; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin: 0 0 12px; }
+    .rig-region { scroll-margin-top: 8px; }
+  </style>
+</head>
+<body class="theme-light is-frameless">
+  <div class="harness-rig">
+    <!-- ============================================================
+         SIDEBAR (file explorer + ribbon)
+         ============================================================ -->
+    <aside class="rig-sidebar workspace-split mod-left-split">
+      <div class="workspace-ribbon side-dock-ribbon mod-left">
+        <div class="side-dock-ribbon-action" data-fp-id="ribbon-icon-rest" aria-label="rest">
+          <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor"/></svg>
+        </div>
+        <div class="side-dock-ribbon-action is-active" data-fp-id="ribbon-icon-active" aria-label="active">
+          <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor"/></svg>
+        </div>
+      </div>
+      <div class="nav-files-container" data-fp-id="file-explorer-container">
+        <div class="tree-item nav-folder">
+          <div class="tree-item-self nav-folder-title is-clickable" data-fp-id="nav-folder-title-rest">
+            <div class="tree-item-icon collapse-icon"></div>
+            <div class="tree-item-inner nav-folder-title-content">notes</div>
+          </div>
+          <div class="tree-item-children nav-folder-children">
+            <div class="tree-item nav-file">
+              <div class="tree-item-self nav-file-title is-clickable" data-fp-id="nav-file-title-rest">
+                <div class="tree-item-inner nav-file-title-content">resting-note</div>
+              </div>
+            </div>
+            <div class="tree-item nav-file">
+              <div class="tree-item-self nav-file-title is-clickable is-active" data-fp-id="nav-file-title-active">
+                <div class="tree-item-inner nav-file-title-content">active-note</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================================================
+         MAIN PANE
+         ============================================================ -->
+    <main class="rig-main workspace-tabs mod-top">
+      <!-- ---- Tabs ---- -->
+      <section class="harness-section rig-region" data-fp-region="tabs">
+        <h2 class="harness-label">workspace-tabs</h2>
+        <div class="workspace-tab-header-container">
+          <div class="workspace-tab-header" data-fp-id="tab-rest">
+            <div class="workspace-tab-header-inner">
+              <div class="workspace-tab-header-inner-title">rest-tab</div>
+            </div>
+          </div>
+          <div class="workspace-tab-header is-active mod-active" data-fp-id="tab-active">
+            <div class="workspace-tab-header-inner">
+              <div class="workspace-tab-header-inner-title">active-tab</div>
+            </div>
+          </div>
+          <div class="workspace-tab-header" data-fp-id="tab-hover">
+            <div class="workspace-tab-header-inner">
+              <div class="workspace-tab-header-inner-title">hover-tab</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- Reading View: headings ---- -->
+      <section class="harness-section rig-region" data-fp-region="reading-headings">
+        <h2 class="harness-label">reading: headings</h2>
+        <div class="view-content"><div class="markdown-reading-view"><div class="markdown-preview-view markdown-rendered">
+          <h1 data-fp-id="reading-h1">Heading One — 보고서 제목</h1>
+          <h2 data-fp-id="reading-h2">Heading Two — 섹션</h2>
+          <h3 data-fp-id="reading-h3">Heading Three — 항목</h3>
+          <h4 data-fp-id="reading-h4">Heading Four — 세부</h4>
+          <p data-fp-id="reading-p">본문 단락입니다. <a class="external-link" data-fp-id="reading-a-ext" href="#">외부 링크</a>와 <a class="internal-link" data-fp-id="reading-a-int" href="#">내부 링크</a>가 함께 표시됩니다. <code data-fp-id="reading-code-inline">inline code</code> 도 포함.</p>
+        </div></div></div>
+      </section>
+
+      <!-- ---- Reading View: lists ---- -->
+      <section class="harness-section rig-region" data-fp-region="reading-lists">
+        <h2 class="harness-label">reading: lists</h2>
+        <div class="markdown-preview-view markdown-rendered">
+          <ul data-fp-id="reading-ul">
+            <li>unordered item one</li>
+            <li>unordered item two
+              <ul><li>nested item</li></ul>
+            </li>
+          </ul>
+          <ol data-fp-id="reading-ol">
+            <li>ordered item one</li>
+            <li>ordered item two</li>
+          </ol>
+          <ul class="contains-task-list" data-fp-id="reading-task-list">
+            <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> open task</li>
+            <li class="task-list-item is-checked"><input type="checkbox" class="task-list-item-checkbox" checked> done task</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ---- Reading View: callouts ---- -->
+      <section class="harness-section rig-region" data-fp-region="reading-callouts">
+        <h2 class="harness-label">reading: callouts</h2>
+        <div class="markdown-preview-view markdown-rendered">
+          <div class="callout" data-callout="note" data-fp-id="callout-note">
+            <div class="callout-title"><div class="callout-icon"></div><div class="callout-title-inner">Note</div></div>
+            <div class="callout-content"><p>note callout body — 메모</p></div>
+          </div>
+          <div class="callout" data-callout="warning" data-fp-id="callout-warning">
+            <div class="callout-title"><div class="callout-icon"></div><div class="callout-title-inner">Warning</div></div>
+            <div class="callout-content"><p>warning callout body — 주의</p></div>
+          </div>
+          <div class="callout" data-callout="danger" data-fp-id="callout-danger">
+            <div class="callout-title"><div class="callout-icon"></div><div class="callout-title-inner">Danger</div></div>
+            <div class="callout-content"><p>danger callout body — 위험</p></div>
+          </div>
+          <div class="callout" data-callout="info" data-fp-id="callout-info">
+            <div class="callout-title"><div class="callout-icon"></div><div class="callout-title-inner">Info</div></div>
+            <div class="callout-content"><p>info callout body — 정보</p></div>
+          </div>
+          <div class="callout" data-callout="tip" data-fp-id="callout-tip">
+            <div class="callout-title"><div class="callout-icon"></div><div class="callout-title-inner">Tip</div></div>
+            <div class="callout-content"><p>tip callout body — 팁</p></div>
+          </div>
+          <div class="callout" data-callout="success" data-fp-id="callout-success">
+            <div class="callout-title"><div class="callout-icon"></div><div class="callout-title-inner">Success</div></div>
+            <div class="callout-content"><p>success callout body — 성공</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- Reading View: tables ---- -->
+      <section class="harness-section rig-region" data-fp-region="reading-tables">
+        <h2 class="harness-label">reading: tables (default + report)</h2>
+        <div class="markdown-preview-view markdown-rendered">
+          <table data-fp-id="reading-table-default">
+            <thead><tr><th>Column A</th><th>Column B</th><th class="ogd-num">수치</th></tr></thead>
+            <tbody>
+              <tr><td>row 1 a</td><td>row 1 b</td><td class="ogd-num">1,234</td></tr>
+              <tr><td>row 2 a</td><td>row 2 b</td><td class="ogd-num">5,678</td></tr>
+              <tr><td>row 3 a</td><td>row 3 b</td><td class="ogd-num">9,012</td></tr>
+            </tbody>
+          </table>
+          <div class="ogd-report-mode">
+            <table data-fp-id="reading-table-report">
+              <thead><tr><th>Column A</th><th>Column B</th><th class="ogd-num">수치</th></tr></thead>
+              <tbody>
+                <tr><td>row 1 a</td><td>row 1 b</td><td class="ogd-num">1,234</td></tr>
+                <tr><td>row 2 a</td><td>row 2 b</td><td class="ogd-num">5,678</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- Reading View: code + blockquote ---- -->
+      <section class="harness-section rig-region" data-fp-region="reading-code">
+        <h2 class="harness-label">reading: code + blockquote</h2>
+        <div class="markdown-preview-view markdown-rendered">
+          <pre data-fp-id="reading-pre"><code class="language-python">def hello():
+    print("graphite")
+</code></pre>
+          <blockquote data-fp-id="reading-blockquote">
+            <p>blockquote 본문 — 인용 표시</p>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ---- Live Preview: editor surface ---- -->
+      <section class="harness-section rig-region" data-fp-region="live-preview">
+        <h2 class="harness-label">live preview (cm6)</h2>
+        <div class="markdown-source-view cm-s-obsidian mod-cm6 is-live-preview" data-fp-id="cm-source-view">
+          <div class="cm-editor" data-fp-id="cm-editor">
+            <div class="cm-scroller">
+              <div class="cm-content">
+                <div class="HyperMD-header HyperMD-header-1 cm-line" data-fp-id="cm-line-h1"><span class="cm-formatting cm-formatting-header"># </span>Live Preview Heading</div>
+                <div class="cm-line" data-fp-id="cm-line-text">본문 라인 — 편집 가능 영역</div>
+                <div class="cm-active cm-line HyperMD-list-line" data-fp-id="cm-line-active">활성 라인 (cursor)</div>
+                <div class="cm-callout" data-callout="note" data-fp-id="cm-callout-note">
+                  <div class="cm-line"><span class="cm-formatting">&gt; [!note]</span></div>
+                  <div class="cm-line">callout body in live preview</div>
+                </div>
+                <div class="HyperMD-codeblock-begin cm-line" data-fp-id="cm-line-codeblock-begin">```python</div>
+                <div class="HyperMD-codeblock cm-line" data-fp-id="cm-line-codeblock-body">print("graphite")</div>
+                <div class="HyperMD-codeblock-end cm-line" data-fp-id="cm-line-codeblock-end">```</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- Surfaces: buttons + inputs ---- -->
+      <section class="harness-section rig-region" data-fp-region="surfaces">
+        <h2 class="harness-label">surfaces: buttons / inputs / chips</h2>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+          <button class="clickable-icon" data-fp-id="surface-icon-button">
+            <svg viewBox="0 0 16 16" width="16" height="16"><rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <button class="mod-cta" data-fp-id="surface-button-cta">Primary CTA</button>
+          <button data-fp-id="surface-button-default">Default Button</button>
+          <input type="text" data-fp-id="surface-input" value="검색어 입력" />
+          <div class="ogd-chip" data-fp-id="surface-chip">상태 칩</div>
+        </div>
+      </section>
+
+      <!-- ---- Overlays: menu + popover + suggestion ---- -->
+      <section class="harness-section rig-region" data-fp-region="overlays">
+        <h2 class="harness-label">overlays: menu / popover / suggestion</h2>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+          <div class="menu" data-fp-id="overlay-menu">
+            <div class="menu-item" data-fp-id="overlay-menu-item-rest"><span class="menu-item-title">메뉴 항목</span></div>
+            <div class="menu-item is-selected" data-fp-id="overlay-menu-item-selected"><span class="menu-item-title">선택된 항목</span></div>
+            <div class="menu-separator"></div>
+            <div class="menu-item is-disabled" data-fp-id="overlay-menu-item-disabled"><span class="menu-item-title">비활성</span></div>
+          </div>
+          <div class="suggestion-container" data-fp-id="overlay-suggestion-container">
+            <div class="suggestion">
+              <div class="suggestion-item" data-fp-id="overlay-suggestion-rest">제안 항목</div>
+              <div class="suggestion-item is-selected" data-fp-id="overlay-suggestion-selected">활성 제안</div>
+            </div>
+          </div>
+          <div class="popover hover-popover" data-fp-id="overlay-popover">
+            <div class="markdown-embed">
+              <div class="markdown-embed-content">
+                <p>임베드 미리보기 — popover</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- Status bar ---- -->
+      <section class="harness-section rig-region" data-fp-region="status-bar">
+        <h2 class="harness-label">status bar</h2>
+        <div class="status-bar" data-fp-id="status-bar">
+          <div class="status-bar-item" data-fp-id="status-bar-item">2,341 단어</div>
+          <div class="status-bar-item" data-fp-id="status-bar-item-2">Vim 정상</div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
