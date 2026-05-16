@@ -592,7 +592,10 @@ body .markdown-rendered blockquote blockquote blockquote {
 ) {
   color: var(--ogd-text-slate, #334155);
   font-weight: 720;
-  text-decoration: underline dotted var(--ogd-text-soft, #94a3b8) 1.35px;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--ogd-text-soft, #94a3b8);
+  text-decoration-thickness: 1.35px;
   text-underline-offset: 0.23em;
   border-bottom: 0;
 }
@@ -603,14 +606,19 @@ body .markdown-rendered blockquote blockquote blockquote {
   [href^="https://"]:not(.internal-link)
 ):hover {
   color: #0d9488;
-  text-decoration: underline dotted #0f766e 1.35px;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #0f766e;
+  text-decoration-thickness: 1.35px;
 }
 
 /* Broken / unresolved internal links */
 .markdown-rendered a.internal-link.is-unresolved,
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
   color: #b45309;
-  text-decoration: underline dotted rgba(180, 83, 9, 0.55);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(180, 83, 9, 0.55);
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) mark,

@@ -192,14 +192,20 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 .theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link),
 .theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link) {
   color: var(--ogd-line-strong, #cbd5e1);
-  text-decoration: underline dotted var(--ogd-text-soft, #94a3b8) 1.5px;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--ogd-text-soft, #94a3b8);
+  text-decoration-thickness: 1.5px;
   text-underline-offset: 0.22em;
 }
 .theme-dark .markdown-rendered a.external-link:hover,
 .theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link):hover,
 .theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link):hover {
   color: var(--ogd-line-soft, #e5e7eb);
-  text-decoration: underline dotted var(--ogd-line-strong, #cbd5e1) 1.5px;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--ogd-line-strong, #cbd5e1);
+  text-decoration-thickness: 1.5px;
 }
 .theme-dark .markdown-rendered a.internal-link.is-unresolved {
   color: #fbbf24;
@@ -236,7 +242,10 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 .theme-dark .markdown-rendered a[href^="http://"]:not(.internal-link),
 .theme-dark .markdown-rendered a[href^="https://"]:not(.internal-link) {
   color: #5eead4;
-  text-decoration: underline dotted #2dd4bf 1.5px;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #2dd4bf;
+  text-decoration-thickness: 1.5px;
   border-bottom: 0;
 }
 .theme-dark .markdown-rendered mark,

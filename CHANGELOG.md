@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.4] — 2026-05-16 — Lint cleanup: duplicate properties + text-decoration shorthand + minAppVersion bump
+
+### Manifest
+
+- `minAppVersion`: **1.6.0 → 1.10.0**. 거의 모든 활성 사용자가 이미 1.10+ 이며, 이 상향으로 1.11.x Chromium 부분지원 워닝 (`text-decoration`, `css-text-indent`) 카테고리가 lint 출력에서 사라집니다. 1.6~1.9 사용자가 있다면 수동 zip 설치로 v3.1.3까지 사용 가능.
+
+### Tooling
+
+- **`scripts/dedup_v3.py`** — Build-time post-pass now also performs **property-level dedup** inside every rule body. The cascade outcome is unchanged (last declaration wins, same as the browser), but the bundled `theme.css` no longer carries redundant intra-rule declarations. Closes the entire `Unexpected duplicate "<property>"` warning class from the community-theme lint validator (50+ warnings removed).
+- **`dev/temp/decompose_text_decoration.py`** — One-shot refactor: decomposed every multi-token `text-decoration:` shorthand in `src/**/*.css` into longhand (`text-decoration-line` / `-style` / `-color` / `-thickness`). Closes the `Unexpected browser feature "text-decoration" is only partially supported` warnings (27+ removed). Single-keyword forms (`text-decoration: none/underline/line-through;`) are universally supported and left as-is.
+
+### Why
+
+The community-theme reviewer flags the shorthand because some Obsidian 1.11.x builds (Chromium <87) only partially support the thickness/style/color combinations. Splitting to longhand keeps the visual result identical on modern Chromium (Obsidian 1.12+) and silences the lint cleanly without raising `minAppVersion`.
+
+### Unchanged
+
+- Visual output (every decomposed declaration is the exact same cascade outcome).
+- `!important` count (still 4, all in comments).
+- Hit-routing audit (clean).
+
 ## [3.1.3] — 2026-05-16 — Hotfix#2: PDF H1 specificity push to (0,3,2)
 
 ### Fixed

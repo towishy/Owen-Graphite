@@ -256,6 +256,22 @@ def dedup_scope(css: str) -> tuple[str, int]:
         for i in idxs[:-1]:
             to_delete.add(i)
             merges += 1
+    # v3.1.4 — property-level dedup pass.
+    # Even rules that were NOT merged across files can pick up duplicate
+    # property declarations (some authored, some accumulated through earlier
+    # merge passes that ran before this hardening). Walk every plain rule's
+    # body and keep only the LAST occurrence of each property name — the same
+    # cascade outcome the browser would produce, but visible to the
+    # community-theme lint validator which warns on intra-rule duplicates.
+    for idx, unit in enumerate(units):
+        if idx in to_delete:
+            continue
+        kind, prelude, body, s, e = unit
+        if kind != "rule":
+            continue
+        new_body = _dedup_declarations(body)
+        if new_body != body:
+            units[idx] = (kind, prelude, new_body, s, e)
     # Reassemble
     out_parts: list[str] = []
     prev_kind = None
@@ -291,6 +307,216 @@ def _merge_bodies(bodies: list[str]) -> str:
     # Indent the merged content with a single newline join so it's readable.
     inner = "\n  ".join(pieces)
     return f"\n  {inner}\n"
+
+
+_PROP_NAME_RE = re.compile(r"\s*(--[A-Za-z0-9_-]+|[A-Za-z_][A-Za-z0-9_-]*)\s*$")
+
+
+def _split_declarations(body: str) -> list[tuple[str, str]]:
+    """Split a CSS rule body into ordered (kind, text) tokens where kind is
+    one of: 'decl', 'comment', 'ws', 'other'. Brace-/paren-/string-/comment-
+    safe. The 'other' kind is returned for any unexpected at-rule or stray
+    construct so callers can bail out of property dedup safely.
+    """
+    out: list[tuple[str, str]] = []
+    n = len(body)
+    i = 0
+    buf: list[str] = []
+
+    def flush_decl():
+        if buf:
+            text = "".join(buf)
+            buf.clear()
+            stripped = text.strip()
+            if stripped:
+                out.append(("decl", text))
+            else:
+                out.append(("ws", text))
+
+    while i < n:
+        c = body[i]
+        # comment
+        if body.startswith("/*", i):
+            flush_decl()
+            j = body.find("*/", i + 2)
+            j = n if j < 0 else j + 2
+            out.append(("comment", body[i:j]))
+            i = j
+            continue
+        # string literal — copy contents into buf verbatim
+        if c in ('"', "'"):
+            buf.append(c)
+            j = i + 1
+            while j < n:
+                cc = body[j]
+                if cc == "\\" and j + 1 < n:
+                    buf.append(body[j : j + 2])
+                    j += 2
+                    continue
+                buf.append(cc)
+                j += 1
+                if cc == c:
+                    break
+            i = j
+            continue
+        # parenthesized group — copy contents into buf, do not split on ;
+        if c == "(":
+            depth = 1
+            buf.append(c)
+            j = i + 1
+            while j < n and depth > 0:
+                cc = body[j]
+                if body.startswith("/*", j):
+                    k = body.find("*/", j + 2)
+                    k = n if k < 0 else k + 2
+                    buf.append(body[j:k])
+                    j = k
+                    continue
+                if cc in ('"', "'"):
+                    buf.append(cc)
+                    k = j + 1
+                    while k < n:
+                        cc2 = body[k]
+                        if cc2 == "\\" and k + 1 < n:
+                            buf.append(body[k : k + 2])
+                            k += 2
+                            continue
+                        buf.append(cc2)
+                        k += 1
+                        if cc2 == cc:
+                            break
+                    j = k
+                    continue
+                if cc == "(":
+                    depth += 1
+                elif cc == ")":
+                    depth -= 1
+                buf.append(cc)
+                j += 1
+            i = j
+            continue
+        # at-rule inside a rule body — abort cleanly by emitting an 'other'
+        # token so the caller can choose to leave the body untouched.
+        if c == "@":
+            flush_decl()
+            # consume to end of body — leave as a single 'other' token
+            out.append(("other", body[i:]))
+            return out
+        # stray brace — abort
+        if c in ("{", "}"):
+            flush_decl()
+            out.append(("other", body[i:]))
+            return out
+        if c == ";":
+            buf.append(c)
+            text = "".join(buf)
+            buf.clear()
+            if text.strip():
+                out.append(("decl", text))
+            else:
+                out.append(("ws", text))
+            i += 1
+            continue
+        buf.append(c)
+        i += 1
+    flush_decl()
+    return out
+
+
+def _decl_property(decl_text: str) -> str | None:
+    """Extract the property name from a declaration string. Returns None if
+    the declaration is malformed or not a plain property declaration."""
+    s = decl_text.strip()
+    if not s:
+        return None
+    # Drop trailing semicolon for matching.
+    if s.endswith(";"):
+        s = s[:-1].rstrip()
+    # Skip leading comments.
+    while s.startswith("/*"):
+        end = s.find("*/")
+        if end < 0:
+            return None
+        s = s[end + 2 :].lstrip()
+    if not s:
+        return None
+    # Find the first ':' that is NOT inside parens — but property names
+    # cannot contain '(' before ':' anyway, so the very first ':' is fine.
+    colon = s.find(":")
+    if colon < 0:
+        return None
+    name = s[:colon].rstrip()
+    m = _PROP_NAME_RE.fullmatch(name)
+    if not m:
+        return None
+    return m.group(1).lower()
+
+
+def _dedup_declarations(body: str) -> str:
+    """Within a rule body, keep only the LAST occurrence of each property
+    declaration. Preserves comments and whitespace runs. Returns the body
+    unchanged if it contains nested at-rules or other constructs the safe
+    parser cannot reason about."""
+    items = _split_declarations(body)
+    # If any 'other' token appears, do not touch this body.
+    if any(kind == "other" for kind, _ in items):
+        return body
+    # Walk to find last index of each property; mark earlier 'decl's as
+    # dropped. Comments and whitespace between a dropped decl and the next
+    # surviving token are preserved (they may carry author intent).
+    last_idx_for: dict[str, int] = {}
+    drop: set[int] = set()
+    for idx, (kind, text) in enumerate(items):
+        if kind != "decl":
+            continue
+        prop = _decl_property(text)
+        if prop is None:
+            continue
+        if prop in last_idx_for:
+            drop.add(last_idx_for[prop])
+        last_idx_for[prop] = idx
+    if not drop:
+        return body
+    out: list[str] = []
+    pending_ws: list[str] = []
+    for idx, (kind, text) in enumerate(items):
+        if idx in drop:
+            # Skip the dropped declaration. Also skip any *immediately*
+            # following whitespace run that exists solely to separate it
+            # from the next token (otherwise the file fills with blank
+            # lines). Comments are always preserved.
+            pending_ws = []
+            # Peek ahead and consume one ws run.
+            # (handled below by setting a flag)
+            _ = idx  # no-op
+            # consume next ws via index manipulation: easier to track
+            # via flag
+            drop_next_ws = True
+            # Mark the drop_next_ws state by appending a sentinel to
+            # pending_ws — but we are inside a for-loop; simpler approach
+            # below.
+            # Use a more direct approach: rebuild via while-loop instead.
+            pass
+        else:
+            out.append(text)
+    # Simpler rebuild: iterate with index and look-ahead to skip one
+    # following whitespace-only token after each dropped declaration.
+    out = []
+    i = 0
+    nitems = len(items)
+    while i < nitems:
+        kind, text = items[i]
+        if i in drop:
+            # Skip this dropped declaration.
+            i += 1
+            # Consume an immediately-following whitespace run (if any) to
+            # avoid leaving large blank holes.
+            if i < nitems and items[i][0] == "ws":
+                i += 1
+            continue
+        out.append(text)
+        i += 1
+    return "".join(out)
 
 
 def main() -> int:
