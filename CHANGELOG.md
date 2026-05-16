@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.1] — 2026-05-16 — File explorer hotfix
+
+### Fixed
+
+- **파일 트리 hover 더블 페인트** — `src/chrome/31-navigation-tasks-search.css` 에 남아있던 v2 잔존 룰이 행 전체에 불투명 회색(`#f3f4f6` / `#1f2937`)을 칠해, `src/chrome/37-tabs-file-explorer-search.css` 의 글래스 pill 위에 회색 배경이 한 번 더 보이던 현상 제거. 이제 hover 표현은 글래스 pill 단일 레이어로 일원화됩니다.
+
+### Changed
+
+- **사이드바 파일 탐색기 컴팩트화** — 행 높이 28→24px, 자식 들여쓰기 15→8px, 아이콘 영역과 상하 여백 축소(자세한 수치는 `src/chrome/37-tabs-file-explorer-search.css`). 같은 패널 폭에서 약 20% 더 많은 문서 제목이 보입니다. 폴더 vertical rail과 hover/active 글래스 표현은 유지.
+
 ## [3.0.0] — 2026-05-16 — From-scratch rewrite with zero `!important`
 
 ### Summary
