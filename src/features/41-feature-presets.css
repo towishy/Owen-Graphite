@@ -223,7 +223,7 @@ kbd {
      --ogd-pdf-header-text      (variable-text, single line)
      ogd-pdf-footer-enabled     (class-toggle on body)
      --ogd-pdf-footer-text      (variable-text, single line)
-     --ogd-pdf-marginalia-accent(variable-color, 두 라벨 공통 글자색)
+    --ogd-pdf-marginalia-accent(variable-color, 두 라벨 공통 글자색)
      ogd-pdf-marginalia-style   (class-select: minimal/bordered/filled)
      ogd-pdf-marginalia-size    (class-select: compact/standard)
      ogd-pdf-header-position    (class-select: top-right/top-center)
@@ -244,8 +244,8 @@ kbd {
    ─────────────────────
    - font-size: 7.5pt (header) / 8pt (footer)
    - font-weight: 700, letter-spacing: 1.2px, text-transform: uppercase
-   - background: rgba(accent, 0.06) (light) / rgba(accent, 0.10) (dark)
-   - border: 1px solid rgba(accent, 0.22) (light) / 0.32 (dark)
+  - background: subtle graphite wash (light/dark tokenized)
+  - border: 1px solid subtle graphite line (light/dark tokenized)
    - border-radius: 4px, box-shadow: none, backdrop-filter 없음
    - 인쇄 전용 톤 — Chromium printToPDF 무시 항목(backdrop-filter)을
      아예 사용하지 않아 graceful degradation이 필요 없음.
@@ -291,13 +291,13 @@ body.ogd-pdf-label-minimal {
 }
 
 body.ogd-pdf-label-filled {
-  --ogd-pdf-marginalia-bg: rgba(39, 157, 245, 0.12);
-  --ogd-pdf-marginalia-border: rgba(39, 157, 245, 0.28);
+  --ogd-pdf-marginalia-bg: rgba(71, 85, 105, 0.09);
+  --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.26);
 }
 
 body.theme-dark.ogd-pdf-label-filled {
-  --ogd-pdf-marginalia-bg: rgba(56, 189, 248, 0.16);
-  --ogd-pdf-marginalia-border: rgba(56, 189, 248, 0.38);
+  --ogd-pdf-marginalia-bg: rgba(203, 213, 225, 0.12);
+  --ogd-pdf-marginalia-border: rgba(203, 213, 225, 0.34);
 }
 
 body.ogd-pdf-label-compact {
@@ -346,8 +346,8 @@ body.ogd-pdf-header-top-center {
     max-width: calc(100% - 26mm);
     padding: var(--ogd-pdf-header-pad-y, 4px) var(--ogd-pdf-header-pad-x, 10px);
     border-radius: var(--ogd-pdf-label-radius, 4px);
-    background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
-    border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
+    background: var(--ogd-pdf-marginalia-bg, rgba(71, 85, 105, 0.045));
+    border: 1px solid var(--ogd-pdf-marginalia-border, rgba(71, 85, 105, 0.20));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
     font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
@@ -356,8 +356,8 @@ body.ogd-pdf-header-top-center {
     letter-spacing: var(--ogd-pdf-label-letter-spacing, 1.2px);
     text-transform: uppercase;
     line-height: var(--ogd-pdf-label-line-height, 1.2);
-    color: var(--ogd-pdf-marginalia-accent, #279DF5);
-    -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
+    color: var(--ogd-pdf-marginalia-accent, #475569);
+    -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #475569);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -382,8 +382,8 @@ body.ogd-pdf-header-top-center {
     max-width: var(--ogd-pdf-footer-max-width, 90%);
     padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 14px);
     border-radius: var(--ogd-pdf-label-radius, 4px);
-    background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
-    border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
+    background: var(--ogd-pdf-marginalia-bg, rgba(71, 85, 105, 0.045));
+    border: 1px solid var(--ogd-pdf-marginalia-border, rgba(71, 85, 105, 0.20));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
     font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-footer-font-size, 8pt);
@@ -392,8 +392,8 @@ body.ogd-pdf-header-top-center {
     letter-spacing: var(--ogd-pdf-label-letter-spacing, 1.2px);
     text-transform: uppercase;
     line-height: var(--ogd-pdf-label-line-height, 1.2);
-    color: var(--ogd-pdf-marginalia-accent, #279DF5);
-    -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
+    color: var(--ogd-pdf-marginalia-accent, #475569);
+    -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #475569);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

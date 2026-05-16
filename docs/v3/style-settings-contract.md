@@ -33,14 +33,14 @@
 | `ogd-glass-intensity` | `class-select` | `ogd-glass-standard` | 데스크톱 Glass 강도 |
 | `ogd-motion-intensity` | `class-select` | `ogd-motion-standard` | 데스크톱 Hover 움직임 |
 | `ogd-cjk-boost` | `class-toggle` | `true` | 한글/CJK 폰트 +0.5px 자동 보정 |
-| `ogd-pdf-marginalia-preset` | `class-select` | `ogd-pdf-preset-custom` | 헤더/풋터 빠른 문구 |
-| `ogd-pdf-header-enabled` | `class-toggle` | `false` | 첫 페이지 헤더 microlabel 표시 |
+| `ogd-pdf-marginalia-preset` | `class-select` | `ogd-pdf-preset-custom` | 헤더/푸터 빠른 문구 |
+| `ogd-pdf-header-enabled` | `class-toggle` | `false` | 첫 페이지 헤더 라벨 표시 |
 | `ogd-pdf-header-text` | `variable-text` | `` | 첫 페이지 헤더 문구 |
-| `ogd-pdf-footer-enabled` | `class-toggle` | `false` | 마지막 페이지 풋터 microlabel 표시 |
-| `ogd-pdf-footer-text` | `variable-text` | `` | 마지막 페이지 풋터 문구 |
-| `ogd-pdf-marginalia-accent` | `variable-color` | `#279DF5` | 헤더/풋터 글자 색상 |
-| `ogd-pdf-marginalia-style` | `class-select` | `ogd-pdf-label-bordered` | 헤더/풋터 라벨 스타일 |
-| `ogd-pdf-marginalia-size` | `class-select` | `ogd-pdf-label-standard` | 헤더/풋터 라벨 크기 |
+| `ogd-pdf-footer-enabled` | `class-toggle` | `false` | 마지막 페이지 푸터 라벨 표시 |
+| `ogd-pdf-footer-text` | `variable-text` | `` | 마지막 페이지 푸터 문구 |
+| `ogd-pdf-marginalia-accent` | `variable-color` | `#475569` | 헤더/푸터 글자 색상 |
+| `ogd-pdf-marginalia-style` | `class-select` | `ogd-pdf-label-bordered` | 헤더/푸터 라벨 스타일 |
+| `ogd-pdf-marginalia-size` | `class-select` | `ogd-pdf-label-standard` | 헤더/푸터 라벨 크기 |
 | `ogd-pdf-header-position` | `class-select` | `ogd-pdf-header-top-right` | 첫 페이지 헤더 위치 |
 
 ## 비기능 엔트리 (heading / info)
@@ -84,4 +84,4 @@
 | `—` | `—` | — |
 | `—` | `—` | — |
 | `—` | `—` | — |
-| `ogd-settings-pdf-marginalia` | `heading` | PDF 헤더/풋터 microlabel |
+| `ogd-settings-pdf-marginalia` | `heading` | PDF 헤더/푸터 작은 라벨 |

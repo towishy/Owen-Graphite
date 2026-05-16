@@ -22,6 +22,7 @@ This surface has already burned a lot of release time because Chromium print/PDF
 - Generated text must use single-line `content: var(--ogd-pdf-header-text, "")` or `content: var(--ogd-pdf-footer-text, "")`.
 - Quick presets, label style, compact sizing, and header alignment must be implemented by CSS variables/classes only; do not add more pseudo anchors.
 - Anchor pseudos must use `position: absolute`, `pointer-events: none`, `white-space: nowrap`, and exact print color adjustment.
+- Anchor pseudos must also keep `display: inline-block`, `overflow: hidden`, `text-overflow: ellipsis`, and `font-style: normal` so long user text stays single-line and cannot reshape the PDF page.
 - `@page` rules belong in `src/features/43-print-base.css` and must be nested under `@media print`.
 
 ## Forbidden Patterns
@@ -44,3 +45,18 @@ Run these before release after touching any PDF, print, or report-output source:
 ```
 
 Any MAP finding in the `pdf-header-footer-sensitive` category must be reviewed against this contract before release.
+
+## Manual PDF Scenarios
+
+Use this short matrix when a change affects header/footer text, sizing, presets, print spacing, or the footer reserve.
+
+| id | Document shape | Settings | Expected result |
+| --- | --- | --- | --- |
+| `pdf-marginalia-short-header` | 1-page prose | header on, custom text | header appears once at the selected top position; Reading View stays clean |
+| `pdf-marginalia-long-header` | 1-page prose | header on, long text | label remains one line and clips with ellipsis |
+| `pdf-marginalia-long-footer` | 2+ page prose | footer on, long text | footer appears below final content only and clips with ellipsis |
+| `pdf-marginalia-both-labels` | 2+ page prose | header and footer on | header and footer do not overlap body content |
+| `pdf-marginalia-table-end` | document ending with a table | footer on | final table keeps readable spacing above footer |
+| `pdf-marginalia-code-end` | document ending with a code block | footer on | footer reserve stays outside the code block surface |
+| `pdf-marginalia-list-end` | document ending with a list | footer on | footer aligns after the final list item without list-marker artifacts |
+| `pdf-marginalia-presets` | 1-2 page prose | each quick preset | preset text resolves through variables without adding anchor pseudos |

@@ -35,6 +35,28 @@ REQUIRED_SETTING_IDS = (
     "ogd-pdf-marginalia-size",
     "ogd-pdf-header-position",
 )
+REQUIRED_SETTING_VALUES = (
+    "ogd-pdf-preset-custom",
+    "ogd-pdf-preset-prepared-confidential",
+    "ogd-pdf-preset-draft-internal",
+    "ogd-pdf-preset-final-end",
+    "ogd-pdf-label-minimal",
+    "ogd-pdf-label-bordered",
+    "ogd-pdf-label-filled",
+    "ogd-pdf-label-compact",
+    "ogd-pdf-label-standard",
+    "ogd-pdf-header-top-right",
+    "ogd-pdf-header-top-center",
+)
+REQUIRED_IMPLEMENTED_CLASSES = (
+    "ogd-pdf-preset-prepared-confidential",
+    "ogd-pdf-preset-draft-internal",
+    "ogd-pdf-preset-final-end",
+    "ogd-pdf-label-minimal",
+    "ogd-pdf-label-filled",
+    "ogd-pdf-label-compact",
+    "ogd-pdf-header-top-center",
+)
 REQUIRED_LIGHT_TOKENS = (
     "--ogd-pdf-header-text",
     "--ogd-pdf-footer-text",
@@ -229,11 +251,18 @@ def require_substring(failures: list[str], text: str, token: str, label: str) ->
 
 def audit_settings_and_tokens(failures: list[str]) -> None:
     settings_text = STYLE_SETTINGS.read_text(encoding="utf-8")
+    owner_text = PDF_OWNER.read_text(encoding="utf-8")
     light_text = LIGHT_TOKENS.read_text(encoding="utf-8")
     dark_text = DARK_TOKENS.read_text(encoding="utf-8")
     for setting_id in REQUIRED_SETTING_IDS:
         if not re.search(rf"\bid:\s*{re.escape(setting_id)}\b", settings_text):
             failures.append(f"missing Style Settings id `{setting_id}` in {rel(STYLE_SETTINGS)}")
+    for setting_value in REQUIRED_SETTING_VALUES:
+        if not re.search(rf"\bvalue:\s*{re.escape(setting_value)}\b", settings_text):
+            failures.append(f"missing Style Settings value `{setting_value}` in {rel(STYLE_SETTINGS)}")
+    for class_name in REQUIRED_IMPLEMENTED_CLASSES:
+        if not re.search(rf"\bbody(?:\.[\w-]+)*\.{re.escape(class_name)}\b", owner_text):
+            failures.append(f"missing PDF marginalia implementation class `body.{class_name}` in {rel(PDF_OWNER)}")
     for token in REQUIRED_LIGHT_TOKENS:
         require_substring(failures, light_text, token, f"light token in {rel(LIGHT_TOKENS)}")
     for token in REQUIRED_DARK_TOKENS:
@@ -324,17 +353,41 @@ def require_anchor_contract(failures: list[str], rule: CssRule, text_token: str)
     expected_exact = {
         "position": "absolute",
         "pointer-events": "none",
+        "display": "inline-block",
         "white-space": "nowrap",
+        "overflow": "hidden",
+        "text-overflow": "ellipsis",
+        "font-style": "normal",
     }
     for property_name, expected_value in expected_exact.items():
         actual = decl.get(property_name, "").split()[0].lower() if decl.get(property_name) else ""
         if actual != expected_value:
             failures.append(f"{location(rule.path, rule.line)}: expected `{property_name}: {expected_value}`")
     content = decl.get("content", "")
-    if f"var({text_token}" not in content:
-        failures.append(f"{location(rule.path, rule.line)}: content must use `{text_token}`")
+    if normalize_ws(content) != f'var({text_token}, "")':
+        failures.append(f"{location(rule.path, rule.line)}: content must be `var({text_token}, \"\")`")
     if "exact" not in decl.get("print-color-adjust", "") or "exact" not in decl.get("-webkit-print-color-adjust", ""):
         failures.append(f"{location(rule.path, rule.line)}: both print-color-adjust properties must be exact")
+    if text_token == "--ogd-pdf-header-text":
+        expected_header_values = {
+            "top": "var(--ogd-pdf-header-top, 11mm)",
+            "right": "var(--ogd-pdf-header-right, 13mm)",
+            "left": "var(--ogd-pdf-header-left, auto)",
+            "transform": "var(--ogd-pdf-header-transform, none)",
+        }
+        for property_name, expected_value in expected_header_values.items():
+            if normalize_ws(decl.get(property_name, "")) != expected_value:
+                failures.append(f"{location(rule.path, rule.line)}: header must keep `{property_name}: {expected_value}`")
+    if text_token == "--ogd-pdf-footer-text":
+        expected_footer_values = {
+            "left": "50%",
+            "bottom": "var(--ogd-pdf-footer-offset, -22mm)",
+            "transform": "translateX(-50%)",
+            "max-width": "var(--ogd-pdf-footer-max-width, 90%)",
+        }
+        for property_name, expected_value in expected_footer_values.items():
+            if normalize_ws(decl.get(property_name, "")) != expected_value:
+                failures.append(f"{location(rule.path, rule.line)}: footer must keep `{property_name}: {expected_value}`")
 
 
 def main() -> int:

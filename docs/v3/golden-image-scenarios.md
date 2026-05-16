@@ -109,7 +109,7 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `a11y-forced-colors-light` | Windows High Contrast | `forced-colors: active` |
 | `a11y-forced-colors-dark` | Windows High Contrast Dark | `forced-colors: active`, dark |
 
-### Print / PDF (4)
+### Print / PDF (12)
 
 | id | 내용 | 조건 |
 | --- | --- | --- |
@@ -117,6 +117,14 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `print-report-mode` | report-mode PDF | `ogd-report-mode=on`, print |
 | `print-compact` | compact PDF | `ogd-pdf-compact=on`, print |
 | `print-last-page-footer` | 마지막 페이지 footer | `ogd-pdf-footer-enabled=on`, print |
+| `print-pdf-header-short` | 짧은 첫 페이지 헤더 라벨 | `ogd-pdf-header-enabled=on`, custom text |
+| `print-pdf-header-long` | 긴 첫 페이지 헤더 라벨 말줄임 | `ogd-pdf-header-enabled=on`, long custom text |
+| `print-pdf-footer-long` | 긴 마지막 페이지 푸터 라벨 말줄임 | `ogd-pdf-footer-enabled=on`, long custom text |
+| `print-pdf-both-labels` | 헤더와 푸터 동시 출력 | header/footer on |
+| `print-pdf-table-end` | 표로 끝나는 문서의 푸터 reserve | footer on, table as final block |
+| `print-pdf-code-end` | 코드블록으로 끝나는 문서의 푸터 reserve | footer on, code block as final block |
+| `print-pdf-list-end` | 리스트로 끝나는 문서의 푸터 reserve | footer on, list as final block |
+| `print-pdf-presets` | 빠른 문구 프리셋 출력 | each marginalia preset |
 
 ## 총 시나리오 수
 
@@ -129,12 +137,12 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | Chrome | 8 |
 | Overlays | 6 |
 | Accessibility | 4 |
-| Print / PDF | 4 |
-| **합계** | **66** |
+| Print / PDF | 12 |
+| **합계** | **74** |
 
 ## v3 결과 검증 스크립트 (최신 v3.1.34 기준)
 
-v3는 이 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다 (최초 v3.0.0 릴리즈 시점에 0 diff 달성, 이후 v3.0.x → v3.1.x 체인은 디자인 표면을 건드리지 않음).
+v3는 기존 66 시나리오 대신 **computed-style fingerprint** 방식으로 시각 보존을 검증했습니다 (최초 v3.0.0 릴리즈 시점에 0 diff 달성, 이후 v3.0.x → v3.1.x 체인은 디자인 표면을 건드리지 않음). PDF marginalia는 v3.1.x에서 추가된 취약 출력 표면이므로 위 8개 시나리오를 별도 수동/자동 후보로 유지합니다.
 
 - 캡처: dev/scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}
 - diff: dev/scripts/fp_diff_summary.py [--theme dark]

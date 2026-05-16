@@ -243,14 +243,14 @@ settings:
     default: true
   -
     id: ogd-settings-pdf-marginalia
-    title: PDF 헤더/풋터 microlabel
-    description: PDF 출력에서 첫 페이지 우측 상단과 마지막 페이지 중앙 하단에 한 줄 microlabel을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
+    title: PDF 헤더/푸터 작은 라벨
+    description: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
     type: heading
     level: 2
   -
     id: ogd-pdf-marginalia-preset
-    title: 헤더/풋터 빠른 문구
-    description: 문구 입력을 비워둘 때 사용할 기본 조합입니다. 직접 입력한 문구가 있으면 입력값이 우선됩니다.
+    title: 헤더/푸터 빠른 문구
+    description: 직접 문구를 비워둘 때 쓰는 출력용 조합입니다. 직접 입력한 헤더/푸터 문구가 있으면 입력값이 우선됩니다.
     type: class-select
     default: ogd-pdf-preset-custom
     options:
@@ -258,75 +258,75 @@ settings:
         label: 직접 입력
         value: ogd-pdf-preset-custom
       -
-        label: Prepared + Confidential
+        label: 준비본 + 기밀
         value: ogd-pdf-preset-prepared-confidential
       -
-        label: Draft + Internal
+        label: 초안 + 내부용
         value: ogd-pdf-preset-draft-internal
       -
-        label: Final + End
+        label: 최종본 + 문서 끝
         value: ogd-pdf-preset-final-end
   -
     id: ogd-pdf-header-enabled
-    title: 첫 페이지 헤더 microlabel 표시
-    description: PDF 첫 페이지 우측 상단에 한 줄 microlabel로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    title: 첫 페이지 헤더 라벨 표시
+    description: PDF 첫 페이지 상단에 한 줄 라벨을 표시합니다. 끄면 문구나 프리셋이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
     id: ogd-pdf-header-text
     title: 첫 페이지 헤더 문구
-    description: 한 줄로 표시되는 문구입니다. 구분은 `-` 를 사용하세요. 예 `Author - Owen Lee - Sr. CSA`.
+    description: 한 줄 문구만 사용하세요. 긴 문구는 출력 시 말줄임 처리됩니다. 예 `Author - Owen Lee`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-footer-enabled
-    title: 마지막 페이지 풋터 microlabel 표시
-    description: PDF 마지막 콘텐츠 아래 중앙에 한 줄 microlabel로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    title: 마지막 페이지 푸터 라벨 표시
+    description: PDF 마지막 콘텐츠 아래 중앙에 한 줄 라벨을 표시합니다. 끄면 문구나 프리셋이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
     id: ogd-pdf-footer-text
-    title: 마지막 페이지 풋터 문구
-    description: 한 줄로 표시되는 문구입니다. 예 `Microsoft Confidential - End of Document`.
+    title: 마지막 페이지 푸터 문구
+    description: 한 줄 문구만 사용하세요. 긴 문구는 출력 시 말줄임 처리됩니다. 예 `Confidential - End of Document`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-marginalia-accent
-    title: 헤더/풋터 글자 색상
-    description: 두 microlabel 공통 글자 색상. 라이트 모드 기본 #279DF5, 다크 모드 기본 #38bdf8 (다크 토큰에서 자동 override).
+    title: 헤더/푸터 글자 색상
+    description: 두 라벨 공통 글자 색상입니다. 기본값은 출력물에 어울리는 graphite 톤입니다.
     type: variable-color
     format: hex
-    default: '#279DF5'
+    default: '#475569'
   -
     id: ogd-pdf-marginalia-style
-    title: 헤더/풋터 라벨 스타일
-    description: PDF 엔진에서 안정적인 범위 안에서 라벨 표면만 바꿉니다.
+    title: 헤더/푸터 라벨 스타일
+    description: PDF 엔진에서 안정적인 표면만 제공합니다. 위치나 페이지 흐름은 바꾸지 않습니다.
     type: class-select
     default: ogd-pdf-label-bordered
     options:
       -
-        label: Minimal
+        label: 텍스트만
         value: ogd-pdf-label-minimal
       -
-        label: Bordered
+        label: 은은한 테두리
         value: ogd-pdf-label-bordered
       -
-        label: Filled
+        label: 은은한 채움
         value: ogd-pdf-label-filled
   -
     id: ogd-pdf-marginalia-size
-    title: 헤더/풋터 라벨 크기
-    description: 라벨 글자와 내부 여백을 조정합니다. 레이아웃 안정성을 위해 두 단계만 제공합니다.
+    title: 헤더/푸터 라벨 크기
+    description: 글자와 내부 여백을 조정합니다. 출력 안정성을 위해 두 단계만 제공합니다.
     type: class-select
     default: ogd-pdf-label-standard
     options:
       -
-        label: Compact
+        label: 작게
         value: ogd-pdf-label-compact
       -
-        label: Standard
+        label: 표준
         value: ogd-pdf-label-standard
   -
     id: ogd-pdf-header-position

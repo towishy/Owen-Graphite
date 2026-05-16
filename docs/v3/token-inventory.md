@@ -204,9 +204,9 @@ Current token inventory extracted from `src/**/*.css`.
 | `--ogd-pdf-label-letter-spacing` | PDF header/footer marginalia | `1.2px` | `—` | 4 | 2 |
 | `--ogd-pdf-label-line-height` | PDF header/footer marginalia | `1.2` | `—` | 3 | 1 |
 | `--ogd-pdf-label-radius` | PDF header/footer marginalia | `4px` | `—` | 3 | 1 |
-| `--ogd-pdf-marginalia-accent` | PDF header/footer marginalia | `#279DF5` | `#38bdf8` | 6 | 2 |
-| `--ogd-pdf-marginalia-bg` | PDF header/footer marginalia | `rgba(39, 157, 245, 0.06)` | `rgba(56, 189, 248, 0.16)` | 7 | 5 |
-| `--ogd-pdf-marginalia-border` | PDF header/footer marginalia | `rgba(39, 157, 245, 0.22)` | `rgba(56, 189, 248, 0.38)` | 7 | 5 |
+| `--ogd-pdf-marginalia-accent` | PDF header/footer marginalia | `#475569` | `#cbd5e1` | 6 | 2 |
+| `--ogd-pdf-marginalia-bg` | PDF header/footer marginalia | `rgba(71, 85, 105, 0.045)` | `rgba(203, 213, 225, 0.12)` | 7 | 5 |
+| `--ogd-pdf-marginalia-border` | PDF header/footer marginalia | `rgba(71, 85, 105, 0.20)` | `rgba(203, 213, 225, 0.34)` | 7 | 5 |
 | `--ogd-pdf-marginalia-shadow` | PDF header/footer marginalia | `none` | `none` | 4 | 2 |
 | `--ogd-plugin-dark-card-bg` | feature-specific | `—` | `radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.12), transparent 34%), linear-gradient…` | 3 | 1 |
 | `--ogd-plugin-dark-card-hover-shadow` | feature-specific | `—` | `inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 8px 18px rgba(0, 0, 0, 0.34), 0 0 0 2px rgba(147, 19…` | 3 | 1 |
