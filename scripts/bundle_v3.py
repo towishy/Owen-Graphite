@@ -67,7 +67,7 @@ def resolve_imports(file_path: Path, visited: set[Path]) -> str:
     return "\n".join(out_lines)
 
 
-def bundle(entry: Path, dist: Path) -> int:
+def bundle(entry: Path, dist: Path, dedup: bool = True) -> int:
     if not entry.is_file():
         print(f"ERROR: entry not found: {entry}")
         return 1
@@ -83,10 +83,25 @@ def bundle(entry: Path, dist: Path) -> int:
         " * branch keeps theme.css on v2.30.14 until S11 swap is approved.\n"
         " */\n\n"
     )
+    merges = 0
+    if dedup:
+        # Import lazily so bundle_v3.py remains importable even if dedup_v3
+        # is removed/relocated.
+        import importlib.util
+        dedup_path = ROOT / "scripts" / "dedup_v3.py"
+        spec = importlib.util.spec_from_file_location("dedup_v3", dedup_path)
+        if spec is None or spec.loader is None:
+            raise RuntimeError("unable to load scripts/dedup_v3.py")
+        dedup_mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(dedup_mod)
+        bundled, merges = dedup_mod.dedup_scope(bundled)
     dist.write_text(header + bundled + "\n", encoding="utf-8")
     line_count = bundled.count("\n") + 1
     bang_count = bundled.count("!important")
-    print(f"OK: bundled {dist.relative_to(ROOT)} ({line_count} lines, !important={bang_count})")
+    print(
+        f"OK: bundled {dist.relative_to(ROOT)} "
+        f"({line_count} lines, !important={bang_count}, dedup_merges={merges})"
+    )
     return 0
 
 
@@ -94,8 +109,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--entry", type=Path, default=ENTRY)
     parser.add_argument("--out", type=Path, default=DIST)
+    parser.add_argument("--no-dedup", action="store_true",
+                        help="Skip the post-bundle same-context selector dedup pass.")
     args = parser.parse_args()
-    return bundle(args.entry, args.out)
+    return bundle(args.entry, args.out, dedup=not args.no_dedup)
 
 
 if __name__ == "__main__":

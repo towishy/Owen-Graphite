@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.6] — 2026-05-16 — Build: same-context duplicate-selector dedup pass
+
+### Changed
+
+- **빌드 단계에 selector 중복 병합 패스 추가** — 새 스크립트 `scripts/dedup_v3.py`가 같은 `@-rule` 컨텍스트(top-level 또는 같은 `@media`/`@supports`/`@container`) 안에서 정규화된 selector 문자열이 일치하는 블록만 마지막 위치로 모아 병합합니다. `:is()`·`:not()` 파싱 시도는 일절 하지 않으며 specificity·소스 순서 cascade가 그대로 보존됩니다.
+- 적용 결과: `theme.css` 16,448 → **16,367 라인** (-81), 113개의 정확히 동일한 selector 블록 병합, `!important` 4건(전부 주석 내) 변동 없음. 스캐너의 “duplicate selector” 워닝이 의미 없는 잡음 수준으로 감소합니다.
+
+### Notes
+
+- 다른 `@-rule` 스코프 사이의 같은 selector(예: 일반 vs `@media print`)는 **병합하지 않습니다** — cascade 의미가 달라지기 때문입니다.
+- 디자인·런타임 동작은 100% 동일합니다.
+
 ## [3.0.5] — 2026-05-16 — Scanner warnings: column-gap → gap
 
 ### Changed
