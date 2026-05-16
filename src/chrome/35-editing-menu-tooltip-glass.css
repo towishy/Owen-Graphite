@@ -1,0 +1,799 @@
+/* ============================================================
+   v1.8.32 — Editing toolbar glass surface + glass icons
+   Apply liquid-glass effect to Editing Toolbar plugin bar and icons.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --ogd-09b-control-bg: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,245,249,0.22)));
+    --ogd-09b-control-border: rgba(148,163,184,0.18);
+    --ogd-09b-control-shadow: inset 0 1px 0 rgba(255,255,255,0.75), inset 0 -1px 0 rgba(148,163,184,0.12);
+    --ogd-09b-control-hover-bg: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(255,255,255,0.62), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148,163,184,0.10), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.52)));
+    --ogd-09b-control-hover-shadow: inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(15,23,42,0.07), 0 8px 18px rgba(15,23,42,0.13);
+    --ogd-09b-toolbar-bg: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)));
+    --ogd-09b-toolbar-border: rgba(148,163,184,0.22);
+    --ogd-09b-toolbar-shadow: inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(148,163,184,0.16), 0 6px 18px rgba(15,23,42,0.06);
+    --ogd-09b-floating-bg: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.55)));
+    --ogd-09b-floating-border: rgba(148,163,184,0.22);
+    --ogd-09b-floating-shadow: inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(148,163,184,0.16), 0 14px 30px rgba(15,23,42,0.10), 0 4px 10px rgba(15,23,42,0.06);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-09b-control-bg: var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.55), rgba(30,41,59,0.30)));
+    --ogd-09b-control-border: rgba(148,163,184,0.22);
+    --ogd-09b-control-shadow: inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.30);
+    --ogd-09b-control-hover-bg: var(--ogd-glass-control-hover-bg, radial-gradient(circle at 76% 32%, rgba(148,163,184,0.14), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203,213,225,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.68), rgba(15,23,42,0.40)));
+    --ogd-09b-control-hover-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(203,213,225,0.08), 0 8px 20px rgba(0,0,0,0.34);
+    --ogd-09b-toolbar-bg: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55)));
+    --ogd-09b-toolbar-border: rgba(203,213,225,0.18);
+    --ogd-09b-toolbar-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.35), 0 6px 18px rgba(0,0,0,0.35);
+    --ogd-09b-floating-bg: var(--ogd-glass-toolbar-bg, linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.55)));
+    --ogd-09b-floating-border: rgba(203,213,225,0.18);
+    --ogd-09b-floating-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.35), 0 14px 30px rgba(0,0,0,0.45), 0 4px 10px rgba(0,0,0,0.30);
+  }
+
+  body:not(.is-mobile) :is(.cm-editor, .markdown-source-view, .markdown-preview-view) .editing-toolbar,
+  body:not(.is-mobile) #editingToolbarModalBar,
+  body:not(.is-mobile) .editing-toolbar {
+    background: var(--ogd-09b-toolbar-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    border-bottom: 1px solid var(--ogd-09b-toolbar-border) !important;
+    box-shadow: var(--ogd-09b-toolbar-shadow) !important;
+    border-radius: 10px !important;
+    margin: 6px 10px !important;
+  }
+
+  body:not(.is-mobile) :is(.cm-editor, .markdown-source-view, .markdown-preview-view) .editing-toolbar,
+  body:not(.is-mobile) .editing-toolbar {
+    padding-left: 72px !important;
+  }
+
+  /* Glass icon buttons inside the toolbar */
+  body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon),
+  body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton),
+  body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button {
+    background: var(--ogd-09b-control-bg) !important;
+    border: 1px solid var(--ogd-09b-control-border) !important;
+    box-shadow: var(--ogd-09b-control-shadow) !important;
+    border-radius: var(--radius-l, 8px) !important;
+    transition: background 160ms ease, box-shadow 160ms ease !important;
+  }
+  body:not(.is-mobile) .editing-toolbar :is(.editing-toolbar-button, button, .clickable-icon):hover,
+  body:not(.is-mobile) #editingToolbarModalBar :is(.clickable-icon, button, .editingToolbarButton):hover,
+  body:not(.is-mobile) .editing-toolbar [class*="editing-toolbar"] button:hover {
+    background: var(--ogd-09b-control-hover-bg) !important;
+    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.33 — Editing toolbar submenu glass
+   Apply glass to popover submenu (paste/cut/copy etc.) under toolbar.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.editing-toolbar-modal-bg, .editing-toolbar-modal, .editing-toolbar-popover),
+  body:not(.is-mobile) [class*="cMenu"][class*="SubmenuBar"],
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Submenu"],
+  body:not(.is-mobile) [class*="cMenuToolbar"][class*="Popup"],
+  body:not(.is-mobile) [class*="editing-toolbar"][class*="submenu"],
+  body:not(.is-mobile) [class*="editing-toolbar"][class*="Submenu"] {
+    background: var(--ogd-09b-floating-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(18px) saturate(160%)) !important;
+    border: 1px solid var(--ogd-09b-floating-border) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--ogd-09b-floating-shadow) !important;
+    padding: 6px !important;
+  }
+
+  /* Buttons inside submenu inherit the same glass icon style */
+  body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon) {
+    background: var(--ogd-09b-control-bg) !important;
+    border: 1px solid var(--ogd-09b-control-border) !important;
+    box-shadow: var(--ogd-09b-control-shadow) !important;
+    border-radius: var(--radius-l, 8px) !important;
+    transition: background 160ms ease, box-shadow 160ms ease !important;
+  }
+  body:not(.is-mobile) :is(.editing-toolbar-modal, .editing-toolbar-popover, [class*="cMenuToolbar"][class*="Submenu"]) :is(button, .clickable-icon):hover {
+    background: var(--ogd-09b-control-hover-bg) !important;
+    box-shadow: var(--ogd-09b-control-hover-shadow) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.34 — Context menu glass surface
+   Apply liquid-glass effect to right-click / dropdown menus.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .menu {
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    border: 1px solid rgba(148,163,184,0.22) !important;
+    border-radius: 10px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -1px 0 rgba(148,163,184,0.14),
+      0 12px 28px rgba(15,23,42,0.12),
+      0 4px 10px rgba(15,23,42,0.06) !important;
+    padding: 6px !important;
+  }
+  body:not(.is-mobile) .menu .menu-item {
+    box-sizing: border-box !important;
+    border: 1px solid transparent !important;
+    border-radius: var(--radius-l, 8px) !important;
+    transition: background 140ms ease, border-color 140ms ease, box-shadow 140ms ease, color 140ms ease !important;
+  }
+  body:not(.is-mobile) .menu .menu-item:hover,
+  body:not(.is-mobile) .menu .menu-item.selected,
+  body:not(.is-mobile) .menu .menu-item:focus {
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.55)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%)) !important;
+    border-color: rgba(100,116,139,0.34) !important;
+    color: #0f172a !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.94),
+      inset 0 -1px 0 rgba(15,23,42,0.06),
+      0 6px 16px rgba(15,23,42,0.12) !important;
+  }
+  body:not(.is-mobile) .menu .menu-separator {
+    background: rgba(148,163,184,0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .menu {
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58))) !important;
+    border-color: rgba(203,213,225,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.35),
+      0 12px 28px rgba(0,0,0,0.45),
+      0 4px 10px rgba(0,0,0,0.30) !important;
+  }
+  body:not(.is-mobile).theme-dark .menu .menu-item:hover,
+  body:not(.is-mobile).theme-dark .menu .menu-item.selected,
+  body:not(.is-mobile).theme-dark .menu .menu-item:focus {
+    background: linear-gradient(180deg, rgba(30,41,59,0.75), rgba(15,23,42,0.45)) !important;
+    border-color: rgba(203,213,225,0.20) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.10),
+      inset 0 -1px 0 rgba(0,0,0,0.24),
+      0 6px 16px rgba(0,0,0,0.32) !important;
+  }
+  body:not(.is-mobile).theme-dark .menu .menu-separator {
+    background: rgba(203,213,225,0.18) !important;
+  }
+}
+
+
+
+/* ============================================================
+   v1.8.35 — Tooltip glass surface
+   Apply liquid-glass effect to Obsidian tooltips (.tooltip).
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .tooltip,
+  body:not(.is-mobile) .tooltip:is(.mod-top, .mod-bottom, .mod-left, .mod-right) {
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(16px) saturate(160%)) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(148,163,184,0.22) !important;
+    border-radius: var(--radius-l, 8px) !important;
+    padding: 4px 10px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -1px 0 rgba(148,163,184,0.14),
+      0 12px 28px rgba(15,23,42,0.12),
+      0 4px 10px rgba(15,23,42,0.06) !important;
+  }
+  body:not(.is-mobile) .tooltip .tooltip-arrow {
+    border-top-color: rgba(255,255,255,0.92) !important;
+    border-bottom-color: rgba(255,255,255,0.92) !important;
+    filter: drop-shadow(0 1px 2px rgba(15,23,42,0.10)) !important;
+  }
+
+  body:not(.is-mobile) .tooltip.mod-right {
+    margin-left: -6px !important;
+  }
+
+  body:not(.is-mobile) .tooltip.mod-left {
+    margin-left: 6px !important;
+  }
+
+  body:not(.is-mobile) .tooltip.mod-bottom {
+    margin-top: -4px !important;
+  }
+
+  body:not(.is-mobile) .tooltip.mod-top {
+    margin-top: 4px !important;
+  }
+
+  body:not(.is-mobile).theme-dark .tooltip,
+  body:not(.is-mobile).theme-dark .tooltip:is(.mod-top, .mod-bottom, .mod-left, .mod-right) {
+    background: var(--ogd-glass-surface-bg, linear-gradient(180deg, rgba(30,41,59,0.82), rgba(15,23,42,0.58))) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+    border-color: rgba(203,213,225,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(0,0,0,0.35),
+      0 12px 28px rgba(0,0,0,0.45),
+      0 4px 10px rgba(0,0,0,0.30) !important;
+  }
+  body:not(.is-mobile).theme-dark .tooltip .tooltip-arrow {
+    border-top-color: rgba(30,41,59,0.82) !important;
+    border-bottom-color: rgba(30,41,59,0.82) !important;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.36 — Breadcrumb centerline glow
+   Keep breadcrumbs minimal, with active underline and hover glass icons.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .mod-root .view-header-title-container {
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 9px !important;
+    min-width: 0 !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title) {
+    display: inline-flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    min-height: 30px !important;
+    padding: 3px 4px !important;
+    border: var(--ogd-border-none, 0) !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    color: var(--ogd-text-subtle, #475569) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    font-size: 14.8px !important;
+    font-weight: 560 !important;
+    line-height: 1.22 !important;
+    max-width: min(34vw, 260px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    position: relative !important;
+    transition: color 160ms ease, text-shadow 160ms ease, transform 160ms ease !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title)::before {
+    content: "" !important;
+    display: inline-block !important;
+    flex: 0 0 0 !important;
+    width: 0 !important;
+    height: 18px !important;
+    margin-right: 0 !important;
+    border: 1px solid rgba(148, 163, 184, 0.22) !important;
+    border-radius: 6px !important;
+    background-color: rgba(255, 255, 255, 0.72) !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6.5h6.2l1.9 2h8.9v9.8a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z'/%3E%3Cpath d='M3.5 8.5h17'/%3E%3C/svg%3E"),
+      var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(255,255,255,0.76), rgba(241,245,249,0.34))) !important;
+    background-position: center, center !important;
+    background-repeat: no-repeat, no-repeat !important;
+    background-size: 12px 12px, 100% 100% !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(135%)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.86),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.10),
+      0 4px 12px rgba(15, 23, 42, 0.08) !important;
+    opacity: 0 !important;
+    transform: scale(0.92) !important;
+    transition: flex-basis 160ms ease, width 160ms ease, margin-right 160ms ease, opacity 160ms ease, transform 160ms ease !important;
+  }
+
+  body:not(.is-mobile) .view-header-title {
+    color: var(--ogd-text-strong, #111827) !important;
+    font-size: 15.6px !important;
+    font-weight: 780 !important;
+  }
+
+  body:not(.is-mobile) .view-header-title::before {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23111827' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7.4l3.6 3.8v13.2h-11Z'/%3E%3Cpath d='M13.7 3.7v4h3.8'/%3E%3C/svg%3E"),
+      var(--ogd-glass-bg-strong, linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.48))) !important;
+  }
+
+  body:not(.is-mobile) .view-header-title::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 4px !important;
+    right: 4px !important;
+    bottom: 0 !important;
+    height: 3px !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: linear-gradient(90deg, rgba(100, 116, 139, 0.08), rgba(148, 163, 184, 0.30), rgba(100, 116, 139, 0.08)) !important;
+    box-shadow: 0 0 8px rgba(100, 116, 139, 0.10) !important;
+    pointer-events: none !important;
+    transition: box-shadow 160ms ease, opacity 160ms ease !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
+    color: var(--ogd-text-strong, #111827) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.60), 0 0 12px rgba(100, 116, 139, 0.12) !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible)::before {
+    flex-basis: 18px !important;
+    width: 18px !important;
+    margin-right: 7px !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+
+  body:not(.is-mobile) .view-header-title:is(:hover, :focus, :focus-visible)::after {
+    box-shadow: 0 0 12px rgba(100, 116, 139, 0.16) !important;
+  }
+
+  body:not(.is-mobile) :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
+    color: rgba(100, 116, 139, 0.54) !important;
+    font-size: 18px !important;
+    font-weight: 340 !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb, .view-header-title) {
+    color: var(--ogd-line-strong, #cbd5e1) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb, .view-header-title)::before {
+    border-color: rgba(203, 213, 225, 0.18) !important;
+    background-color: rgba(30, 41, 59, 0.58) !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6.5h6.2l1.9 2h8.9v9.8a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z'/%3E%3Cpath d='M3.5 8.5h17'/%3E%3C/svg%3E"),
+      var(--ogd-glass-control-bg, linear-gradient(180deg, rgba(51,65,85,0.56), rgba(30,41,59,0.30))) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.24),
+      0 4px 12px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .view-header-title {
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .view-header-title::before {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f8fafc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7.4l3.6 3.8v13.2h-11Z'/%3E%3Cpath d='M13.7 3.7v4h3.8'/%3E%3C/svg%3E"),
+      var(--ogd-glass-bg-strong, linear-gradient(180deg, rgba(51,65,85,0.78), rgba(15,23,42,0.48))) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+    text-shadow: 0 0 12px rgba(147, 197, 253, 0.12) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
+    color: rgba(203, 213, 225, 0.48) !important;
+  }
+}
+
+
+/* ============================================================
+   v1.8.37 — macOS sidebar toggle reset
+   On macOS, the left/right sidebar toggle buttons live inside the
+   title bar (not the ribbon). The v1.8.21–22 glass treatment turns
+   them into heavy 36×36 framed buttons that float awkwardly in the
+   chrome. Restore Obsidian's native subtle styling on macOS only,
+   while keeping the ribbon icons glassy.
+
+   v1.8.38 — macOS sidebar toggle hover glass
+   On hover, lift the toggle with the same liquid-glass surface used
+   across other chrome (light slate gradient + subtle blur + sky tint),
+   so it visually matches ribbon icons / nav hover / resize handle.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right) {
+    --ogd-macos-toggle-border: var(--ogd-border-none, 0);
+    --ogd-macos-toggle-bg: var(--ogd-surface-transparent, transparent);
+    --ogd-macos-toggle-shadow: var(--ogd-shadow-none, none);
+    --ogd-macos-toggle-color: var(--icon-color, var(--text-muted));
+    padding: 4px !important;
+    border: var(--ogd-macos-toggle-border) !important;
+    border-radius: var(--clickable-icon-radius, 6px) !important;
+    background: var(--ogd-macos-toggle-bg) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: var(--ogd-macos-toggle-shadow) !important;
+    color: var(--ogd-macos-toggle-color) !important;
+    transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease !important;
+  }
+
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right)::after {
+    content: none !important;
+  }
+
+  /* Liquid-glass hover (light) */
+  body.mod-macos:not(.is-mobile) :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    --ogd-macos-toggle-border: 1px solid rgba(100, 116, 139, 0.34);
+    --ogd-macos-toggle-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55));
+    --ogd-macos-toggle-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.07),
+      0 6px 16px rgba(15, 23, 42, 0.14);
+    --ogd-macos-toggle-color: var(--ogd-text-strong, #111827);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+  }
+
+  /* Liquid-glass hover (dark) */
+  body.mod-macos:not(.is-mobile).theme-dark :is(.sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right):hover {
+    --ogd-macos-toggle-border: 1px solid rgba(203, 213, 225, 0.22);
+    --ogd-macos-toggle-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55));
+    --ogd-macos-toggle-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+      0 6px 16px rgba(0, 0, 0, 0.36);
+    --ogd-macos-toggle-color: var(--ogd-text-inverted, #f8fafc);
+  }
+}
+
+/* ============================================================
+   v1.8.39 — Settings modal hover liquid-glass
+   Apply the same glass+shadow lift used across ribbon/nav/toggle
+   to Settings modal items: left nav (.vertical-tab-nav-item) and
+   right pane rows (.setting-item).
+   Desktop only (>=701px, non-mobile).
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item,
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item {
+    border-radius: var(--radius-l, 8px) !important;
+    transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease !important;
+  }
+
+  /* Left nav hover (light) */
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55)) !important;
+    border: 1px solid rgba(100, 116, 139, 0.34) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.07),
+      0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  /* Active stays distinct through neutral glass, rim, and lift. */
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active,
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
+    background: radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.72), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.58)) !important;
+    border: 1px solid rgba(100, 116, 139, 0.34) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 8px 18px rgba(15, 23, 42, 0.13), 0 0 0 2px rgba(148, 163, 184, 0.08) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+  }
+
+  /* Left nav hover (dark) */
+  body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item:hover {
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.22) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+      0 1px 3px rgba(0, 0, 0, 0.14) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active,
+  body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
+    background: radial-gradient(circle at 76% 26%, rgba(148, 163, 184, 0.16), transparent 36%), radial-gradient(circle at 14% 64%, rgba(203, 213, 225, 0.06), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.52)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(203, 213, 225, 0.08), 0 8px 22px rgba(0, 0, 0, 0.36), 0 0 0 2px rgba(203, 213, 225, 0.06) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+  }
+
+  /* Right pane setting-item hover (light) */
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(248, 250, 252, 0.45)) !important;
+    border: 1px solid rgba(100, 116, 139, 0.22) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%)) !important;
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.06),
+      0 1px 2px rgba(15, 23, 42, 0.04) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  /* Right pane setting-item hover (dark) */
+  body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-content .setting-item:hover {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.42)) !important;
+    border: 1px solid rgba(203, 213, 225, 0.16) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.24),
+      0 1px 2px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+/* ============================================================
+   v1.8.40 — Search options liquid-glass hover
+   Apply the same translucent glass + drop shadow treatment to
+   search option suggestion popovers and their hover/click states.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
+    background: var(--ogd-glass-surface-bg, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.64), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.50))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07)) !important;
+    backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07)) !important;
+    border: 1px solid var(--ogd-glass-border, rgba(148, 163, 184, 0.30)) !important;
+    border-radius: 12px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.96),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.16),
+      inset 0 0 18px rgba(255, 255, 255, 0.26),
+      0 20px 40px rgba(15, 23, 42, 0.16),
+      0 6px 14px rgba(15, 23, 42, 0.09) !important;
+    padding: 6px !important;
+  }
+
+  body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item) {
+    border: 1px solid transparent !important;
+    border-radius: var(--radius-l, 8px) !important;
+    margin: 2px 4px !important;
+    transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease !important;
+  }
+
+  body:not(.is-mobile) :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.56))) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05)) !important;
+    border-color: var(--ogd-glass-border-hover, rgba(125, 211, 252, 0.60)) !important;
+    color: #0f172a !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(14, 165, 233, 0.10),
+      inset 0 0 16px rgba(255, 255, 255, 0.28),
+      0 10px 22px rgba(15, 23, 42, 0.14),
+      0 3px 10px rgba(56, 189, 248, 0.10) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) {
+    background: var(--ogd-glass-surface-bg, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.16), transparent 35%), linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.58))) !important;
+    border-color: var(--ogd-glass-border, rgba(203, 213, 225, 0.22)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.13),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+      inset 0 0 18px rgba(148, 163, 184, 0.08),
+      0 18px 38px rgba(0, 0, 0, 0.48),
+      0 4px 12px rgba(0, 0, 0, 0.30) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.suggestion-container, .search-suggest-container, .search-suggestion-container) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.19), transparent 35%), linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45))) !important;
+    border-color: var(--ogd-glass-border-hover, rgba(186, 230, 253, 0.30)) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.24),
+      inset 0 0 14px rgba(148, 163, 184, 0.10),
+      0 10px 24px rgba(0, 0, 0, 0.36),
+      0 3px 10px rgba(56, 189, 248, 0.06) !important;
+  }
+}
+
+/* ============================================================
+   v1.8.41 - Workspace frame cleanup
+   Remove persistent vertical frame lines from Obsidian split panes,
+   active tab outlines, and resize handle layers.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --divider-color: var(--ogd-surface-transparent, transparent) !important;
+    --divider-color-hover: var(--ogd-surface-transparent, transparent) !important;
+    --divider-width: 0px !important;
+    --divider-width-hover: 0px !important;
+    --divider-vertical-height: 100% !important;
+    --tab-outline-color: var(--ogd-surface-transparent, transparent) !important;
+    --tab-outline-width: 0px !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace,
+    .workspace-split,
+    .workspace-split.mod-left-split,
+    .workspace-split.mod-right-split,
+    .workspace-split.mod-root,
+    .workspace-tabs,
+    .workspace-tabs.mod-active,
+    .workspace-leaf,
+    .workspace-leaf.mod-active,
+    .workspace-leaf-content,
+    .workspace-tab-container,
+    .workspace-ribbon,
+    .side-dock-ribbon,
+    .view-content
+  ) {
+    border: var(--ogd-border-none, 0) !important;
+    border-left-color: var(--ogd-surface-transparent, transparent) !important;
+    border-right-color: var(--ogd-surface-transparent, transparent) !important;
+    outline: 0 !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle) {
+    display: block !important;
+    width: 6px !important;
+    min-width: 6px !important;
+    flex-basis: 6px !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    border: var(--ogd-border-none, 0) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    outline: none !important;
+    opacity: 0 !important;
+    transition: opacity 160ms ease, background 160ms ease !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle):is(:hover, :focus, :active) {
+    opacity: 1 !important;
+    background: rgba(100, 116, 139, 0.22) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle):is(:hover, :focus, :active) {
+    opacity: 1 !important;
+    background: rgba(203, 213, 225, 0.22) !important;
+  }
+}
+
+/* Left side pane: quiet frosted sheet with a soft editor boundary. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) .workspace-split.mod-left-split {
+    --background-secondary: rgba(241, 245, 249, 0.86);
+    --background-primary: rgba(248, 250, 252, 0.50);
+    background: radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.62), transparent 38%), linear-gradient(180deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.52)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(155%) brightness(1.04)) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(14px) saturate(155%) brightness(1.04)) !important;
+    box-shadow: inset -1px 0 0 rgba(148, 163, 184, 0.08) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split :is(.workspace-tabs, .workspace-leaf, .workspace-leaf-content, .workspace-tab-container, .view-content),
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] :is(.view-content, .nav-files-container) {
+    background-color: transparent !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .view-content,
+  body:not(.is-mobile) .nav-files-container {
+    background: radial-gradient(circle at 22% 10%, rgba(255, 255, 255, 0.44), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.30), rgba(248, 250, 252, 0.12)) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header-container {
+    background: linear-gradient(180deg, rgba(241, 245, 249, 0.90), rgba(226, 232, 240, 0.52)) !important;
+    border-bottom: 1px solid rgba(203, 213, 225, 0.42) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78) !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split .workspace-leaf-resize-handle,
+  body:not(.is-mobile) .workspace-split.mod-left-split > .workspace-leaf-resize-handle {
+    width: 7px !important;
+    min-width: 7px !important;
+    flex-basis: 7px !important;
+    opacity: 0 !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle):is(:hover, :focus, :active) {
+    opacity: 0 !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-left-split {
+    --background-secondary: rgba(15, 23, 42, 0.62);
+    --background-primary: rgba(15, 23, 42, 0.36);
+    background: radial-gradient(circle at 18% 8%, rgba(148, 163, 184, 0.12), transparent 42%), linear-gradient(180deg, rgba(30, 41, 59, 0.64), rgba(15, 23, 42, 0.46)) !important;
+    box-shadow: inset -1px 0 0 rgba(203, 213, 225, 0.07) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header-container {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.34)) !important;
+    border-bottom-color: rgba(203, 213, 225, 0.13) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .view-content,
+  body:not(.is-mobile).theme-dark .nav-files-container {
+    background: radial-gradient(circle at 22% 10%, rgba(148, 163, 184, 0.08), transparent 40%), linear-gradient(180deg, rgba(30, 41, 59, 0.20), rgba(15, 23, 42, 0.10)) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-leaf-resize-handle,
+  body:not(.is-mobile).theme-dark .workspace-split.mod-left-split > .workspace-leaf-resize-handle {
+    opacity: 0 !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-left-split :is(.workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle):is(:hover, :focus, :active) {
+    opacity: 0 !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: none !important;
+  }
+}
+
+/* File explorer scrollbar cleanup: hide the sidebar thumb line. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) {
+    --scrollbar-bg: var(--ogd-surface-transparent, transparent) !important;
+    --scrollbar-thumb-bg: var(--ogd-surface-transparent, transparent) !important;
+    --scrollbar-active-thumb-bg: var(--ogd-surface-transparent, transparent) !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-split.mod-left-split,
+    .workspace-split.mod-right-split,
+    .workspace-leaf-content[data-type="file-explorer"],
+    .workspace-leaf-content[data-type="file-explorer"] .view-content,
+    .nav-files-container
+  ) {
+    -ms-overflow-style: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-split.mod-left-split,
+    .workspace-split.mod-right-split,
+    .workspace-leaf-content[data-type="file-explorer"],
+    .workspace-leaf-content[data-type="file-explorer"] .view-content,
+    .nav-files-container
+  )::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-split.mod-left-split,
+    .workspace-split.mod-right-split,
+    .workspace-leaf-content[data-type="file-explorer"],
+    .workspace-leaf-content[data-type="file-explorer"] .view-content,
+    .nav-files-container
+  )::-webkit-scrollbar-thumb,
+  body:not(.is-mobile) :is(
+    .workspace-split.mod-left-split,
+    .workspace-split.mod-right-split,
+    .workspace-leaf-content[data-type="file-explorer"],
+    .workspace-leaf-content[data-type="file-explorer"] .view-content,
+    .nav-files-container
+  )::-webkit-scrollbar-track {
+    background: var(--ogd-surface-transparent, transparent) !important;
+    border: var(--ogd-border-none, 0) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+  }
+
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-thumb,
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-track,
+  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-corner {
+    background: var(--ogd-surface-transparent, transparent) !important;
+    border: var(--ogd-border-none, 0) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+  }
+}
+

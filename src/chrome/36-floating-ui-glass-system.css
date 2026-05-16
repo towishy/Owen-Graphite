@@ -1,0 +1,630 @@
+/* ============================================================
+   v1.8.42 - Floating UI glass expansion
+   Extend the liquid-glass language to remaining floating controls:
+   command palette, hover previews, Properties, Canvas controls,
+   status bar hover segments, notices, and general modal surfaces.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --ogd-glass-filter: blur(24px) saturate(185%) brightness(1.07);
+    --ogd-glass-filter-soft: blur(16px) saturate(165%) brightness(1.05);
+    --ogd-glass-filter-control: blur(12px) saturate(152%) brightness(1.04);
+    --ogd-glass-transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+    --ogd-glass-transition-control: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    --ogd-glass-bg: radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.68), transparent 36%), radial-gradient(circle at 14% 62%, rgba(186, 230, 253, 0.16), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.46));
+    --ogd-glass-bg-strong: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.76), transparent 36%), radial-gradient(circle at 12% 62%, rgba(186, 230, 253, 0.18), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.58));
+    --ogd-glass-bg-hover: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), radial-gradient(circle at 12% 60%, rgba(186, 230, 253, 0.18), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.56));
+    --ogd-glass-surface-bg: radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.64), transparent 35%), radial-gradient(circle at 12% 64%, rgba(186, 230, 253, 0.13), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.86), rgba(241,245,249,0.46));
+    --ogd-glass-toolbar-bg: radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.68), transparent 35%), linear-gradient(180deg, rgba(255,255,255,0.90), rgba(241,245,249,0.50));
+    --ogd-glass-control-bg: radial-gradient(circle at 74% 26%, rgba(255,255,255,0.58), transparent 35%), linear-gradient(180deg, rgba(255,255,255,0.64), rgba(241,245,249,0.24));
+    --ogd-glass-control-hover-bg: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), radial-gradient(circle at 12% 58%, rgba(186, 230, 253, 0.16), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.56));
+    --ogd-glass-border: rgba(148, 163, 184, 0.30);
+    --ogd-glass-border-hover: rgba(125, 211, 252, 0.60);
+    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(148, 163, 184, 0.18), inset 0 0 22px rgba(255, 255, 255, 0.34), 0 22px 42px rgba(15, 23, 42, 0.18), 0 6px 14px rgba(15, 23, 42, 0.10);
+    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 165, 233, 0.10), inset 0 0 20px rgba(255, 255, 255, 0.36), 0 14px 28px rgba(15, 23, 42, 0.16), 0 4px 12px rgba(56, 189, 248, 0.10);
+    --ogd-glass-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(148, 163, 184, 0.13), inset 0 0 12px rgba(255, 255, 255, 0.28), 0 4px 10px rgba(15, 23, 42, 0.10);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-glass-bg: radial-gradient(circle at 76% 26%, rgba(148, 163, 184, 0.16), transparent 36%), radial-gradient(circle at 12% 62%, rgba(56, 189, 248, 0.06), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.80), rgba(15, 23, 42, 0.54));
+    --ogd-glass-bg-strong: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.18), transparent 36%), radial-gradient(circle at 12% 62%, rgba(56, 189, 248, 0.08), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.64));
+    --ogd-glass-bg-hover: radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.19), transparent 35%), radial-gradient(circle at 12% 58%, rgba(56, 189, 248, 0.08), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.44));
+    --ogd-glass-surface-bg: radial-gradient(circle at 76% 26%, rgba(148, 163, 184, 0.15), transparent 35%), radial-gradient(circle at 12% 64%, rgba(56, 189, 248, 0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.80), rgba(15,23,42,0.54));
+    --ogd-glass-toolbar-bg: radial-gradient(circle at 78% 24%, rgba(148, 163, 184, 0.16), transparent 35%), linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.52));
+    --ogd-glass-control-bg: radial-gradient(circle at 74% 26%, rgba(148,163,184,0.18), transparent 35%), linear-gradient(180deg, rgba(51,65,85,0.54), rgba(30,41,59,0.28));
+    --ogd-glass-control-hover-bg: radial-gradient(circle at 76% 24%, rgba(148,163,184,0.20), transparent 35%), radial-gradient(circle at 12% 58%, rgba(56,189,248,0.06), transparent 34%), linear-gradient(180deg, rgba(30,41,59,0.70), rgba(15,23,42,0.42));
+    --ogd-glass-border: rgba(203, 213, 225, 0.22);
+    --ogd-glass-border-hover: rgba(186, 230, 253, 0.30);
+    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.38), inset 0 0 22px rgba(148, 163, 184, 0.10), 0 22px 42px rgba(0, 0, 0, 0.52), 0 6px 14px rgba(0, 0, 0, 0.32);
+    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.26), inset 0 0 20px rgba(148, 163, 184, 0.12), 0 14px 30px rgba(0, 0, 0, 0.38), 0 4px 12px rgba(56, 189, 248, 0.08);
+    --ogd-glass-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.30), inset 0 0 12px rgba(148, 163, 184, 0.10), 0 4px 10px rgba(0, 0, 0, 0.28);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    body:not(.is-mobile) {
+      --ogd-glass-bg: var(--background-primary) !important;
+      --ogd-glass-bg-strong: var(--background-primary) !important;
+      --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-surface-bg: var(--background-primary) !important;
+      --ogd-glass-toolbar-bg: var(--background-primary) !important;
+      --ogd-glass-control-bg: var(--background-primary-alt) !important;
+      --ogd-glass-control-hover-bg: var(--background-modifier-hover) !important;
+      --ogd-glass-filter: none !important;
+      --ogd-glass-filter-soft: none !important;
+      --ogd-glass-filter-control: none !important;
+      --ogd-glass-shadow: 0 8px 22px rgba(15, 23, 42, 0.12) !important;
+      --ogd-glass-shadow-hover: 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+      --ogd-glass-control-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    body:not(.is-mobile).theme-dark {
+      --ogd-glass-bg: var(--background-primary) !important;
+      --ogd-glass-bg-strong: var(--background-primary) !important;
+      --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+      --ogd-glass-surface-bg: var(--background-primary) !important;
+      --ogd-glass-toolbar-bg: var(--background-primary) !important;
+      --ogd-glass-control-bg: var(--background-primary-alt) !important;
+      --ogd-glass-control-hover-bg: var(--background-modifier-hover) !important;
+      --ogd-glass-shadow: 0 10px 28px rgba(0, 0, 0, 0.38) !important;
+      --ogd-glass-shadow-hover: 0 5px 14px rgba(0, 0, 0, 0.30) !important;
+      --ogd-glass-control-shadow: 0 1px 4px rgba(0, 0, 0, 0.26) !important;
+    }
+  }
+
+  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice) {
+    background: var(--ogd-glass-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
+    backdrop-filter: var(--ogd-glass-filter) !important;
+    border: 1px solid var(--ogd-glass-border) !important;
+    box-shadow: var(--ogd-glass-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-input, .modal input[type="text"], .modal input[type="search"], .modal textarea) {
+    background: var(--ogd-glass-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.prompt-input, .modal input[type="text"], .modal input[type="search"], .modal textarea) {
+    background: var(--ogd-glass-control-bg) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item) {
+    border: 1px solid transparent !important;
+    border-radius: var(--radius-l, 8px) !important;
+    transition: var(--ogd-glass-transition) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item):is(:hover, :focus, :active, .is-selected, .selected, [aria-selected="true"]) {
+    background: var(--ogd-glass-bg-hover) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    border-color: var(--ogd-glass-border-hover) !important;
+    box-shadow: var(--ogd-glass-shadow-hover) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  body:not(.is-mobile) :is(.metadata-container, .metadata-properties-heading) {
+    background: var(--ogd-glass-bg-strong) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.metadata-container, .metadata-properties-heading) {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile) .metadata-container .metadata-property:is(:hover, :focus-within) {
+    background: rgba(255, 255, 255, 0.58) !important;
+    border-radius: var(--radius-m, 6px) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .metadata-container .metadata-property:is(:hover, :focus-within) {
+    background: rgba(30, 41, 59, 0.48) !important;
+  }
+
+  body:not(.is-mobile) :is(.canvas-controls, .canvas-card-menu) {
+    background: var(--ogd-glass-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
+    backdrop-filter: var(--ogd-glass-filter) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: var(--ogd-glass-shadow) !important;
+  }
+
+  body:not(.is-mobile) :is(.canvas-control-item, .canvas-card-menu .clickable-icon):hover {
+    background: var(--ogd-glass-bg-hover) !important;
+    box-shadow: var(--ogd-glass-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile) .status-bar .status-bar-item-segment {
+    border: 1px solid transparent !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    margin: 0 1px !important;
+    position: relative !important;
+    transition: var(--ogd-glass-transition) !important;
+  }
+
+  body:not(.is-mobile) .status-bar .status-bar-item {
+    position: relative !important;
+  }
+
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
+    content: "" !important;
+    position: absolute !important;
+    left: -3px !important;
+    top: calc(50% - 6px) !important;
+    width: 1px !important;
+    height: 12px !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(100, 116, 139, 0.24), rgba(148, 163, 184, 0)) !important;
+    opacity: 0.66 !important;
+    pointer-events: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(203, 213, 225, 0.16), rgba(148, 163, 184, 0)) !important;
+    opacity: 0.74 !important;
+  }
+
+  body:not(.is-mobile) .modal .modal-close-button {
+    border: 1px solid transparent !important;
+    border-radius: var(--ogd-radius-pill, 999px) !important;
+    background: var(--ogd-surface-transparent, transparent) !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+    color: var(--text-muted) !important;
+    transition: var(--ogd-glass-transition-control) !important;
+  }
+
+  body:not(.is-mobile) .modal .modal-close-button:is(:hover, :focus-visible) {
+    background: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.70), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.56)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: rgba(100, 116, 139, 0.32) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 5px 14px rgba(15, 23, 42, 0.12) !important;
+    color: var(--ogd-text-strong, #111827) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .modal .modal-close-button:is(:hover, :focus-visible) {
+    background: radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.14), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.66), rgba(15, 23, 42, 0.40)) !important;
+    border-color: rgba(203, 213, 225, 0.22) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(203, 213, 225, 0.05), 0 7px 18px rgba(0, 0, 0, 0.30) !important;
+    color: var(--ogd-text-inverted, #f8fafc) !important;
+  }
+
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="sync" i], [aria-label*="git" i], [data-tooltip*="sync" i], [data-tooltip*="git" i], [title*="sync" i], [title*="git" i]) {
+    border-color: rgba(148, 163, 184, 0.26) !important;
+    background: radial-gradient(circle at 76% 28%, rgba(255, 255, 255, 0.46), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 250, 252, 0.38)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 2px 7px rgba(15, 23, 42, 0.08) !important;
+    color: var(--text-normal) !important;
+    font-variant-numeric: tabular-nums !important;
+    padding-inline: 7px !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="sync" i], [aria-label*="git" i], [data-tooltip*="sync" i], [data-tooltip*="git" i], [title*="sync" i], [title*="git" i]) {
+    border-color: rgba(203, 213, 225, 0.18) !important;
+    background: radial-gradient(circle at 76% 28%, rgba(148, 163, 184, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.36)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 3px 9px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  body:not(.is-mobile) .status-bar .status-bar-item-segment:hover {
+    background: var(--ogd-glass-bg-hover) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-glass-border-hover) !important;
+    box-shadow: var(--ogd-glass-shadow-hover) !important;
+    color: var(--text-normal) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+}
+
+/* Settings rows: keep hover glass covering the full outer row box. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item,
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: 1px solid transparent !important;
+    border-radius: 10px !important;
+    background-clip: padding-box !important;
+    padding: 12px 16px !important;
+    margin: 2px 0 !important;
+  }
+
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within),
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within) {
+    background: var(--ogd-glass-bg-hover) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    border-color: var(--ogd-surface-transparent, transparent) !important;
+    outline: 1px solid var(--ogd-glass-border-hover) !important;
+    outline-offset: -1px !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  /* v2.30.8 - dark theme override for the hairline shadow above */
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within),
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within) {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  body:not(.is-mobile) .checkbox-container {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(203, 213, 225, 0.58)) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border: 1px solid rgba(148, 163, 184, 0.42) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.88),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.08),
+      0 3px 8px rgba(15, 23, 42, 0.10) !important;
+    transition: var(--ogd-glass-transition-control) !important;
+  }
+
+  body:not(.is-mobile) .checkbox-container::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.86)) !important;
+    border: 1px solid rgba(148, 163, 184, 0.28) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.96),
+      0 2px 6px rgba(15, 23, 42, 0.20) !important;
+  }
+
+  body:not(.is-mobile) .checkbox-container:is(:hover, :focus-visible) {
+    border-color: var(--ogd-glass-border-hover) !important;
+    box-shadow: var(--ogd-glass-shadow-hover) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  body:not(.is-mobile) .checkbox-container.is-enabled {
+    background: linear-gradient(180deg, rgba(75, 85, 99, 0.88), rgba(51, 65, 85, 0.76)) !important;
+    border-color: rgba(75, 85, 99, 0.62) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(15, 23, 42, 0.20),
+      0 4px 10px rgba(15, 23, 42, 0.16) !important;
+  }
+
+  body:not(.is-mobile) .checkbox-container.is-enabled::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.90)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      0 2px 7px rgba(15, 23, 42, 0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .checkbox-container {
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.74), rgba(15, 23, 42, 0.58)) !important;
+    border-color: rgba(203, 213, 225, 0.20) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.30),
+      0 3px 8px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .checkbox-container::after {
+    background: linear-gradient(180deg, rgba(226, 232, 240, 0.96), rgba(148, 163, 184, 0.86)) !important;
+    border-color: rgba(203, 213, 225, 0.16) !important;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.42) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .checkbox-container.is-enabled {
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0.84), rgba(71, 85, 105, 0.72)) !important;
+    border-color: rgba(203, 213, 225, 0.34) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .checkbox-container.is-enabled::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(226, 232, 240, 0.90)) !important;
+  }
+}
+
+/* v1.8.42 - Glass control polish and selected-state clarity. */
+@media (min-width: 701px) {
+  body:not(.is-mobile) .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item {
+    border-radius: var(--radius-l, 8px) !important;
+    padding: 9px 12px !important;
+    margin: 1px 0 !important;
+  }
+
+  body:not(.is-mobile) .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item:is(:hover, :focus-within) {
+    background: rgba(255, 255, 255, 0.46) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    outline-color: rgba(148, 163, 184, 0.28) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+    transform: none !important;
+  }
+
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item:is(:hover, :focus-within) {
+    background: rgba(30, 41, 59, 0.42) !important;
+    outline-color: rgba(203, 213, 225, 0.16) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown),
+  body:not(.is-mobile) .modal .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown) {
+    background: var(--ogd-glass-control-bg) !important;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+    transition: var(--ogd-glass-transition-control) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown):is(:hover, :focus, :focus-visible),
+  body:not(.is-mobile) .modal .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown):is(:hover, :focus, :focus-visible) {
+    background: var(--ogd-glass-bg-hover) !important;
+    border-color: var(--ogd-glass-border-hover) !important;
+    box-shadow: var(--ogd-glass-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown),
+  body:not(.is-mobile).theme-dark .modal .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown) {
+    background: var(--ogd-glass-control-bg) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: var(--ogd-glass-control-shadow) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control input[type="range"]::-webkit-slider-runnable-track {
+    background: rgba(203, 213, 225, 0.58) !important;
+    border: 1px solid rgba(148, 163, 184, 0.28) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.66) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control input[type="range"]::-webkit-slider-thumb {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.86)) !important;
+    border-color: rgba(148, 163, 184, 0.36) !important;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.20) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control input[type="range"]::-moz-range-track {
+    background: rgba(203, 213, 225, 0.58) !important;
+    border: 1px solid rgba(148, 163, 184, 0.28) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.66) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control input[type="range"]::-moz-range-thumb {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.86)) !important;
+    border-color: rgba(148, 163, 184, 0.36) !important;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.20) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item):is(.is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 30%, rgba(255, 255, 255, 0.62), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.52)) !important;
+    border-color: rgba(100, 116, 139, 0.30) !important;
+    box-shadow: inset 0 0 0 1px rgba(100, 116, 139, 0.36), var(--ogd-glass-shadow-hover) !important;
+  }
+
+  body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item):is(.is-selected, .selected, [aria-selected="true"]) {
+    background: radial-gradient(circle at 76% 30%, rgba(148, 163, 184, 0.14), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.42)) !important;
+    border-color: rgba(203, 213, 225, 0.22) !important;
+    box-shadow: inset 0 0 0 1px rgba(203, 213, 225, 0.26), 0 8px 22px rgba(0, 0, 0, 0.32) !important;
+  }
+
+  body:not(.is-mobile) .status-bar .status-bar-item-segment:hover {
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.10) !important;
+    transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar .status-bar-item-segment:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24) !important;
+  }
+}
+
+/* v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation. */
+@media (min-width: 701px) {
+  body:not(.is-mobile).ogd-glass-off,
+  body:not(.is-mobile).ogd-glass-reduced {
+    --ogd-glass-filter: none;
+    --ogd-glass-filter-soft: none;
+    --ogd-glass-filter-control: none;
+  }
+
+  body:not(.is-mobile).ogd-glass-off {
+    --ogd-glass-bg: var(--background-primary) !important;
+    --ogd-glass-bg-strong: var(--background-primary) !important;
+    --ogd-glass-bg-hover: var(--background-modifier-hover) !important;
+    --ogd-glass-border: var(--background-modifier-border) !important;
+    --ogd-glass-border-hover: var(--background-modifier-border-hover) !important;
+    --ogd-glass-shadow: none !important;
+    --ogd-glass-shadow-hover: none !important;
+    --ogd-glass-control-shadow: none !important;
+  }
+
+  body:not(.is-mobile).ogd-glass-reduced {
+    --ogd-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82)) !important;
+    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.90)) !important;
+    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.88)) !important;
+    --ogd-glass-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+    --ogd-glass-shadow-hover: 0 3px 10px rgba(15, 23, 42, 0.10) !important;
+    --ogd-glass-control-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  body:not(.is-mobile).ogd-glass-subtle {
+    --ogd-glass-filter: blur(10px) saturate(130%);
+    --ogd-glass-filter-soft: blur(8px) saturate(125%);
+    --ogd-glass-filter-control: blur(6px) saturate(120%);
+    --ogd-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.62)) !important;
+    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.72)) !important;
+    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(241, 245, 249, 0.68)) !important;
+    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 8px 20px rgba(15, 23, 42, 0.10) !important;
+    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+  }
+
+  body:not(.is-mobile).ogd-glass-standard {
+    --ogd-glass-filter: blur(22px) saturate(175%) brightness(1.06);
+    --ogd-glass-filter-soft: blur(14px) saturate(155%) brightness(1.04);
+    --ogd-glass-filter-control: blur(11px) saturate(145%) brightness(1.03);
+  }
+
+  body:not(.is-mobile).ogd-glass-strong {
+    --ogd-glass-filter: blur(28px) saturate(195%) brightness(1.10);
+    --ogd-glass-filter-soft: blur(18px) saturate(170%) brightness(1.07);
+    --ogd-glass-filter-control: blur(13px) saturate(155%) brightness(1.05);
+    --ogd-glass-bg: radial-gradient(circle at 76% 34%, rgba(255, 255, 255, 0.54), transparent 36%), radial-gradient(circle at 12% 58%, rgba(148, 163, 184, 0.14), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(226, 232, 240, 0.40)) !important;
+    --ogd-glass-bg-strong: radial-gradient(circle at 74% 32%, rgba(255, 255, 255, 0.62), transparent 36%), radial-gradient(circle at 14% 58%, rgba(148, 163, 184, 0.16), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.50)) !important;
+    --ogd-glass-bg-hover: radial-gradient(circle at 76% 30%, rgba(255, 255, 255, 0.70), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148, 163, 184, 0.14), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.54)) !important;
+    --ogd-glass-border: rgba(148, 163, 184, 0.30) !important;
+    --ogd-glass-border-hover: rgba(100, 116, 139, 0.30) !important;
+    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(148, 163, 184, 0.20), inset 0 0 24px rgba(255, 255, 255, 0.34), 0 20px 44px rgba(15, 23, 42, 0.20), 0 6px 16px rgba(15, 23, 42, 0.10) !important;
+    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 22px rgba(255, 255, 255, 0.38), 0 10px 26px rgba(15, 23, 42, 0.18) !important;
+  }
+
+  body:not(.is-mobile).theme-dark.ogd-glass-reduced {
+    --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.78)) !important;
+    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.84)) !important;
+    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(30, 41, 59, 0.74)) !important;
+    --ogd-glass-shadow: 0 2px 8px rgba(0, 0, 0, 0.26) !important;
+    --ogd-glass-shadow-hover: 0 3px 10px rgba(0, 0, 0, 0.30) !important;
+  }
+
+  body:not(.is-mobile).theme-dark.ogd-glass-subtle {
+    --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.62)) !important;
+    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.70)) !important;
+    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.54)) !important;
+    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 20px rgba(0, 0, 0, 0.34) !important;
+    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 4px 12px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  body:not(.is-mobile).theme-dark.ogd-glass-strong {
+    --ogd-glass-bg: radial-gradient(circle at 76% 34%, rgba(148, 163, 184, 0.14), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(2, 6, 23, 0.48)) !important;
+    --ogd-glass-bg-strong: radial-gradient(circle at 74% 32%, rgba(148, 163, 184, 0.16), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.80), rgba(15, 23, 42, 0.56)) !important;
+    --ogd-glass-bg-hover: radial-gradient(circle at 76% 30%, rgba(148, 163, 184, 0.18), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203, 213, 225, 0.07), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.46)) !important;
+    --ogd-glass-border: rgba(203, 213, 225, 0.22) !important;
+    --ogd-glass-border-hover: rgba(203, 213, 225, 0.24) !important;
+    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(0, 0, 0, 0.38), inset 0 0 22px rgba(148, 163, 184, 0.12), 0 20px 46px rgba(0, 0, 0, 0.54), 0 6px 16px rgba(0, 0, 0, 0.34) !important;
+    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 20px rgba(148, 163, 184, 0.14), 0 10px 28px rgba(0, 0, 0, 0.40) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) {
+    -webkit-backdrop-filter: var(--ogd-glass-filter) !important;
+    backdrop-filter: var(--ogd-glass-filter) !important;
+  }
+
+  body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft) !important;
+    backdrop-filter: var(--ogd-glass-filter-soft) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], textarea, select, .dropdown, input[type="color"], .pickr .pcr-button),
+  body:not(.is-mobile) .checkbox-container {
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control) !important;
+    backdrop-filter: var(--ogd-glass-filter-control) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control :is(input[type="color"], .pickr .pcr-button) {
+    background: var(--ogd-glass-bg-strong) !important;
+    border-color: var(--ogd-glass-border) !important;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.12) !important;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control :is(input[type="color"], .pickr .pcr-button):is(:hover, :focus-visible) {
+    border-color: var(--ogd-glass-border-hover) !important;
+    box-shadow: var(--ogd-glass-shadow-hover) !important;
+    transform: var(--ogd-hover-lift, translateY(-1px)) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container):disabled,
+  body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container).is-disabled,
+  body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container)[aria-disabled="true"] {
+    opacity: 0.54 !important;
+    filter: saturate(0.72) !important;
+    transform: none !important;
+    box-shadow: var(--ogd-shadow-none, none) !important;
+  }
+
+  body:not(.is-mobile) .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active,
+  body:not(.is-mobile) .modal .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active {
+    transform: var(--ogd-press-lift, translateY(0) scale(0.99)) !important;
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.20) !important;
+  }
+
+  body:not(.is-mobile) .prompt-input:focus,
+  body:not(.is-mobile) .modal .prompt-input:focus {
+    outline: 1px solid rgba(100, 116, 139, 0.42) !important;
+    outline-offset: 1px !important;
+    box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.10) !important;
+  }
+
+  body:not(.is-mobile) .metadata-container .metadata-property-value:is(:hover, :focus-within) {
+    border-radius: var(--radius-m, 6px) !important;
+    background: rgba(255, 255, 255, 0.42) !important;
+  }
+
+  body:not(.is-mobile).theme-dark .metadata-container .metadata-property-value:is(:hover, :focus-within) {
+    background: rgba(15, 23, 42, 0.34) !important;
+  }
+
+  body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
+  body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(
+    .workspace-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .nav-file-title.is-active,
+    .nav-file-title:hover,
+    .nav-folder-title:hover,
+    .tree-item-self:hover,
+    #editingToolbarModalBar,
+    .editingToolbarModalBar,
+    .editingToolbarPopover,
+    .editingToolbarPopoverItems,
+    .editingToolbarSubmenu,
+    .editingToolbarMenu,
+    .editingToolbarButton,
+    .menu,
+    .menu .menu-item,
+    .tooltip,
+    .view-header-breadcrumb,
+    .view-header-title,
+    .suggestion-container,
+    .search-suggest-container,
+    .search-suggestion-container
+  ),
+  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(
+    .workspace-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .nav-file-title.is-active,
+    .nav-file-title:hover,
+    .nav-folder-title:hover,
+    .tree-item-self:hover,
+    .editingToolbarButton,
+    .menu .menu-item,
+    .view-header-breadcrumb,
+    .view-header-title,
+    .suggestion-item,
+    .search-suggest-item
+  ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(.view-header-breadcrumb, .view-header-title)::before {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media print {
+  body {
+    --ogd-glass-bg: var(--ogd-surface-transparent, transparent) !important;
+    --ogd-glass-bg-strong: var(--ogd-surface-transparent, transparent) !important;
+    --ogd-glass-bg-hover: var(--ogd-surface-transparent, transparent) !important;
+    --ogd-glass-shadow: none !important;
+    --ogd-glass-shadow-hover: none !important;
+    --ogd-glass-filter: none !important;
+    --ogd-glass-filter-soft: none !important;
+    --ogd-glass-filter-control: none !important;
+  }
+}
+
