@@ -10342,6 +10342,12 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .view-content,
   body:not(.is-mobile) .nav-files-container {
     padding-inline: 8px 10px;
+    /* Neutralize Obsidian core nav-item paint paths so only the explicit glass
+       pill below renders. Prevents a second gray rounded box from appearing
+       underneath the inner pill on hover/active. */
+    --nav-item-background-hover: transparent;
+    --nav-item-background-active: transparent;
+    --nav-item-background-selected: transparent;
   }
 
   body:not(.is-mobile) :is(.nav-folder-title, .nav-file-title, .tree-item-self) {
@@ -10499,7 +10505,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
-    min-height: 32px;
     background: var(--ogd-surface-transparent, transparent);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
@@ -10510,29 +10515,23 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
-    padding: 5px 14px 5px 32px;
     background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)));
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
     backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
     border-color: var(--ogd-glass-border-hover, rgba(100, 116, 139, 0.34));
     box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12));
     color: var(--ogd-text-strong, #111827);
-    font-size: 13.4px;
-    transform: var(--ogd-hover-lift, translateY(-1px));
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]):hover,
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover {
-    background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)));
-    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-    border-color: var(--ogd-glass-border-hover, rgba(100, 116, 139, 0.34));
-    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12));
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(148, 163, 184, 0.32);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 2px 6px rgba(15, 23, 42, 0.05);
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]):hover .nav-folder-title-content,
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover .nav-folder-title-content {
-    padding: 3px 0 3px 28px;
     background: var(--ogd-surface-transparent, transparent);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
@@ -10621,20 +10620,17 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:not(.is-mobile).theme-dark :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
-    padding: 5px 14px 5px 32px;
     background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)));
     border-color: var(--ogd-glass-border-hover, rgba(203, 213, 225, 0.20));
     box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32));
     color: var(--ogd-text-inverted, #f8fafc);
-    font-size: 13.4px;
-    transform: var(--ogd-hover-lift, translateY(-1px));
   }
 
   body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*="/"]):hover,
   body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover {
-    background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)));
-    border-color: var(--ogd-glass-border-hover, rgba(203, 213, 225, 0.20));
-    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32));
+    background: rgba(15, 23, 42, 0.48);
+    border-color: rgba(148, 163, 184, 0.26);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 6px rgba(0, 0, 0, 0.20);
   }
 
   body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*="/"]):hover .nav-folder-title-content,
