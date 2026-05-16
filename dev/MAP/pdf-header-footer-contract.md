@@ -21,7 +21,7 @@ This surface has already burned a lot of release time because Chromium print/PDF
 - Key/Value 2-segment mode may add one adjacent key pseudo per surface: `.markdown-rendered::after` for the header and `.markdown-rendered > :last-child::before` for the footer.
 - Footer must reserve space on `.markdown-rendered > :last-child` with a millimeter-based `margin-bottom`.
 - Generated text must remain single-line. Single-label content uses `--ogd-pdf-header-text` / `--ogd-pdf-footer-text`; segmented value content uses `--ogd-pdf-header-value` / `--ogd-pdf-footer-value`.
-- Quick presets, label layout, label style, segment palette, compact sizing, and header alignment must be implemented by CSS variables/classes only.
+- Quick presets, label layout, label style, header/footer segment palettes, compact sizing, and header alignment must be implemented by CSS variables/classes only.
 - Anchor pseudos must use `position: absolute`, `pointer-events: none`, `white-space: nowrap`, and exact print color adjustment.
 - Anchor pseudos must also keep `display: inline-block`, `overflow: hidden`, `text-overflow: ellipsis`, and `font-style: normal` so long user text stays single-line and cannot reshape the PDF page.
 - `@page` rules belong in `src/features/43-print-base.css` and must be nested under `@media print`.

@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.36
+
+- feat: PDF Key/Value 라벨 색상을 헤더/푸터별, key/value별로 독립 선택할 수 있도록 Style Settings UI를 재구성했습니다.
+- polish: PDF 라벨 UI를 활성화 → 라벨 구성 → 공통 구성 → 헤더 설정 → 푸터 설정 순서로 그룹화하고, 라벨 글자 굵기/크기와 segment 폭을 조정해 긴 key 문구가 잘리지 않도록 개선했습니다.
+- docs: README에 PDF Key/Value 라벨 신기능과 전용 스크린샷을 추가했습니다.
+
 ## v3.1.35
 
 - feat: PDF Header/Footer 라벨에 Key/Value 2-segment 모드를 추가. Style Settings에서 단일 라벨과 2-segment 구성을 선택하고, 헤더/푸터 value 입력값과 Graphite/Sky/Mint/Violet/Teal 팔레트를 설정할 수 있습니다.

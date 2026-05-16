@@ -2,16 +2,16 @@
 
 Current token inventory extracted from `src/**/*.css`.
 
-- 총 토큰: **276**
-- light(`:root`) default 정의: **79**
-- dark(`.theme-dark`) default 정의: **181**
+- 총 토큰: **288**
+- light(`:root`) default 정의: **91**
+- dark(`.theme-dark`) default 정의: **193**
 
 ## 카테고리 분류
 
 | category | tokens |
 | --- | ---: |
 | Liquid Glass surface | 54 |
-| PDF header/footer marginalia | 36 |
+| PDF header/footer marginalia | 48 |
 | callout surface | 8 |
 | feature-specific | 142 |
 | line/border | 9 |
@@ -186,19 +186,31 @@ Current token inventory extracted from `src/**/*.css`.
 | `--ogd-overlay-selected-bg` | feature-specific | `—` | `rgba(51, 65, 85, 0.78)` | 3 | 2 |
 | `--ogd-overlay-selected-line` | feature-specific | `—` | `var(--ogd-line-strong, #cbd5e1)` | 3 | 2 |
 | `--ogd-overlay-selected-text` | feature-specific | `—` | `var(--ogd-surface-muted, #f8fafc)` | 3 | 2 |
-| `--ogd-pdf-footer-font-size` | PDF header/footer marginalia | `8.8pt` | `—` | 4 | 2 |
+| `--ogd-pdf-footer-font-size` | PDF header/footer marginalia | `9.2pt` | `—` | 4 | 2 |
 | `--ogd-pdf-footer-max-width` | PDF header/footer marginalia | `90%` | `—` | 4 | 1 |
 | `--ogd-pdf-footer-offset` | PDF header/footer marginalia | `-22mm` | `—` | 4 | 2 |
 | `--ogd-pdf-footer-pad-x` | PDF header/footer marginalia | `16px` | `—` | 6 | 3 |
 | `--ogd-pdf-footer-pad-y` | PDF header/footer marginalia | `6px` | `—` | 6 | 3 |
 | `--ogd-pdf-footer-reserve` | PDF header/footer marginalia | `28mm` | `—` | 3 | 2 |
+| `--ogd-pdf-footer-segment-key-bg` | PDF header/footer marginalia | `var(--ogd-pdf-segment-key-bg, #3f3f46)` | `var(--ogd-pdf-segment-key-bg, #3f3f46)` | 11 | 10 |
+| `--ogd-pdf-footer-segment-key-border` | PDF header/footer marginalia | `var(--ogd-pdf-segment-key-border, transparent)` | `var(--ogd-pdf-segment-key-border, transparent)` | 3 | 2 |
+| `--ogd-pdf-footer-segment-key-text` | PDF header/footer marginalia | `var(--ogd-pdf-segment-key-text, #ffffff)` | `var(--ogd-pdf-segment-key-text, #ffffff)` | 12 | 10 |
+| `--ogd-pdf-footer-segment-value-bg` | PDF header/footer marginalia | `var(--ogd-pdf-segment-value-bg, #0284c7)` | `var(--ogd-pdf-segment-value-bg, #0284c7)` | 11 | 10 |
+| `--ogd-pdf-footer-segment-value-border` | PDF header/footer marginalia | `var(--ogd-pdf-segment-value-border, transparent)` | `var(--ogd-pdf-segment-value-border, transparent)` | 3 | 2 |
+| `--ogd-pdf-footer-segment-value-text` | PDF header/footer marginalia | `var(--ogd-pdf-segment-value-text, #ffffff)` | `var(--ogd-pdf-segment-value-text, #ffffff)` | 12 | 10 |
 | `--ogd-pdf-footer-text` | PDF header/footer marginalia | `""` | `—` | 6 | 4 |
 | `--ogd-pdf-footer-value` | PDF header/footer marginalia | `""` | `—` | 2 | 1 |
-| `--ogd-pdf-header-font-size` | PDF header/footer marginalia | `8.5pt` | `—` | 4 | 2 |
+| `--ogd-pdf-header-font-size` | PDF header/footer marginalia | `9pt` | `—` | 4 | 2 |
 | `--ogd-pdf-header-left` | PDF header/footer marginalia | `auto` | `—` | 3 | 2 |
 | `--ogd-pdf-header-pad-x` | PDF header/footer marginalia | `12px` | `—` | 4 | 3 |
 | `--ogd-pdf-header-pad-y` | PDF header/footer marginalia | `5px` | `—` | 4 | 3 |
 | `--ogd-pdf-header-right` | PDF header/footer marginalia | `13mm` | `—` | 4 | 2 |
+| `--ogd-pdf-header-segment-key-bg` | PDF header/footer marginalia | `var(--ogd-pdf-segment-key-bg, #3f3f46)` | `var(--ogd-pdf-segment-key-bg, #3f3f46)` | 11 | 10 |
+| `--ogd-pdf-header-segment-key-border` | PDF header/footer marginalia | `var(--ogd-pdf-segment-key-border, transparent)` | `var(--ogd-pdf-segment-key-border, transparent)` | 3 | 2 |
+| `--ogd-pdf-header-segment-key-text` | PDF header/footer marginalia | `var(--ogd-pdf-segment-key-text, #ffffff)` | `var(--ogd-pdf-segment-key-text, #ffffff)` | 12 | 10 |
+| `--ogd-pdf-header-segment-value-bg` | PDF header/footer marginalia | `var(--ogd-pdf-segment-value-bg, #0284c7)` | `var(--ogd-pdf-segment-value-bg, #0284c7)` | 11 | 10 |
+| `--ogd-pdf-header-segment-value-border` | PDF header/footer marginalia | `var(--ogd-pdf-segment-value-border, transparent)` | `var(--ogd-pdf-segment-value-border, transparent)` | 3 | 2 |
+| `--ogd-pdf-header-segment-value-text` | PDF header/footer marginalia | `var(--ogd-pdf-segment-value-text, #ffffff)` | `var(--ogd-pdf-segment-value-text, #ffffff)` | 12 | 10 |
 | `--ogd-pdf-header-text` | PDF header/footer marginalia | `""` | `—` | 6 | 4 |
 | `--ogd-pdf-header-top` | PDF header/footer marginalia | `11mm` | `—` | 3 | 1 |
 | `--ogd-pdf-header-transform` | PDF header/footer marginalia | `none` | `—` | 3 | 2 |
@@ -210,18 +222,18 @@ Current token inventory extracted from `src/**/*.css`.
 | `--ogd-pdf-marginalia-bg` | PDF header/footer marginalia | `rgba(71, 85, 105, 0.045)` | `rgba(203, 213, 225, 0.12)` | 8 | 6 |
 | `--ogd-pdf-marginalia-border` | PDF header/footer marginalia | `rgba(71, 85, 105, 0.20)` | `rgba(203, 213, 225, 0.34)` | 8 | 6 |
 | `--ogd-pdf-marginalia-shadow` | PDF header/footer marginalia | `none` | `none` | 4 | 2 |
-| `--ogd-pdf-segment-half-width` | PDF header/footer marginalia | `34mm` | `—` | 3 | 1 |
-| `--ogd-pdf-segment-key-bg` | PDF header/footer marginalia | `#3f3f46` | `#3f3f46` | 4 | 2 |
-| `--ogd-pdf-segment-key-border` | PDF header/footer marginalia | `transparent` | `transparent` | 4 | 2 |
-| `--ogd-pdf-segment-key-text` | PDF header/footer marginalia | `#ffffff` | `#ffffff` | 6 | 2 |
-| `--ogd-pdf-segment-key-width` | PDF header/footer marginalia | `28mm` | `—` | 4 | 1 |
+| `--ogd-pdf-segment-half-width` | PDF header/footer marginalia | `39mm` | `—` | 3 | 1 |
+| `--ogd-pdf-segment-key-bg` | PDF header/footer marginalia | `#3f3f46` | `#3f3f46` | 16 | 10 |
+| `--ogd-pdf-segment-key-border` | PDF header/footer marginalia | `transparent` | `transparent` | 8 | 2 |
+| `--ogd-pdf-segment-key-text` | PDF header/footer marginalia | `#ffffff` | `#ffffff` | 18 | 10 |
+| `--ogd-pdf-segment-key-width` | PDF header/footer marginalia | `34mm` | `—` | 4 | 1 |
 | `--ogd-pdf-segment-pad-x` | PDF header/footer marginalia | `10px` | `—` | 3 | 1 |
 | `--ogd-pdf-segment-pad-y` | PDF header/footer marginalia | `5px` | `—` | 3 | 1 |
 | `--ogd-pdf-segment-radius` | PDF header/footer marginalia | `2px` | `—` | 9 | 1 |
-| `--ogd-pdf-segment-value-bg` | PDF header/footer marginalia | `#0284c7` | `#0284c7` | 9 | 7 |
-| `--ogd-pdf-segment-value-border` | PDF header/footer marginalia | `transparent` | `transparent` | 4 | 2 |
-| `--ogd-pdf-segment-value-text` | PDF header/footer marginalia | `#ffffff` | `#ffffff` | 6 | 2 |
-| `--ogd-pdf-segment-value-width` | PDF header/footer marginalia | `40mm` | `—` | 4 | 1 |
+| `--ogd-pdf-segment-value-bg` | PDF header/footer marginalia | `#0284c7` | `#0284c7` | 22 | 15 |
+| `--ogd-pdf-segment-value-border` | PDF header/footer marginalia | `transparent` | `transparent` | 9 | 2 |
+| `--ogd-pdf-segment-value-text` | PDF header/footer marginalia | `#ffffff` | `#ffffff` | 20 | 10 |
+| `--ogd-pdf-segment-value-width` | PDF header/footer marginalia | `44mm` | `—` | 4 | 1 |
 | `--ogd-plugin-dark-card-bg` | feature-specific | `—` | `radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.12), transparent 34%), linear-gradient…` | 3 | 1 |
 | `--ogd-plugin-dark-card-hover-shadow` | feature-specific | `—` | `inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 8px 18px rgba(0, 0, 0, 0.34), 0 0 0 2px rgba(147, 19…` | 3 | 1 |
 | `--ogd-plugin-dark-card-shadow` | feature-specific | `—` | `inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.26)` | 3 | 1 |

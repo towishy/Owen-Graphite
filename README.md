@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.35** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 16,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.36** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 16,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -21,8 +21,8 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.35` |
-| **베이스라인 / 롤백 기준** | `v3.1.35` |
+| **버전** | `3.1.36` |
+| **베이스라인 / 롤백 기준** | `v3.1.36` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -38,7 +38,21 @@
 
 ---
 
-## 2. 테마 설치
+## 2. PDF Key/Value 라벨
+
+PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-segment 배지로 표시할 수 있습니다. Style Settings에서 헤더와 푸터를 각각 켜고, key/value 문구와 색상을 독립적으로 지정해 작성자, 기밀 등급, 문서 상태를 본문 흐름 밖에 작게 배치합니다.
+
+![PDF Key/Value 헤더와 푸터 라벨](screenshots/readme/pdf-key-value-labels.png)
+
+| 설정 영역 | 가능한 조정 |
+| --- | --- |
+| 헤더 설정 | Key 색상, Value 색상, Key 문구, Value 문구, 위치 |
+| 푸터 설정 | Key 색상, Value 색상, Key 문구, Value 문구 |
+| 공통 구성 | 단일/Key-Value 구성, 라벨 스타일, 라벨 크기, 빠른 문구 |
+
+---
+
+## 3. 테마 설치
 
 ### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
 
@@ -48,7 +62,7 @@
 
 ### 옵션 B — ZIP 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.35.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.36.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -57,7 +71,7 @@
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.35.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.36.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트
 
@@ -119,7 +133,7 @@ fi
 
 ---
 
-## 3. 개발자 워크플로우
+## 4. 개발자 워크플로우
 
 v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → features → themes → plugins → polish 순서로 분리되어 있습니다. 빌드/감사는 `dev/scripts/` 의 v3 도구만 사용합니다.
 
@@ -138,7 +152,7 @@ v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → featur
 
 ---
 
-## 4. 후원
+## 5. 후원
 
 <p align="center">
   <a href="https://github.com/sponsors/towishy">
@@ -150,6 +164,6 @@ Owen Graphite는 무료/오픈소스입니다. 한국어 보고서·위키 작�
 
 ---
 
-## 5. 라이선스
+## 6. 라이선스
 
 MIT — [LICENSE](LICENSE)

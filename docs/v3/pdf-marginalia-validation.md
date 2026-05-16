@@ -7,7 +7,7 @@ This document records the lightweight validation baseline for Owen Graphite PDF 
 - HTML fixture: `docs/v3/research/pdf-marginalia-fixture.html`
 - Theme source loaded by fixture: `theme.css`
 - DOM target: `.markdown-preview-view .markdown-rendered`
-- Body classes: `theme-light ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-segment-sky ogd-pdf-label-standard ogd-pdf-header-top-right`
+- Body classes: `theme-light ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-footer-key-rose ogd-pdf-footer-value-amber ogd-pdf-label-standard ogd-pdf-header-top-right`
 
 ## Current Baseline Checks
 
@@ -26,13 +26,13 @@ Run the fixture with print media emulation and verify:
 
 ## 2026-05-17 Fixture Result
 
-Validated against `theme.css` after the `v3.1.35` Key/Value PDF marginalia update.
+Validated against `theme.css` after the `v3.1.36` Key/Value PDF marginalia UI and sizing update.
 
 | Check | Result |
 | --- | --- |
 | Browser screen media | `::before` and `::after` generated content resolved to `none` |
-| Browser print media header | key `"prepared by"` and value `"Owen Graphite"` rendered as adjacent badge segments |
-| Browser print media footer | key `"confidential"` and value `"internal use only"` rendered as adjacent badge segments |
+| Browser print media header | key `"prepared by"` rendered Graphite and value `"Owen Graphite"` rendered Sky |
+| Browser print media footer | key `"confidential"` rendered Rose and value `"internal use only"` rendered Amber |
 | Segmented badge height | header about `24.9px`, footer about `25.4px`, giving the badge strip more presence than the first `22px` sample |
 | Segmented spacing | header fixed segments are slightly narrower; footer key/value are content-sized around the center seam with measured seam gap `0px` |
 | Header safety | absolute positioning, `nowrap`, hidden overflow, ellipsis confirmed |
@@ -59,7 +59,8 @@ Style Settings model:
 - `ogd-pdf-footer-text`: single-label text, or segmented key.
 - `ogd-pdf-footer-value`: segmented footer value.
 - `ogd-pdf-marginalia-style`: includes the `붙은 배지` sample style.
-- `ogd-pdf-segment-palette`: selects the value segment color while the key stays graphite.
+- `ogd-pdf-header-key-palette` / `ogd-pdf-header-value-palette`: choose the header key and value colors independently.
+- `ogd-pdf-footer-key-palette` / `ogd-pdf-footer-value-palette`: choose the footer key and value colors independently, so footer classification can differ from the header.
 
 ## Footer Extra Sentence Feasibility
 
