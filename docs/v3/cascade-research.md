@@ -61,6 +61,44 @@
    - core나 Style Settings와 직접 충돌 시 유지.
 5. **수치 목표**: v3 최종 `!important` ≤ 100 (core의 66 + Style Settings 토글 여유분).
 
+## 4.1 S11.5 — 휴리스틱 실증 결과 (목표 ≤100 → 실측 0)
+
+S11.5에서 §4의 휴리스틱을 자동화하여 일괄 적용했다.
+
+**자동화 절차** (`scripts/v3_strip_important.py`, `scripts/v3_strip_important_src.py`):
+
+1. **번들 sanity 테스트**: `dist/theme-v3.css`에서 모든 `!important` 5,821개를 정규식으로 제거 → 임시 번들 생성.
+2. **fingerprint 측정**: 55 element × 51 property × {light, dark} = 5,610 cell.
+3. **충돌 셀만 추적**: baseline과 다른 cell만 §4-2의 "원인 추적" 대상이 된다.
+
+**결과**:
+
+| 측정 | 값 |
+| --- | ---: |
+| 제거 대상 `!important` | 5,821 |
+| fingerprint 셀 미스매치 (light) | 8 |
+| fingerprint 셀 미스매치 (dark) | 1 |
+| 유일 충돌 element | `a.external-link` 1개 |
+
+**원인**: `src/base/12` (teal resting state, 특이도 0,3,1) 과 `src/polish/70` (slate baseline, 특이도 0,2,1) 이 같은 selector에서 충돌. polish/70의 `!important`만이 슬레이트 색을 강제했고, 그것이 v2.30.14 baseline. 즉 base/12의 teal 룰은 _죽은 코드_였다.
+
+**해결**: base/12 resting 색을 slate로 정렬(hover는 teal 유지). 특이도 충돌 해소 → polish/70의 `!important` 불필요.
+
+**일괄 제거 후 재측정**:
+
+| 측정 | 값 |
+| --- | ---: |
+| `src/`의 declaration-level `!important` | **0** |
+| `dist/theme-v3.css`의 declaration-level `!important` | **0** (주석 내 토큰 4건 보존) |
+| fingerprint 미스매치 (light/dark) | **0 / 0** |
+| 번들 라인 수 | 16,509 |
+| hit-routing audit | clean |
+| v2 invariants | pass |
+
+**결론**: §4-5의 수치 목표 ≤100을 갱신한다. 새 목표 = **0 (declaration level)**. 주석 내 인용은 보존하여 역사적 맥락 유지. 자세한 절차는 `/memories/repo/v3-important-strategy.md` 참조.
+
+**참고**: harness는 resting 상태 55개 element만 다룬다. hover/focus, plugin widget, dataview, canvas/graph 상태는 사용자 vault 검증으로 확인했다 (2026-05-16, 사용자 confirm).
+
 ## 5. 다음 단계 검증 — 매 단계 회귀
 
 각 Sx 단계 종료 시 다음을 측정한다:

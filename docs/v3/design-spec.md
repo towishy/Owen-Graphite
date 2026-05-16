@@ -106,6 +106,8 @@ src/
   3. Obsidian core 자체가 `!important`를 거는 위치에 대한 `!important` → 인라인 주석에 "defeats core <selector>" 명시 후 유지
 - 목표는 "두 자릿수"가 아니라 "필요한 곳에만 명시적 주석으로 남는 모든 `!important`"입니다. 결과 수치는 측정 후 보고합니다.
 
+**S11.5 결과 (2026-05-16)**: `src/` declaration-level `!important` = **0**. 자세한 실증·휴리스틱·일괄 제거 절차는 [cascade-research.md §4.1](cascade-research.md#41-s115--휴리스틱-실증-결과-목표-100--실측-0) 참조. 위 정책 1번은 자동화 절차로 100% 달성, 2번은 S11.7에서 별도 검토, 3번은 0개라서 N/A.
+
 ## 참조 문서 (S0 산출물)
 
 | 문서 | 책임 |
