@@ -2852,10 +2852,9 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
     font-size: 11pt;
   }
 
-  .markdown-rendered h1 { break-before: page; page-break-before: always; }
-  .markdown-rendered h1:first-child { break-before: avoid; page-break-before: avoid; }
+  .markdown-rendered h1 { page-break-before: always; }
+  .markdown-rendered h1:first-child { page-break-before: avoid; }
   .markdown-rendered :is(h1, h2, h3, h4) {
-    break-after: avoid;
     page-break-after: avoid;
   }
 
@@ -2901,12 +2900,10 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 
   /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
   .markdown-rendered h1 {
-    break-before: page;
     page-break-before: always;
   }
   .markdown-rendered h1:first-of-type,
   .markdown-rendered > h1:first-child {
-    break-before: avoid;
     page-break-before: avoid;
   }
 
@@ -2920,7 +2917,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
     font-size: 0.88em;
     color: #4b5563;
     page-break-before: auto;
-    break-before: auto;
   }
   .markdown-rendered .footnotes ol,
   .markdown-rendered .footnote-section ol {
@@ -2936,7 +2932,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   .callout,
   figure {
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
   .markdown-rendered a[href^="http"]::after {
@@ -2994,17 +2989,15 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   .footnotes,
   .footnote-section {
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
   /* v2.22.121 - PDF parity for liquid list markers. */
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) { --ogd-list-marker-bg: linear-gradient(180deg, #ffffff, #f0f9ff); --ogd-list-marker-bg-active: linear-gradient(180deg, #ffffff, #e0f2fe); --ogd-list-marker-border: rgba(14, 165, 233, 0.46); --ogd-list-marker-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 2px 5px rgba(15, 23, 42, 0.08); --ogd-list-marker-shadow-active: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 3px 8px rgba(14, 165, 233, 0.12); --ogd-list-nested-marker: rgba(14, 165, 233, 0.34); --ogd-list-task-surface: linear-gradient(180deg, #ffffff, #f8fafc); --ogd-list-task-border: rgba(203, 213, 225, 0.62); --ogd-list-task-shadow: inset 0 1px 0 #ffffff, 0 3px 8px rgba(15, 23, 42, 0.06); }
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { break-inside: avoid-page; }
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { page-break-inside: avoid; }
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) input[type="checkbox"] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list { -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
@@ -3017,7 +3010,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) { padding-inline-start: 1.62em; list-style-position: outside; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { list-style-type: decimal-leading-zero; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) { list-style-type: disc; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item; grid-template-columns: none; column-gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; break-inside: auto; page-break-inside: auto; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item; grid-template-columns: none; column-gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; page-break-inside: auto; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: decimal-leading-zero; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: disc; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { content: none; display: none; }
@@ -3028,7 +3021,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
 
   /* v2.22.125 - PDF-safe checklist flattening. */
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list { margin-block: 0.28em 0.68em; padding-inline-start: 1.1em; border: 0; background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item { display: list-item; margin-block: 0.16em; padding: 0; border: 0; background: transparent; box-shadow: none; color: #1f2937; line-height: 1.45; break-inside: avoid-page; page-break-inside: avoid; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item { display: list-item; margin-block: 0.16em; padding: 0; border: 0; background: transparent; box-shadow: none; color: #1f2937; line-height: 1.45; page-break-inside: avoid; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item::marker { color: transparent; font-size: 0; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"] { position: static; display: inline-block; width: 0.86em; height: 0.86em; margin: 0 0.42em 0 0; border: 1.2px solid #94a3b8; border-radius: 3px; background: #ffffff; box-shadow: none; vertical-align: -0.12em; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked { border-color: #0e7490; background: #ecfeff; }
@@ -5206,19 +5199,16 @@ a.tag:hover {
 @media print {
   body.ogd-print-avoid-breaks .markdown-rendered :is(.callout, blockquote, table, pre, figure, img, .mermaid, .markdown-embed),
   .markdown-rendered :is(.callout, blockquote, table, pre, figure, img, .mermaid, .markdown-embed) {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
   body.ogd-print-avoid-breaks .markdown-rendered :is(h2, h3, h4),
   .markdown-rendered :is(h2, h3, h4) {
-    break-after: avoid;
     page-break-after: avoid;
   }
 
   body.ogd-print-avoid-breaks .markdown-rendered :is(h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table),
   .markdown-rendered :is(h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table) {
-    break-before: avoid;
     page-break-before: avoid;
   }
 }
@@ -6984,7 +6974,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 @media print {
   body.ogd-print-avoid-breaks .markdown-rendered :is(.markdown-embed, .internal-embed, iframe, video, audio),
   body.ogd-print-avoid-breaks .markdown-preview-view :is(.markdown-embed, .internal-embed, iframe, video, audio) {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
   body.ogd-print-avoid-breaks .markdown-rendered .mermaid,
@@ -7366,11 +7355,9 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 @media print {
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     overflow: visible;
-    break-inside: auto;
     page-break-inside: auto;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.print-fit-table, .wide-table) {
@@ -7383,7 +7370,6 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
     table-layout: fixed;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
-    break-before: avoid;
     page-break-before: avoid;
     color: #4b5563;
   }
@@ -7552,7 +7538,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -7658,7 +7643,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       border-radius: var(--radius-m, 6px);
       background: #f8fbff;
       line-height: 1.56;
-      break-inside: avoid;
       page-break-inside: avoid;
     }
   }
@@ -7776,7 +7760,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) :is(h1, h2, h3, h4) {
     color: #0f172a;
-    break-after: avoid;
     page-break-after: avoid;
   }
 
@@ -7855,7 +7838,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-radius: 6px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 1px 2px rgba(15, 23, 42, 0.035);
     line-height: 1.42;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -8245,7 +8227,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     color: #334155;
     font-size: 9.4pt;
     line-height: 1.36;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -8272,7 +8253,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin: 0;
     padding: 0.44em 0;
     border-bottom: 1px solid #d7e4ec;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -8332,7 +8312,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) :is(figure, .ogd-figure, .figure-block) {
     margin: 0.88em 0 1.05em;
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -8356,7 +8335,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     font-size: 8.8pt;
     line-height: 1.32;
     text-align: center;
-    break-before: avoid;
     page-break-before: avoid;
   }
 
@@ -8405,7 +8383,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: var(--ogd-callout-bg);
     color: #334155;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
-    break-inside: avoid;
     page-break-inside: avoid;
   }
 
@@ -12673,7 +12650,6 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
     background: #f8fafc;
     box-shadow: none;
     overflow: visible;
-    break-inside: auto;
     page-break-inside: auto;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;

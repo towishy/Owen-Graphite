@@ -15,10 +15,9 @@
     font-size: 11pt;
   }
 
-  .markdown-rendered h1 { break-before: page; page-break-before: always; }
-  .markdown-rendered h1:first-child { break-before: avoid; page-break-before: avoid; }
+  .markdown-rendered h1 { page-break-before: always; }
+  .markdown-rendered h1:first-child { page-break-before: avoid; }
   .markdown-rendered :is(h1, h2, h3, h4) {
-    break-after: avoid;
     page-break-after: avoid;
   }
 
@@ -64,12 +63,10 @@
 
   /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
   .markdown-rendered h1 {
-    break-before: page;
     page-break-before: always;
   }
   .markdown-rendered h1:first-of-type,
   .markdown-rendered > h1:first-child {
-    break-before: avoid;
     page-break-before: avoid;
   }
 
@@ -83,7 +80,6 @@
     font-size: 0.88em;
     color: #4b5563;
     page-break-before: auto;
-    break-before: auto;
   }
   .markdown-rendered .footnotes ol,
   .markdown-rendered .footnote-section ol {
@@ -99,7 +95,6 @@
   .callout,
   figure {
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
   .markdown-rendered a[href^="http"]::after {
@@ -157,17 +152,15 @@
   .footnotes,
   .footnote-section {
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
   /* v2.22.121 - PDF parity for liquid list markers. */
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) { --ogd-list-marker-bg: linear-gradient(180deg, #ffffff, #f0f9ff); --ogd-list-marker-bg-active: linear-gradient(180deg, #ffffff, #e0f2fe); --ogd-list-marker-border: rgba(14, 165, 233, 0.46); --ogd-list-marker-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 2px 5px rgba(15, 23, 42, 0.08); --ogd-list-marker-shadow-active: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 3px 8px rgba(14, 165, 233, 0.12); --ogd-list-nested-marker: rgba(14, 165, 233, 0.34); --ogd-list-task-surface: linear-gradient(180deg, #ffffff, #f8fafc); --ogd-list-task-border: rgba(203, 213, 225, 0.62); --ogd-list-task-shadow: inset 0 1px 0 #ffffff, 0 3px 8px rgba(15, 23, 42, 0.06); }
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { break-inside: avoid-page; }
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { page-break-inside: avoid; }
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) input[type="checkbox"] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list { -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
@@ -180,7 +173,7 @@
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) { padding-inline-start: 1.62em; list-style-position: outside; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) { list-style-type: decimal-leading-zero; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) { list-style-type: disc; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item; grid-template-columns: none; column-gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; break-inside: auto; page-break-inside: auto; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) { display: list-item; grid-template-columns: none; column-gap: normal; position: static; list-style: inherit; list-style-position: outside; padding-inline-start: 0.16em; page-break-inside: auto; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: decimal-leading-zero; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item) { list-style-type: disc; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::before, body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ul:not(.contains-task-list) > li:not(.task-list-item)::before { content: none; display: none; }
@@ -191,7 +184,7 @@
 
   /* v2.22.125 - PDF-safe checklist flattening. */
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list { margin-block: 0.28em 0.68em; padding-inline-start: 1.1em; border: 0; background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
-  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item { display: list-item; margin-block: 0.16em; padding: 0; border: 0; background: transparent; box-shadow: none; color: #1f2937; line-height: 1.45; break-inside: avoid-page; page-break-inside: avoid; }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item { display: list-item; margin-block: 0.16em; padding: 0; border: 0; background: transparent; box-shadow: none; color: #1f2937; line-height: 1.45; page-break-inside: avoid; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item::marker { color: transparent; font-size: 0; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"] { position: static; display: inline-block; width: 0.86em; height: 0.86em; margin: 0 0.42em 0 0; border: 1.2px solid #94a3b8; border-radius: 3px; background: #ffffff; box-shadow: none; vertical-align: -0.12em; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) .contains-task-list > .task-list-item input[type="checkbox"]:checked { border-color: #0e7490; background: #ecfeff; }
