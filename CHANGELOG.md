@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.14] — 2026-05-16 — PDF header colour hardening + footer clipping cleanup
+
+### Fix
+
+- Force first-page header text colour through both `color` and `-webkit-text-fill-color` so Chromium PDF applies the Style Settings colour values to the generated header text, not only the side bars.
+- Increase the last-page footer reservation from `54mm` to `86mm`, move the footer closer to the last content block, reduce footer body text to `7.4pt`, and use explicit wrapping/visible overflow so the Korean confidentiality notice is not clipped mid-block.
+- Apply `-webkit-text-fill-color` to the footer text colour as well, matching Chromium's print paint path.
+
+### Cleanup
+
+- Remove stale v2.22.46/v2.22.49 footer `::after` comments and rules from `src/features/41-feature-presets.css`.
+- Remove the leftover v2.22.51 `:last-child::after` width hotfix from `src/features/42-report-print-polish.css`.
+- Keep only a small intentional guard that disables the known-unreliable pseudo routes (`.markdown-preview-*::before/::after`, `.markdown-rendered::after`, `:last-child::after`).
+
 ## [3.1.13] — 2026-05-16 — PDF-safe single-pseudo header/footer fallback
 
 ### Fix

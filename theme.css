@@ -3735,6 +3735,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     padding-right: 10px;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827);
     color: var(--ogd-first-page-header-color, #111827);
+    -webkit-text-fill-color: var(--ogd-first-page-header-color, #111827);
     text-align: right;
   }
   body.ogd-first-page-header-enabled::after {
@@ -3743,6 +3744,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     padding-left: 10px;
     border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9);
     color: var(--ogd-first-page-header-left-color, #0ea5e9);
+    -webkit-text-fill-color: var(--ogd-first-page-header-left-color, #0ea5e9);
     text-align: left;
   }
   .markdown-rendered h1:first-of-type {
@@ -3758,7 +3760,9 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-reading-view .markdown-rendered
   ) > :last-child {
     position: relative;
-    margin-bottom: 54mm;
+    margin-bottom: 86mm;
+    overflow: visible;
+    isolation: isolate;
   }
 
   body.ogd-last-page-footer :is(
@@ -3783,24 +3787,28 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     print-color-adjust: exact;
   
     content: var(--ogd-last-page-footer-label, "") "  " var(--ogd-last-page-footer-title, "") "  " var(--ogd-last-page-footer-body, "");
-    top: calc(100% + 11mm);
+    top: calc(100% + 6mm);
     min-height: 0;
     padding: 0 0 0 7mm;
     border-top: 0;
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
     box-shadow: none;
     color: var(--ogd-last-page-footer-text-color, #334155);
-    font-size: 8.8pt;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    font-size: 7.4pt;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 1.5;
+    line-height: 1.38;
     text-transform: none;
-    white-space: normal;
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
+    word-break: keep-all;
+    max-height: none;
+    overflow: visible;
     z-index: 2;
 }
 
-  /* Neutralise container/value pseudo routes that are not paintable in Obsidian PDF. */
+  /* PDF guard: these routes were proven unreliable in Obsidian's Chromium exporter. */
   body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
   body.ogd-first-page-header-enabled .markdown-preview-view::after,
   body.ogd-last-page-footer :is(
@@ -3840,66 +3848,6 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     display: none;
     content: none;
   }
-
-        /* v2.22.46-hotfix - PDF footer label vertical centering.
-     Chromium PDF export can leak background-clip:text fills as a solid
-        gray block. Split the label and title/body generated layers so
-          footer color controls stay active and the horizontal label centers vertically. */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child {
-    overflow: visible;
-    isolation: isolate;
-  }
-
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::before {
-    top: calc(100% + 11mm);
-    min-height: 10.5mm;
-    display: block;
-    padding: 0 0 0 7mm;
-    border-top: 0;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
-    background: transparent;
-    box-shadow: none;
-    color: var(--ogd-last-page-footer-text-color, #334155);
-    z-index: 2;
-  }
-
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after {
-    content: none;
-    display: none;
-    top: calc(100% + 21.5mm);
-    width: min(100%, 148mm);
-    max-width: 100%;
-    padding-left: 7mm;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
-    background: transparent;
-    background-image: none;
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-    -webkit-text-fill-color: currentColor;
-    color: var(--ogd-last-page-footer-text-color, #334155);
-    text-shadow: none;
-    z-index: 2;
-  }
-
-  /* Note: the ::first-line title color rule is declared once earlier in
-     this print media block (see the matching `> :last-child::after::first-line`
-     declaration paired with --ogd-last-page-footer-title-color). The
-     v2.22.49-hotfix ::marker rule below provides the actual paint isolation
-     because ::first-line on ::after is unreliable in Chromium. v2.30.13:
-     removed redundant duplicate of the ::first-line declaration here per the
-     community-scanner duplicate-selector cleanup; design output unchanged. */
 }
 
 /* C6. Report metadata block — frontmatter rendered nicely */
@@ -7334,21 +7282,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin: 1.1em 0 1.35em;
     border-left-color: #2563eb;
     background: #f8fbff;
-  }
-
-  /* v2.22.51-hotfix - PDF footer body full-width print line.
-     Let the last-page footer body use the full printable content width
-     instead of the older 148mm cap on wide PDF exports. */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after {
-    right: 0;
-    width: auto;
-    max-width: none;
-    inline-size: auto;
-    max-inline-size: none;
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) hr {
