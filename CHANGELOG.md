@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.0] — 2026-05-16 — H1 size +15% across Reading / Live Preview / Mobile
+
+### Changed
+
+- **H1 글자 크기 일괄 증대 (+15%)** — Reading 본문, Live Preview, 모바일까지 동일한 비율로 키워 시각적 위계를 강화했습니다.
+  - Reading 기본(`.markdown-rendered h1`): **2.15em → 2.45em**
+  - 데스크탑 정식 winner(`body :is(...) h1`): **2.12em → 2.42em**
+  - Live Preview (`.cm-header-1`): **2.05em → 2.35em**
+  - 모바일(≤768px): **1.9em → 2.15em**
+  - PDF 인쇄 / 보고서 모드 H1은 의도된 별도 디자인이라 변동 없음 (2.8em / 2.35em compact 유지).
+
+### Notes
+
+- 다른 H 레벨(H2~H6)·여백·텍스트 데코는 변동 없습니다. H1만 시각 위계 측면에서 +15%.
+
 ## [3.0.8] — 2026-05-16 — Doc + tooling polish
 
 ### Changed
