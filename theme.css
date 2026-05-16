@@ -3679,16 +3679,22 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
 }
 
 /* C3+C4. Print header/footer + chapter counters
-   v3.1.26 — RESTORED from v2.30.8 working baseline.
-   v3.0–v3.1.25 attempted "natural block flow" with static-positioned pseudos,
-   which broke in Chromium PDF because (a) :first-child::before gets absorbed
-   into H1's outline/box and (b) same-element dual static ::before+::after
-   silently culls one side. v2.30.8 used position:absolute !important +
-   z-index:9999 on every pseudo, which floats them OVER the layout and avoids
-   both cull and box-absorption issues. The :last-child::after also uses the
-   display:list-item + ::marker trick to split footer TITLE color/weight from
-   footer BODY color in a SINGLE pseudo. Variable names match v3 Style
-   Settings contract. */
+   v3.1.27 — TRUE byte-for-byte copy of the v2.30.8 working baseline.
+   v3.1.26 attempted the same restoration but dropped two things that turn
+   out to be load-bearing:
+     (1) the abs containing-block rule
+         `body, .print, .markdown-preview-view, .markdown-preview-sizer,
+          .markdown-preview-section, .markdown-rendered { position: relative }`
+         Without it, position:absolute pseudos resolve against the viewport
+         or some unrelated ancestor and the footer ::after is silently
+         culled in Chromium PDF.
+     (2) the shared abs block for `:last-child::before, :last-child::after`
+         (left:0; width:100%; display:block; pointer-events:none; etc.).
+         v3.1.26 inlined the abs properties into the LABEL and BODY rules
+         separately and lost the geometry that makes ::after::marker print.
+   v3.1.27 restores the v2.30.8 print block verbatim. No font-size /
+   color tweaks — those were drift introduced during v3.0 and are not
+   needed for the layout to work. */
 @media print {
   body { counter-reset: ogd-page; }
   .markdown-rendered h1 { counter-reset: ogd-page-in-chapter; }
@@ -3704,9 +3710,20 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       color: #6b7280;
     }
   }
+  /* First page only — Design ③ Side Bar + Two-line.
+     LABELS render via body::before/::after (top, small caps).
+     VALUES render via .markdown-preview-sizer/.markdown-preview-view/.markdown-rendered
+     ::before/::after (below labels, larger, with vertical accent bar).
+     Position:absolute renders only on first page in Chromium pagination.
+     Both label and value default to empty — show only when user fills them.
+     CRITICAL: the relative-positioning rule below is what makes every
+     absolute pseudo below resolve against the correct ancestor. */
+  body, .print, .markdown-preview-view, .markdown-preview-sizer,
+  .markdown-preview-section, .markdown-rendered {
+    position: relative;
+  }
 
-  /* HEADER LABELS — body::before (RIGHT) + body::after (LEFT).
-     Absolute pinned at top of page 1. Small uppercase letter-spaced. */
+  /* ---------- LABELS (top row, small caps, accent color) ---------- */
   body.ogd-first-page-header-enabled::before,
   body.ogd-first-page-header-enabled::after {
     position: absolute !important;
@@ -3717,16 +3734,14 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       "Helvetica Neue", Arial, sans-serif !important;
     font-size: 7.5pt !important;
     font-weight: 600 !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
     text-transform: uppercase !important;
     letter-spacing: 1.8px !important;
     color: var(--ogd-fp-label-color, #6b7280) !important;
-    -webkit-text-fill-color: var(--ogd-fp-label-color, #6b7280) !important;
     white-space: nowrap !important;
-    background: transparent !important;
-    background-image: none !important;
     z-index: 9999 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    pointer-events: none !important;
   }
   body.ogd-first-page-header-enabled::before {
     content: var(--ogd-fp-right-label, "") !important;
@@ -3737,9 +3752,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     left: 13px !important;
   }
 
-  /* HEADER VALUES — markdown-rendered::before (RIGHT) + ::after (LEFT).
-     Absolute pinned, NOT absorbed by H1 outline since they're children of
-     .markdown-rendered (not of :first-child). */
+  /* ---------- VALUES (below labels, larger, accent bar) ---------- */
   body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
   body.ogd-first-page-header-enabled .markdown-preview-view::before,
   body.ogd-first-page-header-enabled .markdown-preview-section::before,
@@ -3755,13 +3768,16 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif !important;
     font-size: 10.5pt !important;
-    font-weight: 700 !important;
-    line-height: 1.25 !important;
-    background: transparent !important;
-    background-image: none !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    line-height: 1.1 !important;
+    color: var(--ogd-text-strong, #111827) !important;
+    white-space: nowrap !important;
     z-index: 9999 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    pointer-events: none !important;
   }
   /* RIGHT header value */
   body.ogd-first-page-header-enabled .markdown-rendered::before {
@@ -3769,9 +3785,6 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     right: 0 !important;
     padding: 16px 10px 0 0 !important;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827) !important;
-    color: var(--ogd-first-page-header-color, #111827) !important;
-    -webkit-text-fill-color: var(--ogd-first-page-header-color, #111827) !important;
-    text-align: right !important;
   }
   /* LEFT header value */
   body.ogd-first-page-header-enabled .markdown-rendered::after {
@@ -3779,9 +3792,6 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     left: 0 !important;
     padding: 16px 0 0 10px !important;
     border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9) !important;
-    color: var(--ogd-first-page-header-left-color, #0ea5e9) !important;
-    -webkit-text-fill-color: var(--ogd-first-page-header-left-color, #0ea5e9) !important;
-    text-align: left !important;
   }
 
   .markdown-rendered h1:first-of-type {
@@ -3791,9 +3801,11 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     string-set: ogd-doc-title content();
   }
 
-  /* FOOTER — reserve 54mm bottom margin under :last-child so absolute
-     pseudos have room. :last-child is the relative containing block for the
-     abs ::before (LABEL) and ::after (TITLE+BODY). */
+  /* ---------- FOOTER ---------- :last-child is the relative containing
+     block for the abs LABEL (::before) and TITLE+BODY (::after).
+     The shared abs block below sets the geometry that makes the marker
+     and content render in Chromium PDF — do NOT inline these into the
+     specific rules below (v3.1.26 did and the ::after was culled). */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -3801,81 +3813,85 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   ) > :last-child {
     position: relative !important;
     margin-bottom: 54mm !important;
-    overflow: visible !important;
-    isolation: auto !important;
   }
 
-  /* FOOTER LABEL — absolute under :last-child, large uppercase. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::before,
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    position: absolute !important;
+    left: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    display: block !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    color: var(--ogd-last-page-footer-text-color, #334155) !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
+    pointer-events: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* FOOTER LABEL (uppercase small caps, left accent bar) */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before {
     content: var(--ogd-last-page-footer-label, "") !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
     top: calc(100% + 11mm) !important;
+    min-height: 0 !important;
     height: 10.5mm !important;
     display: flex !important;
     align-items: center !important;
-    box-sizing: border-box !important;
+    justify-content: flex-start !important;
     padding: 0 0 0 7mm !important;
+    border-top: 0 !important;
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
-    font-size: 14pt !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
-    line-height: 1.2 !important;
+    box-shadow: none !important;
     color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    background: transparent !important;
-    background-image: none !important;
-    white-space: pre-line !important;
-    z-index: 9999 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    font-size: 8.8pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.42 !important;
+    text-transform: none !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
   }
 
-  /* FOOTER TITLE + BODY — absolute under LABEL.
-     display:list-item + list-style-type:"" + ::marker trick lets us color
-     and weight the TITLE differently from the BODY in a SINGLE pseudo. */
+  /* FOOTER BODY + TITLE (TITLE via ::marker for color/weight split).
+     NO `top:` override — inherits abs from the shared block above, which
+     in v2.30.8 caused the BODY/TITLE to stack right below the LABEL
+     because the marker `\A\A` line-breaks push it down naturally. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::after {
-    content: var(--ogd-last-page-footer-body, "") !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: calc(100% + 21.5mm) !important;
     display: list-item !important;
+    list-style-position: inside !important;
     list-style-type: "" !important;
-    list-style-position: outside !important;
-    box-sizing: border-box !important;
+    content: var(--ogd-last-page-footer-body, "") !important;
+    top: calc(100% + 21.5mm) !important;
     padding-left: 7mm !important;
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
+    color: var(--ogd-last-page-footer-text-color, #334155) !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
     font-size: 9.5pt !important;
     font-weight: 500 !important;
     line-height: 1.5 !important;
-    color: var(--ogd-last-page-footer-text-color, #334155) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
-    background: transparent !important;
-    background-image: none !important;
-    white-space: pre-line !important;
+    white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
-    z-index: 9999 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
   body.ogd-last-page-footer :is(
     .markdown-rendered,
@@ -3886,13 +3902,8 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
     -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
     font-weight: 700 !important;
-    font-size: 10.5pt !important;
-    white-space: pre-line !important;
+    white-space: pre-wrap !important;
   }
-  /* v3.1.26: removed obsolete v3.0-era "PDF guard" block.
-     The v2.30.8 baseline restored above does NOT need it and the guard's
-     :is(.markdown-rendered, …)::after rule would inadvertently null the
-     LEFT header value when ogd-last-page-footer is also enabled. */
 }
 
 @media print {
