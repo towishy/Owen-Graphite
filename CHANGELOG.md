@@ -6,6 +6,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.12] — 2026-05-16 — PDF first-page LEFT VALUE + last-page FOOTER TITLE/BODY repaint via split-element architecture
+
+### Empirically verified Chromium PDF limit
+
+The v3.1.11 PDF inspection (17-page export) confirmed a previously hypothesised paint-culling rule in Obsidian's Chromium PDF pipeline:
+
+**When a single element carries BOTH an absolutely-positioned `::before` AND `::after` generated-content layer, the `::after` is silently dropped.**
+
+Consequences for the canonical `src/features/41-feature-presets.css` architecture:
+
+- The 4-container fallback chain (`.markdown-preview-sizer / .markdown-preview-view / .markdown-preview-section / .markdown-rendered`) attaches *both* `::before` (RIGHT VALUE) and `::after` (LEFT VALUE) to every element — so all four `::after` paints were culled and the LEFT VALUE never rendered in PDF, only the LEFT LABEL via `body::after`.
+- The v2.22.49 footer trick (`:last-child::after { display: list-item; … }` with TITLE in `::marker` and BODY in `content`) attaches `::after` to a `:last-child` element that *also* receives the FOOTER LABEL via `::before` — so the entire TITLE+BODY paint layer was culled and only the LABEL rendered.
+- `::first-line { color }` is independently *not* honoured in Chromium PDF (verified via repeated v3.1.6 → v3.1.10 experiments), so multi-line single-pseudo slots cannot carry per-line colour differentiation.
+
+### Architectural fix (in `src/features/41-feature-presets.css`)
+
+Split the chains so every paint slot lives on its own element with at most ONE pseudo (`::before` *or* `::after`):
+
+| Slot                 | Selector                                          | Pseudo     |
+| -------------------- | ------------------------------------------------- | ---------- |
+| RIGHT LABEL          | `body`                                            | `::before` |
+| LEFT LABEL           | `body`                                            | `::after`  |
+| RIGHT VALUE (+ bar)  | `.markdown-preview-sizer`                         | `::before` |
+| **LEFT VALUE (+ bar)** | **`.markdown-preview-view`**                    | **`::after`**  |
+| FOOTER LABEL         | `:last-child` (within `.markdown-rendered`)       | `::before` |
+| **FOOTER TITLE+BODY** | **`.markdown-rendered` (and equivalents)**       | **`::after`** |
+
+Each element now carries exactly one absolutely-positioned pseudo, so none of the slots are culled.
+
+### Known structural limit (per `owen-graphite.md` "신규 기능 제안 시 사전 한계점 분석" policy)
+
+**FOOTER TITLE and FOOTER BODY share a single colour** in PDF output. Chromium PDF does not honour `::first-line { color }` on generated content, and the previous `display: list-item + ::marker` colour-isolation trick is structurally unavailable because pairing `::before` with `::after` on the same element culls the `::after`. The new TITLE+BODY slot uses font-weight, font-size, and letter-spacing on `::first-line` to visually differentiate the TITLE row; only the text colour is uniform (`--ogd-last-page-footer-text-color`). If a distinct TITLE colour is required, the feature must be redesigned to use a JS-based pre-print DOM injector (out of scope for a CSS-only theme).
+
+### Files changed
+
+- `src/features/41-feature-presets.css` — chain split + footer relocation.
+- `manifest.json` — `3.1.12`.
+
+### Memory updated
+
+`/memories/owen-graphite.md` now records the Chromium-PDF `::before+::after` culling rule and the verified-paintable slot inventory.
+
 ## [3.1.11] — 2026-05-16 — REVERT v3.1.6 → v3.1.10 PDF EOF hotfixes — restore original features/41 architecture
 
 ### Why this revert

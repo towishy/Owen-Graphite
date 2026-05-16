@@ -3737,15 +3737,13 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
      across Obsidian print DOM mutations. Earlier versions (v1.4.5\u20131.5.1)
      attached to 5 containers as a defensive fallback; reduced in v1.6.0
      after extensive PDF export validation. */
-  /* v1.7.1: restored 4-container fallback (v1.6.0 single binding regressed PDF) */
+  /* v3.1.12: split the 4-container fallback so no element carries BOTH ::before AND ::after.
+     Chromium's print-to-PDF pipeline empirically culls ::after when the same element also has
+     an absolutely-positioned ::before (verified v3.1.11 PDF inspection: sizer::after LEFT VALUE
+     and :last-child::after FOOTER TITLE/BODY are both silently dropped). Splitting onto two
+     distinct elements (sizer for RIGHT, view for LEFT) keeps each pseudo isolated and paintable. */
   body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
-  body.ogd-first-page-header-enabled .markdown-preview-view::before,
-  body.ogd-first-page-header-enabled .markdown-preview-section::before,
-  body.ogd-first-page-header-enabled .markdown-rendered::before,
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::after,
-  body.ogd-first-page-header-enabled .markdown-preview-view::after,
-  body.ogd-first-page-header-enabled .markdown-preview-section::after,
-  body.ogd-first-page-header-enabled .markdown-rendered::after {
+  body.ogd-first-page-header-enabled .markdown-preview-view::after {
     position: absolute;
     top: 0;
     font-family: "Pretendard Variable", "Pretendard",
@@ -3764,19 +3762,13 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     z-index: 9999;
     pointer-events: none;
   }
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
-  body.ogd-first-page-header-enabled .markdown-preview-view::before,
-  body.ogd-first-page-header-enabled .markdown-preview-section::before,
-  body.ogd-first-page-header-enabled .markdown-rendered::before {
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::before {
     content: var(--ogd-first-page-header, "");
     right: 0;
     padding: 16px 10px 0 0;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827);
   }
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::after,
-  body.ogd-first-page-header-enabled .markdown-preview-view::after,
-  body.ogd-first-page-header-enabled .markdown-preview-section::after,
-  body.ogd-first-page-header-enabled .markdown-rendered::after {
+  body.ogd-first-page-header-enabled .markdown-preview-view::after {
     content: var(--ogd-first-page-header-left, "");
     left: 0;
     padding: 16px 0 0 10px;
@@ -3851,57 +3843,64 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     overflow-wrap: anywhere;
   }
 
+  /* v3.1.12 footer TITLE+BODY relocation.
+     Empirically verified (v3.1.11 PDF inspection): the v2.22.49 :last-child::after
+     `display: list-item` + ::marker trick is CULLED in Obsidian's Chromium PDF whenever
+     :last-child::before exists on the same element (the LABEL slot). Move TITLE+BODY to
+     .markdown-rendered::after instead - a fresh paint slot that, after the v3.1.12 chain
+     split, no longer carries any other pseudo. ::first-line color is not honoured in PDF,
+     so TITLE differentiates from BODY through font-weight/size/letter-spacing only;
+     TITLE/BODY share the body text colour (verified structural Chromium PDF limit). */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
-  ) > :last-child::after::first-line {
-    color: var(--ogd-last-page-footer-title-color, #0f172a);
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
+  )::after {
+    content: var(--ogd-last-page-footer-title, "") "\A\A" var(--ogd-last-page-footer-body, "");
+    position: absolute;
+    bottom: 12mm;
+    left: 18mm;
+    right: 18mm;
+    display: block;
+    padding-left: 7mm;
+    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.8pt;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
+    pointer-events: none;
+    z-index: 9998;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  /* v2.22.49-hotfix - PDF footer title color isolation.
-     Chromium does not reliably apply ::first-line color inside generated
-     footer content when -webkit-text-fill-color is involved. Render the
-     title through ::marker so the title and body use separate paint layers. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  )::after::first-line {
+    font-weight: 700;
+    font-size: 9.6pt;
+    letter-spacing: 0.02em;
+  }
+
+  /* Neutralise the legacy :last-child::after (v2.22.49 list-item + ::marker trick).
+     Chromium PDF culls it whenever :last-child::before paints the LABEL on the same element. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::after {
-    top: calc(100% + 21.5mm);
-    min-height: 0;
-    padding-left: 7mm;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
-    font-size: 8.8pt;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.42;
-    text-transform: none;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    background-image: none;
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-  
-    display: list-item;
-    list-style-position: inside;
-    list-style-type: "";
-    content: var(--ogd-last-page-footer-body, "");
-    color: var(--ogd-last-page-footer-text-color, #334155);
-    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
-}
-
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after::marker {
-    content: var(--ogd-last-page-footer-title, "") "\A\A";
-    color: var(--ogd-last-page-footer-title-color, #0f172a);
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
-    font-weight: 700;
-    white-space: pre-wrap;
+    content: none;
+    display: none;
   }
 }
 
