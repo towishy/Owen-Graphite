@@ -351,7 +351,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     background-image: none;
     -webkit-background-clip: border-box;
     background-clip: border-box;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a);
+    -webkit-text-fill-color: currentColor;
     font-size: 9.2pt;
     font-weight: 600;
     letter-spacing: 0;
@@ -373,8 +373,10 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before::first-line {
-    font-size: 13pt;
-    font-weight: 850;
+    color: var(--ogd-last-page-footer-color, #0ea5e9);
+    -webkit-text-fill-color: var(--ogd-last-page-footer-color, #0ea5e9);
+    font-size: 15pt;
+    font-weight: 900;
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
