@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.13] — 2026-05-16 — PDF-safe single-pseudo header/footer fallback
+
+### Fix
+
+v3.1.12's split-element architecture still relied on generated content attached to Obsidian's multi-page preview containers (`.markdown-preview-sizer`, `.markdown-preview-view`, `.markdown-rendered`). Direct PDF inspection confirmed those container pseudos do not reliably paint in Obsidian's Chromium export pipeline, even when isolated.
+
+This release switches the PDF header/footer to the only paint slots verified to work:
+
+- First-page RIGHT header: `body::before` now renders LABEL + VALUE together.
+- First-page LEFT header: `body::after` now renders LABEL + VALUE together.
+- Last-page footer: `:last-child::before` now renders LABEL + TITLE + BODY together as one naturally-wrapping text block.
+- The failed container pseudo routes are explicitly neutralised: `.markdown-preview-sizer::before`, `.markdown-preview-view::after`, `.markdown-rendered::after`, and `:last-child::after`.
+
+### Structural limit
+
+This is a CSS-only PDF fallback. Per-line colour separation is not possible because Chromium PDF does not honour generated-content `::first-line { color }`, and the multi-container pseudo slots are not paintable. Header side colour now applies to each side's LABEL + VALUE + bar together. Footer uses `--ogd-last-page-footer-text-color` for LABEL + TITLE + BODY together and `--ogd-last-page-footer-color` for the vertical bar.
+
+### Style Settings note
+
+The legacy colour controls for first-page label colour, footer label colour, and footer title colour remain for compatibility, but their labels now state that they are unused by the PDF single-pseudo fallback.
+
 ## [3.1.12] — 2026-05-16 — PDF first-page LEFT VALUE + last-page FOOTER TITLE/BODY repaint via split-element architecture
 
 ### Empirically verified Chromium PDF limit

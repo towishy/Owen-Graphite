@@ -305,7 +305,7 @@ settings:
     quotes: true
   -
     id: ogd-first-page-header-color
-    title: 첫 페이지 우측 본문 사이드바 색상
+    title: 첫 페이지 우측 헤더 색상 (라벨·본문·세로바)
     type: variable-color
     format: hex
     default: '#111827'
@@ -325,7 +325,7 @@ settings:
     quotes: true
   -
     id: ogd-first-page-header-left-color
-    title: 첫 페이지 좌측 본문 사이드바 색상
+    title: 첫 페이지 좌측 헤더 색상 (라벨·본문·세로바)
     type: variable-color
     format: hex
     default: '#0ea5e9'
@@ -338,7 +338,7 @@ settings:
     quotes: true
   -
     id: ogd-fp-label-color
-    title: 첫 페이지 좌·우 라벨 공통 색상
+    title: 첫 페이지 라벨 색상 (PDF 단일 pseudo 출력에서는 미사용)
     type: variable-color
     format: hex
     default: '#6b7280'
@@ -382,13 +382,13 @@ settings:
     default: '#0ea5e9'
   -
     id: ogd-last-page-footer-label-color
-    title: PDF 마지막 페이지 Footer 라벨 색상
+    title: PDF 마지막 페이지 Footer 라벨 색상 (PDF 단일 pseudo 출력에서는 미사용)
     type: variable-color
     format: hex
     default: '#64748b'
   -
     id: ogd-last-page-footer-title-color
-    title: PDF 마지막 페이지 Footer 제목 색상
+    title: PDF 마지막 페이지 Footer 제목 색상 (PDF 단일 pseudo 출력에서는 미사용)
     type: variable-color
     format: hex
     default: '#0f172a'
@@ -3694,17 +3694,14 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       color: #6b7280;
     }
   }
-  /* First page only — Design ③ Side Bar + Two-line.
-     LABELS render via body::before/::after (top, small caps).
-     VALUES render via .markdown-preview-sizer/.markdown-preview-view/.markdown-rendered
-     ::before/::after (below labels, larger, with vertical accent bar).
-     Position:absolute renders only on first page in Chromium pagination.
-     Both label and value default to empty — show only when user fills them. */
+  /* First page only — PDF-safe side-bar header.
+     Obsidian's Chromium PDF export reliably paints body::before/body::after,
+     while generated content on multi-page preview containers is culled. Keep
+     each side in a single body pseudo so LABEL+VALUE ship together. */
   body, .print, .markdown-preview-view, .markdown-preview-sizer,
   .markdown-preview-section, .markdown-rendered {
     position: relative;
   }
-  /* ---------- LABELS (top row, small caps, accent color) ---------- */
   body.ogd-first-page-header-enabled::before,
   body.ogd-first-page-header-enabled::after {
     position: absolute;
@@ -3713,66 +3710,40 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif;
-    font-size: 7.5pt;
-    font-weight: 600;
-    font-style: normal;
-    font-synthesis: weight style;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: var(--ogd-fp-label-color, #6b7280);
-    white-space: nowrap;
-    z-index: 9999;
-    pointer-events: none;
-  }
-  body.ogd-first-page-header-enabled::before {
-    content: var(--ogd-fp-right-label, "");
-    right: 13px;
-  }
-  body.ogd-first-page-header-enabled::after {
-    content: var(--ogd-fp-left-label, "");
-    left: 13px;
-  }
-  /* ---------- VALUES (below labels, larger, dark, with side bar) ----------
-     Bound to .markdown-preview-sizer only \u2014 the most stable container
-     across Obsidian print DOM mutations. Earlier versions (v1.4.5\u20131.5.1)
-     attached to 5 containers as a defensive fallback; reduced in v1.6.0
-     after extensive PDF export validation. */
-  /* v3.1.12: split the 4-container fallback so no element carries BOTH ::before AND ::after.
-     Chromium's print-to-PDF pipeline empirically culls ::after when the same element also has
-     an absolutely-positioned ::before (verified v3.1.11 PDF inspection: sizer::after LEFT VALUE
-     and :last-child::after FOOTER TITLE/BODY are both silently dropped). Splitting onto two
-     distinct elements (sizer for RIGHT, view for LEFT) keeps each pseudo isolated and paintable. */
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
-  body.ogd-first-page-header-enabled .markdown-preview-view::after {
-    position: absolute;
-    top: 0;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif;
     font-size: 10.5pt;
     font-weight: 500;
     font-style: normal;
     font-synthesis: weight style;
-    text-transform: none;
     letter-spacing: 0;
-    line-height: 1.1;
-    color: var(--ogd-text-strong, #111827);
-    white-space: nowrap;
+    line-height: 1.14;
+    white-space: pre;
     z-index: 9999;
     pointer-events: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
-  body.ogd-first-page-header-enabled .markdown-preview-sizer::before {
-    content: var(--ogd-first-page-header, "");
-    right: 0;
-    padding: 16px 10px 0 0;
+  body.ogd-first-page-header-enabled::before::first-line,
+  body.ogd-first-page-header-enabled::after::first-line {
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  body.ogd-first-page-header-enabled::before {
+    content: var(--ogd-fp-right-label, "") "\A" var(--ogd-first-page-header, "");
+    right: 13px;
+    padding-right: 10px;
     border-right: 3px solid var(--ogd-first-page-header-color, #111827);
+    color: var(--ogd-first-page-header-color, #111827);
+    text-align: right;
   }
-  body.ogd-first-page-header-enabled .markdown-preview-view::after {
-    content: var(--ogd-first-page-header-left, "");
-    left: 0;
-    padding: 16px 0 0 10px;
+  body.ogd-first-page-header-enabled::after {
+    content: var(--ogd-fp-left-label, "") "\A" var(--ogd-first-page-header-left, "");
+    left: 13px;
+    padding-left: 10px;
     border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9);
+    color: var(--ogd-first-page-header-left-color, #0ea5e9);
+    text-align: left;
   }
   .markdown-rendered h1:first-of-type {
     margin-top: 44px;
@@ -3794,12 +3765,8 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
-  ) > :last-child::before,
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after {
+  ) > :last-child::before {
+  
     position: absolute;
     left: 0;
     box-sizing: border-box;
@@ -3809,91 +3776,38 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif;
-    color: var(--ogd-last-page-footer-text-color, #334155);
     font-style: normal;
     font-synthesis: weight style;
     pointer-events: none;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-  }
-
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::before {
-    content: var(--ogd-last-page-footer-label, "");
+  
+    content: var(--ogd-last-page-footer-label, "") "  " var(--ogd-last-page-footer-title, "") "  " var(--ogd-last-page-footer-body, "");
     top: calc(100% + 11mm);
     min-height: 0;
-    height: 10.5mm;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     padding: 0 0 0 7mm;
     border-top: 0;
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
     box-shadow: none;
-    color: var(--ogd-last-page-footer-label-color, #64748b);
-    font-size: 8.8pt;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.42;
-    text-transform: none;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-
-  /* v3.1.12 footer TITLE+BODY relocation.
-     Empirically verified (v3.1.11 PDF inspection): the v2.22.49 :last-child::after
-     `display: list-item` + ::marker trick is CULLED in Obsidian's Chromium PDF whenever
-     :last-child::before exists on the same element (the LABEL slot). Move TITLE+BODY to
-     .markdown-rendered::after instead - a fresh paint slot that, after the v3.1.12 chain
-     split, no longer carries any other pseudo. ::first-line color is not honoured in PDF,
-     so TITLE differentiates from BODY through font-weight/size/letter-spacing only;
-     TITLE/BODY share the body text colour (verified structural Chromium PDF limit). */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  )::after {
-    content: var(--ogd-last-page-footer-title, "") "\A\A" var(--ogd-last-page-footer-body, "");
-    position: absolute;
-    bottom: 12mm;
-    left: 18mm;
-    right: 18mm;
-    display: block;
-    padding-left: 7mm;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif;
+    color: var(--ogd-last-page-footer-text-color, #334155);
     font-size: 8.8pt;
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1.5;
-    white-space: pre-wrap;
+    text-transform: none;
+    white-space: normal;
     overflow-wrap: anywhere;
-    color: var(--ogd-last-page-footer-text-color, #334155);
-    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155);
-    pointer-events: none;
-    z-index: 9998;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+    z-index: 2;
+}
 
+  /* Neutralise container/value pseudo routes that are not paintable in Obsidian PDF. */
+  body.ogd-first-page-header-enabled .markdown-preview-sizer::before,
+  body.ogd-first-page-header-enabled .markdown-preview-view::after,
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
-  )::after::first-line {
-    font-weight: 700;
-    font-size: 9.6pt;
-    letter-spacing: 0.02em;
-  }
-
-  /* Neutralise the legacy :last-child::after (v2.22.49 list-item + ::marker trick).
-     Chromium PDF culls it whenever :last-child::before paints the LABEL on the same element. */
+  )::after,
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -3946,17 +3860,15 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before {
     top: calc(100% + 11mm);
-    height: 10.5mm;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    min-height: 10.5mm;
+    display: block;
     padding: 0 0 0 7mm;
     border-top: 0;
     border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9);
     background: transparent;
     box-shadow: none;
-    color: var(--ogd-last-page-footer-label-color, #64748b);
-    z-index: 1;
+    color: var(--ogd-last-page-footer-text-color, #334155);
+    z-index: 2;
   }
 
   body.ogd-last-page-footer :is(
@@ -3964,6 +3876,8 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::after {
+    content: none;
+    display: none;
     top: calc(100% + 21.5mm);
     width: min(100%, 148mm);
     max-width: 100%;
