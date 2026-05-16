@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>PDF Marginalia v3.1.32 Upgrade — 5 Options</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --accent: #279DF5;
+    --bg-page: #fafafa;
+    --bg-paper: #ffffff;
+    --ink: #0f172a;
+    --ink-muted: #64748b;
+    --pill-bg: rgba(248, 250, 252, 0.85);
+    --pill-border: #e2e8f0;
+    --pill-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+  body {
+    margin: 0;
+    padding: 32px;
+    font-family: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif;
+    background: #ececec;
+    color: var(--ink);
+  }
+  h1 { font-size: 18px; margin: 0 0 16px; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .option {
+    background: var(--bg-paper);
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .option-title {
+    padding: 10px 16px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .option-title small { color: #737373; font-weight: 400; font-size: 11px; }
+  .preview {
+    position: relative;
+    height: 260px;
+    padding: 22mm 18mm;
+    background:
+      linear-gradient(180deg, var(--bg-paper) 0%, #fcfcfc 100%);
+    overflow: hidden;
+  }
+  .preview.dark {
+    --bg-paper: #1e293b;
+    --pill-bg: rgba(15, 23, 42, 0.55);
+    --pill-border: rgba(148, 163, 184, 0.22);
+    --pill-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --ink: #f1f5f9;
+    --ink-muted: #94a3b8;
+    --accent: #38bdf8;
+    background: #1e293b;
+  }
+  .doc-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 6px;
+    line-height: 1.25;
+  }
+  .doc-body {
+    font-size: 11px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    max-width: 80%;
+  }
+  .footer-anchor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14mm;
+    text-align: center;
+  }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .pair > .preview { border-right: 1px solid #e5e5e5; }
+  .pair > .preview:last-child { border-right: none; }
+
+  /* ───────── pill base ───────── */
+  .pill {
+    display: inline-block;
+    pointer-events: none;
+    font-family: inherit;
+    line-height: 1.2;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header-pill {
+    position: absolute;
+    top: 8mm;
+    right: 12mm;
+    max-width: calc(100% - 24mm);
+  }
+  .footer-pill { display: inline-block; }
+
+  /* ===================================================================
+     Option A — Editorial Chip
+     상단 2px 액센트 라인 + 비대칭 라운드 (헤더: 오른쪽만 둥글게)
+  =================================================================== */
+  .opt-A .pill {
+    padding: 5px 12px;
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    border-top: 2px solid var(--accent);
+    box-shadow: var(--pill-shadow);
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .opt-A .header-pill { border-radius: 2px 8px 8px 2px; }
+  .opt-A .footer-pill { border-radius: 8px; padding: 6px 16px; font-size: 9pt; }
+
+  /* ===================================================================
+     Option B — Gradient Glass + Inner Stroke
+     배경 그라데이션 + 이중 stroke (inner + outer) + 부드러운 shadow
+  =================================================================== */
+  .opt-B .pill {
+    padding: 5px 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(39, 157, 245, 0.10));
+    border: none;
+    border-radius: 8px;
+    box-shadow:
+      inset 0 0 0 1px rgba(39, 157, 245, 0.22),
+      0 2px 8px rgba(15, 23, 42, 0.06);
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .opt-B .footer-pill { padding: 6px 16px; font-size: 9pt; }
+  .preview.dark .opt-B .pill {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(56, 189, 248, 0.14));
+    box-shadow:
+      inset 0 0 0 1px rgba(56, 189, 248, 0.32),
+      0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ===================================================================
+     Option C — Tag Cut (티켓 모양, 꺾인 모서리)
+     clip-path로 오른쪽 위 모서리 잘라낸 stamp 톤
+  =================================================================== */
+  .opt-C .pill {
+    padding: 6px 14px 6px 12px;
+    background: linear-gradient(135deg, rgba(39, 157, 245, 0.10), rgba(39, 157, 245, 0.04));
+    border: 1px solid rgba(39, 157, 245, 0.30);
+    box-shadow: var(--pill-shadow);
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+  .opt-C .header-pill {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    border-radius: 2px;
+  }
+  .opt-C .footer-pill {
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0 50%);
+    padding: 6px 22px;
+    font-size: 9pt;
+  }
+  .preview.dark .opt-C .pill {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(56, 189, 248, 0.06));
+    border: 1px solid rgba(56, 189, 248, 0.40);
+  }
+
+  /* ===================================================================
+     Option D — Uppercase Microlabel
+     매우 작은 글자 + 강한 자간 + 옅은 보더 (미니멀 럭스)
+  =================================================================== */
+  .opt-D .pill {
+    padding: 4px 10px;
+    background: rgba(39, 157, 245, 0.06);
+    border: 1px solid rgba(39, 157, 245, 0.22);
+    border-radius: 4px;
+    box-shadow: none;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .opt-D .footer-pill { padding: 5px 14px; font-size: 8pt; }
+  .preview.dark .opt-D .pill {
+    background: rgba(56, 189, 248, 0.10);
+    border: 1px solid rgba(56, 189, 248, 0.32);
+  }
+
+  /* ===================================================================
+     Option E — Premium Editorial (A + B + D 조합, 추천)
+     상단 액센트 라인 + 그라데이션 글래스 + 이중 stroke + uppercase microlabel
+  =================================================================== */
+  .opt-E .pill {
+    padding: 5px 13px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(39, 157, 245, 0.08));
+    border: 1px solid rgba(39, 157, 245, 0.20);
+    border-top: 2px solid var(--accent);
+    border-radius: 2px 8px 8px 2px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 2px 8px rgba(15, 23, 42, 0.07);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .opt-E .footer-pill {
+    padding: 6px 18px;
+    border-radius: 8px;
+    font-size: 8pt;
+  }
+  .preview.dark .opt-E .pill {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(56, 189, 248, 0.12));
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-top: 2px solid var(--accent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ===================================================================
+     Option Current (v3.1.31 baseline, 비교용)
+  =================================================================== */
+  .opt-Cur .pill {
+    padding: 5px 12px;
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    border-radius: 6px;
+    box-shadow: var(--pill-shadow);
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .opt-Cur .footer-pill { font-size: 9pt; padding: 6px 14px; }
+</style>
+</head>
+<body>
+  <h1>PDF Marginalia v3.1.32 Upgrade — 5 후보 + 현행 (비교)</h1>
+  <div class="grid">
+
+    <!-- Current baseline -->
+    <section class="option opt-Cur">
+      <div class="option-title">현행 (v3.1.31, 비교 기준)<small>flat pill · 1px border</small></div>
+      <div class="pair">
+        <div class="preview">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+        <div class="preview dark">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option A -->
+    <section class="option opt-A">
+      <div class="option-title">Option A — Editorial Chip<small>상단 2px 액센트 + 비대칭 라운드</small></div>
+      <div class="pair">
+        <div class="preview">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+        <div class="preview dark">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option B -->
+    <section class="option opt-B">
+      <div class="option-title">Option B — Gradient Glass + Inner Stroke<small>그라데이션 + 이중 stroke + soft shadow</small></div>
+      <div class="pair">
+        <div class="preview">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+        <div class="preview dark">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option C -->
+    <section class="option opt-C">
+      <div class="option-title">Option C — Tag Cut (Ticket Stub)<small>clip-path 꺾인 모서리 · stamp 톤</small></div>
+      <div class="pair">
+        <div class="preview">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+        <div class="preview dark">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option D -->
+    <section class="option opt-D">
+      <div class="option-title">Option D — Uppercase Microlabel<small>7.5pt · letter-spacing 1.2px · 옅은 보더</small></div>
+      <div class="pair">
+        <div class="preview">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+        <div class="preview dark">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option E -->
+    <section class="option opt-E">
+      <div class="option-title">Option E — Premium Editorial (A+B+D 합본, 추천)<small>상단 액센트 + 그라데이션 + uppercase microlabel</small></div>
+      <div class="pair">
+        <div class="preview">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+        <div class="preview dark">
+          <span class="pill header-pill">AUTHOR - OWEN LEE - SR. CSA</span>
+          <h2 class="doc-title">High Risk 사용자 → MDE 자동 격리</h2>
+          <p class="doc-body">Entra ID Protection이 사용자를 High Risk로 마킹하면 Logic App이 그 사용자가 현재 로그인한 머신을 MDE로 식별해 네트워크 격리합니다.</p>
+          <div class="footer-anchor"><span class="pill footer-pill">Microsoft Confidential - End of Document</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

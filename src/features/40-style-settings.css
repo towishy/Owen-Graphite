@@ -242,117 +242,43 @@ settings:
     type: class-toggle
     default: true
   -
-    id: ogd-settings-first-page
-    title: PDF 첫 페이지 헤더
+    id: ogd-settings-pdf-marginalia
+    title: PDF 헤더/풋터 (Glass Pill)
+    description: PDF 첫 페이지 우측 상단과 마지막 페이지 중앙 하단에 반투명 글라스 pill로 사용자 문구를 표시합니다. Reading View에서도 동일하게 보이며 PDF export 시 backdrop-filter는 단색 fallback으로 자연 degrade 됩니다.
     type: heading
     level: 2
   -
-    id: ogd-first-page-header-enabled
-    title: PDF 첫 페이지 Header 표시
-    description: PDF 내보내기 시 첫 페이지 Header 라벨과 본문을 출력합니다. 끄면 입력값이 있어도 출력하지 않습니다.
-    type: class-toggle
-    default: true
-  -
-    id: ogd-first-page-header
-    title: PDF 첫 페이지 우측 상단 문구 (본문)
-    description: PDF 내보내기 시 첫 페이지 우측 상단에만 표시되는 본문입니다. 비워두면 표시하지 않습니다.
-    type: variable-text
-    default: ''
-    quotes: true
-  -
-    id: ogd-first-page-header-color
-    title: 첫 페이지 우측 본문·세로바 색상
-    type: variable-color
-    format: hex
-    default: '#111827'
-  -
-    id: ogd-fp-right-label
-    title: 첫 페이지 우측 상단 라벨 (소문자)
-    description: 본문 위에 작게 표시되는 라벨입니다. 비워두면 표시하지 않습니다.
-    type: variable-text
-    default: ''
-    quotes: true
-  -
-    id: ogd-first-page-header-left
-    title: PDF 첫 페이지 좌측 상단 문구 (본문)
-    description: PDF 내보내기 시 첫 페이지 좌측 상단에만 표시되는 본문입니다. 비워두면 표시하지 않습니다.
-    type: variable-text
-    default: ''
-    quotes: true
-  -
-    id: ogd-first-page-header-left-color
-    title: 첫 페이지 좌측 본문·세로바 색상
-    type: variable-color
-    format: hex
-    default: '#0ea5e9'
-  -
-    id: ogd-fp-left-label
-    title: 첫 페이지 좌측 상단 라벨 (소문자)
-    description: 본문 위에 작게 표시되는 라벨입니다. 비워두면 표시하지 않습니다.
-    type: variable-text
-    default: ''
-    quotes: true
-  -
-    id: ogd-fp-label-color
-    title: 첫 페이지 좌·우 라벨 공통 색상
-    type: variable-color
-    format: hex
-    default: '#6b7280'
-  -
-    id: ogd-settings-last-page-footer
-    title: PDF 마지막 페이지 Footer
-    type: heading
-    level: 2
-  -
-    id: ogd-last-page-footer
-    title: PDF 마지막 페이지 Footer 표시
-    description: PDF 내보내기 시 문서 마지막 콘텐츠 뒤에 H3 헤더형 footer notice를 표시합니다.
+    id: ogd-pdf-header-enabled
+    title: 첫 페이지 헤더 pill 표시
+    description: PDF/Reading View 첫 페이지 우측 상단에 글라스 pill로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
-    id: ogd-last-page-footer-label
-    title: PDF 마지막 페이지 Footer 라벨
-    description: footer 제목 위에 작게 표시되는 라벨입니다. 비워두면 라벨 영역을 공백으로 둡니다.
+    id: ogd-pdf-header-text
+    title: 첫 페이지 헤더 문구
+    description: 한 줄로 표시되는 문구입니다. 구분은 `-` 를 사용하세요. 예 `Author - Owen Lee - Sr. CSA`.
     type: variable-text
     default: ''
     quotes: true
   -
-    id: ogd-last-page-footer-title
-    title: PDF 마지막 페이지 Footer 제목
-    description: footer의 굵은 제목 문구입니다. 비워두면 제목 영역을 공백으로 둡니다.
+    id: ogd-pdf-footer-enabled
+    title: 마지막 페이지 풋터 pill 표시
+    description: PDF/Reading View 마지막 콘텐츠 아래 중앙에 글라스 pill로 표시합니다. 끄면 입력값이 있어도 출력하지 않습니다.
+    type: class-toggle
+    default: false
+  -
+    id: ogd-pdf-footer-text
+    title: 마지막 페이지 풋터 문구
+    description: 한 줄로 표시되는 문구입니다. 예 `Microsoft Confidential - End of Document`.
     type: variable-text
     default: ''
     quotes: true
   -
-    id: ogd-last-page-footer-body
-    title: PDF 마지막 페이지 Footer 본문
-    description: footer에 표시할 긴 안내 문구입니다. 비워두면 제목과 라벨만 표시됩니다.
-    type: variable-text
-    default: ''
-    quotes: true
-  -
-    id: ogd-last-page-footer-color
-    title: PDF 마지막 페이지 Footer 세로바 색상
+    id: ogd-pdf-marginalia-accent
+    title: 헤더/풋터 글자 색상
+    description: 두 pill 공통 글자 색상. 라이트 모드 기본 #279DF5, 다크 모드 기본 #38bdf8 (다크 토큰에서 자동 override).
     type: variable-color
     format: hex
-    default: '#0ea5e9'
-  -
-    id: ogd-last-page-footer-label-color
-    title: PDF 마지막 페이지 Footer 라벨 색상
-    type: variable-color
-    format: hex
-    default: '#64748b'
-  -
-    id: ogd-last-page-footer-title-color
-    title: PDF 마지막 페이지 Footer 제목·본문 색상
-    type: variable-color
-    format: hex
-    default: '#0f172a'
-  -
-    id: ogd-last-page-footer-text-color
-    title: PDF 마지막 페이지 Footer 본문 색상 (PDF 단일 pseudo 출력에서는 미사용)
-    type: variable-color
-    format: hex
-    default: '#334155'
+    default: '#279DF5'
 */
 

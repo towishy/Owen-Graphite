@@ -101,7 +101,6 @@ body.theme-dark.ogd-eye-care {
    - Mermaid dark text fill
    - Reading view internal-link chip (parity with Live Preview)
    - Code language label vs copy button collision fix
-   - PDF doc-title fallback safety (handled by string-set behavior)
    ===================================================================== */
 
 /* Mermaid: SVG text was unreadable in dark mode (only container was tinted) */
@@ -207,19 +206,6 @@ body.theme-dark.ogd-eye-care {
 .is-mobile .markdown-rendered::before,
 .is-mobile .markdown-rendered::after {
   display: none;
-}
-
-/* #5 - PDF footer page numbers (v1.7.2: right-only, no prefix) */
-@media print {
-  @page {
-    margin: 18mm 16mm 22mm 16mm;
-    @bottom-right {
-      content: counter(page) " / " counter(pages);
-      font-family: var(--font-text, sans-serif);
-      font-size: 9pt;
-      color: #6b7280;
-    }
-  }
 }
 
 /* #6 - Graph view tonal alignment */

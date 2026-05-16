@@ -168,25 +168,6 @@ kbd {
 /* ---------- C. REPORT FEATURES ---------- */
 /* Ownership: early report presets live here; late table mode visuals live in 10d. */
 
-/* C1. Cover page — frontmatter `cover: true` adds .ogd-cover class via
-       Dataview/Templater; pure-CSS hook on body class as fallback */
-body.ogd-report-mode .markdown-rendered > h1:first-of-type,
-.ogd-cover {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-  text-align: center;
-  font-size: 3em;
-  border: var(--ogd-border-none, 0);
-  border-bottom: 0;
-  background: none;
-  padding: 2em 0;
-  margin: 1em 0 2em 0;
-  page-break-after: always;
-}
-
 /* C2. TOC dot leaders — for [[_TOC_]] / outline output */
 .markdown-rendered .toc a,
 .markdown-rendered .table-of-contents a,
@@ -204,343 +185,160 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   top: -3px;
 }
 
+/* C3. (removed) PDF Header & Footer anchor-pseudo system
+   ─────────────────────────────────────────────────────────
+   v3.1.30~v3.1.31 :last-child::before/::after anchor-pseudo 풋터·헤더
+   시스템은 Chromium printToPDF 명세 한계로 제거. 사유는 docs/v3/cascade-research.md
+   참조. */
+
 /* ============================================================================
-   C3. PDF Header & Footer (v3.1.30 — 3 별도 anchor pseudo로 풋터 분리)
+   C3. PDF Marginalia — Uppercase Microlabel (v3.1.32, Option D)
    ============================================================================
-   목적: PDF 첫 페이지 헤더(4 슬롯) + 마지막 페이지 풋터(3 슬롯) 표시.
+   목적: PDF/Reading View 첫 페이지 우측 상단 + 마지막 페이지 중앙 하단에
+   사용자 문구를 작은 uppercase microlabel(자간 강조)로 표시.
 
-   설계 원칙
-   ─────────
-   "1 정보 = 1 abs pseudo layer." 각 layer는 단일 색·굵기·크기·위치를
-   가지며 anchor element와 z-index만 다름. v3.0~v3.1.27의 회귀 원인
-   (컨테이너 누락, shared rule 분해, list-style outside, ::marker cull
-    등)을 전부 회피하기 위해 list-item / ::marker / @page conditional
-   같은 fragile 트릭은 일절 사용하지 않음.
+   v3.1.31 → v3.1.32 변경: 평이한 글라스 pill(흰색 톤 + blur)에서 액센트-틴트
+   microlabel(작은 글자, 자간 1.2px, uppercase, 액센트 컬러 보더)로 격상.
+   메인 디자인 언어("투명유리창 + 그림자")와는 별개로 PDF 인쇄에서 backdrop-
+   filter가 무시되는 한계를 받아들이고, 인쇄에서도 동일한 톤이 나오도록
+   accent-tinted flat 디자인 채택. 자세한 비교는 docs/fixtures/pdf-marginalia
+   -v3.1.32-upgrade-proposal.html 및 *-opt-{Cur,A,B,C,D,E}.png 참조.
 
-   Style Settings 슬롯 (v3 contract, 사용자 vault 호환)
-   ────────────────────────────────────────────────────
-   헤더 토글 : body.ogd-first-page-header-enabled
-   헤더 텍스트:
-     --ogd-fp-right-label              (우측 small caps 라벨)
-     --ogd-fp-left-label               (좌측 small caps 라벨)
-     --ogd-first-page-header           (우측 본문 값)
-     --ogd-first-page-header-left      (좌측 본문 값)
-   헤더 색상  :
-     --ogd-fp-label-color              (좌·우 라벨 공통)
-     --ogd-first-page-header-color     (우측 값 + 우측 바)
-     --ogd-first-page-header-left-color(좌측 값 + 좌측 바)
+   설계 원칙 (v3.1.6~v3.1.30 24회 회귀 사이클 회피)
+   ─────────────────────────────────────────────────
+   이전 시스템: 4 header + 2 footer = 6 anchor pseudo + ::first-line + string-set
+   + @page margin boxes + list-item/::marker 트릭 + !important 전역.
+   결과: Chromium printToPDF에서 cull/geometry 사고 다발 → v3.1.31 전체 제거.
 
-   풋터 토글 : body.ogd-last-page-footer
-   풋터 텍스트:
-     --ogd-last-page-footer-label      (상단 라벨)
-     --ogd-last-page-footer-title      (제목)
-     --ogd-last-page-footer-body       (본문)
-   풋터 색상  :
-     --ogd-last-page-footer-color      (좌측 세로 바)
-     --ogd-last-page-footer-label-color(라벨)
-     --ogd-last-page-footer-title-color(제목)
-     --ogd-last-page-footer-text-color (본문)
+   본 구현 (Option D Uppercase Microlabel): 단 2개 anchor pseudo, single
+   content() 단일 string, ::first-line 없음, @page margin boxes 없음,
+   string-set 없음, list-item/::marker 없음, backdrop-filter 없음,
+   !important 0개 (v3 cascade S11.5 계약 준수).
+   v3.1.28 [R1]·[R2]·[R5]·[R7] 핵심 안전망만 유지.
+
+   Style Settings 슬롯 (총 5개)
+   ────────────────────────────
+     ogd-pdf-header-enabled     (class-toggle on body)
+     --ogd-pdf-header-text      (variable-text, single line)
+     ogd-pdf-footer-enabled     (class-toggle on body)
+     --ogd-pdf-footer-text      (variable-text, single line)
+     --ogd-pdf-marginalia-accent(variable-color, 두 pill 공통 글자색)
 
    Anchor / Layer 매핑
    ───────────────────
    ┌───────────────────────────────────────────────────────────────────┐
-   │ HEADER (첫 페이지, body 기준 abs)                                 │
-   │   H-L1  body::before               → 우측 라벨                    │
-   │   H-L2  body::after                → 좌측 라벨                    │
-   │   H-L3  .markdown-rendered::before → 우측 본문값 + 우측 세로 바   │
-   │   H-L4  .markdown-rendered::after  → 좌측 본문값 + 좌측 세로 바   │
-   ├───────────────────────────────────────────────────────────────────┤
-   │ FOOTER (마지막 페이지, :last-child 기준 abs)                      │
-   │   F-L1  :last-child::before        → LABEL "\A\A" TITLE (한 layer)    │
-   │           ::first-line             → LABEL 형식 sub-zone (첫 줄)      │
-   │   F-L2  :last-child::after         → BODY (단일 string, ::first-line X) │
-   │   v3.1.29: v3.1.28처럼 ::after에 multiline concat + ::first-line을    │
-   │   쓰면 Chromium PDF가 ::after 본문을 무조건 cull. TITLE을 ::before로 │
-   │   옮기고 ::after는 BODY 단일 string으로 단순화 (R7).             │
+   │ HEADER (첫 페이지)                                                │
+   │   .markdown-rendered::before  →  top:11mm, right:13mm  microlabel  │
+   │                                                                   │
+   │ FOOTER (마지막 페이지)                                            │
+   │   .markdown-rendered > :last-child::after                          │
+   │     → bottom:-22mm + translateX(-50%)  중앙 정렬 microlabel        │
+   │     → :last-child{margin-bottom:28mm}로 풋터 영역 reserve [R2]    │
    └───────────────────────────────────────────────────────────────────┘
 
-   구조 규칙 (회귀 방지)
+   디자인 스펙 (Option D)
    ─────────────────────
-   [R1] body / .markdown-* / .markdown-rendered { position: relative }
-        → 헤더·풋터 abs pseudo의 containing-block 안전 확보.
-          v3.0~v3.1.26 사고의 핵심 원인.
-   [R2] :last-child { position: relative; margin-bottom: 80mm }
-        → 풋터 영역 reserve + 풋터 abs containing-block.
-          v3.1.29에서 LABEL+TITLE+BODY 3 zone를 모두 담기 위해 80mm.
-   [R3] 풋터 ::before / ::after는 반드시 SHARED selector group으로
-        공통 abs(position, left, width, display, box-sizing, font-family,
-        font-style, font-synthesis, pointer-events, print-color-adjust)
-        선언. 분해해서 개별 규칙에 inline하면 ::after geometry가 깨져
-        Chromium PDF가 cull. (v3.1.26 사고 원인 #2)
-   [R4] list-item / ::marker / list-style-position outside 트릭 금지.
-        Chromium PDF가 abs container 안에서 marker를 cull. (v3.1.26 #3)
-   [R7] ::after에 multiline content concat ("\A\A")과 ::first-line을
-        동시에 쓰지 말 것. Chromium PDF가 조합을 cull. 색 분리는
-        멀티 zone을 ::before에 모아놓고(::first-line으로 첫 줄만
-        override), ::after는 언제나 단일 형식 단일 string만 허용.
-        (v3.1.28 사고 근거)
-   [R5] 모든 print pseudo: z-index 9999, pointer-events none,
-        print-color-adjust exact, white-space pre-wrap (multiline 안전).
-   [R6] 헤더 anchor는 .markdown-rendered 단 하나만 사용. sizer / view /
-        section pseudo는 일부러 비워두어 풋터/플러그인 충돌 방지.
+   - font-size: 7.5pt (header) / 8pt (footer)
+   - font-weight: 700, letter-spacing: 1.2px, text-transform: uppercase
+   - background: rgba(accent, 0.06) (light) / rgba(accent, 0.10) (dark)
+   - border: 1px solid rgba(accent, 0.22) (light) / 0.32 (dark)
+   - border-radius: 4px, box-shadow: none, backdrop-filter 없음
+   - 인쇄/화면 동일 톤 — Chromium printToPDF 무시 항목(backdrop-filter)을
+     아예 사용하지 않아 graceful degradation이 필요 없음.
+
+   구조 규칙 (v3.1.28 carry-over)
+   ─────────────────────────────
+     [R1] body, .markdown-preview-view, .markdown-preview-sizer,
+          .markdown-rendered { position: relative } → abs containing-block.
+     [R2] .markdown-rendered > :last-child { margin-bottom: 28mm } → 풋터
+          영역 reserve (본문이 풋터를 덮는 사고 방지).
+     [R5] pointer-events:none, print-color-adjust:exact, z-index:9999,
+          font-style:normal, white-space:nowrap (단일 줄 강제).
+     [R7] single content() 단일 string. ::first-line 없음, multiline 없음.
+
+   금지 (v3.1.6~v3.1.30 사고 재발 방지)
+   ────────────────────────────────────
+   - !important 사용 금지 (v3 S11.5 zero-important 계약)
+   - ::first-line / content multiline concat (\A) 금지
+   - list-item / ::marker / list-style-position 트릭 금지
+   - @page margin boxes (@top-center, @bottom-right) 사용 금지
+   - string-set / content() ::counter 사용 금지
+   - 4개 이상의 anchor pseudo 사용 금지 (header 1 + footer 1만)
    ============================================================================ */
-@media print {
-  /* @page margin boxes — 모든 페이지 상단 중앙 / 하단 우측 */
-  body { counter-reset: ogd-page; }
-  .markdown-rendered h1 { counter-reset: ogd-page-in-chapter; }
-  @page {
-    @top-center {
-      content: string(ogd-doc-title);
-      font-size: 9pt;
-      color: #6b7280;
-    }
-    @bottom-right {
-      content: counter(page) " / " counter(pages);
-      font-size: 9pt;
-      color: #6b7280;
-    }
-  }
 
-  /* [R1] abs containing-block 확보 — print pseudo가 viewport로 떠
-     Chromium PDF에서 cull되는 사고를 막는 단일 안전망. */
-  body,
-  .print,
-  .markdown-preview-view,
-  .markdown-preview-sizer,
-  .markdown-preview-section,
-  .markdown-rendered {
-    position: relative;
-  }
+/* [R1] abs containing-block 안전망 (print + 화면 공통) */
+body,
+.markdown-preview-view,
+.markdown-preview-sizer,
+.markdown-rendered {
+  position: relative;
+}
 
-  /* 첫 H1을 문서 제목으로 string-set → @top-center 사용 */
-  .markdown-rendered h1:first-of-type {
-    margin-top: 6mm;
-    margin-bottom: 10mm;
-    padding-bottom: 4mm;
-    string-set: ogd-doc-title content();
-  }
+/* HEADER — 첫 페이지 우측 상단 microlabel pill (v3.1.32 Option D: Uppercase Microlabel) */
+body.ogd-pdf-header-enabled .markdown-rendered::before {
+  content: var(--ogd-pdf-header-text, "");
+  position: absolute;
+  top: 11mm;
+  right: 13mm;
+  z-index: 9999;
+  pointer-events: none;
+  display: inline-block;
+  max-width: calc(100% - 26mm);
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
+  border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
+  box-shadow: var(--ogd-pdf-marginalia-shadow, none);
+  font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+  font-size: 7.5pt;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ogd-pdf-marginalia-accent, #279DF5);
+  -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
 
-  /* ==========================================================================
-     HEADER — 첫 페이지, 4 layer
-     ========================================================================== */
-
-  /* H-L1, H-L2 : 좌·우 라벨 (body::before/::after, small caps) */
-  body.ogd-first-page-header-enabled::before,
-  body.ogd-first-page-header-enabled::after {
-    position: absolute !important;
-    top: 13mm !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
-    font-size: 7.5pt !important;
-    font-weight: 600 !important;
-    font-style: normal !important;
-    font-synthesis: weight style !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1.8px !important;
-    line-height: 1 !important;
-    color: var(--ogd-fp-label-color, #6b7280) !important;
-    -webkit-text-fill-color: var(--ogd-fp-label-color, #6b7280) !important;
-    background: transparent !important;
-    white-space: nowrap !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  body.ogd-first-page-header-enabled::before {
-    content: var(--ogd-fp-right-label, "") !important;
-    right: 13mm !important;
-  }
-  body.ogd-first-page-header-enabled::after {
-    content: var(--ogd-fp-left-label, "") !important;
-    left: 13mm !important;
-  }
-
-  /* H-L3, H-L4 : 좌·우 본문값 + 세로 사이드 바
-     anchor는 .markdown-rendered 단 하나 [R6]. */
-  body.ogd-first-page-header-enabled .markdown-rendered::before,
-  body.ogd-first-page-header-enabled .markdown-rendered::after {
-    position: absolute !important;
-    top: 0 !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
-    font-size: 10.5pt !important;
-    font-weight: 500 !important;
-    font-style: normal !important;
-    font-synthesis: weight style !important;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
-    line-height: 1.1 !important;
-    white-space: nowrap !important;
-    background: transparent !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  body.ogd-first-page-header-enabled .markdown-rendered::before {
-    content: var(--ogd-first-page-header, "") !important;
-    right: 0 !important;
-    padding: 16px 10px 0 0 !important;
-    border-right: 3px solid var(--ogd-first-page-header-color, #111827) !important;
-    color: var(--ogd-first-page-header-color, #111827) !important;
-    -webkit-text-fill-color: var(--ogd-first-page-header-color, #111827) !important;
-    text-align: right !important;
-  }
-  body.ogd-first-page-header-enabled .markdown-rendered::after {
-    content: var(--ogd-first-page-header-left, "") !important;
-    left: 0 !important;
-    padding: 16px 0 0 10px !important;
-    border-left: 3px solid var(--ogd-first-page-header-left-color, #0ea5e9) !important;
-    color: var(--ogd-first-page-header-left-color, #0ea5e9) !important;
-    -webkit-text-fill-color: var(--ogd-first-page-header-left-color, #0ea5e9) !important;
-    text-align: left !important;
-  }
-
-  /* ==========================================================================
-     FOOTER — v3.1.30: 3 별도 anchor pseudo, 각 단일 var + 단일 형식.
-     ──────────────────────────────────────────────────────────────────────
-     v3.1.25~v3.1.29 실패 원인 정리 (PDF 증거 기반):
-       - `\A\A` content concat → 두번째 var 무시됨
-       - ::first-line on abs pseudo → 적용 안 됨
-       - :last-child::after top:calc(100% + 36mm) → page boundary 넘어 cull
-     해결 (페이지 1 헤더가 정상 작동하는 패턴 그대로 적용):
-       - LABEL = :last-child::before, top calc(100% + 8mm), 단일 var, 단일 형식
-         cyan dot은 background radial-gradient로 좌측 액센트 (좌측 라인 금지 준수)
-       - TITLE = :last-child::after, top calc(100% + 17mm), 단일 var, 단일 형식
-       - BODY  = .markdown-preview-sizer::after, bottom 18mm (free anchor,
-         페이지 1 헤더와 충돌 없음). bottom-anchored이므로 page boundary 안전.
-     디자인 = Footer Option B (Soft accent, no left bar) [샘플 승인 2026-05-16].
-     ========================================================================== */
-
-  /* containing-block 보장 [R1] */
-  body,
-  .markdown-preview-view,
-  .markdown-preview-sizer,
-  .markdown-rendered {
-    position: relative !important;
-  }
-
-  /* [R2] :last-child reserve — LABEL + TITLE의 abs containing-block */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child {
-    position: relative !important;
-    margin-bottom: 95mm !important;
-  }
-
-  /* F-L1 LABEL — :last-child::before, single var, single format, cyan dot bg */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::before {
-    content: var(--ogd-last-page-footer-label, "End of Document : NOTICE") !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: calc(100% + 8mm) !important;
-    padding: 0 0 0 10mm !important;
-    display: block !important;
-    box-sizing: border-box !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
-    font-style: normal !important;
-    font-synthesis: weight style !important;
-    font-size: 8pt !important;
-    font-weight: 700 !important;
-    letter-spacing: 1.6px !important;
-    text-transform: uppercase !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    background:
-      radial-gradient(circle at 3mm center,
-        var(--ogd-last-page-footer-color, #279DF5) 0 1.5mm,
-        transparent 1.7mm) no-repeat !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  /* F-L2 TITLE — :last-child::after, single var, single format */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after {
-    content: var(--ogd-last-page-footer-title, "MICROSOFT CONFIDENTIAL") !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: calc(100% + 16mm) !important;
-    padding: 0 0 0 10mm !important;
-    display: block !important;
-    box-sizing: border-box !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
-    font-style: normal !important;
-    font-synthesis: weight style !important;
-    font-size: 12pt !important;
-    font-weight: 700 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
-    line-height: 1.2 !important;
-    white-space: nowrap !important;
-    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    background: transparent !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  /* F-L3 BODY — .markdown-preview-sizer::after, single var, single format,
-     bottom-anchored (page boundary 안전). free anchor — header H-L1..H-L4와
-     충돌 없음 (header anchor = body + .markdown-rendered만 사용). */
-  body.ogd-last-page-footer .markdown-preview-sizer::after {
-    content: var(--ogd-last-page-footer-body, "본 문서는 Microsoft Confidential 자료입니다.") !important;
-    position: absolute !important;
-    left: 13mm !important;
-    right: 13mm !important;
-    bottom: 18mm !important;
-    padding: 0 0 0 10mm !important;
-    display: block !important;
-    box-sizing: border-box !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    font-family: "Pretendard Variable", "Pretendard",
-      "Apple SD Gothic Neo", "Noto Sans KR",
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
-      "Helvetica Neue", Arial, sans-serif !important;
-    font-style: normal !important;
-    font-synthesis: weight style !important;
-    font-size: 9pt !important;
-    font-weight: 500 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
-    line-height: 1.55 !important;
-    white-space: pre-wrap !important;
-    overflow-wrap: anywhere !important;
-    color: var(--ogd-last-page-footer-text-color, #334155) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
-    background: transparent !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
+/* FOOTER — 마지막 페이지 중앙 하단 글라스 pill */
+body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
+  position: relative;
+  margin-bottom: 28mm;
+}
+body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
+  content: var(--ogd-pdf-footer-text, "");
+  position: absolute;
+  left: 50%;
+  bottom: -22mm;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+  display: inline-block;
+  max-width: 90%;
+  padding: 5px 14px;
+  border-radius: 4px;
+  background: var(--ogd-pdf-marginalia-bg, rgba(39, 157, 245, 0.06));
+  border: 1px solid var(--ogd-pdf-marginalia-border, rgba(39, 157, 245, 0.22));
+  box-shadow: var(--ogd-pdf-marginalia-shadow, none);
+  font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+  font-size: 8pt;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ogd-pdf-marginalia-accent, #279DF5);
+  -webkit-text-fill-color: var(--ogd-pdf-marginalia-accent, #279DF5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 @media print {

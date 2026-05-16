@@ -31,20 +31,6 @@
   --ogd-radius-pill: 999px;
   --ogd-radius-top: var(--radius-m, 6px) var(--radius-m, 6px) 0 0;
   --ogd-radius-pill-left: var(--ogd-radius-pill, 999px) 0 0 var(--ogd-radius-pill, 999px);
-  --ogd-first-page-header: "";
-  --ogd-first-page-header-color: #111827;
-  --ogd-first-page-header-left: "";
-  --ogd-first-page-header-left-color: #0ea5e9;
-  --ogd-fp-right-label: "";
-  --ogd-fp-left-label: "";
-  --ogd-fp-label-color: #6b7280;
-  --ogd-last-page-footer-label: "";
-  --ogd-last-page-footer-title: "";
-  --ogd-last-page-footer-body: "";
-  --ogd-last-page-footer-color: #0ea5e9;
-  --ogd-last-page-footer-label-color: #64748b;
-  --ogd-last-page-footer-title-color: #0f172a;
-  --ogd-last-page-footer-text-color: #334155;
   --ogd-title-rule-start: #0f766e;
   --ogd-title-rule-end: #0284c7;
   --ogd-glass-surface-bg: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.50));
@@ -56,6 +42,16 @@
   --ogd-hover-lift-subtle: translateY(-0.5px);
   --ogd-hover-shift: translateX(1px);
   --ogd-press-lift: translateY(0) scale(0.99);
+
+  /* PDF Marginalia — first page header / last page footer Glass Pill.
+   * Driven by Style Settings (ogd-pdf-header / ogd-pdf-footer).
+   * Anchor pseudo paint surface — see src/features/41-feature-presets.css C3. */
+  --ogd-pdf-header-text: "";
+  --ogd-pdf-footer-text: "";
+  --ogd-pdf-marginalia-accent: #279DF5;
+  --ogd-pdf-marginalia-bg: rgba(39, 157, 245, 0.06);
+  --ogd-pdf-marginalia-border: rgba(39, 157, 245, 0.22);
+  --ogd-pdf-marginalia-shadow: none;
 }
 
 .theme-light,
