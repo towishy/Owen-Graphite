@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Owen Graphite v3.1.30 — PDF 헤더 디자인 제안</title>
+<style>
+  body { margin: 0; padding: 24px; background: #e2e8f0; font-family: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  h1 { font-size: 18pt; color: #0f172a; margin: 0 0 6px; }
+  h2 { font-size: 11pt; color: #475569; margin: 24px 0 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
+  .sheet { background: #ffffff; box-shadow: 0 6px 24px rgba(15,23,42,0.10), 0 1px 3px rgba(15,23,42,0.06); border-radius: 6px; overflow: hidden; min-height: 320px; position: relative; padding: 28mm 18mm 20mm; }
+  .sheet.dark { background: #0b1220; box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.30); }
+  .doctitle { font-size: 22pt; font-weight: 700; color: #0f172a; line-height: 1.2; margin: 6mm 0 3mm; }
+  .sheet.dark .doctitle { color: #f1f5f9; }
+  .docmeta { color: #64748b; font-size: 9.5pt; line-height: 1.6; }
+  .sheet.dark .docmeta { color: #94a3b8; }
+  .placeholder { font-style: italic; color: #94a3b8; margin-top: 6mm; font-size: 9pt; }
+  .sheet.dark .placeholder { color: #475569; }
+
+  /* ========= Header A — 현재 4-slot (좌/우 라벨 + 좌/우 값 + 좌/우 cyan side bar) ========= */
+  /* labels */
+  .hdrA-lbl-l, .hdrA-lbl-r { position: absolute; top: 7mm; font-size: 7pt; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: #94a3b8; line-height: 1; }
+  .hdrA-lbl-l { left: 18mm; }
+  .hdrA-lbl-r { right: 18mm; }
+  /* values + side bars */
+  .hdrA-val-l { position: absolute; top: 14mm; left: 18mm; padding: 4px 0 4px 10px; border-left: 3px solid #279DF5; font-size: 10.5pt; font-weight: 600; color: #279DF5; line-height: 1.2; }
+  .hdrA-val-r { position: absolute; top: 14mm; right: 18mm; padding: 4px 10px 4px 0; border-right: 3px solid #0f172a; font-size: 10.5pt; font-weight: 600; color: #0f172a; line-height: 1.2; text-align: right; }
+  .sheet.dark .hdrA-lbl-l, .sheet.dark .hdrA-lbl-r { color: #64748b; }
+  .sheet.dark .hdrA-val-l { color: #38bdf8; border-left-color: #38bdf8; }
+  .sheet.dark .hdrA-val-r { color: #e2e8f0; border-right-color: #e2e8f0; }
+
+  /* ========= Header B — Soft panel strip (cyan dot + label/value, no bars) ========= */
+  .hdrB { position: absolute; top: 10mm; left: 18mm; right: 18mm; display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 4mm 6mm; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+  .hdrB .left, .hdrB .right { display: flex; flex-direction: column; gap: 1.5mm; }
+  .hdrB .right { text-align: right; }
+  .hdrB .lbl { display: flex; align-items: center; gap: 6px; font-size: 7pt; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #64748b; line-height: 1; }
+  .hdrB .right .lbl { justify-content: flex-end; }
+  .hdrB .lbl::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #279DF5; }
+  .hdrB .right .lbl::before { order: 2; background: #0f172a; }
+  .hdrB .val { font-size: 10pt; font-weight: 600; color: #0f172a; line-height: 1.2; }
+  .hdrB .left .val { color: #279DF5; }
+  .sheet.dark .hdrB { background: rgba(15,23,42,0.55); border-color: rgba(148,163,184,0.18); box-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+  .sheet.dark .hdrB .lbl { color: #94a3b8; }
+  .sheet.dark .hdrB .lbl::before { background: #38bdf8; }
+  .sheet.dark .hdrB .right .lbl::before { background: #e2e8f0; }
+  .sheet.dark .hdrB .val { color: #e2e8f0; }
+  .sheet.dark .hdrB .left .val { color: #38bdf8; }
+
+  /* ========= Header C — Hairline 하단 line + dark pill 라벨 + 우측 값 ========= */
+  .hdrC { position: absolute; top: 12mm; left: 18mm; right: 18mm; display: flex; align-items: center; justify-content: space-between; padding-bottom: 4mm; border-bottom: 1px solid #cbd5e1; }
+  .hdrC .left, .hdrC .right { display: flex; align-items: center; gap: 8px; }
+  .hdrC .pill { background: #0f172a; color: #ffffff; font-size: 7pt; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; line-height: 1; }
+  .hdrC .left .pill { background: #279DF5; }
+  .hdrC .val { font-size: 10pt; font-weight: 600; color: #0f172a; line-height: 1.2; }
+  .hdrC .left .val { color: #279DF5; }
+  .sheet.dark .hdrC { border-bottom-color: rgba(148,163,184,0.22); }
+  .sheet.dark .hdrC .pill { background: #e2e8f0; color: #0b1220; }
+  .sheet.dark .hdrC .left .pill { background: #38bdf8; color: #0b1220; }
+  .sheet.dark .hdrC .val { color: #e2e8f0; }
+  .sheet.dark .hdrC .left .val { color: #38bdf8; }
+</style>
+</head>
+<body>
+  <h1>Owen Graphite v3.1.30 — PDF 헤더 디자인 3안 (page 1)</h1>
+  <p style="margin:0 0 8px; color:#475569; font-size:9.5pt; line-height:1.5">
+    Style Settings 변수 — 좌측 = <code>Microsoft Security</code>, 우측 = <code>Owen Lee - Sr. Cloud Solution Architect</code>.<br>
+    각 옵션 모두 별도 anchor pseudo 4개로 분리 (현재 working 패턴 그대로) — content concat / ::first-line 사용 안 함.
+  </p>
+
+  <h2>Option A — 현재 4-slot 계승 (좌/우 라벨 small caps + 좌/우 값 + 좌/우 side bar)</h2>
+  <div class="grid">
+    <div class="sheet">
+      <div class="hdrA-lbl-l">Organization</div>
+      <div class="hdrA-lbl-r">Author</div>
+      <div class="hdrA-val-l">Microsoft Security</div>
+      <div class="hdrA-val-r">Owen Lee — Sr. Cloud Solution Architect</div>
+      <div class="doctitle">MDE Isolate Logic App 운영 가이드</div>
+      <div class="docmeta">v2.4.1 · 2026-05-16 · Microsoft Confidential</div>
+      <div class="placeholder">…본문 시작…</div>
+    </div>
+    <div class="sheet dark">
+      <div class="hdrA-lbl-l">Organization</div>
+      <div class="hdrA-lbl-r">Author</div>
+      <div class="hdrA-val-l">Microsoft Security</div>
+      <div class="hdrA-val-r">Owen Lee — Sr. Cloud Solution Architect</div>
+      <div class="doctitle">MDE Isolate Logic App 운영 가이드</div>
+      <div class="docmeta">v2.4.1 · 2026-05-16 · Microsoft Confidential</div>
+      <div class="placeholder">…본문 시작…</div>
+    </div>
+  </div>
+
+  <h2>Option B — Soft panel strip (Footer B와 통일된 Glass 톤 / 좌측 라인 정책 준수)</h2>
+  <div class="grid">
+    <div class="sheet">
+      <div class="hdrB">
+        <div class="left">
+          <div class="lbl">Organization</div>
+          <div class="val">Microsoft Security</div>
+        </div>
+        <div class="right">
+          <div class="lbl">Author</div>
+          <div class="val">Owen Lee — Sr. Cloud Solution Architect</div>
+        </div>
+      </div>
+      <div class="doctitle" style="margin-top:18mm">MDE Isolate Logic App 운영 가이드</div>
+      <div class="docmeta">v2.4.1 · 2026-05-16 · Microsoft Confidential</div>
+      <div class="placeholder">…본문 시작…</div>
+    </div>
+    <div class="sheet dark">
+      <div class="hdrB">
+        <div class="left">
+          <div class="lbl">Organization</div>
+          <div class="val">Microsoft Security</div>
+        </div>
+        <div class="right">
+          <div class="lbl">Author</div>
+          <div class="val">Owen Lee — Sr. Cloud Solution Architect</div>
+        </div>
+      </div>
+      <div class="doctitle" style="margin-top:18mm">MDE Isolate Logic App 운영 가이드</div>
+      <div class="docmeta">v2.4.1 · 2026-05-16 · Microsoft Confidential</div>
+      <div class="placeholder">…본문 시작…</div>
+    </div>
+  </div>
+
+  <h2>Option C — Hairline 하단 line + dark/cyan pill 라벨 (Footer C와 통일된 공식 톤)</h2>
+  <div class="grid">
+    <div class="sheet">
+      <div class="hdrC">
+        <div class="left">
+          <span class="pill">Organization</span>
+          <span class="val">Microsoft Security</span>
+        </div>
+        <div class="right">
+          <span class="val">Owen Lee — Sr. Cloud Solution Architect</span>
+          <span class="pill">Author</span>
+        </div>
+      </div>
+      <div class="doctitle" style="margin-top:14mm">MDE Isolate Logic App 운영 가이드</div>
+      <div class="docmeta">v2.4.1 · 2026-05-16 · Microsoft Confidential</div>
+      <div class="placeholder">…본문 시작…</div>
+    </div>
+    <div class="sheet dark">
+      <div class="hdrC">
+        <div class="left">
+          <span class="pill">Organization</span>
+          <span class="val">Microsoft Security</span>
+        </div>
+        <div class="right">
+          <span class="val">Owen Lee — Sr. Cloud Solution Architect</span>
+          <span class="pill">Author</span>
+        </div>
+      </div>
+      <div class="doctitle" style="margin-top:14mm">MDE Isolate Logic App 운영 가이드</div>
+      <div class="docmeta">v2.4.1 · 2026-05-16 · Microsoft Confidential</div>
+      <div class="placeholder">…본문 시작…</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -3679,7 +3679,7 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
 }
 
 /* ============================================================================
-   C3. PDF Header & Footer (v3.1.29 — BODY를 ::after로 분리)
+   C3. PDF Header & Footer (v3.1.30 — 3 별도 anchor pseudo로 풋터 분리)
    ============================================================================
    목적: PDF 첫 페이지 헤더(4 슬롯) + 마지막 페이지 풋터(3 슬롯) 표시.
 
@@ -3876,34 +3876,51 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
   }
 
   /* ==========================================================================
-     FOOTER — 마지막 페이지, 2 layer + 1 sub-zone
+     FOOTER — v3.1.30: 3 별도 anchor pseudo, 각 단일 var + 단일 형식.
+     ──────────────────────────────────────────────────────────────────────
+     v3.1.25~v3.1.29 실패 원인 정리 (PDF 증거 기반):
+       - `\A\A` content concat → 두번째 var 무시됨
+       - ::first-line on abs pseudo → 적용 안 됨
+       - :last-child::after top:calc(100% + 36mm) → page boundary 넘어 cull
+     해결 (페이지 1 헤더가 정상 작동하는 패턴 그대로 적용):
+       - LABEL = :last-child::before, top calc(100% + 8mm), 단일 var, 단일 형식
+         cyan dot은 background radial-gradient로 좌측 액센트 (좌측 라인 금지 준수)
+       - TITLE = :last-child::after, top calc(100% + 17mm), 단일 var, 단일 형식
+       - BODY  = .markdown-preview-sizer::after, bottom 18mm (free anchor,
+         페이지 1 헤더와 충돌 없음). bottom-anchored이므로 page boundary 안전.
+     디자인 = Footer Option B (Soft accent, no left bar) [샘플 승인 2026-05-16].
      ========================================================================== */
 
-  /* [R2] :last-child를 풋터 abs containing-block + 영역 reserve.
-     v3.1.29: BODY를 ::after로 분리하면서 reserve를 80mm로 늘림. */
+  /* containing-block 보장 [R1] */
+  body,
+  .markdown-preview-view,
+  .markdown-preview-sizer,
+  .markdown-rendered {
+    position: relative !important;
+  }
+
+  /* [R2] :last-child reserve — LABEL + TITLE의 abs containing-block */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child {
     position: relative !important;
-    margin-bottom: 80mm !important;
+    margin-bottom: 95mm !important;
   }
 
-  /* [R3] 풋터 ::before / ::after — SHARED abs group (분해 금지!) */
+  /* F-L1 LABEL — :last-child::before, single var, single format, cyan dot bg */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
-  ) > :last-child::before,
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after {
+  ) > :last-child::before {
+    content: var(--ogd-last-page-footer-label, "End of Document : NOTICE") !important;
     position: absolute !important;
     left: 0 !important;
-    width: 100% !important;
+    right: 0 !important;
+    top: calc(100% + 8mm) !important;
+    padding: 0 0 0 10mm !important;
     display: block !important;
     box-sizing: border-box !important;
     z-index: 9999 !important;
@@ -3914,77 +3931,89 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
       "Helvetica Neue", Arial, sans-serif !important;
     font-style: normal !important;
     font-synthesis: weight style !important;
-    border-left: 3px solid var(--ogd-last-page-footer-color, #0ea5e9) !important;
-    background: transparent !important;
+    font-size: 8pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.6px !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    color: var(--ogd-last-page-footer-label-color, #64748b) !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
+    background:
+      radial-gradient(circle at 3mm center,
+        var(--ogd-last-page-footer-color, #279DF5) 0 1.5mm,
+        transparent 1.7mm) no-repeat !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* F-L1 : LABEL + TITLE 한 layer (v3.1.29 재설계).
-     v3.1.28까지는 LABEL만 ::before, TITLE+BODY는 ::after에 묶었으나
-     Chromium PDF가 (abs ::after + ::first-line + multiline `\A\A` concat)
-     조합에서 ::after 본문을 무조건 cull하는 버그가 확인됨 (page 1 헤더는
-     같은 메커니즘인데 ::first-line이 없어 정상 렌더됨이 증거).
-     해결: TITLE을 LABEL과 같은 ::before에 합치고 ::first-line으로 LABEL
-     형식만 분리. ::after는 BODY 단일 string으로 단순화. [R4] 유지. */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::before {
-    content: var(--ogd-last-page-footer-label, "")
-             "\A\A"
-             var(--ogd-last-page-footer-title, "") !important;
-    top: calc(100% + 11mm) !important;
-    min-height: 10.5mm !important;
-    padding: 0 0 0 7mm !important;
-    /* BASE = TITLE 형식 (큰 dark bold) — ::first-line이 첫 줄(LABEL)만 덮음 */
-    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
-    font-size: 11pt !important;
-    font-weight: 700 !important;
-    letter-spacing: 0 !important;
-    line-height: 1.4 !important;
-    text-transform: none !important;
-    white-space: pre-wrap !important;
-    overflow-wrap: anywhere !important;
-  }
-
-  /* LABEL 형식 sub-zone — ::before 첫 줄에만 적용.
-     LABEL은 "End of Document : NOTICE" 같이 짧아 한 줄에 들어감을 가정. */
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::before::first-line {
-    color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-label-color, #64748b) !important;
-    font-weight: 700 !important;
-    letter-spacing: 1.5px !important;
-    text-transform: uppercase !important;
-  }
-
-  /* F-L2 : BODY 단일 layer (v3.1.29).
-     ::after는 단순 string 하나만 — ::first-line 없음, multiline `\A\A`
-     concat 없음. page 1 헤더 ::before/::after와 동일한 단순 메커니즘
-     이므로 Chromium PDF에서 cull 없이 확실히 렌더. */
+  /* F-L2 TITLE — :last-child::after, single var, single format */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::after {
-    content: var(--ogd-last-page-footer-body, "") !important;
-    top: calc(100% + 36mm) !important;
-    padding: 0 0 0 7mm !important;
-    color: var(--ogd-last-page-footer-text-color, #334155) !important;
-    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
-    font-size: 9.5pt !important;
+    content: var(--ogd-last-page-footer-title, "MICROSOFT CONFIDENTIAL") !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: calc(100% + 16mm) !important;
+    padding: 0 0 0 10mm !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
+    font-size: 12pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-title-color, #0f172a) !important;
+    background: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* F-L3 BODY — .markdown-preview-sizer::after, single var, single format,
+     bottom-anchored (page boundary 안전). free anchor — header H-L1..H-L4와
+     충돌 없음 (header anchor = body + .markdown-rendered만 사용). */
+  body.ogd-last-page-footer .markdown-preview-sizer::after {
+    content: var(--ogd-last-page-footer-body, "본 문서는 Microsoft Confidential 자료입니다.") !important;
+    position: absolute !important;
+    left: 13mm !important;
+    right: 13mm !important;
+    bottom: 18mm !important;
+    padding: 0 0 0 10mm !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    font-family: "Pretendard Variable", "Pretendard",
+      "Apple SD Gothic Neo", "Noto Sans KR",
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      "Helvetica Neue", Arial, sans-serif !important;
+    font-style: normal !important;
+    font-synthesis: weight style !important;
+    font-size: 9pt !important;
     font-weight: 500 !important;
     letter-spacing: 0 !important;
-    line-height: 1.5 !important;
     text-transform: none !important;
+    line-height: 1.55 !important;
     white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
+    color: var(--ogd-last-page-footer-text-color, #334155) !important;
+    -webkit-text-fill-color: var(--ogd-last-page-footer-text-color, #334155) !important;
+    background: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 
