@@ -1,0 +1,451 @@
+/* ============================================================
+  v1.8.6 - Parity cleanup + mobile stability
+   - Live Preview embeds/tables/callouts align more closely with Reading View
+   - Mobile panes and wide content avoid viewport push-out
+   - Outline, Bookmarks, Bases, embeds, and status bar inherit v1.8.5 tone
+
+   FORBIDDEN — CM6 hit-routing contract:
+     - .cm-embed-block { overflow-x: auto + max-width: 100% } pair (v2.22.106)
+     - non-zero vertical margin on .cm-callout / .cm-table-widget
+     - pointer-events:none on .cm-content / .cm-line
+   See: dev/MAP/cm6-hit-routing-contract.md
+   ============================================================ */
+
+/* Live Preview parity: chips, embeds, and editing widgets.
+   Keep the editor content width controlled by the readable-line-width rules above;
+   overriding the CM6 containers here can collapse Korean paragraphs to a one-character column. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-callout,
+.markdown-source-view.mod-cm6 .cm-embed-block,
+.markdown-source-view.mod-cm6 .cm-html-embed,
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  border-radius: var(--radius-l, 8px);
+}
+/* v2.22.106: removed `.cm-embed-block, .cm-html-embed { overflow-x: auto;
+   max-width: 100% }`. The forced BFC + scroll container suppressed margin
+   collapse with the paragraph cm-line directly above the table embed and
+   appeared to alter mouse hit-routing for that paragraph. Wide table
+   horizontal scroll is provided by the table-level rules in 08-report-print
+   and 10d-liquid-glass-core; the embed-block container itself can stay
+   visible/static like vanilla. */
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link,
+.markdown-source-view.mod-cm6 .cm-hashtag {
+  border-radius: var(--ogd-radius-pill, 999px);
+  padding: 0.02em 0.28em;
+}
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  background: #eef2ff;
+  color: #3730a3;
+}
+.markdown-source-view.mod-cm6 .cm-hashtag {
+  background: var(--ogd-surface-subtle, #f3f4f6);
+  color: var(--ogd-text-subtle, #475569);
+}
+.markdown-source-view.mod-cm6 .cm-formatting-highlight,
+.markdown-source-view.mod-cm6 .cm-highlight {
+  background: #fef3c7;
+  color: #78350f;
+  border-radius: 3px;
+}
+
+/* Mermaid and wide media: predictable scroll instead of layout push-out */
+.markdown-rendered .mermaid,
+.markdown-preview-view .mermaid,
+.markdown-reading-view .mermaid,
+.markdown-rendered .internal-embed,
+.markdown-preview-view .internal-embed,
+.markdown-reading-view .internal-embed,
+.markdown-rendered .markdown-embed,
+.markdown-preview-view .markdown-embed,
+.markdown-reading-view .markdown-embed {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.markdown-rendered .mermaid svg,
+.markdown-preview-view .mermaid svg,
+.markdown-reading-view .mermaid svg {
+  max-width: none;
+}
+
+@supports selector(.cm-embed-block:has(.mermaid)) {
+  /* Live Preview Mermaid controls must remain visible inside the diagram frame. */
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) {
+    position: relative;
+    overflow: visible;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) .mermaid {
+    position: relative;
+    overflow: visible;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) {
+    position: absolute;
+    inset: 8px auto auto 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px;
+    border: 1px solid rgba(203, 213, 225, 0.56);
+    border-radius: var(--ogd-radius-control, 7px);
+    background: var(--ogd-glass-toolbar-bg, rgba(255, 255, 255, 0.86));
+    box-shadow: var(--ogd-glass-control-shadow, 0 8px 18px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82));
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button:not([class~="clickable-icon"]), button:not([class~="clickable-icon"])) {
+    min-width: 26px;
+    min-height: 26px;
+    padding: 4px;
+    border: 1px solid rgba(203, 213, 225, 0.48);
+    border-radius: 6px;
+    background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70));
+    color: var(--ogd-text-strong, #111827);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 11;
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) .clickable-icon {
+    border: 1px solid rgba(203, 213, 225, 0.48);
+    border-radius: 6px;
+    background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70));
+    color: var(--ogd-text-strong, #111827);
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button, button, .clickable-icon):is(:hover, :focus-visible) {
+    background: var(--ogd-glass-control-hover-bg, rgba(255, 255, 255, 0.92));
+    border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.42));
+    box-shadow: var(--ogd-lg-shadow-focus, 0 10px 24px rgba(15, 23, 42, 0.16));
+  }
+  .markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid) :is(.mermaid-controls, .mermaid-control, .mermaid-toolbar) :is(.mermaid-button:not([class~="clickable-icon"]), button:not([class~="clickable-icon"])):active {
+    transform: var(--ogd-press-lift, translateY(0) scale(0.99));
+  }
+}
+.markdown-rendered .ogd-mermaid-control-fixture,
+.markdown-preview-view .ogd-mermaid-control-fixture,
+.markdown-reading-view .ogd-mermaid-control-fixture {
+  position: relative;
+  margin: 0.8em 0 1em;
+  overflow: visible;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid {
+  position: relative;
+  overflow: visible;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid svg,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid svg,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid-controls,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid-controls,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid-controls {
+  position: absolute;
+  inset: 8px auto auto 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid rgba(203, 213, 225, 0.56);
+  border-radius: var(--ogd-radius-control, 7px);
+  background: var(--ogd-glass-toolbar-bg, rgba(255, 255, 255, 0.86));
+  box-shadow: var(--ogd-glass-control-shadow, 0 8px 18px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82));
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid-controls::after,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid-controls::after,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid-controls::after {
+  content: "DOM only";
+  align-self: center;
+  padding: 0 5px;
+  color: var(--ogd-text-muted, #64748b);
+  font: 650 10px/1 var(--font-interface-theme, inherit);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.markdown-rendered .ogd-mermaid-control-fixture .mermaid-button,
+.markdown-preview-view .ogd-mermaid-control-fixture .mermaid-button,
+.markdown-reading-view .ogd-mermaid-control-fixture .mermaid-button {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 4px;
+  border: 1px solid rgba(203, 213, 225, 0.48);
+  border-radius: 6px;
+  background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70));
+  color: var(--ogd-text-strong, #111827);
+  font: 600 12px/1 var(--font-interface-theme, inherit);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: default;
+  z-index: 11;
+}
+.markdown-rendered .mermaid svg .edgeLabel,
+.markdown-rendered .mermaid svg .edgeLabel span,
+.markdown-rendered .mermaid svg .edgeLabel p {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* Outline, Bookmarks, and pane navigation */
+.outline,
+.outline-view,
+.bookmarks-view,
+.workspace-leaf-content[data-type="outline"],
+.workspace-leaf-content[data-type="bookmarks"] {
+  color: var(--ogd-text-secondary, #374151);
+}
+.outline .tree-item-self,
+.outline-view .tree-item-self,
+.bookmarks-view .tree-item-self,
+.workspace-leaf-content[data-type="outline"] .tree-item-self,
+.workspace-leaf-content[data-type="bookmarks"] .tree-item-self {
+  border-radius: var(--radius-m, 6px);
+}
+.outline .tree-item-self:hover,
+.outline-view .tree-item-self:hover,
+.bookmarks-view .tree-item-self:hover,
+.workspace-leaf-content[data-type="outline"] .tree-item-self:hover,
+.workspace-leaf-content[data-type="bookmarks"] .tree-item-self:hover {
+  background: var(--ogd-surface-subtle, #f3f4f6);
+}
+.outline .tree-item-self.is-active,
+.outline-view .tree-item-self.is-active,
+.bookmarks-view .tree-item-self.is-active {
+  background: radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.70), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.56));
+  color: var(--ogd-text-strong, #111827);
+  box-shadow: inset 0 0 0 1px rgba(100, 116, 139, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 3px 8px rgba(15, 23, 42, 0.08);
+  font-weight: 650;
+}
+
+/* Bases and database-like views */
+.bases-view,
+.base-view,
+.metadata-container,
+.metadata-properties,
+.metadata-property {
+  border-color: #dbe2ea;
+}
+.bases-view table,
+.base-view table,
+.bases-table,
+.base-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: var(--radius-l, 8px);
+}
+.bases-view th,
+.bases-view td,
+.base-view th,
+.base-view td,
+.bases-table th,
+.bases-table td,
+.base-table th,
+.base-table td {
+  border-color: var(--ogd-line-soft, #e5e7eb);
+}
+.bases-view tr:hover td,
+.base-view tr:hover td,
+.bases-table tr:hover td,
+.base-table tr:hover td {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.56));
+}
+
+/* Embedded media and workspace chrome */
+.markdown-rendered :is(img, video, audio, iframe),
+.markdown-preview-view :is(img, video, audio, iframe),
+.markdown-reading-view :is(img, video, audio, iframe) {
+  max-width: 100%;
+}
+.markdown-rendered iframe,
+.markdown-preview-view iframe,
+.markdown-reading-view iframe,
+.markdown-rendered video,
+.markdown-preview-view video,
+.markdown-reading-view video {
+  border: 1px solid #dbe2ea;
+  border-radius: var(--radius-l, 8px);
+  background: var(--ogd-surface-base, #ffffff);
+}
+.status-bar {
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid var(--ogd-line-soft, #e5e7eb);
+  color: #64748b;
+}
+.status-bar-item {
+  border-radius: var(--radius-m, 6px);
+}
+.status-bar-item:hover {
+  background: var(--ogd-surface-subtle, #f3f4f6);
+  color: var(--ogd-text-strong, #111827);
+}
+
+@media (max-width: 700px) {
+  .workspace-leaf-content,
+  .workspace-split,
+  .mod-root .workspace-leaf,
+  .markdown-preview-view,
+  .markdown-reading-view,
+  .markdown-source-view.mod-cm6 {
+    min-width: 0;
+    max-width: 100vw;
+  }
+  .nav-file-title,
+  .nav-folder-title,
+  .tree-item-inner,
+  .search-result-file-title,
+  .search-result-file-match,
+  .backlink-pane .tree-item-inner,
+  .outgoing-link-pane .tree-item-inner {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .markdown-rendered table,
+  .markdown-preview-view table,
+  .markdown-reading-view table,
+  .markdown-source-view.mod-cm6 .cm-table-widget {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .modal,
+  .prompt,
+  .menu {
+    max-width: calc(100vw - 24px);
+  }
+}
+
+@media print {
+  body.ogd-print-avoid-breaks .markdown-rendered :is(.markdown-embed, .internal-embed, iframe, video, audio),
+  body.ogd-print-avoid-breaks .markdown-preview-view :is(.markdown-embed, .internal-embed, iframe, video, audio) {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  body.ogd-print-avoid-breaks .markdown-rendered .mermaid,
+  body.ogd-print-avoid-breaks .markdown-preview-view .mermaid {
+    max-width: 100%;
+    overflow: visible;
+  }
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.42), rgba(15, 23, 42, 0.24));
+  color: #bfdbfe;
+  box-shadow: inset 0 -1px 0 rgba(147, 197, 253, 0.24);
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-hashtag {
+  background: #1f2937;
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-highlight,
+.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
+  background: rgba(146, 64, 14, 0.72);
+  color: #fef3c7;
+}
+.theme-dark .outline,
+.theme-dark .outline-view,
+.theme-dark .bookmarks-view,
+.theme-dark .workspace-leaf-content[data-type="outline"],
+.theme-dark .workspace-leaf-content[data-type="bookmarks"] {
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+.theme-dark .outline .tree-item-self:hover,
+.theme-dark .outline-view .tree-item-self:hover,
+.theme-dark .bookmarks-view .tree-item-self:hover,
+.theme-dark .workspace-leaf-content[data-type="outline"] .tree-item-self:hover,
+.theme-dark .workspace-leaf-content[data-type="bookmarks"] .tree-item-self:hover {
+  background: #1f2937;
+}
+.theme-dark .outline .tree-item-self.is-active,
+.theme-dark .outline-view .tree-item-self.is-active,
+.theme-dark .bookmarks-view .tree-item-self.is-active {
+  background: radial-gradient(circle at 78% 20%, rgba(148, 163, 184, 0.10), transparent 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(15, 23, 42, 0.34));
+  color: var(--ogd-text-inverted, #f8fafc);
+  box-shadow: inset 0 0 0 1px rgba(203, 213, 225, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.theme-dark .bases-view,
+.theme-dark .base-view,
+.theme-dark .metadata-container,
+.theme-dark .metadata-properties,
+.theme-dark .metadata-property {
+  border-color: rgba(203, 213, 225, 0.16);
+}
+.theme-dark .bases-view th,
+.theme-dark .bases-view td,
+.theme-dark .base-view th,
+.theme-dark .base-view td,
+.theme-dark .bases-table th,
+.theme-dark .bases-table td,
+.theme-dark .base-table th,
+.theme-dark .base-table td {
+  border-color: var(--ogd-line-dark, #334155);
+}
+.theme-dark .bases-view tr:hover td,
+.theme-dark .base-view tr:hover td,
+.theme-dark .bases-table tr:hover td,
+.theme-dark .base-table tr:hover td {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.36));
+}
+.theme-dark .markdown-rendered iframe,
+.theme-dark .markdown-preview-view iframe,
+.theme-dark .markdown-reading-view iframe,
+.theme-dark .markdown-rendered video,
+.theme-dark .markdown-preview-view video,
+.theme-dark .markdown-reading-view video {
+  border-color: var(--ogd-line-dark, #334155);
+  background: #0f172a;
+}
+.theme-dark .status-bar {
+  background: rgba(15, 23, 42, 0.94);
+  border-top-color: var(--ogd-text-slate, #334155);
+  color: var(--ogd-text-soft, #94a3b8);
+}
+.theme-dark .status-bar-item:hover {
+  background: #1f2937;
+  color: var(--ogd-text-inverted, #f8fafc);
+}
+
+
+/* ============================================================
+  Seven-direction mobile and overlay polish
+   - Keeps overlays readable on narrow screens without changing core chrome.
+   - Uses shallow glass, full-surface focus, and stable touch rows.
+   ============================================================ */
+
+.is-mobile :is(.modal, .prompt, .menu, .suggestion-container, .popover, .workspace-drawer) {
+  background: var(--ogd-glass-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.78)));
+  -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.04));
+  backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.04));
+  border: 1px solid var(--ogd-glass-border, rgba(148, 163, 184, 0.30));
+  box-shadow: var(--ogd-glass-shadow, 0 18px 42px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.86));
+}
+
+.is-mobile.theme-dark :is(.modal, .prompt, .menu, .suggestion-container, .popover, .workspace-drawer) {
+  background: var(--ogd-glass-bg, linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.70)));
+  border-color: var(--ogd-glass-border, rgba(203, 213, 225, 0.18));
+  box-shadow: var(--ogd-glass-shadow, 0 18px 44px rgba(0, 0, 0, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.10));
+}
+
+.is-mobile :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .setting-item, .tree-item-self, .nav-file-title, .nav-folder-title):is(:hover, :focus-visible, :focus-within, .is-selected, .selected, .is-active, [aria-selected="true"]) {
+  background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 249, 255, 0.72)));
+  border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.48));
+  box-shadow: var(--ogd-lg-shadow-focus, 0 10px 24px rgba(15, 23, 42, 0.14), 0 0 0 3px rgba(103, 232, 249, 0.12));
+  color: var(--text-normal);
+}
+
+.is-mobile.theme-dark :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .setting-item, .tree-item-self, .nav-file-title, .nav-folder-title):is(:hover, :focus-visible, :focus-within, .is-selected, .selected, .is-active, [aria-selected="true"]) {
+  background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.48)));
+  border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.34));
+  box-shadow: var(--ogd-lg-shadow-focus, 0 12px 28px rgba(0, 0, 0, 0.38), 0 0 0 3px rgba(103, 232, 249, 0.08));
+}
+

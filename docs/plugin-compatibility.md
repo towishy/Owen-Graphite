@@ -19,5 +19,3 @@ Owen Graphite는 기본 Obsidian UI와 자주 쓰는 작성 플러그인을 함�
 - hover/focus가 행 높이를 바꾸지 않는지 본다.
 - 다크 모드에서 muted text와 border가 배경에 묻히지 않는지 확인한다.
 - Dataview/Tasks 결과가 긴 텍스트를 포함할 때 본문 column을 밀어내지 않는지 확인한다.
-
-자세한 절차는 [qa-checklist.md](qa-checklist.md)의 plugin smoke matrix와 함께 사용합니다.

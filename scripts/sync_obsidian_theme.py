@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
-"""Bundle, validate, and sync Owen Graphite into an Obsidian theme folder."""
+"""Bundle and sync Owen Graphite v3 into an Obsidian theme folder.
+
+Re-bundles src/ via bundle_v3.py, promotes the bundle to theme.css, and
+copies the release assets into <vault>/.obsidian/themes/Owen Graphite.
+
+Reload Obsidian (Ctrl+R) after sync.
+"""
 
 from __future__ import annotations
 
 import argparse
 import importlib.util
 import shutil
-import subprocess
 import sys
 from pathlib import Path
 
@@ -19,16 +24,9 @@ RELEASE_ASSETS = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "dev/MAP/map-info-classification.md",
-    "dev/MAP/theme-css-risk-map.html",
-    "dev/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
-]
-LEGACY_ASSET_PATHS = [
-    "docs",
-    "docs/MAP",
 ]
 DEFAULT_VAULTS = [
     Path(r"H:\Obsidian"),
@@ -49,10 +47,7 @@ def load_module(name: str, path: Path):
 
 
 def candidate_targets() -> list[Path]:
-    targets: list[Path] = []
-    for vault in DEFAULT_VAULTS:
-        targets.append(vault / ".obsidian" / "themes" / THEME_FOLDER_NAME)
-    return targets
+    return [vault / ".obsidian" / "themes" / THEME_FOLDER_NAME for vault in DEFAULT_VAULTS]
 
 
 def find_target(explicit: Path | None) -> Path:
@@ -68,25 +63,16 @@ def find_target(explicit: Path | None) -> Path:
     )
 
 
-def run_validator(*args: str) -> None:
-    command = [sys.executable, str(ROOT / "scripts" / "validate_theme.py"), *args]
-    subprocess.run(command, cwd=ROOT, check=True)
-
-
-def bundle_theme() -> None:
-    bundle = load_module("bundle_theme", ROOT / "scripts" / "bundle_theme.py")
-    bundle.write_bundle()
+def bundle_and_promote() -> None:
+    bundle = load_module("bundle_v3", ROOT / "scripts" / "bundle_v3.py")
+    bundle.main()
+    src = ROOT / "dist" / "theme-v3.css"
+    dst = ROOT / "theme.css"
+    shutil.copy2(src, dst)
+    print(f"OK: promoted {src.relative_to(ROOT)} -> theme.css")
 
 
 def copy_assets(target: Path, dry_run: bool) -> None:
-    for rel in LEGACY_ASSET_PATHS:
-        legacy = target / rel
-        if not legacy.exists():
-            continue
-        print(f"{'DRY-RUN' if dry_run else 'REMOVE'}: legacy {legacy}")
-        if not dry_run:
-            shutil.rmtree(legacy) if legacy.is_dir() else legacy.unlink()
-
     for rel in RELEASE_ASSETS:
         source = ROOT / rel
         if not source.is_file() or source.stat().st_size == 0:
@@ -103,7 +89,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--target", type=Path, help="Obsidian theme folder to sync, e.g. H:\\Obsidian\\.obsidian\\themes\\Owen Graphite")
     parser.add_argument("--dry-run", action="store_true", help="Show copy operations without writing files.")
-    parser.add_argument("--skip-precheck", action="store_true", help="Skip validation before copying.")
+    parser.add_argument("--skip-bundle", action="store_true", help="Reuse existing theme.css; skip bundle + promote.")
     parser.add_argument("--list-targets", action="store_true", help="Print known target candidates and exit.")
     args = parser.parse_args()
 
@@ -116,13 +102,11 @@ def main() -> int:
     target = find_target(args.target)
     print(f"Target: {target}")
 
-    bundle_theme()
-    if not args.skip_precheck:
-        run_validator("--ci")
+    if not args.skip_bundle:
+        bundle_and_promote()
 
     copy_assets(target, args.dry_run)
     if not args.dry_run:
-        run_validator("--target", str(target))
         print(f"OK: synced Owen Graphite to {target}")
     return 0
 

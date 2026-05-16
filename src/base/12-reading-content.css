@@ -1,0 +1,637 @@
+/* v2.22.103: empty Live Preview lines now follow CM6 native line-height.
+   Earlier 0.45em compaction shrank the click hitbox to ~7px and made the
+   blank row impossible to mouse-target (arrow keys still worked because
+   they only need a line index). Reading view paragraph spacing is
+   handled below; Live Preview compactness is recovered through other
+   spacing presets, not by collapsing the blank line itself. */
+
+/* Reading view: tighten consecutive paragraph stacks. */
+.markdown-rendered p + p {
+  margin-top: 0.18em;
+}
+
+/* H1 - Sample B: Editorial number kicker (auto-numbered chapter) */
+.markdown-rendered,
+.markdown-preview-view.markdown-rendered,
+.markdown-reading-view .markdown-rendered {
+  counter-reset: ogd-h1-counter;
+}
+
+.markdown-rendered h1,
+.markdown-preview-view.markdown-rendered h1,
+.markdown-reading-view .markdown-rendered h1 {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+  padding: 0.3em 0 0.2em;
+  font-size: 2.15em;
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--header-text);
+  background: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  counter-increment: ogd-h1-counter;
+}
+
+.markdown-rendered h1::before,
+.markdown-preview-view.markdown-rendered h1::before,
+.markdown-reading-view .markdown-rendered h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  display: block;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono",
+    "D2Coding", Consolas, "Courier New", monospace;
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--ogd-title-rule-start, #0f766e);
+  margin-bottom: 0.5em;
+  line-height: 1;
+}
+
+/* Disable previous gradient underline */
+.markdown-rendered h1::after,
+.markdown-preview-view.markdown-rendered h1::after,
+.markdown-reading-view .markdown-rendered h1::after {
+  content: none;
+  display: none;
+  background: none;
+  background-image: none;
+  height: 0;
+  border: var(--ogd-border-none, 0);
+  box-shadow: var(--ogd-shadow-none, none);
+}
+
+.markdown-rendered h2,
+.markdown-preview-view.markdown-rendered h2,
+.markdown-reading-view .markdown-rendered h2 {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 0.95em;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.22em;
+  font-size: 1.6em;
+  font-weight: 780;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--header-text);
+  border-bottom: 1px solid var(--header-line);
+}
+
+.markdown-rendered h2::after,
+.markdown-preview-view.markdown-rendered h2::after,
+.markdown-reading-view .markdown-rendered h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: min(220px, 36%);
+  height: 3px;
+  background: var(--header-accent);
+  border-radius: var(--ogd-radius-pill, 999px);
+}
+
+.markdown-rendered h3,
+.markdown-preview-view.markdown-rendered h3,
+.markdown-reading-view .markdown-rendered h3 {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 0.7em;
+  margin-bottom: 0.2em;
+  padding: 0.08em 0 0.22em 0;
+  font-size: 1.3em;
+  font-weight: 720;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--header-accent-dark);
+  border-left: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.theme-dark .markdown-rendered h3,
+.theme-dark .markdown-preview-view.markdown-rendered h3,
+.theme-dark .markdown-reading-view .markdown-rendered h3 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+@supports selector(.markdown-rendered h1:has(+ table)) {
+  .markdown-rendered h1:has(+ table),
+  .markdown-rendered h1:has(+ .table-wrapper),
+  .markdown-rendered h2:has(+ table),
+  .markdown-rendered h2:has(+ .table-wrapper),
+  .markdown-rendered h3:has(+ table),
+  .markdown-rendered h3:has(+ .table-wrapper) {
+    margin-bottom: 0.2em;
+  }
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+  margin-top: 1.1em;
+  margin-bottom: 2.5em;
+  width: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
+}
+
+.markdown-rendered :is(h1, h2, h3) + :is(table, .table-wrapper),
+.markdown-rendered :is(h1, h2, h3) + .table-wrapper table {
+  margin-top: 0.2em;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) th {
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 20px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--ogd-line-strong, #cbd5e1);
+  border-left: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-right: 1px solid var(--ogd-line-soft, #e5e7eb);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td {
+  line-height: 1.6;
+  padding: 10px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  border-left: 1px solid #f1f5f9;
+  border-right: 1px solid #f1f5f9;
+  vertical-align: middle;
+  text-align: left;
+  color: #1f2937;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.markdown-rendered th:first-child,
+.markdown-rendered td:first-child {
+  border-left: none;
+}
+
+.markdown-rendered th:last-child,
+.markdown-rendered td:last-child {
+  border-right: none;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td:first-child {
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) td code {
+  white-space: nowrap;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote,
+.workspace-leaf-content :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote {
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  box-sizing: border-box;
+  margin: 0.95em 0;
+  padding: 0.6em 0.9em 0.6em 1em;
+  padding-inline-start: 1em;
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-radius: var(--radius-m, 6px);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  color: var(--ogd-text-secondary, #374151);
+  box-shadow: var(--ogd-shadow-none, none);
+  font-style: italic;
+}
+
+/* Force blockquote inner spacing - high specificity to override Obsidian defaults */
+body .markdown-rendered blockquote,
+body .markdown-preview-view blockquote,
+body .markdown-reading-view blockquote {
+  border-left: 0;
+  border-inline-start: 0;
+  padding-left: 0.2em;
+  padding-inline-start: 0.2em;
+}
+
+/* v1.8.65 - Definitive blockquote border removal in Reading view.
+   Targets every level (single, nested, dark) and all border longhands. */
+body .markdown-rendered blockquote,
+body .markdown-preview-view blockquote,
+body .markdown-reading-view blockquote,
+body.theme-light .markdown-rendered blockquote,
+body.theme-dark .markdown-rendered blockquote,
+body .markdown-rendered blockquote blockquote,
+body .markdown-rendered blockquote blockquote blockquote {
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-width: 0;
+  border-left-width: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-inline-end-width: 0;
+  border-color: var(--ogd-surface-transparent, transparent);
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  outline: 0;
+  box-shadow: var(--ogd-shadow-none, none);
+}
+
+/* Ensure blockquote children inherit inner spacing */
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :is(p, ul, ol, div) {
+  margin-left: 0.6em;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :first-child,
+.markdown-rendered .callout-content > :first-child {
+  margin-top: 0;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote > :last-child,
+.markdown-rendered .callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote p {
+  color: var(--ogd-text-secondary, #374151);
+  line-height: 1.75;
+  margin-bottom: 0.65em;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.05em 0.6em 0.05em 0.8em;
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-left-width: 0;
+  border-color: var(--ogd-surface-transparent, transparent);
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  color: var(--ogd-text-secondary, #374151);
+  font-style: italic;
+  box-shadow: var(--ogd-shadow-none, none);
+}
+
+/* v1.8.65 - Live Preview: also kill blockquote element rendered inside CM6 */
+.markdown-source-view.mod-cm6 blockquote,
+.markdown-source-view.mod-cm6 .cm-embed-block blockquote,
+.markdown-source-view.mod-cm6 .cm-content blockquote {
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-inline-start-width: 0;
+  border-left-width: 0;
+  border-color: var(--ogd-surface-transparent, transparent);
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+  border-radius: var(--radius-m, 6px);
+  padding: 0.4em 0.8em;
+  font-style: italic;
+  box-shadow: var(--ogd-shadow-none, none);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-formatting-quote {
+    /* v1.8.65 - Hide the > marker; soft background tint already conveys quote.
+      Fixes Windows font fallback rendering > as a protruding chevron glyph. */
+  display: none;
+  visibility: hidden;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  color: var(--ogd-surface-transparent, transparent);
+  opacity: 0;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote {
+  color: var(--ogd-text-secondary, #374151);
+  font-style: normal;
+}
+
+.markdown-rendered div.callout,
+.markdown-rendered .callout,
+.markdown-preview-view .callout,
+.markdown-reading-view .callout,
+.workspace-leaf-content .markdown-rendered div.callout,
+.workspace-leaf-content .markdown-rendered .callout {
+  box-sizing: border-box;
+  margin: 1.05em 0;
+  padding: 11px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-m, 6px);
+  background: #fbfcfd;
+  background-color: #fbfcfd;
+  box-shadow: var(--ogd-shadow-none, none);
+  mix-blend-mode: normal;
+  color: var(--ogd-text-secondary, #374151);
+}
+
+.markdown-rendered div.callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) {
+  border-left-color: #92400e;
+  background: #fffbeb;
+  background-color: #fffbeb;
+}
+
+.markdown-rendered div.callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+  border-left-color: #b91c1c;
+  background: #fef2f2;
+  background-color: #fef2f2;
+}
+
+.markdown-rendered div.callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) {
+  border-left-color: #047857;
+  background: #f0fdf4;
+  background-color: #f0fdf4;
+}
+
+.markdown-rendered div.callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) {
+  border-left-color: #0f766e;
+  background: #f0fdfa;
+  background-color: #f0fdfa;
+}
+
+.markdown-rendered div.callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) {
+  border-left-color: var(--ogd-text-slate, #334155);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+}
+
+.markdown-rendered div.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
+  border-left-color: #7c3aed;
+  background: #faf5ff;
+  background-color: #faf5ff;
+}
+
+.markdown-rendered div.callout[data-callout="example"] {
+  border-left-color: #6d28d9;
+  background: #f5f3ff;
+  background-color: #f5f3ff;
+}
+
+.markdown-rendered div.callout:is([data-callout="quote"], [data-callout="cite"]) {
+  border-left-color: #64748b;
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  color: #1f2937;
+  font-size: 0.98em;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.markdown-rendered .callout-title-inner,
+.markdown-rendered .callout-content,
+.markdown-preview-view .callout-title-inner,
+.markdown-preview-view .callout-content {
+  color: var(--ogd-text-secondary, #374151);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
+  margin-top: 0.35em;
+  font-size: 0.95em;
+  line-height: 1.62;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  background-color: var(--ogd-surface-base, #ffffff);
+  color: var(--ogd-text-subtle, #475569);
+}
+
+.markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) .callout-icon {
+  border: 1.5px solid #fcd34d;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #92400e;
+}
+
+.markdown-rendered .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) .callout-icon {
+  border: 1.5px solid #fca5a5;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #b91c1c;
+}
+
+.markdown-rendered .callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) .callout-icon {
+  border: 1.5px solid #86efac;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #166534;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.4px;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
+.workspace-leaf-content .markdown-rendered pre {
+  margin: 1.35em 0 1.8em;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-m, 6px);
+  background: var(--ogd-surface-muted, #f8fafc);
+  box-shadow: var(--ogd-shadow-none, none);
+}
+
+.markdown-rendered pre::before {
+  content: attr(class);
+  display: block;
+  padding: 8px 14px;
+  color: var(--ogd-text-secondary, #374151);
+  background: #eef2f7;
+  border-bottom: 1px solid #d1d5db;
+  font-family: var(--font-monospace-theme);
+  font-size: 0.78em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+.workspace-leaf-content .markdown-rendered pre code {
+  display: block;
+  padding: 14px 16px;
+  color: var(--ogd-text-strong, #111827);
+  background: var(--ogd-surface-transparent, transparent);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
+  padding: 0.16em 0.38em;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-radius: 4px;
+  background: var(--ogd-surface-subtle, #f3f4f6);
+  color: var(--ogd-text-strong, #111827);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  background: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-strong, #111827);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
+  line-height: 1.65;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top: 1px solid #d1d5db;
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  border-radius: var(--ogd-radius-top, 6px 6px 0 0);
+  padding-top: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom: 1px solid #d1d5db;
+  border-left: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  border-radius: 0 0 6px 6px;
+  padding-bottom: 0;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul {
+  padding-left: 20px;
+  margin-top: 0.4em;
+  margin-bottom: 0.8em;
+  margin-left: 8px;
+  border-left: none;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol {
+  padding-left: 22px;
+  margin-top: 0.4em;
+  margin-bottom: 0.8em;
+  margin-left: 8px;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li {
+  margin-bottom: 0.65em;
+  line-height: 1.78;
+  list-style-type: disc;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li > p {
+  margin-bottom: 0.65em;
+  line-height: 1.78;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) li::before {
+  display: none;
+}
+
+.markdown-rendered a,
+.markdown-source-view.mod-cm6 .cm-link,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  color: #1d4ed8;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #bfdbfe;
+}
+
+.markdown-rendered a:hover {
+  text-decoration-color: #1d4ed8;
+}
+
+/* External-link resting state: align with v2.30.14 graphite baseline.
+   v2 dev/10c (now polish/70) defines slate-700; this block previously
+   declared teal which only "lost" because the polish/70 rule used the
+   important-flag. Aligning the resting state here removes the need for
+   that flag entirely. The hover block below keeps the teal accent. */
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a:is(
+  .external-link,
+  [href^="http://"]:not(.internal-link),
+  [href^="https://"]:not(.internal-link)
+) {
+  color: var(--ogd-text-slate, #334155);
+  font-weight: 720;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--ogd-text-soft, #94a3b8);
+  text-decoration-thickness: 1.35px;
+  text-underline-offset: 0.23em;
+  border-bottom: 0;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a:is(
+  .external-link,
+  [href^="http://"]:not(.internal-link),
+  [href^="https://"]:not(.internal-link)
+):hover {
+  color: #0d9488;
+  text-decoration-color: #0f766e;
+}
+
+/* Broken / unresolved internal links */
+.markdown-rendered a.internal-link.is-unresolved,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link.is-unresolved {
+  color: #b45309;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(180, 83, 9, 0.55);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) mark,
+.cm-highlight {
+  padding: 0.05em 0.25em;
+  border-radius: 3px;
+  background: #fef3c7;
+  color: #78350f;
+  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.22);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.search-highlight, .search-hit, .is-search-match),
+:is(.search-result-file-matched-text, .suggestion-highlight) {
+  padding: 0.05em 0.24em;
+  border-radius: 3px;
+  background: #fef3c7;
+  color: #78350f;
+  box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.24);
+}
+

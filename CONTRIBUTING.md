@@ -1,178 +1,102 @@
-# Contributing to Owen Graphite
+# Contributing to Owen Graphite v3
 
-이 저장소는 Obsidian용 보고서 지향 테마인 **Owen Graphite**를 관리합니다. 외부 기여를 환영합니다.
+Owen Graphite v3.0.0은 처음부터 다시 작성된 코드베이스입니다. 본 문서는 v3 기여자가 따라야 할 워크플로우와 검증 절차를 정리합니다.
 
-## 빠른 시작
+## 0. 사전 준비
 
-```bash
-git clone https://github.com/towishy/Owen-Graphite.git
-cd Owen-Graphite
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r scripts/requirements.txt 2>/dev/null || true
-```
-
-## 작업 흐름
-
-### 1. 로컬 Obsidian 볼트에 즉시 반영
-
-테마를 수정한 후 볼트에 동기화하여 실시간 확인합니다.
-
-```bash
-rsync -a --delete \
-  --exclude='.git/' --exclude='.venv/' --exclude='dist/' --exclude='dev/temp/' --exclude='.DS_Store' \
-  /path/to/Owen-Graphite/ \
-  "/path/to/YourVault/.obsidian/themes/Owen Graphite/"
-```
-
-Obsidian → Settings → Appearance → 테마 새로고침으로 변경사항 확인.
-
-### 2. 검증
-
-커밋 전 반드시 검증 스크립트를 통과해야 합니다.
-
-```bash
-python3 scripts/validate_theme.py
-```
-
-수행되는 검사:
-- `manifest.json` semver 형식
-- `manifest.json` / `README.md` / `CHANGELOG.md` 버전 정합성
-- Style Settings 옵션 카운트
-- 스크린샷 PNG 치수
-- Live Preview / Reading View 가드 룰 (편집성·레이아웃 보호)
-- 색상 대비 (WCAG AA, 13쌍)
-- 릴리즈 ZIP 자산 유효성
-
-선택 visual regression:
+- Python 3.10+ (`.venv\Scripts\python.exe` 권장; Windows 기준)
+- Obsidian 1.6.0+
+- (선택) Style Settings 플러그인 — 옵션 토글 확인용
 
 ```powershell
-# Windows PowerShell
-.\.venv\Scripts\python.exe -m pip install playwright
-.\.venv\Scripts\python.exe -m playwright install chromium
-.\.venv\Scripts\python.exe scripts\visual_regression.py
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt   # Playwright 등 fingerprint 캡처용
+python -m playwright install chromium
 ```
+
+## 1. 폴더 구조
+
+진본 CSS는 모두 `src/` 아래에 있습니다.
+
+```
+src/
+  tokens/      # 색, 타이포, 간격, 그림자, glass surface 토큰
+  base/        # reset, 타이포, reading view, live preview 기본
+  surfaces/    # callout, table, code, list, embed, canvas, graph
+  chrome/      # workspace, nav, overlay, settings
+  features/    # style settings, report, pdf/print, dark
+  themes/      # dark, a11y
+  plugins/     # dataview, tasks, 기타 호환
+  polish/      # 최종 조정 + glass polish
+```
+
+번들 결과는 `dist/theme-v3.css`, 진본 사본은 루트 `theme.css`.
+
+## 2. 작업 흐름
+
+1. **분기**: `git checkout -b feature/<name>` (베이스: `main`)
+2. **편집**: `src/` 안에서만 수정. `theme.css` 는 직접 편집하지 않습니다.
+3. **번들**: `python scripts/bundle_v3.py`
+4. **승격**: `Copy-Item dist\theme-v3.css theme.css -Force` (또는 macOS/Linux `cp`)
+5. **감사**:
+   - `python scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
+   - `python scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
+6. **시각 회귀 (선택)**:
+   - `python scripts/capture_computed_fingerprint.py --build v3 --theme light`
+   - `python scripts/capture_computed_fingerprint.py --build v3 --theme dark`
+   - `python scripts/fp_diff_summary.py [--theme dark]` — 베이스라인과 0 diff 유지
+7. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
+
+## 3. 보존 계약 (Preservation Contract)
+
+v3는 v2.30.14의 픽셀 결과를 **보존**합니다. 모든 변경은 다음을 통과해야 합니다.
+
+| 계약 | 도구 | 통과 기준 |
+| --- | --- | --- |
+| C1 시각 | `scripts/capture_computed_fingerprint.py` + `fp_diff_summary.py` | Light/Dark diff = 0 |
+| C2 Live Preview 편집성 | `scripts/audit_v3_hit_routing.py` | violations = 0 |
+| C3 Style Settings 옵션 | 수동 토글 매트릭스 | 37 옵션 × ON/OFF 동일 |
+| C4 PDF 출력 | `@media print` 시나리오 수동 비교 | 페이지 수·레이아웃·footer 동일 |
+
+상세 계약은 [docs/v3/design-spec.md](docs/v3/design-spec.md) 참고.
+
+## 4. `!important` 정책
+
+declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
+
+1. 해당 룰의 선택자 특이도가 Obsidian core를 이기는지 확인 (대부분 충분합니다)
+2. 그래도 필요하다면 PR 본문에 "defeats core <selector>" 형태로 사유 명시
+3. CSS 주석에 동일한 사유 인라인 명시
+
+자동 제거 도구 `scripts/v3_strip_important_src.py` 는 주석 안의 `!important` 토큰은 건드리지 않습니다.
+
+## 5. 디자인 가이드라인 (Liquid Glass core)
+
+- **Resting state**: 흰색/회색 frosted glass, 좌측 vertical rail 금지
+- **Hover**: 살짝 밝아지고 들어올림, wide soft downward shadow, 얕은 pastel 톤
+- **Active**: 선택 문서/탭 같은 명확한 상태에만 sky tint + glass border 적용
+- **반복 chrome**: 의미색 대신 밝기·그림자로만 반응
+- **샘플 자산**: 새 기능 추가 시 README의 해당 섹션에 liquid-glass 샘플 이미지(SVG/PNG) 동봉
+
+자세한 원칙은 [docs/v3/surface-state-matrix.md](docs/v3/surface-state-matrix.md).
+
+## 6. Pre-commit hook (선택)
 
 ```bash
-# macOS / Linux
-.venv/bin/python -m pip install playwright
-.venv/bin/python -m playwright install chromium
-.venv/bin/python scripts/visual_regression.py
+ln -sf ../../scripts/hooks/pre-commit .git/hooks/pre-commit
+chmod +x scripts/hooks/pre-commit
 ```
 
-기본 캡처 출력은 `dev/temp/visual-regression/`에 저장되며 커밋하지 않습니다. README나 마켓에 쓰는 대표 이미지만 `screenshots/readme/` 같은 추적 경로로 승격합니다.
+Windows에서는 hook 내용을 `.git/hooks/pre-commit.ps1` 로 직접 옮기거나, WSL/Git Bash 환경에서 실행하세요. Hook은 번들 + hit-routing 감사를 강제합니다.
 
-문서 정책:
-- `docs/`는 로컬 작업 문서가 많아 기본 ignore 대상입니다.
-- `scripts/validate_theme.py` 또는 release 안내가 요구하는 문서는 `git add -f`로 명시적으로 추적합니다.
-- 추적되는 docs 파일을 추가할 때는 validator guard나 README/dev 문서의 책임 설명도 함께 맞춥니다.
+## 7. Release 절차
 
-추가 점검:
-```bash
-# 중괄호 균형 확인
-python3 -c "s=open('theme.css').read(); print(s.count('{'), s.count('}'))"
+`docs/v3/release-plan.md` 의 R0~R6 단계 참조.
 
-# 볼트 동기화 확인
-diff -qr --exclude=.git --exclude=.DS_Store \
-  . "/path/to/YourVault/.obsidian/themes/Owen Graphite"
-```
+요약:
 
-### 3. 빌드
-
-```bash
-python3 scripts/build_release.py
-# → dist/Owen-Graphite-<version>.zip
-```
-
-### 4. 커밋 컨벤션
-
-```
-<type>: <subject>
-
-<body>
-```
-
-Type:
-- `feat:` 신규 기능
-- `fix:` 버그 수정
-- `style:` CSS 디자인 조정
-- `docs:` 문서
-- `refactor:` 리팩토링 (동작 변화 없음)
-- `chore:` 빌드/스크립트/설정
-- `Release vX.Y.Z —` 릴리즈 커밋
-
-## 코드 스타일
-
-### CSS 패치 블록 추가 규칙
-
-기존 섹션을 직접 수정하기보다 **EOF 패치 블록**에 추가 오버라이드를 권장합니다 (회귀 위험 최소화).
-
-```css
-/* ============================================================================
- * vX.Y.Z — <기능명>
- * <간단 설명>
- * ========================================================================== */
-
-.your-selector {
-  property: value !important;
-}
-
-/* End of vX.Y.Z ... ======================================================== */
-```
-
-### Live Preview 가드
-
-Live Preview (CM6) 편집성을 해치는 다음 규칙은 금지됩니다 (validate가 차단):
-- `pointer-events: none` on `.cm-line`
-- `user-select: none` on `.cm-content`
-- 비대칭 `padding`으로 커서 좌표를 어긋나게 만드는 룰
-
-### Style Settings 옵션 추가
-
-`/* @settings ... */` YAML 블록에 그룹별로 추가하고 변수는 `--ogd-` 접두사를 사용합니다.
-
-## 릴리즈 절차 (메인테이너)
-
-릴리즈 전에는 같은 버전 태그가 이미 있는지 먼저 확인합니다.
-
-```bash
-git tag --list "vX.Y.Z"
-gh release view vX.Y.Z --json tagName,name,isDraft,isPrerelease,publishedAt
-```
-
-```bash
-# 1. manifest.json + README + CHANGELOG 버전 동기화
-# 2. MAP + 검증 + 빌드
-python3 scripts/analyze_theme_css.py
-python3 scripts/validate_theme.py
-python3 scripts/build_release.py
-
-# 3. 커밋 + 태그 + 푸시
-git add -A
-git commit -m "Release vX.Y.Z — <subject>"
-git tag -a vX.Y.Z -m "Owen Graphite vX.Y.Z"
-git push origin main
-git push origin vX.Y.Z
-
-# 4. GitHub 릴리즈 (한글 노트는 반드시 --notes-file 사용!)
-cat > /tmp/notes.md << 'EOF'
-## Highlights
-...
-EOF
-gh release create vX.Y.Z \
-  dist/Owen-Graphite-X.Y.Z.zip theme.css manifest.json \
-  --title "Owen Graphite vX.Y.Z" \
-  --notes-file /tmp/notes.md
-```
-
-> **주의**: 한글이 포함된 릴리즈 노트는 shell 더블쿼트 안에서 `\u` 이스케이프가 풀리지 않으므로 반드시 파일로 작성 후 `--notes-file` 옵션을 사용합니다.
-
-## 이슈 / PR
-
-- 버그 신고: 재현 절차 + Obsidian 버전 + OS + 스크린샷
-- 기능 제안: 사용 사례와 대안 검토 결과 포함
-- PR: 위 검증을 모두 통과해야 머지 가능
-
-## 라이선스
-
-MIT — `LICENSE` 참조.
+1. `manifest.json` 의 `version` 갱신
+2. `CHANGELOG.md` 에 새 섹션 추가
+3. `python scripts/build_release.py` → `dist/Owen-Graphite-<version>.zip`
+4. `git tag <version>` + `git push origin <version>` (CI가 GitHub Release 생성)

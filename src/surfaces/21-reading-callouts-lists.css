@@ -1,0 +1,340 @@
+/* =====================================================================
+  Callout - full set: note/info/tip/abstract/example/important/quote
+   ===================================================================== */
+.markdown-rendered .callout[data-callout="note"],
+.markdown-rendered .callout[data-callout="info"] {
+  --callout-icon: lucide-info;
+  border-left-color: #64748b;
+  background: var(--ogd-surface-muted, #f8fafc);
+}
+.markdown-rendered .callout[data-callout="note"] .callout-icon,
+.markdown-rendered .callout[data-callout="info"] .callout-icon {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #94a3b8;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: var(--ogd-text-subtle, #475569);
+}
+.markdown-rendered .callout[data-callout="note"] .callout-icon svg,
+.markdown-rendered .callout[data-callout="info"] .callout-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.15px;
+}
+
+.markdown-rendered .callout[data-callout="tip"],
+.markdown-rendered .callout[data-callout="hint"],
+.markdown-rendered .callout[data-callout="important"] {
+  --callout-icon: lucide-lightbulb;
+  border-left-color: #0f766e;
+  background: #f0fdfa;
+  background-color: #f0fdfa;
+}
+.markdown-rendered .callout[data-callout="tip"] .callout-icon,
+.markdown-rendered .callout[data-callout="hint"] .callout-icon,
+.markdown-rendered .callout[data-callout="important"] .callout-icon {
+  border: 1.5px solid #5eead4;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #0f766e;
+}
+
+.markdown-rendered .callout[data-callout="abstract"],
+.markdown-rendered .callout[data-callout="summary"],
+.markdown-rendered .callout[data-callout="tldr"] {
+  --callout-icon: lucide-clipboard-list;
+  border-left-color: var(--ogd-text-slate, #334155);
+  background: var(--ogd-surface-muted, #f8fafc);
+  background-color: var(--ogd-text-inverted, #f8fafc);
+}
+.markdown-rendered .callout[data-callout="abstract"] .callout-icon,
+.markdown-rendered .callout[data-callout="summary"] .callout-icon,
+.markdown-rendered .callout[data-callout="tldr"] .callout-icon {
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: var(--ogd-text-subtle, #475569);
+}
+
+.markdown-rendered .callout[data-callout="example"] {
+  --callout-icon: lucide-list-checks;
+  border-left-color: #6d28d9;
+  background: #f5f3ff;
+  background-color: #f5f3ff;
+}
+.markdown-rendered .callout[data-callout="example"] .callout-icon {
+  border: 1.5px solid #c4b5fd;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #6d28d9;
+}
+
+.markdown-rendered .callout[data-callout="quote"],
+.markdown-rendered .callout[data-callout="cite"] {
+  --callout-icon: lucide-quote;
+  border-left-color: #6b7280;
+  background: #f9fafb;
+  font-style: italic;
+}
+.markdown-rendered .callout[data-callout="quote"] .callout-icon,
+.markdown-rendered .callout[data-callout="cite"] .callout-icon {
+  background: #6b7280;
+}
+
+.markdown-rendered .callout[data-callout="question"],
+.markdown-rendered .callout[data-callout="help"],
+.markdown-rendered .callout[data-callout="faq"] {
+  --callout-icon: lucide-circle-help;
+  border-left-color: #7c3aed;
+  background: #faf5ff;
+  background-color: #faf5ff;
+}
+.markdown-rendered .callout[data-callout="question"] .callout-icon,
+.markdown-rendered .callout[data-callout="help"] .callout-icon,
+.markdown-rendered .callout[data-callout="faq"] .callout-icon {
+  border: 1.5px solid #c4b5fd;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #6d28d9;
+}
+
+.markdown-rendered .callout:is(
+  [data-callout="tip"],
+  [data-callout="hint"],
+  [data-callout="important"]
+) .callout-icon {
+  border: 1.5px solid #5eead4;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #0f766e;
+}
+.markdown-rendered .callout:is(
+  [data-callout="abstract"],
+  [data-callout="summary"],
+  [data-callout="tldr"]
+) .callout-icon {
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: var(--ogd-text-subtle, #475569);
+}
+.markdown-rendered .callout:is(
+  [data-callout="warning"],
+  [data-callout="attention"],
+  [data-callout="caution"]
+) .callout-icon {
+  border: 1.5px solid #fcd34d;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #92400e;
+}
+.markdown-rendered .callout:is(
+  [data-callout="failure"],
+  [data-callout="fail"],
+  [data-callout="missing"],
+  [data-callout="danger"],
+  [data-callout="error"],
+  [data-callout="bug"]
+) .callout-icon {
+  border: 1.5px solid #fca5a5;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #b91c1c;
+}
+.markdown-rendered .callout:is(
+  [data-callout="example"],
+  [data-callout="question"],
+  [data-callout="help"],
+  [data-callout="faq"]
+) .callout-icon {
+  border: 1.5px solid #c4b5fd;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #6d28d9;
+}
+.markdown-rendered .callout:is(
+  [data-callout="success"],
+  [data-callout="check"],
+  [data-callout="done"]
+) .callout-icon {
+  border: 1.5px solid #86efac;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: #047857;
+}
+.markdown-rendered .callout:is(
+  [data-callout="quote"],
+  [data-callout="cite"]
+) .callout-icon {
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-surface-base, #ffffff);
+  color: var(--ogd-text-subtle, #475569);
+}
+
+.markdown-rendered .callout-fold {
+  opacity: 0.6;
+}
+.markdown-rendered .callout:hover .callout-fold {
+  opacity: 1;
+}
+
+/* Nested blockquote depth coloring - v1.8.65 tonal steps */
+.markdown-rendered blockquote blockquote {
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  background: #f1f5f9;
+  background-color: #f1f5f9;
+}
+.markdown-rendered blockquote blockquote blockquote {
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: var(--ogd-surface-transparent, transparent);
+  border: var(--ogd-border-none, 0);
+  border-left: 0;
+  border-inline-start: 0;
+  border-left-color: var(--ogd-surface-transparent, transparent);
+  border-inline-start-color: var(--ogd-surface-transparent, transparent);
+  background: #e2e8f0;
+  background-color: #e2e8f0;
+}
+
+/* =====================================================================
+  Lists - tasks, ordered numbers, indent guides
+   ===================================================================== */
+.markdown-rendered ol li::marker {
+  color: var(--header-accent);
+  font-weight: 700;
+}
+.markdown-rendered ul ul,
+.markdown-rendered ul ol,
+.markdown-rendered ol ul,
+.markdown-rendered ol ol {
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
+  border-left: 1px dotted #e5e7eb;
+  padding-left: 14px;
+  margin-left: 4px;
+}
+
+/* Task checkbox restyle */
+.markdown-rendered input[type="checkbox"],
+.markdown-source-view.mod-cm6 input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #9ca3af;
+  border-radius: 3px;
+  background: var(--ogd-surface-base, #ffffff);
+  vertical-align: -2px;
+  margin-right: 6px;
+  position: relative;
+  cursor: pointer;
+}
+.markdown-rendered input[type="checkbox"]:checked,
+.markdown-source-view.mod-cm6 input[type="checkbox"]:checked {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.72));
+  border-color: rgba(14, 165, 233, 0.52);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 0 0 1px rgba(14, 165, 233, 0.08);
+}
+.markdown-rendered input[type="checkbox"]:checked::after {
+  content: "\2713";
+  position: absolute;
+  top: -3px;
+  left: 1px;
+  color: var(--header-accent);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+.theme-dark .markdown-rendered input[type="checkbox"]:checked,
+.theme-dark .markdown-source-view.mod-cm6 input[type="checkbox"]:checked {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.42));
+  border-color: rgba(56, 189, 248, 0.54);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 0 0 1px rgba(56, 189, 248, 0.10);
+}
+.markdown-rendered li.task-list-item.is-checked,
+.markdown-rendered li[data-task="x"] {
+  color: #9ca3af;
+  text-decoration: line-through;
+  text-decoration-color: rgba(156, 163, 175, 0.6);
+}
+
+/* =====================================================================
+  Tags - chip style
+   ===================================================================== */
+.markdown-rendered a.tag,
+.tag,
+.cm-hashtag {
+  display: inline-block;
+  padding: 1px 8px;
+  background: #eef2f7;
+  color: var(--ogd-text-secondary, #374151);
+  border: 1px solid #d1d5db;
+  border-radius: var(--ogd-radius-pill, 999px);
+  font-size: 0.82em;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.5;
+}
+.markdown-rendered a.tag:hover {
+  background: var(--ogd-line-soft, #e5e7eb);
+  color: var(--ogd-text-strong, #111827);
+}
+
+/* =====================================================================
+   Footnotes
+   ===================================================================== */
+.markdown-rendered .footnotes {
+  margin-top: 1.45em;
+  padding-top: 0.8em;
+  border-top: 1px solid #d8e1ea;
+  font-size: 0.86em;
+  color: #64748b;
+  line-height: 1.58;
+}
+.markdown-rendered .footnote-ref a,
+.markdown-rendered a.footnote-link,
+.markdown-rendered .footnote-backref {
+  font-size: 0.78em;
+  vertical-align: super;
+  text-decoration: none;
+  color: var(--ogd-text-subtle, #475569);
+  font-weight: 750;
+}
+
+/* =====================================================================
+  Horizontal rule - gradient accent
+   ===================================================================== */
+.markdown-rendered hr,
+.markdown-preview-view hr,
+.markdown-reading-view hr {
+  margin: 1.7em 0;
+  height: 1px;
+  border: var(--ogd-border-none, 0);
+  background: linear-gradient(90deg, #475569 0 92px, #d1d5db 92px 100%);
+}
+
+/* =====================================================================
+  Table of Contents - report navigation container
+  v2.30.4: removed forbidden left vertical accent bar; now uses full box.
+   ===================================================================== */
+.markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+.markdown-preview-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents),
+.markdown-reading-view :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) {
+  margin: 1.05em 0 1.45em;
+  padding: 0.85em 1em;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-radius: var(--radius-m, 6px);
+  background: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-subtle, #475569);
+}
+
+.markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) :is(ul, ol) {
+  margin: 0;

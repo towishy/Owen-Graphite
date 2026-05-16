@@ -1,0 +1,191 @@
+/* ============================================================
+  v1.8.2 - Workspace navigation + task states + search/highlight
+   - File explorer gains clearer hierarchy, hover, and active states
+   - Special task checkboxes become semantic status markers
+   - Search results and ==highlight== get a modern, readable treatment
+   ============================================================ */
+
+/* Sidebar / File Explorer */
+.nav-folder-title,
+.nav-file-title {
+  border-radius: var(--radius-m, 6px);
+  margin: 1px 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
+}
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  background: var(--ogd-surface-subtle, #f3f4f6);
+  color: var(--ogd-text-strong, #111827);
+  transform: var(--ogd-hover-shift, translateX(1px));
+}
+.nav-file-title.is-active {
+  background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.72), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.58));
+  color: var(--ogd-text-strong, #111827);
+  box-shadow: inset 0 0 0 1px rgba(100, 116, 139, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 2px 7px rgba(15, 23, 42, 0.07);
+}
+.nav-folder-title.is-active {
+  background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.66), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54));
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 2px 7px rgba(15, 23, 42, 0.06);
+}
+.nav-folder.mod-root > .nav-folder-title {
+  font-weight: 700;
+}
+.nav-file-title-content,
+.nav-folder-title-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-folder-collapse-indicator,
+.tree-item-icon.collapse-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-inline-end: 3px;
+  border-radius: var(--radius-m, 6px);
+  color: var(--ogd-text-soft, #94a3b8);
+  transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
+}
+.nav-folder-title:hover .nav-folder-collapse-indicator,
+.tree-item-self:hover .tree-item-icon.collapse-icon {
+  background: rgba(148, 163, 184, 0.16);
+  color: var(--ogd-text-subtle, #475569);
+}
+.nav-folder-collapse-indicator svg,
+.tree-item-icon.collapse-icon svg {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.nav-folder-collapse-indicator::before,
+.tree-item-icon.collapse-icon::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  transform: rotate(-45deg);
+  transform-origin: 55% 55%;
+  transition: transform 0.12s ease;
+}
+.nav-folder:not(.is-collapsed) > .nav-folder-title .nav-folder-collapse-indicator::before,
+.tree-item:not(.is-collapsed) > .tree-item-self .tree-item-icon.collapse-icon::before,
+.tree-item-self:not(.is-collapsed) .tree-item-icon.collapse-icon::before {
+  transform: rotate(45deg);
+}
+.theme-dark .nav-folder-title:hover,
+.theme-dark .nav-file-title:hover {
+  background: #1f2937;
+  color: #f9fafb;
+}
+.theme-dark .nav-folder-collapse-indicator,
+.theme-dark .tree-item-icon.collapse-icon {
+  color: #64748b;
+}
+.theme-dark .nav-folder-title:hover .nav-folder-collapse-indicator,
+.theme-dark .tree-item-self:hover .tree-item-icon.collapse-icon {
+  background: rgba(148, 163, 184, 0.14);
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+.theme-dark .nav-file-title.is-active {
+  background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.12), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.64), rgba(15, 23, 42, 0.40));
+  color: #f9fafb;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 3px 9px rgba(0, 0, 0, 0.26);
+}
+.theme-dark .nav-folder-title.is-active {
+  background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.10), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(15, 23, 42, 0.34));
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+/* Semantic task checkbox states */
+.markdown-rendered li.task-list-item[data-task]:not([data-task=" "]),
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task]:not([data-task=" "]) {
+  color: var(--text-normal);
+  text-decoration: none;
+}
+.markdown-rendered li.task-list-item[data-task] input[type="checkbox"] {
+  border-width: 1.5px;
+}
+.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"],
+.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"] {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.70));
+  border-color: rgba(59, 130, 246, 0.58);
+}
+.markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"] {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.70));
+  border-color: rgba(239, 68, 68, 0.58);
+}
+.markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"] {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.70));
+  border-color: rgba(236, 72, 153, 0.58);
+}
+.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"] {
+  background: var(--ogd-surface-subtle, #f3f4f6);
+  border-color: #6b7280;
+}
+.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"] {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.70));
+  border-color: rgba(245, 158, 11, 0.58);
+}
+.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"]::after { content: "/"; color: #1d4ed8; left: 3px; top: -3px; }
+.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"]::after { content: ">"; color: #1d4ed8; left: 3px; top: -3px; font-size: 13px; }
+.markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"]::after { content: "!"; color: #b91c1c; left: 4px; top: -2px; }
+.markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"]::after { content: "?"; color: #be185d; left: 3px; top: -2px; }
+.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"]::after { content: "-"; color: var(--ogd-text-secondary, #374151); left: 3px; top: -3px; }
+.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"]::after { content: "*"; color: #b45309; left: 3px; top: -3px; font-size: 12px; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"],
+.theme-dark .markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"] { background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.42)); border-color: rgba(96, 165, 250, 0.62); }
+.theme-dark .markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"] { background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.42)); border-color: rgba(248, 113, 113, 0.62); }
+.theme-dark .markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"] { background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.42)); border-color: rgba(244, 114, 182, 0.62); }
+.theme-dark .markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"] { background: var(--ogd-surface-dark-muted, #374151); border-color: #9ca3af; }
+.theme-dark .markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"] { background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.42)); border-color: rgba(251, 191, 36, 0.62); }
+
+/* Search and highlight readability */
+.markdown-rendered mark,
+.markdown-preview-view mark,
+.cm-s-obsidian span.cm-highlight {
+  background: linear-gradient(180deg, transparent 12%, rgba(254, 243, 199, 0.58) 12%, rgba(253, 230, 138, 0.44) 88%, transparent 88%);
+  color: var(--ogd-text-strong, #111827);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.search-result-file-match,
+.search-result-file-matched-text,
+.search-result-file-match-text,
+.suggestion-highlight {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(254, 243, 199, 0.28));
+  color: #92400e;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.22), 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+.is-flashing,
+.markdown-rendered .is-flashing {
+  background: rgba(14, 165, 233, 0.16);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.28);
+  border-radius: 4px;
+}
+.theme-dark .markdown-rendered mark,
+.theme-dark .markdown-preview-view mark,
+.theme-dark .cm-s-obsidian span.cm-highlight {
+  background: linear-gradient(180deg, transparent 10%, rgba(251, 191, 36, 0.35) 10%, rgba(245, 158, 11, 0.42) 90%, transparent 90%);
+  color: #fde68a;
+}
+.theme-dark .search-result-file-match,
+.theme-dark .search-result-file-matched-text,
+.theme-dark .search-result-file-match-text,
+.theme-dark .suggestion-highlight {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(120, 53, 15, 0.20));
+  color: #fde68a;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.22), 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.theme-dark .is-flashing,
+.theme-dark .markdown-rendered .is-flashing {
+  background: rgba(56, 189, 248, 0.18);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+}
+

@@ -1,0 +1,91 @@
+/* Owen Graphite v3 entry point.
+ *
+ * Cascade strategy: classic file-order + selector-specificity. ZERO important.
+ *
+ * Why we do NOT wrap imports in @layer:
+ *
+ * Per CSS Cascade Layers spec, unlayered styles ALWAYS defeat layered styles,
+ * regardless of specificity. Obsidian core CSS (app.css) is unlayered, so any
+ * theme rule wrapped in @layer would lose to core. The only way back would be
+ * the important-flag, defeating the purpose of v3 (which is to eliminate it).
+ *
+ * v3 theme rules stay UNLAYERED. We rely on:
+ *   1. File @import order — later wins on equal specificity. THIS ORDER IS
+ *      AUTHORITATIVE; it mirrors dev/_order.txt one-to-one so the v3 build
+ *      reproduces the exact same cascade resolution as v2.30.14.
+ *   2. Selector specificity — high-specificity prefixes like `.theme-light`,
+ *      `body.theme-light`, etc. beat Obsidian core's lower-specificity rules
+ *      without needing any priority flag.
+ *   3. As of S11.5, the v3 bundle contains ZERO important-flagged
+ *      declarations. The harness fingerprint (55 elements x 51 properties,
+ *      light + dark) matches v2.30.14 exactly. See docs/v3/cascade-research.md
+ *      for the empirical study that justified removing all of them.
+ *
+ * The folder layout (tokens/ base/ surfaces/ chrome/ features/ themes/
+ * plugins/ polish/) is an organizational convention for provenance audits.
+ * It does NOT dictate import order: the @import sequence below follows
+ * dev/_order.txt because that is the cascade order against which v2.30.14
+ * was measured and validated.
+ *
+ * Per-import comment shows: dev index. dev filename -> v3 module.
+ */
+
+/* 00-settings.css                              -> features/40 */
+@import url("./features/40-style-settings.css");
+/* 01-tokens.css                                -> tokens/00,01 */
+@import url("./tokens/00-light-tokens.css");
+@import url("./tokens/01-dark-tokens.css");
+/* 02-base-workspace.css                        -> base/10 */
+@import url("./base/10-base-workspace.css");
+/* 03-reading-content.css                       -> base/12 */
+@import url("./base/12-reading-content.css");
+/* 03a-reading-tables-code.css                  -> surfaces/20 */
+@import url("./surfaces/20-reading-tables-code.css");
+/* 03b-reading-callouts-lists.css               -> surfaces/21 */
+@import url("./surfaces/21-reading-callouts-lists.css");
+/* 03c-reading-embeds-workspace.css             -> surfaces/22 */
+@import url("./surfaces/22-reading-embeds-workspace.css");
+/* 04-dark-mode.css                             -> themes/50 */
+@import url("./themes/50-dark.css");
+/* 04-print-base.css                            -> features/43 */
+@import url("./features/43-print-base.css");
+/* 05-live-preview.css                          -> base/13 */
+@import url("./base/13-live-preview.css");
+/* 06-feature-presets.css                       -> features/41 */
+@import url("./features/41-feature-presets.css");
+/* 07-plugin-workspace.css                      -> chrome/30 */
+@import url("./chrome/30-workspace.css");
+/* 07a-navigation-tasks-search.css              -> chrome/31 */
+@import url("./chrome/31-navigation-tasks-search.css");
+/* 07b-overlay-popover-dataview.css             -> chrome/32 */
+@import url("./chrome/32-overlay-popover-dataview.css");
+/* 07c-settings-controls.css                    -> chrome/33 */
+@import url("./chrome/33-settings-controls.css");
+/* 07d-canvas-graph-link-panes.css              -> plugins/60 */
+@import url("./plugins/60-canvas-graph-link-panes.css");
+/* 07e-live-preview-mobile-plugin.css           -> plugins/61 */
+@import url("./plugins/61-live-preview-mobile-plugin.css");
+/* 08-report-print-polish.css                   -> features/42 */
+@import url("./features/42-report-print-polish.css");
+/* 09a-nav-ribbon-glass.css                     -> chrome/34 */
+@import url("./chrome/34-nav-ribbon-glass.css");
+/* 09b-editing-menu-tooltip-glass.css           -> chrome/35 */
+@import url("./chrome/35-editing-menu-tooltip-glass.css");
+/* 09c-floating-ui-glass-system.css             -> chrome/36 */
+@import url("./chrome/36-floating-ui-glass-system.css");
+/* 09d-tabs-file-explorer-search.css            -> chrome/37 */
+@import url("./chrome/37-tabs-file-explorer-search.css");
+/* 10a-accessibility-motion-contrast.css        -> themes/51 */
+@import url("./themes/51-accessibility-motion-contrast.css");
+/* 10b-late-reading-nav-polish.css              -> polish/70 */
+@import url("./polish/70-late-reading-nav-polish.css");
+/* 10c-overlay-layout-polish.css                -> polish/71 */
+@import url("./polish/71-overlay-layout-polish.css");
+/* 10d-liquid-glass-core.css                    -> surfaces/23 */
+@import url("./surfaces/23-liquid-glass-core.css");
+/* 10e-html-table-live-preview-glass.css        -> surfaces/24 */
+@import url("./surfaces/24-html-table-live-preview-glass.css");
+/* 10-a11y-regression-hotfixes.css              -> polish/72 */
+@import url("./polish/72-a11y-regression-hotfixes.css");
+/* 10f-workflow-polish.css                      -> polish/73 */
+@import url("./polish/73-workflow-polish.css");

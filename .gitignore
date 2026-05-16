@@ -29,6 +29,10 @@ build/
 dev/temp/*
 !dev/temp/.gitignore
 
+# v3 rewrite harness (golden rig HTML fixtures and supporting assets)
+!dev/v3/
+!dev/v3/**
+
 # Workspace-root one-off preview artifacts
 .temp/
 
@@ -42,10 +46,16 @@ docs/*
 !docs/liquid-glass-core-principles.md
 !docs/community-scanner-acknowledgments.md
 !docs/layer-migration-roadmap.md
+!docs/v3/
+!docs/v3/**
 
 # Local screenshots draft (final ones live in screenshots/)
 screenshots-raw/
 screenshots-draft/
 screenshots/fixture-regression/
+
+# v3 rewrite: keep golden baselines tracked
+!screenshots/golden/
+!screenshots/golden/**
 *.psd
 *.xd

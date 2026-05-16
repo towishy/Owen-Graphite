@@ -1,0 +1,1446 @@
+/* ============================================================
+   v1.8.7 — Table and report output polish
+   - Utility classes for wide, compact, numeric, comparison, risk, matrix tables
+   - PDF output guards for long cells, code chips, notes, and row splitting
+   - Mobile scroll affordance for wide Markdown tables
+   ============================================================ */
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+.markdown-source-view.mod-cm6 .cm-table-widget,
+.markdown-source-view.mod-cm6 table.cm-table {
+  --ogd-table-pad-y: 0.58em;
+  --ogd-table-pad-x: 0.78em;
+  --ogd-table-font-size: 0.96em;
+  --ogd-table-line-height: 1.42;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
+  padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
+  font-size: var(--ogd-table-font-size);
+  line-height: var(--ogd-table-line-height);
+  vertical-align: top;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td),
+.markdown-source-view.mod-cm6 table.cm-table :is(th, td) {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(td, th) code {
+  padding: 0.08em 0.32em;
+  font-size: 0.88em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.nowrap-code-table, .scroll-token-table) :is(td, th) code {
+  display: inline-block;
+  max-width: min(42ch, 100%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+@supports selector(td:has(code)) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.scroll-token-table :is(td, th):has(code) {
+    min-width: 16ch;
+  }
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.scroll-table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  table-layout: auto;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table) {
+  --ogd-table-pad-y: 0.44em;
+  --ogd-table-pad-x: 0.56em;
+  --ogd-table-font-size: 0.9em;
+  --ogd-table-line-height: 1.34;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.compact-table {
+  --ogd-table-pad-y: 0.34em;
+  --ogd-table-pad-x: 0.48em;
+  --ogd-table-font-size: 0.88em;
+  --ogd-table-line-height: 1.28;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table {
+  table-layout: fixed;
+  width: 100%;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table :is(th, td) {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.numeric-table :is(td, th):not(:first-child),
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(td.num, th.num) {
+  text-align: right;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
+  background: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
+  box-shadow: 1px 0 0 #e5e7eb;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.matrix-table :is(th, td) {
+  text-align: center;
+  vertical-align: middle;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.matrix-table :is(th, td):first-child {
+  text-align: left;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table :is(td, th) {
+  vertical-align: middle;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td {
+  color: var(--ogd-text-secondary, #374151);
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:is(:last-child) {
+  font-weight: 700;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:last-child:where(:not(:empty)) {
+  border-radius: var(--radius-m, 6px);
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:last-child {
+  text-align: center;
+  white-space: nowrap;
+}
+@supports selector(td:has(code)) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td:last-child:has(code) {
+    white-space: normal;
+  }
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-high {
+  color: #991b1b;
+  background: #fee2e2;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-medium {
+  color: #92400e;
+  background: #fef3c7;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table :is(.risk-low, .risk-ok) {
+  color: #065f46;
+  background: #d1fae5;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
+  margin-top: -0.35em;
+  margin-bottom: 1.1em;
+  color: #64748b;
+  font-size: 0.86em;
+  line-height: 1.35;
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .table-note::before {
+  content: "Note. ";
+  font-weight: 700;
+  color: var(--ogd-text-subtle, #475569);
+}
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .table-source::before {
+  content: "Source. ";
+  font-weight: 700;
+  color: var(--ogd-text-subtle, #475569);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list {
+  margin: 0.8em 0 1.2em;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list > li {
+  display: grid;
+  grid-template-columns: minmax(86px, 7.2em) minmax(0, 1fr);
+  gap: 0.7em;
+  align-items: start;
+  margin: 0;
+  padding: 0.56em 0 0.62em;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list > li::before {
+  display: none;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.65em;
+  padding: 0.14em 0.55em;
+  border: 1px solid var(--ogd-line-strong, #cbd5e1);
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: #f1f5f9;
+  color: var(--ogd-text-subtle, #475569);
+  font-size: 0.78em;
+  font-weight: 760;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-main {
+  min-width: 0;
+  color: #64748b;
+  line-height: 1.48;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-title {
+  display: inline;
+  font-weight: 760;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-reference-meta, .ogd-reference-note) {
+  color: #64748b;
+  font-size: 0.92em;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-note {
+  display: block;
+  margin-top: 0.2em;
+  line-height: 1.42;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-summary {
+  margin: 0.65em 0 1em;
+  padding: 0.72em 0.9em;
+  border-left: 3px solid #94a3b8;
+  background: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-slate, #334155);
+  font-size: 0.96em;
+  line-height: 1.5;
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(:is(ol, ul).ogd-reference-list, :is(ol, ul).ogd-reference-list > li) {
+  border-color: rgba(203, 213, 225, 0.16);
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-source {
+  border-color: rgba(203, 213, 225, 0.24);
+  background: rgba(30, 41, 59, 0.74);
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-reference-main, .ogd-reference-meta, .ogd-reference-note) {
+  color: var(--ogd-text-soft, #94a3b8);
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-summary {
+  border-left-color: var(--ogd-text-soft, #94a3b8);
+  background: rgba(30, 41, 59, 0.56);
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+
+@media (max-width: 700px) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul).ogd-reference-list > li {
+    grid-template-columns: 1fr;
+    gap: 0.3em;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-reference-source {
+    justify-self: start;
+  }
+
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+    position: relative;
+    box-shadow: inset -16px 0 14px -18px rgba(15, 23, 42, 0.42);
+  }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table, .comparison-table) {
+    min-width: 760px;
+  }
+}
+
+@media print {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+    overflow: visible;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.print-fit-table, .wide-table) {
+    --ogd-table-pad-y: 0.28em;
+    --ogd-table-pad-x: 0.42em;
+    --ogd-table-font-size: 8.8pt;
+    --ogd-table-line-height: 1.24;
+  }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table {
+    table-layout: fixed;
+  }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
+    break-before: avoid;
+    page-break-before: avoid;
+    color: #4b5563;
+  }
+}
+
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
+  background: var(--ogd-surface-dark, #111827);
+  color: var(--ogd-text-inverted, #f8fafc);
+  box-shadow: 1px 0 0 #334155;
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table td {
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-high {
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.58);
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table .risk-medium {
+  color: #fde68a;
+  background: rgba(120, 53, 15, 0.58);
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.risk-table :is(.risk-low, .risk-ok) {
+  color: #a7f3d0;
+  background: rgba(6, 78, 59, 0.58);
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
+  color: var(--ogd-text-soft, #94a3b8);
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source)::before {
+  color: var(--ogd-line-strong, #cbd5e1);
+}
+
+/* Report callout icon aliases; final surfaces are owned by the late Liquid Glass block. */
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="conclusion"] { --callout-icon: lucide-clipboard-check; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="recommendation"] { --callout-icon: lucide-badge-check; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="risk"] { --callout-icon: lucide-shield-alert; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="action"] { --callout-icon: lucide-list-todo; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout[data-callout="decision"] { --callout-icon: lucide-scale; }
+
+/* ============================================================
+  v1.8.19 — PDF report readability polish marker
+  Release improves PDF report spacing, table readability, status badges,
+  weak separators, and print table header continuity.
+   ============================================================ */
+
+/* Final title-rule override for Obsidian PDF export cascade.
+   v1.8.66 — Disabled for H1 (Sample B kicker style); kept for first-of-type H2. */
+body .markdown-rendered h2:first-of-type,
+body .markdown-preview-view.markdown-rendered h2:first-of-type,
+body .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  padding-bottom: 0.52em;
+  border: var(--ogd-border-none, 0);
+  border-bottom: 4px solid #0f766e;
+  border-image-source: linear-gradient(90deg, #0f766e, #0284c7);
+  border-image-slice: 1;
+  border-image-width: 0 0 4px 0;
+  border-image-repeat: stretch;
+  background: var(--ogd-surface-transparent, transparent);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Reset H1 — Sample B kicker style takes precedence */
+body .markdown-rendered h1,
+body .markdown-preview-view.markdown-rendered h1,
+body .markdown-reading-view .markdown-rendered h1,
+body.ogd-report-mode .markdown-rendered > h1:first-of-type {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  border: var(--ogd-border-none, 0);
+  border-top: 0;
+  border-bottom: 0;
+  border-image: none;
+  background: var(--ogd-surface-transparent, transparent);
+  box-shadow: var(--ogd-shadow-none, none);
+  padding-top: 0.3em;
+  padding-bottom: 0.2em;
+}
+
+body .markdown-rendered h2:first-of-type,
+body .markdown-preview-view.markdown-rendered h2:first-of-type,
+body .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+  padding-top: 34px;
+  border-top: 1px solid #edf2f7;
+  box-shadow: 0 -1px 0 #f8fafc;
+}
+
+body .markdown-rendered h1::after,
+body .markdown-preview-view.markdown-rendered h1::after,
+body .markdown-reading-view .markdown-rendered h1::after,
+body.ogd-report-mode .markdown-rendered > h1:first-of-type::after,
+body .markdown-rendered h2:first-of-type::after,
+body .markdown-preview-view.markdown-rendered h2:first-of-type::after,
+body .markdown-reading-view .markdown-rendered h2:first-of-type::after,
+body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
+  display: none;
+  content: none;
+}
+
+/* PDF report readability polish. */
+@media print {
+  body .markdown-rendered h1 + p,
+  body .markdown-preview-view.markdown-rendered h1 + p,
+  body .markdown-reading-view .markdown-rendered h1 + p,
+  body .markdown-rendered h2:first-of-type + p,
+  body .markdown-preview-view.markdown-rendered h2:first-of-type + p,
+  body .markdown-reading-view .markdown-rendered h2:first-of-type + p {
+    margin-top: 0.72em;
+    margin-bottom: 1.22em;
+    line-height: 1.62;
+  }
+
+  body .markdown-rendered :is(h2, h3, h4) + table,
+  body .markdown-preview-view.markdown-rendered :is(h2, h3, h4) + table,
+  body .markdown-reading-view .markdown-rendered :is(h2, h3, h4) + table,
+  body .markdown-rendered :is(h2, h3, h4) + .table-wrapper,
+  body .markdown-preview-view.markdown-rendered :is(h2, h3, h4) + .table-wrapper,
+  body .markdown-reading-view .markdown-rendered :is(h2, h3, h4) + .table-wrapper {
+    margin-top: 0.82em;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+    --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.62), transparent 0 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.84));
+    --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.82));
+    --ogd-table-border: rgba(203, 213, 225, 0.24);
+    --ogd-table-cell-border: rgba(203, 213, 225, 0.78);
+    --ogd-table-row-even: rgba(248, 250, 252, 0.68);
+    line-height: 1.48;
+    table-layout: auto;
+    border: 1px solid var(--ogd-table-border);
+    border-radius: 7px;
+    background: var(--ogd-table-surface);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
+    vertical-align: top;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    border-color: var(--ogd-table-cell-border);
+    color: #334155;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
+    background: var(--ogd-table-head-bg);
+    color: #111827;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16);
+  }
+
+  body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+    background: var(--ogd-table-row-even);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table thead {
+    display: table-header-group;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody {
+    display: table-row-group;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td:first-child {
+    width: 18%;
+    min-width: 26mm;
+    max-width: 48mm;
+    font-weight: 800;
+  }
+
+  body .markdown-rendered h3:first-of-type + table,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table {
+    margin-top: 0.92em;
+    margin-bottom: 1.45em;
+    table-layout: fixed;
+  }
+
+  body .markdown-rendered h3:first-of-type + table td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table td:first-child,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table td:first-child {
+    width: 22%;
+    min-width: 38mm;
+    max-width: 54mm;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.72));
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    color: var(--ogd-text-strong, #111827);
+    line-height: 1.38;
+  }
+
+  body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(1) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(1) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(1) td:first-child,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 250, 0.74));
+    box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    color: #0f766e;
+  }
+
+  body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(2) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(2) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(2) td:first-child,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.74));
+    box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    color: #1d4ed8;
+  }
+
+  body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(3) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(3) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(3) td:first-child,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 251, 235, 0.78));
+    box-shadow: inset 0 0 0 1px rgba(217, 119, 6, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    color: #92400e;
+  }
+
+  body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(4) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(4) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(4) td:first-child,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 242, 0.76));
+    box-shadow: inset 0 0 0 1px rgba(225, 29, 72, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    color: #b91c1c;
+  }
+
+  body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(5) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(5) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(5) td:first-child,
+  body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child,
+  body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child,
+  body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(238, 242, 255, 0.76));
+    box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    color: #3730a3;
+  }
+
+  @supports selector(p:has(> strong:first-child)) {
+    body .markdown-rendered table + p:has(> strong:first-child),
+    body .markdown-preview-view table + p:has(> strong:first-child),
+    body .markdown-reading-view table + p:has(> strong:first-child),
+    body .markdown-rendered .table-wrapper + p:has(> strong:first-child),
+    body .markdown-preview-view .table-wrapper + p:has(> strong:first-child),
+    body .markdown-reading-view .table-wrapper + p:has(> strong:first-child) {
+      margin: 1.05em 0 1.35em;
+      padding: 0.72em 0.9em;
+      border: 1px solid #d7e4ec;
+      border-left: 4px solid #2563eb;
+      border-radius: var(--radius-m, 6px);
+      background: #f8fbff;
+      line-height: 1.56;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge {
+    display: inline-block;
+    min-width: 20mm;
+    padding: 0.18em 0.58em;
+    border: 1px solid var(--ogd-line-strong, #cbd5e1);
+    border-radius: var(--ogd-radius-pill, 999px);
+    background: var(--ogd-surface-base, #ffffff);
+    color: var(--ogd-text-slate, #334155);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge.is-e5 {
+    border-color: #99d6c9;
+    background: #f0fdfa;
+    color: #0f766e;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge.is-payg {
+    border-color: #f2c983;
+    background: #fffbeb;
+    color: #92400e;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-badge.is-addon {
+    border-color: #bfdbfe;
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-executive-summary, .callout[data-callout="summary"]) {
+    margin: 1.1em 0 1.35em;
+    border-color: #cfe5e2;
+    border-left-color: #0f766e;
+    background: linear-gradient(90deg, #effdfa, #f8fafc 92%);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-action-summary, .callout[data-callout="action"]) {
+    margin: 1.1em 0 1.35em;
+    border-left-color: #2563eb;
+    background: #f8fbff;
+  }
+
+  /* v2.22.51-hotfix - PDF footer body full-width print line.
+     Let the last-page footer body use the full printable content width
+     instead of the older 148mm cap on wide PDF exports. */
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
+    right: 0;
+    width: auto;
+    max-width: none;
+    inline-size: auto;
+    max-inline-size: none;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) hr {
+    height: 1px;
+    border: var(--ogd-border-none, 0);
+    background: #eef2f6;
+    margin: 1.35em 0 1.55em;
+  }
+
+  /* v2.22.79 - PDF Compact Report opt-in density preset.
+     Keeps Chromium pagination hints conservative while reducing repeated
+     vertical whitespace in headings, callouts, tables, and references. */
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) {
+    font-size: 10.6pt;
+    color: #1f2937;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(p, li) {
+    color: #1f2937;
+    line-height: 1.46;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) p {
+    margin-top: 0.36em;
+    margin-bottom: 0.58em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(ul, ol) {
+    margin-top: 0.42em;
+    margin-bottom: 0.72em;
+    padding-inline-start: 1.35em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(h1, h2, h3, h4) {
+    color: #0f172a;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) h1 {
+    font-size: 2.35em;
+    line-height: 1.06;
+    margin-top: 0.72em;
+    margin-bottom: 0.42em;
+    padding-top: 0.18em;
+    padding-bottom: 0.12em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) h1::before {
+    margin-bottom: 0.46em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) h2 {
+    margin-top: 1.05em;
+    margin-bottom: 0.46em;
+    padding-top: 0.18em;
+    padding-bottom: 0.22em;
+    line-height: 1.14;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) h3 {
+    margin-top: 0.92em;
+    margin-bottom: 0.34em;
+    line-height: 1.16;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) h4 {
+    margin-top: 0.78em;
+    margin-bottom: 0.28em;
+    line-height: 1.18;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(h1, h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table, .table-wrapper) {
+    margin-top: 0.44em;
+  }
+
+  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) hr { margin: 0.86em 0 1em; background: #e5eaf2; }
+  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) .callout + hr { display: none; }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout, blockquote) {
+    margin-top: 0.72em;
+    margin-bottom: 0.86em;
+    padding: 0.58em 0.76em;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 1px 2px rgba(15, 23, 42, 0.035);
+    line-height: 1.42;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout {
+    border-left-width: 1px;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-title {
+    min-height: 1.42em;
+    padding: 0;
+    line-height: 1.25;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content {
+    padding-top: 0.28em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content > :last-child {
+    margin-bottom: 0;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table {
+    --ogd-table-pad-y: 0.28em;
+    --ogd-table-pad-x: 0.42em;
+    --ogd-table-font-size: 9.1pt;
+    --ogd-table-line-height: 1.28;
+    --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.56), transparent 0 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.82));
+    --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.82));
+    --ogd-table-border: rgba(203, 213, 225, 0.24);
+    --ogd-table-cell-border: rgba(203, 213, 225, 0.78);
+    margin-top: 0.62em;
+    margin-bottom: 0.72em;
+    line-height: var(--ogd-table-line-height);
+    border-color: var(--ogd-table-border);
+    background: var(--ogd-table-surface);
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table:is(.compact-table, .print-fit-table, .wide-table) {
+    --ogd-table-pad-y: 0.22em;
+    --ogd-table-pad-x: 0.34em;
+    --ogd-table-font-size: 8.6pt;
+    --ogd-table-line-height: 1.22;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table :is(th, td) {
+    padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
+    font-size: var(--ogd-table-font-size);
+    line-height: var(--ogd-table-line-height);
+    color: #1f2937;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table th {
+    color: #0f172a;
+    background: var(--ogd-table-head-bg);
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.table-note, .table-source) {
+    margin-top: -0.18em;
+    margin-bottom: 0.68em;
+    font-size: 8.8pt;
+    line-height: 1.28;
+    color: #4b5563;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(ol, ul).ogd-reference-list {
+    margin-top: 0.52em;
+    margin-bottom: 0.8em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(ol, ul).ogd-reference-list > li {
+    gap: 0.5em;
+    padding-top: 0.36em;
+    padding-bottom: 0.42em;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .ogd-reference-summary {
+    margin: 0.52em 0 0.78em;
+    padding: 0.52em 0.68em;
+    border: 1px solid #d7e4ec;
+    background: #f8fafc;
+    font-size: 9.6pt;
+    line-height: 1.36;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre {
+    margin-top: 0.58em;
+    margin-bottom: 0.82em;
+    padding: 8pt 10pt;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre code {
+    font-size: 8.4pt;
+    line-height: 1.42;
+  }
+
+    /* v2.22.111 - PDF export parity for the approved Candidate C codeblock.
+      Chromium print may flatten backdrop-filter, so the glass identity is
+      carried by gradients, rim shadows, and the header divider as well. */
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre,
+  :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre {
+    --ogd-codeblock-wrapper-margin: 0.68em 0 0.9em;
+    --ogd-codeblock-margin: 0.68em 0 0.9em;
+    --ogd-codeblock-radius: 8px;
+    --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.12), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.88));
+    --ogd-codeblock-border: rgba(186, 207, 229, 0.88);
+    --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
+    --ogd-codeblock-header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.56));
+    --ogd-codeblock-header-border: rgba(203, 213, 225, 0.72);
+    --ogd-codeblock-header-padding: 5.5pt 8.5pt 5pt;
+    --ogd-codeblock-header-font-size: 7.2pt;
+    --ogd-codeblock-code-padding: 8pt 9pt 8.5pt;
+    --ogd-codeblock-code-white-space: pre-wrap;
+    --ogd-codeblock-code-overflow-wrap: anywhere;
+    margin-top: 0.68em;
+    margin-bottom: 0.9em;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--ogd-codeblock-border);
+    border-radius: 8px;
+    background: var(--ogd-codeblock-bg);
+    background-color: #f8fbff;
+    box-shadow: var(--ogd-codeblock-shadow);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+    backdrop-filter: var(--ogd-glass-filter-control);
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre::before,
+  :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre::before {
+    display: block;
+    min-height: 0;
+    padding: 5.5pt 8.5pt 5pt;
+    border-bottom: 1px solid var(--ogd-codeblock-header-border);
+    background: var(--ogd-codeblock-header-bg);
+    color: #475569;
+    font-size: 7.2pt;
+    font-weight: 760;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre code,
+  :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre code {
+    display: block;
+    padding: 8pt 9pt 8.5pt;
+    background: transparent;
+    color: #1e293b;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  body.theme-dark :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre {
+    border-color: rgba(71, 85, 105, 0.82);
+    background: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.10), transparent 0 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.90), rgba(15, 23, 42, 0.76));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.30), 0 3px 8px rgba(0, 0, 0, 0.28);
+  }
+
+  body.theme-dark :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre::before {
+    border-bottom-color: rgba(71, 85, 105, 0.64);
+    background: rgba(15, 23, 42, 0.30);
+    color: #cbd5e1;
+  }
+
+  body.theme-dark :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre code {
+    color: #e2e8f0;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.keyword, .token.operator, .token.boolean) { color: #6d28d9; }
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.string, .token.attr-value) { color: #b45309; }
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.function, .token.variable, .token.property) { color: #0f766e; }
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.comment, .token.prolog, .token.doctype) { color: #94a3b8; }
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table,
+  body .workspace-leaf-content .markdown-rendered table {
+    --ogd-table-pad-y: 0.62em;
+    --ogd-table-pad-x: 0.78em;
+    --ogd-table-font-size: 11.6pt;
+    --ogd-table-line-height: 1.42;
+    --ogd-table-surface: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.08), transparent 0 38%), linear-gradient(180deg, #ffffff, #fbfdff);
+    --ogd-table-head-bg: linear-gradient(180deg, #ffffff, #f8fafc);
+    --ogd-table-border: rgba(148, 163, 184, 0.38);
+    --ogd-table-cell-border: rgba(226, 232, 240, 0.70);
+    --ogd-table-row-even: rgba(236, 254, 255, 0.22);
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.72em;
+    margin-bottom: 0.92em;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--ogd-table-border);
+    border-radius: 8px;
+    background: var(--ogd-table-surface);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 2px 6px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table :is(th, td),
+  body .workspace-leaf-content .markdown-rendered table :is(th, td) {
+    padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
+    border-color: var(--ogd-table-cell-border);
+    color: #334155;
+    font-size: var(--ogd-table-font-size);
+    line-height: var(--ogd-table-line-height);
+    vertical-align: middle;
+    background-clip: padding-box;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table th,
+  body .workspace-leaf-content .markdown-rendered table th {
+    border-bottom-color: rgba(148, 163, 184, 0.58);
+    background: var(--ogd-table-head-bg);
+    color: #334155;
+    font-weight: 820;
+    text-align: left;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table td,
+  body .workspace-leaf-content .markdown-rendered table td {
+    background: transparent;
+  }
+
+  body.ogd-zebra-disabled-permanently :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table tbody tr:nth-child(even) td,
+  body.ogd-zebra-disabled-permanently .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td {
+    background: var(--ogd-table-row-even);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table.risk-table td:last-child,
+  body .workspace-leaf-content .markdown-rendered table.risk-table td:last-child {
+    border-radius: 0;
+    background: transparent;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(img, svg, canvas) {
+    max-height: 155mm;
+    object-fit: contain;
+  }
+
+  body.ogd-pdf-compact .markdown-rendered a[href^="http"]::after {
+    content: "";
+  }
+
+  /* v2.22.80 - PDF link output profiles and figure captions.
+     Reference First keeps body copy clean while relying on explicit
+     .ogd-reference-list / .figure-caption authoring for traceability. */
+  body.ogd-pdf-links-inline.ogd-pdf-compact .markdown-rendered a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.78em;
+    color: #6b7280;
+    word-break: break-all;
+  }
+
+  body:is(.ogd-pdf-links-clean, .ogd-pdf-links-reference) .markdown-rendered a[href^="http"]::after {
+    content: "";
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.ogd-reference-summary, .source-note, .reference-note) {
+    margin: 0.7em 0 0.86em;
+    padding: 0.58em 0.72em;
+    border: 1px solid #d7e4ec;
+    border-radius: 6px;
+    background: #f8fbff;
+    color: #334155;
+    font-size: 9.4pt;
+    line-height: 1.36;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(ol, ul).ogd-reference-list {
+    margin: 0.74em 0 1em;
+    padding: 0;
+    border-top: 1px solid #d7e4ec;
+    list-style: none;
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(ol, ul).ogd-reference-list > li {
+    display: grid;
+    grid-template-columns: minmax(68px, 7em) minmax(0, 1fr);
+    gap: 0.58em;
+    align-items: start;
+    margin: 0;
+    padding: 0.44em 0;
+    border-bottom: 1px solid #d7e4ec;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(ol, ul).ogd-reference-list > li::before {
+    display: none;
+    content: none;
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.ogd-reference-source, .reference-source, .source-label) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.48em;
+    padding: 0.1em 0.48em;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 7.8pt;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.ogd-reference-main, .reference-main, .source-main) {
+    min-width: 0;
+    color: #475569;
+    font-size: 9pt;
+    line-height: 1.32;
+    overflow-wrap: anywhere;
+  }
+
+  body.ogd-pdf-links-reference :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.ogd-reference-title, .reference-title, .source-title) {
+    color: #0f172a;
+    font-weight: 780;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(figure, .ogd-figure, .figure-block) {
+    margin: 0.88em 0 1.05em;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(figure, .ogd-figure, .figure-block) > :is(img, svg, canvas) {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(figcaption, .figure-caption, .ogd-figure-caption) {
+    margin: 0.42em 0 0;
+    color: #475569;
+    font-size: 8.8pt;
+    line-height: 1.32;
+    text-align: center;
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(figcaption, .figure-caption, .ogd-figure-caption) strong {
+    color: #0f172a;
+    font-weight: 780;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.figure-source, .ogd-figure-source) {
+    display: block;
+    margin-top: 0.18em;
+    color: #64748b;
+    font-size: 8pt;
+    line-height: 1.28;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* v2.22.85 - PDF Liquid Glass callout parity.
+     Keep PDF export aligned with the full-frame frosted callout style and
+     suppress legacy left-stripe report callouts in Chromium print cascade. */
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout {
+    --ogd-callout-accent: #475569;
+    --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+    --ogd-callout-bg: radial-gradient(circle at 42% 0%, rgba(255, 255, 255, 0.56), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.84)), linear-gradient(135deg, var(--ogd-callout-tint), transparent 64%);
+    --ogd-callout-border: rgba(203, 213, 225, 0.62);
+    --ogd-callout-icon-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.72));
+    --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
+    margin: 0.86em 0 1.02em;
+    padding: 0.7em 0.84em 0.74em;
+    border: 1px solid var(--ogd-callout-border);
+    border-left: 1px solid var(--ogd-callout-border);
+    border-radius: 7px;
+    background: var(--ogd-callout-bg);
+    color: #334155;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout:is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="conclusion"], [data-callout="decision"]) {
+    --ogd-callout-accent: #475569;
+    --ogd-callout-tint: rgba(148, 163, 184, 0.10);
+    --ogd-callout-border: rgba(203, 213, 225, 0.62);
+    --ogd-callout-icon-ring: rgba(148, 163, 184, 0.12);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"], [data-callout="recommendation"]) {
+    --ogd-callout-accent: #047857;
+    --ogd-callout-tint: rgba(94, 234, 212, 0.18);
+    --ogd-callout-border: rgba(20, 184, 166, 0.34);
+    --ogd-callout-icon-ring: rgba(94, 234, 212, 0.18);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"], [data-callout="risk"]) {
+    --ogd-callout-accent: #b45309;
+    --ogd-callout-tint: rgba(252, 211, 77, 0.20);
+    --ogd-callout-border: rgba(217, 119, 6, 0.30);
+    --ogd-callout-icon-ring: rgba(252, 211, 77, 0.20);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+    --ogd-callout-accent: #b91c1c;
+    --ogd-callout-tint: rgba(251, 113, 133, 0.16);
+    --ogd-callout-border: rgba(225, 29, 72, 0.28);
+    --ogd-callout-icon-ring: rgba(251, 113, 133, 0.16);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout:is([data-callout="example"], [data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
+    --ogd-callout-accent: #6d28d9;
+    --ogd-callout-tint: rgba(196, 181, 253, 0.18);
+    --ogd-callout-border: rgba(124, 58, 237, 0.26);
+    --ogd-callout-icon-ring: rgba(196, 181, 253, 0.18);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout:is([data-callout="action"], [data-callout="todo"]) {
+    --ogd-callout-accent: #0e7490;
+    --ogd-callout-tint: rgba(125, 211, 252, 0.18);
+    --ogd-callout-border: rgba(14, 165, 233, 0.30);
+    --ogd-callout-icon-ring: rgba(125, 211, 252, 0.18);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-title {
+    min-height: 0;
+    padding: 0;
+    color: #111827;
+    font-size: 0.98em;
+    font-weight: 820;
+    line-height: 1.28;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-title-inner {
+    color: inherit;
+    font-weight: 820;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-icon {
+    border: 1.5px solid var(--ogd-callout-border);
+    border-radius: 999px;
+    background: var(--ogd-callout-icon-bg);
+    color: var(--ogd-callout-accent);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 0 0 3px var(--ogd-callout-icon-ring);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content {
+    margin-top: 0.42em;
+    padding-top: 0;
+    color: #334155;
+    font-size: 0.96em;
+    line-height: 1.5;
+  }
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.62em; }
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.34em; }
+  body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 { margin-top: 1.12em; }
+  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.46em; }
+  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.22em; }
+  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 { margin-top: 1.02em; }
+
+  /* v2.30.4 - Forbidden left vertical bar removal (PDF/print parity).
+     Mirrors the screen-side global force-disable in 10b. */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
+    border-left: 0;
+    border-inline-start: 0;
+    border-left-width: 0;
+  }
+
+  /* v2.30.4b - kill PDF pseudo-element left accent bars (preserve auto-number content) */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .ogd-executive-summary, .ogd-action-summary)::before {
+    border-left: 0;
+    border-inline-start: 0;
+    border-image: none;
+    box-shadow: none;
+    background-image: none;
+  }
+
+  /* v2.30.4 - Force PDF table zebra to transparent (defense in depth). */
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(odd) td {
+    background: transparent;
+    background-color: transparent;
+  }
+}
+

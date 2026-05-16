@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Build a manual-install release ZIP for Owen Graphite."""
+"""Build a manual-install release ZIP for Owen Graphite v3.
+
+Bundles src/ via bundle_v3.py, promotes the result to theme.css, and packages
+the standard release assets into dist/Owen-Graphite-<version>.zip.
+"""
 
 from __future__ import annotations
 
 import argparse
 import importlib.util
 import json
+import shutil
 import sys
 import zipfile
 from pathlib import Path
@@ -18,9 +23,6 @@ DEFAULT_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "dev/MAP/map-info-classification.md",
-    "dev/MAP/theme-css-risk-map.html",
-    "dev/MAP/theme-css-risk-map.json",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/report.png",
@@ -31,19 +33,30 @@ def version() -> str:
     return json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))["version"]
 
 
-def bundle_theme() -> None:
-    script = ROOT / "scripts" / "bundle_theme.py"
-    spec = importlib.util.spec_from_file_location("bundle_theme", script)
+def bundle_v3() -> Path:
+    script = ROOT / "scripts" / "bundle_v3.py"
+    spec = importlib.util.spec_from_file_location("bundle_v3", script)
     if spec is None or spec.loader is None:
-        raise RuntimeError("unable to load scripts/bundle_theme.py")
+        raise RuntimeError("unable to load scripts/bundle_v3.py")
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    module.write_bundle()
+    module.main()
+    return ROOT / "dist" / "theme-v3.css"
 
 
-def build(output_dir: Path) -> Path:
-    bundle_theme()
+def promote_to_theme_css(bundle: Path) -> None:
+    target = ROOT / "theme.css"
+    if not bundle.is_file():
+        raise FileNotFoundError(f"bundle missing: {bundle}")
+    shutil.copy2(bundle, target)
+    print(f"OK: promoted {bundle.relative_to(ROOT)} -> theme.css")
+
+
+def build(output_dir: Path, skip_bundle: bool = False) -> Path:
+    if not skip_bundle:
+        bundle = bundle_v3()
+        promote_to_theme_css(bundle)
     release_version = version()
     output_dir.mkdir(parents=True, exist_ok=True)
     zip_path = output_dir / f"Owen-Graphite-{release_version}.zip"
@@ -64,8 +77,9 @@ def build(output_dir: Path) -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "dist", help="Directory for generated release ZIP.")
+    parser.add_argument("--skip-bundle", action="store_true", help="Reuse existing theme.css; skip bundle + promote.")
     args = parser.parse_args()
-    build(args.output_dir)
+    build(args.output_dir, skip_bundle=args.skip_bundle)
     return 0
 
 
