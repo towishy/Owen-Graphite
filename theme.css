@@ -3679,11 +3679,16 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
 }
 
 /* C3+C4. Print header/footer + chapter counters
-   v3.1.24 redesign: drop @page/::first-line/abs-positioned pseudo tricks.
-   Render header as a natural document block at TOP of body, footer as natural
-   blocks at END of body. This unlocks real block layout (per-pseudo font-size
-   and color), avoids Chromium's pseudo-chain limits (::before::first-line is
-   silently ignored), and side-steps the gradient-on-footer bug (v3.1.20). */
+   v3.1.25 fix: drop gradient + background-clip:text on ALL print pseudos.
+   In Chromium PDF, background-clip:text silently falls back to default
+   border-box clipping on position:static (natural-flow) pseudos, repainting
+   the gradient as a giant blue rectangle (same root cause as v3.1.20 footer
+   sacgak — now confirmed for header too).
+   New design: HEADER LABEL and HEADER VALUE are TWO separate solid-color
+   pseudos. body::before = LABEL (small gray, single solid color).
+   .markdown-rendered>:first-child::before = VALUE (large colored, single
+   solid color). No gradient, no background-clip text. FOOTER stays as
+   v3.1.24 dual-pseudo (already proven working in PDF page 17). */
 @media print {
   body { counter-reset: ogd-page; }
   .markdown-rendered h1 { counter-reset: ogd-page-in-chapter; }
@@ -3700,90 +3705,74 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     }
   }
 
-  /* HEADER as natural block at TOP of body (body::before).
-     Header is rendered as a real document block, NOT pinned via position:absolute.
-     Gradient text-clip with absolute pt stop (line-height-aware) splits label/value
-     colors per line — gradient stop is set at line 1 end (font-size * line-height). */
+  /* HEADER LABEL — body::before, small gray uppercase row at top of body.
+     RIGHT-aligned. Uses --ogd-fp-right-label only (LEFT vars deprecated for
+     header; combine into right vars if both are needed). NO gradient. */
   body.ogd-first-page-header-enabled::before {
-    content:
-      var(--ogd-fp-right-label, "") "\A"
-      var(--ogd-first-page-header, "");
+    content: var(--ogd-fp-right-label, "");
     display: block;
     box-sizing: border-box;
-    margin: 0 0 6mm 0;
-    padding: 6mm 2mm 6mm 7mm;
-    border-left: 3pt solid var(--ogd-first-page-header-color, #111827);
-    border-bottom: 1pt solid var(--ogd-fp-label-color, #6b7280);
+    margin: 0 0 1mm 0;
+    padding: 10mm 2mm 0 0;
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif;
-    font-size: 11pt;
+    font-size: 8.5pt;
     line-height: 1.2;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    white-space: pre-line;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     text-align: right;
-    background-image: linear-gradient(
-      to bottom,
-      var(--ogd-fp-label-color, #6b7280) 0,
-      var(--ogd-fp-label-color, #6b7280) 13.2pt,
-      var(--ogd-first-page-header-color, #111827) 13.2pt,
-      var(--ogd-first-page-header-color, #111827) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    color: var(--ogd-fp-label-color, #6b7280);
+    -webkit-text-fill-color: var(--ogd-fp-label-color, #6b7280);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
     page-break-after: avoid;
     break-after: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  /* HEADER second row — placed as ::before of the first child of markdown-rendered.
-     Symmetric to :last-child::before slot which is confirmed to paint in Chromium PDF. */
+  /* HEADER VALUE — placed as ::before of the first child of markdown-rendered.
+     Symmetric to :last-child::before slot which is confirmed to paint in
+     Chromium PDF. Larger, colored, RIGHT-aligned, with bottom border separator. */
   body.ogd-first-page-header-enabled :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :first-child::before {
-    content:
-      var(--ogd-fp-left-label, "") "\A"
-      var(--ogd-first-page-header-left, "");
+    content: var(--ogd-first-page-header, "");
     display: block;
     box-sizing: border-box;
     margin: 0 0 12mm 0;
-    padding: 6mm 7mm 6mm 2mm;
-    border-right: 3pt solid var(--ogd-first-page-header-left-color, #0ea5e9);
+    padding: 0 2mm 6mm 0;
     border-bottom: 1pt solid var(--ogd-fp-label-color, #6b7280);
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
       -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
       "Helvetica Neue", Arial, sans-serif;
-    font-size: 11pt;
-    line-height: 1.2;
+    font-size: 13pt;
+    line-height: 1.25;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    white-space: pre-line;
-    text-align: left;
-    background-image: linear-gradient(
-      to bottom,
-      var(--ogd-fp-label-color, #6b7280) 0,
-      var(--ogd-fp-label-color, #6b7280) 13.2pt,
-      var(--ogd-first-page-header-left-color, #0ea5e9) 13.2pt,
-      var(--ogd-first-page-header-left-color, #0ea5e9) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: var(--ogd-first-page-header-color, #0ea5e9);
+    -webkit-text-fill-color: var(--ogd-first-page-header-color, #0ea5e9);
+    background: transparent;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
     page-break-after: avoid;
     break-after: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .markdown-rendered h1:first-of-type {
@@ -3813,26 +3802,22 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     page-break-inside: auto;
   }
 
-  /* Explicitly null :last-child::before so it cannot conflict with ::after. */
+  /* FOOTER — both LABEL and BODY are children of the SAME :last-child block
+     so the 3pt left border lines share an identical X coordinate (perfect
+     vertical alignment). body::after has a different containing block from
+     :last-child::after, which made the two vertical bars misalign — fixed
+     by collapsing both slots onto :last-child (::before = LABEL, ::after =
+     BODY). Both are natural-flow static blocks; no gradient. */
   body.ogd-last-page-footer :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) > :last-child::before {
-    content: none;
-    display: none;
-  }
-
-  body.ogd-last-page-footer :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) > :last-child::after {
     content: var(--ogd-last-page-footer-label, "");
     display: block;
     box-sizing: border-box;
-    margin: 18mm 0 4mm 0;
-    padding: 0 0 0 9mm;
+    margin: 18mm 0 0 0;
+    padding: 0 0 4mm 9mm;
     border-left: 3pt solid var(--ogd-last-page-footer-color, #0ea5e9);
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
@@ -3859,12 +3844,16 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     print-color-adjust: exact;
   }
 
-  body.ogd-last-page-footer::after {
+  body.ogd-last-page-footer :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) > :last-child::after {
     content: var(--ogd-last-page-footer-title, "") "  " var(--ogd-last-page-footer-body, "");
     display: block;
     box-sizing: border-box;
     margin: 0 0 14mm 0;
-    padding: 0 0 0 9mm;
+    padding: 2mm 0 0 9mm;
     border-left: 3pt solid var(--ogd-last-page-footer-color, #0ea5e9);
     font-family: "Pretendard Variable", "Pretendard",
       "Apple SD Gothic Neo", "Noto Sans KR",
@@ -3888,6 +3877,13 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type,
     page-break-inside: avoid;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  /* Null out the old body::after route so the footer body is not duplicated
+     and not painted at body's (different) left edge. */
+  body.ogd-last-page-footer::after {
+    content: none;
+    display: none;
   }
 
   /* PDF guard: these routes were proven unreliable in Obsidian's Chromium exporter. */
