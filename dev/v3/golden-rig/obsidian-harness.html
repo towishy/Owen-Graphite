@@ -5,8 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Owen Graphite Harness</title>
   <!-- Theme CSS is injected at runtime by capture scripts.
-       Theme class (theme-light / theme-dark) is set by capture script before goto. -->
+       Theme class (theme-light / theme-dark) is set by capture script before goto.
+       The capture script may also swap which CSS file is linked via the URL
+       query parameter `?build=v3` (loads dist/theme-v3.css) or `?build=v2`
+       (default, loads theme.css). -->
   <link id="theme-css" rel="stylesheet" href="../../../theme.css">
+  <script>
+    (function swapBuild() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var build = params.get('build');
+        if (build === 'v3') {
+          var link = document.getElementById('theme-css');
+          if (link) link.setAttribute('href', '../../../dist/theme-v3.css');
+        }
+      } catch (e) { /* harmless */ }
+    })();
+  </script>
   <style>
     /* Harness-only baseline so the page paints something without Obsidian app shell.
        This block is intentionally minimal and must not override theme tokens.

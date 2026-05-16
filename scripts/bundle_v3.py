@@ -6,11 +6,9 @@ Design notes:
 - This is the v3 bundler, intentionally separate from scripts/bundle_theme.py
   which still owns the v2.30.x dev/ -> theme.css pipeline. v3-rewrite never
   overwrites theme.css until S11 swaps them.
-- @import statements outside an @layer block keep their layer assignment
-  inline (e.g. `@import url(...) layer(tokens);`). This bundler inlines the
-  imported file's contents wrapped in `@layer <name> { ... }` when an inline
-  layer is present, otherwise it inlines verbatim.
-- @layer declaration statements (no body) are passed through.
+- @import statements are inlined verbatim. v3 deliberately does NOT wrap
+  imports in @layer because unlayered styles always beat layered ones, and
+  Obsidian core CSS is unlayered. See src/entry.css for the full rationale.
 - Re-entrant imports are detected and refused.
 """
 
@@ -18,7 +16,6 @@ from __future__ import annotations
 
 import argparse
 import re
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,15 +23,9 @@ ENTRY = ROOT / "src" / "entry.css"
 DIST = ROOT / "dist" / "theme-v3.css"
 
 IMPORT_RE = re.compile(
-    r"""@import\s+url\(\s*['"]?([^'")]+)['"]?\s*\)\s*(?:layer\(\s*([a-zA-Z0-9_-]+)\s*\))?\s*;""",
+    r"""@import\s+url\(\s*['"]?([^'")]+)['"]?\s*\)\s*;""",
     re.IGNORECASE,
 )
-
-
-def strip_line_comments(line: str) -> str:
-    """Remove a trailing `/* ... */` from a single line. Does not handle
-    multi-line comments — the caller is responsible for those."""
-    return re.sub(r"/\*.*?\*/", "", line).strip()
 
 
 def is_commented_out(line: str) -> bool:
@@ -52,9 +43,9 @@ def resolve_imports(file_path: Path, visited: set[Path]) -> str:
     out_lines: list[str] = []
     for raw_line in text.splitlines():
         # Only treat a line as an @import directive if the directive is at the
-        # *start* of the line (ignoring whitespace) AND the line is not inside
-        # a comment. Commented-out @import lines (used as placeholders for
-        # future steps in entry.css) must be passed through.
+        # start of the line (ignoring whitespace) AND the line is not inside a
+        # comment. Commented-out @import lines (placeholders for future steps)
+        # must be passed through verbatim.
         if "@import" not in raw_line:
             out_lines.append(raw_line)
             continue
@@ -66,20 +57,13 @@ def resolve_imports(file_path: Path, visited: set[Path]) -> str:
             out_lines.append(raw_line)
             continue
         rel = m.group(1)
-        layer_name = m.group(2)
         target = (real.parent / rel).resolve()
         if not target.is_file():
             raise FileNotFoundError(f"@import target not found: {rel} (from {real.relative_to(ROOT)})")
         inner = resolve_imports(target, visited)
         rel_display = target.relative_to(ROOT).as_posix()
-        out_lines.append(f"/* >>> {rel_display} (layer={layer_name or 'inline'}) */")
-        if layer_name:
-            out_lines.append(f"@layer {layer_name} {{")
-            for line in inner.splitlines():
-                out_lines.append("  " + line if line else line)
-            out_lines.append("}")
-        else:
-            out_lines.append(inner)
+        out_lines.append(f"/* >>> {rel_display} */")
+        out_lines.append(inner)
         out_lines.append(f"/* <<< {rel_display} */")
     return "\n".join(out_lines)
 

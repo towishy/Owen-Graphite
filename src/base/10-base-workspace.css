@@ -1,0 +1,135 @@
+/* v1.8.68 — Hide inline title by default (filename is shown in tab header).
+   Excludes hover-popover preview which still needs the title for context. */
+.workspace-leaf-content .inline-title,
+.markdown-source-view .inline-title,
+.markdown-preview-view .inline-title,
+.markdown-reading-view .inline-title {
+  display: none !important;
+}
+
+.workspace,
+.workspace-split,
+.workspace-leaf,
+.workspace-tabs,
+.workspace-tab-header-container,
+.side-dock-ribbon,
+.mod-root .workspace-tab-header-container {
+  background-color: var(--background-secondary);
+}
+
+.workspace-leaf-content,
+.view-content,
+.markdown-reading-view,
+.markdown-source-view {
+  background-color: var(--background-primary);
+}
+
+.nav-file-title,
+.nav-folder-title,
+.tree-item-self,
+.workspace-tab-header-inner-title {
+  color: var(--ogd-text-secondary, #374151);
+}
+
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--ogd-text-strong, #111827);
+  font-weight: 700;
+}
+
+button,
+.clickable-icon,
+.setting-item-control button,
+.modal button {
+  border: 1px solid var(--ogd-line-strong, #cbd5e1);
+  background-color: var(--ogd-surface-subtle, #f3f4f6);
+  color: var(--ogd-text-strong, #111827);
+  box-shadow: var(--ogd-shadow-none, none);
+}
+
+button:hover,
+.clickable-icon:hover,
+.setting-item-control button:hover,
+.modal button:hover {
+  border-color: #9ca3af;
+  background-color: var(--ogd-line-soft, #e5e7eb);
+  color: var(--ogd-text-strong, #111827);
+}
+
+button.mod-cta,
+.setting-item-control button.mod-cta,
+.modal button.mod-cta {
+  border-color: var(--ogd-line-contrast, #374151);
+  background-color: #4b5563;
+  color: var(--ogd-surface-base, #ffffff);
+}
+
+button.mod-cta:hover,
+.setting-item-control button.mod-cta:hover,
+.modal button.mod-cta:hover {
+  border-color: var(--ogd-line-ink, #111827);
+  background-color: var(--ogd-text-secondary, #374151);
+  color: var(--ogd-surface-base, #ffffff);
+}
+
+button.mod-warning,
+.setting-item-control button.mod-warning,
+.modal button.mod-warning {
+  border-color: rgba(203, 213, 225, 0.58);
+  background-color: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-slate, #334155);
+}
+
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.markdown-source-view.is-readable-line-width .cm-contentContainer,
+.markdown-source-view.is-readable-line-width .CodeMirror-sizer,
+.markdown-rendered.is-readable-line-width {
+  max-width: var(--ogd-max-width, 420mm);
+  margin: 0;
+}
+
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.markdown-source-view.is-readable-line-width .cm-contentContainer,
+.markdown-source-view.is-readable-line-width .CodeMirror-sizer {
+  padding-left: max(34px, env(safe-area-inset-left)) !important;
+  padding-right: max(26px, env(safe-area-inset-right)) !important;
+  box-sizing: border-box !important;
+}
+
+.markdown-preview-view,
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-content {
+  font-family: var(--font-text-theme);
+  font-size: var(--ogd-body-size, 15px);
+  color: var(--text-normal);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+.markdown-preview-view,
+.markdown-rendered {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.markdown-source-view.mod-cm6 .cm-content {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.markdown-rendered p {
+  line-height: var(--ogd-line-height, 1.5) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.45em !important;
+  color: var(--text-normal);
+}
+
+.markdown-source-view.mod-cm6 .cm-line {
+  line-height: inherit !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  color: #1a1a1a;
+}
+

@@ -1,50 +1,64 @@
 /* Owen Graphite v3 entry point.
  *
- * This file declares the cascade layer order for the entire theme and
- * then @imports modules in that order. The bundler (scripts/bundle_v3.py)
- * follows these @import statements depth-first to assemble dist/theme-v3.css.
+ * Cascade strategy: classic file-order + selector-specificity.
  *
- * Layer order is normative — every src/* module must keep its declarations
- * inside the appropriate @layer block, never bare at the top level (except
- * @layer declarations themselves, like this one).
+ * IMPORTANT — why we do NOT wrap imports in @layer:
+ *
+ * Per CSS Cascade Layers spec, unlayered styles ALWAYS defeat layered styles,
+ * regardless of specificity. Obsidian core CSS (app.css) is unlayered, so any
+ * theme rule wrapped in @layer would lose to core, and the only way back would
+ * be !important — defeating the purpose of v3 (which is to reduce !important).
+ *
+ * Therefore v3 theme rules stay UNLAYERED. We rely on:
+ *   1. File @import order — later wins on equal specificity (replaces what
+ *      @layer would have done for intra-theme ordering).
+ *   2. Selector specificity — high-specificity prefixes like `.theme-light`,
+ *      `body.theme-light`, etc. beat Obsidian core's lower-specificity rules
+ *      without needing !important.
+ *   3. !important reserved for rules where Obsidian core itself uses
+ *      !important. Reduction of this remainder is a S11 polish concern.
+ *
+ * The folder layout (tokens/ base/ surfaces/ chrome/ features/ themes/
+ * plugins/) is purely an organizational convention. The same modules could
+ * have been written into a single file; the split is for readability and to
+ * make selector-provenance audits straightforward.
  */
 
-@layer reset, tokens, base, surfaces, chrome, features, plugins, dark, a11y, hotfix;
-
 /* ---------- tokens ---------- */
-@import url("./tokens/00-light-tokens.css") layer(tokens);
-@import url("./tokens/01-dark-tokens.css") layer(tokens);
+@import url("./tokens/00-light-tokens.css");
+@import url("./tokens/01-dark-tokens.css");
 
-/* ---------- reset (S3) ---------- */
-/* @import url("./base/10-reset.css") layer(reset); */
+/* ---------- reset / typography (S3) ---------- */
+@import url("./base/10-base-workspace.css");
 
-/* ---------- base (S3) ---------- */
-/* @import url("./base/11-typography.css") layer(base); */
-/* @import url("./base/12-reading-view.css") layer(base); */
-/* @import url("./base/13-live-preview.css") layer(base); */
+/* ---------- reading view (S3) ---------- */
+@import url("./base/12-reading-content.css");
+
+/* ---------- live preview (S4) ---------- */
+/* @import url("./base/13-live-preview.css"); */
 
 /* ---------- surfaces (S5) ---------- */
-/* @import url("./surfaces/20-callout.css") layer(surfaces); */
-/* @import url("./surfaces/21-table.css") layer(surfaces); */
-/* @import url("./surfaces/22-code-block.css") layer(surfaces); */
-/* @import url("./surfaces/23-list.css") layer(surfaces); */
-/* @import url("./surfaces/24-embed.css") layer(surfaces); */
-/* @import url("./surfaces/25-canvas-graph.css") layer(surfaces); */
+/* @import url("./surfaces/20-callout.css"); */
+/* @import url("./surfaces/21-table.css"); */
+/* @import url("./surfaces/22-code-block.css"); */
+/* @import url("./surfaces/23-list.css"); */
+/* @import url("./surfaces/24-embed.css"); */
+/* @import url("./surfaces/25-canvas-graph.css"); */
 
 /* ---------- chrome (S6) ---------- */
-/* @import url("./chrome/30-workspace.css") layer(chrome); */
-/* @import url("./chrome/31-nav.css") layer(chrome); */
-/* @import url("./chrome/32-overlay.css") layer(chrome); */
-/* @import url("./chrome/33-settings.css") layer(chrome); */
+/* @import url("./chrome/30-workspace.css"); */
+/* @import url("./chrome/31-nav.css"); */
+/* @import url("./chrome/32-overlay.css"); */
+/* @import url("./chrome/33-settings.css"); */
 
-/* ---------- features (S7, S9) ---------- */
-/* @import url("./features/40-style-settings.css") layer(features); */
-/* @import url("./features/41-report-mode.css") layer(features); */
-/* @import url("./features/42-pdf-print.css") layer(features); */
+/* ---------- features (S7) ---------- */
+/* @import url("./features/40-style-settings.css"); */
+/* @import url("./features/41-report-mode.css"); */
+/* @import url("./features/42-pdf-print.css"); */
 
-/* ---------- themes (S8) ---------- */
-/* @import url("./themes/50-dark.css") layer(dark); */
-/* @import url("./themes/51-a11y.css") layer(a11y); */
+/* ---------- dark / a11y (S8) ---------- */
+/* @import url("./themes/50-dark.css"); */
+/* @import url("./themes/51-a11y.css"); */
 
 /* ---------- plugins (S10, optional) ---------- */
-/* @import url("./plugins/60-dataview.css") layer(plugins); */
+/* @import url("./plugins/60-dataview.css"); */

@@ -118,7 +118,7 @@ JS_COLLECT = r"""
 """
 
 
-def capture(theme: str, version: str, out_path: Path) -> None:
+def capture(theme: str, version: str, out_path: Path, build: str = "v2") -> None:
     try:
         from playwright.sync_api import sync_playwright
     except ModuleNotFoundError:
@@ -132,6 +132,10 @@ def capture(theme: str, version: str, out_path: Path) -> None:
         print(f"ERROR: harness file not found: {HARNESS}")
         sys.exit(1)
 
+    url = HARNESS.as_uri()
+    if build == "v3":
+        url = f"{url}?build=v3"
+
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
         context = browser.new_context(
@@ -139,7 +143,7 @@ def capture(theme: str, version: str, out_path: Path) -> None:
             device_scale_factor=1,
         )
         page = context.new_page()
-        page.goto(HARNESS.as_uri(), wait_until="networkidle")
+        page.goto(url, wait_until="networkidle")
         # Apply theme class. The harness ships with theme-light by default.
         page.evaluate(
             "(t) => { document.body.classList.remove('theme-light','theme-dark'); "
@@ -155,6 +159,7 @@ def capture(theme: str, version: str, out_path: Path) -> None:
         "schema": "owen-graphite/computed-fingerprint/1",
         "version": version,
         "theme": theme,
+        "build": build,
         "harness": str(HARNESS.relative_to(ROOT)).replace("\\", "/"),
         "props": FINGERPRINT_PROPS,
         "elements": data,
@@ -202,6 +207,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--theme", choices=["light", "dark", "both"], default="both")
     parser.add_argument(
+        "--build",
+        choices=["v2", "v3"],
+        default="v2",
+        help="Which theme bundle to load in the harness. v2 = theme.css (default), v3 = dist/theme-v3.css.",
+    )
+    parser.add_argument(
         "--out-dir",
         type=Path,
         default=ROOT / "docs" / "v3",
@@ -223,10 +234,11 @@ def main() -> int:
     version = args.version or read_version()
     themes = ["light", "dark"] if args.theme == "both" else [args.theme]
     captured: list[Path] = []
+    build_suffix = "" if args.build == "v2" else f"-{args.build}"
     for t in themes:
-        filename = f"computed-fingerprint-v{sanitize_for_filename(version)}-{t}.json"
+        filename = f"computed-fingerprint-v{sanitize_for_filename(version)}{build_suffix}-{t}.json"
         out_path = args.out_dir / filename
-        capture(t, version, out_path)
+        capture(t, version, out_path, build=args.build)
         captured.append(out_path)
 
     if args.diff:

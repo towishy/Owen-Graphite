@@ -26,22 +26,25 @@
 
 ## 아키텍처 결정
 
-### 캐스케이드 레이어
+### 캐스케이드 전략 — 파일 순서 + 선택자 특이도
+
+v3는 `@layer`를 본문 룰에 사용하지 **않습니다**. CSS Cascade Layers 스펙상 unlayered styles가 layered styles를 항상 이기는데, Obsidian core CSS(`app.css`)가 unlayered이기 때문입니다. theme 룰을 `@layer` 안에 두면 core에 패배하여 `!important`로만 되돌릴 수 있고, 이는 v3의 목표(!important 감축)와 모순됩니다.
+
+따라서 v3 본문 룰은 **unlayered** 상태로 유지합니다. 캐스케이드 도구는 다음 셋입니다:
+
+1. **`@import` 파일 순서** — 같은 특이도에서 뒤에 import 된 파일이 승리. tokens → base → surfaces → chrome → features → dark → a11y 순서가 의미를 가집니다.
+2. **선택자 특이도** — `body.theme-light`, `.theme-light :is(...)` 같은 고특이도 prefix가 Obsidian core를 이깁니다. 이것은 v2.30.14가 이미 사용하던 패턴이며 v3에서도 유지합니다.
+3. **잔여 `!important`** — Obsidian core 자체가 `!important`를 거는 곳에서만 허용. 감축은 S11 polish 단계의 별도 책임입니다.
+
+`src/` 폴더 구조 (`tokens/`, `base/`, `surfaces/`, `chrome/`, `features/`, `themes/`, `plugins/`)는 가독성·선택자 provenance 감사를 위한 **조직적 약속**일 뿐이며, 캐스케이드 의미를 갖지 않습니다.
 
 ```css
-@layer reset, tokens, base, surfaces, chrome, features, plugins, dark, a11y, hotfix;
+/* src/entry.css */
+@import url("./tokens/00-light-tokens.css");
+@import url("./tokens/01-dark-tokens.css");
+@import url("./base/10-base-workspace.css");
+/* ... */
 ```
-
-- `reset` — Obsidian core를 부드럽게 다듬는 reset
-- `tokens` — `--ogd-*` custom property 정의 (light default)
-- `base` — Reading View / Live Preview 베이스 타이포·간격
-- `surfaces` — callout / table / code / list / embed
-- `chrome` — workspace / nav / overlay / settings
-- `features` — Style Settings 토글, report-mode, PDF print
-- `plugins` — Dataview / Tasks / Canvas / Outline 등
-- `dark` — `.theme-dark` override
-- `a11y` — `prefers-contrast: more`, `prefers-reduced-motion`, `forced-colors`
-- `hotfix` — 정말 옮길 수 없는 최후의 hotfix (v3에서는 비어 있어야 함)
 
 ### 폴더 구조
 
@@ -94,11 +97,12 @@ src/
 
 ### `!important` 정책
 
-- `tokens` ~ `plugins` 레이어: `!important` **금지** (예외는 PR 리뷰)
-- `dark`, `a11y` 레이어: `!important` **금지** (layer 우선순위로 해결)
-- `hotfix` 레이어: 명시적 주석 + PR 리뷰 통과 시에만 허용
-
-Obsidian core CSS가 `!important`를 거는 곳을 이기기 위한 경우에만 예외. 그 경우에도 CSS comment에 **어떤 core selector를 이기는지** 명시해야 함.
+- v3는 v2.30.14의 5,816개를 한 번에 0으로 떨어뜨리려 하지 않습니다. S3~S10에선 dev/*를 src/*로 옮기는 "정확성 유지" 작업을 우선합니다.
+- S11(polish)에서 다음을 수행합니다:
+  1. 선택자 특이도가 이미 충분히 높은데 `!important`가 붙은 룰 → 제거
+  2. 같은 토큰을 여러 모듈에서 재정의하는 중복 룰 → 단일 source-of-truth 모듈로 통합
+  3. Obsidian core 자체가 `!important`를 거는 위치에 대한 `!important` → 인라인 주석에 "defeats core <selector>" 명시 후 유지
+- 목표는 "두 자릿수"가 아니라 "필요한 곳에만 명시적 주석으로 남는 모든 `!important`"입니다. 결과 수치는 측정 후 보고합니다.
 
 ## 참조 문서 (S0 산출물)
 
@@ -177,6 +181,8 @@ Obsidian core CSS가 `!important`를 거는 곳을 이기기 위한 경우에만
 | 2026-05-16 | 골든 이미지 픽셀 100% 기준 | 가장 안전. 미세 차이는 v3.0 출시 후 별도 검토 |
 | 2026-05-16 | Style Settings 37개 이름·동작 동일 | 사용자 vault 설정 그대로 작동 보장 |
 | 2026-05-16 | minAppVersion 1.6 유지 | 현재 사용자 분포 보호 |
+| 2026-05-16 (S3) | `@layer` 폐기, 파일 순서+특이도 채택 | unlayered Obsidian core가 layered theme을 이기는 CSS spec 한계 발견. `!important`로만 되돌릴 수 있어 v3 목표와 모순됨. |
+| 2026-05-16 (S3) | dev/* → src/* 단계적 이관, !important 감축은 S11에 일임 | 정확성(fingerprint diff=0)을 먼저 보장한 뒤 polish 단계에서 감축하는 strangler 패턴. |
 
 ## 참고
 
