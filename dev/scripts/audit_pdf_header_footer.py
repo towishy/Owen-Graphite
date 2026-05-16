@@ -26,12 +26,16 @@ DARK_TOKENS = SRC_DIR / "tokens" / "01-dark-tokens.css"
 REQUIRED_SETTING_IDS = (
     "ogd-settings-pdf-marginalia",
     "ogd-pdf-marginalia-preset",
+    "ogd-pdf-label-layout",
     "ogd-pdf-header-enabled",
     "ogd-pdf-header-text",
+    "ogd-pdf-header-value",
     "ogd-pdf-footer-enabled",
     "ogd-pdf-footer-text",
+    "ogd-pdf-footer-value",
     "ogd-pdf-marginalia-accent",
     "ogd-pdf-marginalia-style",
+    "ogd-pdf-segment-palette",
     "ogd-pdf-marginalia-size",
     "ogd-pdf-header-position",
 )
@@ -40,9 +44,17 @@ REQUIRED_SETTING_VALUES = (
     "ogd-pdf-preset-prepared-confidential",
     "ogd-pdf-preset-draft-internal",
     "ogd-pdf-preset-final-end",
+    "ogd-pdf-label-single",
+    "ogd-pdf-label-segmented",
     "ogd-pdf-label-minimal",
     "ogd-pdf-label-bordered",
     "ogd-pdf-label-filled",
+    "ogd-pdf-label-badge",
+    "ogd-pdf-segment-graphite",
+    "ogd-pdf-segment-sky",
+    "ogd-pdf-segment-mint",
+    "ogd-pdf-segment-violet",
+    "ogd-pdf-segment-teal",
     "ogd-pdf-label-compact",
     "ogd-pdf-label-standard",
     "ogd-pdf-header-top-right",
@@ -54,12 +66,20 @@ REQUIRED_IMPLEMENTED_CLASSES = (
     "ogd-pdf-preset-final-end",
     "ogd-pdf-label-minimal",
     "ogd-pdf-label-filled",
+    "ogd-pdf-label-badge",
+    "ogd-pdf-segment-graphite",
+    "ogd-pdf-segment-sky",
+    "ogd-pdf-segment-mint",
+    "ogd-pdf-segment-violet",
+    "ogd-pdf-segment-teal",
     "ogd-pdf-label-compact",
     "ogd-pdf-header-top-center",
 )
 REQUIRED_LIGHT_TOKENS = (
     "--ogd-pdf-header-text",
+    "--ogd-pdf-header-value",
     "--ogd-pdf-footer-text",
+    "--ogd-pdf-footer-value",
     "--ogd-pdf-marginalia-accent",
     "--ogd-pdf-marginalia-bg",
     "--ogd-pdf-marginalia-border",
@@ -80,12 +100,27 @@ REQUIRED_LIGHT_TOKENS = (
     "--ogd-pdf-footer-reserve",
     "--ogd-pdf-footer-offset",
     "--ogd-pdf-footer-max-width",
+    "--ogd-pdf-segment-key-width",
+    "--ogd-pdf-segment-value-width",
+    "--ogd-pdf-segment-half-width",
+    "--ogd-pdf-segment-key-bg",
+    "--ogd-pdf-segment-key-text",
+    "--ogd-pdf-segment-key-border",
+    "--ogd-pdf-segment-value-bg",
+    "--ogd-pdf-segment-value-text",
+    "--ogd-pdf-segment-value-border",
 )
 REQUIRED_DARK_TOKENS = (
     "--ogd-pdf-marginalia-accent",
     "--ogd-pdf-marginalia-bg",
     "--ogd-pdf-marginalia-border",
     "--ogd-pdf-marginalia-shadow",
+    "--ogd-pdf-segment-key-bg",
+    "--ogd-pdf-segment-key-text",
+    "--ogd-pdf-segment-key-border",
+    "--ogd-pdf-segment-value-bg",
+    "--ogd-pdf-segment-value-text",
+    "--ogd-pdf-segment-value-border",
 )
 MARGIN_BOX_RE = re.compile(r"^@(top|bottom|left|right)(?:-|$)", re.I)
 VIEWPORT_UNIT_RE = re.compile(r"(?:^|[^a-zA-Z-])-?\d*\.?\d+v(?:h|w|min|max)\b", re.I)
@@ -244,6 +279,10 @@ def location(path: Path, line: int) -> str:
     return f"{rel(path)}:{line}"
 
 
+def has_body_class(selector: str, class_name: str) -> bool:
+    return re.search(rf"\bbody(?=[^{{,]*\.{re.escape(class_name)}\b)", selector) is not None
+
+
 def require_substring(failures: list[str], text: str, token: str, label: str) -> None:
     if token not in text:
         failures.append(f"missing {label}: `{token}`")
@@ -292,12 +331,18 @@ def audit_at_rules(failures: list[str], at_blocks: list[AtBlock], uncommented_so
 
 def audit_pdf_rules(failures: list[str], rules: list[CssRule]) -> None:
     header_rules: list[CssRule] = []
+    header_segment_rules: list[CssRule] = []
+    header_value_rules: list[CssRule] = []
     footer_rules: list[CssRule] = []
+    footer_segment_rules: list[CssRule] = []
+    footer_value_rules: list[CssRule] = []
     footer_reserve_rules: list[CssRule] = []
     for rule in rules:
         selector = rule.selector
         body = rule.body
-        mentions_pdf_toggle = "body.ogd-pdf-header-enabled" in selector or "body.ogd-pdf-footer-enabled" in selector
+        mentions_header_toggle = has_body_class(selector, "ogd-pdf-header-enabled")
+        mentions_footer_toggle = has_body_class(selector, "ogd-pdf-footer-enabled")
+        mentions_pdf_toggle = mentions_header_toggle or mentions_footer_toggle
         mentions_pdf_token = "--ogd-pdf-" in body or "--ogd-pdf-" in selector
         if mentions_pdf_toggle and rule.path != PDF_OWNER:
             failures.append(f"{location(rule.path, rule.line)}: PDF marginalia selector is owned by {rel(PDF_OWNER)}")
@@ -324,11 +369,21 @@ def audit_pdf_rules(failures: list[str], rules: list[CssRule]) -> None:
                     failures.append(f"{location(rule.path, rule.line)}: list-style trick is forbidden in PDF marginalia")
                 if property_name == "content" and "\\A" in value:
                     failures.append(f"{location(rule.path, rule.line)}: multiline generated content is forbidden in PDF marginalia")
-            if "body.ogd-pdf-header-enabled" in selector and "::before" in selector:
-                header_rules.append(rule)
-            if "body.ogd-pdf-footer-enabled" in selector and "::after" in selector:
-                footer_rules.append(rule)
-            if "body.ogd-pdf-footer-enabled" in selector and "::after" not in selector:
+            if mentions_header_toggle and "::before" in selector and "content" in declarations_map:
+                if "--ogd-pdf-header-value" in declarations_map.get("content", ""):
+                    header_value_rules.append(rule)
+                else:
+                    header_rules.append(rule)
+            if mentions_header_toggle and "::after" in selector and "content" in declarations_map:
+                header_segment_rules.append(rule)
+            if mentions_footer_toggle and "::after" in selector and "content" in declarations_map:
+                if "--ogd-pdf-footer-value" in declarations_map.get("content", ""):
+                    footer_value_rules.append(rule)
+                else:
+                    footer_rules.append(rule)
+            if mentions_footer_toggle and "::before" in selector and "content" in declarations_map:
+                footer_segment_rules.append(rule)
+            if mentions_footer_toggle and "::before" not in selector and "::after" not in selector:
                 footer_reserve_rules.append(rule)
 
     if len(header_rules) != 1:
@@ -346,9 +401,21 @@ def audit_pdf_rules(failures: list[str], rules: list[CssRule]) -> None:
         margin_bottom = reserve_declarations.get("margin-bottom", "")
         if "mm" not in margin_bottom:
             failures.append(f"{location(footer_reserve_rules[0].path, footer_reserve_rules[0].line)}: footer reserve must use mm margin-bottom")
+    if len(header_segment_rules) != 1:
+        failures.append(f"expected exactly one PDF header segmented key pseudo; found {len(header_segment_rules)}")
+    else:
+        require_anchor_contract(failures, header_segment_rules[0], "--ogd-pdf-header-text", check_geometry=False)
+    if len(header_value_rules) != 1:
+        failures.append(f"expected exactly one PDF header segmented value override; found {len(header_value_rules)}")
+    if len(footer_segment_rules) != 1:
+        failures.append(f"expected exactly one PDF footer segmented key pseudo; found {len(footer_segment_rules)}")
+    else:
+        require_anchor_contract(failures, footer_segment_rules[0], "--ogd-pdf-footer-text", check_geometry=False)
+    if len(footer_value_rules) != 1:
+        failures.append(f"expected exactly one PDF footer segmented value override; found {len(footer_value_rules)}")
 
 
-def require_anchor_contract(failures: list[str], rule: CssRule, text_token: str) -> None:
+def require_anchor_contract(failures: list[str], rule: CssRule, text_token: str, check_geometry: bool = True) -> None:
     decl = declarations(rule.body)
     expected_exact = {
         "position": "absolute",
@@ -368,6 +435,8 @@ def require_anchor_contract(failures: list[str], rule: CssRule, text_token: str)
         failures.append(f"{location(rule.path, rule.line)}: content must be `var({text_token}, \"\")`")
     if "exact" not in decl.get("print-color-adjust", "") or "exact" not in decl.get("-webkit-print-color-adjust", ""):
         failures.append(f"{location(rule.path, rule.line)}: both print-color-adjust properties must be exact")
+    if not check_geometry:
+        return
     if text_token == "--ogd-pdf-header-text":
         expected_header_values = {
             "top": "var(--ogd-pdf-header-top, 11mm)",

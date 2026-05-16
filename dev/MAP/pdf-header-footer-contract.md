@@ -16,11 +16,12 @@ This surface has already burned a lot of release time because Chromium print/PDF
 
 - PDF header/footer paint rules must live inside `@media print`.
 - `body.ogd-pdf-header-enabled` and `body.ogd-pdf-footer-enabled` selectors are owned by `src/features/41-feature-presets.css` only.
-- Header must use one anchor pseudo: `.markdown-rendered::before`.
-- Footer must use one anchor pseudo: `.markdown-rendered > :last-child::after`.
+- Single-label mode uses one header anchor pseudo: `.markdown-rendered::before`.
+- Single-label mode uses one footer anchor pseudo: `.markdown-rendered > :last-child::after`.
+- Key/Value 2-segment mode may add one adjacent key pseudo per surface: `.markdown-rendered::after` for the header and `.markdown-rendered > :last-child::before` for the footer.
 - Footer must reserve space on `.markdown-rendered > :last-child` with a millimeter-based `margin-bottom`.
-- Generated text must use single-line `content: var(--ogd-pdf-header-text, "")` or `content: var(--ogd-pdf-footer-text, "")`.
-- Quick presets, label style, compact sizing, and header alignment must be implemented by CSS variables/classes only; do not add more pseudo anchors.
+- Generated text must remain single-line. Single-label content uses `--ogd-pdf-header-text` / `--ogd-pdf-footer-text`; segmented value content uses `--ogd-pdf-header-value` / `--ogd-pdf-footer-value`.
+- Quick presets, label layout, label style, segment palette, compact sizing, and header alignment must be implemented by CSS variables/classes only.
 - Anchor pseudos must use `position: absolute`, `pointer-events: none`, `white-space: nowrap`, and exact print color adjustment.
 - Anchor pseudos must also keep `display: inline-block`, `overflow: hidden`, `text-overflow: ellipsis`, and `font-style: normal` so long user text stays single-line and cannot reshape the PDF page.
 - `@page` rules belong in `src/features/43-print-base.css` and must be nested under `@media print`.
@@ -32,6 +33,7 @@ This surface has already burned a lot of release time because Chromium print/PDF
 - Do not add `!important`, `position: fixed`, viewport units, or backdrop filters to PDF marginalia rules.
 - Do not target Live Preview / CM6 selectors from PDF marginalia rules.
 - Do not make the feature visible in Reading View; it is print-only unless a new contract and visual test plan are added first.
+- Do not add more than two segments per header/footer surface without a PDF sample and pagination regression check.
 - Do not add new footer positions without a PDF sample and pagination regression check; the stable footer position is bottom center.
 
 ## Required Validation
@@ -60,3 +62,4 @@ Use this short matrix when a change affects header/footer text, sizing, presets,
 | `pdf-marginalia-code-end` | document ending with a code block | footer on | footer reserve stays outside the code block surface |
 | `pdf-marginalia-list-end` | document ending with a list | footer on | footer aligns after the final list item without list-marker artifacts |
 | `pdf-marginalia-presets` | 1-2 page prose | each quick preset | preset text resolves through variables without adding anchor pseudos |
+| `pdf-marginalia-segmented` | 1-2 page prose | Key/Value layout, badge style | adjacent key/value segments stay one line and do not overlap body content |

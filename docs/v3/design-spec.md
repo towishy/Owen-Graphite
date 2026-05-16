@@ -162,7 +162,7 @@ src/
 
 - `main`: v2.30.x 안정 라인. 커뮤니티 릴리스. 비상 hotfix만 적용.
 - `v3-rewrite`: from-scratch 작업 브랜치. **로컬 검증 완료 전까지 main으로 머지 금지.**
-- `v3-rewrite`가 완성되면 `main`에 머지하되, manifest version을 `3.0.0`으로 점프 (이후 v3.0.1 → v3.0.x → v3.1.x 체인이 이어짐, 현재 안정 릴리즈 = v3.1.34).
+- `v3-rewrite`가 완성되면 `main`에 머지하되, manifest version을 `3.0.0`으로 점프 (이후 v3.0.1 → v3.0.x → v3.1.x 체인이 이어짐, 현재 안정 릴리즈 = v3.1.35).
 
 ## 비목표 (Non-Goals)
 
@@ -190,7 +190,7 @@ src/
 
 ## 참고
 
-- [release-plan.md](release-plan.md) — v3 릴리즈 기록·툴체인·절차 (현재 안정 v3.1.34)
+- [release-plan.md](release-plan.md) — v3 릴리즈 기록·툴체인·절차 (현재 안정 v3.1.35)
 - [cascade-research.md](cascade-research.md) — unlayered 캐스케이드 실증·S11.5 `!important` 일괄 제거 결과
 - [surface-state-matrix.md](surface-state-matrix.md) — Liquid Glass rest/hover/active/disabled 정의
 - [live-preview-editability.md](live-preview-editability.md) — hit-routing 계약 (v3 구현: `dev/scripts/audit_v3_hit_routing.py`)

@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.34`
+- Version: `3.1.35`
 - Source: `src/entry.css`
 - Modules: 30
-- Selectors: 2032
-- Findings: 521
-- Finding severity counts: critical=0, high=0, medium=465, low=56, info=0
+- Selectors: 2045
+- Findings: 527
+- Finding severity counts: critical=0, high=0, medium=465, low=62, info=0
 - Module severity counts: critical=0, high=17, medium=8, low=4, info=1
 
 ## Module Risk Table
@@ -27,7 +27,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 60 | `src/themes/50-dark.css` | 45 | 0 | 0 | high-specificity |
 | medium | 25 | `src/features/43-print-base.css` | 47 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 166 | `src/base/13-live-preview.css` | 113 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| high | 37 | `src/features/41-feature-presets.css` | 135 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
+| high | 49 | `src/features/41-feature-presets.css` | 148 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
 | medium | 23 | `src/chrome/30-workspace.css` | 122 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 31 | 0 | 0 | high-specificity |

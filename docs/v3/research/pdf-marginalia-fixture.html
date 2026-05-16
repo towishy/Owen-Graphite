@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite PDF Marginalia Fixture</title>
+  <link rel="stylesheet" href="../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+    }
+
+    body {
+      --ogd-pdf-header-text: "prepared by";
+      --ogd-pdf-header-value: "Owen Graphite";
+      --ogd-pdf-footer-text: "confidential";
+      --ogd-pdf-footer-value: "internal use only";
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-page {
+      max-width: 780px;
+      margin: 32px auto;
+      padding: 32px;
+      background: #fff;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .fixture-page {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-segment-sky ogd-pdf-label-standard ogd-pdf-header-top-right">
+  <main class="fixture-page markdown-preview-view">
+    <article class="markdown-rendered">
+      <h1>PDF Marginalia Validation</h1>
+      <p>이 fixture는 Owen Graphite PDF 헤더와 푸터 라벨이 print media에서만 표시되는지 확인하기 위한 최소 Obsidian DOM입니다.</p>
+      <p>헤더는 첫 페이지 상단에, 푸터는 마지막 콘텐츠 아래에 배치됩니다. 두 라벨 모두 한 줄로 유지되고 긴 문구는 말줄임 처리되어야 합니다.</p>
+
+      <h2>Long Body</h2>
+      <p>PDF 출력 흐름을 만들기 위한 본문입니다. 실제 Obsidian PDF export에서는 Chromium printToPDF가 이 문서를 페이지 단위로 나누며, 테마는 고정 위치나 margin box 대신 안전한 anchor pseudo만 사용합니다.</p>
+      <p>본문이 길어져도 헤더와 푸터는 문서 내용보다 낮은 시각 우선순위를 유지해야 합니다. 출력물에서 라벨은 보조 메타 정보로 읽혀야 하며 제목, 표, 코드블록보다 강하게 보여서는 안 됩니다.</p>
+
+      <table>
+        <thead>
+          <tr><th>Scenario</th><th>Expected</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Header</td><td>single-line label in the selected top position</td></tr>
+          <tr><td>Footer</td><td>single-line label after final content with reserved spacing</td></tr>
+          <tr><td>Long text</td><td>clips with ellipsis, no multiline expansion</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Final Block</h2>
+      <p>마지막 블록입니다. footer reserve와 footer pseudo는 이 블록을 기준으로 계산됩니다.</p>
+    </article>
+  </main>
+</body>
+</html>

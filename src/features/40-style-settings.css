@@ -273,9 +273,29 @@ settings:
     type: class-toggle
     default: false
   -
+    id: ogd-pdf-label-layout
+    title: PDF 라벨 구성
+    description: 단일 라벨은 기존처럼 한 문구만 표시합니다. Key/Value는 `Prepared by` + `Owen Lee`처럼 붙어 있는 두 segment로 표시합니다.
+    type: class-select
+    default: ogd-pdf-label-single
+    options:
+      -
+        label: 단일 라벨
+        value: ogd-pdf-label-single
+      -
+        label: Key/Value 2-segment
+        value: ogd-pdf-label-segmented
+  -
     id: ogd-pdf-header-text
     title: 첫 페이지 헤더 문구
-    description: 한 줄 문구만 사용하세요. 긴 문구는 출력 시 말줄임 처리됩니다. 예 `Author - Owen Lee`.
+    description: 단일 라벨에서는 전체 문구, Key/Value에서는 왼쪽 key입니다. 예 `Prepared by`.
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-pdf-header-value
+    title: 첫 페이지 헤더 값
+    description: Key/Value 구성에서 오른쪽 value로 표시됩니다. 예 `Owen Lee` 또는 `Sr. CSA`. 단일 라벨 구성에서는 사용하지 않습니다.
     type: variable-text
     default: ''
     quotes: true
@@ -288,7 +308,14 @@ settings:
   -
     id: ogd-pdf-footer-text
     title: 마지막 페이지 푸터 문구
-    description: 한 줄 문구만 사용하세요. 긴 문구는 출력 시 말줄임 처리됩니다. 예 `Confidential - End of Document`.
+    description: 단일 라벨에서는 전체 문구, Key/Value에서는 왼쪽 key입니다. 예 `Confidential`.
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-pdf-footer-value
+    title: 마지막 페이지 푸터 값
+    description: Key/Value 구성에서 오른쪽 value로 표시됩니다. 예 `Internal Use Only` 또는 `End of Document`. 단일 라벨 구성에서는 사용하지 않습니다.
     type: variable-text
     default: ''
     quotes: true
@@ -315,6 +342,31 @@ settings:
       -
         label: 은은한 채움
         value: ogd-pdf-label-filled
+      -
+        label: 붙은 배지
+        value: ogd-pdf-label-badge
+  -
+    id: ogd-pdf-segment-palette
+    title: Key/Value 색상 조합
+    description: Key/Value 구성에서 오른쪽 value segment의 색상을 고릅니다. 왼쪽 key는 graphite로 유지해 출력물의 시각 우선순위를 낮춥니다.
+    type: class-select
+    default: ogd-pdf-segment-sky
+    options:
+      -
+        label: Graphite + Graphite
+        value: ogd-pdf-segment-graphite
+      -
+        label: Graphite + Sky
+        value: ogd-pdf-segment-sky
+      -
+        label: Graphite + Mint
+        value: ogd-pdf-segment-mint
+      -
+        label: Graphite + Violet
+        value: ogd-pdf-segment-violet
+      -
+        label: Graphite + Teal
+        value: ogd-pdf-segment-teal
   -
     id: ogd-pdf-marginalia-size
     title: 헤더/푸터 라벨 크기
@@ -331,7 +383,7 @@ settings:
   -
     id: ogd-pdf-header-position
     title: 첫 페이지 헤더 위치
-    description: 첫 페이지 헤더 라벨 위치를 선택합니다. 마지막 페이지 풋터는 안정성을 위해 중앙 하단으로 고정됩니다.
+    description: 첫 페이지 헤더 라벨 위치를 선택합니다. Key/Value 구성에서는 두 segment가 같은 기준점에 붙어서 배치됩니다. 마지막 페이지 푸터는 안정성을 위해 중앙 하단으로 고정됩니다.
     type: class-select
     default: ogd-pdf-header-top-right
     options:

@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.34",
+  "version": "3.1.35",
   "module_order": [
     {
       "import_index": 1,
@@ -186,12 +186,12 @@
   ],
   "summary": {
     "module_count": 30,
-    "selector_count": 2032,
-    "finding_count": 521,
+    "selector_count": 2045,
+    "finding_count": 527,
     "cross_file_selector_group_count": 77,
     "finding_severity_counts": {
       "medium": 465,
-      "low": 56
+      "low": 62
     },
     "module_severity_counts": {
       "high": 17,
@@ -206,7 +206,7 @@
       "entry_line": 34,
       "legacy_id": "00-settings.css",
       "module": "src/features/40-style-settings.css",
-      "line_count": 346,
+      "line_count": 398,
       "selector_count": 0,
       "declaration_count": 0,
       "important_count": 0,
@@ -230,9 +230,9 @@
       "entry_line": 36,
       "legacy_id": "01-tokens.css",
       "module": "src/tokens/00-light-tokens.css",
-      "line_count": 208,
+      "line_count": 222,
       "selector_count": 6,
-      "declaration_count": 171,
+      "declaration_count": 185,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 0,
@@ -305,9 +305,9 @@
       "entry_line": 37,
       "legacy_id": "",
       "module": "src/tokens/01-dark-tokens.css",
-      "line_count": 200,
+      "line_count": 206,
       "selector_count": 7,
-      "declaration_count": 155,
+      "declaration_count": 161,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 0,
@@ -986,14 +986,14 @@
       "entry_line": 55,
       "legacy_id": "06-feature-presets.css",
       "module": "src/features/41-feature-presets.css",
-      "line_count": 814,
-      "selector_count": 135,
-      "declaration_count": 366,
+      "line_count": 960,
+      "selector_count": 148,
+      "declaration_count": 472,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 5,
       "live_preview_sensitive_rule_count": 0,
-      "pdf_header_footer_sensitive_rule_count": 9,
+      "pdf_header_footer_sensitive_rule_count": 15,
       "repeated_selector_extra_count": 4,
       "max_specificity": [
         0,
@@ -1003,54 +1003,54 @@
       "top_properties": [
         [
           "color",
-          46
+          50
         ],
         [
           "background",
-          28
-        ],
-        [
-          "font-weight",
-          15
+          32
         ],
         [
           "padding",
-          15
-        ],
-        [
-          "border",
-          15
+          19
         ],
         [
           "border-radius",
-          15
+          19
+        ],
+        [
+          "font-weight",
+          17
+        ],
+        [
+          "border",
+          17
         ],
         [
           "box-shadow",
-          11
-        ],
-        [
-          "font-size",
-          9
+          15
         ],
         [
           "content",
-          9
+          13
+        ],
+        [
+          "font-size",
+          11
         ],
         [
           "font-family",
-          8
+          10
         ],
         [
           "display",
-          7
+          9
         ],
         [
-          "border-color",
-          7
+          "max-width",
+          9
         ]
       ],
-      "risk_score": 37,
+      "risk_score": 49,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -3754,7 +3754,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 415,
+      "line": 561,
       "selector": ".markdown-rendered h1, .markdown-preview-view.markdown-rendered h1, .markdown-reading-view .markdown-rendered h1, body.ogd-report-mode .markdown-rendered > h1:first-of-type",
       "message": "specificity=(0, 8, 4)"
     },
@@ -3762,7 +3762,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 420,
+      "line": 566,
       "selector": ".markdown-rendered h1::after, .markdown-preview-view.markdown-rendered h1::after, .markdown-reading-view .markdown-rendered h1::after, body.ogd-report-mode .markdown-rendered > h1:first-of-type::after",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3770,7 +3770,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 464,
+      "line": 610,
       "selector": "body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p, body.ogd-report-mode .markdown-rendered blockquote p, body.ogd-report-mode .markdown-rendered li p, body.ogd-report-mode .markdown-rendered .callout p",
       "message": "specificity=(0, 10, 15)"
     },
@@ -6210,7 +6210,15 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 363,
+      "line": 300,
+      "selector": "body.ogd-pdf-label-badge",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 395,
       "selector": "body.ogd-pdf-header-enabled .markdown-rendered::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6218,7 +6226,31 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 369,
+      "line": 443,
+      "selector": "body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::after",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 447,
+      "selector": "body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::before",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 458,
+      "selector": "body.ogd-pdf-header-enabled.ogd-pdf-header-top-center.ogd-pdf-label-segmented .markdown-rendered::after",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 464,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6226,8 +6258,24 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 399,
+      "line": 494,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 527,
+      "selector": "body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::before",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 544,
+      "selector": "body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
     {
@@ -6586,7 +6634,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/tokens/00-light-tokens.css",
-      "line": 71,
+      "line": 85,
       "selector": ":root",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6594,7 +6642,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/tokens/01-dark-tokens.css",
-      "line": 153,
+      "line": 159,
       "selector": "body:not(.is-mobile).theme-dark",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     }
@@ -6666,7 +6714,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 153
+          "line": 159
         },
         {
           "module": "src/chrome/35-editing-menu-tooltip-glass.css",
@@ -6857,7 +6905,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 529
+          "line": 675
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -6880,7 +6928,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 531
+          "line": 677
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -6954,7 +7002,7 @@
         },
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 768
+          "line": 914
         }
       ]
     },
@@ -7189,7 +7237,7 @@
       "lines": [
         {
           "module": "src/tokens/00-light-tokens.css",
-          "line": 181
+          "line": 195
         },
         {
           "module": "src/features/43-print-base.css",
@@ -7349,7 +7397,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 167
+          "line": 173
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -7533,7 +7581,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 495
+          "line": 641
         },
         {
           "module": "src/chrome/31-navigation-tasks-search.css",
@@ -7713,7 +7761,7 @@
       "lines": [
         {
           "module": "src/tokens/00-light-tokens.css",
-          "line": 71
+          "line": 85
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -7839,7 +7887,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 197
+          "line": 203
         },
         {
           "module": "src/polish/71-overlay-layout-polish.css",
@@ -8181,7 +8229,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 187
+          "line": 193
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -8199,7 +8247,7 @@
       "lines": [
         {
           "module": "src/tokens/01-dark-tokens.css",
-          "line": 176
+          "line": 182
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
