@@ -67,7 +67,7 @@ def resolve_imports(file_path: Path, visited: set[Path]) -> str:
     return "\n".join(out_lines)
 
 
-def bundle(entry: Path, dist: Path, dedup: bool = True) -> int:
+def bundle(entry: Path, dist: Path, dedup: bool = True, check: bool = False) -> int:
     if not entry.is_file():
         print(f"ERROR: entry not found: {entry}")
         return 1
@@ -95,9 +95,27 @@ def bundle(entry: Path, dist: Path, dedup: bool = True) -> int:
         dedup_mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(dedup_mod)
         bundled, merges = dedup_mod.dedup_scope(bundled)
-    dist.write_text(header + bundled + "\n", encoding="utf-8")
+    new_content = header + bundled + "\n"
     line_count = bundled.count("\n") + 1
     bang_count = bundled.count("!important")
+    if check:
+        # Determinism / freshness gate: compare against existing dist file.
+        if not dist.is_file():
+            print(f"FAIL: {dist.relative_to(ROOT)} missing; run bundle_v3.py to generate.")
+            return 1
+        current = dist.read_text(encoding="utf-8")
+        if current != new_content:
+            print(
+                f"FAIL: {dist.relative_to(ROOT)} is stale vs src/.\n"
+                f"      Re-run: python scripts/bundle_v3.py"
+            )
+            return 1
+        print(
+            f"OK: {dist.relative_to(ROOT)} matches src/ "
+            f"({line_count} lines, !important={bang_count}, dedup_merges={merges})"
+        )
+        return 0
+    dist.write_text(new_content, encoding="utf-8")
     print(
         f"OK: bundled {dist.relative_to(ROOT)} "
         f"({line_count} lines, !important={bang_count}, dedup_merges={merges})"
@@ -111,8 +129,10 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=DIST)
     parser.add_argument("--no-dedup", action="store_true",
                         help="Skip the post-bundle same-context selector dedup pass.")
+    parser.add_argument("--check", action="store_true",
+                        help="Verify that dist matches a fresh bundle from src/; do not write.")
     args = parser.parse_args()
-    return bundle(args.entry, args.out, dedup=not args.no_dedup)
+    return bundle(args.entry, args.out, dedup=not args.no_dedup, check=args.check)
 
 
 if __name__ == "__main__":

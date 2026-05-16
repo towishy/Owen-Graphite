@@ -2577,6 +2577,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
     font-size: 11pt;
   }
 
+  .markdown-rendered h1 { page-break-before: always; }
   .markdown-rendered h1:first-child { page-break-before: avoid; }
   .markdown-rendered :is(h1, h2, h3, h4) {
     page-break-after: avoid;
@@ -2622,12 +2623,10 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
     display: table-footer-group;
   }
 
-  /* v1.8.65 — H1 chapter break (Windows Chromium compatibility) */
-  .markdown-rendered h1 {
-   page-break-before: always;
-  
-    page-break-before: always;
-}
+  /* v1.8.65 — H1 chapter break first-of-type/first-child refinement
+   * (base `.markdown-rendered h1 { page-break-before: always }` is declared
+   * once near the top of this @media block; only the more selective avoid
+   * variant lives here). */
   .markdown-rendered h1:first-of-type,
   .markdown-rendered > h1:first-child {
     page-break-before: avoid;

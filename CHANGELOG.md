@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.0.7] — 2026-05-16 — Source dedup follow-up + bundle `--check` mode
+
+### Changed
+
+- **소스 중복 1건 정리** — `src/features/43-print-base.css` 안에서 같은 `@media print` 스코프에 두 번 등장하던 `.markdown-rendered h1 { page-break-before: always }` 블록을 한 곳으로 정리했습니다. 빌드 dedup 패스가 이미 처리하던 소스 레벨 중복(1건) → 0건. 인쇄 동작 100% 동일.
+- **빌드 결정성 검증** — `python scripts/bundle_v3.py --check` 로 현재 `dist/theme-v3.css` 가 소스와 일치하는지 확인하는 모드를 추가했습니다 (CI / pre-commit 후크 용). 불일치 시 종료코드 1과 재빌드 안내 메시지.
+
+### Notes
+
+- 디자인·런타임 동작 변동 없으며 v3.0.6 사용자도 안전하게 업데이트할 수 있습니다.
+
 ## [3.0.6] — 2026-05-16 — Build: same-context duplicate-selector dedup pass
 
 ### Changed
