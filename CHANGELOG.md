@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 > v3.0.0 is a **from-scratch rewrite**. v2.x history is intentionally not carried forward; see git tags for the legacy line.
 
+## [3.1.1] — 2026-05-16 — PDF H1 enlarged as document title
+
+### Changed
+
+- **PDF/인쇄 H1 크기 증대 (+21%)** — A3 landscape PDF 내보내기에서 H1이 문서 제목 위계로 충분히 크게 보이도록 조정했습니다.
+  - 기본 인쇄 H1 (`@media print` 의 `.markdown-rendered h1`): **2.8em → 3.4em**, line-height 1.10 → 1.08
+  - 인쇄 H1 kicker 번호(`::before`): 0.32em → **0.30em** (H1 글자가 커진 만큼 상대 비율로 미세 축소)
+  - 보고서 compact 모드 H1(`body.ogd-pdf-compact h1`): **2.35em → 2.85em**
+- Reading / Live Preview / Mobile H1, H2~H6 사이즈는 v3.1.0 유지.
+
+### Notes
+
+- 작은 PDF 페이지 사이즈(A4 portrait 등)에서도 비례적으로 그대로 키워집니다.
+- 텍스트 데코·여백·kicker margin 등 다른 디자인은 변동 없습니다.
+
 ## [3.1.0] — 2026-05-16 — H1 size +15% across Reading / Live Preview / Mobile
 
 ### Changed

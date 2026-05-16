@@ -2584,19 +2584,22 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
     page-break-after: avoid;
   }
 
-  /* v1.8.67 — PDF: enlarge H1 for stronger visual hierarchy */
+  /* v1.8.67 — PDF: enlarge H1 for stronger visual hierarchy
+   * v3.1.1 — bumped 2.8em → 3.4em so the H1 reads clearly as a document title
+   * across A3 landscape exports where surrounding chrome (kicker, frame) makes
+   * a smaller H1 feel undersized. Kicker tightened to 0.30em to balance. */
   .markdown-rendered h1,
   .markdown-preview-view.markdown-rendered h1,
   .markdown-reading-view .markdown-rendered h1 {
-    font-size: 2.8em;
-    line-height: 1.1;
+    font-size: 3.4em;
+    line-height: 1.08;
     margin-top: 1.2em;
     margin-bottom: 0.7em;
   }
   .markdown-rendered h1::before,
   .markdown-preview-view.markdown-rendered h1::before,
   .markdown-reading-view .markdown-rendered h1::before {
-    font-size: 0.32em;
+    font-size: 0.30em;
     margin-bottom: 0.7em;
   }
 
@@ -7535,7 +7538,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) h1 {
-    font-size: 2.35em;
+    font-size: 2.85em;
     line-height: 1.06;
     margin-top: 0.72em;
     margin-bottom: 0.42em;
