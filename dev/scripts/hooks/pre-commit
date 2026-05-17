@@ -2,6 +2,7 @@
 # Owen Graphite v3 pre-commit hook
 # - builds ignored dist/theme-v3.css from src/ and verifies freshness
 # - verifies root theme.css matches the fresh bundle
+# - checks release metadata, Style Settings, docs/assets, and CSS compatibility budget
 # - runs the Live Preview hit-routing audit
 # - runs the PDF header/footer marginalia audit
 # - runs the duplicate-selector audit (informational)
@@ -31,6 +32,10 @@ bundle = Path("dist/theme-v3.css").read_text(encoding="utf-8")
 if theme != bundle:
     raise SystemExit("theme.css is stale vs dist/theme-v3.css; promote and stage the fresh bundle copy")
 PY
+"$PY" dev/scripts/audit_release_metadata.py
+"$PY" dev/scripts/audit_style_settings_contract.py
+"$PY" dev/scripts/audit_docs_assets.py
+"$PY" dev/scripts/audit_css_compat_budget.py
 "$PY" dev/scripts/audit_v3_hit_routing.py
 "$PY" dev/scripts/audit_pdf_header_footer.py
 "$PY" dev/scripts/v3_audit_duplicate_selectors.py >/dev/null || true

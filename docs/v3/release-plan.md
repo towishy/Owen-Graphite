@@ -34,9 +34,14 @@
 | Computed-style fingerprint | `dev/scripts/capture_computed_fingerprint.py` + `dev/scripts/fp_diff_summary.py` |
 | Strip `!important` from src/ | `dev/scripts/v3_strip_important_src.py` (comment-safe) |
 | Build release ZIP | `dev/scripts/build_release.py` |
+| Release metadata contract | `dev/scripts/audit_release_metadata.py` |
+| Release ZIP install contract | `dev/scripts/audit_release_zip.py` |
+| Style Settings contract | `dev/scripts/audit_style_settings_contract.py` |
+| Docs/assets link contract | `dev/scripts/audit_docs_assets.py` |
+| CSS compatibility/budget guard | `dev/scripts/audit_css_compat_budget.py` |
 | Sync to Obsidian vault | `dev/scripts/sync_obsidian_theme.py` |
-| Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle + hit-routing + PDF marginalia) |
-| CI validation | `.github/workflows/validate.yml` (fresh bundle + `theme.css` freshness + audits) |
+| Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle freshness + metadata/style/docs/CSS/PDF/LP audits) |
+| CI validation | `.github/workflows/validate.yml` (fresh bundle + `theme.css` freshness + metadata/style/docs/CSS/PDF/LP audits) |
 | Visual quality smoke check | `dev/scripts/audit_visual_quality_fixture.py` (local browser render when available) |
 
 ## Release procedure for future v3.x.y
@@ -44,15 +49,20 @@
 1. Edit `src/` only. Never hand-edit `theme.css`.
 2. `python dev/scripts/bundle_v3.py` — must end with `OK: bundled ... !important=N` where N is only comment-counts.
 3. Verify `theme.css` is the promoted copy of `dist/theme-v3.css` before commit.
-4. `python dev/scripts/audit_v3_hit_routing.py` — must be clean.
-5. `python dev/scripts/audit_pdf_header_footer.py` — must be clean after any print/report/PDF settings change.
-6. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
-7. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
-8. Bump `manifest.json` version, add `CHANGELOG.md` entry.
-9. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for fixture contract; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
-10. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
-11. Commit, tag `<version>` (and optionally `v<version>`), push tag.
-12. CI (`.github/workflows/release.yml`) builds the GitHub Release.
+4. `python dev/scripts/audit_release_metadata.py` — version references must agree across manifest, README, changelog, screenshots docs, and release-plan.
+5. `python dev/scripts/audit_style_settings_contract.py` — Style Settings CSS metadata must match `docs/v3/style-settings-contract.json`.
+6. `python dev/scripts/audit_docs_assets.py` — local Markdown links and README image assets must resolve.
+7. `python dev/scripts/audit_css_compat_budget.py` — unlayered/zero-important contract, bundle budget, and known browser-compat exceptions must hold.
+8. `python dev/scripts/audit_v3_hit_routing.py` — must be clean.
+9. `python dev/scripts/audit_pdf_header_footer.py` — must be clean after any print/report/PDF settings change.
+10. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
+11. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
+12. Bump `manifest.json` version, add `CHANGELOG.md` entry.
+13. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for fixture contract; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
+14. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
+15. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
+16. Commit, tag `<version>` (and optionally `v<version>`), push tag.
+17. CI (`.github/workflows/release.yml`) builds the GitHub Release.
 
 ## Style Settings + minAppVersion
 

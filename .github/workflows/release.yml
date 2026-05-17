@@ -35,14 +35,22 @@ jobs:
 
       - name: Validate theme package
         run: |
+          python dev/scripts/audit_release_metadata.py --tag "$GITHUB_REF_NAME"
           python dev/scripts/bundle_v3.py
           python dev/scripts/bundle_v3.py --check
+          python -c "from pathlib import Path; theme = Path('theme.css').read_text(encoding='utf-8'); bundle = Path('dist/theme-v3.css').read_text(encoding='utf-8'); assert theme == bundle, 'theme.css is stale vs dist/theme-v3.css; promote the fresh bundle before commit'"
+          python dev/scripts/audit_style_settings_contract.py
+          python dev/scripts/audit_docs_assets.py
+          python dev/scripts/audit_css_compat_budget.py
           python dev/scripts/audit_v3_hit_routing.py
           python dev/scripts/audit_pdf_header_footer.py
           python dev/scripts/v3_audit_duplicate_selectors.py --threshold 10
 
       - name: Build manual install ZIP
         run: python dev/scripts/build_release.py
+
+      - name: Audit manual install ZIP
+        run: python dev/scripts/audit_release_zip.py
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
