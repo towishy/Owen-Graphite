@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.38
+
+- feat: Live Preview와 PDF Export 코드블럭의 헤더, 폰트, syntax 색상 패리티를 정리했습니다.
+- docs: 전체 `src/` CSS 기준 Live Preview ↔ Export PDF 매핑 MAP을 `dev/MAP/live-preview-pdf-css-map/`에 추가했습니다.
+- guard: 코드 clarity fixture를 확장해 Live Preview source line, rendered widget, PDF `.token.*`/`.cm-*` syntax class 경로를 함께 검증합니다.
+
 ## v3.1.37
 
 - feat: Live Preview / Reading / PDF Export 품질 패리티 fixture와 로컬 visual smoke 검증 스크립트를 추가했습니다.

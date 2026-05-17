@@ -4,7 +4,7 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.37`
+- Version: `3.1.38`
 - Source: `src/entry.css`
 - Modules: 30
 - Selectors: 2166

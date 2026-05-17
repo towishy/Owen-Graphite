@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.37** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 16,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.38** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -21,8 +21,8 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.37` |
-| **베이스라인 / 롤백 기준** | `v3.1.37` |
+| **버전** | `3.1.38` |
+| **베이스라인 / 롤백 기준** | `v3.1.38` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -39,6 +39,18 @@
 ---
 
 ## 2. 신기능 소개
+
+### v3.1.38 — 코드블럭 Live Preview / PDF 패리티
+
+Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax 색상을 같은 토큰 기준으로 맞췄습니다. Obsidian Live Preview의 source line, rendered code widget, PDF export의 Prism `.token.*`/CodeMirror `.cm-*` 경로를 모두 검증 fixture에 포함해 앞으로 코드블럭 개선 시 누락되는 경로를 줄였습니다.
+
+![코드블럭 Live Preview / PDF 패리티](screenshots/readme/code-font-clarity.png)
+
+| 검증 영역 | 개선 내용 |
+| --- | --- |
+| Live Preview | 코드 fence 헤더를 한 줄 라벨로 정리하고 rendered widget 경로까지 동일한 codeblock surface 적용 |
+| PDF Export | `.token.*`와 `.cm-*` syntax class를 같은 `--ogd-code-*` 색상·폰트 토큰으로 매핑 |
+| 유지보수 | `dev/MAP/live-preview-pdf-css-map/`에 selector 매핑, cascade ownership, parity guideline 추가 |
 
 ### v3.1.37 — Live Preview / PDF 품질 패리티
 
@@ -76,7 +88,7 @@ PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-se
 
 ### 옵션 B — ZIP 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.37.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.38.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -85,7 +97,7 @@ PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-se
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.37.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.38.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트
 
