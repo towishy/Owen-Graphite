@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the Live Preview / PDF parity fixture when a local browser exists."""
+"""Render PDF visual quality fixtures when a local browser exists."""
 
 from __future__ import annotations
 
@@ -12,21 +12,67 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-FIXTURE = ROOT / "docs" / "v3" / "research" / "live-preview-pdf-parity-fixture.html"
 THEME = ROOT / "theme.css"
 OUT_DIR = ROOT / "dev" / "temp" / "visual-quality"
-SCREENSHOT = OUT_DIR / "live-preview-pdf-parity.png"
-PDF = OUT_DIR / "live-preview-pdf-parity.pdf"
 
-REQUIRED_MARKERS = (
-    'data-ogd-fixture="live-preview-pdf-parity"',
-    'data-check="lp-callout-summary"',
-    'data-check="reading-callout-summary"',
-    'data-check="pdf-callout-summary"',
-    'class="ogd-html-table wrap-table print-fit-table"',
-    'class="ogd-token-wrap"',
-    'ogd-pdf-visibility',
-    'ogd-pdf-font-comfortable',
+FIXTURES = (
+    {
+        "id": "live-preview-pdf-parity",
+        "path": ROOT / "docs" / "v3" / "research" / "live-preview-pdf-parity-fixture.html",
+        "screenshot": OUT_DIR / "live-preview-pdf-parity.png",
+        "pdf": OUT_DIR / "live-preview-pdf-parity.pdf",
+        "min_png": 20_000,
+        "min_pdf": 10_000,
+        "markers": (
+            'data-ogd-fixture="live-preview-pdf-parity"',
+            'data-check="lp-callout-summary"',
+            'data-check="reading-callout-summary"',
+            'data-check="pdf-callout-summary"',
+            'class="ogd-html-table wrap-table print-fit-table"',
+            'class="ogd-token-wrap"',
+            'ogd-pdf-visibility',
+            'ogd-pdf-font-comfortable',
+        ),
+    },
+    {
+        "id": "pdf-image-body-quality",
+        "path": ROOT / "docs" / "v3" / "research" / "pdf-image-body-quality-fixture.html",
+        "screenshot": OUT_DIR / "pdf-image-body-quality.png",
+        "pdf": OUT_DIR / "pdf-image-body-quality.pdf",
+        "min_png": 20_000,
+        "min_pdf": 10_000,
+        "markers": (
+            'data-ogd-fixture="pdf-image-body-quality"',
+            'data-check="pdf-figure-wide"',
+            'data-check="pdf-figure-compact"',
+            'data-check="pdf-body-callout"',
+            'ogd-figure-wide',
+            'ogd-figure-compact',
+            'ogd-pdf-visibility',
+            'ogd-pdf-font-comfortable',
+        ),
+    },
+    {
+        "id": "code-font-clarity",
+        "path": ROOT / "docs" / "v3" / "research" / "code-font-clarity-fixture.html",
+        "screenshot": OUT_DIR / "code-font-clarity.png",
+        "pdf": OUT_DIR / "code-font-clarity.pdf",
+        "min_png": 20_000,
+        "min_pdf": 10_000,
+        "markers": (
+            'data-ogd-fixture="code-font-clarity"',
+            'data-check="lp-code-clarity"',
+            'data-check="lp-widget-code-clarity"',
+            'data-check="reading-code-clarity"',
+            'data-check="pdf-code-clarity"',
+            'data-check="pdf-cm-code-color"',
+            'cm-keyword',
+            'cm-preview-code-block',
+            'token keyword',
+            'ogd-pdf-visibility',
+            'ogd-pdf-font-comfortable',
+        ),
+    },
 )
 
 BROWSER_NAMES = (
@@ -70,16 +116,20 @@ def find_browser() -> str | None:
     return None
 
 
-def validate_fixture_contract() -> None:
-    if not FIXTURE.exists():
-        raise FileNotFoundError(f"missing fixture: {FIXTURE}")
+def validate_fixture_contract(fixture: dict[str, object]) -> None:
+    path = fixture["path"]
+    markers = fixture["markers"]
+    assert isinstance(path, Path)
+    assert isinstance(markers, tuple)
+    if not path.exists():
+        raise FileNotFoundError(f"missing fixture: {path}")
     if not THEME.exists():
         raise FileNotFoundError(f"missing theme: {THEME}")
 
-    html = FIXTURE.read_text(encoding="utf-8")
-    missing = [marker for marker in REQUIRED_MARKERS if marker not in html]
+    html = path.read_text(encoding="utf-8")
+    missing = [marker for marker in markers if marker not in html]
     if missing:
-        raise AssertionError("fixture is missing required markers: " + ", ".join(missing))
+        raise AssertionError(f"{fixture['id']} is missing required markers: " + ", ".join(missing))
 
 
 def run_browser(browser: str, args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -100,34 +150,40 @@ def assert_output(path: Path, min_size: int) -> None:
         raise AssertionError(f"{path} is unexpectedly small: {size} bytes")
 
 
-def render(browser: str) -> None:
+def render(browser: str, fixture: dict[str, object]) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    fixture_uri = FIXTURE.as_uri()
+    path = fixture["path"]
+    screenshot = fixture["screenshot"]
+    pdf = fixture["pdf"]
+    assert isinstance(path, Path)
+    assert isinstance(screenshot, Path)
+    assert isinstance(pdf, Path)
+    fixture_uri = path.as_uri()
 
     screenshot_result = run_browser(
         browser,
         [
             "--window-size=1440,1100",
-            f"--screenshot={SCREENSHOT}",
+            f"--screenshot={screenshot}",
             fixture_uri,
         ],
     )
     if screenshot_result.returncode != 0:
         raise RuntimeError(screenshot_result.stderr.strip() or "screenshot render failed")
-    assert_output(SCREENSHOT, 20_000)
+    assert_output(screenshot, int(fixture["min_png"]))
 
     pdf_result = run_browser(
         browser,
         [
             "--run-all-compositor-stages-before-draw",
-            f"--print-to-pdf={PDF}",
+            f"--print-to-pdf={pdf}",
             "--print-to-pdf-no-header",
             fixture_uri,
         ],
     )
     if pdf_result.returncode != 0:
         raise RuntimeError(pdf_result.stderr.strip() or "PDF render failed")
-    assert_output(PDF, 10_000)
+    assert_output(pdf, int(fixture["min_pdf"]))
 
 
 def main() -> int:
@@ -137,9 +193,10 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
-        validate_fixture_contract()
+        for fixture in FIXTURES:
+            validate_fixture_contract(fixture)
         if args.static_only:
-            print("OK: visual quality fixture contract")
+            print(f"OK: visual quality fixture contracts ({len(FIXTURES)} fixtures)")
             return 0
 
         browser = find_browser()
@@ -148,9 +205,14 @@ def main() -> int:
             print(message)
             return 2 if args.require_browser else 0
 
-        render(browser)
-        print(f"OK: rendered {SCREENSHOT.relative_to(ROOT)}")
-        print(f"OK: rendered {PDF.relative_to(ROOT)}")
+        for fixture in FIXTURES:
+            render(browser, fixture)
+            screenshot = fixture["screenshot"]
+            pdf = fixture["pdf"]
+            assert isinstance(screenshot, Path)
+            assert isinstance(pdf, Path)
+            print(f"OK: rendered {screenshot.relative_to(ROOT)}")
+            print(f"OK: rendered {pdf.relative_to(ROOT)}")
         return 0
     except Exception as exc:
         print(f"FAIL: {exc}", file=sys.stderr)

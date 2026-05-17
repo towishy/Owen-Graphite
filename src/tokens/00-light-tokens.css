@@ -102,8 +102,30 @@
     "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
   --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
     "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
-  --font-monospace-theme: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono",
-    "Cascadia Code", "Consolas", "D2Coding", "Menlo", "Courier New", monospace;
+  --font-monospace-theme: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
+    "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+
+  --ogd-code-font-family: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
+    "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --ogd-code-font-size: 0.92em;
+  --ogd-code-print-font-size: 8.6pt;
+  --ogd-code-font-weight: 520;
+  --ogd-code-line-height: 1.58;
+  --ogd-code-print-line-height: 1.44;
+  --ogd-code-letter-spacing: 0;
+  --ogd-code-tab-size: 2;
+  --ogd-code-font-feature-settings: "zero" 1, "tnum" 1;
+  --ogd-code-font-variant-numeric: tabular-nums slashed-zero;
+  --ogd-code-font-variant-ligatures: none;
+  --ogd-code-fg: #1e293b;
+  --ogd-code-muted: #64748b;
+  --ogd-code-keyword: #5b21b6;
+  --ogd-code-string: #a16207;
+  --ogd-code-function: #0f766e;
+  --ogd-code-property: #2563eb;
+  --ogd-code-number: #be123c;
+  --ogd-code-punctuation: #475569;
+  --ogd-code-operator: #334155;
 
   --background-primary: #ffffff;
   --background-primary-alt: #f9fafb;
@@ -185,16 +207,16 @@
   --callout-done: 4, 120, 87;
 
   --code-background: #f8fafc;
-  --code-normal: #111827;
-  --code-comment: #6b7280;
-  --code-function: #1d4ed8;
+  --code-normal: var(--ogd-code-fg, #1e293b);
+  --code-comment: var(--ogd-code-muted, #64748b);
+  --code-function: var(--ogd-code-function, #0f766e);
   --code-important: #374151;
-  --code-keyword: #374151;
-  --code-property: #1d4ed8;
-  --code-punctuation: #4b5563;
-  --code-string: #047857;
-  --code-tag: #1d4ed8;
-  --code-value: #047857;
+  --code-keyword: var(--ogd-code-keyword, #5b21b6);
+  --code-property: var(--ogd-code-property, #2563eb);
+  --code-punctuation: var(--ogd-code-punctuation, #475569);
+  --code-string: var(--ogd-code-string, #a16207);
+  --code-tag: var(--ogd-code-property, #2563eb);
+  --code-value: var(--ogd-code-string, #a16207);
 
   --radius-s: 4px;
   --radius-m: 6px;

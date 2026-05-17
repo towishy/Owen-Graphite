@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite PDF Image / Body Quality Fixture</title>
+  <link rel="stylesheet" href="../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef3f8;
+    }
+
+    body {
+      --ogd-pdf-header-text: "Figure";
+      --ogd-pdf-header-value: "Body Quality";
+      --ogd-pdf-footer-text: "Export";
+      --ogd-pdf-footer-value: "Image Fixture";
+      color: #1f2937;
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-shell {
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 30px;
+      border: 1px solid rgba(148, 163, 184, 0.34);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 16px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .fixture-print-note {
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sample-chart {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .fixture-shell {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-spacing-relaxed ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
+  <main class="fixture-shell markdown-preview-view markdown-rendered" data-ogd-fixture="pdf-image-body-quality">
+    <article class="markdown-rendered">
+      <p class="fixture-print-note">PDF Image / Body Quality</p>
+      <h1>PDF 이미지와 본문 조판 품질</h1>
+      <p>이 fixture는 큰 도판, 작은 도판, caption/source, 긴 본문, heading 주변 공백이 PDF export에서 안정적으로 유지되는지 확인합니다.</p>
+      <p>본문은 한국어 기술 보고서처럼 읽히는 것을 목표로 합니다. 줄 간격은 과하게 넓지 않고, 문단 사이의 여백은 표와 callout 사이에서도 예측 가능해야 합니다.</p>
+
+      <figure class="ogd-figure ogd-figure-wide ogd-figure-keep" data-check="pdf-figure-wide">
+        <svg class="sample-chart" viewBox="0 0 960 430" role="img" aria-label="품질 지표 샘플 차트">
+          <defs>
+            <linearGradient id="panel" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#f8fbff"/>
+            </linearGradient>
+            <linearGradient id="sky" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#bae6fd"/>
+              <stop offset="1" stop-color="#99f6e4"/>
+            </linearGradient>
+          </defs>
+          <rect x="1" y="1" width="958" height="428" rx="18" fill="url(#panel)" stroke="#cbd5e1"/>
+          <path d="M70 330 C180 260 250 278 330 210 S520 170 610 132 770 110 880 70" fill="none" stroke="url(#sky)" stroke-width="18" stroke-linecap="round"/>
+          <path d="M70 330 C180 260 250 278 330 210 S520 170 610 132 770 110 880 70" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+          <g fill="#334155" font-family="Segoe UI, sans-serif" font-size="22" font-weight="700">
+            <text x="70" y="72">Export Quality</text>
+            <text x="70" y="108" fill="#64748b" font-size="16" font-weight="600">image, body rhythm, caption binding</text>
+          </g>
+          <g fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="14">
+            <text x="70" y="374">Q1</text>
+            <text x="312" y="374">Q2</text>
+            <text x="554" y="374">Q3</text>
+            <text x="796" y="374">Q4</text>
+          </g>
+        </svg>
+        <figcaption><strong>Figure 1.</strong> PDF export에서 큰 도판이 페이지 폭을 넘지 않고 caption과 함께 유지되는지 확인합니다.</figcaption>
+        <span class="ogd-figure-source">Source: Owen Graphite visual quality fixture</span>
+      </figure>
+
+      <h2>본문 리듬과 이미지 주변 공백</h2>
+      <p>이미지 뒤 heading은 도판과 너무 붙지 않아야 하며, 페이지 하단에 heading만 단독으로 남는 상황을 줄여야 합니다. 본문은 한글 문장 기준으로 자연스럽게 줄바꿈되고, 긴 영문 식별자는 필요한 위치에서만 줄바꿈되어야 합니다.</p>
+      <p>PDF export는 브라우저 print 엔진의 제약을 받기 때문에 모든 페이지 분할을 완전히 제어할 수는 없습니다. 대신 이미지, caption, source, heading, 첫 문단의 관계를 안정적으로 유지하는 보수적인 guard를 사용합니다.</p>
+
+      <figure class="ogd-figure ogd-figure-compact" data-check="pdf-figure-compact">
+        <svg class="sample-chart" viewBox="0 0 640 250" role="img" aria-label="작은 도판 샘플">
+          <rect x="1" y="1" width="638" height="248" rx="16" fill="#ffffff" stroke="#d5e4ec"/>
+          <circle cx="130" cy="126" r="54" fill="#e0f2fe" stroke="#7dd3fc"/>
+          <circle cx="320" cy="126" r="54" fill="#ccfbf1" stroke="#5eead4"/>
+          <circle cx="510" cy="126" r="54" fill="#fef3c7" stroke="#fcd34d"/>
+          <g fill="#334155" font-family="Segoe UI, sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+            <text x="130" y="132">Image</text>
+            <text x="320" y="132">Text</text>
+            <text x="510" y="132">PDF</text>
+          </g>
+        </svg>
+        <figcaption><strong>Figure 2.</strong> 작은 도판은 본문 흐름 안에서 과도한 여백 없이 읽혀야 합니다.</figcaption>
+      </figure>
+
+      <div class="callout" data-callout="summary" data-check="pdf-body-callout">
+        <div class="callout-title"><span class="callout-icon" aria-hidden="true"></span><span class="callout-title-inner">검증 기준</span></div>
+        <div class="callout-content">
+          <p>도판은 `max-width: 100%`와 print height guard를 적용하고, caption은 도판과 분리되지 않도록 page-break guard를 사용합니다.</p>
+        </div>
+      </div>
+
+      <h2>긴 문서 끝 상태</h2>
+      <p>마지막 문단은 PDF footer reserve와 겹치지 않아야 합니다. 본문 글자 크기 preset이 켜져도 이미지와 caption의 정보 위계가 본문보다 과하게 강해지지 않아야 합니다.</p>
+    </article>
+  </main>
+</body>
+</html>

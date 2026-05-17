@@ -938,13 +938,31 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    color: #111827;
-    font-family: var(--font-monospace-theme, "JetBrains Mono", "SFMono-Regular", Consolas, monospace);
-    font-size: 8.8pt;
-    line-height: 1.5;
+    color: var(--ogd-code-fg, #1e293b);
+    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-weight: var(--ogd-code-font-weight, 520);
+    font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
+    font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
+    font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
+    line-height: var(--ogd-code-print-line-height, 1.44);
+    letter-spacing: var(--ogd-code-letter-spacing, 0);
     white-space: pre-wrap;
     word-break: normal;
     overflow-wrap: anywhere;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(span, .token, [class*="token"], [class*="cm-"]),
+  body .workspace-leaf-content .markdown-rendered pre code :is(span, .token, [class*="token"], [class*="cm-"]) {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-feature-settings: inherit;
+    font-variant-numeric: inherit;
+    font-variant-ligatures: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   /* v2.22.78 - Hide document frontmatter/properties from PDF export */

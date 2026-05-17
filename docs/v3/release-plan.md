@@ -42,7 +42,7 @@
 | Sync to Obsidian vault | `dev/scripts/sync_obsidian_theme.py` |
 | Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle freshness + metadata/style/docs/CSS/PDF/LP audits) |
 | CI validation | `.github/workflows/validate.yml` (fresh bundle + `theme.css` freshness + metadata/style/docs/CSS/PDF/LP audits) |
-| Visual quality smoke check | `dev/scripts/audit_visual_quality_fixture.py` (local browser render when available) |
+| Visual quality smoke check | `dev/scripts/audit_visual_quality_fixture.py` (LP/PDF parity + image/body + code font fixtures; local browser render when available) |
 
 ## Release procedure for future v3.x.y
 
@@ -58,7 +58,7 @@
 10. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
 11. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
 12. Bump `manifest.json` version, add `CHANGELOG.md` entry.
-13. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for fixture contract; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
+13. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for LP/PDF parity, image/body, and code font fixture contracts; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
 14. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
 15. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
 16. Commit, tag `<version>` (and optionally `v<version>`), push tag.

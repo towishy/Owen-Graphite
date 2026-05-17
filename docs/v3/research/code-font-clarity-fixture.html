@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Code Font Clarity Fixture</title>
+  <link rel="stylesheet" href="../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef3f8;
+    }
+
+    body {
+      --ogd-pdf-header-text: "Code";
+      --ogd-pdf-header-value: "Clarity";
+      --ogd-pdf-footer-text: "Owen";
+      --ogd-pdf-footer-value: "Graphite";
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-shell {
+      max-width: 1320px;
+      margin: 28px auto;
+      padding: 0 20px 36px;
+    }
+
+    .fixture-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .fixture-pane {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 14px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .fixture-pane-title,
+    .fixture-print-note {
+      margin: 0 0 14px;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fixture-print {
+      display: none;
+    }
+
+    .cm-line {
+      min-height: 1.58em;
+    }
+
+    .fixture-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+
+    .fixture-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 9px;
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.62);
+      color: #334155;
+      font-size: 12px;
+      font-weight: 720;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    }
+
+    .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-formatting-code,
+    .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end .cm-formatting-code {
+      display: inline-block;
+    }
+
+    @media (max-width: 960px) {
+      .fixture-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .fixture-shell {
+        display: none;
+      }
+
+      .fixture-print {
+        display: block;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-spacing-relaxed ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
+  <main class="fixture-shell" data-ogd-fixture="code-font-clarity">
+    <div class="fixture-grid">
+      <section class="fixture-pane markdown-source-view mod-cm6" aria-label="Live Preview code clarity sample">
+        <p class="fixture-pane-title">Live Preview Code</p>
+        <div class="fixture-meta">
+          <span class="fixture-chip">slashed zero</span>
+          <span class="fixture-chip">tabular nums</span>
+          <span class="fixture-chip">ligature off</span>
+        </div>
+        <div class="cm-line HyperMD-codeblock HyperMD-codeblock-begin" data-check="lp-code-clarity"><span class="cm-formatting-code cm-formatting-code-block">```</span><span class="cm-hmd-codeblock">typescript</span></div>
+        <div class="cm-line HyperMD-codeblock"><span class="cm-keyword">type</span> <span class="cm-typeName">DocumentSurface</span> <span class="cm-operator">=</span> <span class="cm-string">"reading"</span> <span class="cm-operator">|</span> <span class="cm-string">"live-preview"</span> <span class="cm-operator">|</span> <span class="cm-string">"pdf"</span>;</div>
+        <div class="cm-line HyperMD-codeblock"><span class="cm-keyword">interface</span> <span class="cm-typeName">BodyDesignCheck</span> {</div>
+        <div class="cm-line HyperMD-codeblock">  <span class="cm-property">surface</span>: <span class="cm-typeName">DocumentSurface</span>;</div>
+        <div class="cm-line HyperMD-codeblock">  <span class="cm-property">headingRhythm</span>: <span class="cm-string">"stable"</span> <span class="cm-operator">|</span> <span class="cm-string">"too-tight"</span> <span class="cm-operator">|</span> <span class="cm-string">"too-loose"</span>;</div>
+        <div class="cm-line HyperMD-codeblock">  <span class="cm-property">captionFlow</span>: <span class="cm-string">"clear"</span> <span class="cm-operator">|</span> <span class="cm-string">"missing"</span> <span class="cm-operator">|</span> <span class="cm-string">"overlapping"</span>;</div>
+        <div class="cm-line HyperMD-codeblock">}</div>
+        <div class="cm-line HyperMD-codeblock"><span class="cm-keyword">const</span> <span class="cm-def">needsFollowUp</span> <span class="cm-operator">=</span> checks.<span class="cm-def">some</span>((<span class="cm-variableName">check</span>) <span class="cm-operator">=&gt;</span></div>
+        <div class="cm-line HyperMD-codeblock">  check.<span class="cm-property">headingRhythm</span> <span class="cm-operator">!==</span> <span class="cm-string">"stable"</span> <span class="cm-operator">||</span> check.<span class="cm-property">captionFlow</span> <span class="cm-operator">!==</span> <span class="cm-string">"clear"</span></div>
+        <div class="cm-line HyperMD-codeblock"><span class="cm-comment">); // PDF에서도 같은 폭과 색 대비를 유지</span></div>
+        <div class="cm-line HyperMD-codeblock HyperMD-codeblock-end"><span class="cm-formatting-code cm-formatting-code-block">```</span></div>
+        <div class="cm-preview-code-block cm-embed-block markdown-rendered" data-check="lp-widget-code-clarity">
+          <pre><code class="language-css"><span class="cm-qualifier">.markdown-preview-view</span> <span class="cm-tag">p</span> <span class="cm-bracket">{</span>
+  <span class="cm-property">line-height</span><span class="cm-punctuation">:</span> <span class="cm-number">1.78</span><span class="cm-punctuation">;</span>
+  <span class="cm-property">margin-block</span><span class="cm-punctuation">:</span> <span class="cm-number">0.72em</span><span class="cm-punctuation">;</span>
+<span class="cm-bracket">}</span></code></pre>
+          <div class="code-block-flair">CSS</div>
+        </div>
+      </section>
+
+      <section class="fixture-pane markdown-preview-view markdown-rendered" aria-label="Reading code clarity sample">
+        <p class="fixture-pane-title">Reading Code</p>
+        <div class="fixture-meta">
+          <span class="fixture-chip">0/O</span>
+          <span class="fixture-chip">1/l/I</span>
+          <span class="fixture-chip">!= => ===</span>
+        </div>
+        <article class="markdown-rendered">
+          <pre class="language-typescript" data-check="reading-code-clarity"><code><span class="token keyword">type</span> <span class="token class-name">DocumentSurface</span> <span class="token operator">=</span> <span class="token string">"reading"</span> <span class="token operator">|</span> <span class="token string">"live-preview"</span> <span class="token operator">|</span> <span class="token string">"pdf"</span>;
+
+<span class="token keyword">interface</span> <span class="token class-name">BodyDesignCheck</span> {
+  <span class="token property">surface</span>: <span class="token class-name">DocumentSurface</span>;
+  <span class="token property">headingRhythm</span>: <span class="token string">"stable"</span> <span class="token operator">|</span> <span class="token string">"too-tight"</span> <span class="token operator">|</span> <span class="token string">"too-loose"</span>;
+  <span class="token property">captionFlow</span>: <span class="token string">"clear"</span> <span class="token operator">|</span> <span class="token string">"missing"</span> <span class="token operator">|</span> <span class="token string">"overlapping"</span>;
+}
+
+<span class="token keyword">const</span> <span class="token function">needsFollowUp</span> <span class="token operator">=</span> checks.<span class="token function">some</span>((check) <span class="token operator">=&gt;</span>
+  check.<span class="token property">headingRhythm</span> <span class="token operator">!==</span> <span class="token string">"stable"</span> <span class="token operator">||</span> check.<span class="token property">captionFlow</span> <span class="token operator">!==</span> <span class="token string">"clear"</span>
+); <span class="token comment">// PDF에서도 같은 폭과 색 대비를 유지</span></code></pre>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <main class="fixture-print markdown-preview-view markdown-rendered" aria-label="PDF code clarity sample">
+    <article class="markdown-rendered">
+      <p class="fixture-print-note">PDF Code Clarity</p>
+      <h1>코드블럭 폰트 가독성</h1>
+      <p>이 fixture는 Live Preview와 PDF가 같은 코드 폰트 스택, 숫자 스타일, ligature 정책, syntax 색상 대비를 공유하는지 확인합니다.</p>
+      <pre class="language-typescript" data-check="pdf-code-clarity"><code><span class="token keyword">type</span> <span class="token class-name">DocumentSurface</span> <span class="token operator">=</span> <span class="token string">"reading"</span> <span class="token operator">|</span> <span class="token string">"live-preview"</span> <span class="token operator">|</span> <span class="token string">"pdf"</span>;
+
+<span class="token keyword">interface</span> <span class="token class-name">BodyDesignCheck</span> {
+  <span class="token property">surface</span>: <span class="token class-name">DocumentSurface</span>;
+  <span class="token property">headingRhythm</span>: <span class="token string">"stable"</span> <span class="token operator">|</span> <span class="token string">"too-tight"</span> <span class="token operator">|</span> <span class="token string">"too-loose"</span>;
+  <span class="token property">captionFlow</span>: <span class="token string">"clear"</span> <span class="token operator">|</span> <span class="token string">"missing"</span> <span class="token operator">|</span> <span class="token string">"overlapping"</span>;
+}
+
+<span class="token keyword">const</span> <span class="token function">needsFollowUp</span> <span class="token operator">=</span> checks.<span class="token function">some</span>((check) <span class="token operator">=&gt;</span>
+  check.<span class="token property">headingRhythm</span> <span class="token operator">!==</span> <span class="token string">"stable"</span> <span class="token operator">||</span> check.<span class="token property">captionFlow</span> <span class="token operator">!==</span> <span class="token string">"clear"</span>
+); <span class="token comment">// PDF에서도 같은 폭과 색 대비를 유지</span></code></pre>
+      <pre class="language-css" data-check="pdf-cm-code-color"><code><span class="cm-qualifier">.markdown-preview-view</span> <span class="cm-tag">p</span> <span class="cm-bracket">{</span>
+  <span class="cm-property">line-height</span><span class="cm-punctuation">:</span> <span class="cm-number">1.78</span><span class="cm-punctuation">;</span>
+  <span class="cm-property">margin-block</span><span class="cm-punctuation">:</span> <span class="cm-number">0.72em</span><span class="cm-punctuation">;</span>
+<span class="cm-bracket">}</span></code></pre>
+      <p>인라인 코드 <code>ogd-code-font-family</code>, <code>comparison-table</code>, <code>print-fit-table</code>도 같은 숫자 스타일을 공유합니다.</p>
+    </article>
+  </main>
+</body>
+</html>

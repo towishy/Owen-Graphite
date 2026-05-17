@@ -216,7 +216,8 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.88);
   --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.42);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.28);
-  --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.2em;
+  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
   position: relative;
   margin: 1.28em 0 1.62em;
   padding: 0;
@@ -270,7 +271,7 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   right: 0;
   z-index: 1;
   display: block;
-  height: 2.7em;
+  height: var(--ogd-codeblock-header-height, 2.2em);
   border-bottom: 1px solid var(--ogd-codeblock-header-border);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22));
   opacity: 1;
@@ -281,12 +282,19 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
 .workspace-leaf-content .markdown-rendered pre code {
   display: block;
   max-width: 100%;
-  padding: var(--ogd-codeblock-code-padding, 2.9em 1.1em 1.05em);
+  padding: var(--ogd-codeblock-code-padding, 4.05em 1.1em 1.05em);
   overflow-x: auto;
-  color: var(--ogd-text-slate, #1e293b);
+  color: var(--ogd-code-fg, #1e293b);
   background: transparent;
-  font-size: 0.9em;
-  line-height: 1.62;
+  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-size: var(--ogd-code-font-size, 0.92em);
+  font-weight: var(--ogd-code-font-weight, 520);
+  font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
+  font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
+  font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
+  line-height: var(--ogd-code-line-height, 1.58);
+  letter-spacing: var(--ogd-code-letter-spacing, 0);
+  tab-size: var(--ogd-code-tab-size, 2);
   white-space: pre;
   word-break: normal;
   overflow-wrap: normal;
@@ -316,7 +324,8 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre {
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.82);
   --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
-  --ogd-codeblock-code-padding: 2.9em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.2em;
+  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
   box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
@@ -327,7 +336,7 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre::before {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
-  color: var(--ogd-text-slate, #1e293b);
+  color: var(--ogd-code-fg, #1e293b);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
@@ -340,42 +349,91 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre .copy-code-button
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
 .workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
-  color: #6d28d9;
+  color: var(--ogd-code-keyword, #5b21b6);
+  font-weight: 700;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
 .workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
-  color: #b45309;
+  color: var(--ogd-code-string, #a16207);
+  font-weight: 640;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
 .workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
-  color: #0f766e;
+  color: var(--ogd-code-function, #0f766e);
+  font-weight: 680;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
 .workspace-leaf-content .markdown-rendered pre :is(.token.comment, .token.prolog, .token.doctype) {
-  color: #94a3b8;
+  color: var(--ogd-code-muted, #64748b);
   font-style: italic;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.number, .token.constant, .token.symbol),
+.workspace-leaf-content .markdown-rendered pre :is(.token.number, .token.constant, .token.symbol) {
+  color: var(--ogd-code-number, #be123c);
+  font-weight: 660;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.class-name, .token.tag, .token.attr-name),
+.workspace-leaf-content .markdown-rendered pre :is(.token.class-name, .token.tag, .token.attr-name) {
+  color: var(--ogd-code-property, #2563eb);
+  font-weight: 660;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-keyword, .cm-operator, .cm-atom, .cm-bool) {
+  color: var(--ogd-code-keyword, #5b21b6);
+  font-weight: 700;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-string, .cm-string-2) {
+  color: var(--ogd-code-string, #a16207);
+  font-weight: 640;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-def, .cm-function, .cm-variableName, .cm-variable-2, .cm-variable-3) {
+  color: var(--ogd-code-function, #0f766e);
+  font-weight: 680;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-property, .cm-attribute, .cm-typeName, .cm-className, .cm-tag) {
+  color: var(--ogd-code-property, #2563eb);
+  font-weight: 660;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-number, .cm-literal) {
+  color: var(--ogd-code-number, #be123c);
+  font-weight: 660;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-comment, .cm-meta) {
+  color: var(--ogd-code-muted, #64748b);
+  font-style: italic;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-punctuation, .cm-separator, .cm-bracket) {
+  color: var(--ogd-code-punctuation, #475569);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.keyword, .token.operator, .token.boolean),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.keyword, .token.operator, .token.boolean) {
-  color: #6d28d9;
+  color: var(--ogd-code-keyword, #5b21b6);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.string, .token.attr-value),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.string, .token.attr-value) {
-  color: #b45309;
+  color: var(--ogd-code-string, #a16207);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.function, .token.variable, .token.property),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.function, .token.variable, .token.property) {
-  color: #0f766e;
+  color: var(--ogd-code-function, #0f766e);
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre :is(.token.comment, .token.prolog, .token.doctype),
 body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.comment, .token.prolog, .token.doctype) {
-  color: #64748b;
+  color: var(--ogd-code-muted, #64748b);
 }
 
