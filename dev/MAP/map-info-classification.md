@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.39`
+- Version: `3.1.40`
 - Source: `src/entry.css`
 - Modules: 30
-- Selectors: 2249
-- Findings: 554
-- Finding severity counts: critical=0, high=0, medium=481, low=73, info=0
+- Selectors: 2254
+- Findings: 557
+- Finding severity counts: critical=0, high=0, medium=482, low=75, info=0
 - Module severity counts: critical=0, high=17, medium=8, low=4, info=1
 
 ## Module Risk Table
@@ -27,7 +27,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 60 | `src/themes/50-dark.css` | 45 | 0 | 0 | high-specificity |
 | medium | 25 | `src/features/43-print-base.css` | 47 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 172 | `src/base/13-live-preview.css` | 116 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| high | 69 | `src/features/41-feature-presets.css` | 273 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
+| high | 76 | `src/features/41-feature-presets.css` | 275 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
 | medium | 23 | `src/chrome/30-workspace.css` | 122 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 31 | 0 | 0 | high-specificity |
@@ -45,7 +45,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 99 | `src/surfaces/23-liquid-glass-core.css` | 143 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 141 | `src/surfaces/24-html-table-live-preview-glass.css` | 84 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 188 | `src/polish/72-a11y-regression-hotfixes.css` | 187 | 0 | 9 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
-| low | 2 | `src/polish/73-workflow-polish.css` | 31 | 0 | 0 | repeated-selector-in-file |
+| low | 2 | `src/polish/73-workflow-polish.css` | 34 | 0 | 0 | repeated-selector-in-file |
 
 ## Findings
 

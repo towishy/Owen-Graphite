@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.40
+
+- fix: PDF Export에서 첫 H1로 렌더링되는 문서 제목을 숨기고, 본문 첫 H1은 이전 크기와 리듬으로 유지합니다.
+- polish: PDF Header/Footer 라벨이 켜진 상태에서 첫 본문 H1이 상단 배지와 겹치지 않도록 여백을 보강했습니다.
+- guard: LP/PDF computed-style audit가 문서 제목 숨김과 본문 H1 표시/크기 유지 조건을 함께 검증하도록 확장했습니다.
+
 ## v3.1.39
 
 - feat: PDF 첫 페이지 헤더에 Key/Value 2쌍 출력을 추가하고, 1번 → 2번 순서와 동일 segment 높이를 보장했습니다.

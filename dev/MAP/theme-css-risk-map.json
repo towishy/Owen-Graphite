@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.39",
+  "version": "3.1.40",
   "module_order": [
     {
       "import_index": 1,
@@ -186,12 +186,12 @@
   ],
   "summary": {
     "module_count": 30,
-    "selector_count": 2249,
-    "finding_count": 554,
+    "selector_count": 2254,
+    "finding_count": 557,
     "cross_file_selector_group_count": 89,
     "finding_severity_counts": {
-      "medium": 481,
-      "low": 73
+      "medium": 482,
+      "low": 75
     },
     "module_severity_counts": {
       "high": 17,
@@ -986,14 +986,14 @@
       "entry_line": 55,
       "legacy_id": "06-feature-presets.css",
       "module": "src/features/41-feature-presets.css",
-      "line_count": 1283,
-      "selector_count": 273,
-      "declaration_count": 797,
+      "line_count": 1311,
+      "selector_count": 275,
+      "declaration_count": 799,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 5,
+      "high_specificity_selector_count": 6,
       "live_preview_sensitive_rule_count": 0,
-      "pdf_header_footer_sensitive_rule_count": 25,
+      "pdf_header_footer_sensitive_rule_count": 27,
       "repeated_selector_extra_count": 4,
       "max_specificity": [
         0,
@@ -1050,7 +1050,7 @@
           16
         ]
       ],
-      "risk_score": 69,
+      "risk_score": 76,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -2360,9 +2360,9 @@
       "entry_line": 91,
       "legacy_id": "10f-workflow-polish.css",
       "module": "src/polish/73-workflow-polish.css",
-      "line_count": 219,
-      "selector_count": 31,
-      "declaration_count": 89,
+      "line_count": 236,
+      "selector_count": 34,
+      "declaration_count": 92,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 0,
@@ -2408,6 +2408,10 @@
           3
         ],
         [
+          "display",
+          3
+        ],
+        [
           "margin-bottom",
           3
         ],
@@ -2417,10 +2421,6 @@
         ],
         [
           "--ogd-table-head-bg",
-          2
-        ],
-        [
-          "--ogd-table-row-hover",
           2
         ]
       ],
@@ -3772,7 +3772,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 884,
+      "line": 787,
+      "selector": "body.ogd-pdf-header-enabled :is( .markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1, body.ogd-pdf-header-enabled :is( .markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1",
+      "message": "specificity=(0, 11, 2)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/features/41-feature-presets.css",
+      "line": 912,
       "selector": ".markdown-rendered h1, .markdown-preview-view.markdown-rendered h1, .markdown-reading-view .markdown-rendered h1, body.ogd-report-mode .markdown-rendered > h1:first-of-type",
       "message": "specificity=(0, 8, 4)"
     },
@@ -3780,7 +3788,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 889,
+      "line": 917,
       "selector": ".markdown-rendered h1::after, .markdown-preview-view.markdown-rendered h1::after, .markdown-reading-view .markdown-rendered h1::after, body.ogd-report-mode .markdown-rendered > h1:first-of-type::after",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3788,7 +3796,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 933,
+      "line": 961,
       "selector": "body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p, body.ogd-report-mode .markdown-rendered blockquote p, body.ogd-report-mode .markdown-rendered li p, body.ogd-report-mode .markdown-rendered .callout p",
       "message": "specificity=(0, 10, 15)"
     },
@@ -6460,7 +6468,23 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 770,
+      "line": 768,
+      "selector": "body.ogd-pdf-header-enabled :is( .markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered ) > h1:first-of-type + h1, body.ogd-pdf-header-enabled :is( .markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered ) > .markdown-preview-section > h1:first-of-type + h1",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 787,
+      "selector": "body.ogd-pdf-header-enabled :is( .markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1, body.ogd-pdf-header-enabled :is( .markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 789,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6468,7 +6492,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 801,
+      "line": 820,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6476,7 +6500,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 841,
+      "line": 860,
       "selector": "body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6484,7 +6508,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 866,
+      "line": 885,
       "selector": "body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -7161,7 +7185,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 166
+          "line": 174
         }
       ]
     },
@@ -7176,7 +7200,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 998
+          "line": 1026
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -7199,7 +7223,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 1000
+          "line": 1028
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -7273,7 +7297,7 @@
         },
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 1237
+          "line": 1265
         }
       ]
     },
@@ -7879,7 +7903,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 964
+          "line": 992
         },
         {
           "module": "src/chrome/31-navigation-tasks-search.css",
@@ -8117,7 +8141,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 186
+          "line": 194
         }
       ]
     },
@@ -8171,7 +8195,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 210
+          "line": 218
         }
       ]
     },
@@ -8189,7 +8213,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 198
+          "line": 206
         }
       ]
     },
@@ -8207,7 +8231,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 190
+          "line": 198
         }
       ]
     },
@@ -8225,7 +8249,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 206
+          "line": 214
         }
       ]
     },
@@ -8243,7 +8267,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 202
+          "line": 210
         }
       ]
     },
@@ -8261,7 +8285,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 214
+          "line": 222
         }
       ]
     },
@@ -8279,7 +8303,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 194
+          "line": 202
         }
       ]
     },
@@ -8297,7 +8321,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 147
+          "line": 155
         }
       ]
     },
@@ -8315,7 +8339,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 151
+          "line": 159
         }
       ]
     },

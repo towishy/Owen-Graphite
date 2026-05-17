@@ -4869,6 +4869,34 @@ body.ogd-pdf-label-segmented-dual {
     right: auto;
   }
 
+  body.ogd-pdf-header-enabled :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > h1:first-of-type + h1,
+  body.ogd-pdf-header-enabled :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > .markdown-preview-section > h1:first-of-type + h1 {
+    margin-top: 1.65em;
+  }
+
+  @supports selector(:nth-child(1 of .el-h1)) {
+    body.ogd-pdf-header-enabled :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1,
+    body.ogd-pdf-header-enabled :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
+      margin-top: 1.65em;
+    }
+  }
+
   /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
     position: relative;
@@ -17753,7 +17781,10 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
 }
 
 @media print {
-  body :is(.inline-title, .markdown-preview-title),
+  body :is(.inline-title, .markdown-preview-title) {
+    display: none;
+  }
+
   body :is(
     .markdown-rendered.markdown-rendered,
     .markdown-preview-view.markdown-rendered.markdown-rendered,
@@ -17780,6 +17811,24 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) {
       display: none;
     }
+
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    font-size: 3.4em;
+    line-height: 1.08;
+    margin-top: 1.2em;
+    margin-bottom: 0.7em;
+  }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    font-size: 0.30em;
+    margin-bottom: 0.7em;
+  }
+  body.ogd-pdf-compact :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    font-size: 2.85em;
+    line-height: 1.06;
+    margin-top: 0.72em;
+    margin-bottom: 0.42em;
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,

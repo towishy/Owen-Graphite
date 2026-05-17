@@ -108,23 +108,40 @@ def audit_with_playwright(require_playwright: bool) -> int:
         page.emulate_media(media="print")
         print_styles = {name: get_style(page, selector) for name, selector in PRINT_SELECTORS.items()}
 
-        pdf_document_title = get_style(page, '[data-check="pdf-table-callout"] > h1:first-of-type')
-        if pdf_document_title["display"] != "none":
-            raise AssertionError(f"pdf document title should be hidden, got display={pdf_document_title['display']!r}")
+        pdf_document_h1 = get_style(page, '[data-check="pdf-table-callout"] > h1:first-of-type')
+        if pdf_document_h1["display"] != "none":
+            raise AssertionError(f"pdf document H1 should be hidden, got display={pdf_document_h1['display']!r}")
 
         page.evaluate(
                         """
                         () => {
-                            const wrappedPreview = document.createElement('article');
-                            wrappedPreview.className = 'markdown-rendered';
-                            wrappedPreview.innerHTML = '<div class="mod-header"></div><div class="el-h1" data-check="pdf-wrapped-title"><h1>Wrapped title</h1></div><div class="el-p"><p>Body text</p></div>';
-                            document.body.appendChild(wrappedPreview);
+                            const pdfArticle = document.querySelector('[data-check="pdf-table-callout"]');
+                            const bodyHeading = document.createElement('h1');
+                            bodyHeading.dataset.check = 'pdf-first-body-h1';
+                            bodyHeading.textContent = 'First visible body heading';
+                            pdfArticle.insertBefore(bodyHeading, pdfArticle.children[1]);
                         }
                         """
         )
-        wrapped_title = get_style(page, '[data-check="pdf-wrapped-title"]')
-        if wrapped_title["display"] != "none":
-            raise AssertionError(f"pdf wrapped document title should be hidden, got display={wrapped_title['display']!r}")
+        pdf_first_body_h1 = get_style(page, '[data-check="pdf-first-body-h1"]')
+        if pdf_first_body_h1["display"] == "none":
+            raise AssertionError("pdf first body H1 should remain visible")
+        assert_between("pdf first body H1 font-size", px(pdf_first_body_h1["fontSize"]), 48.0, 58.0)
+
+        page.evaluate(
+                        """
+                        () => {
+                            const inlineTitle = document.createElement('div');
+                            inlineTitle.className = 'inline-title';
+                            inlineTitle.dataset.check = 'pdf-inline-title';
+                            inlineTitle.textContent = 'Obsidian inline title';
+                            document.body.appendChild(inlineTitle);
+                        }
+                        """
+        )
+        inline_title = get_style(page, '[data-check="pdf-inline-title"]')
+        if inline_title["display"] != "none":
+            raise AssertionError(f"pdf inline title should be hidden, got display={inline_title['display']!r}")
 
         lp_table = screen_table["lp_table"]
         pdf_table_baseline = print_styles["pdf_table_baseline"]

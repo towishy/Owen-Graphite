@@ -123,7 +123,10 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
 }
 
 @media print {
-  body :is(.inline-title, .markdown-preview-title),
+  body :is(.inline-title, .markdown-preview-title) {
+    display: none;
+  }
+
   body :is(
     .markdown-rendered.markdown-rendered,
     .markdown-preview-view.markdown-rendered.markdown-rendered,
@@ -150,6 +153,24 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
     ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) {
       display: none;
     }
+
+  }
+
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    font-size: 3.4em;
+    line-height: 1.08;
+    margin-top: 1.2em;
+    margin-bottom: 0.7em;
+  }
+  body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    font-size: 0.30em;
+    margin-bottom: 0.7em;
+  }
+  body.ogd-pdf-compact :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    font-size: 2.85em;
+    line-height: 1.06;
+    margin-top: 0.72em;
+    margin-bottom: 0.42em;
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
