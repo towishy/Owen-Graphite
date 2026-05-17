@@ -161,8 +161,6 @@ else
 fi
 ```
 
-> [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) 플러그인을 함께 설치하면 옵션을 사이드바 UI에서 토글하고, PDF Compact Report, PDF 링크 출력 방식, PDF Header/Footer 문구·색상을 입력창에서 설정할 수 있습니다.
-
 ---
 
 ## 4. 개발자 워크플로우
