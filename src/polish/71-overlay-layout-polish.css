@@ -675,12 +675,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-weight: 860;
   line-height: 1.14;
   letter-spacing: 0;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(103, 232, 249, 0.72);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.20em;
-  text-decoration-skip-ink: none;
+  text-decoration: none;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
@@ -823,11 +818,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(103, 232, 249, 0.46);
-  text-decoration-thickness: 2px;
-  text-decoration-skip-ink: none;
+  text-decoration: none;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
@@ -1021,6 +1012,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
     border: 1px solid var(--ogd-heading-border);
     background: var(--ogd-heading-h1-bg);
     color: #111827;
+    text-decoration: none;
   }
 
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {

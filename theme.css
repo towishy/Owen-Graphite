@@ -3510,7 +3510,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(e
   padding-left: 0.08em;
 }
 /* HyperMD inline header text size — CM6 needs explicit per-level */
-.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 2.35em; font-weight: 850; }
+.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 3.15em; font-weight: 850; }
 .markdown-source-view.mod-cm6 .cm-header-2 { font-size: 1.6em; font-weight: 780; }
 .markdown-source-view.mod-cm6 .cm-header-3 { font-size: 1.3em; font-weight: 720; color: var(--header-accent-dark); }
 .markdown-source-view.mod-cm6 .cm-header-4 { font-size: 1.12em; font-weight: 700; color: var(--header-accent-dark); }
@@ -13530,12 +13530,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-weight: 860;
   line-height: 1.14;
   letter-spacing: 0;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(103, 232, 249, 0.72);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.20em;
-  text-decoration-skip-ink: none;
+  text-decoration: none;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
@@ -13678,11 +13673,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(103, 232, 249, 0.46);
-  text-decoration-thickness: 2px;
-  text-decoration-skip-ink: none;
+  text-decoration: none;
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
@@ -13876,6 +13867,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
     border: 1px solid var(--ogd-heading-border);
     background: var(--ogd-heading-h1-bg);
     color: #111827;
+    text-decoration: none;
   }
 
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
@@ -17726,7 +17718,13 @@ body .workspace-leaf-content .markdown-rendered pre code {
   overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, normal);
 
   overflow-x: auto;
-  scrollbar-gutter: stable both-edges;
+}
+
+@supports (scrollbar-gutter: stable) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+  body .workspace-leaf-content .markdown-rendered pre code {
+    scrollbar-gutter: stable both-edges;
+  }
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button:is(:hover, :focus-visible),
@@ -17815,14 +17813,34 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
   }
 
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
     font-size: 3.4em;
     line-height: 1.08;
     margin-top: 1.2em;
     margin-bottom: 0.7em;
+    text-decoration: none;
+    padding: 0.48em 0.62em 0.44em;
+    border: 1px solid rgba(203, 213, 225, 0.76);
+    border-radius: 7px;
+    background:
+      radial-gradient(ellipse at 16% 0%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.54) 36%, rgba(255, 255, 255, 0) 68%),
+      linear-gradient(125deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0) 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(240, 249, 255, 0.62));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      inset 0 -1px 0 rgba(14, 165, 233, 0.09),
+      0 12px 28px rgba(15, 23, 42, 0.08);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
     font-size: 0.30em;
     margin-bottom: 0.7em;
+    color: rgba(51, 65, 85, 0.82);
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.86);
   }
   body.ogd-pdf-compact :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
     font-size: 2.85em;

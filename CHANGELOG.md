@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.41
+
+- polish: Live Preview H1 글자 크기를 키워 문서 제목 계층이 더 선명하게 보이도록 조정했습니다.
+- polish: PDF Export H1 박스에 흰색/회색 liquid-glass surface, 연한 회색 rim, 내부 반사와 부드러운 그림자를 적용했습니다.
+- fix: H1 텍스트 아래 cyan underline을 제거해 PDF 제목 박스가 더 차분한 frosted glass 톤으로 보이도록 정리했습니다.
+
 ## v3.1.40
 
 - fix: PDF Export에서 첫 H1로 렌더링되는 문서 제목을 숨기고, 본문 첫 H1은 이전 크기와 리듬으로 유지합니다.

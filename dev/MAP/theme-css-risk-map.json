@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.40",
+  "version": "3.1.41",
   "module_order": [
     {
       "import_index": 1,
@@ -186,7 +186,7 @@
   ],
   "summary": {
     "module_count": 30,
-    "selector_count": 2254,
+    "selector_count": 2255,
     "finding_count": 557,
     "cross_file_selector_group_count": 89,
     "finding_severity_counts": {
@@ -2049,9 +2049,9 @@
       "entry_line": 83,
       "legacy_id": "10c-overlay-layout-polish.css",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line_count": 1352,
+      "line_count": 1344,
       "selector_count": 174,
-      "declaration_count": 607,
+      "declaration_count": 599,
       "important_count": 0,
       "has_selector_count": 3,
       "high_specificity_selector_count": 47,
@@ -2360,15 +2360,15 @@
       "entry_line": 91,
       "legacy_id": "10f-workflow-polish.css",
       "module": "src/polish/73-workflow-polish.css",
-      "line_count": 236,
-      "selector_count": 34,
-      "declaration_count": 92,
+      "line_count": 262,
+      "selector_count": 35,
+      "declaration_count": 106,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 0,
       "live_preview_sensitive_rule_count": 0,
       "pdf_header_footer_sensitive_rule_count": 0,
-      "repeated_selector_extra_count": 2,
+      "repeated_selector_extra_count": 3,
       "max_specificity": [
         0,
         7,
@@ -2377,7 +2377,7 @@
       "top_properties": [
         [
           "color",
-          12
+          13
         ],
         [
           "font-size",
@@ -2386,6 +2386,14 @@
         [
           "line-height",
           6
+        ],
+        [
+          "box-shadow",
+          4
+        ],
+        [
+          "display",
+          4
         ],
         [
           "--ogd-table-pad-y",
@@ -2404,11 +2412,7 @@
           3
         ],
         [
-          "box-shadow",
-          3
-        ],
-        [
-          "display",
+          "border-radius",
           3
         ],
         [
@@ -2418,13 +2422,9 @@
         [
           "overflow-wrap",
           2
-        ],
-        [
-          "--ogd-table-head-bg",
-          2
         ]
       ],
-      "risk_score": 2,
+      "risk_score": 3,
       "severity": "low",
       "risk_reasons": [
         "repeated-selector-in-file"
@@ -4772,7 +4772,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 573,
+      "line": 568,
       "selector": "body.ogd-no-h1-number :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before, .markdown-rendered.ogd-no-h1-number h1::before, .markdown-preview-view.ogd-no-h1-number.markdown-rendered h1::before, .markdown-reading-view.ogd-no-h1-number .markdown-rendered h1::before",
       "message": "specificity=(0, 14, 0)"
     },
@@ -4780,7 +4780,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 577,
+      "line": 572,
       "selector": "body.ogd-no-h1-number :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1, .markdown-rendered.ogd-no-h1-number h1, .markdown-preview-view.ogd-no-h1-number.markdown-rendered h1, .markdown-reading-view.ogd-no-h1-number .markdown-rendered h1",
       "message": "specificity=(0, 10, 4)"
     },
@@ -4788,7 +4788,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 974,
+      "line": 965,
       "selector": "body :is( .metadata-container, .metadata-properties, .metadata-properties-container, .metadata-properties-heading, .frontmatter, .frontmatter-container, .frontmatter-section ), body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is( [class*=\"frontmatter\"], [data-type=\"frontmatter\"], [data-callout-metadata=\"frontmatter\"] ), body .markdown-source-view.mod-cm6 :is( .HyperMD-frontmatter, .cm-line.HyperMD-frontmatter, .HyperMD-codeblock-frontmatter, .cm-line.HyperMD-codeblock-frontmatter-bg )",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -4796,7 +4796,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1007,
+      "line": 999,
       "selector": "body.ogd-no-h1-number :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1, .markdown-rendered.ogd-no-h1-number h1, .markdown-preview-view.ogd-no-h1-number.markdown-rendered h1, .markdown-reading-view.ogd-no-h1-number .markdown-rendered h1",
       "message": "specificity=(0, 10, 4)"
     },
@@ -4804,7 +4804,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1045,
+      "line": 1037,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .el-pre, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered .el-pre",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4812,7 +4812,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1072,
+      "line": 1064,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre), body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4820,7 +4820,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1083,
+      "line": 1075,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) div:has(> pre), body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered div:has(> pre)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4828,7 +4828,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1083,
+      "line": 1075,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre::before",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4836,7 +4836,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1090,
+      "line": 1082,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4844,7 +4844,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1103,
+      "line": 1095,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4852,7 +4852,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1119,
+      "line": 1111,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::before, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::before",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4860,7 +4860,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1127,
+      "line": 1119,
       "selector": "body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-codeblock-frontmatter, body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-frontmatter-bg",
       "message": "specificity=(0, 9, 2)"
     },
@@ -4868,7 +4868,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1143,
+      "line": 1135,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .markdown-source-view.mod-cm6 .code-block-flair, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .code-block-flair",
       "message": "specificity=(0, 19, 0)"
     },
@@ -4876,7 +4876,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1143,
+      "line": 1135,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .markdown-source-view.mod-cm6 .code-block-flair, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .code-block-flair",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -4884,7 +4884,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1147,
+      "line": 1139,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4892,7 +4892,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1151,
+      "line": 1143,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-kusto, .language-kql, .language-kql-query)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-kusto, .language-kql, .language-kql-query)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4900,7 +4900,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1152,
+      "line": 1144,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after, body pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4908,7 +4908,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1155,
+      "line": 1147,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4916,7 +4916,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1155,
+      "line": 1147,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after, body pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4924,7 +4924,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1158,
+      "line": 1150,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after, body pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4932,7 +4932,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1159,
+      "line": 1151,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-python, .language-py)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-python, .language-py)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4940,7 +4940,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1160,
+      "line": 1152,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-makefile, .language-make, .language-cmake)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-makefile, .language-make, .language-cmake)::after, body pre:is(.language-makefile, .language-make, .language-cmake)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4948,7 +4948,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1163,
+      "line": 1155,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-javascript, .language-js)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-javascript, .language-js)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4956,7 +4956,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1163,
+      "line": 1155,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after, body pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4964,7 +4964,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1165,
+      "line": 1157,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-csv, .language-tsv)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-csv, .language-tsv)::after, body pre:is(.language-csv, .language-tsv)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4972,7 +4972,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1167,
+      "line": 1159,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-typescript, .language-ts)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-typescript, .language-ts)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4980,7 +4980,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1168,
+      "line": 1160,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-diff, .language-patch)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-diff, .language-patch)::after, body pre:is(.language-diff, .language-patch)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4988,7 +4988,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1170,
+      "line": 1162,
       "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-regex, .language-regexp)::after, body .workspace-leaf-content .markdown-rendered pre:is(.language-regex, .language-regexp)::after, body pre:is(.language-regex, .language-regexp)::after",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4996,7 +4996,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1171,
+      "line": 1163,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-json::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-json::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5004,7 +5004,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1175,
+      "line": 1167,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-yaml, .language-yml)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-yaml, .language-yml)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5012,7 +5012,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1179,
+      "line": 1171,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-md, .language-markdown)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-md, .language-markdown)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5020,7 +5020,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1183,
+      "line": 1175,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-css::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-css::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5028,7 +5028,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1187,
+      "line": 1179,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-html::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-html::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5036,7 +5036,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1191,
+      "line": 1183,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-sql::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-sql::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5044,7 +5044,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1195,
+      "line": 1187,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -6772,7 +6772,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 904,
+      "line": 895,
       "selector": "body :is(.markdown-preview-section, .markdown-rendered) > div:has(> pre)",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6780,7 +6780,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/polish/71-overlay-layout-polish.css",
-      "line": 1083,
+      "line": 1075,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) div:has(> pre), body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered div:has(> pre)",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -7084,6 +7084,37 @@
       ]
     },
     {
+      "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code, body .workspace-leaf-content .markdown-rendered pre code",
+      "occurrences": 5,
+      "modules": [
+        "src/polish/71-overlay-layout-polish.css",
+        "src/polish/72-a11y-regression-hotfixes.css",
+        "src/polish/73-workflow-polish.css"
+      ],
+      "lines": [
+        {
+          "module": "src/polish/71-overlay-layout-polish.css",
+          "line": 939
+        },
+        {
+          "module": "src/polish/72-a11y-regression-hotfixes.css",
+          "line": 703
+        },
+        {
+          "module": "src/polish/73-workflow-polish.css",
+          "line": 66
+        },
+        {
+          "module": "src/polish/73-workflow-polish.css",
+          "line": 76
+        },
+        {
+          "module": "src/polish/73-workflow-polish.css",
+          "line": 200
+        }
+      ]
+    },
+    {
       "selector": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end",
       "occurrences": 4,
       "modules": [
@@ -7159,33 +7190,6 @@
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
           "line": 62
-        }
-      ]
-    },
-    {
-      "selector": "body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code, body .workspace-leaf-content .markdown-rendered pre code",
-      "occurrences": 4,
-      "modules": [
-        "src/polish/71-overlay-layout-polish.css",
-        "src/polish/72-a11y-regression-hotfixes.css",
-        "src/polish/73-workflow-polish.css"
-      ],
-      "lines": [
-        {
-          "module": "src/polish/71-overlay-layout-polish.css",
-          "line": 948
-        },
-        {
-          "module": "src/polish/72-a11y-regression-hotfixes.css",
-          "line": 703
-        },
-        {
-          "module": "src/polish/73-workflow-polish.css",
-          "line": 67
-        },
-        {
-          "module": "src/polish/73-workflow-polish.css",
-          "line": 174
         }
       ]
     },
@@ -8137,11 +8141,11 @@
       "lines": [
         {
           "module": "src/polish/71-overlay-layout-polish.css",
-          "line": 960
+          "line": 951
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 194
+          "line": 220
         }
       ]
     },
@@ -8159,7 +8163,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 114
+          "line": 120
         }
       ]
     },
@@ -8177,7 +8181,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 99
+          "line": 105
         }
       ]
     },
@@ -8195,7 +8199,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 218
+          "line": 244
         }
       ]
     },
@@ -8213,7 +8217,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 206
+          "line": 232
         }
       ]
     },
@@ -8231,7 +8235,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 198
+          "line": 224
         }
       ]
     },
@@ -8249,7 +8253,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 214
+          "line": 240
         }
       ]
     },
@@ -8267,7 +8271,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 210
+          "line": 236
         }
       ]
     },
@@ -8285,7 +8289,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 222
+          "line": 248
         }
       ]
     },
@@ -8303,7 +8307,7 @@
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 202
+          "line": 228
         }
       ]
     },
@@ -8317,11 +8321,11 @@
       "lines": [
         {
           "module": "src/polish/71-overlay-layout-polish.css",
-          "line": 999
+          "line": 991
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 155
+          "line": 178
         }
       ]
     },
@@ -8335,11 +8339,11 @@
       "lines": [
         {
           "module": "src/polish/71-overlay-layout-polish.css",
-          "line": 1003
+          "line": 995
         },
         {
           "module": "src/polish/73-workflow-polish.css",
-          "line": 159
+          "line": 185
         }
       ]
     },

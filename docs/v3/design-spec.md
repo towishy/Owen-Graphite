@@ -190,7 +190,7 @@ src/
 
 ## 참고
 
-- [release-plan.md](release-plan.md) — v3 릴리즈 기록·툴체인·절차 (현재 안정 v3.1.40)
+- [release-plan.md](release-plan.md) — v3 릴리즈 기록·툴체인·절차 (현재 안정 v3.1.41)
 - [cascade-research.md](cascade-research.md) — unlayered 캐스케이드 실증·S11.5 `!important` 일괄 제거 결과
 - [surface-state-matrix.md](surface-state-matrix.md) — Liquid Glass rest/hover/active/disabled 정의
 - [live-preview-editability.md](live-preview-editability.md) — hit-routing 계약 (v3 구현: `dev/scripts/audit_v3_hit_routing.py`)

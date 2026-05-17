@@ -4,10 +4,10 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.40`
+- Version: `3.1.41`
 - Source: `src/entry.css`
 - Modules: 30
-- Selectors: 2254
+- Selectors: 2255
 - Findings: 557
 - Finding severity counts: critical=0, high=0, medium=482, low=75, info=0
 - Module severity counts: critical=0, high=17, medium=8, low=4, info=1
@@ -45,7 +45,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 99 | `src/surfaces/23-liquid-glass-core.css` | 143 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 141 | `src/surfaces/24-html-table-live-preview-glass.css` | 84 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 188 | `src/polish/72-a11y-regression-hotfixes.css` | 187 | 0 | 9 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
-| low | 2 | `src/polish/73-workflow-polish.css` | 34 | 0 | 0 | repeated-selector-in-file |
+| low | 3 | `src/polish/73-workflow-polish.css` | 35 | 0 | 0 | repeated-selector-in-file |
 
 ## Findings
 
