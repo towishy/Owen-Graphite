@@ -40,7 +40,7 @@
 
 ## 2. 신기능 소개
 
-> [!info]
+> [ 정보 ]
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
 
 ### v3.1.39 — PDF 헤더 Key/Value 2쌍
