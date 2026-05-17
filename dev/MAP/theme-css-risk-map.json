@@ -186,7 +186,7 @@
   ],
   "summary": {
     "module_count": 30,
-    "selector_count": 2201,
+    "selector_count": 2249,
     "finding_count": 554,
     "cross_file_selector_group_count": 89,
     "finding_severity_counts": {
@@ -206,7 +206,7 @@
       "entry_line": 34,
       "legacy_id": "00-settings.css",
       "module": "src/features/40-style-settings.css",
-      "line_count": 625,
+      "line_count": 769,
       "selector_count": 0,
       "declaration_count": 0,
       "important_count": 0,
@@ -986,9 +986,9 @@
       "entry_line": 55,
       "legacy_id": "06-feature-presets.css",
       "module": "src/features/41-feature-presets.css",
-      "line_count": 1235,
-      "selector_count": 225,
-      "declaration_count": 701,
+      "line_count": 1283,
+      "selector_count": 273,
+      "declaration_count": 797,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 5,
@@ -1030,24 +1030,24 @@
           16
         ],
         [
-          "content",
-          15
+          "--ogd-pdf-header-segment-key-bg",
+          16
         ],
         [
-          "--ogd-pdf-segment-value-bg",
-          13
+          "--ogd-pdf-header-segment-key-text",
+          16
         ],
         [
-          "right",
-          13
+          "--ogd-pdf-header-segment-value-bg",
+          16
         ],
         [
-          "font-size",
-          12
+          "--ogd-pdf-header-segment-value-text",
+          16
         ],
         [
-          "display",
-          12
+          "--ogd-pdf-header2-segment-key-bg",
+          16
         ]
       ],
       "risk_score": 69,
@@ -1516,7 +1516,7 @@
       "entry_line": 69,
       "legacy_id": "08-report-print-polish.css",
       "module": "src/features/42-report-print-polish.css",
-      "line_count": 1767,
+      "line_count": 1768,
       "selector_count": 205,
       "declaration_count": 721,
       "important_count": 0,
@@ -3772,7 +3772,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 836,
+      "line": 884,
       "selector": ".markdown-rendered h1, .markdown-preview-view.markdown-rendered h1, .markdown-reading-view .markdown-rendered h1, body.ogd-report-mode .markdown-rendered > h1:first-of-type",
       "message": "specificity=(0, 8, 4)"
     },
@@ -3780,7 +3780,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 841,
+      "line": 889,
       "selector": ".markdown-rendered h1::after, .markdown-preview-view.markdown-rendered h1::after, .markdown-reading-view .markdown-rendered h1::after, body.ogd-report-mode .markdown-rendered > h1:first-of-type::after",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3788,7 +3788,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 885,
+      "line": 933,
       "selector": "body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p, body.ogd-report-mode .markdown-rendered blockquote p, body.ogd-report-mode .markdown-rendered li p, body.ogd-report-mode .markdown-rendered .callout p",
       "message": "specificity=(0, 10, 15)"
     },
@@ -6364,7 +6364,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 551,
+      "line": 599,
       "selector": "body.ogd-pdf-header-enabled .markdown-rendered::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6372,7 +6372,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 611,
+      "line": 659,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6380,7 +6380,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 620,
+      "line": 668,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6388,7 +6388,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 631,
+      "line": 679,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6396,7 +6396,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 635,
+      "line": 683,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6404,7 +6404,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 639,
+      "line": 687,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6412,7 +6412,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 672,
+      "line": 720,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before, body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6420,7 +6420,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 684,
+      "line": 732,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6428,7 +6428,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 696,
+      "line": 744,
       "selector": "body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6436,7 +6436,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 701,
+      "line": 749,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6444,7 +6444,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 711,
+      "line": 759,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6452,7 +6452,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 716,
+      "line": 764,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6460,7 +6460,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 722,
+      "line": 770,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6468,7 +6468,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 753,
+      "line": 801,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6476,7 +6476,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 793,
+      "line": 841,
       "selector": "body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6484,7 +6484,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 818,
+      "line": 866,
       "selector": "body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -7176,7 +7176,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 950
+          "line": 998
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -7199,7 +7199,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 952
+          "line": 1000
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -7273,7 +7273,7 @@
         },
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 1189
+          "line": 1237
         }
       ]
     },
@@ -7879,7 +7879,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 916
+          "line": 964
         },
         {
           "module": "src/chrome/31-navigation-tasks-search.css",

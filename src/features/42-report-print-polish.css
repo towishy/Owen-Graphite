@@ -1642,9 +1642,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body :is(
     .markdown-rendered,
+    .markdown-preview-view,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
-  ) :is(p, li, dd, dt, blockquote):not(table *),
+  ) :is(p, li, dd, dt, blockquote, .el-p, .el-li, .el-ul, .el-ol):not(table *),
   body .workspace-leaf-content .markdown-rendered :is(p, li, dd, dt, blockquote):not(table *) {
     font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
     line-height: var(--ogd-pdf-surface-text-line-height, 1.42);

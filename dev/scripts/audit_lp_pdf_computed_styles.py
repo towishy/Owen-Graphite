@@ -60,7 +60,7 @@ def assert_equal_style(group: str, samples: dict[str, dict[str, str]], propertie
             if style[prop] != baseline[prop]:
                 raise AssertionError(
                     f"{group}.{prop}: {name}={style[prop]!r} differs from {baseline_name}={baseline[prop]!r}"
-                )
+        )
 
 
 def assert_close_style(group: str, samples: dict[str, dict[str, str]], properties: tuple[str, ...], tolerance: float = 0.75) -> None:
@@ -122,6 +122,20 @@ def audit_with_playwright(require_playwright: bool) -> int:
         assert_close("print callout font-size follows table", px(pdf_callout_content["fontSize"]), px(pdf_table_baseline["fontSize"]), tolerance=0.35)
         assert_close("print callout line-height follows table", px(pdf_callout_content["lineHeight"]), px(pdf_table_baseline["lineHeight"]), tolerance=0.75)
 
+        page.evaluate(
+                        """
+                        () => {
+                            const barePreview = document.createElement('section');
+                            barePreview.className = 'markdown-preview-view';
+                            barePreview.innerHTML = '<div class="el-p"><p data-check="pdf-body-bare-preview-text">Bare preview PDF body text</p></div>';
+                            document.body.appendChild(barePreview);
+                        }
+                        """
+        )
+        bare_preview_text = get_style(page, '[data-check="pdf-body-bare-preview-text"]')
+        assert_close("bare preview print body font-size follows table", px(bare_preview_text["fontSize"]), px(pdf_table_baseline["fontSize"]), tolerance=0.35)
+        assert_close("bare preview print body line-height follows table", px(bare_preview_text["lineHeight"]), px(pdf_table_baseline["lineHeight"]), tolerance=0.75)
+
         table_code = print_styles["pdf_table_code"]
         if table_code["whiteSpace"] == "nowrap":
             raise AssertionError("pdf table code should wrap, but computed white-space is nowrap")
@@ -153,7 +167,7 @@ def audit_with_playwright(require_playwright: bool) -> int:
                 raise AssertionError(
                     f"{name} should center text inside the segment box, "
                     f"got align-items={style['alignItems']!r}, justify-content={style['justifyContent']!r}"
-                )
+        )
         assert_close("header pair-1 key/value height", px(header_key["height"]), px(header_value["height"]), tolerance=0.35)
 
         header_pair2_anchor = "body"
@@ -184,7 +198,7 @@ def audit_with_playwright(require_playwright: bool) -> int:
                 raise AssertionError(
                     "dual header order should be pair-1 key/value then pair-2 key/value, "
                     f"but {left_name} left={left_value:.2f}px >= {right_name} left={right_value:.2f}px"
-                )
+        )
         if header_pair2_key["backgroundColor"] == header_key["backgroundColor"]:
             raise AssertionError("header pair-2 key should support an independent palette from pair-1 key")
         if header_pair2_value["backgroundColor"] == header_value["backgroundColor"]:

@@ -7,7 +7,7 @@ Canonical MAP location: `dev/MAP`.
 - Version: `3.1.39`
 - Source: `src/entry.css`
 - Modules: 30
-- Selectors: 2201
+- Selectors: 2249
 - Findings: 554
 - Finding severity counts: critical=0, high=0, medium=481, low=73, info=0
 - Module severity counts: critical=0, high=17, medium=8, low=4, info=1
@@ -27,7 +27,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 60 | `src/themes/50-dark.css` | 45 | 0 | 0 | high-specificity |
 | medium | 25 | `src/features/43-print-base.css` | 47 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 172 | `src/base/13-live-preview.css` | 116 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| high | 69 | `src/features/41-feature-presets.css` | 225 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
+| high | 69 | `src/features/41-feature-presets.css` | 273 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
 | medium | 23 | `src/chrome/30-workspace.css` | 122 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 31 | 0 | 0 | high-specificity |
