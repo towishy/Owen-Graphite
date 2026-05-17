@@ -64,6 +64,13 @@
 16. Commit, tag `<version>` (and optionally `v<version>`), push tag.
 17. CI (`.github/workflows/release.yml`) builds the GitHub Release.
 
+## README Feature Intro Procedure
+
+- `README.md`의 `2. 신기능 소개`에는 최신 3개 신기능만 유지합니다.
+- 4번째로 밀린 신기능 소개는 `docs/v3/feature-history.md`로 옮기고, README의 마지막 신기능 소개 아래에서 해당 문서로 링크합니다.
+- 각 신기능 소개는 기능을 보여주는 SVG 이미지와 짧은 소개 중심으로 작성합니다.
+- README용 신기능 이미지는 Owen Graphite liquid glass 원칙을 따르고, 한국어 문서에서는 이미지 라벨도 한국어를 기본으로 합니다.
+
 ## Style Settings + minAppVersion
 
 - Current v3 Style Settings contract is recorded in `docs/v3/style-settings-contract.md`.

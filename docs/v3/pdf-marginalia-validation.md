@@ -26,7 +26,7 @@ Run the fixture with print media emulation and verify:
 
 ## 2026-05-17 Fixture Result
 
-Validated against `theme.css` after the `v3.1.36` Key/Value PDF marginalia UI and sizing update.
+Validated against `theme.css` after the `v3.1.39` dual Key/Value PDF marginalia UI, palette, and sizing update.
 
 | Check | Result |
 | --- | --- |
