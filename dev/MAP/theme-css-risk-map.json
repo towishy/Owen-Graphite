@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.36",
+  "version": "3.1.37",
   "module_order": [
     {
       "import_index": 1,
@@ -186,12 +186,12 @@
   ],
   "summary": {
     "module_count": 30,
-    "selector_count": 2093,
-    "finding_count": 527,
+    "selector_count": 2114,
+    "finding_count": 530,
     "cross_file_selector_group_count": 77,
     "finding_severity_counts": {
       "medium": 465,
-      "low": 62
+      "low": 65
     },
     "module_severity_counts": {
       "high": 17,
@@ -206,7 +206,7 @@
       "entry_line": 34,
       "legacy_id": "00-settings.css",
       "module": "src/features/40-style-settings.css",
-      "line_count": 515,
+      "line_count": 540,
       "selector_count": 0,
       "declaration_count": 0,
       "important_count": 0,
@@ -986,14 +986,14 @@
       "entry_line": 55,
       "legacy_id": "06-feature-presets.css",
       "module": "src/features/41-feature-presets.css",
-      "line_count": 1080,
-      "selector_count": 196,
-      "declaration_count": 572,
+      "line_count": 1092,
+      "selector_count": 198,
+      "declaration_count": 578,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 5,
       "live_preview_sensitive_rule_count": 0,
-      "pdf_header_footer_sensitive_rule_count": 15,
+      "pdf_header_footer_sensitive_rule_count": 17,
       "repeated_selector_extra_count": 4,
       "max_specificity": [
         0,
@@ -1050,7 +1050,7 @@
           10
         ]
       ],
-      "risk_score": 49,
+      "risk_score": 53,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -1516,14 +1516,14 @@
       "entry_line": 69,
       "legacy_id": "08-report-print-polish.css",
       "module": "src/features/42-report-print-polish.css",
-      "line_count": 1420,
-      "selector_count": 170,
-      "declaration_count": 601,
+      "line_count": 1590,
+      "selector_count": 189,
+      "declaration_count": 661,
       "important_count": 0,
       "has_selector_count": 8,
       "high_specificity_selector_count": 15,
       "live_preview_sensitive_rule_count": 0,
-      "pdf_header_footer_sensitive_rule_count": 0,
+      "pdf_header_footer_sensitive_rule_count": 1,
       "repeated_selector_extra_count": 6,
       "max_specificity": [
         0,
@@ -1533,57 +1533,58 @@
       "top_properties": [
         [
           "color",
-          64
+          65
         ],
         [
           "background",
-          50
+          56
         ],
         [
           "line-height",
-          32
+          35
         ],
         [
           "margin-top",
           27
         ],
         [
+          "font-size",
+          26
+        ],
+        [
           "padding",
           23
         ],
         [
-          "font-size",
-          22
+          "box-shadow",
+          23
         ],
         [
           "display",
           21
         ],
         [
-          "box-shadow",
-          20
+          "margin-bottom",
+          19
         ],
         [
-          "margin-bottom",
-          18
+          "font-weight",
+          16
         ],
         [
           "margin",
           16
         ],
         [
-          "font-weight",
-          15
-        ],
-        [
           "border",
-          14
+          15
         ]
       ],
-      "risk_score": 67,
+      "risk_score": 69,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
+        "pdf-header-footer-sensitive",
         "has-selector",
         "repeated-selector-in-file"
       ]
@@ -3754,7 +3755,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 681,
+      "line": 693,
       "selector": ".markdown-rendered h1, .markdown-preview-view.markdown-rendered h1, .markdown-reading-view .markdown-rendered h1, body.ogd-report-mode .markdown-rendered > h1:first-of-type",
       "message": "specificity=(0, 8, 4)"
     },
@@ -3762,7 +3763,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 686,
+      "line": 698,
       "selector": ".markdown-rendered h1::after, .markdown-preview-view.markdown-rendered h1::after, .markdown-reading-view .markdown-rendered h1::after, body.ogd-report-mode .markdown-rendered > h1:first-of-type::after",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3770,7 +3771,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/41-feature-presets.css",
-      "line": 730,
+      "line": 742,
       "selector": "body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p, body.ogd-report-mode .markdown-rendered blockquote p, body.ogd-report-mode .markdown-rendered li p, body.ogd-report-mode .markdown-rendered .callout p",
       "message": "specificity=(0, 10, 15)"
     },
@@ -3786,7 +3787,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 330,
+      "line": 340,
       "selector": "body .markdown-rendered h2:first-of-type, body .markdown-preview-view.markdown-rendered h2:first-of-type, body .markdown-reading-view .markdown-rendered h2:first-of-type, body.ogd-report-mode .markdown-rendered > h2:first-of-type",
       "message": "specificity=(0, 11, 4)"
     },
@@ -3794,7 +3795,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 345,
+      "line": 355,
       "selector": "body .markdown-rendered h1, body .markdown-preview-view.markdown-rendered h1, body .markdown-reading-view .markdown-rendered h1, body.ogd-report-mode .markdown-rendered > h1:first-of-type",
       "message": "specificity=(0, 8, 7)"
     },
@@ -3802,7 +3803,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 351,
+      "line": 361,
       "selector": "body .markdown-rendered h2:first-of-type, body .markdown-preview-view.markdown-rendered h2:first-of-type, body .markdown-reading-view .markdown-rendered h2:first-of-type, body.ogd-report-mode .markdown-rendered > h2:first-of-type",
       "message": "specificity=(0, 11, 4)"
     },
@@ -3810,7 +3811,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 356,
+      "line": 366,
       "selector": "body .markdown-rendered h1::after, body .markdown-preview-view.markdown-rendered h1::after, body .markdown-reading-view .markdown-rendered h1::after, body.ogd-report-mode .markdown-rendered > h1:first-of-type::after, body .markdown-rendered h2:first-of-type::after, body .markdown-preview-view.markdown-rendered h2:first-of-type::after, body .markdown-reading-view .markdown-rendered h2:first-of-type::after, body.ogd-report-mode .markdown-rendered > h2:first-of-type::after",
       "message": "specificity=(0, 27, 3)"
     },
@@ -3818,7 +3819,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 385,
+      "line": 395,
       "selector": "body .markdown-rendered h1 + p, body .markdown-preview-view.markdown-rendered h1 + p, body .markdown-reading-view .markdown-rendered h1 + p, body .markdown-rendered h2:first-of-type + p, body .markdown-preview-view.markdown-rendered h2:first-of-type + p, body .markdown-reading-view .markdown-rendered h2:first-of-type + p",
       "message": "specificity=(0, 13, 15)"
     },
@@ -3826,7 +3827,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 389,
+      "line": 399,
       "selector": "body .markdown-rendered :is(h2, h3, h4) + table, body .markdown-preview-view.markdown-rendered :is(h2, h3, h4) + table, body .markdown-reading-view .markdown-rendered :is(h2, h3, h4) + table, body .markdown-rendered :is(h2, h3, h4) + .table-wrapper, body .markdown-preview-view.markdown-rendered :is(h2, h3, h4) + .table-wrapper, body .markdown-reading-view .markdown-rendered :is(h2, h3, h4) + .table-wrapper",
       "message": "specificity=(0, 19, 21)"
     },
@@ -3834,7 +3835,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 446,
+      "line": 456,
       "selector": "body .markdown-rendered h3:first-of-type + table, body .markdown-preview-view.markdown-rendered h3:first-of-type + table, body .markdown-reading-view .markdown-rendered h3:first-of-type + table, body .markdown-rendered h3:first-of-type + .table-wrapper table, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table",
       "message": "specificity=(0, 19, 12)"
     },
@@ -3842,7 +3843,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 456,
+      "line": 466,
       "selector": "body .markdown-rendered h3:first-of-type + table td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + table td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + table td:first-child, body .markdown-rendered h3:first-of-type + .table-wrapper table td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table td:first-child",
       "message": "specificity=(0, 25, 12)"
     },
@@ -3850,7 +3851,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 462,
+      "line": 472,
       "selector": "body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(1) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(1) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(1) td:first-child, body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(1) td:first-child",
       "message": "specificity=(0, 31, 18)"
     },
@@ -3858,7 +3859,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 468,
+      "line": 478,
       "selector": "body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(2) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(2) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(2) td:first-child, body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(2) td:first-child",
       "message": "specificity=(0, 31, 18)"
     },
@@ -3866,7 +3867,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 474,
+      "line": 484,
       "selector": "body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(3) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(3) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(3) td:first-child, body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(3) td:first-child",
       "message": "specificity=(0, 31, 18)"
     },
@@ -3874,7 +3875,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 480,
+      "line": 490,
       "selector": "body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(4) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(4) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(4) td:first-child, body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child",
       "message": "specificity=(0, 31, 18)"
     },
@@ -3882,7 +3883,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 486,
+      "line": 496,
       "selector": "body .markdown-rendered h3:first-of-type + table tbody tr:nth-child(5) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + table tbody tr:nth-child(5) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + table tbody tr:nth-child(5) td:first-child, body .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child, body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child, body .markdown-reading-view .markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child",
       "message": "specificity=(0, 31, 18)"
     },
@@ -3890,7 +3891,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 543,
+      "line": 553,
       "selector": "body .markdown-rendered table + p:has(> strong:first-child), body .markdown-preview-view table + p:has(> strong:first-child), body .markdown-reading-view table + p:has(> strong:first-child), body .markdown-rendered .table-wrapper + p:has(> strong:first-child), body .markdown-preview-view .table-wrapper + p:has(> strong:first-child), body .markdown-reading-view .table-wrapper + p:has(> strong:first-child)",
       "message": "specificity=(0, 15, 9)"
     },
@@ -6186,7 +6187,23 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 278,
+      "line": 280,
+      "selector": "body.ogd-pdf-preset-status-end",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 285,
+      "selector": "body.ogd-pdf-preset-status-end.ogd-pdf-label-single",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/41-feature-presets.css",
+      "line": 290,
       "selector": "body.ogd-pdf-label-minimal",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6194,7 +6211,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 283,
+      "line": 295,
       "selector": "body.ogd-pdf-label-filled",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6202,7 +6219,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 288,
+      "line": 300,
       "selector": "body.theme-dark.ogd-pdf-label-filled",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6210,7 +6227,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 300,
+      "line": 312,
       "selector": "body.ogd-pdf-label-badge",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6218,7 +6235,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 511,
+      "line": 523,
       "selector": "body.ogd-pdf-header-enabled .markdown-rendered::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6226,7 +6243,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 559,
+      "line": 571,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6234,7 +6251,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 567,
+      "line": 579,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6242,7 +6259,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 578,
+      "line": 590,
       "selector": "body.ogd-pdf-header-enabled.ogd-pdf-header-top-center.ogd-pdf-label-segmented .markdown-rendered::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6250,7 +6267,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 584,
+      "line": 596,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6258,7 +6275,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 614,
+      "line": 626,
       "selector": "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6266,7 +6283,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 647,
+      "line": 659,
       "selector": "body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::before",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6274,7 +6291,7 @@
       "severity": "low",
       "category": "pdf-header-footer-sensitive",
       "module": "src/features/41-feature-presets.css",
-      "line": 664,
+      "line": 676,
       "selector": "body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::after",
       "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
@@ -6298,9 +6315,17 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/features/42-report-print-polish.css",
-      "line": 543,
+      "line": 553,
       "selector": "body .markdown-rendered table + p:has(> strong:first-child), body .markdown-preview-view table + p:has(> strong:first-child), body .markdown-reading-view table + p:has(> strong:first-child), body .markdown-rendered .table-wrapper + p:has(> strong:first-child), body .markdown-preview-view .table-wrapper + p:has(> strong:first-child), body .markdown-reading-view .table-wrapper + p:has(> strong:first-child)",
       "message": ":has() selector; keep narrowly scoped"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/42-report-print-polish.css",
+      "line": 554,
+      "selector": "body.ogd-pdf-visibility",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
     },
     {
       "severity": "low",
@@ -6905,7 +6930,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 795
+          "line": 807
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -6928,7 +6953,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 797
+          "line": 809
         },
         {
           "module": "src/chrome/30-workspace.css",
@@ -7002,7 +7027,7 @@
         },
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 1034
+          "line": 1046
         }
       ]
     },
@@ -7581,7 +7606,7 @@
       "lines": [
         {
           "module": "src/features/41-feature-presets.css",
-          "line": 761
+          "line": 773
         },
         {
           "module": "src/chrome/31-navigation-tasks-search.css",
@@ -7833,7 +7858,7 @@
       "lines": [
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 403
+          "line": 413
         },
         {
           "module": "src/polish/73-workflow-polish.css",

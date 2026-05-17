@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.36)
+﻿# v3 Release Record (latest: v3.1.37)
 
-**Status**: Current stable / rollback baseline = `v3.1.36` (2026-05-17). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, Key/Value PDF labels, README feature screenshot, minAppVersion 1.12.0). v2 source/dev/scripts/docs/screenshots remain fully purged.
+**Status**: Current stable / rollback baseline = `v3.1.37` (2026-05-17). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, Key/Value PDF labels, Live Preview/PDF quality parity fixture, README feature screenshot, minAppVersion 1.12.0). v2 source/dev/scripts/docs/screenshots remain fully purged.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.36` |
+| `manifest.json` version | `3.1.37` |
 | `minAppVersion` | `1.12.0` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 16,387 / 7 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 16,855 / 7 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.36.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.37.zip` |
 
 ## What was removed
 
@@ -36,19 +36,23 @@
 | Build release ZIP | `dev/scripts/build_release.py` |
 | Sync to Obsidian vault | `dev/scripts/sync_obsidian_theme.py` |
 | Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle + hit-routing + PDF marginalia) |
+| CI validation | `.github/workflows/validate.yml` (fresh bundle + `theme.css` freshness + audits) |
+| Visual quality smoke check | `dev/scripts/audit_visual_quality_fixture.py` (local browser render when available) |
 
 ## Release procedure for future v3.x.y
 
 1. Edit `src/` only. Never hand-edit `theme.css`.
 2. `python dev/scripts/bundle_v3.py` — must end with `OK: bundled ... !important=N` where N is only comment-counts.
-3. `python dev/scripts/audit_v3_hit_routing.py` — must be clean.
-4. `python dev/scripts/audit_pdf_header_footer.py` — must be clean after any print/report/PDF settings change.
-5. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
-6. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
-7. Bump `manifest.json` version, add `CHANGELOG.md` entry.
-8. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
-9. Commit, tag `<version>` (and optionally `v<version>`), push tag.
-10. CI (`.github/workflows/release.yml`) builds the GitHub Release.
+3. Verify `theme.css` is the promoted copy of `dist/theme-v3.css` before commit.
+4. `python dev/scripts/audit_v3_hit_routing.py` — must be clean.
+5. `python dev/scripts/audit_pdf_header_footer.py` — must be clean after any print/report/PDF settings change.
+6. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
+7. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
+8. Bump `manifest.json` version, add `CHANGELOG.md` entry.
+9. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for fixture contract; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
+10. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
+11. Commit, tag `<version>` (and optionally `v<version>`), push tag.
+12. CI (`.github/workflows/release.yml`) builds the GitHub Release.
 
 ## Style Settings + minAppVersion
 

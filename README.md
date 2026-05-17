@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.36** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 16,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.37** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 16,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -21,8 +21,8 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.36` |
-| **베이스라인 / 롤백 기준** | `v3.1.36` |
+| **버전** | `3.1.37` |
+| **베이스라인 / 롤백 기준** | `v3.1.37` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -39,6 +39,18 @@
 ---
 
 ## 2. 신기능 소개
+
+### v3.1.37 — Live Preview / PDF 품질 패리티
+
+Live Preview, Reading View, PDF Export에서 callout과 긴 표 셀이 같은 품질 기준으로 보이도록 검증 fixture와 출력 안정화 guard를 추가했습니다. PDF callout은 흰색/회색 frosted surface, 얇은 rim, icon chip 중심으로 정리하고 긴 코드 토큰은 표 디자인을 유지한 채 셀 안에서 줄바꿈됩니다.
+
+![Live Preview / PDF 품질 패리티](screenshots/readme/pdf-live-preview-parity.png)
+
+| 검증 영역 | 개선 내용 |
+| --- | --- |
+| Live Preview / Reading | callout rim, icon chip, 얕은 glass surface 기준 정렬 |
+| PDF Export | callout 제목/본문 분리 완화, 긴 셀·코드 토큰 wrapping 안정화 |
+| 릴리즈 검증 | fresh bundle, `theme.css` freshness, visual smoke fixture 추가 |
 
 ### v3.1.36 — PDF Key/Value 헤더와 푸터 라벨
 
@@ -64,7 +76,7 @@ PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-se
 
 ### 옵션 B — ZIP 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.36.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.37.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -73,7 +85,7 @@ PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-se
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.36.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.37.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트
 

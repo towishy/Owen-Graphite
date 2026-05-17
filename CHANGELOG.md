@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.37
+
+- feat: Live Preview / Reading / PDF Export 품질 패리티 fixture와 로컬 visual smoke 검증 스크립트를 추가했습니다.
+- polish: PDF callout의 glass rim, icon chip, 페이지 분할 안정성을 보강하고 긴 셀·긴 코드 토큰 wrapping을 안정화했습니다.
+- guard: CI/pre-commit/release/sync 검증 흐름을 fresh bundle, `theme.css` freshness, helper script 실패 전파 기준으로 강화했습니다.
+
 ## v3.1.36
 
 - feat: PDF Key/Value 라벨 색상을 헤더/푸터별, key/value별로 독립 선택할 수 있도록 Style Settings UI를 재구성했습니다.
@@ -23,4 +29,3 @@
 ## v3.1.32
 
 - feat: PDF Header/Footer 입력 기능 추가.
-

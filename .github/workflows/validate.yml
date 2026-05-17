@@ -30,7 +30,9 @@ jobs:
 
       - name: Run theme validation
         run: |
+          python dev/scripts/bundle_v3.py
           python dev/scripts/bundle_v3.py --check
+          python -c "from pathlib import Path; theme = Path('theme.css').read_text(encoding='utf-8'); bundle = Path('dist/theme-v3.css').read_text(encoding='utf-8'); assert theme == bundle, 'theme.css is stale vs dist/theme-v3.css; promote the fresh bundle before commit'"
           python dev/scripts/audit_v3_hit_routing.py
           python dev/scripts/audit_pdf_header_footer.py
           python dev/scripts/v3_audit_duplicate_selectors.py --threshold 10

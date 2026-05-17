@@ -18,7 +18,7 @@
 | --- | --- | --- | --- |
 | C1 | 시각 (Liquid Glass + 일반 surface) | `dev/scripts/capture_computed_fingerprint.py` + `dev/scripts/fp_diff_summary.py` | computed-style fingerprint diff = 0 (Light / Dark) |
 | C2 | 색 대비 (WCAG) | 수동 샘플 + Style Settings 토글 매트릭스 | 30+ 쌍 모두 AA 이상 (베이스라인 v2.30.14와 동일) |
-| C3 | Style Settings 동작 | 토글 매트릭스 캡처 | 37개 옵션 × ON/OFF = 74 cell 동일 |
+| C3 | Style Settings 동작 | 토글 매트릭스 캡처 | 39개 옵션 × ON/OFF = 78 cell 동일 |
 | C4 | Live Preview 편집성 | `dev/scripts/audit_v3_hit_routing.py` | violations = 0 |
 | C5 | PDF 출력 | print 시나리오 PDF 비교 | 페이지 수·레이아웃·footer 동일 |
 
@@ -113,7 +113,7 @@ src/
 | 문서 | 책임 |
 | --- | --- |
 | [token-inventory.md](token-inventory.md) | v2.30.14 토큰 이름·기본값 contract (255 tokens) |
-| [style-settings-contract.md](style-settings-contract.md) | Style Settings 37개 옵션 이름·동작 표 |
+| [style-settings-contract.md](style-settings-contract.md) | Style Settings 39개 옵션 이름·동작 표 |
 | [surface-state-matrix.md](surface-state-matrix.md) | Liquid Glass rest/hover/active/disabled 정의표 |
 | [live-preview-editability.md](live-preview-editability.md) | hit-routing 보존 contract |
 | [golden-image-scenarios.md](golden-image-scenarios.md) | 66 시각 회귀 시나리오 목록 |
@@ -129,7 +129,7 @@ src/
 | **S4** | live-preview + editability probe 통과 | **높음** |
 | **S5** | surfaces (callout/table/code/list/embed) | 중간 |
 | **S6** | chrome (workspace/nav/overlay/settings) | 중간 |
-| **S7** | features (Style Settings 37개) | 중간 |
+| **S7** | features (Style Settings 39개) | 중간 |
 | **S8** | dark + a11y | 중간 |
 | **S9** | PDF print | 중간 |
 | **S10** | plugins (선택적) | 낮음 |

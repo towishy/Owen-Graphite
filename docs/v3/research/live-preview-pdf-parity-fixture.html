@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Live Preview / PDF Parity Fixture</title>
+  <link rel="stylesheet" href="../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef3f8;
+    }
+
+    body {
+      --ogd-pdf-header-text: "Status";
+      --ogd-pdf-header-value: "Quality Parity";
+      --ogd-pdf-footer-text: "Export";
+      --ogd-pdf-footer-value: "PDF Fixture";
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-shell {
+      max-width: 1320px;
+      margin: 28px auto;
+      padding: 0 20px 36px;
+    }
+
+    .fixture-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .fixture-pane {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 14px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .fixture-pane-title {
+      margin: 0 0 14px;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fixture-print {
+      display: none;
+    }
+
+    .cm-line {
+      min-height: 1.45em;
+    }
+
+    .cm-embed-block.cm-callout {
+      display: block;
+    }
+
+    .markdown-source-view.mod-cm6 .callout-title {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .markdown-source-view.mod-cm6 .callout-title-inner {
+      min-width: 0;
+    }
+
+    .markdown-source-view.mod-cm6 .callout-icon {
+      display: inline-flex;
+      flex: 0 0 24px;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+    }
+
+    .callout-icon svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 960px) {
+      .fixture-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .fixture-shell {
+        display: none;
+      }
+
+      .fixture-print {
+        display: block;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-spacing-relaxed ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
+  <main class="fixture-shell" data-ogd-fixture="live-preview-pdf-parity">
+    <div class="fixture-grid">
+      <section class="fixture-pane markdown-source-view mod-cm6" aria-label="Live Preview parity sample">
+        <p class="fixture-pane-title">Live Preview</p>
+        <div class="cm-line"># PDF 보고서 품질 점검</div>
+        <div class="cm-line">화면 편집 중에도 callout은 문서 구조로 읽히고, 강한 색 면이나 왼쪽 rail 없이 얕은 glass rim으로 역할을 구분해야 합니다.</div>
+
+        <div class="cm-embed-block cm-callout callout" data-callout="summary" data-check="lp-callout-summary">
+          <div class="callout-title">
+            <div class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h16"/></svg></div>
+            <div class="callout-title-inner">요약</div>
+          </div>
+          <div class="callout-content">
+            <p>전체 보고서는 안정적인 흰색/회색 frosted surface 위에 얇은 rim, icon chip, 낮은 shadow를 사용합니다.</p>
+          </div>
+        </div>
+
+        <div class="cm-embed-block cm-callout callout" data-callout="warning" data-check="lp-callout-warning">
+          <div class="callout-title">
+            <div class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+            <div class="callout-title-inner">검토 필요</div>
+          </div>
+          <div class="callout-content">
+            <p>긴 문단은 PDF에서 제목과 분리되지 않아야 하며, 문단 단위로 자연스럽게 다음 페이지로 이어져야 합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fixture-pane markdown-preview-view markdown-rendered" aria-label="Reading View parity sample">
+        <p class="fixture-pane-title">Reading View</p>
+        <article class="markdown-rendered">
+          <h1>PDF 보고서 품질 점검</h1>
+          <p>읽기 화면과 PDF 출력은 같은 문서 구조, 같은 callout 톤, 같은 긴 셀 wrapping 기준을 공유해야 합니다.</p>
+          <div class="callout" data-callout="summary" data-check="reading-callout-summary">
+            <div class="callout-title">
+              <div class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h16"/></svg></div>
+              <div class="callout-title-inner">요약</div>
+            </div>
+            <div class="callout-content">
+              <p>요약 callout은 문서의 주요 판단을 담는 구조 블록이며, 색상보다 rim과 icon chip의 차이로 역할을 구분합니다.</p>
+            </div>
+          </div>
+          <div class="callout" data-callout="action" data-check="reading-callout-action">
+            <div class="callout-title">
+              <div class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+              <div class="callout-title-inner">다음 조치</div>
+            </div>
+            <div class="callout-content">
+              <p>PDF visibility와 font size preset이 켜진 상태에서도 표 헤더, 긴 셀, code token이 프레임 밖으로 밀리지 않아야 합니다.</p>
+            </div>
+          </div>
+          <table class="ogd-html-table wrap-table print-fit-table" data-check="reading-long-table">
+            <thead>
+              <tr><th>항목</th><th>긴 값</th><th>기대 동작</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>식별자</td><td><code class="ogd-token-wrap">customer_profile_visibility_export_pipeline_status_identifier_2026_05_17_final_review</code></td><td>셀 내부에서 줄바꿈되고 표 시각 디자인은 유지됩니다.</td></tr>
+              <tr><td>URL</td><td><code class="ogd-token-wrap">https://example.internal/reporting/pdf/live-preview-quality/parity/long-token-check</code></td><td>PDF에서도 오른쪽으로 넘치지 않습니다.</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <main class="fixture-print markdown-preview-view markdown-rendered" aria-label="PDF export parity sample">
+    <article class="markdown-rendered">
+      <h1>PDF 보고서 품질 점검</h1>
+      <p>이 출력 fixture는 Obsidian PDF export에서 callout, 긴 문단, 긴 셀, code token이 Live Preview/Reading View와 같은 품질 기준을 유지하는지 확인합니다.</p>
+      <div class="callout" data-callout="summary" data-check="pdf-callout-summary">
+        <div class="callout-title">
+          <div class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h16"/></svg></div>
+          <div class="callout-title-inner">요약</div>
+        </div>
+        <div class="callout-content">
+          <p>PDF callout은 강한 색 면이 아니라 흰색 glass surface, 얇은 rim, icon chip, 낮은 shadow로 문서 구조를 드러냅니다.</p>
+          <p>긴 내용이 이어질 때 제목과 첫 문단은 같이 유지되어야 하고, 이후 문단은 페이지 경계에서 자연스럽게 분할되어야 합니다.</p>
+        </div>
+      </div>
+      <div class="callout" data-callout="warning" data-check="pdf-callout-warning">
+        <div class="callout-title">
+          <div class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+          <div class="callout-title-inner">검토 필요</div>
+        </div>
+        <div class="callout-content">
+          <p>이 블록은 PDF 페이지 하단에서 제목만 남거나 내용이 갑자기 잘리는 회귀를 잡기 위한 stress sample입니다.</p>
+        </div>
+      </div>
+      <table class="ogd-html-table wrap-table print-fit-table" data-check="pdf-long-table">
+        <thead>
+          <tr><th>항목</th><th>긴 값</th><th>기대 동작</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>식별자</td><td><code class="ogd-token-wrap">customer_profile_visibility_export_pipeline_status_identifier_2026_05_17_final_review</code></td><td>셀 내부에서 줄바꿈되고 표 시각 디자인은 유지됩니다.</td></tr>
+          <tr><td>URL</td><td><code class="ogd-token-wrap">https://example.internal/reporting/pdf/live-preview-quality/parity/long-token-check</code></td><td>PDF에서도 오른쪽으로 넘치지 않습니다.</td></tr>
+        </tbody>
+      </table>
+      <p>마지막 문단입니다. PDF footer reserve와 marginalia 라벨이 본문과 겹치지 않아야 합니다.</p>
+    </article>
+  </main>
+</body>
+</html>

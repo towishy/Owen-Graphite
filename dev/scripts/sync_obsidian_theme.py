@@ -65,7 +65,9 @@ def find_target(explicit: Path | None) -> Path:
 
 def bundle_and_promote() -> None:
     bundle = load_module("bundle_v3", ROOT / "dev" / "scripts" / "bundle_v3.py")
-    bundle.main()
+    result = bundle.main()
+    if result:
+        raise RuntimeError("bundle_v3.py failed")
     src = ROOT / "dist" / "theme-v3.css"
     dst = ROOT / "theme.css"
     shutil.copy2(src, dst)

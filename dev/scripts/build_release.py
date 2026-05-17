@@ -45,7 +45,9 @@ def bundle_v3() -> Path:
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    module.main()
+    result = module.main()
+    if result:
+        raise RuntimeError("bundle_v3.py failed")
     return ROOT / "dist" / "theme-v3.css"
 
 
@@ -57,7 +59,9 @@ def build_src_map() -> None:
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    module.main()
+    result = module.main()
+    if result:
+        raise RuntimeError("build_src_map.py failed")
 
 
 def audit_pdf_header_footer() -> None:

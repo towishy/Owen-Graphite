@@ -91,6 +91,28 @@ settings:
     type: class-toggle
     default: false
   -
+    id: ogd-pdf-visibility
+    title: PDF 보고서 가시성 강화
+    description: PDF 출력에서 문서 상태 라벨, callout, 문서 끝 신호의 대비를 높입니다. 제목 계층과 표 디자인은 변경하지 않습니다.
+    type: class-toggle
+    default: false
+  -
+    id: ogd-pdf-font-size
+    title: PDF 글자 크기
+    description: PDF 출력에서 본문, 목록, callout, 코드, 헤더/푸터 라벨 크기를 조정합니다. 제목 계층과 표 디자인은 변경하지 않습니다.
+    type: class-select
+    default: ogd-pdf-font-standard
+    options:
+      -
+        label: 기본
+        value: ogd-pdf-font-standard
+      -
+        label: 편안하게
+        value: ogd-pdf-font-comfortable
+      -
+        label: 크게
+        value: ogd-pdf-font-large
+  -
     id: ogd-pdf-link-mode
     title: PDF 링크 출력 방식
     description: PDF export에서 외부 URL을 본문 뒤에 표시할지, 숨길지, 참고문헌 중심으로 정리할지 선택합니다.
@@ -296,6 +318,9 @@ settings:
       -
         label: 최종본 + 문서 끝
         value: ogd-pdf-preset-final-end
+      -
+        label: 상태 + 문서 끝
+        value: ogd-pdf-preset-status-end
   -
     id: ogd-pdf-marginalia-accent
     title: 헤더/푸터 글자 색상

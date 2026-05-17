@@ -270,6 +270,16 @@
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table {
     table-layout: fixed;
   }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wrap-table, .print-fit-table) :is(th, td) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table.wrap-table, table.print-fit-table) :is(code, .ogd-token-wrap) {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.table-note, .table-source) {
     page-break-before: avoid;
     color: #4b5563;
@@ -578,6 +588,156 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-color: #bfdbfe;
     background: #eff6ff;
     color: #1d4ed8;
+  }
+
+  body.ogd-pdf-visibility {
+    --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.92);
+    --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.34);
+    --ogd-pdf-marginalia-shadow: 0 4px 10px rgba(15, 23, 42, 0.10);
+    --ogd-pdf-marginalia-accent: #334155;
+    --ogd-pdf-label-letter-spacing: 0.04em;
+  }
+
+  body.ogd-pdf-font-comfortable {
+    --ogd-pdf-readable-font-size: 11.4pt;
+    --ogd-pdf-readable-line-height: 1.60;
+    --ogd-pdf-readable-callout-font-size: 11.2pt;
+    --ogd-pdf-readable-code-font-size: 9.4pt;
+    --ogd-pdf-header-font-size: 9.4pt;
+    --ogd-pdf-footer-font-size: 9.6pt;
+    --ogd-pdf-segment-key-width: 36mm;
+    --ogd-pdf-segment-value-width: 47mm;
+    --ogd-pdf-segment-half-width: 41.5mm;
+  }
+
+  body.ogd-pdf-font-large {
+    --ogd-pdf-readable-font-size: 11.9pt;
+    --ogd-pdf-readable-line-height: 1.62;
+    --ogd-pdf-readable-callout-font-size: 11.7pt;
+    --ogd-pdf-readable-code-font-size: 9.8pt;
+    --ogd-pdf-header-font-size: 9.8pt;
+    --ogd-pdf-footer-font-size: 10pt;
+    --ogd-pdf-segment-key-width: 38mm;
+    --ogd-pdf-segment-value-width: 50mm;
+    --ogd-pdf-segment-half-width: 44mm;
+  }
+
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(p, li, dd, dt, blockquote):not(table *) {
+    font-size: var(--ogd-pdf-readable-font-size, 11pt);
+    line-height: var(--ogd-pdf-readable-line-height, 1.58);
+  }
+
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout, .ogd-executive-summary, .ogd-action-summary) {
+    font-size: var(--ogd-pdf-readable-callout-font-size, 11pt);
+    line-height: var(--ogd-pdf-readable-line-height, 1.58);
+  }
+
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout :is(p, li):not(table *) {
+    font-size: inherit;
+  }
+
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) pre code {
+    font-size: var(--ogd-pdf-readable-code-font-size, 9.2pt);
+    line-height: 1.46;
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout, blockquote) {
+    page-break-inside: avoid;
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout, .ogd-executive-summary, .ogd-action-summary) {
+    border: 1px solid #d5e4ec;
+    border-left-width: 1px;
+    border-radius: 7px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 253, 0.88));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 3px rgba(15, 23, 42, 0.05);
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout-title, .callout-title-inner) {
+    color: #0f172a;
+    font-weight: 820;
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-icon {
+    background: #ffffff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 2px rgba(15, 23, 42, 0.06);
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout[data-callout="summary"], .callout[data-callout="abstract"], .callout[data-callout="tldr"], .callout[data-callout="conclusion"], .ogd-executive-summary) {
+    border-color: #c8dfdc;
+    background: linear-gradient(180deg, #ffffff, #f4fbf9);
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout[data-callout="warning"], .callout[data-callout="attention"], .callout[data-callout="caution"], .callout[data-callout="risk"]) {
+    border-color: #ead6bd;
+    background: linear-gradient(180deg, #ffffff, #fff8ed);
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) :is(.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"], .callout[data-callout="recommendation"], .callout[data-callout="action"], .ogd-action-summary) {
+    border-color: #c7dff1;
+    background: linear-gradient(180deg, #ffffff, #f4f9ff);
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content > :last-child {
+    margin-bottom: 0;
+  }
+
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .ogd-status-badge {
+    border-color: rgba(71, 85, 105, 0.34);
+    background: #ffffff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 2px rgba(15, 23, 42, 0.06);
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-executive-summary, .callout[data-callout="summary"]) {
@@ -1268,7 +1428,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     border-radius: 7px;
     background: var(--ogd-callout-bg);
     color: #334155;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    box-shadow: inset 0 0 0 1px var(--ogd-callout-border), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    break-inside: avoid-page;
     page-break-inside: avoid;
   }
 
@@ -1349,6 +1510,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     font-size: 0.98em;
     font-weight: 820;
     line-height: 1.28;
+    page-break-after: avoid;
   }
 
   body :is(
@@ -1382,6 +1544,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     color: #334155;
     font-size: 0.96em;
     line-height: 1.5;
+  }
+  body.ogd-pdf-visibility :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content > :is(p, ul, ol, blockquote, pre, table) {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.62em; }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.34em; }
