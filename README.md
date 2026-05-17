@@ -40,6 +40,9 @@
 
 ## 2. 신기능 소개
 
+> [!info]
+> [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
+
 ### v3.1.39 — PDF 헤더 Key/Value 2쌍
 
 PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습니다. 1번과 2번 쌍은 설정 UI의 순서 그대로 `1번 Key → 1번 Value → 2번 Key → 2번 Value`로 배치되며, 네 segment의 높이를 같은 기준으로 맞췄습니다. 2번 key/value도 별도 색상 팔레트를 사용해 문서 작성자, 부서, 보안 등급, 검토 상태를 한 줄에서 구분할 수 있습니다.
