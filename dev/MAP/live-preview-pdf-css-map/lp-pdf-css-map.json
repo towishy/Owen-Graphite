@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "scope": "Live Preview to Export PDF CSS parity map",
+  "authoritativeImportFile": "src/entry.css",
+  "roots": {
+    "livePreviewSource": ".markdown-source-view.mod-cm6 .cm-line.HyperMD-*",
+    "livePreviewWidget": ".markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock, .cm-callout, .cm-table-widget, .cm-html-embed, .cm-embed-block)",
+    "exportPdf": "@media print :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered)"
+  },
+  "ownerFiles": {
+    "tokens": [
+      "src/tokens/00-light-tokens.css",
+      "src/tokens/01-dark-tokens.css"
+    ],
+    "livePreview": [
+      "src/base/10-base-workspace.css",
+      "src/base/12-reading-content.css",
+      "src/base/13-live-preview.css",
+      "src/surfaces/23-liquid-glass-core.css",
+      "src/surfaces/24-html-table-live-preview-glass.css",
+      "src/plugins/61-live-preview-mobile-plugin.css",
+      "src/polish/72-a11y-regression-hotfixes.css"
+    ],
+    "exportPdf": [
+      "src/features/40-style-settings.css",
+      "src/features/41-feature-presets.css",
+      "src/features/42-report-print-polish.css",
+      "src/features/43-print-base.css",
+      "src/polish/71-overlay-layout-polish.css",
+      "src/polish/73-workflow-polish.css"
+    ]
+  },
+  "featureMap": [
+    {
+      "feature": "codeblockTypography",
+      "livePreviewSelectors": [
+        ".markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock",
+        ".markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre code"
+      ],
+      "pdfSelectors": [
+        ":is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code",
+        "body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code"
+      ],
+      "tokens": [
+        "--ogd-code-font-family",
+        "--ogd-code-font-size",
+        "--ogd-code-print-font-size",
+        "--ogd-code-font-weight",
+        "--ogd-code-line-height",
+        "--ogd-code-print-line-height"
+      ],
+      "parity": "aligned-via-tokens"
+    },
+    {
+      "feature": "syntaxColors",
+      "livePreviewSelectors": [
+        ".cm-keyword",
+        ".cm-string",
+        ".cm-property",
+        ".cm-number",
+        ".cm-comment"
+      ],
+      "pdfSelectors": [
+        ".token.keyword",
+        ".token.string",
+        ".token.property",
+        ".token.number",
+        ".token.comment",
+        ".cm-keyword",
+        ".cm-string",
+        ".cm-property",
+        ".cm-number",
+        ".cm-comment"
+      ],
+      "tokens": [
+        "--ogd-code-keyword",
+        "--ogd-code-string",
+        "--ogd-code-function",
+        "--ogd-code-property",
+        "--ogd-code-number",
+        "--ogd-code-muted",
+        "--ogd-code-punctuation"
+      ],
+      "parity": "aligned-via-token-and-class-bridge"
+    },
+    {
+      "feature": "tables",
+      "livePreviewSelectors": [
+        ".markdown-source-view.mod-cm6 .cm-table-widget",
+        ".markdown-source-view.mod-cm6 table.cm-table",
+        ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block) table"
+      ],
+      "pdfSelectors": [
+        ".markdown-rendered table",
+        ".markdown-preview-view table",
+        ".markdown-rendered table thead",
+        ".markdown-rendered table tfoot"
+      ],
+      "tokens": [
+        "--ogd-table-pad-y",
+        "--ogd-table-pad-x",
+        "--ogd-table-font-size",
+        "--ogd-table-line-height",
+        "--ogd-table-border",
+        "--ogd-table-head-bg"
+      ],
+      "parity": "partial-with-print-only-pagination"
+    },
+    {
+      "feature": "callouts",
+      "livePreviewSelectors": [
+        ".markdown-source-view.mod-cm6 .cm-callout",
+        ".markdown-source-view.mod-cm6 .cm-line.HyperMD-callout"
+      ],
+      "pdfSelectors": [
+        ".markdown-rendered .callout",
+        ".markdown-preview-view.markdown-rendered .callout"
+      ],
+      "tokens": [
+        "--callout-color",
+        "--callout-border-width",
+        "--callout-radius",
+        "--ogd-glass-*"
+      ],
+      "parity": "partial-lp-interactive-pdf-static"
+    },
+    {
+      "feature": "pdfMarginalia",
+      "livePreviewSelectors": [],
+      "pdfSelectors": [
+        "body.ogd-pdf-header-enabled .markdown-rendered::before",
+        "body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after"
+      ],
+      "tokens": [
+        "--ogd-pdf-header-text",
+        "--ogd-pdf-header-value",
+        "--ogd-pdf-footer-text",
+        "--ogd-pdf-footer-value",
+        "--ogd-pdf-marginalia-*",
+        "--ogd-pdf-segment-*"
+      ],
+      "parity": "pdf-only-by-contract"
+    }
+  ],
+  "contracts": [
+    "dev/MAP/cm6-hit-routing-contract.md",
+    "dev/MAP/pdf-header-footer-contract.md",
+    "dev/MAP/css-stabilization-checklist.md"
+  ],
+  "minimumAudits": [
+    "dev/scripts/build_release.py",
+    "dev/scripts/bundle_v3.py --check",
+    "dev/scripts/audit_visual_quality_fixture.py",
+    "dev/scripts/audit_v3_hit_routing.py",
+    "dev/scripts/audit_css_compat_budget.py"
+  ]
+}
