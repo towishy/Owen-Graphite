@@ -108,6 +108,24 @@ def audit_with_playwright(require_playwright: bool) -> int:
         page.emulate_media(media="print")
         print_styles = {name: get_style(page, selector) for name, selector in PRINT_SELECTORS.items()}
 
+        pdf_document_title = get_style(page, '[data-check="pdf-table-callout"] > h1:first-of-type')
+        if pdf_document_title["display"] != "none":
+            raise AssertionError(f"pdf document title should be hidden, got display={pdf_document_title['display']!r}")
+
+        page.evaluate(
+                        """
+                        () => {
+                            const wrappedPreview = document.createElement('article');
+                            wrappedPreview.className = 'markdown-rendered';
+                            wrappedPreview.innerHTML = '<div class="mod-header"></div><div class="el-h1" data-check="pdf-wrapped-title"><h1>Wrapped title</h1></div><div class="el-p"><p>Body text</p></div>';
+                            document.body.appendChild(wrappedPreview);
+                        }
+                        """
+        )
+        wrapped_title = get_style(page, '[data-check="pdf-wrapped-title"]')
+        if wrapped_title["display"] != "none":
+            raise AssertionError(f"pdf wrapped document title should be hidden, got display={wrapped_title['display']!r}")
+
         lp_table = screen_table["lp_table"]
         pdf_table_baseline = print_styles["pdf_table_baseline"]
         pdf_table = print_styles["pdf_table_cell"]
@@ -226,6 +244,7 @@ def get_style(page, selector: str) -> dict[str, str]:
         (el) => {
           const style = getComputedStyle(el);
           return {
+            display: style.display,
             paddingTop: style.paddingTop,
             paddingLeft: style.paddingLeft,
             fontSize: style.fontSize,
