@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1.42
+
+- polish: Live Preview H1 글자 크기를 두 배로 키워 편집 화면에서도 문서 제목 계층이 더 강하게 보이도록 조정했습니다.
+- fix: Windows 테스트 vault `H:\Owen-WIKI`를 Obsidian sync 기본 후보에 추가해 로컬 확인 흐름에서 최신 테마가 바로 반영되도록 했습니다.
+
 ## v3.1.41
 
 - polish: Live Preview H1 글자 크기를 키워 문서 제목 계층이 더 선명하게 보이도록 조정했습니다.

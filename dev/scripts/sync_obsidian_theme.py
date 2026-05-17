@@ -29,6 +29,7 @@ RELEASE_ASSETS = [
     "screenshots/report.png",
 ]
 DEFAULT_VAULTS = [
+    Path(r"H:\Owen-WIKI"),
     Path(r"H:\Obsidian"),
     Path(r"D:\JAELE\Obsidian"),
     Path.home() / "Work" / "Obsidian",
