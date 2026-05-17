@@ -290,3 +290,33 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
   background: rgba(8, 145, 178, 0.22);
   background-color: rgba(8, 145, 178, 0.22);
 }
+
+
+/* v3.1.39 table parity: LP HTML tables consume the shared report table rhythm tokens. */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  --ogd-table-pad-y: 0.58em;
+  --ogd-table-pad-x: 0.78em;
+  --ogd-table-font-size: 0.96em;
+  --ogd-table-line-height: 1.42;
+  font-size: var(--font-text-size, 16px);
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.wide-table, .print-fit-table):not(.cm-table):not(.cm-table-widget) {
+  --ogd-table-pad-y: 0.44em;
+  --ogd-table-pad-x: 0.56em;
+  --ogd-table-font-size: 0.9em;
+  --ogd-table-line-height: 1.34;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table.compact-table:not(.cm-table):not(.cm-table-widget) {
+  --ogd-table-pad-y: 0.34em;
+  --ogd-table-pad-x: 0.48em;
+  --ogd-table-font-size: 0.88em;
+  --ogd-table-line-height: 1.28;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(th, td) {
+  padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
+  font-size: var(--ogd-table-font-size);
+  line-height: var(--ogd-table-line-height);
+}

@@ -328,7 +328,7 @@ settings:
   -
     id: ogd-pdf-label-layout
     title: PDF 라벨 구성
-    description: 단일 라벨은 기존처럼 한 문구만 표시합니다. Key/Value는 `Prepared by` + `Owen Lee`처럼 붙어 있는 두 segment로 표시합니다.
+    description: 단일 라벨은 기존처럼 한 문구만 표시합니다. Key/Value는 `Prepared by` + `Owen Lee`처럼 붙어 있는 1쌍으로 표시합니다.
     type: class-select
     default: ogd-pdf-label-single
     options:
@@ -336,8 +336,11 @@ settings:
         label: 단일 라벨
         value: ogd-pdf-label-single
       -
-        label: Key/Value 2-segment
+        label: Key/Value 1쌍
         value: ogd-pdf-label-segmented
+      -
+        label: Key/Value 2쌍
+        value: ogd-pdf-label-segmented-dual
   -
     id: ogd-pdf-settings-common
     title: 공통 구성
@@ -412,7 +415,7 @@ settings:
   -
     id: ogd-pdf-header-key-palette
     title: 헤더 Key 색상
-    description: 첫 페이지 헤더의 왼쪽 key segment 색상입니다. 예 `Prepared by` 쪽 색상입니다.
+    description: 첫 페이지 헤더의 왼쪽 key 영역 색상입니다. 예 `Prepared by` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-header-key-graphite
     options:
@@ -443,7 +446,7 @@ settings:
   -
     id: ogd-pdf-header-value-palette
     title: 헤더 Value 색상
-    description: 첫 페이지 헤더의 오른쪽 value segment 색상입니다. 예 `Owen Lee - Sr. CSA` 쪽 색상입니다.
+    description: 첫 페이지 헤더의 오른쪽 value 영역 색상입니다. 예 `Owen Lee - Sr. CSA` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-header-value-sky
     options:
@@ -473,15 +476,97 @@ settings:
         value: ogd-pdf-header-value-amber
   -
     id: ogd-pdf-header-text
-    title: 첫 페이지 헤더 Key 문구
-    description: 단일 라벨에서는 전체 문구, Key/Value에서는 왼쪽 key입니다. 예 `Prepared by`.
+    title: 첫 페이지 헤더 1번 Key 문구
+    description: 단일 라벨에서는 전체 문구, Key/Value에서는 1번 왼쪽 key입니다. 예 `Prepared by`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-header-value
-    title: 첫 페이지 헤더 Value 문구
-    description: Key/Value 구성에서 오른쪽 value로 표시됩니다. 예 `Owen Lee` 또는 `Sr. CSA`. 단일 라벨 구성에서는 사용하지 않습니다.
+    title: 첫 페이지 헤더 1번 Value 문구
+    description: Key/Value 구성에서 1번 오른쪽 value로 표시됩니다. 예 `Owen Lee` 또는 `Sr. CSA`. 단일 라벨 구성에서는 사용하지 않습니다.
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-pdf-header-dual-pair
+    title: 첫 페이지 헤더 2번 Key/Value 표시
+    description: 기존 Key/Value 1쌍 구성에서 두 번째 key/value 쌍만 추가로 켭니다. PDF 라벨 구성에서 `Key/Value 2쌍`을 선택해도 같은 출력이 적용됩니다.
+    type: class-toggle
+    default: false
+  -
+    id: ogd-pdf-header2-key-palette
+    title: 헤더 2번 Key 색상
+    description: 첫 페이지 헤더의 2번 key segment 색상입니다. 예 `Reviewed by` 쪽 색상입니다.
+    type: class-select
+    default: ogd-pdf-header2-key-graphite
+    options:
+      -
+        label: Graphite
+        value: ogd-pdf-header2-key-graphite
+      -
+        label: Slate
+        value: ogd-pdf-header2-key-slate
+      -
+        label: Sky
+        value: ogd-pdf-header2-key-sky
+      -
+        label: Teal
+        value: ogd-pdf-header2-key-teal
+      -
+        label: Mint
+        value: ogd-pdf-header2-key-mint
+      -
+        label: Violet
+        value: ogd-pdf-header2-key-violet
+      -
+        label: Rose
+        value: ogd-pdf-header2-key-rose
+      -
+        label: Amber
+        value: ogd-pdf-header2-key-amber
+  -
+    id: ogd-pdf-header2-value-palette
+    title: 헤더 2번 Value 색상
+    description: 첫 페이지 헤더의 2번 value segment 색상입니다. 예 `Graphite QA` 쪽 색상입니다.
+    type: class-select
+    default: ogd-pdf-header2-value-sky
+    options:
+      -
+        label: Graphite
+        value: ogd-pdf-header2-value-graphite
+      -
+        label: Slate
+        value: ogd-pdf-header2-value-slate
+      -
+        label: Sky
+        value: ogd-pdf-header2-value-sky
+      -
+        label: Teal
+        value: ogd-pdf-header2-value-teal
+      -
+        label: Mint
+        value: ogd-pdf-header2-value-mint
+      -
+        label: Violet
+        value: ogd-pdf-header2-value-violet
+      -
+        label: Rose
+        value: ogd-pdf-header2-value-rose
+      -
+        label: Amber
+        value: ogd-pdf-header2-value-amber
+  -
+    id: ogd-pdf-header-text-2
+    title: 첫 페이지 헤더 2번 Key 문구
+    description: 2번 key segment입니다. 예 `Reviewed by`.
+    type: variable-text
+    default: ''
+    quotes: true
+  -
+    id: ogd-pdf-header-value-2
+    title: 첫 페이지 헤더 2번 Value 문구
+    description: 2번 value segment입니다. 예 `Design QA` 또는 `2026-05-17`.
     type: variable-text
     default: ''
     quotes: true
@@ -634,6 +719,8 @@ settings:
    * Anchor pseudo paint surface — see src/features/41-feature-presets.css C3. */
   --ogd-pdf-header-text: "";
   --ogd-pdf-header-value: "";
+  --ogd-pdf-header-text-2: "";
+  --ogd-pdf-header-value-2: "";
   --ogd-pdf-footer-text: "";
   --ogd-pdf-footer-value: "";
   --ogd-pdf-marginalia-accent: #475569;
@@ -652,6 +739,12 @@ settings:
   --ogd-pdf-header-segment-value-bg: var(--ogd-pdf-segment-value-bg, #0284c7);
   --ogd-pdf-header-segment-value-text: var(--ogd-pdf-segment-value-text, #ffffff);
   --ogd-pdf-header-segment-value-border: var(--ogd-pdf-segment-value-border, transparent);
+  --ogd-pdf-header2-segment-key-bg: var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46));
+  --ogd-pdf-header2-segment-key-text: var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff));
+  --ogd-pdf-header2-segment-key-border: var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
+  --ogd-pdf-header2-segment-value-bg: var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7));
+  --ogd-pdf-header2-segment-value-text: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
+  --ogd-pdf-header2-segment-value-border: var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent));
   --ogd-pdf-footer-segment-key-bg: var(--ogd-pdf-segment-key-bg, #3f3f46);
   --ogd-pdf-footer-segment-key-text: var(--ogd-pdf-segment-key-text, #ffffff);
   --ogd-pdf-footer-segment-key-border: var(--ogd-pdf-segment-key-border, transparent);
@@ -662,6 +755,8 @@ settings:
   --ogd-pdf-segment-key-width: 34mm;
   --ogd-pdf-segment-value-width: 44mm;
   --ogd-pdf-segment-half-width: 39mm;
+  --ogd-pdf-header-pair-gap: 5mm;
+  --ogd-pdf-header-half-pair-gap: 2.5mm;
   --ogd-pdf-segment-pad-y: 5px;
   --ogd-pdf-segment-pad-x: 10px;
   --ogd-pdf-header-top: 11mm;
@@ -693,11 +788,13 @@ settings:
 
   --ogd-code-font-family: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
     "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --ogd-pdf-surface-text-font-size: 11.6pt;
+  --ogd-pdf-surface-text-line-height: 1.42;
   --ogd-code-font-size: 0.92em;
-  --ogd-code-print-font-size: 8.6pt;
+  --ogd-code-print-font-size: var(--ogd-pdf-surface-text-font-size);
   --ogd-code-font-weight: 520;
   --ogd-code-line-height: 1.58;
-  --ogd-code-print-line-height: 1.44;
+  --ogd-code-print-line-height: var(--ogd-pdf-surface-text-line-height);
   --ogd-code-letter-spacing: 0;
   --ogd-code-tab-size: 2;
   --ogd-code-font-feature-settings: "zero" 1, "tnum" 1;
@@ -1000,6 +1097,12 @@ body:not(.is-mobile).theme-dark {
   --ogd-pdf-header-segment-value-bg: var(--ogd-pdf-segment-value-bg, #0284c7);
   --ogd-pdf-header-segment-value-text: var(--ogd-pdf-segment-value-text, #ffffff);
   --ogd-pdf-header-segment-value-border: var(--ogd-pdf-segment-value-border, transparent);
+  --ogd-pdf-header2-segment-key-bg: var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46));
+  --ogd-pdf-header2-segment-key-text: var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff));
+  --ogd-pdf-header2-segment-key-border: var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
+  --ogd-pdf-header2-segment-value-bg: var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7));
+  --ogd-pdf-header2-segment-value-text: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
+  --ogd-pdf-header2-segment-value-border: var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent));
   --ogd-pdf-footer-segment-key-bg: var(--ogd-pdf-segment-key-bg, #3f3f46);
   --ogd-pdf-footer-segment-key-text: var(--ogd-pdf-segment-key-text, #ffffff);
   --ogd-pdf-footer-segment-key-border: var(--ogd-pdf-segment-key-border, transparent);
@@ -1853,7 +1956,7 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   font-size: 0.78em;
   font-weight: 800;
   text-transform: uppercase;
-  
+
   /* Hide the heavy header bar; replace with a small badge */
   content: none;
 }
@@ -1947,7 +2050,7 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 .workspace-leaf-content .markdown-rendered pre {
-  
+
   --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(241, 245, 249, 0.62));
   --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.88);
@@ -2017,7 +2120,7 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 .workspace-leaf-content .markdown-rendered pre code {
-  
+
   display: block;
   max-width: 100%;
   padding: var(--ogd-codeblock-code-padding, 4.05em 1.1em 1.05em);
@@ -3769,7 +3872,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .Hy
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
   border-top: 1px solid rgba(30, 41, 59, 0.18);
   border-radius: var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) 0 0;
-  
+
   margin-top: 0;
   padding-top: 0;
 }
@@ -3777,7 +3880,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
   border-bottom: 1px solid rgba(30, 41, 59, 0.18);
   border-radius: 0 0 var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px);
-  
+
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -3797,7 +3900,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
    ============================================================ */
 
 body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  
+
   background: linear-gradient(180deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.74));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), 0 6px 14px rgba(0, 0, 0, 0.18);
 }
@@ -4296,6 +4399,24 @@ body.ogd-pdf-header-value-violet { --ogd-pdf-header-segment-value-bg: #7c3aed; -
 body.ogd-pdf-header-value-rose { --ogd-pdf-header-segment-value-bg: #be123c; --ogd-pdf-header-segment-value-text: #ffffff; }
 body.ogd-pdf-header-value-amber { --ogd-pdf-header-segment-value-bg: #b45309; --ogd-pdf-header-segment-value-text: #ffffff; }
 
+body.ogd-pdf-header2-key-graphite { --ogd-pdf-header2-segment-key-bg: #3f3f46; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-slate { --ogd-pdf-header2-segment-key-bg: #475569; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-sky { --ogd-pdf-header2-segment-key-bg: #0284c7; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-teal { --ogd-pdf-header2-segment-key-bg: #0f766e; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-mint { --ogd-pdf-header2-segment-key-bg: #059669; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-violet { --ogd-pdf-header2-segment-key-bg: #7c3aed; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-rose { --ogd-pdf-header2-segment-key-bg: #be123c; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-amber { --ogd-pdf-header2-segment-key-bg: #b45309; --ogd-pdf-header2-segment-key-text: #ffffff; }
+
+body.ogd-pdf-header2-value-graphite { --ogd-pdf-header2-segment-value-bg: #52525b; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-slate { --ogd-pdf-header2-segment-value-bg: #475569; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-sky { --ogd-pdf-header2-segment-value-bg: #0284c7; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-teal { --ogd-pdf-header2-segment-value-bg: #0f766e; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-mint { --ogd-pdf-header2-segment-value-bg: #059669; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-violet { --ogd-pdf-header2-segment-value-bg: #7c3aed; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-rose { --ogd-pdf-header2-segment-value-bg: #be123c; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-amber { --ogd-pdf-header2-segment-value-bg: #b45309; --ogd-pdf-header2-segment-value-text: #ffffff; }
+
 body.ogd-pdf-footer-key-graphite { --ogd-pdf-footer-segment-key-bg: #3f3f46; --ogd-pdf-footer-segment-key-text: #ffffff; }
 body.ogd-pdf-footer-key-slate { --ogd-pdf-footer-segment-key-bg: #475569; --ogd-pdf-footer-segment-key-text: #ffffff; }
 body.ogd-pdf-footer-key-sky { --ogd-pdf-footer-segment-key-bg: #0284c7; --ogd-pdf-footer-segment-key-text: #ffffff; }
@@ -4330,6 +4451,16 @@ body.ogd-pdf-header-top-center {
   --ogd-pdf-header-left: 50%;
   --ogd-pdf-header-right: auto;
   --ogd-pdf-header-transform: translateX(-50%);
+}
+
+body.ogd-pdf-header-dual-pair {
+  --ogd-pdf-header-pair-gap: 5mm;
+  --ogd-pdf-header-half-pair-gap: 2.5mm;
+}
+
+body.ogd-pdf-label-segmented-dual {
+  --ogd-pdf-header-pair-gap: 5mm;
+  --ogd-pdf-header-half-pair-gap: 2.5mm;
 }
 
 /* v3.1.33 hotfix: 전체 블록을 @media print 안으로 격리.
@@ -4379,10 +4510,13 @@ body.ogd-pdf-header-top-center {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-label-segmented .markdown-rendered::before,
-  body.ogd-pdf-label-segmented .markdown-rendered > :last-child::after {
+  body:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before,
+  body:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after {
     width: var(--ogd-pdf-segment-value-width, 42mm);
     max-width: var(--ogd-pdf-segment-value-width, 42mm);
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
     border-radius: 0 var(--ogd-pdf-segment-radius, 2px) var(--ogd-pdf-segment-radius, 2px) 0;
     background: var(--ogd-pdf-segment-value-bg, #0284c7);
@@ -4392,9 +4526,12 @@ body.ogd-pdf-header-top-center {
     letter-spacing: 0.02em;
     box-shadow: none;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::after {
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after {
     content: var(--ogd-pdf-header-text, "");
     position: absolute;
     top: var(--ogd-pdf-header-top, 11mm);
@@ -4403,9 +4540,12 @@ body.ogd-pdf-header-top-center {
     transform: none;
     z-index: 9999;
     pointer-events: none;
-    display: inline-block;
+    display: inline-flex;
     width: var(--ogd-pdf-segment-key-width, 30mm);
     max-width: var(--ogd-pdf-segment-key-width, 30mm);
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
     border-radius: var(--ogd-pdf-segment-radius, 2px) 0 0 var(--ogd-pdf-segment-radius, 2px);
     background: var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46));
@@ -4424,26 +4564,116 @@ body.ogd-pdf-header-top-center {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::before {
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before {
     content: var(--ogd-pdf-header-value, "");
+    display: inline-flex;
     background: var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7));
     border-color: var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent));
     color: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
     -webkit-text-fill-color: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
   }
 
-  body.ogd-pdf-header-top-center.ogd-pdf-label-segmented .markdown-rendered::before {
+  body.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before {
     left: calc(50% - var(--ogd-pdf-segment-half-width, 36mm) + var(--ogd-pdf-segment-key-width, 30mm));
     right: auto;
     transform: none;
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center.ogd-pdf-label-segmented .markdown-rendered::after {
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after {
     left: calc(50% - var(--ogd-pdf-segment-half-width, 36mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after {
+    right: calc(var(--ogd-pdf-header-right, 13mm) + var(--ogd-pdf-segment-key-width, 30mm) + var(--ogd-pdf-segment-value-width, 42mm) + var(--ogd-pdf-header-pair-gap, 5mm) + var(--ogd-pdf-segment-value-width, 42mm));
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::before {
+    right: calc(var(--ogd-pdf-header-right, 13mm) + var(--ogd-pdf-segment-key-width, 30mm) + var(--ogd-pdf-segment-value-width, 42mm) + var(--ogd-pdf-header-pair-gap, 5mm));
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before,
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after {
+    position: absolute;
+    top: var(--ogd-pdf-header-top, 11mm);
+    bottom: auto;
+    left: auto;
+    transform: none;
+    z-index: 9999;
+    pointer-events: none;
+    display: inline-flex;
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
+    margin: 0;
+    padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
+    box-shadow: none;
+    box-sizing: border-box;
+    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-size: var(--ogd-pdf-header-font-size, 7.5pt);
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: var(--ogd-pdf-label-line-height, 1.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before {
+    content: var(--ogd-pdf-header-text-2, "");
+    right: calc(var(--ogd-pdf-header-right, 13mm) + var(--ogd-pdf-segment-value-width, 42mm));
+    width: var(--ogd-pdf-segment-key-width, 30mm);
+    max-width: var(--ogd-pdf-segment-key-width, 30mm);
+    border-radius: var(--ogd-pdf-segment-radius, 2px) 0 0 var(--ogd-pdf-segment-radius, 2px);
+    background: var(--ogd-pdf-header2-segment-key-bg, var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46)));
+    border: 1px solid var(--ogd-pdf-header2-segment-key-border, var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent)));
+    color: var(--ogd-pdf-header2-segment-key-text, var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff)));
+    -webkit-text-fill-color: var(--ogd-pdf-header2-segment-key-text, var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff)));
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after {
+    content: var(--ogd-pdf-header-value-2, "");
+    right: var(--ogd-pdf-header-right, 13mm);
+    width: var(--ogd-pdf-segment-value-width, 42mm);
+    max-width: var(--ogd-pdf-segment-value-width, 42mm);
+    border-radius: 0 var(--ogd-pdf-segment-radius, 2px) var(--ogd-pdf-segment-radius, 2px) 0;
+    background: var(--ogd-pdf-header2-segment-value-bg, var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7)));
+    border: 1px solid var(--ogd-pdf-header2-segment-value-border, var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent)));
+    color: var(--ogd-pdf-header2-segment-value-text, var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff)));
+    -webkit-text-fill-color: var(--ogd-pdf-header2-segment-value-text, var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff)));
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after {
+    left: calc(50% - var(--ogd-pdf-header-half-pair-gap, 2.5mm) - var(--ogd-pdf-segment-key-width, 30mm) - var(--ogd-pdf-segment-value-width, 42mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::before {
+    left: calc(50% - var(--ogd-pdf-header-half-pair-gap, 2.5mm) - var(--ogd-pdf-segment-value-width, 42mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before {
+    left: calc(50% + var(--ogd-pdf-header-half-pair-gap, 2.5mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after {
+    left: calc(50% + var(--ogd-pdf-header-half-pair-gap, 2.5mm) + var(--ogd-pdf-segment-key-width, 30mm));
     right: auto;
   }
 
@@ -4455,6 +4685,7 @@ body.ogd-pdf-header-top-center {
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
+    top: auto;
     left: 50%;
     bottom: var(--ogd-pdf-footer-offset, -22mm);
     transform: translateX(-50%);
@@ -4483,16 +4714,20 @@ body.ogd-pdf-header-top-center {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::before {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::before {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
+    top: auto;
     left: auto;
     right: 50%;
     bottom: var(--ogd-pdf-footer-offset, -22mm);
     transform: none;
     z-index: 9999;
     pointer-events: none;
-    display: inline-block;
+    display: inline-flex;
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     max-width: calc(var(--ogd-pdf-footer-max-width, 90%) / 2);
     padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 12px);
     border-radius: var(--ogd-pdf-segment-radius, 2px) 0 0 var(--ogd-pdf-segment-radius, 2px);
@@ -4512,15 +4747,23 @@ body.ogd-pdf-header-top-center {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::after {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after {
     content: var(--ogd-pdf-footer-value, "");
+    display: inline-flex;
+    top: auto;
     left: 50%;
     transform: none;
     width: auto;
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     max-width: calc(var(--ogd-pdf-footer-max-width, 90%) / 2);
     padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 12px);
     border-radius: 0 var(--ogd-pdf-segment-radius, 2px) var(--ogd-pdf-segment-radius, 2px) 0;
@@ -4531,6 +4774,9 @@ body.ogd-pdf-header-top-center {
     letter-spacing: 0.02em;
     box-shadow: none;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }
 
@@ -4608,9 +4854,9 @@ body.ogd-report-mode .markdown-rendered .callout p {
   text-indent: 0;
 }
 body.ogd-report-mode .markdown-rendered {
-  
+
   counter-reset: ogd-h2 ogd-h3 ogd-h4;
-  
+
   font-family: "Noto Serif KR", "Nanum Myeongjo", "Source Serif Pro",
     Georgia, serif;
 }
@@ -4943,7 +5189,7 @@ body.ogd-auto-dark {
    Dark mode parity for v1.4.0 additions
    ===================================================================== */
 .theme-dark {
-  
+
   --background-primary: #1f2024;
   --background-primary-alt: #25272d;
   --background-secondary: #17181c;
@@ -4998,7 +5244,7 @@ body.ogd-auto-dark {
   --code-string: #6ee7b7;
   --code-tag: #93c5fd;
   --code-value: #6ee7b7;
-  
+
   --ogd-plugin-dark-surface-bg: radial-gradient(circle at 78% 18%, rgba(148, 163, 184, 0.11), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.34));
   --ogd-plugin-dark-surface-border: rgba(203, 213, 225, 0.14);
   --ogd-plugin-dark-surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 14px rgba(0, 0, 0, 0.24);
@@ -5082,9 +5328,9 @@ body.ogd-auto-dark {
 .theme-dark .nav-folder-title[data-path^="raw"] .nav-folder-title-content { color: #9ca3af; }
 .theme-dark .nav-folder-title[data-path^="dev/scripts"] .nav-folder-title-content { color: #6ee7b7; }
 body.theme-dark.ogd-eye-care {
-  
+
   /* core variable overrides */
-  
+
   --background-primary: #1f1d18;
   --background-primary-alt: #25221a;
   --background-secondary: #17150f;
@@ -5146,9 +5392,9 @@ body.theme-dark.ogd-eye-care {
   border-color: rgba(147, 197, 253, 0.28);
 }
 .theme-dark .markdown-rendered a.internal-link.is-unresolved {
-  
+
   color: #fbbf24;
-  
+
   background: rgba(251, 191, 36, 0.12);
 }
 
@@ -5156,7 +5402,7 @@ body.theme-dark.ogd-eye-care {
    Default copy button sits at top:6px right:6px. Push badge to right:48px. */
 /* Show badge only on hover to keep code blocks visually clean */
 .markdown-rendered pre[class*="language-"]::after {
-  
+
   content: attr(class);
   position: absolute;
   top: 6px;
@@ -5170,9 +5416,9 @@ body.theme-dark.ogd-eye-care {
   letter-spacing: 0.05em;
   border-radius: 4px;
   pointer-events: none;
-  
+
   right: 48px;
-  
+
   opacity: 0;
   transition: opacity 0.15s ease;
 }
@@ -5624,7 +5870,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 
 /* Properties / Frontmatter: quieter report-card surface */
 .metadata-container {
-  
+
   background: var(--ogd-surface-muted, #f8fafc);
   border: 1px solid #e2e8f0;
   border-left: 4px solid #94a3b8;
@@ -5651,7 +5897,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
   font-size: 0.88em;
   font-family: var(--font-monospace-theme);
-  
+
   background: var(--ogd-surface-muted, #f8fafc);
   color: var(--ogd-text-subtle, #475569);
   border-left: 3px solid #cbd5e1;
@@ -5734,10 +5980,10 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
   transform: var(--ogd-hover-shift, translateX(1px));
 }
 .nav-file-title.is-active {
-  
+
   border-left: 4px solid var(--header-accent);
   padding-left: 4px;
-  
+
   background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.72), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.58));
   color: var(--ogd-text-strong, #111827);
   box-shadow: inset 0 0 0 1px rgba(100, 116, 139, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 2px 7px rgba(15, 23, 42, 0.07);
@@ -6601,7 +6847,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 
 /* Graph view: quiet contrast for dense knowledge maps */
 .graph-view.color-fill {
-  
+
   color: #64748b;
 }
 .graph-view.color-fill-highlight,
@@ -6617,7 +6863,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   color: rgba(129, 140, 248, 0.74);
 }
 .graph-view.color-text {
-  
+
   color: var(--ogd-text-slate, #334155);
 }
 
@@ -7203,10 +7449,10 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   background: var(--ogd-surface-base, #ffffff);
 }
 .status-bar {
-  
+
   font-size: 0.8em;
   padding: 2px 10px;
-  
+
   background: rgba(255, 255, 255, 0.94);
   border-top: 1px solid var(--ogd-line-soft, #e5e7eb);
   color: #64748b;
@@ -7270,7 +7516,7 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
 
 .theme-dark .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
   border: 1px solid rgba(203, 213, 225, 0.16);
-  
+
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.42), rgba(15, 23, 42, 0.24));
   color: #bfdbfe;
   box-shadow: inset 0 -1px 0 rgba(147, 197, 253, 0.24);
@@ -7400,16 +7646,15 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   --ogd-table-line-height: 1.42;
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td),
+.markdown-source-view.mod-cm6 table.cm-table :is(th, td) {
+
   padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
   font-size: var(--ogd-table-font-size);
   line-height: var(--ogd-table-line-height);
   vertical-align: top;
-}
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
-.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td),
-.markdown-source-view.mod-cm6 table.cm-table :is(th, td) {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -7440,13 +7685,17 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   table-layout: auto;
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table),
+.markdown-source-view.mod-cm6 .cm-table-widget table:is(.wide-table, .print-fit-table),
+.markdown-source-view.mod-cm6 table.cm-table:is(.wide-table, .print-fit-table) {
   --ogd-table-pad-y: 0.44em;
   --ogd-table-pad-x: 0.56em;
   --ogd-table-font-size: 0.9em;
   --ogd-table-line-height: 1.34;
 }
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.compact-table {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.compact-table,
+.markdown-source-view.mod-cm6 .cm-table-widget table.compact-table,
+.markdown-source-view.mod-cm6 table.cm-table.compact-table {
   --ogd-table-pad-y: 0.34em;
   --ogd-table-pad-x: 0.48em;
   --ogd-table-font-size: 0.88em;
@@ -7642,10 +7891,10 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
     page-break-inside: avoid;
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.print-fit-table, .wide-table) {
-    --ogd-table-pad-y: 0.28em;
-    --ogd-table-pad-x: 0.42em;
-    --ogd-table-font-size: 8.8pt;
-    --ogd-table-line-height: 1.24;
+    --ogd-table-pad-y: 0.44em;
+    --ogd-table-pad-x: 0.56em;
+    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.wrap-table {
     table-layout: fixed;
@@ -7730,7 +7979,7 @@ body .markdown-rendered h2:first-of-type,
 body .markdown-preview-view.markdown-rendered h2:first-of-type,
 body .markdown-reading-view .markdown-rendered h2:first-of-type,
 body.ogd-report-mode .markdown-rendered > h2:first-of-type {
-  
+
   display: inline-block;
   width: auto;
   max-width: 100%;
@@ -7744,7 +7993,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type {
   background: var(--ogd-surface-transparent, transparent);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
-  
+
   padding-top: 34px;
   border-top: 1px solid #edf2f7;
   box-shadow: 0 -1px 0 #f8fafc;
@@ -7967,6 +8216,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body.ogd-pdf-visibility {
+    --ogd-pdf-surface-text-font-size: 11.6pt;
+    --ogd-pdf-surface-text-line-height: 1.42;
     --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.92);
     --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.34);
     --ogd-pdf-marginalia-shadow: 0 4px 10px rgba(15, 23, 42, 0.10);
@@ -7975,10 +8226,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body.ogd-pdf-font-comfortable {
-    --ogd-pdf-readable-font-size: 11.4pt;
-    --ogd-pdf-readable-line-height: 1.60;
-    --ogd-pdf-readable-callout-font-size: 11.2pt;
-    --ogd-pdf-readable-code-font-size: 9.4pt;
+    --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
+    --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
     --ogd-pdf-header-font-size: 9.4pt;
     --ogd-pdf-footer-font-size: 9.6pt;
     --ogd-pdf-segment-key-width: 36mm;
@@ -7987,10 +8238,10 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body.ogd-pdf-font-large {
-    --ogd-pdf-readable-font-size: 11.9pt;
-    --ogd-pdf-readable-line-height: 1.62;
-    --ogd-pdf-readable-callout-font-size: 11.7pt;
-    --ogd-pdf-readable-code-font-size: 9.8pt;
+    --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
+    --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
     --ogd-pdf-header-font-size: 9.8pt;
     --ogd-pdf-footer-font-size: 10pt;
     --ogd-pdf-segment-key-width: 38mm;
@@ -8003,8 +8254,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) :is(p, li, dd, dt, blockquote):not(table *) {
-    font-size: var(--ogd-pdf-readable-font-size, 11pt);
-    line-height: var(--ogd-pdf-readable-line-height, 1.58);
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-pdf-readable-font-size, 11pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-pdf-readable-line-height, 1.58));
   }
 
   body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
@@ -8012,8 +8263,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) :is(.callout, .ogd-executive-summary, .ogd-action-summary) {
-    font-size: var(--ogd-pdf-readable-callout-font-size, 11pt);
-    line-height: var(--ogd-pdf-readable-line-height, 1.58);
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-pdf-readable-callout-font-size, 11pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-pdf-readable-line-height, 1.58));
   }
 
   body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
@@ -8029,8 +8280,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) pre code {
-    font-size: var(--ogd-pdf-readable-code-font-size, 9.2pt);
-    line-height: 1.46;
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-pdf-readable-code-font-size, 9.2pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.46);
   }
 
   body.ogd-pdf-visibility :is(
@@ -8144,7 +8395,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) {
-    font-size: 10.6pt;
+    font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
     color: #1f2937;
   }
 
@@ -8154,7 +8406,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) :is(p, li) {
     color: #1f2937;
-    line-height: 1.46;
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
 
   body.ogd-pdf-compact :is(
@@ -8304,8 +8556,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   ) table {
     --ogd-table-pad-y: 0.28em;
     --ogd-table-pad-x: 0.42em;
-    --ogd-table-font-size: 9.1pt;
-    --ogd-table-line-height: 1.28;
+    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
     --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.56), transparent 0 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.82));
     --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.82));
     --ogd-table-border: rgba(203, 213, 225, 0.24);
@@ -8324,8 +8576,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   ) table:is(.compact-table, .print-fit-table, .wide-table) {
     --ogd-table-pad-y: 0.22em;
     --ogd-table-pad-x: 0.34em;
-    --ogd-table-font-size: 8.6pt;
-    --ogd-table-line-height: 1.22;
+    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
 
   body.ogd-pdf-compact :is(
@@ -8407,7 +8659,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) pre code {
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     line-height: var(--ogd-code-print-line-height, 1.44);
   }
 
@@ -8490,7 +8742,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: transparent;
     color: var(--ogd-code-fg, #1e293b);
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
     font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
@@ -8581,8 +8833,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body .workspace-leaf-content .markdown-rendered table {
     --ogd-table-pad-y: 0.62em;
     --ogd-table-pad-x: 0.78em;
-    --ogd-table-font-size: 11.6pt;
-    --ogd-table-line-height: 1.42;
+    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
     --ogd-table-surface: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.08), transparent 0 38%), linear-gradient(180deg, #ffffff, #fbfdff);
     --ogd-table-head-bg: linear-gradient(180deg, #ffffff, #f8fafc);
     --ogd-table-border: rgba(148, 163, 184, 0.38);
@@ -8599,6 +8851,18 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     background: var(--ogd-table-surface);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 2px 6px rgba(15, 23, 42, 0.06);
     overflow: hidden;
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) table:is(.print-fit-table, .wide-table),
+  body .workspace-leaf-content .markdown-rendered table:is(.print-fit-table, .wide-table) {
+    --ogd-table-pad-y: 0.44em;
+    --ogd-table-pad-x: 0.56em;
+    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
 
   body :is(
@@ -8999,6 +9263,16 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
+  ) :is(p, li, dd, dt, blockquote):not(table *),
+  body .workspace-leaf-content .markdown-rendered :is(p, li, dd, dt, blockquote):not(table *) {
+    font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
+  }
+
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
   ) .callout-title {
     min-height: 0;
     padding: 0;
@@ -9038,8 +9312,34 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin-top: 0.42em;
     padding-top: 0;
     color: #334155;
-    font-size: 0.96em;
-    line-height: 1.5;
+    font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
+  }
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout :is(p, li):not(table *),
+  body :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content > :is(p, ul, ol):not(table *) {
+    font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
+  }
+  body:is(.ogd-pdf-visibility, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout :is(p, li):not(table *),
+  body:is(.ogd-pdf-visibility, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .callout-content > :is(p, ul, ol):not(table *) {
+    font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
+    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
   body.ogd-pdf-visibility :is(
     .markdown-rendered,
@@ -11479,7 +11779,7 @@ body.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-ch
 .markdown-rendered h2,
 .markdown-preview-view.markdown-rendered h2,
 .markdown-reading-view .markdown-rendered h2 {
-  
+
   position: relative;
   box-sizing: border-box;
   padding-bottom: 0.22em;
@@ -11489,7 +11789,7 @@ body.ogd-zebra-disabled-permanently .markdown-reading-view table tbody tr:nth-ch
   letter-spacing: 0;
   color: var(--header-text);
   border-bottom: 1px solid var(--header-line);
-  
+
   margin-top: 1.08em;
   margin-bottom: 0.42em;
 }
@@ -11703,7 +12003,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 .markdown-rendered hr,
 .markdown-preview-view hr,
 .markdown-reading-view hr {
-  
+
   height: 1px;
   margin: 1.28em 0 1.5em;
   border: var(--ogd-border-none, 0);
@@ -11915,7 +12215,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 .theme-dark .markdown-rendered hr,
 .theme-dark .markdown-preview-view hr,
 .theme-dark .markdown-reading-view hr {
-  
+
   background: linear-gradient(90deg, rgba(51, 65, 85, 0), rgba(51, 65, 85, 0.92), rgba(51, 65, 85, 0));
 }
 
@@ -12448,7 +12748,7 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
 .popover.hover-popover .markdown-rendered {
   font-size: 0.94em;
   line-height: 1.55;
-  
+
   padding: 12px 14px;
   color: var(--ogd-text-slate, #334155);
 }
@@ -12803,9 +13103,9 @@ body .markdown-source-view.mod-cm6 .cm-line {
 
 /* --- 1. Dark mode parity for v1.8.6x components --------------------------- */
 body.theme-dark {
-  
+
   /* --ogd-* tokens */
-  
+
   --ogd-blockquote-bg-1: #1f242b;
   --ogd-blockquote-bg-2: #252b34;
   --ogd-blockquote-bg-3: #2c333d;
@@ -12872,7 +13172,7 @@ body.theme-dark .markdown-preview-view h1::before {
 .markdown-rendered .callout:is([data-callout="danger"], [data-callout="error"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"]) { --callout-color: #ef4444; }
 .markdown-rendered .callout[data-callout="bug"]       { --callout-color: #dc2626; }
 .markdown-rendered .callout[data-callout="example"]   {
-  
+
   --callout-icon: lucide-list-checks;
   border-left-color: #6d28d9;
   background: #f5f3ff;
@@ -13274,7 +13574,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
     box-shadow: none;
     color: var(--ogd-code-fg, #1e293b);
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
     font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
@@ -13452,7 +13752,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-  
+
     border-bottom-color: transparent;
     background: transparent;
     box-shadow: none;
@@ -13569,11 +13869,11 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
 
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre code {
-  
+
     background: transparent;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-  
+
     padding: 24pt 9pt 8.5pt;
 }
 }
@@ -14138,7 +14438,7 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
     backdrop-filter: var(--ogd-glass-filter-control);
     border: 1px solid var(--ogd-lg-border);
     border-radius: var(--ogd-radius-control, 7px);
-  
+
     background: var(--ogd-lg-control-bg);
     border-color: var(--ogd-lg-border);
     box-shadow: var(--ogd-glass-control-shadow);
@@ -14287,7 +14587,7 @@ body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
   color: var(--ogd-text-strong, #111827);
   font-weight: 700;
-  
+
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.76));
   box-shadow: 1px 0 0 rgba(203, 213, 225, 0.72);
 }
@@ -15084,12 +15384,12 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
 }
 
 .markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code) {
-  
+
   padding-inline: 0.32em;
   border-radius: 4px;
   color: var(--ogd-text-subtle, #64748b);
   background: rgba(255, 255, 255, 0.38);
-  
+
   opacity: 0.52;
 }
 
@@ -15188,11 +15488,6 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
 .theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62)); --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74)); --ogd-table-border: rgba(203, 213, 225, 0.28); --ogd-table-cell-border: rgba(71, 85, 105, 0.72); --ogd-table-row-hover: rgba(51, 65, 85, 0.50); --ogd-table-row-even: rgba(15, 23, 42, 0.36); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7); }
 /* v2.30.10 reading-view neutralizer for HTML tables in Live Preview */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-  font-variant-numeric: tabular-nums;
-   --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface); border-color: var(--ogd-table-border); box-shadow: var(--ogd-table-shadow);
-   margin: 0; width: 100%; max-width: 100%; font-size: 1em; border-collapse: collapse;
-}
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td:first-child { color: inherit; font-weight: inherit; }
 /* v2.30.13 align HTML table tone with markdown widget tokens (PDF / Live Preview parity) */
 /* Drops the v2.30.11 backdrop-filter / drop shadow / bespoke gradient that
@@ -15264,19 +15559,19 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 /* v2.30.22 mirror dev/10-a11y markdown widget td/th rules onto HTML tables (white row overlay + smaller/denser header) */
 /* dev/10-a11y:996-1006 sets `td { background: rgba(255, 255, 255, 0.28) }` and `th { font-size: 0.88em; font-weight: 820 }` for cm-table-widget only. HTML tables in Live Preview never received these, so their rows pick up the table surface gradient (faint grey) and their headers render larger/heavier than the markdown widget side-by-side. Restate both at matching specificity for HTML tables, in both report-mode and non-report-mode. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  
+
   border-width: 1px;
   border-style: solid;
   border-color: var(--ogd-table-cell-border);
-  
+
   background: rgba(255, 255, 255, 0.28);
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  
+
   border-width: 1px;
   border-style: solid;
   border-color: var(--ogd-table-cell-border);
-  
+
   background: rgba(255, 255, 255, 0.28);
 }
 /* Dark mode parity: dev/10-a11y has no dark override, so same overlay/font apply. The white overlay reads correctly on dark surface (subtle highlight without flipping rows white). */
@@ -15285,7 +15580,7 @@ body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdow
 }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
    color: var(--text-normal, #e5edf7);
-  
+
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -15296,51 +15591,51 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 /* v2.30.24 soften HTML thead divider to normal cell grid weight */
 /* v2.30.23 restored the header separator to 2px, but side-by-side review shows it still reads as a thick line below the header. Keep only a normal 1px grid divider and remove the header inset shadow so the line cannot visually double. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  
+
   border-top-width: 0;
   border-top-style: none;
-  
+
   font-size: 0.88em;
   font-weight: 820;
-  
+
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: rgba(148, 163, 184, 0.58);
-  
+
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
    border-color: var(--ogd-table-cell-border); background: var(--ogd-table-head-bg); color: var(--ogd-text-strong, #111827);
-  
+
   border-top-width: 0;
   border-top-style: none;
-  
+
   font-size: 0.88em;
   font-weight: 820;
-  
+
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: rgba(148, 163, 184, 0.58);
-  
+
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
 body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  
+
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: rgba(148, 163, 184, 0.34);
-  
+
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
   box-shadow: none;
 }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { color: var(--text-normal, #e5edf7);
-  
+
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: rgba(148, 163, 184, 0.34);
-  
+
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
   box-shadow: none;
 }
@@ -15350,18 +15645,18 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 /* Keep v2.30.24's softened header divider and normal inner grid. Add a table-level ring so only the outside perimeter reads closer to the markdown table outline. Use box-shadow rather than a real border to avoid collapsed-border side effects. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
    --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto;
-  
+
   border-style: none;
   border-width: 0;
-  
+
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.96);
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
    --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden; border-color: var(--ogd-table-border); border-radius: var(--ogd-radius-control, 7px); background: var(--ogd-table-surface); -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
-  
+
   border-style: none;
   border-width: 0;
-  
+
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.90);
 }
 body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
@@ -15369,7 +15664,7 @@ body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdow
 }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
    --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
-  
+
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
@@ -15437,6 +15732,40 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
   background: rgba(8, 145, 178, 0.22);
   background-color: rgba(8, 145, 178, 0.22);
+}
+
+
+/* v3.1.39 table parity: LP HTML tables consume the shared report table rhythm tokens. */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+  font-variant-numeric: tabular-nums;
+   --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface); border-color: var(--ogd-table-border); box-shadow: var(--ogd-table-shadow);
+   margin: 0; width: 100%; max-width: 100%; border-collapse: collapse;
+
+  --ogd-table-pad-y: 0.58em;
+  --ogd-table-pad-x: 0.78em;
+  --ogd-table-font-size: 0.96em;
+  --ogd-table-line-height: 1.42;
+  font-size: var(--font-text-size, 16px);
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.wide-table, .print-fit-table):not(.cm-table):not(.cm-table-widget) {
+  --ogd-table-pad-y: 0.44em;
+  --ogd-table-pad-x: 0.56em;
+  --ogd-table-font-size: 0.9em;
+  --ogd-table-line-height: 1.34;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table.compact-table:not(.cm-table):not(.cm-table-widget) {
+  --ogd-table-pad-y: 0.34em;
+  --ogd-table-pad-x: 0.48em;
+  --ogd-table-font-size: 0.88em;
+  --ogd-table-line-height: 1.28;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(th, td) {
+  padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
+  font-size: var(--ogd-table-font-size);
+  line-height: var(--ogd-table-line-height);
 }
 /* <<< src/surfaces/24-html-table-live-preview-glass.css */
 /* 10-a11y-regression-hotfixes.css              -> polish/72 */
@@ -15704,7 +16033,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
    ============================================================ */
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
-  
+
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -15712,7 +16041,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   min-width: 0;
   margin-left: 0;
   margin-right: 0;
-  
+
   --ogd-callout-accent: #475569;
   --ogd-callout-tint: rgba(148, 163, 184, 0.10);
   --ogd-callout-border: rgba(203, 213, 225, 0.52);
@@ -15795,7 +16124,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
   padding: 0;
-  
+
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr) auto;
@@ -15803,7 +16132,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   gap: 10px;
   min-width: 0;
   width: 100%;
-  
+
   color: var(--ogd-text-strong, #111827);
   font-size: 0.98em;
   font-weight: 820;
@@ -15818,7 +16147,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
   flex: 0 0 auto;
   background-color: var(--ogd-surface-base, #ffffff);
-  
+
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -15828,7 +16157,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
   height: 24px;
   min-width: 24px;
   margin: 0;
-  
+
   border: 1.5px solid var(--ogd-callout-border);
   border-radius: var(--ogd-radius-pill, 999px);
   background: var(--ogd-callout-icon-bg);
@@ -15837,19 +16166,19 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon svg {
-  
+
   width: 14px;
   height: 14px;
-  
+
   display: block;
   flex: 0 0 auto;
-  
+
   color: inherit;
   stroke-width: 2.15px;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
-  
+
   margin-top: 0.52em;
   color: var(--ogd-text-slate, #334155);
   font-size: 0.96em;
@@ -16018,13 +16347,13 @@ body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm
 }
 
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
-  
+
   box-sizing: border-box;
   max-width: 100%;
   margin-right: 0;
   overflow-wrap: anywhere;
   word-break: break-word;
-  
+
   --ogd-callout-border: rgba(203, 213, 225, 0.52);
   margin-left: 0;
   padding-left: 1em;
@@ -16361,12 +16690,13 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
 body .workspace-leaf-content .markdown-rendered table :is(th, td),
 body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
-  padding: 0.62em 0.78em;
+  padding: var(--ogd-table-pad-y, 0.62em) var(--ogd-table-pad-x, 0.78em);
+  font-size: var(--ogd-table-font-size, 0.96em);
   border-color: var(--ogd-table-cell-border);
   border-width: 0 0 1px 1px;
   background-clip: padding-box;
   color: var(--ogd-text-slate, #334155);
-  line-height: 1.42;
+  line-height: var(--ogd-table-line-height, 1.42);
   vertical-align: top;
   overflow-wrap: anywhere;
 }
@@ -16657,7 +16987,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD
    ============================================================ */
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) {
-  
+
   padding-inline-start: 1.62em;
   list-style-position: outside;
 }
@@ -16667,10 +16997,10 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ul ul, ul ol, ol ul, ol ol):not(.contains-task-list) {
-  
+
   margin-top: 0.18em;
   margin-bottom: 0.18em;
-  
+
   padding-inline-start: 1.42em;
   margin-inline-start: 0;
   border-inline-start: 0;
@@ -16678,7 +17008,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(ol, ul):not(.contains-task-list) > li:not(.task-list-item) {
-  
+
   display: list-item;
   position: static;
   list-style: inherit;
@@ -16700,7 +17030,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item)::marker,
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ul:not(.contains-task-list) > li:not(.task-list-item)::marker {
-  
+
   color: var(--header-accent, #0e7490);
   font-size: 0.92em;
   font-weight: 820;
@@ -16776,13 +17106,13 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
    ============================================================ */
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) {
-  
+
   counter-reset: revert;
   list-style-type: decimal;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) ol:not(.contains-task-list) > li:not(.task-list-item) {
-  
+
   counter-increment: revert;
   list-style-type: decimal;
 }
@@ -16879,7 +17209,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  
+
   border-left: 1px solid #d1d5db;
   border-right: 1px solid #d1d5db;
   margin-top: 0;
@@ -16900,7 +17230,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
   line-height: var(--ogd-code-line-height, 1.58);
   letter-spacing: var(--ogd-code-letter-spacing, 0);
   tab-size: var(--ogd-code-tab-size, 2);
-  
+
   --ogd-codeblock-header-height: 2.2em;
   --ogd-lp-code-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.96));
   --ogd-lp-code-border: rgba(203, 213, 225, 0.78);
@@ -16908,14 +17238,14 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
   border-left: 1px solid #d1d5db;
   border-right: 1px solid #d1d5db;
-  
+
   margin-top: 0;
   padding-top: 0;
   border-top: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
-  
+
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06);
-  
+
   min-height: var(--ogd-codeblock-header-height, 2.2em);
   line-height: var(--ogd-codeblock-header-height, 2.2em);
   border-radius: 12px 12px 0 0;
@@ -16924,7 +17254,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
   border-left: 1px solid #d1d5db;
   border-right: 1px solid #d1d5db;
-  
+
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
@@ -16938,7 +17268,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 }
 
 .markdown-source-view.mod-cm6 :is(.HyperMD-codeblock-begin, .HyperMD-codeblock-end) :is(.cm-formatting-code, .cm-formatting-code-block) {
-  
+
   display: inline-block;
   width: 0;
   min-width: 0;
@@ -16955,7 +17285,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
-  
+
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -16969,18 +17299,18 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
   letter-spacing: 0.08em;
   text-transform: uppercase;
   vertical-align: baseline;
-  
+
   margin-left: 0;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin + .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-end) {
-  
+
   min-height: calc(var(--ogd-code-line-height, 1.58) * 2em);
   line-height: calc(var(--ogd-code-line-height, 1.58) * 2);
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin + .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-end) :is(.cm-hmd-codeblock, span) {
-  
+
   line-height: var(--ogd-code-line-height, 1.58);
 }
 
@@ -16998,7 +17328,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
     [class*="cm-"]
   ) {
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -17046,7 +17376,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
     .token.prolog,
     .token.doctype
   ) {
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
     line-height: var(--ogd-code-print-line-height, 1.44);
@@ -17152,7 +17482,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
 body .workspace-leaf-content .markdown-rendered pre code {
-  
+
   display: block;
   box-sizing: border-box;
   max-width: 100%;
@@ -17173,7 +17503,7 @@ body .workspace-leaf-content .markdown-rendered pre code {
   white-space: var(--ogd-codeblock-code-white-space, pre);
   word-break: normal;
   overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, normal);
-  
+
   overflow-x: auto;
   scrollbar-gutter: stable both-edges;
 }
@@ -17265,32 +17595,32 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
   body .workspace-leaf-content .markdown-rendered pre code {
-    --ogd-code-font-size: var(--ogd-code-print-font-size, 8.6pt);
-    --ogd-code-line-height: var(--ogd-code-print-line-height, 1.44);
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
     white-space: var(--ogd-codeblock-code-white-space, pre-wrap);
     overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, anywhere);
   }
 
   body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
-    --ogd-pdf-readable-code-font-size: var(--ogd-code-print-font-size, 8.6pt);
-    --ogd-code-font-size: var(--ogd-code-print-font-size, 8.6pt);
-    --ogd-code-line-height: var(--ogd-code-print-line-height, 1.44);
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(span, .token, [class*="token"], [class*="cm-"]),
   body .workspace-leaf-content .markdown-rendered pre code :is(span, .token, [class*="token"], [class*="cm-"]) {
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
     font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
     font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
     letter-spacing: var(--ogd-code-letter-spacing, 0);
   }
 

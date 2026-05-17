@@ -104,7 +104,14 @@
         "--ogd-table-border",
         "--ogd-table-head-bg"
       ],
-      "parity": "partial-with-print-only-pagination"
+      "parity": "pdf-follows-live-preview-rhythm-with-print-only-pagination",
+      "fixtures": [
+        "docs/v3/research/table-callout-parity-fixture.html"
+      ],
+      "audits": [
+        "dev/scripts/audit_visual_quality_fixture.py",
+        "dev/scripts/audit_lp_pdf_computed_styles.py"
+      ]
     },
     {
       "feature": "callouts",
@@ -122,7 +129,14 @@
         "--callout-radius",
         "--ogd-glass-*"
       ],
-      "parity": "partial-lp-interactive-pdf-static"
+      "parity": "partial-lp-interactive-pdf-static",
+      "fixtures": [
+        "docs/v3/research/table-callout-parity-fixture.html"
+      ],
+      "audits": [
+        "dev/scripts/audit_visual_quality_fixture.py",
+        "dev/scripts/audit_lp_pdf_computed_styles.py"
+      ]
     },
     {
       "feature": "pdfMarginalia",
@@ -151,6 +165,7 @@
     "dev/scripts/build_release.py",
     "dev/scripts/bundle_v3.py --check",
     "dev/scripts/audit_visual_quality_fixture.py",
+    "dev/scripts/audit_lp_pdf_computed_styles.py",
     "dev/scripts/audit_v3_hit_routing.py",
     "dev/scripts/audit_css_compat_budget.py"
   ]

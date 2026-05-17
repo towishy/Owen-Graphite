@@ -16,8 +16,8 @@ Use this file when changing a visual feature in Live Preview or PDF. Find the fe
 
 | Concern | Live Preview selector path | Export PDF selector path | Shared tokens / notes |
 | --- | --- | --- | --- |
-| Markdown table widget | `.markdown-source-view.mod-cm6 .cm-table-widget`, `table.cm-table` | `.markdown-rendered table`, `.markdown-preview-view table` in `@media print` | `--ogd-table-pad-y`, `--ogd-table-pad-x`, `--ogd-table-font-size`, `--ogd-table-line-height`, `--ogd-table-border` |
-| HTML table embed | `.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block) table` | `.markdown-rendered table:is(.ogd-html-table, .wide-table, .print-fit-table, ...)` | LP table widgets must avoid unsafe overflow/margin combinations from the hit-routing contract. |
+| Markdown table widget | `.markdown-source-view.mod-cm6 .cm-table-widget`, `table.cm-table` | `.markdown-rendered table`, `.markdown-preview-view table` in `@media print` | Live Preview is the baseline. PDF `print-fit-table`/`wide-table` should preserve LP-like padding, font size, and line-height unless page-fit requires a documented exception. |
+| HTML table embed | `.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block) table` | `.markdown-rendered table:is(.ogd-html-table, .wide-table, .print-fit-table, ...)` | LP table widgets must avoid unsafe overflow/margin combinations from the hit-routing contract. `docs/v3/research/table-callout-parity-fixture.html` covers this path separately from `.cm-table-widget`. |
 | Header repetition | Not applicable to continuous LP | `thead { display: table-header-group; }` | Intentional PDF-only behavior. |
 | Horizontal overflow | LP may use local scroll affordances | PDF uses wrapping/fit utilities | `print-fit-table`, `wrap-table`, `nowrap-code-table` require PDF fixture coverage. |
 
@@ -28,6 +28,12 @@ Use this file when changing a visual feature in Live Preview or PDF. Find the fe
 | Callout widget | `.markdown-source-view.mod-cm6 .cm-callout` | `.markdown-rendered .callout` in print | LP widgets cannot receive vertical margin that changes click geometry. |
 | Source callout line | `.markdown-source-view.mod-cm6 .cm-line.HyperMD-callout` | No direct equivalent; PDF receives rendered callout DOM | Direct source-line rules are LP-only. Use rendered callout tokens for parity. |
 | Icons and title rhythm | `.callout-title`, `.callout-icon`, CM6 widget descendants | `.markdown-rendered .callout-title`, `.callout-icon` in `@media print` | Print should be static; hover/active transitions are LP-only. |
+
+Table and callout parity is covered by:
+
+- `docs/v3/research/table-callout-parity-fixture.html`
+- `dev/scripts/audit_visual_quality_fixture.py`
+- `dev/scripts/audit_lp_pdf_computed_styles.py`
 
 ## Headings And Body Rhythm
 

@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.38`
+- Version: `3.1.39`
 - Source: `src/entry.css`
 - Modules: 30
-- Selectors: 2166
-- Findings: 539
-- Finding severity counts: critical=0, high=0, medium=474, low=65, info=0
+- Selectors: 2201
+- Findings: 554
+- Finding severity counts: critical=0, high=0, medium=481, low=73, info=0
 - Module severity counts: critical=0, high=17, medium=8, low=4, info=1
 
 ## Module Risk Table
@@ -27,14 +27,14 @@ Canonical MAP location: `dev/MAP`.
 | high | 60 | `src/themes/50-dark.css` | 45 | 0 | 0 | high-specificity |
 | medium | 25 | `src/features/43-print-base.css` | 47 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 172 | `src/base/13-live-preview.css` | 116 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| high | 53 | `src/features/41-feature-presets.css` | 198 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
+| high | 69 | `src/features/41-feature-presets.css` | 225 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
 | medium | 23 | `src/chrome/30-workspace.css` | 122 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 31 | 0 | 0 | high-specificity |
 | high | 39 | `src/chrome/33-settings-controls.css` | 52 | 0 | 0 | high-specificity |
 | high | 54 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 98 | `src/plugins/61-live-preview-mobile-plugin.css` | 56 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector |
-| high | 69 | `src/features/42-report-print-polish.css` | 201 | 0 | 8 | high-specificity, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |
+| high | 88 | `src/features/42-report-print-polish.css` | 205 | 0 | 8 | high-specificity, cm6-hit-routing-sensitive, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |
 | medium | 18 | `src/chrome/34-nav-ribbon-glass.css` | 21 | 0 | 0 | high-specificity |
 | high | 43 | `src/chrome/35-editing-menu-tooltip-glass.css` | 78 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 36 | `src/chrome/36-floating-ui-glass-system.css` | 74 | 0 | 0 | high-specificity, repeated-selector-in-file |
@@ -43,7 +43,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 165 | `src/polish/70-late-reading-nav-polish.css` | 111 | 0 | 32 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 157 | `src/polish/71-overlay-layout-polish.css` | 174 | 0 | 3 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 99 | `src/surfaces/23-liquid-glass-core.css` | 143 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
-| high | 137 | `src/surfaces/24-html-table-live-preview-glass.css` | 80 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
+| high | 141 | `src/surfaces/24-html-table-live-preview-glass.css` | 84 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 188 | `src/polish/72-a11y-regression-hotfixes.css` | 187 | 0 | 9 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | low | 2 | `src/polish/73-workflow-polish.css` | 31 | 0 | 0 | repeated-selector-in-file |
 

@@ -942,12 +942,13 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
 body .workspace-leaf-content .markdown-rendered table :is(th, td),
 body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
-  padding: 0.62em 0.78em;
+  padding: var(--ogd-table-pad-y, 0.62em) var(--ogd-table-pad-x, 0.78em);
+  font-size: var(--ogd-table-font-size, 0.96em);
   border-color: var(--ogd-table-cell-border);
   border-width: 0 0 1px 1px;
   background-clip: padding-box;
   color: var(--ogd-text-slate, #334155);
-  line-height: 1.42;
+  line-height: var(--ogd-table-line-height, 1.42);
   vertical-align: top;
   overflow-wrap: anywhere;
 }
@@ -1551,7 +1552,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
     [class*="cm-"]
   ) {
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -1599,7 +1600,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
     .token.prolog,
     .token.doctype
   ) {
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
     line-height: var(--ogd-code-print-line-height, 1.44);

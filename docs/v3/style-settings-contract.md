@@ -5,8 +5,8 @@
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **47**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **39**
+- 전체 엔트리(heading 포함): **52**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **44**
 
 ## 기능 옵션 목록
 
@@ -44,8 +44,13 @@
 | `ogd-pdf-marginalia-size` | `class-select` | `ogd-pdf-label-standard` | 헤더/푸터 라벨 크기 |
 | `ogd-pdf-header-key-palette` | `class-select` | `ogd-pdf-header-key-graphite` | 헤더 Key 색상 |
 | `ogd-pdf-header-value-palette` | `class-select` | `ogd-pdf-header-value-sky` | 헤더 Value 색상 |
-| `ogd-pdf-header-text` | `variable-text` | `` | 첫 페이지 헤더 Key 문구 |
-| `ogd-pdf-header-value` | `variable-text` | `` | 첫 페이지 헤더 Value 문구 |
+| `ogd-pdf-header-text` | `variable-text` | `` | 첫 페이지 헤더 1번 Key 문구 |
+| `ogd-pdf-header-value` | `variable-text` | `` | 첫 페이지 헤더 1번 Value 문구 |
+| `ogd-pdf-header-dual-pair` | `class-toggle` | `false` | 첫 페이지 헤더 2번 Key/Value 표시 |
+| `ogd-pdf-header2-key-palette` | `class-select` | `ogd-pdf-header2-key-graphite` | 헤더 2번 Key 색상 |
+| `ogd-pdf-header2-value-palette` | `class-select` | `ogd-pdf-header2-value-sky` | 헤더 2번 Value 색상 |
+| `ogd-pdf-header-text-2` | `variable-text` | `` | 첫 페이지 헤더 2번 Key 문구 |
+| `ogd-pdf-header-value-2` | `variable-text` | `` | 첫 페이지 헤더 2번 Value 문구 |
 | `ogd-pdf-header-position` | `class-select` | `ogd-pdf-header-top-right` | 첫 페이지 헤더 위치 |
 | `ogd-pdf-footer-key-palette` | `class-select` | `ogd-pdf-footer-key-graphite` | 푸터 Key 색상 |
 | `ogd-pdf-footer-value-palette` | `class-select` | `ogd-pdf-footer-value-sky` | 푸터 Value 색상 |

@@ -158,32 +158,32 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
   body .workspace-leaf-content .markdown-rendered pre code {
-    --ogd-code-font-size: var(--ogd-code-print-font-size, 8.6pt);
-    --ogd-code-line-height: var(--ogd-code-print-line-height, 1.44);
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
     white-space: var(--ogd-codeblock-code-white-space, pre-wrap);
     overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, anywhere);
   }
 
   body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
-    --ogd-pdf-readable-code-font-size: var(--ogd-code-print-font-size, 8.6pt);
-    --ogd-code-font-size: var(--ogd-code-print-font-size, 8.6pt);
-    --ogd-code-line-height: var(--ogd-code-print-line-height, 1.44);
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(span, .token, [class*="token"], [class*="cm-"]),
   body .workspace-leaf-content .markdown-rendered pre code :is(span, .token, [class*="token"], [class*="cm-"]) {
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, 8.6pt);
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
     font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
     font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
     letter-spacing: var(--ogd-code-letter-spacing, 0);
   }
 

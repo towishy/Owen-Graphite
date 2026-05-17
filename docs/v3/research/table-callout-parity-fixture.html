@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Table Callout Parity Fixture</title>
+  <link rel="stylesheet" href="../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef3f8;
+    }
+
+    body {
+      --ogd-pdf-header-text: "Prepared by";
+      --ogd-pdf-header-value: "Owen Lee - Sr. CSA";
+      --ogd-pdf-header-text-2: "Reviewed by";
+      --ogd-pdf-header-value-2: "Graphite QA";
+      --ogd-pdf-footer-text: "Owen";
+      --ogd-pdf-footer-value: "Graphite";
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-shell {
+      max-width: 1380px;
+      margin: 28px auto;
+      padding: 0 20px 36px;
+    }
+
+    .fixture-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .fixture-pane {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 14px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .fixture-pane-title,
+    .fixture-print-note {
+      margin: 0 0 14px;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fixture-print {
+      display: none;
+    }
+
+    .cm-line {
+      min-height: 1.58em;
+    }
+
+    .fixture-token {
+      display: inline-block;
+      max-width: 100%;
+      font-family: var(--font-monospace-theme, "JetBrains Mono", Consolas, monospace);
+    }
+
+    .fixture-key-col {
+      width: 26%;
+    }
+
+    .fixture-text-col {
+      width: 42%;
+    }
+
+    .fixture-token-col {
+      width: 32%;
+    }
+
+    .fixture-pane :is(th, td) {
+      padding-left: max(var(--ogd-table-pad-x, 0.56em), 0.72em);
+      padding-right: max(var(--ogd-table-pad-x, 0.56em), 0.72em);
+    }
+
+    .fixture-row-label {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1180px) {
+      .fixture-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .fixture-shell {
+        display: none;
+      }
+
+      .fixture-print {
+        display: block;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-spacing-relaxed ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented-dual ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-header2-key-slate ogd-pdf-header2-value-mint ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
+  <main class="fixture-shell" data-ogd-fixture="table-callout-parity">
+    <div class="fixture-grid">
+      <section class="fixture-pane markdown-source-view mod-cm6" aria-label="Live Preview markdown table widget sample">
+        <p class="fixture-pane-title">Live Preview Markdown Widget</p>
+        <div class="cm-table-widget" data-check="lp-table-widget">
+          <table class="cm-table ogd-html-table wrap-table print-fit-table comparison-table">
+            <colgroup>
+              <col class="fixture-key-col">
+              <col class="fixture-text-col">
+              <col class="fixture-token-col">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>항목</th>
+                <th>Live Preview 기준</th>
+                <th>검증 포인트</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fixture-row-label" data-check="lp-table-widget-cell">셀 패딩</td>
+                <td>표 셀은 공유 토큰의 Y/X 값을 사용합니다.</td>
+                <td><span class="ogd-token-wrap fixture-token">--ogd-table-pad-y / --ogd-table-pad-x</span></td>
+              </tr>
+              <tr>
+                <td class="fixture-row-label">줄 높이</td>
+                <td>긴 한글 설명과 코드 토큰이 같은 줄 리듬으로 접혀야 합니다.</td>
+                <td><code class="ogd-token-wrap">cm-table-widget-2025-visibility-wrap-token</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cm-callout callout" data-callout="summary" data-check="lp-callout-widget">
+          <div class="callout-title">
+            <div class="callout-icon"></div>
+            <div class="callout-title-inner">LP 콜아웃 요약</div>
+          </div>
+          <div class="callout-content">
+            <p data-check="lp-callout-content">콜아웃은 여백을 위젯 내부에만 두고, 왼쪽 레일 없이 유리 표면과 얇은 테두리로 상태를 표현합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fixture-pane markdown-source-view mod-cm6" aria-label="Live Preview HTML embed table sample">
+        <p class="fixture-pane-title">Live Preview HTML Embed</p>
+        <div class="cm-html-embed markdown-rendered" data-check="lp-html-table">
+          <table class="ogd-html-table wrap-table print-fit-table comparison-table">
+            <colgroup>
+              <col class="fixture-key-col">
+              <col class="fixture-text-col">
+              <col class="fixture-token-col">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>경로</th>
+                <th>표면</th>
+                <th>긴 토큰</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fixture-row-label" data-check="lp-html-table-cell">HTML embed</td>
+                <td>markdown table widget과 같은 표 리듬 토큰을 소비합니다.</td>
+                <td><code class="ogd-token-wrap">html-embed-table-token-wrap-parity-2025</code></td>
+              </tr>
+              <tr>
+                <td class="fixture-row-label">PDF 대응</td>
+                <td>print-fit-table과 wrap-table이 PDF에서 줄바꿈을 보장합니다.</td>
+                <td><span class="ogd-token-wrap fixture-token">table-callout-parity-fixture</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="fixture-pane markdown-preview-view markdown-rendered" aria-label="Reading table and callout sample">
+        <p class="fixture-pane-title">Reading / Rendered</p>
+        <article class="markdown-rendered" data-check="reading-table-callout">
+          <div class="callout" data-callout="summary" data-check="reading-callout-widget">
+            <div class="callout-title">
+              <div class="callout-icon"></div>
+              <div class="callout-title-inner">Reading 콜아웃 요약</div>
+            </div>
+            <div class="callout-content">
+              <p data-check="reading-callout-content">렌더링 뷰의 콜아웃은 PDF와 같은 제목 무게, 내용 줄높이, 테두리 밀도를 공유해야 합니다.</p>
+            </div>
+          </div>
+          <table class="ogd-html-table wrap-table print-fit-table comparison-table">
+            <colgroup>
+              <col class="fixture-key-col">
+              <col class="fixture-text-col">
+              <col class="fixture-token-col">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>표면</th>
+                <th>기대 동작</th>
+                <th>토큰</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fixture-row-label" data-check="reading-table-cell">Reading</td>
+                <td>표 셀 typography와 wrapping이 PDF 경로와 충돌하지 않아야 합니다.</td>
+                <td><code class="ogd-token-wrap">reading-table-long-token-wrap-verified</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <main class="fixture-print markdown-preview-view markdown-rendered" aria-label="PDF table and callout sample">
+    <article class="markdown-rendered" data-check="pdf-table-callout">
+      <h1>표와 콜아웃 PDF 패리티</h1>
+      <p class="fixture-print-note">PDF Table / Callout Parity</p>
+      <p data-check="pdf-body-text">이 fixture는 Live Preview markdown widget, Live Preview HTML embed, Reading View, Export PDF가 같은 표 리듬과 콜아웃 표면 규칙을 공유하는지 확인합니다.</p>
+      <table class="ogd-html-table comparison-table" data-check="pdf-font-baseline-table">
+        <tbody>
+          <tr>
+            <td class="fixture-row-label" data-check="pdf-table-font-baseline">기준 텍스트</td>
+            <td>PDF에서는 이 테이블 행 안의 텍스트 크기가 callout과 코드블럭 본문 크기의 기준입니다.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout" data-callout="summary" data-check="pdf-callout-widget">
+        <div class="callout-title">
+          <div class="callout-icon"></div>
+          <div class="callout-title-inner">PDF 콜아웃 요약</div>
+        </div>
+        <div class="callout-content">
+          <p data-check="pdf-callout-content">PDF에서도 왼쪽 레일 없이 얇은 테두리, 밝은 표면, 안정적인 제목 행을 유지해야 합니다.</p>
+        </div>
+      </div>
+      <table class="ogd-html-table wrap-table print-fit-table comparison-table" data-check="pdf-table">
+        <colgroup>
+          <col class="fixture-key-col">
+          <col class="fixture-text-col">
+          <col class="fixture-token-col">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>PDF 기대값</th>
+            <th>긴 토큰</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fixture-row-label" data-check="pdf-table-cell">줄바꿈</td>
+            <td>print-fit-table은 좁은 PDF 폭에서도 셀 내부 내용이 넘치지 않아야 합니다.</td>
+            <td><code class="ogd-token-wrap" data-check="pdf-table-code">pdf-table-callout-token-wrap-parity-2025-export-check</code></td>
+          </tr>
+          <tr>
+            <td class="fixture-row-label">리듬</td>
+            <td>폰트 크기와 line-height가 본문보다 과하게 커지지 않아야 합니다.</td>
+            <td><span class="ogd-token-wrap fixture-token">--ogd-table-font-size / --ogd-table-line-height</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </main>
+</body>
+</html>

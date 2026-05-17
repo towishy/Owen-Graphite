@@ -17,8 +17,8 @@ This backlog focuses on making Live Preview and Export PDF parity easier to main
 
 3. Expand visual fixture contracts.
    - Keep `docs/v3/research/code-font-clarity-fixture.html` covering both `.token.*` and `.cm-*` syntax spans.
-   - Add a dedicated table/callout LP-PDF fixture if the next polish cycle touches tables or callouts.
-   - Add computed-style checks for PDF print media, not just screenshot/PDF size checks.
+   - Implemented: `docs/v3/research/table-callout-parity-fixture.html` covers LP markdown table widget, LP HTML embed table, Reading View, and PDF table/callout paths.
+   - Implemented: `dev/scripts/audit_lp_pdf_computed_styles.py` checks table/callout computed styles under screen and print media when Playwright is available.
 
 4. Generate a selector map artifact.
    - Extend current MAP tooling to emit `dev/MAP/live-preview-pdf-css-map/generated-selector-index.json`.

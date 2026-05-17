@@ -42,9 +42,9 @@ Validated against `theme.css` after the `v3.1.36` Key/Value PDF marginalia UI an
 
 The generated PDF is intentionally kept in `dev/TEMP` as a local validation artifact and is not part of the repository sync surface.
 
-## Key/Value 2-Segment Mode
+## Key/Value 1쌍 Mode
 
-The product-safe segmented mode is limited to two adjacent segments per surface:
+The product-safe key/value mode is limited to one adjacent key/value pair per surface:
 
 ```text
 [ prepared by ][ Owen Graphite ]
@@ -53,7 +53,7 @@ The product-safe segmented mode is limited to two adjacent segments per surface:
 
 Style Settings model:
 
-- `ogd-pdf-label-layout`: choose `단일 라벨` or `Key/Value 2세그먼트`.
+- `ogd-pdf-label-layout`: choose `단일 라벨` or `Key/Value 1쌍`.
 - `ogd-pdf-header-text`: single-label text, or segmented key.
 - `ogd-pdf-header-value`: segmented header value.
 - `ogd-pdf-footer-text`: single-label text, or segmented key.

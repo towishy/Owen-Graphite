@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.39
+
+- feat: PDF 첫 페이지 헤더에 Key/Value 2쌍 출력을 추가하고, 1번 → 2번 순서와 동일 segment 높이를 보장했습니다.
+- feat: 헤더 2번 key/value 전용 색상 팔레트를 Style Settings에 추가했습니다.
+- guard: computed-style audit가 2쌍 헤더의 출력 순서, 높이 일치, 독립 색상 적용을 검증하도록 보강했습니다.
+
 ## v3.1.38
 
 - feat: Live Preview와 PDF Export 코드블럭의 헤더, 폰트, syntax 색상 패리티를 정리했습니다.

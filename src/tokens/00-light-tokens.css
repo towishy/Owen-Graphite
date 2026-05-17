@@ -48,6 +48,8 @@
    * Anchor pseudo paint surface — see src/features/41-feature-presets.css C3. */
   --ogd-pdf-header-text: "";
   --ogd-pdf-header-value: "";
+  --ogd-pdf-header-text-2: "";
+  --ogd-pdf-header-value-2: "";
   --ogd-pdf-footer-text: "";
   --ogd-pdf-footer-value: "";
   --ogd-pdf-marginalia-accent: #475569;
@@ -66,6 +68,12 @@
   --ogd-pdf-header-segment-value-bg: var(--ogd-pdf-segment-value-bg, #0284c7);
   --ogd-pdf-header-segment-value-text: var(--ogd-pdf-segment-value-text, #ffffff);
   --ogd-pdf-header-segment-value-border: var(--ogd-pdf-segment-value-border, transparent);
+  --ogd-pdf-header2-segment-key-bg: var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46));
+  --ogd-pdf-header2-segment-key-text: var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff));
+  --ogd-pdf-header2-segment-key-border: var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
+  --ogd-pdf-header2-segment-value-bg: var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7));
+  --ogd-pdf-header2-segment-value-text: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
+  --ogd-pdf-header2-segment-value-border: var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent));
   --ogd-pdf-footer-segment-key-bg: var(--ogd-pdf-segment-key-bg, #3f3f46);
   --ogd-pdf-footer-segment-key-text: var(--ogd-pdf-segment-key-text, #ffffff);
   --ogd-pdf-footer-segment-key-border: var(--ogd-pdf-segment-key-border, transparent);
@@ -76,6 +84,8 @@
   --ogd-pdf-segment-key-width: 34mm;
   --ogd-pdf-segment-value-width: 44mm;
   --ogd-pdf-segment-half-width: 39mm;
+  --ogd-pdf-header-pair-gap: 5mm;
+  --ogd-pdf-header-half-pair-gap: 2.5mm;
   --ogd-pdf-segment-pad-y: 5px;
   --ogd-pdf-segment-pad-x: 10px;
   --ogd-pdf-header-top: 11mm;
@@ -107,11 +117,13 @@
 
   --ogd-code-font-family: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
     "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --ogd-pdf-surface-text-font-size: 11.6pt;
+  --ogd-pdf-surface-text-line-height: 1.42;
   --ogd-code-font-size: 0.92em;
-  --ogd-code-print-font-size: 8.6pt;
+  --ogd-code-print-font-size: var(--ogd-pdf-surface-text-font-size);
   --ogd-code-font-weight: 520;
   --ogd-code-line-height: 1.58;
-  --ogd-code-print-line-height: 1.44;
+  --ogd-code-print-line-height: var(--ogd-pdf-surface-text-line-height);
   --ogd-code-letter-spacing: 0;
   --ogd-code-tab-size: 2;
   --ogd-code-font-feature-settings: "zero" 1, "tnum" 1;

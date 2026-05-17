@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.38** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.39** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -21,8 +21,8 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.38` |
-| **베이스라인 / 롤백 기준** | `v3.1.38` |
+| **버전** | `3.1.39` |
+| **베이스라인 / 롤백 기준** | `v3.1.39` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -39,6 +39,19 @@
 ---
 
 ## 2. 신기능 소개
+
+### v3.1.39 — PDF 헤더 Key/Value 2쌍
+
+PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습니다. 1번과 2번 쌍은 설정 UI의 순서 그대로 `1번 Key → 1번 Value → 2번 Key → 2번 Value`로 배치되며, 네 segment의 높이를 같은 기준으로 맞췄습니다. 2번 key/value도 별도 색상 팔레트를 사용해 문서 작성자, 부서, 보안 등급, 검토 상태를 한 줄에서 구분할 수 있습니다.
+
+![PDF 헤더 Key/Value 2쌍](screenshots/readme/pdf-dual-key-value-header.png)
+
+| 설정 영역 | 개선 내용 |
+| --- | --- |
+| 라벨 구성 | `Key/Value 1쌍`과 `Key/Value 2쌍`을 직접 선택 |
+| 헤더 1번 | Key/Value 문구와 색상 팔레트 유지 |
+| 헤더 2번 | Key/Value 문구와 독립 색상 팔레트 추가 |
+| PDF 안정성 | Obsidian export wrapper 구조와 무관하게 2쌍 출력 |
 
 ### v3.1.38 — 코드블럭 Live Preview / PDF 패리티
 
@@ -66,7 +79,7 @@ Live Preview, Reading View, PDF Export에서 callout과 긴 표 셀이 같은 �
 
 ### v3.1.36 — PDF Key/Value 헤더와 푸터 라벨
 
-PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-segment 배지로 표시할 수 있습니다. Style Settings에서 헤더와 푸터를 각각 켜고, key/value 문구와 색상을 독립적으로 지정해 작성자, 기밀 등급, 문서 상태를 본문 흐름 밖에 작게 배치합니다.
+PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 1쌍 배지로 표시할 수 있습니다. Style Settings에서 헤더와 푸터를 각각 켜고, key/value 문구와 색상을 독립적으로 지정해 작성자, 기밀 등급, 문서 상태를 본문 흐름 밖에 작게 배치합니다.
 
 ![PDF Key/Value 헤더와 푸터 라벨](screenshots/readme/pdf-key-value-labels.png)
 
@@ -88,7 +101,7 @@ PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-se
 
 ### 옵션 B — ZIP 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.38.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.39.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -97,7 +110,7 @@ PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 2-se
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.38.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.39.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트
 

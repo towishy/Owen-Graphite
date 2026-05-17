@@ -442,6 +442,24 @@ body.ogd-pdf-header-value-violet { --ogd-pdf-header-segment-value-bg: #7c3aed; -
 body.ogd-pdf-header-value-rose { --ogd-pdf-header-segment-value-bg: #be123c; --ogd-pdf-header-segment-value-text: #ffffff; }
 body.ogd-pdf-header-value-amber { --ogd-pdf-header-segment-value-bg: #b45309; --ogd-pdf-header-segment-value-text: #ffffff; }
 
+body.ogd-pdf-header2-key-graphite { --ogd-pdf-header2-segment-key-bg: #3f3f46; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-slate { --ogd-pdf-header2-segment-key-bg: #475569; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-sky { --ogd-pdf-header2-segment-key-bg: #0284c7; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-teal { --ogd-pdf-header2-segment-key-bg: #0f766e; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-mint { --ogd-pdf-header2-segment-key-bg: #059669; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-violet { --ogd-pdf-header2-segment-key-bg: #7c3aed; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-rose { --ogd-pdf-header2-segment-key-bg: #be123c; --ogd-pdf-header2-segment-key-text: #ffffff; }
+body.ogd-pdf-header2-key-amber { --ogd-pdf-header2-segment-key-bg: #b45309; --ogd-pdf-header2-segment-key-text: #ffffff; }
+
+body.ogd-pdf-header2-value-graphite { --ogd-pdf-header2-segment-value-bg: #52525b; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-slate { --ogd-pdf-header2-segment-value-bg: #475569; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-sky { --ogd-pdf-header2-segment-value-bg: #0284c7; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-teal { --ogd-pdf-header2-segment-value-bg: #0f766e; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-mint { --ogd-pdf-header2-segment-value-bg: #059669; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-violet { --ogd-pdf-header2-segment-value-bg: #7c3aed; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-rose { --ogd-pdf-header2-segment-value-bg: #be123c; --ogd-pdf-header2-segment-value-text: #ffffff; }
+body.ogd-pdf-header2-value-amber { --ogd-pdf-header2-segment-value-bg: #b45309; --ogd-pdf-header2-segment-value-text: #ffffff; }
+
 body.ogd-pdf-footer-key-graphite { --ogd-pdf-footer-segment-key-bg: #3f3f46; --ogd-pdf-footer-segment-key-text: #ffffff; }
 body.ogd-pdf-footer-key-slate { --ogd-pdf-footer-segment-key-bg: #475569; --ogd-pdf-footer-segment-key-text: #ffffff; }
 body.ogd-pdf-footer-key-sky { --ogd-pdf-footer-segment-key-bg: #0284c7; --ogd-pdf-footer-segment-key-text: #ffffff; }
@@ -476,6 +494,16 @@ body.ogd-pdf-header-top-center {
   --ogd-pdf-header-left: 50%;
   --ogd-pdf-header-right: auto;
   --ogd-pdf-header-transform: translateX(-50%);
+}
+
+body.ogd-pdf-header-dual-pair {
+  --ogd-pdf-header-pair-gap: 5mm;
+  --ogd-pdf-header-half-pair-gap: 2.5mm;
+}
+
+body.ogd-pdf-label-segmented-dual {
+  --ogd-pdf-header-pair-gap: 5mm;
+  --ogd-pdf-header-half-pair-gap: 2.5mm;
 }
 
 /* v3.1.33 hotfix: 전체 블록을 @media print 안으로 격리.
@@ -525,10 +553,13 @@ body.ogd-pdf-header-top-center {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-label-segmented .markdown-rendered::before,
-  body.ogd-pdf-label-segmented .markdown-rendered > :last-child::after {
+  body:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before,
+  body:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after {
     width: var(--ogd-pdf-segment-value-width, 42mm);
     max-width: var(--ogd-pdf-segment-value-width, 42mm);
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
     border-radius: 0 var(--ogd-pdf-segment-radius, 2px) var(--ogd-pdf-segment-radius, 2px) 0;
     background: var(--ogd-pdf-segment-value-bg, #0284c7);
@@ -538,9 +569,12 @@ body.ogd-pdf-header-top-center {
     letter-spacing: 0.02em;
     box-shadow: none;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::after {
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after {
     content: var(--ogd-pdf-header-text, "");
     position: absolute;
     top: var(--ogd-pdf-header-top, 11mm);
@@ -549,9 +583,12 @@ body.ogd-pdf-header-top-center {
     transform: none;
     z-index: 9999;
     pointer-events: none;
-    display: inline-block;
+    display: inline-flex;
     width: var(--ogd-pdf-segment-key-width, 30mm);
     max-width: var(--ogd-pdf-segment-key-width, 30mm);
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
     border-radius: var(--ogd-pdf-segment-radius, 2px) 0 0 var(--ogd-pdf-segment-radius, 2px);
     background: var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46));
@@ -570,26 +607,116 @@ body.ogd-pdf-header-top-center {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-label-segmented .markdown-rendered::before {
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before {
     content: var(--ogd-pdf-header-value, "");
+    display: inline-flex;
     background: var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7));
     border-color: var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent));
     color: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
     -webkit-text-fill-color: var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff));
   }
 
-  body.ogd-pdf-header-top-center.ogd-pdf-label-segmented .markdown-rendered::before {
+  body.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before {
     left: calc(50% - var(--ogd-pdf-segment-half-width, 36mm) + var(--ogd-pdf-segment-key-width, 30mm));
     right: auto;
     transform: none;
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center.ogd-pdf-label-segmented .markdown-rendered::after {
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after {
     left: calc(50% - var(--ogd-pdf-segment-half-width, 36mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after {
+    right: calc(var(--ogd-pdf-header-right, 13mm) + var(--ogd-pdf-segment-key-width, 30mm) + var(--ogd-pdf-segment-value-width, 42mm) + var(--ogd-pdf-header-pair-gap, 5mm) + var(--ogd-pdf-segment-value-width, 42mm));
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::before {
+    right: calc(var(--ogd-pdf-header-right, 13mm) + var(--ogd-pdf-segment-key-width, 30mm) + var(--ogd-pdf-segment-value-width, 42mm) + var(--ogd-pdf-header-pair-gap, 5mm));
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before,
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after {
+    position: absolute;
+    top: var(--ogd-pdf-header-top, 11mm);
+    bottom: auto;
+    left: auto;
+    transform: none;
+    z-index: 9999;
+    pointer-events: none;
+    display: inline-flex;
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
+    margin: 0;
+    padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
+    box-shadow: none;
+    box-sizing: border-box;
+    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-size: var(--ogd-pdf-header-font-size, 7.5pt);
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: var(--ogd-pdf-label-line-height, 1.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before {
+    content: var(--ogd-pdf-header-text-2, "");
+    right: calc(var(--ogd-pdf-header-right, 13mm) + var(--ogd-pdf-segment-value-width, 42mm));
+    width: var(--ogd-pdf-segment-key-width, 30mm);
+    max-width: var(--ogd-pdf-segment-key-width, 30mm);
+    border-radius: var(--ogd-pdf-segment-radius, 2px) 0 0 var(--ogd-pdf-segment-radius, 2px);
+    background: var(--ogd-pdf-header2-segment-key-bg, var(--ogd-pdf-header-segment-key-bg, var(--ogd-pdf-segment-key-bg, #3f3f46)));
+    border: 1px solid var(--ogd-pdf-header2-segment-key-border, var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent)));
+    color: var(--ogd-pdf-header2-segment-key-text, var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff)));
+    -webkit-text-fill-color: var(--ogd-pdf-header2-segment-key-text, var(--ogd-pdf-header-segment-key-text, var(--ogd-pdf-segment-key-text, #ffffff)));
+  }
+
+  body.ogd-pdf-header-enabled:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after {
+    content: var(--ogd-pdf-header-value-2, "");
+    right: var(--ogd-pdf-header-right, 13mm);
+    width: var(--ogd-pdf-segment-value-width, 42mm);
+    max-width: var(--ogd-pdf-segment-value-width, 42mm);
+    border-radius: 0 var(--ogd-pdf-segment-radius, 2px) var(--ogd-pdf-segment-radius, 2px) 0;
+    background: var(--ogd-pdf-header2-segment-value-bg, var(--ogd-pdf-header-segment-value-bg, var(--ogd-pdf-segment-value-bg, #0284c7)));
+    border: 1px solid var(--ogd-pdf-header2-segment-value-border, var(--ogd-pdf-header-segment-value-border, var(--ogd-pdf-segment-value-border, transparent)));
+    color: var(--ogd-pdf-header2-segment-value-text, var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff)));
+    -webkit-text-fill-color: var(--ogd-pdf-header2-segment-value-text, var(--ogd-pdf-header-segment-value-text, var(--ogd-pdf-segment-value-text, #ffffff)));
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after {
+    left: calc(50% - var(--ogd-pdf-header-half-pair-gap, 2.5mm) - var(--ogd-pdf-segment-key-width, 30mm) - var(--ogd-pdf-segment-value-width, 42mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::before {
+    left: calc(50% - var(--ogd-pdf-header-half-pair-gap, 2.5mm) - var(--ogd-pdf-segment-value-width, 42mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before {
+    left: calc(50% + var(--ogd-pdf-header-half-pair-gap, 2.5mm));
+    right: auto;
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::after {
+    left: calc(50% + var(--ogd-pdf-header-half-pair-gap, 2.5mm) + var(--ogd-pdf-segment-key-width, 30mm));
     right: auto;
   }
 
@@ -601,6 +728,7 @@ body.ogd-pdf-header-top-center {
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
+    top: auto;
     left: 50%;
     bottom: var(--ogd-pdf-footer-offset, -22mm);
     transform: translateX(-50%);
@@ -629,16 +757,20 @@ body.ogd-pdf-header-top-center {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::before {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::before {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
+    top: auto;
     left: auto;
     right: 50%;
     bottom: var(--ogd-pdf-footer-offset, -22mm);
     transform: none;
     z-index: 9999;
     pointer-events: none;
-    display: inline-block;
+    display: inline-flex;
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     max-width: calc(var(--ogd-pdf-footer-max-width, 90%) / 2);
     padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 12px);
     border-radius: var(--ogd-pdf-segment-radius, 2px) 0 0 var(--ogd-pdf-segment-radius, 2px);
@@ -658,15 +790,23 @@ body.ogd-pdf-header-top-center {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled.ogd-pdf-label-segmented .markdown-rendered > :last-child::after {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after {
     content: var(--ogd-pdf-footer-value, "");
+    display: inline-flex;
+    top: auto;
     left: 50%;
     transform: none;
     width: auto;
+    height: var(--ogd-pdf-segment-min-height, 24px);
+    min-height: var(--ogd-pdf-segment-min-height, 24px);
+    max-height: var(--ogd-pdf-segment-min-height, 24px);
     max-width: calc(var(--ogd-pdf-footer-max-width, 90%) / 2);
     padding: var(--ogd-pdf-footer-pad-y, 5px) var(--ogd-pdf-footer-pad-x, 12px);
     border-radius: 0 var(--ogd-pdf-segment-radius, 2px) var(--ogd-pdf-segment-radius, 2px) 0;
@@ -677,6 +817,9 @@ body.ogd-pdf-header-top-center {
     letter-spacing: 0.02em;
     box-shadow: none;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }
 

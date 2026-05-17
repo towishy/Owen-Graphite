@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Audit the PDF header/footer marginalia contract.
 
-This guard codifies the v3.1.32+ PDF marginalia design: print-only, two
-anchor pseudos, no Chromium-fragile margin boxes/string-set/list tricks, and
-stable Style Settings + token plumbing.
+This guard codifies the v3.1.32+ PDF marginalia design: print-only anchor
+pseudos, no Chromium-fragile margin boxes/string-set/list tricks, and stable
+Style Settings + token plumbing.
 
 Exits with code 1 if any contract violation is detected, 0 otherwise.
 """
@@ -30,6 +30,11 @@ REQUIRED_SETTING_IDS = (
     "ogd-pdf-header-enabled",
     "ogd-pdf-header-text",
     "ogd-pdf-header-value",
+    "ogd-pdf-header-dual-pair",
+    "ogd-pdf-header2-key-palette",
+    "ogd-pdf-header2-value-palette",
+    "ogd-pdf-header-text-2",
+    "ogd-pdf-header-value-2",
     "ogd-pdf-footer-enabled",
     "ogd-pdf-footer-text",
     "ogd-pdf-footer-value",
@@ -50,6 +55,7 @@ REQUIRED_SETTING_VALUES = (
     "ogd-pdf-preset-status-end",
     "ogd-pdf-label-single",
     "ogd-pdf-label-segmented",
+    "ogd-pdf-label-segmented-dual",
     "ogd-pdf-label-minimal",
     "ogd-pdf-label-bordered",
     "ogd-pdf-label-filled",
@@ -70,6 +76,22 @@ REQUIRED_SETTING_VALUES = (
     "ogd-pdf-header-value-violet",
     "ogd-pdf-header-value-rose",
     "ogd-pdf-header-value-amber",
+    "ogd-pdf-header2-key-graphite",
+    "ogd-pdf-header2-key-slate",
+    "ogd-pdf-header2-key-sky",
+    "ogd-pdf-header2-key-teal",
+    "ogd-pdf-header2-key-mint",
+    "ogd-pdf-header2-key-violet",
+    "ogd-pdf-header2-key-rose",
+    "ogd-pdf-header2-key-amber",
+    "ogd-pdf-header2-value-graphite",
+    "ogd-pdf-header2-value-slate",
+    "ogd-pdf-header2-value-sky",
+    "ogd-pdf-header2-value-teal",
+    "ogd-pdf-header2-value-mint",
+    "ogd-pdf-header2-value-violet",
+    "ogd-pdf-header2-value-rose",
+    "ogd-pdf-header2-value-amber",
     "ogd-pdf-footer-key-graphite",
     "ogd-pdf-footer-key-slate",
     "ogd-pdf-footer-key-sky",
@@ -99,6 +121,7 @@ REQUIRED_IMPLEMENTED_CLASSES = (
     "ogd-pdf-label-minimal",
     "ogd-pdf-label-filled",
     "ogd-pdf-label-badge",
+    "ogd-pdf-label-segmented-dual",
     "ogd-pdf-header-key-graphite",
     "ogd-pdf-header-key-slate",
     "ogd-pdf-header-key-sky",
@@ -115,6 +138,22 @@ REQUIRED_IMPLEMENTED_CLASSES = (
     "ogd-pdf-header-value-violet",
     "ogd-pdf-header-value-rose",
     "ogd-pdf-header-value-amber",
+    "ogd-pdf-header2-key-graphite",
+    "ogd-pdf-header2-key-slate",
+    "ogd-pdf-header2-key-sky",
+    "ogd-pdf-header2-key-teal",
+    "ogd-pdf-header2-key-mint",
+    "ogd-pdf-header2-key-violet",
+    "ogd-pdf-header2-key-rose",
+    "ogd-pdf-header2-key-amber",
+    "ogd-pdf-header2-value-graphite",
+    "ogd-pdf-header2-value-slate",
+    "ogd-pdf-header2-value-sky",
+    "ogd-pdf-header2-value-teal",
+    "ogd-pdf-header2-value-mint",
+    "ogd-pdf-header2-value-violet",
+    "ogd-pdf-header2-value-rose",
+    "ogd-pdf-header2-value-amber",
     "ogd-pdf-footer-key-graphite",
     "ogd-pdf-footer-key-slate",
     "ogd-pdf-footer-key-sky",
@@ -133,10 +172,13 @@ REQUIRED_IMPLEMENTED_CLASSES = (
     "ogd-pdf-footer-value-amber",
     "ogd-pdf-label-compact",
     "ogd-pdf-header-top-center",
+    "ogd-pdf-header-dual-pair",
 )
 REQUIRED_LIGHT_TOKENS = (
     "--ogd-pdf-header-text",
     "--ogd-pdf-header-value",
+    "--ogd-pdf-header-text-2",
+    "--ogd-pdf-header-value-2",
     "--ogd-pdf-footer-text",
     "--ogd-pdf-footer-value",
     "--ogd-pdf-marginalia-accent",
@@ -162,6 +204,8 @@ REQUIRED_LIGHT_TOKENS = (
     "--ogd-pdf-segment-key-width",
     "--ogd-pdf-segment-value-width",
     "--ogd-pdf-segment-half-width",
+    "--ogd-pdf-header-pair-gap",
+    "--ogd-pdf-header-half-pair-gap",
     "--ogd-pdf-segment-key-bg",
     "--ogd-pdf-segment-key-text",
     "--ogd-pdf-segment-key-border",
@@ -174,6 +218,12 @@ REQUIRED_LIGHT_TOKENS = (
     "--ogd-pdf-header-segment-value-bg",
     "--ogd-pdf-header-segment-value-text",
     "--ogd-pdf-header-segment-value-border",
+    "--ogd-pdf-header2-segment-key-bg",
+    "--ogd-pdf-header2-segment-key-text",
+    "--ogd-pdf-header2-segment-key-border",
+    "--ogd-pdf-header2-segment-value-bg",
+    "--ogd-pdf-header2-segment-value-text",
+    "--ogd-pdf-header2-segment-value-border",
     "--ogd-pdf-footer-segment-key-bg",
     "--ogd-pdf-footer-segment-key-text",
     "--ogd-pdf-footer-segment-key-border",
@@ -198,6 +248,12 @@ REQUIRED_DARK_TOKENS = (
     "--ogd-pdf-header-segment-value-bg",
     "--ogd-pdf-header-segment-value-text",
     "--ogd-pdf-header-segment-value-border",
+    "--ogd-pdf-header2-segment-key-bg",
+    "--ogd-pdf-header2-segment-key-text",
+    "--ogd-pdf-header2-segment-key-border",
+    "--ogd-pdf-header2-segment-value-bg",
+    "--ogd-pdf-header2-segment-value-text",
+    "--ogd-pdf-header2-segment-value-border",
     "--ogd-pdf-footer-segment-key-bg",
     "--ogd-pdf-footer-segment-key-text",
     "--ogd-pdf-footer-segment-key-border",
@@ -416,6 +472,8 @@ def audit_pdf_rules(failures: list[str], rules: list[CssRule]) -> None:
     header_rules: list[CssRule] = []
     header_segment_rules: list[CssRule] = []
     header_value_rules: list[CssRule] = []
+    header_pair2_key_rules: list[CssRule] = []
+    header_pair2_value_rules: list[CssRule] = []
     footer_rules: list[CssRule] = []
     footer_segment_rules: list[CssRule] = []
     footer_value_rules: list[CssRule] = []
@@ -453,12 +511,23 @@ def audit_pdf_rules(failures: list[str], rules: list[CssRule]) -> None:
                 if property_name == "content" and "\\A" in value:
                     failures.append(f"{location(rule.path, rule.line)}: multiline generated content is forbidden in PDF marginalia")
             if mentions_header_toggle and "::before" in selector and "content" in declarations_map:
-                if "--ogd-pdf-header-value" in declarations_map.get("content", ""):
+                content = declarations_map.get("content", "")
+                if "--ogd-pdf-header-text-2" in content:
+                    header_pair2_key_rules.append(rule)
+                elif "--ogd-pdf-header-value-2" in content:
+                    header_pair2_value_rules.append(rule)
+                elif "--ogd-pdf-header-value" in content:
                     header_value_rules.append(rule)
                 else:
                     header_rules.append(rule)
             if mentions_header_toggle and "::after" in selector and "content" in declarations_map:
-                header_segment_rules.append(rule)
+                content = declarations_map.get("content", "")
+                if "--ogd-pdf-header-text-2" in content:
+                    header_pair2_key_rules.append(rule)
+                elif "--ogd-pdf-header-value-2" in content:
+                    header_pair2_value_rules.append(rule)
+                else:
+                    header_segment_rules.append(rule)
             if mentions_footer_toggle and "::after" in selector and "content" in declarations_map:
                 if "--ogd-pdf-footer-value" in declarations_map.get("content", ""):
                     footer_value_rules.append(rule)
@@ -487,23 +556,45 @@ def audit_pdf_rules(failures: list[str], rules: list[CssRule]) -> None:
     if len(header_segment_rules) != 1:
         failures.append(f"expected exactly one PDF header segmented key pseudo; found {len(header_segment_rules)}")
     else:
-        require_anchor_contract(failures, header_segment_rules[0], "--ogd-pdf-header-text", check_geometry=False)
+        require_anchor_contract(
+            failures,
+            header_segment_rules[0],
+            "--ogd-pdf-header-text",
+            check_geometry=False,
+            expected_display="inline-flex",
+        )
     if len(header_value_rules) != 1:
         failures.append(f"expected exactly one PDF header segmented value override; found {len(header_value_rules)}")
+    if len(header_pair2_key_rules) != 1:
+        failures.append(f"expected exactly one PDF header pair-2 key pseudo; found {len(header_pair2_key_rules)}")
+    if len(header_pair2_value_rules) != 1:
+        failures.append(f"expected exactly one PDF header pair-2 value pseudo; found {len(header_pair2_value_rules)}")
     if len(footer_segment_rules) != 1:
         failures.append(f"expected exactly one PDF footer segmented key pseudo; found {len(footer_segment_rules)}")
     else:
-        require_anchor_contract(failures, footer_segment_rules[0], "--ogd-pdf-footer-text", check_geometry=False)
+        require_anchor_contract(
+            failures,
+            footer_segment_rules[0],
+            "--ogd-pdf-footer-text",
+            check_geometry=False,
+            expected_display="inline-flex",
+        )
     if len(footer_value_rules) != 1:
         failures.append(f"expected exactly one PDF footer segmented value override; found {len(footer_value_rules)}")
 
 
-def require_anchor_contract(failures: list[str], rule: CssRule, text_token: str, check_geometry: bool = True) -> None:
+def require_anchor_contract(
+    failures: list[str],
+    rule: CssRule,
+    text_token: str,
+    check_geometry: bool = True,
+    expected_display: str = "inline-block",
+) -> None:
     decl = declarations(rule.body)
     expected_exact = {
         "position": "absolute",
         "pointer-events": "none",
-        "display": "inline-block",
+        "display": expected_display,
         "white-space": "nowrap",
         "overflow": "hidden",
         "text-overflow": "ellipsis",

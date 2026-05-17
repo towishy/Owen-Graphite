@@ -96,6 +96,7 @@ def bundle(entry: Path, dist: Path, dedup: bool = True, check: bool = False) -> 
         dedup_mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(dedup_mod)
         bundled, merges = dedup_mod.dedup_scope(bundled)
+    bundled = "\n".join(line.rstrip() for line in bundled.splitlines())
     new_content = header + bundled + "\n"
     line_count = bundled.count("\n") + 1
     bang_count = bundled.count("!important")

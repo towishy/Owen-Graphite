@@ -18,7 +18,7 @@ This surface has already burned a lot of release time because Chromium print/PDF
 - `body.ogd-pdf-header-enabled` and `body.ogd-pdf-footer-enabled` selectors are owned by `src/features/41-feature-presets.css` only.
 - Single-label mode uses one header anchor pseudo: `.markdown-rendered::before`.
 - Single-label mode uses one footer anchor pseudo: `.markdown-rendered > :last-child::after`.
-- Key/Value 2-segment mode may add one adjacent key pseudo per surface: `.markdown-rendered::after` for the header and `.markdown-rendered > :last-child::before` for the footer.
+- Key/Value 1-pair mode may add one adjacent key pseudo per surface: `.markdown-rendered::after` for the header and `.markdown-rendered > :last-child::before` for the footer.
 - Footer must reserve space on `.markdown-rendered > :last-child` with a millimeter-based `margin-bottom`.
 - Generated text must remain single-line. Single-label content uses `--ogd-pdf-header-text` / `--ogd-pdf-footer-text`; segmented value content uses `--ogd-pdf-header-value` / `--ogd-pdf-footer-value`.
 - Quick presets, label layout, label style, header/footer segment palettes, compact sizing, and header alignment must be implemented by CSS variables/classes only.

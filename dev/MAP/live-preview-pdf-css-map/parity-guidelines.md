@@ -4,6 +4,8 @@ These rules should be followed when changing any CSS that affects both Live Prev
 
 ## Golden Rule
 
+Live Preview is the source of truth. Export PDF should follow the Live Preview result as closely as print constraints allow.
+
 Do not assume that Reading View parity means Live Preview parity. Obsidian Live Preview has at least two separate DOM paths:
 
 - source lines: `.cm-line.HyperMD-*`
@@ -66,6 +68,7 @@ When a visual feature is changed in one surface and expected to match another, u
 .\.venv\Scripts\python.exe dev\scripts\build_release.py
 .\.venv\Scripts\python.exe dev\scripts\bundle_v3.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_visual_quality_fixture.py
+.\.venv\Scripts\python.exe dev\scripts\audit_lp_pdf_computed_styles.py
 .\.venv\Scripts\python.exe dev\scripts\audit_v3_hit_routing.py
 .\.venv\Scripts\python.exe dev\scripts\audit_css_compat_budget.py
 ```

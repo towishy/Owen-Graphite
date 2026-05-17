@@ -109,7 +109,7 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `a11y-forced-colors-light` | Windows High Contrast | `forced-colors: active` |
 | `a11y-forced-colors-dark` | Windows High Contrast Dark | `forced-colors: active`, dark |
 
-### Print / PDF (14)
+### Print / PDF (17)
 
 | id | 내용 | 조건 |
 | --- | --- | --- |
@@ -129,6 +129,7 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `print-live-preview-pdf-parity` | Live Preview/Reading/PDF 공통 callout + 긴 셀 fixture | `docs/v3/research/live-preview-pdf-parity-fixture.html`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
 | `print-image-body-quality` | PDF 이미지/figure/caption + 본문 조판 fixture | `docs/v3/research/pdf-image-body-quality-fixture.html`, `ogd-figure-*`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
 | `print-code-font-clarity` | Live Preview/Reading/PDF 코드 폰트와 syntax 색상 fixture | `docs/v3/research/code-font-clarity-fixture.html`, `ogd-code-*`, `cm-*`, `token.*` |
+| `print-table-callout-parity` | LP markdown table widget/HTML embed/Reading/PDF 표와 콜아웃 fixture | `docs/v3/research/table-callout-parity-fixture.html`, `cm-table-widget`, `cm-html-embed`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
 
 ## 총 시나리오 수
 
@@ -141,8 +142,8 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | Chrome | 8 |
 | Overlays | 6 |
 | Accessibility | 4 |
-| Print / PDF | 16 |
-| **합계** | **78** |
+| Print / PDF | 17 |
+| **합계** | **79** |
 
 ## v3 결과 검증 스크립트 (최신 v3.1.36 기준)
 
@@ -154,7 +155,9 @@ v3는 기존 66 시나리오 대신 **computed-style fingerprint** 방식으로 
 - Live Preview/PDF 품질 fixture: docs/v3/research/live-preview-pdf-parity-fixture.html
 - PDF 이미지/본문 품질 fixture: docs/v3/research/pdf-image-body-quality-fixture.html
 - 코드 폰트/PDF 품질 fixture: docs/v3/research/code-font-clarity-fixture.html
+- 표/콜아웃 LP-PDF 품질 fixture: docs/v3/research/table-callout-parity-fixture.html
 - 로컬 렌더 smoke check: dev/scripts/audit_visual_quality_fixture.py
+- computed-style parity check: dev/scripts/audit_lp_pdf_computed_styles.py
 - 베이스라인: docs/v3/computed-fingerprint-v3.0.0-{light,dark}.json (v3 최초 캡처 원본 — 파일명 그대로 유지)
 - 결과: 모두 0 diff
 

@@ -73,6 +73,33 @@ FIXTURES = (
             'ogd-pdf-font-comfortable',
         ),
     },
+    {
+        "id": "table-callout-parity",
+        "path": ROOT / "docs" / "v3" / "research" / "table-callout-parity-fixture.html",
+        "screenshot": OUT_DIR / "table-callout-parity.png",
+        "pdf": OUT_DIR / "table-callout-parity.pdf",
+        "min_png": 20_000,
+        "min_pdf": 10_000,
+        "markers": (
+            'data-ogd-fixture="table-callout-parity"',
+            'data-check="lp-table-widget"',
+            'data-check="lp-html-table"',
+            'data-check="lp-callout-widget"',
+            'data-check="reading-table-callout"',
+            'data-check="pdf-table-callout"',
+            'data-check="pdf-body-text"',
+            'data-check="pdf-table-font-baseline"',
+            'class="ogd-html-table wrap-table print-fit-table comparison-table"',
+            'class="ogd-token-wrap"',
+            'cm-table-widget',
+            'cm-html-embed',
+            'ogd-pdf-visibility',
+            'ogd-pdf-font-comfortable',
+            'ogd-pdf-label-segmented-dual',
+            'ogd-pdf-header2-key-slate',
+            'ogd-pdf-header2-value-mint',
+        ),
+    },
 )
 
 BROWSER_NAMES = (
