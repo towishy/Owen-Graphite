@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.43
+
+- release: Obsidian community scanner refresh를 위해 v3.1.43 패치 릴리즈를 발행합니다.
+- guard: direct-owner CSS baseline, effective/provenance MAP, unused CSS candidate report를 main에 고정해 커뮤니티 스캔 전 검증 근거를 보강했습니다.
+- docs: release metadata와 설치 ZIP 안내를 새 버전 기준으로 갱신했습니다.
+
 ## v3.1.42
 
 - polish: Live Preview H1 글자 크기를 두 배로 키워 편집 화면에서도 문서 제목 계층이 더 강하게 보이도록 조정했습니다.
