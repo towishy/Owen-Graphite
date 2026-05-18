@@ -173,6 +173,7 @@ v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → featur
 | `theme.css` 갱신 | `Copy-Item dist/theme-v3.css theme.css -Force` (Windows) 또는 동등 명령 |
 | Live Preview hit-routing 감사 | `python dev/scripts/audit_v3_hit_routing.py` |
 | 중복 selector 감사(참고용) | `python dev/scripts/v3_audit_duplicate_selectors.py` |
+| unused CSS 후보 리포트 | `python dev/scripts/build_unused_css_report.py` |
 | computed-style fingerprint 캡처 | `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme {light,dark}` |
 | fingerprint diff | `python dev/scripts/fp_diff_summary.py [--theme dark]` |
 | Release ZIP | `python dev/scripts/build_release.py` |

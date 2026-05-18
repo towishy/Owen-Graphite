@@ -222,6 +222,49 @@
         </div>
       </section>
 
+      <!-- ---- Live Preview: coverage-only CM6 variants ---- -->
+      <section class="harness-section rig-region" data-fp-region="live-preview-coverage">
+        <h2 class="harness-label">live preview coverage: cm6 variants</h2>
+        <div class="markdown-source-view cm-s-obsidian mod-cm6 is-live-preview is-readable-line-width" data-check="cm6-coverage">
+          <div class="cm-editor">
+            <div class="cm-scroller">
+              <div class="cm-sizer CodeMirror-sizer">
+                <div class="cm-contentContainer">
+                  <div class="cm-content">
+                    <div class="HyperMD-header HyperMD-header-2 cm-line"><span class="cm-formatting cm-formatting-header">## </span><span class="cm-header cm-header-2">Section heading</span></div>
+                    <div class="HyperMD-header HyperMD-header-3 cm-line"><span class="cm-formatting cm-formatting-header">### </span><span class="cm-header cm-header-3">Subsection heading</span></div>
+                    <div class="HyperMD-header HyperMD-header-4 cm-line"><span class="cm-formatting cm-formatting-header">#### </span><span class="cm-header cm-header-4">Detail heading</span></div>
+                    <div class="HyperMD-header HyperMD-header-5 cm-line"><span class="cm-formatting cm-formatting-header">##### </span><span class="cm-header cm-header-5">Minor heading</span></div>
+                    <div class="HyperMD-header HyperMD-header-6 cm-line"><span class="cm-formatting cm-formatting-header">###### </span><span class="cm-header cm-header-6">Tiny heading</span></div>
+                    <div class="HyperMD-header HyperMD-header-1 cm-line"><span class="cm-header cm-header-1">Primary heading text</span></div>
+                    <div class="HyperMD-codeblock-frontmatter cm-line">---</div>
+                    <div class="cm-line HyperMD-codeblock-frontmatter-bg">title: coverage</div>
+                    <div class="cm-line HyperMD-list-line HyperMD-list-line-2"><span class="cm-formatting-list cm-formatting-list-ul">-</span> nested unordered item <span class="cm-highlight"><span class="cm-formatting-highlight">==</span>mark<span class="cm-formatting-highlight">==</span></span></div>
+                    <div class="cm-line HyperMD-list-line HyperMD-list-line-3"><span class="cm-formatting-list cm-formatting-list-ol">1.</span> nested ordered item</div>
+                    <div class="cm-line HyperMD-list-line HyperMD-list-line-4 HyperMD-task-line"><label class="task-list-label"><input type="checkbox" checked> done</label><span class="cm-formatting-task">[x]</span></div>
+                    <div class="cm-line HyperMD-callout HyperMD-task-line"><span class="cm-formatting-list cm-formatting-list-ul">-</span><label class="task-list-label"><input type="checkbox"> callout task</label> <span class="cm-inline-code">inline</span></div>
+                    <div class="cm-line HyperMD-quote"><span class="cm-formatting-quote">&gt;</span> quoted live preview line</div>
+                    <div class="cm-line"><span class="cm-hmd-internal-link cm-link">Internal Note</span> <span class="cm-hmd-internal-link is-unresolved">Missing Note</span> <span class="cm-hashtag cm-hashtag-begin">#</span><span class="cm-hashtag cm-hashtag-end">tag</span> <span class="cm-strong">strong</span> <span class="cm-em">em</span> <span class="cm-strong cm-em">both</span> <span class="cm-strikethrough">old</span></div>
+                    <div class="cm-embed-block"><div class="mermaid"><svg viewBox="0 0 120 54" width="120" height="54"><text x="8" y="28">LP Mermaid</text></svg></div><div class="mermaid-controls"><button class="mermaid-button">Zoom</button></div></div>
+                          <div class="cm-embed-block"><div class="mermaid"><svg viewBox="0 0 120 54" width="120" height="54"><text x="8" y="28">LP Control</text></svg></div><div class="mermaid-toolbar"><button class="clickable-icon mermaid-button">Fit</button><button class="mermaid-button">Pan</button></div></div>
+                    <div class="cm-embed-block cm-table-widget">
+                      <table class="cm-table compact-table"><thead><tr><th><p>Head</p></th><th>Value</th></tr></thead><tbody><tr class="HyperMD-table-row"><td><div class="table-cell-wrapper"><div class="cm-editor"><div class="cm-scroller"><div class="cm-content"><div class="cm-line">cell</div><div class="cm-active cm-line">active cell</div><div class="cm-line"></div><div class="cm-line"><br></div></div></div></div></div></td><td><p>42</p></td></tr></tbody></table>
+                    </div>
+                    <div class="cm-line HyperMD-hr"><hr><span class="cm-hr">---</span><span class="cm-formatting-hr">---</span></div>
+                    <div class="cm-line HyperMD-frontmatter-1">---</div>
+                    <div class="cm-line HyperMD-frontmatter">aliases: [coverage]</div>
+                    <div class="cm-line HyperMD-frontmatter-end">---</div>
+                    <div class="cm-line"><span class="cm-hmd-table-sep">|</span> pipe separator <span class="cm-hmd-table-sep">|</span></div>
+                    <div class="cm-embed-block"><table><tbody><tr><td><p>embed table</p></td><td><div class="cm-line"><br></div></td></tr></tbody></table></div>
+                    <div class="cm-html-embed"><table class="ogd-html-table"><caption>Live HTML caption</caption><thead><tr><th>HTML</th><th>Value</th></tr></thead><tbody><tr><td>One</td><td>1</td></tr><tr><td>Two</td><td>2</td></tr></tbody></table></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ---- Surfaces: buttons + inputs ---- -->
       <section class="harness-section rig-region" data-fp-region="surfaces">
         <h2 class="harness-label">surfaces: buttons / inputs / chips</h2>
@@ -262,12 +305,279 @@
         </div>
       </section>
 
+      <!-- ---- Plugin and floating chrome DOM ---- -->
+      <section class="harness-section rig-region" data-fp-region="plugin-chrome">
+        <h2 class="harness-label">plugin chrome: canvas / graph / links / settings</h2>
+        <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:16px; align-items:start;">
+          <div class="canvas-wrapper" data-check="canvas-wrapper">
+            <div class="canvas-background">
+              <div class="canvas-node is-selected">
+                <div class="canvas-node-container">
+                  <div class="canvas-node-content markdown-rendered">
+                    <p class="canvas-node-label">Canvas note card</p>
+                  </div>
+                </div>
+                <div class="canvas-node-label">Selected node</div>
+              </div>
+              <div class="canvas-node is-focused">
+                <div class="canvas-node-container"><div class="canvas-node-content">Focused node</div></div>
+              </div>
+              <div class="canvas-group-label">Group label</div>
+              <svg class="canvas-edges" viewBox="0 0 160 40" width="160" height="40"><path class="canvas-edge-path" d="M8 20 C60 4 100 36 152 20"/></svg>
+              <div class="canvas-edge is-focused"><svg viewBox="0 0 160 24" width="160" height="24"><path class="canvas-edge-path" d="M8 12 H152"/></svg></div>
+              <div class="canvas-controls"><button class="canvas-control-item">+</button><button class="canvas-control-item">-</button></div>
+              <div class="canvas-card-menu"><button class="clickable-icon" aria-label="canvas menu">⋯</button></div>
+            </div>
+          </div>
+
+          <div class="workspace-leaf-content" data-type="graph" data-check="graph-leaf">
+            <svg class="graph-view" viewBox="0 0 180 100" width="180" height="100">
+              <circle class="color-fill" cx="50" cy="50" r="12" fill="currentColor"/>
+              <circle class="color-fill-highlight color-circle" cx="125" cy="50" r="12" fill="currentColor"/>
+              <path class="color-line" d="M62 50 H113" stroke="currentColor"/>
+              <path class="color-line-highlight color-arrow color-arrow-highlight" d="M80 70 H145" stroke="currentColor"/>
+              <text class="color-text" x="24" y="88">Graph</text>
+            </svg>
+            <div class="graph-controls">
+              <div class="graph-control-section">
+                <div class="graph-control-group">
+                  <button class="graph-control-button is-active" aria-pressed="true">Depth</button>
+                  <button class="clickable-icon mod-active" aria-label="graph filter">F</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workspace-leaf-content" data-type="backlink" data-check="backlink-leaf">
+            <div class="backlink-pane">
+              <div class="tree-item-self mod-current"><span class="tree-item-inner">Backlink note</span><span class="tree-item-flair">3</span></div>
+              <div class="search-result-file-title">Source note</div>
+              <div class="search-result-file-match"><span class="search-result-file-matched-text">matched</span> text <span class="search-result-file-match-count">2</span></div>
+              <div class="search-empty-state">No more backlinks</div>
+            </div>
+          </div>
+
+          <div class="workspace-leaf-content" data-type="outgoing-link" data-check="outgoing-leaf">
+            <div class="outgoing-link-pane">
+              <div class="tree-item-self is-active"><span class="tree-item-inner">Outgoing note</span><span class="tree-item-flair">5</span></div>
+              <div class="search-result-file-match"><span class="search-result-file-match-text">target</span> reference</div>
+              <div class="search-empty-state">No outgoing links</div>
+            </div>
+          </div>
+
+          <div class="tag-container" data-check="tag-pane">
+            <div class="tag-pane-tag">#project <span class="tag-pane-tag-count">7</span></div>
+            <div class="tree-item-self"><span class="tree-item-inner">#report</span><span class="tree-item-flair">4</span></div>
+          </div>
+
+          <div class="workspace-leaf-content" data-type="outline" data-check="outline-leaf">
+            <div class="outline outline-view"><div class="tree-item-self is-active"><span class="tree-item-inner">Heading</span></div></div>
+            <div class="bookmarks-view"><div class="tree-item-self"><span class="tree-item-inner">Bookmark</span></div></div>
+          </div>
+
+          <div class="bases-view base-view" data-check="bases-view">
+            <table class="bases-table base-table"><tbody><tr><th>Property</th><td>Value</td></tr><tr><th>Status</th><td>Ready</td></tr></tbody></table>
+          </div>
+
+          <div class="metadata-container metadata-properties" data-check="metadata-container">
+            <div class="metadata-properties-heading">Properties</div>
+            <div class="metadata-property"><div class="metadata-property-key">status</div><div class="metadata-property-value">ready</div></div>
+          </div>
+
+          <div class="markdown-preview-view markdown-rendered" data-check="mermaid-controls">
+            <div class="cm-embed-block">
+              <div class="ogd-mermaid-control-fixture">
+                <div class="mermaid"><svg viewBox="0 0 120 44" width="120" height="44"><g class="edgeLabel"><foreignObject width="72" height="24"><span>flow label</span></foreignObject></g></svg></div>
+                <div class="mermaid-controls"><button class="mermaid-button">+</button><button class="clickable-icon">−</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prompt" data-check="prompt-surface">
+            <input class="prompt-input" type="search" value="command">
+            <div class="prompt-results"><div class="suggestion-item is-selected" aria-selected="true">Open command</div></div>
+          </div>
+
+          <div class="modal mod-settings" data-check="settings-modal">
+            <button class="modal-close-button" aria-label="close">×</button>
+            <div class="vertical-tab-content-container style-settings-container">
+              <div class="setting-item">
+                <div class="setting-item-info"><div class="setting-item-heading">Appearance</div><div class="setting-item-name">Glass option</div><div class="setting-item-description">Coverage description</div></div>
+                <div class="setting-item-control">
+                  <input type="text" value="standard">
+                  <input type="search" value="glass">
+                  <input type="number" value="42">
+                  <input type="range" value="50">
+                  <input type="color" value="#64748b">
+                  <select><option>standard</option></select>
+                  <div class="dropdown">standard</div>
+                  <button class="mod-warning">Warn</button>
+                  <button class="mod-destructive">Delete</button>
+                  <button class="is-disabled" aria-disabled="true">Disabled</button>
+                  <div class="pickr"><button class="pcr-button">Color</button></div>
+                  <div class="checkbox-container is-enabled" role="switch" aria-checked="true"></div>
+                  <button class="mod-cta">Apply</button>
+                </div>
+                <div class="setting-item"><div class="setting-item-control"><textarea>nested option</textarea></div></div>
+              </div>
+            </div>
+            <div class="suggestion-item selected">Selected modal suggestion</div>
+          </div>
+
+          <div class="notice-container"><div class="notice" data-check="notice">Saved</div></div>
+        </div>
+      </section>
+
+      <!-- ---- Content and plugin coverage-only variants ---- -->
+      <section class="harness-section rig-region" data-fp-region="content-plugin-coverage">
+        <h2 class="harness-label">coverage: dataview / plugin / content variants</h2>
+        <div class="workspace-leaf-content markdown-reading-view" data-check="content-plugin-coverage">
+          <div class="markdown-preview-view markdown-rendered">
+            <h1>Coverage heading</h1>
+            <p>First paragraph for style preset coverage, with <sup class="footnote-ref"><a href="#fn1">1</a></sup> and a return <a class="footnote-link" href="#fnref1">↩</a>.</p>
+            <ul><li><p>Nested paragraph item for indent coverage.</p></li></ul>
+            <p><img alt="coverage pixel" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lw9B8wAAAABJRU5ErkJggg=="></p>
+            <h5>Fifth level <span class="heading-collapse-indicator">#</span></h5>
+            <h6>Sixth level <span class="heading-collapse-indicator">#</span></h6>
+            <p><mark>highlighted result</mark> <a class="internal-link is-unresolved" href="#">missing link</a> <kbd>Ctrl</kbd><span class="ogd-blur">hidden text</span></p>
+            <ul><li class="task-list-item" data-task="x">Completed task marker</li><li class="task-list-item" data-task="!">Important task marker</li></ul>
+            <p><a class="tag" href="#tag">#coverage</a></p>
+            <div class="callout" data-callout="secret"><div class="callout-content">private content</div></div>
+            <div class="callout" data-callout="note"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"></circle></svg></div><div class="callout-title-inner">note</div></div><div class="callout-content">note icon coverage</div></div>
+            <div class="callout" data-callout="hint"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M8 2v12"></path></svg></div><div class="callout-title-inner">hint</div></div><div class="callout-content">hint</div></div>
+            <div class="callout" data-callout="important"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M8 2v12"></path></svg></div><div class="callout-title-inner">important</div></div><div class="callout-content">important</div></div>
+            <div class="callout" data-callout="abstract"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10"></rect></svg></div><div class="callout-title-inner">abstract</div></div><div class="callout-content">abstract</div></div>
+            <div class="callout" data-callout="summary"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10"></rect></svg></div><div class="callout-title-inner">summary</div></div><div class="callout-content">summary</div></div>
+            <div class="callout" data-callout="tldr"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10"></rect></svg></div><div class="callout-title-inner">tldr</div></div><div class="callout-content">tldr</div></div>
+            <div class="callout" data-callout="example"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 8h8"></path></svg></div><div class="callout-title-inner">example</div></div><div class="callout-content">example</div></div>
+            <div class="callout" data-callout="quote"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M5 5h3v6H4V7c0-1 .4-1.7 1-2z"></path></svg></div><div class="callout-title-inner">quote</div></div><div class="callout-content">quote</div></div>
+            <div class="callout" data-callout="cite"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M5 5h3v6H4V7c0-1 .4-1.7 1-2z"></path></svg></div><div class="callout-title-inner">cite</div></div><div class="callout-content">cite</div></div>
+            <div class="callout" data-callout="faq"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5"></circle></svg></div><div class="callout-title-inner">faq</div></div><div class="callout-content">faq</div></div>
+            <div class="callout" data-callout="attention"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M8 2l6 12H2z"></path></svg></div><div class="callout-title-inner">attention</div></div><div class="callout-content">attention</div></div><div class="callout" data-callout="caution"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M8 2l6 12H2z"></path></svg></div><div class="callout-title-inner">caution</div></div><div class="callout-content">caution</div></div><div class="callout" data-callout="failure"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"></path></svg></div><div class="callout-title-inner">failure</div></div><div class="callout-content">failure</div></div><div class="callout" data-callout="error"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"></path></svg></div><div class="callout-title-inner">error</div></div><div class="callout-content">error</div></div><div class="callout" data-callout="bug"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M8 2v12M4 6h8"></path></svg></div><div class="callout-title-inner">bug</div></div><div class="callout-content">bug</div></div><div class="callout" data-callout="missing"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"></path></svg></div><div class="callout-title-inner">missing</div></div><div class="callout-content">missing</div></div><div class="callout" data-callout="check"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"></path></svg></div><div class="callout-title-inner">check</div></div><div class="callout-content">check</div></div><div class="callout" data-callout="done"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"></path></svg></div><div class="callout-title-inner">done</div></div><div class="callout-content">done</div></div>
+            <div class="callout" data-callout="question"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5"></circle></svg></div><div class="callout-title-inner">question</div></div><div class="callout-content">question</div></div>
+            <div class="callout" data-callout="help"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5"></circle></svg></div><div class="callout-title-inner">help</div></div><div class="callout-content">help</div></div>
+            <div class="callout" data-callout="action"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 8h8"></path></svg></div><div class="callout-title-inner">action</div></div><div class="callout-content">action</div></div>
+            <div class="callout" data-callout="todo"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 8h8"></path></svg></div><div class="callout-title-inner">todo</div></div><div class="callout-content">todo</div></div>
+            <div class="callout" data-callout="fail"><div class="callout-title"><div class="callout-icon"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"></path></svg></div><div class="callout-title-inner">fail</div></div><div class="callout-content">fail</div></div>
+            <div class="callout" data-callout="conclusion"><div class="callout-content">conclusion</div></div>
+            <div class="callout" data-callout="recommendation"><div class="callout-content">recommendation</div></div>
+            <div class="callout" data-callout="risk"><div class="callout-content">risk</div></div>
+            <div class="callout" data-callout="decision"><div class="callout-content">decision</div></div>
+            <blockquote><p>Quote level one</p><blockquote><p>Quote level two</p><blockquote><p>Quote level three</p></blockquote></blockquote></blockquote>
+            <nav class="toc"><ul><li><a href="#toc-a">TOC item</a></li></ul></nav><nav class="table-of-contents"><ul><li><a href="#toc-b">Contents item</a></li></ul></nav><div class="outline"><a href="#toc-c">Outline item</a></div>
+            <dl><dt>Term</dt><dd>Definition coverage</dd></dl><div class="definition-list"><div class="definition-row"><span>Key</span><span>Value</span></div></div>
+            <table class="sticky-first-col">
+              <caption>Captioned coverage table <span class="table-status">ready</span><span class="ogd-caption-chip">chip</span><span class="status">stable</span></caption>
+              <thead><tr><th class="num">ID</th><th>Name</th></tr></thead>
+              <tbody><tr><td class="num">1</td><td>Alpha</td></tr><tr><td class="num">2</td><td>Beta</td></tr></tbody>
+            </table>
+            <table class="dataview table-view-table"><thead><tr><th>File</th><th>Score</th></tr></thead><tbody><tr><td>Note A</td><td>91</td></tr></tbody></table>
+            <table class="dataview dataview-table"><thead><tr><th>Task</th><th>Done</th></tr></thead><tbody><tr><td>Audit</td><td>yes</td></tr></tbody></table>
+            <table class="comparison-table"><tbody><tr><td>Compare</td><td>Value</td></tr></tbody></table>
+            <p class="table-note">Coverage table note.</p><p class="table-source">Coverage table source.</p>
+            <div class="internal-embed">Internal embed coverage</div><div class="markdown-embed"><div class="markdown-embed-title">Embed title</div><div class="markdown-embed-content">Embed body</div></div>
+            <table class="risk-table"><tbody><tr><td>High</td><td><code class="risk-high">risk-high</code></td></tr><tr><td>Medium</td><td class="risk-medium">medium</td></tr><tr><td>Low</td><td class="risk-low">low</td></tr></tbody></table>
+            <table class="report-table ogd-report-table"><thead><tr><th>Report</th><th>Status</th></tr></thead><tbody><tr><td>Coverage</td><td>Ready</td></tr></tbody></table>
+            <table class="ogd-wiki-table"><thead><tr><th>Wiki</th><th>Value</th></tr></thead><tbody><tr><td>Entry</td><td>Linked</td></tr></tbody></table>
+            <div class="block-language-dataview"><table><thead><tr><th>Inline</th></tr></thead><tbody><tr><td>Query result</td></tr></tbody></table></div>
+            <p><span class="dataview inline-field"><span class="dataview inline-field-key">status</span><span class="dataview inline-field-value">ready</span></span> <span class="dataview-inline-field"><span class="dataview-inline-field-key">owner</span><span class="dataview-inline-field-value">theme</span></span></p>
+            <ol class="ogd-reference-list"><li><span class="ogd-reference-source">R1</span><span class="ogd-reference-main"><span class="ogd-reference-title">Reference title</span> <span class="ogd-reference-meta">2026</span><span class="ogd-reference-note">Reference note</span></span></li></ol>
+            <p class="ogd-reference-summary">Reference summary coverage.</p>
+            <pre class="language-mermaid"><code>graph TD; A--&gt;B;</code></pre>
+            <pre class="line-numbers"><button class="copy-code-button">Copy</button><code><span class="line"><span class="token keyword">const</span> theme = <span class="token string">"graphite"</span>;</span><span class="code-line"><span class="token function">returnTheme</span>(<span class="token variable">theme</span>, <span class="token number">42</span>);</span><span class="token-line"><span class="token comment">// comment</span> <span class="token property">done</span>: <span class="token boolean">true</span> <span class="token constant">READY</span> <span class="token symbol">*</span></span><span class="line"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span><span class="token doctype">&lt;!doctype html&gt;</span></span></code></pre>
+            <div class="el-pre"><pre><code>embedded pre coverage</code></pre></div>
+            <pre class="language-ini"><code>[coverage]
+status=ready</code></pre><pre class="language-nginx"><code>server { listen 443; }</code></pre><pre class="language-dockerfile"><code>FROM python:3.12</code></pre><pre class="language-makefile"><code>build:
+    echo ok</code></pre><pre class="language-xml"><code>&lt;root /&gt;</code></pre><pre class="language-csv"><code>a,b
+1,2</code></pre><pre class="language-diff"><code>+ added</code></pre><pre class="language-regex"><code>^coverage$</code></pre>
+            <div class="mermaid"><svg viewBox="0 0 160 80" width="160" height="80"><g class="cluster"><rect x="4" y="4" width="80" height="36"></rect></g><g class="node"><foreignObject x="8" y="42" width="60" height="24"><div><p>node</p></div></foreignObject></g><g class="label"><foreignObject x="72" y="42" width="60" height="24"><div>label</div></foreignObject></g><g class="edgeLabel"><rect x="92" y="12" width="48" height="20"></rect><foreignObject x="92" y="12" width="48" height="20"><span>edge</span><p>edge p</p></foreignObject></g><text class="nodeLabel" x="12" y="28"><tspan>Node</tspan></text></svg></div>
+          </div>
+        </div>
+        <div class="markdown-reading-view" data-check="report-print-adjacent-coverage">
+          <div class="markdown-rendered">
+            <h2>Report Print Lead</h2>
+            <p>Opening paragraph after the first h2 for print spacing coverage.</p>
+            <h4>Report detail after paragraph</h4>
+            <h3>Report Cost Table</h3>
+            <table><tbody><tr><td>Plan</td><td>Value</td></tr><tr><td>E5</td><td><span class="ogd-status-badge is-e5">E5</span></td></tr><tr><td>PAYG</td><td><span class="ogd-status-badge is-payg">PAYG</span></td></tr><tr><td>Add-on</td><td><span class="ogd-status-badge is-addon">Add-on</span></td></tr><tr><td>Note</td><td>Done</td></tr></tbody></table>
+            <p><strong>Follow-up:</strong> report table note coverage.</p>
+          </div>
+          <div class="markdown-rendered">
+            <h3>Wrapped Report Table</h3>
+            <div class="table-wrapper"><table><tbody><tr><td>First</td><td>Alpha</td></tr><tr><td>Second</td><td>Beta</td></tr><tr><td>Third</td><td>Gamma</td></tr><tr><td>Fourth</td><td>Delta</td></tr><tr><td>Fifth</td><td>Epsilon</td></tr></tbody></table></div>
+            <p><strong>Wrapper:</strong> table wrapper note coverage.</p>
+          </div>
+        </div>
+        <div class="markdown-preview-view markdown-rendered" data-check="report-preview-adjacent-coverage">
+          <h2>Preview Report Lead</h2>
+          <p>Preview paragraph after the first h2.</p>
+          <h4>Preview detail after paragraph</h4>
+          <h1>Preview Table Heading</h1><table><tbody><tr><td>H1 adjacent</td><td>table</td></tr></tbody></table>
+          <h2>Preview Wrapped Table</h2><div class="table-wrapper"><table><tbody><tr><td>H2 wrapper</td><td>table</td></tr></tbody></table></div>
+          <h3>Preview Report Table</h3>
+          <table><tbody><tr><td>One</td><td>A</td></tr><tr><td>Two</td><td>B</td></tr><tr><td>Three</td><td>C</td></tr><tr><td>Four</td><td>D</td></tr><tr><td>Five</td><td>E</td></tr></tbody></table>
+        </div>
+        <div class="markdown-rendered ogd-no-h1-number"><h1>Numberless rendered heading</h1></div>
+        <div class="markdown-preview-view ogd-no-h1-number markdown-rendered"><h1>Numberless preview heading</h1></div>
+        <div class="markdown-reading-view ogd-no-h1-number"><div class="markdown-rendered"><h1>Numberless reading heading</h1></div></div>
+        <div class="workspace-ribbon" data-check="ribbon-clickable-coverage"><button class="clickable-icon side-dock-ribbon-action is-active" aria-pressed="true">R</button></div>
+        <div class="markdown-preview-view is-readable-line-width"><div class="markdown-preview-sizer"><div class="markdown-preview-section"><div>Readable preview section</div></div></div></div>
+        <div class="markdown-reading-view is-readable-line-width"><div class="markdown-preview-sizer"><div class="markdown-preview-section"><div class="markdown-rendered is-readable-line-width">Readable rendered body</div></div></div></div>
+        <div class="cm-search-match">search match</div><div class="cm-search-match-selected">selected match</div>
+        <div class="markdown-reading-view"><div class="ogd-mermaid-control-fixture"><div class="mermaid"><svg viewBox="0 0 120 44" width="120" height="44"><text x="8" y="24">Reading Mermaid</text></svg></div><div class="mermaid-controls"><button class="mermaid-button">Zoom</button><button class="clickable-icon">Fit</button></div></div></div>
+        <div class="popover hover-popover" data-check="popover-content-coverage"><div class="markdown-embed"><div class="markdown-embed-title">Embed title</div><div class="markdown-embed-content"><div class="markdown-preview-view markdown-rendered"><div class="inline-title">Inline title</div><h1>Preview H1</h1><h2>Preview H2</h2><h3>Preview H3</h3><p>Popover paragraph coverage.</p></div></div></div></div>
+        <div class="kanban-plugin__lane"><div class="kanban-plugin__item">Kanban card</div></div>
+        <div class="graph-view color-fill color-line color-text">Graph color coverage</div>
+        <div class="suggestion-highlight">Suggestion highlight</div>
+        <div class="internal-embed markdown-embed-content">Combined embed content</div>
+        <div class="excalidraw-host"><div class="excalidraw"><svg class="excalidraw-svg" viewBox="0 0 80 40" width="80" height="40"></svg></div></div>
+        <div class="bases-card-view"><div class="bases-card">Base card</div></div>
+        <div class="nav-files-container"><div class="tree-item-self nav-folder-title" data-path="outputs/report"><span class="nav-folder-title-content">outputs</span></div><div class="tree-item-self nav-folder-title" data-path="raw/obsidian/outputs"><span class="nav-folder-title-content">raw outputs</span></div><div class="tree-item-self nav-folder-title" data-path="wiki/home"><span class="nav-folder-title-content">wiki</span></div><div class="tree-item-self nav-folder-title" data-path="raw/import"><span class="nav-folder-title-content">raw</span></div><div class="tree-item-self nav-folder-title" data-path="dev/scripts/audit.py"><span class="nav-folder-title-content">dev scripts</span></div></div>
+        <div class="workspace-leaf-content" data-type="file-explorer" data-check="file-explorer-coverage"><div class="view-content"><div class="nav-files-container"><div class="nav-folder mod-root"><div class="tree-item-self nav-folder-title is-active"><span class="nav-folder-collapse-indicator"><svg viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"></path></svg></span><span class="nav-folder-title-content">Vault</span></div><div class="nav-folder-children"><div class="nav-folder"><div class="tree-item-self nav-folder-title is-active" data-path="Projects"><span class="nav-folder-collapse-indicator"><svg viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"></path></svg></span><span class="nav-folder-title-content">Projects</span></div><div class="nav-folder-children"><div class="tree-item-self nav-folder-title" data-path="Projects/Reports"><span class="tree-item-icon collapse-icon"><svg viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"></path></svg></span><span class="nav-folder-title-content">Reports</span></div><div class="nav-file"><div class="tree-item-self nav-file-title is-active" data-path="Projects/Reports/Status.md"><span class="nav-file-title-content">Status</span></div></div></div></div></div></div></div></div></div>
+        <div class="workspace mod-root" data-check="workspace-shell-coverage">
+          <div class="workspace-split mod-right-split">
+            <div class="workspace-leaf">
+              <div class="workspace-tab-header-container"><div class="workspace-tab-header-container-inner"><button class="workspace-tab-header-new-tab clickable-icon mod-new-tab">+</button></div></div>
+              <div class="workspace-leaf-content" data-type="search">
+                <div class="view-header"><div class="view-header-nav-buttons"><button class="clickable-icon view-action" aria-pressed="true">B</button></div><div class="view-header-title-container"><span class="view-header-breadcrumb">vault</span><span class="view-header-title">Search</span></div><div class="view-actions"><button class="clickable-icon view-action mod-active">A</button></div></div>
+                <div class="view-content"><div class="search-result-container"><div class="inline-title">Search inline title</div><input data-test-id="search-input" type="search" value="graphite"><div class="search-result-file-match is-active mod-current"><span class="search-result-file-match-text">current match</span></div><div class="empty-state-container"><div class="empty-state"><div class="empty-state-title">No results</div><button class="empty-state-action">Clear</button></div></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="markdown-source-view workspace-leaf-content"><div class="inline-title">Source inline title</div><div class="cm-editor"><div id="editingToolbarModalBar"><button class="clickable-icon editingToolbarButton">B</button><button>U</button></div><div class="editing-toolbar"><button class="editing-toolbar-button">Bold</button><span class="editing-toolbar-inline"><button>Inline</button></span><button class="clickable-icon">I</button></div></div></div>
+        <div class="markdown-reading-view"><div class="inline-title">Reading inline title</div></div>
+        <div class="editing-toolbar-modal-bg"><div class="editing-toolbar-modal"><button>Copy</button><button class="clickable-icon">Cut</button></div></div>
+        <div class="editingToolbarPopoverBar">Toolbar popover bar</div>
+        <div class="editing-toolbar-popover"><button>Paste</button><button class="clickable-icon">Link</button></div>
+        <div class="cMenuToolbarSubmenu"><button>Submenu</button><button class="clickable-icon">More</button></div>
+        <div class="cMenuToolbarPopup"><button>Popup</button></div>
+        <div class="cMenuSubmenuBar">Submenu bar</div>
+        <div class="editing-toolbar-submenu"><button>Nested</button></div>
+        <div class="editing-toolbarSubmenu"><button>Nested camel</button></div>
+        <div class="search-input-container"><input type="search" value="graphite"></div>
+        <div class="menu"><div class="menu-item selected"><span class="menu-item-title">Selected menu</span></div></div>
+        <div class="suggestion-item is-selected"><span class="suggestion-title">Selected suggestion</span><span class="suggestion-note">Selected suggestion note</span></div>
+        <div class="tooltip mod-top"><span class="tooltip-arrow"></span><span class="tooltip-content"><strong>Top</strong> tooltip</span></div>
+        <div class="tooltip mod-bottom"><span class="tooltip-arrow"></span><span class="tooltip-inner">Bottom tooltip</span></div>
+        <div class="tooltip mod-left"><span class="tooltip-arrow"></span><span class="tooltip-title">Left tooltip</span></div>
+        <div class="tooltip mod-right"><span class="tooltip-arrow"></span><span class="tooltip-description">Right tooltip</span></div>
+        <div role="tooltip"><span class="tooltip-content">ARIA tooltip</span></div>
+        <div role="menu"><button class="menu-item">Role menu item</button></div>
+        <div class="MainColumn_main__WJ16D SearchContent_main__Qj1W_ SearchContent_column__HogP5 WorkspaceSelector_main__YvQ7Q VisualPropertiesContent_main__B0L8J" data-check="publish-class-module-coverage">
+          <div class="LegendItem_legendItemText__zGq0y">Legend item</div>
+          <div class="ChartLegend_legendItemText__KOfH_">Chart legend</div>
+        </div>
+      </section>
+
       <!-- ---- Status bar ---- -->
       <section class="harness-section rig-region" data-fp-region="status-bar">
         <h2 class="harness-label">status bar</h2>
         <div class="status-bar" data-fp-id="status-bar">
           <div class="status-bar-item" data-fp-id="status-bar-item">2,341 단어</div>
           <div class="status-bar-item" data-fp-id="status-bar-item-2">Vim 정상</div>
+          <div class="status-bar-item-segment" aria-label="sync complete">sync</div>
+          <div class="status-bar-item-segment" data-tooltip="git clean">git</div>
         </div>
       </section>
     </main>

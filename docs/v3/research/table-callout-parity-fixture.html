@@ -115,7 +115,7 @@
     }
   </style>
 </head>
-<body class="theme-light ogd-spacing-relaxed ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented-dual ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-header2-key-slate ogd-pdf-header2-value-mint ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
+<body class="theme-light ogd-report-mode ogd-zebra-disabled-permanently ogd-spacing-relaxed ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented-dual ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-header2-key-slate ogd-pdf-header2-value-mint ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
   <main class="fixture-shell" data-ogd-fixture="table-callout-parity">
     <div class="fixture-grid">
       <section class="fixture-pane markdown-source-view mod-cm6" aria-label="Live Preview markdown table widget sample">
@@ -277,6 +277,61 @@
           </tr>
         </tbody>
       </table>
+      <h2>보고서 표 변형 커버리지</h2>
+      <p>보고서 fixture는 실제 PDF 문서에서 자주 쓰는 compact, numeric, matrix, risk, reference list 경로를 함께 검증합니다.</p>
+      <h3>요약 매트릭스</h3>
+      <table class="ogd-html-table compact-table numeric-table matrix-table" data-check="pdf-matrix-table">
+        <thead>
+          <tr><th>구분</th><th class="num">Q1</th><th class="num">Q2</th><th class="num">합계</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>문서</td><td class="num">12</td><td class="num">18</td><td class="num">30</td></tr>
+          <tr><td>보고서</td><td class="num">8</td><td class="num">15</td><td class="num">23</td></tr>
+        </tbody>
+      </table>
+      <section class="markdown-rendered" data-check="pdf-wrapped-table-section">
+        <h3>상태 테이블</h3>
+        <div class="table-wrapper">
+          <table class="ogd-html-table risk-table nowrap-code-table scroll-token-table" data-check="pdf-risk-table">
+            <thead>
+              <tr><th>항목</th><th>증거</th><th>상태</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>헤더</td><td><code>pdf_header_key_value_segment_alignment_check</code></td><td class="risk-low"><code>OK</code></td></tr>
+              <tr><td>본문</td><td><code>long_body_token_wrap_inside_report_table_cell</code></td><td class="risk-medium">검토</td></tr>
+              <tr><td>내보내기</td><td><code>export_footer_marginalia_overlap_guard</code></td><td class="risk-high">위험</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <table class="ogd-html-table scroll-table wide-table" data-check="pdf-scroll-table">
+        <tbody>
+          <tr><td>넓은 표</td><td>PDF에서는 overflow 없이 표시되고, 화면에서는 horizontal affordance를 확인합니다.</td><td><code>scroll-table-wide-report-sample</code></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">정책 표는 핵심 판단과 상태를 한 화면에서 비교할 수 있어야 합니다.</p>
+      <p class="table-source">Owen Graphite report fixture.</p>
+      <ol class="ogd-reference-list" data-check="pdf-reference-list">
+        <li>
+          <span class="ogd-reference-source">RFC</span>
+          <span class="ogd-reference-main"><span class="ogd-reference-title">CSS paged media export guard</span> <span class="ogd-reference-meta">2026</span><span class="ogd-reference-note">PDF page split and footer reserve validation.</span></span>
+        </li>
+        <li>
+          <span class="ogd-reference-source">MAP</span>
+          <span class="ogd-reference-main"><span class="ogd-reference-title">Live Preview / PDF CSS map</span> <span class="ogd-reference-meta">v3.1</span><span class="ogd-reference-note">Table and callout parity selectors.</span></span>
+        </li>
+      </ol>
+      <p class="ogd-reference-summary">참고문헌 요약은 report mode에서 표와 본문 사이의 정보 밀도를 안정적으로 유지합니다.</p>
+      <div class="workspace-leaf-content">
+        <article class="markdown-rendered" data-check="workspace-leaf-table">
+          <table class="sticky-first-col">
+            <tbody>
+              <tr><th>경로</th><td>workspace-leaf-content table selector coverage</td></tr>
+              <tr><td>상태</td><td>matched</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
     </article>
   </main>
 </body>

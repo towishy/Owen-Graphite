@@ -19,7 +19,7 @@ python -m playwright install chromium
 
 진본 CSS는 모두 `src/` 아래에 있습니다.
 
-```
+```text
 src/
   tokens/      # 색, 타이포, 간격, 그림자, glass surface 토큰
   base/        # reset, 타이포, reading view, live preview 기본
@@ -42,11 +42,27 @@ src/
 5. **감사**:
    - `python dev/scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
    - `python dev/scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
+   - `python dev/scripts/build_unused_css_report.py` — unused CSS 제거 전 후보/예약 selector 분류
 6. **시각 회귀 (선택)**:
    - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme light`
    - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme dark`
    - `python dev/scripts/fp_diff_summary.py [--theme dark]` — 베이스라인과 0 diff 유지
 7. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
+
+### Direct-owner migration guard
+
+`src/polish/*`는 기존 보정 debt를 담는 동결 레이어입니다. 새 보정은 먼저 원 소유 모듈(`base/`, `surfaces/`, `chrome/`, `features/`, `tokens/`)에 적용해야 하며, late layer에 새 selector/property를 추가하면 `audit_late_layer_policy.py`가 실패합니다.
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\build_effective_source_map.py
+.\.venv\Scripts\python.exe dev\scripts\build_effective_baseline.py
+.\.venv\Scripts\python.exe dev\scripts\build_style_settings_matrix.py
+.\.venv\Scripts\python.exe dev\scripts\audit_late_layer_policy.py
+```
+
+직접소유 이관 작업은 `dev/MAP/direct-owner-migration-matrix.md`와 `dev/MAP/owner-registry.json`을 기준으로 surface 단위로 진행합니다. 값 검증은 `capture_effective_snapshot.py` / `diff_effective_snapshot.py`, 출처 검증은 `capture_provenance_snapshot.py` / `build_owner_migration_report.py`를 사용합니다.
+
+unused CSS 정리는 `dev/MAP/unused-css-candidates.md`를 먼저 생성한 뒤 진행합니다. `candidate`가 아닌 `reserved` selector는 Obsidian 상태, 플러그인, 문서 의미, Style Settings, print/mobile 조건처럼 fixture에 없을 수 있는 경로이므로 별도 coverage 없이 제거하지 않습니다. 다음 coverage 보강은 리포트의 `Reserved Reason Summary`와 `Coverage Gap Hotspots`를 기준으로 정합니다.
 
 ## 3. 보존 계약 (Preservation Contract)
 
@@ -66,7 +82,7 @@ v3는 v2.30.14의 픽셀 결과를 **보존**합니다. 모든 변경은 다음�
 declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 
 1. 해당 룰의 선택자 특이도가 Obsidian core를 이기는지 확인 (대부분 충분합니다)
-2. 그래도 필요하다면 PR 본문에 "defeats core <selector>" 형태로 사유 명시
+2. 그래도 필요하다면 PR 본문에 `defeats core selector` 형태로 사유 명시
 3. CSS 주석에 동일한 사유 인라인 명시
 
 자동 제거 도구 `dev/scripts/v3_strip_important_src.py` 는 주석 안의 `!important` 토큰은 건드리지 않습니다.

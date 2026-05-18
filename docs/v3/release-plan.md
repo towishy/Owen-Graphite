@@ -43,6 +43,12 @@
 | Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle freshness + metadata/style/docs/CSS/PDF/LP audits) |
 | CI validation | `.github/workflows/validate.yml` (fresh bundle + `theme.css` freshness + metadata/style/docs/CSS/PDF/LP audits) |
 | Visual quality smoke check | `dev/scripts/audit_visual_quality_fixture.py` (LP/PDF parity + image/body + code font fixtures; local browser render when available) |
+| Direct-owner baseline/source map | `dev/scripts/build_effective_source_map.py` + `dev/scripts/build_effective_baseline.py` |
+| Direct-owner Style Settings coverage | `dev/scripts/build_style_settings_matrix.py` |
+| Late polish freeze guard | `dev/scripts/audit_late_layer_policy.py` |
+| Effective/provenance snapshots | `dev/scripts/capture_effective_snapshot.py` + `dev/scripts/capture_provenance_snapshot.py` |
+| Owner migration report / diff gate | `dev/scripts/build_owner_migration_report.py` + `dev/scripts/diff_effective_snapshot.py` |
+| Unused CSS candidate report | `dev/scripts/build_unused_css_report.py` |
 
 ## Release procedure for future v3.x.y
 
@@ -59,10 +65,12 @@
 11. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
 12. Bump `manifest.json` version, add `CHANGELOG.md` entry.
 13. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for LP/PDF parity, image/body, and code font fixture contracts; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
-14. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
-15. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
-16. Commit, tag `<version>` (and optionally `v<version>`), push tag.
-17. CI (`.github/workflows/release.yml`) builds the GitHub Release.
+14. For direct-owner migrations, refresh effective source/baseline artifacts and run `python dev/scripts/audit_late_layer_policy.py`; late-layer winner count must not increase.
+15. Before unused CSS removal, run `python dev/scripts/build_unused_css_report.py`; only `candidate` selectors are eligible for removal, and `reserved` selectors require purpose-built coverage first.
+16. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
+17. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
+18. Commit, tag `<version>` (and optionally `v<version>`), push tag.
+19. CI (`.github/workflows/release.yml`) builds the GitHub Release.
 
 ## README Feature Intro Procedure
 

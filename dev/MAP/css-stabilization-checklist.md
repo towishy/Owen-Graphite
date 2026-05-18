@@ -12,7 +12,7 @@
 
 - critical=0
 - high=0
-- medium=482
+- medium=457
 - low=75
 - info=0
 
@@ -20,9 +20,9 @@
 
 - critical=0
 - high=17
-- medium=8
-- low=4
-- info=1
+- medium=5
+- low=3
+- info=5
 
 ## Regenerate
 

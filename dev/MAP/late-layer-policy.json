@@ -1,0 +1,21 @@
+{
+  "schema": "owen-graphite/late-layer-policy/1",
+  "purpose": "Freeze late polish/hotfix/overlay accumulation while migrating declarations back to their direct owner modules.",
+  "protectedModules": [
+    "src/polish/70-late-reading-nav-polish.css",
+    "src/polish/71-overlay-layout-polish.css",
+    "src/polish/72-a11y-regression-hotfixes.css",
+    "src/polish/73-workflow-polish.css"
+  ],
+  "baseline": "dev/MAP/late-layer-baseline.json",
+  "exceptions": "dev/MAP/late-layer-exceptions.json",
+  "rules": {
+    "forbidNewSelectors": true,
+    "forbidNewPropertiesOnExistingSelectors": true,
+    "requireExceptionReason": true,
+    "requireExceptionOwner": true,
+    "requireExceptionExpiry": true,
+    "lateWinnerCountMustNotIncrease": true
+  },
+  "migrationGoal": "Existing late declarations are allowed only as baseline debt. New work should reduce late winners or move them into owner modules listed in dev/MAP/owner-registry.json."
+}
