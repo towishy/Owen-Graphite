@@ -51,16 +51,15 @@ src/
 
 ### Direct-owner migration guard
 
-`src/polish/*`는 기존 보정 debt를 담는 동결 레이어입니다. 새 보정은 먼저 원 소유 모듈(`base/`, `surfaces/`, `chrome/`, `features/`, `tokens/`)에 적용해야 하며, late layer에 새 selector/property를 추가하면 `audit_late_layer_policy.py`가 실패합니다.
+`src/polish/*` late layer는 retired 상태입니다. 새 보정은 원 소유 모듈(`base/`, `surfaces/`, `chrome/`, `features/`, `tokens/`)에 직접 적용합니다.
 
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\build_effective_source_map.py
 .\.venv\Scripts\python.exe dev\scripts\build_effective_baseline.py
 .\.venv\Scripts\python.exe dev\scripts\build_style_settings_matrix.py
-.\.venv\Scripts\python.exe dev\scripts\audit_late_layer_policy.py
 ```
 
-직접소유 이관 작업은 `dev/MAP/direct-owner-migration-matrix.md`와 `dev/MAP/owner-registry.json`을 기준으로 surface 단위로 진행합니다. 값 검증은 `capture_effective_snapshot.py` / `diff_effective_snapshot.py`, 출처 검증은 `capture_provenance_snapshot.py` / `build_owner_migration_report.py`를 사용합니다.
+직접소유 이관 작업은 `dev/MAP/direct-owner-migration-matrix.md`와 `dev/MAP/owner-registry.json`을 기준으로 surface 단위로 진행합니다. 값 검증은 `capture_effective_snapshot.py` / `diff_effective_snapshot.py`, 출처 검증은 `capture_provenance_snapshot.py`와 `dev/MAP/effective-source-map.json`을 사용합니다.
 
 unused CSS 정리는 `dev/MAP/unused-css-candidates.md`를 먼저 생성한 뒤 진행합니다. `candidate`가 아닌 `reserved` selector는 Obsidian 상태, 플러그인, 문서 의미, Style Settings, print/mobile 조건처럼 fixture에 없을 수 있는 경로이므로 별도 coverage 없이 제거하지 않습니다. 다음 coverage 보강은 리포트의 `Reserved Reason Summary`와 `Coverage Gap Hotspots`를 기준으로 정합니다.
 

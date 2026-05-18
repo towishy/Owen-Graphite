@@ -1,18 +1,18 @@
 # Direct Owner Migration Matrix
 
-This matrix turns the direct-owner rule into executable gates. The goal is to stop accumulating corrections in late polish/hotfix/overlay files and migrate effective declarations back to their source owners.
+This matrix records the direct-owner migration that retired the late polish/hotfix/overlay layer. New work should continue editing the source owner modules directly.
 
 ## Phase Matrix
 
 | Phase | Goal | Artifact | Gate |
 | ---: | --- | --- | --- |
-| 0 | Freeze current release baseline | `dev/MAP/effective-baseline/v3.1.42/*` | bundle hashes, import order, source map, environment recorded |
+| 0 | Freeze current release baseline | `dev/MAP/effective-baseline/v3.1.43/*` | bundle hashes, import order, source map, environment recorded |
 | 1 | Define source ownership | `dev/MAP/owner-registry.json` | every high-risk surface has an owner module |
-| 2 | Freeze late layer | `dev/MAP/late-layer-policy.json` + `audit_late_layer_policy.py` | no new late selectors/properties |
+| 2 | Retire late layer | removed `src/polish/*` modules | no active late selectors/properties |
 | 3 | Capture effective values | `capture_effective_snapshot.py` | screen/print, light/dark, pseudo, tokens captured |
 | 4 | Capture provenance | `capture_provenance_snapshot.py` | matched rules map back to source modules |
 | 5 | Cover settings | `build_style_settings_matrix.py` | every Style Settings value appears in at least one scenario |
-| 6 | Report migration candidates | `build_owner_migration_report.py` | late-layer matched declarations are listed by target |
+| 6 | Review provenance | `capture_provenance_snapshot.py` + `dev/MAP/effective-source-map.json` | matched rules map back to owner modules |
 | 7 | Migrate one surface | owner source edit + late rule removal | strict computed diff remains zero |
 | 8 | Validate structure | provenance diff + late count | winning source moves toward owner modules |
 | 9 | Repeat in small slices | per-surface migration | late dependency count trends down |
@@ -23,16 +23,14 @@ This matrix turns the direct-owner rule into executable gates. The goal is to st
 .\.venv\Scripts\python.exe dev\scripts\build_effective_source_map.py
 .\.venv\Scripts\python.exe dev\scripts\build_effective_baseline.py
 .\.venv\Scripts\python.exe dev\scripts\build_style_settings_matrix.py
-.\.venv\Scripts\python.exe dev\scripts\audit_late_layer_policy.py
 .\.venv\Scripts\python.exe dev\scripts\capture_effective_snapshot.py --theme light --media screen --include-tokens
 .\.venv\Scripts\python.exe dev\scripts\capture_effective_snapshot.py --theme dark --media screen --include-tokens
 .\.venv\Scripts\python.exe dev\scripts\capture_provenance_snapshot.py --theme light --media screen
-.\.venv\Scripts\python.exe dev\scripts\build_owner_migration_report.py
 ```
 
 ## Non-Negotiable Rule
 
-New work should modify the owner module first. Late polish files are migration debt unless explicitly registered as temporary exceptions in `dev/MAP/late-layer-policy.json`.
+New work should modify the owner module first. Reintroducing `src/polish/*` is treated as new migration debt and should be avoided unless a future compatibility issue has no direct-owner alternative.
 
 ## Migration Log
 

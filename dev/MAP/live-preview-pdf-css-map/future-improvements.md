@@ -34,7 +34,7 @@ This backlog focuses on making Live Preview and Export PDF parity easier to main
    - Mark scenarios as `lp-source`, `lp-widget`, `reading`, `pdf`, or `cross-surface`.
 
 3. Add a MAP freshness check.
-   - If `src/base/13-live-preview.css`, `src/features/42-report-print-polish.css`, `src/features/43-print-base.css`, `src/polish/72-a11y-regression-hotfixes.css`, or `src/polish/73-workflow-polish.css` changes, require a human check of this folder.
+   - If `src/base/13-live-preview.css`, `src/features/42-report-print-polish.css`, `src/features/43-print-base.css`, `src/surfaces/20-reading-tables-code.css`, or `src/surfaces/21-reading-callouts-lists.css` changes, require a human check of this folder.
 
 4. Add a preset specificity checklist.
    - PDF preset classes such as `ogd-pdf-font-comfortable` can outrank generic print rules.

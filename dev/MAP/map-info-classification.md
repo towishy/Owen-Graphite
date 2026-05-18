@@ -6,11 +6,11 @@ Canonical MAP location: `dev/MAP`.
 
 - Version: `3.1.43`
 - Source: `src/entry.css`
-- Modules: 30
+- Modules: 26
 - Selectors: 2242
 - Findings: 532
 - Finding severity counts: critical=0, high=0, medium=457, low=75, info=0
-- Module severity counts: critical=0, high=17, medium=5, low=3, info=5
+- Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
 
@@ -40,12 +40,8 @@ Canonical MAP location: `dev/MAP`.
 | high | 67 | `src/chrome/36-floating-ui-glass-system.css` | 113 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 132 | `src/chrome/37-tabs-file-explorer-search.css` | 98 | 0 | 32 | high-specificity, has-selector, repeated-selector-in-file |
 | low | 3 | `src/themes/51-accessibility-motion-contrast.css` | 16 | 0 | 0 | repeated-selector-in-file |
-| info | 0 | `src/polish/70-late-reading-nav-polish.css` | 0 | 0 | 0 | - |
-| info | 0 | `src/polish/71-overlay-layout-polish.css` | 0 | 0 | 0 | - |
 | high | 99 | `src/surfaces/23-liquid-glass-core.css` | 143 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 141 | `src/surfaces/24-html-table-live-preview-glass.css` | 84 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| info | 0 | `src/polish/72-a11y-regression-hotfixes.css` | 0 | 0 | 0 | - |
-| info | 0 | `src/polish/73-workflow-polish.css` | 0 | 0 | 0 | - |
 
 ## Findings
 

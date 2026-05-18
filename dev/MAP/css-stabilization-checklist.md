@@ -22,7 +22,7 @@
 - high=17
 - medium=5
 - low=3
-- info=5
+- info=1
 
 ## Regenerate
 

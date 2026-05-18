@@ -36,7 +36,7 @@ PDF export uses rendered DOM under print media. A fix may need all three paths.
 ## PDF Safety Rules
 
 - Put print-only behavior inside `@media print`.
-- When a late screen rule in `src/polish/73-workflow-polish.css` touches `pre code`, tables, headings, or spacing, add a later print guard in the same file if needed.
+- When a screen rule touches `pre code`, tables, headings, or spacing, add a matching print guard in the relevant print owner if needed.
 - `body.ogd-pdf-*` preset classes can outrank generic print rules. Match their specificity when closing print cascade.
 - Do not use unsupported print margin boxes, `string-set`, generated multiline labels, fixed positioning, viewport units, or backdrop filters for PDF marginalia.
 - Use `print-color-adjust: exact` for surfaces that must retain color.

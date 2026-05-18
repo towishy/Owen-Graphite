@@ -15634,24 +15634,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
 }
 
 /* <<< src/themes/51-accessibility-motion-contrast.css */
-/* 10b-late-reading-nav-polish.css              -> polish/70 */
-/* >>> src/polish/70-late-reading-nav-polish.css */
-/* All rules previously in this late module have been migrated to direct owners. */
-
-/* <<< src/polish/70-late-reading-nav-polish.css */
-/* 10c-overlay-layout-polish.css                -> polish/71 */
-/* >>> src/polish/71-overlay-layout-polish.css */
-/* ============================================================================
- * v1.8.66 - Polish pack
- * Dark mode, mobile, tabs, callouts, code labels, links, headings, search,
- * status bar, frontmatter readability.
- * Isolated block - only additive overrides; never weakens existing rules.
- * ========================================================================== */
-
-/* End of v1.8.66 polish pack ============================================== */
-
-/* <<< src/polish/71-overlay-layout-polish.css */
-/* 10d-liquid-glass-core.css                    -> surfaces/23 */
+/* 10b-liquid-glass-core.css                    -> surfaces/23 */
 /* >>> src/surfaces/23-liquid-glass-core.css */
 /* ============================================================
   v2.22.30 - Owen Graphite Liquid Glass core tab rim hotfix
@@ -17142,7 +17125,7 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
   color: var(--text-normal, #e5edf7);
 }
 /* <<< src/surfaces/23-liquid-glass-core.css */
-/* 10e-html-table-live-preview-glass.css        -> surfaces/24 */
+/* 10c-html-table-live-preview-glass.css        -> surfaces/24 */
 /* >>> src/surfaces/24-html-table-live-preview-glass.css */
 /* ============================================================
   v2.30.9 — HTML <table> in Live Preview liquid glass parity
@@ -17442,22 +17425,3 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
   line-height: var(--ogd-table-line-height);
 }
 /* <<< src/surfaces/24-html-table-live-preview-glass.css */
-/* 10-a11y-regression-hotfixes.css              -> polish/72 */
-/* >>> src/polish/72-a11y-regression-hotfixes.css */
-/* ============================================================
-  v2.22.102 - Remove forced Live Preview pointer-events guard
-   The previous EOF block forced pointer-events:auto on every
-   .cm-line descendant. That overrode CM6's native hit routing
-   for list markers, widgets and decorations, trapping clicks on
-   the currently active line. Native CM6 behaviour (matching the
-   vanilla theme) is restored by deleting that block entirely.
-   ============================================================ */
-/* <<< src/polish/72-a11y-regression-hotfixes.css */
-/* 10f-workflow-polish.css                      -> polish/73 */
-/* >>> src/polish/73-workflow-polish.css */
-/* ============================================================
-  v2.30.10 - Workflow polish sweep
-   Compact README-facing refinements were migrated to direct owners.
-   This late module is intentionally selector-free.
-   ============================================================ */
-/* <<< src/polish/73-workflow-polish.css */

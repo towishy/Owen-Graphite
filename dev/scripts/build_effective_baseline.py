@@ -84,7 +84,6 @@ def main() -> int:
             "git": {
                 "branch": git_value(["branch", "--show-current"]),
                 "commit": git_value(["rev-parse", "HEAD"]),
-                "statusShort": git_value(["status", "--short"]),
             },
             "environment": {
                 "platform": platform.platform(),
@@ -112,8 +111,6 @@ def main() -> int:
             },
             "linkedArtifacts": {
                 "ownerRegistry": "dev/MAP/owner-registry.json",
-                "lateLayerPolicy": "dev/MAP/late-layer-policy.json",
-                "lateLayerBaseline": "dev/MAP/late-layer-baseline.json",
                 "effectiveSourceMap": "dev/MAP/effective-source-map.json",
             },
         }

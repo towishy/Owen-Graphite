@@ -24,9 +24,9 @@ Owen Graphite has three rendering surfaces that can look similar but are not the
 
 | Surface | Root | Typical CSS owner | Notes |
 | --- | --- | --- | --- |
-| Live Preview source lines | `.markdown-source-view.mod-cm6 .cm-line.HyperMD-*` | `src/base/13-live-preview.css`, `src/polish/72-a11y-regression-hotfixes.css` | Must preserve CM6 click routing. No vertical margin/padding on direct HyperMD lines. |
-| Live Preview rendered widgets | `.markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock, .cm-callout, .cm-table-widget, .cm-html-embed)` | `src/base/13-live-preview.css`, `src/surfaces/23-liquid-glass-core.css`, `src/surfaces/24-html-table-live-preview-glass.css`, `src/polish/72-a11y-regression-hotfixes.css` | Looks close to Reading View but still lives inside CM6. |
-| Export PDF | `@media print` + `.markdown-rendered` / `.markdown-preview-view.markdown-rendered` | `src/features/43-print-base.css`, `src/features/41-feature-presets.css`, `src/features/42-report-print-polish.css`, `src/polish/71-overlay-layout-polish.css`, `src/polish/73-workflow-polish.css` | Chromium print has its own limitations. Final print fixes often need to live late in cascade. |
+| Live Preview source lines | `.markdown-source-view.mod-cm6 .cm-line.HyperMD-*` | `src/base/13-live-preview.css` | Must preserve CM6 click routing. No vertical margin/padding on direct HyperMD lines. |
+| Live Preview rendered widgets | `.markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock, .cm-callout, .cm-table-widget, .cm-html-embed)` | `src/base/13-live-preview.css`, `src/surfaces/23-liquid-glass-core.css`, `src/surfaces/24-html-table-live-preview-glass.css` | Looks close to Reading View but still lives inside CM6. |
+| Export PDF | `@media print` + `.markdown-rendered` / `.markdown-preview-view.markdown-rendered` | `src/features/43-print-base.css`, `src/features/41-feature-presets.css`, `src/features/42-report-print-polish.css` | Chromium print has its own limitations. Final print fixes should stay in direct owner modules. |
 
 The safest parity path is token first, selector second, fixture third:
 

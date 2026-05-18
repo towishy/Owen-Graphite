@@ -18,6 +18,5 @@ Top chrome includes root tab strips, view headers, side pane headers, tab button
 - `src/chrome/35-editing-menu-tooltip-glass.css`: editing menu and tooltip glass refinements.
 - `src/chrome/36-floating-ui-glass-system.css`: floating UI glass system.
 - `src/surfaces/23-liquid-glass-core.css`: final liquid glass surface and top chrome ownership.
-- `src/polish/73-workflow-polish.css`: late workflow polish after core glass ownership.
 
 Run `dev/scripts/build_src_map.py` after broad top chrome edits so `dev/MAP/theme-css-risk-map.json` records the changed risk surface.
