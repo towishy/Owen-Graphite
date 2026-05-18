@@ -21,6 +21,167 @@
    target into adjacent rows and trapped cursor placement on neighbour
    headings/blank rows. Visual rhythm is now owned by line-height and the
    header-adjacent blank row in 03-reading-content.css. */
+body .markdown-source-view.mod-cm6 .cm-editor,
+body .markdown-source-view.mod-cm6 .cm-scroller,
+body .markdown-source-view.mod-cm6 .cm-sizer,
+body .markdown-source-view.mod-cm6 .cm-contentContainer,
+body .markdown-source-view.mod-cm6 .cm-content {
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+body .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer,
+body .markdown-source-view.mod-cm6.is-readable-line-width .CodeMirror-sizer {
+  max-width: var(--ogd-max-width, 420mm);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body .markdown-source-view.is-readable-line-width .cm-contentContainer,
+body .markdown-source-view.is-readable-line-width .cm-sizer,
+body .markdown-source-view.is-readable-line-width .CodeMirror-sizer {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body .markdown-source-view.is-readable-line-width :is(.cm-sizer, .cm-contentContainer, .CodeMirror-sizer, .cm-content) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body .markdown-source-view.mod-cm6 .cm-content {
+  display: block;
+  max-width: 100%;
+  min-height: calc(100vh - 220px);
+  cursor: text;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  text-align: left;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  table.cm-table,
+  .HyperMD-table-row,
+  .cm-embed-block table
+) :is(
+  .cm-content,
+  .cm-line,
+  .cm-scroller,
+  .cm-sizer,
+  .cm-contentContainer,
+  .cm-editor,
+  .table-cell-wrapper,
+  p,
+  td,
+  th,
+  tr,
+  tbody,
+  thead
+) {
+  min-height: 0;
+  height: auto;
+}
+
+body .markdown-source-view.mod-cm6 .cm-embed-block table :is(td, th) > p {
+  margin: 0;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  .cm-embed-block.cm-table-widget,
+  table.cm-table,
+  .cm-embed-block table
+) :is(td, th) :is(
+  .table-cell-wrapper,
+  .cm-editor,
+  .cm-scroller,
+  .cm-content,
+  .cm-line,
+  .cm-active.cm-line
+) {
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  .cm-embed-block.cm-table-widget,
+  table.cm-table,
+  .cm-embed-block table
+) :is(
+  table,
+  thead,
+  tbody,
+  tr,
+  td,
+  th
+) {
+  min-height: 0;
+  height: auto;
+}
+
+body .markdown-source-view.mod-cm6 :is(
+  .cm-table-widget,
+  .cm-embed-block.cm-table-widget,
+  table.cm-table,
+  .cm-embed-block table
+) :is(td, th) :is(
+  .cm-line:empty,
+  .cm-active.cm-line:empty
+) {
+  display: none;
+  min-height: 0;
+  height: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@supports selector(.cm-line:has(br:only-child)) {
+  body .markdown-source-view.mod-cm6 :is(
+    .cm-table-widget,
+    .cm-embed-block.cm-table-widget,
+    table.cm-table,
+    .cm-embed-block table
+  ) :is(td, th) :is(
+  .cm-line:has(br:only-child),
+  .cm-active.cm-line:has(br:only-child)
+  ) {
+    display: none;
+    min-height: 0;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-frontmatter,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-frontmatter-bg {
+  font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
+  font-size: 0.88em;
+  background: var(--ogd-surface-muted, #f8fafc);
+}
+body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-codeblock-frontmatter,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-frontmatter-bg {
+  background: #1c2128;
+}
+
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
   line-height: 1.2;
   padding-top: 0;
@@ -65,6 +226,211 @@
 .markdown-source-view.mod-cm6 .cm-header-4 { font-size: 1.12em; font-weight: 700; color: var(--header-accent-dark); }
 .markdown-source-view.mod-cm6 .cm-header-5 { font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--header-muted); }
 .markdown-source-view.mod-cm6 .cm-header-6 { font-size: 0.92em; font-weight: 700; color: var(--header-muted); }
+body .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
+  color: var(--ogd-text-strong, #111827);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(103, 232, 249, 0.55);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.20em;
+  text-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+body .markdown-source-view.mod-cm6 .cm-header-1 { font-weight: 860; }
+body .markdown-source-view.mod-cm6 .cm-header-2 { font-weight: 800; }
+
+body .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
+  color: var(--ogd-text-slate, #334155);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(203, 213, 225, 0.72);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+body .markdown-source-view.mod-cm6 .cm-header-3 { font-weight: 760; }
+body .markdown-source-view.mod-cm6 .cm-header-4 { color: var(--ogd-text-subtle, #475569); font-weight: 760; }
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
+  color: var(--ogd-text-inverted, #f8fafc);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(103, 232, 249, 0.42);
+  text-decoration-thickness: 1.5px;
+  text-shadow: none;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
+  color: var(--ogd-line-soft, #e5e7eb);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(71, 85, 105, 0.80);
+  text-decoration-thickness: 1px;
+}
+
+body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
+  color: var(--ogd-text-soft, #94a3b8);
+}
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .cm-inline-code {
+  display: inline;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) + .cm-line.HyperMD-hr {
+  height: 0;
+  min-height: 0;
+  line-height: 0;
+  overflow: hidden;
+  color: transparent;
+}
+
+body .markdown-source-view.mod-cm6 :is(.callout, .cm-callout, .cm-embed-block.cm-callout) + .cm-line.HyperMD-hr :is(hr, .cm-hr, .cm-formatting-hr) {
+  display: none;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout.HyperMD-task-line input[type="checkbox"],
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout .task-list-label input[type="checkbox"] {
+  margin-left: 0;
+  margin-right: 0.48em;
+  vertical-align: -0.12em;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout :is(.cm-formatting-list, .cm-formatting-list-ul, .cm-formatting-task) {
+  color: transparent;
+  display: inline-block;
+  width: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+
+body .markdown-source-view.mod-cm6 input[type="checkbox"] {
+  border-color: rgba(148, 163, 184, 0.56);
+  border-radius: 5px;
+  background: var(--ogd-list-marker-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.72)));
+  box-shadow: var(--ogd-list-marker-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 0 0 1px rgba(14, 165, 233, 0.08));
+}
+
+body .markdown-source-view.mod-cm6 input[type="checkbox"]:checked {
+  border-color: rgba(16, 185, 129, 0.58);
+  background: var(--ogd-list-marker-bg-active, linear-gradient(180deg, rgba(240, 253, 244, 0.94), rgba(220, 252, 231, 0.62)));
+  box-shadow: var(--ogd-list-marker-shadow-active, inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 0 0 3px rgba(16, 185, 129, 0.10));
+}
+
+body .markdown-source-view.mod-cm6 .cm-formatting-list,
+body .markdown-source-view.mod-cm6 .cm-formatting-list-ul,
+body .markdown-source-view.mod-cm6 .cm-formatting-list-ol {
+  color: var(--header-accent, #0e7490);
+  font-weight: 820;
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.18);
+}
+
+body .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD-list-line-3, .HyperMD-list-line-4) {
+  border-inline-start: 0;
+}
+
+body .markdown-source-view.mod-cm6 {
+  --ogd-list-marker-bg: radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.18) 44%, rgba(14, 165, 233, 0.18)), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.54));
+  --ogd-list-marker-border: rgba(125, 211, 252, 0.48);
+  --ogd-list-marker-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 5px 14px rgba(14, 165, 233, 0.12);
+  --ogd-list-nested-marker: rgba(14, 165, 233, 0.28);
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-list-ol {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.06em;
+  height: 1.58em;
+  margin-inline-end: 0.34em;
+  border: 1px solid var(--ogd-list-marker-border);
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-list-marker-bg);
+  box-shadow: var(--ogd-list-marker-shadow);
+  color: var(--header-accent, #0e7490);
+  font-size: 0.68em;
+  font-weight: 820;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: none;
+  vertical-align: 0.12em;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-list-ul {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-inline: 0.54em 0.62em;
+  border: 1px solid var(--ogd-list-marker-border);
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-list-marker-bg);
+  box-shadow: var(--ogd-list-marker-shadow);
+  color: transparent;
+  font-size: 0;
+  line-height: 1;
+  text-shadow: none;
+  vertical-align: 0.08em;
+}
+
+body .markdown-source-view.mod-cm6 :is(.HyperMD-list-line-2, .HyperMD-list-line-3, .HyperMD-list-line-4) .cm-formatting-list-ul {
+  width: 0.48em;
+  height: 0.48em;
+  border-color: var(--ogd-list-nested-marker);
+  background: rgba(240, 249, 255, 0.42);
+  box-shadow: inset 0 0 0 2px rgba(14, 165, 233, 0.10), 0 3px 8px rgba(14, 165, 233, 0.08);
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line :is(.cm-formatting-list, .cm-formatting-list-ol, .cm-formatting-list-ul) {
+  display: inline;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--header-accent, #0e7490);
+  font-size: inherit;
+  font-weight: 820;
+  line-height: inherit;
+  text-shadow: 0 0 8px rgba(14, 165, 233, 0.12);
+  vertical-align: baseline;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-highlight {
+  display: inline;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: 0.12em;
+  line-height: inherit;
+  vertical-align: baseline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-highlight {
+  display: inline;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  line-height: inherit;
+  vertical-align: baseline;
+}
 /* Heading hash markers (#, ##, ###) — soft, like Reading-view absent */
 .markdown-source-view.mod-cm6 .cm-formatting-header {
   color: var(--ogd-line-strong, #cbd5e1);
@@ -174,6 +540,21 @@
   text-decoration-color: rgba(107, 114, 128, 0.6);
   color: #9ca3af;
 }
+.markdown-source-view.mod-cm6 ::spelling-error,
+.markdown-source-view.mod-cm6 ::grammar-error {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(185, 28, 28, 0.38);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.theme-dark .markdown-source-view.mod-cm6 ::spelling-error,
+.theme-dark .markdown-source-view.mod-cm6 ::grammar-error {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(248, 113, 113, 0.42);
+  text-decoration-thickness: 1px;
+}
 
 /* (7) Checkbox alignment in CM6 */
 .markdown-source-view.mod-cm6 .HyperMD-list-line .task-list-label,
@@ -254,6 +635,66 @@
 .markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
 .markdown-source-view.mod-cm6 table.cm-table tr:hover td {
   background: #f5f7fa;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.66));
+  --ogd-table-border: rgba(148, 163, 184, 0.46);
+  --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
+  --ogd-table-row-even: rgba(236, 254, 255, 0.28);
+  --ogd-table-row-hover: rgba(224, 242, 254, 0.62);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--ogd-table-border);
+  border-radius: 8px;
+  background: var(--ogd-table-bg);
+  box-shadow: var(--ogd-table-shadow);
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+  padding: var(--ogd-table-pad-y, 0.62em) var(--ogd-table-pad-x, 0.78em);
+  font-size: var(--ogd-table-font-size, 0.96em);
+  border-color: var(--ogd-table-cell-border);
+  border-width: 0 0 1px 1px;
+  background-clip: padding-box;
+  color: var(--ogd-text-slate, #334155);
+  line-height: var(--ogd-table-line-height, 1.42);
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tr > :is(th, td):first-child {
+  border-left-width: 0;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:last-child > td {
+  border-bottom-width: 0;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+  background: var(--ogd-table-head-bg);
+  color: var(--ogd-text-slate, #334155);
+  font-size: 0.88em;
+  font-weight: 820;
+  text-align: left;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+  background: var(--ogd-table-row-even);
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+  background: var(--ogd-table-row-hover);
 }
 /* Pipe `|` separators in source mode — dim */
 .markdown-source-view.mod-cm6 .cm-hmd-table-sep {
@@ -454,7 +895,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout 
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 250, 252, 0.46));
 }
 
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   padding-left: 14px;
   padding-right: 14px;
   border-left: 1px solid rgba(30, 41, 59, 0.18);
@@ -464,14 +905,27 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
   line-height: 1.62;
 }
 
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  --ogd-lp-code-bg: rgba(248, 250, 252, 0.86);
+  --ogd-lp-code-border: rgba(148, 163, 184, 0.46);
+  border-color: var(--ogd-lp-code-border);
+  background: var(--ogd-lp-code-bg);
+  color: var(--ogd-text-slate, #334155);
+  line-height: 1.62;
+}
+
+body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  line-height: 1.62;
+}
+
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
   margin-top: 0;
   border-top: 1px solid rgba(30, 41, 59, 0.18);
   border-radius: var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px) 0 0;
   padding-top: 0;
 }
 
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
   margin-bottom: 0;
   border-bottom: 1px solid rgba(30, 41, 59, 0.18);
   border-radius: 0 0 var(--ogd-radius-control, 7px) var(--ogd-radius-control, 7px);

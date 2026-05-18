@@ -178,6 +178,50 @@
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
 }
 
+body:not(.is-mobile) .setting-item-control input[type="color"],
+body:not(.is-mobile) .modal .setting-item-control input[type="color"] {
+  background: transparent;
+  background-color: transparent;
+  padding: 0;
+  overflow: hidden;
+}
+
+body:not(.is-mobile) .setting-item-control input[type="color"]::-webkit-color-swatch-wrapper,
+body:not(.is-mobile) .modal .setting-item-control input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  background: transparent;
+}
+
+body:not(.is-mobile) .setting-item-control input[type="color"]::-webkit-color-swatch,
+body:not(.is-mobile) .modal .setting-item-control input[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--ogd-radius-control, 7px) - 2px);
+}
+
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button {
+  background: transparent;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before,
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after {
+  border-radius: calc(var(--ogd-radius-control, 7px) - 2px);
+  inset: 2px;
+}
+
+body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after,
+body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after {
+  background: var(--pcr-color);
+}
+
+body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-accent"] .pickr .pcr-button {
+  --pcr-color: var(--ogd-accent, #4b5563);
+}
+
 /* Settings focus ring */
 .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible {
   outline: 1px solid rgba(100, 116, 139, 0.42);

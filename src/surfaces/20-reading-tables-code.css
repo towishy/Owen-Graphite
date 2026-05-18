@@ -93,6 +93,106 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   background-color: #fafbfc;
 }
 
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+  border-color: #e2e8f0;
+  border-radius: var(--ogd-radius-control, 7px);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
+  background: #f4f6f8;
+  color: #1f2937;
+  border-color: #e2e8f0;
+  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8);
+  font-weight: 760;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
+  color: var(--ogd-text-slate, #334155);
+  border-color: #edf2f7;
+}
+
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+  background: #fbfcfd;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
+  background: #f7fafc;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td:first-child {
+  color: #1f2937;
+  font-weight: 720;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
+body .workspace-leaf-content .markdown-rendered table {
+  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.66));
+  --ogd-table-border: rgba(148, 163, 184, 0.46);
+  --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
+  --ogd-table-row-even: rgba(236, 254, 255, 0.28);
+  --ogd-table-row-hover: rgba(224, 242, 254, 0.62);
+  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--ogd-table-border);
+  border-radius: 8px;
+  background: var(--ogd-table-bg);
+  box-shadow: var(--ogd-table-shadow);
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
+body .workspace-leaf-content .markdown-rendered table :is(th, td) {
+  padding: var(--ogd-table-pad-y, 0.62em) var(--ogd-table-pad-x, 0.78em);
+  font-size: var(--ogd-table-font-size, 0.96em);
+  border-color: var(--ogd-table-cell-border);
+  border-width: 0 0 1px 1px;
+  background-clip: padding-box;
+  color: var(--ogd-text-slate, #334155);
+  line-height: var(--ogd-table-line-height, 1.42);
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tr > :is(th, td):first-child,
+body .workspace-leaf-content .markdown-rendered table tr > :is(th, td):first-child {
+  border-left-width: 0;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:last-child > td,
+body .workspace-leaf-content .markdown-rendered table tbody tr:last-child > td {
+  border-bottom-width: 0;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
+body .workspace-leaf-content .markdown-rendered table th {
+  background: var(--ogd-table-head-bg);
+  color: var(--ogd-text-slate, #334155);
+  font-size: 0.88em;
+  font-weight: 820;
+  text-align: left;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
+body .workspace-leaf-content .markdown-rendered table td {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
+body.ogd-zebra-disabled-permanently .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td {
+  background: var(--ogd-table-row-even);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
+body .workspace-leaf-content .markdown-rendered table tbody tr:hover td {
+  background: var(--ogd-table-row-hover);
+}
+
 /* =====================================================================
   Code - language badge in top-right + diff line tinting
    ===================================================================== */
@@ -103,6 +203,35 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   /* Hide the heavy header bar; replace with a small badge */
   content: none;
 }
+.markdown-rendered pre[class*="language-"] {
+  position: relative;
+}
+.markdown-rendered pre[class*="language-"]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0.5em;
+  right: 0.7em;
+  font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
+  font-size: 0.7em;
+  font-weight: 600;
+  color: var(--ogd-text-soft, #94a3b8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.markdown-rendered pre:is(.language-typescript, .language-ts)::before { content: "TS"; }
+.markdown-rendered pre:is(.language-javascript, .language-js)::before { content: "JS"; }
+.markdown-rendered pre:is(.language-python, .language-py)::before { content: "PY"; }
+.markdown-rendered pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::before { content: "SH"; }
+.markdown-rendered pre.language-css::before { content: "CSS"; }
+.markdown-rendered pre.language-html::before { content: "HTML"; }
+.markdown-rendered pre.language-json::before { content: "JSON"; }
+.markdown-rendered pre:is(.language-yaml, .language-yml)::before { content: "YAML"; }
+.markdown-rendered pre:is(.language-md, .language-markdown)::before { content: "MD"; }
+.markdown-rendered pre:is(.language-rust, .language-rs)::before { content: "RS"; }
+.markdown-rendered pre.language-go::before { content: "GO"; }
+.markdown-rendered pre.language-sql::before { content: "SQL"; }
 .markdown-rendered pre[class*="language-"]::after {
   content: attr(class);
   position: absolute;
@@ -119,6 +248,50 @@ body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   border-radius: 4px;
   pointer-events: none;
   opacity: 0.8;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after,
+body pre:is(.language-ini, .language-cfg, .language-conf, .language-config, .language-properties, .language-prop, .language-toml, .language-env, .language-dotenv, .language-wslconfig, .language-editorconfig, .language-gitconfig, .language-gitignore, .language-gitattributes)::after { content: "Config"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after,
+body pre:is(.language-nginx, .language-apache, .language-systemd, .language-haproxy, .language-caddyfile, .language-traefik)::after { content: "Server config"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after,
+body pre:is(.language-dockerfile, .language-docker, .language-containerfile)::after { content: "Dockerfile"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-makefile, .language-make, .language-cmake)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-makefile, .language-make, .language-cmake)::after,
+body pre:is(.language-makefile, .language-make, .language-cmake)::after { content: "Makefile"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after,
+body pre:is(.language-xml, .language-svg, .language-plist, .language-xaml)::after { content: "XML"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-csv, .language-tsv)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-csv, .language-tsv)::after,
+body pre:is(.language-csv, .language-tsv)::after { content: "Data"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-diff, .language-patch)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-diff, .language-patch)::after,
+body pre:is(.language-diff, .language-patch)::after { content: "Diff"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-regex, .language-regexp)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-regex, .language-regexp)::after,
+body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
+
+.markdown-rendered code:not(pre code),
+.markdown-preview-view code:not(pre code) {
+  background: var(--ogd-inline-code-bg, #f3f4f6);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+  color: #b91c1c;
+}
+body.theme-dark .markdown-rendered code:not(pre code) {
+  color: #fca5a5;
 }
 
 .markdown-rendered pre.line-numbers,
@@ -437,3 +610,485 @@ body.theme-dark .workspace-leaf-content .markdown-rendered pre :is(.token.commen
   color: var(--ogd-code-muted, #64748b);
 }
 
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-report-table,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.report-table {
+  --ogd-table-pad-y: 0.42em;
+  --ogd-table-pad-x: 0.58em;
+  --ogd-table-font-size: 0.91em;
+  --ogd-table-line-height: 1.32;
+  --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(226, 232, 240, 0.82));
+  --ogd-table-row-hover: rgba(224, 242, 254, 0.72);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-report-table th,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.report-table th {
+  color: var(--ogd-text-strong, #111827);
+  font-size: 0.84em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.ogd-wiki-table {
+  --ogd-table-pad-y: 0.62em;
+  --ogd-table-pad-x: 0.82em;
+  --ogd-table-font-size: 0.96em;
+  --ogd-table-line-height: 1.46;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body .workspace-leaf-content .markdown-rendered pre code {
+  overflow-x: auto;
+}
+
+@supports (scrollbar-gutter: stable) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+  body .workspace-leaf-content .markdown-rendered pre code {
+    scrollbar-gutter: stable both-edges;
+  }
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button:is(:hover, :focus-visible),
+body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover, :focus-visible) {
+  border-color: rgba(14, 165, 233, 0.44);
+  background: rgba(240, 249, 255, 0.86);
+  color: var(--ogd-text-strong, #111827);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 0 0 3px rgba(14, 165, 233, 0.10);
+}
+
+@media (max-width: 700px) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+    --ogd-table-pad-y: 0.42em;
+    --ogd-table-pad-x: 0.52em;
+    --ogd-table-font-size: 0.86em;
+    --ogd-table-line-height: 1.34;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre) {
+    --ogd-codeblock-header-height: 2.2em;
+    --ogd-codeblock-code-padding: 3.72em 0.82em 0.88em;
+    border-radius: 9px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
+  body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
+    left: 0.82em;
+    max-width: calc(100% - 7em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre .copy-code-button,
+  body .workspace-leaf-content .markdown-rendered pre .copy-code-button {
+    right: 0.52em;
+    min-width: 3.6em;
+    padding-inline: 0.52em;
+  }
+}
+
+/* ============================================================
+  v2.22.112/114 - Code block Candidate C cascade repair
+   Keep late overlay/print rules from reverting the approved codeblock
+   into a gray wrapper with raw language-* class labels.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .el-pre,
+body .workspace-leaf-content .markdown-rendered .el-pre {
+  margin: var(--ogd-codeblock-wrapper-margin, 1.28em 0 1.62em);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+@supports selector(.markdown-rendered div:has(> pre)) {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) > div:has(> pre),
+  body .workspace-leaf-content .markdown-rendered > div:has(> pre),
+  body :is(.markdown-preview-section, .markdown-rendered, .markdown-preview-view, .markdown-reading-view) div:has(> pre),
+  body .workspace-leaf-content .markdown-rendered div:has(> pre) {
+    margin-inline: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: var(--ogd-codeblock-margin, 0);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--ogd-codeblock-border, rgba(148, 163, 184, 0.42));
+  border-radius: var(--ogd-codeblock-radius, var(--ogd-radius-control, 10px));
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(241, 245, 249, 0.64)));
+  box-shadow: var(--ogd-codeblock-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09));
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+body .workspace-leaf-content .markdown-rendered pre::before {
+  content: "CODE";
+  position: absolute;
+  top: 0.62em;
+  right: 4.9em;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55em;
+  padding: 0.16em 0.62em;
+  border: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28));
+  border-radius: 6px;
+  background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.58));
+  color: var(--ogd-text-subtle, #475569);
+  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--ogd-codeblock-header-font-size, 0.72em);
+  font-weight: 760;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+  opacity: 1;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80), 0 2px 7px rgba(15, 23, 42, 0.06);
+  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
+  backdrop-filter: var(--ogd-glass-filter-control);
+  pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
+body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  height: var(--ogd-codeblock-header-height, 2.2em);
+  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22));
+  opacity: 1;
+  pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::after { content: "POWERSHELL"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::after { content: "SHELL"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-python, .language-py)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-python, .language-py)::after { content: "PYTHON"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-javascript, .language-js)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-javascript, .language-js)::after { content: "JAVASCRIPT"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-typescript, .language-ts)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-typescript, .language-ts)::after { content: "TYPESCRIPT"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-json::after,
+body .workspace-leaf-content .markdown-rendered pre.language-json::after { content: "JSON"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-yaml, .language-yml)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-yaml, .language-yml)::after { content: "YAML"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-md, .language-markdown)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-md, .language-markdown)::after { content: "MARKDOWN"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-css::after,
+body .workspace-leaf-content .markdown-rendered pre.language-css::after { content: "CSS"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-html::after,
+body .workspace-leaf-content .markdown-rendered pre.language-html::after { content: "HTML"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-sql::after,
+body .workspace-leaf-content .markdown-rendered pre.language-sql::after { content: "SQL"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after { content: "TEXT"; }
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-kusto, .language-kql, .language-kql-query)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-kusto, .language-kql, .language-kql-query)::after { content: "KUSTO"; }
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body .workspace-leaf-content .markdown-rendered pre code {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  padding: var(--ogd-codeblock-code-padding, 4.05em 1.1em 1.05em);
+  border: 0;
+  background: transparent;
+  color: var(--ogd-code-fg, #1e293b);
+  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-size: var(--ogd-code-font-size, 0.92em);
+  font-weight: var(--ogd-code-font-weight, 520);
+  font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
+  font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
+  font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
+  line-height: var(--ogd-code-line-height, 1.58);
+  letter-spacing: var(--ogd-code-letter-spacing, 0);
+  tab-size: var(--ogd-code-tab-size, 2);
+  white-space: var(--ogd-codeblock-code-white-space, pre);
+  word-break: normal;
+  overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, normal);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
+  --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre::before,
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-dark .workspace-leaf-content .markdown-rendered pre code {
+  color: var(--ogd-code-fg, #1e293b);
+}
+
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-light .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
+  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70));
+  --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
+  --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.50);
+  --ogd-codeblock-header-border: rgba(148, 163, 184, 0.30);
+  --ogd-codeblock-header-height: 2.2em;
+  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09);
+  background: var(--ogd-codeblock-bg);
+  border-color: var(--ogd-codeblock-border);
+  color: var(--ogd-text-slate, #1e293b);
+}
+
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-light .workspace-leaf-content .markdown-rendered pre code,
+body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code > :is(.line, .code-line, .token-line),
+body.theme-light .workspace-leaf-content .markdown-rendered pre code > :is(.line, .code-line, .token-line),
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered pre code {
+  background: transparent;
+  color: var(--ogd-code-fg, #1e293b);
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .markdown-source-view.mod-cm6 :is(.HyperMD-codeblock, .cm-line.HyperMD-codeblock) {
+  --ogd-lp-code-bg: rgba(248, 250, 252, 0.86);
+  --ogd-lp-code-border: rgba(148, 163, 184, 0.46);
+  background: var(--ogd-lp-code-bg);
+  border-color: var(--ogd-lp-code-border);
+  color: var(--ogd-text-slate, #1e293b);
+}
+
+/* ============================================================
+  v2.30.2 - Compact Candidate C codeblock parity restore
+   Final cascade only: variables do the heavy lifting; overrides only
+   move the language label back into the header row and keep PDF clean.
+   ============================================================ */
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
+body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
+body pre[class*="language-"],
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre {
+  --ogd-codeblock-radius: 12px;
+  --ogd-codeblock-header-height: 2.2em;
+  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-embed-block.cm-preview-code-block) {
+  position: relative;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--ogd-codeblock-border, rgba(148, 163, 184, 0.42));
+  border-radius: var(--ogd-codeblock-radius, 12px);
+  background: var(--ogd-codeblock-bg, radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(241, 245, 249, 0.62)));
+  box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim, rgba(255, 255, 255, 0.88)), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 14px 28px rgba(15, 23, 42, 0.10);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::before,
+body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::before,
+body pre[class*="language-"]::before,
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre::before {
+  content: ""; position: absolute; inset: 0 0 auto 0;
+  z-index: 1; display: block; height: var(--ogd-codeblock-header-height, 2.2em);
+  min-height: 0; padding: 0; border: 0;
+  border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(148, 163, 184, 0.28));
+  background: transparent; box-shadow: none; pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
+body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after,
+body pre[class*="language-"]::after,
+body .markdown-source-view.mod-cm6 .code-block-flair,
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) .code-block-flair {
+  position: absolute; top: 0; bottom: auto; left: 1.08em; right: auto;
+  z-index: 2; display: inline-flex; align-items: center; height: var(--ogd-codeblock-header-height, 2.2em);
+  min-height: 0; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; transform: none;
+  color: var(--ogd-text-subtle, #475569); font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72em; font-weight: 760; line-height: 1.1; letter-spacing: 0.02em;
+  text-transform: none; opacity: 1; pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::after,
+body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::after,
+body pre:is(.language-powershell, .language-ps1, .language-pwsh)::after { content: "PowerShell"; }
+
+body pre code {
+  padding: 4.05em 1.1em 1.05em;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre code {
+  padding: 4.05em 1.1em 1.05em;
+}
+
+body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) :is(pre code, code) {
+  padding-top: 4.05em;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  --ogd-codeblock-header-height: 2.2em;
+  --ogd-lp-code-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.96));
+  --ogd-lp-code-border: rgba(203, 213, 225, 0.78);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  min-height: var(--ogd-codeblock-header-height, 2.2em);
+  line-height: var(--ogd-codeblock-header-height, 2.2em);
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end { border-radius: 0 0 12px 12px; }
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin :is(.cm-formatting-code, .cm-formatting-code-block, .cm-hmd-codeblock),
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+  line-height: inherit;
+}
+
+.markdown-source-view.mod-cm6 :is(.HyperMD-codeblock-begin, .HyperMD-codeblock-end) :is(.cm-formatting-code, .cm-formatting-code-block) {
+  display: inline-block;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  font-size: 0;
+  opacity: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+  margin-left: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin + .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-end) {
+  min-height: calc(var(--ogd-code-line-height, 1.58) * 2em);
+  line-height: calc(var(--ogd-code-line-height, 1.58) * 2);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin + .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-end) :is(.cm-hmd-codeblock, span) {
+  line-height: var(--ogd-code-line-height, 1.58);
+}
+
+@media print {
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(
+    span,
+    .token,
+    [class*="token"],
+    [class*="cm-"]
+  ),
+  body .workspace-leaf-content .markdown-rendered pre code :is(
+    span,
+    .token,
+    [class*="token"],
+    [class*="cm-"]
+  ) {
+    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
+    font-weight: var(--ogd-code-font-weight, 520);
+    font-style: normal;
+    font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
+    font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
+    font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
+    line-height: var(--ogd-code-print-line-height, 1.44);
+    letter-spacing: var(--ogd-code-letter-spacing, 0);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(
+    .token.keyword,
+    .token.operator,
+    .token.boolean,
+    .token.string,
+    .token.attr-value,
+    .token.function,
+    .token.variable,
+    .token.property,
+    .token.number,
+    .token.constant,
+    .token.symbol,
+    .token.class-name,
+    .token.tag,
+    .token.attr-name,
+    .token.comment,
+    .token.prolog,
+    .token.doctype
+  ),
+  body .workspace-leaf-content .markdown-rendered pre code :is(
+    .token.keyword,
+    .token.operator,
+    .token.boolean,
+    .token.string,
+    .token.attr-value,
+    .token.function,
+    .token.variable,
+    .token.property,
+    .token.number,
+    .token.constant,
+    .token.symbol,
+    .token.class-name,
+    .token.tag,
+    .token.attr-name,
+    .token.comment,
+    .token.prolog,
+    .token.doctype
+  ) {
+    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
+    font-weight: var(--ogd-code-font-weight, 520);
+    font-style: normal;
+    line-height: var(--ogd-code-print-line-height, 1.44);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.keyword, .token.operator, .token.boolean, .token.atrule, .cm-keyword, .cm-operator, .cm-atom, .cm-bool) {
+    color: var(--ogd-code-keyword, #5b21b6);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.string, .token.attr-value, .token.selector, .cm-string, .cm-string-2, .cm-qualifier) {
+    color: var(--ogd-code-string, #a16207);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.function, .token.variable, .cm-def, .cm-function, .cm-variableName, .cm-variable-2, .cm-variable-3) {
+    color: var(--ogd-code-function, #0f766e);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.property, .token.class-name, .token.tag, .token.attr-name, .token.pseudo-class, .token.pseudo-element, .cm-property, .cm-attribute, .cm-typeName, .cm-className, .cm-tag, .cm-builtin) {
+    color: var(--ogd-code-property, #2563eb);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.number, .token.constant, .token.symbol, .cm-number, .cm-literal) {
+    color: var(--ogd-code-number, #be123c);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.comment, .token.prolog, .token.doctype, .cm-comment, .cm-meta) {
+    color: var(--ogd-code-muted, #64748b);
+  }
+
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.punctuation, .cm-punctuation, .cm-separator, .cm-bracket) {
+    color: var(--ogd-code-punctuation, #475569);
+  }
+}

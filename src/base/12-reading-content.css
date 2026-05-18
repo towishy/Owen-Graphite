@@ -6,8 +6,75 @@
    spacing presets, not by collapsing the blank line itself. */
 
 /* Reading view: tighten consecutive paragraph stacks. */
+body .markdown-preview-view,
+body .markdown-reading-view,
+body .markdown-rendered {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body .markdown-preview-sizer,
+body .markdown-preview-section,
+body .markdown-rendered {
+  min-width: 0;
+}
+
+body .markdown-preview-section > div,
+body .markdown-rendered > div {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+body .markdown-rendered p,
+body .markdown-preview-view.markdown-rendered p,
+body .markdown-reading-view .markdown-rendered p {
+  display: block;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+body .markdown-reading-view.is-readable-line-width .markdown-preview-sizer,
+body .markdown-rendered.is-readable-line-width {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body :is(.markdown-preview-view, .markdown-reading-view).is-readable-line-width
+  :is(.markdown-preview-sizer, .markdown-preview-section),
+body .markdown-rendered.is-readable-line-width {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .markdown-rendered p + p {
   margin-top: 0.18em;
+}
+
+.markdown-rendered :is(h1, h2, h3) + p,
+.markdown-preview-view.markdown-rendered :is(h1, h2, h3) + p,
+.markdown-reading-view .markdown-rendered :is(h1, h2, h3) + p {
+  margin-top: 0.42em;
+  margin-bottom: 0.78em;
+  line-height: 1.58;
+}
+
+.markdown-rendered h1 + p,
+.markdown-preview-view.markdown-rendered h1 + p,
+.markdown-reading-view .markdown-rendered h1 + p {
+  margin-top: 0.52em;
+  margin-bottom: 1.02em;
+  color: var(--ogd-text-subtle, #475569);
+  font-size: 0.98em;
+  line-height: 1.64;
 }
 
 /* H1 - Sample B: Editorial number kicker (auto-numbered chapter) */
@@ -54,6 +121,24 @@
   color: var(--ogd-title-rule-start, #0f766e);
   margin-bottom: 0.5em;
   line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .markdown-rendered h1,
+  .markdown-preview-view h1 {
+    font-size: 2.15em;
+    line-height: 1.2;
+    margin-top: 1em;
+  }
+
+  .markdown-rendered h1::before,
+  .markdown-preview-view h1::before {
+    font-size: 0.55em;
+    letter-spacing: 1.5px;
+  }
+
+  .markdown-rendered h2 { font-size: 1.45em; }
+  .markdown-rendered h3 { font-size: 1.2em; }
 }
 
 /* Disable previous gradient underline */
@@ -120,6 +205,225 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
+.markdown-rendered h2,
+.markdown-preview-view.markdown-rendered h2,
+.markdown-reading-view .markdown-rendered h2 {
+  margin-top: 1.08em;
+  margin-bottom: 0.42em;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-h1-bg: radial-gradient(circle at 78% 18%, rgba(125, 211, 252, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.62));
+  --ogd-heading-h2-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(248, 250, 252, 0.46));
+  --ogd-heading-border: rgba(203, 213, 225, 0.68);
+  --ogd-heading-border-soft: rgba(226, 232, 240, 0.82);
+  --ogd-heading-rule: linear-gradient(90deg, rgba(103, 232, 249, 0.72), rgba(203, 213, 225, 0.58), transparent);
+  --ogd-heading-rule-soft: linear-gradient(90deg, rgba(148, 163, 184, 0.56), rgba(226, 232, 240, 0.20), transparent);
+  --ogd-heading-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+  margin-top: 1.42em;
+  margin-bottom: 0.78em;
+  padding: 1.36em 0.68em 0.72em;
+  border: 1px solid var(--ogd-heading-border);
+  border-left: 1px solid var(--ogd-heading-border);
+  border-bottom: 1px solid var(--ogd-heading-border);
+  border-radius: var(--ogd-radius-panel, 10px);
+  background: var(--ogd-heading-h1-bg);
+  box-shadow: var(--ogd-heading-shadow);
+  color: var(--header-text, var(--ogd-text-strong, #111827));
+  font-size: 2.42em;
+  font-weight: 860;
+  line-height: 1.14;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  display: block;
+  position: absolute;
+  top: 0.58em;
+  left: 0.68em;
+  margin: 0;
+  color: var(--ogd-text-muted, #64748b);
+  font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono", "D2Coding", Consolas, "Courier New", monospace;
+  font-size: 0.32em;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: none;
+  pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+  content: none;
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.ogd-no-h1-number :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
+.markdown-rendered.ogd-no-h1-number h1::before,
+.markdown-preview-view.ogd-no-h1-number.markdown-rendered h1::before,
+.markdown-reading-view.ogd-no-h1-number .markdown-rendered h1::before {
+  content: none;
+  display: none;
+}
+
+body.ogd-no-h1-number :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1,
+.markdown-rendered.ogd-no-h1-number h1,
+.markdown-preview-view.ogd-no-h1-number.markdown-rendered h1,
+.markdown-reading-view.ogd-no-h1-number .markdown-rendered h1 {
+  padding-top: 0.58em;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 1.26em;
+  margin-bottom: 0.76em;
+  padding: 0.42em 0 0.46em;
+  border: 0;
+  border-left: 0;
+  border-bottom: 1px solid var(--ogd-heading-border-soft);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--header-text, var(--ogd-text-strong, #111827));
+  font-size: 1.56em;
+  font-weight: 800;
+  line-height: 1.23;
+  letter-spacing: 0;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: auto;
+  bottom: -0.43em;
+  width: min(280px, 44%);
+  height: 1.5px;
+  border: 0;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-heading-rule);
+  box-shadow: none;
+  pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  border-left: 0;
+  border-bottom: 0;
+  background: transparent;
+  box-shadow: none;
+  letter-spacing: 0;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+  margin-top: 1.04em;
+  margin-bottom: 0.46em;
+  padding: 0.06em 0 0.34em;
+  color: var(--ogd-text-slate, #334155);
+  font-size: 1.28em;
+  font-weight: 760;
+  line-height: 1.28;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::after,
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: auto;
+  bottom: 0;
+  transform: none;
+  height: 1px;
+  border: 0;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-heading-rule-soft);
+  opacity: 1;
+  pointer-events: none;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::after {
+  width: min(190px, 28%);
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  margin-top: 0.86em;
+  margin-bottom: 0.34em;
+  padding: 0.02em 0 0.28em;
+  color: var(--ogd-text-subtle, #475569);
+  font-size: 1.06em;
+  font-weight: 760;
+  line-height: 1.30;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::after {
+  width: min(128px, 20%);
+}
+
+body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 {
+  margin-top: 2.05em;
+}
+
+body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 {
+  margin-top: 1.62em;
+}
+
+body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 {
+  margin-top: 1.34em;
+}
+
+.markdown-rendered a.external-link:visited,
+.markdown-preview-view a.external-link:visited {
+  color: #7c3aed;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(124, 58, 237, 0.4);
+  text-decoration-thickness: 1.35px;
+}
+body.theme-dark .markdown-rendered a.external-link:visited {
+  color: #c4b5fd;
+}
+
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4 {
+  position: relative;
+}
+.markdown-rendered h2:hover::after,
+.markdown-rendered h3:hover::after,
+.markdown-rendered h4:hover::after {
+  content: "#";
+  position: absolute;
+  left: -0.85em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ogd-line-strong, #cbd5e1);
+  font-weight: 400;
+  opacity: 0.6;
+  pointer-events: none;
+  font-size: 0.85em;
+}
+
 @supports selector(.markdown-rendered h1:has(+ table)) {
   .markdown-rendered h1:has(+ table),
   .markdown-rendered h1:has(+ .table-wrapper),
@@ -144,6 +448,18 @@
 .markdown-rendered :is(h1, h2, h3) + :is(table, .table-wrapper),
 .markdown-rendered :is(h1, h2, h3) + .table-wrapper table {
   margin-top: 0.2em;
+}
+
+.markdown-rendered h2 + table,
+.markdown-rendered h2 + .table-wrapper,
+.markdown-rendered h2 + .table-wrapper table,
+.markdown-preview-view.markdown-rendered h2 + table,
+.markdown-preview-view.markdown-rendered h2 + .table-wrapper,
+.markdown-preview-view.markdown-rendered h2 + .table-wrapper table,
+.markdown-reading-view .markdown-rendered h2 + table,
+.markdown-reading-view .markdown-rendered h2 + .table-wrapper,
+.markdown-reading-view .markdown-rendered h2 + .table-wrapper table {
+  margin-top: 0.58em;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) th {
@@ -609,6 +925,56 @@ body .markdown-rendered blockquote blockquote blockquote {
 
 .markdown-rendered a:hover {
   /* underline is drawn by border-bottom in the resting rule; nothing to do here */
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a.internal-link:not(.is-unresolved) {
+  color: var(--ogd-text-slate, #334155);
+  font-weight: 660;
+  text-decoration: none;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a.internal-link:not(.is-unresolved):hover {
+  color: #1d4ed8;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(96, 165, 250, 0.34);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-status-ok, .ogd-status-no, .ogd-status-warn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.72em;
+  min-height: 1.48em;
+  padding: 0.08em 0.46em;
+  border: 1px solid currentColor;
+  border-radius: var(--ogd-radius-pill, 999px);
+  font-size: 0.82em;
+  font-weight: 850;
+  line-height: 1.18;
+  text-align: center;
+  vertical-align: 0.02em;
+  white-space: nowrap;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-ok {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-no {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ogd-status-warn {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
 }
 
 /* External-link resting state: align with v2.30.14 graphite baseline.

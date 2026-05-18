@@ -636,6 +636,16 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 .metadata-container .metadata-property-value :is(input, textarea) {
   color: var(--ogd-text-strong, #111827);
 }
+.metadata-container,
+.metadata-properties-container {
+  font-family: var(--font-text-theme, inherit);
+}
+.metadata-property-key,
+.metadata-property .metadata-property-key-input {
+  color: var(--ogd-text-subtle, #475569);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
   background: var(--ogd-surface-muted, #f8fafc);
   color: var(--ogd-text-subtle, #475569);
@@ -654,6 +664,10 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 .theme-dark .metadata-container :is(.metadata-property-key, .metadata-property-key-input) {
   color: var(--ogd-line-strong, #cbd5e1);
+}
+body.theme-dark .metadata-property-key,
+body.theme-dark .metadata-property .metadata-property-key-input {
+  color: var(--ogd-text-soft, #94a3b8);
 }
 .theme-dark .metadata-container .metadata-property-value,
 .theme-dark .metadata-container .metadata-property-value :is(input, textarea) {

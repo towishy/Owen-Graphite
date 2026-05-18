@@ -1196,6 +1196,227 @@ body.ogd-spacing-relaxed .markdown-rendered p { margin-bottom: 0.7em; }
 body.ogd-spacing-relaxed .markdown-rendered h1 { margin-top: 1.4em; }
 body.ogd-spacing-relaxed .markdown-rendered h2 { margin-top: 1.25em; }
 
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-doc-rim: rgba(203, 213, 225, 0.72);
+  --ogd-doc-rim-soft: rgba(226, 232, 240, 0.82);
+  --ogd-doc-glass-bg: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.78), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.70));
+  --ogd-doc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.05), 0 10px 24px rgba(15, 23, 42, 0.08);
+  --ogd-doc-caption-color: var(--ogd-text-subtle, #475569);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) p {
+  margin-top: 0.58em;
+  margin-bottom: 0.58em;
+  line-height: 1.74;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) p + p {
+  margin-top: 0.42em;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  margin-top: 1.78em;
+  margin-bottom: 0.62em;
+  padding-bottom: 0.34em;
+  font-size: 1.64em;
+  line-height: 1.24;
+  border-bottom-color: rgba(148, 163, 184, 0.34);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+  width: min(176px, 30%);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(51, 65, 85, 0.68), rgba(148, 163, 184, 0.10));
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+  margin-top: 1.22em;
+  margin-bottom: 0.44em;
+  padding-bottom: 0.16em;
+  font-size: 1.26em;
+  font-weight: 760;
+  color: var(--ogd-text-slate, #334155);
+  border-bottom-color: rgba(203, 213, 225, 0.72);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  margin-top: 1.02em;
+  margin-bottom: 0.34em;
+  padding-bottom: 0.1em;
+  font-size: 1.08em;
+  font-weight: 760;
+  color: var(--ogd-text-slate, #334155);
+  border-bottom-color: rgba(226, 232, 240, 0.88);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h2, h3, h4) + p {
+  margin-top: 0.52em;
+  margin-bottom: 0.84em;
+  line-height: 1.70;
+}
+
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-doc-rim: rgba(51, 65, 85, 0.92);
+  --ogd-doc-rim-soft: rgba(51, 65, 85, 0.78);
+  --ogd-doc-glass-bg: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.10), transparent 0 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54));
+  --ogd-doc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 10px 24px rgba(0, 0, 0, 0.30);
+  --ogd-doc-caption-color: var(--ogd-text-soft, #94a3b8);
+}
+
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  color: var(--ogd-line-strong, #cbd5e1);
+  border-bottom-color: rgba(51, 65, 85, 0.92);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote {
+  margin: 1.05em 0 1.25em;
+  padding: 0.74em 1em;
+  border: 1px solid var(--ogd-doc-rim-soft);
+  border-left-width: 1px;
+  border-radius: var(--ogd-radius-control, 7px);
+  background: var(--ogd-doc-glass-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  font-style: normal;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) div.callout,
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout {
+  margin: 1.2em 0 1.35em;
+  padding: 13px 15px;
+  border: 1px solid var(--ogd-doc-rim, rgba(203, 213, 225, 0.72));
+  border-left-width: 1px;
+  border-radius: var(--ogd-radius-control, 7px);
+  background: var(--ogd-doc-glass-bg);
+  box-shadow: var(--ogd-doc-glass-shadow);
+}
+
+body.ogd-spacing-relaxed .markdown-rendered .callout:is([data-callout="note"], [data-callout="info"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"]) {
+  border-color: rgba(203, 213, 225, 0.78);
+}
+
+body.ogd-spacing-relaxed .markdown-rendered .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"]) {
+  border-color: rgba(153, 246, 228, 0.70);
+  background: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.82), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(240, 253, 250, 0.68));
+}
+
+body.ogd-spacing-relaxed .markdown-rendered .callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) {
+  border-color: rgba(253, 230, 138, 0.82);
+  background: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.82), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 251, 235, 0.74));
+}
+
+body.ogd-spacing-relaxed .markdown-rendered .callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
+  border-color: rgba(254, 205, 211, 0.82);
+  background: radial-gradient(circle at 74% 14%, rgba(255, 255, 255, 0.82), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 241, 242, 0.72));
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-title {
+  gap: 10px;
+  color: var(--ogd-text-strong, #111827);
+  font-size: 0.98em;
+  line-height: 1.34;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-icon {
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 66% 20%, rgba(255, 255, 255, 0.92), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.66));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 3px 8px rgba(15, 23, 42, 0.08);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout-content {
+  margin-top: 0.48em;
+  font-size: 0.96em;
+  line-height: 1.66;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+  margin-top: 0.62em;
+  margin-bottom: 1.65em;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-caption, .table-caption, .figure-caption, .media-caption) {
+  display: block;
+  margin: 0.76em 0 0.46em;
+  color: var(--ogd-doc-caption-color, #475569);
+  font-size: 0.86em;
+  font-weight: 760;
+  line-height: 1.42;
+  text-align: left;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, .mermaid, pre.language-mermaid) + :is(.ogd-caption, .table-caption, .figure-caption, .media-caption) {
+  margin-top: -0.74em;
+  margin-bottom: 1.2em;
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .mermaid,
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-mermaid {
+  margin: 1em 0 1.35em;
+  border: 1px solid rgba(203, 213, 225, 0.76);
+  border-radius: var(--ogd-radius-control, 7px);
+  background: var(--ogd-doc-glass-bg);
+  box-shadow: var(--ogd-doc-glass-shadow);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:not(.language-mermaid) {
+  margin: 1.05em 0 1.35em;
+  border: 1px solid rgba(30, 41, 59, 0.18);
+  border-radius: var(--ogd-radius-control, 7px);
+  background: linear-gradient(180deg, #172033, #111827);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
+  padding: 0.08em 0.34em;
+  border: 1px solid rgba(203, 213, 225, 0.82);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.68));
+  color: var(--ogd-text-slate, #334155);
+}
+
+body.ogd-spacing-relaxed .markdown-rendered .contains-task-list {
+  margin: 1.05em 0 1.45em;
+  border: 1px solid rgba(203, 213, 225, 0.76);
+  border-radius: var(--ogd-radius-control, 7px);
+  background: var(--ogd-doc-glass-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+body.ogd-spacing-relaxed .markdown-rendered .contains-task-list > .task-list-item {
+  padding: 0.68em 0.9em;
+  border-bottom-color: rgba(226, 232, 240, 0.88);
+}
+
+body.ogd-spacing-relaxed .markdown-rendered input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.72));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+body.ogd-spacing-relaxed .markdown-rendered input[type="checkbox"]:checked {
+  border-color: rgba(103, 232, 249, 0.70);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 0 0 3px rgba(103, 232, 249, 0.12);
+}
+
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) div.callout,
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .callout,
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) blockquote,
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .mermaid,
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-mermaid,
+body.theme-dark.ogd-spacing-relaxed .markdown-rendered .contains-task-list {
+  border-color: var(--ogd-doc-rim);
+  background: var(--ogd-doc-glass-bg);
+  box-shadow: var(--ogd-doc-glass-shadow);
+}
+
+body.theme-dark.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
+  border-color: rgba(51, 65, 85, 0.92);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.54));
+  color: var(--ogd-line-soft, #e5e7eb);
+}
+
 /* F5. Accent presets */
 body.ogd-accent-graphite { --ogd-accent: #4b5563; }
 body.ogd-accent-blue     { --ogd-accent: #2563eb; }

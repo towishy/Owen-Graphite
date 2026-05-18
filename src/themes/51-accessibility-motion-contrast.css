@@ -134,3 +134,36 @@
   }
 }
 
+/* v2.30.4 - Forbidden left vertical bar removal (global force-disable).
+   Policy: no strong-color left accent bars on headings, callouts,
+   blockquotes, TOC, or PDF report sections. Box outlines and bottom
+   underlines are allowed; left bars are not. */
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
+  border-left: 0;
+  border-inline-start: 0;
+  border-left-width: 0;
+}
+
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, .ogd-executive-summary, .ogd-action-summary)::before {
+  border-left: 0;
+  border-inline-start: 0;
+  border-image: none;
+  box-shadow: none;
+  background-image: none;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-callout, .HyperMD-callout, .HyperMD-quote, blockquote) {
+  border-left: 0;
+  border-inline-start: 0;
+}
+
+.markdown-source-view.mod-cm6 :is(.cm-callout, .HyperMD-callout, .HyperMD-quote, blockquote)::before {
+  border-left: 0;
+  border-inline-start: 0;
+  border-image: none;
+  box-shadow: none;
+  background-image: none;
+}
+
