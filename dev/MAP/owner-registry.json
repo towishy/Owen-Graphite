@@ -1,0 +1,114 @@
+{
+  "schema": "owen-graphite/owner-registry/1",
+  "purpose": "Machine-readable source owner contract for direct-owner CSS migration. Late polish/hotfix/overlay modules may not become new owners without an explicit exception.",
+  "surfaces": [
+    {
+      "id": "reading-typography",
+      "description": "Reading View headings, paragraphs, links, lists rhythm, and document typography.",
+      "selectorPatterns": ["markdown-rendered", "markdown-preview-view", "markdown-reading-view"],
+      "propertyGroups": ["typography", "spacing", "color"],
+      "ownerModules": ["src/base/12-reading-content.css"],
+      "allowedLateModules": [],
+      "riskContracts": []
+    },
+    {
+      "id": "reading-tables-code",
+      "description": "Reading/PDF table and code block primitives before print-specific closure.",
+      "selectorPatterns": ["table", "pre", "code", "language-"],
+      "propertyGroups": ["table", "code", "spacing", "surface"],
+      "ownerModules": ["src/surfaces/20-reading-tables-code.css"],
+      "allowedLateModules": ["src/features/42-report-print-polish.css"],
+      "riskContracts": ["dev/MAP/live-preview-pdf-css-map/parity-guidelines.md"]
+    },
+    {
+      "id": "reading-callouts-lists",
+      "description": "Reading View callouts, callout internals, blockquotes, and list surfaces.",
+      "selectorPatterns": ["callout", "blockquote", "contains-task-list", "task-list"],
+      "propertyGroups": ["surface", "layout", "spacing", "color"],
+      "ownerModules": ["src/surfaces/21-reading-callouts-lists.css"],
+      "allowedLateModules": ["src/surfaces/23-liquid-glass-core.css"],
+      "riskContracts": []
+    },
+    {
+      "id": "live-preview-cm6",
+      "description": "CodeMirror 6 source-line geometry and Live Preview text routing.",
+      "selectorPatterns": ["markdown-source-view.mod-cm6", "cm-line", "HyperMD-"],
+      "propertyGroups": ["geometry", "typography", "hit-routing"],
+      "ownerModules": ["src/base/13-live-preview.css"],
+      "allowedLateModules": [],
+      "riskContracts": ["dev/MAP/cm6-hit-routing-contract.md"]
+    },
+    {
+      "id": "live-preview-rendered-widgets",
+      "description": "Live Preview rendered widgets: callouts, tables, HTML embeds, and preview code blocks.",
+      "selectorPatterns": ["cm-callout", "cm-table-widget", "cm-html-embed", "cm-embed-block", "cm-preview-code-block", "cm-hmd-codeblock"],
+      "propertyGroups": ["surface", "layout", "code", "table", "hit-routing"],
+      "ownerModules": ["src/base/13-live-preview.css", "src/surfaces/23-liquid-glass-core.css", "src/surfaces/24-html-table-live-preview-glass.css"],
+      "allowedLateModules": [],
+      "riskContracts": ["dev/MAP/cm6-hit-routing-contract.md", "dev/MAP/live-preview-pdf-css-map/parity-guidelines.md"]
+    },
+    {
+      "id": "workspace-chrome",
+      "description": "Workspace tabs, nav tree, ribbon, status bar, and repeated chrome controls.",
+      "selectorPatterns": ["workspace-", "nav-", "side-dock", "status-bar", "ribbon"],
+      "propertyGroups": ["chrome", "surface", "interaction"],
+      "ownerModules": ["src/chrome/30-workspace.css", "src/chrome/31-navigation-tasks-search.css", "src/chrome/34-nav-ribbon-glass.css", "src/chrome/37-tabs-file-explorer-search.css"],
+      "allowedLateModules": [],
+      "riskContracts": ["dev/MAP/top-chrome-icon-background-contract.md"]
+    },
+    {
+      "id": "overlay-menu-search",
+      "description": "Menus, command palette, suggestions, popovers, tooltips, modals, and search UI.",
+      "selectorPatterns": ["menu", "suggestion", "popover", "tooltip", "modal", "prompt", "search"],
+      "propertyGroups": ["overlay", "surface", "interaction", "focus"],
+      "ownerModules": ["src/chrome/32-overlay-popover-dataview.css", "src/chrome/35-editing-menu-tooltip-glass.css", "src/chrome/36-floating-ui-glass-system.css"],
+      "allowedLateModules": [],
+      "riskContracts": []
+    },
+    {
+      "id": "pdf-base",
+      "description": "Print page base, @page, and generic PDF body defaults.",
+      "selectorPatterns": ["@page", "@media print", "markdown-rendered", "markdown-preview-view"],
+      "propertyGroups": ["print", "page", "typography", "layout"],
+      "ownerModules": ["src/features/43-print-base.css"],
+      "allowedLateModules": ["src/features/42-report-print-polish.css"],
+      "riskContracts": ["dev/MAP/pdf-header-footer-contract.md"]
+    },
+    {
+      "id": "pdf-report-polish",
+      "description": "Report/PDF tables, code, images, callouts, references, and print-safe fallbacks.",
+      "selectorPatterns": ["@media print", "ogd-pdf", "figure", "caption", "reference", "callout", "table", "pre"],
+      "propertyGroups": ["print", "report", "surface", "layout"],
+      "ownerModules": ["src/features/42-report-print-polish.css"],
+      "allowedLateModules": [],
+      "riskContracts": ["dev/MAP/live-preview-pdf-css-map/parity-guidelines.md"]
+    },
+    {
+      "id": "pdf-marginalia",
+      "description": "PDF header/footer labels, key/value segments, palettes, and pseudo-element anchors.",
+      "selectorPatterns": ["ogd-pdf-header", "ogd-pdf-footer", "ogd-pdf-marginalia", "::before", "::after"],
+      "propertyGroups": ["print", "generated-content", "palette", "layout"],
+      "ownerModules": ["src/features/41-feature-presets.css", "src/tokens/00-light-tokens.css", "src/tokens/01-dark-tokens.css"],
+      "allowedLateModules": [],
+      "riskContracts": ["dev/MAP/pdf-header-footer-contract.md"]
+    },
+    {
+      "id": "style-settings-contract",
+      "description": "Style Settings metadata, setting ids/defaults/options, and user-facing compatibility.",
+      "selectorPatterns": ["@settings", "ogd-"],
+      "propertyGroups": ["metadata", "settings"],
+      "ownerModules": ["src/features/40-style-settings.css", "docs/v3/style-settings-contract.json"],
+      "allowedLateModules": [],
+      "riskContracts": []
+    },
+    {
+      "id": "shared-tokens",
+      "description": "Shared --ogd-* design intent and theme tokens consumed by multiple surfaces.",
+      "selectorPatterns": ["--ogd-", ":root", "theme-dark", "theme-light"],
+      "propertyGroups": ["tokens", "color", "surface", "motion", "spacing"],
+      "ownerModules": ["src/tokens/00-light-tokens.css", "src/tokens/01-dark-tokens.css"],
+      "allowedLateModules": [],
+      "riskContracts": []
+    }
+  ]
+}
