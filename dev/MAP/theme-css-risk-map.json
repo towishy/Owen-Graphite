@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.43",
+  "version": "3.1.44",
   "module_order": [
     {
       "import_index": 1,
@@ -162,11 +162,11 @@
   ],
   "summary": {
     "module_count": 26,
-    "selector_count": 2242,
-    "finding_count": 532,
+    "selector_count": 2286,
+    "finding_count": 533,
     "cross_file_selector_group_count": 76,
     "finding_severity_counts": {
-      "medium": 457,
+      "medium": 458,
       "low": 75
     },
     "module_severity_counts": {
@@ -1806,12 +1806,12 @@
       "entry_line": 77,
       "legacy_id": "09d-tabs-file-explorer-search.css",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line_count": 740,
-      "selector_count": 98,
-      "declaration_count": 405,
+      "line_count": 824,
+      "selector_count": 142,
+      "declaration_count": 587,
       "important_count": 0,
       "has_selector_count": 32,
-      "high_specificity_selector_count": 20,
+      "high_specificity_selector_count": 21,
       "live_preview_sensitive_rule_count": 0,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 8,
@@ -1822,12 +1822,28 @@
       ],
       "top_properties": [
         [
+          "content",
+          49
+        ],
+        [
+          "--ogd-nav-file-type-bg",
+          40
+        ],
+        [
+          "--ogd-nav-file-type-fg",
+          40
+        ],
+        [
           "color",
-          35
+          36
         ],
         [
           "background",
-          32
+          33
+        ],
+        [
+          "--ogd-nav-file-type-size",
+          33
         ],
         [
           "box-shadow",
@@ -1835,11 +1851,11 @@
         ],
         [
           "border-color",
-          24
+          25
         ],
         [
           "font-weight",
-          13
+          14
         ],
         [
           "-webkit-backdrop-filter",
@@ -1851,26 +1867,10 @@
         ],
         [
           "font-size",
-          10
-        ],
-        [
-          "opacity",
-          9
-        ],
-        [
-          "content",
-          8
-        ],
-        [
-          "border",
-          7
-        ],
-        [
-          "border-radius",
-          7
+          11
         ]
       ],
-      "risk_score": 132,
+      "risk_score": 135,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -3658,7 +3658,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 252,
+      "line": 262,
       "selector": "body:not(.is-mobile) .nav-folder-title[data-path^=\"outputs\"] .nav-folder-title-content, body:not(.is-mobile) .nav-folder-title[data-path^=\"raw/obsidian/outputs\"] .nav-folder-title-content",
       "message": "specificity=(0, 8, 2)"
     },
@@ -3666,7 +3666,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 304,
+      "line": 314,
       "selector": "body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3674,7 +3674,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 313,
+      "line": 323,
       "selector": "body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover .nav-folder-title-content",
       "message": "specificity=(0, 14, 0)"
     },
@@ -3682,7 +3682,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 381,
+      "line": 391,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3690,7 +3690,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 405,
+      "line": 415,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover",
       "message": "specificity=(0, 14, 0)"
     },
@@ -3698,7 +3698,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 411,
+      "line": 421,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover .nav-folder-title-content",
       "message": "specificity=(0, 16, 0)"
     },
@@ -3706,7 +3706,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 502,
+      "line": 567,
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-file-title[data-path] .nav-file-title-content::before",
+      "message": "specificity=(0, 8, 1)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 586,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3714,7 +3722,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 511,
+      "line": 595,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": "specificity=(0, 20, 0)"
     },
@@ -3722,7 +3730,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 516,
+      "line": 600,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": "specificity=(0, 10, 0)"
     },
@@ -3730,7 +3738,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 534,
+      "line": 618,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3738,7 +3746,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 550,
+      "line": 634,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3746,7 +3754,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 555,
+      "line": 639,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 23, 0)"
     },
@@ -3754,7 +3762,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 597,
+      "line": 681,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3762,7 +3770,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 607,
+      "line": 691,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": "specificity=(0, 23, 0)"
     },
@@ -3770,7 +3778,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 611,
+      "line": 695,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3778,7 +3786,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 619,
+      "line": 703,
       "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3786,7 +3794,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 623,
+      "line": 707,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 26, 0)"
     },
@@ -3794,7 +3802,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 648,
+      "line": 732,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3802,7 +3810,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 721,
+      "line": 805,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container:is(:focus, :focus-visible, :focus-within), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
       "message": "specificity=(0, 11, 0)"
     },
@@ -3810,7 +3818,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 735,
+      "line": 819,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(.clickable-icon, button, .search-input-clear-button), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container + .clickable-icon, .search-input-container ~ .clickable-icon, .search-input-container + button, .search-input-container ~ button)",
       "message": "specificity=(0, 9, 3)"
     },
@@ -5786,7 +5794,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 502,
+      "line": 586,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5794,7 +5802,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 511,
+      "line": 595,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5802,7 +5810,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 516,
+      "line": 600,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5810,7 +5818,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 527,
+      "line": 611,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5818,7 +5826,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 534,
+      "line": 618,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5826,7 +5834,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 550,
+      "line": 634,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5834,7 +5842,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 555,
+      "line": 639,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5842,7 +5850,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 559,
+      "line": 643,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-children",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5850,7 +5858,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 564,
+      "line": 648,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5858,7 +5866,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 570,
+      "line": 654,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5866,7 +5874,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 575,
+      "line": 659,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5874,7 +5882,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 580,
+      "line": 664,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5882,7 +5890,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 607,
+      "line": 691,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5890,7 +5898,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 611,
+      "line": 695,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5898,7 +5906,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 619,
+      "line": 703,
       "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5906,7 +5914,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 623,
+      "line": 707,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5914,7 +5922,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 627,
+      "line": 711,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-children",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5922,7 +5930,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 632,
+      "line": 716,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5930,7 +5938,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 638,
+      "line": 722,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5938,7 +5946,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 643,
+      "line": 727,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5946,7 +5954,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 648,
+      "line": 732,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -7041,11 +7049,11 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 343
+          "line": 353
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 447
+          "line": 457
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7063,11 +7071,11 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 351
+          "line": 361
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 453
+          "line": 463
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7748,7 +7756,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 466
+          "line": 476
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7802,7 +7810,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 706
+          "line": 790
         },
         {
           "module": "src/themes/51-accessibility-motion-contrast.css",
@@ -7838,7 +7846,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 298
+          "line": 308
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",

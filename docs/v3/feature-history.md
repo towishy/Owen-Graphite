@@ -2,6 +2,18 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.37 — Live Preview / PDF 품질 패리티
+
+Live Preview, Reading View, PDF Export에서 callout과 긴 표 셀이 같은 품질 기준으로 보이도록 검증 fixture와 출력 안정화 guard를 추가했습니다. PDF callout은 흰색/회색 frosted surface, 얇은 rim, icon chip 중심으로 정리하고 긴 코드 토큰은 표 디자인을 유지한 채 셀 안에서 줄바꿈됩니다.
+
+![Live Preview / PDF 품질 패리티](../../screenshots/readme/pdf-live-preview-parity.png)
+
+| 검증 영역 | 개선 내용 |
+| --- | --- |
+| Live Preview / Reading | callout rim, icon chip, 얕은 glass surface 기준 정렬 |
+| PDF Export | callout 제목/본문 분리 완화, 긴 셀·코드 토큰 wrapping 안정화 |
+| 릴리즈 검증 | fresh bundle, `theme.css` freshness, visual smoke fixture 추가 |
+
 ## v3.1.36 — PDF Key/Value 헤더와 푸터 라벨
 
 PDF 출력 전용 헤더와 푸터 라벨을 단일 문구 또는 Key/Value 1쌍 배지로 표시할 수 있습니다. Style Settings에서 헤더와 푸터를 각각 켜고, key/value 문구와 색상을 독립적으로 지정해 작성자, 기밀 등급, 문서 상태를 본문 흐름 밖에 작게 배치합니다.

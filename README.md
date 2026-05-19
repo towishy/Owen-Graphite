@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.43** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.44** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -21,8 +21,8 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.43` |
-| **베이스라인 / 롤백 기준** | `v3.1.43` |
+| **버전** | `3.1.44` |
+| **베이스라인 / 롤백 기준** | `v3.1.44` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -42,6 +42,19 @@
 
 > [ 정보 ]
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
+
+### v3.1.44 — 파일 탐색기 확장자 배지
+
+파일 탐색기의 오른쪽 확장자 텍스트를 숨기고, 앞쪽 문서 아이콘 자리에 `MD`, `HTML`, `SVG`, `PDF`, `CFG` 같은 타입 배지를 표시합니다. 오른쪽 배지가 차지하던 폭을 파일명 표시 영역으로 돌려 긴 문서 제목이 더 늦게 말줄임되며, 문서·이미지·코드·설정·오피스·미디어·Obsidian 특화 파일을 한눈에 구분할 수 있습니다.
+
+![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg)
+
+| 구분 | 개선 내용 |
+| --- | --- |
+| 제목 표시 | 파일 row가 사용 가능한 폭을 끝까지 쓰도록 조정 |
+| 확장자 표시 | 오른쪽 `HTML` 같은 확장자 배지를 숨기고 앞쪽 타입 배지로 통합 |
+| 대응 범위 | Markdown, HTML/SVG/PDF, 코드, 설정, 오피스, 이미지, 오디오/비디오, Obsidian canvas/excalidraw |
+| 가독성 | 타입 배지와 파일명 사이 간격을 확보해 목록 스캔성을 개선 |
 
 ### v3.1.39 — PDF 헤더 Key/Value 2쌍
 
@@ -68,18 +81,6 @@ Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax �
 | PDF Export | `.token.*`와 `.cm-*` syntax class를 같은 `--ogd-code-*` 색상·폰트 토큰으로 매핑 |
 | 유지보수 | `dev/MAP/live-preview-pdf-css-map/`에 selector 매핑, cascade ownership, parity guideline 추가 |
 
-### v3.1.37 — Live Preview / PDF 품질 패리티
-
-Live Preview, Reading View, PDF Export에서 callout과 긴 표 셀이 같은 품질 기준으로 보이도록 검증 fixture와 출력 안정화 guard를 추가했습니다. PDF callout은 흰색/회색 frosted surface, 얇은 rim, icon chip 중심으로 정리하고 긴 코드 토큰은 표 디자인을 유지한 채 셀 안에서 줄바꿈됩니다.
-
-![Live Preview / PDF 품질 패리티](screenshots/readme/pdf-live-preview-parity.png)
-
-| 검증 영역 | 개선 내용 |
-| --- | --- |
-| Live Preview / Reading | callout rim, icon chip, 얕은 glass surface 기준 정렬 |
-| PDF Export | callout 제목/본문 분리 완화, 긴 셀·코드 토큰 wrapping 안정화 |
-| 릴리즈 검증 | fresh bundle, `theme.css` freshness, visual smoke fixture 추가 |
-
 이전 신기능 소개는 [docs/v3/feature-history.md](docs/v3/feature-history.md)에 보관합니다.
 
 ---
@@ -94,7 +95,7 @@ Live Preview, Reading View, PDF Export에서 callout과 긴 표 셀이 같은 �
 
 ### 옵션 B — ZIP 수동 설치
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.43.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.44.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -103,7 +104,7 @@ Live Preview, Reading View, PDF Export에서 callout과 긴 표 셀이 같은 �
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.43.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.44.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트
 

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 900" role="img" aria-labelledby="title desc">
+  <title id="title">파일 탐색기 확장자 배지</title>
+  <desc id="desc">Owen Graphite 파일 탐색기에서 오른쪽 확장자 텍스트를 제거하고 앞쪽 타입 배지로 문서 종류를 표시해 긴 파일명을 더 많이 보여주는 기능 설명 이미지</desc>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --panel-soft: #eef6ff;
+      --line: #cbd5e1;
+      --line-strong: #94a3b8;
+      --text: #172033;
+      --muted: #526173;
+      --blue: #2563eb;
+      --sky: #0ea5e9;
+      --amber: #d97706;
+      --green: #059669;
+      --rose: #e11d48;
+      --shadow: rgba(15, 23, 42, 0.14);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --panel: #172033;
+        --panel-soft: #1e293b;
+        --line: #334155;
+        --line-strong: #64748b;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --blue: #60a5fa;
+        --sky: #38bdf8;
+        --amber: #fbbf24;
+        --green: #34d399;
+        --rose: #fb7185;
+        --shadow: rgba(0, 0, 0, 0.40);
+      }
+    }
+
+    .bg { fill: var(--bg); }
+    .halo-a { fill: #dbeafe; opacity: 0.72; }
+    .halo-b { fill: #ccfbf1; opacity: 0.56; }
+    .panel { fill: var(--panel); stroke: var(--line); stroke-width: 2; filter: url(#shadow); }
+    .panel-soft { fill: var(--panel-soft); stroke: var(--line); stroke-width: 2; }
+    .line { stroke: var(--line); stroke-width: 2; }
+    .line-strong { stroke: var(--line-strong); stroke-width: 2; }
+    .title { fill: var(--text); font: 800 46px Georgia, 'Times New Roman', serif; }
+    .subtitle { fill: var(--muted); font: 500 24px 'Segoe UI', Arial, sans-serif; }
+    .label { fill: var(--muted); font: 700 18px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .file-name { fill: var(--text); font: 700 24px 'Segoe UI', Arial, sans-serif; }
+    .file-muted { fill: var(--muted); font: 700 21px 'Segoe UI', Arial, sans-serif; }
+    .badge-text { fill: var(--blue); font: 900 12px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .badge-bg { fill: #dbeafe; stroke: #bfdbfe; stroke-width: 1.5; }
+    .badge-html { fill: #ffedd5; stroke: #fed7aa; stroke-width: 1.5; }
+    .badge-html-text { fill: #9a3412; font: 900 10px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .badge-img { fill: #dcfce7; stroke: #bbf7d0; stroke-width: 1.5; }
+    .badge-img-text { fill: #15803d; font: 900 11px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .badge-cfg { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1.5; }
+    .badge-cfg-text { fill: #334155; font: 900 11px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .old-tag { fill: var(--muted); font: 800 19px 'Segoe UI', Arial, sans-serif; letter-spacing: 0.04em; }
+    .check { fill: var(--green); font: 900 24px 'Segoe UI', Arial, sans-serif; }
+    .arrow { stroke: var(--sky); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dot { fill: var(--sky); }
+    .note { fill: var(--text); font: 760 22px 'Segoe UI', Arial, sans-serif; }
+    .small { fill: var(--muted); font: 520 18px 'Segoe UI', Arial, sans-serif; }
+  </style>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="var(--shadow)"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" width="1560" height="900" rx="0"/>
+  <circle class="halo-a" cx="310" cy="120" r="260"/>
+  <circle class="halo-b" cx="1240" cy="760" r="300"/>
+
+  <text class="title" x="88" y="96">파일 탐색기 확장자 배지</text>
+  <text class="subtitle" x="90" y="136">오른쪽 확장자 표시는 숨기고, 앞쪽 타입 배지로 문서 종류를 빠르게 구분합니다.</text>
+
+  <rect class="panel" x="90" y="190" width="560" height="560" rx="26"/>
+  <text class="label" x="130" y="238">이전 표시</text>
+  <line class="line" x1="130" y1="260" x2="610" y2="260"/>
+
+  <g transform="translate(130 300)">
+    <rect class="panel-soft" x="0" y="0" width="480" height="56" rx="14"/>
+    <path class="line-strong" d="M24 16h18l12 12v20H24z" fill="none"/>
+    <text class="file-name" x="74" y="36">reddit-defenderatp-bug-do...</text>
+    <text class="old-tag" x="410" y="36">HTML</text>
+  </g>
+  <g transform="translate(130 378)">
+    <path class="line-strong" d="M24 16h18l12 12v20H24z" fill="none"/>
+    <text class="file-muted" x="74" y="36">mde-analyzer-auto-collec...</text>
+  </g>
+  <g transform="translate(130 444)">
+    <path class="line-strong" d="M24 16h18l12 12v20H24z" fill="none"/>
+    <text class="file-muted" x="74" y="36">gsa-private-access-rdp-...</text>
+  </g>
+
+  <text class="small" x="130" y="610">오른쪽 확장자 텍스트가 파일명 폭을 차지합니다.</text>
+  <text class="small" x="130" y="642">긴 문서 제목은 더 이른 위치에서 말줄임됩니다.</text>
+
+  <path class="arrow" d="M710 462h130"/>
+  <path class="arrow" d="M820 430l36 32-36 32"/>
+  <circle class="dot" cx="783" cy="462" r="8"/>
+
+  <rect class="panel" x="910" y="190" width="560" height="560" rx="26"/>
+  <text class="label" x="950" y="238">개선 후</text>
+  <line class="line" x1="950" y1="260" x2="1430" y2="260"/>
+
+  <g transform="translate(950 300)">
+    <rect class="panel-soft" x="0" y="0" width="480" height="56" rx="14"/>
+    <rect class="badge-html" x="18" y="17" width="38" height="24" rx="6"/>
+    <text class="badge-html-text" x="24" y="33">HTML</text>
+    <text class="file-name" x="74" y="36">reddit-defenderatp-bug-down-o...</text>
+  </g>
+  <g transform="translate(950 378)">
+    <rect class="badge-bg" x="18" y="17" width="38" height="24" rx="6"/>
+    <text class="badge-text" x="28" y="33">MD</text>
+    <text class="file-muted" x="74" y="36">mde-analyzer-auto-collect-guide</text>
+  </g>
+  <g transform="translate(950 444)">
+    <rect class="badge-img" x="18" y="17" width="38" height="24" rx="6"/>
+    <text class="badge-img-text" x="26" y="33">IMG</text>
+    <text class="file-muted" x="74" y="36">architecture-screen-capture</text>
+  </g>
+  <g transform="translate(950 510)">
+    <rect class="badge-cfg" x="18" y="17" width="38" height="24" rx="6"/>
+    <text class="badge-cfg-text" x="25" y="33">CFG</text>
+    <text class="file-muted" x="74" y="36">workspace-settings-template</text>
+  </g>
+
+  <text class="check" x="950" y="610">✓</text>
+  <text class="note" x="988" y="610">오른쪽 배지를 제거해 제목 영역을 확보</text>
+  <text class="check" x="950" y="646">✓</text>
+  <text class="note" x="988" y="646">MD, HTML, SVG, PDF, 코드·설정·미디어 확장자 대응</text>
+</svg>

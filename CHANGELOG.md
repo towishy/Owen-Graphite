@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.44
+
+- feat: 파일 탐색기에서 오른쪽 확장자 배지를 숨기고 앞쪽 타입 배지로 통합해 긴 문서 제목 표시 폭을 넓혔습니다.
+- feat: Markdown, HTML/SVG/PDF, 코드, 설정, 오피스, 이미지, 오디오/비디오, Obsidian canvas/excalidraw 등 주요 확장자 타입 배지를 추가했습니다.
+- docs: README 신기능 소개와 전용 SVG 이미지를 추가하고 설치 ZIP 안내를 새 버전 기준으로 갱신했습니다.
+
 ## v3.1.43
 
 - release: Obsidian community scanner refresh를 위해 v3.1.43 패치 릴리즈를 발행합니다.
