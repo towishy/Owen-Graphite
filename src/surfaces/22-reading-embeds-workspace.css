@@ -1,8 +1,8 @@
-/* v3.1.34: removed orphan `padding-left: 1.35em; }` block that previously
+/* v3.1.34: removed orphan `padding-left: 1.35em;` plus closing brace block that previously
    sat at the top of this file with no matching opening selector. Browsers
    tolerated the stray declaration + closing brace, but the new
    community.obsidian.md CSS validator correctly reports it as
-   `Unexpected }` (theme.css:2230). Zero visual impact — the orphan
+  an unexpected closing brace at theme.css:2230. Zero visual impact — the orphan
    declaration was unreachable at runtime. */
 
 .markdown-rendered :is(nav.toc, nav.table-of-contents, .toc, .report-toc, .table-of-contents) li {
