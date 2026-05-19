@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1.45
+
+- docs: Obsidian community review가 요구하는 영어 테마 설명을 README 상단에 추가했습니다.
+- docs: README 파일 탐색기 확장자 배지 SVG를 한글 안전 폰트, 단일 배경, liquid-glass 화살표, 텍스트 overflow 검증 기준으로 정리했습니다.
+
 ## v3.1.44
 
 - feat: 파일 탐색기에서 오른쪽 확장자 배지를 숨기고 앞쪽 타입 배지로 통합해 긴 문서 제목 표시 폭을 넓혔습니다.

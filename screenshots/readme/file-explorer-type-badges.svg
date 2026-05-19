@@ -6,6 +6,8 @@
       --bg: #f8fafc;
       --panel: #ffffff;
       --panel-soft: #eef6ff;
+      --arrow-glass: rgba(125, 211, 252, 0.34);
+      --arrow-glass-shine: rgba(255, 255, 255, 0.86);
       --line: #cbd5e1;
       --line-strong: #94a3b8;
       --text: #172033;
@@ -23,6 +25,8 @@
         --bg: #0f172a;
         --panel: #172033;
         --panel-soft: #1e293b;
+        --arrow-glass: rgba(125, 211, 252, 0.24);
+        --arrow-glass-shine: rgba(255, 255, 255, 0.20);
         --line: #334155;
         --line-strong: #64748b;
         --text: #f8fafc;
@@ -37,41 +41,42 @@
     }
 
     .bg { fill: var(--bg); }
-    .halo-a { fill: #dbeafe; opacity: 0.72; }
-    .halo-b { fill: #ccfbf1; opacity: 0.56; }
     .panel { fill: var(--panel); stroke: var(--line); stroke-width: 2; filter: url(#shadow); }
     .panel-soft { fill: var(--panel-soft); stroke: var(--line); stroke-width: 2; }
     .line { stroke: var(--line); stroke-width: 2; }
     .line-strong { stroke: var(--line-strong); stroke-width: 2; }
-    .title { fill: var(--text); font: 800 46px Georgia, 'Times New Roman', serif; }
-    .subtitle { fill: var(--muted); font: 500 24px 'Segoe UI', Arial, sans-serif; }
-    .label { fill: var(--muted); font: 700 18px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
-    .file-name { fill: var(--text); font: 700 24px 'Segoe UI', Arial, sans-serif; }
-    .file-muted { fill: var(--muted); font: 700 21px 'Segoe UI', Arial, sans-serif; }
-    .badge-text { fill: var(--blue); font: 900 12px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .doc-icon { fill: none; stroke: var(--line-strong); stroke-width: 2; }
+    .title { fill: var(--text); font: 850 44px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
+    .subtitle { fill: var(--muted); font: 520 23px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
+    .label { fill: var(--muted); font: 760 18px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; letter-spacing: 0; }
+    .file-name { fill: var(--text); font: 780 23px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
+    .file-muted { fill: var(--muted); font: 720 20px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
+    .badge-text { fill: var(--blue); font: 900 12px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; letter-spacing: 0; }
     .badge-bg { fill: #dbeafe; stroke: #bfdbfe; stroke-width: 1.5; }
     .badge-html { fill: #ffedd5; stroke: #fed7aa; stroke-width: 1.5; }
-    .badge-html-text { fill: #9a3412; font: 900 10px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .badge-html-text { fill: #9a3412; font: 900 10px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; letter-spacing: 0; }
     .badge-img { fill: #dcfce7; stroke: #bbf7d0; stroke-width: 1.5; }
-    .badge-img-text { fill: #15803d; font: 900 11px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
+    .badge-img-text { fill: #15803d; font: 900 11px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; letter-spacing: 0; }
     .badge-cfg { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1.5; }
-    .badge-cfg-text { fill: #334155; font: 900 11px 'Segoe UI', Arial, sans-serif; letter-spacing: 0; }
-    .old-tag { fill: var(--muted); font: 800 19px 'Segoe UI', Arial, sans-serif; letter-spacing: 0.04em; }
-    .check { fill: var(--green); font: 900 24px 'Segoe UI', Arial, sans-serif; }
-    .arrow { stroke: var(--sky); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-    .dot { fill: var(--sky); }
-    .note { fill: var(--text); font: 760 22px 'Segoe UI', Arial, sans-serif; }
-    .small { fill: var(--muted); font: 520 18px 'Segoe UI', Arial, sans-serif; }
+    .badge-cfg-text { fill: #334155; font: 900 11px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; letter-spacing: 0; }
+    .old-tag { fill: var(--muted); font: 800 18px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; letter-spacing: 0.03em; }
+    .check { fill: var(--green); font: 900 24px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
+    .arrow-glow { fill: none; stroke: var(--arrow-glass); stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; filter: url(#arrow-shadow); }
+    .arrow-shine { fill: none; stroke: var(--arrow-glass-shine); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.76; }
+    .arrow-mark { fill: none; stroke: var(--sky); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+    .note { fill: var(--text); font: 760 21px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
+    .small { fill: var(--muted); font: 520 18px 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', sans-serif; }
   </style>
   <defs>
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
       <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="var(--shadow)"/>
     </filter>
+    <filter id="arrow-shadow" x="-30%" y="-35%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="var(--shadow)"/>
+    </filter>
   </defs>
 
   <rect class="bg" width="1560" height="900" rx="0"/>
-  <circle class="halo-a" cx="310" cy="120" r="260"/>
-  <circle class="halo-b" cx="1240" cy="760" r="300"/>
 
   <text class="title" x="88" y="96">파일 탐색기 확장자 배지</text>
   <text class="subtitle" x="90" y="136">오른쪽 확장자 표시는 숨기고, 앞쪽 타입 배지로 문서 종류를 빠르게 구분합니다.</text>
@@ -82,25 +87,30 @@
 
   <g transform="translate(130 300)">
     <rect class="panel-soft" x="0" y="0" width="480" height="56" rx="14"/>
-    <path class="line-strong" d="M24 16h18l12 12v20H24z" fill="none"/>
+    <path class="doc-icon" d="M24 16h18l12 12v20H24z"/>
     <text class="file-name" x="74" y="36">reddit-defenderatp-bug-do...</text>
     <text class="old-tag" x="410" y="36">HTML</text>
   </g>
   <g transform="translate(130 378)">
-    <path class="line-strong" d="M24 16h18l12 12v20H24z" fill="none"/>
+    <path class="doc-icon" d="M24 16h18l12 12v20H24z"/>
     <text class="file-muted" x="74" y="36">mde-analyzer-auto-collec...</text>
   </g>
   <g transform="translate(130 444)">
-    <path class="line-strong" d="M24 16h18l12 12v20H24z" fill="none"/>
+    <path class="doc-icon" d="M24 16h18l12 12v20H24z"/>
     <text class="file-muted" x="74" y="36">gsa-private-access-rdp-...</text>
   </g>
 
   <text class="small" x="130" y="610">오른쪽 확장자 텍스트가 파일명 폭을 차지합니다.</text>
   <text class="small" x="130" y="642">긴 문서 제목은 더 이른 위치에서 말줄임됩니다.</text>
 
-  <path class="arrow" d="M710 462h130"/>
-  <path class="arrow" d="M820 430l36 32-36 32"/>
-  <circle class="dot" cx="783" cy="462" r="8"/>
+  <g transform="translate(684 410)">
+    <path class="arrow-glow" d="M48 52h88"/>
+    <path class="arrow-glow" d="M120 26l38 26-38 26"/>
+    <path class="arrow-mark" d="M48 52h88"/>
+    <path class="arrow-mark" d="M120 26l38 26-38 26"/>
+    <path class="arrow-shine" d="M50 47h84"/>
+    <path class="arrow-shine" d="M121 22l38 26"/>
+  </g>
 
   <rect class="panel" x="910" y="190" width="560" height="560" rx="26"/>
   <text class="label" x="950" y="238">개선 후</text>
@@ -131,5 +141,7 @@
   <text class="check" x="950" y="610">✓</text>
   <text class="note" x="988" y="610">오른쪽 배지를 제거해 제목 영역을 확보</text>
   <text class="check" x="950" y="646">✓</text>
-  <text class="note" x="988" y="646">MD, HTML, SVG, PDF, 코드·설정·미디어 확장자 대응</text>
+  <text class="note" x="988" y="646">MD, HTML, SVG, PDF, 코드·설정 파일 대응</text>
+  <text class="check" x="950" y="682">✓</text>
+  <text class="note" x="988" y="682">오피스·이미지·미디어·Obsidian 파일까지 확장</text>
 </svg>
