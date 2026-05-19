@@ -11,6 +11,27 @@
 [![Obsidian](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
 [![!important](https://img.shields.io/badge/!important-0-0d9488?style=flat-square)](docs/v3/cascade-research.md)
 
+## English Overview
+
+Owen Graphite is designed for people who write long-form notes, technical documents, knowledge-base pages, and printable reports in Obsidian. It keeps dense Markdown content readable, makes workspace chrome quieter, and preserves a consistent visual language across editing, reading, and PDF export.
+
+### Features
+
+| Area | What it improves |
+| --- | --- |
+| Korean and English notes | Balanced typography for CJK and Latin text, with stable spacing for long documents |
+| Technical writing | Clear code blocks, long tables, callouts, embeds, and document-style layouts |
+| Workspace navigation | Polished tabs, file explorer, search panels, sidebars, and type badges for common file formats |
+| Report workflows | Report mode, print-friendly surfaces, PDF header options, and reduced page-break issues |
+| Maintenance | Modular v3 CSS source, release audits, and zero-important cascade policy |
+
+### Installation
+
+1. Open Obsidian and go to `Settings` → `Appearance` → `Themes`.
+2. Search for `Owen Graphite` in the community theme browser.
+3. Install and enable the theme.
+4. Optional: install the Style Settings plugin to adjust report mode, PDF header fields, and workspace polish options.
+
 | 핵심 사용처 | 바로 얻는 효과 |
 | --- | --- |
 | 한국어 위키·기술 문서 | CJK 가독성, 긴 표·코드·callout 안정화 |
@@ -19,7 +40,7 @@
 
 ---
 
-## 1. 테마 소개
+## 1. 테마 소개 / Theme Profile
 
 | 항목 | 내용 |
 | --- | --- |
@@ -40,14 +61,18 @@
 
 ---
 
-## 2. 신기능 소개
+## 2. 신기능 소개 / Latest Highlights
 
 > [ 정보 ]
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
 
-### v3.1.44 — 파일 탐색기 확장자 배지
+Recent updates are listed here so English-speaking users and reviewers can quickly see what changed in the latest stable releases.
+
+### v3.1.44 — 파일 탐색기 확장자 배지 / File Explorer Type Badges
 
 파일 탐색기의 오른쪽 확장자 텍스트를 숨기고, 앞쪽 문서 아이콘 자리에 `MD`, `HTML`, `SVG`, `PDF`, `CFG` 같은 타입 배지를 표시합니다. 오른쪽 배지가 차지하던 폭을 파일명 표시 영역으로 돌려 긴 문서 제목이 더 늦게 말줄임되며, 문서·이미지·코드·설정·오피스·미디어·Obsidian 특화 파일을 한눈에 구분할 수 있습니다.
+
+This update hides the right-side extension label and replaces the leading document icon with compact type badges such as `MD`, `HTML`, `SVG`, `PDF`, and `CFG`. The file name receives more horizontal space, so long document titles stay readable for longer in the file explorer.
 
 ![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg)
 
@@ -58,7 +83,7 @@
 | 대응 범위 | Markdown, HTML/SVG/PDF, 코드, 설정, 오피스, 이미지, 오디오/비디오, Obsidian canvas/excalidraw |
 | 가독성 | 타입 배지와 파일명 사이 간격을 확보해 목록 스캔성을 개선 |
 
-### v3.1.39 — PDF 헤더 Key/Value 2쌍
+### v3.1.39 — PDF 헤더 Key/Value 2쌍 / Two PDF Header Key-Value Pairs
 
 PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습니다. 1번과 2번 쌍은 설정 UI의 순서 그대로 `1번 Key → 1번 Value → 2번 Key → 2번 Value`로 배치되며, 네 segment의 높이를 같은 기준으로 맞췄습니다. 2번 key/value도 별도 색상 팔레트를 사용해 문서 작성자, 부서, 보안 등급, 검토 상태를 한 줄에서 구분할 수 있습니다.
 
@@ -71,7 +96,7 @@ PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습�
 | 헤더 2번 | Key/Value 문구와 독립 색상 팔레트 추가 |
 | PDF 안정성 | Obsidian export wrapper 구조와 무관하게 2쌍 출력 |
 
-### v3.1.38 — 코드블럭 Live Preview / PDF 패리티
+### v3.1.38 — 코드블럭 Live Preview / PDF 패리티 / Code Block Live Preview and PDF Parity
 
 Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax 색상을 같은 토큰 기준으로 맞췄습니다. Obsidian Live Preview의 source line, rendered code widget, PDF export의 Prism `.token.*`/CodeMirror `.cm-*` 경로를 모두 검증 fixture에 포함해 앞으로 코드블럭 개선 시 누락되는 경로를 줄였습니다.
 
@@ -87,15 +112,15 @@ Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax �
 
 ---
 
-## 3. 테마 설치
+## 3. 테마 설치 / Installation Details
 
-### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후)
+### 옵션 A — Obsidian 커뮤니티 마켓 (승인 후) / Community Theme Browser
 
 1. 설정 → **외관 → 테마 관리**
 2. 검색: `Owen Graphite`
 3. 설치 → 사용
 
-### 옵션 B — ZIP 수동 설치
+### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
 [Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.45.zip`** 을 받아 압축 해제합니다.
 
@@ -108,7 +133,7 @@ Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax �
 
 > ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.45.zip` 을 받으세요.
 
-### 옵션 C — Git 수동 설치 / 업데이트
+### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 
 `.obsidian/themes/Owen Graphite/` 경로에 클론합니다. **같은 명령을 다시 실행하면 자동 업데이트**됩니다.
 
