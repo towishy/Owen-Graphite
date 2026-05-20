@@ -30,7 +30,7 @@ def latest_changelog_section() -> tuple[str, str]:
 
 
 def build_notes(version: str, body: str) -> str:
-    return f"""# Owen Graphite v{version}
+    return f"""# Owen Graphite {version}
 
 ## Highlights
 
@@ -38,7 +38,7 @@ def build_notes(version: str, body: str) -> str:
 
 ## Validation
 
-- `python dev/scripts/release_check.py --tag v{version}`
+- `python dev/scripts/release_check.py --tag {version}`
 - `python dev/scripts/build_release.py`
 - `python dev/scripts/audit_release_zip.py`
 
