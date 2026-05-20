@@ -1,6 +1,6 @@
 # Screenshots
 
-Owen Graphite v3.1.48 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.49 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
@@ -15,6 +15,7 @@ Owen Graphite v3.1.48 마켓플레이스 등록용 스크린샷.
 | `readme/pdf-live-preview-parity.png` | PDF | README Live Preview / PDF 품질 패리티 이미지 |
 | `readme/code-font-clarity.png` | Live Preview / PDF | README 코드블럭 폰트·색상 패리티 이미지 |
 | `readme/file-explorer-type-badges.svg` | File Explorer | README 파일 탐색기 확장자 배지 기능 이미지 |
+| `readme/search-focus-rim-liquid-aqua.png` | Settings / Search | README 검색 focus rim 기능 이미지 |
 | `readme/sponsor-coffee.svg` | — | 후원 배너 |
 
 > 모든 스크린샷은 익명 샘플 콘텐츠로 제작되어 개인·고객사 식별 정보를 포함하지 않습니다.

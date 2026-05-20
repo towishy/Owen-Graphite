@@ -9439,6 +9439,47 @@ body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tb
   font-weight: 700;
   letter-spacing: 0;
 }
+body.css-settings-manager .style-settings-container .setting-item.setting-item-heading,
+body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  margin: 18px 0 10px;
+  padding: 8px 12px 8px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  border-radius: var(--ogd-radius-control, 7px);
+  background:
+    radial-gradient(circle at 92% 16%, rgba(186, 230, 253, 0.32), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.58));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.04),
+    0 8px 18px rgba(15, 23, 42, 0.07);
+}
+body.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before,
+body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 18px;
+  margin-right: 10px;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: linear-gradient(180deg, #0284c7, #0f766e);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.10);
+  flex: 0 0 auto;
+}
+body.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-info,
+body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-info {
+  min-width: 0;
+}
+body.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name,
+body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3),
+body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name {
+  color: var(--ogd-text-strong, #111827);
+  font-size: 14px;
+  font-weight: 860;
+}
 .setting-item-description,
 .setting-item-info .setting-item-description {
   color: #64748b;
@@ -9655,6 +9696,27 @@ body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-a
 }
 .theme-dark .setting-item-heading,
 .theme-dark .setting-item-name {
+  color: var(--ogd-text-inverted, #f8fafc);
+}
+body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading,
+body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3) {
+  border-color: rgba(203, 213, 225, 0.18);
+  background:
+    radial-gradient(circle at 92% 16%, rgba(56, 189, 248, 0.12), transparent 32%),
+    linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.42));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.26),
+    0 8px 18px rgba(0, 0, 0, 0.30);
+}
+body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before,
+body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before {
+  background: linear-gradient(180deg, #7dd3fc, #5eead4);
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.10);
+}
+body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name,
+body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3),
+body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name {
   color: var(--ogd-text-inverted, #f8fafc);
 }
 .theme-dark .setting-item-description,
@@ -16480,6 +16542,49 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
     outline: 1px solid var(--ogd-lg-frost-outline);
     outline-offset: 2px;
     box-shadow: var(--ogd-lg-shadow-focus);
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="search"],
+    .modal.mod-settings
+  ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within {
+    background:
+      radial-gradient(circle at 92% 18%, rgba(224, 242, 254, 0.72), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 249, 255, 0.68));
+    border-color: rgba(56, 189, 248, 0.42);
+    outline: 1px solid rgba(255, 255, 255, 0.92);
+    outline-offset: -2px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      inset 0 -1px 0 rgba(14, 165, 233, 0.06),
+      0 0 0 3px rgba(186, 230, 253, 0.34),
+      0 12px 28px rgba(14, 165, 233, 0.13);
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="search"],
+    .modal.mod-settings
+  ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type="search"], input[type="text"]):is(:focus, :focus-visible) {
+    background: var(--ogd-surface-transparent, transparent);
+    border-color: var(--ogd-surface-transparent, transparent);
+    outline: none;
+    box-shadow: none;
+  }
+
+  body:not(.is-mobile).theme-dark :is(
+    .workspace-leaf-content[data-type="search"],
+    .modal.mod-settings
+  ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within {
+    background:
+      radial-gradient(circle at 92% 18%, rgba(56, 189, 248, 0.14), transparent 34%),
+      linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.52));
+    border-color: rgba(125, 211, 252, 0.30);
+    outline-color: rgba(255, 255, 255, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.26),
+      0 0 0 3px rgba(56, 189, 248, 0.12),
+      0 12px 28px rgba(0, 0, 0, 0.32);
   }
 }
 

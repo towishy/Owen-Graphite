@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.48",
+  "version": "3.1.49",
   "module_order": [
     {
       "import_index": 1,
@@ -162,11 +162,11 @@
   ],
   "summary": {
     "module_count": 26,
-    "selector_count": 2287,
-    "finding_count": 536,
+    "selector_count": 2297,
+    "finding_count": 543,
     "cross_file_selector_group_count": 76,
     "finding_severity_counts": {
-      "medium": 461,
+      "medium": 468,
       "low": 75
     },
     "module_severity_counts": {
@@ -1274,12 +1274,12 @@
       "entry_line": 63,
       "legacy_id": "07c-settings-controls.css",
       "module": "src/chrome/33-settings-controls.css",
-      "line_count": 364,
-      "selector_count": 59,
-      "declaration_count": 138,
+      "line_count": 426,
+      "selector_count": 66,
+      "declaration_count": 167,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 18,
+      "high_specificity_selector_count": 25,
       "live_preview_sensitive_rule_count": 0,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 0,
@@ -1291,27 +1291,27 @@
       "top_properties": [
         [
           "background",
-          34
-        ],
-        [
-          "color",
-          20
+          38
         ],
         [
           "box-shadow",
-          20
+          24
+        ],
+        [
+          "color",
+          22
         ],
         [
           "border-color",
-          17
+          18
         ],
         [
           "border-radius",
-          7
+          9
         ],
         [
           "border",
-          6
+          7
         ],
         [
           "outline",
@@ -1322,23 +1322,23 @@
           4
         ],
         [
+          "padding",
+          3
+        ],
+        [
+          "height",
+          3
+        ],
+        [
           "border-top-color",
           2
         ],
         [
-          "transform",
-          2
-        ],
-        [
-          "height",
-          2
-        ],
-        [
-          "background-color",
+          "font-weight",
           2
         ]
       ],
-      "risk_score": 54,
+      "risk_score": 75,
       "severity": "high",
       "risk_reasons": [
         "high-specificity"
@@ -1959,9 +1959,9 @@
       "entry_line": 81,
       "legacy_id": "10b-liquid-glass-core.css",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line_count": 1499,
-      "selector_count": 143,
-      "declaration_count": 653,
+      "line_count": 1542,
+      "selector_count": 146,
+      "declaration_count": 666,
       "important_count": 0,
       "has_selector_count": 6,
       "high_specificity_selector_count": 27,
@@ -1976,15 +1976,15 @@
       "top_properties": [
         [
           "box-shadow",
-          85
+          88
         ],
         [
           "background",
-          81
+          84
         ],
         [
           "border-color",
-          77
+          80
         ],
         [
           "color",
@@ -1992,19 +1992,19 @@
         ],
         [
           "outline",
-          26
+          28
         ],
         [
           "font-weight",
           16
         ],
         [
-          "border-radius",
+          "outline-offset",
           15
         ],
         [
-          "outline-offset",
-          14
+          "border-radius",
+          15
         ],
         [
           "-webkit-backdrop-filter",
@@ -3188,6 +3188,38 @@
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
       "line": 35,
+      "selector": "body.css-settings-manager .style-settings-container .setting-item.setting-item-heading, body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
+      "message": "specificity=(0, 9, 2)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 46,
+      "selector": "body.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before, body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before",
+      "message": "specificity=(0, 11, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 49,
+      "selector": "body.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-info, body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-info",
+      "message": "specificity=(0, 12, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 54,
+      "selector": "body.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name, body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3), body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
+      "message": "specificity=(0, 17, 1)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 71,
       "selector": ".setting-item-control input[type=\"text\"], .setting-item-control input[type=\"number\"], .setting-item-control input[type=\"search\"], .setting-item-control textarea, .setting-item-control select, .setting-item-control .dropdown, .modal .setting-item-control input[type=\"text\"], .modal .setting-item-control input[type=\"number\"], .modal .setting-item-control textarea, .modal .setting-item-control select, .modal .setting-item-control .dropdown",
       "message": "specificity=(0, 23, 14)"
     },
@@ -3195,7 +3227,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 39,
+      "line": 75,
       "selector": ".setting-item-control select, .setting-item-control .dropdown, .modal .setting-item-control select, .modal .setting-item-control .dropdown",
       "message": "specificity=(0, 8, 2)"
     },
@@ -3203,7 +3235,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 47,
+      "line": 83,
       "selector": ".setting-item-control select option:checked, .setting-item-control select option:hover, .setting-item-control select option:focus, .modal .setting-item-control select option:checked, .modal .setting-item-control select option:hover, .modal .setting-item-control select option:focus",
       "message": "specificity=(0, 15, 6)"
     },
@@ -3211,7 +3243,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 55,
+      "line": 91,
       "selector": ".setting-item-control input:focus, .setting-item-control textarea:focus, .setting-item-control select:focus, .setting-item-control .dropdown:focus-visible",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3219,7 +3251,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 77,
+      "line": 113,
       "selector": ".setting-item-control button.mod-warning, .setting-item-control button.mod-destructive, .modal .setting-item-control button.mod-warning, .modal .setting-item-control button.mod-destructive",
       "message": "specificity=(0, 10, 4)"
     },
@@ -3227,7 +3259,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 154,
+      "line": 190,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper",
       "message": "specificity=(0, 9, 2)"
     },
@@ -3235,7 +3267,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 159,
+      "line": 195,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch",
       "message": "specificity=(0, 9, 2)"
     },
@@ -3243,7 +3275,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 165,
+      "line": 201,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3251,7 +3283,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 170,
+      "line": 206,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "message": "specificity=(0, 22, 0)"
     },
@@ -3259,7 +3291,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 174,
+      "line": 210,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -3267,7 +3299,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 188,
+      "line": 224,
       "selector": ".theme-dark .setting-item, .theme-dark .style-settings-container .setting-item, .theme-dark .vertical-tab-content-container .setting-item",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3275,7 +3307,31 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 200,
+      "line": 237,
+      "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
+      "message": "specificity=(0, 11, 2)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 241,
+      "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before",
+      "message": "specificity=(0, 13, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 244,
+      "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3), body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
+      "message": "specificity=(0, 20, 1)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 253,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "message": "specificity=(0, 34, 14)"
     },
@@ -3283,7 +3339,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 204,
+      "line": 257,
       "selector": ".theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "message": "specificity=(0, 12, 2)"
     },
@@ -3291,7 +3347,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 212,
+      "line": 265,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "message": "specificity=(0, 21, 6)"
     },
@@ -3299,7 +3355,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 220,
+      "line": 273,
       "selector": ".theme-dark .setting-item-control input:focus, .theme-dark .setting-item-control textarea:focus, .theme-dark .setting-item-control select:focus, .theme-dark .setting-item-control .dropdown:focus-visible",
       "message": "specificity=(0, 13, 0)"
     },
@@ -3307,7 +3363,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 231,
+      "line": 284,
       "selector": ".theme-dark .setting-item-control button.mod-warning, .theme-dark .setting-item-control button.mod-destructive, .theme-dark .modal .setting-item-control button.mod-warning, .theme-dark .modal .setting-item-control button.mod-destructive",
       "message": "specificity=(0, 14, 4)"
     },
@@ -3315,7 +3371,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 237,
+      "line": 290,
       "selector": ".theme-dark .setting-item-control button.mod-warning:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3323,7 +3379,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 243,
+      "line": 296,
       "selector": ".theme-dark .setting-item-control button.mod-destructive:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -5171,7 +5227,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 828,
+      "line": 871,
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner, body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5179,7 +5235,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 900,
+      "line": 943,
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon ), body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "message": "specificity=(0, 22, 0)"
     },
@@ -5187,7 +5243,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1037,
+      "line": 1080,
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "message": "specificity=(0, 36, 0)"
     },
@@ -5195,7 +5251,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1042,
+      "line": 1085,
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "message": "specificity=(0, 37, 0)"
     },
@@ -5203,7 +5259,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1106,
+      "line": 1149,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container ), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item), body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
       "message": "specificity=(0, 9, 6)"
     },
@@ -5211,7 +5267,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1115,
+      "line": 1158,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5219,7 +5275,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1122,
+      "line": 1165,
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile).theme-dark :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "message": "specificity=(0, 10, 0)"
     },
@@ -5227,7 +5283,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1267,
+      "line": 1310,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container, body:not(.is-mobile) .workspace-split.mod-root .view-header",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5235,7 +5291,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1283,
+      "line": 1326,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5243,7 +5299,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1289,
+      "line": 1332,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "message": "specificity=(0, 9, 0)"
     },
@@ -5251,7 +5307,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1310,
+      "line": 1353,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5259,7 +5315,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1315,
+      "line": 1358,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5267,7 +5323,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1342,
+      "line": 1385,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "message": "specificity=(0, 16, 0)"
     },
@@ -5275,7 +5331,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1347,
+      "line": 1390,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5283,7 +5339,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1352,
+      "line": 1395,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "message": "specificity=(0, 18, 0)"
     },
@@ -5291,7 +5347,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1370,
+      "line": 1413,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5299,7 +5355,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1428,
+      "line": 1471,
       "selector": "body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td, body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td",
       "message": "specificity=(0, 10, 6)"
     },
@@ -5307,7 +5363,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1432,
+      "line": 1475,
       "selector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td, body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td",
       "message": "specificity=(0, 8, 4)"
     },
@@ -5315,7 +5371,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1443,
+      "line": 1486,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5323,7 +5379,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1448,
+      "line": 1491,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th",
       "message": "specificity=(0, 8, 2)"
     },
@@ -5331,7 +5387,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1452,
+      "line": 1495,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td",
       "message": "specificity=(0, 8, 2)"
     },
@@ -6450,7 +6506,7 @@
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
-          "line": 768
+          "line": 811
         }
       ]
     },
@@ -6491,7 +6547,7 @@
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
-          "line": 779
+          "line": 822
         }
       ]
     },
@@ -7371,7 +7427,7 @@
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
-          "line": 1385
+          "line": 1428
         }
       ]
     },

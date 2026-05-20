@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.49
+
+- polish: Style Settings 그룹 제목과 Obsidian 설정 본문 섹션 제목에 추천안 D의 liquid header bar와 좌측 gradient rail을 적용했습니다.
+- polish: 단축키/검색 입력창의 강한 파란 focus rim을 추천안 B Liquid Aqua rim으로 낮춰 settings chrome의 glass 톤과 맞췄습니다.
+- docs: 설정 그룹 제목과 검색 focus rim 추천안 preview를 추가하고, README 신기능 이미지와 소개를 v3.1.49 기준으로 갱신했습니다.
+
 ## v3.1.48
 
 - polish: 이미지 외곽선 추천안 D를 적용해 1px 회색 rim에 내부 liquid-glass highlight와 절제된 그림자를 더했습니다.

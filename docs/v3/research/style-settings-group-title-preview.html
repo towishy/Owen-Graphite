@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style Settings Group Title Preview</title>
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --panel: rgba(255, 255, 255, 0.86);
+      --card: rgba(255, 255, 255, 0.72);
+      --text: #111827;
+      --muted: #64748b;
+      --line: rgba(203, 213, 225, 0.72);
+      --line-soft: rgba(226, 232, 240, 0.82);
+      --accent: #475569;
+      --sky: #0284c7;
+      --teal: #0f766e;
+      --shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(186, 230, 253, 0.38), transparent 30%),
+        radial-gradient(circle at 90% 16%, rgba(203, 213, 225, 0.42), transparent 32%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: "Pretendard", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+    }
+
+    .shell {
+      width: 1280px;
+      min-height: 860px;
+      margin: 0 auto;
+      padding: 32px 38px 38px;
+    }
+
+    .top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 760;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 8px 18px rgba(15,23,42,0.06);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .option {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid rgba(203, 213, 225, 0.72);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.94), var(--shadow);
+    }
+
+    .option-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .option h2 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .option small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .settings {
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(226, 232, 240, 0.82);
+      border-radius: 8px;
+      background: rgba(248, 250, 252, 0.62);
+    }
+
+    .search {
+      height: 34px;
+      width: 62%;
+      margin-bottom: 18px;
+      border: 1px solid rgba(226, 232, 240, 0.92);
+      border-radius: 7px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.72));
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      padding-left: 14px;
+      font-size: 12px;
+    }
+
+    .group {
+      margin-top: 18px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 52px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(226, 232, 240, 0.58);
+      margin-top: 8px;
+    }
+
+    .label strong {
+      display: block;
+      color: #1f2937;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .label span {
+      display: block;
+      margin-top: 3px;
+      color: #64748b;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .toggle {
+      width: 34px;
+      height: 18px;
+      border-radius: 999px;
+      background: #64748b;
+      box-shadow: inset 0 1px 2px rgba(15,23,42,0.22), 0 1px 2px rgba(15,23,42,0.12);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(15,23,42,0.18);
+    }
+
+    .reset {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      background: rgba(248, 250, 252, 0.92);
+      flex: 0 0 auto;
+      position: relative;
+    }
+
+    .reset::before {
+      content: "↻";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .group-title {
+      color: #111827;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 860;
+      letter-spacing: 0;
+    }
+
+    .a .group-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 2px 0 8px;
+      border-bottom: 1px solid rgba(203, 213, 225, 0.72);
+    }
+
+    .a .group-title::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #475569;
+      box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.14);
+    }
+
+    .b .group-title {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.34);
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(241,245,249,0.62));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.94), 0 6px 14px rgba(15,23,42,0.06);
+    }
+
+    .c .group-title {
+      display: flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 0 0 12px;
+      border-left: 4px solid #475569;
+      color: #0f172a;
+    }
+
+    .c .group-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      margin-left: 12px;
+      background: linear-gradient(90deg, rgba(148, 163, 184, 0.55), transparent);
+    }
+
+    .d .group-title {
+      display: flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      border-radius: 7px;
+      background:
+        radial-gradient(circle at 92% 16%, rgba(186, 230, 253, 0.36), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(241,245,249,0.58));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.94),
+        inset 0 -1px 0 rgba(15,23,42,0.04),
+        0 8px 18px rgba(15,23,42,0.07);
+    }
+
+    .d .group-title::before {
+      content: "";
+      width: 3px;
+      height: 18px;
+      margin-right: 10px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #0284c7, #0f766e);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.10);
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="top">
+      <div>
+        <h1>Style Settings 그룹 제목 강조안</h1>
+        <p class="subtitle">설정 항목보다 한 단계 위의 구조가 바로 보이도록, 그룹 제목만 살짝 드러내는 4가지 후보입니다. 실제 메뉴 밀도를 해치지 않는 방향으로 비교했습니다.</p>
+      </div>
+      <div class="badge">Preview · 1280×860</div>
+    </div>
+
+    <section class="grid" aria-label="그룹 제목 강조 후보">
+      <article class="option a">
+        <div class="option-name"><h2>A. Dot + underline</h2><small>가장 절제됨</small></div>
+        <div class="settings">
+          <div class="search">Search Style Settings...</div>
+          <div class="group">
+            <div class="group-title">읽기와 본문</div>
+            <div class="row"><div class="label"><strong>본문 폰트 크기</strong><span>본문 기본 글자 크기</span></div><div class="actions"><div class="reset"></div></div></div>
+            <div class="row"><div class="label"><strong>본문 최대 폭</strong><span>Default: 420mm</span></div><div class="actions"><div class="reset"></div></div></div>
+          </div>
+          <div class="group">
+            <div class="group-title">표와 코드</div>
+            <div class="row"><div class="label"><strong>표 모던 스타일 강화</strong><span>표 header, hover, border tone</span></div><div class="actions"><div class="toggle"></div><div class="reset"></div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="option b">
+        <div class="option-name"><h2>B. Glass pill label</h2><small>부드럽게 구분</small></div>
+        <div class="settings">
+          <div class="search">Search Style Settings...</div>
+          <div class="group">
+            <div class="group-title">읽기와 본문</div>
+            <div class="row"><div class="label"><strong>본문 폰트 크기</strong><span>본문 기본 글자 크기</span></div><div class="actions"><div class="reset"></div></div></div>
+            <div class="row"><div class="label"><strong>본문 최대 폭</strong><span>Default: 420mm</span></div><div class="actions"><div class="reset"></div></div></div>
+          </div>
+          <div class="group">
+            <div class="group-title">표와 코드</div>
+            <div class="row"><div class="label"><strong>PDF 블록 분할 방지 강화</strong><span>callout, 표, mermaid, 코드블록</span></div><div class="actions"><div class="toggle"></div><div class="reset"></div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="option c">
+        <div class="option-name"><h2>C. Left rail + divider</h2><small>가장 명확함</small></div>
+        <div class="settings">
+          <div class="search">Search Style Settings...</div>
+          <div class="group">
+            <div class="group-title">읽기와 본문</div>
+            <div class="row"><div class="label"><strong>헤더 강조 색상</strong><span>Default: #4b5563</span></div><div class="actions"><div class="reset"></div></div></div>
+            <div class="row"><div class="label"><strong>본문 최대 폭</strong><span>Default: 420mm</span></div><div class="actions"><div class="reset"></div></div></div>
+          </div>
+          <div class="group">
+            <div class="group-title">보고서와 PDF</div>
+            <div class="row"><div class="label"><strong>PDF 보고서 가시성 강화</strong><span>출력 대비를 높입니다</span></div><div class="actions"><div class="toggle"></div><div class="reset"></div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="option d">
+        <div class="option-name"><h2>D. Liquid header bar</h2><small>추천 후보</small></div>
+        <div class="settings">
+          <div class="search">Search Style Settings...</div>
+          <div class="group">
+            <div class="group-title">읽기와 본문</div>
+            <div class="row"><div class="label"><strong>본문 폰트 크기</strong><span>본문 기본 글자 크기</span></div><div class="actions"><div class="reset"></div></div></div>
+            <div class="row"><div class="label"><strong>본문 최대 폭</strong><span>Default: 420mm</span></div><div class="actions"><div class="reset"></div></div></div>
+          </div>
+          <div class="group">
+            <div class="group-title">보고서와 PDF</div>
+            <div class="row"><div class="label"><strong>보고서 모드</strong><span>표지/넘버링/세리프 본문</span></div><div class="actions"><div class="toggle"></div><div class="reset"></div></div></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

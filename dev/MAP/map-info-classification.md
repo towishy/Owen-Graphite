@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.48`
+- Version: `3.1.49`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2287
-- Findings: 536
-- Finding severity counts: critical=0, high=0, medium=461, low=75, info=0
+- Selectors: 2297
+- Findings: 543
+- Finding severity counts: critical=0, high=0, medium=468, low=75, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -31,7 +31,7 @@ Canonical MAP location: `dev/MAP`.
 | medium | 23 | `src/chrome/30-workspace.css` | 125 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 32 | 0 | 0 | high-specificity |
-| high | 54 | `src/chrome/33-settings-controls.css` | 59 | 0 | 0 | high-specificity |
+| high | 75 | `src/chrome/33-settings-controls.css` | 66 | 0 | 0 | high-specificity |
 | high | 54 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 98 | `src/plugins/61-live-preview-mobile-plugin.css` | 56 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector |
 | high | 168 | `src/features/42-report-print-polish.css` | 251 | 0 | 11 | high-specificity, cm6-hit-routing-sensitive, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |
@@ -40,7 +40,7 @@ Canonical MAP location: `dev/MAP`.
 | high | 67 | `src/chrome/36-floating-ui-glass-system.css` | 113 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 135 | `src/chrome/37-tabs-file-explorer-search.css` | 142 | 0 | 32 | high-specificity, has-selector, repeated-selector-in-file |
 | low | 3 | `src/themes/51-accessibility-motion-contrast.css` | 16 | 0 | 0 | repeated-selector-in-file |
-| high | 99 | `src/surfaces/23-liquid-glass-core.css` | 143 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
+| high | 99 | `src/surfaces/23-liquid-glass-core.css` | 146 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 141 | `src/surfaces/24-html-table-live-preview-glass.css` | 84 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 
 ## Findings
