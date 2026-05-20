@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.47
+
+- polish: 문서에 첨부/삽입되는 이미지에 1px 희미한 회색 외곽선을 추가해 흰 배경 스크린샷이 본문 배경에 묻히지 않도록 개선했습니다.
+- polish: PDF Export 이미지와 figure 안의 이미지에도 동일한 1px 회색 외곽선과 `box-sizing: border-box`를 적용해 출력 폭을 안정화했습니다.
+- docs: 이미지 외곽선 추천안 A/B/C/D를 비교하는 `docs/v3/research/image-border-samples.html` 샘플 fixture를 추가했습니다.
+
 ## v3.1.46
 
 - docs: README 첫 화면에 사용 시나리오, release confidence, visual tour를 추가해 테마의 강점과 검증 상태를 더 빠르게 파악할 수 있도록 정리했습니다.

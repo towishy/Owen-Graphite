@@ -1438,6 +1438,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     .markdown-reading-view .markdown-rendered
   ) :is(img, svg, canvas):not(.callout-icon *) {
     max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(148, 163, 184, 0.38);
     height: auto;
     object-fit: contain;
     -webkit-print-color-adjust: exact;
@@ -1487,6 +1489,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   ) :is(figure, .ogd-figure, .figure-block) > :is(img, svg, canvas) {
     display: block;
     max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(148, 163, 184, 0.38);
     max-height: var(--ogd-pdf-figure-max-height, 145mm);
     height: auto;
     margin: 0 auto;

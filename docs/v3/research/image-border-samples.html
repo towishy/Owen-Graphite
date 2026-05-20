@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Image Border Samples</title>
+  <link rel="stylesheet" href="../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      background: #eef3f8;
+    }
+
+    body {
+      color: #1f2937;
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-shell {
+      max-width: 1120px;
+      margin: 28px auto;
+      padding: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.34);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 16px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .sample-card {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid rgba(203, 213, 225, 0.74);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .sample-card h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .sample-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+
+    .border-default { border: 1px solid rgba(148, 163, 184, 0.34); }
+    .border-soft { border: 1px solid rgba(203, 213, 225, 0.72); }
+    .border-ink { border: 1px solid rgba(100, 116, 139, 0.42); }
+    .border-hairline { outline: 1px solid rgba(148, 163, 184, 0.32); outline-offset: -1px; }
+
+    .sample-note {
+      margin: 8px 0 0;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 760px) {
+      .fixture-shell {
+        margin: 0;
+        padding: 18px;
+        border-width: 0;
+        border-radius: 0;
+      }
+
+      .sample-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-spacing-relaxed">
+  <main class="fixture-shell markdown-preview-view markdown-rendered" data-ogd-fixture="image-border-samples">
+    <article class="markdown-rendered">
+      <h1>이미지 외곽라인 샘플</h1>
+      <p>문서에 첨부하거나 삽입한 이미지를 본문 배경과 분리하기 위한 1px 회색계열 외곽라인 후보입니다. 기본 적용안은 첫 번째 샘플입니다.</p>
+
+      <section class="sample-grid" aria-label="이미지 외곽라인 후보">
+        <div class="sample-card" data-check="image-border-default">
+          <h2>추천안 A: 기본 faint gray</h2>
+          <svg class="sample-image border-default" viewBox="0 0 720 380" role="img" aria-label="디바이스 상태 샘플 이미지">
+            <rect width="720" height="380" fill="#f8fafc"/>
+            <rect x="34" y="34" width="652" height="312" rx="10" fill="#ffffff"/>
+            <rect x="58" y="64" width="88" height="88" rx="44" fill="#0f5c8d"/>
+            <path d="M88 111h28M83 122h38M91 91h22v20H91z" fill="none" stroke="#e0f2fe" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="168" y="94" fill="#0f172a" font-size="30" font-family="Segoe UI, sans-serif" font-weight="800">zerotrust-02</text>
+            <text x="168" y="132" fill="#64748b" font-size="16" font-family="Segoe UI, sans-serif" font-weight="650">알려진 리스크 없음 · 활성 연결됨</text>
+            <rect x="60" y="185" width="220" height="18" rx="4" fill="#e2e8f0"/>
+            <rect x="60" y="222" width="170" height="18" rx="4" fill="#e2e8f0"/>
+            <rect x="60" y="259" width="210" height="18" rx="4" fill="#e2e8f0"/>
+            <rect x="332" y="184" width="304" height="22" rx="5" fill="#e2e8f0"/>
+            <rect x="332" y="230" width="270" height="18" rx="4" fill="#f1f5f9"/>
+            <rect x="332" y="268" width="180" height="18" rx="4" fill="#f1f5f9"/>
+            <rect x="580" y="64" width="54" height="34" rx="4" fill="#eef2f7"/>
+            <circle cx="598" cy="81" r="3" fill="#64748b"/><circle cx="607" cy="81" r="3" fill="#64748b"/><circle cx="616" cy="81" r="3" fill="#64748b"/>
+          </svg>
+          <p class="sample-note">본문 이미지 기본값. 흰 배경 스크린샷과 문서 배경을 부드럽게 구분합니다.</p>
+        </div>
+
+        <div class="sample-card" data-check="image-border-soft">
+          <h2>샘플 B: 더 연한 outline</h2>
+          <svg class="sample-image border-soft" viewBox="0 0 720 380" role="img" aria-label="연한 외곽라인 샘플">
+            <rect width="720" height="380" fill="#ffffff"/>
+            <rect x="48" y="54" width="624" height="272" rx="12" fill="#f8fafc"/>
+            <path d="M96 246 C170 184 220 198 282 150 S420 116 502 92 596 84 638 68" fill="none" stroke="#7dd3fc" stroke-width="16" stroke-linecap="round" opacity="0.55"/>
+            <path d="M96 246 C170 184 220 198 282 150 S420 116 502 92 596 84 638 68" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+            <text x="82" y="104" fill="#334155" font-size="24" font-family="Segoe UI, sans-serif" font-weight="800">Report Snapshot</text>
+            <text x="82" y="136" fill="#64748b" font-size="15" font-family="Segoe UI, sans-serif" font-weight="600">white-heavy screenshots</text>
+          </svg>
+          <p class="sample-note">이미지 자체가 복잡하거나 테두리가 이미 있는 경우에 적합합니다.</p>
+        </div>
+
+        <div class="sample-card" data-check="image-border-ink">
+          <h2>샘플 C: 조금 더 선명한 gray</h2>
+          <svg class="sample-image border-ink" viewBox="0 0 720 380" role="img" aria-label="선명한 외곽라인 샘플">
+            <rect width="720" height="380" fill="#f8fafc"/>
+            <rect x="50" y="54" width="620" height="272" rx="12" fill="#ffffff"/>
+            <rect x="80" y="88" width="150" height="154" rx="10" fill="#e0f2fe"/>
+            <rect x="260" y="88" width="150" height="154" rx="10" fill="#ccfbf1"/>
+            <rect x="440" y="88" width="150" height="154" rx="10" fill="#fef3c7"/>
+            <text x="155" y="276" text-anchor="middle" fill="#334155" font-size="18" font-family="Segoe UI, sans-serif" font-weight="800">Inventory</text>
+            <text x="335" y="276" text-anchor="middle" fill="#334155" font-size="18" font-family="Segoe UI, sans-serif" font-weight="800">Alert</text>
+            <text x="515" y="276" text-anchor="middle" fill="#334155" font-size="18" font-family="Segoe UI, sans-serif" font-weight="800">Action</text>
+          </svg>
+          <p class="sample-note">밝은 페이지에서 스크린샷 경계가 자주 사라질 때 좋지만, 기본값보다 약간 더 강합니다.</p>
+        </div>
+
+        <div class="sample-card" data-check="image-border-hairline">
+          <h2>샘플 D: 내부 hairline</h2>
+          <svg class="sample-image border-hairline" viewBox="0 0 720 380" role="img" aria-label="내부 hairline 외곽라인 샘플">
+            <rect width="720" height="380" fill="#ffffff"/>
+            <rect x="44" y="44" width="632" height="292" rx="16" fill="#f8fafc"/>
+            <circle cx="164" cy="188" r="74" fill="#e0f2fe" stroke="#7dd3fc"/>
+            <circle cx="360" cy="188" r="74" fill="#ccfbf1" stroke="#5eead4"/>
+            <circle cx="556" cy="188" r="74" fill="#fef3c7" stroke="#fcd34d"/>
+            <g fill="#334155" font-family="Segoe UI, sans-serif" font-size="20" font-weight="800" text-anchor="middle">
+              <text x="164" y="195">IMG</text>
+              <text x="360" y="195">DOC</text>
+              <text x="556" y="195">PDF</text>
+            </g>
+          </svg>
+          <p class="sample-note">레이아웃 치수 증가가 싫을 때 쓰는 방식입니다. 이번 기본 구현은 더 예측 가능한 border-box를 사용했습니다.</p>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
