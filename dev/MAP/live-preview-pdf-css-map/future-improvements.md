@@ -5,10 +5,11 @@ This backlog focuses on making Live Preview and Export PDF parity easier to main
 ## High Priority
 
 1. Add a selector ownership audit.
-   - Proposed script: `dev/scripts/audit_lp_pdf_selector_ownership.py`
-   - Inputs: `src/entry.css`, all `src/**/*.css`.
-   - Output: selectors grouped by surface (`lp-source`, `lp-widget`, `reading`, `pdf-print`, `shared-token`).
-   - Fail when direct `.cm-line.HyperMD-*` rules add forbidden vertical margin/padding.
+   - Implemented: `dev/scripts/audit_lp_pdf_selector_ownership.py`
+   - Inputs: `src/entry.css`, all imported `src/**/*.css` modules.
+   - Output: selectors grouped by surface (`lp-source`, `lp-widget`, `reading`, `pdf-print`, `shared-token`), with optional JSON via `--json-output`.
+   - Fails when direct `.cm-line.HyperMD-*` rules add forbidden vertical margin/padding outside the reviewed frontmatter/quote exceptions.
+   - Included in `dev/scripts/release_check.py`.
 
 2. Add a token parity audit.
    - Proposed script: `dev/scripts/audit_lp_pdf_token_parity.py`

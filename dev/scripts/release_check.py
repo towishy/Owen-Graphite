@@ -50,6 +50,7 @@ def main() -> int:
             ("Style Settings contract", [PYTHON, "dev/scripts/audit_style_settings_contract.py"]),
             ("Docs and assets", [PYTHON, "dev/scripts/audit_docs_assets.py"]),
             ("CSS compatibility budget", [PYTHON, "dev/scripts/audit_css_compat_budget.py"]),
+            ("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"]),
             ("Live Preview hit routing", [PYTHON, "dev/scripts/audit_v3_hit_routing.py"]),
             ("PDF header/footer contract", [PYTHON, "dev/scripts/audit_pdf_header_footer.py"]),
             ("Duplicate selector threshold", [PYTHON, "dev/scripts/v3_audit_duplicate_selectors.py", "--threshold", "10"]),

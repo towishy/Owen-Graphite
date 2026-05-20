@@ -43,6 +43,7 @@ src/
    - `python dev/scripts/release_check.py` — 번들 freshness, 메타데이터, Style Settings, docs/assets, CSS budget, Live Preview, PDF header/footer, 중복 selector threshold를 한 번에 확인
 6. **개별 감사**:
    - `python dev/scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
+   - `python dev/scripts/audit_lp_pdf_selector_ownership.py` — Live Preview/Reading/PDF selector ownership 및 HyperMD direct-line vertical box 회귀 차단
    - `python dev/scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
    - `python dev/scripts/build_unused_css_report.py` — unused CSS 제거 전 후보/예약 selector 분류
 7. **시각 회귀 (선택)**:
