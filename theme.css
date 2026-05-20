@@ -4363,13 +4363,26 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ca
 /* =====================================================================
   Images & embeds - figure caption, shadows
    ===================================================================== */
-.markdown-rendered img:not(.emoji) {
-  --ogd-img-border-color: rgba(148, 163, 184, 0.34);
+.markdown-rendered img:not(.emoji),
+.markdown-preview-view img:not(.emoji),
+.markdown-reading-view img:not(.emoji),
+.markdown-source-view.mod-cm6 :is(.internal-embed, .image-embed, .media-embed, .cm-embed-block) img:not(.emoji) {
+  --ogd-img-border-color: rgba(148, 163, 184, 0.38);
+  --ogd-img-glass-highlight: rgba(255, 255, 255, 0.84);
+  --ogd-img-glass-lowlight: rgba(15, 23, 42, 0.04);
+  --ogd-img-shadow-soft: rgba(15, 23, 42, 0.08);
+  --ogd-img-shadow-tight: rgba(15, 23, 42, 0.05);
   max-width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--ogd-img-border-color, rgba(148, 163, 184, 0.34));
+  outline: 1px solid var(--ogd-img-glass-highlight, rgba(255, 255, 255, 0.84));
+  outline-offset: -2px;
   border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    inset 0 1px 0 var(--ogd-img-glass-highlight, rgba(255, 255, 255, 0.84)),
+    inset 0 -1px 0 var(--ogd-img-glass-lowlight, rgba(15, 23, 42, 0.04)),
+    0 8px 18px var(--ogd-img-shadow-soft, rgba(15, 23, 42, 0.08)),
+    0 1px 4px var(--ogd-img-shadow-tight, rgba(15, 23, 42, 0.05));
 }
 .markdown-rendered p > img + em,
 .markdown-rendered figcaption {
@@ -4924,8 +4937,15 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line :is(.cm
   background: #151f2f;
   color: var(--ogd-line-strong, #cbd5e1);
 }
-.theme-dark .markdown-rendered img:not(.emoji) {
-  --ogd-img-border-color: rgba(203, 213, 225, 0.24);
+.theme-dark .markdown-rendered img:not(.emoji),
+.theme-dark .markdown-preview-view img:not(.emoji),
+.theme-dark .markdown-reading-view img:not(.emoji),
+.theme-dark .markdown-source-view.mod-cm6 :is(.internal-embed, .image-embed, .media-embed, .cm-embed-block) img:not(.emoji) {
+  --ogd-img-border-color: rgba(203, 213, 225, 0.28);
+  --ogd-img-glass-highlight: rgba(255, 255, 255, 0.18);
+  --ogd-img-glass-lowlight: rgba(0, 0, 0, 0.30);
+  --ogd-img-shadow-soft: rgba(0, 0, 0, 0.30);
+  --ogd-img-shadow-tight: rgba(0, 0, 0, 0.22);
 }
 .theme-dark .markdown-rendered dl,
 .theme-dark .markdown-rendered .definition-list,

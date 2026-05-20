@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Border Effect Preview</title>
+  <style>
+    :root {
+      --page-bg: #eef3f8;
+      --panel-bg: rgba(255, 255, 255, 0.86);
+      --text: #111827;
+      --muted: #64748b;
+      --line: rgba(203, 213, 225, 0.76);
+      --rim: rgba(148, 163, 184, 0.34);
+      --glass-rim: rgba(186, 230, 253, 0.62);
+      --glass-rim-low: rgba(148, 163, 184, 0.32);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(125, 211, 252, 0.24), transparent 34%),
+        radial-gradient(circle at 88% 20%, rgba(203, 213, 225, 0.34), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, var(--page-bg) 100%);
+      color: var(--text);
+      font-family: "Pretendard", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+    }
+
+    .shell {
+      width: 1280px;
+      min-height: 760px;
+      margin: 0 auto;
+      padding: 34px 38px 40px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 620px;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid rgba(203, 213, 225, 0.68);
+      border-radius: 8px;
+      background: var(--panel-bg);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 14px 34px rgba(15, 23, 42, 0.07);
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .sample {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .note {
+      margin: 10px 0 0;
+      min-height: 40px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .plain {
+      border: 1px solid var(--rim);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .liquid-rim {
+      border: 1px solid var(--glass-rim-low);
+      outline: 1px solid rgba(255, 255, 255, 0.84);
+      outline-offset: -2px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        inset 0 -1px 0 rgba(15, 23, 42, 0.05),
+        0 0 0 1px rgba(186, 230, 253, 0.18);
+    }
+
+    .soft-shadow {
+      border: 1px solid rgba(148, 163, 184, 0.36);
+      box-shadow:
+        0 10px 24px rgba(15, 23, 42, 0.10),
+        0 2px 6px rgba(15, 23, 42, 0.06);
+    }
+
+    .liquid-shadow {
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      outline: 1px solid rgba(255, 255, 255, 0.88);
+      outline-offset: -2px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.96),
+        inset 0 -1px 0 rgba(15, 23, 42, 0.05),
+        0 14px 30px rgba(15, 23, 42, 0.11),
+        0 3px 8px rgba(15, 23, 42, 0.06),
+        0 0 0 1px rgba(186, 230, 253, 0.16);
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="title-row">
+      <div>
+        <h1>이미지 외곽선 효과 비교</h1>
+        <p class="subtitle">첨부/삽입 이미지가 문서 배경에 묻히지 않도록 하는 후보입니다. A는 현재 확정값이고, D는 liquid-glass 느낌을 가장 살린 추천 후보입니다.</p>
+      </div>
+      <div class="badge">Preview · 1280×760</div>
+    </div>
+
+    <section class="grid" aria-label="이미지 외곽선 효과 샘플">
+      <article class="card">
+        <h2>A. 현재 기본 1px faint gray</h2>
+        <svg class="sample plain" viewBox="0 0 560 260" role="img" aria-label="기본 외곽선 샘플">
+          <rect width="560" height="260" fill="#ffffff"/>
+          <rect x="28" y="28" width="504" height="204" rx="8" fill="#f8fafc"/>
+          <circle cx="86" cy="82" r="30" fill="#0f5c8d"/>
+          <path d="M73 88h26M70 96h32M78 68h18v20H78z" fill="none" stroke="#e0f2fe" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="132" y="74" fill="#0f172a" font-size="24" font-family="Segoe UI, sans-serif" font-weight="800">zerotrust-02</text>
+          <text x="132" y="105" fill="#64748b" font-size="13" font-family="Segoe UI, sans-serif" font-weight="650">알려진 리스크 없음 · 활성 연결됨</text>
+          <rect x="44" y="145" width="160" height="14" rx="4" fill="#e2e8f0"/>
+          <rect x="44" y="174" width="118" height="14" rx="4" fill="#e2e8f0"/>
+          <rect x="250" y="144" width="230" height="18" rx="5" fill="#e2e8f0"/>
+          <rect x="250" y="181" width="190" height="14" rx="4" fill="#f1f5f9"/>
+        </svg>
+        <p class="note">가장 절제된 기준안. 이미 테두리/그림자가 많은 스크린샷에도 부담이 적습니다.</p>
+      </article>
+
+      <article class="card">
+        <h2>B. Liquid rim only</h2>
+        <svg class="sample liquid-rim" viewBox="0 0 560 260" role="img" aria-label="리퀴드 림 샘플">
+          <rect width="560" height="260" fill="#ffffff"/>
+          <rect x="28" y="28" width="504" height="204" rx="8" fill="#f8fafc"/>
+          <path d="M62 180 C122 132 168 145 220 106 S344 82 418 60 490 58 520 48" fill="none" stroke="#7dd3fc" stroke-width="14" stroke-linecap="round" opacity="0.5"/>
+          <path d="M62 180 C122 132 168 145 220 106 S344 82 418 60 490 58 520 48" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+          <text x="54" y="76" fill="#334155" font-size="21" font-family="Segoe UI, sans-serif" font-weight="800">Report Snapshot</text>
+          <text x="54" y="104" fill="#64748b" font-size="13" font-family="Segoe UI, sans-serif" font-weight="600">inner highlight + faint outer rim</text>
+          <rect x="54" y="204" width="452" height="8" rx="4" fill="#e2e8f0"/>
+        </svg>
+        <p class="note">그림자 없이 glass rim만 추가합니다. 깔끔하지만 흰 배경에서는 A와 차이가 작습니다.</p>
+      </article>
+
+      <article class="card">
+        <h2>C. Soft shadow</h2>
+        <svg class="sample soft-shadow" viewBox="0 0 560 260" role="img" aria-label="부드러운 그림자 샘플">
+          <rect width="560" height="260" fill="#ffffff"/>
+          <rect x="38" y="38" width="484" height="184" rx="10" fill="#f8fafc"/>
+          <rect x="70" y="70" width="112" height="110" rx="10" fill="#e0f2fe"/>
+          <rect x="222" y="70" width="112" height="110" rx="10" fill="#ccfbf1"/>
+          <rect x="374" y="70" width="112" height="110" rx="10" fill="#fef3c7"/>
+          <text x="126" y="204" text-anchor="middle" fill="#334155" font-size="15" font-family="Segoe UI, sans-serif" font-weight="800">Inventory</text>
+          <text x="278" y="204" text-anchor="middle" fill="#334155" font-size="15" font-family="Segoe UI, sans-serif" font-weight="800">Alert</text>
+          <text x="430" y="204" text-anchor="middle" fill="#334155" font-size="15" font-family="Segoe UI, sans-serif" font-weight="800">Action</text>
+        </svg>
+        <p class="note">가시성은 좋지만 문서 안 이미지가 떠 보일 수 있습니다. 보고서보다 대시보드 느낌이 강합니다.</p>
+      </article>
+
+      <article class="card">
+        <h2>D. Liquid rim + restrained shadow</h2>
+        <svg class="sample liquid-shadow" viewBox="0 0 560 260" role="img" aria-label="리퀴드 림과 절제된 그림자 샘플">
+          <rect width="560" height="260" fill="#ffffff"/>
+          <rect x="34" y="34" width="492" height="192" rx="12" fill="#f8fafc"/>
+          <circle cx="136" cy="130" r="50" fill="#e0f2fe" stroke="#7dd3fc"/>
+          <circle cx="280" cy="130" r="50" fill="#ccfbf1" stroke="#5eead4"/>
+          <circle cx="424" cy="130" r="50" fill="#fef3c7" stroke="#fcd34d"/>
+          <g fill="#334155" font-family="Segoe UI, sans-serif" font-size="17" font-weight="800" text-anchor="middle">
+            <text x="136" y="136">IMG</text>
+            <text x="280" y="136">DOC</text>
+            <text x="424" y="136">PDF</text>
+          </g>
+          <path d="M54 54h452" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        </svg>
+        <p class="note">추천 후보. 테두리는 1px 유지하고 내부 하이라이트와 낮은 그림자만 더해 경계를 살립니다.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

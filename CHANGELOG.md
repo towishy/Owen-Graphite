@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.48
+
+- polish: 이미지 외곽선 추천안 D를 적용해 1px 회색 rim에 내부 liquid-glass highlight와 절제된 그림자를 더했습니다.
+- fix: Live Preview 첨부 이미지 경로(`.internal-embed`, `.image-embed`, `.media-embed`, `.cm-embed-block`)에도 동일한 이미지 외곽선 효과가 적용되도록 selector 범위를 확장했습니다.
+- docs: liquid rim, soft shadow, restrained shadow 후보를 비교하는 `docs/v3/research/image-border-effect-preview.html` 및 PNG 샘플을 추가했습니다.
+
 ## v3.1.47
 
 - polish: 문서에 첨부/삽입되는 이미지에 1px 희미한 회색 외곽선을 추가해 흰 배경 스크린샷이 본문 배경에 묻히지 않도록 개선했습니다.

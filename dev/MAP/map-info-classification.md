@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.47`
+- Version: `3.1.48`
 - Source: `src/entry.css`
 - Modules: 26
 - Selectors: 2287
-- Findings: 533
-- Finding severity counts: critical=0, high=0, medium=458, low=75, info=0
+- Findings: 536
+- Finding severity counts: critical=0, high=0, medium=461, low=75, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -23,8 +23,8 @@ Canonical MAP location: `dev/MAP`.
 | high | 82 | `src/base/12-reading-content.css` | 106 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 107 | `src/surfaces/20-reading-tables-code.css` | 152 | 0 | 4 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 67 | `src/surfaces/21-reading-callouts-lists.css` | 121 | 0 | 3 | high-specificity, has-selector, repeated-selector-in-file |
-| medium | 15 | `src/surfaces/22-reading-embeds-workspace.css` | 30 | 0 | 0 | high-specificity |
-| high | 69 | `src/themes/50-dark.css` | 87 | 0 | 0 | high-specificity |
+| medium | 21 | `src/surfaces/22-reading-embeds-workspace.css` | 30 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive |
+| high | 72 | `src/themes/50-dark.css` | 87 | 0 | 0 | high-specificity |
 | high | 33 | `src/features/43-print-base.css` | 63 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 219 | `src/base/13-live-preview.css` | 168 | 0 | 2 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 79 | `src/features/41-feature-presets.css` | 306 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |

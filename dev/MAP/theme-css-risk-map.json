@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.47",
+  "version": "3.1.48",
   "module_order": [
     {
       "import_index": 1,
@@ -163,10 +163,10 @@
   "summary": {
     "module_count": 26,
     "selector_count": 2287,
-    "finding_count": 533,
+    "finding_count": 536,
     "cross_file_selector_group_count": 76,
     "finding_severity_counts": {
-      "medium": 458,
+      "medium": 461,
       "low": 75
     },
     "module_severity_counts": {
@@ -665,13 +665,13 @@
       "entry_line": 47,
       "legacy_id": "03c-reading-embeds-workspace.css",
       "module": "src/surfaces/22-reading-embeds-workspace.css",
-      "line_count": 235,
+      "line_count": 248,
       "selector_count": 30,
-      "declaration_count": 86,
+      "declaration_count": 92,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 5,
-      "live_preview_sensitive_rule_count": 0,
+      "high_specificity_selector_count": 6,
+      "live_preview_sensitive_rule_count": 1,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 0,
       "max_specificity": [
@@ -713,6 +713,10 @@
           4
         ],
         [
+          "outline",
+          3
+        ],
+        [
           "box-shadow",
           3
         ],
@@ -723,16 +727,13 @@
         [
           "border-top",
           2
-        ],
-        [
-          "font-weight",
-          2
         ]
       ],
-      "risk_score": 15,
+      "risk_score": 21,
       "severity": "medium",
       "risk_reasons": [
-        "high-specificity"
+        "high-specificity",
+        "cm6-hit-routing-sensitive"
       ]
     },
     {
@@ -740,12 +741,12 @@
       "entry_line": 49,
       "legacy_id": "04-dark-mode.css",
       "module": "src/themes/50-dark.css",
-      "line_count": 563,
+      "line_count": 570,
       "selector_count": 87,
-      "declaration_count": 271,
+      "declaration_count": 275,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 23,
+      "high_specificity_selector_count": 24,
       "live_preview_sensitive_rule_count": 0,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 0,
@@ -804,7 +805,7 @@
           4
         ]
       ],
-      "risk_score": 69,
+      "risk_score": 72,
       "severity": "high",
       "risk_reasons": [
         "high-specificity"
@@ -5066,7 +5067,23 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/22-reading-embeds-workspace.css",
-      "line": 138,
+      "line": 121,
+      "selector": ".markdown-rendered img:not(.emoji), .markdown-preview-view img:not(.emoji), .markdown-reading-view img:not(.emoji), .markdown-source-view.mod-cm6 :is(.internal-embed, .image-embed, .media-embed, .cm-embed-block) img:not(.emoji)",
+      "message": "specificity=(0, 10, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "cm6-hit-routing-sensitive",
+      "module": "src/surfaces/22-reading-embeds-workspace.css",
+      "line": 121,
+      "selector": ".markdown-rendered img:not(.emoji), .markdown-preview-view img:not(.emoji), .markdown-reading-view img:not(.emoji), .markdown-source-view.mod-cm6 :is(.internal-embed, .image-embed, .media-embed, .cm-embed-block) img:not(.emoji)",
+      "message": "CM6 rule declares vertical box or overlay-sensitive properties"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/surfaces/22-reading-embeds-workspace.css",
+      "line": 148,
       "selector": ".markdown-source-view.mod-cm6 .cm-formatting-header, .markdown-source-view.mod-cm6 .cm-formatting-list, .markdown-source-view.mod-cm6 .cm-formatting-quote",
       "message": "specificity=(0, 9, 0)"
     },
@@ -5074,7 +5091,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/22-reading-embeds-workspace.css",
-      "line": 141,
+      "line": 151,
       "selector": ".markdown-source-view.mod-cm6 .cm-formatting-link, .markdown-source-view.mod-cm6 .cm-formatting-link-string, .markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-formatting-link",
       "message": "specificity=(0, 10, 0)"
     },
@@ -5082,7 +5099,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/22-reading-embeds-workspace.css",
-      "line": 179,
+      "line": 189,
       "selector": ".workspace-leaf, .workspace-leaf-content, .view-content, .markdown-source-view, .markdown-reading-view, .markdown-preview-view, .cm-editor, .cm-scroller, .cm-content",
       "message": "specificity=(0, 9, 0)"
     },
@@ -5090,7 +5107,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/22-reading-embeds-workspace.css",
-      "line": 183,
+      "line": 193,
       "selector": ".workspace-leaf:focus, .workspace-leaf:focus-visible, .workspace-leaf-content:focus, .workspace-leaf-content:focus-visible, .view-content:focus, .view-content:focus-visible, .markdown-source-view:focus, .markdown-source-view:focus-visible, .markdown-reading-view:focus, .markdown-reading-view:focus-visible, .cm-editor:focus, .cm-editor:focus-visible, .cm-scroller:focus, .cm-scroller:focus-visible, .cm-content:focus, .cm-content:focus-visible",
       "message": "specificity=(0, 32, 0)"
     },
@@ -5754,7 +5771,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/themes/50-dark.css",
-      "line": 444,
+      "line": 445,
+      "selector": ".theme-dark .markdown-rendered img:not(.emoji), .theme-dark .markdown-preview-view img:not(.emoji), .theme-dark .markdown-reading-view img:not(.emoji), .theme-dark .markdown-source-view.mod-cm6 :is(.internal-embed, .image-embed, .media-embed, .cm-embed-block) img:not(.emoji)",
+      "message": "specificity=(0, 14, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/themes/50-dark.css",
+      "line": 448,
       "selector": ".theme-dark .markdown-rendered dl, .theme-dark .markdown-rendered .definition-list, .theme-dark .markdown-rendered .definition-row, .theme-dark .markdown-rendered dd, .theme-dark .markdown-rendered .contains-task-list, .theme-dark .markdown-rendered .contains-task-list > .task-list-item, .theme-dark .markdown-rendered .footnotes",
       "message": "specificity=(0, 20, 2)"
     },
@@ -5762,7 +5787,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/themes/50-dark.css",
-      "line": 450,
+      "line": 454,
       "selector": ".theme-dark .markdown-rendered dd, .theme-dark .markdown-rendered :is(.definition-row .desc, .definition-desc), .theme-dark .markdown-rendered figcaption, .theme-dark .markdown-rendered :is(.image-caption, .media-caption, .figure-caption), .theme-dark .markdown-rendered img + em, .theme-dark .markdown-rendered .footnotes",
       "message": "specificity=(0, 15, 2)"
     },
@@ -5770,7 +5795,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/themes/50-dark.css",
-      "line": 460,
+      "line": 464,
       "selector": ".theme-dark .markdown-rendered .callout-icon, .theme-dark .markdown-rendered code:not(pre code), .theme-dark .markdown-rendered kbd",
       "message": "specificity=(0, 8, 3)"
     },
@@ -6850,7 +6875,7 @@
       "lines": [
         {
           "module": "src/surfaces/22-reading-embeds-workspace.css",
-          "line": 164
+          "line": 174
         },
         {
           "module": "src/plugins/61-live-preview-mobile-plugin.css",

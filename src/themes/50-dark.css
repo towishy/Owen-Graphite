@@ -502,8 +502,15 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line :is(.cm
   background: #151f2f;
   color: var(--ogd-line-strong, #cbd5e1);
 }
-.theme-dark .markdown-rendered img:not(.emoji) {
-  --ogd-img-border-color: rgba(203, 213, 225, 0.24);
+.theme-dark .markdown-rendered img:not(.emoji),
+.theme-dark .markdown-preview-view img:not(.emoji),
+.theme-dark .markdown-reading-view img:not(.emoji),
+.theme-dark .markdown-source-view.mod-cm6 :is(.internal-embed, .image-embed, .media-embed, .cm-embed-block) img:not(.emoji) {
+  --ogd-img-border-color: rgba(203, 213, 225, 0.28);
+  --ogd-img-glass-highlight: rgba(255, 255, 255, 0.18);
+  --ogd-img-glass-lowlight: rgba(0, 0, 0, 0.30);
+  --ogd-img-shadow-soft: rgba(0, 0, 0, 0.30);
+  --ogd-img-shadow-tight: rgba(0, 0, 0, 0.22);
 }
 .theme-dark .markdown-rendered dl,
 .theme-dark .markdown-rendered .definition-list,

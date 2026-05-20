@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.47)
+﻿# v3 Release Record (latest: v3.1.48)
 
-**Status**: Current stable / rollback baseline = `v3.1.47` (2026-05-20). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover and extension type badges, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, Key/Value PDF labels, dual PDF header Key/Value pairs, Live Preview/PDF quality parity fixture, codeblock font/color parity, Live Preview/PDF CSS MAP, README feature screenshot, README English community-review summary, PDF document-title hiding, PDF H1 liquid-glass plate polish, Live Preview H1 scale bump, Obsidian vault sync target discovery, direct-owner CSS baseline tooling, unused CSS candidate reporting, minAppVersion 1.12.0, release confidence docs, release-check automation, issue templates, image border polish). v2 source/dev/scripts/docs/screenshots remain fully purged.
+**Status**: Current stable / rollback baseline = `v3.1.48` (2026-05-20). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover and extension type badges, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, Key/Value PDF labels, dual PDF header Key/Value pairs, Live Preview/PDF quality parity fixture, codeblock font/color parity, Live Preview/PDF CSS MAP, README feature screenshot, README English community-review summary, PDF document-title hiding, PDF H1 liquid-glass plate polish, Live Preview H1 scale bump, Obsidian vault sync target discovery, direct-owner CSS baseline tooling, unused CSS candidate reporting, minAppVersion 1.12.0, release confidence docs, release-check automation, issue templates, image border polish, Live Preview image embed rim coverage, liquid-glass image shadow polish). v2 source/dev/scripts/docs/screenshots remain fully purged.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.47` |
+| `manifest.json` version | `3.1.48` |
 | `minAppVersion` | `1.12.0` |
 | `dist/theme-v3.css` lines / `!important` scanner count | 17,501 / 6 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.47.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.48.zip` |
 
 ## What was removed
 
