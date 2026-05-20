@@ -1,0 +1,46 @@
+name: Visual regression
+description: Report a before/after visual change between releases or theme modes.
+title: "[Visual]: "
+labels: [visual-regression]
+body:
+  - type: input
+    id: from-version
+    attributes:
+      label: Previous Owen Graphite version
+      placeholder: "3.1.44"
+    validations:
+      required: true
+  - type: input
+    id: to-version
+    attributes:
+      label: Current Owen Graphite version
+      placeholder: "3.1.46"
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - Reading View
+        - Live Preview
+        - PDF export
+        - File explorer
+        - Search
+        - Settings modal
+        - Canvas or Graph
+        - Mobile
+    validations:
+      required: true
+  - type: textarea
+    id: comparison
+    attributes:
+      label: Before/after evidence
+      description: Attach images captured with the same note, zoom, theme mode, and viewport where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Include OS, Obsidian version, Style Settings changes, and related plugins.

@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.45)
+﻿# v3 Release Record (latest: v3.1.46)
 
-**Status**: Current stable / rollback baseline = `v3.1.45` (2026-05-19). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover and extension type badges, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, Key/Value PDF labels, dual PDF header Key/Value pairs, Live Preview/PDF quality parity fixture, codeblock font/color parity, Live Preview/PDF CSS MAP, README feature screenshot, README English community-review summary, PDF document-title hiding, PDF H1 liquid-glass plate polish, Live Preview H1 scale bump, Obsidian vault sync target discovery, direct-owner CSS baseline tooling, unused CSS candidate reporting, minAppVersion 1.12.0). v2 source/dev/scripts/docs/screenshots remain fully purged.
+**Status**: Current stable / rollback baseline = `v3.1.46` (2026-05-20). Original v3.0.0 from-scratch rewrite shipped 2026-05-16; superseded by the v3.0.x hotfix chain and the v3.1.x feature/lint chain (file-explorer hover and extension type badges, scanner multicolumn cleanup, H1 sizing across reading/live-preview/print, PDF marginalia hardening, build-time dedup, CSS validator cleanup, MAP risk tooling, Key/Value PDF labels, dual PDF header Key/Value pairs, Live Preview/PDF quality parity fixture, codeblock font/color parity, Live Preview/PDF CSS MAP, README feature screenshot, README English community-review summary, PDF document-title hiding, PDF H1 liquid-glass plate polish, Live Preview H1 scale bump, Obsidian vault sync target discovery, direct-owner CSS baseline tooling, unused CSS candidate reporting, minAppVersion 1.12.0, release confidence docs, release-check automation, issue templates). v2 source/dev/scripts/docs/screenshots remain fully purged.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.45` |
+| `manifest.json` version | `3.1.46` |
 | `minAppVersion` | `1.12.0` |
 | `dist/theme-v3.css` lines / `!important` scanner count | 17,501 / 6 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.45.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.46.zip` |
 
 ## What was removed
 
@@ -29,11 +29,13 @@
 | --- | --- |
 | Bundle src → dist/theme-v3.css | `dev/scripts/bundle_v3.py` |
 | Promote bundle to root `theme.css` | `Copy-Item dist\theme-v3.css theme.css -Force` (Windows) |
+| Local release validation sequence | `dev/scripts/release_check.py` |
 | Live Preview hit-routing audit | `dev/scripts/audit_v3_hit_routing.py` |
 | Cross-module duplicate selectors | `dev/scripts/v3_audit_duplicate_selectors.py` |
 | Computed-style fingerprint | `dev/scripts/capture_computed_fingerprint.py` + `dev/scripts/fp_diff_summary.py` |
 | Strip `!important` from src/ | `dev/scripts/v3_strip_important_src.py` (comment-safe) |
 | Build release ZIP | `dev/scripts/build_release.py` |
+| Build release notes from CHANGELOG | `dev/scripts/build_release_notes.py` |
 | Release metadata contract | `dev/scripts/audit_release_metadata.py` |
 | Release ZIP install contract | `dev/scripts/audit_release_zip.py` |
 | Style Settings contract | `dev/scripts/audit_style_settings_contract.py` |
@@ -41,7 +43,7 @@
 | CSS compatibility/budget guard | `dev/scripts/audit_css_compat_budget.py` |
 | Sync to Obsidian vault | `dev/scripts/sync_obsidian_theme.py` |
 | Pre-commit hook | `dev/scripts/hooks/pre-commit` (bundle freshness + metadata/style/docs/CSS/PDF/LP audits) |
-| CI validation | `.github/workflows/validate.yml` (fresh bundle + `theme.css` freshness + metadata/style/docs/CSS/PDF/LP audits) |
+| CI validation | `.github/workflows/validate.yml` via `dev/scripts/release_check.py` |
 | Visual quality smoke check | `dev/scripts/audit_visual_quality_fixture.py` (LP/PDF parity + image/body + code font fixtures; local browser render when available) |
 | Direct-owner baseline/source map | `dev/scripts/build_effective_source_map.py` + `dev/scripts/build_effective_baseline.py` |
 | Direct-owner Style Settings coverage | `dev/scripts/build_style_settings_matrix.py` |
@@ -53,23 +55,17 @@
 
 1. Edit `src/` only. Never hand-edit `theme.css`.
 2. `python dev/scripts/bundle_v3.py` — must end with `OK: bundled ... !important=N` where N is only comment-counts.
-3. Verify `theme.css` is the promoted copy of `dist/theme-v3.css` before commit.
-4. `python dev/scripts/audit_release_metadata.py` — version references must agree across manifest, README, changelog, screenshots docs, and release-plan.
-5. `python dev/scripts/audit_style_settings_contract.py` — Style Settings CSS metadata must match `docs/v3/style-settings-contract.json`.
-6. `python dev/scripts/audit_docs_assets.py` — local Markdown links and README image assets must resolve.
-7. `python dev/scripts/audit_css_compat_budget.py` — unlayered/zero-important contract, bundle budget, and known browser-compat exceptions must hold.
-8. `python dev/scripts/audit_v3_hit_routing.py` — must be clean.
-9. `python dev/scripts/audit_pdf_header_footer.py` — must be clean after any print/report/PDF settings change.
-10. `python dev/scripts/build_src_map.py` — refreshes the MAP baseline.
-11. (Optional) re-capture fingerprint to confirm 0 diff against baseline.
-12. Bump `manifest.json` version, add `CHANGELOG.md` entry.
-13. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for LP/PDF parity, image/body, and code font fixture contracts; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
-14. For direct-owner migrations, refresh effective source/baseline artifacts and confirm provenance maps back to owner modules.
-15. Before unused CSS removal, run `python dev/scripts/build_unused_css_report.py`; only `candidate` selectors are eligible for removal, and `reserved` selectors require purpose-built coverage first.
-16. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
-17. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
-18. Commit, tag `<version>` (and optionally `v<version>`), push tag.
-19. CI (`.github/workflows/release.yml`) builds the GitHub Release.
+3. Promote the bundle to `theme.css`.
+4. Bump `manifest.json` version, add `CHANGELOG.md` entry, and update README/release-plan references.
+5. `python dev/scripts/release_check.py --tag <version>` — runs bundle freshness, release metadata, Style Settings, docs/assets, CSS budget, LP hit-routing, PDF header/footer, and duplicate selector threshold checks.
+6. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for LP/PDF parity, image/body, and code font fixture contracts; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
+7. For direct-owner migrations, refresh effective source/baseline artifacts and confirm provenance maps back to owner modules.
+8. Before unused CSS removal, run `python dev/scripts/build_unused_css_report.py`; only `candidate` selectors are eligible for removal, and `reserved` selectors require purpose-built coverage first.
+9. `python dev/scripts/build_release_notes.py --output dist/release-notes-v<version>.md` — builds release notes from the latest CHANGELOG section.
+10. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
+11. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
+12. Commit, tag `<version>` (and optionally `v<version>`), push tag.
+13. CI (`.github/workflows/release.yml`) validates, builds release notes, builds the ZIP, audits it, and publishes the GitHub Release.
 
 ## README Feature Intro Procedure
 

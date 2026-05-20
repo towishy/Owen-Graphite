@@ -1,0 +1,70 @@
+name: Bug report
+description: Report a visual, layout, or compatibility problem in Owen Graphite.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: obsidian-version
+    attributes:
+      label: Obsidian version
+      placeholder: "1.12.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Theme mode
+      options:
+        - Light
+        - Dark
+        - Report
+        - PDF export
+        - Mobile
+    validations:
+      required: true
+  - type: textarea
+    id: style-settings
+    attributes:
+      label: Style Settings options
+      description: List changed Owen Graphite options or paste the relevant preset name.
+  - type: textarea
+    id: plugins
+    attributes:
+      label: Related plugins
+      description: Mention Style Settings, Dataview, Tasks, Canvas, Graph, or other plugins involved.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: "1. Open...\n2. Enable...\n3. See..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or sample note
+      description: Attach screenshots, PDF output, or a small Markdown sample if possible.

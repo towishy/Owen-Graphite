@@ -1,11 +1,11 @@
 ﻿# Contributing to Owen Graphite v3
 
-Owen Graphite v3 (현재 안정 릴리즈 v3.1.43)은 처음부터 다시 작성된 코드베이스입니다. 본 문서는 v3 기여자가 따라야 할 워크플로우와 검증 절차를 정리합니다.
+Owen Graphite v3 (현재 안정 릴리즈 v3.1.46)은 처음부터 다시 작성된 코드베이스입니다. 본 문서는 v3 기여자가 따라야 할 워크플로우와 검증 절차를 정리합니다.
 
 ## 0. 사전 준비
 
 - Python 3.10+ (`.venv\Scripts\python.exe` 권장; Windows 기준)
-- Obsidian 1.6.0+
+- Obsidian 1.12.0+
 - (선택) Style Settings 플러그인 — 옵션 토글 확인용
 
 ```powershell
@@ -39,17 +39,38 @@ src/
 2. **편집**: `src/` 안에서만 수정. `theme.css` 는 직접 편집하지 않습니다.
 3. **번들**: `python dev/scripts/bundle_v3.py`
 4. **승격**: `Copy-Item dist\theme-v3.css theme.css -Force` (또는 macOS/Linux `cp`)
-5. **감사**:
+5. **빠른 전체 점검**:
+   - `python dev/scripts/release_check.py` — 번들 freshness, 메타데이터, Style Settings, docs/assets, CSS budget, Live Preview, PDF header/footer, 중복 selector threshold를 한 번에 확인
+6. **개별 감사**:
    - `python dev/scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
    - `python dev/scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
    - `python dev/scripts/build_unused_css_report.py` — unused CSS 제거 전 후보/예약 selector 분류
-6. **시각 회귀 (선택)**:
+7. **시각 회귀 (선택)**:
    - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme light`
    - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme dark`
    - `python dev/scripts/fp_diff_summary.py [--theme dark]` — 베이스라인과 0 diff 유지
-7. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
+8. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
 
-### Direct-owner migration guard
+## 2.1 변경 유형별 검증 매트릭스
+
+| 변경 유형 | 최소 검증 | 추가 확인 |
+| --- | --- | --- |
+| `src/tokens/` 색·간격·타이포 토큰 | `python dev/scripts/release_check.py` | Light/Dark fingerprint diff 또는 실제 Obsidian 화면 비교 |
+| `src/base/` / `src/surfaces/` 본문·표·코드·callout | `python dev/scripts/release_check.py` | 긴 표, 긴 코드 토큰, callout 내부 목록 fixture 확인 |
+| `src/chrome/` 탭·탐색기·검색·설정 UI | `python dev/scripts/release_check.py` | hover/focus가 row height를 바꾸지 않는지 수동 확인 |
+| `src/features/42-report-print-polish.css` 또는 PDF 설정 | `python dev/scripts/release_check.py` | PDF export 샘플, header/footer 겹침, 페이지 분할 확인 |
+| Style Settings id/default/title 변경 | `python dev/scripts/audit_style_settings_contract.py` | [docs/v3/style-settings-contract.md](docs/v3/style-settings-contract.md)와 JSON 계약 동시 갱신 |
+| README 이미지·문서 링크 변경 | `python dev/scripts/audit_docs_assets.py` | 새 이미지가 mobile/desktop 폭에서 읽히는지 확인 |
+| unused CSS 제거 | `python dev/scripts/build_unused_css_report.py` | [docs/v3/unused-css-roadmap.md](docs/v3/unused-css-roadmap.md)의 bucket별 제거 조건 충족 |
+
+## 2.2 README 기능 소개와 이미지
+
+- README의 `2. 신기능 소개`에는 최신 3개 기능만 유지합니다.
+- 네 번째로 밀린 기능은 [docs/v3/feature-history.md](docs/v3/feature-history.md)로 이동합니다.
+- 새 기능 이미지는 기능이 실제로 보이는 SVG/PNG를 사용하고, README 링크는 `python dev/scripts/audit_docs_assets.py`로 검증합니다.
+- 기본 Obsidian과 비교가 필요한 변경은 [docs/v3/visual-comparison-guide.md](docs/v3/visual-comparison-guide.md)의 캡처 기준을 따릅니다.
+
+## 3. Direct-owner migration guard
 
 `src/polish/*` late layer는 retired 상태입니다. 새 보정은 원 소유 모듈(`base/`, `surfaces/`, `chrome/`, `features/`, `tokens/`)에 직접 적용합니다.
 
@@ -63,7 +84,7 @@ src/
 
 unused CSS 정리는 `dev/MAP/unused-css-candidates.md`를 먼저 생성한 뒤 진행합니다. `candidate`가 아닌 `reserved` selector는 Obsidian 상태, 플러그인, 문서 의미, Style Settings, print/mobile 조건처럼 fixture에 없을 수 있는 경로이므로 별도 coverage 없이 제거하지 않습니다. 다음 coverage 보강은 리포트의 `Reserved Reason Summary`와 `Coverage Gap Hotspots`를 기준으로 정합니다.
 
-## 3. 보존 계약 (Preservation Contract)
+## 4. 보존 계약 (Preservation Contract)
 
 v3는 v2.30.14의 픽셀 결과를 **보존**합니다. 모든 변경은 다음을 통과해야 합니다.
 
@@ -76,7 +97,7 @@ v3는 v2.30.14의 픽셀 결과를 **보존**합니다. 모든 변경은 다음�
 
 상세 계약은 [docs/v3/design-spec.md](docs/v3/design-spec.md) 참고.
 
-## 4. `!important` 정책
+## 5. `!important` 정책
 
 declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 
@@ -86,7 +107,7 @@ declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 
 자동 제거 도구 `dev/scripts/v3_strip_important_src.py` 는 주석 안의 `!important` 토큰은 건드리지 않습니다.
 
-## 5. 디자인 가이드라인 (Liquid Glass core)
+## 6. 디자인 가이드라인 (Liquid Glass core)
 
 - **Resting state**: 흰색/회색 frosted glass, 좌측 vertical rail 금지
 - **Hover**: 살짝 밝아지고 들어올림, wide soft downward shadow, 얕은 pastel 톤
@@ -96,7 +117,7 @@ declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 
 자세한 원칙은 [docs/v3/surface-state-matrix.md](docs/v3/surface-state-matrix.md).
 
-## 6. Pre-commit hook (선택)
+## 7. Pre-commit hook (선택)
 
 ```bash
 ln -sf ../../dev/scripts/hooks/pre-commit .git/hooks/pre-commit
@@ -105,7 +126,7 @@ chmod +x dev/scripts/hooks/pre-commit
 
 Windows에서는 hook 내용을 `.git/hooks/pre-commit.ps1` 로 직접 옮기거나, WSL/Git Bash 환경에서 실행하세요. Hook은 번들 + hit-routing 감사를 강제합니다.
 
-## 7. Release 절차
+## 8. Release 절차
 
 `docs/v3/release-plan.md` 의 R0~R6 단계 참조.
 
@@ -113,5 +134,8 @@ Windows에서는 hook 내용을 `.git/hooks/pre-commit.ps1` 로 직접 옮기거
 
 1. `manifest.json` 의 `version` 갱신
 2. `CHANGELOG.md` 에 새 섹션 추가
-3. `python dev/scripts/build_release.py` → `dist/Owen-Graphite-<version>.zip`
-4. `git tag <version>` + `git push origin <version>` (CI가 GitHub Release 생성)
+3. `python dev/scripts/release_check.py --tag <version>`
+4. `python dev/scripts/build_release_notes.py --output dist/release-notes-v<version>.md`
+5. `python dev/scripts/build_release.py` → `dist/Owen-Graphite-<version>.zip`
+6. `python dev/scripts/audit_release_zip.py`
+7. `git tag <version>` + `git push origin <version>` (CI가 GitHub Release 생성)

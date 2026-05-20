@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.45** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.46** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -10,6 +10,38 @@
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
 [![!important](https://img.shields.io/badge/!important-0-0d9488?style=flat-square)](docs/v3/cascade-research.md)
+
+[English README](README.en.md) · [Style Settings presets](docs/v3/style-settings-presets.md) · [Compatibility matrix](docs/plugin-compatibility.md)
+
+## Why Owen Graphite?
+
+| 작업 흐름 | 바로 좋아지는 지점 |
+| --- | --- |
+| 긴 한글·영문 기술 문서 | CJK/Latin 혼합 문단, 제목, 코드, 표의 밀도와 리듬을 안정화 |
+| Live Preview 중심 작성 | 편집 화면과 Reading View의 표·코드·callout 표면 차이를 줄임 |
+| PDF 보고서 제출 | 첫 페이지 헤더, 마지막 페이지 푸터, 자동 넘버링, 페이지 분할 완화 지원 |
+| 반복 작성 워크스페이스 | 탭, 탐색기, 검색, 설정, 팝오버를 조용한 liquid-glass 톤으로 정리 |
+
+## Release Confidence
+
+| Guard | Current status | Evidence |
+| --- | --- | --- |
+| Bundle freshness | `theme.css` must match `dist/theme-v3.css` | [release plan](docs/v3/release-plan.md) |
+| Zero-important cascade | declaration-level `!important` policy is enforced | [cascade research](docs/v3/cascade-research.md) |
+| Style Settings contract | option ids/defaults are audited against the contract | [contract](docs/v3/style-settings-contract.md) |
+| Docs/assets links | local Markdown links and README images are audited | [contributing](CONTRIBUTING.md) |
+| Live Preview/PDF parity | LP hit-routing, PDF header/footer, and visual fixture checks are scripted | [release plan](docs/v3/release-plan.md) |
+
+## Visual Tour
+
+| Surface | Preview |
+| --- | --- |
+| Light mode | ![Light Mode](screenshots/light.png) |
+| Dark mode | ![Dark Mode](screenshots/dark.png) |
+| Report mode | ![Report Mode](screenshots/report.png) |
+| File explorer type badges | ![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg) |
+
+비교 스크린샷을 새로 캡처할 때는 [visual comparison guide](docs/v3/visual-comparison-guide.md)를 기준으로 기본 Obsidian과 Owen Graphite를 같은 문서·같은 뷰포트에서 촬영합니다.
 
 ## English Overview
 
@@ -44,8 +76,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.45` |
-| **베이스라인 / 롤백 기준** | `v3.1.45` |
+| **버전** | `3.1.46` |
+| **베이스라인 / 롤백 기준** | `v3.1.46` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -122,7 +154,7 @@ Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax �
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.45.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.46.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -131,7 +163,7 @@ Live Preview, Reading View, PDF Export의 코드블럭 헤더·폰트·syntax �
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.45.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.46.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 

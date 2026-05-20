@@ -1,0 +1,39 @@
+name: Feature request
+description: Suggest a theme improvement or Style Settings option.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Workflow problem
+      description: Describe the writing, reading, workspace, or PDF workflow this should improve.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Explain what Owen Graphite should change or add.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Typography
+        - Tables and code
+        - Callouts and embeds
+        - Workspace chrome
+        - Style Settings
+        - PDF/report mode
+        - Plugin compatibility
+        - Mobile
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References or screenshots
+      description: Add examples, screenshots, or links that clarify the desired result.

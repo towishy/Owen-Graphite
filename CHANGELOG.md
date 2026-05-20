@@ -1,9 +1,18 @@
 # Changelog
 
+## v3.1.46
+
+- docs: README 첫 화면에 사용 시나리오, release confidence, visual tour를 추가해 테마의 강점과 검증 상태를 더 빠르게 파악할 수 있도록 정리했습니다.
+- docs: 영어 README, Style Settings 프리셋, 시각 비교 가이드, unused CSS 로드맵, 릴리스 노트 workflow 문서를 추가했습니다.
+- guard: `release_check.py`로 로컬/CI/release 검증 흐름을 단일 진입점으로 묶고, CHANGELOG 기반 release note 생성 스크립트를 추가했습니다.
+- repo: GitHub Issue 템플릿을 추가해 버그, 시각 회귀, 기능 요청에 필요한 재현 정보를 표준화했습니다.
+
 ## v3.1.45
 
 - docs: Obsidian community review가 요구하는 영어 테마 설명을 README 상단에 추가했습니다.
 - docs: README 파일 탐색기 확장자 배지 SVG를 한글 안전 폰트, 단일 배경, liquid-glass 화살표, 텍스트 overflow 검증 기준으로 정리했습니다.
+- docs: README 요약, 검증 상태, 시각 갤러리, Style Settings 프리셋, 호환성/unused CSS/릴리스 노트 문서를 연결했습니다.
+- guard: 로컬 릴리스 점검을 묶는 `dev/scripts/release_check.py`와 changelog 기반 릴리스 노트 생성 스크립트를 추가했습니다.
 
 ## v3.1.44
 
