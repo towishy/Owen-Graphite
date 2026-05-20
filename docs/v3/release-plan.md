@@ -61,10 +61,10 @@
 6. `python dev/scripts/audit_visual_quality_fixture.py --static-only` for LP/PDF parity, image/body, and code font fixture contracts; omit `--static-only` locally to render screenshot/PDF with Chrome or Edge.
 7. For direct-owner migrations, refresh effective source/baseline artifacts and confirm provenance maps back to owner modules.
 8. Before unused CSS removal, run `python dev/scripts/build_unused_css_report.py`; only `candidate` selectors are eligible for removal, and `reserved` selectors require purpose-built coverage first.
-9. `python dev/scripts/build_release_notes.py --output dist/release-notes-v<version>.md` — builds release notes from the latest CHANGELOG section.
+9. `python dev/scripts/build_release_notes.py --output dist/release-notes-<version>.md` — builds release notes from the latest CHANGELOG section.
 10. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
 11. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
-12. Commit, tag `<version>` (and optionally `v<version>`), push tag.
+12. Commit, tag `<version>` using numeric semver only, and push the numeric tag.
 13. CI (`.github/workflows/release.yml`) validates, builds release notes, builds the ZIP, audits it, and publishes the GitHub Release.
 
 ## README Feature Intro Procedure

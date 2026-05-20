@@ -42,12 +42,14 @@ def assert_contains(path: str, needle: str) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--tag", help="Optional git/GitHub tag to compare with manifest version; leading v is ignored.")
+    parser.add_argument("--tag", help="Optional numeric git/GitHub tag to compare with manifest version.")
     args = parser.parse_args()
 
     try:
         version = manifest_version()
-        expected_tag = args.tag.removeprefix("v") if args.tag else None
+        expected_tag = args.tag if args.tag else None
+        if expected_tag and not SEMVER_RE.match(expected_tag):
+            raise AssertionError(f"release tag must be numeric semver without a leading v: {args.tag!r}")
         if expected_tag and expected_tag != version:
             raise AssertionError(f"tag {args.tag!r} does not match manifest version {version!r}")
 
@@ -65,7 +67,7 @@ def main() -> int:
         assert_contains("docs/v3/release-plan.md", f"| `manifest.json` version | `{version}` |")
         assert_contains("docs/v3/release-plan.md", f"dist/Owen-Graphite-{version}.zip")
 
-        print(f"OK: release metadata is consistent for v{version}")
+        print(f"OK: release metadata is consistent for {version}")
         return 0
     except Exception as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
