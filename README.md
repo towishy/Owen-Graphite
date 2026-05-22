@@ -42,7 +42,6 @@
 | Top tabs and floating toolbar | ![상단 탭과 플로팅 툴바](screenshots/readme/top-tabs-liquid-glass.svg) |
 | Writing surface and floating toolbar | ![문서 작성 화면과 플로팅 툴바](screenshots/readme/workspace-writing-surface.jpg) |
 | Style Settings report controls | ![Style Settings 보고서 옵션](screenshots/readme/style-settings-report-options.jpg) |
-| File explorer glass navigation | ![파일 탐색기 글래스 네비게이션](screenshots/readme/file-explorer-glass-navigation.jpg) |
 | Owen Editor toolbar controls | ![Owen Editor 툴바 설정](screenshots/readme/owen-editor-toolbar-settings.jpg) |
 | File explorer type badges | ![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg) |
 
@@ -122,9 +121,9 @@ This release refines the top workspace tabs into an attached liquid-glass shape.
 
 ### v3.1.50 — README 화면 투어 / README Visual Tour Refresh
 
-README 상단 Visual Tour에 실제 작업 화면과 설정 화면 스크린샷을 보강했습니다. 문서 작성 surface, 플로팅 툴바, Style Settings의 보고서 옵션, 파일 탐색기 glass navigation, Owen Editor 툴바 설정을 첫 화면에서 바로 확인할 수 있습니다.
+README 상단 Visual Tour에 실제 작업 화면과 설정 화면 스크린샷을 보강했습니다. 문서 작성 surface, 플로팅 툴바, Style Settings의 보고서 옵션, Owen Editor 툴바 설정을 첫 화면에서 바로 확인할 수 있습니다.
 
-This release expands the README Visual Tour with real workspace screenshots for the writing surface, floating toolbar, report-oriented Style Settings controls, file explorer glass navigation, and Owen Editor toolbar options.
+This release expands the README Visual Tour with real workspace screenshots for the writing surface, floating toolbar, report-oriented Style Settings controls, and Owen Editor toolbar options.
 
 ![문서 작성 화면과 플로팅 툴바](screenshots/readme/workspace-writing-surface.jpg)
 
@@ -132,8 +131,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 | --- | --- |
 | 작업 화면 | 문서 표면, floating glass toolbar, 사이드바 톤을 한 화면에서 확인 |
 | 설정 화면 | Style Settings의 본문/보고서 옵션과 Owen Editor 툴바 설정 이미지 추가 |
-| 탐색기 | glass navigation, active row, 타입 배지 상태를 README 투어에 노출 |
-| 문서 자산 | 새 JPG 4장을 `screenshots/readme/` 인벤토리에 등록 |
+| 문서 자산 | 새 JPG 3장을 `screenshots/readme/` 인벤토리에 등록 |
 
 ### v3.1.49 — 설정 제목과 검색 Focus Rim / Settings Headings and Search Focus Rim
 
