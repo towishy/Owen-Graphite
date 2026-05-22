@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.51
+
+- polish: 상단 workspace tab을 첨부 이미지 기준의 attached liquid-glass 형태로 정리하고, 활성 탭의 sky rim을 위/좌/우 동일 톤으로 맞췄습니다.
+- polish: 비활성 탭에도 보일듯 말듯한 외곽선을 추가해 탭 경계가 사라지지 않도록 하면서, Obsidian 기본 separator 라인은 계속 숨깁니다.
+- docs: 새 상단 탭/플로팅 툴바 신기능 이미지를 README 신기능 소개와 스크린샷 인벤토리에 등록했습니다.
+
 ## v3.1.50
 
 - docs: README Visual Tour에 문서 작성 화면, Style Settings 보고서 옵션, 파일 탐색기 glass navigation, Owen Editor 툴바 설정 스크린샷을 추가했습니다.

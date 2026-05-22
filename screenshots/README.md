@@ -1,6 +1,6 @@
 # Screenshots
 
-Owen Graphite v3.1.50 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.51 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
@@ -8,16 +8,13 @@ Owen Graphite v3.1.50 마켓플레이스 등록용 스크린샷.
 | `dark.png` | Dark | README 다크 모드 이미지 |
 | `report.png` | Report | README 보고서 / PDF 모드 이미지 |
 | `thumbnail.png` | — | 커뮤니티 카탈로그 썸네일 |
+| `readme/top-tabs-liquid-glass.svg` | Workspace chrome | README 상단 탭 liquid-glass 신기능 이미지 |
 | `readme/owen-knowledge-work-stack.svg` | — | Owen 지식 작업 스택 다이어그램 |
 | `readme/owen-ai-document-stack.svg` | — | Owen AI 문서 제작 다이어그램 |
 | `readme/pdf-key-value-labels.png` | PDF | README PDF Key/Value 라벨 기능 이미지 |
 | `readme/pdf-dual-key-value-header.png` | PDF | README PDF 헤더 Key/Value 2쌍 기능 이미지 |
 | `readme/pdf-live-preview-parity.png` | PDF | README Live Preview / PDF 품질 패리티 이미지 |
 | `readme/code-font-clarity.png` | Live Preview / PDF | README 코드블럭 폰트·색상 패리티 이미지 |
-| `readme/workspace-writing-surface.jpg` | Workspace / Editor | README 문서 작성 화면과 플로팅 툴바 이미지 |
-| `readme/style-settings-report-options.jpg` | Style Settings | README 보고서/본문 Style Settings 옵션 이미지 |
-| `readme/file-explorer-glass-navigation.jpg` | File Explorer | README 파일 탐색기 glass navigation 이미지 |
-| `readme/owen-editor-toolbar-settings.jpg` | Owen Editor | README Owen Editor 툴바 설정 이미지 |
 | `readme/file-explorer-type-badges.svg` | File Explorer | README 파일 탐색기 확장자 배지 기능 이미지 |
 | `readme/search-focus-rim-liquid-aqua.png` | Settings / Search | README 검색 focus rim 기능 이미지 |
 | `readme/sponsor-coffee.svg` | — | 후원 배너 |

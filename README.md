@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.50** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.51** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -39,6 +39,7 @@
 | Light mode | ![Light Mode](screenshots/light.png) |
 | Dark mode | ![Dark Mode](screenshots/dark.png) |
 | Report mode | ![Report Mode](screenshots/report.png) |
+| Top tabs and floating toolbar | ![상단 탭과 플로팅 툴바](screenshots/readme/top-tabs-liquid-glass.svg) |
 | Writing surface and floating toolbar | ![문서 작성 화면과 플로팅 툴바](screenshots/readme/workspace-writing-surface.jpg) |
 | Style Settings report controls | ![Style Settings 보고서 옵션](screenshots/readme/style-settings-report-options.jpg) |
 | File explorer glass navigation | ![파일 탐색기 글래스 네비게이션](screenshots/readme/file-explorer-glass-navigation.jpg) |
@@ -80,8 +81,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.50` |
-| **베이스라인 / 롤백 기준** | `v3.1.50` |
+| **버전** | `3.1.51` |
+| **베이스라인 / 롤백 기준** | `v3.1.51` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -103,6 +104,21 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
 
 Recent updates are listed here so English-speaking users and reviewers can quickly see what changed in the latest stable releases.
+
+### v3.1.51 — 상단 탭 Liquid Glass / Top Tab Liquid Glass
+
+상단 workspace tab을 첨부 화면 기준의 붙은 탭 형태로 다듬었습니다. 활성 탭은 위·좌·우 rim이 같은 sky 톤으로 이어지고, 비활성 탭은 분리선 대신 보일듯 말듯한 graphite outline으로 경계를 남깁니다. 플로팅 툴바와 같은 frosted glass 톤 안에서 탭 상태가 더 조용하고 명확하게 읽히도록 정리했습니다.
+
+This release refines the top workspace tabs into an attached liquid-glass shape. The active tab uses one consistent sky rim across the top and sides, while inactive tabs keep a barely visible graphite outline instead of hard divider lines.
+
+![상단 탭과 플로팅 툴바](screenshots/readme/top-tabs-liquid-glass.svg)
+
+| 구분 | 개선 내용 |
+| --- | --- |
+| 활성 탭 | sky rim을 위/좌/우 동일 톤으로 맞추고 두 겹처럼 보이던 top highlight 제거 |
+| 비활성 탭 | 매우 낮은 alpha의 graphite outline으로 경계를 보일듯 말듯하게 유지 |
+| 분리선 | Obsidian 기본 tab separator와 pseudo-element 라인을 숨겨 `|`처럼 보이는 선 제거 |
+| 문서 자산 | 첨부 화면 구도의 README 신기능 이미지를 `screenshots/readme/`에 추가 |
 
 ### v3.1.50 — README 화면 투어 / README Visual Tour Refresh
 
@@ -134,21 +150,6 @@ This release aligns Style Settings group titles and core settings section headin
 | 적용 범위 | 단축키 검색, 검색 패널, 설정 modal의 검색 입력 컨테이너 |
 | 다크 모드 | 어두운 배경에서는 약한 cyan rim과 절제된 shadow로 별도 조정 |
 
-### v3.1.44 — 파일 탐색기 확장자 배지 / File Explorer Type Badges
-
-파일 탐색기의 오른쪽 확장자 텍스트를 숨기고, 앞쪽 문서 아이콘 자리에 `MD`, `HTML`, `SVG`, `PDF`, `CFG` 같은 타입 배지를 표시합니다. 오른쪽 배지가 차지하던 폭을 파일명 표시 영역으로 돌려 긴 문서 제목이 더 늦게 말줄임되며, 문서·이미지·코드·설정·오피스·미디어·Obsidian 특화 파일을 한눈에 구분할 수 있습니다.
-
-This update hides the right-side extension label and replaces the leading document icon with compact type badges such as `MD`, `HTML`, `SVG`, `PDF`, and `CFG`. The file name receives more horizontal space, so long document titles stay readable for longer in the file explorer.
-
-![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg)
-
-| 구분 | 개선 내용 |
-| --- | --- |
-| 제목 표시 | 파일 row가 사용 가능한 폭을 끝까지 쓰도록 조정 |
-| 확장자 표시 | 오른쪽 `HTML` 같은 확장자 배지를 숨기고 앞쪽 타입 배지로 통합 |
-| 대응 범위 | Markdown, HTML/SVG/PDF, 코드, 설정, 오피스, 이미지, 오디오/비디오, Obsidian canvas/excalidraw |
-| 가독성 | 타입 배지와 파일명 사이 간격을 확보해 목록 스캔성을 개선 |
-
 이전 신기능 소개는 [docs/v3/feature-history.md](docs/v3/feature-history.md)에 보관합니다.
 
 ---
@@ -163,7 +164,7 @@ This update hides the right-side extension label and replaces the leading docume
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.50.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.51.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -172,7 +173,7 @@ This update hides the right-side extension label and replaces the leading docume
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.50.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.51.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 
