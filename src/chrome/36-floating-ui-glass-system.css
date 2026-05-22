@@ -233,6 +233,58 @@
     color: var(--text-normal);
     transform: var(--ogd-hover-lift, translateY(-1px));
   }
+
+  /* Bottom document frame uses status-bar items as compact chips; separators would overlap icons. */
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment)::before,
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment)::after,
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before,
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::after {
+    content: none;
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    opacity: 0;
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 176px;
+    min-height: 28px;
+    padding-inline: 12px;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) :is(svg, .svg-icon, .clickable-icon, .status-bar-item-icon) {
+    flex: 0 0 auto;
+    margin-inline: 0 4px;
+    min-width: 16px;
+  }
+
+  body:not(.is-mobile) .status-bar > .status-bar-item :is(.status-bar-item, .status-bar-item-segment) {
+    display: inline;
+    min-width: 0;
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
 }
 
 /* Settings rows: keep hover glass covering the full outer row box. */

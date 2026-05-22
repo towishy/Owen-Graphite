@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.51** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.52** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -80,8 +80,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.51` |
-| **베이스라인 / 롤백 기준** | `v3.1.51` |
+| **버전** | `3.1.52` |
+| **베이스라인 / 롤백 기준** | `v3.1.52` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -103,6 +103,21 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
 
 Recent updates are listed here so English-speaking users and reviewers can quickly see what changed in the latest stable releases.
+
+### v3.1.52 — Workspace Chrome Connected Glass
+
+상단 활성 탭, 하단 문서 프레임, vault switcher를 같은 sky-rim liquid glass 언어로 맞췄습니다. 활성 탭은 문서 표면과 이어지는 bridge를 갖고, 비활성 탭은 별도 pill처럼 분리되며, 하단 문서 제목과 `Owen-WIKI` vault switcher는 활성 파일 pill 계열의 frosted glass 표면으로 정리했습니다.
+
+This release aligns the active workspace tab, bottom document frame, and vault switcher with one connected sky-rim liquid-glass language. Active tabs now read as attached to the document surface, while inactive tabs stay separated and quiet.
+
+![Workspace Chrome Connected Glass](screenshots/readme/workspace-chrome-connected-glass.svg)
+
+| 구분 | 개선 내용 |
+| --- | --- |
+| 활성 탭 | 문서 표면과 이어지는 bridge, 중앙 정렬 제목, 낮춘 top shadow로 attached tab 느낌 강화 |
+| 비활성 탭 | 제목 중앙 정렬과 낮은 graphite edge로 활성 탭 뒤에 겹치지 않는 독립 pill 유지 |
+| 하단 프레임 | 문서 제목·상태칩·외부 그림자를 같은 frosted glass 계층으로 정리 |
+| Vault switcher | `Owen-WIKI` 박스를 활성 파일 pill 계열 sky rim glass로 통일 |
 
 ### v3.1.51 — 상단 탭 Liquid Glass / Top Tab Liquid Glass
 
@@ -133,21 +148,6 @@ This release expands the README Visual Tour with real workspace screenshots for 
 | 설정 화면 | Style Settings의 본문/보고서 옵션과 Owen Editor 툴바 설정 이미지 추가 |
 | 문서 자산 | 새 JPG 3장을 `screenshots/readme/` 인벤토리에 등록 |
 
-### v3.1.49 — 설정 제목과 검색 Focus Rim / Settings Headings and Search Focus Rim
-
-Style Settings의 그룹 제목과 Obsidian 설정 본문 섹션 제목을 같은 liquid header bar 언어로 정리했습니다. 단축키 검색·검색 패널 입력창의 강한 파란 focus rim은 추천안 B `Liquid Aqua`로 낮춰, 입력 상태는 분명하게 보이되 설정 화면 전체의 회색·흰색 glass 톤을 해치지 않도록 조정했습니다.
-
-This release aligns Style Settings group titles and core settings section headings with the same liquid header treatment. Search and hotkey filter inputs now use the selected `Liquid Aqua` focus rim, reducing the stronger blue glow while keeping keyboard focus clear.
-
-![검색 Focus Rim Liquid Aqua](screenshots/readme/search-focus-rim-liquid-aqua.png)
-
-| 구분 | 개선 내용 |
-| --- | --- |
-| 설정 제목 | 그룹/섹션 제목에 liquid glass bar와 좌측 gradient rail 적용 |
-| 검색 focus | 강한 cyan outline을 낮은 채도 aqua rim, 내부 highlight, 얕은 halo로 교체 |
-| 적용 범위 | 단축키 검색, 검색 패널, 설정 modal의 검색 입력 컨테이너 |
-| 다크 모드 | 어두운 배경에서는 약한 cyan rim과 절제된 shadow로 별도 조정 |
-
 이전 신기능 소개는 [docs/v3/feature-history.md](docs/v3/feature-history.md)에 보관합니다.
 
 ---
@@ -162,7 +162,7 @@ This release aligns Style Settings group titles and core settings section headin
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.51.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.52.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -171,7 +171,7 @@ This release aligns Style Settings group titles and core settings section headin
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.51.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.52.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 

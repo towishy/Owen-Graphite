@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.52
+
+- polish: 활성 workspace tab과 문서 표면이 이어지는 connected glass 처리, 비활성 탭 제목 중앙 정렬, 빈 탭 영역 하단 hairline을 정리했습니다.
+- polish: 하단 문서 프레임과 vault switcher에 활성 파일 pill 계열의 sky rim / frosted glass surface를 적용하고, 상태칩·문서 제목 위계를 조정했습니다.
+- fix: Windows 타이틀바 버튼 영역을 침범하지 않도록 탭 라인 구현을 background 기반으로 정리하고, Owen Editor top/bottom 툴바 위치와 문서 시작/끝 여백을 분기했습니다.
+- docs: README 최신 신기능 소개와 전용 SVG 이미지를 v3.1.52 기준으로 갱신했습니다.
+
 ## v3.1.51
 
 - polish: 상단 workspace tab을 첨부 이미지 기준의 attached liquid-glass 형태로 정리하고, 활성 탭의 sky rim을 위/좌/우 동일 톤으로 맞췄습니다.

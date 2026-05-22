@@ -1,6 +1,6 @@
 # Screenshots
 
-Owen Graphite v3.1.51 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.52 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
@@ -8,6 +8,7 @@ Owen Graphite v3.1.51 마켓플레이스 등록용 스크린샷.
 | `dark.png` | Dark | README 다크 모드 이미지 |
 | `report.png` | Report | README 보고서 / PDF 모드 이미지 |
 | `thumbnail.png` | — | 커뮤니티 카탈로그 썸네일 |
+| `readme/workspace-chrome-connected-glass.svg` | Workspace chrome | README 연결형 탭·하단 프레임·vault switcher 신기능 이미지 |
 | `readme/top-tabs-liquid-glass.svg` | Workspace chrome | README 상단 탭 liquid-glass 신기능 이미지 |
 | `readme/owen-knowledge-work-stack.svg` | — | Owen 지식 작업 스택 다이어그램 |
 | `readme/owen-ai-document-stack.svg` | — | Owen AI 문서 제작 다이어그램 |

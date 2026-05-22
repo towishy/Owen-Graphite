@@ -10,8 +10,11 @@
     --ogd-tab-glass-shadow-hover: none;
     --ogd-tab-header-bg: var(--ogd-surface-transparent, transparent);
     --ogd-tab-header-border-color: var(--ogd-surface-transparent, transparent);
-    --ogd-tab-header-border-bottom: var(--ogd-surface-transparent, transparent);
+    --ogd-tab-header-border-bottom: rgba(203, 213, 225, 0.34);
     --ogd-tab-header-shadow: var(--ogd-shadow-none, none);
+    --ogd-tab-connected-bg: radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.86), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.64));
+    --ogd-tab-connected-bridge: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.66));
+    --ogd-chrome-hairline: rgba(148, 163, 184, 0.22);
   }
 
   body:not(.is-mobile).theme-dark {
@@ -22,6 +25,10 @@
     --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent);
     --ogd-tab-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(255, 255, 255, 0.04), 0 12px 26px -18px rgba(0, 0, 0, 0.72), 0 5px 12px -10px rgba(56, 189, 248, 0.18);
     --ogd-tab-glass-shadow-hover: none;
+    --ogd-tab-header-border-bottom: rgba(203, 213, 225, 0.14);
+    --ogd-tab-connected-bg: radial-gradient(circle at 72% 18%, rgba(148, 163, 184, 0.18), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.50));
+    --ogd-tab-connected-bridge: linear-gradient(180deg, rgba(51, 65, 85, 0.62), rgba(30, 41, 59, 0.48));
+    --ogd-chrome-hairline: rgba(203, 213, 225, 0.14);
   }
 
   body:not(.is-mobile).ogd-glass-off {
@@ -52,6 +59,38 @@
 
   body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
     gap: 8px;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header-container-inner {
+    position: relative;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header-container-inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--ogd-chrome-hairline);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split {
+    position: relative;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--ogd-chrome-hairline);
+    pointer-events: none;
+    z-index: 2;
   }
 
   body:not(.is-mobile) .workspace-tab-header {
@@ -85,14 +124,57 @@
     transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
   }
 
+  body:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+    position: relative;
+    z-index: 2;
+    border-color: rgba(203, 213, 225, 0.36);
+    border-bottom-color: rgba(203, 213, 225, 0.34);
+    border-radius: 13px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.34);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62), 0 3px 10px rgba(15, 23, 42, 0.04);
+  }
+
   body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
-    --ogd-tab-header-bg: var(--ogd-tab-glass-bg);
-    --ogd-tab-header-border-color: var(--ogd-tab-glass-border);
-    --ogd-tab-header-border-bottom: var(--ogd-tab-glass-border-bottom);
-    --ogd-tab-header-shadow: var(--ogd-tab-glass-shadow);
-    transform: translateY(1px);
+    --ogd-tab-header-bg: var(--ogd-tab-connected-bg);
+    --ogd-tab-header-border-color: rgba(203, 213, 225, 0.52);
+    --ogd-tab-header-border-bottom: var(--ogd-surface-transparent, transparent);
+    --ogd-tab-header-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.82), inset 0 -1px 0 rgba(255, 255, 255, 0.38), 0 8px 18px rgba(15, 23, 42, 0.06);
+    position: relative;
+    z-index: 4;
+    margin-bottom: -4px;
+    transform: translateY(4px);
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft);
     backdrop-filter: var(--ogd-glass-filter-soft);
+  }
+
+  body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -6px;
+    height: 7px;
+    border-inline: 1px solid rgba(203, 213, 225, 0.32);
+    background: var(--ogd-tab-connected-bridge);
+    pointer-events: none;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner {
+    --ogd-tab-header-border-color: rgba(203, 213, 225, 0.18);
+    --ogd-tab-header-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(148, 163, 184, 0.08), 0 8px 18px rgba(0, 0, 0, 0.22);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+    border-color: rgba(203, 213, 225, 0.14);
+    border-bottom-color: rgba(203, 213, 225, 0.16);
+    background: rgba(30, 41, 59, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 3px 10px rgba(0, 0, 0, 0.14);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    border-inline-color: rgba(203, 213, 225, 0.12);
   }
 
   body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
@@ -215,10 +297,11 @@
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) {
+    justify-content: flex-start;
     min-height: 26px;
     margin-top: 3px;
     margin-bottom: 1px;
-    padding-inline: 8px 10px;
+    padding-inline: 16px 12px;
     border-color: rgba(148, 163, 184, 0.22);
     background: rgba(248, 250, 252, 0.78);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
@@ -226,6 +309,10 @@
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
     color: var(--ogd-text-slate, #334155);
     font-size: 12.5px;
     font-weight: 850;
@@ -242,10 +329,11 @@
   }
 
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
+    justify-content: flex-start;
     min-height: 26px;
     margin-top: 3px;
     margin-bottom: 1px;
-    padding-inline: 8px 10px;
+    padding-inline: 16px 12px;
     border-color: rgba(148, 163, 184, 0.22);
     background: rgba(248, 250, 252, 0.72);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
@@ -253,6 +341,10 @@
   }
 
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
     color: var(--ogd-text-slate, #334155);
     font-size: 12.5px;
     font-weight: 850;

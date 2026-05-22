@@ -6556,12 +6556,19 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin >
    borders and dark-mode rules. Liquid glass tokens for HTML tables
    live in dev/10d-liquid-glass-core.css.
    ===================================================================== */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+  background: #f5f7fa;
+}
 /* Inline code in HTML <table> cells: keep behavior aligned with Reading view */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td code {
   white-space: nowrap;
 }
 
 /* Dark mode parity for HTML <table> in Live Preview */
+.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
+  background: #2a2c33;
+}
+
 /* Relaxed-spacing parity (light + dark) */
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
   margin: 0;
@@ -12897,6 +12904,21 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     font-weight: 700;
   }
 
+  body:not(.is-mobile) .workspace-drawer-vault-switcher {
+    border: 1px solid rgba(125, 211, 252, 0.58);
+    border-radius: 9px;
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.62)));
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07));
+    backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 165, 233, 0.12), inset 0 0 18px rgba(255, 255, 255, 0.34), 0 10px 22px rgba(15, 23, 42, 0.12), 0 3px 10px rgba(56, 189, 248, 0.10);
+  }
+
+  body:not(.is-mobile) .workspace-drawer-vault-switcher:hover {
+    border-color: rgba(125, 211, 252, 0.72);
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.84), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.68)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 165, 233, 0.14), inset 0 0 18px rgba(255, 255, 255, 0.38), 0 12px 26px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(56, 189, 248, 0.13);
+  }
+
   body:not(.is-mobile).theme-dark :is(
     .workspace-sidedock-vault-profile,
     .workspace-sidedock-vault-profile-container,
@@ -12934,6 +12956,18 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile).theme-dark :is(.workspace-sidedock-vault-name, .workspace-drawer-vault-name, .workspace-drawer-vault-switcher-name) {
     color: var(--ogd-text-inverted, #f8fafc);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-drawer-vault-switcher {
+    border-color: rgba(186, 230, 253, 0.30);
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.18), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(15, 23, 42, 0.56)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.34), inset 0 0 16px rgba(148, 163, 184, 0.10), 0 10px 24px rgba(0, 0, 0, 0.36), 0 4px 12px rgba(56, 189, 248, 0.06);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-drawer-vault-switcher:hover {
+    border-color: rgba(186, 230, 253, 0.40);
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.22), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.88), rgba(15, 23, 42, 0.60)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20), inset 0 -1px 0 rgba(0, 0, 0, 0.30), inset 0 0 16px rgba(148, 163, 184, 0.12), 0 12px 28px rgba(0, 0, 0, 0.40), 0 4px 12px rgba(56, 189, 248, 0.08);
   }
 }
 
@@ -13329,20 +13363,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
       var(--ogd-glass-bg-strong, linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.48)));
   }
 
-  body:not(.is-mobile) .view-header-title::after {
-    content: "";
-    position: absolute;
-    left: 4px;
-    right: 4px;
-    bottom: 0;
-    height: 3px;
-    border-radius: var(--ogd-radius-pill, 999px);
-    background: linear-gradient(90deg, rgba(100, 116, 139, 0.08), rgba(148, 163, 184, 0.30), rgba(100, 116, 139, 0.08));
-    box-shadow: 0 0 8px rgba(100, 116, 139, 0.10);
-    pointer-events: none;
-    transition: box-shadow 160ms ease, opacity 160ms ease;
-  }
-
   body:not(.is-mobile) :is(.view-header-breadcrumb, .view-header-title):is(:hover, :focus, :focus-visible) {
     color: var(--ogd-text-strong, #111827);
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.60), 0 0 12px rgba(100, 116, 139, 0.12);
@@ -13354,10 +13374,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin-right: 7px;
     opacity: 1;
     transform: scale(1);
-  }
-
-  body:not(.is-mobile) .view-header-title:is(:hover, :focus, :focus-visible)::after {
-    box-shadow: 0 0 12px rgba(100, 116, 139, 0.16);
   }
 
   body:not(.is-mobile) :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
@@ -13399,6 +13415,305 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body:not(.is-mobile).theme-dark :is(.view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
     color: rgba(203, 213, 225, 0.48);
+  }
+}
+
+
+/* ============================================================
+  v3.1.52 — Bottom document frame
+  Desktop default. Moves the root view header to a low bottom frame
+  and lets the status bar read as right-side chips.
+   ============================================================ */
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) {
+    --ogd-bottom-document-frame-height: 40px;
+    --ogd-bottom-document-frame-gap: 6px;
+    --ogd-bottom-document-frame-inset: clamp(28px, 4vw, 64px);
+    --ogd-bottom-document-frame-reserve: calc(var(--ogd-bottom-document-frame-height) + (var(--ogd-bottom-document-frame-gap) * 2) + 8px);
+    --ogd-bottom-document-frame-status-space: min(52vw, 680px);
+    --ogd-bottom-document-frame-source-header-height: 40px;
+    --ogd-bottom-document-toolbar-top-gap: 20px;
+    --ogd-bottom-document-toolbar-lift: 160px;
+    --ogd-bottom-document-toolbar-height: 50px;
+    --ogd-bottom-document-toolbar-gap: 8px;
+    --ogd-bottom-document-toolbar-margin: 32px;
+    --ogd-editor-toolbar-height: 42px;
+    --ogd-editor-toolbar-content-gap: 16px;
+    --ogd-editor-toolbar-top-offset: 54px;
+    --ogd-editor-toolbar-top-content-lift: 30px;
+    --ogd-bottom-document-toolbar-clearance: calc(var(--ogd-editor-toolbar-height) + var(--ogd-bottom-document-toolbar-margin) + var(--ogd-bottom-document-toolbar-gap));
+    --ogd-bottom-document-toolbar-floor-offset: calc(var(--ogd-bottom-document-frame-height) + var(--ogd-bottom-document-toolbar-margin));
+    --ogd-bottom-document-toolbar-bottom: var(--ogd-bottom-document-toolbar-floor-offset);
+    --ogd-bottom-document-toolbar-boundary-offset: calc(-1 * (var(--ogd-bottom-document-frame-source-header-height) + var(--ogd-bottom-document-toolbar-lift) + var(--ogd-bottom-document-toolbar-height) + var(--ogd-bottom-document-toolbar-gap)) + var(--ogd-bottom-document-toolbar-top-gap));
+    --toolbar-vertical-offset: var(--ogd-bottom-document-toolbar-boundary-offset);
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content {
+    position: relative;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content > .view-header {
+    position: absolute;
+    left: var(--ogd-bottom-document-frame-inset);
+    right: var(--ogd-bottom-document-frame-inset);
+    bottom: var(--ogd-bottom-document-frame-gap);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: var(--ogd-bottom-document-frame-height);
+    height: var(--ogd-bottom-document-frame-height);
+    padding: 4px calc(var(--ogd-bottom-document-frame-status-space) + 10px) 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.62);
+    border-radius: 12px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.62), transparent 56%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.30), rgba(226, 232, 240, 0.16));
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.10));
+    backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.10));
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.70),
+      inset 0 0 22px rgba(255, 255, 255, 0.24),
+      inset 0 -1px 0 rgba(100, 116, 139, 0.10),
+      0 16px 38px rgba(15, 23, 42, 0.17),
+      0 5px 14px rgba(15, 23, 42, 0.08),
+      0 0 22px rgba(15, 23, 42, 0.06),
+      0 -10px 26px rgba(15, 23, 42, 0.07);
+    overflow: hidden;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content > .view-content {
+    position: absolute;
+    inset: 0 0 var(--ogd-bottom-document-frame-reserve) 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content > .view-content :is(.markdown-source-view.mod-cm6 .cm-scroller, .markdown-preview-view .markdown-preview-sizer, .markdown-reading-view .markdown-preview-sizer) {
+    padding-bottom: var(--ogd-bottom-document-toolbar-clearance);
+  }
+
+  body:not(.is-mobile) :is(.cm-editor, .markdown-source-view, .markdown-preview-view) .editing-toolbar,
+  body:not(.is-mobile) .editing-toolbar,
+  body:not(.is-mobile) #editingToolbarModalBar,
+  body:not(.is-mobile) .editingToolbarModalBar,
+  body:not(.is-mobile) .workspace-leaf-content #editingToolbarModalBar {
+    margin-top: 0;
+    transform: translate(var(--toolbar-horizontal-offset, 16px), min(var(--toolbar-vertical-offset, var(--ogd-bottom-document-toolbar-boundary-offset)), var(--ogd-bottom-document-toolbar-boundary-offset)));
+  }
+
+  body:not(.is-mobile).owen-editor-toolbar-top .owen-editor-glass-toolbar.mod-top {
+    top: var(--ogd-editor-toolbar-top-offset);
+    bottom: auto;
+  }
+
+  body:not(.is-mobile).owen-editor-toolbar-bottom .owen-editor-glass-toolbar.mod-bottom {
+    top: auto;
+    bottom: var(--ogd-bottom-document-toolbar-bottom);
+  }
+
+  body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-sizer,
+  body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type="markdown"] .markdown-source-view .cm-scroller {
+    padding-top: calc(var(--ogd-editor-toolbar-top-offset) + var(--ogd-editor-toolbar-height) + var(--ogd-editor-toolbar-content-gap) - var(--ogd-editor-toolbar-top-content-lift));
+    scroll-padding-top: calc(var(--ogd-editor-toolbar-top-offset) + var(--ogd-editor-toolbar-height) + var(--ogd-editor-toolbar-content-gap) - var(--ogd-editor-toolbar-top-content-lift));
+  }
+
+  body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-bottom .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-sizer,
+  body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-bottom .workspace-leaf-content[data-type="markdown"] .markdown-source-view .cm-scroller {
+    padding-bottom: var(--ogd-bottom-document-toolbar-clearance);
+    scroll-padding-bottom: var(--ogd-bottom-document-toolbar-clearance);
+  }
+
+  body:not(.is-mobile) .mod-root .view-header :is(.view-header-nav-buttons, .view-actions) {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    min-width: 0;
+    margin: 0;
+  }
+
+  body:not(.is-mobile) .mod-root .view-header .view-actions {
+    order: 0;
+    margin-right: 6px;
+  }
+
+  body:not(.is-mobile) .mod-root .view-header .view-header-nav-buttons {
+    order: 1;
+  }
+
+  body:not(.is-mobile) .mod-root .view-header .view-header-title-container {
+    order: 2;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    min-width: 0;
+    max-width: 100%;
+    gap: 5px;
+    margin-inline: 8px;
+    overflow: hidden;
+  }
+
+  body:not(.is-mobile) .mod-root .view-header :is(.view-header-breadcrumb, .view-header-breadcrumb-separator, .view-header-breadcrumb-separator span) {
+    display: none;
+  }
+
+  body:not(.is-mobile) .mod-root .view-header :is(.view-header-breadcrumb, .view-header-title) {
+    min-height: 28px;
+    max-width: min(26vw, 260px);
+    padding-block: 2px;
+    font-size: 13.6px;
+  }
+
+  body:not(.is-mobile) .mod-root .view-header .view-header-title {
+    max-width: min(42vw, 520px);
+    padding: 5px 16px;
+    border: 1px solid rgba(125, 211, 252, 0.58);
+    border-radius: 9px;
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.62)));
+    -webkit-backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07));
+    backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 165, 233, 0.12), inset 0 0 18px rgba(255, 255, 255, 0.34), 0 10px 22px rgba(15, 23, 42, 0.12), 0 3px 10px rgba(56, 189, 248, 0.10);
+    font-size: 14.2px;
+    font-weight: 820;
+    color: var(--ogd-text-strong, #111827);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.62);
+  }
+
+  body:not(.is-mobile) .mod-root .view-header :is(.view-action, .clickable-icon, button.clickable-icon) {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 4px;
+    border-radius: 9px;
+    border-color: rgba(203, 213, 225, 0.48);
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56), 0 1px 4px rgba(15, 23, 42, 0.04);
+  }
+
+  body:not(.is-mobile) .mod-root .view-header .view-header-title:is(:hover, :focus, :focus-visible) {
+    border-color: rgba(125, 211, 252, 0.72);
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.84), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.68)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 165, 233, 0.14), inset 0 0 18px rgba(255, 255, 255, 0.38), 0 12px 26px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(56, 189, 248, 0.13);
+  }
+
+  body:not(.is-mobile) .status-bar {
+    position: fixed;
+    right: calc(var(--ogd-bottom-document-frame-inset) + 10px);
+    bottom: calc(var(--ogd-bottom-document-frame-gap) + 6px);
+    z-index: 35;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    box-sizing: border-box;
+    max-width: calc(var(--ogd-bottom-document-frame-status-space) - 14px);
+    height: 28px;
+    min-height: 28px;
+    padding: 0;
+    border: 0;
+    background: var(--ogd-surface-transparent, transparent);
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) {
+    margin: 0;
+    padding: 0 12px;
+    border: 1px solid rgba(203, 213, 225, 0.56);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.30);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(145%) brightness(1.04));
+    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(145%) brightness(1.04));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58), 0 1px 5px rgba(15, 23, 42, 0.05);
+    color: var(--text-muted);
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment):is(:hover, :focus-visible) {
+    border-color: rgba(125, 211, 252, 0.58);
+    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(224, 242, 254, 0.58)));
+    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 8px 18px rgba(15, 23, 42, 0.12));
+    color: var(--text-normal);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-leaf-content > .view-header {
+    border-color: rgba(203, 213, 225, 0.20);
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(148, 163, 184, 0.16), transparent 58%),
+      linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.30));
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 0 22px rgba(148, 163, 184, 0.10),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.34),
+      0 14px 34px rgba(0, 0, 0, 0.30),
+      0 3px 10px rgba(0, 0, 0, 0.17),
+      0 0 22px rgba(0, 0, 0, 0.18),
+      0 -12px 30px rgba(0, 0, 0, 0.26);
+  }
+
+  body:not(.is-mobile).theme-dark .mod-root .view-header .view-header-title {
+    border-color: rgba(186, 230, 253, 0.30);
+    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.18), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(15, 23, 42, 0.56)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.34), inset 0 0 16px rgba(148, 163, 184, 0.10), 0 10px 24px rgba(0, 0, 0, 0.36), 0 4px 12px rgba(56, 189, 248, 0.06);
+    color: var(--ogd-text-inverted, #f8fafc);
+    text-shadow: 0 0 12px rgba(147, 197, 253, 0.10);
+  }
+
+  body:not(.is-mobile).theme-dark .mod-root .view-header .view-header-title:is(:hover, :focus, :focus-visible) {
+    border-color: rgba(186, 230, 253, 0.40);
+    background: var(--ogd-glass-bg-hover, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.22), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.88), rgba(15, 23, 42, 0.60)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20), inset 0 -1px 0 rgba(0, 0, 0, 0.30), inset 0 0 16px rgba(148, 163, 184, 0.12), 0 12px 28px rgba(0, 0, 0, 0.40), 0 4px 12px rgba(56, 189, 248, 0.08);
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar > :is(.status-bar-item, .status-bar-item-segment) {
+    border-color: rgba(203, 213, 225, 0.16);
+    background: rgba(30, 41, 59, 0.34);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 7px rgba(0, 0, 0, 0.20);
+    color: var(--text-muted);
+  }
+
+  body:not(.is-mobile).theme-dark .status-bar > :is(.status-bar-item, .status-bar-item-segment):is(:hover, :focus-visible) {
+    border-color: rgba(186, 230, 253, 0.30);
+    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(51, 65, 85, 0.66), rgba(15, 23, 42, 0.42)));
+    color: var(--text-normal);
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1180px) {
+  body:not(.is-mobile) {
+    --ogd-bottom-document-frame-status-space: min(46vw, 520px);
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) {
+    max-width: 148px;
+    padding-inline: 10px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 980px) {
+  body:not(.is-mobile) {
+    --ogd-bottom-document-frame-status-space: min(40vw, 380px);
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) {
+    max-width: 116px;
+    padding-inline: 8px;
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment):is([aria-label*="word" i], [aria-label*="character" i], [data-tooltip*="word" i], [data-tooltip*="character" i], [title*="word" i], [title*="character" i]) {
+    display: none;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 820px) {
+  body:not(.is-mobile) {
+    --ogd-bottom-document-frame-status-space: min(34vw, 260px);
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment):not(:last-child) {
+    display: none;
   }
 }
 
@@ -14052,6 +14367,58 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: var(--ogd-glass-shadow-hover);
     color: var(--text-normal);
     transform: var(--ogd-hover-lift, translateY(-1px));
+  }
+
+  /* Bottom document frame uses status-bar items as compact chips; separators would overlap icons. */
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment)::before,
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment)::after,
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before,
+  body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::after {
+    content: none;
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    opacity: 0;
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 176px;
+    min-height: 28px;
+    padding-inline: 12px;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) :is(svg, .svg-icon, .clickable-icon, .status-bar-item-icon) {
+    flex: 0 0 auto;
+    margin-inline: 0 4px;
+    min-width: 16px;
+  }
+
+  body:not(.is-mobile) .status-bar > .status-bar-item :is(.status-bar-item, .status-bar-item-segment) {
+    display: inline;
+    min-width: 0;
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: nowrap;
   }
 }
 
@@ -14826,8 +15193,11 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     --ogd-tab-glass-shadow-hover: none;
     --ogd-tab-header-bg: var(--ogd-surface-transparent, transparent);
     --ogd-tab-header-border-color: var(--ogd-surface-transparent, transparent);
-    --ogd-tab-header-border-bottom: var(--ogd-surface-transparent, transparent);
+    --ogd-tab-header-border-bottom: rgba(203, 213, 225, 0.34);
     --ogd-tab-header-shadow: var(--ogd-shadow-none, none);
+    --ogd-tab-connected-bg: radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.86), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.64));
+    --ogd-tab-connected-bridge: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.66));
+    --ogd-chrome-hairline: rgba(148, 163, 184, 0.22);
   }
 
   body:not(.is-mobile).theme-dark {
@@ -14838,6 +15208,10 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent);
     --ogd-tab-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(255, 255, 255, 0.04), 0 12px 26px -18px rgba(0, 0, 0, 0.72), 0 5px 12px -10px rgba(56, 189, 248, 0.18);
     --ogd-tab-glass-shadow-hover: none;
+    --ogd-tab-header-border-bottom: rgba(203, 213, 225, 0.14);
+    --ogd-tab-connected-bg: radial-gradient(circle at 72% 18%, rgba(148, 163, 184, 0.18), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.50));
+    --ogd-tab-connected-bridge: linear-gradient(180deg, rgba(51, 65, 85, 0.62), rgba(30, 41, 59, 0.48));
+    --ogd-chrome-hairline: rgba(203, 213, 225, 0.14);
   }
 
   body:not(.is-mobile).ogd-glass-off {
@@ -14868,6 +15242,38 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
 
   body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
     gap: 8px;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header-container-inner {
+    position: relative;
+  }
+
+  body:not(.is-mobile) .workspace-tab-header-container-inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--ogd-chrome-hairline);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split {
+    position: relative;
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-left-split::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--ogd-chrome-hairline);
+    pointer-events: none;
+    z-index: 2;
   }
 
   body:not(.is-mobile) .workspace-tab-header {
@@ -14901,14 +15307,57 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
   }
 
+  body:not(.is-mobile) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+    position: relative;
+    z-index: 2;
+    border-color: rgba(203, 213, 225, 0.36);
+    border-bottom-color: rgba(203, 213, 225, 0.34);
+    border-radius: 13px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.34);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62), 0 3px 10px rgba(15, 23, 42, 0.04);
+  }
+
   body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner {
-    --ogd-tab-header-bg: var(--ogd-tab-glass-bg);
-    --ogd-tab-header-border-color: var(--ogd-tab-glass-border);
-    --ogd-tab-header-border-bottom: var(--ogd-tab-glass-border-bottom);
-    --ogd-tab-header-shadow: var(--ogd-tab-glass-shadow);
-    transform: translateY(1px);
+    --ogd-tab-header-bg: var(--ogd-tab-connected-bg);
+    --ogd-tab-header-border-color: rgba(203, 213, 225, 0.52);
+    --ogd-tab-header-border-bottom: var(--ogd-surface-transparent, transparent);
+    --ogd-tab-header-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.82), inset 0 -1px 0 rgba(255, 255, 255, 0.38), 0 8px 18px rgba(15, 23, 42, 0.06);
+    position: relative;
+    z-index: 4;
+    margin-bottom: -4px;
+    transform: translateY(4px);
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft);
     backdrop-filter: var(--ogd-glass-filter-soft);
+  }
+
+  body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -6px;
+    height: 7px;
+    border-inline: 1px solid rgba(203, 213, 225, 0.32);
+    background: var(--ogd-tab-connected-bridge);
+    pointer-events: none;
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner {
+    --ogd-tab-header-border-color: rgba(203, 213, 225, 0.18);
+    --ogd-tab-header-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(148, 163, 184, 0.08), 0 8px 18px rgba(0, 0, 0, 0.22);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+    border-color: rgba(203, 213, 225, 0.14);
+    border-bottom-color: rgba(203, 213, 225, 0.16);
+    background: rgba(30, 41, 59, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 3px 10px rgba(0, 0, 0, 0.14);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    border-inline-color: rgba(203, 213, 225, 0.12);
   }
 
   body:not(.is-mobile) .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
@@ -15031,10 +15480,11 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) {
+    justify-content: flex-start;
     min-height: 26px;
     margin-top: 3px;
     margin-bottom: 1px;
-    padding-inline: 8px 10px;
+    padding-inline: 16px 12px;
     border-color: rgba(148, 163, 184, 0.22);
     background: rgba(248, 250, 252, 0.78);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
@@ -15042,6 +15492,10 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
     color: var(--ogd-text-slate, #334155);
     font-size: 12.5px;
     font-weight: 850;
@@ -15058,10 +15512,11 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   }
 
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
+    justify-content: flex-start;
     min-height: 26px;
     margin-top: 3px;
     margin-bottom: 1px;
-    padding-inline: 8px 10px;
+    padding-inline: 16px 12px;
     border-color: rgba(148, 163, 184, 0.22);
     background: rgba(248, 250, 252, 0.72);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
@@ -15069,6 +15524,10 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   }
 
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
     color: var(--ogd-text-slate, #334155);
     font-size: 12.5px;
     font-weight: 850;
@@ -17058,36 +17517,59 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
 
   body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
     background: rgba(255, 255, 255, 0.20);
-    border-color: rgba(148, 163, 184, 0.16);
-    border-bottom-color: transparent;
-    border-radius: 13px 13px 0 0;
+    border-color: rgba(203, 213, 225, 0.36);
+    border-bottom-color: rgba(203, 213, 225, 0.34);
+    border-radius: 13px;
+    margin-bottom: 4px;
     outline: none;
-    box-shadow: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62), 0 3px 10px rgba(15, 23, 42, 0.04);
   }
 
   body:not(.is-mobile) .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
     background: rgba(255, 255, 255, 0.42);
     border-color: rgba(148, 163, 184, 0.24);
-    border-bottom-color: transparent;
+    border-bottom-color: rgba(203, 213, 225, 0.34);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 10px rgba(15, 23, 42, 0.06);
   }
 
   body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
-    background: radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.92), transparent 0 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 249, 255, 0.66));
-    border-color: rgba(125, 211, 252, 0.64);
+    background: radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.86), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.64));
+    border-color: rgba(203, 213, 225, 0.52);
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
     outline: none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 8px 16px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(56, 189, 248, 0.08);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.92), inset -1px 0 0 rgba(255, 255, 255, 0.50), inset 0 -1px 0 rgba(255, 255, 255, 0.32), -5px 0 16px rgba(15, 23, 42, 0.08), 5px 0 16px rgba(15, 23, 42, 0.07), 0 -1px 2px rgba(15, 23, 42, 0.018), 0 8px 18px rgba(15, 23, 42, 0.06);
+    position: relative;
+    z-index: 4;
+    min-height: 42px;
+    padding-block: 5px 6px;
+    margin-bottom: -1px;
     transform: translateY(1px);
   }
 
+  body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -4px;
+    height: 5px;
+    border-inline: 1px solid rgba(203, 213, 225, 0.32);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
+    pointer-events: none;
+  }
+
   body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title {
+    flex: 1 1 auto;
+    text-align: center;
     color: var(--text-muted);
     font-weight: 620;
   }
 
   body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    flex: 1 1 auto;
+    text-align: center;
     color: var(--text-normal);
     font-weight: 800;
   }
@@ -17102,30 +17584,39 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
   body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
     background: rgba(15, 23, 42, 0.20);
     border-color: rgba(148, 163, 184, 0.14);
-    border-bottom-color: transparent;
+    border-bottom-color: rgba(203, 213, 225, 0.16);
   }
 
   body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
     background: rgba(51, 65, 85, 0.34);
     border-color: rgba(148, 163, 184, 0.22);
-    border-bottom-color: transparent;
+    border-bottom-color: rgba(203, 213, 225, 0.16);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 5px 12px rgba(0, 0, 0, 0.18);
   }
 
   body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
-    background: radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.18), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.66), rgba(15, 23, 42, 0.48));
-    border-color: rgba(186, 230, 253, 0.36);
+    background: radial-gradient(circle at 72% 18%, rgba(148, 163, 184, 0.18), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.50));
+    border-color: rgba(203, 213, 225, 0.18);
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 16px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(56, 189, 248, 0.08);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.18), inset -1px 0 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(148, 163, 184, 0.08), -5px 0 16px rgba(0, 0, 0, 0.24), 5px 0 16px rgba(0, 0, 0, 0.22), 0 -1px 2px rgba(0, 0, 0, 0.06), 0 8px 18px rgba(0, 0, 0, 0.22);
     transform: translateY(1px);
   }
 
+  body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    border-inline-color: rgba(203, 213, 225, 0.12);
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.74), rgba(30, 41, 59, 0.58));
+  }
+
   body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title {
+    flex: 1 1 auto;
+    text-align: center;
     color: var(--text-muted);
   }
 
   body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    flex: 1 1 auto;
+    text-align: center;
     color: var(--text-normal);
   }
 }
@@ -17138,62 +17629,108 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container {
-    box-shadow: none;
+    background-image: linear-gradient(var(--ogd-chrome-hairline, rgba(148, 163, 184, 0.22)), var(--ogd-chrome-hairline, rgba(148, 163, 184, 0.22)));
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 100% 1px;
+    box-shadow: 0 1px 5px rgba(15, 23, 42, 0.045);
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner {
     background: transparent;
     border-color: rgba(148, 163, 184, 0.14);
-    border-bottom-color: transparent;
-    border-radius: 13px 13px 0 0;
-    box-shadow: none;
+    border-bottom-color: rgba(203, 213, 225, 0.34);
+    border-radius: 13px;
+    margin-bottom: 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62), 0 3px 10px rgba(15, 23, 42, 0.04);
     transform: none;
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(248, 250, 252, 0.50));
     border-color: rgba(148, 163, 184, 0.24);
-    border-bottom-color: transparent;
+    border-bottom-color: rgba(203, 213, 225, 0.34);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 4px 10px rgba(15, 23, 42, 0.055);
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner {
     background: linear-gradient(180deg, rgba(51, 65, 85, 0.46), rgba(15, 23, 42, 0.30));
     border-color: rgba(148, 163, 184, 0.22);
-    border-bottom-color: transparent;
+    border-bottom-color: rgba(203, 213, 225, 0.16);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 5px 12px rgba(0, 0, 0, 0.16);
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active {
     border-top-color: transparent;
+    flex: 0 0 260px;
+    max-width: 260px;
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
-    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.86), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 249, 255, 0.70)));
-    border-color: rgba(125, 211, 252, 0.64);
+    background: radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.86), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.64));
+    border-color: rgba(203, 213, 225, 0.52);
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(14, 165, 233, 0.04), 0 8px 16px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(56, 189, 248, 0.08);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.92), inset -1px 0 0 rgba(255, 255, 255, 0.50), inset 0 -1px 0 rgba(255, 255, 255, 0.32), -5px 0 16px rgba(15, 23, 42, 0.08), 5px 0 16px rgba(15, 23, 42, 0.07), 0 -1px 2px rgba(15, 23, 42, 0.018), 0 8px 18px rgba(15, 23, 42, 0.06);
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding-inline: 18px 14px;
+    padding-block: 5px 6px;
+    margin-bottom: -1px;
     transform: translateY(1px);
+  }
+
+  body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -4px;
+    height: 5px;
+    border-inline: 1px solid rgba(203, 213, 225, 0.32);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
+    pointer-events: none;
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    flex: 1 1 auto;
+    padding-left: 0;
+    text-align: center;
     color: #0f172a;
     font-weight: 850;
+    transform: translateY(-3px);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container {
+    background-image: linear-gradient(var(--ogd-chrome-hairline, rgba(203, 213, 225, 0.14)), var(--ogd-chrome-hairline, rgba(203, 213, 225, 0.14)));
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
-    background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.22), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.88), rgba(15, 23, 42, 0.62)));
-    border-color: rgba(186, 230, 253, 0.36);
+    background: radial-gradient(circle at 72% 18%, rgba(148, 163, 184, 0.18), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.50));
+    border-color: rgba(203, 213, 225, 0.18);
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.30), 0 2px 6px rgba(56, 189, 248, 0.08);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.18), inset -1px 0 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(148, 163, 184, 0.08), -5px 0 16px rgba(0, 0, 0, 0.24), 5px 0 16px rgba(0, 0, 0, 0.22), 0 -1px 2px rgba(0, 0, 0, 0.06), 0 8px 18px rgba(0, 0, 0, 0.22);
     transform: translateY(1px);
   }
 
+  body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    border-inline-color: rgba(203, 213, 225, 0.12);
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.74), rgba(30, 41, 59, 0.58));
+  }
+
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    flex: 1 1 auto;
+    padding-left: 0;
+    text-align: center;
     color: var(--ogd-text-inverted, #f8fafc);
     font-weight: 850;
+    transform: translateY(-3px);
   }
 }
 
@@ -17404,8 +17941,6 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
   Loaded after 10d-liquid-glass-core.css per dev/_order.txt so its
   late position keeps the cascade ordering identical to vanilla 10d.
    ============================================================ */
-/* v2.30.13: removed two byte-identical duplicates that were also restated in the v2.30.16 block below (zebra-disabled-permanently :nth-child(even) td background, and theme-dark:not(.ogd-report-mode) table token block). v2.30.16 is the consolidated owner; cascade outcome unchanged. */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover); }
 .theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.56); --ogd-table-row-hover: rgba(51, 65, 85, 0.42); --ogd-table-row-even: rgba(15, 23, 42, 0.26); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
 .theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62)); --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74)); --ogd-table-border: rgba(203, 213, 225, 0.28); --ogd-table-cell-border: rgba(71, 85, 105, 0.72); --ogd-table-row-hover: rgba(51, 65, 85, 0.50); --ogd-table-row-even: rgba(15, 23, 42, 0.36); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7); }
@@ -17416,16 +17951,7 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
    made HTML tables look heavier than the markdown widget. The parent
    `:is(.markdown-rendered,...) table` rule in dev/10d already supplies
    --ogd-table-surface / --ogd-table-shadow, so we only need to
-   neutralize the v2.30.10 solid `background-color` on <th>/<td> and
-   restore markdown-widget hover, in light + dark. */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
-   background-color: transparent; background: var(--ogd-table-row-hover);
-}
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td {
-   background-color: transparent; background: var(--ogd-table-row-hover);
-}
-
-
+    neutralize the v2.30.10 solid `background-color` on <th>/<td>. */
 /* v2.30.14 neutralize HTML utility-class table styling in Live Preview (PDF parity) */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) { border-collapse: collapse; border-spacing: 0; border-radius: 0; border-color: var(--ogd-table-border); background: var(--ogd-table-surface); box-shadow: var(--ogd-table-shadow); overflow: visible; }
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) thead th { background: var(--ogd-table-head-bg); background-color: transparent; border-color: var(--ogd-table-cell-border); border-bottom: 2px solid #6b7280; color: var(--ogd-text-slate, #334155); font-weight: 700; text-align: left; }
@@ -17436,6 +17962,16 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 
 /* v2.30.15 align HTML table cell borders with markdown widget tone (--ogd-table-cell-border) */
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
+   padding: 6px 10px; text-align: left; vertical-align: top; white-space: normal; border-bottom: 2px solid #6b7280; border-left: 1px solid var(--ogd-line-soft, #e5e7eb); border-right: 1px solid var(--ogd-line-soft, #e5e7eb); font-weight: 700;
+   background: var(--ogd-table-head-bg); background-color: transparent; color: var(--ogd-text-slate, #334155);
+   border-color: var(--ogd-table-cell-border); border-left-color: var(--ogd-table-cell-border); border-right-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.58);
+}
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+   padding: 5px 10px; line-height: normal; vertical-align: top; text-align: left; border: 1px solid var(--ogd-line-soft, #e5e7eb); color: var(--ogd-text-slate, #334155); word-break: keep-all; overflow-wrap: anywhere;
+   background: transparent;
+   border-color: var(--ogd-table-cell-border);
+}
 .theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
    background: var(--ogd-table-head-bg); background-color: transparent; color: var(--text-normal, #e5edf7);
    border-color: rgba(71, 85, 105, 0.56); border-left-color: rgba(71, 85, 105, 0.56); border-right-color: rgba(71, 85, 105, 0.56); border-bottom-color: rgba(148, 163, 184, 0.34);
@@ -17449,34 +17985,24 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { border-color: var(--ogd-table-cell-border); color: var(--ogd-text-slate, #334155); }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover); }
 body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td { background: var(--ogd-table-row-even); }
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
 body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { color: var(--text-normal, #e5edf7); }
 
 
-/* v2.30.17 align HTML table (Live Preview) cell line-height + report-mode header weight with markdown widget */
-/* Cell line-height parity with markdown widget (.cm-table-widget td inherits ~1.5 from .cm-line; v2.30.10 forces `normal` ~1.2 on HTML td). Apply to all HTML tables in Live Preview, regardless of report-mode. */
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-   padding: 5px 10px; vertical-align: top; text-align: left; border: 1px solid var(--ogd-line-soft, #e5e7eb); color: var(--ogd-text-slate, #334155); word-break: keep-all; overflow-wrap: anywhere;
-   background: transparent;
-   border-color: var(--ogd-table-cell-border);
-   line-height: var(--line-height-normal, 1.5);
-}
-.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th {
-   padding: 6px 10px; text-align: left; vertical-align: top; white-space: normal; border-bottom: 2px solid #6b7280; border-left: 1px solid var(--ogd-line-soft, #e5e7eb); border-right: 1px solid var(--ogd-line-soft, #e5e7eb); font-weight: 700;
-   background: var(--ogd-table-head-bg); background-color: transparent; color: var(--ogd-text-slate, #334155);
-   border-color: var(--ogd-table-cell-border); border-left-color: var(--ogd-table-cell-border); border-right-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.58);
-   line-height: var(--line-height-normal, 1.5);
-}
-/* Report-mode header weight parity: dev/10d:537 sets font-weight 780 on markdown widget th; v2.30.14 sets 700 on HTML utility-class. v2.30.16 already covers non-report-mode (font-weight 820, Liquid Glass parity). */
-/* v2.30.18 soften HTML table thead bottom-line color in report-mode to match markdown widget */
-/* HTML utility-class thead th border-bottom is forced to `2px solid #6b7280` by v2.30.14 (specificity 0,8,3); v2.30.13/15/17 carry only 0,7,2 so their tone overrides lose the cascade. Restate the color at report-mode specificity (0,8,4) — width stays 2px to match the markdown widget (dev/10d:537 + dev/05:229). */
-/* v2.30.13: removed the v2.30.18 dark-mode duplicate (`body.theme-dark :is(body.ogd-report-mode ...) thead th { border-bottom-color: rgba(148, 163, 184, 0.34); }`); the v2.30.20 block below already restates the identical declaration on the same selector, so the cascade outcome is unchanged. */
-
-
-/* v2.30.20 thin out HTML table thead bottom-line width (2px -> 1px) and ease color to match markdown widget Liquid Glass parity */
-/* v2.30.10/14 force `border-bottom: 2px solid #6b7280` shorthand on HTML utility-class thead th; v2.30.18 only restated the color. The markdown widget side renders with effective width 1px and alpha 0.46 (light) / 0.34 (dark) after dev/10d:1452. Restate width + color at higher specificity (0,8,4) so HTML thead matches the lighter markdown widget rendering in both report-mode and default Liquid Glass. */
-/* Dark mode parity (markdown widget dark sits at alpha 0.34 in dev/10d:1490). */
 /* v2.30.21 normalize HTML table outer border to match markdown widget exactly (cell-only outer line) */
 /* The visible outer line should come from collapsed cell borders only, like the markdown widget. v2.30.14 sets `border-color` on the outer <table> without an explicit `border-style`, which can leave a hairline at certain zoom levels. Force `border: 0` on the outer table and `border-top: 0` on thead/th so the outer box never paints — exactly matching the markdown widget rendering (dev/05:236 + dev/10d:537/602 stack). */
+:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+   --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto;
+
+  border-style: none;
+  border-width: 0;
+}
+body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+   --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden; border-color: var(--ogd-table-border); border-radius: var(--ogd-radius-control, 7px); background: var(--ogd-table-surface); box-shadow: var(--ogd-table-shadow); -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
+
+  border-style: none;
+  border-width: 0;
+}
 /* Cell border color parity with markdown widget (--ogd-table-cell-border resolves to rgba(203, 213, 225, 0.92) in report-mode via dev/10d:602 + dev/10e:18). Re-state explicitly on td to override v2.30.10's `border: 1px solid #e5e7eb` shorthand color in case any cascade ordering still leaves the opaque #e5e7eb on a sub-edge. */
 /* v2.30.22 mirror dev/10-a11y markdown widget td/th rules onto HTML tables (white row overlay + smaller/denser header) */
 /* dev/10-a11y:996-1006 sets `td { background: rgba(255, 255, 255, 0.28) }` and `th { font-size: 0.88em; font-weight: 820 }` for cm-table-widget only. HTML tables in Live Preview never received these, so their rows pick up the table surface gradient (faint grey) and their headers render larger/heavier than the markdown widget side-by-side. Restate both at matching specificity for HTML tables, in both report-mode and non-report-mode. */
@@ -17507,11 +18033,7 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 }
 
 
-/* v2.30.23 restore HTML thead bottom-line to exact markdown widget value (2px @ alpha 0.58 / dark 0.34) */
-/* v2.30.20 trimmed this to 1px @ 0.46 which now reads as a much weaker outer rectangle than the markdown widget when the two are stacked. Markdown widget retains the dev/05:236 baseline (2px solid) with only color swapped via dev/10d:544 (rgba(148, 163, 184, 0.58)). Restore identical width AND color so the visual outer-line strength is matched. */
-/* Dark mode parity (markdown widget dark uses alpha 0.34 via dev/10d:1490) */
-/* v2.30.24 soften HTML thead divider to normal cell grid weight */
-/* v2.30.23 restored the header separator to 2px, but side-by-side review shows it still reads as a thick line below the header. Keep only a normal 1px grid divider and remove the header inset shadow so the line cannot visually double. */
+/* Current owner: HTML table header divider matches the normal cell grid weight. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
 
   border-top-width: 0;
@@ -17520,15 +18042,11 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
   font-size: 0.88em;
   font-weight: 820;
 
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.58);
-
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
 body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-   border-color: var(--ogd-table-cell-border); background: var(--ogd-table-head-bg); color: var(--ogd-text-strong, #111827);
+   border-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.46); background: var(--ogd-table-head-bg); color: var(--ogd-text-strong, #111827);
 
   border-top-width: 0;
   border-top-style: none;
@@ -17536,63 +18054,22 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm
   font-size: 0.88em;
   font-weight: 820;
 
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.58);
-
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
 body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.34);
-
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
   box-shadow: none;
 }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th { color: var(--text-normal, #e5edf7);
-
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(148, 163, 184, 0.34);
+body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+   border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7);
 
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
   box-shadow: none;
 }
 
 
-/* v2.30.25 strengthen HTML table outer ring only */
-/* Keep v2.30.24's softened header divider and normal inner grid. Add a table-level ring so only the outside perimeter reads closer to the markdown table outline. Use box-shadow rather than a real border to avoid collapsed-border side effects. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-   --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto;
-
-  border-style: none;
-  border-width: 0;
-
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.96);
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-   --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden; border-color: var(--ogd-table-border); border-radius: var(--ogd-radius-control, 7px); background: var(--ogd-table-surface); -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
-
-  border-style: none;
-  border-width: 0;
-
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.90);
-}
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.10);
-}
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-   --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
-
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.10);
-}
-
-
-/* v2.30.26 make HTML table outer outline visibly strong */
-/* v2.30.25's box-shadow ring can be visually lost on collapsed HTML tables. Add a real outline on both generic HTML tables and utility-class tables; outline does not affect collapsed cell borders, so only the perimeter gets stronger. */
+/* Current owner: outline paints only the table perimeter, avoiding collapsed-border side effects. */
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
 :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
   outline: 1.5px solid rgba(148, 163, 184, 0.72);
@@ -17659,9 +18136,12 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 /* v3.1.39 table parity: LP HTML tables consume the shared report table rhythm tokens. */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+
+  border-collapse: collapse;
+  width: 100%;
   font-variant-numeric: tabular-nums;
    --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface); border-color: var(--ogd-table-border); box-shadow: var(--ogd-table-shadow);
-   margin: 0; width: 100%; max-width: 100%; border-collapse: collapse;
+   margin: 0; max-width: 100%;
 
   --ogd-table-pad-y: 0.58em;
   --ogd-table-pad-x: 0.78em;

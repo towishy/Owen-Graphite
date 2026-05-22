@@ -2,6 +2,21 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.49 — 설정 제목과 검색 Focus Rim / Settings Headings and Search Focus Rim
+
+Style Settings의 그룹 제목과 Obsidian 설정 본문 섹션 제목을 같은 liquid header bar 언어로 정리했습니다. 단축키 검색·검색 패널 입력창의 강한 파란 focus rim은 추천안 B `Liquid Aqua`로 낮춰, 입력 상태는 분명하게 보이되 설정 화면 전체의 회색·흰색 glass 톤을 해치지 않도록 조정했습니다.
+
+This release aligns Style Settings group titles and core settings section headings with the same liquid header treatment. Search and hotkey filter inputs now use the selected `Liquid Aqua` focus rim, reducing the stronger blue glow while keeping keyboard focus clear.
+
+![검색 Focus Rim Liquid Aqua](../../screenshots/readme/search-focus-rim-liquid-aqua.png)
+
+| 구분 | 개선 내용 |
+| --- | --- |
+| 설정 제목 | 그룹/섹션 제목에 liquid glass bar와 좌측 gradient rail 적용 |
+| 검색 focus | 강한 cyan outline을 낮은 채도 aqua rim, 내부 highlight, 얕은 halo로 교체 |
+| 적용 범위 | 단축키 검색, 검색 패널, 설정 modal의 검색 입력 컨테이너 |
+| 다크 모드 | 어두운 배경에서는 약한 cyan rim과 절제된 shadow로 별도 조정 |
+
 ## v3.1.44 — 파일 탐색기 확장자 배지 / File Explorer Type Badges
 
 파일 탐색기의 오른쪽 확장자 텍스트를 숨기고, 앞쪽 문서 아이콘 자리에 `MD`, `HTML`, `SVG`, `PDF`, `CFG` 같은 타입 배지를 표시합니다. 오른쪽 배지가 차지하던 폭을 파일명 표시 영역으로 돌려 긴 문서 제목이 더 늦게 말줄임되며, 문서·이미지·코드·설정·오피스·미디어·Obsidian 특화 파일을 한눈에 구분할 수 있습니다.

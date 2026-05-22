@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.51",
+  "version": "3.1.52",
   "module_order": [
     {
       "import_index": 1,
@@ -162,11 +162,11 @@
   ],
   "summary": {
     "module_count": 26,
-    "selector_count": 2299,
-    "finding_count": 544,
+    "selector_count": 2332,
+    "finding_count": 546,
     "cross_file_selector_group_count": 76,
     "finding_severity_counts": {
-      "medium": 469,
+      "medium": 471,
       "low": 75
     },
     "module_severity_counts": {
@@ -1580,9 +1580,9 @@
       "entry_line": 71,
       "legacy_id": "09a-nav-ribbon-glass.css",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line_count": 234,
-      "selector_count": 21,
-      "declaration_count": 80,
+      "line_count": 261,
+      "selector_count": 25,
+      "declaration_count": 95,
       "important_count": 0,
       "has_selector_count": 0,
       "high_specificity_selector_count": 6,
@@ -1597,14 +1597,18 @@
       "top_properties": [
         [
           "box-shadow",
-          11
+          15
         ],
         [
           "background",
-          9
+          13
         ],
         [
           "color",
+          7
+        ],
+        [
+          "border-color",
           7
         ],
         [
@@ -1625,23 +1629,19 @@
         ],
         [
           "border",
-          5
-        ],
-        [
-          "border-color",
-          4
+          6
         ],
         [
           "border-radius",
-          3
+          4
         ],
         [
           "-webkit-backdrop-filter",
-          3
+          4
         ],
         [
           "backdrop-filter",
-          3
+          4
         ]
       ],
       "risk_score": 18,
@@ -1655,74 +1655,75 @@
       "entry_line": 73,
       "legacy_id": "09b-editing-menu-tooltip-glass.css",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line_count": 800,
-      "selector_count": 78,
-      "declaration_count": 334,
+      "line_count": 1081,
+      "selector_count": 110,
+      "declaration_count": 480,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 14,
-      "live_preview_sensitive_rule_count": 0,
+      "high_specificity_selector_count": 17,
+      "live_preview_sensitive_rule_count": 1,
       "pdf_header_footer_sensitive_rule_count": 0,
-      "repeated_selector_extra_count": 1,
+      "repeated_selector_extra_count": 7,
       "max_specificity": [
-        1,
-        11,
+        2,
+        10,
         0
       ],
       "top_properties": [
         [
           "background",
-          42
+          53
         ],
         [
           "box-shadow",
-          40
+          49
         ],
         [
           "border",
-          21
+          25
         ],
         [
           "color",
-          19
+          25
         ],
         [
           "-webkit-backdrop-filter",
-          14
+          17
         ],
         [
           "backdrop-filter",
-          14
+          17
         ],
         [
           "border-radius",
-          14
+          17
+        ],
+        [
+          "border-color",
+          16
+        ],
+        [
+          "padding",
+          11
+        ],
+        [
+          "display",
+          11
         ],
         [
           "transition",
-          10
+          9
         ],
         [
           "opacity",
           9
-        ],
-        [
-          "border-color",
-          8
-        ],
-        [
-          "padding",
-          6
-        ],
-        [
-          "width",
-          6
         ]
       ],
-      "risk_score": 43,
+      "risk_score": 61,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
+        "cm6-hit-routing-sensitive",
         "repeated-selector-in-file"
       ]
     },
@@ -1731,12 +1732,12 @@
       "entry_line": 75,
       "legacy_id": "09c-floating-ui-glass-system.css",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line_count": 991,
-      "selector_count": 113,
-      "declaration_count": 432,
+      "line_count": 1043,
+      "selector_count": 117,
+      "declaration_count": 468,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 21,
+      "high_specificity_selector_count": 22,
       "live_preview_sensitive_rule_count": 0,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 4,
@@ -1748,11 +1749,11 @@
       "top_properties": [
         [
           "background",
-          54
+          56
         ],
         [
           "box-shadow",
-          54
+          55
         ],
         [
           "border-color",
@@ -1764,11 +1765,11 @@
         ],
         [
           "-webkit-backdrop-filter",
-          20
+          21
         ],
         [
           "backdrop-filter",
-          20
+          21
         ],
         [
           "--ogd-glass-bg",
@@ -1792,10 +1793,10 @@
         ],
         [
           "border-radius",
-          11
+          12
         ]
       ],
-      "risk_score": 67,
+      "risk_score": 70,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -1807,9 +1808,9 @@
       "entry_line": 77,
       "legacy_id": "09d-tabs-file-explorer-search.css",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line_count": 826,
-      "selector_count": 142,
-      "declaration_count": 589,
+      "line_count": 918,
+      "selector_count": 151,
+      "declaration_count": 654,
       "important_count": 0,
       "has_selector_count": 32,
       "high_specificity_selector_count": 21,
@@ -1824,7 +1825,7 @@
       "top_properties": [
         [
           "content",
-          49
+          52
         ],
         [
           "--ogd-nav-file-type-bg",
@@ -1835,12 +1836,12 @@
           40
         ],
         [
-          "color",
-          36
+          "background",
+          38
         ],
         [
-          "background",
-          33
+          "color",
+          36
         ],
         [
           "--ogd-nav-file-type-size",
@@ -1848,15 +1849,19 @@
         ],
         [
           "box-shadow",
-          30
+          32
         ],
         [
           "border-color",
-          25
+          27
         ],
         [
           "font-weight",
           14
+        ],
+        [
+          "position",
+          13
         ],
         [
           "-webkit-backdrop-filter",
@@ -1865,10 +1870,6 @@
         [
           "backdrop-filter",
           12
-        ],
-        [
-          "font-size",
-          11
         ]
       ],
       "risk_score": 135,
@@ -1959,12 +1960,12 @@
       "entry_line": 81,
       "legacy_id": "10b-liquid-glass-core.css",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line_count": 1586,
-      "selector_count": 148,
-      "declaration_count": 703,
+      "line_count": 1664,
+      "selector_count": 153,
+      "declaration_count": 766,
       "important_count": 0,
       "has_selector_count": 6,
-      "high_specificity_selector_count": 28,
+      "high_specificity_selector_count": 30,
       "live_preview_sensitive_rule_count": 1,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 3,
@@ -1976,11 +1977,11 @@
       "top_properties": [
         [
           "box-shadow",
-          90
+          91
         ],
         [
           "background",
-          85
+          89
         ],
         [
           "border-color",
@@ -2023,7 +2024,7 @@
           12
         ]
       ],
-      "risk_score": 102,
+      "risk_score": 108,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -2037,15 +2038,15 @@
       "entry_line": 83,
       "legacy_id": "10c-html-table-live-preview-glass.css",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line_count": 323,
-      "selector_count": 84,
-      "declaration_count": 256,
+      "line_count": 238,
+      "selector_count": 63,
+      "declaration_count": 218,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 26,
+      "high_specificity_selector_count": 21,
       "live_preview_sensitive_rule_count": 8,
       "pdf_header_footer_sensitive_rule_count": 0,
-      "repeated_selector_extra_count": 39,
+      "repeated_selector_extra_count": 22,
       "max_specificity": [
         0,
         34,
@@ -2054,15 +2055,7 @@
       "top_properties": [
         [
           "background",
-          25
-        ],
-        [
-          "border-bottom-color",
-          19
-        ],
-        [
-          "box-shadow",
-          18
+          22
         ],
         [
           "color",
@@ -2073,12 +2066,20 @@
           16
         ],
         [
+          "box-shadow",
+          14
+        ],
+        [
+          "border-bottom-color",
+          10
+        ],
+        [
           "background-color",
-          13
+          9
         ],
         [
           "font-weight",
-          9
+          8
         ],
         [
           "--ogd-table-surface",
@@ -2101,7 +2102,7 @@
           6
         ]
       ],
-      "risk_score": 141,
+      "risk_score": 109,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -3387,7 +3388,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line": 173,
+      "line": 200,
       "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right, body:not(.is-mobile) .workspace-tab-header-tab-list, body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3395,7 +3396,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line": 179,
+      "line": 206,
       "selector": "body:not(.is-mobile) .sidebar-toggle-button.mod-right:hover, body:not(.is-mobile).theme-dark .sidebar-toggle-button.mod-right:hover",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3403,7 +3404,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line": 200,
+      "line": 227,
       "selector": "body:not(.is-mobile).theme-dark .mod-root .workspace-tab-header-container, body:not(.is-mobile).theme-dark .mod-root .view-header",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3411,7 +3412,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line": 204,
+      "line": 231,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root, body:not(.is-mobile) .mod-root .workspace-leaf, body:not(.is-mobile) .mod-root .workspace-tabs",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3419,7 +3420,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line": 210,
+      "line": 237,
       "selector": "body:not(.is-mobile) .workspace-split.mod-horizontal, body:not(.is-mobile) .workspace-split.mod-left-split, body:not(.is-mobile) .workspace-split.mod-right-split",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3427,7 +3428,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/34-nav-ribbon-glass.css",
-      "line": 228,
+      "line": 255,
       "selector": "body:not(.is-mobile) .markdown-source-view.mod-cm6 .cm-scroller, body:not(.is-mobile) .markdown-preview-view .markdown-preview-sizer, body:not(.is-mobile) .markdown-reading-view .markdown-preview-sizer",
       "message": "specificity=(0, 10, 0)"
     },
@@ -3481,9 +3482,41 @@
     },
     {
       "severity": "medium",
+      "category": "cm6-hit-routing-sensitive",
+      "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+      "line": 445,
+      "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content > .view-content :is(.markdown-source-view.mod-cm6 .cm-scroller, .markdown-preview-view .markdown-preview-sizer, .markdown-reading-view .markdown-preview-sizer)",
+      "message": "CM6 rule declares vertical box or overlay-sensitive properties"
+    },
+    {
+      "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 460,
+      "line": 450,
+      "selector": "body:not(.is-mobile) :is(.cm-editor, .markdown-source-view, .markdown-preview-view) .editing-toolbar, body:not(.is-mobile) .editing-toolbar, body:not(.is-mobile) #editingToolbarModalBar, body:not(.is-mobile) .editingToolbarModalBar, body:not(.is-mobile) .workspace-leaf-content #editingToolbarModalBar",
+      "message": "specificity=(2, 10, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+      "line": 465,
+      "selector": "body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type=\"markdown\"] .markdown-reading-view .markdown-preview-sizer, body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type=\"markdown\"] .markdown-source-view .cm-scroller",
+      "message": "specificity=(0, 14, 2)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+      "line": 470,
+      "selector": "body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-bottom .workspace-leaf-content[data-type=\"markdown\"] .markdown-reading-view .markdown-preview-sizer, body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-bottom .workspace-leaf-content[data-type=\"markdown\"] .markdown-source-view .cm-scroller",
+      "message": "specificity=(0, 14, 2)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+      "line": 741,
       "selector": "body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item, body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3491,7 +3524,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 482,
+      "line": 763,
       "selector": "body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active, body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active:hover",
       "message": "specificity=(0, 11, 0)"
     },
@@ -3499,7 +3532,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 500,
+      "line": 781,
       "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active, body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active:hover",
       "message": "specificity=(0, 13, 0)"
     },
@@ -3507,7 +3540,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 675,
+      "line": 956,
       "selector": "body:not(.is-mobile) .workspace-split.mod-left-split :is(.workspace-tabs, .workspace-leaf, .workspace-leaf-content, .workspace-tab-container, .view-content), body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] :is(.view-content, .nav-files-container)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3515,7 +3548,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 694,
+      "line": 975,
       "selector": "body:not(.is-mobile) .workspace-split.mod-left-split .workspace-leaf-resize-handle, body:not(.is-mobile) .workspace-split.mod-left-split > .workspace-leaf-resize-handle",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3523,7 +3556,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 717,
+      "line": 998,
       "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .view-content, body:not(.is-mobile).theme-dark .nav-files-container",
       "message": "specificity=(0, 8, 1)"
     },
@@ -3531,7 +3564,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 722,
+      "line": 1003,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-leaf-resize-handle, body:not(.is-mobile).theme-dark .workspace-split.mod-left-split > .workspace-leaf-resize-handle",
       "message": "specificity=(0, 10, 0)"
     },
@@ -3539,7 +3572,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 770,
+      "line": 1051,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type=\"file-explorer\"]) *::-webkit-scrollbar-thumb, body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type=\"file-explorer\"]) *::-webkit-scrollbar-track, body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type=\"file-explorer\"]) *::-webkit-scrollbar-corner",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3547,7 +3580,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 248,
+      "line": 245,
+      "selector": "body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment)::before, body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment)::after, body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before, body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::after",
+      "message": "specificity=(0, 18, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/36-floating-ui-glass-system.css",
+      "line": 300,
       "selector": "body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item, body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item",
       "message": "specificity=(0, 10, 0)"
     },
@@ -3555,7 +3596,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 259,
+      "line": 311,
       "selector": "body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within), body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within)",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3563,7 +3604,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 264,
+      "line": 316,
       "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) > .setting-item:is(:hover, :focus-within), body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:is(:hover, :focus-within)",
       "message": "specificity=(0, 14, 0)"
     },
@@ -3571,7 +3612,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 357,
+      "line": 409,
       "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.style-settings-container, .vertical-tab-content-container) .setting-item .setting-item:is(:hover, :focus-within)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3579,7 +3620,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 372,
+      "line": 424,
       "selector": "body:not(.is-mobile) .setting-item-control :is(input[type=\"text\"], input[type=\"number\"], input[type=\"search\"], textarea, select, .dropdown):is(:hover, :focus, :focus-visible), body:not(.is-mobile) .modal .setting-item-control :is(input[type=\"text\"], input[type=\"number\"], input[type=\"search\"], textarea, select, .dropdown):is(:hover, :focus, :focus-visible)",
       "message": "specificity=(0, 9, 6)"
     },
@@ -3587,7 +3628,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 378,
+      "line": 430,
       "selector": "body:not(.is-mobile).theme-dark .setting-item-control :is(input[type=\"text\"], input[type=\"number\"], input[type=\"search\"], textarea, select, .dropdown), body:not(.is-mobile).theme-dark .modal .setting-item-control :is(input[type=\"text\"], input[type=\"number\"], input[type=\"search\"], textarea, select, .dropdown)",
       "message": "specificity=(0, 9, 14)"
     },
@@ -3595,7 +3636,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 516,
+      "line": 568,
       "selector": "body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu)",
       "message": "specificity=(1, 2, 0)"
     },
@@ -3603,7 +3644,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 546,
+      "line": 598,
       "selector": "body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container):disabled, body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container).is-disabled, body:not(.is-mobile) .setting-item-control :is(button, input, textarea, select, .dropdown, .checkbox-container)[aria-disabled=\"true\"]",
       "message": "specificity=(0, 12, 9)"
     },
@@ -3611,7 +3652,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 551,
+      "line": 603,
       "selector": "body:not(.is-mobile) .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active, body:not(.is-mobile) .modal .setting-item-control button:is(.mod-cta, .mod-warning, .mod-destructive):active",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3619,7 +3660,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 571,
+      "line": 623,
       "selector": "body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu), body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "message": "specificity=(1, 7, 0)"
     },
@@ -3627,7 +3668,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 576,
+      "line": 628,
       "selector": "body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .nav-file-title.is-active, .nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu, .editingToolbarButton, .menu, .menu .menu-item, .tooltip, .view-header-breadcrumb, .view-header-title, .suggestion-container, .search-suggest-container, .search-suggestion-container ), body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is( .workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .nav-file-title.is-active, .nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover, .editingToolbarButton, .menu .menu-item, .view-header-breadcrumb, .view-header-title, .suggestion-item, .search-suggest-item ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "message": "specificity=(1, 7, 0)"
     },
@@ -3635,7 +3676,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 645,
+      "line": 697,
       "selector": "body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :is(.search-input-container, .community-modal-search):is(:focus, :focus-visible, :focus-within), body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :is(.prompt-input, input[type=\"search\"], input[type=\"text\"], .community-modal-search-input):is(:focus, :focus-visible)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3643,7 +3684,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 666,
+      "line": 718,
       "selector": ".prompt-results .suggestion-item.is-selected, .suggestion-container .suggestion-item.is-selected, .menu .menu-item:hover, .menu .menu-item.selected",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3651,7 +3692,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 670,
+      "line": 722,
       "selector": ".suggestion-item.is-selected .suggestion-title, .suggestion-item.is-selected .suggestion-note, .menu-item:hover .menu-item-title, .menu-item.selected .menu-item-title",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3659,7 +3700,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 686,
+      "line": 738,
       "selector": ".tooltip, .popover, .popover.hover-popover, .hover-popover .markdown-embed, .hover-popover .markdown-embed-content, .modal, .prompt, .suggestion-container, .menu",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3667,7 +3708,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 734,
+      "line": 786,
       "selector": ".empty-state, .empty-state-container, .search-empty-state, .backlink-pane .search-empty-state, .outgoing-link-pane .search-empty-state, .workspace-leaf-content[data-type=\"search\"] .search-empty-state, .workspace-leaf-content[data-type=\"backlink\"] .search-empty-state, .workspace-leaf-content[data-type=\"outgoing-link\"] .search-empty-state",
       "message": "specificity=(0, 16, 3)"
     },
@@ -3675,7 +3716,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 776,
+      "line": 828,
       "selector": ".theme-dark .prompt-results .suggestion-item, .theme-dark .suggestion-container .suggestion-item, .theme-dark .menu .menu-item",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3683,7 +3724,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 787,
+      "line": 839,
       "selector": ".theme-dark .search-result-file-match.mod-current, .theme-dark .search-result-file-match.is-active, .theme-dark .search-result-file-match:hover",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3691,7 +3732,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 792,
+      "line": 844,
       "selector": ".theme-dark .tooltip, .theme-dark .popover, .theme-dark .popover.hover-popover, .theme-dark .hover-popover .markdown-embed, .theme-dark .hover-popover .markdown-embed-content, .theme-dark .modal, .theme-dark .prompt, .theme-dark .suggestion-container, .theme-dark .menu",
       "message": "specificity=(0, 21, 0)"
     },
@@ -3699,7 +3740,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 815,
+      "line": 867,
       "selector": ".theme-dark .popover.hover-popover .markdown-preview-view, .theme-dark .popover.hover-popover .markdown-rendered",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3707,7 +3748,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 819,
+      "line": 871,
       "selector": ".theme-dark .empty-state, .theme-dark .empty-state-container, .theme-dark .search-empty-state, .theme-dark .backlink-pane .search-empty-state, .theme-dark .outgoing-link-pane .search-empty-state, .theme-dark .workspace-leaf-content[data-type=\"search\"] .search-empty-state, .theme-dark .workspace-leaf-content[data-type=\"backlink\"] .search-empty-state, .theme-dark .workspace-leaf-content[data-type=\"outgoing-link\"] .search-empty-state",
       "message": "specificity=(0, 24, 3)"
     },
@@ -3715,7 +3756,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 264,
+      "line": 356,
       "selector": "body:not(.is-mobile) .nav-folder-title[data-path^=\"outputs\"] .nav-folder-title-content, body:not(.is-mobile) .nav-folder-title[data-path^=\"raw/obsidian/outputs\"] .nav-folder-title-content",
       "message": "specificity=(0, 8, 2)"
     },
@@ -3723,7 +3764,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 316,
+      "line": 408,
       "selector": "body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3731,7 +3772,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 325,
+      "line": 417,
       "selector": "body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover .nav-folder-title-content",
       "message": "specificity=(0, 14, 0)"
     },
@@ -3739,7 +3780,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 393,
+      "line": 485,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3747,7 +3788,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 417,
+      "line": 509,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover",
       "message": "specificity=(0, 14, 0)"
     },
@@ -3755,7 +3796,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 423,
+      "line": 515,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*=\"/\"]):hover .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title:hover .nav-folder-title-content",
       "message": "specificity=(0, 16, 0)"
     },
@@ -3763,7 +3804,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 569,
+      "line": 661,
       "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-file-title[data-path] .nav-file-title-content::before",
       "message": "specificity=(0, 8, 1)"
     },
@@ -3771,7 +3812,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 588,
+      "line": 680,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3779,7 +3820,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 597,
+      "line": 689,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": "specificity=(0, 20, 0)"
     },
@@ -3787,7 +3828,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 602,
+      "line": 694,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": "specificity=(0, 10, 0)"
     },
@@ -3795,7 +3836,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 620,
+      "line": 712,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3803,7 +3844,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 636,
+      "line": 728,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3811,7 +3852,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 641,
+      "line": 733,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 23, 0)"
     },
@@ -3819,7 +3860,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 683,
+      "line": 775,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3827,7 +3868,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 693,
+      "line": 785,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": "specificity=(0, 23, 0)"
     },
@@ -3835,7 +3876,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 697,
+      "line": 789,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": "specificity=(0, 12, 0)"
     },
@@ -3843,7 +3884,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 705,
+      "line": 797,
       "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3851,7 +3892,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 709,
+      "line": 801,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": "specificity=(0, 26, 0)"
     },
@@ -3859,7 +3900,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 734,
+      "line": 826,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3867,7 +3908,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 807,
+      "line": 899,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container:is(:focus, :focus-visible, :focus-within), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
       "message": "specificity=(0, 11, 0)"
     },
@@ -3875,7 +3916,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 821,
+      "line": 913,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] .search-input-container :is(.clickable-icon, button, .search-input-clear-button), body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container + .clickable-icon, .search-input-container ~ .clickable-icon, .search-input-container + button, .search-input-container ~ button)",
       "message": "specificity=(0, 9, 3)"
     },
@@ -5291,7 +5332,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1337,
+      "line": 1369,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container, body:not(.is-mobile) .workspace-split.mod-root .view-header",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5299,7 +5340,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1357,
+      "line": 1394,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5307,7 +5348,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1364,
+      "line": 1401,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "message": "specificity=(0, 9, 0)"
     },
@@ -5315,7 +5356,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1391,
+      "line": 1437,
+      "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
+      "message": "specificity=(0, 8, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 1460,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5323,7 +5372,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1396,
+      "line": 1465,
+      "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
+      "message": "specificity=(0, 9, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 1474,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5331,7 +5388,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1423,
+      "line": 1501,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "message": "specificity=(0, 16, 0)"
     },
@@ -5339,7 +5396,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1428,
+      "line": 1506,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5347,7 +5404,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1433,
+      "line": 1511,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "message": "specificity=(0, 18, 0)"
     },
@@ -5355,7 +5412,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1457,
+      "line": 1535,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5363,7 +5420,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1515,
+      "line": 1593,
       "selector": "body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td, body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td",
       "message": "specificity=(0, 10, 6)"
     },
@@ -5371,7 +5428,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1519,
+      "line": 1597,
       "selector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td, body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td",
       "message": "specificity=(0, 8, 4)"
     },
@@ -5379,7 +5436,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1530,
+      "line": 1608,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5387,7 +5444,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1535,
+      "line": 1613,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th",
       "message": "specificity=(0, 8, 2)"
     },
@@ -5395,7 +5452,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1539,
+      "line": 1617,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td",
       "message": "specificity=(0, 8, 2)"
     },
@@ -5403,7 +5460,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 20,
+      "line": 18,
       "selector": ".theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 14, 0)"
     },
@@ -5411,7 +5468,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 21,
+      "line": 19,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5419,7 +5476,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 22,
+      "line": 20,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5427,7 +5484,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 26,
+      "line": 24,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5435,7 +5492,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 27,
+      "line": 25,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5443,7 +5500,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 28,
+      "line": 26,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5451,23 +5508,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 33,
-      "selector": ".theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td",
-      "message": "specificity=(0, 8, 0)"
-    },
-    {
-      "severity": "medium",
-      "category": "high-specificity",
-      "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 47,
-      "selector": ".theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td",
-      "message": "specificity=(0, 8, 0)"
-    },
-    {
-      "severity": "medium",
-      "category": "high-specificity",
-      "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 53,
+      "line": 46,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody td:first-child",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5475,7 +5516,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 55,
+      "line": 48,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5483,7 +5524,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 56,
+      "line": 49,
       "selector": ".theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) thead th",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5491,7 +5532,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 70,
+      "line": 63,
       "selector": "body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5499,7 +5540,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 71,
+      "line": 64,
       "selector": "body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5507,7 +5548,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 72,
+      "line": 65,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5515,7 +5556,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 73,
+      "line": 66,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5523,7 +5564,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 74,
+      "line": 67,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5531,15 +5572,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 109,
-      "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th",
-      "message": "specificity=(0, 8, 0)"
-    },
-    {
-      "severity": "medium",
-      "category": "high-specificity",
-      "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 165,
+      "line": 123,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5547,7 +5580,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 190,
+      "line": 142,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th",
       "message": "specificity=(0, 8, 0)"
     },
@@ -5555,23 +5588,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 210,
-      "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th",
-      "message": "specificity=(0, 8, 0)"
-    },
-    {
-      "severity": "medium",
-      "category": "high-specificity",
-      "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 226,
-      "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget)",
-      "message": "specificity=(0, 8, 0)"
-    },
-    {
-      "severity": "medium",
-      "category": "high-specificity",
-      "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 235,
+      "line": 150,
       "selector": ":is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 11, 0)"
     },
@@ -5579,7 +5596,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 235,
+      "line": 150,
       "selector": ":is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5587,7 +5604,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 240,
+      "line": 155,
       "selector": "body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 15, 0)"
     },
@@ -5595,7 +5612,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 240,
+      "line": 155,
       "selector": "body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5603,7 +5620,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 245,
+      "line": 160,
       "selector": "body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 13, 0)"
     },
@@ -5611,7 +5628,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 245,
+      "line": 160,
       "selector": "body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5619,7 +5636,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 250,
+      "line": 165,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 17, 0)"
     },
@@ -5627,7 +5644,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 250,
+      "line": 165,
       "selector": "body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5635,7 +5652,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 258,
+      "line": 173,
       "selector": "body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget), body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget)",
       "message": "specificity=(0, 30, 0)"
     },
@@ -5643,7 +5660,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 263,
+      "line": 178,
       "selector": "body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td), body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td), body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td), body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td)",
       "message": "specificity=(0, 34, 0)"
     },
@@ -5651,7 +5668,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 271,
+      "line": 186,
       "selector": "body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td, body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td, body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td, body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td",
       "message": "specificity=(0, 34, 0)"
     },
@@ -5659,7 +5676,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 276,
+      "line": 191,
       "selector": "body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td, body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td, body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td",
       "message": "specificity=(0, 34, 0)"
     },
@@ -5667,7 +5684,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/surfaces/24-html-table-live-preview-glass.css",
-      "line": 306,
+      "line": 221,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(th, td)",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -5883,7 +5900,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 588,
+      "line": 680,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5891,7 +5908,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 597,
+      "line": 689,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5899,7 +5916,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 602,
+      "line": 694,
       "selector": "body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5907,7 +5924,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 613,
+      "line": 705,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5915,7 +5932,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 620,
+      "line": 712,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5923,7 +5940,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 636,
+      "line": 728,
       "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5931,7 +5948,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 641,
+      "line": 733,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5939,7 +5956,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 645,
+      "line": 737,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-children",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5947,7 +5964,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 650,
+      "line": 742,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5955,7 +5972,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 656,
+      "line": 748,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5963,7 +5980,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 661,
+      "line": 753,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5971,7 +5988,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 666,
+      "line": 758,
       "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5979,7 +5996,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 693,
+      "line": 785,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]), body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5987,7 +6004,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 697,
+      "line": 789,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -5995,7 +6012,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 705,
+      "line": 797,
       "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6003,7 +6020,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 709,
+      "line": 801,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6011,7 +6028,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 713,
+      "line": 805,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-children",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6019,7 +6036,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 718,
+      "line": 810,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6027,7 +6044,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 724,
+      "line": 816,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6035,7 +6052,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 729,
+      "line": 821,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6043,7 +6060,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 734,
+      "line": 826,
       "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6467,7 +6484,7 @@
   "cross_file_selectors": [
     {
       "selector": "body:not(.is-mobile)",
-      "occurrences": 10,
+      "occurrences": 14,
       "modules": [
         "src/chrome/35-editing-menu-tooltip-glass.css",
         "src/chrome/36-floating-ui-glass-system.css",
@@ -6482,7 +6499,23 @@
         },
         {
           "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-          "line": 612
+          "line": 398
+        },
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 635
+        },
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 646
+        },
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 661
+        },
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 893
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -6494,7 +6527,7 @@
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 15
+          "line": 18
         },
         {
           "module": "src/themes/51-accessibility-motion-contrast.css",
@@ -6547,7 +6580,7 @@
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 25
+          "line": 32
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -6556,74 +6589,6 @@
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
           "line": 822
-        }
-      ]
-    },
-    {
-      "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td",
-      "occurrences": 6,
-      "modules": [
-        "src/base/13-live-preview.css",
-        "src/surfaces/24-html-table-live-preview-glass.css"
-      ],
-      "lines": [
-        {
-          "module": "src/base/13-live-preview.css",
-          "line": 1115
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 15
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 28
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 44
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 61
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 79
-        }
-      ]
-    },
-    {
-      "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th",
-      "occurrences": 6,
-      "modules": [
-        "src/base/13-live-preview.css",
-        "src/surfaces/24-html-table-live-preview-glass.css"
-      ],
-      "lines": [
-        {
-          "module": "src/base/13-live-preview.css",
-          "line": 1108
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 14
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 27
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 43
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 60
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 80
         }
       ]
     },
@@ -6655,6 +6620,66 @@
         {
           "module": "src/base/13-live-preview.css",
           "line": 1058
+        }
+      ]
+    },
+    {
+      "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td",
+      "occurrences": 5,
+      "modules": [
+        "src/base/13-live-preview.css",
+        "src/surfaces/24-html-table-live-preview-glass.css"
+      ],
+      "lines": [
+        {
+          "module": "src/base/13-live-preview.css",
+          "line": 1115
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 15
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 26
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 39
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th",
+      "occurrences": 5,
+      "modules": [
+        "src/base/13-live-preview.css",
+        "src/surfaces/24-html-table-live-preview-glass.css"
+      ],
+      "lines": [
+        {
+          "module": "src/base/13-live-preview.css",
+          "line": 1108
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 14
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 25
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 38
+        },
+        {
+          "module": "src/surfaces/24-html-table-live-preview-glass.css",
+          "line": 53
         }
       ]
     },
@@ -6733,11 +6758,11 @@
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 26
+          "line": 24
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 286
+          "line": 201
         }
       ]
     },
@@ -6755,15 +6780,15 @@
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 31
+          "line": 28
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 46
+          "line": 40
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 62
+          "line": 55
         }
       ]
     },
@@ -6791,6 +6816,32 @@
         {
           "module": "src/features/42-report-print-polish.css",
           "line": 266
+        }
+      ]
+    },
+    {
+      "selector": "body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment)",
+      "occurrences": 4,
+      "modules": [
+        "src/chrome/35-editing-menu-tooltip-glass.css",
+        "src/chrome/36-floating-ui-glass-system.css"
+      ],
+      "lines": [
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 574
+        },
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 640
+        },
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 651
+        },
+        {
+          "module": "src/chrome/36-floating-ui-glass-system.css",
+          "line": 260
         }
       ]
     },
@@ -6907,28 +6958,6 @@
       ]
     },
     {
-      "selector": ".markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td",
-      "occurrences": 3,
-      "modules": [
-        "src/base/13-live-preview.css",
-        "src/surfaces/24-html-table-live-preview-glass.css"
-      ],
-      "lines": [
-        {
-          "module": "src/base/13-live-preview.css",
-          "line": 1118
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 30
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 45
-        }
-      ]
-    },
-    {
       "selector": ".status-bar",
       "occurrences": 3,
       "modules": [
@@ -6987,33 +7016,11 @@
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 32
+          "line": 29
         },
         {
           "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 63
-        }
-      ]
-    },
-    {
-      "selector": ".theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tr:hover td",
-      "occurrences": 3,
-      "modules": [
-        "src/base/13-live-preview.css",
-        "src/surfaces/24-html-table-live-preview-glass.css"
-      ],
-      "lines": [
-        {
-          "module": "src/base/13-live-preview.css",
-          "line": 1137
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 33
-        },
-        {
-          "module": "src/surfaces/24-html-table-live-preview-glass.css",
-          "line": 47
+          "line": 56
         }
       ]
     },
@@ -7102,7 +7109,7 @@
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 988
+          "line": 1040
         }
       ]
     },
@@ -7138,11 +7145,11 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 355
+          "line": 447
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 459
+          "line": 551
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7160,11 +7167,11 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 363
+          "line": 455
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 465
+          "line": 557
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7183,7 +7190,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 95
+          "line": 148
         },
         {
           "module": "src/themes/51-accessibility-motion-contrast.css",
@@ -7206,11 +7213,11 @@
       "lines": [
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 446
+          "line": 498
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 35
+          "line": 42
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7233,11 +7240,11 @@
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 493
+          "line": 545
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 51
+          "line": 58
         }
       ]
     },
@@ -7435,7 +7442,7 @@
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
-          "line": 1472
+          "line": 1550
         }
       ]
     },
@@ -7489,7 +7496,7 @@
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 717
+          "line": 769
         }
       ]
     },
@@ -7845,7 +7852,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 478
+          "line": 570
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7881,11 +7888,11 @@
       "lines": [
         {
           "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-          "line": 679
+          "line": 960
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 128
+          "line": 210
         }
       ]
     },
@@ -7899,11 +7906,29 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 792
+          "line": 884
         },
         {
           "module": "src/themes/51-accessibility-motion-contrast.css",
           "line": 109
+        }
+      ]
+    },
+    {
+      "selector": "body:not(.is-mobile) .workspace-split.mod-left-split",
+      "occurrences": 2,
+      "modules": [
+        "src/chrome/35-editing-menu-tooltip-glass.css",
+        "src/chrome/37-tabs-file-explorer-search.css"
+      ],
+      "lines": [
+        {
+          "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+          "line": 951
+        },
+        {
+          "module": "src/chrome/37-tabs-file-explorer-search.css",
+          "line": 82
         }
       ]
     },
@@ -7917,7 +7942,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 104
+          "line": 186
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7935,7 +7960,7 @@
       "lines": [
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 310
+          "line": 402
         },
         {
           "module": "src/surfaces/23-liquid-glass-core.css",
@@ -7953,7 +7978,7 @@
       "lines": [
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 408
+          "line": 460
         },
         {
           "module": "src/themes/51-accessibility-motion-contrast.css",
@@ -8025,11 +8050,11 @@
       "lines": [
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 455
+          "line": 507
         },
         {
           "module": "src/chrome/37-tabs-file-explorer-search.css",
-          "line": 43
+          "line": 50
         }
       ]
     },
@@ -8047,7 +8072,7 @@
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 511
+          "line": 563
         }
       ]
     },
@@ -8065,7 +8090,7 @@
         },
         {
           "module": "src/chrome/36-floating-ui-glass-system.css",
-          "line": 501
+          "line": 553
         }
       ]
     }
