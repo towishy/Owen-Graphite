@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
 
-**Owen Graphite v3.1.49** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.50** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -39,6 +39,10 @@
 | Light mode | ![Light Mode](screenshots/light.png) |
 | Dark mode | ![Dark Mode](screenshots/dark.png) |
 | Report mode | ![Report Mode](screenshots/report.png) |
+| Writing surface and floating toolbar | ![문서 작성 화면과 플로팅 툴바](screenshots/readme/workspace-writing-surface.jpg) |
+| Style Settings report controls | ![Style Settings 보고서 옵션](screenshots/readme/style-settings-report-options.jpg) |
+| File explorer glass navigation | ![파일 탐색기 글래스 네비게이션](screenshots/readme/file-explorer-glass-navigation.jpg) |
+| Owen Editor toolbar controls | ![Owen Editor 툴바 설정](screenshots/readme/owen-editor-toolbar-settings.jpg) |
 | File explorer type badges | ![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg) |
 
 비교 스크린샷을 새로 캡처할 때는 [visual comparison guide](docs/v3/visual-comparison-guide.md)를 기준으로 기본 Obsidian과 Owen Graphite를 같은 문서·같은 뷰포트에서 촬영합니다.
@@ -76,8 +80,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.49` |
-| **베이스라인 / 롤백 기준** | `v3.1.49` |
+| **버전** | `3.1.50` |
+| **베이스라인 / 롤백 기준** | `v3.1.50` |
 | **모드 지원** | ✅ Light / Dark / Report |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -99,6 +103,21 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
 
 Recent updates are listed here so English-speaking users and reviewers can quickly see what changed in the latest stable releases.
+
+### v3.1.50 — README 화면 투어 / README Visual Tour Refresh
+
+README 상단 Visual Tour에 실제 작업 화면과 설정 화면 스크린샷을 보강했습니다. 문서 작성 surface, 플로팅 툴바, Style Settings의 보고서 옵션, 파일 탐색기 glass navigation, Owen Editor 툴바 설정을 첫 화면에서 바로 확인할 수 있습니다.
+
+This release expands the README Visual Tour with real workspace screenshots for the writing surface, floating toolbar, report-oriented Style Settings controls, file explorer glass navigation, and Owen Editor toolbar options.
+
+![문서 작성 화면과 플로팅 툴바](screenshots/readme/workspace-writing-surface.jpg)
+
+| 구분 | 개선 내용 |
+| --- | --- |
+| 작업 화면 | 문서 표면, floating glass toolbar, 사이드바 톤을 한 화면에서 확인 |
+| 설정 화면 | Style Settings의 본문/보고서 옵션과 Owen Editor 툴바 설정 이미지 추가 |
+| 탐색기 | glass navigation, active row, 타입 배지 상태를 README 투어에 노출 |
+| 문서 자산 | 새 JPG 4장을 `screenshots/readme/` 인벤토리에 등록 |
 
 ### v3.1.49 — 설정 제목과 검색 Focus Rim / Settings Headings and Search Focus Rim
 
@@ -130,19 +149,6 @@ This update hides the right-side extension label and replaces the leading docume
 | 대응 범위 | Markdown, HTML/SVG/PDF, 코드, 설정, 오피스, 이미지, 오디오/비디오, Obsidian canvas/excalidraw |
 | 가독성 | 타입 배지와 파일명 사이 간격을 확보해 목록 스캔성을 개선 |
 
-### v3.1.39 — PDF 헤더 Key/Value 2쌍 / Two PDF Header Key-Value Pairs
-
-PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습니다. 1번과 2번 쌍은 설정 UI의 순서 그대로 `1번 Key → 1번 Value → 2번 Key → 2번 Value`로 배치되며, 네 segment의 높이를 같은 기준으로 맞췄습니다. 2번 key/value도 별도 색상 팔레트를 사용해 문서 작성자, 부서, 보안 등급, 검토 상태를 한 줄에서 구분할 수 있습니다.
-
-![PDF 헤더 Key/Value 2쌍](screenshots/readme/pdf-dual-key-value-header.png)
-
-| 설정 영역 | 개선 내용 |
-| --- | --- |
-| 라벨 구성 | `Key/Value 1쌍`과 `Key/Value 2쌍`을 직접 선택 |
-| 헤더 1번 | Key/Value 문구와 색상 팔레트 유지 |
-| 헤더 2번 | Key/Value 문구와 독립 색상 팔레트 추가 |
-| PDF 안정성 | Obsidian export wrapper 구조와 무관하게 2쌍 출력 |
-
 이전 신기능 소개는 [docs/v3/feature-history.md](docs/v3/feature-history.md)에 보관합니다.
 
 ---
@@ -157,7 +163,7 @@ PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습�
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.49.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.50.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -166,7 +172,7 @@ PDF 첫 페이지 헤더에 Key/Value 쌍을 두 개까지 출력할 수 있습�
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.49.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.50.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 

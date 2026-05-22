@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.50
+
+- docs: README Visual Tour에 문서 작성 화면, Style Settings 보고서 옵션, 파일 탐색기 glass navigation, Owen Editor 툴바 설정 스크린샷을 추가했습니다.
+- docs: 새 README 스크린샷 4장을 `screenshots/readme/`에 등록하고 스크린샷 인벤토리를 갱신했습니다.
+- release: 문서/스크린샷 자산 링크 검증을 통과한 README 갤러리 갱신 릴리즈입니다.
+
 ## v3.1.49
 
 - polish: Style Settings 그룹 제목과 Obsidian 설정 본문 섹션 제목에 추천안 D의 liquid header bar와 좌측 gradient rail을 적용했습니다.
