@@ -26,7 +26,6 @@ RELEASE_ASSETS = [
     "LICENSE",
     "screenshots/light.png",
     "screenshots/dark.png",
-    "screenshots/report.png",
 ]
 DEFAULT_VAULTS = [
     Path(r"H:\Owen-WIKI"),

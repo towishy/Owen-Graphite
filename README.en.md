@@ -8,7 +8,7 @@ Owen Graphite is an Obsidian theme for long-form technical writing, Korean and E
 | --- | --- |
 | Long Korean and English notes | Balanced CJK/Latin typography, calmer spacing, stable long tables and code blocks |
 | Technical documentation | Clear callouts, embeds, tables, code blocks, and document-style reading surfaces |
-| PDF reports | Report mode, automatic heading numbering, first-page header labels, final-page footer labels, and reduced page-break issues |
+| PDF reports | Automatic heading numbering, first-page header labels, final-page footer labels, and reduced page-break issues |
 | Daily Obsidian workspaces | Polished tabs, file explorer, search panes, settings controls, popovers, and type badges |
 
 ## Install
@@ -16,7 +16,7 @@ Owen Graphite is an Obsidian theme for long-form technical writing, Korean and E
 1. Open Obsidian.
 2. Go to `Settings` -> `Appearance` -> `Themes`.
 3. Search for `Owen Graphite` and enable it.
-4. Optional: install the Style Settings plugin to adjust report mode, PDF labels, typography, glass intensity, motion, and accessibility options.
+4. Optional: install the Style Settings plugin to adjust PDF labels, typography, glass intensity, motion, and accessibility options.
 
 Manual ZIP installs should use the release asset named `Owen-Graphite-3.1.52.zip`, not GitHub's auto-generated source archive.
 

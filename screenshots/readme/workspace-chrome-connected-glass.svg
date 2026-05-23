@@ -1,98 +1,240 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="320" viewBox="0 0 2048 320" role="img" aria-labelledby="title desc">
   <title id="title">Workspace chrome connected liquid glass</title>
-  <desc id="desc">Owen Graphite v3.1.52 workspace chrome polish showing connected active tab, floating editor toolbar, file explorer glass pills, and bottom document frame.</desc>
+  <desc id="desc">Owen Graphite v3.1.52 workspace chrome polish based on the real Obsidian layout, with a connected active tab, left navigation, and floating editor toolbar.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="0.55" stop-color="#eef2f7"/>
-      <stop offset="1" stop-color="#dbeafe"/>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.68" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef6ff"/>
+    </linearGradient>
+    <linearGradient id="sidebar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#f1f5f9" stop-opacity="0.62"/>
     </linearGradient>
     <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
-      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.62"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0.78"/>
     </linearGradient>
-    <linearGradient id="softGlass" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.74"/>
-      <stop offset="1" stop-color="#e2e8f0" stop-opacity="0.18"/>
+    <linearGradient id="activeTab" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f0f9ff"/>
     </linearGradient>
-    <radialGradient id="shine" cx="72%" cy="18%" r="70%">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.88"/>
-      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
-      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.14"/>
-      <feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#38bdf8" flood-opacity="0.08"/>
+    <linearGradient id="button" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#f1f5f9" stop-opacity="0.84"/>
+    </linearGradient>
+    <filter id="tabShadow" x="-18%" y="-40%" width="136%" height="190%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0f172a" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="9" flood-color="#38bdf8" flood-opacity="0.10"/>
     </filter>
-    <filter id="softShadow" x="-20%" y="-30%" width="140%" height="170%">
-      <feDropShadow dx="0" dy="8" stdDeviation="13" flood-color="#0f172a" flood-opacity="0.10"/>
+    <filter id="toolbarShadow" x="-12%" y="-80%" width="124%" height="260%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#0f172a" flood-opacity="0.16"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#38bdf8" flood-opacity="0.08"/>
+    </filter>
+    <filter id="buttonShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.14"/>
     </filter>
   </defs>
 
-  <rect width="1120" height="520" fill="url(#bg)"/>
-  <rect x="26" y="24" width="1068" height="472" rx="18" fill="#ffffff" fill-opacity="0.72" stroke="#cbd5e1" stroke-opacity="0.62"/>
+  <rect width="2048" height="320" fill="url(#page)"/>
+  <path d="M0 58H2048" stroke="#e2e8f0"/>
+  <path d="M0 116H2048" stroke="#cbd5e1" stroke-opacity="0.68"/>
 
-  <rect x="26" y="24" width="210" height="472" rx="18" fill="url(#softGlass)" stroke="#cbd5e1" stroke-opacity="0.36"/>
-  <rect x="236" y="24" width="1" height="472" fill="#94a3b8" opacity="0.22"/>
+  <g font-family="Inter, Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <rect x="0" y="0" width="298" height="320" fill="url(#sidebar)" stroke="#cbd5e1" stroke-opacity="0.45"/>
+    <rect x="0" y="0" width="298" height="58" fill="#ffffff" fill-opacity="0.54"/>
 
-  <g font-family="Inter, Pretendard, system-ui, sans-serif" font-size="16" font-weight="780" fill="#334155">
-    <rect x="52" y="92" width="156" height="34" rx="9" fill="#ffffff" fill-opacity="0.52" stroke="#cbd5e1" stroke-opacity="0.58"/>
-    <text x="88" y="114">게임</text>
-    <rect x="52" y="138" width="156" height="34" rx="9" fill="#ffffff" fill-opacity="0.52" stroke="#cbd5e1" stroke-opacity="0.58"/>
-    <text x="88" y="160">기타</text>
-    <rect x="52" y="184" width="156" height="34" rx="9" fill="#ffffff" fill-opacity="0.52" stroke="#cbd5e1" stroke-opacity="0.58"/>
-    <text x="88" y="206">임시</text>
-  </g>
-
-  <g filter="url(#softShadow)">
-    <rect x="54" y="438" width="132" height="38" rx="10" fill="url(#glass)" stroke="#7dd3fc" stroke-opacity="0.58"/>
-    <text x="90" y="463" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="16" font-weight="760" fill="#111827">Owen-WIKI</text>
-  </g>
-  <circle cx="206" cy="457" r="18" fill="#ffffff" fill-opacity="0.58" stroke="#cbd5e1"/>
-  <circle cx="252" cy="457" r="18" fill="#ffffff" fill-opacity="0.58" stroke="#cbd5e1"/>
-
-  <g>
-    <rect x="260" y="42" width="810" height="1" fill="#94a3b8" opacity="0.22"/>
-    <rect x="272" y="16" width="166" height="44" rx="18" fill="#ffffff" fill-opacity="0.36" stroke="#cbd5e1" stroke-opacity="0.38"/>
-    <text x="292" y="43" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748b">mermaid-live...</text>
-    <g filter="url(#shadow)">
-      <rect x="456" y="8" width="244" height="54" rx="18" fill="url(#glass)" stroke="#7dd3fc" stroke-opacity="0.62"/>
-      <rect x="456" y="58" width="244" height="8" fill="#ffffff" fill-opacity="0.82"/>
-      <text x="496" y="42" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="18" font-weight="850" text-anchor="middle" fill="#111827" transform="translate(82 0)">구독 - 요청 - MCAPS</text>
+    <g transform="translate(7 10)" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <g filter="url(#buttonShadow)">
+        <rect width="48" height="42" rx="12" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M16 16H28L33 21V30H15Z"/>
+        <path d="M15 21H33"/>
+      </g>
+      <g transform="translate(56)" filter="url(#buttonShadow)">
+        <rect width="50" height="42" rx="18" fill="url(#button)" stroke="#cbd5e1"/>
+        <circle cx="23" cy="19" r="8"/>
+        <path d="M30 26L37 33"/>
+      </g>
+      <g transform="translate(112)" filter="url(#buttonShadow)">
+        <rect width="50" height="42" rx="18" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M20 12H32V31L26 27L20 31Z"/>
+      </g>
+      <g transform="translate(250)" filter="url(#buttonShadow)">
+        <rect width="44" height="42" rx="12" fill="url(#button)" stroke="#cbd5e1"/>
+        <rect x="15" y="10" width="17" height="22" rx="3"/>
+        <path d="M19 13V29" stroke-opacity="0.45"/>
+      </g>
     </g>
-    <rect x="718" y="18" width="148" height="36" rx="16" fill="#ffffff" fill-opacity="0.34" stroke="#cbd5e1" stroke-opacity="0.34"/>
-    <text x="742" y="42" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748b">Perks +</text>
-  </g>
 
-  <g filter="url(#shadow)">
-    <rect x="376" y="104" width="520" height="56" rx="18" fill="url(#glass)" stroke="#ffffff" stroke-opacity="0.70"/>
-    <g fill="#111827" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="15" font-weight="760">
-      <rect x="392" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="403" y="139">↶</text>
-      <rect x="436" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="447" y="139">↷</text>
-      <rect x="498" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="508" y="139">H2</text>
-      <rect x="542" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="552" y="139">H3</text>
-      <rect x="586" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="596" y="139">H4</text>
-      <rect x="648" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="660" y="139">B</text>
-      <rect x="692" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="705" y="139">I</text>
-      <rect x="736" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="748" y="139">≡</text>
-      <rect x="780" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="791" y="139">▦</text>
-      <rect x="824" y="116" width="34" height="34" rx="10" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1"/>
-      <text x="835" y="139">⌁</text>
+    <g transform="translate(36 70)" fill="none" stroke="#334155" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <g filter="url(#buttonShadow)">
+        <rect width="44" height="38" rx="7" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M16 25L28 13"/>
+        <path d="M25 12L31 18"/>
+        <path d="M14 27L13 33L19 32"/>
+      </g>
+      <g transform="translate(48)" filter="url(#buttonShadow)">
+        <rect width="44" height="38" rx="7" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M12 26H32V14H23L20 10H12Z"/>
+        <path d="M22 17V29M16 23H28"/>
+      </g>
+      <g transform="translate(96)" filter="url(#buttonShadow)">
+        <rect width="44" height="38" rx="7" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M14 27H32"/>
+        <path d="M18 12V29"/>
+        <path d="M12 18L18 12L24 18"/>
+      </g>
+      <g transform="translate(144)" filter="url(#buttonShadow)">
+        <rect width="44" height="38" rx="7" fill="url(#button)" stroke="#cbd5e1"/>
+        <rect x="13" y="12" width="20" height="16" rx="2"/>
+        <path d="M12 8H34"/>
+      </g>
+      <g transform="translate(192)" filter="url(#buttonShadow)">
+        <rect width="44" height="38" rx="7" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M17 14L22 19L27 14"/>
+        <path d="M17 25L22 20L27 25"/>
+      </g>
     </g>
-  </g>
 
-  <text x="300" y="264" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="34" font-weight="850" fill="#111827">구독 - 요청 - MCAPS</text>
-  <rect x="300" y="274" width="270" height="2" fill="#67e8f9" opacity="0.60"/>
-  <rect x="300" y="310" width="724" height="92" rx="8" fill="#ffffff" fill-opacity="0.50" stroke="#cbd5e1" stroke-opacity="0.54"/>
-  <text x="330" y="350" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="17" font-weight="800" fill="#111827">연결된 탭과 문서 프레임</text>
-  <text x="330" y="382" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="14" fill="#475569">활성 탭, 하단 문서 제목, vault switcher가 같은 sky-rim glass 언어로 이어집니다.</text>
+    <g transform="translate(8 130)" font-size="18" font-weight="760" fill="#334155">
+      <rect width="288" height="38" rx="8" fill="#ffffff" fill-opacity="0.60" stroke="#cbd5e1" stroke-opacity="0.58"/>
+      <path d="M33 145H44V151H33Z" transform="translate(0 -130)" fill="none" stroke="#94a3b8" stroke-width="2"/>
+      <text x="68" y="25">게임</text>
+      <rect y="42" width="288" height="38" rx="8" fill="#ffffff" fill-opacity="0.60" stroke="#cbd5e1" stroke-opacity="0.58"/>
+      <circle cx="50" cy="61" r="20" fill="#ffffff" fill-opacity="0.62" stroke="#7dd3fc" stroke-opacity="0.58"/>
+      <text x="68" y="67">기타</text>
+    </g>
+
+    <g>
+      <rect x="298" y="0" width="1750" height="58" fill="#ffffff" fill-opacity="0.54"/>
+      <g transform="translate(344 14)" filter="url(#tabShadow)">
+        <path d="M0 18C0 8.1 8.1 0 18 0H346C355.9 0 364 8.1 364 18V44H0Z" fill="url(#activeTab)" stroke="#cbd5e1" stroke-opacity="0.55"/>
+        <path d="M1 18C1 8.7 8.7 1 18 1H346C355.3 1 363 8.7 363 18" fill="none" stroke="#ffffff" stroke-opacity="0.94"/>
+        <rect y="42" width="364" height="16" fill="#ffffff" fill-opacity="0.88"/>
+        <text x="168" y="29" text-anchor="middle" font-size="17" font-weight="850" fill="#111827">노트북LM - 한글 프롬프트</text>
+        <path d="M328 16L340 28M340 16L328 28" stroke="#64748b" stroke-width="2.1" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(742 26)" stroke="#64748b" stroke-width="2.4" stroke-linecap="round">
+        <path d="M0 0H20"/>
+        <path d="M10 -10V10"/>
+      </g>
+      <g transform="translate(1941 10)" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="40" height="38" rx="12" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M13 17L20 24L27 17"/>
+      </g>
+      <g transform="translate(2012 10)" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="36" height="38" rx="10" fill="url(#button)" stroke="#cbd5e1"/>
+        <rect x="11" y="9" width="16" height="20" rx="3"/>
+        <path d="M15 12V26" stroke-opacity="0.45"/>
+      </g>
+    </g>
+
+    <g transform="translate(660 78)" filter="url(#toolbarShadow)">
+      <rect width="1260" height="68" rx="22" fill="url(#glass)" stroke="#e2e8f0"/>
+      <path d="M24 12C120 2 1140 2 1236 12" fill="none" stroke="#ffffff" stroke-opacity="0.94" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(671 87)" fill="#334155" stroke="#334155" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <g filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M26 17H17V8"/>
+        <path d="M18 8C27 9 32 15 32 23C32 31 26 36 18 36"/>
+      </g>
+      <g transform="translate(51)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M18 17H27V8"/>
+        <path d="M28 8C19 9 14 15 14 23C14 31 20 36 28 36"/>
+      </g>
+      <g transform="translate(102)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M18 12L31 25L22 34L9 21Z"/>
+        <path d="M13 32H33"/>
+      </g>
+      <g transform="translate(172)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <text x="22" y="29" text-anchor="middle" font-size="17" font-weight="850" fill="#334155" stroke="none">H2</text>
+      </g>
+      <g transform="translate(223)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <text x="22" y="29" text-anchor="middle" font-size="17" font-weight="850" fill="#334155" stroke="none">H3</text>
+      </g>
+      <g transform="translate(274)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <text x="22" y="29" text-anchor="middle" font-size="17" font-weight="850" fill="#334155" stroke="none">H4</text>
+      </g>
+      <g transform="translate(325)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <text x="22" y="30" text-anchor="middle" font-size="21" font-weight="850" fill="#334155" stroke="none">B</text>
+      </g>
+      <g transform="translate(376)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M26 12H34M13 34H22M30 12L18 34"/>
+      </g>
+      <g transform="translate(427)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M16 20H31M20 28H28M23 13H35"/>
+      </g>
+      <g transform="translate(478)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M14 13V24C14 31 30 31 30 24V13M12 34H33"/>
+      </g>
+      <g transform="translate(552)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M28 12L15 28M18 25L30 34M27 13C31 16 33 19 34 23"/>
+      </g>
+      <g transform="translate(603)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M18 14L10 22L18 30M25 17H35M25 27H35"/>
+      </g>
+      <g transform="translate(654)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M27 14L35 22L27 30M10 17H20M10 27H20"/>
+      </g>
+      <g transform="translate(705)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M14 15H34M14 23H34M14 31H34M8 15H9M8 23H9M8 31H9"/>
+      </g>
+      <g transform="translate(756)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M14 15H34M14 23H34M14 31H34M8 15H10M8 23H10M8 31H10"/>
+      </g>
+      <g transform="translate(807)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <text x="22" y="29" text-anchor="middle" font-size="17" font-weight="850" fill="#334155" stroke="none">1·2</text>
+      </g>
+      <g transform="translate(880)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <rect x="14" y="14" width="16" height="16" rx="2" stroke-dasharray="2 3" fill="none"/>
+        <path d="M11 22H33M22 11V33" stroke-opacity="0.55"/>
+      </g>
+      <g transform="translate(931)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M18 29L28 17M19 18C14 16 10 18 9 23C8 27 11 31 16 31H20M27 17H31C36 17 39 20 38 25C37 29 33 31 29 29"/>
+      </g>
+      <g transform="translate(982)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M13 22H33M27 16L33 22L27 28M18 14V30"/>
+      </g>
+      <g transform="translate(1033)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <rect x="13" y="13" width="20" height="20" rx="2" fill="none"/>
+        <path d="M23 13V33M13 23H33"/>
+      </g>
+      <g transform="translate(1084)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M22 10L25 18L33 21L25 24L22 32L19 24L11 21L19 18ZM32 9L34 14L39 16L34 18L32 23L30 18L25 16L30 14Z"/>
+      </g>
+      <g transform="translate(1135)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <rect x="13" y="14" width="19" height="17" rx="2" fill="none"/>
+        <path d="M13 20H32M18 10H27M19 25H26"/>
+      </g>
+      <g transform="translate(1186)" filter="url(#buttonShadow)">
+        <rect width="44" height="44" rx="14" fill="url(#button)" stroke="#cbd5e1"/>
+        <path d="M17 27L22 32L27 27M17 17L22 12L27 17"/>
+      </g>
+    </g>
+
+    <rect x="356" y="176" width="2" height="140" rx="1" fill="#111827"/>
+  </g>
 </svg>

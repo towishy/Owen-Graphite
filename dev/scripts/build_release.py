@@ -29,7 +29,6 @@ DEFAULT_FILES = [
     "dev/MAP/selector-provenance.json",
     "screenshots/light.png",
     "screenshots/dark.png",
-    "screenshots/report.png",
 ]
 
 

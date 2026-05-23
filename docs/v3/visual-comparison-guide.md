@@ -25,7 +25,6 @@
 | --- | --- | --- |
 | Light mode | `screenshots/light.png` | 첫 인상과 본문 밀도 |
 | Dark mode | `screenshots/dark.png` | 다크 대비와 chrome 안정성 |
-| Report mode | `screenshots/report.png` | 보고서 모드와 PDF에 가까운 레이아웃 |
 | 기능별 이미지 | `screenshots/readme/` | 최신 기능 3개 소개 |
 
 ## 남은 작업

@@ -1,10 +1,4 @@
-﻿# Owen Graphite — Obsidian Theme
-
-<!-- markdownlint-disable MD022 MD032 MD033 MD040 -->
-
-**Owen Graphite v3.1.52** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
-
-**English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
+﻿<!-- markdownlint-disable MD022 MD032 MD033 MD040 MD041 -->
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
@@ -12,6 +6,12 @@
 [![!important](https://img.shields.io/badge/!important-0-0d9488?style=flat-square)](docs/v3/cascade-research.md)
 
 [English README](README.en.md) · [Style Settings presets](docs/v3/style-settings-presets.md) · [Compatibility matrix](docs/plugin-compatibility.md)
+
+# Owen Graphite — Obsidian Theme
+
+**Owen Graphite v3.1.52** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+
+**English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
 ## Why Owen Graphite?
 
@@ -38,7 +38,6 @@
 | --- | --- |
 | Light mode | ![Light Mode](screenshots/light.png) |
 | Dark mode | ![Dark Mode](screenshots/dark.png) |
-| Report mode | ![Report Mode](screenshots/report.png) |
 | Top tabs and floating toolbar | ![상단 탭과 플로팅 툴바](screenshots/readme/top-tabs-liquid-glass.svg) |
 | Writing surface and floating toolbar | ![문서 작성 화면과 플로팅 툴바](screenshots/readme/workspace-writing-surface.jpg) |
 | Style Settings report controls | ![Style Settings 보고서 옵션](screenshots/readme/style-settings-report-options.jpg) |
@@ -58,7 +57,7 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 | Korean and English notes | Balanced typography for CJK and Latin text, with stable spacing for long documents |
 | Technical writing | Clear code blocks, long tables, callouts, embeds, and document-style layouts |
 | Workspace navigation | Polished tabs, file explorer, search panels, sidebars, and type badges for common file formats |
-| Report workflows | Report mode, print-friendly surfaces, PDF header options, and reduced page-break issues |
+| PDF workflows | Print-friendly surfaces, PDF header options, and reduced page-break issues |
 | Maintenance | Modular v3 CSS source, release audits, and zero-important cascade policy |
 
 ### Installation
@@ -66,7 +65,7 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 1. Open Obsidian and go to `Settings` → `Appearance` → `Themes`.
 2. Search for `Owen Graphite` in the community theme browser.
 3. Install and enable the theme.
-4. Optional: install the Style Settings plugin to adjust report mode, PDF header fields, and workspace polish options.
+4. Optional: install the Style Settings plugin to adjust PDF header fields, typography, and workspace polish options.
 
 | 핵심 사용처 | 바로 얻는 효과 |
 | --- | --- |
@@ -82,16 +81,15 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 | --- | --- |
 | **버전** | `3.1.52` |
 | **베이스라인 / 롤백 기준** | `v3.1.52` |
-| **모드 지원** | ✅ Light / Dark / Report |
+| **모드 지원** | ✅ Light / Dark |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
 
 <details>
-<summary>📷 Light / Dark / Report 모드 스크린샷</summary>
+<summary>📷 Light / Dark 모드 스크린샷</summary>
 
 ![Light Mode](screenshots/light.png)
 ![Dark Mode](screenshots/dark.png)
-![Report Mode (auto-numbering + serif body + cover page)](screenshots/report.png)
 
 </details>
 
