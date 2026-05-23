@@ -18,7 +18,7 @@ Owen Graphite is an Obsidian theme for long-form technical writing, Korean and E
 3. Search for `Owen Graphite` and enable it.
 4. Optional: install the Style Settings plugin to adjust PDF labels, typography, glass intensity, motion, and accessibility options.
 
-Manual ZIP installs should use the release asset named `Owen-Graphite-3.1.55.zip`, not GitHub's auto-generated source archive.
+Manual ZIP installs should use the release asset named `Owen-Graphite-3.1.56.zip`, not GitHub's auto-generated source archive.
 
 ## Documentation
 

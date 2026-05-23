@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.55`
+- Version: `3.1.56`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2365
-- Findings: 554
-- Finding severity counts: critical=0, high=0, medium=478, low=76, info=0
+- Selectors: 2372
+- Findings: 555
+- Finding severity counts: critical=0, high=0, medium=479, low=76, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -31,7 +31,7 @@ Canonical MAP location: `dev/MAP`.
 | medium | 23 | `src/chrome/30-workspace.css` | 125 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
 | high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 32 | 0 | 0 | high-specificity |
-| high | 75 | `src/chrome/33-settings-controls.css` | 66 | 0 | 0 | high-specificity |
+| high | 78 | `src/chrome/33-settings-controls.css` | 73 | 0 | 0 | high-specificity |
 | high | 54 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 98 | `src/plugins/61-live-preview-mobile-plugin.css` | 56 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector |
 | high | 170 | `src/features/42-report-print-polish.css` | 265 | 0 | 11 | high-specificity, cm6-hit-routing-sensitive, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |

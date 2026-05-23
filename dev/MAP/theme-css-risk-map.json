@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.55",
+  "version": "3.1.56",
   "module_order": [
     {
       "import_index": 1,
@@ -162,11 +162,11 @@
   ],
   "summary": {
     "module_count": 26,
-    "selector_count": 2365,
-    "finding_count": 554,
+    "selector_count": 2372,
+    "finding_count": 555,
     "cross_file_selector_group_count": 76,
     "finding_severity_counts": {
-      "medium": 478,
+      "medium": 479,
       "low": 76
     },
     "module_severity_counts": {
@@ -1274,12 +1274,12 @@
       "entry_line": 63,
       "legacy_id": "07c-settings-controls.css",
       "module": "src/chrome/33-settings-controls.css",
-      "line_count": 426,
-      "selector_count": 66,
-      "declaration_count": 167,
+      "line_count": 431,
+      "selector_count": 73,
+      "declaration_count": 200,
       "important_count": 0,
       "has_selector_count": 0,
-      "high_specificity_selector_count": 25,
+      "high_specificity_selector_count": 26,
       "live_preview_sensitive_rule_count": 0,
       "pdf_header_footer_sensitive_rule_count": 0,
       "repeated_selector_extra_count": 0,
@@ -1291,54 +1291,54 @@
       "top_properties": [
         [
           "background",
-          38
+          42
         ],
         [
           "box-shadow",
-          24
+          28
         ],
         [
           "color",
-          22
+          27
         ],
         [
           "border-color",
-          18
+          21
         ],
         [
           "border-radius",
-          9
+          10
         ],
         [
           "border",
-          7
+          8
         ],
         [
           "outline",
           5
         ],
         [
+          "padding",
+          4
+        ],
+        [
           "accent-color",
           4
         ],
         [
-          "padding",
-          3
-        ],
-        [
-          "height",
-          3
-        ],
-        [
-          "border-top-color",
-          2
-        ],
-        [
           "font-weight",
-          2
+          3
+        ],
+        [
+          "display",
+          3
+        ],
+        [
+          "min-height",
+          3
         ]
       ],
-      "risk_score": 75,
+      "risk_score": 78,
       "severity": "high",
       "risk_reasons": [
         "high-specificity"
@@ -3260,7 +3260,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 190,
+      "line": 196,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper",
       "message": "specificity=(0, 9, 2)"
     },
@@ -3268,7 +3268,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 195,
+      "line": 201,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch",
       "message": "specificity=(0, 9, 2)"
     },
@@ -3276,7 +3276,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 201,
+      "line": 207,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3284,7 +3284,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 206,
+      "line": 212,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "message": "specificity=(0, 22, 0)"
     },
@@ -3292,7 +3292,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 210,
+      "line": 216,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -3300,7 +3300,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 224,
+      "line": 227,
       "selector": ".theme-dark .setting-item, .theme-dark .style-settings-container .setting-item, .theme-dark .vertical-tab-content-container .setting-item",
       "message": "specificity=(0, 8, 0)"
     },
@@ -3308,7 +3308,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 237,
+      "line": 240,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
       "message": "specificity=(0, 11, 2)"
     },
@@ -3316,7 +3316,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 241,
+      "line": 244,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before",
       "message": "specificity=(0, 13, 0)"
     },
@@ -3324,7 +3324,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 244,
+      "line": 247,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3), body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
       "message": "specificity=(0, 20, 1)"
     },
@@ -3332,7 +3332,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 253,
+      "line": 256,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "message": "specificity=(0, 34, 14)"
     },
@@ -3340,7 +3340,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 257,
+      "line": 260,
       "selector": ".theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "message": "specificity=(0, 12, 2)"
     },
@@ -3348,7 +3348,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 265,
+      "line": 268,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "message": "specificity=(0, 21, 6)"
     },
@@ -3356,7 +3356,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 273,
+      "line": 276,
       "selector": ".theme-dark .setting-item-control input:focus, .theme-dark .setting-item-control textarea:focus, .theme-dark .setting-item-control select:focus, .theme-dark .setting-item-control .dropdown:focus-visible",
       "message": "specificity=(0, 13, 0)"
     },
@@ -3364,7 +3364,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 284,
+      "line": 287,
       "selector": ".theme-dark .setting-item-control button.mod-warning, .theme-dark .setting-item-control button.mod-destructive, .theme-dark .modal .setting-item-control button.mod-warning, .theme-dark .modal .setting-item-control button.mod-destructive",
       "message": "specificity=(0, 14, 4)"
     },
@@ -3372,7 +3372,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 290,
+      "line": 293,
       "selector": ".theme-dark .setting-item-control button.mod-warning:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -3380,8 +3380,16 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/chrome/33-settings-controls.css",
-      "line": 296,
+      "line": 299,
       "selector": ".theme-dark .setting-item-control button.mod-destructive:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
+      "message": "specificity=(0, 9, 0)"
+    },
+    {
+      "severity": "medium",
+      "category": "high-specificity",
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 301,
+      "selector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
       "message": "specificity=(0, 9, 0)"
     },
     {

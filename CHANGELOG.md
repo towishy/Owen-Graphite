@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.56
+
+- polish: Style Settings의 `Import`, `Export`, `Copy to clipboard`, `Download`, `Import from file` 링크 문자열을 Owen Graphite glass pill 버튼 톤으로 정리했습니다.
+- polish: Style Settings export/import 모달 안의 유틸리티 액션도 설정 화면과 같은 버튼 언어로 맞췄습니다.
+- ci: main Validate workflow에 requirements와 Playwright Chromium 설치 단계를 추가해 release check 실행 환경을 릴리즈 workflow와 맞췄습니다.
+- guard: CSS budget, bundle freshness, release build, release ZIP 검증을 통과했습니다.
+
 ## v3.1.55
 
 - feat: 고객 전달용 화면 PDF를 위한 `PDF 고객 전달용 화면 가시성` Style Settings 토글을 추가했습니다.

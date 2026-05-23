@@ -170,6 +170,12 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
   box-shadow: var(--ogd-shadow-none, none);
 }
 
+body.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile) .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label) { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 0 10px; border: 1px solid rgba(148, 163, 184, 0.36); border-radius: var(--ogd-radius-control, 7px); background: radial-gradient(circle at 72% 20%, rgba(255, 255, 255, 0.78), transparent 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.62)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04), 0 4px 10px rgba(15, 23, 42, 0.07); color: var(--ogd-text-slate, #334155); font-size: 0.9em; font-weight: 760; line-height: 1; text-decoration: none; text-underline-offset: 0; transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease, transform 0.12s ease; }
+body.css-settings-manager :is(.style-settings-import, .style-settings-export):not(:last-child) { margin-right: 8px; }
+body.css-settings-manager :is(.style-settings-copy, .style-settings-download), body:not(.is-mobile) .modal-style-settings :is(.style-settings-copy, .style-settings-download) { margin-left: 8px; }
+body.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile) .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible) { border-color: rgba(14, 165, 233, 0.36); background: radial-gradient(circle at 72% 20%, rgba(255, 255, 255, 0.92), transparent 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(240, 249, 255, 0.70)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 7px 16px rgba(15, 23, 42, 0.11), 0 0 0 3px rgba(14, 165, 233, 0.07); color: #0f766e; transform: var(--ogd-hover-lift, translateY(-1px)); }
+body.css-settings-manager .style-settings-copy::before, body:not(.is-mobile) .modal-style-settings .style-settings-copy::before { color: #0f766e; left: -15px; }
+
 /* Toggles */
 .checkbox-container {
   background: var(--ogd-line-strong, #cbd5e1);
@@ -264,10 +270,7 @@ body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-a
 }
 
 /* Settings focus ring */
-.setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible {
-  outline: 1px solid rgba(100, 116, 139, 0.42);
-  outline-offset: 1px;
-}
+.setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible { outline: 1px solid rgba(100, 116, 139, 0.42); outline-offset: 1px; }
 
 .theme-dark .setting-item,
 .theme-dark .style-settings-container .setting-item,
@@ -381,6 +384,8 @@ body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(251, 113, 133, 0.06), 0 6px 16px rgba(0, 0, 0, 0.32), 0 0 0 3px rgba(251, 113, 133, 0.05);
   color: #fecdd3;
 }
+body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label) { border-color: rgba(203, 213, 225, 0.18); background: radial-gradient(circle at 72% 20%, rgba(148, 163, 184, 0.12), transparent 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.38)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 4px 12px rgba(0, 0, 0, 0.24); color: var(--ogd-line-strong, #cbd5e1); }
+body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible) { border-color: rgba(14, 165, 233, 0.28); background: radial-gradient(circle at 72% 20%, rgba(148, 163, 184, 0.16), transparent 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.48)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 7px 18px rgba(0, 0, 0, 0.34), 0 0 0 3px rgba(14, 165, 233, 0.05); color: #7dd3fc; }
 .theme-dark .checkbox-container {
   background: var(--ogd-surface-dark-subtle, #334155);
   border-color: var(--ogd-line-muted, #475569);
