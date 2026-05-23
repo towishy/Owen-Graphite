@@ -4,12 +4,12 @@ Canonical MAP location: `dev/MAP`.
 
 ## Summary
 
-- Version: `3.1.52`
+- Version: `3.1.53`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2334
-- Findings: 548
-- Finding severity counts: critical=0, high=0, medium=473, low=75, info=0
+- Selectors: 2335
+- Findings: 549
+- Finding severity counts: critical=0, high=0, medium=474, low=75, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -21,7 +21,7 @@ Canonical MAP location: `dev/MAP`.
 | low | 2 | `src/tokens/01-dark-tokens.css` | 7 | 0 | 0 | pdf-header-footer-sensitive |
 | medium | 18 | `src/base/10-base-workspace.css` | 17 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive |
 | high | 82 | `src/base/12-reading-content.css` | 106 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
-| high | 107 | `src/surfaces/20-reading-tables-code.css` | 152 | 0 | 4 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
+| high | 110 | `src/surfaces/20-reading-tables-code.css` | 153 | 0 | 4 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 67 | `src/surfaces/21-reading-callouts-lists.css` | 121 | 0 | 3 | high-specificity, has-selector, repeated-selector-in-file |
 | medium | 21 | `src/surfaces/22-reading-embeds-workspace.css` | 30 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive |
 | high | 72 | `src/themes/50-dark.css` | 87 | 0 | 0 | high-specificity |

@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.53
+
+- fix: Live Preview 코드블럭 헤더 라벨이 클릭 후 사라지지 않도록 `.code-block-flair` 표시를 복원하고, 클릭 라우팅은 유지했습니다.
+- polish: 코드블럭 헤더 오른쪽 액션 슬롯 토큰을 예약해 향후 copy icon 같은 DOM 액션이 라벨과 겹치지 않도록 정리했습니다.
+- guard: Live Preview hit-routing, LP/PDF selector ownership, CSS budget, PDF header/footer 릴리스 검증을 통과했습니다.
+
 ## v3.1.52
 
 - polish: 활성 workspace tab과 문서 표면이 이어지는 connected glass 처리, 비활성 탭 제목 중앙 정렬, 빈 탭 영역 하단 hairline을 정리했습니다.
