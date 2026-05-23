@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.54
+
+- polish: 파일 탐색기 상단 5개 액션 버튼에 Owen Graphite 전용 마스크 아이콘, liquid-glass 표면, hover/focus 리프트 효과를 적용했습니다.
+- polish: 문서 상단 root view header의 흰 배경을 더 투명한 cyan-tint glass로 낮추고, 실제 소유 규칙의 하이라이트와 그림자를 함께 줄였습니다.
+- fix: 활성 workspace tab 뒤에 보이던 둥근 backline/connector 레이어와 확산 그림자를 정리해 탭 뒤쪽 라인이 드러나지 않도록 했습니다.
+- guard: release check, CSS budget, LP/PDF selector ownership, Live Preview hit-routing, PDF header/footer 검증을 통과했습니다.
+
 ## v3.1.53
 
 - fix: Live Preview 코드블럭 헤더 라벨이 클릭 후 사라지지 않도록 `.code-block-flair` 표시를 복원하고, 클릭 라우팅은 유지했습니다.

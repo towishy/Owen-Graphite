@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.53** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.54** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -79,8 +79,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.53` |
-| **베이스라인 / 롤백 기준** | `v3.1.53` |
+| **버전** | `3.1.54` |
+| **베이스라인 / 롤백 기준** | `v3.1.54` |
 | **모드 지원** | ✅ Light / Dark |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -101,6 +101,17 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 > [Style Settings 플러그인](https://community.obsidian.md/plugins/obsidian-style-settings)을 설치하면, 신기능 관련 옵션과 설정을 진행할 수 있습니다.
 
 Recent updates are listed here so English-speaking users and reviewers can quickly see what changed in the latest stable releases.
+
+### v3.1.54 — File Explorer Actions & Transparent Top Chrome
+
+파일 탐색기 상단 5개 액션 버튼을 Owen Graphite 전용 아이콘과 liquid-glass 표면으로 맞추고, hover/focus 시 teal/cyan 림과 살짝 떠오르는 리프트를 추가했습니다. 문서 상단 root view header는 더 투명한 cyan-tint glass로 낮췄고, 활성 탭 뒤에 보이던 둥근 backline/connector 레이어를 숨겼습니다.
+
+| 구분 | 개선 내용 |
+| --- | --- |
+| 파일 탐색기 액션 | 새 노트, 새 폴더, 정렬, compact, fold 계열 5개 버튼에 전용 마스크 아이콘 적용 |
+| 상단 chrome | root view header의 흰 배경, 하이라이트, 그림자를 낮춰 더 투명한 glass 톤으로 조정 |
+| 활성 탭 | 뒤쪽 rounded connector와 확산 그림자를 제거해 탭 뒤 라인이 드러나지 않도록 정리 |
+| 검증 | release check, CSS budget, LP/PDF selector ownership, Live Preview hit-routing 검증 통과 |
 
 ### v3.1.53 — Live Preview Codeblock Header Editability
 
@@ -171,7 +182,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.53.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.54.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -180,7 +191,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.53.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.54.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 
