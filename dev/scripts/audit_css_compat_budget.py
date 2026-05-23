@@ -14,6 +14,13 @@ SRC_DIR = ROOT / "src"
 MAX_THEME_LINES = 18_250
 MAX_THEME_BYTES = 900_000
 ALLOWED_SCROLLBAR_GUTTER_VALUE = "stable both-edges"
+MAX_RAW_AQUA_RGBA = 182
+RAW_AQUA_RGBA_PATTERNS = (
+    re.compile(r"rgba\(125,\s*211,\s*252"),
+    re.compile(r"rgba\(186,\s*230,\s*253"),
+    re.compile(r"rgba\(56,\s*189,\s*248"),
+    re.compile(r"rgba\(103,\s*232,\s*249"),
+)
 
 COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 DECL_RE = re.compile(r"(?P<prop>[a-zA-Z-]+)\s*:\s*(?P<value>[^;{}]+);")
@@ -50,6 +57,13 @@ def main() -> int:
         if "@import" in clean_theme:
             raise AssertionError("theme.css still contains @import outside comments; bundle should inline imports")
 
+        raw_aqua_rgba_count = sum(len(pattern.findall(clean_src)) for pattern in RAW_AQUA_RGBA_PATTERNS)
+        if raw_aqua_rgba_count > MAX_RAW_AQUA_RGBA:
+            raise AssertionError(
+                f"raw aqua rgba budget exceeded: {raw_aqua_rgba_count} > {MAX_RAW_AQUA_RGBA}; "
+                "prefer semantic --ogd-rim-* / --ogd-surface-tint-* tokens"
+            )
+
         scrollbar_matches = [match.group("value").strip() for match in DECL_RE.finditer(clean_theme) if match.group("prop") == "scrollbar-gutter"]
         unexpected_scrollbar = [value for value in scrollbar_matches if value != ALLOWED_SCROLLBAR_GUTTER_VALUE]
         if unexpected_scrollbar:
@@ -68,7 +82,8 @@ def main() -> int:
 
         print(
             "OK: CSS compatibility budget passed "
-            f"({line_count} lines, {byte_count} bytes, scrollbar-gutter exceptions={len(scrollbar_matches)})"
+            f"({line_count} lines, {byte_count} bytes, scrollbar-gutter exceptions={len(scrollbar_matches)}, "
+            f"raw aqua rgba={raw_aqua_rgba_count}/{MAX_RAW_AQUA_RGBA})"
         )
         return 0
     except Exception as exc:

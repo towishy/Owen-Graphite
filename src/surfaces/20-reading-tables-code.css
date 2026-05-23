@@ -127,7 +127,7 @@ body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-vi
 
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
 body .workspace-leaf-content .markdown-rendered table {
-  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  --ogd-table-bg: radial-gradient(circle at 78% 12%, var(--ogd-surface-tint-aqua-soft, rgba(125, 211, 252, 0.14)), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
   --ogd-table-head-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.66));
   --ogd-table-border: rgba(148, 163, 184, 0.46);
   --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
@@ -284,14 +284,18 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
 
 .markdown-rendered code:not(pre code),
 .markdown-preview-view code:not(pre code) {
-  background: var(--ogd-inline-code-bg, #f3f4f6);
-  padding: 0.15em 0.4em;
+  background: var(--ogd-inline-code-bg, rgba(248, 250, 252, 0.82));
+  padding: 0.11em 0.34em;
+  border: 1px solid var(--ogd-inline-code-border, rgba(148, 163, 184, 0.24));
   border-radius: 4px;
   font-size: 0.88em;
-  color: #b91c1c;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  color: var(--ogd-code-property, #334155);
 }
 body.theme-dark .markdown-rendered code:not(pre code) {
-  color: #fca5a5;
+  border-color: var(--ogd-inline-code-border, rgba(203, 213, 225, 0.16));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: var(--ogd-code-property, #93c5fd);
 }
 
 .markdown-rendered pre.line-numbers,

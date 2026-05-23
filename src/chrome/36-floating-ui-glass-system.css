@@ -24,6 +24,9 @@
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(148, 163, 184, 0.18), inset 0 0 22px rgba(255, 255, 255, 0.34), 0 22px 42px rgba(15, 23, 42, 0.18), 0 6px 14px rgba(15, 23, 42, 0.10);
     --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(14, 165, 233, 0.10), inset 0 0 20px rgba(255, 255, 255, 0.36), 0 14px 28px rgba(15, 23, 42, 0.16), 0 4px 12px rgba(56, 189, 248, 0.10);
     --ogd-glass-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(148, 163, 184, 0.13), inset 0 0 12px rgba(255, 255, 255, 0.28), 0 4px 10px rgba(15, 23, 42, 0.10);
+    --ogd-setting-row-bg: rgba(248, 250, 252, 0.34);
+    --ogd-setting-row-border: rgba(203, 213, 225, 0.16);
+    --ogd-setting-row-shadow: none;
   }
 
   body:not(.is-mobile).theme-dark {
@@ -39,6 +42,9 @@
     --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 rgba(0, 0, 0, 0.38), inset 0 0 22px rgba(148, 163, 184, 0.10), 0 22px 42px rgba(0, 0, 0, 0.52), 0 6px 14px rgba(0, 0, 0, 0.32);
     --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.26), inset 0 0 20px rgba(148, 163, 184, 0.12), 0 14px 30px rgba(0, 0, 0, 0.38), 0 4px 12px rgba(56, 189, 248, 0.08);
     --ogd-glass-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.30), inset 0 0 12px rgba(148, 163, 184, 0.10), 0 4px 10px rgba(0, 0, 0, 0.28);
+    --ogd-setting-row-bg: rgba(15, 23, 42, 0.22);
+    --ogd-setting-row-border: rgba(203, 213, 225, 0.10);
+    --ogd-setting-row-shadow: none;
   }
 
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -295,6 +301,8 @@
     box-sizing: border-box;
     border: 1px solid transparent;
     border-radius: 10px;
+    background: var(--ogd-setting-row-bg);
+    box-shadow: var(--ogd-setting-row-shadow);
     background-clip: padding-box;
     padding: 12px 16px;
     margin: 2px 0;
@@ -305,8 +313,8 @@
     background: var(--ogd-glass-bg-hover);
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft);
     backdrop-filter: var(--ogd-glass-filter-soft);
-    border-color: var(--ogd-surface-transparent, transparent);
-    outline: 1px solid var(--ogd-glass-border-hover);
+    border-color: var(--ogd-setting-row-border);
+    outline: 1px solid color-mix(in srgb, var(--ogd-glass-border-hover) 62%, transparent);
     outline-offset: -1px;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
     transform: var(--ogd-hover-lift, translateY(-1px));
