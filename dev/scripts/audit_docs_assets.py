@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import ast
 import re
 import sys
 from pathlib import Path
@@ -11,8 +12,14 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+README_IMAGE_RE = re.compile(r"!\[[^\]]*\]\((screenshots/[^)]+)\)|<img\s+[^>]*src=\"(screenshots/[^\"]+)\"")
 SKIP_SCHEMES = {"http", "https", "mailto", "tel", "obsidian"}
 DOC_GLOBS = ("README.md", "CHANGELOG.md", "CONTRIBUTING.md", "screenshots/README.md", "docs/**/*.md")
+ASSET_LISTS = (
+    ("dev/scripts/build_release.py", "DEFAULT_FILES"),
+    ("dev/scripts/sync_obsidian_theme.py", "RELEASE_ASSETS"),
+    ("dev/scripts/audit_release_zip.py", "REQUIRED_FILES"),
+)
 
 
 def iter_markdown_files() -> list[Path]:
@@ -53,6 +60,74 @@ def resolve_target(source: Path, target: str) -> Path | None:
     return (source.parent / path_part).resolve()
 
 
+def read_constant_string_sequence(path: Path, name: str) -> set[str]:
+    tree = ast.parse(path.read_text(encoding="utf-8-sig"), filename=str(path))
+    for node in tree.body:
+        if not isinstance(node, ast.Assign):
+            continue
+        if not any(isinstance(target, ast.Name) and target.id == name for target in node.targets):
+            continue
+        if not isinstance(node.value, (ast.List, ast.Tuple)):
+            raise AssertionError(f"{path.relative_to(ROOT)}:{name} is not a list/tuple")
+        values: set[str] = set()
+        for item in node.value.elts:
+            if not isinstance(item, ast.Constant) or not isinstance(item.value, str):
+                raise AssertionError(f"{path.relative_to(ROOT)}:{name} contains a non-string item")
+            values.add(item.value)
+        return values
+    raise AssertionError(f"{path.relative_to(ROOT)} is missing {name}")
+
+
+def read_github_release_assets() -> set[str]:
+    path = ROOT / ".github" / "workflows" / "release.yml"
+    assets: set[str] = set()
+    in_files = False
+    files_indent = 0
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped == "files: |":
+            in_files = True
+            files_indent = len(line) - len(line.lstrip())
+            continue
+        if not in_files:
+            continue
+        indent = len(line) - len(line.lstrip())
+        if stripped and indent <= files_indent:
+            break
+        if stripped and not any(char in stripped for char in "*${}"):
+            assets.add(stripped)
+    return assets
+
+
+def readme_image_targets() -> set[str]:
+    readme = ROOT / "README.md"
+    targets: set[str] = set()
+    for match in README_IMAGE_RE.finditer(readme.read_text(encoding="utf-8")):
+        raw = match.group(1) or match.group(2)
+        target = clean_target(raw).split("#", 1)[0]
+        targets.add(unquote(target))
+    return targets
+
+
+def audit_readme_images_are_release_assets() -> None:
+    targets = readme_image_targets()
+    if not targets:
+        raise AssertionError("README.md does not reference any local screenshots assets")
+
+    containers: list[tuple[str, set[str]]] = []
+    for script_rel, variable in ASSET_LISTS:
+        containers.append((f"{script_rel}:{variable}", read_constant_string_sequence(ROOT / script_rel, variable)))
+    containers.append((".github/workflows/release.yml:files", read_github_release_assets()))
+
+    missing: list[str] = []
+    for label, assets in containers:
+        for target in sorted(targets):
+            if target not in assets:
+                missing.append(f"{label} missing README image asset: {target}")
+    if missing:
+        raise AssertionError("README image assets are not fully packaged/synced:\n" + "\n".join(missing))
+
+
 def main() -> int:
     try:
         missing: list[str] = []
@@ -72,6 +147,8 @@ def main() -> int:
 
         if missing:
             raise AssertionError("broken local docs links:\n" + "\n".join(missing[:40]))
+
+        audit_readme_images_are_release_assets()
 
         print(f"OK: docs/assets local links resolved ({len(iter_markdown_files())} markdown files)")
         return 0

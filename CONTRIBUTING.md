@@ -61,14 +61,15 @@ src/
 | `src/chrome/` 탭·탐색기·검색·설정 UI | `python dev/scripts/release_check.py` | hover/focus가 row height를 바꾸지 않는지 수동 확인 |
 | `src/features/42-report-print-polish.css` 또는 PDF 설정 | `python dev/scripts/release_check.py` | PDF export 샘플, header/footer 겹침, 페이지 분할 확인 |
 | Style Settings id/default/title 변경 | `python dev/scripts/audit_style_settings_contract.py` | [docs/v3/style-settings-contract.md](docs/v3/style-settings-contract.md)와 JSON 계약 동시 갱신 |
-| README 이미지·문서 링크 변경 | `python dev/scripts/audit_docs_assets.py` | 새 이미지가 mobile/desktop 폭에서 읽히는지 확인 |
+| README 이미지·문서 링크 변경 | `python dev/scripts/audit_docs_assets.py` + `python dev/scripts/audit_readme_svg_layout.py` | SVG 텍스트·아이콘이 컨테이너 경계에 닿지 않고 release/sync 자산에 포함되는지 확인 |
 | unused CSS 제거 | `python dev/scripts/build_unused_css_report.py` | [docs/v3/unused-css-roadmap.md](docs/v3/unused-css-roadmap.md)의 bucket별 제거 조건 충족 |
 
 ## 2.2 README 기능 소개와 이미지
 
 - README의 `2. 신기능 소개`에는 최신 3개 기능만 유지합니다.
 - 네 번째로 밀린 기능은 [docs/v3/feature-history.md](docs/v3/feature-history.md)로 이동합니다.
-- 새 기능 이미지는 기능이 실제로 보이는 SVG/PNG를 사용하고, README 링크는 `python dev/scripts/audit_docs_assets.py`로 검증합니다.
+- 새 기능 이미지는 기능이 실제로 보이는 SVG/PNG를 사용하고, README 링크와 release/sync 포함 여부는 `python dev/scripts/audit_docs_assets.py`로 검증합니다.
+- 생성 SVG는 텍스트와 아이콘이 카드·툴바·뷰포트 경계에 닿지 않도록 여유 마진을 두고, `python dev/scripts/audit_readme_svg_layout.py`를 통과해야 합니다.
 - 기본 Obsidian과 비교가 필요한 변경은 [docs/v3/visual-comparison-guide.md](docs/v3/visual-comparison-guide.md)의 캡처 기준을 따릅니다.
 
 ## 3. Direct-owner migration guard

@@ -49,6 +49,7 @@ def main() -> int:
             ("Release metadata", metadata_command),
             ("Style Settings contract", [PYTHON, "dev/scripts/audit_style_settings_contract.py"]),
             ("Docs and assets", [PYTHON, "dev/scripts/audit_docs_assets.py"]),
+            ("README SVG layout", [PYTHON, "dev/scripts/audit_readme_svg_layout.py"]),
             ("CSS compatibility budget", [PYTHON, "dev/scripts/audit_css_compat_budget.py"]),
             ("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"]),
             ("Live Preview hit routing", [PYTHON, "dev/scripts/audit_v3_hit_routing.py"]),
