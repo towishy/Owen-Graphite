@@ -24,6 +24,13 @@ REQUIRED_FILES = (
     "dev/MAP/selector-provenance.json",
     "screenshots/light.png",
     "screenshots/dark.png",
+    "screenshots/readme/workspace-chrome-connected-glass.svg",
+    "screenshots/readme/top-tabs-liquid-glass.svg",
+    "screenshots/readme/workspace-writing-surface.jpg",
+    "screenshots/readme/style-settings-report-options.jpg",
+    "screenshots/readme/owen-editor-toolbar-settings.jpg",
+    "screenshots/readme/file-explorer-type-badges.svg",
+    "screenshots/readme/sponsor-coffee.svg",
 )
 
 
