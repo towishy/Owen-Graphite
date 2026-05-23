@@ -1,6 +1,6 @@
 # Screenshots
 
-Owen Graphite v3.1.54 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.55 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
@@ -13,6 +13,7 @@ Owen Graphite v3.1.54 마켓플레이스 등록용 스크린샷.
 | `readme/owen-ai-document-stack.svg` | — | Owen AI 문서 제작 다이어그램 |
 | `readme/pdf-key-value-labels.png` | PDF | README PDF Key/Value 라벨 기능 이미지 |
 | `readme/pdf-dual-key-value-header.png` | PDF | README PDF 헤더 Key/Value 2쌍 기능 이미지 |
+| `readme/pdf-customer-delivery-feature.png` | Settings / PDF | README PDF 고객 전달용 화면 가시성 신기능 이미지 |
 | `readme/pdf-live-preview-parity.png` | PDF | README Live Preview / PDF 품질 패리티 이미지 |
 | `readme/code-font-clarity.png` | Live Preview / PDF | README 코드블럭 폰트·색상 패리티 이미지 |
 | `readme/file-explorer-type-badges.svg` | File Explorer | README 파일 탐색기 확장자 배지 기능 이미지 |

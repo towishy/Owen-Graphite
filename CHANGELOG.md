@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.55
+
+- feat: 고객 전달용 화면 PDF를 위한 `PDF 고객 전달용 화면 가시성` Style Settings 토글을 추가했습니다.
+- polish: 새 PDF preset에서 제목 위계, 본문·표 글자 크기, callout 역할 구분, 헤더/푸터 라벨 톤을 화면 공유용으로 조정했습니다.
+- docs: README 신기능 소개와 Visual Tour에 PDF 고객 전달용 화면 가시성 이미지를 추가했습니다.
+- guard: Style Settings contract, PDF header/footer contract, release build, release ZIP 검증을 통과했습니다.
+
 ## v3.1.54
 
 - polish: 파일 탐색기 상단 5개 액션 버튼에 Owen Graphite 전용 마스크 아이콘, liquid-glass 표면, hover/focus 리프트 효과를 적용했습니다.

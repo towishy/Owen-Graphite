@@ -1,7 +1,7 @@
 {
   "source": "src/entry.css",
   "map_root": "dev/MAP",
-  "version": "3.1.54",
+  "version": "3.1.55",
   "module_order": [
     {
       "import_index": 1,
@@ -162,12 +162,12 @@
   ],
   "summary": {
     "module_count": 26,
-    "selector_count": 2351,
-    "finding_count": 553,
+    "selector_count": 2365,
+    "finding_count": 554,
     "cross_file_selector_group_count": 76,
     "finding_severity_counts": {
       "medium": 478,
-      "low": 75
+      "low": 76
     },
     "module_severity_counts": {
       "high": 17,
@@ -182,7 +182,7 @@
       "entry_line": 34,
       "legacy_id": "00-settings.css",
       "module": "src/features/40-style-settings.css",
-      "line_count": 769,
+      "line_count": 775,
       "selector_count": 0,
       "declaration_count": 0,
       "important_count": 0,
@@ -1501,14 +1501,14 @@
       "entry_line": 69,
       "legacy_id": "08-report-print-polish.css",
       "module": "src/features/42-report-print-polish.css",
-      "line_count": 2107,
-      "selector_count": 251,
-      "declaration_count": 939,
+      "line_count": 2096,
+      "selector_count": 265,
+      "declaration_count": 1002,
       "important_count": 0,
       "has_selector_count": 11,
       "high_specificity_selector_count": 43,
       "live_preview_sensitive_rule_count": 2,
-      "pdf_header_footer_sensitive_rule_count": 1,
+      "pdf_header_footer_sensitive_rule_count": 2,
       "repeated_selector_extra_count": 9,
       "max_specificity": [
         0,
@@ -1518,23 +1518,23 @@
       "top_properties": [
         [
           "color",
-          82
+          89
         ],
         [
           "background",
-          75
+          82
         ],
         [
           "line-height",
-          48
+          53
         ],
         [
           "font-size",
-          38
+          43
         ],
         [
           "box-shadow",
-          36
+          38
         ],
         [
           "padding",
@@ -1542,19 +1542,19 @@
         ],
         [
           "margin-top",
-          27
+          28
         ],
         [
           "display",
           26
         ],
         [
-          "border",
-          24
+          "font-weight",
+          25
         ],
         [
-          "font-weight",
-          23
+          "border",
+          25
         ],
         [
           "content",
@@ -1565,7 +1565,7 @@
           21
         ]
       ],
-      "risk_score": 168,
+      "risk_score": 170,
       "severity": "high",
       "risk_reasons": [
         "high-specificity",
@@ -4156,7 +4156,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1290,
+      "line": 1279,
       "selector": "body :is( .markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered ) .callout :is(p, li):not(table *), body :is( .markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered ) .callout-content > :is(p, ul, ol):not(table *)",
       "message": "specificity=(0, 8, 3)"
     },
@@ -4164,15 +4164,15 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1294,
-      "selector": "body:is(.ogd-pdf-visibility, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is( .markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered ) .callout :is(p, li):not(table *), body:is(.ogd-pdf-visibility, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is( .markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered ) .callout-content > :is(p, ul, ol):not(table *)",
+      "line": 1283,
+      "selector": "body:is(.ogd-pdf-visibility, .ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is( .markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered ) .callout :is(p, li):not(table *), body:is(.ogd-pdf-visibility, .ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is( .markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered ) .callout-content > :is(p, ul, ol):not(table *)",
       "message": "specificity=(0, 10, 1)"
     },
     {
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1372,
+      "line": 1361,
       "selector": "body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td), body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table :is(th, td)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4180,7 +4180,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1389,
+      "line": 1378,
       "selector": "body.ogd-zebra-disabled-permanently:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td, body.ogd-zebra-disabled-permanently:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table tbody tr:nth-child(even) td",
       "message": "specificity=(0, 11, 1)"
     },
@@ -4188,7 +4188,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1396,
+      "line": 1385,
       "selector": "body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child, body:is(.theme-light, .theme-dark, :not(.theme-light)):is(.ogd-spacing-relaxed, :not(.ogd-spacing-relaxed)) .workspace-leaf-content .markdown-rendered table.comparison-table :is(th, td):first-child",
       "message": "specificity=(0, 13, 0)"
     },
@@ -4196,7 +4196,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1478,
+      "line": 1467,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .el-pre, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered .el-pre",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4204,7 +4204,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1505,
+      "line": 1494,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre), body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4212,7 +4212,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1521,
+      "line": 1510,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre::before, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre::before",
       "message": "specificity=(0, 9, 0)"
     },
@@ -4220,7 +4220,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1529,
+      "line": 1518,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4228,7 +4228,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1551,
+      "line": 1540,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::before, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::before",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4236,7 +4236,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1575,
+      "line": 1564,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .markdown-source-view.mod-cm6 .code-block-flair, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .code-block-flair",
       "message": "specificity=(0, 19, 0)"
     },
@@ -4244,7 +4244,7 @@
       "severity": "medium",
       "category": "cm6-hit-routing-sensitive",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1575,
+      "line": 1564,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre[class*=\"language-\"]::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .markdown-source-view.mod-cm6 .code-block-flair, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .code-block-flair",
       "message": "CM6 rule declares vertical box or overlay-sensitive properties"
     },
@@ -4252,7 +4252,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1577,
+      "line": 1566,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-powershell, .language-ps1, .language-pwsh)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4260,7 +4260,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1578,
+      "line": 1567,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-kusto, .language-kql, .language-kql-query)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-kusto, .language-kql, .language-kql-query)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4268,7 +4268,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1579,
+      "line": 1568,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-bash, .language-sh, .language-shell, .language-zsh)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4276,7 +4276,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1580,
+      "line": 1569,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-python, .language-py)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-python, .language-py)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4284,7 +4284,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1581,
+      "line": 1570,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-javascript, .language-js)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-javascript, .language-js)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4292,7 +4292,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1582,
+      "line": 1571,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-typescript, .language-ts)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-typescript, .language-ts)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4300,7 +4300,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1583,
+      "line": 1572,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-json::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-json::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4308,7 +4308,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1584,
+      "line": 1573,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-yaml, .language-yml)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-yaml, .language-yml)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4316,7 +4316,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1585,
+      "line": 1574,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-md, .language-markdown)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-md, .language-markdown)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4324,7 +4324,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1586,
+      "line": 1575,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-css::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-css::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4332,7 +4332,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1587,
+      "line": 1576,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-html::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-html::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4340,7 +4340,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1588,
+      "line": 1577,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.language-sql::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-sql::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4348,7 +4348,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1589,
+      "line": 1578,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after, body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after",
       "message": "specificity=(0, 11, 0)"
     },
@@ -4356,7 +4356,7 @@
       "severity": "medium",
       "category": "high-specificity",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1942,
+      "line": 1931,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) div:has(> pre), body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered div:has(> pre)",
       "message": "specificity=(0, 9, 0)"
     },
@@ -6354,6 +6354,22 @@
     },
     {
       "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/42-report-print-polish.css",
+      "line": 554,
+      "selector": "body.ogd-pdf-visibility",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
+      "category": "pdf-header-footer-sensitive",
+      "module": "src/features/42-report-print-polish.css",
+      "line": 556,
+      "selector": "body.ogd-pdf-screen-delivery",
+      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
+    },
+    {
+      "severity": "low",
       "category": "has-selector",
       "module": "src/features/42-report-print-polish.css",
       "line": 559,
@@ -6362,17 +6378,9 @@
     },
     {
       "severity": "low",
-      "category": "pdf-header-footer-sensitive",
-      "module": "src/features/42-report-print-polish.css",
-      "line": 562,
-      "selector": "body.ogd-pdf-visibility",
-      "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md"
-    },
-    {
-      "severity": "low",
       "category": "has-selector",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1862,
+      "line": 1851,
       "selector": "body :is(.markdown-preview-section, .markdown-rendered) > div:has(> pre)",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6380,7 +6388,7 @@
       "severity": "low",
       "category": "has-selector",
       "module": "src/features/42-report-print-polish.css",
-      "line": 1942,
+      "line": 1931,
       "selector": "body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) div:has(> pre), body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered div:has(> pre)",
       "message": ":has() selector; keep narrowly scoped"
     },
@@ -6761,11 +6769,11 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1458
+          "line": 1447
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1598
+          "line": 1587
         }
       ]
     },
@@ -7750,7 +7758,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1625
+          "line": 1614
         }
       ]
     },
@@ -7768,7 +7776,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1622
+          "line": 1611
         }
       ]
     },
@@ -7786,7 +7794,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1620
+          "line": 1609
         }
       ]
     },
@@ -7804,7 +7812,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1624
+          "line": 1613
         }
       ]
     },
@@ -7822,7 +7830,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1623
+          "line": 1612
         }
       ]
     },
@@ -7840,7 +7848,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1626
+          "line": 1615
         }
       ]
     },
@@ -7858,7 +7866,7 @@
         },
         {
           "module": "src/features/42-report-print-polish.css",
-          "line": 1621
+          "line": 1610
         }
       ]
     },

@@ -5,8 +5,8 @@
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **52**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **44**
+- 전체 엔트리(heading 포함): **53**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **45**
 
 ## 기능 옵션 목록
 
@@ -21,6 +21,7 @@
 | `ogd-report-mode` | `class-toggle` | `false` | 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프) |
 | `ogd-pdf-compact` | `class-toggle` | `false` | PDF Compact Report |
 | `ogd-pdf-visibility` | `class-toggle` | `false` | PDF 보고서 가시성 강화 |
+| `ogd-pdf-screen-delivery` | `class-toggle` | `false` | PDF 고객 전달용 화면 가시성 |
 | `ogd-pdf-font-size` | `class-select` | `ogd-pdf-font-standard` | PDF 글자 크기 |
 | `ogd-pdf-link-mode` | `class-select` | `ogd-pdf-links-inline` | PDF 링크 출력 방식 |
 | `ogd-serif-body` | `class-toggle` | `false` | 본문 세리프 글꼴 |
