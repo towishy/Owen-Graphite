@@ -420,14 +420,17 @@ def cross_file_selector_groups(selector_entries: dict[str, dict[str, object]]) -
                 "selector": selector,
                 "occurrences": len(entries),
                 "modules": modules,
-                "lines": [{"module": entry["module"], "line": entry["line"]} for entry in entries],
+                "lines": sorted(
+                    ({"module": entry["module"], "line": entry["line"]} for entry in entries),
+                    key=lambda item: (str(item["module"]), int(item["line"])),
+                ),
             }
         )
     return sorted(groups, key=lambda group: (-int(group["occurrences"]), str(group["selector"])))
 
 
 def write_json(path: Path, payload: object) -> None:
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def markdown_report(payload: dict[str, object]) -> str:
@@ -618,8 +621,9 @@ def main() -> int:
         "findings": sorted(all_findings, key=lambda finding: (severity_rank(finding["severity"]), str(finding["module"]), int(finding["line"]))),
         "cross_file_selectors": cross_file_groups[:120],
     }
+    stable_selector_entries = {key: selector_entries[key] for key in sorted(selector_entries)}
     write_json(MAP_DIR / "theme-css-risk-map.json", payload)
-    write_json(MAP_DIR / "selector-provenance.json", selector_entries)
+    write_json(MAP_DIR / "selector-provenance.json", stable_selector_entries)
     (MAP_DIR / "map-info-classification.md").write_text(markdown_report(payload), encoding="utf-8")
     (MAP_DIR / "css-stabilization-checklist.md").write_text(checklist(payload), encoding="utf-8")
     (MAP_DIR / "theme-css-risk-map.html").write_text(html_report(payload), encoding="utf-8")

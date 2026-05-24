@@ -3,6 +3,13 @@
 Core commands:
 
 ```powershell
+.\.venv\Scripts\python.exe dev\scripts\wiki_route.py --list
+.\.venv\Scripts\python.exe dev\scripts\wiki_route.py table
+```
+
+Validation commands:
+
+```powershell
 .\.venv\Scripts\python.exe dev\scripts\build_source_usage_map.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_core_principles.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_consistency.py

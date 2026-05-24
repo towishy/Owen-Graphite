@@ -62,6 +62,7 @@
 ## Operations
 
 - `audits.md`
+- `dev/scripts/wiki_route.py`: prints WIKI owner/workflow/check routing by surface.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`

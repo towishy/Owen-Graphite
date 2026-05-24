@@ -14,6 +14,7 @@ REQUIRED_FILES = [
     "dev/WIKI/VISUAL-QA.md",
     "dev/WIKI/OWNER-DECISION-TREE.md",
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md",
+    "dev/WIKI/MAP/diff-stability.md",
     "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/RUNTIME/README.md",
     "dev/WIKI/RUNTIME/table.md",
@@ -65,6 +66,16 @@ REQUIRED_TEXT = {
         "RECIPES/README.md",
         "INCIDENTS/incident-template.md",
         "INCIDENTS/taxonomy.md",
+        "dev/scripts/wiki_route.py",
+    ],
+    "dev/WIKI/audits.md": [
+        "wiki_route.py --list",
+        "audit_wiki_consistency.py",
+    ],
+    "dev/WIKI/MAP/diff-stability.md": [
+        "sorted keys",
+        "selector-key order",
+        "fix the generator ordering",
     ],
     "dev/WIKI/VISUAL-QA.md": [
         "Liquid Glass Acceptance",
@@ -202,6 +213,22 @@ def assert_release_workflow_paths() -> None:
     print("OK: release workflow uses WIKI paths and numeric tag language")
 
 
+def assert_helper_and_generator_stability() -> None:
+    wiki_route = read("dev/scripts/wiki_route.py")
+    build_src_map = read("dev/scripts/build_src_map.py")
+    light_tokens = read("src/tokens/00-light-tokens.css")
+    required_routes = ["table", "live-preview", "pdf", "chrome", "plugin", "tokens", "docs", "release"]
+    missing_routes = [route for route in required_routes if f'"{route}"' not in wiki_route]
+    if missing_routes:
+        fail("wiki_route.py missing routes: " + ", ".join(missing_routes))
+    if "sort_keys=True" not in build_src_map or "stable_selector_entries" not in build_src_map:
+        fail("build_src_map.py must keep generated JSON output stable")
+    for token in ("--ogd-focus-ring-border", "--ogd-focus-ring-halo", "--ogd-media-frame-bg"):
+        if token not in light_tokens:
+            fail(f"src/tokens/00-light-tokens.css missing shared token {token}")
+    print("OK: helper routes, shared tokens, and MAP stability checks present")
+
+
 def assert_index_has_no_legacy_routes() -> None:
     index = read("dev/WIKI/INDEX.md")
     offenders = [text for text in FORBIDDEN_INDEX_TEXT if text in index]
@@ -216,6 +243,7 @@ def main() -> int:
         assert_required_text()
         assert_src_docs_have_validation_matrix()
         assert_release_workflow_paths()
+        assert_helper_and_generator_stability()
         assert_index_has_no_legacy_routes()
         print("OK: WIKI consistency audit clean")
         return 0

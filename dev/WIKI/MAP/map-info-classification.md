@@ -7,9 +7,9 @@ Canonical MAP location: `dev/WIKI/MAP`.
 - Version: `3.1.57`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2365
-- Findings: 542
-- Finding severity counts: critical=0, high=0, medium=464, low=78, info=0
+- Selectors: 2379
+- Findings: 546
+- Finding severity counts: critical=0, high=0, medium=468, low=78, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -28,17 +28,17 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | high | 33 | `src/features/43-print-base.css` | 63 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 198 | `src/base/13-live-preview.css` | 150 | 0 | 2 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 89 | `src/features/41-feature-presets.css` | 310 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
-| medium | 23 | `src/chrome/30-workspace.css` | 125 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 40 | 0 | 0 | high-specificity |
-| high | 66 | `src/chrome/32-overlay-popover-dataview.css` | 32 | 0 | 0 | high-specificity |
+| medium | 23 | `src/chrome/30-workspace.css` | 127 | 0 | 0 | high-specificity, repeated-selector-in-file |
+| medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 43 | 0 | 0 | high-specificity |
+| high | 78 | `src/chrome/32-overlay-popover-dataview.css` | 37 | 0 | 0 | high-specificity |
 | high | 78 | `src/chrome/33-settings-controls.css` | 73 | 0 | 0 | high-specificity |
 | high | 54 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
-| high | 104 | `src/plugins/61-live-preview-mobile-plugin.css` | 64 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector |
+| high | 106 | `src/plugins/61-live-preview-mobile-plugin.css` | 67 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 162 | `src/features/42-report-print-polish.css` | 266 | 0 | 11 | high-specificity, cm6-hit-routing-sensitive, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |
 | medium | 18 | `src/chrome/34-nav-ribbon-glass.css` | 25 | 0 | 0 | high-specificity |
 | high | 61 | `src/chrome/35-editing-menu-tooltip-glass.css` | 110 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 70 | `src/chrome/36-floating-ui-glass-system.css` | 117 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| high | 144 | `src/chrome/37-tabs-file-explorer-search.css` | 166 | 0 | 32 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 144 | `src/chrome/37-tabs-file-explorer-search.css` | 167 | 0 | 32 | high-specificity, has-selector, repeated-selector-in-file |
 | low | 3 | `src/themes/51-accessibility-motion-contrast.css` | 16 | 0 | 0 | repeated-selector-in-file |
 | high | 96 | `src/surfaces/23-liquid-glass-core.css` | 154 | 0 | 6 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 109 | `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |

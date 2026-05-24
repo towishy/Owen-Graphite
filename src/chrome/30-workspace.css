@@ -699,4 +699,7 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 .is-mobile .markdown-rendered pre {
   white-space: pre;
 }
+.is-mobile :is(.workspace-leaf-content, .workspace-tab-container, .workspace-tab-header-container, .view-content),
+.is-mobile .markdown-rendered :is(.internal-embed, .markdown-embed, .block-language-dataview, .mermaid) { min-width: 0; max-width: 100vw; box-sizing: border-box; }
+.is-mobile .markdown-rendered :is(img, svg, video, iframe) { max-width: 100%; height: auto; }
 

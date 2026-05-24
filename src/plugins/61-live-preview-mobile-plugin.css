@@ -50,7 +50,13 @@
 .markdown-rendered .mermaid,
 .markdown-preview-view .mermaid,
 .markdown-reading-view .mermaid {
+  box-sizing: border-box;
   max-width: 100%;
+  padding: 8px;
+  border: 1px solid var(--ogd-media-frame-border);
+  border-radius: var(--radius-l, 8px);
+  background: var(--ogd-media-frame-bg);
+  box-shadow: var(--ogd-media-frame-shadow);
   overflow: visible;
 }
 .markdown-rendered .internal-embed,
@@ -92,6 +98,7 @@
 .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg {
   --ogd-mermaid-label-color: var(--ogd-line-soft, #e5e7eb);
 }
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .mermaid { border-color: var(--ogd-media-frame-border); background: var(--ogd-media-frame-bg); box-shadow: var(--ogd-media-frame-shadow); }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg :is(.node, .label, .edgeLabel) foreignObject {
   overflow: visible;
@@ -384,6 +391,18 @@
   .prompt,
   .menu {
     max-width: calc(100vw - 24px);
+  }
+  .markdown-rendered .mermaid,
+  .markdown-preview-view .mermaid,
+  .markdown-reading-view .mermaid {
+    padding: 6px;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  .markdown-rendered .mermaid svg,
+  .markdown-preview-view .mermaid svg,
+  .markdown-reading-view .mermaid svg {
+    min-width: min(620px, 100%);
   }
 }
 
