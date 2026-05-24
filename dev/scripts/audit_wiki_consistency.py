@@ -15,6 +15,7 @@ REQUIRED_FILES = [
     "dev/WIKI/OWNER-DECISION-TREE.md",
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md",
     "dev/WIKI/MAP/diff-stability.md",
+    "dev/WIKI/MAP/coverage-priority-plan.md",
     "dev/WIKI/MAP/theme-css-risk-summary.json",
     "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/runtime-evidence-schema.json",
@@ -69,6 +70,7 @@ REQUIRED_TEXT = {
         "VISUAL-QA.md",
         "runtime-evidence-template.md",
         "SRC/validation-matrix.md",
+        "MAP/coverage-priority-plan.md",
         "TOKENS/usage-guide.md",
         "PLUGINS/compatibility-matrix.md",
         "PLUGINS/coverage-matrix.md",
@@ -84,6 +86,7 @@ REQUIRED_TEXT = {
         "dev/scripts/new_runtime_evidence.py",
         "dev/scripts/new_incident.py",
         "dev/scripts/work_summary.py",
+        "dev/scripts/build_coverage_priority_plan.py",
         "dev/scripts/audit_mobile_owner.py",
         "dev/scripts/audit_owner_risk_contracts.py",
         "dev/scripts/audit_wiki_route_coverage.py",
@@ -97,6 +100,7 @@ REQUIRED_TEXT = {
         "wiki_route.py --list",
         "wiki_route.py mobile",
         "wiki_route.py settings --commands",
+        "build_coverage_priority_plan.py --check",
         "validation_plan.py --run-safe",
         "audit_owner_risk_contracts.py",
         "audit_selector_owner_cheatsheet.py",
@@ -107,6 +111,12 @@ REQUIRED_TEXT = {
         "theme-css-risk-summary.json",
         "selector-key order",
         "fix the generator ordering",
+    ],
+    "dev/WIKI/MAP/coverage-priority-plan.md": [
+        "P0 State And Chrome Runtime",
+        "P1 Plugin Runtime",
+        "P2 Print And PDF Context",
+        "build_coverage_priority_plan.py --check",
     ],
     "dev/WIKI/VISUAL-QA.md": [
         "Liquid Glass Acceptance",
@@ -178,6 +188,7 @@ REQUIRED_TEXT = {
         "WIKI Maintenance",
         "audit_owner_risk_contracts.py",
         "build_source_usage_map.py --check",
+        "build_coverage_priority_plan.py --check",
     ],
     "dev/WIKI/PLUGINS/coverage-matrix.md": [
         "Real DOM Captured",
@@ -315,7 +326,12 @@ def assert_helper_and_generator_stability() -> None:
     release_check = read("dev/scripts/release_check.py")
     if "--include-sync" not in release_check or "--sync-target" not in release_check:
         fail("release_check.py must expose optional Obsidian sync validation")
-    for script in ("dev/scripts/new_runtime_evidence.py", "dev/scripts/work_summary.py", "dev/scripts/audit_mobile_owner.py"):
+    for script in (
+        "dev/scripts/new_runtime_evidence.py",
+        "dev/scripts/work_summary.py",
+        "dev/scripts/build_coverage_priority_plan.py",
+        "dev/scripts/audit_mobile_owner.py",
+    ):
         if not (ROOT / script).is_file():
             fail(f"missing helper script: {script}")
     for script in (

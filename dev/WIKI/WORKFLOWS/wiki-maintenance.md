@@ -21,6 +21,7 @@ Use this when changing WIKI routing, owner registry, generated MAP bridges, runt
 
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\build_source_usage_map.py --check
+.\.venv\Scripts\python.exe dev\scripts\build_coverage_priority_plan.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_consistency.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_route_coverage.py
 .\.venv\Scripts\python.exe dev\scripts\audit_owner_risk_contracts.py

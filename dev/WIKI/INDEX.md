@@ -28,6 +28,7 @@
 ## Generated MAP Bridge
 
 - `MAP/source-usage-map.md`
+- `MAP/coverage-priority-plan.md`
 - `MAP/owner-registry.md`
 - `MAP/risk-contracts.md`
 - `MAP/selector-provenance.md`
@@ -108,6 +109,7 @@
 - `dev/scripts/new_incident.py`
 - `dev/scripts/promote_evidence.py`
 - `dev/scripts/work_summary.py`
+- `dev/scripts/build_coverage_priority_plan.py`
 - `dev/scripts/audit_mobile_owner.py`
 - `dev/scripts/audit_owner_risk_contracts.py`
 - `dev/scripts/audit_wiki_route_coverage.py`

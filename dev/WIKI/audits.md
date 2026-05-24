@@ -17,6 +17,7 @@ Validation commands:
 
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\build_source_usage_map.py --check
+.\.venv\Scripts\python.exe dev\scripts\build_coverage_priority_plan.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_core_principles.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_consistency.py
 .\.venv\Scripts\python.exe dev\scripts\audit_mobile_owner.py

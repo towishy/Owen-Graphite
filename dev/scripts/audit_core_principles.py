@@ -150,6 +150,7 @@ def main() -> int:
         run("owner risk contracts", [PYTHON, "dev/scripts/audit_owner_risk_contracts.py"])
         run("selector owner cheatsheet", [PYTHON, "dev/scripts/audit_selector_owner_cheatsheet.py"])
         run("source usage map freshness", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"])
+        run("coverage priority plan freshness", [PYTHON, "dev/scripts/build_coverage_priority_plan.py", "--check"])
         run("direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"])
         run("mobile owner guard", [PYTHON, "dev/scripts/audit_mobile_owner.py"])
         run("runtime evidence advisory", [PYTHON, "dev/scripts/audit_runtime_evidence_requirements.py"])
