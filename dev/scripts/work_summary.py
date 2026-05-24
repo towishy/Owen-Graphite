@@ -49,6 +49,18 @@ def runtime_evidence_summary() -> str:
     return ", ".join(files) if files else "n/a"
 
 
+def changelog_candidate(files: list[str]) -> str:
+    if any(path.startswith("src/") for path in files):
+        return "polish/fix: source CSS changed; summarize user-visible surface and validation"
+    if any(path.startswith("dev/scripts/") for path in files):
+        return "process: workflow automation or audit tooling changed"
+    if any(path.startswith("dev/WIKI/") for path in files):
+        return "docs: WIKI workflow/process documentation changed"
+    if any(path in {"manifest.json", "CHANGELOG.md"} for path in files):
+        return "release: metadata changed"
+    return "n/a"
+
+
 def main() -> int:
     files = changed_files()
     owners = owner_modules(files)
@@ -67,6 +79,7 @@ def main() -> int:
     print("| Audits passed | fill from terminal output |")
     print(f"| Obsidian synced | {last_sync_summary()} |")
     print("| Release/tag impact | n/a unless manifest/tag changed |")
+    print(f"| Changelog candidate | {changelog_candidate(files)} |")
     return 0
 
 

@@ -22,9 +22,14 @@ else
     PY=python3
 fi
 
-"$PY" dev/scripts/bundle_v3.py
-"$PY" dev/scripts/bundle_v3.py --check
-"$PY" - <<'PY'
+changed=$(git diff --cached --name-only)
+
+"$PY" dev/scripts/validation_plan.py --run-safe
+
+if printf '%s\n' "$changed" | grep -Eq '^(src/|theme\.css|manifest\.json|CHANGELOG\.md|README\.md|screenshots/|dev/WIKI/MAP/)'; then
+    "$PY" dev/scripts/bundle_v3.py
+    "$PY" dev/scripts/bundle_v3.py --check
+    "$PY" - <<'PY'
 from pathlib import Path
 
 theme = Path("theme.css").read_text(encoding="utf-8")
@@ -32,15 +37,14 @@ bundle = Path("dist/theme-v3.css").read_text(encoding="utf-8")
 if theme != bundle:
     raise SystemExit("theme.css is stale vs dist/theme-v3.css; promote and stage the fresh bundle copy")
 PY
-"$PY" dev/scripts/audit_release_metadata.py
-"$PY" dev/scripts/audit_style_settings_contract.py
-"$PY" dev/scripts/audit_docs_assets.py
-"$PY" dev/scripts/audit_css_compat_budget.py
-"$PY" dev/scripts/build_source_usage_map.py --check
-"$PY" dev/scripts/audit_wiki_consistency.py
-"$PY" dev/scripts/audit_core_principles.py
-"$PY" dev/scripts/audit_direct_owner_guard.py
-"$PY" dev/scripts/audit_v3_hit_routing.py
-"$PY" dev/scripts/audit_pdf_header_footer.py
-"$PY" dev/scripts/v3_audit_duplicate_selectors.py >/dev/null || true
+    "$PY" dev/scripts/release_check.py --skip-bundle
+else
+    "$PY" dev/scripts/audit_docs_assets.py
+    "$PY" dev/scripts/audit_wiki_consistency.py
+fi
+
+"$PY" dev/scripts/audit_runtime_evidence_requirements.py --strict || {
+    echo "Runtime evidence strict check failed. Add evidence or avoid claiming runtime correctness." >&2
+    exit 1
+}
 

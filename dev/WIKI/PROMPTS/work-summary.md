@@ -9,6 +9,7 @@ Generate a draft with:
 ```
 
 The script reads `dev/TEMP/last-sync.json` and `dev/TEMP/runtime-evidence/*.json` when present.
+It also emits a changelog candidate line based on the changed files.
 
 Run the finish helper when wrapping up a task:
 

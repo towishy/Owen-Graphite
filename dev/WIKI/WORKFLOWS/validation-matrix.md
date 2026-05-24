@@ -30,3 +30,5 @@ Use `dev/scripts/validation_plan.py` to recommend checks from the current git di
 Use `dev/scripts/validation_plan.py --run-safe` to execute recommended checks that do not require placeholders.
 
 `--run-safe` never builds release ZIPs, publishes, or syncs Obsidian; use explicit release/sync commands for those.
+
+The pre-commit hook uses the same diff-aware validation path and then escalates to full release validation when source, release, screenshot, or generated MAP files are staged.

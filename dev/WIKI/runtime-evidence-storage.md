@@ -24,6 +24,14 @@ Use strict mode when runtime correctness is part of the claim:
 .\.venv\Scripts\python.exe dev\scripts\audit_runtime_evidence_requirements.py --strict
 ```
 
+Strict mode is required when the diff touches Live Preview CM6 routing, `.cm-*`, `.HyperMD-*`, `.cm-table-widget`, chrome hover/focus/active states, or plugin runtime selectors such as Mermaid, Dataview, Canvas, and Graph.
+
+Promote temporary evidence into a permanent incident with:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\promote_evidence.py --incident table-row-height --evidence dev/TEMP/runtime-evidence/<file>.json
+```
+
 ## Permanent Evidence
 
 Promote evidence into `dev/WIKI/INCIDENTS/` only when one of these is true:

@@ -16,6 +16,7 @@ Replace `<version>` with numeric semver only, for example `3.1.58`.
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\bundle_v3.py
 Copy-Item dist\theme-v3.css theme.css -Force
+.\.venv\Scripts\python.exe dev\scripts\release_preflight.py --version <version>
 .\.venv\Scripts\python.exe dev\scripts\build_source_usage_map.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_core_principles.py
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --tag <version> --skip-bundle
@@ -36,6 +37,7 @@ Never run `git tag v<version>` and never publish a `v<version>` GitHub Release.
 ## Before Publishing
 
 - Confirm `manifest.json` version.
+- Run `dev/scripts/release_preflight.py --version <version>` before tagging.
 - Use numeric semver tags and GitHub Release names only, for example `3.1.57`; never use a leading `v` prefix.
 - Confirm `theme.css` matches `dist/theme-v3.css`.
 - Confirm source usage map is fresh.

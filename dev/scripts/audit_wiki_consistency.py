@@ -82,6 +82,7 @@ REQUIRED_TEXT = {
         "dev/scripts/audit_wiki_route_coverage.py",
         "dev/scripts/audit_selector_owner_cheatsheet.py",
         "dev/scripts/audit_runtime_evidence_requirements.py",
+        "dev/scripts/promote_evidence.py",
         "PROMPTS/work-summary.md",
         "WORKFLOWS/validation-matrix.md",
     ],
@@ -128,6 +129,7 @@ REQUIRED_TEXT = {
         "dev/TEMP/runtime-evidence",
         "new_runtime_evidence.py",
         "--strict",
+        "promote_evidence.py",
         "Permanent Evidence",
         "Minimum Metadata",
     ],
@@ -158,12 +160,14 @@ REQUIRED_TEXT = {
         "wiki_route.py <surface>",
         "--run-safe",
         "never builds release ZIPs",
+        "pre-commit hook",
     ],
     "dev/WIKI/PROMPTS/work-summary.md": [
         "WIKI consulted",
         "Owner modules changed",
         "work_summary.py",
         "last-sync.json",
+        "changelog candidate",
         "--sync",
         "Obsidian synced",
     ],
@@ -179,6 +183,7 @@ REQUIRED_TEXT = {
         "taxonomy.md",
         "new_incident.py",
         "--evidence",
+        "promote_evidence.py",
     ],
     "dev/WIKI/INCIDENTS/taxonomy.md": [
         "runtime-selected-state",
@@ -289,6 +294,7 @@ def assert_helper_and_generator_stability() -> None:
         "dev/scripts/audit_wiki_route_coverage.py",
         "dev/scripts/audit_selector_owner_cheatsheet.py",
         "dev/scripts/audit_runtime_evidence_requirements.py",
+        "dev/scripts/promote_evidence.py",
     ):
         if not (ROOT / script).is_file():
             fail(f"missing process script: {script}")
@@ -300,6 +306,11 @@ def assert_helper_and_generator_stability() -> None:
         fail("new_incident.py must support --evidence")
     if "--run-safe" not in read("dev/scripts/validation_plan.py") or "build_release.py" not in read("dev/scripts/validation_plan.py"):
         fail("validation_plan.py must keep bounded --run-safe behavior")
+    pre_commit = read("dev/scripts/hooks/pre-commit")
+    if "validation_plan.py --run-safe" not in pre_commit or "audit_runtime_evidence_requirements.py --strict" not in pre_commit:
+        fail("pre-commit hook must use diff-aware validation and strict runtime evidence checks")
+    if "--verify-only" not in read("dev/scripts/sync_obsidian_theme.py"):
+        fail("sync_obsidian_theme.py must support --verify-only")
     print("OK: helper routes, shared tokens, and MAP stability checks present")
 
 

@@ -140,10 +140,29 @@ def copy_assets(target: Path, dry_run: bool) -> None:
         print(f"OK: wrote {out.relative_to(ROOT)}")
 
 
+def verify_assets(target: Path) -> None:
+    mismatches: list[str] = []
+    for rel in RELEASE_ASSETS:
+        source = ROOT / rel
+        destination = target / rel
+        if not source.is_file():
+            mismatches.append(f"missing repo asset: {rel}")
+            continue
+        if not destination.is_file():
+            mismatches.append(f"missing target asset: {rel}")
+            continue
+        if sha256(source) != sha256(destination):
+            mismatches.append(f"hash mismatch: {rel}")
+    if mismatches:
+        raise RuntimeError("Obsidian sync verification failed: " + "; ".join(mismatches))
+    print(f"OK: verified Owen Graphite assets in {target}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--target", type=Path, help="Obsidian theme folder to sync, e.g. H:\\Obsidian\\.obsidian\\themes\\Owen Graphite")
     parser.add_argument("--dry-run", action="store_true", help="Show copy operations without writing files.")
+    parser.add_argument("--verify-only", action="store_true", help="Verify target assets match the repository without copying.")
     parser.add_argument("--skip-bundle", action="store_true", help="Reuse existing theme.css; skip bundle + promote.")
     parser.add_argument("--list-targets", action="store_true", help="Print known target candidates and exit.")
     args = parser.parse_args()
@@ -156,6 +175,10 @@ def main() -> int:
 
     target = find_target(args.target)
     print(f"Target: {target}")
+
+    if args.verify_only:
+        verify_assets(target)
+        return 0
 
     if not args.skip_bundle:
         bundle_and_promote()

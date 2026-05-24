@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.58
+
+- process: 작업 시작/종료 helper, diff-aware validation, runtime evidence strict mode, incident/evidence helper를 WIKI workflow에 연결했습니다.
+- guard: selector owner cheatsheet, WIKI route coverage, mobile owner guard, WIKI schema consistency 검증을 core/release gate에 보강했습니다.
+- sync: Obsidian theme sync에 chunk-copy fallback, verify-only, last-sync 기록을 추가했습니다.
+- guard: release preflight, source usage map freshness, core principles gate, release check, Obsidian sync 검증을 통과했습니다.
+
 ## v3.1.57
 
 - docs: `dev/MAP`, `dev/effective-baseline`, `docs/v3` 운영 자료를 `dev/WIKI` 아래로 흡수해 WIKI를 단일 작업 진입점으로 정리했습니다.

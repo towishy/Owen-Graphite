@@ -30,3 +30,5 @@ Create a new incident scaffold with:
 ```
 
 Add `--evidence` to create and link a temporary runtime evidence scaffold at the same time.
+
+Promote existing temporary evidence into an incident with `dev/scripts/promote_evidence.py`.

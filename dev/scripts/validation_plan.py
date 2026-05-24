@@ -44,6 +44,8 @@ def main() -> int:
     args = parser.parse_args()
 
     files = changed_files()
+    source_like = [path for path in files if path.startswith("src/") or path == "theme.css"]
+    diff_text = subprocess.run(["git", "diff", "--", *source_like], cwd=ROOT, text=True, capture_output=True, check=True).stdout if source_like else ""
     commands: list[str] = []
     notes: list[str] = []
 
@@ -60,6 +62,16 @@ def main() -> int:
         add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_wiki_consistency.py")
     if any(path.startswith("src/base/13-live-preview") or "cm-" in Path(path).name for path in files):
         add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_v3_hit_routing.py")
+    if any(term in diff_text for term in (":focus", "focus-visible", "focus-within", ".is-active")):
+        add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_runtime_evidence_requirements.py --strict")
+        notes.append("Interactive state diff detected; strict runtime evidence check is recommended.")
+    if "@media print" in diff_text or "@page" in diff_text:
+        add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_pdf_header_footer.py")
+    if "--ogd-" in diff_text:
+        notes.append("Token/design-language diff detected; check TOKENS guidance and Light/Dark impact.")
+    if ".mermaid" in diff_text or ".dataview" in diff_text or ".canvas" in diff_text or ".graph" in diff_text:
+        add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\wiki_route.py plugin")
+        notes.append("Plugin/runtime selector diff detected; record real DOM evidence or fixture gap when claiming runtime correctness.")
     if any(path.startswith("src/chrome/") for path in files):
         notes.append("Chrome interactive changes may need runtime evidence for hover/focus/active states.")
     if any(path.startswith("src/plugins/") for path in files):
