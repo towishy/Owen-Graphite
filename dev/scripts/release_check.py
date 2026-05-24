@@ -34,6 +34,7 @@ def main() -> int:
     parser.add_argument("--include-visual", action="store_true", help="Run the static visual quality fixture audit.")
     parser.add_argument("--include-sync", action="store_true", help="Sync release assets to an Obsidian theme folder after validation.")
     parser.add_argument("--sync-target", help="Target Obsidian theme folder for --include-sync.")
+    parser.add_argument("--preflight", help="Run numeric release preflight for the given version before validation.")
     args = parser.parse_args()
 
     metadata_command = [PYTHON, "dev/scripts/audit_release_metadata.py"]
@@ -41,6 +42,8 @@ def main() -> int:
         metadata_command.extend(["--tag", args.tag])
 
     steps: list[tuple[str, list[str]]] = []
+    if args.preflight:
+        steps.append(("Release preflight", [PYTHON, "dev/scripts/release_preflight.py", "--version", args.preflight]))
     if not args.skip_bundle:
         steps.append(("Bundle v3 CSS", [PYTHON, "dev/scripts/bundle_v3.py"]))
 
@@ -55,6 +58,7 @@ def main() -> int:
             ("CSS compatibility budget", [PYTHON, "dev/scripts/audit_css_compat_budget.py"]),
             ("Source usage map", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"]),
             ("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"]),
+            ("WIKI route coverage", [PYTHON, "dev/scripts/audit_wiki_route_coverage.py"]),
             ("Core principles process gate", [PYTHON, "dev/scripts/audit_core_principles.py"]),
             ("Direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"]),
             ("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"]),

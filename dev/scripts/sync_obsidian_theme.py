@@ -12,8 +12,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import json
 import shutil
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -107,6 +109,7 @@ def copy_with_fallback(source: Path, destination: Path) -> None:
 
 
 def copy_assets(target: Path, dry_run: bool) -> None:
+    copied: list[dict[str, object]] = []
     for rel in RELEASE_ASSETS:
         source = ROOT / rel
         if not source.is_file() or source.stat().st_size == 0:
@@ -116,6 +119,25 @@ def copy_assets(target: Path, dry_run: bool) -> None:
         if dry_run:
             continue
         copy_with_fallback(source, destination)
+        copied.append({"path": rel, "sha256": sha256(source), "bytes": source.stat().st_size})
+    if not dry_run:
+        out = ROOT / "dev" / "TEMP" / "last-sync.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(
+            json.dumps(
+                {
+                    "schema": "owen-graphite/sync-state/1",
+                    "target": str(target),
+                    "syncedAt": datetime.now(timezone.utc).isoformat(),
+                    "assets": copied,
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        print(f"OK: wrote {out.relative_to(ROOT)}")
 
 
 def main() -> int:

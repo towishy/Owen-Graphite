@@ -72,9 +72,14 @@ REQUIRED_TEXT = {
         "INCIDENTS/incident-template.md",
         "INCIDENTS/taxonomy.md",
         "dev/scripts/wiki_route.py",
+        "dev/scripts/start_work.py",
+        "dev/scripts/finish_work.py",
+        "dev/scripts/validation_plan.py",
         "dev/scripts/new_runtime_evidence.py",
         "dev/scripts/work_summary.py",
         "dev/scripts/audit_mobile_owner.py",
+        "dev/scripts/audit_wiki_route_coverage.py",
+        "dev/scripts/audit_runtime_evidence_requirements.py",
         "PROMPTS/work-summary.md",
         "WORKFLOWS/validation-matrix.md",
     ],
@@ -265,6 +270,18 @@ def assert_helper_and_generator_stability() -> None:
     for script in ("dev/scripts/new_runtime_evidence.py", "dev/scripts/work_summary.py", "dev/scripts/audit_mobile_owner.py"):
         if not (ROOT / script).is_file():
             fail(f"missing helper script: {script}")
+    for script in (
+        "dev/scripts/start_work.py",
+        "dev/scripts/finish_work.py",
+        "dev/scripts/validation_plan.py",
+        "dev/scripts/release_preflight.py",
+        "dev/scripts/audit_wiki_route_coverage.py",
+        "dev/scripts/audit_runtime_evidence_requirements.py",
+    ):
+        if not (ROOT / script).is_file():
+            fail(f"missing process script: {script}")
+    if "last-sync.json" not in sync_script:
+        fail("sync_obsidian_theme.py must record dev/TEMP/last-sync.json")
     print("OK: helper routes, shared tokens, and MAP stability checks present")
 
 

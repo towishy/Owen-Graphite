@@ -8,6 +8,12 @@ Generate a draft with:
 .\.venv\Scripts\python.exe dev\scripts\work_summary.py
 ```
 
+Run the finish helper when wrapping up a task:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\finish_work.py --check
+```
+
 ## Required Summary Fields
 
 | Field | Value |
