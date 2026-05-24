@@ -52,6 +52,12 @@ ROUTES: dict[str, dict[str, list[str] | str]] = {
         "contracts": ["dev/WIKI/SRC/validation-matrix.md"],
         "checks": ["dev/scripts/audit_style_settings_contract.py when setting-facing", "dev/scripts/release_check.py --skip-bundle"],
     },
+    "settings": {
+        "owner": "src/chrome/33-settings-controls.css for settings UI controls; src/features/40-style-settings.css and dev/WIKI/DOCS/v3/style-settings-contract.json for Style Settings metadata",
+        "read": ["dev/WIKI/RECIPES/style-settings-option.md", "dev/WIKI/DOCS/v3/style-settings-contract.md", "dev/WIKI/TOKENS/usage-guide.md"],
+        "contracts": ["dev/WIKI/MAP/settings-style-contract.md"],
+        "checks": ["dev/scripts/audit_style_settings_contract.py", "dev/scripts/audit_core_principles.py", "dev/scripts/release_check.py --skip-bundle"],
+    },
     "docs": {
         "owner": "dev/WIKI/DOCS/*, README files, screenshots/readme/* by publication target",
         "read": ["dev/WIKI/WORKFLOWS/docs-assets.md", "dev/WIKI/DOCS/docs-map.md", "dev/WIKI/VISUAL-QA.md"],

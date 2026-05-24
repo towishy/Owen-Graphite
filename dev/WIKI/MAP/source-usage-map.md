@@ -167,7 +167,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 706 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 8821-9021 | 201 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:20, workspace-chrome:16 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 9025-9331 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
-| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 431 | unregistered/support | overlay-search:38, table:56 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
+| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 431 | settings-controls | overlay-search:38, table:56 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 9768-10161 | 393 | unregistered/support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 532 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:6, print-pdf:2, reading-rendered:27, table:36, workspace-chrome:16 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2095 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:261, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:209, reading-rendered:262, table:125, workspace-chrome:53 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
@@ -252,14 +252,7 @@ Forbidden:
 
 ## Risk Contract Coverage Gaps
 
-Surfaces without explicit `riskContracts` in `owner-registry.json`:
-
-- `reading-typography`: Reading View headings, paragraphs, links, lists rhythm, and document typography. Owners: src/base/12-reading-content.css
-- `reading-callouts-lists`: Reading View callouts, callout internals, blockquotes, and list surfaces. Owners: src/surfaces/21-reading-callouts-lists.css
-- `overlay-menu-search`: Menus, command palette, suggestions, popovers, tooltips, modals, and search UI. Owners: src/chrome/32-overlay-popover-dataview.css, src/chrome/35-editing-menu-tooltip-glass.css, src/chrome/36-floating-ui-glass-system.css
-- `mobile-narrow-layout`: Mobile and narrow-width workspace/content overflow stability. Owners: src/chrome/30-workspace.css, src/plugins/61-live-preview-mobile-plugin.css
-- `style-settings-contract`: Style Settings metadata, setting ids/defaults/options, and user-facing compatibility. Owners: src/features/40-style-settings.css, dev/WIKI/DOCS/v3/style-settings-contract.json
-- `shared-tokens`: Shared --ogd-* design intent and theme tokens consumed by multiple surfaces. Owners: src/tokens/00-light-tokens.css, src/tokens/01-dark-tokens.css
+All owner surfaces have at least one risk contract.
 
 ## Allowed-Late Does Not Mean New Owner
 
@@ -272,7 +265,6 @@ These modules are not primary owners in `owner-registry.json`. They may be valid
 - `src/base/10-base-workspace.css`: intentional support: base/embed workspace primitives; labels {'cm6': 5, 'code': 5, 'overlay-search': 5, 'reading-rendered': 7, 'table': 8, 'workspace-chrome': 5}
 - `src/surfaces/22-reading-embeds-workspace.css`: intentional support: base/embed workspace primitives; labels {'callout-list': 4, 'cm6': 6, 'code': 4, 'overlay-search': 1, 'reading-rendered': 18, 'table': 5, 'workspace-chrome': 6}
 - `src/themes/50-dark.css`: intentional support: theme/tokens layer; labels {'callout-list': 35, 'cm6': 6, 'code': 44, 'overlay-search': 3, 'reading-rendered': 81, 'table': 87, 'workspace-chrome': 4}
-- `src/chrome/33-settings-controls.css`: possible owner registry gap: settings controls; labels {'overlay-search': 38, 'table': 56}
 - `src/plugins/60-canvas-graph-link-panes.css`: external/plugin specific support; labels {'code': 2, 'overlay-search': 27, 'table': 48, 'workspace-chrome': 12}
 - `src/themes/51-accessibility-motion-contrast.css`: intentional support: theme/tokens layer; labels {'callout-list': 4, 'cm6': 4, 'code': 11, 'overlay-search': 7, 'reading-rendered': 2, 'table': 4, 'workspace-chrome': 7}
 

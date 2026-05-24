@@ -18,6 +18,13 @@ Create a scaffold with:
 .\.venv\Scripts\python.exe dev\scripts\new_runtime_evidence.py --surface table --name selected-cell-height --state selected
 ```
 
+Use these examples as the expected level of detail:
+
+```text
+dev/WIKI/runtime-evidence-example-selected-tab.md
+dev/WIKI/runtime-evidence-example-plugin-dom.md
+```
+
 Use strict mode when runtime correctness is part of the claim:
 
 ```powershell

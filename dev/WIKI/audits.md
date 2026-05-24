@@ -6,6 +6,7 @@ Core commands:
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py --list
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py table
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py mobile
+.\.venv\Scripts\python.exe dev\scripts\wiki_route.py settings
 .\.venv\Scripts\python.exe dev\scripts\start_work.py --surface chrome --name focus-polish
 .\.venv\Scripts\python.exe dev\scripts\finish_work.py --check
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --run-safe

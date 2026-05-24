@@ -27,6 +27,13 @@ Use this before changing CSS for selected, hovered, focused, active, collapsed, 
 
 ## Snippets
 
+See example completed notes before capturing a new state:
+
+```text
+dev/WIKI/runtime-evidence-example-selected-tab.md
+dev/WIKI/runtime-evidence-example-plugin-dom.md
+```
+
 Use these first when the issue touches table/cell geometry:
 
 ```text

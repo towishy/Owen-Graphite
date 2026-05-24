@@ -268,7 +268,7 @@ def assert_helper_and_generator_stability() -> None:
     wiki_route = read("dev/scripts/wiki_route.py")
     build_src_map = read("dev/scripts/build_src_map.py")
     light_tokens = read("src/tokens/00-light-tokens.css")
-    required_routes = ["table", "live-preview", "pdf", "chrome", "plugin", "mobile", "tokens", "docs", "release"]
+    required_routes = ["table", "live-preview", "pdf", "chrome", "plugin", "mobile", "tokens", "settings", "docs", "release"]
     missing_routes = [route for route in required_routes if f'"{route}"' not in wiki_route]
     if missing_routes:
         fail("wiki_route.py missing routes: " + ", ".join(missing_routes))

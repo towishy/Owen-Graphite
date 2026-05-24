@@ -9,7 +9,7 @@
       "propertyGroups": ["typography", "spacing", "color"],
       "ownerModules": ["src/base/12-reading-content.css"],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": ["dev/WIKI/MAP/reading-content-contract.md"]
     },
     {
       "id": "reading-tables-code",
@@ -27,7 +27,7 @@
       "propertyGroups": ["surface", "layout", "spacing", "color"],
       "ownerModules": ["src/surfaces/21-reading-callouts-lists.css"],
       "allowedLateModules": ["src/surfaces/23-liquid-glass-core.css"],
-      "riskContracts": []
+      "riskContracts": ["dev/WIKI/MAP/reading-content-contract.md"]
     },
     {
       "id": "live-preview-cm6",
@@ -63,7 +63,16 @@
       "propertyGroups": ["overlay", "surface", "interaction", "focus"],
       "ownerModules": ["src/chrome/32-overlay-popover-dataview.css", "src/chrome/35-editing-menu-tooltip-glass.css", "src/chrome/36-floating-ui-glass-system.css"],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": ["dev/WIKI/MAP/overlay-menu-search-contract.md"]
+    },
+    {
+      "id": "settings-controls",
+      "description": "Obsidian settings panes, setting rows, form controls, toggles, sliders, dropdowns, and settings search presentation.",
+      "selectorPatterns": ["setting", "setting-item", "modal.mod-settings", "dropdown", "slider", "checkbox-container"],
+      "propertyGroups": ["settings", "control", "surface", "interaction"],
+      "ownerModules": ["src/chrome/33-settings-controls.css"],
+      "allowedLateModules": [],
+      "riskContracts": ["dev/WIKI/MAP/settings-style-contract.md"]
     },
     {
       "id": "mobile-narrow-layout",
@@ -72,7 +81,7 @@
       "propertyGroups": ["layout", "overflow", "chrome", "embed"],
       "ownerModules": ["src/chrome/30-workspace.css", "src/plugins/61-live-preview-mobile-plugin.css"],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": ["dev/WIKI/MAP/mobile-narrow-layout-contract.md"]
     },
     {
       "id": "dataview-plugin-support",
@@ -117,7 +126,7 @@
       "propertyGroups": ["metadata", "settings"],
       "ownerModules": ["src/features/40-style-settings.css", "dev/WIKI/DOCS/v3/style-settings-contract.json"],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": ["dev/WIKI/MAP/settings-style-contract.md"]
     },
     {
       "id": "shared-tokens",
@@ -126,7 +135,7 @@
       "propertyGroups": ["tokens", "color", "surface", "motion", "spacing"],
       "ownerModules": ["src/tokens/00-light-tokens.css", "src/tokens/01-dark-tokens.css"],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": ["dev/WIKI/MAP/shared-tokens-contract.md"]
     }
   ]
 }

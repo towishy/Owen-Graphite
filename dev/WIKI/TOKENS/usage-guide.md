@@ -19,6 +19,7 @@ Use tokens before adding literal colors, shadows, spacing, or glass effects.
 - Do not create a token to hide a one-off repair.
 - Do not bypass tokens with repeated literal colors.
 - For dark-only behavior, route through `src/themes/50-dark.css` only when base ownership remains intact.
+- Read `dev/WIKI/MAP/shared-tokens-contract.md` before changing shared `--ogd-*` tokens consumed by more than one surface.
 
 ## Checks
 

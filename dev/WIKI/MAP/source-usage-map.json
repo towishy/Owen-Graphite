@@ -375,7 +375,9 @@
         "overlay-search": 38,
         "table": 56
       },
-      "ownerSurfaces": [],
+      "ownerSurfaces": [
+        "settings-controls"
+      ],
       "previousModule": "src/chrome/32-overlay-popover-dataview.css",
       "nextModule": "src/plugins/60-canvas-graph-link-panes.css"
     },
@@ -12117,14 +12119,6 @@
       }
     },
     {
-      "module": "src/chrome/33-settings-controls.css",
-      "classification": "possible owner registry gap: settings controls",
-      "labels": {
-        "overlay-search": 38,
-        "table": 56
-      }
-    },
-    {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
       "classification": "external/plugin specific support",
       "labels": {
@@ -12148,55 +12142,7 @@
       }
     }
   ],
-  "riskContractGaps": [
-    {
-      "surface": "reading-typography",
-      "description": "Reading View headings, paragraphs, links, lists rhythm, and document typography.",
-      "ownerModules": [
-        "src/base/12-reading-content.css"
-      ]
-    },
-    {
-      "surface": "reading-callouts-lists",
-      "description": "Reading View callouts, callout internals, blockquotes, and list surfaces.",
-      "ownerModules": [
-        "src/surfaces/21-reading-callouts-lists.css"
-      ]
-    },
-    {
-      "surface": "overlay-menu-search",
-      "description": "Menus, command palette, suggestions, popovers, tooltips, modals, and search UI.",
-      "ownerModules": [
-        "src/chrome/32-overlay-popover-dataview.css",
-        "src/chrome/35-editing-menu-tooltip-glass.css",
-        "src/chrome/36-floating-ui-glass-system.css"
-      ]
-    },
-    {
-      "surface": "mobile-narrow-layout",
-      "description": "Mobile and narrow-width workspace/content overflow stability.",
-      "ownerModules": [
-        "src/chrome/30-workspace.css",
-        "src/plugins/61-live-preview-mobile-plugin.css"
-      ]
-    },
-    {
-      "surface": "style-settings-contract",
-      "description": "Style Settings metadata, setting ids/defaults/options, and user-facing compatibility.",
-      "ownerModules": [
-        "src/features/40-style-settings.css",
-        "dev/WIKI/DOCS/v3/style-settings-contract.json"
-      ]
-    },
-    {
-      "surface": "shared-tokens",
-      "description": "Shared --ogd-* design intent and theme tokens consumed by multiple surfaces.",
-      "ownerModules": [
-        "src/tokens/00-light-tokens.css",
-        "src/tokens/01-dark-tokens.css"
-      ]
-    }
-  ],
+  "riskContractGaps": [],
   "surfaces": {
     "reading-typography": {
       "id": "reading-typography",
@@ -12215,7 +12161,9 @@
         "src/base/12-reading-content.css"
       ],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": [
+        "dev/WIKI/MAP/reading-content-contract.md"
+      ]
     },
     "reading-tables-code": {
       "id": "reading-tables-code",
@@ -12263,7 +12211,9 @@
       "allowedLateModules": [
         "src/surfaces/23-liquid-glass-core.css"
       ],
-      "riskContracts": []
+      "riskContracts": [
+        "dev/WIKI/MAP/reading-content-contract.md"
+      ]
     },
     "live-preview-cm6": {
       "id": "live-preview-cm6",
@@ -12365,7 +12315,34 @@
         "src/chrome/36-floating-ui-glass-system.css"
       ],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": [
+        "dev/WIKI/MAP/overlay-menu-search-contract.md"
+      ]
+    },
+    "settings-controls": {
+      "id": "settings-controls",
+      "description": "Obsidian settings panes, setting rows, form controls, toggles, sliders, dropdowns, and settings search presentation.",
+      "selectorPatterns": [
+        "setting",
+        "setting-item",
+        "modal.mod-settings",
+        "dropdown",
+        "slider",
+        "checkbox-container"
+      ],
+      "propertyGroups": [
+        "settings",
+        "control",
+        "surface",
+        "interaction"
+      ],
+      "ownerModules": [
+        "src/chrome/33-settings-controls.css"
+      ],
+      "allowedLateModules": [],
+      "riskContracts": [
+        "dev/WIKI/MAP/settings-style-contract.md"
+      ]
     },
     "mobile-narrow-layout": {
       "id": "mobile-narrow-layout",
@@ -12387,7 +12364,9 @@
         "src/plugins/61-live-preview-mobile-plugin.css"
       ],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": [
+        "dev/WIKI/MAP/mobile-narrow-layout-contract.md"
+      ]
     },
     "dataview-plugin-support": {
       "id": "dataview-plugin-support",
@@ -12507,7 +12486,9 @@
         "dev/WIKI/DOCS/v3/style-settings-contract.json"
       ],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": [
+        "dev/WIKI/MAP/settings-style-contract.md"
+      ]
     },
     "shared-tokens": {
       "id": "shared-tokens",
@@ -12530,7 +12511,9 @@
         "src/tokens/01-dark-tokens.css"
       ],
       "allowedLateModules": [],
-      "riskContracts": []
+      "riskContracts": [
+        "dev/WIKI/MAP/shared-tokens-contract.md"
+      ]
     }
   }
 }

@@ -18,12 +18,13 @@ EXPECTED = {
     "live-preview-rendered-widgets": "live-preview",
     "workspace-chrome": "chrome",
     "overlay-menu-search": "chrome",
+    "settings-controls": "settings",
     "mobile-narrow-layout": "mobile",
     "dataview-plugin-support": "plugin",
     "pdf-base": "pdf",
     "pdf-report-polish": "pdf",
     "pdf-marginalia": "pdf",
-    "style-settings-contract": "docs",
+    "style-settings-contract": "settings",
     "shared-tokens": "tokens",
 }
 

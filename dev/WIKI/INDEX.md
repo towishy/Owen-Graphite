@@ -10,6 +10,8 @@
 - `VISUAL-QA.md`: visual acceptance checklist.
 - `runtime-evidence-template.md`: required runtime evidence shape.
 - `runtime-evidence-storage.md`: where runtime captures are kept.
+- `runtime-evidence-example-selected-tab.md`: completed chrome selected-state example.
+- `runtime-evidence-example-plugin-dom.md`: completed plugin DOM example.
 
 ## Workflows
 
@@ -27,6 +29,11 @@
 - `MAP/owner-registry.md`
 - `MAP/risk-contracts.md`
 - `MAP/selector-provenance.md`
+- `MAP/reading-content-contract.md`
+- `MAP/overlay-menu-search-contract.md`
+- `MAP/mobile-narrow-layout-contract.md`
+- `MAP/settings-style-contract.md`
+- `MAP/shared-tokens-contract.md`
 
 ## Source Families
 
@@ -65,6 +72,7 @@
 
 - `audits.md`
 - `dev/scripts/wiki_route.py`: prints WIKI owner/workflow/check routing by surface.
+- `dev/scripts/wiki_route.py settings`: routes settings UI and Style Settings work.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`

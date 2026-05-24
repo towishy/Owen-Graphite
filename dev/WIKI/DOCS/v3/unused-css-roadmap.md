@@ -24,10 +24,10 @@ unused CSS 정리는 단순 no-match 제거가 아니라 coverage 확장 작업�
 
 ## 다음 coverage 우선순위
 
-1. `state-interaction`: hover/focus가 layout shift를 만들지 않는지 반복 chrome부터 확인합니다.
-2. `plugin-runtime`: Dataview, Tasks, Canvas, Graph fixture를 실제 플러그인 DOM에 가깝게 보강합니다.
-3. `print-pdf-context`: PDF header/footer, compact report, visibility mode 조합을 캡처합니다.
-4. `document-content-fixture-gap`: 긴 표, HTML table, embed, Mermaid, callout 내부 task를 자연 문서로 추가합니다.
+1. `state-interaction`: `dev/WIKI/RECIPES/coverage-state-interaction.md`.
+2. `plugin-runtime`: `dev/WIKI/RECIPES/coverage-plugin-runtime.md`.
+3. `print-pdf-context`: `dev/WIKI/RECIPES/coverage-print-pdf-context.md`.
+4. `document-content-fixture-gap`: `dev/WIKI/RECIPES/coverage-document-content-fixture.md`.
 
 ## 작업 절차
 

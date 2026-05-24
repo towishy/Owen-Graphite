@@ -6,6 +6,18 @@ This wiki is the operational entry point for AI-assisted work on Owen Graphite.
 
 ## Start Here
 
+### By Task
+
+| Task | First Route | Read Next |
+| --- | --- | --- |
+| Bug fix or visual change | `dev/scripts/wiki_route.py <surface>` | Relevant `WORKFLOWS/` page and `MAP/*-contract.md` |
+| Runtime hover/focus/active issue | `runtime-evidence-template.md` | `RUNTIME/` surface guide before editing CSS |
+| New Style Settings option | `dev/scripts/wiki_route.py settings` | `MAP/settings-style-contract.md`, `RECIPES/style-settings-option.md` |
+| Token or palette change | `dev/scripts/wiki_route.py tokens` | `MAP/shared-tokens-contract.md`, `TOKENS/usage-guide.md` |
+| Release or Obsidian sync | `dev/scripts/wiki_route.py release` | `WORKFLOWS/release.md`, `sync-obsidian.md` |
+
+### Standard Flow
+
 1. Read `CORE-PRINCIPLES.md`.
 2. Read `STRUCTURE.md` when changing paths, generated artifacts, or docs layout.
 3. Use `QUICK-ROUTING.md` to find the owner module.
@@ -15,7 +27,7 @@ This wiki is the operational entry point for AI-assisted work on Owen Graphite.
 7. Use `MAP/source-usage-map.md` to jump into generated source maps.
 8. Use `DOCS/docs-map.md` when a task touches docs, samples, settings, visual baselines, or release process.
 9. Use `VISUAL-QA.md` for visual changes and `runtime-evidence-template.md` plus `runtime-evidence-storage.md` before editing runtime state bugs.
-10. Use `TOKENS/` and `PLUGINS/` notes when touching token or plugin behavior.
+10. Use `TOKENS/`, `PLUGINS/`, and `MAP/settings-style-contract.md` when touching token, plugin, settings, or Style Settings behavior.
 11. Run the audits listed in the workflow before committing.
 
 ## Non-Negotiable
