@@ -28,3 +28,5 @@ Create a new incident scaffold with:
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\new_incident.py --type runtime-selected-state --name table-row-height --surface table --state selected
 ```
+
+Add `--evidence` to create and link a temporary runtime evidence scaffold at the same time.

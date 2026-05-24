@@ -28,3 +28,5 @@ Use `dev/scripts/wiki_route.py <surface>` before choosing owner-specific checks.
 Use `dev/scripts/validation_plan.py` to recommend checks from the current git diff.
 
 Use `dev/scripts/validation_plan.py --run-safe` to execute recommended checks that do not require placeholders.
+
+`--run-safe` never builds release ZIPs, publishes, or syncs Obsidian; use explicit release/sync commands for those.

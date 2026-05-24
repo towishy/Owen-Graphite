@@ -8,6 +8,8 @@ Generate a draft with:
 .\.venv\Scripts\python.exe dev\scripts\work_summary.py
 ```
 
+The script reads `dev/TEMP/last-sync.json` and `dev/TEMP/runtime-evidence/*.json` when present.
+
 Run the finish helper when wrapping up a task:
 
 ```powershell

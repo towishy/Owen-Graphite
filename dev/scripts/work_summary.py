@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import subprocess
 from pathlib import Path
 
@@ -28,6 +29,26 @@ def yes_no(condition: bool) -> str:
     return "yes" if condition else "no"
 
 
+def last_sync_summary() -> str:
+    path = ROOT / "dev" / "TEMP" / "last-sync.json"
+    if not path.is_file():
+        return "no"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    theme = next((asset for asset in data.get("assets", []) if asset.get("path") == "theme.css"), {})
+    digest = str(theme.get("sha256", ""))[:12]
+    target = str(data.get("target", ""))
+    when = str(data.get("syncedAt", ""))
+    return f"yes; {target}; {when}; theme.css {digest}"
+
+
+def runtime_evidence_summary() -> str:
+    folder = ROOT / "dev" / "TEMP" / "runtime-evidence"
+    if not folder.exists():
+        return "n/a"
+    files = sorted(path.relative_to(ROOT).as_posix() for path in folder.glob("*.json"))
+    return ", ".join(files) if files else "n/a"
+
+
 def main() -> int:
     files = changed_files()
     owners = owner_modules(files)
@@ -41,10 +62,10 @@ def main() -> int:
     print("| WIKI consulted | dev/WIKI/README.md, CORE-PRINCIPLES.md, QUICK-ROUTING.md, relevant workflow |")
     print(f"| Owner modules changed | {', '.join(owners) if owners else 'n/a'} |")
     print(f"| Runtime evidence required | {yes_no(runtime_related)} |")
-    print("| Runtime evidence captured | n/a |")
+    print(f"| Runtime evidence captured | {runtime_evidence_summary()} |")
     print(f"| Generated artifacts refreshed | {yes_no(generated)} |")
     print("| Audits passed | fill from terminal output |")
-    print("| Obsidian synced | fill after sync |")
+    print(f"| Obsidian synced | {last_sync_summary()} |")
     print("| Release/tag impact | n/a unless manifest/tag changed |")
     return 0
 

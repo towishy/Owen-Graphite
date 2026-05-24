@@ -32,6 +32,12 @@ def command_to_args(command: str) -> list[str] | None:
     return [sys.executable, *parts]
 
 
+def is_safe_command(command: str) -> bool:
+    # Keep run-safe bounded: no bundling, release ZIP, sync, or publishing.
+    blocked = ("build_release.py", "sync_obsidian_theme.py", "--include-sync", "--include-zip")
+    return not any(term in command for term in blocked)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-safe", action="store_true", help="Run recommended commands that do not require placeholders.")
@@ -78,7 +84,7 @@ def main() -> int:
         exit_code = 0
         for command in commands:
             run_args = command_to_args(command)
-            if run_args is None:
+            if run_args is None or not is_safe_command(command):
                 print(f"SKIP: {command}")
                 continue
             print(f"RUN: {command}")

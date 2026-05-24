@@ -157,11 +157,13 @@ REQUIRED_TEXT = {
         "Full Release-Confidence Set",
         "wiki_route.py <surface>",
         "--run-safe",
+        "never builds release ZIPs",
     ],
     "dev/WIKI/PROMPTS/work-summary.md": [
         "WIKI consulted",
         "Owner modules changed",
         "work_summary.py",
+        "last-sync.json",
         "--sync",
         "Obsidian synced",
     ],
@@ -176,6 +178,7 @@ REQUIRED_TEXT = {
         "incident-template.md",
         "taxonomy.md",
         "new_incident.py",
+        "--evidence",
     ],
     "dev/WIKI/INCIDENTS/taxonomy.md": [
         "runtime-selected-state",
@@ -291,6 +294,12 @@ def assert_helper_and_generator_stability() -> None:
             fail(f"missing process script: {script}")
     if "last-sync.json" not in sync_script:
         fail("sync_obsidian_theme.py must record dev/TEMP/last-sync.json")
+    if "last_sync_summary" not in read("dev/scripts/work_summary.py"):
+        fail("work_summary.py must read last sync state")
+    if "--evidence" not in read("dev/scripts/new_incident.py"):
+        fail("new_incident.py must support --evidence")
+    if "--run-safe" not in read("dev/scripts/validation_plan.py") or "build_release.py" not in read("dev/scripts/validation_plan.py"):
+        fail("validation_plan.py must keep bounded --run-safe behavior")
     print("OK: helper routes, shared tokens, and MAP stability checks present")
 
 
