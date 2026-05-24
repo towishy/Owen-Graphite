@@ -5,6 +5,7 @@ Core commands:
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py --list
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py table
+.\.venv\Scripts\python.exe dev\scripts\wiki_route.py mobile
 ```
 
 Validation commands:

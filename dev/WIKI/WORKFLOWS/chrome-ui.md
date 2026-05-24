@@ -4,6 +4,7 @@
 
 - Workspace/nav/status/ribbon: `src/chrome/30`, `31`, `34`, `37`.
 - Overlay/menu/search/modal: `src/chrome/32`, `35`, `36`.
+- Mobile/narrow workspace overflow: `src/chrome/30`; plugin/mobile embed behavior: `src/plugins/61`.
 - Accessibility/motion: `src/themes/51-accessibility-motion-contrast.css`.
 
 ## Contract

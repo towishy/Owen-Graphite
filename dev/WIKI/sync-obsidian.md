@@ -7,3 +7,5 @@ Windows test vault path:
 ```
 
 After sync, compare repo `theme.css` with vault `theme.css` when debugging cache or path issues.
+
+`sync_obsidian_theme.py` uses `copy2` first and falls back to chunk-copy with SHA-256 verification when Windows reports large-file `WinError 483` device hardware failures.

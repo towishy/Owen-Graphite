@@ -35,9 +35,15 @@ ROUTES: dict[str, dict[str, list[str] | str]] = {
         "checks": ["dev/scripts/audit_core_principles.py", "dev/scripts/release_check.py --skip-bundle"],
     },
     "plugin": {
-        "owner": "src/plugins/* for plugin-specific DOM; core document geometry stays with core owners",
+        "owner": "src/plugins/* for plugin-specific DOM; Dataview tables/inline fields currently route to src/chrome/32-overlay-popover-dataview.css; core document geometry stays with core owners",
         "read": ["dev/WIKI/PLUGINS/compatibility-matrix.md", "dev/WIKI/PLUGINS/runtime-dom-notes.md", "dev/WIKI/RUNTIME/plugins.md"],
         "contracts": ["dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
+        "checks": ["dev/scripts/audit_core_principles.py", "dev/scripts/release_check.py --skip-bundle"],
+    },
+    "mobile": {
+        "owner": "src/chrome/30-workspace.css for general mobile layout; src/plugins/61-live-preview-mobile-plugin.css for plugin/mobile embeds",
+        "read": ["dev/WIKI/WORKFLOWS/chrome-ui.md", "dev/WIKI/RUNTIME/chrome.md", "dev/WIKI/VISUAL-QA.md"],
+        "contracts": ["dev/WIKI/SRC/validation-matrix.md"],
         "checks": ["dev/scripts/audit_core_principles.py", "dev/scripts/release_check.py --skip-bundle"],
     },
     "tokens": {

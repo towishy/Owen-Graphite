@@ -16,6 +16,7 @@ REQUIRED_FILES = [
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md",
     "dev/WIKI/MAP/diff-stability.md",
     "dev/WIKI/runtime-evidence-template.md",
+    "dev/WIKI/runtime-evidence-storage.md",
     "dev/WIKI/RUNTIME/README.md",
     "dev/WIKI/RUNTIME/table.md",
     "dev/WIKI/RUNTIME/chrome.md",
@@ -35,8 +36,10 @@ REQUIRED_FILES = [
     "dev/WIKI/INCIDENTS/README.md",
     "dev/WIKI/INCIDENTS/incident-template.md",
     "dev/WIKI/INCIDENTS/taxonomy.md",
+    "dev/WIKI/PROMPTS/work-summary.md",
     "dev/WIKI/SRC/validation-matrix.md",
     "dev/WIKI/WORKFLOWS/release.md",
+    "dev/WIKI/WORKFLOWS/validation-matrix.md",
 ]
 
 REQUIRED_TEXT = {
@@ -50,6 +53,7 @@ REQUIRED_TEXT = {
         "SELECTOR-OWNER-CHEATSHEET.md",
         "VISUAL-QA.md",
         "runtime-evidence-template.md",
+        "runtime-evidence-storage.md",
         "TOKENS/",
         "PLUGINS/",
         "numeric semver tags only",
@@ -67,9 +71,12 @@ REQUIRED_TEXT = {
         "INCIDENTS/incident-template.md",
         "INCIDENTS/taxonomy.md",
         "dev/scripts/wiki_route.py",
+        "PROMPTS/work-summary.md",
+        "WORKFLOWS/validation-matrix.md",
     ],
     "dev/WIKI/audits.md": [
         "wiki_route.py --list",
+        "wiki_route.py mobile",
         "audit_wiki_consistency.py",
     ],
     "dev/WIKI/MAP/diff-stability.md": [
@@ -103,6 +110,11 @@ REQUIRED_TEXT = {
         "Matched rules",
         "If this template cannot be filled",
     ],
+    "dev/WIKI/runtime-evidence-storage.md": [
+        "dev/TEMP/runtime-evidence",
+        "Permanent Evidence",
+        "Minimum Metadata",
+    ],
     "dev/WIKI/RUNTIME/README.md": [
         "table.md",
         "chrome.md",
@@ -120,8 +132,19 @@ REQUIRED_TEXT = {
     ],
     "dev/WIKI/PLUGINS/compatibility-matrix.md": [
         "Dataview",
+        "src/chrome/32-overlay-popover-dataview.css",
         "Mermaid",
         "does not transfer ownership",
+    ],
+    "dev/WIKI/WORKFLOWS/validation-matrix.md": [
+        "Change Type",
+        "Full Release-Confidence Set",
+        "wiki_route.py <surface>",
+    ],
+    "dev/WIKI/PROMPTS/work-summary.md": [
+        "WIKI consulted",
+        "Owner modules changed",
+        "Obsidian synced",
     ],
     "dev/WIKI/RECIPES/README.md": [
         "reading-heading-spacing.md",
@@ -217,7 +240,7 @@ def assert_helper_and_generator_stability() -> None:
     wiki_route = read("dev/scripts/wiki_route.py")
     build_src_map = read("dev/scripts/build_src_map.py")
     light_tokens = read("src/tokens/00-light-tokens.css")
-    required_routes = ["table", "live-preview", "pdf", "chrome", "plugin", "tokens", "docs", "release"]
+    required_routes = ["table", "live-preview", "pdf", "chrome", "plugin", "mobile", "tokens", "docs", "release"]
     missing_routes = [route for route in required_routes if f'"{route}"' not in wiki_route]
     if missing_routes:
         fail("wiki_route.py missing routes: " + ", ".join(missing_routes))
@@ -226,6 +249,9 @@ def assert_helper_and_generator_stability() -> None:
     for token in ("--ogd-focus-ring-border", "--ogd-focus-ring-halo", "--ogd-media-frame-bg"):
         if token not in light_tokens:
             fail(f"src/tokens/00-light-tokens.css missing shared token {token}")
+    sync_script = read("dev/scripts/sync_obsidian_theme.py")
+    if "copy_with_fallback" not in sync_script or "retrying with chunk copy" not in sync_script:
+        fail("sync_obsidian_theme.py must keep chunk-copy fallback for WinError 483")
     print("OK: helper routes, shared tokens, and MAP stability checks present")
 
 

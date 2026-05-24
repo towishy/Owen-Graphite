@@ -9,6 +9,7 @@
 - `SELECTOR-OWNER-CHEATSHEET.md`: selector-to-owner quick map.
 - `VISUAL-QA.md`: visual acceptance checklist.
 - `runtime-evidence-template.md`: required runtime evidence shape.
+- `runtime-evidence-storage.md`: where runtime captures are kept.
 
 ## Workflows
 
@@ -18,6 +19,7 @@
 - `WORKFLOWS/chrome-ui.md`
 - `WORKFLOWS/docs-assets.md`
 - `WORKFLOWS/release.md`
+- `WORKFLOWS/validation-matrix.md`
 
 ## Generated MAP Bridge
 
@@ -82,3 +84,4 @@
 - `INCIDENTS/taxonomy.md`
 - `PROMPTS/before-edit.md`
 - `PROMPTS/review-core-principles.md`
+- `PROMPTS/work-summary.md`

@@ -10,6 +10,7 @@ Reload Obsidian (Ctrl+R) after sync.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import shutil
 import sys
@@ -82,6 +83,29 @@ def bundle_and_promote() -> None:
     print(f"OK: promoted {src.relative_to(ROOT)} -> theme.css")
 
 
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def copy_with_fallback(source: Path, destination: Path) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        shutil.copy2(source, destination)
+    except OSError as exc:
+        print(f"WARN: copy2 failed for {source.relative_to(ROOT)} ({exc}); retrying with chunk copy")
+        if destination.exists():
+            destination.unlink()
+        with source.open("rb") as src, destination.open("wb") as dst:
+            for chunk in iter(lambda: src.read(32 * 1024), b""):
+                dst.write(chunk)
+    if sha256(source) != sha256(destination):
+        raise RuntimeError(f"hash mismatch after copy: {source.relative_to(ROOT)}")
+
+
 def copy_assets(target: Path, dry_run: bool) -> None:
     for rel in RELEASE_ASSETS:
         source = ROOT / rel
@@ -91,8 +115,7 @@ def copy_assets(target: Path, dry_run: bool) -> None:
         print(f"{'DRY-RUN' if dry_run else 'COPY'}: {rel} -> {destination}")
         if dry_run:
             continue
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, destination)
+        copy_with_fallback(source, destination)
 
 
 def main() -> int:

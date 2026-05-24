@@ -144,7 +144,8 @@
         "workspace-chrome": 77
       },
       "ownerSurfaces": [
-        "reading-tables-code"
+        "reading-tables-code",
+        "dataview-plugin-support (allowed-late)"
       ],
       "previousModule": "src/base/12-reading-content.css",
       "nextModule": "src/surfaces/21-reading-callouts-lists.css"
@@ -309,7 +310,8 @@
         "workspace-chrome": 6
       },
       "ownerSurfaces": [
-        "workspace-chrome"
+        "workspace-chrome",
+        "mobile-narrow-layout"
       ],
       "previousModule": "src/features/41-feature-presets.css",
       "nextModule": "src/chrome/31-navigation-tasks-search.css"
@@ -354,7 +356,8 @@
         "table": 24
       },
       "ownerSurfaces": [
-        "overlay-menu-search"
+        "overlay-menu-search",
+        "dataview-plugin-support"
       ],
       "previousModule": "src/chrome/31-navigation-tasks-search.css",
       "nextModule": "src/chrome/33-settings-controls.css"
@@ -414,7 +417,9 @@
         "table": 36,
         "workspace-chrome": 16
       },
-      "ownerSurfaces": [],
+      "ownerSurfaces": [
+        "mobile-narrow-layout"
+      ],
       "previousModule": "src/plugins/60-canvas-graph-link-panes.css",
       "nextModule": "src/features/42-report-print-polish.css"
     },
@@ -12130,20 +12135,6 @@
       }
     },
     {
-      "module": "src/plugins/61-live-preview-mobile-plugin.css",
-      "classification": "external/plugin specific support",
-      "labels": {
-        "callout-list": 1,
-        "cm6": 23,
-        "code": 27,
-        "overlay-search": 6,
-        "print-pdf": 2,
-        "reading-rendered": 27,
-        "table": 36,
-        "workspace-chrome": 16
-      }
-    },
-    {
       "module": "src/themes/51-accessibility-motion-contrast.css",
       "classification": "intentional support: theme/tokens layer",
       "labels": {
@@ -12179,6 +12170,14 @@
         "src/chrome/32-overlay-popover-dataview.css",
         "src/chrome/35-editing-menu-tooltip-glass.css",
         "src/chrome/36-floating-ui-glass-system.css"
+      ]
+    },
+    {
+      "surface": "mobile-narrow-layout",
+      "description": "Mobile and narrow-width workspace/content overflow stability.",
+      "ownerModules": [
+        "src/chrome/30-workspace.css",
+        "src/plugins/61-live-preview-mobile-plugin.css"
       ]
     },
     {
@@ -12367,6 +12366,52 @@
       ],
       "allowedLateModules": [],
       "riskContracts": []
+    },
+    "mobile-narrow-layout": {
+      "id": "mobile-narrow-layout",
+      "description": "Mobile and narrow-width workspace/content overflow stability.",
+      "selectorPatterns": [
+        "is-mobile",
+        "max-width",
+        "mobile",
+        "narrow"
+      ],
+      "propertyGroups": [
+        "layout",
+        "overflow",
+        "chrome",
+        "embed"
+      ],
+      "ownerModules": [
+        "src/chrome/30-workspace.css",
+        "src/plugins/61-live-preview-mobile-plugin.css"
+      ],
+      "allowedLateModules": [],
+      "riskContracts": []
+    },
+    "dataview-plugin-support": {
+      "id": "dataview-plugin-support",
+      "description": "Dataview plugin tables, inline fields, and block-language-dataview surfaces.",
+      "selectorPatterns": [
+        "dataview",
+        "block-language-dataview",
+        "table-view-table"
+      ],
+      "propertyGroups": [
+        "plugin",
+        "table",
+        "surface",
+        "focus"
+      ],
+      "ownerModules": [
+        "src/chrome/32-overlay-popover-dataview.css"
+      ],
+      "allowedLateModules": [
+        "src/surfaces/20-reading-tables-code.css"
+      ],
+      "riskContracts": [
+        "dev/WIKI/MAP/live-preview-pdf-css-map/parity-guidelines.md"
+      ]
     },
     "pdf-base": {
       "id": "pdf-base",

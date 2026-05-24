@@ -66,6 +66,24 @@
       "riskContracts": []
     },
     {
+      "id": "mobile-narrow-layout",
+      "description": "Mobile and narrow-width workspace/content overflow stability.",
+      "selectorPatterns": ["is-mobile", "max-width", "mobile", "narrow"],
+      "propertyGroups": ["layout", "overflow", "chrome", "embed"],
+      "ownerModules": ["src/chrome/30-workspace.css", "src/plugins/61-live-preview-mobile-plugin.css"],
+      "allowedLateModules": [],
+      "riskContracts": []
+    },
+    {
+      "id": "dataview-plugin-support",
+      "description": "Dataview plugin tables, inline fields, and block-language-dataview surfaces.",
+      "selectorPatterns": ["dataview", "block-language-dataview", "table-view-table"],
+      "propertyGroups": ["plugin", "table", "surface", "focus"],
+      "ownerModules": ["src/chrome/32-overlay-popover-dataview.css"],
+      "allowedLateModules": ["src/surfaces/20-reading-tables-code.css"],
+      "riskContracts": ["dev/WIKI/MAP/live-preview-pdf-css-map/parity-guidelines.md"]
+    },
+    {
       "id": "pdf-base",
       "description": "Print page base, @page, and generic PDF body defaults.",
       "selectorPatterns": ["@page", "@media print", "markdown-rendered", "markdown-preview-view"],
