@@ -22,8 +22,8 @@ def main() -> int:
     parser.add_argument("--theme", choices=["light", "dark"], default="light")
     args = parser.parse_args()
 
-    baseline_path = ROOT / "docs" / "v3" / f"computed-fingerprint-v2.30.14-{args.theme}.json"
-    candidate_path = ROOT / "docs" / "v3" / f"computed-fingerprint-v2.30.14-v3-{args.theme}.json"
+    baseline_path = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / f"computed-fingerprint-v2.30.14-{args.theme}.json"
+    candidate_path = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / f"computed-fingerprint-v2.30.14-v3-{args.theme}.json"
     baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
     candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
 

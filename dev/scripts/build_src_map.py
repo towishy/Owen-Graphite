@@ -1,7 +1,7 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Build source-adjacent MAP artifacts for the Owen Graphite src/ tree.
 
-The MAP lives under dev/MAP so investigation artifacts stay separate from the
+The MAP lives under dev/WIKI/MAP so investigation artifacts stay separate from the
 shipping src/ CSS modules while still mapping directly back to src/entry.css.
 """
 
@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = ROOT / "src"
 ENTRY = SRC_DIR / "entry.css"
-MAP_DIR = ROOT / "dev" / "MAP"
+MAP_DIR = ROOT / "dev" / "WIKI" / "MAP"
 MANIFEST = ROOT / "manifest.json"
 
 IMPORT_RE = re.compile(r"@import\s+url\(\s*['\"]?([^'\")]+)['\"]?\s*\)\s*;", re.I)
@@ -334,7 +334,7 @@ def analyze_module(module_info: dict[str, object]) -> tuple[dict[str, object], l
                     "module": module_info["module"],
                     "line": rule.line,
                     "selector": rule.selector,
-                    "message": "PDF marginalia or @page-sensitive rule; review dev/MAP/pdf-header-footer-contract.md",
+                    "message": "PDF marginalia or @page-sensitive rule; review dev/WIKI/MAP/pdf-header-footer-contract.md",
                 }
             )
         for property_name, value in declarations(rule.body):
@@ -462,7 +462,7 @@ def markdown_report(payload: dict[str, object]) -> str:
         [
             "# Source MAP Risk Classification",
             "",
-            "Canonical MAP location: `dev/MAP`.",
+            "Canonical MAP location: `dev/WIKI/MAP`.",
             "",
             "## Summary",
             "",
@@ -501,9 +501,9 @@ def checklist(payload: dict[str, object]) -> str:
             "",
             "- Finding `critical = 0`: no orphan braces, unclosed blocks, or unterminated comments.",
             "- Finding `high` must not increase unless a release note explains the Obsidian core conflict.",
-            "- CM6 hit-routing sensitive findings must be reviewed against `dev/MAP/cm6-hit-routing-contract.md`.",
-            "- Top chrome/icon changes must be reviewed against `dev/MAP/top-chrome-icon-background-contract.md`.",
-            "- PDF header/footer sensitive findings must be reviewed against `dev/MAP/pdf-header-footer-contract.md`.",
+            "- CM6 hit-routing sensitive findings must be reviewed against `dev/WIKI/MAP/cm6-hit-routing-contract.md`.",
+            "- Top chrome/icon changes must be reviewed against `dev/WIKI/MAP/top-chrome-icon-background-contract.md`.",
+            "- PDF header/footer sensitive findings must be reviewed against `dev/WIKI/MAP/pdf-header-footer-contract.md`.",
             "",
             "## Current Finding Baseline",
             "",
@@ -569,7 +569,7 @@ def html_report(payload: dict[str, object]) -> str:
 <body>
 <main>
   <h1>Owen Graphite Source MAP Risk Map</h1>
-    <p>Canonical MAP root: <code>dev/MAP</code>. Source: <code>{html.escape(str(payload['source']))}</code>. Version: <code>{html.escape(str(payload['version']))}</code>.</p>
+    <p>Canonical MAP root: <code>dev/WIKI/MAP</code>. Source: <code>{html.escape(str(payload['source']))}</code>. Version: <code>{html.escape(str(payload['version']))}</code>.</p>
   <section class="summary">
     <div class="metric"><b>{payload['summary']['module_count']}</b><span>modules</span></div>
     <div class="metric"><b>{payload['summary']['selector_count']}</b><span>selectors</span></div>
@@ -624,7 +624,7 @@ def main() -> int:
     (MAP_DIR / "css-stabilization-checklist.md").write_text(checklist(payload), encoding="utf-8")
     (MAP_DIR / "theme-css-risk-map.html").write_text(html_report(payload), encoding="utf-8")
     print(
-        "OK: built dev/MAP "
+        "OK: built dev/WIKI/MAP "
         f"({len(module_records)} modules, {payload['summary']['selector_count']} selectors, "
         f"{len(all_findings)} findings, {len(cross_file_groups)} cross-file selector groups)"
     )

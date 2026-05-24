@@ -16,7 +16,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "manifest.json"
 ENTRY = ROOT / "src" / "entry.css"
-STYLE_CONTRACT = ROOT / "docs" / "v3" / "style-settings-contract.json"
+STYLE_CONTRACT = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "style-settings-contract.json"
 IMPORT_RE = re.compile(r"@import\s+url\(\s*['\"]?([^'\")]+)['\"]?\s*\)\s*;", re.I)
 
 
@@ -74,7 +74,7 @@ def optional_file_hash(env_name: str) -> dict[str, object] | None:
 def main() -> int:
     try:
         release_version = version()
-        out_dir = ROOT / "dev" / "MAP" / "effective-baseline" / f"v{release_version}"
+        out_dir = ROOT / "dev" / "WIKI" / "effective-baseline" / f"v{release_version}"
         out_dir.mkdir(parents=True, exist_ok=True)
         contract = read_json(STYLE_CONTRACT)
         bundle_paths = [ROOT / "theme.css", ROOT / "dist" / "theme-v3.css"]
@@ -110,8 +110,8 @@ def main() -> int:
                 "contractSha256": sha256(STYLE_CONTRACT),
             },
             "linkedArtifacts": {
-                "ownerRegistry": "dev/MAP/owner-registry.json",
-                "effectiveSourceMap": "dev/MAP/effective-source-map.json",
+                "ownerRegistry": "dev/WIKI/MAP/owner-registry.json",
+                "effectiveSourceMap": "dev/WIKI/MAP/effective-source-map.json",
             },
         }
         path = out_dir / "baseline-metadata.json"

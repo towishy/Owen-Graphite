@@ -1,4 +1,4 @@
-﻿"""Sanity test: strip ALL !important from v3 bundle and capture fingerprint.
+"""Sanity test: strip ALL !important from v3 bundle and capture fingerprint.
 
 This is the first step of S11.5 (!important reduction). It answers:
   "How many of the 5,821 !important declarations actually MATTER at the
@@ -10,7 +10,7 @@ bisect by module for the remainder.
 
 Output:
   dist/theme-v3.no-important.css        # bundle with all !important stripped
-  docs/v3/computed-fingerprint-v2.30.14-v3-no-important-{light,dark}.json
+  dev/WIKI/DOCS/v3/computed-fingerprint-v2.30.14-v3-no-important-{light,dark}.json
 
 This script does NOT modify src/ — it operates on the bundle only, so the
 canonical v3 bundle stays unchanged until we have evidence to act on.

@@ -1,4 +1,4 @@
-﻿# Contributing to Owen Graphite v3
+# Contributing to Owen Graphite v3
 
 Owen Graphite v3 (현재 안정 릴리즈 v3.1.51)은 처음부터 다시 작성된 코드베이스입니다. 본 문서는 v3 기여자가 따라야 할 워크플로우와 검증 절차를 정리합니다.
 
@@ -35,22 +35,23 @@ src/
 
 ## 2. 작업 흐름
 
-1. **분기**: `git checkout -b feature/<name>` (베이스: `main`)
-2. **편집**: `src/` 안에서만 수정. `theme.css` 는 직접 편집하지 않습니다.
-3. **번들**: `python dev/scripts/bundle_v3.py`
-4. **승격**: `Copy-Item dist\theme-v3.css theme.css -Force` (또는 macOS/Linux `cp`)
-5. **빠른 전체 점검**:
+1. **WIKI 확인**: 모든 코드 작성, 기능 개선, 수정, 정리 작업 전에 [dev/WIKI/README.md](dev/WIKI/README.md), [dev/WIKI/CORE-PRINCIPLES.md](dev/WIKI/CORE-PRINCIPLES.md), [dev/WIKI/QUICK-ROUTING.md](dev/WIKI/QUICK-ROUTING.md), 관련 workflow/MAP을 먼저 읽습니다.
+2. **분기**: `git checkout -b feature/<name>` (베이스: `main`)
+3. **편집**: `src/` 안에서만 수정. `theme.css` 는 직접 편집하지 않습니다.
+4. **번들**: `python dev/scripts/bundle_v3.py`
+5. **승격**: `Copy-Item dist\theme-v3.css theme.css -Force` (또는 macOS/Linux `cp`)
+6. **빠른 전체 점검**:
    - `python dev/scripts/release_check.py` — 번들 freshness, 메타데이터, Style Settings, docs/assets, CSS budget, Live Preview, PDF header/footer, 중복 selector threshold를 한 번에 확인
-6. **개별 감사**:
+7. **개별 감사**:
    - `python dev/scripts/audit_v3_hit_routing.py` — Live Preview 회귀 차단
    - `python dev/scripts/audit_lp_pdf_selector_ownership.py` — Live Preview/Reading/PDF selector ownership 및 HyperMD direct-line vertical box 회귀 차단
    - `python dev/scripts/v3_audit_duplicate_selectors.py` — 중복 selector 통계 (정보용)
    - `python dev/scripts/build_unused_css_report.py` — unused CSS 제거 전 후보/예약 selector 분류
-7. **시각 회귀 (선택)**:
+8. **시각 회귀 (선택)**:
    - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme light`
    - `python dev/scripts/capture_computed_fingerprint.py --build v3 --theme dark`
    - `python dev/scripts/fp_diff_summary.py [--theme dark]` — 베이스라인과 0 diff 유지
-8. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
+9. **commit/PR**: 메시지에 영향 받는 `src/` 모듈을 명시. fingerprint diff가 0이 아닌 경우 PR 본문에 사유 첨부.
 
 ## 2.1 변경 유형별 검증 매트릭스
 
@@ -60,17 +61,17 @@ src/
 | `src/base/` / `src/surfaces/` 본문·표·코드·callout | `python dev/scripts/release_check.py` | 긴 표, 긴 코드 토큰, callout 내부 목록 fixture 확인 |
 | `src/chrome/` 탭·탐색기·검색·설정 UI | `python dev/scripts/release_check.py` | hover/focus가 row height를 바꾸지 않는지 수동 확인 |
 | `src/features/42-report-print-polish.css` 또는 PDF 설정 | `python dev/scripts/release_check.py` | PDF export 샘플, header/footer 겹침, 페이지 분할 확인 |
-| Style Settings id/default/title 변경 | `python dev/scripts/audit_style_settings_contract.py` | [docs/v3/style-settings-contract.md](docs/v3/style-settings-contract.md)와 JSON 계약 동시 갱신 |
+| Style Settings id/default/title 변경 | `python dev/scripts/audit_style_settings_contract.py` | [dev/WIKI/DOCS/v3/style-settings-contract.md](dev/WIKI/DOCS/v3/style-settings-contract.md)와 JSON 계약 동시 갱신 |
 | README 이미지·문서 링크 변경 | `python dev/scripts/audit_docs_assets.py` + `python dev/scripts/audit_readme_svg_layout.py` | SVG 텍스트·아이콘이 컨테이너 경계에 닿지 않고 release/sync 자산에 포함되는지 확인 |
-| unused CSS 제거 | `python dev/scripts/build_unused_css_report.py` | [docs/v3/unused-css-roadmap.md](docs/v3/unused-css-roadmap.md)의 bucket별 제거 조건 충족 |
+| unused CSS 제거 | `python dev/scripts/build_unused_css_report.py` | [dev/WIKI/DOCS/v3/unused-css-roadmap.md](dev/WIKI/DOCS/v3/unused-css-roadmap.md)의 bucket별 제거 조건 충족 |
 
 ## 2.2 README 기능 소개와 이미지
 
 - README의 `2. 신기능 소개`에는 최신 3개 기능만 유지합니다.
-- 네 번째로 밀린 기능은 [docs/v3/feature-history.md](docs/v3/feature-history.md)로 이동합니다.
+- 네 번째로 밀린 기능은 [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md)로 이동합니다.
 - 새 기능 이미지는 기능이 실제로 보이는 SVG/PNG를 사용하고, README 링크와 release/sync 포함 여부는 `python dev/scripts/audit_docs_assets.py`로 검증합니다.
 - 생성 SVG는 텍스트와 아이콘이 카드·툴바·뷰포트 경계에 닿지 않도록 여유 마진을 두고, `python dev/scripts/audit_readme_svg_layout.py`를 통과해야 합니다.
-- 기본 Obsidian과 비교가 필요한 변경은 [docs/v3/visual-comparison-guide.md](docs/v3/visual-comparison-guide.md)의 캡처 기준을 따릅니다.
+- 기본 Obsidian과 비교가 필요한 변경은 [dev/WIKI/DOCS/v3/visual-comparison-guide.md](dev/WIKI/DOCS/v3/visual-comparison-guide.md)의 캡처 기준을 따릅니다.
 
 ## 3. Direct-owner migration guard
 
@@ -82,9 +83,9 @@ src/
 .\.venv\Scripts\python.exe dev\scripts\build_style_settings_matrix.py
 ```
 
-직접소유 이관 작업은 `dev/MAP/direct-owner-migration-matrix.md`와 `dev/MAP/owner-registry.json`을 기준으로 surface 단위로 진행합니다. 값 검증은 `capture_effective_snapshot.py` / `diff_effective_snapshot.py`, 출처 검증은 `capture_provenance_snapshot.py`와 `dev/MAP/effective-source-map.json`을 사용합니다.
+직접소유 이관 작업은 `dev/WIKI/MAP/direct-owner-migration-matrix.md`와 `dev/WIKI/MAP/owner-registry.json`을 기준으로 surface 단위로 진행합니다. 값 검증은 `capture_effective_snapshot.py` / `diff_effective_snapshot.py`, 출처 검증은 `capture_provenance_snapshot.py`와 `dev/WIKI/MAP/effective-source-map.json`을 사용합니다.
 
-unused CSS 정리는 `dev/MAP/unused-css-candidates.md`를 먼저 생성한 뒤 진행합니다. `candidate`가 아닌 `reserved` selector는 Obsidian 상태, 플러그인, 문서 의미, Style Settings, print/mobile 조건처럼 fixture에 없을 수 있는 경로이므로 별도 coverage 없이 제거하지 않습니다. 다음 coverage 보강은 리포트의 `Reserved Reason Summary`와 `Coverage Gap Hotspots`를 기준으로 정합니다.
+unused CSS 정리는 `dev/WIKI/MAP/unused-css-candidates.md`를 먼저 생성한 뒤 진행합니다. `candidate`가 아닌 `reserved` selector는 Obsidian 상태, 플러그인, 문서 의미, Style Settings, print/mobile 조건처럼 fixture에 없을 수 있는 경로이므로 별도 coverage 없이 제거하지 않습니다. 다음 coverage 보강은 리포트의 `Reserved Reason Summary`와 `Coverage Gap Hotspots`를 기준으로 정합니다.
 
 ## 4. 보존 계약 (Preservation Contract)
 
@@ -97,7 +98,7 @@ v3는 v2.30.14의 픽셀 결과를 **보존**합니다. 모든 변경은 다음�
 | C3 Style Settings 옵션 | 수동 토글 매트릭스 | 37 옵션 × ON/OFF 동일 |
 | C4 PDF 출력 | `@media print` 시나리오 수동 비교 | 페이지 수·레이아웃·footer 동일 |
 
-상세 계약은 [docs/v3/design-spec.md](docs/v3/design-spec.md) 참고.
+상세 계약은 [dev/WIKI/DOCS/v3/design-spec.md](dev/WIKI/DOCS/v3/design-spec.md) 참고.
 
 ## 5. `!important` 정책
 
@@ -117,7 +118,7 @@ declaration-level `!important` = **0**. 새 `!important`를 추가하려면:
 - **반복 chrome**: 의미색 대신 밝기·그림자로만 반응
 - **샘플 자산**: 새 기능 추가 시 README의 해당 섹션에 liquid-glass 샘플 이미지(SVG/PNG) 동봉
 
-자세한 원칙은 [docs/v3/surface-state-matrix.md](docs/v3/surface-state-matrix.md).
+자세한 원칙은 [dev/WIKI/DOCS/v3/surface-state-matrix.md](dev/WIKI/DOCS/v3/surface-state-matrix.md).
 
 ## 7. Pre-commit hook (선택)
 
@@ -130,7 +131,7 @@ Windows에서는 hook 내용을 `.git/hooks/pre-commit.ps1` 로 직접 옮기거
 
 ## 8. Release 절차
 
-`docs/v3/release-plan.md` 의 R0~R6 단계 참조.
+`dev/WIKI/DOCS/v3/release-plan.md` 의 R0~R6 단계 참조.
 
 요약:
 

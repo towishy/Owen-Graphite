@@ -155,7 +155,7 @@ def main() -> int:
             "uncoveredSettings": [],
             "scenarios": scenarios,
         }
-        out = ROOT / "dev" / "MAP" / "effective-baseline" / f"v{version()}" / "style-settings-matrix.json"
+        out = ROOT / "dev" / "WIKI" / "effective-baseline" / f"v{version()}" / "style-settings-matrix.json"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"OK: wrote {out.relative_to(ROOT)} ({len(scenarios)} scenarios)")

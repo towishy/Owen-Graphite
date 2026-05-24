@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Build a manual-install release ZIP for Owen Graphite v3.
 
 Bundles src/ via bundle_v3.py, promotes the result to theme.css, and packages
@@ -23,10 +23,10 @@ DEFAULT_FILES = [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "dev/MAP/map-info-classification.md",
-    "dev/MAP/theme-css-risk-map.html",
-    "dev/MAP/theme-css-risk-map.json",
-    "dev/MAP/selector-provenance.json",
+    "dev/WIKI/MAP/map-info-classification.md",
+    "dev/WIKI/MAP/theme-css-risk-map.html",
+    "dev/WIKI/MAP/theme-css-risk-map.json",
+    "dev/WIKI/MAP/selector-provenance.json",
     "screenshots/light.png",
     "screenshots/dark.png",
     "screenshots/readme/workspace-chrome-connected-glass.svg",

@@ -1,10 +1,10 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Capture a computed-style fingerprint of the Owen Graphite theme.
 
-For every element in docs/v3/research/golden-rig/obsidian-harness.html that carries a
+For every element in dev/WIKI/DOCS/v3/research/golden-rig/obsidian-harness.html that carries a
 `data-fp-id` attribute, we record the value of a fixed list of CSS properties
 resolved by the browser. The result is written to
-`docs/v3/computed-fingerprint-<version>-<theme>.json`.
+`dev/WIKI/DOCS/v3/computed-fingerprint-<version>-<theme>.json`.
 
 This file is the primary regression contract for the v3 rewrite:
 the new src/ tree must produce a bit-identical fingerprint against the same
@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-HARNESS = ROOT / "docs" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
+HARNESS = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
 MANIFEST = ROOT / "manifest.json"
 
 # Properties we sample per element. Kept small enough to stay readable in diff
@@ -215,7 +215,7 @@ def main() -> int:
     parser.add_argument(
         "--out-dir",
         type=Path,
-        default=ROOT / "docs" / "v3",
+        default=ROOT / "dev" / "WIKI" / "DOCS" / "v3",
         help="Directory for the JSON fingerprint output.",
     )
     parser.add_argument(

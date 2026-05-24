@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLE = ROOT / "dist" / "theme-v3.css"
-OUT = ROOT / "dev" / "MAP" / "effective-source-map.json"
+OUT = ROOT / "dev" / "WIKI" / "MAP" / "effective-source-map.json"
 MANIFEST = ROOT / "manifest.json"
 START_RE = re.compile(r"/\* >>> (?P<module>src/.+?) \*/")
 END_RE = re.compile(r"/\* <<< (?P<module>src/.+?) \*/")

@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.57
+
+- docs: `dev/MAP`, `dev/effective-baseline`, `docs/v3` 운영 자료를 `dev/WIKI` 아래로 흡수해 WIKI를 단일 작업 진입점으로 정리했습니다.
+- process: 모든 코드 작성, 기능 개선, 수정, 정리 작업 전에 `dev/WIKI`를 먼저 참조하도록 Copilot 지침, WIKI core/prompt, CONTRIBUTING, core gate를 보강했습니다.
+- guard: WIKI 필수 파일과 legacy 경로 재생성 금지, 새 DOCS/fixture 경로, Style Settings 계약 경로를 release check에 연결했습니다.
+- guard: source usage map freshness, core principles gate, docs/assets, Style Settings contract, release check를 통과했습니다.
+
 ## v3.1.56
 
 - polish: Style Settings의 `Import`, `Export`, `Copy to clipboard`, `Download`, `Import from file` 링크 문자열을 Owen Graphite glass pill 버튼 톤으로 정리했습니다.
@@ -56,13 +63,13 @@
 
 - polish: 이미지 외곽선 추천안 D를 적용해 1px 회색 rim에 내부 liquid-glass highlight와 절제된 그림자를 더했습니다.
 - fix: Live Preview 첨부 이미지 경로(`.internal-embed`, `.image-embed`, `.media-embed`, `.cm-embed-block`)에도 동일한 이미지 외곽선 효과가 적용되도록 selector 범위를 확장했습니다.
-- docs: liquid rim, soft shadow, restrained shadow 후보를 비교하는 `docs/v3/research/image-border-effect-preview.html` 및 PNG 샘플을 추가했습니다.
+- docs: liquid rim, soft shadow, restrained shadow 후보를 비교하는 `dev/WIKI/DOCS/v3/research/image-border-effect-preview.html` 및 PNG 샘플을 추가했습니다.
 
 ## v3.1.47
 
 - polish: 문서에 첨부/삽입되는 이미지에 1px 희미한 회색 외곽선을 추가해 흰 배경 스크린샷이 본문 배경에 묻히지 않도록 개선했습니다.
 - polish: PDF Export 이미지와 figure 안의 이미지에도 동일한 1px 회색 외곽선과 `box-sizing: border-box`를 적용해 출력 폭을 안정화했습니다.
-- docs: 이미지 외곽선 추천안 A/B/C/D를 비교하는 `docs/v3/research/image-border-samples.html` 샘플 fixture를 추가했습니다.
+- docs: 이미지 외곽선 추천안 A/B/C/D를 비교하는 `dev/WIKI/DOCS/v3/research/image-border-samples.html` 샘플 fixture를 추가했습니다.
 
 ## v3.1.46
 
@@ -116,7 +123,7 @@
 ## v3.1.38
 
 - feat: Live Preview와 PDF Export 코드블럭의 헤더, 폰트, syntax 색상 패리티를 정리했습니다.
-- docs: 전체 `src/` CSS 기준 Live Preview ↔ Export PDF 매핑 MAP을 `dev/MAP/live-preview-pdf-css-map/`에 추가했습니다.
+- docs: 전체 `src/` CSS 기준 Live Preview ↔ Export PDF 매핑 MAP을 `dev/WIKI/MAP/live-preview-pdf-css-map/`에 추가했습니다.
 - guard: 코드 clarity fixture를 확장해 Live Preview source line, rendered widget, PDF `.token.*`/`.cm-*` syntax class 경로를 함께 검증합니다.
 
 ## v3.1.37

@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 STYLE_SETTINGS = ROOT / "src" / "features" / "40-style-settings.css"
-CONTRACT = ROOT / "docs" / "v3" / "style-settings-contract.json"
+CONTRACT = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "style-settings-contract.json"
 FUNCTIONAL_TYPES = {"class-toggle", "class-select", "variable-color", "variable-number-slider", "variable-select", "variable-text"}
 
 

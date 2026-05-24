@@ -26,17 +26,17 @@ ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = ROOT / "src"
 BUNDLE = ROOT / "dist" / "theme-v3.css"
 MANIFEST = ROOT / "manifest.json"
-DEFAULT_FIXTURE = ROOT / "docs" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
+DEFAULT_FIXTURE = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
 PRINT_FIXTURES = [
-    ROOT / "docs" / "v3" / "research" / "table-callout-parity-fixture.html",
-    ROOT / "docs" / "v3" / "research" / "pdf-marginalia-fixture.html",
-    ROOT / "docs" / "v3" / "research" / "pdf-image-body-quality-fixture.html",
-    ROOT / "docs" / "v3" / "research" / "live-preview-pdf-parity-fixture.html",
-    ROOT / "docs" / "v3" / "research" / "code-font-clarity-fixture.html",
+    ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "table-callout-parity-fixture.html",
+    ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "pdf-marginalia-fixture.html",
+    ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "pdf-image-body-quality-fixture.html",
+    ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "live-preview-pdf-parity-fixture.html",
+    ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "code-font-clarity-fixture.html",
 ]
-MATRIX_TEMPLATE = ROOT / "dev" / "MAP" / "effective-baseline" / "v{version}" / "style-settings-matrix.json"
-OUT_JSON = ROOT / "dev" / "MAP" / "unused-css-candidates.json"
-OUT_MD = ROOT / "dev" / "MAP" / "unused-css-candidates.md"
+MATRIX_TEMPLATE = ROOT / "dev" / "WIKI" / "effective-baseline" / "v{version}" / "style-settings-matrix.json"
+OUT_JSON = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.json"
+OUT_MD = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.md"
 
 STATE_PSEUDOS = re.compile(
     r":(?:hover|active|focus|focus-visible|focus-within|target|visited|link|checked|disabled|enabled|placeholder-shown|modal|open)\b"

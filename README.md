@@ -1,15 +1,15 @@
-﻿<!-- markdownlint-disable MD022 MD032 MD033 MD040 MD041 -->
+<!-- markdownlint-disable MD022 MD032 MD033 MD040 MD041 -->
 
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
-[![!important](https://img.shields.io/badge/!important-0-0d9488?style=flat-square)](docs/v3/cascade-research.md)
+[![!important](https://img.shields.io/badge/!important-0-0d9488?style=flat-square)](dev/WIKI/DOCS/v3/cascade-research.md)
 
-[English README](README.en.md) · [Style Settings presets](docs/v3/style-settings-presets.md) · [Compatibility matrix](docs/plugin-compatibility.md)
+[English README](README.en.md) · [Style Settings presets](dev/WIKI/DOCS/v3/style-settings-presets.md) · [Compatibility matrix](dev/WIKI/DOCS/v3/plugin-compatibility.md)
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.56** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.57** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -26,11 +26,11 @@
 
 | Guard | Current status | Evidence |
 | --- | --- | --- |
-| Bundle freshness | `theme.css` must match `dist/theme-v3.css` | [release plan](docs/v3/release-plan.md) |
-| Zero-important cascade | declaration-level `!important` policy is enforced | [cascade research](docs/v3/cascade-research.md) |
-| Style Settings contract | option ids/defaults are audited against the contract | [contract](docs/v3/style-settings-contract.md) |
+| Bundle freshness | `theme.css` must match `dist/theme-v3.css` | [release plan](dev/WIKI/DOCS/v3/release-plan.md) |
+| Zero-important cascade | declaration-level `!important` policy is enforced | [cascade research](dev/WIKI/DOCS/v3/cascade-research.md) |
+| Style Settings contract | option ids/defaults are audited against the contract | [contract](dev/WIKI/DOCS/v3/style-settings-contract.md) |
 | Docs/assets links | local Markdown links and README images are audited | [contributing](CONTRIBUTING.md) |
-| Live Preview/PDF parity | LP hit-routing, PDF header/footer, and visual fixture checks are scripted | [release plan](docs/v3/release-plan.md) |
+| Live Preview/PDF parity | LP hit-routing, PDF header/footer, and visual fixture checks are scripted | [release plan](dev/WIKI/DOCS/v3/release-plan.md) |
 
 ## Visual Tour
 
@@ -45,7 +45,7 @@
 | Owen Editor toolbar controls | ![Owen Editor 툴바 설정](screenshots/readme/owen-editor-toolbar-settings.jpg) |
 | File explorer type badges | ![파일 탐색기 확장자 배지](screenshots/readme/file-explorer-type-badges.svg) |
 
-비교 스크린샷을 새로 캡처할 때는 [visual comparison guide](docs/v3/visual-comparison-guide.md)를 기준으로 기본 Obsidian과 Owen Graphite를 같은 문서·같은 뷰포트에서 촬영합니다.
+비교 스크린샷을 새로 캡처할 때는 [visual comparison guide](dev/WIKI/DOCS/v3/visual-comparison-guide.md)를 기준으로 기본 Obsidian과 Owen Graphite를 같은 문서·같은 뷰포트에서 촬영합니다.
 
 ## English Overview
 
@@ -80,8 +80,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.56` |
-| **베이스라인 / 롤백 기준** | `v3.1.56` |
+| **버전** | `3.1.57` |
+| **베이스라인 / 롤백 기준** | `v3.1.57` |
 | **모드 지원** | ✅ Light / Dark |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -197,7 +197,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 | 설정 화면 | Style Settings의 본문/보고서 옵션과 Owen Editor 툴바 설정 이미지 추가 |
 | 문서 자산 | 새 JPG 3장을 `screenshots/readme/` 인벤토리에 등록 |
 
-이전 신기능 소개는 [docs/v3/feature-history.md](docs/v3/feature-history.md)에 보관합니다.
+이전 신기능 소개는 [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md)에 보관합니다.
 
 ---
 
@@ -211,7 +211,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.56.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.57.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -220,7 +220,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.56.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.57.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 
@@ -296,7 +296,7 @@ v3 소스는 `src/` 폴더에 토큰 → base → surfaces → chrome → featur
 | Release ZIP | `python dev/scripts/build_release.py` |
 | Obsidian vault 동기화 | `python dev/scripts/sync_obsidian_theme.py` |
 
-자세한 기여 가이드는 [CONTRIBUTING.md](CONTRIBUTING.md), 변경 이력은 [CHANGELOG.md](CHANGELOG.md), 보존·검증 계약은 [docs/v3/design-spec.md](docs/v3/design-spec.md) 참조.
+자세한 기여 가이드는 [CONTRIBUTING.md](CONTRIBUTING.md), 변경 이력은 [CHANGELOG.md](CHANGELOG.md), 보존·검증 계약은 [dev/WIKI/DOCS/v3/design-spec.md](dev/WIKI/DOCS/v3/design-spec.md) 참조.
 
 ---
 

@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 README_IMAGE_RE = re.compile(r"!\[[^\]]*\]\((screenshots/[^)]+)\)|<img\s+[^>]*src=\"(screenshots/[^\"]+)\"")
 SKIP_SCHEMES = {"http", "https", "mailto", "tel", "obsidian"}
-DOC_GLOBS = ("README.md", "CHANGELOG.md", "CONTRIBUTING.md", "screenshots/README.md", "docs/**/*.md")
+DOC_GLOBS = ("README.md", "README.en.md", "CHANGELOG.md", "CONTRIBUTING.md", "screenshots/README.md", "dev/WIKI/**/*.md", "docs/**/*.md")
 ASSET_LISTS = (
     ("dev/scripts/build_release.py", "DEFAULT_FILES"),
     ("dev/scripts/sync_obsidian_theme.py", "RELEASE_ASSETS"),

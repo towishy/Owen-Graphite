@@ -9,8 +9,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-TABLE_CALLOUT_FIXTURE = ROOT / "docs" / "v3" / "research" / "table-callout-parity-fixture.html"
-CODE_FONT_FIXTURE = ROOT / "docs" / "v3" / "research" / "code-font-clarity-fixture.html"
+TABLE_CALLOUT_FIXTURE = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "table-callout-parity-fixture.html"
+CODE_FONT_FIXTURE = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "code-font-clarity-fixture.html"
 
 
 SCREEN_TABLE_SELECTORS = {

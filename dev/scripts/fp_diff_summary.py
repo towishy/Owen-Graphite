@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Summarize the v3 fingerprint diff by element.
 
 Reads both the v2.30.14 baseline and the freshly captured v3 candidate from
-`docs/v3/computed-fingerprint-v<version>-*.json` and prints a per-element
+`dev/WIKI/DOCS/v3/computed-fingerprint-v<version>-*.json` and prints a per-element
 count of mismatching properties. Useful for tracking S3-S6 closure progress.
 
 Usage:
@@ -36,10 +36,10 @@ def main() -> int:
     args = parser.parse_args()
 
     baseline_path = args.baseline or (
-        ROOT / "docs" / "v3" / f"computed-fingerprint-v2.30.14-{args.theme}.json"
+        ROOT / "dev" / "WIKI" / "DOCS" / "v3" / f"computed-fingerprint-v2.30.14-{args.theme}.json"
     )
     candidate_path = args.candidate or (
-        ROOT / "docs" / "v3" / f"computed-fingerprint-v2.30.14-v3-{args.theme}.json"
+        ROOT / "dev" / "WIKI" / "DOCS" / "v3" / f"computed-fingerprint-v2.30.14-v3-{args.theme}.json"
     )
     baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
     candidate = json.loads(candidate_path.read_text(encoding="utf-8"))

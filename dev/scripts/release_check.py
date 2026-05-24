@@ -51,6 +51,8 @@ def main() -> int:
             ("Docs and assets", [PYTHON, "dev/scripts/audit_docs_assets.py"]),
             ("README SVG layout", [PYTHON, "dev/scripts/audit_readme_svg_layout.py"]),
             ("CSS compatibility budget", [PYTHON, "dev/scripts/audit_css_compat_budget.py"]),
+            ("Source usage map", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"]),
+            ("Core principles process gate", [PYTHON, "dev/scripts/audit_core_principles.py"]),
             ("Direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"]),
             ("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"]),
             ("Live Preview hit routing", [PYTHON, "dev/scripts/audit_v3_hit_routing.py"]),

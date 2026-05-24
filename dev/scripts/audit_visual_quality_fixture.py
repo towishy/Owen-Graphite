@@ -18,7 +18,7 @@ OUT_DIR = ROOT / "dev" / "temp" / "visual-quality"
 FIXTURES = (
     {
         "id": "live-preview-pdf-parity",
-        "path": ROOT / "docs" / "v3" / "research" / "live-preview-pdf-parity-fixture.html",
+        "path": ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "live-preview-pdf-parity-fixture.html",
         "screenshot": OUT_DIR / "live-preview-pdf-parity.png",
         "pdf": OUT_DIR / "live-preview-pdf-parity.pdf",
         "min_png": 20_000,
@@ -36,7 +36,7 @@ FIXTURES = (
     },
     {
         "id": "pdf-image-body-quality",
-        "path": ROOT / "docs" / "v3" / "research" / "pdf-image-body-quality-fixture.html",
+        "path": ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "pdf-image-body-quality-fixture.html",
         "screenshot": OUT_DIR / "pdf-image-body-quality.png",
         "pdf": OUT_DIR / "pdf-image-body-quality.pdf",
         "min_png": 20_000,
@@ -54,7 +54,7 @@ FIXTURES = (
     },
     {
         "id": "code-font-clarity",
-        "path": ROOT / "docs" / "v3" / "research" / "code-font-clarity-fixture.html",
+        "path": ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "code-font-clarity-fixture.html",
         "screenshot": OUT_DIR / "code-font-clarity.png",
         "pdf": OUT_DIR / "code-font-clarity.pdf",
         "min_png": 20_000,
@@ -75,7 +75,7 @@ FIXTURES = (
     },
     {
         "id": "table-callout-parity",
-        "path": ROOT / "docs" / "v3" / "research" / "table-callout-parity-fixture.html",
+        "path": ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "table-callout-parity-fixture.html",
         "screenshot": OUT_DIR / "table-callout-parity.png",
         "pdf": OUT_DIR / "table-callout-parity.pdf",
         "min_png": 20_000,

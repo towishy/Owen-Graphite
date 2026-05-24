@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "manifest.json"
-DEFAULT_FIXTURE = ROOT / "docs" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
+DEFAULT_FIXTURE = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
 
 
 def version() -> str:
@@ -19,7 +19,7 @@ def version() -> str:
 
 
 def load_line_map(release: str) -> dict[int, dict[str, object]]:
-    path = ROOT / "dev" / "MAP" / "effective-source-map.json"
+    path = ROOT / "dev" / "WIKI" / "MAP" / "effective-source-map.json"
     if not path.is_file():
         return {}
     payload = json.loads(path.read_text(encoding="utf-8"))
@@ -96,7 +96,7 @@ def main() -> int:
                 rules.append({"selector": rule.get("selectorList", {}).get("text", ""), "origin": rule.get("origin"), "source": source, "declarations": declarations})
             targets[item["id"]] = {"selector": selector, "rules": rules}
         browser.close()
-    out = args.out or (ROOT / "dev" / "MAP" / "effective-baseline" / f"v{release}" / "provenance" / f"{fixture.stem}-{args.media}-{args.theme}.json")
+    out = args.out or (ROOT / "dev" / "WIKI" / "effective-baseline" / f"v{release}" / "provenance" / f"{fixture.stem}-{args.media}-{args.theme}.json")
     if not out.is_absolute():
         out = ROOT / out
     payload = {"schema": "owen-graphite/provenance-snapshot/1", "version": release, "fixture": fixture.relative_to(ROOT).as_posix(), "theme": args.theme, "media": args.media, "targets": targets}

@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "manifest.json"
-DEFAULT_FIXTURE = ROOT / "docs" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
+DEFAULT_FIXTURE = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "golden-rig" / "obsidian-harness.html"
 V3_BUNDLE = ROOT / "dist" / "theme-v3.css"
 PROPS = [
     "display", "position", "visibility", "pointer-events", "color", "background-color", "background-image",
@@ -108,7 +108,7 @@ def main() -> int:
         data = page.evaluate(JS_COLLECT, {"props": PROPS, "includeTokens": args.include_tokens})
         browser.close()
     release = version()
-    out = args.out or (ROOT / "dev" / "MAP" / "effective-baseline" / f"v{release}" / "computed" / f"{fixture.stem}-{args.media}-{args.theme}.json")
+    out = args.out or (ROOT / "dev" / "WIKI" / "effective-baseline" / f"v{release}" / "computed" / f"{fixture.stem}-{args.media}-{args.theme}.json")
     if not out.is_absolute():
         out = ROOT / out
     payload = {"schema": "owen-graphite/effective-snapshot/1", "version": release, "fixture": fixture.relative_to(ROOT).as_posix(), "theme": args.theme, "media": args.media, "props": PROPS, "targets": data}

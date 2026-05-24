@@ -1,6 +1,6 @@
 # Screenshots
 
-Owen Graphite v3.1.56 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.57 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
@@ -46,4 +46,4 @@ Owen Graphite v3.1.56 마켓플레이스 등록용 스크린샷.
 - Hover: 살짝 밝아지고 들어올림, wide soft downward shadow, 얕은 pastel 톤
 - Active: 선택 문서/탭 등 명확한 상태에만 sky tint + glass border
 
-자세한 원칙은 [../docs/v3/surface-state-matrix.md](../docs/v3/surface-state-matrix.md).
+자세한 원칙은 [../dev/WIKI/DOCS/v3/surface-state-matrix.md](../dev/WIKI/DOCS/v3/surface-state-matrix.md).

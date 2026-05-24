@@ -1,0 +1,62 @@
+# Docs Map
+
+## Docs Routing
+
+| Source | Use When | Notes |
+| --- | --- | --- |
+| `dev/WIKI/DOCS/v3/plugin-compatibility.md` | Plugin compatibility, supported plugin surfaces, known plugin caveats | Check before plugin-specific CSS changes. |
+| `dev/WIKI/DOCS/v3/style-settings-contract.json` | Style Settings contract behavior | Check when changing settings contract or presets. |
+
+## V3 Core Design And Cascade
+
+| Source | Use When | Notes |
+| --- | --- | --- |
+| `dev/WIKI/DOCS/v3/design-spec.md` | Visual/design language, theme philosophy | Use before broad visual changes. |
+| `dev/WIKI/DOCS/v3/cascade-research.md` | Cascade model, unlayered CSS rationale | Use before changing import order or specificity strategy. |
+| `dev/WIKI/DOCS/v3/surface-state-matrix.md` | Surface states across UI patterns | Use before hover/active/focus surface changes. |
+| `dev/WIKI/DOCS/v3/live-preview-editability.md` | Live Preview editability and CM6 behavior | Use before Live Preview source-mode changes. |
+
+## Settings And Tokens
+
+| Source | Use When | Notes |
+| --- | --- | --- |
+| `dev/WIKI/DOCS/v3/style-settings-contract.md` | User-facing Style Settings contract | Pair with `audit_style_settings_contract.py`. |
+| `dev/WIKI/DOCS/v3/style-settings-contract.json` | Machine-readable settings contract | Do not handwave setting IDs/defaults. |
+| `dev/WIKI/DOCS/v3/style-settings-presets.md` | Preset behavior and examples | Use before preset or customer-delivery changes. |
+| `dev/WIKI/DOCS/v3/token-inventory.md` | Human-readable token inventory | Prefer tokens over repeated literal values. |
+| `dev/WIKI/DOCS/v3/token-inventory.json` | Machine-readable token inventory | Use for token audits and automated checks. |
+
+## Release And Change History
+
+| Source | Use When | Notes |
+| --- | --- | --- |
+| `dev/WIKI/DOCS/v3/release-plan.md` | Release planning and scope | Check before version/release changes. |
+| `dev/WIKI/DOCS/v3/release-notes-workflow.md` | Release notes process | Use before publishing release notes. |
+| `dev/WIKI/DOCS/v3/feature-history.md` | Older feature intro archive | README should keep only the latest feature intros. |
+| `dev/WIKI/DOCS/v3/unused-css-roadmap.md` | Cleanup roadmap | Use before removing candidate CSS. |
+
+## Visual And Regression References
+
+| Source | Use When | Notes |
+| --- | --- | --- |
+| `dev/WIKI/DOCS/v3/golden-image-scenarios.md` | Visual regression scenarios | Use before/after visual changes. |
+| `dev/WIKI/DOCS/v3/visual-comparison-guide.md` | Comparing visual outputs | Use for screenshot review process. |
+| `dev/WIKI/DOCS/v3/computed-fingerprint-v3.0.0-light.json` | Historical computed baseline | Use for fingerprint comparisons. |
+| `dev/WIKI/DOCS/v3/computed-fingerprint-v3.0.0-dark.json` | Historical computed baseline | Use for fingerprint comparisons. |
+| `dev/WIKI/DOCS/v3/pdf-marginalia-validation.md` | PDF marginalia validation | Pair with `pdf-header-footer-contract.md`. |
+
+## Research Fixtures
+
+| Source Family | Use When | Notes |
+| --- | --- | --- |
+| `dev/WIKI/DOCS/v3/research/table-callout-parity-fixture.html` | Table/callout parity checks | Useful before touching table/callout visual parity. |
+| `dev/WIKI/DOCS/v3/research/live-preview-pdf-parity-fixture.html` | LP/PDF parity checks | Use before cross-surface table/code/callout changes. |
+| `dev/WIKI/DOCS/v3/research/pdf-marginalia-fixture.html` | PDF header/footer rendering | Use with PDF marginalia work. |
+| `dev/WIKI/DOCS/v3/research/code-font-clarity-fixture.html` | Code font readability | Use before code block typography changes. |
+| `dev/WIKI/DOCS/v3/research/*preview*.html/png` | Visual experiments | Treat as research references, not source owners. |
+| `dev/WIKI/DOCS/v3/research/cascade-probe/*` | Cascade layer/unlayered experiments | Use before changing cascade strategy. |
+| `dev/WIKI/DOCS/v3/research/golden-rig/obsidian-harness.html` | Harness for visual snapshots | Use for repeatable visual checks. |
+
+## Editing Rule
+
+If a docs file describes a behavior contract, update the matching MAP/WIKI workflow when the behavior changes. The retired `docs/v3` path must not be recreated; use `dev/WIKI/DOCS/v3`.

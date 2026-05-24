@@ -62,10 +62,10 @@ def main() -> int:
         assert_contains("README.md", f"| **베이스라인 / 롤백 기준** | `v{version}` |")
         assert_contains("README.md", f"Owen-Graphite-{version}.zip")
         assert_contains("screenshots/README.md", f"Owen Graphite v{version}")
-        assert_contains("docs/v3/release-plan.md", f"latest: v{version}")
-        assert_contains("docs/v3/release-plan.md", f"baseline = `v{version}`")
-        assert_contains("docs/v3/release-plan.md", f"| `manifest.json` version | `{version}` |")
-        assert_contains("docs/v3/release-plan.md", f"dist/Owen-Graphite-{version}.zip")
+        assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"latest: v{version}")
+        assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"baseline = `v{version}`")
+        assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"| `manifest.json` version | `{version}` |")
+        assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"dist/Owen-Graphite-{version}.zip")
 
         print(f"OK: release metadata is consistent for {version}")
         return 0
