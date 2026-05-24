@@ -44,6 +44,11 @@ def main() -> int:
             "themeVersion": "",
             "vaultPath": "",
         },
+        "evidenceSource": {
+            "captureTool": "",
+            "isApproximation": False,
+            "fixtureGap": "",
+        },
         "domChain": [],
         "rectChain": [],
         "computedGeometry": {},
@@ -55,6 +60,11 @@ def main() -> int:
             "cssAllowedByContract": None,
             "workflow": "",
             "audits": [],
+        },
+        "verification": {
+            "runtimeStateRechecked": None,
+            "screenshotOrNote": "",
+            "auditsRun": [],
         },
         "notes": "",
     }

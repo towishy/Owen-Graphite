@@ -16,6 +16,29 @@
 - Matched rules:
 - Owner mapping:
 
+## Evidence Source
+
+- Temporary evidence file:
+- Runtime evidence schema:
+- Capture tool:
+- Approximation or real runtime DOM:
+
+## Owner Decision
+
+- Owner edit:
+- No CSS fix:
+- WIKI/MAP update:
+
+## Forbidden Fix
+
+- 
+
+## Regression Check
+
+- Runtime state to recheck:
+- Fixture or visual scenario:
+- Audit command:
+
 ## Correct Owner Route
 
 - Owner module:

@@ -1,16 +1,16 @@
 # Unused CSS Candidate Report
 
-Version: 3.1.56
-Bundle SHA256: `b41bae62035aa141a9985b0be58af31e8c902f46d8eb4aa030e1751cbde9d0b6`
-Coverage scenarios: 33
+Version: 3.1.58
+Bundle SHA256: `48726f5c1349a53f9543c3a0b1a97724e4d78d2c40f335730e9ec4a6c3f4a4f8`
+Coverage scenarios: 190
 
 ## Summary
 
 | Classification | Count |
 | --- | ---: |
 | invalid-query | 3 |
-| matched | 2673 |
-| reserved | 1067 |
+| matched | 2943 |
+| reserved | 829 |
 
 ## Candidate Selectors
 
@@ -18,30 +18,30 @@ No low-risk no-match selectors were found in the current coverage matrix.
 
 ## Reserved No-Match Selectors
 
-Reserved no-match selectors: 1067. These need purpose-built coverage before removal.
+Reserved no-match selectors: 829. These need purpose-built coverage before removal.
 
 ### Reserved Reason Summary
 
 | Reason | Count |
 | --- | ---: |
-| obsidian-style-or-semantic-selector | 1034 |
-| document-content-selector | 777 |
+| obsidian-style-or-semantic-selector | 796 |
+| document-content-selector | 524 |
 | reserved-module | 488 |
-| state-pseudo | 353 |
-| reserved-at-context | 148 |
+| state-pseudo | 372 |
+| reserved-at-context | 77 |
 | token-or-variable | 1 |
 
 ### Reserved Bucket Summary
 
-| Bucket | Count | Meaning |
-| --- | ---: | --- |
-| state-interaction | 353 | State pseudo selectors (:hover/:focus/etc.) that static DOM coverage cannot fully prove. |
-| print-pdf-context | 237 | Print/PDF and PDF Style Settings selectors reserved for print-specific validation. |
-| obsidian-chrome-runtime | 192 | Obsidian app chrome/runtime DOM such as workspace, nav, search, modal, menu, tooltip, or status surfaces. |
-| style-setting-class | 119 | Body-class Style Settings variants that are valid only under selected settings. |
-| plugin-runtime | 90 | Plugin/runtime DOM such as Canvas, Dataview, Mermaid, Graph, Bases, Pickr, or Editing Toolbar. |
-| document-content-fixture-gap | 58 | Document/content semantics that need more purpose-built fixture DOM before removal review. |
-| live-preview-runtime | 18 | CodeMirror/Live Preview runtime DOM and editor-generated classes. |
+| Bucket | Count | Meaning | Recipe |
+| --- | ---: | --- | --- |
+| state-interaction | 372 | State pseudo selectors (:hover/:focus/etc.) that static DOM coverage cannot fully prove. | `dev/WIKI/RECIPES/coverage-state-interaction.md` |
+| obsidian-chrome-runtime | 185 | Obsidian app chrome/runtime DOM such as workspace, nav, search, modal, menu, tooltip, or status surfaces. | `dev/WIKI/RECIPES/coverage-state-interaction.md` |
+| plugin-runtime | 89 | Plugin/runtime DOM such as Canvas, Dataview, Mermaid, Graph, Bases, Pickr, or Editing Toolbar. | `dev/WIKI/RECIPES/coverage-plugin-runtime.md` |
+| print-pdf-context | 79 | Print/PDF and PDF Style Settings selectors reserved for print-specific validation. | `dev/WIKI/RECIPES/coverage-print-pdf-context.md` |
+| document-content-fixture-gap | 55 | Document/content semantics that need more purpose-built fixture DOM before removal review. | `dev/WIKI/RECIPES/coverage-document-content-fixture.md` |
+| style-setting-class | 32 | Body-class Style Settings variants that are valid only under selected settings. | `OWNER-DECISION-TREE.md` |
+| live-preview-runtime | 17 | CodeMirror/Live Preview runtime DOM and editor-generated classes. | `dev/WIKI/RECIPES/live-preview-spacing.md` |
 
 ### Reserved Decision Policy
 
@@ -51,11 +51,11 @@ Reserved selectors are not deletion approval; each bucket below defines the requ
 | Bucket | Decision | Next action |
 | --- | --- | --- |
 | state-interaction | do-not-remove | Validate through interactive state coverage or keep reserved. |
-| print-pdf-context | do-not-remove | Validate through PDF/print scenario coverage before any removal review. |
 | obsidian-chrome-runtime | runtime-reserved | Validate in Obsidian app chrome runtime or keep reserved. |
-| style-setting-class | do-not-remove | Keep reserved unless the Style Settings contract removes the class. |
 | plugin-runtime | runtime-reserved | Validate in Obsidian/plugin runtime or keep reserved. |
+| print-pdf-context | do-not-remove | Validate through PDF/print scenario coverage before any removal review. |
 | document-content-fixture-gap | needs-purpose-built-fixture | Add natural document fixture coverage when real document evidence exists; otherwise keep as coverage backlog. |
+| style-setting-class | do-not-remove | Keep reserved unless the Style Settings contract removes the class. |
 | live-preview-runtime | runtime-reserved | Validate with CodeMirror/Live Preview runtime DOM or keep reserved. |
 
 ### Coverage Backlog Policy
@@ -67,74 +67,61 @@ Reserved selectors are not deletion approval; each bucket below defines the requ
 
 | Module | reserved | static | state | matched | Top buckets | Top reserved reasons |
 | --- | ---: | ---: | ---: | ---: | --- | --- |
-| src/features/41-feature-presets.css | 221 | 209 | 12 | 148 | print-pdf-context=117, style-setting-class=78, state-interaction=12, plugin-runtime=12 | obsidian-style-or-semantic-selector=221, document-content-selector=199, reserved-at-context=27, state-pseudo=12 |
-| src/features/42-report-print-polish.css | 87 | 87 | 0 | 302 | print-pdf-context=87 | document-content-selector=87, obsidian-style-or-semantic-selector=87, reserved-at-context=86 |
-| src/chrome/37-tabs-file-explorer-search.css | 86 | 68 | 18 | 101 | obsidian-chrome-runtime=64, state-interaction=18, plugin-runtime=3, print-pdf-context=1 | document-content-selector=86, obsidian-style-or-semantic-selector=86, reserved-module=86, state-pseudo=18 |
-| src/chrome/30-workspace.css | 59 | 30 | 29 | 125 | state-interaction=29, plugin-runtime=10, style-setting-class=10, obsidian-chrome-runtime=7 | reserved-module=59, obsidian-style-or-semantic-selector=42, document-content-selector=40, state-pseudo=29 |
+| src/chrome/37-tabs-file-explorer-search.css | 85 | 66 | 19 | 103 | obsidian-chrome-runtime=62, state-interaction=19, plugin-runtime=3, print-pdf-context=1 | document-content-selector=85, obsidian-style-or-semantic-selector=85, reserved-module=85, state-pseudo=19 |
+| src/chrome/32-overlay-popover-dataview.css | 60 | 10 | 50 | 92 | state-interaction=50, style-setting-class=6, plugin-runtime=4 | obsidian-style-or-semantic-selector=60, reserved-module=60, state-pseudo=50, document-content-selector=15 |
+| src/features/41-feature-presets.css | 58 | 47 | 11 | 311 | print-pdf-context=22, plugin-runtime=12, state-interaction=11, style-setting-class=11 | obsidian-style-or-semantic-selector=58, document-content-selector=36, reserved-at-context=19, state-pseudo=11 |
 | src/chrome/35-editing-menu-tooltip-glass.css | 56 | 29 | 27 | 89 | obsidian-chrome-runtime=28, state-interaction=27, plugin-runtime=1 | document-content-selector=56, obsidian-style-or-semantic-selector=56, reserved-module=56, state-pseudo=27 |
 | src/chrome/33-settings-controls.css | 54 | 20 | 34 | 113 | state-interaction=34, obsidian-chrome-runtime=19, plugin-runtime=1 | obsidian-style-or-semantic-selector=54, reserved-module=54, state-pseudo=34, document-content-selector=24 |
-| src/surfaces/23-liquid-glass-core.css | 54 | 23 | 31 | 124 | state-interaction=31, obsidian-chrome-runtime=22, document-content-fixture-gap=1 | document-content-selector=54, obsidian-style-or-semantic-selector=54, state-pseudo=31 |
-| src/chrome/36-floating-ui-glass-system.css | 48 | 8 | 40 | 147 | state-interaction=40, obsidian-chrome-runtime=7, plugin-runtime=1 | reserved-module=48, obsidian-style-or-semantic-selector=47, state-pseudo=40, document-content-selector=34 |
-| src/plugins/61-live-preview-mobile-plugin.css | 46 | 23 | 23 | 136 | state-interaction=23, plugin-runtime=19, print-pdf-context=4 | reserved-module=46, obsidian-style-or-semantic-selector=44, state-pseudo=23, document-content-selector=13 |
-| src/chrome/32-overlay-popover-dataview.css | 42 | 10 | 32 | 92 | state-interaction=32, style-setting-class=6, plugin-runtime=4 | obsidian-style-or-semantic-selector=42, reserved-module=42, state-pseudo=32, document-content-selector=12 |
-| src/base/13-live-preview.css | 39 | 32 | 7 | 146 | style-setting-class=22, live-preview-runtime=10, state-interaction=7 | obsidian-style-or-semantic-selector=39, document-content-selector=31, state-pseudo=7 |
+| src/surfaces/23-liquid-glass-core.css | 53 | 22 | 31 | 125 | state-interaction=31, obsidian-chrome-runtime=22 | document-content-selector=53, obsidian-style-or-semantic-selector=53, state-pseudo=31 |
+| src/chrome/30-workspace.css | 51 | 22 | 29 | 136 | state-interaction=29, plugin-runtime=10, obsidian-chrome-runtime=7, style-setting-class=5 | reserved-module=51, obsidian-style-or-semantic-selector=34, document-content-selector=32, state-pseudo=29 |
+| src/chrome/36-floating-ui-glass-system.css | 43 | 4 | 39 | 152 | state-interaction=39, obsidian-chrome-runtime=4 | reserved-module=43, obsidian-style-or-semantic-selector=42, state-pseudo=39, document-content-selector=29 |
+| src/plugins/61-live-preview-mobile-plugin.css | 42 | 19 | 23 | 147 | state-interaction=23, plugin-runtime=19 | reserved-module=42, obsidian-style-or-semantic-selector=40, state-pseudo=23, document-content-selector=9 |
 | src/plugins/60-canvas-graph-link-panes.css | 38 | 14 | 24 | 112 | state-interaction=24, plugin-runtime=14 | reserved-module=38, obsidian-style-or-semantic-selector=36, state-pseudo=24 |
+| src/chrome/31-navigation-tasks-search.css | 35 | 24 | 11 | 35 | plugin-runtime=24, state-interaction=11 | reserved-module=35, obsidian-style-or-semantic-selector=34, document-content-selector=22, state-pseudo=11 |
+| src/features/42-report-print-polish.css | 32 | 32 | 0 | 357 | print-pdf-context=32 | document-content-selector=32, obsidian-style-or-semantic-selector=32, reserved-at-context=31 |
 
 ### Reserved Selector Samples
 
 Representative no-match selectors from the largest hotspots. Static no-match selectors are shown before state-only hover/focus examples. These are examples for coverage planning, not removal approval.
 
-#### src/features/41-feature-presets.css
-
-| Line | Bucket | Selector part | Reasons |
-| ---: | --- | --- | --- |
-| 20 | style-setting-class | `body.ogd-drop-cap .markdown-rendered > p:first-of-type::first-letter` | document-content-selector, obsidian-style-or-semantic-selector |
-| 20 | style-setting-class | `body.ogd-drop-cap .markdown-rendered h1 + p::first-letter` | document-content-selector, obsidian-style-or-semantic-selector |
-| 28 | style-setting-class | `body.ogd-indent-paragraph .markdown-rendered p` | document-content-selector, obsidian-style-or-semantic-selector |
-| 34 | style-setting-class | `body.ogd-indent-paragraph .markdown-rendered .callout p` | document-content-selector, obsidian-style-or-semantic-selector |
-| 34 | style-setting-class | `body.ogd-indent-paragraph .markdown-rendered :is(h1, h2, h3, h4, h5, h6) + p` | document-content-selector, obsidian-style-or-semantic-selector |
-| 34 | style-setting-class | `body.ogd-indent-paragraph .markdown-rendered blockquote p` | document-content-selector, obsidian-style-or-semantic-selector |
-| 34 | style-setting-class | `body.ogd-indent-paragraph .markdown-rendered li p` | document-content-selector, obsidian-style-or-semantic-selector |
-| 41 | style-setting-class | `body.ogd-serif-body .markdown-rendered` | document-content-selector, obsidian-style-or-semantic-selector |
-
-#### src/features/42-report-print-polish.css
-
-| Line | Bucket | Selector part | Reasons |
-| ---: | --- | --- | --- |
-| 65 | print-pdf-context | `.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table.compact-table:not(.cm-table):not(.cm-table-widget)` | document-content-selector, obsidian-style-or-semantic-selector |
-| 527 | print-pdf-context | `body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-| 538 | print-pdf-context | `body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-| 555 | print-pdf-context | `body .markdown-preview-view .table-wrapper + p:has(> strong:first-child)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-| 555 | print-pdf-context | `body .markdown-preview-view table + p:has(> strong:first-child)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-| 592 | print-pdf-context | `body.ogd-pdf-screen-delivery` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-| 633 | print-pdf-context | `body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-| 633 | print-pdf-context | `body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, li, dd, dt, blockquote):not(table *)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
-
 #### src/chrome/37-tabs-file-explorer-search.css
 
 | Line | Bucket | Selector part | Reasons |
 | ---: | --- | --- | --- |
-| 637 | print-pdf-context | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".pdf" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 42 | obsidian-chrome-runtime | `body:not(.is-mobile).ogd-glass-off` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 642 | print-pdf-context | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".pdf" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
 | 238 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-tag` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 618 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".mdx" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 619 | plugin-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".canvas" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 620 | plugin-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".excalidraw" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 621 | plugin-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mmd" i], [data-path$=".mermaid" i]) .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 622 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".html" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 623 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".mdx" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 624 | plugin-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".canvas" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 625 | plugin-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".excalidraw" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 626 | plugin-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mmd" i], [data-path$=".mermaid" i]) .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 627 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".html" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 628 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".xml" i] .nav-file-title-content::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
 
-#### src/chrome/30-workspace.css
+#### src/chrome/32-overlay-popover-dataview.css
 
 | Line | Bucket | Selector part | Reasons |
 | ---: | --- | --- | --- |
-| 462 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-rendered :is(.callout, blockquote, table, pre, figure, img, .mermaid, .markdown-embed)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 467 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-rendered :is(h2, h3, h4)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 472 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-rendered :is(h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 556 | style-setting-class | `body.ogd-modern-tables .markdown-rendered table` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 563 | style-setting-class | `body.ogd-modern-tables .markdown-rendered table th` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 567 | style-setting-class | `body.ogd-modern-tables .markdown-rendered table td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 579 | style-setting-class | `body.ogd-modern-tables .markdown-rendered table td:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 579 | style-setting-class | `body.ogd-modern-tables .markdown-rendered table th:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 133 | style-setting-class | `body.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 133 | style-setting-class | `body.ogd-zebra-disabled-permanently .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 133 | style-setting-class | `body.ogd-zebra-disabled-permanently .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 226 | style-setting-class | `body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 226 | style-setting-class | `body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 226 | style-setting-class | `body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 24 | plugin-runtime | `.modal-title` | obsidian-style-or-semantic-selector, reserved-module |
+| 24 | plugin-runtime | `.prompt-title` | obsidian-style-or-semantic-selector, reserved-module |
+
+#### src/features/41-feature-presets.css
+
+| Line | Bucket | Selector part | Reasons |
+| ---: | --- | --- | --- |
+| 423 | print-pdf-context | `body.ogd-pdf-segment-value-violet` | document-content-selector, obsidian-style-or-semantic-selector |
+| 428 | print-pdf-context | `body.ogd-pdf-segment-value-rose` | document-content-selector, obsidian-style-or-semantic-selector |
+| 433 | print-pdf-context | `body.ogd-pdf-segment-value-amber` | document-content-selector, obsidian-style-or-semantic-selector |
+| 686 | print-pdf-context | `body.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 691 | print-pdf-context | `body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered::after` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 762 | print-pdf-context | `body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::after` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 767 | print-pdf-context | `body.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair) .markdown-rendered::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 772 | print-pdf-context | `body.ogd-pdf-header-enabled.ogd-pdf-header-top-center:is(.ogd-pdf-label-segmented-dual, .ogd-pdf-label-segmented.ogd-pdf-header-dual-pair)::before` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
 
 #### src/chrome/35-editing-menu-tooltip-glass.css
 
@@ -166,7 +153,6 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 
 | Line | Bucket | Selector part | Reasons |
 | ---: | --- | --- | --- |
-| 542 | document-content-fixture-gap | `body:not(.is-mobile).ogd-glass-off` | document-content-selector, obsidian-style-or-semantic-selector |
 | 256 | obsidian-chrome-runtime | `body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header :is(.workspace-tab-header-inner, .workspace-tab-header-inner-icon)` | document-content-selector, obsidian-style-or-semantic-selector |
 | 1329 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-tabs .workspace-tab-header :is(.workspace-tab-header-inner-close-button, .workspace-tab-header-inner-icon)` | document-content-selector, obsidian-style-or-semantic-selector |
 | 1376 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-split.mod-root .view-header` | document-content-selector, obsidian-style-or-semantic-selector |
@@ -174,6 +160,20 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 | 1384 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container` | document-content-selector, obsidian-style-or-semantic-selector |
 | 1394 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner` | document-content-selector, obsidian-style-or-semantic-selector |
 | 1417 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active` | document-content-selector, obsidian-style-or-semantic-selector |
+| 1423 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after` | document-content-selector, obsidian-style-or-semantic-selector |
+
+#### src/chrome/30-workspace.css
+
+| Line | Bucket | Selector part | Reasons |
+| ---: | --- | --- | --- |
+| 585 | style-setting-class | `body.theme-dark.ogd-modern-tables .markdown-rendered table` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 591 | style-setting-class | `body.theme-dark.ogd-modern-tables .markdown-rendered table th` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 595 | style-setting-class | `body.theme-dark.ogd-modern-tables .markdown-rendered table td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 606 | style-setting-class | `body.theme-dark.ogd-modern-tables .markdown-rendered table td:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 606 | style-setting-class | `body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 355 | plugin-runtime | `.markdown-rendered .mermaid svg .nodeLabel :is(span, p)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 365 | plugin-runtime | `.markdown-rendered .mermaid svg .edgeLabel foreignObject > div` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 371 | plugin-runtime | `.markdown-rendered .mermaid svg .cluster .nodeLabel` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
 
 #### src/chrome/36-floating-ui-glass-system.css
 
@@ -181,51 +181,25 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 | ---: | --- | --- | --- |
 | 275 | obsidian-chrome-runtime | `body:not(.is-mobile) .status-bar > :is(.status-bar-item, .status-bar-item-segment) :is(svg, .svg-icon, .clickable-icon, .status-bar-item-icon)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
 | 293 | obsidian-chrome-runtime | `body:not(.is-mobile) .status-bar > .status-bar-item :is(.status-bar-item, .status-bar-item-segment)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 496 | obsidian-chrome-runtime | `body:not(.is-mobile).ogd-glass-off` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 507 | obsidian-chrome-runtime | `body:not(.is-mobile).ogd-glass-off` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 533 | obsidian-chrome-runtime | `body:not(.is-mobile).ogd-glass-standard` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 638 | plugin-runtime | `body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
 | 832 | obsidian-chrome-runtime | `.workspace-leaf-content[data-type="search"] .search-empty-state` | obsidian-style-or-semantic-selector, reserved-module |
 | 978 | obsidian-chrome-runtime | `.theme-dark .workspace-leaf-content[data-type="search"] .search-empty-state` | obsidian-style-or-semantic-selector, reserved-module |
+| 133 | state-interaction | `body:not(.is-mobile) .metadata-container .metadata-property:is(:hover, :focus-within)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
+| 137 | state-interaction | `body:not(.is-mobile).theme-dark .metadata-container .metadata-property:is(:hover, :focus-within)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
+| 150 | state-interaction | `body:not(.is-mobile) :is(.canvas-control-item, .canvas-card-menu .clickable-icon):hover` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
+| 207 | state-interaction | `body:not(.is-mobile) .modal .modal-close-button:is(:hover, :focus-visible)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 
 #### src/plugins/61-live-preview-mobile-plugin.css
 
 | Line | Bucket | Selector part | Reasons |
 | ---: | --- | --- | --- |
-| 394 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-preview-view :is(.markdown-embed, .internal-embed, iframe, video, audio)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 394 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-rendered :is(.markdown-embed, .internal-embed, iframe, video, audio)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 399 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-preview-view .mermaid` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 399 | print-pdf-context | `body.ogd-print-avoid-breaks .markdown-rendered .mermaid` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context, reserved-module |
-| 91 | plugin-runtime | `.markdown-source-view.mod-cm6 .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel :is(div, span, p), .label :is(div, span, p))` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 267 | plugin-runtime | `.workspace-leaf-content[data-type="bookmarks"]` | obsidian-style-or-semantic-selector, reserved-module |
-| 274 | plugin-runtime | `.workspace-leaf-content[data-type="bookmarks"] .tree-item-self` | obsidian-style-or-semantic-selector, reserved-module |
-| 289 | plugin-runtime | `.bookmarks-view .tree-item-self.is-active` | obsidian-style-or-semantic-selector, reserved-module |
-
-#### src/chrome/32-overlay-popover-dataview.css
-
-| Line | Bucket | Selector part | Reasons |
-| ---: | --- | --- | --- |
-| 125 | style-setting-class | `body.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 125 | style-setting-class | `body.ogd-zebra-disabled-permanently .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 125 | style-setting-class | `body.ogd-zebra-disabled-permanently .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 198 | style-setting-class | `body.theme-dark.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 198 | style-setting-class | `body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered .dataview.dataview-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 198 | style-setting-class | `body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered .dataview.table-view-table tbody tr:nth-child(even) td` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 24 | plugin-runtime | `.modal-title` | obsidian-style-or-semantic-selector, reserved-module |
-| 24 | plugin-runtime | `.prompt-title` | obsidian-style-or-semantic-selector, reserved-module |
-
-#### src/base/13-live-preview.css
-
-| Line | Bucket | Selector part | Reasons |
-| ---: | --- | --- | --- |
-| 730 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2` | document-content-selector, obsidian-style-or-semantic-selector |
-| 737 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3` | document-content-selector, obsidian-style-or-semantic-selector |
-| 744 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4` | document-content-selector, obsidian-style-or-semantic-selector |
-| 749 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-2` | document-content-selector, obsidian-style-or-semantic-selector |
-| 755 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-3` | document-content-selector, obsidian-style-or-semantic-selector |
-| 761 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-4` | document-content-selector, obsidian-style-or-semantic-selector |
-| 771 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.HyperMD-callout)` | document-content-selector, obsidian-style-or-semantic-selector |
-| 791 | style-setting-class | `body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout` | document-content-selector, obsidian-style-or-semantic-selector |
+| 97 | plugin-runtime | `.markdown-source-view.mod-cm6 .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel :is(div, span, p), .label :is(div, span, p))` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 274 | plugin-runtime | `.workspace-leaf-content[data-type="bookmarks"]` | obsidian-style-or-semantic-selector, reserved-module |
+| 281 | plugin-runtime | `.workspace-leaf-content[data-type="bookmarks"] .tree-item-self` | obsidian-style-or-semantic-selector, reserved-module |
+| 296 | plugin-runtime | `.bookmarks-view .tree-item-self.is-active` | obsidian-style-or-semantic-selector, reserved-module |
+| 347 | plugin-runtime | `.markdown-preview-view iframe` | obsidian-style-or-semantic-selector, reserved-module |
+| 347 | plugin-runtime | `.markdown-preview-view video` | obsidian-style-or-semantic-selector, reserved-module |
+| 347 | plugin-runtime | `.markdown-reading-view iframe` | obsidian-style-or-semantic-selector, reserved-module |
+| 347 | plugin-runtime | `.markdown-reading-view video` | obsidian-style-or-semantic-selector, reserved-module |
 
 #### src/plugins/60-canvas-graph-link-panes.css
 
@@ -239,6 +213,32 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 | 101 | plugin-runtime | `.workspace-leaf-content[data-type="localgraph"] :is(.graph-controls, .graph-control-section, .graph-control-group)` | obsidian-style-or-semantic-selector, reserved-module |
 | 117 | plugin-runtime | `.workspace-leaf-content[data-type="localgraph"] :is(.graph-control-button, .clickable-icon, button)` | obsidian-style-or-semantic-selector, reserved-module |
 | 290 | plugin-runtime | `.theme-dark .graph-view.color-circle` | obsidian-style-or-semantic-selector, reserved-module |
+
+#### src/chrome/31-navigation-tasks-search.css
+
+| Line | Bucket | Selector part | Reasons |
+| ---: | --- | --- | --- |
+| 116 | plugin-runtime | `.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task]:not([data-task=" "])` | obsidian-style-or-semantic-selector, reserved-module |
+| 119 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 124 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task="/"] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 124 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task=">"] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 128 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task="!"] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 132 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task="?"] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 136 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task="-"] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+| 140 | plugin-runtime | `.markdown-rendered li.task-list-item[data-task="*"] input[type="checkbox"]` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
+
+#### src/features/42-report-print-polish.css
+
+| Line | Bucket | Selector part | Reasons |
+| ---: | --- | --- | --- |
+| 65 | print-pdf-context | `.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table.compact-table:not(.cm-table):not(.cm-table-widget)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 527 | print-pdf-context | `body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(4) td:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 538 | print-pdf-context | `body .markdown-preview-view.markdown-rendered h3:first-of-type + .table-wrapper table tbody tr:nth-child(5) td:first-child` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 555 | print-pdf-context | `body .markdown-preview-view .table-wrapper + p:has(> strong:first-child)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 555 | print-pdf-context | `body .markdown-preview-view table + p:has(> strong:first-child)` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 749 | print-pdf-context | `body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) hr` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 862 | print-pdf-context | `body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) hr` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
+| 863 | print-pdf-context | `body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) .callout + hr` | document-content-selector, obsidian-style-or-semantic-selector, reserved-at-context |
 
 ### Invalid Query Selectors
 
@@ -260,26 +260,26 @@ Invalid-query rows are query-coverage exclusions, not CSS syntax failures and no
 | --- | ---: | ---: | ---: | ---: |
 | src/base/10-base-workspace.css | 0 | 7 | 0 | 47 |
 | src/base/12-reading-content.css | 0 | 25 | 0 | 183 |
-| src/base/13-live-preview.css | 0 | 39 | 0 | 146 |
-| src/chrome/30-workspace.css | 0 | 59 | 0 | 125 |
-| src/chrome/31-navigation-tasks-search.css | 0 | 32 | 0 | 35 |
-| src/chrome/32-overlay-popover-dataview.css | 0 | 42 | 0 | 92 |
+| src/base/13-live-preview.css | 0 | 26 | 0 | 159 |
+| src/chrome/30-workspace.css | 0 | 51 | 0 | 136 |
+| src/chrome/31-navigation-tasks-search.css | 0 | 35 | 0 | 35 |
+| src/chrome/32-overlay-popover-dataview.css | 0 | 60 | 0 | 92 |
 | src/chrome/33-settings-controls.css | 0 | 54 | 0 | 113 |
 | src/chrome/34-nav-ribbon-glass.css | 0 | 23 | 0 | 14 |
 | src/chrome/35-editing-menu-tooltip-glass.css | 0 | 56 | 0 | 89 |
-| src/chrome/36-floating-ui-glass-system.css | 0 | 48 | 0 | 147 |
-| src/chrome/37-tabs-file-explorer-search.css | 0 | 86 | 0 | 101 |
-| src/features/41-feature-presets.css | 0 | 221 | 0 | 148 |
-| src/features/42-report-print-polish.css | 0 | 87 | 0 | 302 |
-| src/features/43-print-base.css | 0 | 24 | 0 | 98 |
+| src/chrome/36-floating-ui-glass-system.css | 0 | 43 | 0 | 152 |
+| src/chrome/37-tabs-file-explorer-search.css | 0 | 85 | 0 | 103 |
+| src/features/41-feature-presets.css | 0 | 58 | 0 | 311 |
+| src/features/42-report-print-polish.css | 0 | 32 | 0 | 357 |
+| src/features/43-print-base.css | 0 | 23 | 0 | 99 |
 | src/plugins/60-canvas-graph-link-panes.css | 0 | 38 | 0 | 112 |
-| src/plugins/61-live-preview-mobile-plugin.css | 0 | 46 | 0 | 136 |
-| src/surfaces/20-reading-tables-code.css | 0 | 33 | 1 | 246 |
+| src/plugins/61-live-preview-mobile-plugin.css | 0 | 42 | 0 | 147 |
+| src/surfaces/20-reading-tables-code.css | 0 | 28 | 1 | 251 |
 | src/surfaces/21-reading-callouts-lists.css | 0 | 29 | 0 | 130 |
 | src/surfaces/22-reading-embeds-workspace.css | 0 | 25 | 2 | 44 |
-| src/surfaces/23-liquid-glass-core.css | 0 | 54 | 0 | 124 |
+| src/surfaces/23-liquid-glass-core.css | 0 | 53 | 0 | 125 |
 | src/surfaces/24-html-table-live-preview-glass.css | 0 | 10 | 0 | 70 |
 | src/themes/50-dark.css | 0 | 22 | 0 | 144 |
 | src/themes/51-accessibility-motion-contrast.css | 0 | 3 | 0 | 17 |
-| src/tokens/00-light-tokens.css | 0 | 3 | 0 | 4 |
+| src/tokens/00-light-tokens.css | 0 | 0 | 0 | 7 |
 | src/tokens/01-dark-tokens.css | 0 | 1 | 0 | 6 |

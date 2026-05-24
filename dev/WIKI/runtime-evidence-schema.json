@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owen Graphite Runtime Evidence",
+  "type": "object",
+  "required": [
+    "schema",
+    "surface",
+    "name",
+    "runtimeState",
+    "ownerCandidate",
+    "environment",
+    "evidenceSource",
+    "domChain",
+    "rectChain",
+    "computedGeometry",
+    "matchedRules",
+    "inlineStyle",
+    "decision",
+    "verification",
+    "notes"
+  ],
+  "properties": {
+    "schema": { "const": "owen-graphite/runtime-evidence/1" },
+    "surface": { "type": "string" },
+    "name": { "type": "string" },
+    "runtimeState": { "type": "string" },
+    "ownerCandidate": { "type": "string" },
+    "environment": {
+      "type": "object",
+      "required": ["obsidianVersion", "os", "themeVersion", "vaultPath"]
+    },
+    "evidenceSource": {
+      "type": "object",
+      "required": ["captureTool", "isApproximation", "fixtureGap"]
+    },
+    "domChain": { "type": "array" },
+    "rectChain": { "type": "array" },
+    "computedGeometry": { "type": "object" },
+    "matchedRules": { "type": "array" },
+    "inlineStyle": { "type": "string" },
+    "decision": {
+      "type": "object",
+      "required": ["themeRuleResponsible", "ownerModule", "cssAllowedByContract", "workflow", "audits"]
+    },
+    "verification": {
+      "type": "object",
+      "required": ["runtimeStateRechecked", "screenshotOrNote", "auditsRun"]
+    },
+    "notes": { "type": "string" }
+  }
+}

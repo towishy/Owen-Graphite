@@ -52,6 +52,7 @@ Promote evidence into `dev/WIKI/INCIDENTS/` only when one of these is true:
 
 Each evidence note should include:
 
+- schema fields from `dev/WIKI/runtime-evidence-schema.json`;
 - surface and owner candidate;
 - Obsidian version and OS when known;
 - runtime state;

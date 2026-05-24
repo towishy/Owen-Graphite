@@ -27,6 +27,8 @@ def main() -> int:
 
     print("== WIKI route ==")
     run(["dev/scripts/wiki_route.py", args.surface])
+    print("\n== Surface check commands ==")
+    run(["dev/scripts/wiki_route.py", args.surface, "--commands"])
     print("\n== Validation plan ==")
     run(["dev/scripts/validation_plan.py"])
     if args.evidence:

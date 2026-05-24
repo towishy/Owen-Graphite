@@ -7,6 +7,7 @@ Core commands:
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py table
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py mobile
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py settings
+.\.venv\Scripts\python.exe dev\scripts\wiki_route.py settings --commands
 .\.venv\Scripts\python.exe dev\scripts\start_work.py --surface chrome --name focus-polish
 .\.venv\Scripts\python.exe dev\scripts\finish_work.py --check
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --run-safe
@@ -19,6 +20,7 @@ Validation commands:
 .\.venv\Scripts\python.exe dev\scripts\audit_core_principles.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_consistency.py
 .\.venv\Scripts\python.exe dev\scripts\audit_mobile_owner.py
+.\.venv\Scripts\python.exe dev\scripts\audit_owner_risk_contracts.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_route_coverage.py
 .\.venv\Scripts\python.exe dev\scripts\audit_selector_owner_cheatsheet.py
 .\.venv\Scripts\python.exe dev\scripts\audit_runtime_evidence_requirements.py

@@ -9,6 +9,7 @@
 - `SELECTOR-OWNER-CHEATSHEET.md`: selector-to-owner quick map.
 - `VISUAL-QA.md`: visual acceptance checklist.
 - `runtime-evidence-template.md`: required runtime evidence shape.
+- `runtime-evidence-schema.json`: required JSON fields for temporary runtime captures.
 - `runtime-evidence-storage.md`: where runtime captures are kept.
 - `runtime-evidence-example-selected-tab.md`: completed chrome selected-state example.
 - `runtime-evidence-example-plugin-dom.md`: completed plugin DOM example.
@@ -22,6 +23,7 @@
 - `WORKFLOWS/docs-assets.md`
 - `WORKFLOWS/release.md`
 - `WORKFLOWS/validation-matrix.md`
+- `WORKFLOWS/wiki-maintenance.md`
 
 ## Generated MAP Bridge
 
@@ -51,6 +53,7 @@
 - `TOKENS/usage-guide.md`
 - `TOKENS/state-token-map.md`
 - `PLUGINS/compatibility-matrix.md`
+- `PLUGINS/coverage-matrix.md`
 - `PLUGINS/runtime-dom-notes.md`
 
 ## Runtime And Recipes
@@ -73,6 +76,7 @@
 - `audits.md`
 - `dev/scripts/wiki_route.py`: prints WIKI owner/workflow/check routing by surface.
 - `dev/scripts/wiki_route.py settings`: routes settings UI and Style Settings work.
+- `dev/scripts/wiki_route.py <surface> --commands`: prints copyable surface check commands.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`
@@ -105,6 +109,7 @@
 - `dev/scripts/promote_evidence.py`
 - `dev/scripts/work_summary.py`
 - `dev/scripts/audit_mobile_owner.py`
+- `dev/scripts/audit_owner_risk_contracts.py`
 - `dev/scripts/audit_wiki_route_coverage.py`
 - `dev/scripts/audit_selector_owner_cheatsheet.py`
 - `dev/scripts/audit_runtime_evidence_requirements.py`

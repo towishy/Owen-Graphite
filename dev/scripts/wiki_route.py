@@ -4,10 +4,24 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+ROUTE_SURFACES: dict[str, list[str]] = {
+    "table": ["reading-typography", "reading-tables-code", "reading-callouts-lists", "live-preview-rendered-widgets"],
+    "live-preview": ["live-preview-cm6", "live-preview-rendered-widgets"],
+    "pdf": ["pdf-base", "pdf-report-polish", "pdf-marginalia"],
+    "chrome": ["workspace-chrome", "overlay-menu-search"],
+    "plugin": ["dataview-plugin-support"],
+    "mobile": ["mobile-narrow-layout"],
+    "tokens": ["shared-tokens"],
+    "settings": ["settings-controls", "style-settings-contract"],
+    "docs": [],
+    "release": [],
+}
 
 ROUTES: dict[str, dict[str, list[str] | str]] = {
     "table": {
@@ -86,6 +100,14 @@ def existing(path: str) -> str:
     return "INFO"
 
 
+def registry_surfaces(surface: str) -> list[dict[str, object]]:
+    wanted = set(ROUTE_SURFACES.get(surface, []))
+    if not wanted:
+        return []
+    registry = json.loads((ROOT / "dev" / "WIKI" / "MAP" / "owner-registry.json").read_text(encoding="utf-8"))
+    return [item for item in registry.get("surfaces", []) if item.get("id") in wanted]
+
+
 def print_route(surface: str, route: dict[str, list[str] | str]) -> None:
     print(f"# WIKI route: {surface}")
     print(f"Owner: {route['owner']}")
@@ -95,15 +117,28 @@ def print_route(surface: str, route: dict[str, list[str] | str]) -> None:
     print("\nContracts / boundaries:")
     for item in route["contracts"]:
         print(f"- {item}")
+    registry_items = registry_surfaces(surface)
+    if registry_items:
+        print("\nOwner registry surfaces:")
+        for item in registry_items:
+            owners = ", ".join(str(value) for value in item.get("ownerModules", []))
+            contracts = ", ".join(str(value) for value in item.get("riskContracts", []))
+            print(f"- {item['id']}: owners={owners}; contracts={contracts}")
     print("\nChecks:")
     for item in route["checks"]:
         print(f"- .\\.venv\\Scripts\\python.exe {item}")
+
+
+def print_commands(route: dict[str, list[str] | str]) -> None:
+    for item in route["checks"]:
+        print(f".\\.venv\\Scripts\\python.exe {item}")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("surface", nargs="?", choices=sorted(ROUTES), help="Work surface to route.")
     parser.add_argument("--list", action="store_true", help="List available surfaces.")
+    parser.add_argument("--commands", action="store_true", help="Print only the route's check commands.")
     args = parser.parse_args()
 
     if args.list or not args.surface:
@@ -112,7 +147,11 @@ def main() -> int:
             print(f"- {key}")
         return 0 if args.list else 1
 
-    print_route(args.surface, ROUTES[args.surface])
+    route = ROUTES[args.surface]
+    if args.commands:
+        print_commands(route)
+    else:
+        print_route(args.surface, route)
     return 0
 
 

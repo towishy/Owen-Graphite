@@ -15,6 +15,10 @@ Use incidents to preserve failure patterns, wrong approaches, correct owner rout
 - Affected owner surface.
 - Wrong approach to avoid.
 - Evidence that would have prevented the mistake.
+- Evidence source and runtime schema link.
+- Owner decision, no-CSS-fix decision, or WIKI/MAP update decision.
+- Forbidden fix pattern.
+- Regression check.
 - Correct owner route.
 - Required audits and runtime checks.
 - Follow-up WIKI/MAP updates.

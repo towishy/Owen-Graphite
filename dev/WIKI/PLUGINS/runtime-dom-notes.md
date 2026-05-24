@@ -31,3 +31,5 @@ Use this to record plugin DOM facts that static fixtures cannot prove.
 | Mermaid render | `.mermaid svg` or plugin-rendered image wrapper | `src/plugins/61-live-preview-mobile-plugin.css` when plugin-specific; rendered content owner when ordinary document flow changes | Needs actual rendered SVG/image output, not markdown source text |
 
 See `dev/WIKI/runtime-evidence-example-plugin-dom.md` for the expected evidence shape.
+
+Track coverage status in `dev/WIKI/PLUGINS/coverage-matrix.md` after adding real DOM evidence or fixture coverage.

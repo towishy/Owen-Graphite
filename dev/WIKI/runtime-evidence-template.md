@@ -2,6 +2,8 @@
 
 Use this before changing CSS for selected, hovered, focused, active, collapsed, expanded, plugin-generated, or Obsidian runtime states.
 
+JSON captures created by `new_runtime_evidence.py` must follow `runtime-evidence-schema.json`.
+
 ## Capture Header
 
 | Field | Value |
@@ -14,6 +16,14 @@ Use this before changing CSS for selected, hovered, focused, active, collapsed, 
 | Theme version |  |
 | Vault/theme path |  |
 | Repro note |  |
+
+## Evidence Source
+
+| Field | Value |
+| --- | --- |
+| Capture tool |  |
+| Approximation or real runtime DOM |  |
+| Fixture gap |  |
 
 ## Required Evidence
 
@@ -51,6 +61,14 @@ dev/WIKI/runtime-debug-snippets/matched-rules-dump.js
 | Is CSS allowed by a risk contract? |  |
 | Which workflow applies? |  |
 | Which audit proves the change? |  |
+
+## Verification
+
+| Field | Value |
+| --- | --- |
+| Runtime state rechecked |  |
+| Screenshot or note |  |
+| Audits run |  |
 
 ## Rule
 

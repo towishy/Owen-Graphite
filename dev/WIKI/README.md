@@ -11,9 +11,10 @@ This wiki is the operational entry point for AI-assisted work on Owen Graphite.
 | Task | First Route | Read Next |
 | --- | --- | --- |
 | Bug fix or visual change | `dev/scripts/wiki_route.py <surface>` | Relevant `WORKFLOWS/` page and `MAP/*-contract.md` |
-| Runtime hover/focus/active issue | `runtime-evidence-template.md` | `RUNTIME/` surface guide before editing CSS |
+| Runtime hover/focus/active issue | `runtime-evidence-template.md` | `runtime-evidence-schema.json`, `RUNTIME/` surface guide before editing CSS |
 | New Style Settings option | `dev/scripts/wiki_route.py settings` | `MAP/settings-style-contract.md`, `RECIPES/style-settings-option.md` |
 | Token or palette change | `dev/scripts/wiki_route.py tokens` | `MAP/shared-tokens-contract.md`, `TOKENS/usage-guide.md` |
+| WIKI or process change | `WORKFLOWS/wiki-maintenance.md` | `audit_wiki_consistency.py`, `audit_owner_risk_contracts.py` |
 | Release or Obsidian sync | `dev/scripts/wiki_route.py release` | `WORKFLOWS/release.md`, `sync-obsidian.md` |
 
 ### Standard Flow

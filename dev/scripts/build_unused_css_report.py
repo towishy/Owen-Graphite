@@ -77,6 +77,14 @@ BUCKET_LABELS = {
     "at-context-runtime": "Media/supports context selectors reserved for context-specific validation.",
     "reserved-static-other": "Reserved static no-match selectors that need manual review.",
 }
+BUCKET_RECIPES = {
+    "state-interaction": "dev/WIKI/RECIPES/coverage-state-interaction.md",
+    "plugin-runtime": "dev/WIKI/RECIPES/coverage-plugin-runtime.md",
+    "print-pdf-context": "dev/WIKI/RECIPES/coverage-print-pdf-context.md",
+    "document-content-fixture-gap": "dev/WIKI/RECIPES/coverage-document-content-fixture.md",
+    "obsidian-chrome-runtime": "dev/WIKI/RECIPES/coverage-state-interaction.md",
+    "live-preview-runtime": "dev/WIKI/RECIPES/live-preview-spacing.md",
+}
 BUCKET_DECISIONS = {
     "state-interaction": {
         "decision": "do-not-remove",
@@ -457,10 +465,11 @@ def write_markdown(payload: dict[str, Any], out_path: Path) -> None:
         for reason, count in payload["reservedReasonSummary"].items():
             lines.append(f"| {reason} | {count} |")
     if payload.get("reservedBucketSummary"):
-        lines.extend(["", "### Reserved Bucket Summary", "", "| Bucket | Count | Meaning |", "| --- | ---: | --- |"])
+        lines.extend(["", "### Reserved Bucket Summary", "", "| Bucket | Count | Meaning | Recipe |", "| --- | ---: | --- | --- |"])
         for bucket, count in payload["reservedBucketSummary"].items():
             label = BUCKET_LABELS.get(bucket, "Reserved for manual review.").replace("|", "\\|")
-            lines.append(f"| {bucket} | {count} | {label} |")
+            recipe = BUCKET_RECIPES.get(bucket, "OWNER-DECISION-TREE.md")
+            lines.append(f"| {bucket} | {count} | {label} | `{recipe}` |")
     if payload.get("reservedDecisionPolicy"):
         lines.extend(["", "### Reserved Decision Policy", ""])
         lines.append(f"Current low-risk removal candidates: {payload['summary'].get('candidate', 0)}.")
@@ -768,6 +777,7 @@ def main() -> int:
         "reservedReasonSummary": reserved_reason_summary(rows),
         "reservedBucketSummary": bucket_summary,
         "reservedBucketLabels": BUCKET_LABELS,
+        "reservedBucketRecipes": BUCKET_RECIPES,
         "reservedDecisionPolicy": BUCKET_DECISIONS,
         "reservedDecisionSummary": reserved_decision_summary(bucket_summary),
         "coverageBacklogPolicy": COVERAGE_BACKLOG_POLICY,

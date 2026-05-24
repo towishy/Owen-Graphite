@@ -2,6 +2,8 @@
 
 Use this before changing plugin-specific CSS or public compatibility claims.
 
+Use `coverage-matrix.md` to check whether a plugin route has real DOM evidence, fixture coverage, and owner confirmation.
+
 | Plugin / Surface | Owner Route | Check | Risk |
 | --- | --- | --- | --- |
 | Dataview | `src/chrome/32-overlay-popover-dataview.css` for Dataview tables/inline fields; rendered table owner only for ordinary Markdown tables | table layout, sticky header, zebra, number alignment | table fixes leaking to core widgets |

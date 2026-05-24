@@ -1,5 +1,18 @@
 # Docs Map
 
+## Purpose Map
+
+| Goal | Start Here | Then Check |
+| --- | --- | --- |
+| CSS bug fix | `dev/scripts/wiki_route.py <surface>` | owner contract, `WORKFLOWS/validation-matrix.md` |
+| Runtime state issue | `runtime-evidence-template.md` | `runtime-evidence-schema.json`, relevant `RUNTIME/` guide |
+| Style Settings option | `dev/scripts/wiki_route.py settings` | `MAP/settings-style-contract.md`, `DOCS/v3/style-settings-contract.md` |
+| Unused CSS cleanup | `DOCS/v3/unused-css-roadmap.md` | `MAP/unused-css-candidates.md`, matching `RECIPES/coverage-*.md` |
+| Plugin compatibility | `PLUGINS/coverage-matrix.md` | `PLUGINS/runtime-dom-notes.md`, `RUNTIME/plugins.md` |
+| Release | `dev/scripts/wiki_route.py release` | `WORKFLOWS/release.md`, `DOCS/v3/release-plan.md` |
+| Obsidian sync | `sync-obsidian.md` | `WORKFLOWS/release.md`, `dev/TEMP/last-sync.json` |
+| WIKI/process change | `WORKFLOWS/wiki-maintenance.md` | `audit_wiki_consistency.py`, `audit_owner_risk_contracts.py` |
+
 ## Docs Routing
 
 | Source | Use When | Notes |
