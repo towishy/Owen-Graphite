@@ -16,3 +16,11 @@ Read `dev/WIKI/MAP/top-chrome-icon-background-contract.md` before top chrome ico
 - Fixing workspace chrome from overlay modules.
 - Broad `body:not(.is-mobile)` additions without checking duplicate groups.
 - Hidden focus/hover regressions without runtime state checks.
+
+## Required Checks
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\wiki_route.py chrome
+.\.venv\Scripts\python.exe dev\scripts\audit_core_principles.py
+.\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
+```

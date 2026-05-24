@@ -5,6 +5,7 @@ Generated MAP artifacts are useful only when their diffs are reviewable. Keep ge
 ## Current Rules
 
 - JSON output uses sorted keys.
+- `theme-css-risk-summary.json` is the stable review surface for ordinary changes.
 - Selector provenance entries are written in sorted selector-key order.
 - Cross-file selector line references are sorted by module and line.
 - Markdown/HTML reports remain generated from the same payload and should not be hand-edited.

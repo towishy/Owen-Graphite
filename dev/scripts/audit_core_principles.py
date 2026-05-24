@@ -148,6 +148,7 @@ def main() -> int:
         run("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"])
         run("source usage map freshness", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"])
         run("direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"])
+        run("mobile owner guard", [PYTHON, "dev/scripts/audit_mobile_owner.py"])
         run("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"])
         run("Live Preview hit routing", [PYTHON, "dev/scripts/audit_v3_hit_routing.py"])
         print("OK: core principles process gate clean")

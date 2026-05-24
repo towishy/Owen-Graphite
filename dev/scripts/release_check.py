@@ -32,6 +32,8 @@ def main() -> int:
     parser.add_argument("--skip-bundle", action="store_true", help="Skip bundle rebuild but still check existing bundle freshness.")
     parser.add_argument("--include-zip", action="store_true", help="Build and audit the manual install ZIP.")
     parser.add_argument("--include-visual", action="store_true", help="Run the static visual quality fixture audit.")
+    parser.add_argument("--include-sync", action="store_true", help="Sync release assets to an Obsidian theme folder after validation.")
+    parser.add_argument("--sync-target", help="Target Obsidian theme folder for --include-sync.")
     args = parser.parse_args()
 
     metadata_command = [PYTHON, "dev/scripts/audit_release_metadata.py"]
@@ -72,6 +74,12 @@ def main() -> int:
                 ("Audit manual install ZIP", [PYTHON, "dev/scripts/audit_release_zip.py"]),
             ]
         )
+
+    if args.include_sync:
+        sync_command = [PYTHON, "dev/scripts/sync_obsidian_theme.py", "--skip-bundle"]
+        if args.sync_target:
+            sync_command.extend(["--target", args.sync_target])
+        steps.append(("Sync Obsidian theme", sync_command))
 
     try:
         for label, command in steps:

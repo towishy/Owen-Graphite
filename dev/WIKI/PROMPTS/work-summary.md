@@ -2,6 +2,12 @@
 
 Use this before final response, commit, or PR text.
 
+Generate a draft with:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\work_summary.py
+```
+
 ## Required Summary Fields
 
 | Field | Value |

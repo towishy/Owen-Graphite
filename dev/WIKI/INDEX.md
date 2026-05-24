@@ -85,3 +85,10 @@
 - `PROMPTS/before-edit.md`
 - `PROMPTS/review-core-principles.md`
 - `PROMPTS/work-summary.md`
+
+## Helper Scripts
+
+- `dev/scripts/wiki_route.py`
+- `dev/scripts/new_runtime_evidence.py`
+- `dev/scripts/work_summary.py`
+- `dev/scripts/audit_mobile_owner.py`

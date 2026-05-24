@@ -12,6 +12,12 @@ dev/TEMP/runtime-evidence/<yyyy-mm-dd>-<surface>-<short-name>.json
 
 Use this for exploratory DOM chains, computed styles, matched rules, screenshots notes, and plugin DOM probes.
 
+Create a scaffold with:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\new_runtime_evidence.py --surface table --name selected-cell-height --state selected
+```
+
 ## Permanent Evidence
 
 Promote evidence into `dev/WIKI/INCIDENTS/` only when one of these is true:

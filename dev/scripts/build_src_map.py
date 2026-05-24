@@ -621,7 +621,24 @@ def main() -> int:
         "findings": sorted(all_findings, key=lambda finding: (severity_rank(finding["severity"]), str(finding["module"]), int(finding["line"]))),
         "cross_file_selectors": cross_file_groups[:120],
     }
+    summary_payload: dict[str, object] = {
+        "source": payload["source"],
+        "map_root": payload["map_root"],
+        "version": payload["version"],
+        "summary": payload["summary"],
+        "source_modules": [
+            {
+                "module": module["module"],
+                "selector_count": module["selector_count"],
+                "risk_score": module["risk_score"],
+                "severity": module["severity"],
+                "risk_reasons": module["risk_reasons"],
+            }
+            for module in module_records
+        ],
+    }
     stable_selector_entries = {key: selector_entries[key] for key in sorted(selector_entries)}
+    write_json(MAP_DIR / "theme-css-risk-summary.json", summary_payload)
     write_json(MAP_DIR / "theme-css-risk-map.json", payload)
     write_json(MAP_DIR / "selector-provenance.json", stable_selector_entries)
     (MAP_DIR / "map-info-classification.md").write_text(markdown_report(payload), encoding="utf-8")

@@ -15,6 +15,7 @@ REQUIRED_FILES = [
     "dev/WIKI/OWNER-DECISION-TREE.md",
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md",
     "dev/WIKI/MAP/diff-stability.md",
+    "dev/WIKI/MAP/theme-css-risk-summary.json",
     "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/runtime-evidence-storage.md",
     "dev/WIKI/RUNTIME/README.md",
@@ -71,6 +72,9 @@ REQUIRED_TEXT = {
         "INCIDENTS/incident-template.md",
         "INCIDENTS/taxonomy.md",
         "dev/scripts/wiki_route.py",
+        "dev/scripts/new_runtime_evidence.py",
+        "dev/scripts/work_summary.py",
+        "dev/scripts/audit_mobile_owner.py",
         "PROMPTS/work-summary.md",
         "WORKFLOWS/validation-matrix.md",
     ],
@@ -81,6 +85,7 @@ REQUIRED_TEXT = {
     ],
     "dev/WIKI/MAP/diff-stability.md": [
         "sorted keys",
+        "theme-css-risk-summary.json",
         "selector-key order",
         "fix the generator ordering",
     ],
@@ -112,6 +117,7 @@ REQUIRED_TEXT = {
     ],
     "dev/WIKI/runtime-evidence-storage.md": [
         "dev/TEMP/runtime-evidence",
+        "new_runtime_evidence.py",
         "Permanent Evidence",
         "Minimum Metadata",
     ],
@@ -144,6 +150,7 @@ REQUIRED_TEXT = {
     "dev/WIKI/PROMPTS/work-summary.md": [
         "WIKI consulted",
         "Owner modules changed",
+        "work_summary.py",
         "Obsidian synced",
     ],
     "dev/WIKI/RECIPES/README.md": [
@@ -252,7 +259,37 @@ def assert_helper_and_generator_stability() -> None:
     sync_script = read("dev/scripts/sync_obsidian_theme.py")
     if "copy_with_fallback" not in sync_script or "retrying with chunk copy" not in sync_script:
         fail("sync_obsidian_theme.py must keep chunk-copy fallback for WinError 483")
+    release_check = read("dev/scripts/release_check.py")
+    if "--include-sync" not in release_check or "--sync-target" not in release_check:
+        fail("release_check.py must expose optional Obsidian sync validation")
+    for script in ("dev/scripts/new_runtime_evidence.py", "dev/scripts/work_summary.py", "dev/scripts/audit_mobile_owner.py"):
+        if not (ROOT / script).is_file():
+            fail(f"missing helper script: {script}")
     print("OK: helper routes, shared tokens, and MAP stability checks present")
+
+
+def assert_wiki_schema() -> None:
+    problems: list[str] = []
+    for path in sorted((ROOT / "dev" / "WIKI" / "RECIPES").glob("*.md")):
+        if path.name == "README.md":
+            continue
+        text = path.read_text(encoding="utf-8")
+        for heading in ("## Route", "## Steps", "## Checks"):
+            if heading not in text:
+                problems.append(f"{path.relative_to(ROOT).as_posix()} missing {heading}")
+    for path in sorted((ROOT / "dev" / "WIKI" / "RUNTIME").glob("*.md")):
+        if path.name == "README.md":
+            continue
+        text = path.read_text(encoding="utf-8")
+        if "Evidence" not in text and "Capture" not in text:
+            problems.append(f"{path.relative_to(ROOT).as_posix()} missing Evidence/Capture section")
+    for path in sorted((ROOT / "dev" / "WIKI" / "WORKFLOWS").glob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        if "dev\\scripts" not in text and "dev/scripts" not in text:
+            problems.append(f"{path.relative_to(ROOT).as_posix()} missing script command")
+    if problems:
+        fail("WIKI schema issues: " + "; ".join(problems))
+    print("OK: WIKI recipe/runtime/workflow schema clean")
 
 
 def assert_index_has_no_legacy_routes() -> None:
@@ -270,6 +307,7 @@ def main() -> int:
         assert_src_docs_have_validation_matrix()
         assert_release_workflow_paths()
         assert_helper_and_generator_stability()
+        assert_wiki_schema()
         assert_index_has_no_legacy_routes()
         print("OK: WIKI consistency audit clean")
         return 0
