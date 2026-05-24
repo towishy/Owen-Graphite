@@ -12,6 +12,7 @@
 ## Before Publishing
 
 - Confirm `manifest.json` version.
+- Use numeric semver tags and GitHub Release names only, for example `3.1.57`; never use a leading `v` prefix.
 - Confirm `theme.css` matches `dist/theme-v3.css`.
 - Confirm source usage map is fresh.
 - Confirm core principles gate passes.

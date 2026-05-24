@@ -64,7 +64,7 @@
 9. `python dev/scripts/build_release_notes.py --output dist/release-notes-<version>.md` — builds release notes from the latest CHANGELOG section.
 10. `python dev/scripts/build_release.py` — emits `dist/Owen-Graphite-<version>.zip`.
 11. `python dev/scripts/audit_release_zip.py` — verifies the manual-install ZIP contains the expected install tree and fresh `theme.css`.
-12. Commit, tag `<version>` using numeric semver only, and push the numeric tag.
+12. Commit, tag `<version>` using numeric semver only, and push the numeric tag. Do not use a leading `v` prefix in the tag or GitHub Release name.
 13. CI (`.github/workflows/release.yml`) validates, builds release notes, builds the ZIP, audits it, and publishes the GitHub Release.
 
 ## README Feature Intro Procedure

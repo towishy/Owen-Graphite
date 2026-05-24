@@ -17,6 +17,7 @@ Hard rules:
 - Do not recreate `dev/MAP`, `dev/LLM-WIKI`, `dev/effective-baseline`, `dev/WIKI/DEV`, or `docs/v3`.
 - Do not style Obsidian-owned markdown table widget geometry (`.cm-table-widget` or `table.cm-table`).
 - For runtime states such as selected, hovered, focused, or active UI, collect runtime evidence before changing CSS.
+- Release tags and GitHub Release names must be numeric semver only, such as `3.1.57`; never use a leading `v` prefix.
 
 Required validation for code changes:
 

@@ -116,6 +116,22 @@ def assert_no_legacy_wiki_paths() -> None:
     print("OK: legacy WIKI paths absent")
 
 
+def assert_numeric_release_tag_policy() -> None:
+    workflow = (ROOT / ".github" / "workflows" / "release.yml").read_text(encoding="utf-8")
+    release_workflow = (ROOT / "dev" / "WIKI" / "WORKFLOWS" / "release.md").read_text(encoding="utf-8")
+    copilot_instructions = (ROOT / ".github" / "copilot-instructions.md").read_text(encoding="utf-8")
+    if '"[0-9]+.[0-9]+.[0-9]+"' not in workflow:
+        fail("release workflow must trigger on numeric semver tags only")
+    for path, text in (
+        ("dev/WIKI/WORKFLOWS/release.md", release_workflow),
+        (".github/copilot-instructions.md", copilot_instructions),
+    ):
+        low = text.lower()
+        if "numeric semver" not in low or "v` prefix" not in low:
+            fail(f"{path} must explicitly forbid v-prefixed release tags")
+    print("OK: numeric release tag policy enforced")
+
+
 def main() -> int:
     try:
         assert_no_src_polish()
@@ -123,6 +139,7 @@ def main() -> int:
         assert_owner_modules_exist()
         assert_wiki_exists()
         assert_no_legacy_wiki_paths()
+        assert_numeric_release_tag_policy()
         run("source usage map freshness", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"])
         run("direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"])
         run("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"])
