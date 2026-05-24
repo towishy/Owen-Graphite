@@ -34,6 +34,9 @@ PRINT_FIXTURES = [
     ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "live-preview-pdf-parity-fixture.html",
     ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "code-font-clarity-fixture.html",
 ]
+COVERAGE_FIXTURES = [
+    ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "coverage-priority-fixture.html",
+]
 MATRIX_TEMPLATE = ROOT / "dev" / "WIKI" / "effective-baseline" / "v{version}" / "style-settings-matrix.json"
 OUT_JSON = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.json"
 OUT_MD = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.md"
@@ -373,6 +376,15 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
     for fixture in PRINT_FIXTURES:
         if fixture.is_file():
             scenarios.append({"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": [], "viewport": {"width": 1440, "height": 1400}})
+    for fixture in COVERAGE_FIXTURES:
+        if fixture.is_file():
+            scenarios.extend(
+                [
+                    {"id": f"{fixture.stem}-screen-light", "fixture": fixture, "theme": "light", "media": "screen", "bodyClasses": [], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-screen-dark", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-glass-subtle"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility"], "viewport": {"width": 1440, "height": 1400}},
+                ]
+            )
     scenarios.extend(load_style_scenarios(style_limit))
     return scenarios
 

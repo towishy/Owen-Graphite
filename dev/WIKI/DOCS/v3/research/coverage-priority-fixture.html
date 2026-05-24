@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Coverage Priority Fixture</title>
+  <link rel="stylesheet" href="../../../../../theme.css">
+</head>
+<body class="theme-light is-frameless ogd-report-mode ogd-pdf-visibility ogd-zebra-disabled-permanently ogd-glass-subtle">
+  <div class="workspace workspace-split mod-root">
+    <aside class="workspace-leaf-content" data-type="file-explorer">
+      <div class="nav-header">
+        <div class="nav-buttons-container">
+          <button class="clickable-icon nav-action-button" aria-label="New note"></button>
+          <button class="clickable-icon nav-action-button is-active" aria-label="Sort"></button>
+        </div>
+      </div>
+      <div class="nav-files-container">
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title is-active" data-path="docs/report.pdf"><div class="nav-file-title-content">report.pdf</div><span class="nav-file-tag">PDF</span></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title" data-path="docs/spec.mdx"><div class="nav-file-title-content">spec.mdx</div><span class="nav-file-tag">MDX</span></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title" data-path="boards/system.canvas"><div class="nav-file-title-content">system.canvas</div><span class="nav-file-tag">Canvas</span></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title" data-path="drawings/flow.excalidraw"><div class="nav-file-title-content">flow.excalidraw</div><span class="nav-file-tag">Excalidraw</span></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title" data-path="diagrams/sequence.mermaid"><div class="nav-file-title-content">sequence.mermaid</div><span class="nav-file-tag">Mermaid</span></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title" data-path="web/sample.html"><div class="nav-file-title-content">sample.html</div><span class="nav-file-tag">HTML</span></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title" data-path="data/config.xml"><div class="nav-file-title-content">config.xml</div><span class="nav-file-tag">XML</span></div></div>
+      </div>
+    </aside>
+
+    <main class="workspace-leaf-content markdown-reading-view" data-type="markdown">
+      <div class="markdown-preview-view markdown-rendered">
+        <h1>Coverage 문서</h1>
+        <p>긴 문단, <mark>highlight</mark>, <kbd>Ctrl</kbd> 키, <code>inlineCode()</code>, 이미지와 Mermaid 출력이 함께 있는 자연 문서 fixture입니다.</p>
+        <ul class="contains-task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Tasks plugin style open item</li>
+          <li class="task-list-item is-checked"><input type="checkbox" class="task-list-item-checkbox" checked> completed item</li>
+        </ul>
+        <div class="callout" data-callout="summary"><div class="callout-title"><div class="callout-title-inner">Summary</div></div><div class="callout-content"><ul><li>nested callout task</li></ul></div></div>
+        <div class="block-language-dataview">
+          <table class="dataview table-view-table"><thead><tr><th>File</th><th>Status</th></tr></thead><tbody><tr><td>alpha</td><td>done</td></tr><tr><td>beta</td><td>review</td></tr></tbody></table>
+        </div>
+        <div class="dataview dataview-table"><table><tbody><tr><td>inline dataview</td><td>42</td></tr></tbody></table></div>
+        <div class="mermaid"><svg viewBox="0 0 120 40" role="img"><rect x="4" y="4" width="112" height="32"></rect><text x="60" y="25" text-anchor="middle">graph</text></svg></div>
+        <figure><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='90'%3E%3Crect width='160' height='90' fill='%23dbeafe'/%3E%3C/svg%3E" alt="fixture"><figcaption>Figure caption</figcaption></figure>
+        <table><caption>Natural table</caption><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Coverage</td><td>planned</td></tr></tbody></table>
+      </div>
+    </main>
+  </div>
+
+  <section class="modal mod-settings">
+    <div class="modal-title">Settings</div>
+    <div class="vertical-tab-content-container">
+      <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Toggle</div><div class="setting-item-description">setting description</div></div><div class="setting-item-control"><div class="checkbox-container is-enabled"><input type="checkbox" checked></div></div></div>
+      <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Dropdown</div></div><div class="setting-item-control"><select class="dropdown"><option>Graphite</option></select></div></div>
+      <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Slider</div></div><div class="setting-item-control"><input class="slider" type="range" value="60"></div></div>
+      <div class="search-input-container"><input type="search" value="pdf"><div class="search-input-clear-button"></div></div>
+    </div>
+  </section>
+
+  <section class="suggestion-container mod-search-suggestion">
+    <div class="suggestion-item is-selected"><span class="suggestion-highlight">report</span> match</div>
+    <div class="search-result-file-match is-active"><span class="search-result-file-matched-text">highlight</span></div>
+  </section>
+
+  <section class="canvas-wrapper">
+    <div class="canvas-node is-selected"><div class="canvas-node-container"><div class="canvas-node-content markdown-rendered"><p>Canvas node</p></div></div></div>
+    <div class="canvas-controls"><button class="clickable-icon is-active"></button></div>
+  </section>
+
+  <section class="graph-view color-fill color-line">
+    <div class="graph-controls"><button class="clickable-icon mod-cta"></button></div>
+    <canvas class="graph-view-canvas"></canvas>
+  </section>
+</body>
+</html>

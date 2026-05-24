@@ -66,6 +66,7 @@
 | `dev/WIKI/DOCS/v3/research/live-preview-pdf-parity-fixture.html` | LP/PDF parity checks | Use before cross-surface table/code/callout changes. |
 | `dev/WIKI/DOCS/v3/research/pdf-marginalia-fixture.html` | PDF header/footer rendering | Use with PDF marginalia work. |
 | `dev/WIKI/DOCS/v3/research/code-font-clarity-fixture.html` | Code font readability | Use before code block typography changes. |
+| `dev/WIKI/DOCS/v3/research/coverage-priority-fixture.html` | Coverage priority fixture for plugin/chrome/settings/PDF selectors | Use before updating `MAP/unused-css-candidates.md` or `MAP/coverage-priority-plan.md`. |
 | `dev/WIKI/DOCS/v3/research/*preview*.html/png` | Visual experiments | Treat as research references, not source owners. |
 | `dev/WIKI/DOCS/v3/research/cascade-probe/*` | Cascade layer/unlayered experiments | Use before changing cascade strategy. |
 | `dev/WIKI/DOCS/v3/research/golden-rig/obsidian-harness.html` | Harness for visual snapshots | Use for repeatable visual checks. |
