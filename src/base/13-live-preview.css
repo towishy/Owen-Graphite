@@ -54,7 +54,7 @@ body .markdown-source-view.is-readable-line-width :is(.cm-sizer, .cm-contentCont
   margin-right: auto;
 }
 
-body .markdown-source-view.mod-cm6 .cm-content {
+body .markdown-source-view.mod-cm6 .cm-content:not(.cm-table-widget .cm-content) {
   display: block;
   max-width: 100%;
   min-height: calc(100vh - 220px);
@@ -70,12 +70,7 @@ body .markdown-source-view.mod-cm6 .cm-line {
   text-align: left;
 }
 
-body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  table.cm-table,
-  .HyperMD-table-row,
-  .cm-embed-block table
-) :is(
+body .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget) :is(
   .cm-content,
   .cm-line,
   .cm-scroller,
@@ -94,17 +89,13 @@ body .markdown-source-view.mod-cm6 :is(
   height: auto;
 }
 
-body .markdown-source-view.mod-cm6 .cm-embed-block table :is(td, th) > p {
+body .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget) :is(td, th) > p {
   margin: 0;
 }
 
 body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  .cm-embed-block.cm-table-widget,
-  table.cm-table,
-  .cm-embed-block table
+  .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
 ) :is(td, th) :is(
-  .table-cell-wrapper,
   .cm-editor,
   .cm-scroller,
   .cm-content,
@@ -119,10 +110,7 @@ body .markdown-source-view.mod-cm6 :is(
 }
 
 body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  .cm-embed-block.cm-table-widget,
-  table.cm-table,
-  .cm-embed-block table
+  .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
 ) :is(
   table,
   thead,
@@ -136,10 +124,7 @@ body .markdown-source-view.mod-cm6 :is(
 }
 
 body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  .cm-embed-block.cm-table-widget,
-  table.cm-table,
-  .cm-embed-block table
+  .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
 ) :is(td, th) :is(
   .cm-line:empty,
   .cm-active.cm-line:empty
@@ -154,10 +139,7 @@ body .markdown-source-view.mod-cm6 :is(
 
 @supports selector(.cm-line:has(br:only-child)) {
   body .markdown-source-view.mod-cm6 :is(
-    .cm-table-widget,
-    .cm-embed-block.cm-table-widget,
-    table.cm-table,
-    .cm-embed-block table
+    .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
   ) :is(td, th) :is(
   .cm-line:has(br:only-child),
   .cm-active.cm-line:has(br:only-child)
@@ -603,99 +585,8 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
   opacity: 1;
 }
 
-/* (9) Table widget in Live Preview
-   v2.22.105: removed `.HyperMD-table-row` from this selector group.
-   v2.22.106: dropped the leftover `margin: 0.4em 0 !important` on the
-   widget itself. The blank `.cm-line` between paragraph and table is
-   already enough vertical rhythm; the extra widget margin produced a
-   gap that paragraph clicks could land in but where caret routing
-   defaulted to the table widget. */
-.markdown-source-view.mod-cm6 .cm-table-widget,
-.markdown-source-view.mod-cm6 table.cm-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-variant-numeric: tabular-nums;
-}
-.markdown-source-view.mod-cm6 .cm-table-widget th,
-.markdown-source-view.mod-cm6 table.cm-table th {
-  background: var(--ogd-surface-subtle, #f3f4f6);
-  border-bottom: 2px solid #6b7280;
-  border-left: 1px solid var(--ogd-line-soft, #e5e7eb);
-  border-right: 1px solid var(--ogd-line-soft, #e5e7eb);
-  padding: 6px 10px;
-  font-weight: 700;
-  text-align: left;
-}
-.markdown-source-view.mod-cm6 .cm-table-widget td,
-.markdown-source-view.mod-cm6 table.cm-table td {
-  border: 1px solid var(--ogd-line-soft, #e5e7eb);
-  padding: 5px 10px;
-  vertical-align: top;
-}
-.markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
-.markdown-source-view.mod-cm6 table.cm-table tr:hover td {
-  background: #f5f7fa;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
-  --ogd-table-head-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.66));
-  --ogd-table-border: rgba(148, 163, 184, 0.46);
-  --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
-  --ogd-table-row-even: rgba(236, 254, 255, 0.28);
-  --ogd-table-row-hover: rgba(224, 242, 254, 0.62);
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--ogd-table-border);
-  border-radius: 8px;
-  background: var(--ogd-table-bg);
-  box-shadow: var(--ogd-table-shadow);
-  overflow: hidden;
-  font-variant-numeric: tabular-nums;
-  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
-  backdrop-filter: var(--ogd-glass-filter-control);
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
-  padding: var(--ogd-table-pad-y, 0.62em) var(--ogd-table-pad-x, 0.78em);
-  font-size: var(--ogd-table-font-size, 0.96em);
-  border-color: var(--ogd-table-cell-border);
-  border-width: 0 0 1px 1px;
-  background-clip: padding-box;
-  color: var(--ogd-text-slate, #334155);
-  line-height: var(--ogd-table-line-height, 1.42);
-  vertical-align: top;
-  overflow-wrap: anywhere;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tr > :is(th, td):first-child {
-  border-left-width: 0;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:last-child > td {
-  border-bottom-width: 0;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
-  background: var(--ogd-table-head-bg);
-  color: var(--ogd-text-slate, #334155);
-  font-size: 0.88em;
-  font-weight: 820;
-  text-align: left;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
-  background: rgba(255, 255, 255, 0.28);
-}
-
-body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
-  background: var(--ogd-table-row-even);
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
-  background: var(--ogd-table-row-hover);
-}
+/* (9) Markdown table widgets follow Obsidian core geometry.
+   Theme table styling is limited to rendered/HTML table surfaces. */
 /* Pipe `|` separators in source mode — dim */
 .markdown-source-view.mod-cm6 .cm-hmd-table-sep {
   color: var(--ogd-line-strong, #cbd5e1);
@@ -782,22 +673,6 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody t
   border-color: rgba(203, 213, 225, 0.68);
   color: var(--ogd-text-slate, #1e293b);
 }
-.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget th,
-.theme-dark .markdown-source-view.mod-cm6 table.cm-table th {
-  background: #25272d;
-  border-bottom-color: #6b7280;
-  border-left-color: #353841;
-  border-right-color: #353841;
-  color: var(--ogd-surface-subtle, #f3f4f6);
-}
-.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget td,
-.theme-dark .markdown-source-view.mod-cm6 table.cm-table td {
-  border-color: #2a2c33;
-}
-.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
-.theme-dark .markdown-source-view.mod-cm6 table.cm-table tr:hover td {
-  background: #2a2c33;
-}
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter,
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1,
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end {
@@ -831,21 +706,21 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2
   line-height: 1.28;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.34);
+  border-bottom: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
   line-height: 1.34;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(203, 213, 225, 0.72);
+  border-bottom: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
   line-height: 1.38;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.88);
+  border-bottom: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-2 {
@@ -940,29 +815,6 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
   color: var(--ogd-text-slate, #334155);
 }
 
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  /* v2.22.108: vertical margin removed; same hit-routing fix as v2.22.106. */
-  margin: 0;
-  border: 1px solid rgba(203, 213, 225, 0.76);
-  border-radius: var(--ogd-radius-control, 7px);
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035);
-}
-
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
-  background: #f4f6f8;
-  border-color: #e2e8f0;
-  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8);
-  color: #1f2937;
-  font-weight: 760;
-}
-
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
-  border-color: #edf2f7;
-  color: var(--ogd-text-slate, #334155);
-  line-height: 1.6;
-}
-
 /* v2.30.12 — default list line spacing parity with reading view; safe for CM6 hit-routing (small padding, line-height only).
    v2.30.19 — bumped line-height 1.7 -> 1.85 and padding 0.05em -> 0.08em for clearer
    bullet/numbered list rhythm (matches reading-view li margin-bottom 0.65em + line-height 1.78). */
@@ -1010,7 +862,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-header
   color: var(--ogd-line-strong, #cbd5e1);
 }
 
-body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout, .cm-line.HyperMD-quote:not(.HyperMD-callout), .cm-table-widget, table.cm-table) {
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout, .cm-line.HyperMD-quote:not(.HyperMD-callout)) {
   border-color: var(--ogd-lp-doc-rim);
   background: var(--ogd-lp-doc-glass-bg);
   box-shadow: var(--ogd-lp-doc-glass-shadow);

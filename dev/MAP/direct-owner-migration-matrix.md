@@ -23,6 +23,7 @@ This matrix records the direct-owner migration that retired the late polish/hotf
 .\.venv\Scripts\python.exe dev\scripts\build_effective_source_map.py
 .\.venv\Scripts\python.exe dev\scripts\build_effective_baseline.py
 .\.venv\Scripts\python.exe dev\scripts\build_style_settings_matrix.py
+.\.venv\Scripts\python.exe dev\scripts\audit_direct_owner_guard.py
 .\.venv\Scripts\python.exe dev\scripts\capture_effective_snapshot.py --theme light --media screen --include-tokens
 .\.venv\Scripts\python.exe dev\scripts\capture_effective_snapshot.py --theme dark --media screen --include-tokens
 .\.venv\Scripts\python.exe dev\scripts\capture_provenance_snapshot.py --theme light --media screen
@@ -30,7 +31,7 @@ This matrix records the direct-owner migration that retired the late polish/hotf
 
 ## Non-Negotiable Rule
 
-New work should modify the owner module first. Reintroducing `src/polish/*` is treated as new migration debt and should be avoided unless a future compatibility issue has no direct-owner alternative.
+New work should modify the owner module first. Reintroducing `src/polish/*` is treated as new migration debt and should be avoided unless a future compatibility issue has no direct-owner alternative. `audit_direct_owner_guard.py` blocks commits that reintroduce known high-risk owner violations such as styling Obsidian core-owned `.cm-table-widget` geometry outside core-compatible paths.
 
 ## Migration Log
 

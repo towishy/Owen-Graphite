@@ -157,12 +157,20 @@ kbd {
   padding: 16px;
   margin: 0.6em 0;
   text-align: center;
-  overflow-x: auto;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
+.markdown-rendered .mermaid {
+  overflow: visible;
+}
+.markdown-rendered pre.language-mermaid {
+  overflow-x: auto;
+}
 .markdown-rendered .mermaid svg {
+  display: block;
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 /* ---------- C. REPORT FEATURES ---------- */
@@ -778,7 +786,7 @@ body.ogd-pdf-label-segmented-dual {
     .markdown-preview-view.markdown-rendered.markdown-rendered,
     .markdown-reading-view .markdown-rendered.markdown-rendered
   ) > .markdown-preview-section > h1:first-of-type + h1 {
-    margin-top: 1.65em;
+    margin-top: var(--ogd-pdf-header-title-gap, 1.65em);
   }
 
   @supports selector(:nth-child(1 of .el-h1)) {
@@ -792,7 +800,55 @@ body.ogd-pdf-label-segmented-dual {
       .markdown-preview-view.markdown-rendered.markdown-rendered,
       .markdown-reading-view .markdown-rendered.markdown-rendered
     ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
-      margin-top: 1.65em;
+      margin-top: var(--ogd-pdf-header-title-gap, 1.65em);
+    }
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) h1:first-of-type,
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > h1:first-of-type + h1,
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > .markdown-preview-section > h1:first-of-type,
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > .markdown-preview-section > h1:first-of-type + h1 {
+    margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
+  }
+
+  @supports selector(:nth-child(1 of .el-h1)) {
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .el-h1:nth-child(1 of .el-h1) > h1,
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1,
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) > h1,
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
+      margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
     }
   }
 

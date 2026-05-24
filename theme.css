@@ -1785,22 +1785,21 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-size: 1.28em;
   font-weight: 760;
   line-height: 1.28;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(203, 213, 225, 0.72);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::after,
 body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: auto;
-  bottom: 0;
-  transform: none;
-  height: 1px;
-  border: 0;
-  border-radius: var(--ogd-radius-pill, 999px);
-  background: var(--ogd-heading-rule-soft);
-  opacity: 1;
+  content: none;
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -1816,6 +1815,11 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-size: 1.06em;
   font-weight: 760;
   line-height: 1.30;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgba(226, 232, 240, 0.88);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
 body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::after {
@@ -2464,42 +2468,6 @@ body .markdown-rendered blockquote blockquote blockquote {
 /* zebra toggle via Style Settings class */
 body.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   background-color: #fafbfc;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
-
-  margin-top: 1.1em;
-  margin-bottom: 2.5em;
-  width: auto;
-  max-width: 100%;
-  border-collapse: collapse;
-  font-size: 0.92em;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb);
-
-  border-color: #e2e8f0;
-  border-radius: var(--ogd-radius-control, 7px);
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035);
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
-  background: #f4f6f8;
-  color: #1f2937;
-  border-color: #e2e8f0;
-  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8);
-  font-weight: 760;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
-  color: var(--ogd-text-slate, #334155);
-  border-color: #edf2f7;
-}
-
-body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
-  background: #fbfcfd;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
-  background: #f7fafc;
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td:first-child {
@@ -4556,10 +4524,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ca
 body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered tr:nth-child(even) td {
   background-color: #25272d;
 }
-.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
-  border-color: var(--ogd-line-dark, #334155);
-  box-shadow: var(--ogd-shadow-none, none);
-}
 .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
   background: #202833;
   color: #f1f5f9;
@@ -4794,8 +4758,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-body.theme-dark .workspace-leaf-content .markdown-rendered table,
-body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+body.theme-dark .workspace-leaf-content .markdown-rendered table {
   --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.10), transparent 0 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.72));
   --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(30, 41, 59, 0.70));
   --ogd-table-border: rgba(71, 85, 105, 0.86);
@@ -4806,8 +4769,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-tab
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
-body.theme-dark .workspace-leaf-content .markdown-rendered table :is(th, td),
-body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+body.theme-dark .workspace-leaf-content .markdown-rendered table :is(th, td) {
   color: var(--ogd-line-soft, #e5e7eb);
 }
 .theme-dark .markdown-rendered code:not(pre code) {
@@ -5465,7 +5427,7 @@ body .markdown-source-view.is-readable-line-width :is(.cm-sizer, .cm-contentCont
   margin-right: auto;
 }
 
-body .markdown-source-view.mod-cm6 .cm-content {
+body .markdown-source-view.mod-cm6 .cm-content:not(.cm-table-widget .cm-content) {
   display: block;
   max-width: 100%;
   min-height: calc(100vh - 220px);
@@ -5481,12 +5443,7 @@ body .markdown-source-view.mod-cm6 .cm-line {
   text-align: left;
 }
 
-body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  table.cm-table,
-  .HyperMD-table-row,
-  .cm-embed-block table
-) :is(
+body .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget) :is(
   .cm-content,
   .cm-line,
   .cm-scroller,
@@ -5505,17 +5462,13 @@ body .markdown-source-view.mod-cm6 :is(
   height: auto;
 }
 
-body .markdown-source-view.mod-cm6 .cm-embed-block table :is(td, th) > p {
+body .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget) :is(td, th) > p {
   margin: 0;
 }
 
 body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  .cm-embed-block.cm-table-widget,
-  table.cm-table,
-  .cm-embed-block table
+  .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
 ) :is(td, th) :is(
-  .table-cell-wrapper,
   .cm-editor,
   .cm-scroller,
   .cm-content,
@@ -5530,10 +5483,7 @@ body .markdown-source-view.mod-cm6 :is(
 }
 
 body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  .cm-embed-block.cm-table-widget,
-  table.cm-table,
-  .cm-embed-block table
+  .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
 ) :is(
   table,
   thead,
@@ -5547,10 +5497,7 @@ body .markdown-source-view.mod-cm6 :is(
 }
 
 body .markdown-source-view.mod-cm6 :is(
-  .cm-table-widget,
-  .cm-embed-block.cm-table-widget,
-  table.cm-table,
-  .cm-embed-block table
+  .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
 ) :is(td, th) :is(
   .cm-line:empty,
   .cm-active.cm-line:empty
@@ -5565,10 +5512,7 @@ body .markdown-source-view.mod-cm6 :is(
 
 @supports selector(.cm-line:has(br:only-child)) {
   body .markdown-source-view.mod-cm6 :is(
-    .cm-table-widget,
-    .cm-embed-block.cm-table-widget,
-    table.cm-table,
-    .cm-embed-block table
+    .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
   ) :is(td, th) :is(
   .cm-line:has(br:only-child),
   .cm-active.cm-line:has(br:only-child)
@@ -6002,99 +5946,8 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
   opacity: 1;
 }
 
-/* (9) Table widget in Live Preview
-   v2.22.105: removed `.HyperMD-table-row` from this selector group.
-   v2.22.106: dropped the leftover `margin: 0.4em 0 !important` on the
-   widget itself. The blank `.cm-line` between paragraph and table is
-   already enough vertical rhythm; the extra widget margin produced a
-   gap that paragraph clicks could land in but where caret routing
-   defaulted to the table widget. */
-.markdown-source-view.mod-cm6 .cm-table-widget,
-.markdown-source-view.mod-cm6 table.cm-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-variant-numeric: tabular-nums;
-}
-.markdown-source-view.mod-cm6 .cm-table-widget th,
-.markdown-source-view.mod-cm6 table.cm-table th {
-  background: var(--ogd-surface-subtle, #f3f4f6);
-  border-bottom: 2px solid #6b7280;
-  border-left: 1px solid var(--ogd-line-soft, #e5e7eb);
-  border-right: 1px solid var(--ogd-line-soft, #e5e7eb);
-  padding: 6px 10px;
-  font-weight: 700;
-  text-align: left;
-}
-.markdown-source-view.mod-cm6 .cm-table-widget td,
-.markdown-source-view.mod-cm6 table.cm-table td {
-  border: 1px solid var(--ogd-line-soft, #e5e7eb);
-  padding: 5px 10px;
-  vertical-align: top;
-}
-.markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
-.markdown-source-view.mod-cm6 table.cm-table tr:hover td {
-  background: #f5f7fa;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
-  --ogd-table-head-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.66));
-  --ogd-table-border: rgba(148, 163, 184, 0.46);
-  --ogd-table-cell-border: rgba(226, 232, 240, 0.82);
-  --ogd-table-row-even: rgba(236, 254, 255, 0.28);
-  --ogd-table-row-hover: rgba(224, 242, 254, 0.62);
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--ogd-table-border);
-  border-radius: 8px;
-  background: var(--ogd-table-bg);
-  box-shadow: var(--ogd-table-shadow);
-  overflow: hidden;
-  font-variant-numeric: tabular-nums;
-  -webkit-backdrop-filter: var(--ogd-glass-filter-control);
-  backdrop-filter: var(--ogd-glass-filter-control);
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
-  padding: var(--ogd-table-pad-y, 0.62em) var(--ogd-table-pad-x, 0.78em);
-  font-size: var(--ogd-table-font-size, 0.96em);
-  border-color: var(--ogd-table-cell-border);
-  border-width: 0 0 1px 1px;
-  background-clip: padding-box;
-  color: var(--ogd-text-slate, #334155);
-  line-height: var(--ogd-table-line-height, 1.42);
-  vertical-align: top;
-  overflow-wrap: anywhere;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tr > :is(th, td):first-child {
-  border-left-width: 0;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:last-child > td {
-  border-bottom-width: 0;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
-  background: var(--ogd-table-head-bg);
-  color: var(--ogd-text-slate, #334155);
-  font-size: 0.88em;
-  font-weight: 820;
-  text-align: left;
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
-  background: rgba(255, 255, 255, 0.28);
-}
-
-body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
-  background: var(--ogd-table-row-even);
-}
-
-body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
-  background: var(--ogd-table-row-hover);
-}
+/* (9) Markdown table widgets follow Obsidian core geometry.
+   Theme table styling is limited to rendered/HTML table surfaces. */
 /* Pipe `|` separators in source mode — dim */
 .markdown-source-view.mod-cm6 .cm-hmd-table-sep {
   color: var(--ogd-line-strong, #cbd5e1);
@@ -6175,22 +6028,6 @@ body .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody t
   border-color: rgba(203, 213, 225, 0.68);
   color: var(--ogd-text-slate, #1e293b);
 }
-.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget th,
-.theme-dark .markdown-source-view.mod-cm6 table.cm-table th {
-  background: #25272d;
-  border-bottom-color: #6b7280;
-  border-left-color: #353841;
-  border-right-color: #353841;
-  color: var(--ogd-surface-subtle, #f3f4f6);
-}
-.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget td,
-.theme-dark .markdown-source-view.mod-cm6 table.cm-table td {
-  border-color: #2a2c33;
-}
-.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget tr:hover td,
-.theme-dark .markdown-source-view.mod-cm6 table.cm-table tr:hover td {
-  background: #2a2c33;
-}
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter,
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-1,
 .theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter-end {
@@ -6224,21 +6061,21 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2
   line-height: 1.28;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.34);
+  border-bottom: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
   line-height: 1.34;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(203, 213, 225, 0.72);
+  border-bottom: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
   line-height: 1.38;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.88);
+  border-bottom: 0;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-2 {
@@ -6333,29 +6170,6 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
   color: var(--ogd-text-slate, #334155);
 }
 
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
-  /* v2.22.108: vertical margin removed; same hit-routing fix as v2.22.106. */
-  margin: 0;
-  border: 1px solid rgba(203, 213, 225, 0.76);
-  border-radius: var(--ogd-radius-control, 7px);
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035);
-}
-
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
-  background: #f4f6f8;
-  border-color: #e2e8f0;
-  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8);
-  color: #1f2937;
-  font-weight: 760;
-}
-
-body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
-  border-color: #edf2f7;
-  color: var(--ogd-text-slate, #334155);
-  line-height: 1.6;
-}
-
 /* v2.30.12 — default list line spacing parity with reading view; safe for CM6 hit-routing (small padding, line-height only).
    v2.30.19 — bumped line-height 1.7 -> 1.85 and padding 0.05em -> 0.08em for clearer
    bullet/numbered list rhythm (matches reading-view li margin-bottom 0.65em + line-height 1.78). */
@@ -6403,7 +6217,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-header
   color: var(--ogd-line-strong, #cbd5e1);
 }
 
-body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout, .cm-line.HyperMD-quote:not(.HyperMD-callout), .cm-table-widget, table.cm-table) {
+body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 :is(.cm-callout, .cm-embed-block.cm-callout, .cm-line.HyperMD-quote:not(.HyperMD-callout)) {
   border-color: var(--ogd-lp-doc-rim);
   background: var(--ogd-lp-doc-glass-bg);
   box-shadow: var(--ogd-lp-doc-glass-shadow);
@@ -6795,12 +6609,20 @@ kbd {
   padding: 16px;
   margin: 0.6em 0;
   text-align: center;
-  overflow-x: auto;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
+.markdown-rendered .mermaid {
+  overflow: visible;
+}
+.markdown-rendered pre.language-mermaid {
+  overflow-x: auto;
+}
 .markdown-rendered .mermaid svg {
+  display: block;
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 /* ---------- C. REPORT FEATURES ---------- */
@@ -7416,7 +7238,7 @@ body.ogd-pdf-label-segmented-dual {
     .markdown-preview-view.markdown-rendered.markdown-rendered,
     .markdown-reading-view .markdown-rendered.markdown-rendered
   ) > .markdown-preview-section > h1:first-of-type + h1 {
-    margin-top: 1.65em;
+    margin-top: var(--ogd-pdf-header-title-gap, 1.65em);
   }
 
   @supports selector(:nth-child(1 of .el-h1)) {
@@ -7430,7 +7252,55 @@ body.ogd-pdf-label-segmented-dual {
       .markdown-preview-view.markdown-rendered.markdown-rendered,
       .markdown-reading-view .markdown-rendered.markdown-rendered
     ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
-      margin-top: 1.65em;
+      margin-top: var(--ogd-pdf-header-title-gap, 1.65em);
+    }
+  }
+
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) h1:first-of-type,
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > h1:first-of-type + h1,
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > .markdown-preview-section > h1:first-of-type,
+  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) > .markdown-preview-section > h1:first-of-type + h1 {
+    margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
+  }
+
+  @supports selector(:nth-child(1 of .el-h1)) {
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .el-h1:nth-child(1 of .el-h1) > h1,
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1,
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) > h1,
+    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
+      .markdown-rendered.markdown-rendered,
+      .markdown-preview-view.markdown-rendered.markdown-rendered,
+      .markdown-reading-view .markdown-rendered.markdown-rendered
+    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
+      margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
     }
   }
 
@@ -10310,8 +10180,7 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
    overriding the CM6 containers here can collapse Korean paragraphs to a one-character column. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout,
 .markdown-source-view.mod-cm6 .cm-embed-block,
-.markdown-source-view.mod-cm6 .cm-html-embed,
-.markdown-source-view.mod-cm6 .cm-table-widget {
+.markdown-source-view.mod-cm6 .cm-html-embed {
   border-radius: var(--radius-l, 8px);
 }
 /* v2.22.106: removed `.cm-embed-block, .cm-html-embed { overflow-x: auto;
@@ -10341,10 +10210,13 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
   border-radius: 3px;
 }
 
-/* Mermaid and wide media: predictable scroll instead of layout push-out */
+/* Mermaid and wide media: predictable layout without clipping diagram bounds. */
 .markdown-rendered .mermaid,
 .markdown-preview-view .mermaid,
-.markdown-reading-view .mermaid,
+.markdown-reading-view .mermaid {
+  max-width: 100%;
+  overflow: visible;
+}
 .markdown-rendered .internal-embed,
 .markdown-preview-view .internal-embed,
 .markdown-reading-view .internal-embed,
@@ -10357,7 +10229,68 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
 .markdown-rendered .mermaid svg,
 .markdown-preview-view .mermaid svg,
 .markdown-reading-view .mermaid svg {
-  max-width: none;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+.markdown-rendered .mermaid svg text,
+.markdown-preview-view .mermaid svg text,
+.markdown-reading-view .mermaid svg text,
+.markdown-source-view.mod-cm6 .mermaid svg text {
+  fill: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  opacity: 1;
+  visibility: visible;
+}
+.markdown-rendered .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel :is(div, span, p), .label :is(div, span, p)),
+.markdown-preview-view .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel :is(div, span, p), .label :is(div, span, p)),
+.markdown-reading-view .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel :is(div, span, p), .label :is(div, span, p)),
+.markdown-source-view.mod-cm6 .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel :is(div, span, p), .label :is(div, span, p)) {
+  color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  -webkit-text-fill-color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  opacity: 1;
+  visibility: visible;
+}
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg {
+  --ogd-mermaid-label-color: var(--ogd-line-soft, #e5e7eb);
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg :is(.node, .label, .edgeLabel) foreignObject {
+  overflow: visible;
+  opacity: 1;
+  visibility: visible;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg :is(.node, .label, .edgeLabel) foreignObject > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  -webkit-text-fill-color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  opacity: 1;
+  visibility: visible;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg :is(.nodeLabel, .nodeLabel *, .edgeLabel span, .edgeLabel p, .label span, .label p) {
+  display: inline;
+  color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  -webkit-text-fill-color: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  line-height: 1.2;
+  opacity: 1;
+  visibility: visible;
+}
+
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .markdown-source-view.mod-cm6) .mermaid svg :is(text, tspan) {
+  fill: var(--ogd-mermaid-label-color, var(--ogd-text-slate, #334155));
+  stroke: none;
+  opacity: 1;
+  visibility: visible;
 }
 
 @supports selector(.cm-embed-block:has(.mermaid)) {
@@ -10610,8 +10543,7 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
   }
   .markdown-rendered table,
   .markdown-preview-view table,
-  .markdown-reading-view table,
-  .markdown-source-view.mod-cm6 .cm-table-widget {
+  .markdown-reading-view table {
     display: block;
     max-width: 100%;
     overflow-x: auto;
@@ -10758,18 +10690,7 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
    - Mobile scroll affordance for wide Markdown tables
    ============================================================ */
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-.markdown-source-view.mod-cm6 .cm-table-widget,
-.markdown-source-view.mod-cm6 table.cm-table {
-  --ogd-table-pad-y: 0.58em;
-  --ogd-table-pad-x: 0.78em;
-  --ogd-table-font-size: 0.96em;
-  --ogd-table-line-height: 1.42;
-}
-
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
-.markdown-source-view.mod-cm6 .cm-table-widget :is(th, td),
-.markdown-source-view.mod-cm6 table.cm-table :is(th, td) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
 
   padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
   font-size: var(--ogd-table-font-size);
@@ -10807,16 +10728,14 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table:is(.wide-table, .print-fit-table),
-.markdown-source-view.mod-cm6 .cm-table-widget table:is(.wide-table, .print-fit-table),
-.markdown-source-view.mod-cm6 table.cm-table:is(.wide-table, .print-fit-table) {
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.wide-table, .print-fit-table):not(.cm-table):not(.cm-table-widget) {
   --ogd-table-pad-y: 0.44em;
   --ogd-table-pad-x: 0.56em;
   --ogd-table-font-size: 0.9em;
   --ogd-table-line-height: 1.34;
 }
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.compact-table,
-.markdown-source-view.mod-cm6 .cm-table-widget table.compact-table,
-.markdown-source-view.mod-cm6 table.cm-table.compact-table {
+.markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table.compact-table:not(.cm-table):not(.cm-table-widget) {
   --ogd-table-pad-y: 0.34em;
   --ogd-table-pad-x: 0.48em;
   --ogd-table-font-size: 0.88em;
@@ -11338,7 +11257,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body.ogd-pdf-visibility { --ogd-pdf-surface-text-font-size: 11.6pt; --ogd-pdf-surface-text-line-height: 1.42; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.92); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.34); --ogd-pdf-marginalia-shadow: 0 4px 10px rgba(15, 23, 42, 0.10); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.04em; }
 
-  body.ogd-pdf-screen-delivery { --ogd-pdf-surface-text-font-size: 12pt; --ogd-pdf-surface-text-line-height: 1.46; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.94); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.28); --ogd-pdf-marginalia-shadow: 0 3px 8px rgba(15, 23, 42, 0.08); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.03em; --ogd-pdf-header-font-size: 8.8pt; --ogd-pdf-footer-font-size: 9pt; --ogd-pdf-segment-key-width: 35mm; --ogd-pdf-segment-value-width: 46mm; --ogd-pdf-segment-half-width: 40.5mm; }
+  body.ogd-pdf-screen-delivery { --ogd-pdf-surface-text-font-size: 12pt; --ogd-pdf-surface-text-line-height: 1.46; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.94); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.28); --ogd-pdf-marginalia-shadow: 0 3px 8px rgba(15, 23, 42, 0.08); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.03em; --ogd-pdf-header-font-size: 8.8pt; --ogd-pdf-footer-font-size: 9pt; --ogd-pdf-segment-key-width: 35mm; --ogd-pdf-segment-value-width: 46mm; --ogd-pdf-segment-half-width: 40.5mm; --ogd-pdf-header-title-gap: 3.25em; }
 
   body.ogd-pdf-font-comfortable { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.42); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-header-font-size: 9.4pt; --ogd-pdf-footer-font-size: 9.6pt; --ogd-pdf-segment-key-width: 36mm; --ogd-pdf-segment-value-width: 47mm; --ogd-pdf-segment-half-width: 41.5mm; }
 
@@ -11380,8 +11299,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered), body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, li, dd, dt, blockquote):not(table *) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
-  body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.78em; margin-bottom: 0.52em; padding-top: 0.22em; padding-bottom: 0.16em; }
-  body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); }
+  body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.92em; margin-bottom: 0.62em; padding-top: 0.34em; padding-bottom: 0.28em; }
+  body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; padding: 0.20em 0.44em 0.24em; border-color: transparent; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.84), rgba(241, 245, 249, 0.50)); box-shadow: none; }
   body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 { color: #172033; text-decoration-color: rgba(14, 116, 144, 0.52); text-decoration-thickness: 1.5px; }
   body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table { --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.46); --ogd-table-border: rgba(148, 163, 184, 0.42); --ogd-table-cell-border: rgba(203, 213, 225, 0.90); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef5); --ogd-table-row-even: rgba(248, 250, 252, 0.84); font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); border-color: var(--ogd-table-border); }
   body.ogd-pdf-screen-delivery :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table th { border-bottom: 2px solid #b8c6d6; background: var(--ogd-table-head-bg); color: #0f172a; font-weight: 850; }
@@ -12038,6 +11957,14 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   ) :is(img, svg, canvas) {
     max-height: 155mm;
     object-fit: contain;
+  }
+
+  body.ogd-pdf-compact :is(
+    .markdown-rendered,
+    .markdown-preview-view.markdown-rendered,
+    .markdown-reading-view .markdown-rendered
+  ) .mermaid svg {
+    max-height: none;
   }
 
   body.ogd-pdf-compact .markdown-rendered a[href^="http"]::after {
@@ -14482,7 +14409,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft);
     backdrop-filter: var(--ogd-glass-filter-soft);
     border-color: var(--ogd-setting-row-border);
-    outline: 1px solid color-mix(in srgb, var(--ogd-glass-border-hover) 62%, transparent);
+    outline: 1px solid rgba(125, 211, 252, 0.30);
     outline-offset: -1px;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
     transform: var(--ogd-hover-lift, translateY(-1px));
@@ -16857,8 +16784,22 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
    - Promotes Frost Aqua focus as a visible, non-shifting glass state.
    ============================================================ */
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+
+  margin-top: 1.1em;
+  margin-bottom: 2.5em;
+  width: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+  border: 1px solid var(--ogd-line-soft, #e5e7eb);
+  border-radius: var(--ogd-radius-control, 7px);
+
+  --ogd-table-pad-y: 0.58em;
+  --ogd-table-pad-x: 0.78em;
+  --ogd-table-font-size: 0.96em;
+  --ogd-table-line-height: 1.42;
+
   --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54));
   --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66));
   --ogd-table-border: rgba(203, 213, 225, 0.58);
@@ -16871,8 +16812,9 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
   box-shadow: var(--ogd-table-shadow);
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
+  border-bottom: 1px solid var(--ogd-text-soft, #94a3b8);
+
   background: var(--ogd-table-head-bg);
   color: var(--ogd-text-slate, #334155);
   border-color: var(--ogd-table-cell-border);
@@ -16880,19 +16822,19 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
   font-weight: 780;
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
+
   border-color: var(--ogd-table-cell-border);
   color: var(--ogd-text-slate, #334155);
 }
 
-body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+
   background: var(--ogd-table-row-even);
 }
 
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
+
   background: var(--ogd-table-row-hover);
 }
 
@@ -16922,8 +16864,7 @@ body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-
   .markdown-reading-view.ogd-report-mode,
   .markdown-preview-view.ogd-report-mode .markdown-rendered,
   .markdown-reading-view.ogd-report-mode .markdown-rendered
-) table,
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-table-widget, table.cm-table) {
+) table {
   --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
   --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6);
   --ogd-table-border: rgba(148, 163, 184, 0.72);
@@ -16966,8 +16907,11 @@ body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-
   box-shadow: 1px 0 0 rgba(148, 163, 184, 0.66);
 }
 
-.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+
+  border-color: var(--ogd-line-dark, #334155);
+  box-shadow: var(--ogd-shadow-none, none);
+
   --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48));
   --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58));
   --ogd-table-border: rgba(203, 213, 225, 0.20);
@@ -16994,9 +16938,7 @@ body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-table-
   .markdown-preview-view.ogd-report-mode .markdown-rendered,
   .markdown-reading-view.ogd-report-mode .markdown-rendered
 ) table,
-.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-table-widget, table.cm-table),
-body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
   --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62));
   --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74));
   --ogd-table-border: rgba(203, 213, 225, 0.28);
@@ -17227,13 +17169,12 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
   }
 
   :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre),
-  .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table, .cm-embed-block pre) {
+  .markdown-source-view.mod-cm6 .cm-embed-block pre {
     border-color: var(--ogd-lg-refined-border);
     box-shadow: var(--ogd-table-shadow, var(--ogd-lg-refined-shadow));
   }
 
-  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
-  .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+  :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td) {
     overflow-wrap: anywhere;
     word-break: normal;
   }
@@ -17901,18 +17842,6 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
    no such visual; we now match that behaviour. The cell focus visual
    for table widgets is preserved. */
 
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within {
-  background: var(--ogd-lp-cell-focus-bg);
-  outline: 1px solid var(--ogd-lp-focus-rim);
-  outline-offset: -2px;
-  box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.18), var(--ogd-lp-focus-shadow);
-}
-
-.markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(td, th):focus-within :is(.table-cell-wrapper, .cm-editor, .cm-scroller, .cm-content, .cm-line) {
-  background: transparent;
-  box-shadow: none;
-}
-
 .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) :is(.cm-inline-code, .cm-url, .cm-link) {
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -17936,8 +17865,7 @@ body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-table-widg
    - Leaves report-mode/PDF table fallback rules to their existing owners.
    ============================================================ */
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
   --ogd-table-tint: rgba(125, 211, 252, 0.10);
   --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
   --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68));
@@ -17955,8 +17883,7 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, t
   backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
   border-color: var(--ogd-table-cell-border);
   border-bottom-color: rgba(148, 163, 184, 0.46);
   background: var(--ogd-table-head-bg);
@@ -17965,24 +17892,20 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, t
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16);
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
   border-color: var(--ogd-table-cell-border);
   color: var(--ogd-text-slate, #334155);
 }
 
-body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td,
-body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
   background: var(--ogd-table-row-even);
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td,
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) tbody tr:hover td {
+body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
   background: var(--ogd-table-row-hover);
 }
 
-body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
   --ogd-table-tint: rgba(14, 165, 233, 0.10);
   --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
   --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58));
@@ -17993,14 +17916,12 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-tabl
   --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
-body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th,
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) th {
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
   border-bottom-color: rgba(148, 163, 184, 0.34);
   color: var(--text-normal, #e5edf7);
 }
 
-body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td,
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) td {
+body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
   color: var(--text-normal, #e5edf7);
 }
 /* <<< src/surfaces/23-liquid-glass-core.css */

@@ -326,8 +326,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table,
-body.theme-dark .workspace-leaf-content .markdown-rendered table,
-body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) {
+body.theme-dark .workspace-leaf-content .markdown-rendered table {
   --ogd-table-bg: radial-gradient(circle at 78% 12%, rgba(125, 211, 252, 0.10), transparent 0 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.72));
   --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(30, 41, 59, 0.70));
   --ogd-table-border: rgba(71, 85, 105, 0.86);
@@ -338,8 +337,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-tab
 }
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td),
-body.theme-dark .workspace-leaf-content .markdown-rendered table :is(th, td),
-body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-table-widget, table.cm-table) :is(th, td) {
+body.theme-dark .workspace-leaf-content .markdown-rendered table :is(th, td) {
   color: var(--ogd-line-soft, #e5e7eb);
 }
 .theme-dark .markdown-rendered code:not(pre code) {
