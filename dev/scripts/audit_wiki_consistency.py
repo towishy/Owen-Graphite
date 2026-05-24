@@ -76,9 +76,11 @@ REQUIRED_TEXT = {
         "dev/scripts/finish_work.py",
         "dev/scripts/validation_plan.py",
         "dev/scripts/new_runtime_evidence.py",
+        "dev/scripts/new_incident.py",
         "dev/scripts/work_summary.py",
         "dev/scripts/audit_mobile_owner.py",
         "dev/scripts/audit_wiki_route_coverage.py",
+        "dev/scripts/audit_selector_owner_cheatsheet.py",
         "dev/scripts/audit_runtime_evidence_requirements.py",
         "PROMPTS/work-summary.md",
         "WORKFLOWS/validation-matrix.md",
@@ -86,6 +88,8 @@ REQUIRED_TEXT = {
     "dev/WIKI/audits.md": [
         "wiki_route.py --list",
         "wiki_route.py mobile",
+        "validation_plan.py --run-safe",
+        "audit_selector_owner_cheatsheet.py",
         "audit_wiki_consistency.py",
     ],
     "dev/WIKI/MAP/diff-stability.md": [
@@ -123,6 +127,7 @@ REQUIRED_TEXT = {
     "dev/WIKI/runtime-evidence-storage.md": [
         "dev/TEMP/runtime-evidence",
         "new_runtime_evidence.py",
+        "--strict",
         "Permanent Evidence",
         "Minimum Metadata",
     ],
@@ -151,11 +156,13 @@ REQUIRED_TEXT = {
         "Change Type",
         "Full Release-Confidence Set",
         "wiki_route.py <surface>",
+        "--run-safe",
     ],
     "dev/WIKI/PROMPTS/work-summary.md": [
         "WIKI consulted",
         "Owner modules changed",
         "work_summary.py",
+        "--sync",
         "Obsidian synced",
     ],
     "dev/WIKI/RECIPES/README.md": [
@@ -168,6 +175,7 @@ REQUIRED_TEXT = {
         "Required Fields For New Incidents",
         "incident-template.md",
         "taxonomy.md",
+        "new_incident.py",
     ],
     "dev/WIKI/INCIDENTS/taxonomy.md": [
         "runtime-selected-state",
@@ -276,6 +284,7 @@ def assert_helper_and_generator_stability() -> None:
         "dev/scripts/validation_plan.py",
         "dev/scripts/release_preflight.py",
         "dev/scripts/audit_wiki_route_coverage.py",
+        "dev/scripts/audit_selector_owner_cheatsheet.py",
         "dev/scripts/audit_runtime_evidence_requirements.py",
     ):
         if not (ROOT / script).is_file():

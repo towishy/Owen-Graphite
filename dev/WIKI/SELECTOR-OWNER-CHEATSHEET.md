@@ -18,6 +18,6 @@ Use this for quick selector-to-owner routing. If a selector appears in a runtime
 | `.setting-item`, `.setting-tab-container`, Style Settings controls | `src/chrome/33-settings-controls.css`, `src/features/40-style-settings.css` | `WORKFLOWS/docs-assets.md` | Contract audit for settings metadata. |
 | `body.ogd-report-mode`, `@media print`, `@page` | `src/features/42-report-print-polish.css`, `43-print-base.css` | `WORKFLOWS/pdf.md` | Print scope must not leak to screen. |
 | `ogd-pdf-header-*`, `ogd-pdf-footer-*` | `src/features/41-feature-presets.css` | `MAP/pdf-header-footer-contract.md` | Marginalia owner stays in presets. |
-| `.dataview`, `.task-list-item`, `.canvas`, `.graph-view`, `.mermaid` | `src/plugins/*` when plugin-specific | `PLUGINS/compatibility-matrix.md` | Plugin CSS does not own core document geometry. |
+| `.dataview`, `.task-list-item`, `.canvas`, `.graph-view`, `.mermaid` | `src/chrome/32-overlay-popover-dataview.css` for Dataview, `src/plugins/60-canvas-graph-link-panes.css` for Canvas/Graph, `src/plugins/61-live-preview-mobile-plugin.css` for Mermaid/mobile/plugin embeds | `PLUGINS/compatibility-matrix.md` | Plugin CSS does not own core document geometry. |
 
 If a selector is not listed, use `OWNER-DECISION-TREE.md` and update this cheatsheet after the owner is confirmed.

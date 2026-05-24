@@ -18,6 +18,12 @@ Create a scaffold with:
 .\.venv\Scripts\python.exe dev\scripts\new_runtime_evidence.py --surface table --name selected-cell-height --state selected
 ```
 
+Use strict mode when runtime correctness is part of the claim:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\audit_runtime_evidence_requirements.py --strict
+```
+
 ## Permanent Evidence
 
 Promote evidence into `dev/WIKI/INCIDENTS/` only when one of these is true:

@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import argparse
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -20,7 +22,21 @@ def add(commands: list[str], command: str) -> None:
         commands.append(command)
 
 
+def command_to_args(command: str) -> list[str] | None:
+    prefix = ".\\.venv\\Scripts\\python.exe "
+    if not command.startswith(prefix):
+        return None
+    parts = command[len(prefix):].split()
+    if "<version>" in parts:
+        return None
+    return [sys.executable, *parts]
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run-safe", action="store_true", help="Run recommended commands that do not require placeholders.")
+    args = parser.parse_args()
+
     files = changed_files()
     commands: list[str] = []
     notes: list[str] = []
@@ -57,6 +73,17 @@ def main() -> int:
         print("\nNotes:")
         for note in notes:
             print(f"- {note}")
+    if args.run_safe:
+        print("\nRunning safe validation commands:")
+        exit_code = 0
+        for command in commands:
+            run_args = command_to_args(command)
+            if run_args is None:
+                print(f"SKIP: {command}")
+                continue
+            print(f"RUN: {command}")
+            exit_code |= subprocess.run(run_args, cwd=ROOT).returncode
+        return exit_code
     return 0
 
 

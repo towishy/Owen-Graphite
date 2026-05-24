@@ -26,3 +26,5 @@ Use this to choose validation depth without guessing.
 Use `dev/scripts/wiki_route.py <surface>` before choosing owner-specific checks.
 
 Use `dev/scripts/validation_plan.py` to recommend checks from the current git diff.
+
+Use `dev/scripts/validation_plan.py --run-safe` to execute recommended checks that do not require placeholders.

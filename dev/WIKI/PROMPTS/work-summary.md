@@ -14,6 +14,12 @@ Run the finish helper when wrapping up a task:
 .\.venv\Scripts\python.exe dev\scripts\finish_work.py --check
 ```
 
+To sync Obsidian as part of wrap-up:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\finish_work.py --check --sync --target "D:\Owen-WIKI\.obsidian\themes\Owen Graphite"
+```
+
 ## Required Summary Fields
 
 | Field | Value |

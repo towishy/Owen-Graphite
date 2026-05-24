@@ -93,7 +93,9 @@
 - `dev/scripts/finish_work.py`
 - `dev/scripts/validation_plan.py`
 - `dev/scripts/new_runtime_evidence.py`
+- `dev/scripts/new_incident.py`
 - `dev/scripts/work_summary.py`
 - `dev/scripts/audit_mobile_owner.py`
 - `dev/scripts/audit_wiki_route_coverage.py`
+- `dev/scripts/audit_selector_owner_cheatsheet.py`
 - `dev/scripts/audit_runtime_evidence_requirements.py`

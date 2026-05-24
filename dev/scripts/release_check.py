@@ -59,6 +59,7 @@ def main() -> int:
             ("Source usage map", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"]),
             ("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"]),
             ("WIKI route coverage", [PYTHON, "dev/scripts/audit_wiki_route_coverage.py"]),
+            ("Selector owner cheatsheet", [PYTHON, "dev/scripts/audit_selector_owner_cheatsheet.py"]),
             ("Core principles process gate", [PYTHON, "dev/scripts/audit_core_principles.py"]),
             ("Direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"]),
             ("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"]),

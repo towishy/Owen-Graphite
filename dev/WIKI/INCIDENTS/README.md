@@ -22,3 +22,9 @@ Use incidents to preserve failure patterns, wrong approaches, correct owner rout
 Use `incident-template.md` for new entries.
 
 Use `taxonomy.md` to decide which class of incident applies.
+
+Create a new incident scaffold with:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\new_incident.py --type runtime-selected-state --name table-row-height --surface table --state selected
+```
