@@ -10,11 +10,13 @@ This wiki is the operational entry point for AI-assisted work on Owen Graphite.
 2. Read `STRUCTURE.md` when changing paths, generated artifacts, or docs layout.
 3. Use `QUICK-ROUTING.md` to find the owner module.
 4. Use `OWNER-DECISION-TREE.md` when ownership is ambiguous.
-5. Open the relevant workflow under `WORKFLOWS/`.
-6. Use `MAP/source-usage-map.md` to jump into generated source maps.
-7. Use `DOCS/docs-map.md` when a task touches docs, samples, settings, visual baselines, or release process.
-8. Use `runtime-evidence-template.md` before editing runtime state bugs.
-9. Run the audits listed in the workflow before committing.
+5. Use `SELECTOR-OWNER-CHEATSHEET.md` when starting from matched selectors.
+6. Open the relevant workflow under `WORKFLOWS/` or recipe under `RECIPES/`.
+7. Use `MAP/source-usage-map.md` to jump into generated source maps.
+8. Use `DOCS/docs-map.md` when a task touches docs, samples, settings, visual baselines, or release process.
+9. Use `VISUAL-QA.md` for visual changes and `runtime-evidence-template.md` before editing runtime state bugs.
+10. Use `TOKENS/` and `PLUGINS/` notes when touching token or plugin behavior.
+11. Run the audits listed in the workflow before committing.
 
 ## Non-Negotiable
 

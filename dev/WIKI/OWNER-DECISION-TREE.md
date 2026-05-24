@@ -45,5 +45,5 @@ Use this when `QUICK-ROUTING.md` is not enough. Stop at the first true statement
    - Gate: Style Settings contract audit.
 
 9. If none of the above fits:
-   - Search `MAP/source-usage-map.md`, `MAP/owner-registry.json`, and `SRC/validation-matrix.md`.
+   - Search `MAP/source-usage-map.md`, `MAP/owner-registry.json`, `SELECTOR-OWNER-CHEATSHEET.md`, and `SRC/validation-matrix.md`.
    - If ownership is still unclear, update WIKI/MAP before changing source.

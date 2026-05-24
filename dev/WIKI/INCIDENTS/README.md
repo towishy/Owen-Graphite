@@ -20,3 +20,5 @@ Use incidents to preserve failure patterns, wrong approaches, correct owner rout
 - Follow-up WIKI/MAP updates.
 
 Use `incident-template.md` for new entries.
+
+Use `taxonomy.md` to decide which class of incident applies.

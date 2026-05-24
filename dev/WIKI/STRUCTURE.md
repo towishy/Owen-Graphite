@@ -10,6 +10,10 @@
 | `dev/WIKI/DOCS/` | Documentation corpus routing and absorbed v3 docs/research fixtures. |
 | `dev/WIKI/SRC/` | Curated source-family routing notes. |
 | `dev/WIKI/WORKFLOWS/` | Task-specific edit and validation workflows. |
+| `dev/WIKI/RECIPES/` | Step-by-step recipes for common theme changes. |
+| `dev/WIKI/RUNTIME/` | Surface-specific runtime evidence guides. |
+| `dev/WIKI/TOKENS/` | Token usage and state mapping guidance. |
+| `dev/WIKI/PLUGINS/` | Plugin compatibility and runtime DOM notes. |
 | `dev/WIKI/INCIDENTS/` | Failure pattern records and incident templates. |
 | `dev/WIKI/effective-baseline/` | Effective baseline snapshots and Style Settings matrices. |
 | `dev/WIKI/runtime-debug-snippets/` | Runtime evidence snippets used before CSS fixes. |

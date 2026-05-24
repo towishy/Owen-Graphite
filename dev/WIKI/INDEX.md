@@ -6,6 +6,8 @@
 - `STRUCTURE.md`: canonical WIKI folders and removed legacy roots.
 - `QUICK-ROUTING.md`: where to start by work area.
 - `OWNER-DECISION-TREE.md`: fallback routing when ownership is ambiguous.
+- `SELECTOR-OWNER-CHEATSHEET.md`: selector-to-owner quick map.
+- `VISUAL-QA.md`: visual acceptance checklist.
 - `runtime-evidence-template.md`: required runtime evidence shape.
 
 ## Workflows
@@ -35,6 +37,28 @@
 - `SRC/tokens.md`
 - `SRC/validation-matrix.md`
 
+## Tokens And Plugins
+
+- `TOKENS/usage-guide.md`
+- `TOKENS/state-token-map.md`
+- `PLUGINS/compatibility-matrix.md`
+- `PLUGINS/runtime-dom-notes.md`
+
+## Runtime And Recipes
+
+- `RUNTIME/README.md`
+- `RUNTIME/table.md`
+- `RUNTIME/chrome.md`
+- `RUNTIME/pdf.md`
+- `RUNTIME/plugins.md`
+- `RECIPES/README.md`
+- `RECIPES/reading-heading-spacing.md`
+- `RECIPES/live-preview-spacing.md`
+- `RECIPES/rendered-table-polish.md`
+- `RECIPES/pdf-label-preset.md`
+- `RECIPES/top-chrome-state.md`
+- `RECIPES/style-settings-option.md`
+
 ## Operations
 
 - `audits.md`
@@ -54,5 +78,6 @@
 - `INCIDENTS/direct-owner-violation.md`
 - `INCIDENTS/README.md`
 - `INCIDENTS/incident-template.md`
+- `INCIDENTS/taxonomy.md`
 - `PROMPTS/before-edit.md`
 - `PROMPTS/review-core-principles.md`
