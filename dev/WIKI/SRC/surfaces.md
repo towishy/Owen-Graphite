@@ -7,3 +7,5 @@
 - `src/surfaces/24-html-table-live-preview-glass.css`: Live Preview HTML table embeds only.
 
 Do not use surfaces as a catch-all repair layer.
+
+Minimum checks: `SRC/validation-matrix.md`, `audit_direct_owner_guard.py`, `audit_lp_pdf_selector_ownership.py`, `release_check.py --skip-bundle`.

@@ -23,6 +23,7 @@ REQUIRED_WIKI_FILES = [
     "dev/WIKI/CORE-PRINCIPLES.md",
     "dev/WIKI/STRUCTURE.md",
     "dev/WIKI/QUICK-ROUTING.md",
+    "dev/WIKI/OWNER-DECISION-TREE.md",
     "dev/WIKI/MAP/source-usage-map.md",
     "dev/WIKI/MAP/owner-registry.json",
     "dev/WIKI/effective-baseline/v3.1.43/baseline-metadata.json",
@@ -31,6 +32,10 @@ REQUIRED_WIKI_FILES = [
     "dev/WIKI/DOCS/v3/style-settings-contract.json",
     "dev/WIKI/DOCS/v3/release-plan.md",
     "dev/WIKI/DOCS/v3/research/golden-rig/obsidian-harness.html",
+    "dev/WIKI/SRC/validation-matrix.md",
+    "dev/WIKI/INCIDENTS/README.md",
+    "dev/WIKI/INCIDENTS/incident-template.md",
+    "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/runtime-debug-protocol.md",
     "dev/WIKI/runtime-debug-snippets/table-cell-dump.js",
     "dev/WIKI/runtime-debug-snippets/matched-rules-dump.js",
@@ -140,6 +145,7 @@ def main() -> int:
         assert_wiki_exists()
         assert_no_legacy_wiki_paths()
         assert_numeric_release_tag_policy()
+        run("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"])
         run("source usage map freshness", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"])
         run("direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"])
         run("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"])

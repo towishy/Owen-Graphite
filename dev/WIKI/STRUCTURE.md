@@ -10,6 +10,7 @@
 | `dev/WIKI/DOCS/` | Documentation corpus routing and absorbed v3 docs/research fixtures. |
 | `dev/WIKI/SRC/` | Curated source-family routing notes. |
 | `dev/WIKI/WORKFLOWS/` | Task-specific edit and validation workflows. |
+| `dev/WIKI/INCIDENTS/` | Failure pattern records and incident templates. |
 | `dev/WIKI/effective-baseline/` | Effective baseline snapshots and Style Settings matrices. |
 | `dev/WIKI/runtime-debug-snippets/` | Runtime evidence snippets used before CSS fixes. |
 

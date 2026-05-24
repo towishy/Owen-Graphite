@@ -12,3 +12,5 @@
 | Workspace chrome | `src/chrome/30`, `31`, `34`, `37` | `WORKFLOWS/chrome-ui.md` | Fix from overlay modules |
 | Overlay/menu/search | `src/chrome/32`, `35`, `36` | `SRC/chrome.md` | Treat as workspace chrome owner |
 | Release | `dev/scripts/build_release.py` | `WORKFLOWS/release.md` | Release without gates |
+
+If the owner is still unclear, use `OWNER-DECISION-TREE.md` before searching or editing source.

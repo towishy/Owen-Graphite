@@ -4,3 +4,5 @@
 - `src/themes/51-accessibility-motion-contrast.css`: reduced motion/high contrast/accessibility support.
 
 Theme files may adjust theme-specific values but should not own base behavior unless registered.
+
+Minimum checks: `SRC/validation-matrix.md`, `release_check.py --skip-bundle`, and Light/Dark evidence for visible changes.

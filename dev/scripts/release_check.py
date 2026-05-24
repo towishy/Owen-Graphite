@@ -28,7 +28,7 @@ def assert_theme_fresh() -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--tag", help="Optional release tag to compare with manifest version; leading v is ignored.")
+    parser.add_argument("--tag", help="Optional numeric semver release tag to compare with manifest version; do not include a leading v.")
     parser.add_argument("--skip-bundle", action="store_true", help="Skip bundle rebuild but still check existing bundle freshness.")
     parser.add_argument("--include-zip", action="store_true", help="Build and audit the manual install ZIP.")
     parser.add_argument("--include-visual", action="store_true", help="Run the static visual quality fixture audit.")
@@ -52,6 +52,7 @@ def main() -> int:
             ("README SVG layout", [PYTHON, "dev/scripts/audit_readme_svg_layout.py"]),
             ("CSS compatibility budget", [PYTHON, "dev/scripts/audit_css_compat_budget.py"]),
             ("Source usage map", [PYTHON, "dev/scripts/build_source_usage_map.py", "--check"]),
+            ("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"]),
             ("Core principles process gate", [PYTHON, "dev/scripts/audit_core_principles.py"]),
             ("Direct owner guard", [PYTHON, "dev/scripts/audit_direct_owner_guard.py"]),
             ("LP/PDF selector ownership", [PYTHON, "dev/scripts/audit_lp_pdf_selector_ownership.py"]),

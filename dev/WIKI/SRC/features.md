@@ -6,3 +6,5 @@
 - `src/features/43-print-base.css`: base print page and generic PDF rules.
 
 PDF header/footer ownership belongs to `41-feature-presets.css`.
+
+Minimum checks: `SRC/validation-matrix.md`, `audit_style_settings_contract.py` for settings, `audit_pdf_header_footer.py` for PDF, `release_check.py --skip-bundle`.

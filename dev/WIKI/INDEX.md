@@ -5,6 +5,8 @@
 - `CORE-PRINCIPLES.md`: non-negotiable rules.
 - `STRUCTURE.md`: canonical WIKI folders and removed legacy roots.
 - `QUICK-ROUTING.md`: where to start by work area.
+- `OWNER-DECISION-TREE.md`: fallback routing when ownership is ambiguous.
+- `runtime-evidence-template.md`: required runtime evidence shape.
 
 ## Workflows
 
@@ -31,6 +33,7 @@
 - `SRC/plugins.md`
 - `SRC/themes.md`
 - `SRC/tokens.md`
+- `SRC/validation-matrix.md`
 
 ## Operations
 
@@ -49,5 +52,7 @@
 
 - `INCIDENTS/table-row-inflation.md`
 - `INCIDENTS/direct-owner-violation.md`
+- `INCIDENTS/README.md`
+- `INCIDENTS/incident-template.md`
 - `PROMPTS/before-edit.md`
 - `PROMPTS/review-core-principles.md`

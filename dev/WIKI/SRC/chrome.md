@@ -10,3 +10,5 @@
 - `src/chrome/37-tabs-file-explorer-search.css`: tabs and file explorer.
 
 Check owner before adding broad `body:not(.is-mobile)` selectors.
+
+Minimum checks: `SRC/validation-matrix.md`, `audit_core_principles.py`, `release_check.py --skip-bundle`, plus runtime evidence for hover/focus/active states.
