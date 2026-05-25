@@ -1,25 +1,25 @@
 {
   "schema": "owen-graphite/unused-css-candidates/2",
-  "version": "3.1.61",
+  "version": "3.1.62",
   "bundle": "dist/theme-v3.css",
-  "bundleSha256": "403b1ec620f7aa22e6e2de09a9b7703837bb11612f165548073de89a16b0c279",
+  "bundleSha256": "411721f6b4741416f0a8ee3792293507205580ce6ae18074a78f2c6a7efd854e",
   "scenarioCount": 201,
-  "querySelectorCount": 3082,
-  "sourceSelectorPartCount": 3786,
+  "querySelectorCount": 3092,
+  "sourceSelectorPartCount": 3796,
   "summary": {
     "invalid-query": 3,
     "matched": 3337,
-    "reserved": 446
+    "reserved": 456
   },
   "reservedReasonSummary": {
-    "obsidian-style-or-semantic-selector": 418,
-    "state-pseudo": 373,
-    "reserved-module": 303,
-    "document-content-selector": 250,
+    "obsidian-style-or-semantic-selector": 428,
+    "state-pseudo": 383,
+    "reserved-module": 309,
+    "document-content-selector": 260,
     "reserved-at-context": 5
   },
   "reservedBucketSummary": {
-    "state-interaction": 373,
+    "state-interaction": 383,
     "obsidian-chrome-runtime": 65,
     "live-preview-runtime": 8
   },
@@ -86,7 +86,7 @@
     }
   },
   "reservedDecisionSummary": {
-    "do-not-remove": 373,
+    "do-not-remove": 383,
     "runtime-reserved": 73
   },
   "coverageBacklogPolicy": {
@@ -94,6 +94,38 @@
     "invalid-query": "Do not use invalid-query rows as deletion evidence; pseudo-element-only selectors and browser query limitations require manual or visual/context validation."
   },
   "coverageGapSummary": [
+    {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "reserved": 53,
+      "staticReserved": 18,
+      "stateReserved": 35,
+      "matched": 129,
+      "invalidQuery": 0,
+      "topReasons": [
+        {
+          "reason": "document-content-selector",
+          "count": 53
+        },
+        {
+          "reason": "obsidian-style-or-semantic-selector",
+          "count": 53
+        },
+        {
+          "reason": "state-pseudo",
+          "count": 35
+        }
+      ],
+      "topBuckets": [
+        {
+          "bucket": "state-interaction",
+          "count": 35
+        },
+        {
+          "bucket": "obsidian-chrome-runtime",
+          "count": 18
+        }
+      ]
+    },
     {
       "module": "src/chrome/32-overlay-popover-dataview.css",
       "reserved": 50,
@@ -123,38 +155,6 @@
         {
           "bucket": "state-interaction",
           "count": 50
-        }
-      ]
-    },
-    {
-      "module": "src/surfaces/23-liquid-glass-core.css",
-      "reserved": 49,
-      "staticReserved": 18,
-      "stateReserved": 31,
-      "matched": 129,
-      "invalidQuery": 0,
-      "topReasons": [
-        {
-          "reason": "document-content-selector",
-          "count": 49
-        },
-        {
-          "reason": "obsidian-style-or-semantic-selector",
-          "count": 49
-        },
-        {
-          "reason": "state-pseudo",
-          "count": 31
-        }
-      ],
-      "topBuckets": [
-        {
-          "bucket": "state-interaction",
-          "count": 31
-        },
-        {
-          "bucket": "obsidian-chrome-runtime",
-          "count": 18
         }
       ]
     },
@@ -191,6 +191,38 @@
         {
           "bucket": "obsidian-chrome-runtime",
           "count": 18
+        }
+      ]
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "reserved": 40,
+      "staticReserved": 0,
+      "stateReserved": 40,
+      "matched": 133,
+      "invalidQuery": 0,
+      "topReasons": [
+        {
+          "reason": "obsidian-style-or-semantic-selector",
+          "count": 40
+        },
+        {
+          "reason": "reserved-module",
+          "count": 40
+        },
+        {
+          "reason": "state-pseudo",
+          "count": 40
+        },
+        {
+          "reason": "document-content-selector",
+          "count": 10
+        }
+      ],
+      "topBuckets": [
+        {
+          "bucket": "state-interaction",
+          "count": 40
         }
       ]
     },
@@ -259,38 +291,6 @@
         {
           "bucket": "obsidian-chrome-runtime",
           "count": 18
-        }
-      ]
-    },
-    {
-      "module": "src/chrome/33-settings-controls.css",
-      "reserved": 34,
-      "staticReserved": 0,
-      "stateReserved": 34,
-      "matched": 133,
-      "invalidQuery": 0,
-      "topReasons": [
-        {
-          "reason": "obsidian-style-or-semantic-selector",
-          "count": 34
-        },
-        {
-          "reason": "reserved-module",
-          "count": 34
-        },
-        {
-          "reason": "state-pseudo",
-          "count": 34
-        },
-        {
-          "reason": "document-content-selector",
-          "count": 4
-        }
-      ],
-      "topBuckets": [
-        {
-          "bucket": "state-interaction",
-          "count": 34
         }
       ]
     },
@@ -761,6 +761,99 @@
   ],
   "reservedSamples": [
     {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "items": [
+        {
+          "line": 1373,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .view-header",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .view-header",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1373,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1381,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1391,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1414,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1420,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1420,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::before",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        },
+        {
+          "line": 1437,
+          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
+          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
+          "atContext": "@media (min-width: 701px)",
+          "reservedBucket": "obsidian-chrome-runtime",
+          "riskReasons": [
+            "document-content-selector",
+            "obsidian-style-or-semantic-selector"
+          ]
+        }
+      ]
+    },
+    {
       "module": "src/chrome/32-overlay-popover-dataview.css",
       "items": [
         {
@@ -865,99 +958,6 @@
       ]
     },
     {
-      "module": "src/surfaces/23-liquid-glass-core.css",
-      "items": [
-        {
-          "line": 1376,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .view-header",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .view-header",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1376,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1384,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1394,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1417,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1423,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1423,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::before",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        },
-        {
-          "line": 1440,
-          "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
-          "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
-          "atContext": "@media (min-width: 701px)",
-          "reservedBucket": "obsidian-chrome-runtime",
-          "riskReasons": [
-            "document-content-selector",
-            "obsidian-style-or-semantic-selector"
-          ]
-        }
-      ]
-    },
-    {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
       "items": [
         {
@@ -1054,6 +1054,107 @@
             "document-content-selector",
             "obsidian-style-or-semantic-selector",
             "reserved-module"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "items": [
+        {
+          "line": 112,
+          "selectorPart": ".modal .setting-item-control select option:focus",
+          "querySelector": ".modal .setting-item-control select option:focus",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 112,
+          "selectorPart": ".modal .setting-item-control select option:hover",
+          "querySelector": ".modal .setting-item-control select option:hover",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 112,
+          "selectorPart": ".setting-item-control select option:focus",
+          "querySelector": ".setting-item-control select option:focus",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 112,
+          "selectorPart": ".setting-item-control select option:hover",
+          "querySelector": ".setting-item-control select option:hover",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 124,
+          "selectorPart": ".setting-item-control .dropdown:focus-visible",
+          "querySelector": ".setting-item-control .dropdown:focus-visible",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 124,
+          "selectorPart": ".setting-item-control input:focus",
+          "querySelector": ".setting-item-control input:focus",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 124,
+          "selectorPart": ".setting-item-control select:focus",
+          "querySelector": ".setting-item-control select:focus",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
+          ]
+        },
+        {
+          "line": 124,
+          "selectorPart": ".setting-item-control textarea:focus",
+          "querySelector": ".setting-item-control textarea:focus",
+          "atContext": "",
+          "reservedBucket": "state-interaction",
+          "riskReasons": [
+            "obsidian-style-or-semantic-selector",
+            "reserved-module",
+            "state-pseudo"
           ]
         }
       ]
@@ -1264,107 +1365,6 @@
             "document-content-selector",
             "obsidian-style-or-semantic-selector",
             "reserved-module"
-          ]
-        }
-      ]
-    },
-    {
-      "module": "src/chrome/33-settings-controls.css",
-      "items": [
-        {
-          "line": 112,
-          "selectorPart": ".modal .setting-item-control select option:focus",
-          "querySelector": ".modal .setting-item-control select option:focus",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 112,
-          "selectorPart": ".modal .setting-item-control select option:hover",
-          "querySelector": ".modal .setting-item-control select option:hover",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 112,
-          "selectorPart": ".setting-item-control select option:focus",
-          "querySelector": ".setting-item-control select option:focus",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 112,
-          "selectorPart": ".setting-item-control select option:hover",
-          "querySelector": ".setting-item-control select option:hover",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 124,
-          "selectorPart": ".setting-item-control .dropdown:focus-visible",
-          "querySelector": ".setting-item-control .dropdown:focus-visible",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 124,
-          "selectorPart": ".setting-item-control input:focus",
-          "querySelector": ".setting-item-control input:focus",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 124,
-          "selectorPart": ".setting-item-control select:focus",
-          "querySelector": ".setting-item-control select:focus",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
-          ]
-        },
-        {
-          "line": 124,
-          "selectorPart": ".setting-item-control textarea:focus",
-          "querySelector": ".setting-item-control textarea:focus",
-          "atContext": "",
-          "reservedBucket": "state-interaction",
-          "riskReasons": [
-            "obsidian-style-or-semantic-selector",
-            "reserved-module",
-            "state-pseudo"
           ]
         }
       ]
@@ -4242,7 +4242,7 @@
     },
     "src/chrome/33-settings-controls.css": {
       "matched": 133,
-      "reserved": 34
+      "reserved": 40
     },
     "src/chrome/34-nav-ribbon-glass.css": {
       "matched": 25,
@@ -4294,7 +4294,7 @@
     },
     "src/surfaces/23-liquid-glass-core.css": {
       "matched": 129,
-      "reserved": 49
+      "reserved": 53
     },
     "src/surfaces/24-html-table-live-preview-glass.css": {
       "matched": 71,
@@ -16267,7 +16267,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 185,
+      "line": 189,
       "selector": ".checkbox-container",
       "selectorPart": ".checkbox-container",
       "querySelector": ".checkbox-container",
@@ -16281,7 +16281,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 189,
+      "line": 193,
       "selector": ".checkbox-container::after",
       "selectorPart": ".checkbox-container::after",
       "querySelector": ".checkbox-container",
@@ -16295,7 +16295,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 193,
+      "line": 197,
       "selector": ".checkbox-container.is-enabled",
       "selectorPart": ".checkbox-container.is-enabled",
       "querySelector": ".checkbox-container.is-enabled",
@@ -16310,7 +16310,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 196,
+      "line": 200,
       "selector": ".checkbox-container.is-enabled::after",
       "selectorPart": ".checkbox-container.is-enabled::after",
       "querySelector": ".checkbox-container.is-enabled",
@@ -16325,7 +16325,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 201,
+      "line": 205,
       "selector": ".setting-item-control input[type=\"range\"]",
       "selectorPart": ".setting-item-control input[type=\"range\"]",
       "querySelector": ".setting-item-control input[type=\"range\"]",
@@ -16340,7 +16340,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 206,
+      "line": 210,
       "selector": ".setting-item-control input[type=\"range\"]::-webkit-slider-runnable-track",
       "selectorPart": ".setting-item-control input[type=\"range\"]::-webkit-slider-runnable-track",
       "querySelector": ".setting-item-control input[type=\"range\"]",
@@ -16355,7 +16355,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 211,
+      "line": 215,
       "selector": ".setting-item-control input[type=\"range\"]::-webkit-slider-thumb",
       "selectorPart": ".setting-item-control input[type=\"range\"]::-webkit-slider-thumb",
       "querySelector": ".setting-item-control input[type=\"range\"]",
@@ -16370,7 +16370,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 216,
+      "line": 220,
       "selector": ".setting-item-control input[type=\"range\"]::-moz-range-track",
       "selectorPart": ".setting-item-control input[type=\"range\"]::-moz-range-track",
       "querySelector": ".setting-item-control input[type=\"range\"]",
@@ -16385,7 +16385,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 221,
+      "line": 225,
       "selector": ".setting-item-control input[type=\"range\"]::-moz-range-thumb",
       "selectorPart": ".setting-item-control input[type=\"range\"]::-moz-range-thumb",
       "querySelector": ".setting-item-control input[type=\"range\"]",
@@ -16400,7 +16400,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 227,
+      "line": 231,
       "selector": ".setting-item-control input[type=\"color\"], .setting-item-control .pickr .pcr-button",
       "selectorPart": ".setting-item-control .pickr .pcr-button",
       "querySelector": ".setting-item-control .pickr .pcr-button",
@@ -16415,7 +16415,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 227,
+      "line": 231,
       "selector": ".setting-item-control input[type=\"color\"], .setting-item-control .pickr .pcr-button",
       "selectorPart": ".setting-item-control input[type=\"color\"]",
       "querySelector": ".setting-item-control input[type=\"color\"]",
@@ -16430,7 +16430,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 235,
+      "line": 239,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"], body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]",
@@ -16446,7 +16446,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 235,
+      "line": 239,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"], body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]",
       "selectorPart": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]",
       "querySelector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]",
@@ -16462,7 +16462,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 241,
+      "line": 245,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]",
@@ -16478,7 +16478,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 241,
+      "line": 245,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper",
       "selectorPart": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch-wrapper",
       "querySelector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]",
@@ -16494,7 +16494,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 247,
+      "line": 251,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]",
@@ -16510,7 +16510,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 247,
+      "line": 251,
       "selector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch, body:not(.is-mobile) .modal .setting-item-control input[type=\"color\"]::-webkit-color-swatch",
       "selectorPart": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]::-webkit-color-swatch",
       "querySelector": "body:not(.is-mobile) .setting-item-control input[type=\"color\"]",
@@ -16526,7 +16526,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 254,
+      "line": 258,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
@@ -16542,7 +16542,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 254,
+      "line": 258,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
       "selectorPart": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button",
       "querySelector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button",
@@ -16558,7 +16558,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 262,
+      "line": 266,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
@@ -16574,7 +16574,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 262,
+      "line": 266,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
@@ -16590,7 +16590,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 262,
+      "line": 266,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "selectorPart": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after",
       "querySelector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button",
@@ -16606,7 +16606,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 262,
+      "line": 266,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::before, body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "selectorPart": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::before",
       "querySelector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button",
@@ -16622,7 +16622,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 267,
+      "line": 271,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "selectorPart": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "querySelector": "body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button",
@@ -16638,7 +16638,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 267,
+      "line": 271,
       "selector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after, body:not(.is-mobile) .modal .setting-item-control .pickr .pcr-button::after",
       "selectorPart": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button::after",
       "querySelector": "body:not(.is-mobile) .setting-item-control .pickr .pcr-button",
@@ -16654,7 +16654,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 271,
+      "line": 275,
       "selector": "body.css-settings-manager .style-settings-container .setting-item[data-id=\"ogd-accent\"] .pickr .pcr-button",
       "selectorPart": "body.css-settings-manager .style-settings-container .setting-item[data-id=\"ogd-accent\"] .pickr .pcr-button",
       "querySelector": "body.css-settings-manager .style-settings-container .setting-item[data-id=\"ogd-accent\"] .pickr .pcr-button",
@@ -16670,7 +16670,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 280,
+      "line": 284,
       "selector": ".theme-dark .setting-item, .theme-dark .style-settings-container .setting-item, .theme-dark .vertical-tab-content-container .setting-item",
       "selectorPart": ".theme-dark .setting-item",
       "querySelector": ".theme-dark .setting-item",
@@ -16685,7 +16685,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 280,
+      "line": 284,
       "selector": ".theme-dark .setting-item, .theme-dark .style-settings-container .setting-item, .theme-dark .vertical-tab-content-container .setting-item",
       "selectorPart": ".theme-dark .style-settings-container .setting-item",
       "querySelector": ".theme-dark .style-settings-container .setting-item",
@@ -16700,7 +16700,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 280,
+      "line": 284,
       "selector": ".theme-dark .setting-item, .theme-dark .style-settings-container .setting-item, .theme-dark .vertical-tab-content-container .setting-item",
       "selectorPart": ".theme-dark .vertical-tab-content-container .setting-item",
       "querySelector": ".theme-dark .vertical-tab-content-container .setting-item",
@@ -16715,7 +16715,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 284,
+      "line": 288,
       "selector": ".theme-dark .setting-item-heading, .theme-dark .setting-item-name",
       "selectorPart": ".theme-dark .setting-item-heading",
       "querySelector": ".theme-dark .setting-item-heading",
@@ -16730,7 +16730,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 284,
+      "line": 288,
       "selector": ".theme-dark .setting-item-heading, .theme-dark .setting-item-name",
       "selectorPart": ".theme-dark .setting-item-name",
       "querySelector": ".theme-dark .setting-item-name",
@@ -16745,7 +16745,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 295,
+      "line": 299,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
       "selectorPart": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading",
       "querySelector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading",
@@ -16761,7 +16761,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 295,
+      "line": 299,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
       "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
       "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
@@ -16777,7 +16777,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 300,
+      "line": 304,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before",
       "selectorPart": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before",
       "querySelector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading",
@@ -16793,7 +16793,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 300,
+      "line": 304,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before",
       "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before",
       "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
@@ -16809,7 +16809,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 305,
+      "line": 309,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3), body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
       "selectorPart": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name",
       "querySelector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name",
@@ -16825,7 +16825,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 305,
+      "line": 309,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3), body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
       "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
       "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
@@ -16841,7 +16841,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 305,
+      "line": 309,
       "selector": "body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name, body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3), body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name",
       "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
       "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)",
@@ -16857,7 +16857,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 309,
+      "line": 313,
       "selector": ".theme-dark .setting-item-description, .theme-dark .setting-item-info .setting-item-description",
       "selectorPart": ".theme-dark .setting-item-description",
       "querySelector": ".theme-dark .setting-item-description",
@@ -16872,7 +16872,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 309,
+      "line": 313,
       "selector": ".theme-dark .setting-item-description, .theme-dark .setting-item-info .setting-item-description",
       "selectorPart": ".theme-dark .setting-item-info .setting-item-description",
       "querySelector": ".theme-dark .setting-item-info .setting-item-description",
@@ -16887,7 +16887,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control .dropdown",
       "querySelector": ".theme-dark .modal .setting-item-control .dropdown",
@@ -16902,7 +16902,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control input[type=\"number\"]",
       "querySelector": ".theme-dark .modal .setting-item-control input[type=\"number\"]",
@@ -16917,7 +16917,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control input[type=\"text\"]",
       "querySelector": ".theme-dark .modal .setting-item-control input[type=\"text\"]",
@@ -16932,7 +16932,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control select",
       "querySelector": ".theme-dark .modal .setting-item-control select",
@@ -16947,7 +16947,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control textarea",
       "querySelector": ".theme-dark .modal .setting-item-control textarea",
@@ -16962,7 +16962,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control .dropdown",
       "querySelector": ".theme-dark .setting-item-control .dropdown",
@@ -16977,7 +16977,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"number\"]",
       "querySelector": ".theme-dark .setting-item-control input[type=\"number\"]",
@@ -16992,7 +16992,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"search\"]",
       "querySelector": ".theme-dark .setting-item-control input[type=\"search\"]",
@@ -17007,7 +17007,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"text\"]",
       "querySelector": ".theme-dark .setting-item-control input[type=\"text\"]",
@@ -17022,7 +17022,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control select",
       "querySelector": ".theme-dark .setting-item-control select",
@@ -17037,7 +17037,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 329,
       "selector": ".theme-dark .setting-item-control input[type=\"text\"], .theme-dark .setting-item-control input[type=\"number\"], .theme-dark .setting-item-control input[type=\"search\"], .theme-dark .setting-item-control textarea, .theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control input[type=\"text\"], .theme-dark .modal .setting-item-control input[type=\"number\"], .theme-dark .modal .setting-item-control textarea, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control textarea",
       "querySelector": ".theme-dark .setting-item-control textarea",
@@ -17052,7 +17052,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 332,
+      "line": 336,
       "selector": ".theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control .dropdown",
       "querySelector": ".theme-dark .modal .setting-item-control .dropdown",
@@ -17067,7 +17067,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 332,
+      "line": 336,
       "selector": ".theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .modal .setting-item-control select",
       "querySelector": ".theme-dark .modal .setting-item-control select",
@@ -17082,7 +17082,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 332,
+      "line": 336,
       "selector": ".theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control .dropdown",
       "querySelector": ".theme-dark .setting-item-control .dropdown",
@@ -17097,7 +17097,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 332,
+      "line": 336,
       "selector": ".theme-dark .setting-item-control select, .theme-dark .setting-item-control .dropdown, .theme-dark .modal .setting-item-control select, .theme-dark .modal .setting-item-control .dropdown",
       "selectorPart": ".theme-dark .setting-item-control select",
       "querySelector": ".theme-dark .setting-item-control select",
@@ -17112,7 +17112,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 337,
+      "line": 341,
       "selector": ".theme-dark .setting-item-control select option, .theme-dark .modal .setting-item-control select option",
       "selectorPart": ".theme-dark .modal .setting-item-control select option",
       "querySelector": ".theme-dark .modal .setting-item-control select option",
@@ -17127,7 +17127,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 337,
+      "line": 341,
       "selector": ".theme-dark .setting-item-control select option, .theme-dark .modal .setting-item-control select option",
       "selectorPart": ".theme-dark .setting-item-control select option",
       "querySelector": ".theme-dark .setting-item-control select option",
@@ -17142,7 +17142,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 350,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "selectorPart": ".theme-dark .modal .setting-item-control select option:checked",
       "querySelector": ".theme-dark .modal .setting-item-control select option:checked",
@@ -17158,7 +17158,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 350,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "selectorPart": ".theme-dark .setting-item-control select option:checked",
       "querySelector": ".theme-dark .setting-item-control select option:checked",
@@ -17174,7 +17174,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 350,
+      "line": 354,
       "selector": ".theme-dark .setting-item-control input::placeholder, .theme-dark .setting-item-control textarea::placeholder",
       "selectorPart": ".theme-dark .setting-item-control input::placeholder",
       "querySelector": ".theme-dark .setting-item-control input",
@@ -17189,7 +17189,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 350,
+      "line": 354,
       "selector": ".theme-dark .setting-item-control input::placeholder, .theme-dark .setting-item-control textarea::placeholder",
       "selectorPart": ".theme-dark .setting-item-control textarea::placeholder",
       "querySelector": ".theme-dark .setting-item-control textarea",
@@ -17204,7 +17204,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 364,
+      "line": 368,
       "selector": ".theme-dark .setting-item-control button.mod-cta, .theme-dark .modal .setting-item-control button.mod-cta",
       "selectorPart": ".theme-dark .modal .setting-item-control button.mod-cta",
       "querySelector": ".theme-dark .modal .setting-item-control button.mod-cta",
@@ -17219,7 +17219,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 364,
+      "line": 368,
       "selector": ".theme-dark .setting-item-control button.mod-cta, .theme-dark .modal .setting-item-control button.mod-cta",
       "selectorPart": ".theme-dark .setting-item-control button.mod-cta",
       "querySelector": ".theme-dark .setting-item-control button.mod-cta",
@@ -17234,7 +17234,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 373,
+      "line": 377,
       "selector": ".theme-dark .setting-item-control button.mod-warning, .theme-dark .setting-item-control button.mod-destructive, .theme-dark .modal .setting-item-control button.mod-warning, .theme-dark .modal .setting-item-control button.mod-destructive",
       "selectorPart": ".theme-dark .modal .setting-item-control button.mod-destructive",
       "querySelector": ".theme-dark .modal .setting-item-control button.mod-destructive",
@@ -17249,7 +17249,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 373,
+      "line": 377,
       "selector": ".theme-dark .setting-item-control button.mod-warning, .theme-dark .setting-item-control button.mod-destructive, .theme-dark .modal .setting-item-control button.mod-warning, .theme-dark .modal .setting-item-control button.mod-destructive",
       "selectorPart": ".theme-dark .modal .setting-item-control button.mod-warning",
       "querySelector": ".theme-dark .modal .setting-item-control button.mod-warning",
@@ -17264,7 +17264,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 373,
+      "line": 377,
       "selector": ".theme-dark .setting-item-control button.mod-warning, .theme-dark .setting-item-control button.mod-destructive, .theme-dark .modal .setting-item-control button.mod-warning, .theme-dark .modal .setting-item-control button.mod-destructive",
       "selectorPart": ".theme-dark .setting-item-control button.mod-destructive",
       "querySelector": ".theme-dark .setting-item-control button.mod-destructive",
@@ -17279,7 +17279,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 373,
+      "line": 377,
       "selector": ".theme-dark .setting-item-control button.mod-warning, .theme-dark .setting-item-control button.mod-destructive, .theme-dark .modal .setting-item-control button.mod-warning, .theme-dark .modal .setting-item-control button.mod-destructive",
       "selectorPart": ".theme-dark .setting-item-control button.mod-warning",
       "querySelector": ".theme-dark .setting-item-control button.mod-warning",
@@ -17294,7 +17294,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 388,
+      "line": 392,
       "selector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label)",
       "selectorPart": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label)",
       "querySelector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label)",
@@ -17310,7 +17310,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 388,
+      "line": 392,
       "selector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label)",
       "selectorPart": "body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label)",
       "querySelector": "body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label)",
@@ -17326,7 +17326,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 394,
+      "line": 402,
       "selector": ".theme-dark .checkbox-container",
       "selectorPart": ".theme-dark .checkbox-container",
       "querySelector": ".theme-dark .checkbox-container",
@@ -17341,7 +17341,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 398,
+      "line": 406,
       "selector": ".theme-dark .checkbox-container::after",
       "selectorPart": ".theme-dark .checkbox-container::after",
       "querySelector": ".theme-dark .checkbox-container",
@@ -17356,7 +17356,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 402,
+      "line": 410,
       "selector": ".theme-dark .checkbox-container.is-enabled",
       "selectorPart": ".theme-dark .checkbox-container.is-enabled",
       "querySelector": ".theme-dark .checkbox-container.is-enabled",
@@ -17371,7 +17371,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 405,
+      "line": 413,
       "selector": ".theme-dark .checkbox-container.is-enabled::after",
       "selectorPart": ".theme-dark .checkbox-container.is-enabled::after",
       "querySelector": ".theme-dark .checkbox-container.is-enabled",
@@ -17386,7 +17386,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 408,
+      "line": 416,
       "selector": ".theme-dark .setting-item-control input[type=\"range\"]",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"range\"]",
       "querySelector": ".theme-dark .setting-item-control input[type=\"range\"]",
@@ -17401,7 +17401,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 411,
+      "line": 419,
       "selector": ".theme-dark .setting-item-control input[type=\"range\"]::-webkit-slider-runnable-track",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"range\"]::-webkit-slider-runnable-track",
       "querySelector": ".theme-dark .setting-item-control input[type=\"range\"]",
@@ -17416,7 +17416,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 415,
+      "line": 423,
       "selector": ".theme-dark .setting-item-control input[type=\"range\"]::-webkit-slider-thumb",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"range\"]::-webkit-slider-thumb",
       "querySelector": ".theme-dark .setting-item-control input[type=\"range\"]",
@@ -17431,7 +17431,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 418,
+      "line": 426,
       "selector": ".theme-dark .setting-item-control input[type=\"range\"]::-moz-range-track",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"range\"]::-moz-range-track",
       "querySelector": ".theme-dark .setting-item-control input[type=\"range\"]",
@@ -17446,7 +17446,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 422,
+      "line": 430,
       "selector": ".theme-dark .setting-item-control input[type=\"range\"]::-moz-range-thumb",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"range\"]::-moz-range-thumb",
       "querySelector": ".theme-dark .setting-item-control input[type=\"range\"]",
@@ -17461,7 +17461,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 427,
+      "line": 435,
       "selector": ".theme-dark .setting-item-control input[type=\"color\"], .theme-dark .setting-item-control .pickr .pcr-button",
       "selectorPart": ".theme-dark .setting-item-control .pickr .pcr-button",
       "querySelector": ".theme-dark .setting-item-control .pickr .pcr-button",
@@ -17476,7 +17476,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 427,
+      "line": 435,
       "selector": ".theme-dark .setting-item-control input[type=\"color\"], .theme-dark .setting-item-control .pickr .pcr-button",
       "selectorPart": ".theme-dark .setting-item-control input[type=\"color\"]",
       "querySelector": ".theme-dark .setting-item-control input[type=\"color\"]",
@@ -50072,7 +50072,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 818,
+      "line": 815,
       "selector": "body:not(.is-mobile)",
       "selectorPart": "body:not(.is-mobile)",
       "querySelector": "body:not(.is-mobile)",
@@ -50087,7 +50087,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 829,
+      "line": 826,
       "selector": "body:not(.is-mobile).theme-dark",
       "selectorPart": "body:not(.is-mobile).theme-dark",
       "querySelector": "body:not(.is-mobile).theme-dark",
@@ -50102,7 +50102,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 845,
+      "line": 842,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container)",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container)",
       "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container)",
@@ -50117,7 +50117,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 859,
+      "line": 856,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
@@ -50133,7 +50133,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 880,
+      "line": 877,
       "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
       "selectorPart": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
       "querySelector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
@@ -50148,7 +50148,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 887,
+      "line": 884,
       "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50164,7 +50164,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 891,
+      "line": 888,
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title.is-active .nav-file-title-content)",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title.is-active .nav-file-title-content)",
       "querySelector": "body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title.is-active .nav-file-title-content)",
@@ -50179,7 +50179,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 900,
+      "line": 897,
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner, body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content",
       "selectorPart": "body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content",
       "querySelector": "body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content",
@@ -50194,7 +50194,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 900,
+      "line": 897,
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner, body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content",
       "selectorPart": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -50209,7 +50209,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 913,
+      "line": 910,
       "selector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre), .markdown-source-view.mod-cm6 .cm-embed-block pre",
       "selectorPart": ".markdown-source-view.mod-cm6 .cm-embed-block pre",
       "querySelector": ".markdown-source-view.mod-cm6 .cm-embed-block pre",
@@ -50224,7 +50224,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 913,
+      "line": 910,
       "selector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre), .markdown-source-view.mod-cm6 .cm-embed-block pre",
       "selectorPart": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre)",
       "querySelector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(table, pre)",
@@ -50239,7 +50239,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 918,
+      "line": 915,
       "selector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td)",
       "selectorPart": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td)",
       "querySelector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table :is(th, td)",
@@ -50254,7 +50254,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 925,
+      "line": 922,
       "selector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre, .markdown-source-view.mod-cm6 .cm-embed-block pre",
       "selectorPart": ".markdown-source-view.mod-cm6 .cm-embed-block pre",
       "querySelector": ".markdown-source-view.mod-cm6 .cm-embed-block pre",
@@ -50269,7 +50269,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 925,
+      "line": 922,
       "selector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre, .markdown-source-view.mod-cm6 .cm-embed-block pre",
       "selectorPart": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre",
       "querySelector": ":is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre",
@@ -50284,7 +50284,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 939,
+      "line": 936,
       "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]), body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
       "querySelector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
@@ -50299,7 +50299,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 939,
+      "line": 936,
       "selector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]), body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50315,7 +50315,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 944,
+      "line": 941,
       "selector": "body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]), body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
@@ -50330,7 +50330,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 944,
+      "line": 941,
       "selector": "body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]), body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50346,7 +50346,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 972,
+      "line": 969,
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon ), body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon )",
       "querySelector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon )",
@@ -50361,7 +50361,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 972,
+      "line": 969,
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon ), body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "querySelector": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
@@ -50377,7 +50377,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1009,
+      "line": 1006,
       "selector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ), body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right )",
       "querySelector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right )",
@@ -50392,7 +50392,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1009,
+      "line": 1006,
       "selector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ), body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"])",
@@ -50408,7 +50408,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1027,
+      "line": 1024,
       "selector": "body:not(.is-mobile) :is(.menu, [role=\"menu\"])",
       "selectorPart": "body:not(.is-mobile) :is(.menu, [role=\"menu\"])",
       "querySelector": "body:not(.is-mobile) :is(.menu, [role=\"menu\"])",
@@ -50423,7 +50423,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1033,
+      "line": 1030,
       "selector": "body:not(.is-mobile).theme-dark :is(.menu, [role=\"menu\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.menu, [role=\"menu\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.menu, [role=\"menu\"])",
@@ -50438,7 +50438,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1040,
+      "line": 1037,
       "selector": "body:not(.is-mobile) :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
       "selectorPart": "body:not(.is-mobile) :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
       "querySelector": "body:not(.is-mobile) :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"])",
@@ -50453,7 +50453,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1047,
+      "line": 1044,
       "selector": "body:not(.is-mobile) :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50469,7 +50469,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1053,
+      "line": 1050,
       "selector": "body:not(.is-mobile).theme-dark :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.menu .menu-item, [role=\"menu\"] [role=\"menuitem\"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50485,7 +50485,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1058,
+      "line": 1055,
       "selector": "body:not(.is-mobile) :is(.menu-separator, .menu .menu-separator, [role=\"menu\"] .menu-separator, [role=\"separator\"])",
       "selectorPart": "body:not(.is-mobile) :is(.menu-separator, .menu .menu-separator, [role=\"menu\"] .menu-separator, [role=\"separator\"])",
       "querySelector": "body:not(.is-mobile) :is(.menu-separator, .menu .menu-separator, [role=\"menu\"] .menu-separator, [role=\"separator\"])",
@@ -50500,7 +50500,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1062,
+      "line": 1059,
       "selector": "body:not(.is-mobile).theme-dark :is(.menu-separator, .menu .menu-separator, [role=\"menu\"] .menu-separator, [role=\"separator\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.menu-separator, .menu .menu-separator, [role=\"menu\"] .menu-separator, [role=\"separator\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.menu-separator, .menu .menu-separator, [role=\"menu\"] .menu-separator, [role=\"separator\"])",
@@ -50515,7 +50515,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1096,
+      "line": 1093,
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon, .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right )",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon, .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right )",
       "querySelector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon, .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right )",
@@ -50530,7 +50530,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1117,
+      "line": 1114,
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "querySelector": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
@@ -50546,7 +50546,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1136,
+      "line": 1133,
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "selectorPart": "body:not(.is-mobile).theme-dark :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
       "querySelector": "body:not(.is-mobile).theme-dark :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
@@ -50562,7 +50562,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1185,
+      "line": 1182,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container ), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item), body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
       "selectorPart": "body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item)",
       "querySelector": "body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item)",
@@ -50577,7 +50577,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1185,
+      "line": 1182,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container ), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item), body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container )",
       "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container )",
@@ -50592,7 +50592,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1185,
+      "line": 1182,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container ), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item), body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
       "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
@@ -50607,7 +50607,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1212,
+      "line": 1209,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50623,7 +50623,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1212,
+      "line": 1209,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
@@ -50639,7 +50639,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1237,
+      "line": 1234,
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile).theme-dark :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -50655,7 +50655,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1237,
+      "line": 1234,
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile).theme-dark :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"])",
@@ -50671,7 +50671,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1254,
+      "line": 1251,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header",
@@ -50686,7 +50686,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1263,
+      "line": 1260,
       "selector": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::before, body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::after",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::after",
       "querySelector": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)",
@@ -50701,7 +50701,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1263,
+      "line": 1260,
       "selector": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::before, body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::after",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::before",
       "querySelector": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)",
@@ -50716,7 +50716,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1273,
+      "line": 1270,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
@@ -50731,7 +50731,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1295,
+      "line": 1292,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -50746,7 +50746,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1308,
+      "line": 1305,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -50761,7 +50761,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1315,
+      "line": 1312,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title",
@@ -50776,7 +50776,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1322,
+      "line": 1319,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
@@ -50791,7 +50791,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1329,
+      "line": 1326,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header :is(.workspace-tab-header-inner-close-button, .workspace-tab-header-inner-icon)",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header :is(.workspace-tab-header-inner-close-button, .workspace-tab-header-inner-icon)",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header :is(.workspace-tab-header-inner-close-button, .workspace-tab-header-inner-icon)",
@@ -50806,7 +50806,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1335,
+      "line": 1332,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
@@ -50821,7 +50821,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1351,
+      "line": 1348,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -50836,7 +50836,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1356,
+      "line": 1353,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -50851,7 +50851,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1362,
+      "line": 1359,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header .workspace-tab-header-inner-title",
@@ -50866,7 +50866,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1368,
+      "line": 1365,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
@@ -50881,7 +50881,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1499,
+      "line": 1496,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container",
       "querySelector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container",
@@ -50896,7 +50896,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1504,
+      "line": 1501,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container",
@@ -50911,7 +50911,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1511,
+      "line": 1508,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon)",
       "querySelector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon)",
@@ -50926,7 +50926,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1511,
+      "line": 1508,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "querySelector": "body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
@@ -50941,7 +50941,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1524,
+      "line": 1521,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon)",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon)",
@@ -50956,7 +50956,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1524,
+      "line": 1521,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
@@ -50971,7 +50971,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1565,
+      "line": 1562,
       "selector": ".markdown-source-view.mod-cm6",
       "selectorPart": ".markdown-source-view.mod-cm6",
       "querySelector": ".markdown-source-view.mod-cm6",
@@ -50985,7 +50985,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1573,
+      "line": 1570,
       "selector": ".theme-dark .markdown-source-view.mod-cm6",
       "selectorPart": ".theme-dark .markdown-source-view.mod-cm6",
       "querySelector": ".theme-dark .markdown-source-view.mod-cm6",
@@ -50999,7 +50999,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1587,
+      "line": 1584,
       "selector": ".markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) :is(.cm-inline-code, .cm-url, .cm-link)",
       "selectorPart": ".markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) :is(.cm-inline-code, .cm-url, .cm-link)",
       "querySelector": ".markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) :is(.cm-inline-code, .cm-url, .cm-link)",
@@ -51013,7 +51013,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1591,
+      "line": 1588,
       "selector": ".markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code)",
       "selectorPart": ".markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code)",
       "querySelector": ".markdown-source-view.mod-cm6 :is(.cm-formatting-code-block, .HyperMD-codeblock-begin .cm-formatting-code, .HyperMD-codeblock-end .cm-formatting-code)",
@@ -51027,7 +51027,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1616,
+      "line": 1613,
       "selector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table",
       "selectorPart": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table",
       "querySelector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table",
@@ -51042,7 +51042,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1625,
+      "line": 1622,
       "selector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th",
       "selectorPart": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th",
       "querySelector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th",
@@ -51057,7 +51057,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1630,
+      "line": 1627,
       "selector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td",
       "selectorPart": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td",
       "querySelector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td",
@@ -51072,7 +51072,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1634,
+      "line": 1631,
       "selector": "body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td",
       "selectorPart": "body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td",
       "querySelector": "body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td",
@@ -51087,7 +51087,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1649,
+      "line": 1646,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table",
       "selectorPart": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table",
       "querySelector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table",
@@ -51102,7 +51102,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1654,
+      "line": 1651,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th",
       "selectorPart": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th",
       "querySelector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th",
@@ -51117,7 +51117,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1658,
+      "line": 1655,
       "selector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td",
       "selectorPart": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td",
       "querySelector": "body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td",
@@ -57216,7 +57216,58 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 274,
+      "line": 180,
+      "selector": "body:not(.is-mobile) :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible)",
+      "selectorPart": "body:not(.is-mobile) :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible)",
+      "querySelector": "body:not(.is-mobile) :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible)",
+      "atContext": "",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "reserved-module",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 181,
+      "selector": "body:not(.is-mobile) .modal.mod-settings .search-input-container:focus-within",
+      "selectorPart": "body:not(.is-mobile) .modal.mod-settings .search-input-container:focus-within",
+      "querySelector": "body:not(.is-mobile) .modal.mod-settings .search-input-container:focus-within",
+      "atContext": "",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "reserved-module",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 182,
+      "selector": "body:not(.is-mobile) .modal.mod-settings .search-input-container input[type=\"search\"]:is(:focus, :focus-visible)",
+      "selectorPart": "body:not(.is-mobile) .modal.mod-settings .search-input-container input[type=\"search\"]:is(:focus, :focus-visible)",
+      "querySelector": "body:not(.is-mobile) .modal.mod-settings .search-input-container input[type=\"search\"]:is(:focus, :focus-visible)",
+      "atContext": "",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "reserved-module",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 278,
       "selector": ".setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible",
       "selectorPart": ".setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible",
       "querySelector": ".setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible",
@@ -57232,7 +57283,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 350,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "selectorPart": ".theme-dark .modal .setting-item-control select option:focus",
       "querySelector": ".theme-dark .modal .setting-item-control select option:focus",
@@ -57248,7 +57299,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 350,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "selectorPart": ".theme-dark .modal .setting-item-control select option:hover",
       "querySelector": ".theme-dark .modal .setting-item-control select option:hover",
@@ -57264,7 +57315,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 350,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "selectorPart": ".theme-dark .setting-item-control select option:focus",
       "querySelector": ".theme-dark .setting-item-control select option:focus",
@@ -57280,7 +57331,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 350,
       "selector": ".theme-dark .setting-item-control select option:checked, .theme-dark .setting-item-control select option:hover, .theme-dark .setting-item-control select option:focus, .theme-dark .modal .setting-item-control select option:checked, .theme-dark .modal .setting-item-control select option:hover, .theme-dark .modal .setting-item-control select option:focus",
       "selectorPart": ".theme-dark .setting-item-control select option:hover",
       "querySelector": ".theme-dark .setting-item-control select option:hover",
@@ -57296,7 +57347,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 358,
+      "line": 362,
       "selector": ".theme-dark .setting-item-control input:focus, .theme-dark .setting-item-control textarea:focus, .theme-dark .setting-item-control select:focus, .theme-dark .setting-item-control .dropdown:focus-visible",
       "selectorPart": ".theme-dark .setting-item-control .dropdown:focus-visible",
       "querySelector": ".theme-dark .setting-item-control .dropdown:focus-visible",
@@ -57312,7 +57363,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 358,
+      "line": 362,
       "selector": ".theme-dark .setting-item-control input:focus, .theme-dark .setting-item-control textarea:focus, .theme-dark .setting-item-control select:focus, .theme-dark .setting-item-control .dropdown:focus-visible",
       "selectorPart": ".theme-dark .setting-item-control input:focus",
       "querySelector": ".theme-dark .setting-item-control input:focus",
@@ -57328,7 +57379,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 358,
+      "line": 362,
       "selector": ".theme-dark .setting-item-control input:focus, .theme-dark .setting-item-control textarea:focus, .theme-dark .setting-item-control select:focus, .theme-dark .setting-item-control .dropdown:focus-visible",
       "selectorPart": ".theme-dark .setting-item-control select:focus",
       "querySelector": ".theme-dark .setting-item-control select:focus",
@@ -57344,7 +57395,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 358,
+      "line": 362,
       "selector": ".theme-dark .setting-item-control input:focus, .theme-dark .setting-item-control textarea:focus, .theme-dark .setting-item-control select:focus, .theme-dark .setting-item-control .dropdown:focus-visible",
       "selectorPart": ".theme-dark .setting-item-control textarea:focus",
       "querySelector": ".theme-dark .setting-item-control textarea:focus",
@@ -57360,7 +57411,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 380,
+      "line": 384,
       "selector": ".theme-dark .setting-item-control button.mod-warning:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
       "selectorPart": ".theme-dark .modal .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
       "querySelector": ".theme-dark .modal .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
@@ -57376,7 +57427,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 380,
+      "line": 384,
       "selector": ".theme-dark .setting-item-control button.mod-warning:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
       "selectorPart": ".theme-dark .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
       "querySelector": ".theme-dark .setting-item-control button.mod-warning:is(:hover, :focus-visible)",
@@ -57392,7 +57443,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 387,
+      "line": 391,
       "selector": ".theme-dark .setting-item-control button.mod-destructive:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
       "selectorPart": ".theme-dark .modal .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
       "querySelector": ".theme-dark .modal .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
@@ -57408,7 +57459,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 387,
+      "line": 391,
       "selector": ".theme-dark .setting-item-control button.mod-destructive:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
       "selectorPart": ".theme-dark .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
       "querySelector": ".theme-dark .setting-item-control button.mod-destructive:is(:hover, :focus-visible)",
@@ -57424,7 +57475,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 389,
+      "line": 393,
       "selector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
       "selectorPart": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
       "querySelector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
@@ -57441,7 +57492,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 389,
+      "line": 393,
       "selector": "body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
       "selectorPart": "body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
       "querySelector": "body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible)",
@@ -57458,7 +57509,58 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 430,
+      "line": 395,
+      "selector": "body:not(.is-mobile).theme-dark :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible)",
+      "selectorPart": "body:not(.is-mobile).theme-dark :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible)",
+      "querySelector": "body:not(.is-mobile).theme-dark :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible)",
+      "atContext": "",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "reserved-module",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 396,
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container:focus-within",
+      "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container:focus-within",
+      "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container:focus-within",
+      "atContext": "",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "reserved-module",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 397,
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container input[type=\"search\"]:is(:focus, :focus-visible)",
+      "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container input[type=\"search\"]:is(:focus, :focus-visible)",
+      "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container input[type=\"search\"]:is(:focus, :focus-visible)",
+      "atContext": "",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "reserved-module",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 438,
       "selector": ".theme-dark .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible",
       "selectorPart": ".theme-dark .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible",
       "querySelector": ".theme-dark .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible",
@@ -61283,7 +61385,39 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 738,
+      "line": 733,
+      "selector": "body:not(.is-mobile) .modal.mod-community-theme .setting-item:focus-within",
+      "selectorPart": "body:not(.is-mobile) .modal.mod-community-theme .setting-item:focus-within",
+      "querySelector": "body:not(.is-mobile) .modal.mod-community-theme .setting-item:focus-within",
+      "atContext": "@media (min-width: 701px)",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 734,
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-community-theme .setting-item:focus-within",
+      "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-community-theme .setting-item:focus-within",
+      "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-community-theme .setting-item:focus-within",
+      "atContext": "@media (min-width: 701px)",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 741,
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header:focus-within .workspace-tab-header-inner, .workspace-tab-header-inner:focus-visible)",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-tab-header:focus-within .workspace-tab-header-inner, .workspace-tab-header-inner:focus-visible)",
       "querySelector": "body:not(.is-mobile) :is(.workspace-tab-header:focus-within .workspace-tab-header-inner, .workspace-tab-header-inner:focus-visible)",
@@ -61299,7 +61433,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 746,
+      "line": 749,
       "selector": "body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner)",
       "selectorPart": "body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner)",
       "querySelector": "body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner)",
@@ -61315,7 +61449,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 754,
+      "line": 757,
       "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type=\"text\"], .modal input[type=\"search\"], .modal textarea, .modal select, .modal .dropdown):focus-within",
       "selectorPart": "body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type=\"text\"], .modal input[type=\"search\"], .modal textarea, .modal select, .modal .dropdown):focus-within",
       "querySelector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type=\"text\"], .modal input[type=\"search\"], .modal textarea, .modal select, .modal .dropdown):focus-within",
@@ -61332,9 +61466,9 @@
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
       "line": 771,
-      "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
-      "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
-      "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "selectorPart": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "querySelector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
       "atContext": "@media (min-width: 701px)",
       "classification": "reserved",
       "matchCount": 0,
@@ -61347,10 +61481,10 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 781,
-      "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
-      "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
-      "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
+      "line": 778,
+      "selector": "body:not(.is-mobile) :is(.workspace-leaf-content[data-type=\"search\"], .modal.mod-settings) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
+      "selectorPart": "body:not(.is-mobile) :is(.workspace-leaf-content[data-type=\"search\"], .modal.mod-settings) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
+      "querySelector": "body:not(.is-mobile) :is(.workspace-leaf-content[data-type=\"search\"], .modal.mod-settings) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search) :is(input, input[type=\"search\"], input[type=\"text\"]):is(:focus, :focus-visible)",
       "atContext": "@media (min-width: 701px)",
       "classification": "reserved",
       "matchCount": 0,
@@ -61363,10 +61497,10 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 797,
-      "selector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
-      "selectorPart": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
-      "querySelector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"search\"], .modal.mod-settings ) :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "line": 791,
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "selectorPart": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "querySelector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"search\"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
       "atContext": "@media (min-width: 701px)",
       "classification": "reserved",
       "matchCount": 0,
@@ -61379,7 +61513,39 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 873,
+      "line": 793,
+      "selector": "body:not(.is-mobile) .modal.mod-settings :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "selectorPart": "body:not(.is-mobile) .modal.mod-settings :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "querySelector": "body:not(.is-mobile) .modal.mod-settings :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "atContext": "@media (min-width: 701px)",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 794,
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "selectorPart": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "querySelector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within",
+      "atContext": "@media (min-width: 701px)",
+      "classification": "reserved",
+      "matchCount": 0,
+      "riskReasons": [
+        "document-content-selector",
+        "obsidian-style-or-semantic-selector",
+        "state-pseudo"
+      ],
+      "reservedBucket": "state-interaction"
+    },
+    {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 870,
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:focus-visible, :focus-within)",
       "selectorPart": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:focus-visible, :focus-within)",
       "querySelector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match):is(:focus-visible, :focus-within)",
@@ -61395,7 +61561,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 907,
+      "line": 904,
       "selector": "body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title-content, .nav-folder-title-content, .tree-item-inner):is(:focus-visible, :focus-within)",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title-content, .nav-folder-title-content, .tree-item-inner):is(:focus-visible, :focus-within)",
       "querySelector": "body:not(.is-mobile) :is(.workspace-tab-header-inner, .nav-file-title-content, .nav-folder-title-content, .tree-item-inner):is(:focus-visible, :focus-within)",
@@ -61411,7 +61577,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1280,
+      "line": 1277,
       "selector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
@@ -61427,7 +61593,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1342,
+      "line": 1339,
       "selector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
@@ -61443,7 +61609,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1376,
+      "line": 1373,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container, body:not(.is-mobile) .workspace-split.mod-root .view-header",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .view-header",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .view-header",
@@ -61458,7 +61624,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1376,
+      "line": 1373,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container, body:not(.is-mobile) .workspace-split.mod-root .view-header",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
@@ -61473,7 +61639,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1384,
+      "line": 1381,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container",
@@ -61488,7 +61654,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1394,
+      "line": 1391,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header .workspace-tab-header-inner",
@@ -61503,7 +61669,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1401,
+      "line": 1398,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
@@ -61519,7 +61685,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1408,
+      "line": 1405,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
@@ -61535,7 +61701,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1417,
+      "line": 1414,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
@@ -61550,7 +61716,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1423,
+      "line": 1420,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::before, body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
@@ -61565,7 +61731,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1423,
+      "line": 1420,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::before, body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::before",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active",
@@ -61580,7 +61746,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1440,
+      "line": 1437,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61595,7 +61761,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1445,
+      "line": 1442,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61610,7 +61776,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1454,
+      "line": 1451,
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
@@ -61625,7 +61791,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1459,
+      "line": 1456,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container",
@@ -61640,7 +61806,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1468,
+      "line": 1465,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61655,7 +61821,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1473,
+      "line": 1470,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61670,7 +61836,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1482,
+      "line": 1479,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
@@ -61685,7 +61851,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1486,
+      "line": 1483,
       "selector": "body.mod-macos:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body.mod-macos:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body.mod-macos:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61700,7 +61866,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1490,
+      "line": 1487,
       "selector": "body.mod-macos:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body.mod-macos:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body.mod-macos:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61715,7 +61881,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1518,
+      "line": 1515,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]))",
       "querySelector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]))",
@@ -61731,7 +61897,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1518,
+      "line": 1515,
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "selectorPart": "body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "querySelector": "body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
@@ -61747,7 +61913,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1530,
+      "line": 1527,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]))",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]))",
@@ -61763,7 +61929,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1530,
+      "line": 1527,
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "selectorPart": "body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
       "querySelector": "body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
@@ -61779,7 +61945,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1539,
+      "line": 1536,
       "selector": "body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61794,7 +61960,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1548,
+      "line": 1545,
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner",
       "selectorPart": "body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner",
       "querySelector": "body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -61809,7 +61975,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1638,
+      "line": 1635,
       "selector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td",
       "selectorPart": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td",
       "querySelector": "body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td",

@@ -4,7 +4,7 @@ Use this to choose validation depth without guessing.
 
 | Change Type | Always Run | Also Run When Relevant |
 | --- | --- | --- |
-| Any source CSS | `build_source_usage_map.py --check`, `audit_core_principles.py`, `release_check.py --skip-bundle` | owner-specific audits below |
+| Any source CSS | `build_source_usage_map.py --check`, `audit_core_principles.py`, `release_check.py --skip-bundle`, CDP remote status check | owner-specific audits below |
 | Live Preview / CM6 | universal checks | `audit_v3_hit_routing.py`, runtime evidence |
 | Tables / code / callouts | universal checks | `audit_direct_owner_guard.py`, `audit_lp_pdf_selector_ownership.py`, visual fixture |
 | Chrome hover/focus/active | universal checks | runtime evidence, screenshot review |
@@ -39,6 +39,14 @@ Use `dev/scripts/validation_plan.py --surface <surface> --json` when CI or helpe
 Use `dev/scripts/validation_plan.py --run-safe` to execute recommended checks that do not require placeholders.
 
 Successful `--run-safe` executions write `dev/TEMP/last-validation.json`, which `dev/scripts/work_summary.py` uses to fill the audit summary.
+
+For design or visible CSS changes, implementation is not complete until Obsidian is reachable through CDP and the changed surface has been checked in the live app. Run:
+
+```powershell
+node dev\scripts\cdp_capture.mjs --status --require-theme "Owen Graphite"
+```
+
+Use `--require-vault <vault name>` as well when a task depends on a specific vault. If CDP is unavailable, restart Obsidian with `--remote-debugging-port=9222` before handoff.
 
 Use `dev/scripts/validation_plan.py --full-check --run-safe` or `dev/scripts/finish_work.py --full-check` for release-confidence handoff validation.
 

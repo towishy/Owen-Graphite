@@ -36,6 +36,14 @@ Use this when a change affects visible theme output. The goal is to keep Owen Gr
 
 For runtime states, fill `runtime-evidence-template.md`. For static visual claims, record the fixture, viewport, theme mode, and files touched.
 
+After implementing any design or visible CSS change, verify the live Obsidian app through CDP before handoff:
+
+```powershell
+node dev\scripts\cdp_capture.mjs --status --require-theme "Owen Graphite"
+```
+
+Then inspect or capture the changed surface through CDP. For hover/focus/active states, save a fragment under `dev/TEMP/runtime-evidence/fragments/` and reference it from a runtime evidence note when the fix depends on that state. Static fixture rendering is supplemental; it does not replace the CDP live-app check for design changes.
+
 ## Checks
 
 ```powershell
@@ -43,4 +51,5 @@ For runtime states, fill `runtime-evidence-template.md`. For static visual claim
 .\.venv\Scripts\python.exe dev\scripts\audit_readme_svg_layout.py
 .\.venv\Scripts\python.exe dev\scripts\audit_visual_quality_fixture.py --static-only
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
+node dev\scripts\cdp_capture.mjs --status --require-theme "Owen Graphite"
 ```

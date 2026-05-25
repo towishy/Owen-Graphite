@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 18444
-- Parsed CSS rules: 2382
-- Selector parts: 3783
+- Source CSS lines: 18449
+- Parsed CSS rules: 2392
+- Selector parts: 3793
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -19,10 +19,10 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `code`: 946 rules
 - `lp-html-table`: 83 rules
 - `lp-markdown-table-widget-reference`: 94 rules
-- `overlay-search`: 258 rules
+- `overlay-search`: 268 rules
 - `print-pdf`: 467 rules
 - `reading-rendered`: 1108 rules
-- `table`: 1068 rules
+- `table`: 1077 rules
 - `workspace-chrome`: 563 rules
 
 ## Quick Routing
@@ -167,7 +167,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 696 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 8821-9021 | 201 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:20, workspace-chrome:16 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 9025-9331 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
-| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 432 | settings-controls | overlay-search:38, table:56 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
+| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 440 | settings-controls | overlay-search:44, table:61 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 9768-10161 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 532 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:6, print-pdf:2, reading-rendered:27, table:36, workspace-chrome:16 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2085 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:260, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:208, reading-rendered:261, table:125, workspace-chrome:52 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
@@ -176,7 +176,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 1051 | overlay-menu-search | code:4, overlay-search:62, print-pdf:1, reading-rendered:4, table:63, workspace-chrome:26 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
 | 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 934 | workspace-chrome | overlay-search:10, table:118, workspace-chrome:162 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
 | 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 170 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:11, overlay-search:7, reading-rendered:2, table:4, workspace-chrome:7 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
-| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1659 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:49, overlay-search:39, print-pdf:7, reading-rendered:39, table:99, workspace-chrome:87 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
+| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1656 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:49, overlay-search:43, print-pdf:7, reading-rendered:39, table:103, workspace-chrome:87 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
 | 26 | `src/surfaces/24-html-table-live-preview-glass.css` | 17930-18169 | 238 | live-preview-rendered-widgets | callout-list:63, cm6:63, code:14, lp-html-table:63, lp-markdown-table-widget-reference:63, print-pdf:15, table:63 | after `src/surfaces/23-liquid-glass-core.css`; before `None` |
 
 ## Table Code Map
@@ -204,7 +204,7 @@ Table-related rules are intentionally split by surface:
 | `src/chrome/30-workspace.css` | 68 | 0 | 69 | 3 |
 | `src/chrome/31-navigation-tasks-search.css` | 20 | 0 | 25 | 0 |
 | `src/chrome/32-overlay-popover-dataview.css` | 24 | 0 | 24 | 0 |
-| `src/chrome/33-settings-controls.css` | 56 | 0 | 0 | 0 |
+| `src/chrome/33-settings-controls.css` | 61 | 0 | 0 | 0 |
 | `src/plugins/60-canvas-graph-link-panes.css` | 48 | 0 | 0 | 0 |
 | `src/plugins/61-live-preview-mobile-plugin.css` | 36 | 0 | 27 | 2 |
 | `src/features/42-report-print-polish.css` | 125 | 2 | 261 | 208 |
@@ -213,7 +213,7 @@ Table-related rules are intentionally split by surface:
 | `src/chrome/36-floating-ui-glass-system.css` | 63 | 0 | 4 | 1 |
 | `src/chrome/37-tabs-file-explorer-search.css` | 118 | 0 | 0 | 0 |
 | `src/themes/51-accessibility-motion-contrast.css` | 4 | 0 | 2 | 0 |
-| `src/surfaces/23-liquid-glass-core.css` | 99 | 0 | 39 | 7 |
+| `src/surfaces/23-liquid-glass-core.css` | 103 | 0 | 39 | 7 |
 | `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 63 | 0 | 15 |
 
 ## Table Selector Rules

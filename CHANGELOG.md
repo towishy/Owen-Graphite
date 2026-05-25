@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.62
+
+- polish: 커뮤니티 테마 검색 입력 focus 시 보이던 cyan rim/halo를 CDP로 원인 확인 후 shadow-only 상태로 낮췄습니다.
+- polish: Chrome/settings 상태 표현의 shadow, lift, selected/focus 깊이를 더 차분한 liquid-glass 위계로 맞췄습니다.
+- process: 디자인/visible CSS 변경 후 Obsidian CDP remote debugging 상태 확인과 live DOM/computed 확인을 WIKI 및 validation plan에 필수 handoff 단계로 반영했습니다.
+- guard: CDP status, runtime evidence strict check, visual fixture render, release check, Obsidian sync 검증을 통과했습니다.
+
 ## v3.1.61
 
 - process: Owen risk-accepted 예외를 `risk-accepted-registry.json` 기반으로 구조화하고 source marker `id`/evidence와 연결했습니다.

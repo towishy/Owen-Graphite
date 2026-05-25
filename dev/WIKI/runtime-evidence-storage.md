@@ -24,6 +24,20 @@ Capture real Obsidian DOM/computed fragments through CDP with:
 node dev\scripts\cdp_capture.mjs --selector ".workspace" --scenario resting --out dev\TEMP\runtime-evidence\fragments\workspace.json
 ```
 
+For every design or visible CSS change, confirm the live app is reachable after implementation and before handoff:
+
+```powershell
+node dev\scripts\cdp_capture.mjs --status --require-theme "Owen Graphite"
+```
+
+When the visual claim depends on a particular vault, add `--require-vault <vault name>`. If the command cannot reach `http://127.0.0.1:9222/json`, restart Obsidian with `--remote-debugging-port=9222` and rerun the status check before claiming the design change is verified.
+
+Example vault-specific status check:
+
+```powershell
+node dev\scripts\cdp_capture.mjs --status --require-vault Owen-WIKI --require-theme "Owen Graphite"
+```
+
 Use these examples as the expected level of detail:
 
 ```text
@@ -43,7 +57,7 @@ When a temporary capture proves module-level coverage for unused/reserved select
 
 When Owen accepts a known repository risk, record the exception in `dev/WIKI/risk-accepted-registry.json` and reference the registry id from the source marker.
 
-Use `dev/scripts/cdp_capture.mjs --status --require-vault Owen-WIKI --require-theme "Owen Graphite"` before capture runs when you need to confirm that Obsidian is reachable through the approved CDP port, vault, and theme.
+Use `dev/scripts/cdp_capture.mjs --status --require-theme "Owen Graphite"` before capture runs when you need to confirm that Obsidian is reachable through the approved CDP port and theme. Add `--require-vault <vault name>` when the task is vault-specific.
 
 Promote temporary evidence into a permanent incident with:
 

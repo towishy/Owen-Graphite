@@ -21,6 +21,7 @@ FULL_CHECK_COMMANDS = [
     ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_core_principles.py",
     ".\\.venv\\Scripts\\python.exe dev\\scripts\\release_check.py --skip-bundle",
 ]
+CDP_STATUS_COMMAND = "node dev\\scripts\\cdp_capture.mjs --status --require-theme \"Owen Graphite\""
 RUNTIME_PROPERTY_GROUPS = {"focus", "hit-routing", "interaction"}
 
 
@@ -57,12 +58,16 @@ def add_model(commands: list[dict[str, object]], command: str, source: str, safe
 
 def command_to_args(command: str) -> list[str] | None:
     prefix = ".\\.venv\\Scripts\\python.exe "
-    if not command.startswith(prefix):
-        return None
-    parts = command[len(prefix):].split()
-    if "<version>" in parts:
-        return None
-    return [sys.executable, *(part.replace("\\", "/") for part in parts)]
+    if command.startswith(prefix):
+        parts = command[len(prefix):].split()
+        if "<version>" in parts:
+            return None
+        return [sys.executable, *(part.replace("\\", "/") for part in parts)]
+    if command.startswith("node "):
+        import shlex
+
+        return [part.strip('"').replace("\\", "/") for part in shlex.split(command, posix=False)]
+    return None
 
 
 def is_safe_command(command: str) -> bool:
@@ -93,6 +98,8 @@ def build_plan(surfaces: list[str], full_check: bool) -> dict[str, object]:
         add_model(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\build_source_usage_map.py --check", "diff")
         add_model(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_core_principles.py", "diff")
         add_model(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\release_check.py --skip-bundle", "diff")
+        add_model(commands, CDP_STATUS_COMMAND, "diff")
+        notes.append("Visible source CSS diff detected; after implementation, confirm Obsidian CDP remote status and inspect the changed surface before handoff.")
     if any(path.startswith("dev/WIKI/") or path.startswith(".github/") or path.startswith("CONTRIBUTING") for path in files):
         add_model(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_docs_assets.py", "diff")
         add_model(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_wiki_consistency.py", "diff")

@@ -30,16 +30,21 @@
         <div class="vertical-tab-content-container">
           <div class="setting-item setting-item-heading"><div class="setting-item-info"><div class="setting-item-name">Appearance</div></div></div>
           <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Glass intensity</div><div class="setting-item-description">Stable row spacing and control alignment.</div></div><div class="setting-item-control"><div class="checkbox-container is-enabled" role="switch" aria-checked="true" title="Glass intensity enabled"></div></div></div>
-          <div class="setting-item" data-check="settings-focus-within"><div class="setting-item-info"><div class="setting-item-name">Focused row</div><div class="setting-item-description">Focus-within outline and glass row state.</div></div><div class="setting-item-control"><input type="text" value="focused control" autofocus title="Focused row"></div></div>
+          <div class="setting-item" data-check="settings-focus-within"><div class="setting-item-info"><div class="setting-item-name">Focused row</div><div class="setting-item-description">Focus-within outline and glass row state.</div></div><div class="setting-item-control"><input type="text" value="focused control" title="Focused row"></div></div>
           <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Mode</div></div><div class="setting-item-control"><select class="dropdown" title="Mode"><option>Graphite</option></select></div></div>
           <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Density</div></div><div class="setting-item-control"><input class="slider" type="range" value="60" title="Density"></div></div>
-          <div class="search-input-container"><input type="search" value="tabs" title="Settings search"><div class="search-input-clear-button"></div></div>
+          <div class="search-input-container" data-check="settings-search-focus-rim"><input type="search" value="tabs" autofocus title="Settings search"><div class="search-input-clear-button"></div></div>
         </div>
       </section>
 
       <section class="style-settings-container" data-check="style-settings-button-states">
         <div class="setting-item setting-item-heading"><div class="setting-item-info"><div class="setting-item-name">Style Settings</div></div></div>
         <button class="style-settings-import">Import</button><button class="style-settings-export">Export</button><button class="style-settings-copy">Copy</button><button class="style-settings-download">Download</button><label class="style-settings-import-label">Upload</label>
+      </section>
+
+      <section class="modal mod-settings modal-style-settings" data-check="style-settings-export-modal">
+        <div class="setting-item setting-item-heading" data-check="style-settings-export-rim"><div class="setting-item-info"><div class="setting-item-name">Export settings for: All settings</div></div><div class="setting-item-control"><button class="style-settings-copy" autofocus>Copy to clipboard</button><button class="style-settings-download">Download</button></div></div>
+        <pre><code>{ "owen-graphite-document@@ogd-pdf-visibility": true }</code></pre>
       </section>
 
       <section class="metadata-container" data-check="metadata-focus-state">
