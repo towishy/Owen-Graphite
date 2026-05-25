@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -73,6 +74,8 @@ def command_to_args(command: str) -> list[str] | None:
 def is_safe_command(command: str) -> bool:
     # Keep run-safe bounded: no bundling, release ZIP, sync, or publishing.
     blocked = ("build_release.py", "sync_obsidian_theme.py", "--include-sync", "--include-zip")
+    if "cdp_capture.mjs" in command and os.environ.get("CI"):
+        return False
     return not any(term in command for term in blocked)
 
 
