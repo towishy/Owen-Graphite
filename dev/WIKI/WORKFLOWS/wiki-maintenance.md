@@ -16,6 +16,7 @@ Use this when changing WIKI routing, owner registry, generated MAP bridges, runt
 - If adding a new WIKI page, link it from `INDEX.md` and the nearest entry point.
 - If adding a new helper script, list it in `INDEX.md`, `audits.md` when relevant, and `audit_wiki_consistency.py` if it is a required process gate.
 - If adding module-level runtime coverage, update `runtime-evidence-registry.json` and regenerate `MAP/coverage-priority-plan.md`.
+- If adding an Owen risk-accepted exception, update `risk-accepted-registry.json`, source marker `id=`, runtime evidence, and the direct-owner guard together.
 - Do not edit generated MAP outputs directly when a generator owns them.
 
 ## Required Checks

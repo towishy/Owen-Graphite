@@ -41,6 +41,10 @@ Strict mode is required when the diff touches Live Preview CM6 routing, `.cm-*`,
 
 When a temporary capture proves module-level coverage for unused/reserved selector planning, record the status in `dev/WIKI/runtime-evidence-registry.json`. `dev/scripts/build_coverage_priority_plan.py` reads that registry so P0/P1 rows show whether runtime evidence is captured, partial, unavailable, or still needed.
 
+When Owen accepts a known repository risk, record the exception in `dev/WIKI/risk-accepted-registry.json` and reference the registry id from the source marker.
+
+Use `dev/scripts/cdp_capture.mjs --status` before capture runs when you need to confirm that Obsidian is reachable through the approved CDP port.
+
 Promote temporary evidence into a permanent incident with:
 
 ```powershell

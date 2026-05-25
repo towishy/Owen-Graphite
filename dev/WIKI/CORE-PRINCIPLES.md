@@ -16,6 +16,7 @@
 
 - If Owen explicitly instructs the agent to proceed despite a known repository risk, treat that as product-owner risk acceptance.
 - Risk acceptance does not authorize silent late repair layers; update the relevant WIKI contract, guard, runtime evidence, and owner notes in the same change.
+- Structured exceptions must be recorded in `risk-accepted-registry.json`; source markers should reference the registry `id` and evidence path.
 - Prefer the direct owner even under risk acceptance. If a core boundary changes, change the boundary documentation and audit rule before changing behavior.
 
 ## No Late Repair Layer

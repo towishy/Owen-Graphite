@@ -36,14 +36,17 @@ Forbidden:
 Owen may explicitly accept the runtime risk of styling markdown table widget geometry. When this happens:
 
 1. Capture before/after runtime DOM and computed geometry for the same table state.
-2. Add a narrow source comment marker immediately before the exception rule:
+2. Add the exception to `risk-accepted-registry.json` with owner, selector, allowed properties, and evidence.
+3. Add a narrow source comment marker immediately before the exception rule:
 
 ```css
-/* owen-risk-accepted: cm-table-widget */
+/* owen-risk-accepted-begin: cm-table-widget; id=<registry-id>; evidence=<runtime-evidence> */
+...
+/* owen-risk-accepted-end: cm-table-widget */
 ```
 
-3. Keep the selector as narrow as possible; do not route through `.HyperMD-table-row`.
-4. Update `RUNTIME/table.md`, the incident/risk notes if needed, and run the direct-owner and hit-routing audits.
+4. Keep the selector as narrow as possible; do not route through `.HyperMD-table-row`.
+5. Update `RUNTIME/table.md`, the incident/risk notes if needed, and run the direct-owner and hit-routing audits.
 
 ## Runtime Issues
 

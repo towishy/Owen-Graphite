@@ -1,0 +1,37 @@
+{
+  "schema": "owen-graphite/risk-accepted-registry/1",
+  "updated": "2026-05-25",
+  "entries": [
+    {
+      "id": "cm-table-widget-visibility-2026-05-25",
+      "status": "active",
+      "acceptedBy": "Owen",
+      "acceptedAt": "2026-05-25",
+      "surface": "table",
+      "module": "src/base/13-live-preview.css",
+      "risk": "Styles Obsidian-owned Live Preview markdown table widget geometry to match HTML table visibility.",
+      "selectorContains": [
+        ".cm-table-widget.markdown-rendered table.table-editor"
+      ],
+      "allowedProperties": [
+        "background-color",
+        "border-color",
+        "box-shadow",
+        "color",
+        "font-size",
+        "line-height",
+        "padding"
+      ],
+      "evidence": [
+        "dev/TEMP/runtime-evidence/fragments/capture-widget-risk-accepted-compare.json"
+      ],
+      "checks": [
+        "dev/scripts/audit_direct_owner_guard.py",
+        "dev/scripts/audit_v3_hit_routing.py",
+        "dev/scripts/audit_lp_pdf_selector_ownership.py",
+        "dev/scripts/release_check.py --skip-bundle"
+      ],
+      "notes": "Keep this exception narrow. Do not route through .HyperMD-table-row."
+    }
+  ]
+}

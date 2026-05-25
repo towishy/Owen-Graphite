@@ -24,6 +24,7 @@ REQUIRED_FILES = [
     "dev/WIKI/runtime-evidence-schema.json",
     "dev/WIKI/runtime-evidence-storage.md",
     "dev/WIKI/runtime-evidence-registry.json",
+    "dev/WIKI/risk-accepted-registry.json",
     "dev/WIKI/RUNTIME/README.md",
     "dev/WIKI/RUNTIME/table.md",
     "dev/WIKI/RUNTIME/chrome.md",
@@ -77,6 +78,7 @@ REQUIRED_TEXT = {
         "VISUAL-QA.md",
         "runtime-evidence-template.md",
         "runtime-evidence-registry.json",
+        "risk-accepted-registry.json",
         "SRC/validation-matrix.md",
         "MAP/coverage-priority-plan.md",
         "TOKENS/usage-guide.md",
@@ -109,7 +111,7 @@ REQUIRED_TEXT = {
         "dev/scripts/audit_wiki_route_coverage.py",
         "dev/scripts/audit_selector_owner_cheatsheet.py",
         "dev/scripts/audit_runtime_evidence_requirements.py",
-        "dev/scripts/cdp_capture.mjs",
+        "dev/scripts/cdp_capture.mjs --status",
         "dev/scripts/promote_evidence.py",
         "PROMPTS/work-summary.md",
         "WORKFLOWS/validation-matrix.md",
@@ -133,6 +135,7 @@ REQUIRED_TEXT = {
         "audit_selector_owner_cheatsheet.py",
         "build_route_registry_doc.py --check",
         "audit_wiki_consistency.py",
+        "cdp_capture.mjs --status",
     ],
     "dev/WIKI/DOCS/v3/pdf-font-size-matrix.md": [
         "12pt = 16px",
@@ -173,6 +176,7 @@ REQUIRED_TEXT = {
     "dev/WIKI/CORE-PRINCIPLES.md": [
         "Owen Risk Acceptance",
         "product-owner risk acceptance",
+        "risk-accepted-registry.json",
         "change the boundary documentation and audit rule",
     ],
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md": [
@@ -195,6 +199,14 @@ REQUIRED_TEXT = {
         "Minimum Metadata",
         "runtime-evidence-schema.json",
         "runtime-evidence-registry.json",
+        "risk-accepted-registry.json",
+        "dev/scripts/cdp_capture.mjs --status",
+    ],
+    "dev/WIKI/risk-accepted-registry.json": [
+        "owen-graphite/risk-accepted-registry/1",
+        "cm-table-widget-visibility-2026-05-25",
+        "src/base/13-live-preview.css",
+        "allowedProperties",
     ],
     "dev/WIKI/runtime-evidence-registry.json": [
         "owen-graphite/runtime-evidence-registry/1",
@@ -247,6 +259,7 @@ REQUIRED_TEXT = {
         "build_route_registry_doc.py --check",
         "build_source_usage_map.py --check",
         "build_coverage_priority_plan.py --check",
+        "risk-accepted-registry.json",
     ],
     "dev/WIKI/PLUGINS/coverage-matrix.md": [
         "Real DOM Captured",
@@ -322,6 +335,7 @@ FORBIDDEN_INDEX_TEXT = [
 RUNTIME_EVIDENCE_STATUSES = {"captured", "partial", "unavailable", "needed"}
 RUNTIME_EVIDENCE_DECISIONS = {"runtime-reserved", "do-not-remove", "needs-capture", "candidate-review"}
 RUNTIME_EVIDENCE_SURFACES = {"chrome", "plugin", "table", "pdf", "live-preview", "mobile", "settings"}
+RISK_ACCEPTED_STATUSES = {"active", "retired"}
 
 
 def fail(message: str) -> None:
@@ -515,6 +529,60 @@ def assert_runtime_evidence_registry() -> None:
     print("OK: runtime evidence registry schema clean")
 
 
+def assert_risk_accepted_registry() -> None:
+    path = ROOT / "dev" / "WIKI" / "risk-accepted-registry.json"
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"risk accepted registry invalid JSON: {exc}")
+    if payload.get("schema") != "owen-graphite/risk-accepted-registry/1":
+        fail(f"risk accepted registry unexpected schema: {payload.get('schema')!r}")
+    entries = payload.get("entries")
+    if not isinstance(entries, list) or not entries:
+        fail("risk accepted registry must contain non-empty entries list")
+    seen: set[str] = set()
+    problems: list[str] = []
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            problems.append(f"entry {index} must be object")
+            continue
+        required = ("id", "status", "acceptedBy", "acceptedAt", "surface", "module", "risk", "selectorContains", "allowedProperties", "evidence")
+        missing = [key for key in required if key not in entry]
+        if missing:
+            problems.append(f"entry {index} missing {', '.join(missing)}")
+            continue
+        risk_id = str(entry["id"])
+        status = str(entry["status"])
+        module = str(entry["module"])
+        surface = str(entry["surface"])
+        selectors = entry["selectorContains"]
+        properties = entry["allowedProperties"]
+        evidence = entry["evidence"]
+        if risk_id in seen:
+            problems.append(f"duplicate risk id {risk_id}")
+        seen.add(risk_id)
+        if status not in RISK_ACCEPTED_STATUSES:
+            problems.append(f"entry {risk_id} has unknown status {status!r}")
+        if not module.startswith("src/") or not (ROOT / module).is_file():
+            problems.append(f"entry {risk_id} must reference an existing src module")
+        if surface not in RUNTIME_EVIDENCE_SURFACES:
+            problems.append(f"entry {risk_id} has unknown surface {surface!r}")
+        if not isinstance(selectors, list) or not selectors or not all(isinstance(item, str) and item.strip() for item in selectors):
+            problems.append(f"entry {risk_id} selectorContains must be a non-empty string list")
+        if not isinstance(properties, list) or not properties or not all(isinstance(item, str) and item.strip() for item in properties):
+            problems.append(f"entry {risk_id} allowedProperties must be a non-empty string list")
+        if not isinstance(evidence, list) or not evidence:
+            problems.append(f"entry {risk_id} evidence must be a non-empty list")
+        else:
+            for item in evidence:
+                item_text = str(item)
+                if not item_text.startswith("dev/TEMP/runtime-evidence/") or not item_text.endswith(".json"):
+                    problems.append(f"entry {risk_id} evidence must point at dev/TEMP/runtime-evidence/*.json")
+    if problems:
+        fail("risk accepted registry issues: " + "; ".join(problems))
+    print("OK: risk accepted registry schema clean")
+
+
 def assert_index_has_no_legacy_routes() -> None:
     index = read("dev/WIKI/INDEX.md")
     offenders = [text for text in FORBIDDEN_INDEX_TEXT if text in index]
@@ -532,6 +600,7 @@ def main() -> int:
         assert_helper_and_generator_stability()
         assert_wiki_schema()
         assert_runtime_evidence_registry()
+        assert_risk_accepted_registry()
         assert_index_has_no_legacy_routes()
         print("OK: WIKI consistency audit clean")
         return 0

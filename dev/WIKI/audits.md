@@ -43,3 +43,4 @@ Validation commands:
 ```
 
 Use runtime debug for selected/hover/focus issues that static audits cannot see.
+Use `node dev\scripts\cdp_capture.mjs --status` to confirm the approved Obsidian CDP port is reachable before runtime captures.

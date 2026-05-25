@@ -5,8 +5,13 @@ const args = new Map();
 for (let index = 2; index < process.argv.length; index += 1) {
   const key = process.argv[index];
   if (!key.startsWith("--")) continue;
-  args.set(key.slice(2), process.argv[index + 1] || "");
-  index += 1;
+  const next = process.argv[index + 1] || "";
+  if (next && !next.startsWith("--")) {
+    args.set(key.slice(2), next);
+    index += 1;
+  } else {
+    args.set(key.slice(2), "true");
+  }
 }
 
 const endpoint = args.get("endpoint") || "http://127.0.0.1:9222/json";
@@ -17,6 +22,7 @@ const outPath = args.get("out") || "";
 const expressionArg = args.get("expr") || "";
 const mouseAction = args.get("mouse") || "";
 const actionSelector = args.get("action-selector") || selector;
+const statusOnly = args.get("status") === "true";
 
 const targets = await fetch(endpoint).then((response) => response.json());
 const target = targets.find((item) => item.type === "page" && item.url.startsWith("app://obsidian.md/"));
@@ -56,6 +62,27 @@ const evaluate = async (expression) => {
 await send("Runtime.enable");
 await send("DOM.enable");
 await send("CSS.enable");
+
+if (statusOnly) {
+  const output = await evaluate(`(() => {
+    const appRef = window.app || globalThis.app;
+    const titleVersion = (document.title.match(/Obsidian\\s+([0-9.]+)/) || [])[1] || "";
+    return {
+      schema: "owen-graphite/cdp-status/1",
+      ok: true,
+      capturedAt: new Date().toISOString(),
+      url: location.href,
+      title: document.title,
+      obsidianVersion: appRef && appRef.getVersion ? appRef.getVersion() : titleVersion,
+      vaultName: appRef && appRef.vault ? appRef.vault.getName() : "",
+      bodyClasses: String(document.body.className || "")
+    };
+  })()`);
+  if (outPath) await writeFile(outPath, JSON.stringify(output, null, 2) + "\n", "utf8");
+  else console.log(JSON.stringify(output, null, 2));
+  socket.close();
+  process.exit(0);
+}
 
 if (expressionArg) {
   const output = await evaluate(expressionArg);
@@ -100,7 +127,9 @@ const captureExpression = `(() => {
   const matchedRulesFor = (element) => { const matched = []; for (const sheet of Array.from(document.styleSheets)) { try { walkRules(sheet.cssRules, element, matched); } catch {} } return matched.slice(-120); };
   const chain = [];
   for (let element = target; element && chain.length < 10; element = element.parentElement) chain.push(element);
-  return { schema: "owen-graphite/runtime-capture-fragment/1", scenario, selector, capturedAt: new Date().toISOString(), url: location.href, title: document.title, obsidianVersion: window.app && app.getVersion ? app.getVersion() : "", vaultName: window.app && app.vault ? app.vault.getName() : "", bodyClasses: String(document.body.className || ""), target: labelFor(target), activeElement: document.activeElement ? labelFor(document.activeElement) : "", domChain: chain.map((element) => ({ node: labelFor(element), inlineStyle: element.getAttribute("style") || "", textPreview: previewFor(element) })), rectChain: chain.map((element) => ({ node: labelFor(element), rect: readRect(element) })), computedGeometry: Object.fromEntries(chain.map((element) => [labelFor(element), readComputed(element)])), matchedRules: chain.map((element) => ({ node: labelFor(element), rules: matchedRulesFor(element) })), inlineStyle: target.getAttribute("style") || "" };
+  const appRef = window.app || globalThis.app;
+  const titleVersion = (document.title.match(/Obsidian\\s+([0-9.]+)/) || [])[1] || "";
+  return { schema: "owen-graphite/runtime-capture-fragment/1", scenario, selector, capturedAt: new Date().toISOString(), url: location.href, title: document.title, obsidianVersion: appRef && appRef.getVersion ? appRef.getVersion() : titleVersion, vaultName: appRef && appRef.vault ? appRef.vault.getName() : "", bodyClasses: String(document.body.className || ""), target: labelFor(target), activeElement: document.activeElement ? labelFor(document.activeElement) : "", domChain: chain.map((element) => ({ node: labelFor(element), inlineStyle: element.getAttribute("style") || "", textPreview: previewFor(element) })), rectChain: chain.map((element) => ({ node: labelFor(element), rect: readRect(element) })), computedGeometry: Object.fromEntries(chain.map((element) => [labelFor(element), readComputed(element)])), matchedRules: chain.map((element) => ({ node: labelFor(element), rules: matchedRulesFor(element) })), inlineStyle: target.getAttribute("style") || "" };
 })()`;
 
 const output = await evaluate(captureExpression);

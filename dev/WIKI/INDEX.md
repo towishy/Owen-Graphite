@@ -12,6 +12,7 @@
 - `runtime-evidence-schema.json`: required JSON fields for temporary runtime captures.
 - `runtime-evidence-storage.md`: where runtime captures are kept.
 - `runtime-evidence-registry.json`: module-level runtime evidence status used by coverage planning.
+- `risk-accepted-registry.json`: structured record for Owen-accepted repository risks and guard exceptions.
 - `runtime-evidence-example-selected-tab.md`: completed chrome selected-state example.
 - `runtime-evidence-example-plugin-dom.md`: completed plugin DOM example.
 
@@ -88,7 +89,7 @@
 - `dev/scripts/validation_plan.py --json`: prints the route-aware validation plan as machine-readable JSON.
 - `dev/scripts/finish_work.py --full-check`: runs release-confidence handoff validation.
 - `dev/scripts/run_validation.py --preset core`: runs validation presets with UTF-8-safe output and JSON summary.
-- `dev/scripts/cdp_capture.mjs`: captures real Obsidian runtime DOM/computed evidence through CDP.
+- `dev/scripts/cdp_capture.mjs --status`: checks real Obsidian CDP availability and captures DOM/computed evidence.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`
