@@ -34,5 +34,5 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
-      - name: Run full validation plan
-        run: python dev/scripts/validation_plan.py --full-check --run-safe
+      - name: Run core validation preset
+        run: python dev/scripts/run_validation.py --preset core
