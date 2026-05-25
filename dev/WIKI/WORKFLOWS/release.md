@@ -9,6 +9,14 @@
 .\.venv\Scripts\python.exe dev\scripts\audit_release_zip.py
 ```
 
+For a scripted dry run of the publish playbook, use:
+
+```powershell
+.\.venv\Scripts\python.exe dev\scripts\release_publish.py --version <version>
+```
+
+Add `--publish` only after the version metadata is final and the dry run is clean.
+
 ## Publish Playbook
 
 Replace `<version>` with numeric semver only, for example `3.1.58`.
@@ -30,6 +38,7 @@ git tag <version>
 git push origin <version>
 gh run list --workflow Release --limit 1 --json databaseId,status,conclusion,headBranch,url
 gh release view <version> --json tagName,name,url,isDraft,isPrerelease
+.\.venv\Scripts\python.exe dev\scripts\check_release_status.py --version <version> --wait --require-complete
 ```
 
 Never run `git tag v<version>` and never publish a `v<version>` GitHub Release.

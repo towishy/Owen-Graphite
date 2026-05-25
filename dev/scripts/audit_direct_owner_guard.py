@@ -14,15 +14,15 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+from css_scan import iter_comments, iter_rule_blocks, line_for_offset, strip_comments
+
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "src"
 RISK_REGISTRY = ROOT / "dev" / "WIKI" / "risk-accepted-registry.json"
 
-COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 OWEN_RISK_BEGIN = "owen-risk-accepted-begin: cm-table-widget"
 OWEN_RISK_END = "owen-risk-accepted-end: cm-table-widget"
-BLOCK_RE = re.compile(r"(?P<selectors>[^{}]+)\{(?P<body>[^{}]*)\}", re.DOTALL)
 
 @dataclass(frozen=True)
 class Rule:
@@ -77,13 +77,6 @@ RULES = [
 ]
 
 
-def strip_comments(text: str) -> str:
-    return COMMENT_RE.sub(lambda match: "".join("\n" if char == "\n" else " " for char in match.group(0)), text)
-
-
-def line_for_offset(text: str, offset: int) -> int:
-    return text.count("\n", 0, offset) + 1
-
 
 def css_files() -> list[Path]:
     return sorted(SRC.rglob("*.css"))
@@ -106,7 +99,7 @@ def marker_value(text: str, key: str) -> str:
 def owen_risk_ranges(text: str, rel: str, registry: dict[str, dict[str, object]]) -> tuple[list[RiskRange], list[str]]:
     ranges: list[RiskRange] = []
     problems: list[str] = []
-    comments = list(COMMENT_RE.finditer(text))
+    comments = list(iter_comments(text))
     for index, comment in enumerate(comments):
         body = comment.group(0)
         if OWEN_RISK_BEGIN not in body:
@@ -145,39 +138,32 @@ def assert_risk_range_rules(text: str, rel: str, ranges: list[RiskRange], regist
             continue
         allowed_properties = {str(item) for item in entry.get("allowedProperties", [])}
         selector_needles = [str(item) for item in entry.get("selectorContains", [])]
-        for block in BLOCK_RE.finditer(searchable, risk_range.start, risk_range.end):
-            selectors = " ".join(block.group("selectors").split())
+        for block in iter_rule_blocks(searchable, risk_range.start, risk_range.end):
+            selectors = block.normalized_selectors
             if selector_needles and not any(needle in selectors for needle in selector_needles):
-                line = line_for_offset(searchable, block.start())
+                line = line_for_offset(searchable, block.start)
                 violations.append(f"{rel}:{line}: owen-risk-selector: {selectors} — selector is not listed in risk registry entry {risk_range.risk_id}")
-            for declaration in block.group("body").split(";"):
-                prop, _, value = declaration.partition(":")
-                prop = prop.strip()
-                if not prop:
-                    continue
+            for prop, _value in block.declarations():
                 if allowed_properties and prop not in allowed_properties:
-                    line = line_for_offset(searchable, block.start())
+                    line = line_for_offset(searchable, block.start)
                     violations.append(f"{rel}:{line}: owen-risk-property: {prop} — property is not listed in risk registry entry {risk_range.risk_id}")
 
 
 def assert_no_callout_left_rails(text: str, rel: str, violations: list[str]) -> None:
     searchable = strip_comments(text)
-    for block in BLOCK_RE.finditer(searchable):
-        selectors = " ".join(block.group("selectors").split())
+    for block in iter_rule_blocks(searchable):
+        selectors = block.normalized_selectors
         if ".callout" not in selectors:
             continue
-        body = block.group("body")
-        for declaration in body.split(";"):
-            if "border-left" not in declaration:
+        for prop, value in block.declarations():
+            if "border-left" not in prop:
                 continue
-            prop, _, value = declaration.partition(":")
-            prop = prop.strip()
             value = value.strip().lower()
             if prop == "border-left-width" and value in {"0", "0px", "1px"}:
                 continue
             if value in {"0", "0px", "transparent", "var(--ogd-surface-transparent, transparent)"}:
                 continue
-            line = line_for_offset(searchable, block.start())
+            line = line_for_offset(searchable, block.start)
             violations.append(f"{rel}:{line}: callout-left-rail: {selectors} — callout rules must not add left-only accent rails; use full border, icon, or surface state instead.")
 
 

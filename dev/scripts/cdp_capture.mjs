@@ -23,8 +23,34 @@ const expressionArg = args.get("expr") || "";
 const mouseAction = args.get("mouse") || "";
 const actionSelector = args.get("action-selector") || selector;
 const statusOnly = args.get("status") === "true";
+const requireVault = args.get("require-vault") || "";
+const requireVersion = args.get("require-version") || "";
+const requireTheme = args.get("require-theme") || "";
 
-const targets = await fetch(endpoint).then((response) => response.json());
+const assertRequirements = (output) => {
+  const actual = output || {};
+  const checks = [
+    ["vaultName", requireVault],
+    ["obsidianVersion", requireVersion],
+    ["themeName", requireTheme],
+  ];
+  for (const [key, expected] of checks) {
+    if (expected && actual[key] !== expected) {
+      throw new Error(`Requirement failed: ${key} expected ${JSON.stringify(expected)} but got ${JSON.stringify(actual[key] || "")}`);
+    }
+  }
+};
+
+const loadTargets = async () => {
+  try {
+    const response = await fetch(endpoint);
+    return await response.json();
+  } catch (error) {
+    throw new Error(`Cannot reach Obsidian CDP endpoint ${endpoint}. Start Obsidian with --remote-debugging-port=9222. ${error.message || error}`);
+  }
+};
+
+const targets = await loadTargets();
 const target = targets.find((item) => item.type === "page" && item.url.startsWith("app://obsidian.md/"));
 if (!target) throw new Error("No Obsidian CDP page target found. Start Obsidian with --remote-debugging-port=9222.");
 
@@ -64,9 +90,14 @@ await send("DOM.enable");
 await send("CSS.enable");
 
 if (statusOnly) {
-  const output = await evaluate(`(() => {
+  const output = await evaluate(`(async () => {
     const appRef = window.app || globalThis.app;
     const titleVersion = (document.title.match(/Obsidian\\s+([0-9.]+)/) || [])[1] || "";
+    let themeName = "";
+    try {
+      const raw = appRef && appRef.vault && appRef.vault.adapter && appRef.vault.adapter.read ? await appRef.vault.adapter.read(".obsidian/appearance.json") : "";
+      themeName = raw ? (JSON.parse(raw).cssTheme || "") : "";
+    } catch {}
     return {
       schema: "owen-graphite/cdp-status/1",
       ok: true,
@@ -75,9 +106,11 @@ if (statusOnly) {
       title: document.title,
       obsidianVersion: appRef && appRef.getVersion ? appRef.getVersion() : titleVersion,
       vaultName: appRef && appRef.vault ? appRef.vault.getName() : "",
+      themeName,
       bodyClasses: String(document.body.className || "")
     };
   })()`);
+  assertRequirements(output);
   if (outPath) await writeFile(outPath, JSON.stringify(output, null, 2) + "\n", "utf8");
   else console.log(JSON.stringify(output, null, 2));
   socket.close();
@@ -86,6 +119,7 @@ if (statusOnly) {
 
 if (expressionArg) {
   const output = await evaluate(expressionArg);
+  if (output && typeof output === "object") assertRequirements(output);
   if (outPath) await writeFile(outPath, JSON.stringify(output, null, 2) + "\n", "utf8");
   else console.log(JSON.stringify(output, null, 2));
   socket.close();
@@ -112,7 +146,7 @@ if (mouseAction) {
   }
 }
 
-const captureExpression = `(() => {
+const captureExpression = `(async () => {
   const selector = ${JSON.stringify(selector)};
   const scenario = ${JSON.stringify(scenario)};
   const target = document.querySelector(selector);
@@ -129,10 +163,16 @@ const captureExpression = `(() => {
   for (let element = target; element && chain.length < 10; element = element.parentElement) chain.push(element);
   const appRef = window.app || globalThis.app;
   const titleVersion = (document.title.match(/Obsidian\\s+([0-9.]+)/) || [])[1] || "";
-  return { schema: "owen-graphite/runtime-capture-fragment/1", scenario, selector, capturedAt: new Date().toISOString(), url: location.href, title: document.title, obsidianVersion: appRef && appRef.getVersion ? appRef.getVersion() : titleVersion, vaultName: appRef && appRef.vault ? appRef.vault.getName() : "", bodyClasses: String(document.body.className || ""), target: labelFor(target), activeElement: document.activeElement ? labelFor(document.activeElement) : "", domChain: chain.map((element) => ({ node: labelFor(element), inlineStyle: element.getAttribute("style") || "", textPreview: previewFor(element) })), rectChain: chain.map((element) => ({ node: labelFor(element), rect: readRect(element) })), computedGeometry: Object.fromEntries(chain.map((element) => [labelFor(element), readComputed(element)])), matchedRules: chain.map((element) => ({ node: labelFor(element), rules: matchedRulesFor(element) })), inlineStyle: target.getAttribute("style") || "" };
+  let themeName = "";
+  try {
+    const raw = appRef && appRef.vault && appRef.vault.adapter && appRef.vault.adapter.read ? await appRef.vault.adapter.read(".obsidian/appearance.json") : "";
+    themeName = raw ? (JSON.parse(raw).cssTheme || "") : "";
+  } catch {}
+  return { schema: "owen-graphite/runtime-capture-fragment/1", scenario, selector, capturedAt: new Date().toISOString(), url: location.href, title: document.title, obsidianVersion: appRef && appRef.getVersion ? appRef.getVersion() : titleVersion, vaultName: appRef && appRef.vault ? appRef.vault.getName() : "", themeName, bodyClasses: String(document.body.className || ""), target: labelFor(target), activeElement: document.activeElement ? labelFor(document.activeElement) : "", domChain: chain.map((element) => ({ node: labelFor(element), inlineStyle: element.getAttribute("style") || "", textPreview: previewFor(element) })), rectChain: chain.map((element) => ({ node: labelFor(element), rect: readRect(element) })), computedGeometry: Object.fromEntries(chain.map((element) => [labelFor(element), readComputed(element)])), matchedRules: chain.map((element) => ({ node: labelFor(element), rules: matchedRulesFor(element) })), inlineStyle: target.getAttribute("style") || "" };
 })()`;
 
 const output = await evaluate(captureExpression);
+assertRequirements(output);
 if (outPath) await writeFile(outPath, JSON.stringify(output, null, 2) + "\n", "utf8");
 else console.log(JSON.stringify(output, null, 2));
 socket.close();

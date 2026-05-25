@@ -33,6 +33,12 @@ PRESETS = {
         ["dev/scripts/release_check.py", "--skip-bundle"],
         ["dev/scripts/audit_release_zip.py"],
     ],
+    "process": [
+        ["dev/scripts/audit_wiki_consistency.py"],
+        ["dev/scripts/test_route_workflow.py"],
+        ["dev/scripts/test_direct_owner_guard.py"],
+        ["dev/scripts/audit_core_principles.py"],
+    ],
 }
 
 

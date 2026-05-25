@@ -43,7 +43,7 @@ When a temporary capture proves module-level coverage for unused/reserved select
 
 When Owen accepts a known repository risk, record the exception in `dev/WIKI/risk-accepted-registry.json` and reference the registry id from the source marker.
 
-Use `dev/scripts/cdp_capture.mjs --status` before capture runs when you need to confirm that Obsidian is reachable through the approved CDP port.
+Use `dev/scripts/cdp_capture.mjs --status --require-vault Owen-WIKI --require-theme "Owen Graphite"` before capture runs when you need to confirm that Obsidian is reachable through the approved CDP port, vault, and theme.
 
 Promote temporary evidence into a permanent incident with:
 

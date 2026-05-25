@@ -102,6 +102,8 @@ REQUIRED_TEXT = {
         "dev/scripts/finish_work.py",
         "dev/scripts/validation_plan.py",
         "dev/scripts/run_validation.py",
+        "dev/scripts/check_release_status.py",
+        "dev/scripts/release_publish.py",
         "dev/scripts/new_runtime_evidence.py",
         "dev/scripts/new_incident.py",
         "dev/scripts/work_summary.py",
@@ -125,6 +127,8 @@ REQUIRED_TEXT = {
         "validation_plan.py --surface chrome --json",
         "validation_plan.py --full-check --run-safe",
         "run_validation.py --preset core",
+        "run_validation.py --preset process",
+        "check_release_status.py --version <version>",
         "finish_work.py --surface chrome --full-check",
         "finish_work.py --full-check",
         "build_coverage_priority_plan.py --check",
@@ -136,6 +140,7 @@ REQUIRED_TEXT = {
         "build_route_registry_doc.py --check",
         "audit_wiki_consistency.py",
         "cdp_capture.mjs --status",
+        "test_direct_owner_guard.py",
     ],
     "dev/WIKI/DOCS/v3/pdf-font-size-matrix.md": [
         "12pt = 16px",
@@ -164,6 +169,8 @@ REQUIRED_TEXT = {
     "dev/WIKI/WORKFLOWS/release.md": [
         "git tag <version>",
         "Never run `git tag v<version>`",
+        "release_publish.py --version <version>",
+        "check_release_status.py --version <version>",
         "gh release view <version>",
     ],
     "dev/WIKI/OWNER-DECISION-TREE.md": [
@@ -201,6 +208,8 @@ REQUIRED_TEXT = {
         "runtime-evidence-registry.json",
         "risk-accepted-registry.json",
         "dev/scripts/cdp_capture.mjs --status",
+        "--require-vault Owen-WIKI",
+        "--require-theme \"Owen Graphite\"",
     ],
     "dev/WIKI/risk-accepted-registry.json": [
         "owen-graphite/risk-accepted-registry/1",
@@ -260,6 +269,7 @@ REQUIRED_TEXT = {
         "build_source_usage_map.py --check",
         "build_coverage_priority_plan.py --check",
         "risk-accepted-registry.json",
+        "dry-run mode",
     ],
     "dev/WIKI/PLUGINS/coverage-matrix.md": [
         "Real DOM Captured",
@@ -413,8 +423,11 @@ def assert_helper_and_generator_stability() -> None:
         "dev/scripts/build_route_registry_doc.py",
         "dev/scripts/audit_mobile_owner.py",
         "dev/scripts/run_validation.py",
+        "dev/scripts/check_release_status.py",
+        "dev/scripts/release_publish.py",
         "dev/scripts/cdp_capture.mjs",
         "dev/scripts/test_route_workflow.py",
+        "dev/scripts/test_direct_owner_guard.py",
     ):
         if not (ROOT / script).is_file():
             fail(f"missing helper script: {script}")

@@ -90,6 +90,8 @@
 - `dev/scripts/finish_work.py --full-check`: runs release-confidence handoff validation.
 - `dev/scripts/run_validation.py --preset core`: runs validation presets with UTF-8-safe output and JSON summary.
 - `dev/scripts/cdp_capture.mjs --status`: checks real Obsidian CDP availability and captures DOM/computed evidence.
+- `dev/scripts/check_release_status.py --version <version>`: checks GitHub Actions and GitHub Release state without opening a pager.
+- `dev/scripts/release_publish.py --version <version>`: runs the release publish playbook as a dry run; add `--publish` only when ready to push.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`
@@ -122,6 +124,8 @@
 - `dev/scripts/finish_work.py`
 - `dev/scripts/validation_plan.py`
 - `dev/scripts/run_validation.py`
+- `dev/scripts/check_release_status.py`
+- `dev/scripts/release_publish.py`
 - `dev/scripts/new_runtime_evidence.py`
 - `dev/scripts/new_incident.py`
 - `dev/scripts/promote_evidence.py`

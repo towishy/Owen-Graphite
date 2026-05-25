@@ -18,6 +18,8 @@ Core commands:
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --run-safe
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --full-check --run-safe
 .\.venv\Scripts\python.exe dev\scripts\run_validation.py --preset core
+.\.venv\Scripts\python.exe dev\scripts\run_validation.py --preset process
+.\.venv\Scripts\python.exe dev\scripts\check_release_status.py --version <version>
 ```
 
 Validation commands:
@@ -40,7 +42,8 @@ Validation commands:
 .\.venv\Scripts\python.exe dev\scripts\audit_lp_pdf_selector_ownership.py
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
 .\.venv\Scripts\python.exe dev\scripts\run_validation.py --preset table
+.\.venv\Scripts\python.exe dev\scripts\test_direct_owner_guard.py
 ```
 
 Use runtime debug for selected/hover/focus issues that static audits cannot see.
-Use `node dev\scripts\cdp_capture.mjs --status` to confirm the approved Obsidian CDP port is reachable before runtime captures.
+Use `node dev\scripts\cdp_capture.mjs --status --require-vault Owen-WIKI --require-theme "Owen Graphite"` to confirm the approved Obsidian CDP port, vault, and theme before runtime captures.
