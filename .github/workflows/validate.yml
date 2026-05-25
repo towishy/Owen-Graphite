@@ -34,5 +34,17 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
-      - name: Run core validation preset
-        run: python dev/scripts/run_validation.py --preset core
+      - name: Source usage map freshness
+        run: python dev/scripts/build_source_usage_map.py --check
+
+      - name: Coverage priority plan freshness
+        run: python dev/scripts/build_coverage_priority_plan.py --check
+
+      - name: WIKI consistency
+        run: python dev/scripts/audit_wiki_consistency.py
+
+      - name: Core principles
+        run: python dev/scripts/audit_core_principles.py
+
+      - name: Release check
+        run: python dev/scripts/release_check.py --skip-bundle
