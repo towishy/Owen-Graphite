@@ -118,7 +118,8 @@ jobs:
         run: python dev/scripts/bundle_v3.py --check
 
       - name: Theme promotion freshness
-        run: python - <<'PY'
+        run: |
+          python - <<'PY'
           from pathlib import Path
           assert Path('theme.css').read_text(encoding='utf-8') == Path('dist/theme-v3.css').read_text(encoding='utf-8'), 'theme.css is stale vs dist/theme-v3.css'
           print('OK: theme.css matches dist/theme-v3.css')
