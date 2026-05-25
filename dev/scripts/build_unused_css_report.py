@@ -340,6 +340,9 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
         "ogd-pdf-segment-value-sky",
         "ogd-pdf-segment-value-teal",
         "ogd-pdf-segment-value-mint",
+        "ogd-pdf-segment-value-violet",
+        "ogd-pdf-segment-value-rose",
+        "ogd-pdf-segment-value-amber",
         "ogd-report-mode",
     ]:
         scenarios.append(
@@ -382,7 +385,12 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                 [
                     {"id": f"{fixture.stem}-screen-light", "fixture": fixture, "theme": "light", "media": "screen", "bodyClasses": [], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-screen-dark", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-glass-subtle"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-screen-dark-mobile", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["is-mobile"], "viewport": {"width": 390, "height": 844}},
+                    {"id": f"{fixture.stem}-screen-light-relaxed", "fixture": fixture, "theme": "light", "media": "screen", "bodyClasses": ["ogd-spacing-relaxed", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-screen-dark-relaxed", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-glass-subtle", "ogd-spacing-relaxed", "ogd-modern-tables", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-print-pdf-compound", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility", "ogd-pdf-compact", "ogd-pdf-screen-delivery", "ogd-pdf-header-enabled", "ogd-pdf-header-top-center", "ogd-pdf-label-segmented-dual", "ogd-pdf-header-dual-pair", "ogd-pdf-links-inline", "ogd-pdf-segment-value-violet", "ogd-pdf-segment-value-rose", "ogd-pdf-segment-value-amber"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-print-pdf-links-clean", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility", "ogd-pdf-links-clean"], "viewport": {"width": 1440, "height": 1400}},
                 ]
             )
     scenarios.extend(load_style_scenarios(style_limit))

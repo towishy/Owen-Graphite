@@ -39,6 +39,7 @@ def tokenize_blocks(css: str):
     Handles nested at-rules (`@media`, `@supports`, `@layer`, `@container`)
     by tracking the enclosing at-rule chain as `at_context`.
     """
+    css = css.lstrip("\ufeff")
     i = 0
     n = len(css)
     at_stack: list[str] = []
