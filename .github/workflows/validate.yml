@@ -43,8 +43,104 @@ jobs:
       - name: WIKI consistency
         run: python dev/scripts/audit_wiki_consistency.py
 
-      - name: Core principles
-        run: python dev/scripts/audit_core_principles.py
+      - name: Core static policy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, re
+          root = Path('.')
+          assert not (root / 'src' / 'polish').exists(), 'src/polish exists'
+          entry = (root / 'src' / 'entry.css').read_text(encoding='utf-8').lower()
+          assert './polish/' not in entry and 'src/polish' not in entry, 'src/entry.css references src/polish'
+          comment_re = re.compile(r'/\*.*?\*/', re.S)
+          offenders = []
+          for path in sorted((root / 'src').rglob('*.css')):
+              clean = comment_re.sub(lambda match: '\n' * match.group(0).count('\n'), path.read_text(encoding='utf-8'))
+              if '!important' in clean:
+                  offenders.append(path.as_posix())
+          assert not offenders, 'important found in src CSS: ' + ', '.join(offenders)
+          registry = json.loads((root / 'dev/WIKI/MAP/owner-registry.json').read_text(encoding='utf-8'))
+          missing = []
+          for surface in registry['surfaces']:
+              for key in ('ownerModules', 'allowedLateModules'):
+                  for module in surface.get(key, []):
+                      if module.startswith(('src/', 'dev/')) and not (root / module).is_file():
+                          missing.append(f"{surface['id']}:{module}")
+              for contract in surface.get('riskContracts', []):
+                  if contract.startswith('dev/') and not (root / contract).is_file():
+                      missing.append(f"{surface['id']}:{contract}")
+          assert not missing, 'owner registry references missing files: ' + ', '.join(missing)
+          workflow = (root / '.github/workflows/release.yml').read_text(encoding='utf-8')
+          assert '"[0-9]+.[0-9]+.[0-9]+"' in workflow, 'release workflow must use numeric tags only'
+          print('OK: core static policy clean')
+          PY
 
-      - name: Release check
-        run: python dev/scripts/release_check.py --skip-bundle
+      - name: Route registry
+        run: python dev/scripts/audit_route_registry.py
+
+      - name: Route workflow unit tests
+        run: python dev/scripts/test_route_workflow.py
+
+      - name: Direct owner guard unit tests
+        run: python dev/scripts/test_direct_owner_guard.py
+
+      - name: Obsidian sync unit tests
+        run: python dev/scripts/test_sync_obsidian_theme.py
+
+      - name: WIKI route coverage
+        run: python dev/scripts/audit_wiki_route_coverage.py
+
+      - name: Owner risk contracts
+        run: python dev/scripts/audit_owner_risk_contracts.py
+
+      - name: Selector owner cheatsheet
+        run: python dev/scripts/audit_selector_owner_cheatsheet.py
+
+      - name: Route registry doc freshness
+        run: python dev/scripts/build_route_registry_doc.py --check
+
+      - name: Direct owner guard
+        run: python dev/scripts/audit_direct_owner_guard.py
+
+      - name: Mobile owner guard
+        run: python dev/scripts/audit_mobile_owner.py
+
+      - name: Runtime evidence advisory
+        run: python dev/scripts/audit_runtime_evidence_requirements.py
+
+      - name: LP/PDF selector ownership
+        run: python dev/scripts/audit_lp_pdf_selector_ownership.py
+
+      - name: Live Preview hit routing
+        run: python dev/scripts/audit_v3_hit_routing.py
+
+      - name: Bundle freshness
+        run: python dev/scripts/bundle_v3.py --check
+
+      - name: Theme promotion freshness
+        run: python - <<'PY'
+          from pathlib import Path
+          assert Path('theme.css').read_text(encoding='utf-8') == Path('dist/theme-v3.css').read_text(encoding='utf-8'), 'theme.css is stale vs dist/theme-v3.css'
+          print('OK: theme.css matches dist/theme-v3.css')
+          PY
+
+      - name: Release metadata
+        run: python dev/scripts/audit_release_metadata.py
+
+      - name: Style Settings contract
+        run: python dev/scripts/audit_style_settings_contract.py
+
+      - name: Docs and assets
+        run: python dev/scripts/audit_docs_assets.py
+
+      - name: README SVG layout
+        run: python dev/scripts/audit_readme_svg_layout.py
+
+      - name: CSS compatibility budget
+        run: python dev/scripts/audit_css_compat_budget.py
+
+      - name: PDF header/footer contract
+        run: python dev/scripts/audit_pdf_header_footer.py
+
+      - name: Duplicate selector threshold
+        run: python dev/scripts/v3_audit_duplicate_selectors.py --threshold 10
