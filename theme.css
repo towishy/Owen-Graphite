@@ -5396,7 +5396,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
        .cm-active.cm-line (active line)
      - overflow-x:auto + max-width:100% pair on .cm-embed-block
      - pointer-events:none on .cm-content / .cm-line
-  See: dev/MAP/cm6-hit-routing-contract.md
+  See: dev/WIKI/MAP/cm6-hit-routing-contract.md
    ===================================================================== */
 
 /* (1) CM6 header line-height per level — override generic .cm-line 1.45
@@ -5586,9 +5586,9 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-frontma
   padding-left: 0.08em;
 }
 /* HyperMD inline header text size — CM6 needs explicit per-level */
-.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 6.3em; font-weight: 850; }
-.markdown-source-view.mod-cm6 .cm-header-2 { font-size: 1.6em; font-weight: 780; }
-.markdown-source-view.mod-cm6 .cm-header-3 { font-size: 1.3em; font-weight: 720; color: var(--header-accent-dark); }
+.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 6.3em; font-weight: 860; }
+.markdown-source-view.mod-cm6 .cm-header-2 { font-size: 1.6em; font-weight: 800; }
+.markdown-source-view.mod-cm6 .cm-header-3 { font-size: 1.3em; font-weight: 760; color: var(--header-accent-dark); }
 .markdown-source-view.mod-cm6 .cm-header-4 { font-size: 1.12em; font-weight: 700; color: var(--header-accent-dark); }
 .markdown-source-view.mod-cm6 .cm-header-5 { font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--header-muted); }
 .markdown-source-view.mod-cm6 .cm-header-6 { font-size: 0.92em; font-weight: 700; color: var(--header-muted); }
@@ -5602,9 +5602,6 @@ body .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
   text-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
 }
 
-body .markdown-source-view.mod-cm6 .cm-header-1 { font-weight: 860; }
-body .markdown-source-view.mod-cm6 .cm-header-2 { font-weight: 800; }
-
 body .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
   color: var(--ogd-text-slate, #334155);
   text-decoration-line: underline;
@@ -5614,7 +5611,6 @@ body .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
   text-underline-offset: 0.18em;
 }
 
-body .markdown-source-view.mod-cm6 .cm-header-3 { font-weight: 760; }
 body .markdown-source-view.mod-cm6 .cm-header-4 { color: var(--ogd-text-subtle, #475569); font-weight: 760; }
 
 body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2) {
@@ -12614,6 +12610,32 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     content: none;
   }
 
+  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
+  body .workspace-leaf-content .markdown-rendered pre code {
+    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ogd-code-fg, #1e293b);
+    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    font-weight: var(--ogd-code-font-weight, 520);
+    font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
+    font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
+    font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
+    letter-spacing: var(--ogd-code-letter-spacing, 0);
+    white-space: var(--ogd-codeblock-code-white-space, pre-wrap);
+    word-break: normal;
+    overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, anywhere);
+  }
+
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .el-pre,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered .el-pre {
     margin: var(--ogd-codeblock-wrapper-margin, 0.72em 0 1.05em);
@@ -12754,34 +12776,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-sql::after { content: "SQL"; }
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after { content: "TEXT"; }
-
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
-  body .workspace-leaf-content .markdown-rendered pre code {
-
-    box-sizing: border-box;
-    display: block;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    color: var(--ogd-code-fg, #1e293b);
-    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-weight: var(--ogd-code-font-weight, 520);
-    font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
-    font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
-    font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
-    letter-spacing: var(--ogd-code-letter-spacing, 0);
-    word-break: normal;
-
-    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
-    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
-    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
-    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
-    white-space: var(--ogd-codeblock-code-white-space, pre-wrap);
-    overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, anywhere);
-}
 
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
     --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));

@@ -6,7 +6,7 @@
   <title>Owen Graphite Chrome UI State Fixture</title>
   <link rel="stylesheet" href="../../../../../theme.css">
 </head>
-<body class="theme-light is-frameless" data-ogd-fixture="chrome-ui-state">
+<body class="theme-light is-frameless css-settings-manager" data-ogd-fixture="chrome-ui-state">
   <div class="workspace workspace-split mod-root" data-check="chrome-state-shell">
     <aside class="workspace-leaf-content" data-type="file-explorer" data-check="chrome-file-explorer-states">
       <div class="workspace-tab-header-container">
@@ -14,6 +14,9 @@
         <div class="workspace-tab-header is-active mod-active" data-check="tab-active"><div class="workspace-tab-header-inner"><div class="workspace-tab-header-inner-title">active</div></div></div>
       </div>
       <div class="nav-files-container">
+        <div class="tree-item nav-folder mod-root"><div class="nav-folder-children">
+          <div class="tree-item nav-folder" data-check="nav-parent-has-active"><div class="tree-item-self nav-folder-title is-clickable" data-path="Project/Sub"><div class="tree-item-inner nav-folder-title-content">Project/Sub</div></div><div class="nav-folder-children"><div class="tree-item nav-file"><div class="tree-item-self nav-file-title is-clickable is-active" data-path="Project/Sub/nested.md"><div class="tree-item-inner nav-file-title-content">nested.md</div></div></div></div></div>
+        </div></div>
         <div class="tree-item nav-folder"><div class="tree-item-self nav-folder-title is-clickable" data-path="Project"><div class="tree-item-inner nav-folder-title-content">Project</div></div></div>
         <div class="tree-item nav-file"><div class="tree-item-self nav-file-title is-clickable" data-path="Project/rest.md" data-check="nav-rest"><div class="tree-item-inner nav-file-title-content">rest.md</div></div></div>
         <div class="tree-item nav-file"><div class="tree-item-self nav-file-title is-clickable is-active" data-path="Project/active.md" data-check="nav-active"><div class="tree-item-inner nav-file-title-content">active.md</div></div></div>
@@ -22,20 +25,38 @@
 
     <main class="workspace-leaf-content markdown-reading-view" data-type="markdown">
       <section class="modal mod-settings" data-check="settings-control-states">
+        <button class="modal-close-button" data-check="modal-close-state" aria-label="Close settings"></button>
         <div class="modal-title">Settings</div>
         <div class="vertical-tab-content-container">
           <div class="setting-item setting-item-heading"><div class="setting-item-info"><div class="setting-item-name">Appearance</div></div></div>
           <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Glass intensity</div><div class="setting-item-description">Stable row spacing and control alignment.</div></div><div class="setting-item-control"><div class="checkbox-container is-enabled" role="switch" aria-checked="true" title="Glass intensity enabled"></div></div></div>
+          <div class="setting-item" data-check="settings-focus-within"><div class="setting-item-info"><div class="setting-item-name">Focused row</div><div class="setting-item-description">Focus-within outline and glass row state.</div></div><div class="setting-item-control"><input type="text" value="focused control" autofocus title="Focused row"></div></div>
           <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Mode</div></div><div class="setting-item-control"><select class="dropdown" title="Mode"><option>Graphite</option></select></div></div>
           <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Density</div></div><div class="setting-item-control"><input class="slider" type="range" value="60" title="Density"></div></div>
           <div class="search-input-container"><input type="search" value="tabs" title="Settings search"><div class="search-input-clear-button"></div></div>
         </div>
       </section>
 
+      <section class="style-settings-container" data-check="style-settings-button-states">
+        <div class="setting-item setting-item-heading"><div class="setting-item-info"><div class="setting-item-name">Style Settings</div></div></div>
+        <button class="style-settings-import">Import</button><button class="style-settings-export">Export</button><button class="style-settings-copy">Copy</button><button class="style-settings-download">Download</button><label class="style-settings-import-label">Upload</label>
+      </section>
+
+      <section class="metadata-container" data-check="metadata-focus-state">
+        <div class="metadata-properties-container"><div class="metadata-property"><input class="metadata-property-key-input" value="status"><div class="metadata-property-value"><input value="ready"><textarea>notes</textarea></div></div></div>
+      </section>
+
       <section class="suggestion-container mod-search-suggestion" data-check="overlay-selection-states">
+        <input class="prompt-input" value="command" title="Command input">
         <div class="suggestion-item">Open daily note</div>
         <div class="suggestion-item is-selected"><span class="suggestion-highlight">tabs</span> command</div>
+        <div class="menu"><div class="menu-item">Menu rest</div><div class="menu-item selected" data-check="menu-selected-state">Selected menu item</div></div>
         <div class="menu-item selected">Selected menu item</div>
+      </section>
+
+      <section class="status-bar" data-check="status-bar-chip-state">
+        <div class="status-bar-item" aria-label="git sync"><span class="status-bar-item-icon svg-icon"></span><span class="status-bar-item-segment" title="git sync">synced</span></div>
+        <div class="status-bar-item-segment" title="word count">120 words</div>
       </section>
 
       <section class="workspace-split mod-right-split is-mobile" data-check="mobile-narrow-overflow">

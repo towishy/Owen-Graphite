@@ -1,7 +1,7 @@
 # Unused CSS Candidate Report
 
-Version: 3.1.60
-Bundle SHA256: `e7ea0384f2fe0727949c193211c3e4ba54f8337536373db053452954eaa1fa82`
+Version: 3.1.61
+Bundle SHA256: `403b1ec620f7aa22e6e2de09a9b7703837bb11612f165548073de89a16b0c279`
 Coverage scenarios: 201
 
 ## Summary
@@ -9,7 +9,7 @@ Coverage scenarios: 201
 | Classification | Count |
 | --- | ---: |
 | invalid-query | 3 |
-| matched | 3342 |
+| matched | 3337 |
 | reserved | 446 |
 
 ## Candidate Selectors
@@ -68,7 +68,7 @@ Reserved selectors are not deletion approval; each bucket below defines the requ
 | src/plugins/60-canvas-graph-link-panes.css | 24 | 0 | 24 | 128 | state-interaction=24 | reserved-module=24, state-pseudo=24, obsidian-style-or-semantic-selector=22 |
 | src/plugins/61-live-preview-mobile-plugin.css | 22 | 0 | 22 | 167 | state-interaction=22 | reserved-module=22, state-pseudo=22, obsidian-style-or-semantic-selector=20, document-content-selector=8 |
 | src/surfaces/22-reading-embeds-workspace.css | 18 | 1 | 17 | 51 | state-interaction=17, obsidian-chrome-runtime=1 | state-pseudo=17, obsidian-style-or-semantic-selector=15 |
-| src/base/13-live-preview.css | 16 | 8 | 8 | 183 | live-preview-runtime=8, state-interaction=8 | obsidian-style-or-semantic-selector=16, document-content-selector=12, state-pseudo=8 |
+| src/base/13-live-preview.css | 16 | 8 | 8 | 180 | live-preview-runtime=8, state-interaction=8 | obsidian-style-or-semantic-selector=16, document-content-selector=12, state-pseudo=8 |
 | src/features/41-feature-presets.css | 13 | 2 | 11 | 356 | state-interaction=11, obsidian-chrome-runtime=2 | obsidian-style-or-semantic-selector=13, state-pseudo=11, document-content-selector=4, reserved-at-context=1 |
 
 ### Reserved Selector Samples
@@ -209,14 +209,14 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 
 | Line | Bucket | Selector part | Reasons |
 | ---: | --- | --- | --- |
-| 257 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor` | document-content-selector, obsidian-style-or-semantic-selector |
-| 258 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)` | document-content-selector, obsidian-style-or-semantic-selector |
-| 259 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)` | document-content-selector, obsidian-style-or-semantic-selector |
-| 260 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th` | document-content-selector, obsidian-style-or-semantic-selector |
-| 262 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor` | document-content-selector, obsidian-style-or-semantic-selector |
-| 263 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)` | document-content-selector, obsidian-style-or-semantic-selector |
-| 264 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)` | document-content-selector, obsidian-style-or-semantic-selector |
-| 265 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th` | document-content-selector, obsidian-style-or-semantic-selector |
+| 253 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor` | document-content-selector, obsidian-style-or-semantic-selector |
+| 254 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 255 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 256 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th` | document-content-selector, obsidian-style-or-semantic-selector |
+| 258 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor` | document-content-selector, obsidian-style-or-semantic-selector |
+| 259 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 260 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 261 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th` | document-content-selector, obsidian-style-or-semantic-selector |
 
 #### src/features/41-feature-presets.css
 
@@ -251,7 +251,7 @@ Invalid-query rows are query-coverage exclusions, not CSS syntax failures and no
 | --- | ---: | ---: | ---: | ---: |
 | src/base/10-base-workspace.css | 0 | 7 | 0 | 47 |
 | src/base/12-reading-content.css | 0 | 10 | 0 | 198 |
-| src/base/13-live-preview.css | 0 | 16 | 0 | 183 |
+| src/base/13-live-preview.css | 0 | 16 | 0 | 180 |
 | src/chrome/30-workspace.css | 0 | 29 | 0 | 158 |
 | src/chrome/31-navigation-tasks-search.css | 0 | 11 | 0 | 59 |
 | src/chrome/32-overlay-popover-dataview.css | 0 | 50 | 0 | 102 |
@@ -261,7 +261,7 @@ Invalid-query rows are query-coverage exclusions, not CSS syntax failures and no
 | src/chrome/36-floating-ui-glass-system.css | 0 | 39 | 0 | 156 |
 | src/chrome/37-tabs-file-explorer-search.css | 0 | 37 | 0 | 151 |
 | src/features/41-feature-presets.css | 0 | 13 | 0 | 356 |
-| src/features/42-report-print-polish.css | 0 | 0 | 0 | 389 |
+| src/features/42-report-print-polish.css | 0 | 0 | 0 | 387 |
 | src/features/43-print-base.css | 0 | 0 | 0 | 122 |
 | src/plugins/60-canvas-graph-link-panes.css | 0 | 24 | 0 | 128 |
 | src/plugins/61-live-preview-mobile-plugin.css | 0 | 22 | 0 | 167 |

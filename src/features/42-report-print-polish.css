@@ -1874,6 +1874,8 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
   body .workspace-leaf-content .markdown-rendered pre code {
+    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
+    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
     box-sizing: border-box;
     display: block;
     margin: 0;
@@ -1884,16 +1886,16 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     box-shadow: none;
     color: var(--ogd-code-fg, #1e293b);
     font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
-    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
+    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
     font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
     font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
-    line-height: var(--ogd-code-print-line-height, 1.44);
+    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
     letter-spacing: var(--ogd-code-letter-spacing, 0);
-    white-space: pre-wrap;
+    white-space: var(--ogd-codeblock-code-white-space, pre-wrap);
     word-break: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, anywhere);
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(span, .token, [class*="token"], [class*="cm-"]),
@@ -2049,16 +2051,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-sql::after { content: "SQL"; }
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after { content: "TEXT"; }
-
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
-  body .workspace-leaf-content .markdown-rendered pre code {
-    --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
-    --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
-    font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
-    line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
-    white-space: var(--ogd-codeblock-code-white-space, pre-wrap);
-    overflow-wrap: var(--ogd-codeblock-code-overflow-wrap, anywhere);
-  }
 
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
     --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));

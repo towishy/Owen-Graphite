@@ -125,7 +125,7 @@ def bundle(entry: Path, dist: Path, dedup: bool = True, check: bool = False) -> 
     return 0
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--entry", type=Path, default=ENTRY)
     parser.add_argument("--out", type=Path, default=DIST)
@@ -133,7 +133,7 @@ def main() -> int:
                         help="Skip the post-bundle same-context selector dedup pass.")
     parser.add_argument("--check", action="store_true",
                         help="Verify that dist matches a fresh bundle from src/; do not write.")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     return bundle(args.entry, args.out, dedup=not args.no_dedup, check=args.check)
 
 

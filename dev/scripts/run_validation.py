@@ -37,6 +37,7 @@ PRESETS = {
         ["dev/scripts/audit_wiki_consistency.py"],
         ["dev/scripts/test_route_workflow.py"],
         ["dev/scripts/test_direct_owner_guard.py"],
+        ["dev/scripts/test_sync_obsidian_theme.py"],
         ["dev/scripts/audit_core_principles.py"],
     ],
 }

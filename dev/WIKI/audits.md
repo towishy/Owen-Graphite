@@ -38,6 +38,7 @@ Validation commands:
 .\.venv\Scripts\python.exe dev\scripts\audit_selector_owner_cheatsheet.py
 .\.venv\Scripts\python.exe dev\scripts\audit_runtime_evidence_requirements.py
 .\.venv\Scripts\python.exe dev\scripts\audit_direct_owner_guard.py
+.\.venv\Scripts\python.exe dev\scripts\test_sync_obsidian_theme.py
 .\.venv\Scripts\python.exe dev\scripts\audit_v3_hit_routing.py
 .\.venv\Scripts\python.exe dev\scripts\audit_lp_pdf_selector_ownership.py
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
