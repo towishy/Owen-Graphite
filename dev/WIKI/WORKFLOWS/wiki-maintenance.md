@@ -24,6 +24,7 @@ Use this when changing WIKI routing, owner registry, generated MAP bridges, runt
 .\.venv\Scripts\python.exe dev\scripts\build_coverage_priority_plan.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_consistency.py
 .\.venv\Scripts\python.exe dev\scripts\audit_route_registry.py
+.\.venv\Scripts\python.exe dev\scripts\test_route_workflow.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_route_coverage.py
 .\.venv\Scripts\python.exe dev\scripts\audit_owner_risk_contracts.py
 .\.venv\Scripts\python.exe dev\scripts\build_route_registry_doc.py --check

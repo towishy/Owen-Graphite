@@ -153,6 +153,7 @@ def main() -> int:
         assert_numeric_release_tag_policy()
         run("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"])
         run("route registry", [PYTHON, "dev/scripts/audit_route_registry.py"])
+        run("route workflow unit tests", [PYTHON, "dev/scripts/test_route_workflow.py"])
         run("WIKI route coverage", [PYTHON, "dev/scripts/audit_wiki_route_coverage.py"])
         run("owner risk contracts", [PYTHON, "dev/scripts/audit_owner_risk_contracts.py"])
         run("selector owner cheatsheet", [PYTHON, "dev/scripts/audit_selector_owner_cheatsheet.py"])

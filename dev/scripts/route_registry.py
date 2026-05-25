@@ -48,7 +48,11 @@ def route_surfaces() -> dict[str, list[str]]:
 def check_command(check: str | dict[str, Any]) -> str:
     if isinstance(check, str):
         return check
-    return str(check.get("command", ""))
+    if check.get("command"):
+        return str(check.get("command", ""))
+    script = str(check.get("script", ""))
+    args = [str(arg) for arg in check.get("args", [])]
+    return " ".join([script, *args]).strip()
 
 
 def check_note(check: str | dict[str, Any]) -> str:
@@ -59,6 +63,32 @@ def check_note(check: str | dict[str, Any]) -> str:
 
 def route_check_commands(route: dict[str, Any]) -> list[str]:
     return [command for command in (check_command(check) for check in route.get("checks", [])) if command]
+
+
+def normalized_check(check: str | dict[str, Any]) -> dict[str, Any]:
+    if isinstance(check, str):
+        parts = command_parts(check)
+        return {
+            "script": parts[0] if parts else "",
+            "args": parts[1:],
+            "safe": "<" not in check and ">" not in check,
+            "requiresPlaceholder": "<" in check or ">" in check,
+            "note": "",
+            "command": check,
+        }
+    command = check_command(check)
+    return {
+        "script": str(check.get("script") or command_script(command)),
+        "args": [str(arg) for arg in check.get("args", command_parts(command)[1:])],
+        "safe": bool(check.get("safe", True)),
+        "requiresPlaceholder": bool(check.get("requiresPlaceholder", False)),
+        "note": check_note(check),
+        "command": command,
+    }
+
+
+def route_check_models(route: dict[str, Any]) -> list[dict[str, Any]]:
+    return [normalized_check(check) for check in route.get("checks", [])]
 
 
 def command_parts(command: str) -> list[str]:

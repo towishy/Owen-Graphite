@@ -34,7 +34,11 @@ Use `dev/scripts/validation_plan.py --surface <surface>` when planning before a 
 
 Repeat `--surface` for multi-surface work, for example `dev/scripts/validation_plan.py --surface chrome --surface settings`.
 
+Use `dev/scripts/validation_plan.py --surface <surface> --json` when CI or helper scripts need a machine-readable plan.
+
 Use `dev/scripts/validation_plan.py --run-safe` to execute recommended checks that do not require placeholders.
+
+Successful `--run-safe` executions write `dev/TEMP/last-validation.json`, which `dev/scripts/work_summary.py` uses to fill the audit summary.
 
 Use `dev/scripts/validation_plan.py --full-check --run-safe` or `dev/scripts/finish_work.py --full-check` for release-confidence handoff validation.
 

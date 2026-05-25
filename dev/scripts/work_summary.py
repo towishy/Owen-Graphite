@@ -49,6 +49,20 @@ def runtime_evidence_summary() -> str:
     return ", ".join(files) if files else "n/a"
 
 
+def validation_summary() -> str:
+    path = ROOT / "dev" / "TEMP" / "last-validation.json"
+    if not path.is_file():
+        return "no recent validation result"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    results = data.get("results", [])
+    ran = [item for item in results if item.get("ran")]
+    failed = [item for item in ran if int(item.get("exitCode", 1)) != 0]
+    skipped = [item for item in results if not item.get("ran")]
+    status = "yes" if data.get("ok") and not failed else "no"
+    when = str(data.get("completedAt", data.get("generatedAt", "")))
+    return f"{status}; ran {len(ran)}; skipped {len(skipped)}; {when}"
+
+
 def changelog_candidate(files: list[str]) -> str:
     if any(path.startswith("src/") for path in files):
         return "polish/fix: source CSS changed; summarize user-visible surface and validation"
@@ -76,7 +90,7 @@ def main() -> int:
     print(f"| Runtime evidence required | {yes_no(runtime_related)} |")
     print(f"| Runtime evidence captured | {runtime_evidence_summary()} |")
     print(f"| Generated artifacts refreshed | {yes_no(generated)} |")
-    print("| Audits passed | fill from terminal output |")
+    print(f"| Audits passed | {validation_summary()} |")
     print(f"| Obsidian synced | {last_sync_summary()} |")
     print("| Release/tag impact | n/a unless manifest/tag changed |")
     print(f"| Changelog candidate | {changelog_candidate(files)} |")

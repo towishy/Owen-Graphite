@@ -84,6 +84,7 @@
 - `dev/scripts/build_route_registry_doc.py --check`: verifies generated route registry docs are fresh.
 - `dev/scripts/validation_plan.py --surface <surface>`: plans route-aware checks before a diff exists.
 - `dev/scripts/validation_plan.py --surface chrome --surface settings`: plans multi-surface checks with de-duplicated commands.
+- `dev/scripts/validation_plan.py --json`: prints the route-aware validation plan as machine-readable JSON.
 - `dev/scripts/finish_work.py --full-check`: runs release-confidence handoff validation.
 - `runtime-debug.md`
 - `build-release.md`
@@ -112,6 +113,7 @@
 - `dev/scripts/route_registry.py`
 - `dev/scripts/audit_route_registry.py`
 - `dev/scripts/build_route_registry_doc.py`
+- `dev/scripts/test_route_workflow.py`
 - `dev/scripts/start_work.py`
 - `dev/scripts/finish_work.py`
 - `dev/scripts/validation_plan.py`

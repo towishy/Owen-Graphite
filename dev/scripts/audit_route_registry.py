@@ -4,9 +4,7 @@
 from __future__ import annotations
 
 import sys
-from pathlib import Path
-
-from route_registry import ROOT, check_command, command_script, common_read, load_owner_registry, load_route_registry, routes
+from route_registry import ROOT, check_command, command_script, common_read, load_owner_registry, load_route_registry, normalized_check, routes
 
 
 REQUIRED_ROUTE_FIELDS = {"owner", "read", "contracts", "checks", "surfaces"}
@@ -53,11 +51,26 @@ def audit() -> list[str]:
         if not isinstance(checks, list) or not checks:
             problems.append(f"{name}: checks must be a non-empty list")
         for check in checks:
+            if isinstance(check, str) or "command" in check:
+                problems.append(f"{name}: checks must use structured script/args/safe fields")
+                continue
             command = check_command(check)
-            script = command_script(command)
+            model = normalized_check(check)
+            script = str(model["script"] or command_script(command))
             if not command:
                 problems.append(f"{name}: empty check command")
                 continue
+            if not script:
+                problems.append(f"{name}: check missing script")
+            if "args" not in check or not isinstance(check.get("args"), list):
+                problems.append(f"{name}: check {script} args must be a list")
+            if "safe" not in check or not isinstance(check.get("safe"), bool):
+                problems.append(f"{name}: check {script} safe must be boolean")
+            has_placeholder = any("<" in str(arg) or ">" in str(arg) for arg in model["args"])
+            if has_placeholder and not model["requiresPlaceholder"]:
+                problems.append(f"{name}: check {script} has placeholder args but requiresPlaceholder is not true")
+            if has_placeholder and model["safe"]:
+                problems.append(f"{name}: check {script} has placeholder args but safe is true")
             if script.startswith("dev/") and not (ROOT / script).is_file():
                 problems.append(f"{name}: check script missing: {script}")
         for surface in route.get("surfaces", []):

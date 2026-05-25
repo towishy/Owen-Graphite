@@ -13,8 +13,8 @@
       "read": ["dev/WIKI/WORKFLOWS/chrome-ui.md", "dev/WIKI/RUNTIME/chrome.md", "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
       "contracts": ["dev/WIKI/MAP/top-chrome-icon-background-contract.md when top chrome is involved"],
       "checks": [
-        {"command": "dev/scripts/audit_core_principles.py"},
-        {"command": "dev/scripts/release_check.py --skip-bundle"}
+        {"script": "dev/scripts/audit_core_principles.py", "args": [], "safe": true},
+        {"script": "dev/scripts/release_check.py", "args": ["--skip-bundle"], "safe": true}
       ]
     },
     "docs": {
@@ -23,8 +23,8 @@
       "read": ["dev/WIKI/WORKFLOWS/docs-assets.md", "dev/WIKI/DOCS/docs-map.md", "dev/WIKI/VISUAL-QA.md"],
       "contracts": ["dev/WIKI/STRUCTURE.md"],
       "checks": [
-        {"command": "dev/scripts/audit_docs_assets.py"},
-        {"command": "dev/scripts/audit_readme_svg_layout.py"}
+        {"script": "dev/scripts/audit_docs_assets.py", "args": [], "safe": true},
+        {"script": "dev/scripts/audit_readme_svg_layout.py", "args": [], "safe": true}
       ]
     },
     "live-preview": {
@@ -33,8 +33,8 @@
       "read": ["dev/WIKI/WORKFLOWS/live-preview-cm6.md", "dev/WIKI/RUNTIME/table.md", "dev/WIKI/runtime-evidence-template.md"],
       "contracts": ["dev/WIKI/MAP/cm6-hit-routing-contract.md"],
       "checks": [
-        {"command": "dev/scripts/audit_v3_hit_routing.py"},
-        {"command": "dev/scripts/audit_core_principles.py"}
+        {"script": "dev/scripts/audit_v3_hit_routing.py", "args": [], "safe": true},
+        {"script": "dev/scripts/audit_core_principles.py", "args": [], "safe": true}
       ]
     },
     "mobile": {
@@ -43,8 +43,8 @@
       "read": ["dev/WIKI/WORKFLOWS/chrome-ui.md", "dev/WIKI/RUNTIME/chrome.md", "dev/WIKI/VISUAL-QA.md"],
       "contracts": ["dev/WIKI/SRC/validation-matrix.md"],
       "checks": [
-        {"command": "dev/scripts/audit_core_principles.py"},
-        {"command": "dev/scripts/release_check.py --skip-bundle"}
+        {"script": "dev/scripts/audit_core_principles.py", "args": [], "safe": true},
+        {"script": "dev/scripts/release_check.py", "args": ["--skip-bundle"], "safe": true}
       ]
     },
     "pdf": {
@@ -53,8 +53,8 @@
       "read": ["dev/WIKI/WORKFLOWS/pdf.md", "dev/WIKI/RUNTIME/pdf.md", "dev/WIKI/RECIPES/pdf-label-preset.md"],
       "contracts": ["dev/WIKI/MAP/pdf-header-footer-contract.md"],
       "checks": [
-        {"command": "dev/scripts/audit_pdf_header_footer.py"},
-        {"command": "dev/scripts/release_check.py --skip-bundle"}
+        {"script": "dev/scripts/audit_pdf_header_footer.py", "args": [], "safe": true},
+        {"script": "dev/scripts/release_check.py", "args": ["--skip-bundle"], "safe": true}
       ]
     },
     "plugin": {
@@ -63,8 +63,8 @@
       "read": ["dev/WIKI/PLUGINS/compatibility-matrix.md", "dev/WIKI/PLUGINS/runtime-dom-notes.md", "dev/WIKI/RUNTIME/plugins.md"],
       "contracts": ["dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
       "checks": [
-        {"command": "dev/scripts/audit_core_principles.py"},
-        {"command": "dev/scripts/release_check.py --skip-bundle"}
+        {"script": "dev/scripts/audit_core_principles.py", "args": [], "safe": true},
+        {"script": "dev/scripts/release_check.py", "args": ["--skip-bundle"], "safe": true}
       ]
     },
     "release": {
@@ -73,8 +73,8 @@
       "read": ["dev/WIKI/WORKFLOWS/release.md", "dev/WIKI/DOCS/v3/release-plan.md"],
       "contracts": ["numeric semver tag only; no leading v prefix"],
       "checks": [
-        {"command": "dev/scripts/release_check.py --tag <version>"},
-        {"command": "dev/scripts/audit_release_zip.py"}
+        {"script": "dev/scripts/release_check.py", "args": ["--tag", "<version>"], "safe": false, "requiresPlaceholder": true},
+        {"script": "dev/scripts/audit_release_zip.py", "args": [], "safe": true}
       ]
     },
     "settings": {
@@ -83,9 +83,9 @@
       "read": ["dev/WIKI/RECIPES/style-settings-option.md", "dev/WIKI/DOCS/v3/style-settings-contract.md", "dev/WIKI/TOKENS/usage-guide.md"],
       "contracts": ["dev/WIKI/MAP/settings-style-contract.md"],
       "checks": [
-        {"command": "dev/scripts/audit_style_settings_contract.py"},
-        {"command": "dev/scripts/audit_core_principles.py"},
-        {"command": "dev/scripts/release_check.py --skip-bundle"}
+        {"script": "dev/scripts/audit_style_settings_contract.py", "args": [], "safe": true},
+        {"script": "dev/scripts/audit_core_principles.py", "args": [], "safe": true},
+        {"script": "dev/scripts/release_check.py", "args": ["--skip-bundle"], "safe": true}
       ]
     },
     "table": {
@@ -94,9 +94,9 @@
       "read": ["dev/WIKI/WORKFLOWS/table.md", "dev/WIKI/RUNTIME/table.md", "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
       "contracts": ["dev/WIKI/MAP/cm6-hit-routing-contract.md", "dev/WIKI/MAP/live-preview-pdf-css-map/parity-guidelines.md"],
       "checks": [
-        {"command": "dev/scripts/audit_direct_owner_guard.py"},
-        {"command": "dev/scripts/audit_v3_hit_routing.py"},
-        {"command": "dev/scripts/audit_lp_pdf_selector_ownership.py"}
+        {"script": "dev/scripts/audit_direct_owner_guard.py", "args": [], "safe": true},
+        {"script": "dev/scripts/audit_v3_hit_routing.py", "args": [], "safe": true},
+        {"script": "dev/scripts/audit_lp_pdf_selector_ownership.py", "args": [], "safe": true}
       ]
     },
     "tokens": {
@@ -105,8 +105,8 @@
       "read": ["dev/WIKI/TOKENS/usage-guide.md", "dev/WIKI/TOKENS/state-token-map.md", "dev/WIKI/VISUAL-QA.md"],
       "contracts": ["dev/WIKI/SRC/validation-matrix.md"],
       "checks": [
-        {"command": "dev/scripts/audit_style_settings_contract.py", "note": "when setting-facing"},
-        {"command": "dev/scripts/release_check.py --skip-bundle"}
+        {"script": "dev/scripts/audit_style_settings_contract.py", "args": [], "safe": true, "note": "when setting-facing"},
+        {"script": "dev/scripts/release_check.py", "args": ["--skip-bundle"], "safe": true}
       ]
     }
   }

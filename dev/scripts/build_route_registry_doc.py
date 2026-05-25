@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from route_registry import ROOT, check_command, check_note, common_read, routes, support_modules
+from route_registry import ROOT, check_command, check_note, common_read, normalized_check, routes, support_modules
 
 
 OUT = ROOT / "dev" / "WIKI" / "MAP" / "route-registry.md"
@@ -51,8 +51,14 @@ def render() -> str:
         lines.append("Checks:")
         lines.append("")
         for check in route.get("checks", []):
+            model = normalized_check(check)
             note = check_note(check)
-            suffix = f" ({note})" if note else ""
+            metadata = ["safe" if model["safe"] else "manual"]
+            if model["requiresPlaceholder"]:
+                metadata.append("requires placeholder")
+            if note:
+                metadata.append(note)
+            suffix = f" ({'; '.join(metadata)})"
             lines.append(f"- `{check_command(check)}`{suffix}")
         lines.append("")
     modules = support_modules()

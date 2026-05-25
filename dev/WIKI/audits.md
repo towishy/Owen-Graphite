@@ -14,6 +14,7 @@ Core commands:
 .\.venv\Scripts\python.exe dev\scripts\finish_work.py --full-check
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --surface chrome
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --surface chrome --surface settings
+.\.venv\Scripts\python.exe dev\scripts\validation_plan.py --surface chrome --json
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --run-safe
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --full-check --run-safe
 ```
@@ -28,6 +29,7 @@ Validation commands:
 .\.venv\Scripts\python.exe dev\scripts\audit_mobile_owner.py
 .\.venv\Scripts\python.exe dev\scripts\audit_owner_risk_contracts.py
 .\.venv\Scripts\python.exe dev\scripts\audit_route_registry.py
+.\.venv\Scripts\python.exe dev\scripts\test_route_workflow.py
 .\.venv\Scripts\python.exe dev\scripts\audit_wiki_route_coverage.py
 .\.venv\Scripts\python.exe dev\scripts\build_route_registry_doc.py --check
 .\.venv\Scripts\python.exe dev\scripts\audit_selector_owner_cheatsheet.py

@@ -39,8 +39,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_core_principles.py`
-- `dev/scripts/release_check.py --skip-bundle`
+- `dev/scripts/audit_core_principles.py` (safe)
+- `dev/scripts/release_check.py --skip-bundle` (safe)
 
 ### docs
 
@@ -56,8 +56,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_docs_assets.py`
-- `dev/scripts/audit_readme_svg_layout.py`
+- `dev/scripts/audit_docs_assets.py` (safe)
+- `dev/scripts/audit_readme_svg_layout.py` (safe)
 
 ### live-preview
 
@@ -73,8 +73,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_v3_hit_routing.py`
-- `dev/scripts/audit_core_principles.py`
+- `dev/scripts/audit_v3_hit_routing.py` (safe)
+- `dev/scripts/audit_core_principles.py` (safe)
 
 ### mobile
 
@@ -90,8 +90,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_core_principles.py`
-- `dev/scripts/release_check.py --skip-bundle`
+- `dev/scripts/audit_core_principles.py` (safe)
+- `dev/scripts/release_check.py --skip-bundle` (safe)
 
 ### pdf
 
@@ -107,8 +107,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_pdf_header_footer.py`
-- `dev/scripts/release_check.py --skip-bundle`
+- `dev/scripts/audit_pdf_header_footer.py` (safe)
+- `dev/scripts/release_check.py --skip-bundle` (safe)
 
 ### plugin
 
@@ -124,8 +124,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_core_principles.py`
-- `dev/scripts/release_check.py --skip-bundle`
+- `dev/scripts/audit_core_principles.py` (safe)
+- `dev/scripts/release_check.py --skip-bundle` (safe)
 
 ### release
 
@@ -140,8 +140,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/release_check.py --tag <version>`
-- `dev/scripts/audit_release_zip.py`
+- `dev/scripts/release_check.py --tag <version>` (manual; requires placeholder)
+- `dev/scripts/audit_release_zip.py` (safe)
 
 ### settings
 
@@ -157,9 +157,9 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_style_settings_contract.py`
-- `dev/scripts/audit_core_principles.py`
-- `dev/scripts/release_check.py --skip-bundle`
+- `dev/scripts/audit_style_settings_contract.py` (safe)
+- `dev/scripts/audit_core_principles.py` (safe)
+- `dev/scripts/release_check.py --skip-bundle` (safe)
 
 ### table
 
@@ -176,9 +176,9 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_direct_owner_guard.py`
-- `dev/scripts/audit_v3_hit_routing.py`
-- `dev/scripts/audit_lp_pdf_selector_ownership.py`
+- `dev/scripts/audit_direct_owner_guard.py` (safe)
+- `dev/scripts/audit_v3_hit_routing.py` (safe)
+- `dev/scripts/audit_lp_pdf_selector_ownership.py` (safe)
 
 ### tokens
 
@@ -194,8 +194,8 @@ Contracts:
 
 Checks:
 
-- `dev/scripts/audit_style_settings_contract.py` (when setting-facing)
-- `dev/scripts/release_check.py --skip-bundle`
+- `dev/scripts/audit_style_settings_contract.py` (safe; when setting-facing)
+- `dev/scripts/release_check.py --skip-bundle` (safe)
 
 ## Registered Support Modules
 
