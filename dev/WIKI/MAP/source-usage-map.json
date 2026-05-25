@@ -1,22 +1,73 @@
 {
   "schema": "owen-graphite/source-usage-map/1",
   "moduleCount": 26,
-  "sourceLines": 18457,
-  "rules": 2376,
-  "selectorParts": 3776,
+  "sourceLines": 18458,
+  "rules": 2386,
+  "selectorParts": 3788,
   "labelTotals": {
     "callout-list": 429,
-    "cm6": 318,
+    "cm6": 328,
     "code": 947,
     "lp-html-table": 83,
-    "lp-markdown-table-widget-reference": 84,
+    "lp-markdown-table-widget-reference": 94,
     "overlay-search": 258,
     "print-pdf": 468,
-    "reading-rendered": 1099,
-    "table": 1058,
+    "reading-rendered": 1109,
+    "table": 1068,
     "workspace-chrome": 564
   },
-  "hardViolations": [],
+  "hardViolations": [
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 188,
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 189,
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 190,
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 191,
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 192,
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 193,
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 194,
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 195,
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 196,
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 197,
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)"
+    }
+  ],
   "modules": [
     {
       "index": 1,
@@ -255,18 +306,19 @@
       "index": 11,
       "module": "src/base/13-live-preview.css",
       "legacyId": "05-live-preview.css",
-      "sourceLines": 1116,
+      "sourceLines": 1127,
       "bundleStartLine": 5374,
       "bundleEndLine": 6447,
-      "rules": 150,
-      "selectorParts": 189,
+      "rules": 160,
+      "selectorParts": 199,
       "labels": {
         "callout-list": 30,
-        "cm6": 150,
+        "cm6": 160,
         "code": 41,
         "lp-html-table": 18,
-        "lp-markdown-table-widget-reference": 19,
-        "table": 58
+        "lp-markdown-table-widget-reference": 29,
+        "reading-rendered": 10,
+        "table": 68
       },
       "ownerSurfaces": [
         "live-preview-cm6",
@@ -306,7 +358,7 @@
       "index": 13,
       "module": "src/chrome/30-workspace.css",
       "legacyId": "07-plugin-workspace.css",
-      "sourceLines": 706,
+      "sourceLines": 696,
       "bundleStartLine": 8036,
       "bundleEndLine": 8817,
       "rules": 127,
@@ -405,7 +457,7 @@
       "bundleStartLine": 9768,
       "bundleEndLine": 10161,
       "rules": 64,
-      "selectorParts": 150,
+      "selectorParts": 152,
       "labels": {
         "code": 2,
         "overlay-search": 27,
@@ -2982,7 +3034,127 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 433,
+      "line": 188,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 189,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 190,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 191,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 192,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 193,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 194,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 195,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 196,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 197,
+      "context": "",
+      "labels": [
+        "cm6",
+        "lp-markdown-table-widget-reference",
+        "reading-rendered",
+        "table"
+      ],
+      "selector": "body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)"
+    },
+    {
+      "module": "src/base/13-live-preview.css",
+      "line": 444,
       "context": "",
       "labels": [
         "cm6",
@@ -2992,7 +3164,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 440,
+      "line": 451,
       "context": "",
       "labels": [
         "cm6",
@@ -3002,7 +3174,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 446,
+      "line": 457,
       "context": "",
       "labels": [
         "cm6",
@@ -3012,7 +3184,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 459,
+      "line": 470,
       "context": "",
       "labels": [
         "cm6",
@@ -3022,7 +3194,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 513,
+      "line": 524,
       "context": "",
       "labels": [
         "cm6",
@@ -3032,7 +3204,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 552,
+      "line": 563,
       "context": "",
       "labels": [
         "cm6",
@@ -3043,7 +3215,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 558,
+      "line": 569,
       "context": "",
       "labels": [
         "cm6",
@@ -3053,7 +3225,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 563,
+      "line": 574,
       "context": "",
       "labels": [
         "cm6",
@@ -3063,7 +3235,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 566,
+      "line": 577,
       "context": "",
       "labels": [
         "cm6",
@@ -3073,7 +3245,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 571,
+      "line": 582,
       "context": "",
       "labels": [
         "cm6",
@@ -3083,7 +3255,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 576,
+      "line": 587,
       "context": "",
       "labels": [
         "cm6",
@@ -3094,7 +3266,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 581,
+      "line": 592,
       "context": "",
       "labels": [
         "cm6",
@@ -3105,7 +3277,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 586,
+      "line": 597,
       "context": "",
       "labels": [
         "cm6",
@@ -3115,7 +3287,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 589,
+      "line": 600,
       "context": "",
       "labels": [
         "cm6",
@@ -3125,7 +3297,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 607,
+      "line": 618,
       "context": "",
       "labels": [
         "callout-list",
@@ -3137,7 +3309,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 685,
+      "line": 696,
       "context": "",
       "labels": [
         "cm6",
@@ -3148,7 +3320,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 694,
+      "line": 705,
       "context": "",
       "labels": [
         "cm6",
@@ -3159,7 +3331,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 698,
+      "line": 709,
       "context": "",
       "labels": [
         "cm6",
@@ -3170,7 +3342,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 705,
+      "line": 716,
       "context": "",
       "labels": [
         "cm6",
@@ -3181,7 +3353,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 712,
+      "line": 723,
       "context": "",
       "labels": [
         "cm6",
@@ -3192,7 +3364,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 759,
+      "line": 770,
       "context": "",
       "labels": [
         "cm6",
@@ -3202,7 +3374,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 763,
+      "line": 774,
       "context": "",
       "labels": [
         "cm6",
@@ -3212,7 +3384,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 767,
+      "line": 778,
       "context": "",
       "labels": [
         "cm6",
@@ -3222,7 +3394,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 773,
+      "line": 784,
       "context": "",
       "labels": [
         "callout-list",
@@ -3233,7 +3405,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 777,
+      "line": 788,
       "context": "",
       "labels": [
         "callout-list",
@@ -3244,7 +3416,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 783,
+      "line": 794,
       "context": "",
       "labels": [
         "cm6",
@@ -3255,7 +3427,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 870,
+      "line": 881,
       "context": "",
       "labels": [
         "cm6",
@@ -3266,7 +3438,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 874,
+      "line": 885,
       "context": "",
       "labels": [
         "cm6",
@@ -3277,7 +3449,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 878,
+      "line": 889,
       "context": "",
       "labels": [
         "cm6",
@@ -3288,7 +3460,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 883,
+      "line": 894,
       "context": "",
       "labels": [
         "cm6",
@@ -3299,7 +3471,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 934,
+      "line": 945,
       "context": "",
       "labels": [
         "cm6",
@@ -3310,7 +3482,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 938,
+      "line": 949,
       "context": "",
       "labels": [
         "cm6",
@@ -3321,7 +3493,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 953,
+      "line": 964,
       "context": "",
       "labels": [
         "callout-list",
@@ -3334,7 +3506,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 962,
+      "line": 973,
       "context": "",
       "labels": [
         "callout-list",
@@ -3347,7 +3519,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 969,
+      "line": 980,
       "context": "",
       "labels": [
         "callout-list",
@@ -3360,7 +3532,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 972,
+      "line": 983,
       "context": "",
       "labels": [
         "callout-list",
@@ -3373,7 +3545,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 976,
+      "line": 987,
       "context": "",
       "labels": [
         "callout-list",
@@ -3387,7 +3559,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 985,
+      "line": 996,
       "context": "",
       "labels": [
         "callout-list",
@@ -3400,7 +3572,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 988,
+      "line": 999,
       "context": "",
       "labels": [
         "callout-list",
@@ -3413,7 +3585,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 991,
+      "line": 1002,
       "context": "",
       "labels": [
         "callout-list",
@@ -3426,7 +3598,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 1000,
+      "line": 1011,
       "context": "",
       "labels": [
         "callout-list",
@@ -3439,7 +3611,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 1007,
+      "line": 1018,
       "context": "",
       "labels": [
         "callout-list",
@@ -3452,7 +3624,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 1012,
+      "line": 1023,
       "context": "",
       "labels": [
         "callout-list",
@@ -3465,7 +3637,7 @@
     },
     {
       "module": "src/base/13-live-preview.css",
-      "line": 1017,
+      "line": 1028,
       "context": "",
       "labels": [
         "callout-list",
@@ -4211,7 +4383,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 389,
+      "line": 388,
       "context": "",
       "labels": [
         "callout-list",
@@ -4222,7 +4394,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 397,
+      "line": 395,
       "context": "",
       "labels": [
         "callout-list",
@@ -4233,7 +4405,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 400,
+      "line": 398,
       "context": "",
       "labels": [
         "callout-list",
@@ -4244,7 +4416,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 403,
+      "line": 401,
       "context": "",
       "labels": [
         "callout-list",
@@ -4255,7 +4427,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 461,
+      "line": 459,
       "context": "@media print",
       "labels": [
         "callout-list",
@@ -4268,7 +4440,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 469,
+      "line": 467,
       "context": "@media print",
       "labels": [
         "callout-list",
@@ -4280,7 +4452,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 471,
+      "line": 465,
       "context": "",
       "labels": [
         "callout-list",
@@ -4291,7 +4463,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 478,
+      "line": 471,
       "context": "",
       "labels": [
         "callout-list",
@@ -4302,7 +4474,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 484,
+      "line": 476,
       "context": "",
       "labels": [
         "callout-list",
@@ -4313,7 +4485,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 490,
+      "line": 481,
       "context": "",
       "labels": [
         "callout-list",
@@ -4324,7 +4496,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 496,
+      "line": 486,
       "context": "",
       "labels": [
         "callout-list",
@@ -4335,7 +4507,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 506,
+      "line": 496,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4345,7 +4517,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 512,
+      "line": 502,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4355,7 +4527,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 515,
+      "line": 505,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4365,7 +4537,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 518,
+      "line": 508,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4375,7 +4547,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 521,
+      "line": 511,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4385,7 +4557,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 525,
+      "line": 515,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4395,7 +4567,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 530,
+      "line": 520,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4405,7 +4577,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 535,
+      "line": 525,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4415,7 +4587,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 538,
+      "line": 528,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4425,7 +4597,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 541,
+      "line": 531,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4435,7 +4607,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 544,
+      "line": 534,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4445,7 +4617,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 547,
+      "line": 537,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -4455,7 +4627,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 599,
+      "line": 589,
       "context": "",
       "labels": [
         "table"
@@ -4464,7 +4636,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 602,
+      "line": 592,
       "context": "",
       "labels": [
         "table"
@@ -4473,7 +4645,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 605,
+      "line": 595,
       "context": "",
       "labels": [
         "table"
@@ -4482,7 +4654,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 608,
+      "line": 598,
       "context": "",
       "labels": [
         "table"
@@ -4491,7 +4663,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 611,
+      "line": 601,
       "context": "",
       "labels": [
         "table"
@@ -4500,7 +4672,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 616,
+      "line": 606,
       "context": "",
       "labels": [
         "cm6",
@@ -4510,7 +4682,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 622,
+      "line": 612,
       "context": "",
       "labels": [
         "code",
@@ -4521,7 +4693,7 @@
     },
     {
       "module": "src/chrome/30-workspace.css",
-      "line": 627,
+      "line": 617,
       "context": "",
       "labels": [
         "reading-rendered",
@@ -5546,7 +5718,7 @@
       "labels": [
         "table"
       ],
-      "selector": ".canvas-edge.is-focused .canvas-edge-path, .canvas-edge:hover .canvas-edge-path"
+      "selector": ".canvas-edge.is-focused .canvas-edge-path, .canvas-edge:hover .canvas-edge-path, .canvas-edges path:hover"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
@@ -5566,7 +5738,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": ".canvas-control-item, .canvas-card-menu .clickable-icon"
+      "selector": ".canvas-control-item, .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button)"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
@@ -5576,7 +5748,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": ".canvas-control-item:hover, .canvas-card-menu .clickable-icon:hover"
+      "selector": ".canvas-control-item:hover, .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
@@ -5770,7 +5942,7 @@
       "labels": [
         "table"
       ],
-      "selector": ".theme-dark .canvas-edge.is-focused .canvas-edge-path, .theme-dark .canvas-edge:hover .canvas-edge-path"
+      "selector": ".theme-dark .canvas-edge.is-focused .canvas-edge-path, .theme-dark .canvas-edge:hover .canvas-edge-path, .theme-dark .canvas-edges path:hover"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
@@ -5790,7 +5962,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": ".theme-dark .canvas-control-item, .theme-dark .canvas-card-menu .clickable-icon"
+      "selector": ".theme-dark .canvas-control-item, .theme-dark .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button)"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
@@ -5800,7 +5972,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": ".theme-dark .canvas-control-item:hover, .theme-dark .canvas-card-menu .clickable-icon:hover"
+      "selector": ".theme-dark .canvas-control-item:hover, .theme-dark .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",

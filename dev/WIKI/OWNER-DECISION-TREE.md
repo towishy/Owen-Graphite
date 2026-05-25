@@ -17,7 +17,7 @@ Use this when `QUICK-ROUTING.md` is not enough. Stop at the first true statement
 3. Is the target `.cm-table-widget`, `table.cm-table`, or a markdown table cell editor?
    - Owner: Obsidian core for widget geometry.
    - Read: `WORKFLOWS/table.md`, `INCIDENTS/table-row-inflation.md`, `MAP/cm6-hit-routing-contract.md`.
-   - Gate: do not theme widget geometry.
+   - Gate: default is do not theme widget geometry. If Owen explicitly accepts the risk, update WIKI, runtime evidence, and the guard exception before changing behavior.
 
 4. Is the target an HTML table embed in Live Preview?
    - Owner: `src/base/13-live-preview.css` and `src/surfaces/24-html-table-live-preview-glass.css`.

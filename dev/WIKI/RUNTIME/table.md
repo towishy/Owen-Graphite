@@ -6,7 +6,7 @@ Use this for table row height, selected cells, nested editors, and LP/Reading/PD
 
 | Runtime DOM | Owner Route | Rule |
 | --- | --- | --- |
-| `.cm-table-widget`, `table.cm-table` | Obsidian core | Do not style theme geometry. |
+| `.cm-table-widget`, `table.cm-table` | Obsidian core by default | Do not style theme geometry unless Owen explicitly accepts the risk and the WIKI/guard/evidence exception path is updated. |
 | LP HTML embed table | `src/base/13-live-preview.css`, `src/surfaces/24-html-table-live-preview-glass.css` | Must exclude `.cm-table-widget` and `.cm-table`. |
 | Rendered Reading table | `src/surfaces/20-reading-tables-code.css` | Keep rendered table owner. |
 | Report/PDF table | `src/features/42-report-print-polish.css` | Print/report scope only. |
@@ -18,6 +18,12 @@ Use this for table row height, selected cells, nested editors, and LP/Reading/PD
 3. Record whether inline `style` sets width/height/min-height.
 4. Map matched theme selectors to `SELECTOR-OWNER-CHEATSHEET.md`.
 5. If the path is `.cm-table-widget`, stop before adding CSS.
+
+## Captured Runtime Facts
+
+| Date | Surface | Runtime DOM | Source Owner | Evidence | Decision |
+| --- | --- | --- | --- | --- | --- |
+| 2026-05-25 | Markdown table widget, Owen risk accepted | `.cm-table-widget table.table-editor` | `src/base/13-live-preview.css` with `owen-risk-accepted: cm-table-widget` marker | CDP comparison in `dev/TEMP/runtime-evidence/fragments/capture-widget-risk-accepted-compare.json` | Owen accepted the risk to match Markdown widget typography/spacing to Live Preview HTML table visibility; direct-owner guard allows only marked exceptions |
 
 ## Checks
 

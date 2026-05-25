@@ -11,6 +11,7 @@
 - `runtime-evidence-template.md`: required runtime evidence shape.
 - `runtime-evidence-schema.json`: required JSON fields for temporary runtime captures.
 - `runtime-evidence-storage.md`: where runtime captures are kept.
+- `runtime-evidence-registry.json`: module-level runtime evidence status used by coverage planning.
 - `runtime-evidence-example-selected-tab.md`: completed chrome selected-state example.
 - `runtime-evidence-example-plugin-dom.md`: completed plugin DOM example.
 

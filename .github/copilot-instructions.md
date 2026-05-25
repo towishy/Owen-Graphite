@@ -12,10 +12,11 @@ Required entrypoints:
 
 Hard rules:
 
+- Owen's explicit instruction to proceed despite a known repo risk is product-owner risk acceptance. In that case, update the relevant WIKI contract/audit/evidence in the same change; do not add silent late repair layers.
 - Identify the owner before editing source.
 - Edit the owner module directly; do not add late repair layers.
 - Do not recreate `dev/MAP`, `dev/LLM-WIKI`, `dev/effective-baseline`, `dev/WIKI/DEV`, or `docs/v3`.
-- Do not style Obsidian-owned markdown table widget geometry (`.cm-table-widget` or `table.cm-table`).
+- Do not style Obsidian-owned markdown table widget geometry (`.cm-table-widget` or `table.cm-table`) unless Owen explicitly accepts the risk and the change records runtime evidence plus a WIKI/guard update.
 - For runtime states such as selected, hovered, focused, or active UI, collect runtime evidence before changing CSS.
 - Release tags and GitHub Release names must be numeric semver only, such as `3.1.57`; never use a leading `v` prefix.
 

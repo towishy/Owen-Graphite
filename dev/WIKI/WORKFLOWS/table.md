@@ -31,6 +31,20 @@ Forbidden:
 .HyperMD-table-row ... td
 ```
 
+## Owen Risk-Accepted Exception
+
+Owen may explicitly accept the runtime risk of styling markdown table widget geometry. When this happens:
+
+1. Capture before/after runtime DOM and computed geometry for the same table state.
+2. Add a narrow source comment marker immediately before the exception rule:
+
+```css
+/* owen-risk-accepted: cm-table-widget */
+```
+
+3. Keep the selector as narrow as possible; do not route through `.HyperMD-table-row`.
+4. Update `RUNTIME/table.md`, the incident/risk notes if needed, and run the direct-owner and hit-routing audits.
+
 ## Runtime Issues
 
 If selected-cell or hover behavior changes row height, run `DEV/runtime-debug.md` before editing.

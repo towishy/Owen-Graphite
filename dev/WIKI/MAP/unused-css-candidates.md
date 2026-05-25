@@ -1,7 +1,7 @@
 # Unused CSS Candidate Report
 
-Version: 3.1.59
-Bundle SHA256: `f23fe717946284635d52309c58d69170fae53846d092b7d2726ced86586ec928`
+Version: 3.1.60
+Bundle SHA256: `0c33b0c83499b8d4562298b7417534ff855dbbb280605c148160ab720a6b6d65`
 Coverage scenarios: 201
 
 ## Summary
@@ -10,7 +10,7 @@ Coverage scenarios: 201
 | --- | ---: |
 | invalid-query | 3 |
 | matched | 3342 |
-| reserved | 434 |
+| reserved | 446 |
 
 ## Candidate Selectors
 
@@ -18,24 +18,25 @@ No low-risk no-match selectors were found in the current coverage matrix.
 
 ## Reserved No-Match Selectors
 
-Reserved no-match selectors: 434. These need purpose-built coverage before removal.
+Reserved no-match selectors: 446. These need purpose-built coverage before removal.
 
 ### Reserved Reason Summary
 
 | Reason | Count |
 | --- | ---: |
-| obsidian-style-or-semantic-selector | 406 |
-| state-pseudo | 369 |
-| reserved-module | 301 |
-| document-content-selector | 240 |
+| obsidian-style-or-semantic-selector | 418 |
+| state-pseudo | 373 |
+| reserved-module | 303 |
+| document-content-selector | 250 |
 | reserved-at-context | 5 |
 
 ### Reserved Bucket Summary
 
 | Bucket | Count | Meaning | Recipe |
 | --- | ---: | --- | --- |
-| state-interaction | 369 | State pseudo selectors (:hover/:focus/etc.) that static DOM coverage cannot fully prove. | `dev/WIKI/RECIPES/coverage-state-interaction.md` |
+| state-interaction | 373 | State pseudo selectors (:hover/:focus/etc.) that static DOM coverage cannot fully prove. | `dev/WIKI/RECIPES/coverage-state-interaction.md` |
 | obsidian-chrome-runtime | 65 | Obsidian app chrome/runtime DOM such as workspace, nav, search, modal, menu, tooltip, or status surfaces. | `dev/WIKI/RECIPES/coverage-state-interaction.md` |
+| live-preview-runtime | 8 | CodeMirror/Live Preview runtime DOM and editor-generated classes. | `dev/WIKI/RECIPES/live-preview-spacing.md` |
 
 ### Reserved Decision Policy
 
@@ -46,6 +47,7 @@ Reserved selectors are not deletion approval; each bucket below defines the requ
 | --- | --- | --- |
 | state-interaction | do-not-remove | Validate through interactive state coverage or keep reserved. |
 | obsidian-chrome-runtime | runtime-reserved | Validate in Obsidian app chrome runtime or keep reserved. |
+| live-preview-runtime | runtime-reserved | Validate with CodeMirror/Live Preview runtime DOM or keep reserved. |
 
 ### Coverage Backlog Policy
 
@@ -63,11 +65,11 @@ Reserved selectors are not deletion approval; each bucket below defines the requ
 | src/chrome/37-tabs-file-explorer-search.css | 37 | 18 | 19 | 151 | state-interaction=19, obsidian-chrome-runtime=18 | document-content-selector=37, obsidian-style-or-semantic-selector=37, reserved-module=37, state-pseudo=19 |
 | src/chrome/33-settings-controls.css | 34 | 0 | 34 | 133 | state-interaction=34 | obsidian-style-or-semantic-selector=34, reserved-module=34, state-pseudo=34, document-content-selector=4 |
 | src/chrome/30-workspace.css | 29 | 0 | 29 | 158 | state-interaction=29 | reserved-module=29, state-pseudo=29, document-content-selector=16, obsidian-style-or-semantic-selector=12 |
-| src/plugins/60-canvas-graph-link-panes.css | 22 | 0 | 22 | 128 | state-interaction=22 | reserved-module=22, state-pseudo=22, obsidian-style-or-semantic-selector=20 |
+| src/plugins/60-canvas-graph-link-panes.css | 24 | 0 | 24 | 128 | state-interaction=24 | reserved-module=24, state-pseudo=24, obsidian-style-or-semantic-selector=22 |
 | src/plugins/61-live-preview-mobile-plugin.css | 22 | 0 | 22 | 167 | state-interaction=22 | reserved-module=22, state-pseudo=22, obsidian-style-or-semantic-selector=20, document-content-selector=8 |
 | src/surfaces/22-reading-embeds-workspace.css | 18 | 1 | 17 | 51 | state-interaction=17, obsidian-chrome-runtime=1 | state-pseudo=17, obsidian-style-or-semantic-selector=15 |
+| src/base/13-live-preview.css | 16 | 8 | 8 | 183 | live-preview-runtime=8, state-interaction=8 | obsidian-style-or-semantic-selector=16, document-content-selector=12, state-pseudo=8 |
 | src/features/41-feature-presets.css | 13 | 2 | 11 | 356 | state-interaction=11, obsidian-chrome-runtime=2 | obsidian-style-or-semantic-selector=13, state-pseudo=11, document-content-selector=4, reserved-at-context=1 |
-| src/chrome/34-nav-ribbon-glass.css | 12 | 4 | 8 | 25 | state-interaction=8, obsidian-chrome-runtime=4 | document-content-selector=12, obsidian-style-or-semantic-selector=12, reserved-module=12, state-pseudo=8 |
 
 ### Reserved Selector Samples
 
@@ -171,11 +173,11 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 | 27 | state-interaction | `.canvas-node:hover .canvas-node-container` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 | 27 | state-interaction | `.canvas-node:hover .canvas-node-content` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 | 51 | state-interaction | `.canvas-edge:hover .canvas-edge-path` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
-| 70 | state-interaction | `.canvas-card-menu .clickable-icon:hover` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
+| 51 | state-interaction | `.canvas-edges path:hover` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
+| 70 | state-interaction | `.canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 | 70 | state-interaction | `.canvas-control-item:hover` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 | 146 | state-interaction | `.backlink-pane .tree-item-self:hover` | reserved-module, state-pseudo |
 | 146 | state-interaction | `.outgoing-link-pane .tree-item-self:hover` | reserved-module, state-pseudo |
-| 146 | state-interaction | `.search-result-file-match:hover` | obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 
 #### src/plugins/61-live-preview-mobile-plugin.css
 
@@ -203,6 +205,19 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 | 234 | state-interaction | `.cm-scroller:focus-visible` | obsidian-style-or-semantic-selector, state-pseudo |
 | 234 | state-interaction | `.markdown-reading-view:focus` | obsidian-style-or-semantic-selector, state-pseudo |
 
+#### src/base/13-live-preview.css
+
+| Line | Bucket | Selector part | Reasons |
+| ---: | --- | --- | --- |
+| 257 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor` | document-content-selector, obsidian-style-or-semantic-selector |
+| 258 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 259 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 260 | live-preview-runtime | `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th` | document-content-selector, obsidian-style-or-semantic-selector |
+| 262 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor` | document-content-selector, obsidian-style-or-semantic-selector |
+| 263 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 264 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)` | document-content-selector, obsidian-style-or-semantic-selector |
+| 265 | live-preview-runtime | `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th` | document-content-selector, obsidian-style-or-semantic-selector |
+
 #### src/features/41-feature-presets.css
 
 | Line | Bucket | Selector part | Reasons |
@@ -215,19 +230,6 @@ Representative no-match selectors from the largest hotspots. Static no-match sel
 | 130 | state-interaction | `.markdown-rendered a.footnote-link:hover` | obsidian-style-or-semantic-selector, state-pseudo |
 | 149 | state-interaction | `.markdown-rendered img:not(.emoji):not(.callout-icon img):hover` | document-content-selector, obsidian-style-or-semantic-selector, state-pseudo |
 | 1134 | state-interaction | `.block-language-dataview table tr:hover td` | document-content-selector, obsidian-style-or-semantic-selector, state-pseudo |
-
-#### src/chrome/34-nav-ribbon-glass.css
-
-| Line | Bucket | Selector part | Reasons |
-| ---: | --- | --- | --- |
-| 205 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-tab-header-tab-list` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 205 | obsidian-chrome-runtime | `body:not(.is-mobile).theme-dark .workspace-tab-header-tab-list` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 237 | obsidian-chrome-runtime | `body:not(.is-mobile) .mod-root .workspace-tabs` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 245 | obsidian-chrome-runtime | `body:not(.is-mobile) .workspace-split.mod-horizontal` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module |
-| 28 | state-interaction | `body:not(.is-mobile) :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
-| 42 | state-interaction | `body:not(.is-mobile).theme-dark :is(.workspace-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action):hover` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
-| 111 | state-interaction | `body:not(.is-mobile) :is( .workspace-sidedock-vault-profile, .workspace-drawer-vault-switcher, .workspace-drawer-vault-actions ) :is(.clickable-icon, .workspace-drawer-vault-action):hover` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
-| 132 | state-interaction | `body:not(.is-mobile) .workspace-drawer-vault-switcher:hover` | document-content-selector, obsidian-style-or-semantic-selector, reserved-module, state-pseudo |
 
 ### Invalid Query Selectors
 
@@ -249,7 +251,7 @@ Invalid-query rows are query-coverage exclusions, not CSS syntax failures and no
 | --- | ---: | ---: | ---: | ---: |
 | src/base/10-base-workspace.css | 0 | 7 | 0 | 47 |
 | src/base/12-reading-content.css | 0 | 10 | 0 | 198 |
-| src/base/13-live-preview.css | 0 | 6 | 0 | 183 |
+| src/base/13-live-preview.css | 0 | 16 | 0 | 183 |
 | src/chrome/30-workspace.css | 0 | 29 | 0 | 158 |
 | src/chrome/31-navigation-tasks-search.css | 0 | 11 | 0 | 59 |
 | src/chrome/32-overlay-popover-dataview.css | 0 | 50 | 0 | 102 |
@@ -261,7 +263,7 @@ Invalid-query rows are query-coverage exclusions, not CSS syntax failures and no
 | src/features/41-feature-presets.css | 0 | 13 | 0 | 356 |
 | src/features/42-report-print-polish.css | 0 | 0 | 0 | 389 |
 | src/features/43-print-base.css | 0 | 0 | 0 | 122 |
-| src/plugins/60-canvas-graph-link-panes.css | 0 | 22 | 0 | 128 |
+| src/plugins/60-canvas-graph-link-panes.css | 0 | 24 | 0 | 128 |
 | src/plugins/61-live-preview-mobile-plugin.css | 0 | 22 | 0 | 167 |
 | src/surfaces/20-reading-tables-code.css | 0 | 8 | 1 | 271 |
 | src/surfaces/21-reading-callouts-lists.css | 0 | 3 | 0 | 156 |

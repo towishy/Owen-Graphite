@@ -33,8 +33,9 @@ This wiki is the operational entry point for AI-assisted work on Owen Graphite.
 
 ## Non-Negotiable
 
+- Owen can explicitly accept repository-specific visual/runtime risk. When that happens, record the risk in WIKI/evidence and update the relevant guard instead of silently bypassing it.
 - Do not add late fixes because the owner is hard to find.
-- Do not style Obsidian-owned markdown table widget geometry.
+- Do not style Obsidian-owned markdown table widget geometry unless Owen explicitly accepts the risk and the WIKI/guard/evidence path is updated.
 - Do not reintroduce `src/polish` or `!important`.
 - Do not claim a runtime issue is fixed without runtime evidence.
 - Do not release with a `v`-prefixed tag; Owen Graphite uses numeric semver tags only.

@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "src"
 
 COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
+OWEN_RISK_MARKER = "owen-risk-accepted: cm-table-widget"
 
 @dataclass(frozen=True)
 class Rule:
@@ -65,7 +66,7 @@ RULES = [
 
 
 def strip_comments(text: str) -> str:
-    return COMMENT_RE.sub(lambda match: "\n" * match.group(0).count("\n"), text)
+    return COMMENT_RE.sub(lambda match: "".join("\n" if char == "\n" else " " for char in match.group(0)), text)
 
 
 def line_for_offset(text: str, offset: int) -> int:
@@ -74,6 +75,11 @@ def line_for_offset(text: str, offset: int) -> int:
 
 def css_files() -> list[Path]:
     return sorted(SRC.rglob("*.css"))
+
+
+def has_owen_risk_marker(text: str, offset: int) -> bool:
+    prefix = text[max(0, offset - 8000):offset]
+    return OWEN_RISK_MARKER in prefix
 
 
 def main() -> int:
@@ -87,6 +93,8 @@ def main() -> int:
                 continue
             for match in rule.pattern.finditer(searchable):
                 snippet = searchable[match.start():match.end()]
+                if rule.name in {"cm-table-widget-core-geometry", "generic-lp-table-selector"} and has_owen_risk_marker(text, match.start()):
+                    continue
                 if rule.allow_if and all(token in snippet for token in rule.allow_if):
                     continue
                 # Negative lookbehind cannot express :not(.cm-table) for table.cm-table.

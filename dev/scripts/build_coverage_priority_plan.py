@@ -12,6 +12,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.json"
+EVIDENCE_REGISTRY = ROOT / "dev" / "WIKI" / "runtime-evidence-registry.json"
 OUT_MD = ROOT / "dev" / "WIKI" / "MAP" / "coverage-priority-plan.md"
 
 STATE_BUCKETS = {"state-interaction", "obsidian-chrome-runtime", "live-preview-runtime"}
@@ -56,24 +57,55 @@ def evidence_command(module: str, surface: str, state: str = "hovered") -> str:
     )
 
 
+def load_evidence_registry() -> dict[str, dict[str, Any]]:
+    if not EVIDENCE_REGISTRY.is_file():
+        return {}
+    payload = json.loads(EVIDENCE_REGISTRY.read_text(encoding="utf-8"))
+    if payload.get("schema") != "owen-graphite/runtime-evidence-registry/1":
+        raise ValueError(f"unexpected runtime evidence registry schema: {payload.get('schema')!r}")
+    return {str(entry["module"]): dict(entry) for entry in payload.get("entries", [])}
+
+
+def evidence_status(module: str, registry: dict[str, dict[str, Any]]) -> str:
+    entry = registry.get(module)
+    if not entry:
+        return "needed"
+    status = str(entry.get("status", "recorded"))
+    decision = str(entry.get("decision", "review"))
+    evidence = str(entry.get("evidence", ""))
+    label = f"{status}; {decision}"
+    return f"{label} (`{evidence}`)" if evidence else label
+
+
 def top_modules(payload: dict[str, Any], buckets: set[str], limit: int) -> list[dict[str, Any]]:
     rows = [item for item in payload.get("coverageGapSummary", []) if score(item, buckets) > 0]
     rows.sort(key=lambda item: (-score(item, buckets), -int(item.get("reserved", 0)), str(item.get("module", ""))))
     return rows[:limit]
 
 
-def table_for(rows: list[dict[str, Any]], buckets: set[str], surface: str, state: str) -> list[str]:
-    lines = ["| Module | Priority Count | Reserved | Matched | Evidence scaffold |", "| --- | ---: | ---: | ---: | --- |"]
+def table_for(
+    rows: list[dict[str, Any]],
+    buckets: set[str],
+    surface: str,
+    state: str,
+    registry: dict[str, dict[str, Any]],
+) -> list[str]:
+    lines = [
+        "| Module | Priority Count | Reserved | Matched | Runtime evidence | Evidence scaffold |",
+        "| --- | ---: | ---: | ---: | --- | --- |",
+    ]
     for item in rows:
         module = str(item["module"])
         lines.append(
             f"| `{module}` | {score(item, buckets)} | {item['reserved']} | {item['matched']} | "
+            f"{evidence_status(module, registry)} | "
             f"`{evidence_command(module, surface, state)}` |"
         )
     return lines
 
 
 def build_markdown(payload: dict[str, Any]) -> str:
+    registry = load_evidence_registry()
     state_rows = top_modules(payload, STATE_BUCKETS, 8)
     plugin_rows = top_modules(payload, PLUGIN_BUCKETS, 6)
     pdf_rows = top_modules(payload, PDF_BUCKETS, 5)
@@ -99,25 +131,25 @@ def build_markdown(payload: dict[str, Any]) -> str:
         "",
         "Capture resting and active runtime states before changing or deleting these selectors.",
         "",
-        *table_for(state_rows, STATE_BUCKETS, "chrome", "hovered"),
+        *table_for(state_rows, STATE_BUCKETS, "chrome", "hovered", registry),
         "",
         "## P1 Plugin Runtime",
         "",
         "Prefer real plugin DOM. If unavailable, mark the capture as an approximation and keep the selector reserved.",
         "",
-        *table_for(plugin_rows, PLUGIN_BUCKETS, "plugin", "rendered"),
+        *table_for(plugin_rows, PLUGIN_BUCKETS, "plugin", "rendered", registry),
         "",
         "## P2 Print And PDF Context",
         "",
         "Validate print media, report mode, header/footer state, and customer-delivery visibility before changing selector status.",
         "",
-        *table_for(pdf_rows, PDF_BUCKETS, "pdf", "print"),
+        *table_for(pdf_rows, PDF_BUCKETS, "pdf", "print", registry),
         "",
         "## P3 Document Content Fixtures",
         "",
         "Add natural Markdown fixtures before treating these selectors as removal candidates.",
         "",
-        *table_for(document_rows, DOCUMENT_BUCKETS, "table", "rendered"),
+        *table_for(document_rows, DOCUMENT_BUCKETS, "table", "rendered", registry),
         "",
         "## Required Checks",
         "",

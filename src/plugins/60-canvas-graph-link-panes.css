@@ -46,7 +46,7 @@
   stroke: var(--ogd-text-soft, #94a3b8);
 }
 .canvas-edge.is-focused .canvas-edge-path,
-.canvas-edge:hover .canvas-edge-path {
+.canvas-edge:hover .canvas-edge-path, .canvas-edges path:hover {
   stroke: rgba(129, 140, 248, 0.74);
 }
 .canvas-controls,
@@ -57,12 +57,12 @@
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
 }
 .canvas-control-item,
-.canvas-card-menu .clickable-icon {
+.canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button) {
   color: var(--ogd-text-subtle, #475569);
   border-radius: var(--radius-m, 6px);
 }
 .canvas-control-item:hover,
-.canvas-card-menu .clickable-icon:hover {
+.canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover {
   background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.82), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.66));
   border-color: rgba(100, 116, 139, 0.30);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 4px 10px rgba(15, 23, 42, 0.10);
@@ -261,7 +261,7 @@
   stroke: var(--ogd-text-subtle, #475569);
 }
 .theme-dark .canvas-edge.is-focused .canvas-edge-path,
-.theme-dark .canvas-edge:hover .canvas-edge-path {
+.theme-dark .canvas-edge:hover .canvas-edge-path, .theme-dark .canvas-edges path:hover {
   stroke: rgba(165, 180, 252, 0.72);
 }
 .theme-dark .canvas-controls,
@@ -271,11 +271,11 @@
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
 }
 .theme-dark .canvas-control-item,
-.theme-dark .canvas-card-menu .clickable-icon {
+.theme-dark .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button) {
   color: var(--ogd-line-strong, #cbd5e1);
 }
 .theme-dark .canvas-control-item:hover,
-.theme-dark .canvas-card-menu .clickable-icon:hover {
+.theme-dark .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover {
   background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.10), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.66), rgba(15, 23, 42, 0.38));
   border-color: rgba(203, 213, 225, 0.22);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(203, 213, 225, 0.06), 0 5px 14px rgba(0, 0, 0, 0.30);

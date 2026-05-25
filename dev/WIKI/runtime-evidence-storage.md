@@ -33,6 +33,8 @@ Use strict mode when runtime correctness is part of the claim:
 
 Strict mode is required when the diff touches Live Preview CM6 routing, `.cm-*`, `.HyperMD-*`, `.cm-table-widget`, chrome hover/focus/active states, or plugin runtime selectors such as Mermaid, Dataview, Canvas, and Graph.
 
+When a temporary capture proves module-level coverage for unused/reserved selector planning, record the status in `dev/WIKI/runtime-evidence-registry.json`. `dev/scripts/build_coverage_priority_plan.py` reads that registry so P0/P1 rows show whether runtime evidence is captured, partial, unavailable, or still needed.
+
 Promote temporary evidence into a permanent incident with:
 
 ```powershell

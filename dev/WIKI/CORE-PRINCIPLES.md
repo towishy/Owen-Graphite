@@ -12,6 +12,12 @@
 - Edit the owner module directly.
 - Remove or merge conflicting follow-up rules instead of adding another rule later in the cascade.
 
+## Owen Risk Acceptance
+
+- If Owen explicitly instructs the agent to proceed despite a known repository risk, treat that as product-owner risk acceptance.
+- Risk acceptance does not authorize silent late repair layers; update the relevant WIKI contract, guard, runtime evidence, and owner notes in the same change.
+- Prefer the direct owner even under risk acceptance. If a core boundary changes, change the boundary documentation and audit rule before changing behavior.
+
 ## No Late Repair Layer
 
 - Do not use late visual modules as a repair layer.
@@ -21,7 +27,7 @@
 ## Obsidian Core Boundaries
 
 - Markdown table widget geometry is core-owned.
-- Do not style `.cm-table-widget` or `table.cm-table` geometry.
+- Do not style `.cm-table-widget` or `table.cm-table` geometry unless Owen explicitly accepts the risk and the change updates the contract, evidence, and guard path.
 - Do not route table fixes through `.HyperMD-table-row` descendants.
 
 ## Evidence Before Runtime Fixes

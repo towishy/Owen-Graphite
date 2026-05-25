@@ -1,7 +1,18 @@
 # Changelog
 
+## v3.1.60
+
+- polish: PDF 기본 본문/표/callout/code 기준 글자 크기를 12pt(약 16px)로 올리고, 고객 전달용 PDF는 12.4pt(약 16.5px)로 조정했습니다.
+- fix: callout 타입별 왼쪽 accent rail을 제거하고 전체 border/아이콘 중심의 liquid-glass 톤으로 복구했습니다.
+- process: Owen risk-accepted 예외 경로를 WIKI와 guard에 반영하고 Markdown table widget을 HTML table 가시성에 맞췄습니다.
+- guard: source usage map, runtime evidence, direct owner, hit routing, LP/PDF ownership, release check 검증을 통과했습니다.
+
 ## v3.1.59
 
+- polish: Live Preview HTML table의 셀 여백과 line-height를 넓혀 긴 한국어 표의 가독성을 개선했습니다.
+- polish: Owen risk-accepted 예외로 Live Preview Markdown table widget의 글자 크기와 셀 여백을 HTML table 가시성에 맞췄습니다.
+- fix: Canvas card menu와 edge hover selector를 Obsidian 1.12 runtime DOM(`.canvas-card-menu-button`, `.canvas-edges path`)에 맞게 보강했습니다.
+- process: CDP runtime evidence registry와 coverage priority plan을 연결하고 Dataview/Canvas/Graph/Search real DOM evidence를 기록했습니다.
 - polish: Settings 섹션 heading의 좌측 vertical rail을 제거하고 Owen Graphite liquid-glass 원칙에 맞는 작은 frosted badge로 정리했습니다.
 - docs: chrome/settings/overlay/mobile 상태를 한 화면에서 확인하는 `chrome-ui-state-fixture.html` visual QA fixture를 추가했습니다.
 - process: WIKI route registry command를 `script`/`args`/`safe` 구조로 바꾸고 JSON validation plan, last-validation summary, route workflow unit test를 추가했습니다.
@@ -9,6 +20,7 @@
 
 ## v3.1.58
 
+- fix: callout 타입별 왼쪽 accent rail을 제거하고 전체 border/아이콘 중심의 liquid-glass 톤으로 복구했습니다.
 - process: 작업 시작/종료 helper, diff-aware validation, runtime evidence strict mode, incident/evidence helper를 WIKI workflow에 연결했습니다.
 - guard: selector owner cheatsheet, WIKI route coverage, mobile owner guard, WIKI schema consistency 검증을 core/release gate에 보강했습니다.
 - sync: Obsidian theme sync에 chunk-copy fallback, verify-only, last-sync 기록을 추가했습니다.

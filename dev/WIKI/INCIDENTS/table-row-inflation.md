@@ -23,3 +23,7 @@ Selecting a table cell caused the row to grow unexpectedly.
 - `source-usage-map.md` Table Selector Rules.
 - Runtime debug snippets.
 - `audit_core_principles.py`.
+
+## Risk-Accepted Exception
+
+On 2026-05-25, Owen explicitly accepted the risk of styling `.cm-table-widget table.table-editor` to match Live Preview HTML table visibility. This exception requires the `owen-risk-accepted: cm-table-widget` marker, before/after runtime evidence, and direct-owner/hit-routing audits. Keep future widget changes narrow and evidence-backed.

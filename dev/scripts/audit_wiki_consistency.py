@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -22,6 +23,7 @@ REQUIRED_FILES = [
     "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/runtime-evidence-schema.json",
     "dev/WIKI/runtime-evidence-storage.md",
+    "dev/WIKI/runtime-evidence-registry.json",
     "dev/WIKI/RUNTIME/README.md",
     "dev/WIKI/RUNTIME/table.md",
     "dev/WIKI/RUNTIME/chrome.md",
@@ -52,6 +54,7 @@ REQUIRED_FILES = [
 REQUIRED_TEXT = {
     ".github/copilot-instructions.md": [
         "consult `dev/WIKI` first",
+        "Owen's explicit instruction",
         "numeric semver",
         "never use a leading `v` prefix",
     ],
@@ -62,6 +65,7 @@ REQUIRED_TEXT = {
         "runtime-evidence-template.md",
         "runtime-evidence-schema.json",
         "runtime-evidence-storage.md",
+        "Owen can explicitly accept",
         "TOKENS/",
         "PLUGINS/",
         "numeric semver tags only",
@@ -71,6 +75,7 @@ REQUIRED_TEXT = {
         "SELECTOR-OWNER-CHEATSHEET.md",
         "VISUAL-QA.md",
         "runtime-evidence-template.md",
+        "runtime-evidence-registry.json",
         "SRC/validation-matrix.md",
         "MAP/coverage-priority-plan.md",
         "TOKENS/usage-guide.md",
@@ -135,6 +140,7 @@ REQUIRED_TEXT = {
         "P0 State And Chrome Runtime",
         "P1 Plugin Runtime",
         "P2 Print And PDF Context",
+        "Runtime evidence",
         "build_coverage_priority_plan.py --check",
     ],
     "dev/WIKI/VISUAL-QA.md": [
@@ -150,8 +156,14 @@ REQUIRED_TEXT = {
     "dev/WIKI/OWNER-DECISION-TREE.md": [
         "runtime evidence",
         "Obsidian core",
+        "Owen explicitly accepts the risk",
         "SELECTOR-OWNER-CHEATSHEET.md",
         "If ownership is still unclear",
+    ],
+    "dev/WIKI/CORE-PRINCIPLES.md": [
+        "Owen Risk Acceptance",
+        "product-owner risk acceptance",
+        "change the boundary documentation and audit rule",
     ],
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md": [
         ".cm-table-widget",
@@ -172,6 +184,13 @@ REQUIRED_TEXT = {
         "Permanent Evidence",
         "Minimum Metadata",
         "runtime-evidence-schema.json",
+        "runtime-evidence-registry.json",
+    ],
+    "dev/WIKI/runtime-evidence-registry.json": [
+        "owen-graphite/runtime-evidence-registry/1",
+        "src/chrome/32-overlay-popover-dataview.css",
+        "src/plugins/60-canvas-graph-link-panes.css",
+        "runtime-reserved",
     ],
     "dev/WIKI/RUNTIME/README.md": [
         "table.md",
@@ -259,6 +278,7 @@ REQUIRED_TEXT = {
     ],
     "dev/WIKI/INCIDENTS/taxonomy.md": [
         "runtime-selected-state",
+        "owen-risk-accepted",
         "release-process",
         "create an incident",
     ],
@@ -288,6 +308,10 @@ FORBIDDEN_INDEX_TEXT = [
     "dev/MAP/",
     "docs/v3/",
 ]
+
+RUNTIME_EVIDENCE_STATUSES = {"captured", "partial", "unavailable", "needed"}
+RUNTIME_EVIDENCE_DECISIONS = {"runtime-reserved", "do-not-remove", "needs-capture", "candidate-review"}
+RUNTIME_EVIDENCE_SURFACES = {"chrome", "plugin", "table", "pdf", "live-preview", "mobile", "settings"}
 
 
 def fail(message: str) -> None:
@@ -384,6 +408,9 @@ def assert_helper_and_generator_stability() -> None:
             fail(f"missing process script: {script}")
     if "last-sync.json" not in sync_script:
         fail("sync_obsidian_theme.py must record dev/TEMP/last-sync.json")
+    coverage_plan = read("dev/scripts/build_coverage_priority_plan.py")
+    if "runtime-evidence-registry.json" not in coverage_plan or "Runtime evidence" not in coverage_plan:
+        fail("build_coverage_priority_plan.py must read runtime evidence registry")
     if "last_sync_summary" not in read("dev/scripts/work_summary.py"):
         fail("work_summary.py must read last sync state")
     if "--evidence" not in read("dev/scripts/new_incident.py"):
@@ -429,6 +456,53 @@ def assert_wiki_schema() -> None:
     print("OK: WIKI recipe/runtime/workflow schema clean")
 
 
+def assert_runtime_evidence_registry() -> None:
+    path = ROOT / "dev" / "WIKI" / "runtime-evidence-registry.json"
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"runtime evidence registry invalid JSON: {exc}")
+    if payload.get("schema") != "owen-graphite/runtime-evidence-registry/1":
+        fail(f"runtime evidence registry unexpected schema: {payload.get('schema')!r}")
+    entries = payload.get("entries")
+    if not isinstance(entries, list) or not entries:
+        fail("runtime evidence registry must contain non-empty entries list")
+    seen: set[str] = set()
+    problems: list[str] = []
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            problems.append(f"entry {index} must be object")
+            continue
+        missing = [key for key in ("module", "surface", "status", "decision", "evidence", "summary") if key not in entry]
+        if missing:
+            problems.append(f"entry {index} missing {', '.join(missing)}")
+            continue
+        module = str(entry["module"])
+        surface = str(entry["surface"])
+        status = str(entry["status"])
+        decision = str(entry["decision"])
+        evidence = str(entry["evidence"])
+        summary = str(entry["summary"])
+        if module in seen:
+            problems.append(f"duplicate module {module}")
+        seen.add(module)
+        if not module.startswith("src/") or not (ROOT / module).is_file():
+            problems.append(f"entry {module} must reference an existing src module")
+        if surface not in RUNTIME_EVIDENCE_SURFACES:
+            problems.append(f"entry {module} has unknown surface {surface!r}")
+        if status not in RUNTIME_EVIDENCE_STATUSES:
+            problems.append(f"entry {module} has unknown status {status!r}")
+        if decision not in RUNTIME_EVIDENCE_DECISIONS:
+            problems.append(f"entry {module} has unknown decision {decision!r}")
+        if not evidence.startswith("dev/TEMP/runtime-evidence/") or not evidence.endswith(".json"):
+            problems.append(f"entry {module} evidence must point at dev/TEMP/runtime-evidence/*.json")
+        if not summary.strip():
+            problems.append(f"entry {module} summary must be non-empty")
+    if problems:
+        fail("runtime evidence registry issues: " + "; ".join(problems))
+    print("OK: runtime evidence registry schema clean")
+
+
 def assert_index_has_no_legacy_routes() -> None:
     index = read("dev/WIKI/INDEX.md")
     offenders = [text for text in FORBIDDEN_INDEX_TEXT if text in index]
@@ -445,6 +519,7 @@ def main() -> int:
         assert_release_workflow_paths()
         assert_helper_and_generator_stability()
         assert_wiki_schema()
+        assert_runtime_evidence_registry()
         assert_index_has_no_legacy_routes()
         print("OK: WIKI consistency audit clean")
         return 0

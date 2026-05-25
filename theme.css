@@ -2116,49 +2116,49 @@ body .markdown-rendered blockquote blockquote blockquote {
 }
 
 .markdown-rendered div.callout:is([data-callout="warning"], [data-callout="attention"], [data-callout="caution"]) {
-  border-left-color: #92400e;
+  border-color: #fde68a;
   background: #fffbeb;
   background-color: #fffbeb;
 }
 
 .markdown-rendered div.callout:is([data-callout="failure"], [data-callout="fail"], [data-callout="missing"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"]) {
-  border-left-color: #b91c1c;
+  border-color: #fecaca;
   background: #fef2f2;
   background-color: #fef2f2;
 }
 
 .markdown-rendered div.callout:is([data-callout="success"], [data-callout="check"], [data-callout="done"]) {
-  border-left-color: #047857;
+  border-color: #bbf7d0;
   background: #f0fdf4;
   background-color: #f0fdf4;
 }
 
 .markdown-rendered div.callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"]) {
-  border-left-color: #0f766e;
+  border-color: #99f6e4;
   background: #f0fdfa;
   background-color: #f0fdfa;
 }
 
 .markdown-rendered div.callout:is([data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) {
-  border-left-color: var(--ogd-text-slate, #334155);
+  border-color: var(--ogd-line-soft, #e5e7eb);
   background: var(--ogd-surface-muted, #f8fafc);
   background-color: var(--ogd-text-inverted, #f8fafc);
 }
 
 .markdown-rendered div.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"]) {
-  border-left-color: #7c3aed;
+  border-color: #ddd6fe;
   background: #faf5ff;
   background-color: #faf5ff;
 }
 
 .markdown-rendered div.callout[data-callout="example"] {
-  border-left-color: #6d28d9;
+  border-color: #ddd6fe;
   background: #f5f3ff;
   background-color: #f5f3ff;
 }
 
 .markdown-rendered div.callout:is([data-callout="quote"], [data-callout="cite"]) {
-  border-left-color: #64748b;
+  border-color: var(--ogd-line-soft, #e5e7eb);
   background: var(--ogd-surface-muted, #f8fafc);
   background-color: var(--ogd-text-inverted, #f8fafc);
 }
@@ -3437,7 +3437,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-rendered .callout[data-callout="note"],
 .markdown-rendered .callout[data-callout="info"] {
   --callout-icon: lucide-info;
-  border-left-color: #64748b;
+  border-color: var(--ogd-line-soft, #e5e7eb);
   background: var(--ogd-surface-muted, #f8fafc);
 }
 .markdown-rendered .callout[data-callout="note"] .callout-icon,
@@ -3460,7 +3460,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-rendered .callout[data-callout="hint"],
 .markdown-rendered .callout[data-callout="important"] {
   --callout-icon: lucide-lightbulb;
-  border-left-color: #0f766e;
+  border-color: #99f6e4;
   background: #f0fdfa;
   background-color: #f0fdfa;
 }
@@ -3477,7 +3477,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-rendered .callout[data-callout="summary"],
 .markdown-rendered .callout[data-callout="tldr"] {
   --callout-icon: lucide-clipboard-list;
-  border-left-color: var(--ogd-text-slate, #334155);
+  border-color: var(--ogd-line-soft, #e5e7eb);
   background: var(--ogd-surface-muted, #f8fafc);
   background-color: var(--ogd-text-inverted, #f8fafc);
 }
@@ -3500,7 +3500,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-rendered .callout[data-callout="quote"],
 .markdown-rendered .callout[data-callout="cite"] {
   --callout-icon: lucide-quote;
-  border-left-color: #6b7280;
+  border-color: var(--ogd-line-soft, #e5e7eb);
   background: #f9fafb;
   font-style: italic;
 }
@@ -3513,7 +3513,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-rendered .callout[data-callout="help"],
 .markdown-rendered .callout[data-callout="faq"] {
   --callout-icon: lucide-circle-help;
-  border-left-color: #7c3aed;
+  border-color: #ddd6fe;
   background: #faf5ff;
   background-color: #faf5ff;
 }
@@ -3625,7 +3625,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 .markdown-rendered .callout[data-callout="example"] {
 
   --callout-icon: lucide-list-checks;
-  border-left-color: #6d28d9;
+  border-color: #ddd6fe;
   background: #f5f3ff;
   background-color: #f5f3ff;
    --callout-color: #8b5cf6;
@@ -4630,17 +4630,17 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 }
 .theme-dark .markdown-rendered .callout[data-callout="note"],
 .theme-dark .markdown-rendered .callout[data-callout="info"] {
-  background: #1e293b; border-left-color: #60a5fa;
+  background: #1e293b; border-color: #334155;
 }
 .theme-dark .markdown-rendered .callout[data-callout="tip"],
 .theme-dark .markdown-rendered .callout[data-callout="hint"],
 .theme-dark .markdown-rendered .callout[data-callout="important"] {
-  background: #082f2f; border-left-color: #22d3ee;
+  background: #082f2f; border-color: rgba(45, 212, 191, 0.32);
 }
 .theme-dark .markdown-rendered .callout[data-callout="abstract"],
 .theme-dark .markdown-rendered .callout[data-callout="summary"],
 .theme-dark .markdown-rendered .callout[data-callout="tldr"] {
-  background: #2a1f3d; border-left-color: #a78bfa;
+  background: #2a1f3d; border-color: rgba(167, 139, 250, 0.28);
 }
 .theme-dark .markdown-rendered .callout[data-callout="warning"],
 .theme-dark .markdown-rendered .callout[data-callout="attention"],
@@ -4649,20 +4649,20 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 .theme-dark .markdown-rendered .callout[data-callout="danger"],
 .theme-dark .markdown-rendered .callout[data-callout="error"],
 .theme-dark .markdown-rendered .callout[data-callout="bug"] {
-  background: #3a2a18; border-left-color: #fb923c;
+  background: #3a2a18; border-color: rgba(251, 146, 60, 0.32);
 }
 .theme-dark .markdown-rendered .callout[data-callout="success"],
 .theme-dark .markdown-rendered .callout[data-callout="check"],
 .theme-dark .markdown-rendered .callout[data-callout="done"] {
-  background: #0f2a1d; border-left-color: #34d399;
+  background: #0f2a1d; border-color: rgba(52, 211, 153, 0.32);
 }
 .theme-dark .markdown-rendered .callout[data-callout="example"] {
-  background: #3a2e0f; border-left-color: #fbbf24;
+  background: #3a2e0f; border-color: rgba(251, 191, 36, 0.32);
 }
 .theme-dark .markdown-rendered .callout[data-callout="question"],
 .theme-dark .markdown-rendered .callout[data-callout="help"],
 .theme-dark .markdown-rendered .callout[data-callout="faq"] {
-  background: #3a330f; border-left-color: #facc15;
+  background: #3a330f; border-color: rgba(250, 204, 21, 0.32);
 }
 .theme-dark .markdown-rendered .callout .callout-icon {
   background: var(--ogd-surface-dark, #111827);
@@ -5638,6 +5638,17 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
 body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-text-soft, #94a3b8);
 }
+/* owen-risk-accepted: cm-table-widget */
+body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor { background-color: #ffffff; border-color: rgba(148, 163, 184, 0.58); box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.90); }
+body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr) { background-color: #ffffff; }
+body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td) { padding: 7.6px 10.1px; font-size: 14.7px; line-height: 20.3px; background-color: #ffffff; border-color: rgba(226, 232, 240, 0.98); color: var(--ogd-text-slate, #334155); box-shadow: inset 0 0 0 0.5px rgba(226, 232, 240, 0.92); }
+body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th { font-size: 14.1px; line-height: 19.4px; background-color: #f8fafc; color: var(--ogd-text-strong, #111827); box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.32), inset 0 0 0 0.5px rgba(226, 232, 240, 0.96); }
+body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td) { background-color: rgba(224, 242, 254, 0.78); }
+body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor { background-color: rgba(15, 23, 42, 0.86); border-color: rgba(148, 163, 184, 0.34); box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.10); }
+body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr) { background-color: rgba(15, 23, 42, 0.86); }
+body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td) { background-color: rgba(15, 23, 42, 0.66); border-color: rgba(71, 85, 105, 0.82); color: var(--text-normal, #e5edf7); box-shadow: inset 0 0 0 0.5px rgba(71, 85, 105, 0.72); }
+body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th { background-color: rgba(30, 41, 59, 0.92); color: var(--ogd-text-inverted, #f8fafc); box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.24), inset 0 0 0 0.5px rgba(71, 85, 105, 0.78); }
+body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td) { background-color: rgba(8, 145, 178, 0.28); }
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
   box-sizing: border-box;
   max-width: 100%;
@@ -8539,7 +8550,6 @@ a.tag:hover {
   --callout-icon: lucide-lightbulb;
   background: #f0f9ff;
   border: 1px solid #bae6fd;
-  border-left: 4px solid #0ea5e9;
   border-radius: var(--radius-l, 8px);
   color: #0c4a6e;
 }
@@ -8559,7 +8569,6 @@ a.tag:hover {
 .theme-dark .markdown-rendered .callout[data-callout="conclusion"] {
   background: #082f49;
   border: 1px solid #075985;
-  border-left: 4px solid #38bdf8;
   color: #e0f2fe;
 }
 .theme-dark .markdown-rendered .callout[data-callout="conclusion"] :is(.callout-title, p, li, strong) {
@@ -8601,7 +8610,6 @@ a.tag:hover {
   --callout-icon: lucide-check-circle-2;
   background: #ecfdf5;
   border: 1px solid #a7f3d0;
-  border-left: 4px solid #10b981;
   border-radius: var(--radius-l, 8px);
   color: #064e3b;
 }
@@ -8610,7 +8618,6 @@ a.tag:hover {
   --callout-icon: lucide-triangle-alert;
   background: #fffbeb;
   border: 1px solid #fde68a;
-  border-left: 4px solid #f59e0b;
   border-radius: var(--radius-l, 8px);
   color: #78350f;
 }
@@ -8619,7 +8626,6 @@ a.tag:hover {
   --callout-icon: lucide-list-checks;
   background: #eef2ff;
   border: 1px solid #c7d2fe;
-  border-left: 4px solid #6366f1;
   border-radius: var(--radius-l, 8px);
   color: #312e81;
 }
@@ -8628,7 +8634,6 @@ a.tag:hover {
   --callout-icon: lucide-gavel;
   background: var(--ogd-surface-subtle, #f3f4f6);
   border: 1px solid #d1d5db;
-  border-left: 4px solid #4b5563;
   border-radius: var(--radius-l, 8px);
   color: var(--ogd-text-strong, #111827);
 }
@@ -8645,25 +8650,21 @@ a.tag:hover {
 .theme-dark .markdown-rendered .callout[data-callout="recommendation"] {
   background: #052e2b;
   border-color: #047857;
-  border-left-color: #34d399;
   color: #d1fae5;
 }
 .theme-dark .markdown-rendered .callout[data-callout="risk"] {
   background: #451a03;
   border-color: #92400e;
-  border-left-color: #fbbf24;
   color: #fef3c7;
 }
 .theme-dark .markdown-rendered .callout[data-callout="action"] {
   background: #1e1b4b;
   border-color: #4338ca;
-  border-left-color: #818cf8;
   color: #e0e7ff;
 }
 .theme-dark .markdown-rendered .callout[data-callout="decision"] {
   background: #1f2937;
   border-color: #4b5563;
-  border-left-color: #9ca3af;
   color: var(--ogd-surface-subtle, #f3f4f6);
 }
 
@@ -9867,7 +9868,7 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
   stroke: var(--ogd-text-soft, #94a3b8);
 }
 .canvas-edge.is-focused .canvas-edge-path,
-.canvas-edge:hover .canvas-edge-path {
+.canvas-edge:hover .canvas-edge-path, .canvas-edges path:hover {
   stroke: rgba(129, 140, 248, 0.74);
 }
 .canvas-controls,
@@ -9878,12 +9879,12 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
 }
 .canvas-control-item,
-.canvas-card-menu .clickable-icon {
+.canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button) {
   color: var(--ogd-text-subtle, #475569);
   border-radius: var(--radius-m, 6px);
 }
 .canvas-control-item:hover,
-.canvas-card-menu .clickable-icon:hover {
+.canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover {
   background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.82), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.66));
   border-color: rgba(100, 116, 139, 0.30);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 4px 10px rgba(15, 23, 42, 0.10);
@@ -10084,7 +10085,7 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
   stroke: var(--ogd-text-subtle, #475569);
 }
 .theme-dark .canvas-edge.is-focused .canvas-edge-path,
-.theme-dark .canvas-edge:hover .canvas-edge-path {
+.theme-dark .canvas-edge:hover .canvas-edge-path, .theme-dark .canvas-edges path:hover {
   stroke: rgba(165, 180, 252, 0.72);
 }
 .theme-dark .canvas-controls,
@@ -10094,11 +10095,11 @@ body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
 }
 .theme-dark .canvas-control-item,
-.theme-dark .canvas-card-menu .clickable-icon {
+.theme-dark .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button) {
   color: var(--ogd-line-strong, #cbd5e1);
 }
 .theme-dark .canvas-control-item:hover,
-.theme-dark .canvas-card-menu .clickable-icon:hover {
+.theme-dark .canvas-card-menu :is(.clickable-icon, .canvas-card-menu-button):hover {
   background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.10), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.66), rgba(15, 23, 42, 0.38));
   border-color: rgba(203, 213, 225, 0.22);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(203, 213, 225, 0.06), 0 5px 14px rgba(0, 0, 0, 0.30);
@@ -11328,13 +11329,13 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     color: #1d4ed8;
   }
 
-  body.ogd-pdf-visibility { --ogd-pdf-surface-text-font-size: 11.6pt; --ogd-pdf-surface-text-line-height: 1.42; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.92); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.34); --ogd-pdf-marginalia-shadow: 0 4px 10px rgba(15, 23, 42, 0.10); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.04em; }
+  body.ogd-pdf-visibility { --ogd-pdf-surface-text-font-size: 12pt; --ogd-pdf-surface-text-line-height: 1.45; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.92); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.34); --ogd-pdf-marginalia-shadow: 0 4px 10px rgba(15, 23, 42, 0.10); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.04em; }
 
-  body.ogd-pdf-screen-delivery { --ogd-pdf-surface-text-font-size: 12pt; --ogd-pdf-surface-text-line-height: 1.46; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.94); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.28); --ogd-pdf-marginalia-shadow: 0 3px 8px rgba(15, 23, 42, 0.08); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.03em; --ogd-pdf-header-font-size: 8.8pt; --ogd-pdf-footer-font-size: 9pt; --ogd-pdf-segment-key-width: 35mm; --ogd-pdf-segment-value-width: 46mm; --ogd-pdf-segment-half-width: 40.5mm; --ogd-pdf-header-title-gap: 3.25em; }
+  body.ogd-pdf-screen-delivery { --ogd-pdf-surface-text-font-size: 12.4pt; --ogd-pdf-surface-text-line-height: 1.48; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.94); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.28); --ogd-pdf-marginalia-shadow: 0 3px 8px rgba(15, 23, 42, 0.08); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.03em; --ogd-pdf-header-font-size: 8.8pt; --ogd-pdf-footer-font-size: 9pt; --ogd-pdf-segment-key-width: 35mm; --ogd-pdf-segment-value-width: 46mm; --ogd-pdf-segment-half-width: 40.5mm; --ogd-pdf-header-title-gap: 3.25em; }
 
-  body.ogd-pdf-font-comfortable { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.42); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-header-font-size: 9.4pt; --ogd-pdf-footer-font-size: 9.6pt; --ogd-pdf-segment-key-width: 36mm; --ogd-pdf-segment-value-width: 47mm; --ogd-pdf-segment-half-width: 41.5mm; }
+  body.ogd-pdf-font-comfortable { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.45); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-header-font-size: 9.4pt; --ogd-pdf-footer-font-size: 9.6pt; --ogd-pdf-segment-key-width: 36mm; --ogd-pdf-segment-value-width: 47mm; --ogd-pdf-segment-half-width: 41.5mm; }
 
-  body.ogd-pdf-font-large { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.42); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt); --ogd-pdf-header-font-size: 9.8pt; --ogd-pdf-footer-font-size: 10pt; --ogd-pdf-segment-key-width: 38mm; --ogd-pdf-segment-value-width: 50mm; --ogd-pdf-segment-half-width: 44mm; }
+  body.ogd-pdf-font-large { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.45); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-header-font-size: 9.8pt; --ogd-pdf-footer-font-size: 10pt; --ogd-pdf-segment-key-width: 38mm; --ogd-pdf-segment-value-width: 50mm; --ogd-pdf-segment-half-width: 44mm; }
 
   body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
     .markdown-rendered,
@@ -18219,25 +18220,25 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
    --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.62), transparent 0 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.54)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.70), transparent 0 30%), linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.66)); --ogd-table-border: rgba(203, 213, 225, 0.58); --ogd-table-cell-border: rgba(226, 232, 240, 0.84); --ogd-table-row-hover: rgba(240, 249, 255, 0.54); --ogd-table-row-even: rgba(248, 250, 252, 0.62); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88); background: var(--ogd-table-surface); border-color: var(--ogd-table-border); box-shadow: var(--ogd-table-shadow);
    margin: 0; max-width: 100%;
 
-  --ogd-table-pad-y: 0.58em;
-  --ogd-table-pad-x: 0.78em;
+  --ogd-table-pad-y: 0.64em;
+  --ogd-table-pad-x: 0.90em;
   --ogd-table-font-size: 0.96em;
-  --ogd-table-line-height: 1.42;
+  --ogd-table-line-height: 1.46;
   font-size: var(--font-text-size, 16px);
 }
 
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.wide-table, .print-fit-table):not(.cm-table):not(.cm-table-widget) {
-  --ogd-table-pad-y: 0.44em;
-  --ogd-table-pad-x: 0.56em;
-  --ogd-table-font-size: 0.9em;
-  --ogd-table-line-height: 1.34;
+  --ogd-table-pad-y: 0.54em;
+  --ogd-table-pad-x: 0.72em;
+  --ogd-table-font-size: 0.92em;
+  --ogd-table-line-height: 1.38;
 }
 
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table.compact-table:not(.cm-table):not(.cm-table-widget) {
-  --ogd-table-pad-y: 0.34em;
-  --ogd-table-pad-x: 0.48em;
+  --ogd-table-pad-y: 0.40em;
+  --ogd-table-pad-x: 0.56em;
   --ogd-table-font-size: 0.88em;
-  --ogd-table-line-height: 1.28;
+  --ogd-table-line-height: 1.32;
 }
 
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(th, td) {
