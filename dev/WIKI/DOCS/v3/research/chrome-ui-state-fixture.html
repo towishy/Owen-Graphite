@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite Chrome UI State Fixture</title>
+  <link rel="stylesheet" href="../../../../../theme.css">
+</head>
+<body class="theme-light is-frameless" data-ogd-fixture="chrome-ui-state">
+  <div class="workspace workspace-split mod-root" data-check="chrome-state-shell">
+    <aside class="workspace-leaf-content" data-type="file-explorer" data-check="chrome-file-explorer-states">
+      <div class="workspace-tab-header-container">
+        <div class="workspace-tab-header" data-check="tab-rest"><div class="workspace-tab-header-inner"><div class="workspace-tab-header-inner-title">rest</div></div></div>
+        <div class="workspace-tab-header is-active mod-active" data-check="tab-active"><div class="workspace-tab-header-inner"><div class="workspace-tab-header-inner-title">active</div></div></div>
+      </div>
+      <div class="nav-files-container">
+        <div class="tree-item nav-folder"><div class="tree-item-self nav-folder-title is-clickable" data-path="Project"><div class="tree-item-inner nav-folder-title-content">Project</div></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title is-clickable" data-path="Project/rest.md" data-check="nav-rest"><div class="tree-item-inner nav-file-title-content">rest.md</div></div></div>
+        <div class="tree-item nav-file"><div class="tree-item-self nav-file-title is-clickable is-active" data-path="Project/active.md" data-check="nav-active"><div class="tree-item-inner nav-file-title-content">active.md</div></div></div>
+      </div>
+    </aside>
+
+    <main class="workspace-leaf-content markdown-reading-view" data-type="markdown">
+      <section class="modal mod-settings" data-check="settings-control-states">
+        <div class="modal-title">Settings</div>
+        <div class="vertical-tab-content-container">
+          <div class="setting-item setting-item-heading"><div class="setting-item-info"><div class="setting-item-name">Appearance</div></div></div>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Glass intensity</div><div class="setting-item-description">Stable row spacing and control alignment.</div></div><div class="setting-item-control"><div class="checkbox-container is-enabled" role="switch" aria-checked="true" title="Glass intensity enabled"></div></div></div>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Mode</div></div><div class="setting-item-control"><select class="dropdown" title="Mode"><option>Graphite</option></select></div></div>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">Density</div></div><div class="setting-item-control"><input class="slider" type="range" value="60" title="Density"></div></div>
+          <div class="search-input-container"><input type="search" value="tabs" title="Settings search"><div class="search-input-clear-button"></div></div>
+        </div>
+      </section>
+
+      <section class="suggestion-container mod-search-suggestion" data-check="overlay-selection-states">
+        <div class="suggestion-item">Open daily note</div>
+        <div class="suggestion-item is-selected"><span class="suggestion-highlight">tabs</span> command</div>
+        <div class="menu-item selected">Selected menu item</div>
+      </section>
+
+      <section class="workspace-split mod-right-split is-mobile" data-check="mobile-narrow-overflow">
+        <div class="workspace-leaf-content" data-type="search"><div class="search-result-container"><div class="search-result-file-match is-active"><span class="search-result-file-matched-text">narrow result</span></div></div></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

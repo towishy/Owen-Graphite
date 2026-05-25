@@ -41,12 +41,13 @@ body.css-settings-manager .style-settings-container .setting-item.setting-item-h
 body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before {
   content: "";
   display: block;
-  width: 3px;
+  width: 18px;
   height: 18px;
   margin-right: 10px;
-  border-radius: var(--ogd-radius-pill, 999px);
-  background: linear-gradient(180deg, #0284c7, #0f766e);
-  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.10);
+  border: 1px solid rgba(125, 211, 252, 0.34);
+  border-radius: var(--ogd-radius-control, 7px);
+  background: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.88), transparent 36%), linear-gradient(180deg, rgba(240, 249, 255, 0.88), rgba(226, 232, 240, 0.58));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 3px 8px rgba(15, 23, 42, 0.08);
   flex: 0 0 auto;
 }
 body.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-info,

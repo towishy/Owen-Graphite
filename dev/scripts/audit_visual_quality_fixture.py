@@ -100,6 +100,27 @@ FIXTURES = (
             'ogd-pdf-header2-value-mint',
         ),
     },
+    {
+        "id": "chrome-ui-state",
+        "path": ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "chrome-ui-state-fixture.html",
+        "screenshot": OUT_DIR / "chrome-ui-state.png",
+        "pdf": OUT_DIR / "chrome-ui-state.pdf",
+        "min_png": 20_000,
+        "min_pdf": 10_000,
+        "markers": (
+            'data-ogd-fixture="chrome-ui-state"',
+            'data-check="chrome-state-shell"',
+            'data-check="tab-active"',
+            'data-check="nav-active"',
+            'data-check="settings-control-states"',
+            'data-check="overlay-selection-states"',
+            'data-check="mobile-narrow-overflow"',
+            'class="setting-item setting-item-heading"',
+            'class="checkbox-container is-enabled" role="switch" aria-checked="true" title="Glass intensity enabled"',
+            'class="suggestion-item is-selected"',
+            'class="tree-item-self nav-file-title is-clickable is-active"',
+        ),
+    },
 )
 
 BROWSER_NAMES = (

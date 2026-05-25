@@ -63,6 +63,7 @@
 | Source Family | Use When | Notes |
 | --- | --- | --- |
 | `dev/WIKI/DOCS/v3/research/table-callout-parity-fixture.html` | Table/callout parity checks | Useful before touching table/callout visual parity. |
+| `dev/WIKI/DOCS/v3/research/chrome-ui-state-fixture.html` | Chrome, settings, overlay, and narrow state checks | Use before chrome/settings/overlay UX polish and visual state reviews. |
 | `dev/WIKI/DOCS/v3/research/live-preview-pdf-parity-fixture.html` | LP/PDF parity checks | Use before cross-surface table/code/callout changes. |
 | `dev/WIKI/DOCS/v3/research/pdf-marginalia-fixture.html` | PDF header/footer rendering | Use with PDF marginalia work. |
 | `dev/WIKI/DOCS/v3/research/code-font-clarity-fixture.html` | Code font readability | Use before code block typography changes. |
