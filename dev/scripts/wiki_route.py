@@ -7,7 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
-from route_registry import check_command, check_note, common_read, route_for, route_names, route_surfaces
+from route_registry import check_command, check_note, common_read, route_for, route_names, route_surfaces, support_modules
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -44,6 +44,11 @@ def print_route(surface: str, route: dict[str, object]) -> None:
             owners = ", ".join(str(value) for value in item.get("ownerModules", []))
             contracts = ", ".join(str(value) for value in item.get("riskContracts", []))
             print(f"- {item['id']}: owners={owners}; contracts={contracts}")
+    modules = support_modules()
+    if modules:
+        print("\nRegistered support modules (not owners; not repair layers):")
+        for item in modules:
+            print(f"- {item['module']}: {item['role']}")
     print("\nChecks:")
     for check in route["checks"]:
         command = check_command(check)

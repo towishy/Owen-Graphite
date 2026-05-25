@@ -32,9 +32,13 @@ Use `dev/scripts/validation_plan.py` to recommend checks from the current git di
 
 Use `dev/scripts/validation_plan.py --surface <surface>` when planning before a diff exists or when a task route is already known.
 
+Repeat `--surface` for multi-surface work, for example `dev/scripts/validation_plan.py --surface chrome --surface settings`.
+
 Use `dev/scripts/validation_plan.py --run-safe` to execute recommended checks that do not require placeholders.
 
 Use `dev/scripts/validation_plan.py --full-check --run-safe` or `dev/scripts/finish_work.py --full-check` for release-confidence handoff validation.
+
+Add `--surface <surface>` to `finish_work.py --full-check` when the handoff should include route-specific checks.
 
 `--run-safe` never builds release ZIPs, publishes, or syncs Obsidian; use explicit release/sync commands for those.
 

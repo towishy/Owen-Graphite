@@ -40,5 +40,5 @@ jobs:
       - name: Core principles gate
         run: python dev/scripts/audit_core_principles.py
 
-      - name: Run theme validation
-        run: python dev/scripts/release_check.py
+      - name: Run full validation plan
+        run: python dev/scripts/validation_plan.py --full-check --run-safe

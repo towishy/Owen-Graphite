@@ -17,6 +17,7 @@ REQUIRED_FILES = [
     "dev/WIKI/MAP/diff-stability.md",
     "dev/WIKI/MAP/coverage-priority-plan.md",
     "dev/WIKI/MAP/route-registry.json",
+    "dev/WIKI/MAP/route-registry.md",
     "dev/WIKI/MAP/theme-css-risk-summary.json",
     "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/runtime-evidence-schema.json",
@@ -82,7 +83,11 @@ REQUIRED_TEXT = {
         "dev/scripts/wiki_route.py",
         "dev/scripts/wiki_route.py <surface> --commands",
         "MAP/route-registry.json",
+        "MAP/route-registry.md",
+        "dev/scripts/audit_route_registry.py",
+        "dev/scripts/build_route_registry_doc.py --check",
         "validation_plan.py --surface",
+        "validation_plan.py --surface chrome --surface settings",
         "finish_work.py --full-check",
         "dev/scripts/start_work.py",
         "dev/scripts/finish_work.py",
@@ -105,12 +110,16 @@ REQUIRED_TEXT = {
         "wiki_route.py mobile",
         "wiki_route.py settings --commands",
         "validation_plan.py --surface",
+        "validation_plan.py --surface chrome --surface settings",
         "validation_plan.py --full-check --run-safe",
+        "finish_work.py --surface chrome --full-check",
         "finish_work.py --full-check",
         "build_coverage_priority_plan.py --check",
         "validation_plan.py --run-safe",
         "audit_owner_risk_contracts.py",
+        "audit_route_registry.py",
         "audit_selector_owner_cheatsheet.py",
+        "build_route_registry_doc.py --check",
         "audit_wiki_consistency.py",
     ],
     "dev/WIKI/MAP/diff-stability.md": [
@@ -189,6 +198,7 @@ REQUIRED_TEXT = {
         "wiki_route.py <surface>",
         "--run-safe",
         "--surface <surface>",
+        "--surface chrome --surface settings",
         "finish_work.py --full-check",
         "never builds release ZIPs",
         "pre-commit hook",
@@ -196,7 +206,10 @@ REQUIRED_TEXT = {
     "dev/WIKI/WORKFLOWS/wiki-maintenance.md": [
         "WIKI Maintenance",
         "audit_owner_risk_contracts.py",
+        "audit_route_registry.py",
         "route-registry.json",
+        "route-registry.md",
+        "build_route_registry_doc.py --check",
         "build_source_usage_map.py --check",
         "build_coverage_priority_plan.py --check",
     ],
@@ -343,6 +356,7 @@ def assert_helper_and_generator_stability() -> None:
         "dev/scripts/new_runtime_evidence.py",
         "dev/scripts/work_summary.py",
         "dev/scripts/build_coverage_priority_plan.py",
+        "dev/scripts/build_route_registry_doc.py",
         "dev/scripts/audit_mobile_owner.py",
     ):
         if not (ROOT / script).is_file():
@@ -352,6 +366,7 @@ def assert_helper_and_generator_stability() -> None:
         "dev/scripts/finish_work.py",
         "dev/scripts/validation_plan.py",
         "dev/scripts/release_preflight.py",
+        "dev/scripts/audit_route_registry.py",
         "dev/scripts/audit_owner_risk_contracts.py",
         "dev/scripts/audit_wiki_route_coverage.py",
         "dev/scripts/audit_selector_owner_cheatsheet.py",
@@ -369,7 +384,7 @@ def assert_helper_and_generator_stability() -> None:
     validation_plan = read("dev/scripts/validation_plan.py")
     if "--run-safe" not in validation_plan or "build_release.py" not in validation_plan:
         fail("validation_plan.py must keep bounded --run-safe behavior")
-    if "--surface" not in validation_plan or "--full-check" not in validation_plan:
+    if "--surface" not in validation_plan or "--full-check" not in validation_plan or "action=\"append\"" not in validation_plan:
         fail("validation_plan.py must support route-aware and full-check planning")
     if "--full-check" not in read("dev/scripts/finish_work.py"):
         fail("finish_work.py must expose --full-check")

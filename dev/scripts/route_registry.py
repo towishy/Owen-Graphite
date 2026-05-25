@@ -4,16 +4,22 @@
 from __future__ import annotations
 
 import json
+import shlex
 from pathlib import Path
 from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[2]
 ROUTE_REGISTRY = ROOT / "dev" / "WIKI" / "MAP" / "route-registry.json"
+OWNER_REGISTRY = ROOT / "dev" / "WIKI" / "MAP" / "owner-registry.json"
 
 
 def load_route_registry() -> dict[str, Any]:
     return json.loads(ROUTE_REGISTRY.read_text(encoding="utf-8"))
+
+
+def load_owner_registry() -> dict[str, Any]:
+    return json.loads(OWNER_REGISTRY.read_text(encoding="utf-8"))
 
 
 def routes() -> dict[str, dict[str, Any]]:
@@ -53,3 +59,16 @@ def check_note(check: str | dict[str, Any]) -> str:
 
 def route_check_commands(route: dict[str, Any]) -> list[str]:
     return [command for command in (check_command(check) for check in route.get("checks", [])) if command]
+
+
+def command_parts(command: str) -> list[str]:
+    return shlex.split(command, posix=False)
+
+
+def command_script(command: str) -> str:
+    parts = command_parts(command)
+    return parts[0] if parts else ""
+
+
+def support_modules() -> list[dict[str, Any]]:
+    return list(load_owner_registry().get("supportModules", []))

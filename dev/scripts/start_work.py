@@ -8,6 +8,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from route_registry import route_names
+
 
 ROOT = Path(__file__).resolve().parents[2]
 PYTHON = sys.executable
@@ -19,7 +21,7 @@ def run(args: list[str]) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--surface", required=True, help="Surface for wiki_route.py, e.g. table, chrome, plugin.")
+    parser.add_argument("--surface", required=True, choices=route_names(), help="Surface for wiki_route.py, e.g. table, chrome, plugin.")
     parser.add_argument("--name", default="", help="Short task/evidence name.")
     parser.add_argument("--state", default="", help="Runtime state when evidence is needed.")
     parser.add_argument("--evidence", action="store_true", help="Create runtime evidence scaffold.")
@@ -30,7 +32,7 @@ def main() -> int:
     print("\n== Surface check commands ==")
     run(["dev/scripts/wiki_route.py", args.surface, "--commands"])
     print("\n== Validation plan ==")
-    run(["dev/scripts/validation_plan.py"])
+    run(["dev/scripts/validation_plan.py", "--surface", args.surface])
     if args.evidence:
         if not args.name:
             raise SystemExit("--name is required with --evidence")

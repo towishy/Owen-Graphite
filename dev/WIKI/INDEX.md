@@ -31,6 +31,7 @@
 - `MAP/coverage-priority-plan.md`
 - `MAP/owner-registry.md`
 - `MAP/route-registry.json`
+- `MAP/route-registry.md`
 - `MAP/risk-contracts.md`
 - `MAP/selector-provenance.md`
 - `MAP/reading-content-contract.md`
@@ -79,7 +80,10 @@
 - `dev/scripts/wiki_route.py`: prints WIKI owner/workflow/check routing by surface.
 - `dev/scripts/wiki_route.py settings`: routes settings UI and Style Settings work.
 - `dev/scripts/wiki_route.py <surface> --commands`: prints copyable surface check commands.
+- `dev/scripts/audit_route_registry.py`: validates route registry schema, links, and command references.
+- `dev/scripts/build_route_registry_doc.py --check`: verifies generated route registry docs are fresh.
 - `dev/scripts/validation_plan.py --surface <surface>`: plans route-aware checks before a diff exists.
+- `dev/scripts/validation_plan.py --surface chrome --surface settings`: plans multi-surface checks with de-duplicated commands.
 - `dev/scripts/finish_work.py --full-check`: runs release-confidence handoff validation.
 - `runtime-debug.md`
 - `build-release.md`
@@ -106,6 +110,8 @@
 
 - `dev/scripts/wiki_route.py`
 - `dev/scripts/route_registry.py`
+- `dev/scripts/audit_route_registry.py`
+- `dev/scripts/build_route_registry_doc.py`
 - `dev/scripts/start_work.py`
 - `dev/scripts/finish_work.py`
 - `dev/scripts/validation_plan.py`

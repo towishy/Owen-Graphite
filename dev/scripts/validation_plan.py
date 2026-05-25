@@ -28,6 +28,7 @@ def changed_files() -> list[str]:
 
 
 def add(commands: list[str], command: str) -> None:
+    command = command.replace("/", "\\") if command.startswith(".\\.venv\\Scripts\\python.exe dev/") else command
     if command not in commands:
         commands.append(command)
 
@@ -61,7 +62,13 @@ def route_needs_runtime_note(surface: str) -> bool:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--surface", choices=route_names(), help="Add validation recommended by the WIKI route for this work surface.")
+    parser.add_argument(
+        "--surface",
+        action="append",
+        choices=route_names(),
+        default=[],
+        help="Add validation recommended by a WIKI route. Repeat for multi-surface work.",
+    )
     parser.add_argument("--full-check", action="store_true", help="Add the standard release-confidence checks for handoff or commit readiness.")
     parser.add_argument("--run-safe", action="store_true", help="Run recommended commands that do not require placeholders.")
     args = parser.parse_args()
@@ -72,7 +79,9 @@ def main() -> int:
     commands: list[str] = []
     notes: list[str] = []
 
-    if not files and not args.surface and not args.full_check:
+    surfaces = list(dict.fromkeys(args.surface))
+
+    if not files and not surfaces and not args.full_check:
         print("OK: no changed files")
         return 0
 
@@ -104,11 +113,11 @@ def main() -> int:
     if any(path in {"manifest.json", "CHANGELOG.md"} or "release-plan" in path or path.startswith(".github/workflows/release") for path in files):
         add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\release_preflight.py --version <version>")
 
-    if args.surface:
-        for command in route_check_commands(route_for(args.surface)):
+    for surface in surfaces:
+        for command in route_check_commands(route_for(surface)):
             add(commands, f".\\.venv\\Scripts\\python.exe {command}")
-        if route_needs_runtime_note(args.surface):
-            notes.append(f"Surface route '{args.surface}' can require runtime evidence for selected/hover/focus/active states.")
+        if route_needs_runtime_note(surface):
+            notes.append(f"Surface route '{surface}' can require runtime evidence for selected/hover/focus/active states.")
 
     if args.full_check:
         for command in FULL_CHECK_COMMANDS:
@@ -120,8 +129,8 @@ def main() -> int:
             print(f"- {path}")
     else:
         print("- n/a")
-    if args.surface:
-        print(f"\nSurface route: {args.surface}")
+    if surfaces:
+        print("\nSurface routes: " + ", ".join(surfaces))
     if args.full_check:
         print("\nFull check: enabled")
     print("\nRecommended validation:")
