@@ -34,6 +34,11 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
+      - name: Bundle v3 CSS
+        run: |
+          python dev/scripts/bundle_v3.py
+          cp dist/theme-v3.css theme.css
+
       - name: Source usage map freshness
         run: python dev/scripts/build_source_usage_map.py --check
 
