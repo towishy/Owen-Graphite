@@ -4058,7 +4058,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ca
   margin: 1em 0 1.15em;
   padding: 0.86em 1em 0.9em;
   border: 1px solid var(--ogd-callout-border);
-  border-left: 1px solid var(--ogd-callout-border);
   border-radius: var(--ogd-radius-control, 7px);
   background: var(--ogd-callout-bg);
   color: var(--ogd-text-slate, #334155);
@@ -5638,7 +5637,7 @@ body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-header-3, .cm-header-4) {
 body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-text-soft, #94a3b8);
 }
-/* owen-risk-accepted: cm-table-widget */
+/* owen-risk-accepted-begin: cm-table-widget; evidence=dev/TEMP/runtime-evidence/fragments/capture-widget-risk-accepted-compare.json */
 body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor { background-color: #ffffff; border-color: rgba(148, 163, 184, 0.58); box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.90); }
 body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr) { background-color: #ffffff; }
 body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td) { padding: 7.6px 10.1px; font-size: 14.7px; line-height: 20.3px; background-color: #ffffff; border-color: rgba(226, 232, 240, 0.98); color: var(--ogd-text-slate, #334155); box-shadow: inset 0 0 0 0.5px rgba(226, 232, 240, 0.92); }
@@ -5649,6 +5648,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered
 body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td) { background-color: rgba(15, 23, 42, 0.66); border-color: rgba(71, 85, 105, 0.82); color: var(--text-normal, #e5edf7); box-shadow: inset 0 0 0 0.5px rgba(71, 85, 105, 0.72); }
 body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th { background-color: rgba(30, 41, 59, 0.92); color: var(--ogd-text-inverted, #f8fafc); box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.24), inset 0 0 0 0.5px rgba(71, 85, 105, 0.78); }
 body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td) { background-color: rgba(8, 145, 178, 0.28); }
+/* owen-risk-accepted-end: cm-table-widget */
 body .markdown-source-view.mod-cm6 .cm-line.HyperMD-callout {
   box-sizing: border-box;
   max-width: 100%;
@@ -6558,7 +6558,7 @@ body.ogd-auto-number-headings .markdown-rendered h4::before {
 
 /* B1. Spoiler / blur — `> [!secret]` callout or .ogd-blur class */
 .markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]) {
-  border-left-color: #6b7280;
+  border-color: #d1d5db;
   background: var(--ogd-surface-subtle, #f3f4f6);
 }
 .markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]) .callout-content,
@@ -8153,7 +8153,7 @@ body.ogd-auto-dark {
 }
 .theme-dark .markdown-rendered .callout:is([data-callout="secret"], [data-callout="hidden"]) {
   background: #25272d;
-  border-left-color: #6b7280;
+  border-color: #6b7280;
 }
 .theme-dark kbd {
   background: linear-gradient(180deg, #2a2c33, #1f2024);
@@ -11473,13 +11473,12 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-executive-summary, .callout[data-callout="summary"]) {
     margin: 1.1em 0 1.35em;
     border-color: #cfe5e2;
-    border-left-color: #0f766e;
     background: linear-gradient(90deg, #effdfa, #f8fafc 92%);
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-action-summary, .callout[data-callout="action"]) {
     margin: 1.1em 0 1.35em;
-    border-left-color: #2563eb;
+    border-color: #bfdbfe;
     background: #f8fbff;
   }
 
@@ -12299,7 +12298,6 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
     margin: 0.86em 0 1.02em;
     padding: 0.7em 0.84em 0.74em;
     border: 1px solid var(--ogd-callout-border);
-    border-left: 1px solid var(--ogd-callout-border);
     border-radius: 7px;
     background: var(--ogd-callout-bg);
     color: #334155;

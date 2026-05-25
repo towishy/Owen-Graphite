@@ -46,6 +46,7 @@ REQUIRED_FILES = [
     "dev/WIKI/INCIDENTS/taxonomy.md",
     "dev/WIKI/PROMPTS/work-summary.md",
     "dev/WIKI/SRC/validation-matrix.md",
+    "dev/WIKI/DOCS/v3/pdf-font-size-matrix.md",
     "dev/WIKI/WORKFLOWS/release.md",
     "dev/WIKI/WORKFLOWS/validation-matrix.md",
     "dev/WIKI/WORKFLOWS/wiki-maintenance.md",
@@ -98,6 +99,7 @@ REQUIRED_TEXT = {
         "dev/scripts/start_work.py",
         "dev/scripts/finish_work.py",
         "dev/scripts/validation_plan.py",
+        "dev/scripts/run_validation.py",
         "dev/scripts/new_runtime_evidence.py",
         "dev/scripts/new_incident.py",
         "dev/scripts/work_summary.py",
@@ -107,6 +109,7 @@ REQUIRED_TEXT = {
         "dev/scripts/audit_wiki_route_coverage.py",
         "dev/scripts/audit_selector_owner_cheatsheet.py",
         "dev/scripts/audit_runtime_evidence_requirements.py",
+        "dev/scripts/cdp_capture.mjs",
         "dev/scripts/promote_evidence.py",
         "PROMPTS/work-summary.md",
         "WORKFLOWS/validation-matrix.md",
@@ -119,6 +122,7 @@ REQUIRED_TEXT = {
         "validation_plan.py --surface chrome --surface settings",
         "validation_plan.py --surface chrome --json",
         "validation_plan.py --full-check --run-safe",
+        "run_validation.py --preset core",
         "finish_work.py --surface chrome --full-check",
         "finish_work.py --full-check",
         "build_coverage_priority_plan.py --check",
@@ -129,6 +133,12 @@ REQUIRED_TEXT = {
         "audit_selector_owner_cheatsheet.py",
         "build_route_registry_doc.py --check",
         "audit_wiki_consistency.py",
+    ],
+    "dev/WIKI/DOCS/v3/pdf-font-size-matrix.md": [
+        "12pt = 16px",
+        "PDF visibility",
+        "PDF customer delivery",
+        "--ogd-pdf-surface-text-font-size",
     ],
     "dev/WIKI/MAP/diff-stability.md": [
         "sorted keys",
@@ -388,6 +398,8 @@ def assert_helper_and_generator_stability() -> None:
         "dev/scripts/build_coverage_priority_plan.py",
         "dev/scripts/build_route_registry_doc.py",
         "dev/scripts/audit_mobile_owner.py",
+        "dev/scripts/run_validation.py",
+        "dev/scripts/cdp_capture.mjs",
         "dev/scripts/test_route_workflow.py",
     ):
         if not (ROOT / script).is_file():

@@ -18,6 +18,12 @@ Create a scaffold with:
 .\.venv\Scripts\python.exe dev\scripts\new_runtime_evidence.py --surface table --name selected-cell-height --state selected
 ```
 
+Capture real Obsidian DOM/computed fragments through CDP with:
+
+```powershell
+node dev\scripts\cdp_capture.mjs --selector ".workspace" --scenario resting --out dev\TEMP\runtime-evidence\fragments\workspace.json
+```
+
 Use these examples as the expected level of detail:
 
 ```text

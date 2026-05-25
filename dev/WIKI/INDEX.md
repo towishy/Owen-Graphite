@@ -87,6 +87,8 @@
 - `dev/scripts/validation_plan.py --surface chrome --surface settings`: plans multi-surface checks with de-duplicated commands.
 - `dev/scripts/validation_plan.py --json`: prints the route-aware validation plan as machine-readable JSON.
 - `dev/scripts/finish_work.py --full-check`: runs release-confidence handoff validation.
+- `dev/scripts/run_validation.py --preset core`: runs validation presets with UTF-8-safe output and JSON summary.
+- `dev/scripts/cdp_capture.mjs`: captures real Obsidian runtime DOM/computed evidence through CDP.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`
@@ -118,6 +120,7 @@
 - `dev/scripts/start_work.py`
 - `dev/scripts/finish_work.py`
 - `dev/scripts/validation_plan.py`
+- `dev/scripts/run_validation.py`
 - `dev/scripts/new_runtime_evidence.py`
 - `dev/scripts/new_incident.py`
 - `dev/scripts/promote_evidence.py`
@@ -128,3 +131,4 @@
 - `dev/scripts/audit_wiki_route_coverage.py`
 - `dev/scripts/audit_selector_owner_cheatsheet.py`
 - `dev/scripts/audit_runtime_evidence_requirements.py`
+- `dev/scripts/cdp_capture.mjs`

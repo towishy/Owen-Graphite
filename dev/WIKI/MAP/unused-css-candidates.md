@@ -1,7 +1,7 @@
 # Unused CSS Candidate Report
 
 Version: 3.1.60
-Bundle SHA256: `0c33b0c83499b8d4562298b7417534ff855dbbb280605c148160ab720a6b6d65`
+Bundle SHA256: `e7ea0384f2fe0727949c193211c3e4ba54f8337536373db053452954eaa1fa82`
 Coverage scenarios: 201
 
 ## Summary

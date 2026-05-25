@@ -17,6 +17,7 @@ Core commands:
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --surface chrome --json
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --run-safe
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --full-check --run-safe
+.\.venv\Scripts\python.exe dev\scripts\run_validation.py --preset core
 ```
 
 Validation commands:
@@ -38,6 +39,7 @@ Validation commands:
 .\.venv\Scripts\python.exe dev\scripts\audit_v3_hit_routing.py
 .\.venv\Scripts\python.exe dev\scripts\audit_lp_pdf_selector_ownership.py
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
+.\.venv\Scripts\python.exe dev\scripts\run_validation.py --preset table
 ```
 
 Use runtime debug for selected/hover/focus issues that static audits cannot see.

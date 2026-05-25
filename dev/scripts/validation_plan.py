@@ -25,7 +25,7 @@ RUNTIME_PROPERTY_GROUPS = {"focus", "hit-routing", "interaction"}
 
 
 def changed_files() -> list[str]:
-    result = subprocess.run(["git", "status", "--short"], cwd=ROOT, check=True, text=True, capture_output=True)
+    result = subprocess.run(["git", "status", "--short"], cwd=ROOT, check=True, text=True, encoding="utf-8", errors="replace", capture_output=True)
     return [line[3:].replace("\\", "/") for line in result.stdout.splitlines() if len(line) > 3]
 
 
@@ -85,7 +85,7 @@ def route_needs_runtime_note(surface: str) -> bool:
 def build_plan(surfaces: list[str], full_check: bool) -> dict[str, object]:
     files = changed_files()
     source_like = [path for path in files if path.startswith("src/") or path == "theme.css"]
-    diff_text = subprocess.run(["git", "diff", "--", *source_like], cwd=ROOT, text=True, capture_output=True, check=True).stdout if source_like else ""
+    diff_text = subprocess.run(["git", "diff", "--", *source_like], cwd=ROOT, text=True, encoding="utf-8", errors="replace", capture_output=True, check=True).stdout if source_like else ""
     commands: list[dict[str, object]] = []
     notes: list[str] = []
 

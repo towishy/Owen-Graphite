@@ -23,6 +23,20 @@ def git_output(args: list[str]) -> str:
     return subprocess.run(["git", *args], cwd=ROOT, text=True, capture_output=True, check=True).stdout.strip()
 
 
+def gh_release_exists(version: str) -> bool:
+    try:
+        result = subprocess.run(
+            ["gh", "release", "view", version, "--json", "tagName,name"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+    except OSError:
+        return False
+    return result.returncode == 0 and version in result.stdout
+
+
 def fail(message: str) -> None:
     raise AssertionError(message)
 
@@ -56,6 +70,8 @@ def main() -> int:
         remote_tag = git_output(["ls-remote", "--tags", "origin", version])
         if remote_tag:
             fail(f"remote tag already exists: {version}")
+        if gh_release_exists(version):
+            fail(f"GitHub Release already exists: {version}")
         v_tag = git_output(["tag", "--list", f"v{version}"])
         if v_tag:
             fail(f"v-prefixed local tag exists and is forbidden: v{version}")

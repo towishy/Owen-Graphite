@@ -57,6 +57,7 @@
 | `dev/WIKI/DOCS/v3/computed-fingerprint-v3.0.0-light.json` | Historical computed baseline | Use for fingerprint comparisons. |
 | `dev/WIKI/DOCS/v3/computed-fingerprint-v3.0.0-dark.json` | Historical computed baseline | Use for fingerprint comparisons. |
 | `dev/WIKI/DOCS/v3/pdf-marginalia-validation.md` | PDF marginalia validation | Pair with `pdf-header-footer-contract.md`. |
+| `dev/WIKI/DOCS/v3/pdf-font-size-matrix.md` | PDF body/table/callout/code font-size policy and px conversion | Use before changing PDF readability presets. |
 
 ## Research Fixtures
 
