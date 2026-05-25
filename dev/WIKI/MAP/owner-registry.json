@@ -137,5 +137,32 @@
       "allowedLateModules": [],
       "riskContracts": ["dev/WIKI/MAP/shared-tokens-contract.md"]
     }
+  ],
+  "supportModules": [
+    {
+      "module": "src/base/10-base-workspace.css",
+      "role": "base/embed workspace primitives",
+      "description": "Foundational workspace and embed primitives consumed by multiple owner surfaces; not a late repair owner."
+    },
+    {
+      "module": "src/surfaces/22-reading-embeds-workspace.css",
+      "role": "reading embed/workspace primitives",
+      "description": "Support layer for reading embeds and workspace-adjacent document surfaces; ownership must still route through the target surface owner."
+    },
+    {
+      "module": "src/themes/50-dark.css",
+      "role": "dark theme support",
+      "description": "Dark-mode token and theme adjustments; not a general owner for surface behavior."
+    },
+    {
+      "module": "src/plugins/60-canvas-graph-link-panes.css",
+      "role": "external/plugin support",
+      "description": "Canvas, graph, and link-pane plugin support; plugin DOM changes still require route and runtime evidence."
+    },
+    {
+      "module": "src/themes/51-accessibility-motion-contrast.css",
+      "role": "accessibility/motion/contrast support",
+      "description": "Accessibility and motion support layer; not a late visual repair layer."
+    }
   ]
 }

@@ -27,10 +27,19 @@ def main() -> int:
                 contract_path = str(contract)
                 if contract_path.startswith("dev/") and not (ROOT / contract_path).is_file():
                     missing_files.append(f"{surface_id}:{contract_path}")
+        support_problems: list[str] = []
+        for support in registry.get("supportModules", []):
+            module = str(support.get("module", ""))
+            if not module or not support.get("role") or not support.get("description"):
+                support_problems.append(module or "<unknown>")
+            elif module.startswith(("src/", "dev/")) and not (ROOT / module).is_file():
+                missing_files.append(f"support:{module}")
         if missing_contracts:
             raise AssertionError("owner surfaces missing riskContracts: " + ", ".join(missing_contracts))
         if missing_files:
             raise AssertionError("owner surfaces reference missing risk contract files: " + ", ".join(missing_files))
+        if support_problems:
+            raise AssertionError("supportModules missing module/role/description: " + ", ".join(support_problems))
         print("OK: owner risk contract coverage clean")
         return 0
     except Exception as exc:

@@ -10,7 +10,10 @@ Core commands:
 .\.venv\Scripts\python.exe dev\scripts\wiki_route.py settings --commands
 .\.venv\Scripts\python.exe dev\scripts\start_work.py --surface chrome --name focus-polish
 .\.venv\Scripts\python.exe dev\scripts\finish_work.py --check
+.\.venv\Scripts\python.exe dev\scripts\finish_work.py --full-check
+.\.venv\Scripts\python.exe dev\scripts\validation_plan.py --surface chrome
 .\.venv\Scripts\python.exe dev\scripts\validation_plan.py --run-safe
+.\.venv\Scripts\python.exe dev\scripts\validation_plan.py --full-check --run-safe
 ```
 
 Validation commands:

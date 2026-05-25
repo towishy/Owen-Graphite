@@ -120,7 +120,7 @@ def strip_comments_keep_lines(text: str) -> str:
     return re.sub(r"/\*.*?\*/", lambda match: "\n" * match.group(0).count("\n"), text, flags=re.S)
 
 
-def owner_maps() -> tuple[dict[str, list[str]], dict[str, dict[str, object]]]:
+def owner_maps() -> tuple[dict[str, list[str]], dict[str, dict[str, object]], dict[str, dict[str, object]]]:
     registry = json.loads(OWNER_REGISTRY.read_text(encoding="utf-8"))
     by_module: dict[str, list[str]] = defaultdict(list)
     by_surface: dict[str, dict[str, object]] = {}
@@ -132,7 +132,8 @@ def owner_maps() -> tuple[dict[str, list[str]], dict[str, dict[str, object]]]:
         for module in surface.get("allowedLateModules", []):
             if module.startswith("src/"):
                 by_module[module].append(f"{surface['id']} (allowed-late)")
-    return dict(by_module), by_surface
+    support_by_module = {str(item["module"]): item for item in registry.get("supportModules", [])}
+    return dict(by_module), by_surface, support_by_module
 
 
 def bundle_ranges() -> dict[str, dict[str, int]]:
@@ -183,20 +184,23 @@ def direct_core_table_violation(selector_part: str) -> bool:
     return ".cm-table-widget" in no_not or "table.cm-table" in no_not
 
 
-def classify_support_module(module: dict[str, object]) -> str:
-        path = str(module["module"])
-        labels = set(module["labels"])
-        if path.startswith("src/tokens/") or path.startswith("src/themes/"):
-                return "intentional support: theme/tokens layer"
-        if path.startswith("src/plugins/"):
-                return "external/plugin specific support"
-        if path in {"src/base/10-base-workspace.css", "src/surfaces/22-reading-embeds-workspace.css"}:
-                return "intentional support: base/embed workspace primitives"
-        if path == "src/chrome/33-settings-controls.css":
-                return "possible owner registry gap: settings controls"
-        if "workspace-chrome" in labels or "overlay-search" in labels:
-                return "possible owner registry gap: chrome/overlay support"
-        return "needs review"
+def classify_support_module(module: dict[str, object], support_by_module: dict[str, dict[str, object]]) -> str:
+    path = str(module["module"])
+    support = support_by_module.get(path)
+    if support:
+        return f"registered support: {support.get('role', 'support module')}"
+    labels = set(module["labels"])
+    if path.startswith("src/tokens/") or path.startswith("src/themes/"):
+        return "intentional support: theme/tokens layer"
+    if path.startswith("src/plugins/"):
+        return "external/plugin specific support"
+    if path in {"src/base/10-base-workspace.css", "src/surfaces/22-reading-embeds-workspace.css"}:
+        return "intentional support: base/embed workspace primitives"
+    if path == "src/chrome/33-settings-controls.css":
+        return "possible owner registry gap: settings controls"
+    if "workspace-chrome" in labels or "overlay-search" in labels:
+        return "possible owner registry gap: chrome/overlay support"
+    return "needs review"
 
 
 def table_selector_index() -> list[dict[str, str]]:
@@ -342,7 +346,7 @@ Use this when static audits pass but a selected, hovered, focused, or active run
 def build() -> tuple[dict[str, object], str]:
     build_src_map = load_build_src_map_module()
     imports = build_src_map.import_order()
-    owners_by_module, surfaces = owner_maps()
+    owners_by_module, surfaces, support_by_module = owner_maps()
     ranges = bundle_ranges()
 
     modules: list[dict[str, object]] = []
@@ -390,6 +394,7 @@ def build() -> tuple[dict[str, object], str]:
             "selectorParts": selector_parts,
             "labels": dict(sorted(label_counts.items())),
             "ownerSurfaces": owners_by_module.get(module, []),
+            "supportRole": str(support_by_module.get(module, {}).get("role", "")),
             "previousModule": imports[index - 1]["module"] if index > 0 else None,
             "nextModule": imports[index + 1]["module"] if index + 1 < len(imports) else None,
         }
@@ -414,11 +419,20 @@ def build() -> tuple[dict[str, object], str]:
         "ownerRegistryGaps": [
             {
                 "module": module["module"],
-                "classification": classify_support_module(module),
+                "classification": classify_support_module(module, support_by_module),
                 "labels": module["labels"],
             }
             for module in modules
-            if not module["ownerSurfaces"]
+            if not module["ownerSurfaces"] and module["module"] not in support_by_module
+        ],
+        "supportModules": [
+            {
+                "module": module["module"],
+                "role": module["supportRole"],
+                "labels": module["labels"],
+            }
+            for module in modules
+            if module["module"] in support_by_module
         ],
         "riskContractGaps": [
             {
@@ -437,7 +451,7 @@ def build() -> tuple[dict[str, object], str]:
 def render_markdown(data: dict[str, object]) -> str:
     modules = data["modules"]
     label_totals = data["labelTotals"]
-    unregistered = [module for module in modules if not module["ownerSurfaces"]]
+    unregistered = [module for module in modules if not module["ownerSurfaces"] and not module.get("supportRole")]
     lines: list[str] = []
     lines.append("# Owen Graphite Source Usage Map")
     lines.append("")
@@ -559,7 +573,9 @@ def render_markdown(data: dict[str, object]) -> str:
     lines.append("| ---: | --- | --- | ---: | --- | --- | --- |")
     for module in modules:
         bundle = f"{module['bundleStartLine']}-{module['bundleEndLine']}" if module.get("bundleStartLine") else "-"
-        owners = ", ".join(module["ownerSurfaces"]) or "unregistered/support"
+        owners = ", ".join(module["ownerSurfaces"])
+        if not owners:
+            owners = f"support: {module['supportRole']}" if module.get("supportRole") else "unregistered/support"
         labels = ", ".join(f"{label}:{count}" for label, count in module["labels"].items()) or "metadata/tokens"
         relation = f"after `{module['previousModule']}`; before `{module['nextModule']}`"
         lines.append(f"| {module['index']} | `{module['module']}` | {bundle} | {module['sourceLines']} | {owners} | {labels} | {relation} |")
@@ -629,6 +645,14 @@ def render_markdown(data: dict[str, object]) -> str:
     lines.append("")
     lines.append("`allowed-late` modules exist to preserve validated cascade order or print/report closure. They do not authorize new broad fixes. If a behavior has a clear owner, edit the owner first and use allowed-late modules only for their registered surface.")
     lines.append("")
+    if data.get("supportModules"):
+        lines.append("## Registered Support Modules")
+        lines.append("")
+        lines.append("These modules have explicit support roles in `owner-registry.json`. They are not primary owners and must not be used as repair layers.")
+        lines.append("")
+        for item in data["supportModules"]:
+            lines.append(f"- `{item['module']}`: {item['role']}; labels {item['labels'] or {}}")
+        lines.append("")
     if unregistered:
         lines.append("## Unregistered/Support Modules")
         lines.append("")

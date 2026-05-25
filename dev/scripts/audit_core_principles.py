@@ -102,6 +102,12 @@ def assert_owner_modules_exist() -> None:
         for contract in surface.get("riskContracts", []):
             if contract.startswith("dev/") and not (ROOT / contract).is_file():
                 missing.append(f"{surface['id']}:{contract}")
+    for support in registry.get("supportModules", []):
+        module = str(support.get("module", ""))
+        if module.startswith(("src/", "dev/")) and not (ROOT / module).is_file():
+            missing.append(f"support:{module}")
+        if not support.get("role") or not support.get("description"):
+            missing.append(f"support metadata incomplete:{module}")
     if missing:
         fail("owner-registry references missing files: " + ", ".join(missing))
     print("OK: owner registry modules exist")

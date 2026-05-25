@@ -30,6 +30,7 @@
 - `MAP/source-usage-map.md`
 - `MAP/coverage-priority-plan.md`
 - `MAP/owner-registry.md`
+- `MAP/route-registry.json`
 - `MAP/risk-contracts.md`
 - `MAP/selector-provenance.md`
 - `MAP/reading-content-contract.md`
@@ -78,6 +79,8 @@
 - `dev/scripts/wiki_route.py`: prints WIKI owner/workflow/check routing by surface.
 - `dev/scripts/wiki_route.py settings`: routes settings UI and Style Settings work.
 - `dev/scripts/wiki_route.py <surface> --commands`: prints copyable surface check commands.
+- `dev/scripts/validation_plan.py --surface <surface>`: plans route-aware checks before a diff exists.
+- `dev/scripts/finish_work.py --full-check`: runs release-confidence handoff validation.
 - `runtime-debug.md`
 - `build-release.md`
 - `sync-obsidian.md`
@@ -102,6 +105,7 @@
 ## Helper Scripts
 
 - `dev/scripts/wiki_route.py`
+- `dev/scripts/route_registry.py`
 - `dev/scripts/start_work.py`
 - `dev/scripts/finish_work.py`
 - `dev/scripts/validation_plan.py`

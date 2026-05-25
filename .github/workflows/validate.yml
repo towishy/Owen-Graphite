@@ -34,5 +34,11 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
+      - name: WIKI consistency
+        run: python dev/scripts/audit_wiki_consistency.py
+
+      - name: Core principles gate
+        run: python dev/scripts/audit_core_principles.py
+
       - name: Run theme validation
         run: python dev/scripts/release_check.py

@@ -1,0 +1,113 @@
+{
+  "schema": "owen-graphite/route-registry/1",
+  "purpose": "Single source of truth for WIKI route surfaces, owner guidance, required reading, contracts, and validation commands.",
+  "commonRead": [
+    "dev/WIKI/README.md",
+    "dev/WIKI/CORE-PRINCIPLES.md",
+    "dev/WIKI/QUICK-ROUTING.md"
+  ],
+  "routes": {
+    "chrome": {
+      "surfaces": ["workspace-chrome", "overlay-menu-search"],
+      "owner": "src/chrome/* according to dev/WIKI/SRC/chrome.md",
+      "read": ["dev/WIKI/WORKFLOWS/chrome-ui.md", "dev/WIKI/RUNTIME/chrome.md", "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
+      "contracts": ["dev/WIKI/MAP/top-chrome-icon-background-contract.md when top chrome is involved"],
+      "checks": [
+        {"command": "dev/scripts/audit_core_principles.py"},
+        {"command": "dev/scripts/release_check.py --skip-bundle"}
+      ]
+    },
+    "docs": {
+      "surfaces": [],
+      "owner": "dev/WIKI/DOCS/*, README files, screenshots/readme/* by publication target",
+      "read": ["dev/WIKI/WORKFLOWS/docs-assets.md", "dev/WIKI/DOCS/docs-map.md", "dev/WIKI/VISUAL-QA.md"],
+      "contracts": ["dev/WIKI/STRUCTURE.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_docs_assets.py"},
+        {"command": "dev/scripts/audit_readme_svg_layout.py"}
+      ]
+    },
+    "live-preview": {
+      "surfaces": ["live-preview-cm6", "live-preview-rendered-widgets"],
+      "owner": "src/base/13-live-preview.css",
+      "read": ["dev/WIKI/WORKFLOWS/live-preview-cm6.md", "dev/WIKI/RUNTIME/table.md", "dev/WIKI/runtime-evidence-template.md"],
+      "contracts": ["dev/WIKI/MAP/cm6-hit-routing-contract.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_v3_hit_routing.py"},
+        {"command": "dev/scripts/audit_core_principles.py"}
+      ]
+    },
+    "mobile": {
+      "surfaces": ["mobile-narrow-layout"],
+      "owner": "src/chrome/30-workspace.css for general mobile layout; src/plugins/61-live-preview-mobile-plugin.css for plugin/mobile embeds",
+      "read": ["dev/WIKI/WORKFLOWS/chrome-ui.md", "dev/WIKI/RUNTIME/chrome.md", "dev/WIKI/VISUAL-QA.md"],
+      "contracts": ["dev/WIKI/SRC/validation-matrix.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_core_principles.py"},
+        {"command": "dev/scripts/release_check.py --skip-bundle"}
+      ]
+    },
+    "pdf": {
+      "surfaces": ["pdf-base", "pdf-report-polish", "pdf-marginalia"],
+      "owner": "src/features/41-feature-presets.css, src/features/42-report-print-polish.css, or src/features/43-print-base.css by surface",
+      "read": ["dev/WIKI/WORKFLOWS/pdf.md", "dev/WIKI/RUNTIME/pdf.md", "dev/WIKI/RECIPES/pdf-label-preset.md"],
+      "contracts": ["dev/WIKI/MAP/pdf-header-footer-contract.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_pdf_header_footer.py"},
+        {"command": "dev/scripts/release_check.py --skip-bundle"}
+      ]
+    },
+    "plugin": {
+      "surfaces": ["dataview-plugin-support"],
+      "owner": "src/plugins/* for plugin-specific DOM; Dataview tables/inline fields currently route to src/chrome/32-overlay-popover-dataview.css; core document geometry stays with core owners",
+      "read": ["dev/WIKI/PLUGINS/compatibility-matrix.md", "dev/WIKI/PLUGINS/runtime-dom-notes.md", "dev/WIKI/RUNTIME/plugins.md"],
+      "contracts": ["dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_core_principles.py"},
+        {"command": "dev/scripts/release_check.py --skip-bundle"}
+      ]
+    },
+    "release": {
+      "surfaces": [],
+      "owner": "manifest.json, CHANGELOG.md, README.md, dev/WIKI/DOCS/v3/release-plan.md, dev/scripts/build_release.py",
+      "read": ["dev/WIKI/WORKFLOWS/release.md", "dev/WIKI/DOCS/v3/release-plan.md"],
+      "contracts": ["numeric semver tag only; no leading v prefix"],
+      "checks": [
+        {"command": "dev/scripts/release_check.py --tag <version>"},
+        {"command": "dev/scripts/audit_release_zip.py"}
+      ]
+    },
+    "settings": {
+      "surfaces": ["settings-controls", "style-settings-contract"],
+      "owner": "src/chrome/33-settings-controls.css for settings UI controls; src/features/40-style-settings.css and dev/WIKI/DOCS/v3/style-settings-contract.json for Style Settings metadata",
+      "read": ["dev/WIKI/RECIPES/style-settings-option.md", "dev/WIKI/DOCS/v3/style-settings-contract.md", "dev/WIKI/TOKENS/usage-guide.md"],
+      "contracts": ["dev/WIKI/MAP/settings-style-contract.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_style_settings_contract.py"},
+        {"command": "dev/scripts/audit_core_principles.py"},
+        {"command": "dev/scripts/release_check.py --skip-bundle"}
+      ]
+    },
+    "table": {
+      "surfaces": ["reading-typography", "reading-tables-code", "reading-callouts-lists", "live-preview-rendered-widgets"],
+      "owner": "Rendered: src/surfaces/20-reading-tables-code.css; LP HTML: src/base/13-live-preview.css + src/surfaces/24-html-table-live-preview-glass.css; LP markdown widget: Obsidian core",
+      "read": ["dev/WIKI/WORKFLOWS/table.md", "dev/WIKI/RUNTIME/table.md", "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md"],
+      "contracts": ["dev/WIKI/MAP/cm6-hit-routing-contract.md", "dev/WIKI/MAP/live-preview-pdf-css-map/parity-guidelines.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_direct_owner_guard.py"},
+        {"command": "dev/scripts/audit_v3_hit_routing.py"},
+        {"command": "dev/scripts/audit_lp_pdf_selector_ownership.py"}
+      ]
+    },
+    "tokens": {
+      "surfaces": ["shared-tokens"],
+      "owner": "src/tokens/00-light-tokens.css and src/tokens/01-dark-tokens.css",
+      "read": ["dev/WIKI/TOKENS/usage-guide.md", "dev/WIKI/TOKENS/state-token-map.md", "dev/WIKI/VISUAL-QA.md"],
+      "contracts": ["dev/WIKI/SRC/validation-matrix.md"],
+      "checks": [
+        {"command": "dev/scripts/audit_style_settings_contract.py", "note": "when setting-facing"},
+        {"command": "dev/scripts/release_check.py --skip-bundle"}
+      ]
+    }
+  }
+}

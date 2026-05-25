@@ -4,12 +4,22 @@
 from __future__ import annotations
 
 import argparse
+import json
 import subprocess
 import sys
 from pathlib import Path
 
+from route_registry import route_check_commands, route_for, route_names
+
 
 ROOT = Path(__file__).resolve().parents[2]
+
+FULL_CHECK_COMMANDS = [
+    ".\\.venv\\Scripts\\python.exe dev\\scripts\\build_source_usage_map.py --check",
+    ".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_core_principles.py",
+    ".\\.venv\\Scripts\\python.exe dev\\scripts\\release_check.py --skip-bundle",
+]
+RUNTIME_PROPERTY_GROUPS = {"focus", "hit-routing", "interaction"}
 
 
 def changed_files() -> list[str]:
@@ -29,7 +39,7 @@ def command_to_args(command: str) -> list[str] | None:
     parts = command[len(prefix):].split()
     if "<version>" in parts:
         return None
-    return [sys.executable, *parts]
+    return [sys.executable, *(part.replace("\\", "/") for part in parts)]
 
 
 def is_safe_command(command: str) -> bool:
@@ -38,8 +48,21 @@ def is_safe_command(command: str) -> bool:
     return not any(term in command for term in blocked)
 
 
+def route_needs_runtime_note(surface: str) -> bool:
+    registry = json.loads((ROOT / "dev" / "WIKI" / "MAP" / "owner-registry.json").read_text(encoding="utf-8"))
+    surface_map = {item["id"]: item for item in registry.get("surfaces", [])}
+    for surface_id in route_for(surface).get("surfaces", []):
+        item = surface_map.get(surface_id, {})
+        property_groups = {str(value) for value in item.get("propertyGroups", [])}
+        if property_groups & RUNTIME_PROPERTY_GROUPS:
+            return True
+    return False
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--surface", choices=route_names(), help="Add validation recommended by the WIKI route for this work surface.")
+    parser.add_argument("--full-check", action="store_true", help="Add the standard release-confidence checks for handoff or commit readiness.")
     parser.add_argument("--run-safe", action="store_true", help="Run recommended commands that do not require placeholders.")
     args = parser.parse_args()
 
@@ -49,7 +72,7 @@ def main() -> int:
     commands: list[str] = []
     notes: list[str] = []
 
-    if not files:
+    if not files and not args.surface and not args.full_check:
         print("OK: no changed files")
         return 0
 
@@ -81,9 +104,26 @@ def main() -> int:
     if any(path in {"manifest.json", "CHANGELOG.md"} or "release-plan" in path or path.startswith(".github/workflows/release") for path in files):
         add(commands, ".\\.venv\\Scripts\\python.exe dev\\scripts\\release_preflight.py --version <version>")
 
+    if args.surface:
+        for command in route_check_commands(route_for(args.surface)):
+            add(commands, f".\\.venv\\Scripts\\python.exe {command}")
+        if route_needs_runtime_note(args.surface):
+            notes.append(f"Surface route '{args.surface}' can require runtime evidence for selected/hover/focus/active states.")
+
+    if args.full_check:
+        for command in FULL_CHECK_COMMANDS:
+            add(commands, command)
+
     print("Changed files:")
-    for path in files:
-        print(f"- {path}")
+    if files:
+        for path in files:
+            print(f"- {path}")
+    else:
+        print("- n/a")
+    if args.surface:
+        print(f"\nSurface route: {args.surface}")
+    if args.full_check:
+        print("\nFull check: enabled")
     print("\nRecommended validation:")
     for command in commands or [".\\.venv\\Scripts\\python.exe dev\\scripts\\audit_wiki_consistency.py"]:
         print(f"- {command}")

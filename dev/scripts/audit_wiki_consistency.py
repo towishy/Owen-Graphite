@@ -16,6 +16,7 @@ REQUIRED_FILES = [
     "dev/WIKI/SELECTOR-OWNER-CHEATSHEET.md",
     "dev/WIKI/MAP/diff-stability.md",
     "dev/WIKI/MAP/coverage-priority-plan.md",
+    "dev/WIKI/MAP/route-registry.json",
     "dev/WIKI/MAP/theme-css-risk-summary.json",
     "dev/WIKI/runtime-evidence-template.md",
     "dev/WIKI/runtime-evidence-schema.json",
@@ -80,6 +81,9 @@ REQUIRED_TEXT = {
         "INCIDENTS/taxonomy.md",
         "dev/scripts/wiki_route.py",
         "dev/scripts/wiki_route.py <surface> --commands",
+        "MAP/route-registry.json",
+        "validation_plan.py --surface",
+        "finish_work.py --full-check",
         "dev/scripts/start_work.py",
         "dev/scripts/finish_work.py",
         "dev/scripts/validation_plan.py",
@@ -100,6 +104,9 @@ REQUIRED_TEXT = {
         "wiki_route.py --list",
         "wiki_route.py mobile",
         "wiki_route.py settings --commands",
+        "validation_plan.py --surface",
+        "validation_plan.py --full-check --run-safe",
+        "finish_work.py --full-check",
         "build_coverage_priority_plan.py --check",
         "validation_plan.py --run-safe",
         "audit_owner_risk_contracts.py",
@@ -181,12 +188,15 @@ REQUIRED_TEXT = {
         "Full Release-Confidence Set",
         "wiki_route.py <surface>",
         "--run-safe",
+        "--surface <surface>",
+        "finish_work.py --full-check",
         "never builds release ZIPs",
         "pre-commit hook",
     ],
     "dev/WIKI/WORKFLOWS/wiki-maintenance.md": [
         "WIKI Maintenance",
         "audit_owner_risk_contracts.py",
+        "route-registry.json",
         "build_source_usage_map.py --check",
         "build_coverage_priority_plan.py --check",
     ],
@@ -309,12 +319,15 @@ def assert_release_workflow_paths() -> None:
 
 def assert_helper_and_generator_stability() -> None:
     wiki_route = read("dev/scripts/wiki_route.py")
+    route_registry = read("dev/WIKI/MAP/route-registry.json")
     build_src_map = read("dev/scripts/build_src_map.py")
     light_tokens = read("src/tokens/00-light-tokens.css")
     required_routes = ["table", "live-preview", "pdf", "chrome", "plugin", "mobile", "tokens", "settings", "docs", "release"]
-    missing_routes = [route for route in required_routes if f'"{route}"' not in wiki_route]
+    missing_routes = [route for route in required_routes if f'"{route}"' not in route_registry]
     if missing_routes:
-        fail("wiki_route.py missing routes: " + ", ".join(missing_routes))
+        fail("route-registry.json missing routes: " + ", ".join(missing_routes))
+    if "route_registry" not in wiki_route:
+        fail("wiki_route.py must load route registry metadata")
     if "sort_keys=True" not in build_src_map or "stable_selector_entries" not in build_src_map:
         fail("build_src_map.py must keep generated JSON output stable")
     for token in ("--ogd-focus-ring-border", "--ogd-focus-ring-halo", "--ogd-media-frame-bg"):
@@ -353,8 +366,13 @@ def assert_helper_and_generator_stability() -> None:
         fail("work_summary.py must read last sync state")
     if "--evidence" not in read("dev/scripts/new_incident.py"):
         fail("new_incident.py must support --evidence")
-    if "--run-safe" not in read("dev/scripts/validation_plan.py") or "build_release.py" not in read("dev/scripts/validation_plan.py"):
+    validation_plan = read("dev/scripts/validation_plan.py")
+    if "--run-safe" not in validation_plan or "build_release.py" not in validation_plan:
         fail("validation_plan.py must keep bounded --run-safe behavior")
+    if "--surface" not in validation_plan or "--full-check" not in validation_plan:
+        fail("validation_plan.py must support route-aware and full-check planning")
+    if "--full-check" not in read("dev/scripts/finish_work.py"):
+        fail("finish_work.py must expose --full-check")
     pre_commit = read("dev/scripts/hooks/pre-commit")
     if "validation_plan.py --run-safe" not in pre_commit or "audit_runtime_evidence_requirements.py --strict" not in pre_commit:
         fail("pre-commit hook must use diff-aware validation and strict runtime evidence checks")
