@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.1.61
+
+- process: Owen risk-accepted 예외를 `risk-accepted-registry.json` 기반으로 구조화하고 source marker `id`/evidence와 연결했습니다.
+- guard: direct-owner guard가 risk registry의 module, selector, allowed property, evidence를 검증하도록 강화하고 legacy 단일 marker bypass를 제거했습니다.
+- tooling: CDP runtime evidence helper에 `--status` 모드를 추가해 승인된 Obsidian 원격 디버깅 포트와 vault/version metadata를 빠르게 확인할 수 있게 했습니다.
+- docs: WIKI core principles, table workflow, runtime evidence storage, audits, consistency check를 새 risk registry/CDP status 흐름에 맞췄습니다.
+- guard: release check, table validation, WIKI consistency, CDP status smoke 검증을 통과했습니다.
+
 ## v3.1.60
 
 - polish: PDF 기본 본문/표/callout/code 기준 글자 크기를 12pt(약 16px)로 올리고, 고객 전달용 PDF는 12.4pt(약 16.5px)로 조정했습니다.
