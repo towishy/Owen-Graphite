@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite PDF Client Delivery Fixture</title>
+  <link rel="stylesheet" href="../../../../../src/entry.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #eef3f8;
+    }
+
+    body {
+      --ogd-pdf-header-text: "Prepared for";
+      --ogd-pdf-header-value: "Client Review";
+      --ogd-pdf-footer-text: "Status";
+      --ogd-pdf-footer-value: "Final Draft";
+      color: #263445;
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-shell {
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.34);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .fixture-kicker {
+      margin: 0 0 0.6em;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 780;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sample-chart {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .fixture-shell {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: #fff;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-modern-tables ogd-print-avoid-breaks ogd-pdf-client-delivery ogd-pdf-header-enabled ogd-pdf-footer-enabled ogd-pdf-label-segmented ogd-pdf-label-badge ogd-pdf-header-key-graphite ogd-pdf-header-value-sky ogd-pdf-footer-key-slate ogd-pdf-footer-value-mint ogd-pdf-header-top-right">
+  <main class="fixture-shell markdown-preview-view markdown-rendered" data-ogd-fixture="pdf-client-delivery">
+    <article class="markdown-rendered">
+      <p class="fixture-kicker">Client Delivery PDF</p>
+      <h1>고객 전달용 검토 보고서</h1>
+      <p>이 샘플은 고객에게 메일이나 Teams로 전달되는 PDF를 기준으로 구성했습니다. 본문은 화면에서 바로 읽히도록 조금 크게 잡고, 표와 callout은 낮은 대비 장식을 줄여 핵심 정보가 먼저 보이도록 조정합니다.</p>
+      <p>외부 링크는 본문 뒤에 긴 URL을 붙이지 않고, 문서 하단의 참고 목록으로 분리합니다. 본문 흐름을 깨지 않으면서도 출처 추적이 가능해야 하기 때문입니다.</p>
+
+      <div class="callout" data-callout="summary">
+        <div class="callout-title"><span class="callout-icon" aria-hidden="true"></span><span class="callout-title-inner">요약</span></div>
+        <div class="callout-content">
+          <p>새 프리셋은 `ogd-pdf-client-delivery` 하나로 본문 크기, 제목 위계, 표 대비, callout 구분, 링크 출력 방식을 고객 전달용 톤에 맞춥니다.</p>
+        </div>
+      </div>
+
+      <h2>검토 범위</h2>
+      <table class="print-fit-table wrap-table">
+        <thead>
+          <tr>
+            <th>영역</th>
+            <th>고객에게 보여야 하는 상태</th>
+            <th>프리셋 처리</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>본문</td>
+            <td>PDF 뷰어 100% 배율에서 확대 없이 읽힘</td>
+            <td>12.4pt 기반 크기와 1.48 줄간격</td>
+          </tr>
+          <tr>
+            <td>표</td>
+            <td>헤더와 셀 경계가 화면 캡처 후에도 구분됨</td>
+            <td>테두리와 헤더 대비 강화, 줄바꿈 안정화</td>
+          </tr>
+          <tr>
+            <td>링크</td>
+            <td>본문 흐름은 깨지지 않고 출처는 별도 확인 가능</td>
+            <td>본문 inline URL 숨김, reference block 중심 정리</td>
+          </tr>
+          <tr>
+            <td>콜아웃</td>
+            <td>요약, 위험, 권장 항목이 인쇄 후에도 빠르게 구분됨</td>
+            <td>상단 accent bar와 밝은 배경 톤 적용</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>상태 요약</h2>
+      <figure class="ogd-figure ogd-figure-compact ogd-figure-keep">
+        <svg class="sample-chart" viewBox="0 0 780 240" role="img" aria-label="고객 전달용 PDF 가시성 지표">
+          <defs>
+            <linearGradient id="panel-client" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#f8fbff"/>
+            </linearGradient>
+            <linearGradient id="bar-client" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#0f766e"/>
+              <stop offset="1" stop-color="#0284c7"/>
+            </linearGradient>
+          </defs>
+          <rect x="1" y="1" width="778" height="238" rx="16" fill="url(#panel-client)" stroke="#cbd5e1"/>
+          <g font-family="Segoe UI, sans-serif">
+            <text x="42" y="54" fill="#0f172a" font-size="24" font-weight="750">Readability Snapshot</text>
+            <text x="42" y="82" fill="#64748b" font-size="15" font-weight="600">body size, table contrast, reference-first links</text>
+            <rect x="42" y="118" width="620" height="18" rx="9" fill="#e2e8f0"/>
+            <rect x="42" y="118" width="520" height="18" rx="9" fill="url(#bar-client)"/>
+            <rect x="42" y="156" width="620" height="18" rx="9" fill="#e2e8f0"/>
+            <rect x="42" y="156" width="575" height="18" rx="9" fill="#0f766e"/>
+            <rect x="42" y="194" width="620" height="18" rx="9" fill="#e2e8f0"/>
+            <rect x="42" y="194" width="550" height="18" rx="9" fill="#0369a1"/>
+            <text x="684" y="133" fill="#334155" font-size="14" font-weight="700">Body</text>
+            <text x="684" y="171" fill="#334155" font-size="14" font-weight="700">Tables</text>
+            <text x="684" y="209" fill="#334155" font-size="14" font-weight="700">Links</text>
+          </g>
+        </svg>
+        <figcaption><strong>Figure 1.</strong> 프리셋은 PDF 뷰어와 화면 공유 상황에서 읽히는 정도를 우선합니다.</figcaption>
+      </figure>
+
+      <div class="callout" data-callout="warning">
+        <div class="callout-title"><span class="callout-icon" aria-hidden="true"></span><span class="callout-title-inner">주의</span></div>
+        <div class="callout-content">
+          <p>문서에 매우 넓은 표가 많으면 표마다 `print-fit-table` 또는 `wrap-table`을 지정해야 합니다. 프리셋은 기본 가시성을 높이지만 콘텐츠 구조 자체를 추측해서 바꾸지는 않습니다.</p>
+        </div>
+      </div>
+
+      <h2>참고 자료</h2>
+      <p>본문에서는 Owen Graphite 릴리스 노트와 Obsidian PDF export 동작을 참고하지만, 긴 URL은 본문 뒤에 노출하지 않습니다. 예: <a href="https://help.obsidian.md/Plugins/Style+Settings">Style Settings reference</a>.</p>
+      <ol class="ogd-reference-list">
+        <li><span class="ogd-reference-source">Theme</span><span class="ogd-reference-main"><span class="ogd-reference-title">Owen Graphite Style Settings</span><span class="ogd-reference-note">고객 전달용 PDF 프리셋의 실제 body class는 `ogd-pdf-client-delivery`입니다.</span></span></li>
+        <li><span class="ogd-reference-source">Export</span><span class="ogd-reference-main"><span class="ogd-reference-title">Obsidian PDF Export</span><span class="ogd-reference-note">Chromium print 엔진의 페이지 분할 제약을 전제로 보수적인 break guard를 사용합니다.</span></span></li>
+      </ol>
+    </article>
+  </main>
+</body>
+</html>

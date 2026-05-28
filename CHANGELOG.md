@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.63
+
+- feat: Style Settings에 `PDF 고객 전달 권장 프리셋`(`ogd-pdf-client-delivery`)을 추가해 고객 공유용 PDF 가시성 조합을 한 번에 적용할 수 있게 했습니다.
+- polish: 새 프리셋에서 화면 전달용 본문·표·callout 톤을 재사용하고, 긴 URL은 본문 뒤에 붙이지 않도록 reference-first 출력 흐름을 기본화했습니다.
+- docs: 고객 전달용 PDF 샘플 fixture를 추가하고 Style Settings 프리셋 문서와 계약을 갱신했습니다.
+- guard: Style Settings contract, PDF header/footer contract, docs/assets, source usage map, core principles, release check, Obsidian sync 검증을 통과했습니다.
+
 ## v3.1.62
 
 - polish: 커뮤니티 테마 검색 입력 focus 시 보이던 cyan rim/halo를 CDP로 원인 확인 후 shadow-only 상태로 낮췄습니다.

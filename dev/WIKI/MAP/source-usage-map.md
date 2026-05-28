@@ -7,7 +7,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 18449
+- Source CSS lines: 18451
 - Parsed CSS rules: 2392
 - Selector parts: 3793
 - Hard core-owner violations: 10
@@ -152,7 +152,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 
 | # | Module | Bundle Lines | Source Lines | Primary Owners | Major Labels | Cascade Relation |
 | ---: | --- | --- | ---: | --- | --- | --- |
-| 1 | `src/features/40-style-settings.css` | 45-818 | 775 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
+| 1 | `src/features/40-style-settings.css` | 45-818 | 781 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
 | 2 | `src/tokens/00-light-tokens.css` | 822-1088 | 274 | pdf-marginalia, shared-tokens | callout-list:1, code:5, print-pdf:2, table:1, workspace-chrome:1 | after `src/features/40-style-settings.css`; before `src/tokens/01-dark-tokens.css` |
 | 3 | `src/tokens/01-dark-tokens.css` | 1091-1306 | 230 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:7, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 1310-1444 | 136 | support: base/embed workspace primitives | cm6:5, code:5, overlay-search:5, reading-rendered:7, table:8, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |
@@ -170,7 +170,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 440 | settings-controls | overlay-search:44, table:61 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 9768-10161 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 532 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:6, print-pdf:2, reading-rendered:27, table:36, workspace-chrome:16 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
-| 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2085 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:260, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:208, reading-rendered:261, table:125, workspace-chrome:52 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
+| 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2081 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:260, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:208, reading-rendered:261, table:125, workspace-chrome:52 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
 | 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 263 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:23 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
 | 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1081 | overlay-menu-search | cm6:6, code:6, overlay-search:35, reading-rendered:6, table:32, workspace-chrome:45 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 1051 | overlay-menu-search | code:4, overlay-search:62, print-pdf:1, reading-rendered:4, table:63, workspace-chrome:26 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
