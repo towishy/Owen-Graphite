@@ -201,7 +201,7 @@
 @media (min-width: 701px) {
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .view-content,
   body:not(.is-mobile) .nav-files-container {
-    padding-inline: 8px 10px;
+    padding-inline: 8px 10px; background: var(--background-primary);
     /* Neutralize Obsidian core nav-item paint paths so only the explicit glass
        pill below renders. Prevents a second gray rounded box from appearing
        underneath the inner pill on hover/active. */
@@ -246,12 +246,12 @@
   }
 
   body:not(.is-mobile) .nav-folder-title-content {
-    font-weight: 760;
+    font-weight: 760; --ogd-nav-hover-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.36)); --ogd-nav-hover-border: rgba(148, 163, 184, 0.20); --ogd-nav-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 2px 6px rgba(15, 23, 42, 0.04);
   }
 
   body:not(.is-mobile) .nav-file-title-content {
     color: #405066;
-    font-weight: 500;
+    font-weight: 500; --ogd-nav-hover-border: rgba(148, 163, 184, 0.18); --ogd-lg-row-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.78), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), color-mix(in srgb, var(--ogd-surface-tint-aqua) 34%, rgba(248, 250, 252, 0.46))); --ogd-lg-refined-active-bg: var(--ogd-lg-row-active-bg); --ogd-lg-row-active-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 18%, transparent), 0 8px 18px rgba(15, 23, 42, 0.09), 0 0 0 2px color-mix(in srgb, var(--ogd-surface-tint-aqua-soft) 28%, transparent); --ogd-lg-refined-shadow-hover: var(--ogd-lg-row-active-shadow); --ogd-lg-mist-rim: var(--ogd-rim-active-low);
   }
 
   body:not(.is-mobile) :is(.nav-folder-title-content, .nav-file-title-content) {
@@ -261,7 +261,7 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: 2px 10px 2px 26px;
+    padding: 2px 12px 2px 27px;
     border: 1px solid transparent;
     border-radius: var(--ogd-radius-control, 7px);
     font-size: inherit;
@@ -276,12 +276,12 @@
   body:not(.is-mobile) :is(.nav-folder-title-content, .nav-file-title-content)::before {
     content: "";
     position: absolute;
-    left: 4px;
+    left: 5px;
     top: 50%;
     width: 13px;
     height: 13px;
     background-color: currentColor;
-    opacity: 0.48;
+    opacity: 0.42;
     transform: translateY(-50%);
     pointer-events: none;
   }
@@ -295,17 +295,18 @@
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 3.5h7.4l3.6 3.8v13.2h-11Z' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3Cpath d='M13.7 3.7v4h3.8' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 3.5h7.4l3.6 3.8v13.2h-11Z' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3Cpath d='M13.7 3.7v4h3.8' fill='none' stroke='black' stroke-width='1.9' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
   }
-
+  body:not(.is-mobile) .nav-folder-title.is-collapsed .nav-folder-title-content::before { opacity: 0.34; transform: translateY(-50%) scale(0.92); }
+  body:not(.is-mobile) .nav-folder-title:not(.is-collapsed) .nav-folder-title-content::before { opacity: 0.48; }
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) {
     justify-content: flex-start;
     min-height: 26px;
-    margin-top: 3px;
-    margin-bottom: 1px;
+    margin-top: 2px;
+    margin-bottom: 0;
     padding-inline: 16px 12px;
-    border-color: rgba(148, 163, 184, 0.16);
-    background: rgba(248, 250, 252, 0.48);
+    border-color: rgba(148, 163, 184, 0.12);
+    background: rgba(248, 250, 252, 0.36);
     box-shadow: none;
-    color: var(--ogd-text-slate, #334155);
+    color: #64748b;
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
@@ -313,10 +314,11 @@
     flex: 1 1 auto;
     width: 100%;
     max-width: 100%;
-    color: var(--ogd-text-slate, #334155);
+    color: var(--ogd-text-subtle, #475569);
     font-size: 12.5px;
-    font-weight: 850;
+    font-weight: 760;
     letter-spacing: 0.02em;
+    padding-left: 30px;
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path*="/"] .nav-folder-title-content {
@@ -328,29 +330,6 @@
     font-size: 12.75px;
   }
 
-  body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
-    justify-content: flex-start;
-    min-height: 26px;
-    margin-top: 3px;
-    margin-bottom: 1px;
-    padding-inline: 16px 12px;
-    border-color: rgba(148, 163, 184, 0.16);
-    background: rgba(248, 250, 252, 0.44);
-    box-shadow: none;
-    color: var(--ogd-text-slate, #334155);
-  }
-
-  body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content {
-    display: block;
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: 100%;
-    color: var(--ogd-text-slate, #334155);
-    font-size: 12.5px;
-    font-weight: 850;
-    letter-spacing: 0.02em;
-  }
-
   body:not(.is-mobile) .nav-folder-title[data-path^="outputs"] .nav-folder-title-content,
   body:not(.is-mobile) .nav-folder-title[data-path^="raw/obsidian/outputs"] .nav-folder-title-content {
     color: var(--ogd-text-strong, #111827);
@@ -358,9 +337,13 @@
   }
 
   body:not(.is-mobile) :is(.nav-folder-children, .tree-item-children) {
-    margin-left: 2px;
-    padding-left: 6px;
-    border-left: 1px solid rgba(148, 163, 184, 0.26);
+    margin-left: 1px;
+    padding-left: 7px;
+    border-left: 1px solid rgba(148, 163, 184, 0.10);
+  }
+
+  body:not(.is-mobile) .nav-folder-children .nav-folder-children {
+    padding-left: 8px;
   }
 
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children {
@@ -368,6 +351,8 @@
     padding-left: 0;
     border-left: 0;
   }
+
+  body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder + .nav-folder > .nav-folder-title { margin-top: 4px; }
 
   body:not(.is-mobile) :is(.nav-folder-collapse-indicator, .tree-item-icon.collapse-icon) {
     display: none;
@@ -391,21 +376,21 @@
     border-color: var(--ogd-surface-transparent, transparent);
     box-shadow: var(--ogd-shadow-none, none);
     color: var(--ogd-text-strong, #111827);
-    transform: var(--ogd-hover-shift, translateX(1px));
+    transform: none;
   }
 
   body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
-    background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55)));
+    background: var(--ogd-nav-hover-bg, var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.55))));
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
     backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-    border-color: var(--ogd-glass-border-hover, rgba(100, 116, 139, 0.34));
-    box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12));
-    color: var(--ogd-text-strong, #111827);
+    border-color: var(--ogd-nav-hover-border, rgba(148, 163, 184, 0.18));
+    box-shadow: var(--ogd-nav-hover-shadow, var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12)));
+    color: var(--ogd-text-strong, #111827); --ogd-nav-file-type-bg: color-mix(in srgb, var(--ogd-surface-tint-aqua) 36%, rgba(255, 255, 255, 0.72)); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-border: var(--ogd-rim-active-low);
   }
 
   body:not(.is-mobile) :is(.nav-file-title:focus-within .nav-file-title-content, .nav-folder-title:focus-within .nav-folder-title-content, .tree-item-self:focus-within .tree-item-inner) {
     border-color: var(--ogd-focus-ring-border);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), var(--ogd-focus-ring-shadow), 0 4px 10px rgba(15, 23, 42, 0.08);
+    box-shadow: var(--ogd-focus-ring-shadow);
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]):hover,
@@ -426,7 +411,7 @@
   }
 
   body:not(.is-mobile) .nav-file-title.is-active {
-    min-height: 38px;
+    min-height: 30px;
     padding-left: 9px;
     border-radius: var(--ogd-radius-control, 7px);
     border: 1px solid transparent;
@@ -443,7 +428,7 @@
   }
 
   body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
-    padding: 6px 18px 6px 34px;
+    padding: 3px 14px 3px 30px;
     border-color: var(--ogd-rim-active-low, rgba(125, 211, 252, 0.42));
     background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.78), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.62)));
     -webkit-backdrop-filter: var(--ogd-glass-filter, blur(24px) saturate(185%) brightness(1.07));
@@ -465,36 +450,28 @@
 
   body:not(.is-mobile).theme-dark :is(.nav-folder-title, .nav-file-title, .tree-item-self) {
     border-color: var(--ogd-surface-transparent, transparent);
+    --ogd-nav-hover-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.52), rgba(15, 23, 42, 0.30)); --ogd-nav-hover-border: rgba(148, 163, 184, 0.14); --ogd-nav-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 6px rgba(0, 0, 0, 0.14);
   }
 
   body:not(.is-mobile).theme-dark .nav-file-title-content {
-    color: var(--ogd-line-strong, #cbd5e1);
+    color: var(--ogd-line-strong, #cbd5e1); --ogd-nav-hover-border: rgba(148, 163, 184, 0.14); --ogd-lg-row-active-bg: radial-gradient(circle at 76% 20%, rgba(148, 163, 184, 0.12), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.58), color-mix(in srgb, var(--ogd-surface-tint-aqua) 20%, rgba(15, 23, 42, 0.40))); --ogd-lg-refined-active-bg: var(--ogd-lg-row-active-bg); --ogd-lg-row-active-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.20), 0 8px 20px rgba(0, 0, 0, 0.30), 0 0 0 2px rgba(148, 163, 184, 0.05); --ogd-lg-refined-shadow-hover: var(--ogd-lg-row-active-shadow); --ogd-lg-mist-rim: rgba(203, 213, 225, 0.18);
   }
 
   body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*="/"]) {
-    border-color: rgba(148, 163, 184, 0.16);
-    background: rgba(15, 23, 42, 0.34);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    color: #dbeafe;
+    border-color: rgba(148, 163, 184, 0.12);
+    background: rgba(15, 23, 42, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    color: var(--ogd-text-soft, #94a3b8);
   }
 
   body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
-    color: #e2e8f0;
+    color: var(--ogd-line-strong, #cbd5e1);
   }
 
-  body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
-    border-color: rgba(148, 163, 184, 0.16);
-    background: rgba(15, 23, 42, 0.34);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    color: #dbeafe;
-  }
-
-  body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content {
-    color: #e2e8f0;
-  }
+  body:not(.is-mobile).theme-dark .nav-folder-title:not(.is-collapsed) .nav-folder-title-content::before { opacity: 0.50; }
 
   body:not(.is-mobile).theme-dark :is(.nav-folder-children, .tree-item-children) {
-    border-left-color: rgba(148, 163, 184, 0.20);
+    border-left-color: rgba(148, 163, 184, 0.10);
   }
 
   body:not(.is-mobile).theme-dark :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
@@ -506,9 +483,9 @@
 
   body:not(.is-mobile).theme-dark :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner) {
     background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.45)));
-    border-color: var(--ogd-glass-border-hover, rgba(203, 213, 225, 0.20));
+    border-color: var(--ogd-nav-hover-border, rgba(148, 163, 184, 0.14));
     box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32));
-    color: var(--ogd-text-inverted, #f8fafc);
+    color: var(--ogd-text-inverted, #f8fafc); --ogd-nav-file-type-bg: color-mix(in srgb, var(--ogd-surface-tint-aqua) 34%, rgba(30, 41, 59, 0.62)); --ogd-nav-file-type-fg: #bfdbfe; --ogd-nav-file-type-border: var(--ogd-rim-active-low);
   }
 
   body:not(.is-mobile).theme-dark .nav-folder-title[data-path]:not([data-path*="/"]):hover,
@@ -533,7 +510,7 @@
   }
 
   body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-content {
-    padding: 6px 18px 6px 34px;
+    padding: 3px 14px 3px 30px;
     border-color: var(--ogd-rim-hover, rgba(186, 230, 253, 0.30));
     background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.18), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(15, 23, 42, 0.56)));
     box-shadow: var(--ogd-glass-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.34), inset 0 0 16px rgba(148, 163, 184, 0.10), 0 16px 34px rgba(0, 0, 0, 0.52), 0 4px 12px rgba(56, 189, 248, 0.06));
@@ -549,47 +526,47 @@
 }
 
 body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content {
-  border-color: rgba(100, 116, 139, 0.30);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.72));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.05), 0 4px 11px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(148, 163, 184, 0.16);
+  border-color: var(--ogd-rim-active);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), color-mix(in srgb, var(--ogd-surface-tint-aqua) 30%, rgba(248, 250, 252, 0.66)));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 16%, transparent), 0 2px 7px rgba(15, 23, 42, 0.05), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 58%, transparent);
   color: #172033;
 }
 
 body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::before {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.86), rgba(71, 85, 105, 0.66));
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.44)) drop-shadow(0 0 4px rgba(100, 116, 139, 0.14));
-  opacity: 0.78;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), color-mix(in srgb, var(--ogd-surface-tint-aqua) 48%, rgba(226, 232, 240, 0.68)));
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.24));
+  opacity: 0.74; color: #1d4ed8;
 }
 
 body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content::after {
-  content: "";
+  content: none;
   position: absolute;
   left: 12px;
   right: 18px;
   bottom: 5px;
   height: 2px;
   border-radius: var(--ogd-radius-pill, 999px);
-  background: linear-gradient(90deg, rgba(148, 163, 184, 0.06), rgba(100, 116, 139, 0.30), rgba(148, 163, 184, 0.06));
-  box-shadow: 0 0 5px rgba(100, 116, 139, 0.10);
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.04), color-mix(in srgb, var(--ogd-rim-active-low) 58%, rgba(100, 116, 139, 0.12)), rgba(148, 163, 184, 0.04));
+  box-shadow: 0 0 4px color-mix(in srgb, var(--ogd-rim-active-low) 36%, transparent);
   pointer-events: none;
 }
 
 body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-content {
-  border-color: rgba(203, 213, 225, 0.20);
-  background: linear-gradient(180deg, rgba(51, 65, 85, 0.66), rgba(15, 23, 42, 0.50));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), inset 0 -1px 0 rgba(0, 0, 0, 0.20), 0 4px 12px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(203, 213, 225, 0.09);
+  border-color: var(--ogd-rim-active);
+  background: linear-gradient(180deg, rgba(51, 65, 85, 0.58), color-mix(in srgb, var(--ogd-surface-tint-aqua) 24%, rgba(15, 23, 42, 0.42)));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.22), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 56%, transparent);
   color: var(--ogd-text-inverted, #f8fafc);
 }
 
 body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-content::before {
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.90), rgba(203, 213, 225, 0.58));
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.34)) drop-shadow(0 0 5px rgba(203, 213, 225, 0.12));
-  opacity: 0.82;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.88), color-mix(in srgb, var(--ogd-surface-tint-aqua) 46%, rgba(203, 213, 225, 0.54)));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.24));
+  opacity: 0.76; color: #bfdbfe;
 }
 
 body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-content::after {
-  background: linear-gradient(90deg, rgba(148, 163, 184, 0.08), rgba(203, 213, 225, 0.22), rgba(148, 163, 184, 0.08));
-  box-shadow: 0 0 6px rgba(203, 213, 225, 0.12);
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.06), color-mix(in srgb, var(--ogd-rim-active-low) 52%, rgba(203, 213, 225, 0.10)), rgba(148, 163, 184, 0.06));
+  box-shadow: 0 0 4px color-mix(in srgb, var(--ogd-rim-active-low) 34%, transparent);
 }
 
 @media (min-width: 701px) {
@@ -598,9 +575,10 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     display: flex;
     align-items: center;
     justify-content: center;
-    left: 4px;
+    left: 5px;
+    top: calc(50% + 0.5px);
     width: 15px;
-    height: 13px;
+    height: 12px;
     border: 1px solid var(--ogd-nav-file-type-border, rgba(100, 116, 139, 0.18));
     border-radius: 3px;
     background: var(--ogd-nav-file-type-bg, linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(226, 232, 240, 0.66)));
@@ -609,119 +587,116 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     font-weight: 850;
     letter-spacing: 0;
     line-height: 1;
-    opacity: 0.96;
+    opacity: 0.58;
     -webkit-mask: none;
     mask: none;
   }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title.is-active .nav-file-title-content {
-    padding-left: 26px;
-    padding-right: 10px;
+    padding-left: 27px;
+    padding-right: 12px; font-weight: 780;
   }
 
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".md" i] .nav-file-title-content::before { content: "MD"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #dbeafe); --ogd-nav-file-type-fg: #1d4ed8; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".mdx" i] .nav-file-title-content::before { content: "MDX"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #bfdbfe); --ogd-nav-file-type-fg: #1e40af; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".canvas" i] .nav-file-title-content::before { content: "MAP"; --ogd-nav-file-type-bg: linear-gradient(180deg, #ecfeff, #a5f3fc); --ogd-nav-file-type-fg: #0e7490; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".excalidraw" i] .nav-file-title-content::before { content: "EXC"; --ogd-nav-file-type-bg: linear-gradient(180deg, #faf5ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mmd" i], [data-path$=".mermaid" i]) .nav-file-title-content::before { content: "MMD"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #99f6e4); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".html" i] .nav-file-title-content::before { content: "HTML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fff7ed, #fed7aa); --ogd-nav-file-type-fg: #9a3412; --ogd-nav-file-type-size: 4.7px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".xml" i] .nav-file-title-content::before { content: "XML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fff7ed, #fed7aa); --ogd-nav-file-type-fg: #9a3412; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".css" i] .nav-file-title-content::before { content: "CSS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1e40af; --ogd-nav-file-type-size: 5.3px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".scss" i], [data-path$=".sass" i], [data-path$=".less" i]) .nav-file-title-content::before { content: "CSS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #f5d0fe); --ogd-nav-file-type-fg: #86198f; --ogd-nav-file-type-size: 5.3px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".js" i] .nav-file-title-content::before { content: "JS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fefce8, #fde68a); --ogd-nav-file-type-fg: #854d0e; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".jsx" i], [data-path$=".tsx" i]) .nav-file-title-content::before { content: "JSX"; --ogd-nav-file-type-bg: linear-gradient(180deg, #ecfeff, #bae6fd); --ogd-nav-file-type-fg: #0369a1; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".ts" i] .nav-file-title-content::before { content: "TS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #e0f2fe, #bae6fd); --ogd-nav-file-type-fg: #075985; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".vue" i] .nav-file-title-content::before { content: "VUE"; --ogd-nav-file-type-bg: linear-gradient(180deg, #ecfdf5, #bbf7d0); --ogd-nav-file-type-fg: #047857; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".json" i] .nav-file-title-content::before { content: "JSON"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fef3c7, #fde68a); --ogd-nav-file-type-fg: #92400e; --ogd-nav-file-type-size: 4.7px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".yaml" i], [data-path$=".yml" i]) .nav-file-title-content::before { content: "YML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #ecfdf5, #bbf7d0); --ogd-nav-file-type-fg: #166534; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".toml" i] .nav-file-title-content::before { content: "TOML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fef3c7, #fed7aa); --ogd-nav-file-type-fg: #9a3412; --ogd-nav-file-type-size: 4.7px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ini" i], [data-path$=".conf" i], [data-path$=".cfg" i], [data-path$=".properties" i]) .nav-file-title-content::before { content: "CFG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f1f5f9, #cbd5e1); --ogd-nav-file-type-fg: #334155; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".env" i], [data-path*=".env." i]) .nav-file-title-content::before { content: "ENV"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdf4, #bbf7d0); --ogd-nav-file-type-fg: #166534; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".svg" i] .nav-file-title-content::before { content: "SVG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #f5d0fe); --ogd-nav-file-type-fg: #86198f; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".png" i], [data-path$=".jpg" i], [data-path$=".jpeg" i], [data-path$=".webp" i], [data-path$=".gif" i]) .nav-file-title-content::before { content: "IMG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdf4, #bbf7d0); --ogd-nav-file-type-fg: #15803d; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".pdf" i] .nav-file-title-content::before { content: "PDF"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fef2f2, #fecaca); --ogd-nav-file-type-fg: #b91c1c; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".doc" i], [data-path$=".docx" i], [data-path$=".rtf" i], [data-path$=".odt" i]) .nav-file-title-content::before { content: "DOC"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ppt" i], [data-path$=".pptx" i]) .nav-file-title-content::before { content: "PPT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fff7ed, #fed7aa); --ogd-nav-file-type-fg: #c2410c; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".xls" i], [data-path$=".xlsx" i]) .nav-file-title-content::before { content: "XLS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #ecfdf5, #bbf7d0); --ogd-nav-file-type-fg: #15803d; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".csv" i], [data-path$=".tsv" i]) .nav-file-title-content::before { content: "CSV"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #99f6e4); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".sql" i] .nav-file-title-content::before { content: "SQL"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eef2ff, #c7d2fe); --ogd-nav-file-type-fg: #4338ca; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".db" i], [data-path$=".sqlite" i], [data-path$=".sqlite3" i]) .nav-file-title-content::before { content: "DB"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eef2ff, #c7d2fe); --ogd-nav-file-type-fg: #4338ca; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".py" i] .nav-file-title-content::before { content: "PY"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #fde68a); --ogd-nav-file-type-fg: #1e3a8a; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".java" i], [data-path$=".cs" i], [data-path$=".go" i], [data-path$=".rs" i], [data-path$=".rb" i], [data-path$=".php" i]) .nav-file-title-content::before { content: "DEV"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eef2ff, #c7d2fe); --ogd-nav-file-type-fg: #3730a3; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".c" i], [data-path$=".h" i], [data-path$=".cpp" i], [data-path$=".hpp" i]) .nav-file-title-content::before { content: "C++"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eef2ff, #c7d2fe); --ogd-nav-file-type-fg: #4338ca; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ps1" i], [data-path$=".psm1" i]) .nav-file-title-content::before { content: "PS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #e0f2fe, #bae6fd); --ogd-nav-file-type-fg: #0369a1; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".sh" i], [data-path$=".bash" i], [data-path$=".zsh" i]) .nav-file-title-content::before { content: "SH"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f1f5f9, #cbd5e1); --ogd-nav-file-type-fg: #334155; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$="Dockerfile" i], [data-path$=".dockerfile" i]) .nav-file-title-content::before { content: "DOCK"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bae6fd); --ogd-nav-file-type-fg: #0369a1; --ogd-nav-file-type-size: 4.7px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".gitignore" i], [data-path$=".gitattributes" i], [data-path$=".lock" i]) .nav-file-title-content::before { content: "GIT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f1f5f9, #cbd5e1); --ogd-nav-file-type-fg: #334155; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".txt" i] .nav-file-title-content::before { content: "TXT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fafafa, #e5e7eb); --ogd-nav-file-type-fg: #52525b; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".log" i] .nav-file-title-content::before { content: "LOG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fafafa, #e5e7eb); --ogd-nav-file-type-fg: #52525b; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".zip" i], [data-path$=".7z" i], [data-path$=".tar" i], [data-path$=".gz" i]) .nav-file-title-content::before { content: "ZIP"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fefce8, #fef08a); --ogd-nav-file-type-fg: #713f12; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mp3" i], [data-path$=".wav" i], [data-path$=".m4a" i], [data-path$=".flac" i]) .nav-file-title-content::before { content: "AUD"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf2f8, #fbcfe8); --ogd-nav-file-type-fg: #be185d; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mp4" i], [data-path$=".mov" i], [data-path$=".webm" i], [data-path$=".mkv" i]) .nav-file-title-content::before { content: "VID"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf2f8, #fbcfe8); --ogd-nav-file-type-fg: #be185d; --ogd-nav-file-type-size: 5.2px; }
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ttf" i], [data-path$=".otf" i], [data-path$=".woff" i], [data-path$=".woff2" i]) .nav-file-title-content::before { content: "FONT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #faf5ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 4.5px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is(:hover, .is-active) .nav-file-title-content::before { opacity: 0.76; }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".md" i] .nav-file-title-content::before { content: "MD"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-border: rgba(148, 163, 184, 0.22); }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".mdx" i] .nav-file-title-content::before { content: "MDX"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".canvas" i] .nav-file-title-content::before { content: "MAP"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".excalidraw" i] .nav-file-title-content::before { content: "EXC"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mmd" i], [data-path$=".mermaid" i]) .nav-file-title-content::before { content: "MMD"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".html" i] .nav-file-title-content::before { content: "HTML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 4.7px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".xml" i] .nav-file-title-content::before { content: "XML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".css" i] .nav-file-title-content::before { content: "CSS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.3px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".scss" i], [data-path$=".sass" i], [data-path$=".less" i]) .nav-file-title-content::before { content: "CSS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.3px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".js" i] .nav-file-title-content::before { content: "JS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".jsx" i], [data-path$=".tsx" i]) .nav-file-title-content::before { content: "JSX"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".ts" i] .nav-file-title-content::before { content: "TS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".vue" i] .nav-file-title-content::before { content: "VUE"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".json" i] .nav-file-title-content::before { content: "JSON"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 4.7px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".yaml" i], [data-path$=".yml" i]) .nav-file-title-content::before { content: "YML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".toml" i] .nav-file-title-content::before { content: "TOML"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 4.7px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ini" i], [data-path$=".conf" i], [data-path$=".cfg" i], [data-path$=".properties" i]) .nav-file-title-content::before { content: "CFG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".env" i], [data-path*=".env." i]) .nav-file-title-content::before { content: "ENV"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".svg" i] .nav-file-title-content::before { content: "SVG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".png" i], [data-path$=".jpg" i], [data-path$=".jpeg" i], [data-path$=".webp" i], [data-path$=".gif" i]) .nav-file-title-content::before { content: "IMG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".pdf" i] .nav-file-title-content::before { content: "PDF"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".doc" i], [data-path$=".docx" i], [data-path$=".rtf" i], [data-path$=".odt" i]) .nav-file-title-content::before { content: "DOC"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ppt" i], [data-path$=".pptx" i]) .nav-file-title-content::before { content: "PPT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".xls" i], [data-path$=".xlsx" i]) .nav-file-title-content::before { content: "XLS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".csv" i], [data-path$=".tsv" i]) .nav-file-title-content::before { content: "CSV"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".sql" i] .nav-file-title-content::before { content: "SQL"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".db" i], [data-path$=".sqlite" i], [data-path$=".sqlite3" i]) .nav-file-title-content::before { content: "DB"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f0fdfa, #ccfbf1); --ogd-nav-file-type-fg: #0f766e; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".py" i] .nav-file-title-content::before { content: "PY"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".java" i], [data-path$=".cs" i], [data-path$=".go" i], [data-path$=".rs" i], [data-path$=".rb" i], [data-path$=".php" i]) .nav-file-title-content::before { content: "DEV"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".c" i], [data-path$=".h" i], [data-path$=".cpp" i], [data-path$=".hpp" i]) .nav-file-title-content::before { content: "C++"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ps1" i], [data-path$=".psm1" i]) .nav-file-title-content::before { content: "PS"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".sh" i], [data-path$=".bash" i], [data-path$=".zsh" i]) .nav-file-title-content::before { content: "SH"; --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$="Dockerfile" i], [data-path$=".dockerfile" i]) .nav-file-title-content::before { content: "DOCK"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fefce8, #fde68a); --ogd-nav-file-type-fg: #854d0e; --ogd-nav-file-type-size: 4.7px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".gitignore" i], [data-path$=".gitattributes" i], [data-path$=".lock" i]) .nav-file-title-content::before { content: "GIT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fefce8, #fde68a); --ogd-nav-file-type-fg: #854d0e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".txt" i] .nav-file-title-content::before { content: "TXT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".log" i] .nav-file-title-content::before { content: "LOG"; --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".zip" i], [data-path$=".7z" i], [data-path$=".tar" i], [data-path$=".gz" i]) .nav-file-title-content::before { content: "ZIP"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fefce8, #fde68a); --ogd-nav-file-type-fg: #854d0e; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mp3" i], [data-path$=".wav" i], [data-path$=".m4a" i], [data-path$=".flac" i]) .nav-file-title-content::before { content: "AUD"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".mp4" i], [data-path$=".mov" i], [data-path$=".webm" i], [data-path$=".mkv" i]) .nav-file-title-content::before { content: "VID"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 5.2px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".ttf" i], [data-path$=".otf" i], [data-path$=".woff" i], [data-path$=".woff2" i]) .nav-file-title-content::before { content: "FONT"; --ogd-nav-file-type-bg: linear-gradient(180deg, #fdf4ff, #e9d5ff); --ogd-nav-file-type-fg: #7e22ce; --ogd-nav-file-type-size: 4.5px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path]:not(:hover):not(.is-active) .nav-file-title-content::before { --ogd-nav-file-type-bg: linear-gradient(180deg, #f8fafc, #e2e8f0); --ogd-nav-file-type-fg: #64748b; --ogd-nav-file-type-border: rgba(148, 163, 184, 0.18); }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is(:hover, .is-active):is([data-path$=".md" i], [data-path$=".mdx" i]) .nav-file-title-content::before { --ogd-nav-file-type-bg: linear-gradient(180deg, #eff6ff, #bfdbfe); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-border: var(--ogd-rim-active-low); }
 
   body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path] .nav-file-title-content::before {
     border-color: rgba(203, 213, 225, 0.18);
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.22));
   }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path]:not(:hover):not(.is-active) .nav-file-title-content::before { --ogd-nav-file-type-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.52), rgba(15, 23, 42, 0.42)); --ogd-nav-file-type-fg: #cbd5e1; --ogd-nav-file-type-border: rgba(148, 163, 184, 0.14); }
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is(:hover, .is-active):is([data-path$=".md" i], [data-path$=".mdx" i]) .nav-file-title-content::before { --ogd-nav-file-type-bg: linear-gradient(180deg, color-mix(in srgb, var(--ogd-surface-tint-aqua) 44%, rgba(30, 41, 59, 0.56)), color-mix(in srgb, var(--ogd-surface-tint-aqua-soft) 50%, rgba(15, 23, 42, 0.48))); --ogd-nav-file-type-fg: #bfdbfe; --ogd-nav-file-type-border: var(--ogd-rim-active-low); }
 }
 
 @media (min-width: 701px) {
-  body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
-    border-color: rgba(148, 163, 184, 0.16);
-    background: rgba(248, 250, 252, 0.52);
-    box-shadow: var(--ogd-shadow-none, none);
-    color: #64748b;
-  }
-
-  body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content {
-    color: var(--ogd-text-subtle, #475569);
-    font-weight: 780;
-  }
-
   @supports selector(.nav-folder:has(.nav-file-title.is-active)) {
     body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title,
     body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self {
       color: #1f2937;
     }
 
-    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]),
-    body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title,
-    body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title {
-      border-color: rgba(148, 163, 184, 0.32);
-      background: radial-gradient(circle at 74% 24%, rgba(255, 255, 255, 0.66), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.58));
+    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) {
+      border-color: color-mix(in srgb, var(--ogd-rim-active-low) 68%, rgba(148, 163, 184, 0.14));
+      background: radial-gradient(circle at 74% 24%, color-mix(in srgb, var(--ogd-surface-tint-aqua-soft) 68%, rgba(255, 255, 255, 0.48)), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), color-mix(in srgb, var(--ogd-surface-tint-aqua) 24%, rgba(248, 250, 252, 0.42)));
       -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
       backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-      box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12)), 0 0 0 1px rgba(148, 163, 184, 0.10);
-      color: #1f2937;
+      box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 16%, transparent), 0 3px 8px rgba(15, 23, 42, 0.05)), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 36%, transparent);
+      color: #1e3a5f;
     }
 
     body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
     body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner {
-      color: #1f2937;
-      font-weight: 820;
+      color: #1e3a5f;
+      font-weight: 800;
     }
 
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
       --ogd-direct-parent-folder-icon: #64748b;
-      --ogd-direct-parent-folder-icon-opacity: 0.64;
-      --ogd-direct-parent-folder-halo-border: rgba(125, 211, 252, 0.74);
-      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.92), transparent 38%), radial-gradient(circle at 30% 74%, rgba(186, 230, 253, 0.28), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(240, 249, 255, 0.54));
-      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(125, 211, 252, 0.16), inset 0 0 10px rgba(255, 255, 255, 0.30), 0 5px 12px rgba(56, 189, 248, 0.14);
-      min-height: 31px;
-      padding: 6px 14px 6px 38px;
+      --ogd-direct-parent-folder-icon-opacity: 0.60;
+      --ogd-direct-parent-folder-halo-border: rgba(125, 211, 252, 0.38);
+      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.78), transparent 38%), radial-gradient(circle at 30% 74%, rgba(186, 230, 253, 0.12), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(240, 249, 255, 0.36));
+      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(125, 211, 252, 0.08), inset 0 0 8px rgba(255, 255, 255, 0.18), 0 3px 8px rgba(56, 189, 248, 0.06);
+      min-height: 28px;
+      padding: 4px 12px 4px 27px;
       isolation: isolate;
+      color: #18375a;
+      font-weight: 830;
     }
 
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content { color: #334155; font-weight: 540; }
+
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before {
-      left: 9px;
+      left: 5px;
       z-index: 1;
       opacity: var(--ogd-direct-parent-folder-icon-opacity, 0.58);
       background-color: var(--ogd-direct-parent-folder-icon, #64748b);
     }
 
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after {
-      content: "";
+      content: none;
       position: absolute;
       left: 2px;
       top: 50%;
@@ -736,15 +711,13 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
       z-index: 0;
     }
 
-    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content,
-    body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content,
-    body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
-      color: #1f2937;
-      font-weight: 860;
+    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
+      color: #1e3a5f;
+      font-weight: 820;
     }
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-children {
-      border-left-color: rgba(100, 116, 139, 0.34);
+      border-left-color: rgba(100, 116, 139, 0.14);
     }
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] {
@@ -760,34 +733,22 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content {
       color: #1f2937;
-      font-weight: 820;
+      font-weight: 800;
     }
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content::before {
       background-color: #475569;
-      opacity: 0.68;
+      opacity: 0.56;
     }
   }
 
-  body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title {
-    border-color: rgba(148, 163, 184, 0.12);
-    background: rgba(15, 23, 42, 0.24);
-    color: var(--ogd-text-soft, #94a3b8);
-  }
-
-  body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-title .nav-folder-title-content {
-    color: var(--ogd-line-strong, #cbd5e1);
-  }
-
   @supports selector(.nav-folder:has(.nav-file-title.is-active)) {
-    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]),
-    body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title,
-    body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title {
-      border-color: rgba(203, 213, 225, 0.18);
-      background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.12), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.66), rgba(15, 23, 42, 0.42));
+    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) {
+      border-color: var(--ogd-rim-active-low);
+      background: radial-gradient(circle at 74% 24%, var(--ogd-surface-tint-aqua-soft), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(15, 23, 42, 0.34));
       -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
       backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-      box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 6px 16px rgba(0, 0, 0, 0.32)), 0 0 0 1px rgba(203, 213, 225, 0.10);
+      box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 3px 8px rgba(0, 0, 0, 0.20)), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 38%, transparent);
       color: var(--ogd-text-inverted, #f8fafc);
     }
 
@@ -798,20 +759,21 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 
     body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
       --ogd-direct-parent-folder-icon: #cbd5e1;
-      --ogd-direct-parent-folder-icon-opacity: 0.68;
-      --ogd-direct-parent-folder-halo-border: rgba(186, 230, 253, 0.30);
-      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.14), transparent 38%), radial-gradient(circle at 30% 74%, rgba(56, 189, 248, 0.08), transparent 40%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), rgba(15, 23, 42, 0.32));
-      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.24), inset 0 0 9px rgba(148, 163, 184, 0.08), 0 5px 12px rgba(0, 0, 0, 0.30);
+      --ogd-direct-parent-folder-icon-opacity: 0.62;
+      --ogd-direct-parent-folder-halo-border: rgba(186, 230, 253, 0.20);
+      --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.10), transparent 38%), radial-gradient(circle at 30% 74%, rgba(56, 189, 248, 0.04), transparent 40%), linear-gradient(180deg, rgba(51, 65, 85, 0.40), rgba(15, 23, 42, 0.26));
+      --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.18), inset 0 0 7px rgba(148, 163, 184, 0.05), 0 3px 8px rgba(0, 0, 0, 0.20);
+      color: #e0f2fe;
     }
 
-    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content,
-    body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.is-active) > .nav-folder-title .nav-folder-title-content,
-    body:not(.is-mobile).theme-dark .nav-folder.mod-root > .nav-folder-children > .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
-      font-weight: 860;
+    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content { color: #d6e0ee; font-weight: 540; }
+
+    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
+      font-weight: 820;
     }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-children {
-      border-left-color: rgba(148, 163, 184, 0.30);
+      border-left-color: rgba(148, 163, 184, 0.16);
     }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] {
@@ -827,12 +789,12 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content {
       color: var(--ogd-text-inverted, #f8fafc);
-      font-weight: 820;
+      font-weight: 800;
     }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content::before {
       background-color: #cbd5e1;
-      opacity: 0.68;
+      opacity: 0.56;
     }
   }
 }

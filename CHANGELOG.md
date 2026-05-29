@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.64
+
+- polish: 왼쪽 파일 탐색기 문서 트리의 hover/active/parent folder 위계를 더 조용하게 정리하고, 선택 문서 외곽선과 sibling 문서 대비를 보강했습니다.
+- polish: 파일 탐색기 확장자 배지가 기본 상태에서는 회색으로 쉬고, hover/active 상태에서 MD/MDX 문서도 푸른 glass 배지로 명확히 올라오도록 수정했습니다.
+- fix: MD/MDX 확장자 전용 회색 배지 변수가 hover 색상 변수를 덮던 cascade를 owner CSS 안에서 바로잡았습니다.
+- guard: bundle freshness, source usage map, core principles, release check, runtime evidence strict 검증과 Obsidian test vault sync를 통과했습니다.
+
 ## v3.1.63
 
 - feat: Style Settings에 `PDF 고객 전달 권장 프리셋`(`ogd-pdf-client-delivery`)을 추가해 고객 공유용 PDF 가시성 조합을 한 번에 적용할 수 있게 했습니다.
