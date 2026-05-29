@@ -5,7 +5,7 @@ Owen Graphite v3 (현재 안정 릴리즈 v3.1.51)은 처음부터 다시 작성
 ## 0. 사전 준비
 
 - Python 3.10+ (`.venv\Scripts\python.exe` 권장; Windows 기준)
-- Obsidian 1.12.0+
+- Obsidian 1.5.8+
 - (선택) Style Settings 플러그인 — 옵션 토글 확인용
 
 ```powershell

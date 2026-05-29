@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.1.65
+
+- compat: 커뮤니티 테마 최소 지원 버전을 Obsidian `1.5.8`로 낮추고 문서/이슈 템플릿의 기준 버전도 맞췄습니다.
+- a11y: light/dark 핵심 보조 텍스트와 code comment 팔레트 대비를 WCAG AA 기준에 맞게 보강했습니다.
+- fix: bundled `theme.css` 중간에 섞이던 UTF-8 BOM을 제거해 커뮤니티 스캐너의 unknown type selector 경고를 정리했습니다.
+- polish: 파일 탐색기 최상위 폴더 기본 외곽선을 조금 진하게 해 폴더 간 구분을 더 쉽게 보이게 했습니다.
+- guard: source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.64
 
 - polish: 왼쪽 파일 탐색기 문서 트리의 hover/active/parent folder 위계를 더 조용하게 정리하고, 선택 문서 외곽선과 sibling 문서 대비를 보강했습니다.

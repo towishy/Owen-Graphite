@@ -6,7 +6,7 @@ Owen Graphite는 기본 Obsidian UI와 자주 쓰는 작성 플러그인을 함�
 
 | 항목 | 현재 기준 | 확인 내용 |
 | --- | --- | --- |
-| 최소 지원 버전 | `1.12.0` | `manifest.json`의 `minAppVersion`과 일치 |
+| 최소 지원 버전 | `1.5.8` | `manifest.json`의 `minAppVersion`과 일치 |
 | 권장 확인 버전 | 최신 stable desktop | Live Preview, Reading View, PDF export, Settings modal |
 | 모바일 | 지원 대상 | 좁은 폭에서 side pane, file explorer, reading surface overflow 확인 |
 | 커뮤니티 제출 | 수동 ZIP + GitHub Release | `dev/scripts/audit_release_zip.py`로 설치 트리 검증 |
