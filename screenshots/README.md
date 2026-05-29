@@ -1,6 +1,6 @@
 # Screenshots
 
-Owen Graphite v3.1.65 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.66 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |

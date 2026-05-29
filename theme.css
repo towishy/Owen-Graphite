@@ -15535,6 +15535,44 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     border-left: 0;
   }
 
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) {
+    position: relative; margin: 8px 3px 8px 6px; padding: 28px 7px 7px 8px; border: 1px solid rgba(148, 163, 184, 0.24); border-radius: 10px; background: linear-gradient(180deg, rgba(238, 246, 250, 0.64), rgba(248, 251, 253, 0.36)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 12px rgba(15, 23, 42, 0.045); overflow: hidden;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)::before {
+    content: ""; position: absolute; inset: 0 0 auto; height: 28px; border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.16));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 9px rgba(15, 23, 42, 0.035);
+    pointer-events: none;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title {
+    position: absolute; inset: 0 0 auto; z-index: 1; display: flex; align-items: center; justify-content: center; height: 28px; min-height: 28px; margin: 0; padding: 0 8px; padding-inline-start: 0;
+    border-color: var(--ogd-surface-transparent, transparent); border-radius: 10px 10px 0 0; background: var(--ogd-surface-transparent, transparent); box-shadow: var(--ogd-shadow-none, none);
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
+    display: inline-flex; align-items: center; justify-content: center; flex: 0 1 auto; width: auto; max-width: calc(100% - 16px); height: 20px; min-height: 20px; padding: 0 8px 0 16px; color: #25364b; font-weight: 820; line-height: 20px; --ogd-nav-hover-bg: var(--ogd-surface-transparent, transparent); --ogd-nav-hover-border: var(--ogd-surface-transparent, transparent); --ogd-nav-hover-shadow: var(--ogd-shadow-none, none); --ogd-glass-filter-soft: none;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before { left: 1px; }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children {
+    margin: 0; padding: 2px 0 0 0; border-left: 0;
+    background: var(--ogd-surface-transparent, transparent);
+    box-shadow: var(--ogd-shadow-none, none);
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title { margin-left: -30px; padding-left: 28px; padding-right: 2px; }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content {
+    padding-left: 23px; padding-right: 2px;
+    color: #4b5f77;
+    font-weight: 560;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before { left: 5px; }
+
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder + .nav-folder > .nav-folder-title { margin-top: 4px; }
 
   body:not(.is-mobile) :is(.nav-folder-collapse-indicator, .tree-item-icon.collapse-icon) {
@@ -15570,6 +15608,8 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     box-shadow: var(--ogd-nav-hover-shadow, var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.12)));
     color: var(--ogd-text-strong, #111827); --ogd-nav-file-type-bg: color-mix(in srgb, var(--ogd-surface-tint-aqua) 36%, rgba(255, 255, 255, 0.72)); --ogd-nav-file-type-fg: #1d4ed8; --ogd-nav-file-type-border: var(--ogd-rim-active-low);
   }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title:hover .nav-folder-title-content { background: var(--ogd-surface-transparent, transparent); border-color: var(--ogd-surface-transparent, transparent); box-shadow: var(--ogd-shadow-none, none); -webkit-backdrop-filter: none; backdrop-filter: none; transform: none; }
 
   body:not(.is-mobile) :is(.nav-file-title:focus-within .nav-file-title-content, .nav-folder-title:focus-within .nav-folder-title-content, .tree-item-self:focus-within .tree-item-inner) {
     border-color: var(--ogd-focus-ring-border);
@@ -15655,6 +15695,36 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
 
   body:not(.is-mobile).theme-dark :is(.nav-folder-children, .tree-item-children) {
     border-left-color: rgba(148, 163, 184, 0.10);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) {
+    border-color: rgba(203, 213, 225, 0.18);
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.46), rgba(15, 23, 42, 0.28));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)::before {
+    border-bottom-color: rgba(203, 213, 225, 0.18); background: linear-gradient(180deg, rgba(51, 65, 85, 0.34), rgba(15, 23, 42, 0.10));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 9px rgba(0, 0, 0, 0.18);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title {
+    border-color: var(--ogd-surface-transparent, transparent);
+    background: var(--ogd-surface-transparent, transparent);
+    box-shadow: var(--ogd-shadow-none, none);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
+    color: var(--ogd-text-inverted, #f8fafc);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children {
+    border-left: 0; background: var(--ogd-surface-transparent, transparent); box-shadow: var(--ogd-shadow-none, none);
+  }
+
+  body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content {
+    color: #cbd5e1;
+    font-weight: 540;
   }
 
   body:not(.is-mobile).theme-dark :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover) {
@@ -15842,12 +15912,12 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     }
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) {
-      border-color: color-mix(in srgb, var(--ogd-rim-active-low) 68%, rgba(148, 163, 184, 0.14));
-      background: radial-gradient(circle at 74% 24%, color-mix(in srgb, var(--ogd-surface-tint-aqua-soft) 68%, rgba(255, 255, 255, 0.48)), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), color-mix(in srgb, var(--ogd-surface-tint-aqua) 24%, rgba(248, 250, 252, 0.42)));
-      -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-      backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-      box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 16%, transparent), 0 3px 8px rgba(15, 23, 42, 0.05)), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 36%, transparent);
-      color: #1e3a5f;
+      border-color: rgba(100, 116, 139, 0.22);
+      background: rgba(248, 250, 252, 0.36);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 0 0 0.5px rgba(148, 163, 184, 0.10);
+      color: #64748b;
     }
 
     body:not(.is-mobile) .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
@@ -15856,29 +15926,30 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
       font-weight: 800;
     }
 
-    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
       --ogd-direct-parent-folder-icon: #64748b;
       --ogd-direct-parent-folder-icon-opacity: 0.60;
       --ogd-direct-parent-folder-halo-border: rgba(125, 211, 252, 0.38);
       --ogd-direct-parent-folder-halo-bg: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.78), transparent 38%), radial-gradient(circle at 30% 74%, rgba(186, 230, 253, 0.12), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(240, 249, 255, 0.36));
       --ogd-direct-parent-folder-halo-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(125, 211, 252, 0.08), inset 0 0 8px rgba(255, 255, 255, 0.18), 0 3px 8px rgba(56, 189, 248, 0.06);
-      min-height: 28px;
-      padding: 4px 12px 4px 27px;
+      min-height: 20px; height: 20px;
+      padding: 0 8px 0 16px;
       isolation: isolate;
       color: #18375a;
       font-weight: 830;
     }
 
-    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content { color: #334155; font-weight: 540; }
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content { padding-left: 23px; padding-right: 2px; color: #334155; font-weight: 540; }
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before { left: 5px; }
 
-    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before {
-      left: 5px;
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before {
+      left: 1px;
       z-index: 1;
       opacity: var(--ogd-direct-parent-folder-icon-opacity, 0.58);
       background-color: var(--ogd-direct-parent-folder-icon, #64748b);
     }
 
-    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after {
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after {
       content: none;
       position: absolute;
       left: 2px;
@@ -15895,31 +15966,35 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     }
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
-      color: #1e3a5f;
-      font-weight: 820;
+      color: var(--ogd-text-subtle, #475569);
+      font-weight: 760;
     }
 
     body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-children {
       border-left-color: rgba(100, 116, 139, 0.14);
     }
 
-    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] {
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):not(:has(.nav-file-title.is-active)):not(:hover):not(:focus-within) > .nav-folder-children { display: none; }
+
+    body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"] {
       position: relative;
+      padding-left: 0;
+      padding-right: 8px;
       color: #1f2937;
     }
 
-    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"]::before {
+    body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"]::before {
       content: none;
       display: none;
       pointer-events: none;
     }
 
-    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content {
+    body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"] .nav-folder-title-content {
       color: #1f2937;
       font-weight: 800;
     }
 
-    body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content::before {
+    body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"] .nav-folder-title-content::before {
       background-color: #475569;
       opacity: 0.56;
     }
@@ -15927,12 +16002,12 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
 
   @supports selector(.nav-folder:has(.nav-file-title.is-active)) {
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) {
-      border-color: var(--ogd-rim-active-low);
-      background: radial-gradient(circle at 74% 24%, var(--ogd-surface-tint-aqua-soft), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.56), rgba(15, 23, 42, 0.34));
-      -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-      backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
-      box-shadow: var(--ogd-glass-shadow-hover, inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 3px 8px rgba(0, 0, 0, 0.20)), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 38%, transparent);
-      color: var(--ogd-text-inverted, #f8fafc);
+      border-color: rgba(203, 213, 225, 0.18);
+      background: rgba(15, 23, 42, 0.24);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      color: var(--ogd-text-soft, #94a3b8);
     }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content,
@@ -15940,7 +16015,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
       color: var(--ogd-text-inverted, #f8fafc);
     }
 
-    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
+    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
       --ogd-direct-parent-folder-icon: #cbd5e1;
       --ogd-direct-parent-folder-icon-opacity: 0.62;
       --ogd-direct-parent-folder-halo-border: rgba(186, 230, 253, 0.20);
@@ -15949,33 +16024,36 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
       color: #e0f2fe;
     }
 
-    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content { color: #d6e0ee; font-weight: 540; }
+    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content { padding-left: 23px; padding-right: 2px; color: #d6e0ee; font-weight: 540; }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
-      font-weight: 820;
+      color: var(--ogd-line-strong, #cbd5e1);
+      font-weight: 760;
     }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-children {
       border-left-color: rgba(148, 163, 184, 0.16);
     }
 
-    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] {
+    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"] {
       position: relative;
+      padding-left: 0;
+      padding-right: 8px;
       color: var(--ogd-text-inverted, #f8fafc);
     }
 
-    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"]::before {
+    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"]::before {
       content: none;
       display: none;
       pointer-events: none;
     }
 
-    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content {
+    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"] .nav-folder-title-content {
       color: var(--ogd-text-inverted, #f8fafc);
       font-weight: 800;
     }
 
-    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*="/"] .nav-folder-title-content::before {
+    body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*="/"] .nav-folder-title-content::before {
       background-color: #cbd5e1;
       opacity: 0.56;
     }

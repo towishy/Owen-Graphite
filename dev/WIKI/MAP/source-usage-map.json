@@ -1,9 +1,9 @@
 {
   "schema": "owen-graphite/source-usage-map/1",
   "moduleCount": 26,
-  "sourceLines": 18418,
-  "rules": 2396,
-  "selectorParts": 3789,
+  "sourceLines": 18496,
+  "rules": 2414,
+  "selectorParts": 3807,
   "labelTotals": {
     "callout-list": 429,
     "cm6": 325,
@@ -13,8 +13,8 @@
     "overlay-search": 268,
     "print-pdf": 467,
     "reading-rendered": 1108,
-    "table": 1079,
-    "workspace-chrome": 567
+    "table": 1101,
+    "workspace-chrome": 585
   },
   "hardViolations": [
     {
@@ -599,15 +599,15 @@
       "index": 23,
       "module": "src/chrome/37-tabs-file-explorer-search.css",
       "legacyId": "09d-tabs-file-explorer-search.css",
-      "sourceLines": 896,
+      "sourceLines": 974,
       "bundleStartLine": 15152,
       "bundleEndLine": 16079,
-      "rules": 171,
-      "selectorParts": 184,
+      "rules": 189,
+      "selectorParts": 202,
       "labels": {
         "overlay-search": 10,
-        "table": 120,
-        "workspace-chrome": 166
+        "table": 142,
+        "workspace-chrome": 184
       },
       "ownerSurfaces": [
         "workspace-chrome"
@@ -9300,33 +9300,73 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 363,
+      "line": 355,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile) :is(.nav-folder-collapse-indicator, .tree-item-icon.collapse-icon)"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 368,
+      "line": 362,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile) :is(.nav-folder-collapse-indicator::before, .tree-item-icon.collapse-icon::before)"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)::before"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 378,
+      "line": 367,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover)"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 371,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 373,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 379,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 381,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
@@ -9336,11 +9376,71 @@
         "table",
         "workspace-chrome"
       ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 389,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 401,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is(.nav-folder-collapse-indicator, .tree-item-icon.collapse-icon)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 406,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is(.nav-folder-collapse-indicator::before, .tree-item-icon.collapse-icon::before)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 416,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is(.nav-file-title:hover, .nav-folder-title:hover, .tree-item-self:hover)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 425,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
       "selector": "body:not(.is-mobile) :is(.nav-file-title:hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner)"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 392,
+      "line": 427,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title:hover .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 432,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9350,7 +9450,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 398,
+      "line": 438,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9360,7 +9460,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 407,
+      "line": 447,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9370,7 +9470,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 450,
+      "line": 490,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9380,7 +9480,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 454,
+      "line": 494,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9390,7 +9490,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 461,
+      "line": 501,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9400,7 +9500,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 465,
+      "line": 505,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9410,7 +9510,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 467,
+      "line": 507,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9420,7 +9520,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 471,
+      "line": 511,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9430,7 +9530,67 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 478,
+      "line": 517,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 522,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 528,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 532,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 536,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 541,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 548,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9440,7 +9600,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 485,
+      "line": 555,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9450,7 +9610,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 491,
+      "line": 561,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9460,7 +9620,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 497,
+      "line": 567,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9470,7 +9630,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 504,
+      "line": 574,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9480,7 +9640,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 514,
+      "line": 584,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9490,7 +9650,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 519,
+      "line": 589,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9500,7 +9660,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 559,
+      "line": 629,
       "context": "",
       "labels": [
         "table",
@@ -9510,7 +9670,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 565,
+      "line": 635,
       "context": "",
       "labels": [
         "table",
@@ -9520,7 +9680,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 570,
+      "line": 640,
       "context": "",
       "labels": [
         "table",
@@ -9530,7 +9690,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 593,
+      "line": 663,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9540,7 +9700,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 602,
+      "line": 672,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9550,7 +9710,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 603,
+      "line": 673,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9560,7 +9720,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 604,
+      "line": 674,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9570,7 +9730,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 605,
+      "line": 675,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9580,7 +9740,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 606,
+      "line": 676,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9590,7 +9750,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 607,
+      "line": 677,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9600,7 +9760,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 608,
+      "line": 678,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9610,7 +9770,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 609,
+      "line": 679,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9620,7 +9780,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 610,
+      "line": 680,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9630,7 +9790,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 611,
+      "line": 681,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9640,7 +9800,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 612,
+      "line": 682,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9650,7 +9810,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 613,
+      "line": 683,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9660,7 +9820,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 614,
+      "line": 684,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9670,7 +9830,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 615,
+      "line": 685,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9680,7 +9840,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 616,
+      "line": 686,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9690,7 +9850,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 617,
+      "line": 687,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9700,7 +9860,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 618,
+      "line": 688,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9710,7 +9870,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 619,
+      "line": 689,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9720,7 +9880,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 620,
+      "line": 690,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9730,7 +9890,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 621,
+      "line": 691,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9740,7 +9900,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 622,
+      "line": 692,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9750,7 +9910,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 623,
+      "line": 693,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9760,7 +9920,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 624,
+      "line": 694,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9770,7 +9930,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 625,
+      "line": 695,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9780,7 +9940,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 626,
+      "line": 696,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9790,7 +9950,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 627,
+      "line": 697,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9800,7 +9960,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 628,
+      "line": 698,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9810,7 +9970,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 629,
+      "line": 699,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9820,7 +9980,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 630,
+      "line": 700,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9830,7 +9990,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 631,
+      "line": 701,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9840,7 +10000,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 632,
+      "line": 702,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9850,7 +10010,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 633,
+      "line": 703,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9860,7 +10020,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 634,
+      "line": 704,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9870,7 +10030,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 635,
+      "line": 705,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9880,7 +10040,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 636,
+      "line": 706,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9890,7 +10050,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 637,
+      "line": 707,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9900,7 +10060,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 638,
+      "line": 708,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9910,7 +10070,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 639,
+      "line": 709,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9920,7 +10080,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 640,
+      "line": 710,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9930,7 +10090,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 641,
+      "line": 711,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9940,7 +10100,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 642,
+      "line": 712,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9950,7 +10110,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 643,
+      "line": 713,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9960,7 +10120,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 648,
+      "line": 718,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9970,7 +10130,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 650,
+      "line": 720,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9980,7 +10140,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 651,
+      "line": 721,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -9990,7 +10150,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 658,
+      "line": 728,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
@@ -10000,7 +10160,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 667,
+      "line": 737,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
@@ -10010,7 +10170,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 672,
+      "line": 742,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
@@ -10020,63 +10180,13 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 715,
+      "line": 755,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 724,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 730,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]::before"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 735,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 740,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 753,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"])"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
@@ -10086,47 +10196,27 @@
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 766,
+      "line": 758,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 768,
+      "line": 765,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title:not(.is-active) .nav-file-title-content"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 772,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content"
-    },
-    {
-      "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 776,
-      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
-      "labels": [
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-children"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
@@ -10136,17 +10226,17 @@
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::after"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 787,
+      "line": 786,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"]::before"
+      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
@@ -10156,21 +10246,151 @@
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content"
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):not(:has(.nav-file-title.is-active)):not(:hover):not(:focus-within) > .nav-folder-children"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 797,
+      "line": 799,
       "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
       "labels": [
         "table",
         "workspace-chrome"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before"
+      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"]"
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 820,
+      "line": 805,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"]::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 810,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 815,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 828,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"])"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 832,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content, body:not(.is-mobile).theme-dark .nav-folder:has(.nav-file-title.is-active) > .tree-item-self .tree-item-inner"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 841,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 843,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path*=\"/\"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 848,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*=\"/\"]) .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 852,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-children"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 859,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"]"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 865,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"]::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 870,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 875,
+      "context": "@media (min-width: 701px) >> @supports selector(.nav-folder:has(.nav-file-title.is-active))",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .nav-folder:has(.is-active):not(:has(> .nav-folder-children > .nav-file .nav-file-title.is-active)) > .nav-folder-title[data-path*=\"/\"] .nav-folder-title-content::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 898,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -10181,7 +10401,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 843,
+      "line": 921,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -10192,7 +10412,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 866,
+      "line": 944,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -10203,7 +10423,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 872,
+      "line": 950,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -10214,7 +10434,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10224,7 +10444,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10234,7 +10454,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10244,7 +10464,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10254,7 +10474,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10264,7 +10484,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10274,7 +10494,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 885,
+      "line": 963,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10284,7 +10504,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 886,
+      "line": 964,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10294,7 +10514,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 887,
+      "line": 965,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10304,7 +10524,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 888,
+      "line": 966,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10314,7 +10534,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 889,
+      "line": 967,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10324,7 +10544,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 890,
+      "line": 968,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10334,7 +10554,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 891,
+      "line": 969,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10344,7 +10564,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 892,
+      "line": 970,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10354,7 +10574,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 893,
+      "line": 971,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",

@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.66
+
+- polish: 파일 탐색기에서 선택 문서를 포함한 하위 폴더 하나만 코드블록형 outer/header band로 보이도록 계층 표현을 좁혔습니다.
+- polish: active 하위 폴더 헤더의 폴더 아이콘/이름을 중앙 정렬하고, hover pill이 헤더 라인과 겹치지 않도록 제거했습니다.
+- fix: active 하위 폴더 내부 문서 배지와 문서 제목이 겹치던 간격을 CDP computed style 기준으로 보정했습니다.
+- guard: CDP 런타임 확인, source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.65
 
 - compat: 커뮤니티 테마 최소 지원 버전을 Obsidian `1.5.8`로 낮추고 문서/이슈 템플릿의 기준 버전도 맞췄습니다.
