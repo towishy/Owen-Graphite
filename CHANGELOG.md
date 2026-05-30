@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.67
+
+- polish: active 하위 폴더 문서 목록을 더 선명한 흰 유리면으로 정리하고, header/body 경계와 첫 문서 pill 사이 여백을 안정화했습니다.
+- polish: active 하위 폴더 내부 문서 pill의 제목 표시 폭을 넓히고 그림자를 낮춰 선택 상태가 덜 무겁게 보이도록 다듬었습니다.
+- fix: 깊은 하위 폴더에서 문서 pill이 박스 경계에 붙어 보이던 계층별 margin을 보정하고, 긴 하위 폴더명 ellipsis/중앙정렬을 안정화했습니다.
+- guard: light/dark CDP 런타임 확인, source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.66
 
 - polish: 파일 탐색기에서 선택 문서를 포함한 하위 폴더 하나만 코드블록형 outer/header band로 보이도록 계층 표현을 좁혔습니다.
