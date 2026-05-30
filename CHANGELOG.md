@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.68
+
+- fix: 파일 탐색기 active 하위 폴더 ancestor에 남던 Obsidian virtual list inline `min-height` spacer를 제거해 하단 빈 스크롤 영역이 보이지 않도록 수정했습니다.
+- polish: active 하위 폴더의 흰 문서박스와 문서 리스트는 유지하면서 부모 folder children box만 레이아웃에서 빠지도록 selector를 좁혔습니다.
+- guard: CDP 런타임 확인, source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.67
 
 - polish: active 하위 폴더 문서 목록을 더 선명한 흰 유리면으로 정리하고, header/body 경계와 첫 문서 pill 사이 여백을 안정화했습니다.
