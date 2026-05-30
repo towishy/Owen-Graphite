@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.68** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
+**Owen Graphite v3.1.69** — 한국어 기술 문서·보고서·위키 작성을 위한 Obsidian 테마. 17,000+ 줄 CSS를 src/ 폴더에 처음부터 다시 작성한 v3 코드베이스의 최신 안정 릴리즈입니다.
 
 **English summary** — Owen Graphite is an Obsidian theme for technical documentation, knowledge bases, and report writing. It focuses on readable Korean and English notes, stable long tables and code blocks, polished workspace chrome, Live Preview / PDF export parity, and report-friendly layouts for recurring documentation work.
 
@@ -80,8 +80,8 @@ Owen Graphite is designed for people who write long-form notes, technical docume
 
 | 항목 | 내용 |
 | --- | --- |
-| **버전** | `3.1.68` |
-| **베이스라인 / 롤백 기준** | `v3.1.68` |
+| **버전** | `3.1.69` |
+| **베이스라인 / 롤백 기준** | `v3.1.69` |
 | **모드 지원** | ✅ Light / Dark |
 | **플랫폼** | ✅ Desktop & Mobile |
 | **디자인 정책** | Liquid Glass core · 토큰 우선 · zero-important cascade |
@@ -211,7 +211,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 
 ### 옵션 B — ZIP 수동 설치 / Manual ZIP Install
 
-[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.68.zip`** 을 받아 압축 해제합니다.
+[Releases 페이지](https://github.com/towishy/Owen-Graphite/releases/latest)에서 **`Owen-Graphite-3.1.69.zip`** 을 받아 압축 해제합니다.
 
 | 플랫폼 | 대상 경로 |
 | --- | --- |
@@ -220,7 +220,7 @@ This release expands the README Visual Tour with real workspace screenshots for 
 
 설치 후 Obsidian → 설정 → **외관 → 테마** → `Owen Graphite` 선택.
 
-> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.68.zip` 을 받으세요.
+> ⚠️ Release Assets에는 GitHub 자동 생성 `Source code (zip)`도 함께 표시됩니다. 반드시 `Owen-Graphite-3.1.69.zip` 을 받으세요.
 
 ### 옵션 C — Git 수동 설치 / 업데이트 / Git Install or Update
 

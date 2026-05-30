@@ -4,12 +4,12 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.68`
+- Version: `3.1.69`
 - Source: `src/entry.css`
 - Modules: 26
 - Selectors: 2419
-- Findings: 592
-- Finding severity counts: critical=0, high=0, medium=490, low=102, info=0
+- Findings: 593
+- Finding severity counts: critical=0, high=0, medium=491, low=102, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -38,7 +38,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | medium | 18 | `src/chrome/34-nav-ribbon-glass.css` | 25 | 0 | 0 | high-specificity |
 | high | 61 | `src/chrome/35-editing-menu-tooltip-glass.css` | 110 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 | high | 70 | `src/chrome/36-floating-ui-glass-system.css` | 117 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| high | 296 | `src/chrome/37-tabs-file-explorer-search.css` | 191 | 0 | 79 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 299 | `src/chrome/37-tabs-file-explorer-search.css` | 191 | 0 | 79 | high-specificity, has-selector, repeated-selector-in-file |
 | low | 3 | `src/themes/51-accessibility-motion-contrast.css` | 16 | 0 | 0 | repeated-selector-in-file |
 | high | 96 | `src/surfaces/23-liquid-glass-core.css` | 158 | 0 | 6 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 109 | `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |

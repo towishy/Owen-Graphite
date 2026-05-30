@@ -15383,8 +15383,8 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
 
 @media (min-width: 701px) {
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .view-content,
-  body:not(.is-mobile) .nav-files-container {
-    padding-inline: 8px 10px; background: var(--background-primary);
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container {
+    padding-inline: 8px 10px; background: linear-gradient(180deg, transparent calc(100% - 34px), rgba(100, 116, 139, 0.055)), var(--background-primary); box-shadow: inset 0 -16px 18px -22px rgba(100, 116, 139, 0.16);
     /* Neutralize Obsidian core nav-item paint paths so only the explicit glass
        pill below renders. Prevents a second gray rounded box from appearing
        underneath the inner pill on hover/active. */
@@ -15536,7 +15536,7 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) {
-    position: relative; margin: 8px 3px 8px 6px; padding: 28px 7px 7px 8px; border: 1px solid rgba(148, 163, 184, 0.24); border-radius: 10px; background: linear-gradient(180deg, rgba(244, 249, 252, 0.70), rgba(255, 255, 255, 0.44)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 12px rgba(15, 23, 42, 0.045); overflow: hidden;
+    position: relative; margin: 10px 3px 8px 6px; padding: 28px 7px 7px 8px; border: 1px solid rgba(148, 163, 184, 0.24); border-radius: 10px; background: linear-gradient(180deg, rgba(244, 249, 252, 0.70), rgba(255, 255, 255, 0.44)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 12px rgba(15, 23, 42, 0.045); overflow: hidden;
   }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)::before {
@@ -15570,12 +15570,12 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder-children .nav-folder-children .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title { margin-left: -18px; width: calc(100% + 6px); max-width: calc(100% + 6px); }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content {
-    padding-left: 23px; padding-right: 2px; --ogd-lg-row-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.68), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), color-mix(in srgb, var(--ogd-surface-tint-aqua) 24%, rgba(248, 250, 252, 0.48))); --ogd-lg-row-active-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 14%, transparent), 0 5px 12px rgba(15, 23, 42, 0.06), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 54%, transparent);
+    padding-left: 22px; padding-right: 2px; font-size: 13px; --ogd-lg-row-active-bg: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.68), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.86), color-mix(in srgb, var(--ogd-surface-tint-aqua) 24%, rgba(248, 250, 252, 0.48))); --ogd-lg-row-active-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 14%, transparent), 0 5px 12px rgba(15, 23, 42, 0.06), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 54%, transparent);
     color: #4b5f77;
     font-weight: 560;
   }
 
-  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before { left: 5px; }
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before { left: 5px; width: 14px; }
 
   body:not(.is-mobile) .nav-folder.mod-root > .nav-folder-children > .nav-folder + .nav-folder > .nav-folder-title { margin-top: 4px; }
 
@@ -15943,8 +15943,8 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
       font-weight: 830;
     }
 
-    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content { padding-left: 23px; padding-right: 2px; color: #334155; font-weight: 540; }
-    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before { left: 5px; }
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content { padding-left: 22px; padding-right: 2px; color: #334155; font-size: 13px; font-weight: 540; }
+    body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content::before { left: 5px; width: 14px; }
 
     body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before {
       left: 1px;
@@ -16028,7 +16028,7 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
       color: #e0f2fe;
     }
 
-    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content { padding-left: 23px; padding-right: 2px; color: #d6e0ee; font-weight: 540; --ogd-lg-row-active-bg: radial-gradient(circle at 76% 20%, rgba(148, 163, 184, 0.10), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), color-mix(in srgb, var(--ogd-surface-tint-aqua) 16%, rgba(15, 23, 42, 0.38))); --ogd-lg-row-active-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), inset 0 -1px 0 rgba(0, 0, 0, 0.16), 0 5px 13px rgba(0, 0, 0, 0.24), 0 0 0 1px rgba(148, 163, 184, 0.06); }
+    body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path*="/"]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children > .nav-file > .nav-file-title .nav-file-title-content { padding-left: 22px; padding-right: 2px; color: #d6e0ee; font-size: 13px; font-weight: 540; --ogd-lg-row-active-bg: radial-gradient(circle at 76% 20%, rgba(148, 163, 184, 0.10), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.50), color-mix(in srgb, var(--ogd-surface-tint-aqua) 16%, rgba(15, 23, 42, 0.38))); --ogd-lg-row-active-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), inset 0 -1px 0 rgba(0, 0, 0, 0.16), 0 5px 13px rgba(0, 0, 0, 0.24), 0 0 0 1px rgba(148, 163, 184, 0.06); }
 
     body:not(.is-mobile).theme-dark .nav-folder:has(.is-active) > .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
       color: var(--ogd-line-strong, #cbd5e1);

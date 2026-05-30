@@ -1508,24 +1508,6 @@
     {
       "lines": [
         {
-          "line": 960,
-          "module": "src/chrome/35-editing-menu-tooltip-glass.css"
-        },
-        {
-          "line": 210,
-          "module": "src/chrome/37-tabs-file-explorer-search.css"
-        }
-      ],
-      "modules": [
-        "src/chrome/35-editing-menu-tooltip-glass.css",
-        "src/chrome/37-tabs-file-explorer-search.css"
-      ],
-      "occurrences": 2,
-      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .view-content, body:not(.is-mobile) .nav-files-container"
-    },
-    {
-      "lines": [
-        {
           "line": 933,
           "module": "src/chrome/37-tabs-file-explorer-search.css"
         },
@@ -3361,6 +3343,14 @@
       "message": "specificity=(0, 24, 3)",
       "module": "src/chrome/36-floating-ui-glass-system.css",
       "selector": ".theme-dark .empty-state, .theme-dark .empty-state-container, .theme-dark .search-empty-state, .theme-dark .backlink-pane .search-empty-state, .theme-dark .outgoing-link-pane .search-empty-state, .theme-dark .workspace-leaf-content[data-type=\"search\"] .search-empty-state, .theme-dark .workspace-leaf-content[data-type=\"backlink\"] .search-empty-state, .theme-dark .workspace-leaf-content[data-type=\"outgoing-link\"] .search-empty-state",
+      "severity": "medium"
+    },
+    {
+      "category": "high-specificity",
+      "line": 210,
+      "message": "specificity=(0, 8, 2)",
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .view-content, body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-files-container",
       "severity": "medium"
     },
     {
@@ -8250,10 +8240,10 @@
       ]
     },
     {
-      "declaration_count": 847,
+      "declaration_count": 853,
       "entry_line": 77,
       "has_selector_count": 79,
-      "high_specificity_selector_count": 43,
+      "high_specificity_selector_count": 44,
       "import_index": 23,
       "important_count": 0,
       "legacy_id": "09d-tabs-file-explorer-search.css",
@@ -8272,7 +8262,7 @@
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 296,
+      "risk_score": 299,
       "selector_count": 191,
       "severity": "high",
       "top_properties": [
@@ -8294,7 +8284,7 @@
         ],
         [
           "box-shadow",
-          40
+          41
         ],
         [
           "color",
@@ -8318,7 +8308,7 @@
         ],
         [
           "width",
-          15
+          17
         ],
         [
           "display",
@@ -8557,11 +8547,11 @@
     }
   ],
   "summary": {
-    "cross_file_selector_group_count": 81,
-    "finding_count": 592,
+    "cross_file_selector_group_count": 80,
+    "finding_count": 593,
     "finding_severity_counts": {
       "low": 102,
-      "medium": 490
+      "medium": 491
     },
     "module_count": 26,
     "module_severity_counts": {
@@ -8572,5 +8562,5 @@
     },
     "selector_count": 2419
   },
-  "version": "3.1.68"
+  "version": "3.1.69"
 }

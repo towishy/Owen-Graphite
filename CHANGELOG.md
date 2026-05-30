@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.69
+
+- polish: 파일 탐색기 active 하위 폴더 진입 전 여백을 살짝 늘려 상위 폴더와 active 문서박스 사이의 계층 리듬을 더 안정화했습니다.
+- polish: active 하위 폴더 내부 파일명 글자 크기와 확장자 배지 폭을 미세 조정해 긴 파일명이 조금 더 읽히도록 했습니다.
+- polish: 파일 탐색기 목록 하단에 얕은 fade/inner edge를 추가해 vault switcher 위쪽 여백이 목록 끝으로 읽히도록 정리했습니다.
+- guard: CDP 런타임 확인, source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.68
 
 - fix: 파일 탐색기 active 하위 폴더 ancestor에 남던 Obsidian virtual list inline `min-height` spacer를 제거해 하단 빈 스크롤 영역이 보이지 않도록 수정했습니다.
