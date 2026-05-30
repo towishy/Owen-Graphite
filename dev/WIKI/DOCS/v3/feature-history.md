@@ -2,6 +2,54 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.56 — Style Settings Import / Export Glass Polish
+
+Style Settings의 `Import`, `Export`, `Copy to clipboard`, `Download`, `Import from file` 링크 문자열을 Owen Graphite의 설정 화면 톤에 맞는 작은 glass pill 버튼으로 정리했습니다. Export/Import 모달 안에서도 같은 버튼 언어를 적용해 링크 텍스트가 설정 화면에서 따로 떠 보이지 않도록 맞췄습니다.
+
+This release polishes the Style Settings import/export links into compact glass pill controls, including the export and import modals, so plugin utility actions align with the rest of the Owen Graphite settings surface.
+
+## v3.1.55 — Customer Delivery PDF Visibility
+
+고객에게 PDF 파일로 전달하는 문서를 위해 `PDF 고객 전달용 화면 가시성` 옵션을 추가했습니다. 인쇄물보다 메일, Teams, 브라우저 미리보기에서 바로 읽히는 화면 PDF를 기준으로 제목 위계, 본문·표 크기, callout 역할 구분, 헤더/푸터 라벨 톤을 조정합니다.
+
+This release adds a customer-delivery PDF visibility option for screen-first PDFs shared through mail, Teams, and browser previews. It strengthens heading hierarchy, body/table readability, callout role separation, and PDF label tone without replacing the existing print-stability presets.
+
+## v3.1.54 — File Explorer Actions & Transparent Top Chrome
+
+파일 탐색기 상단 5개 액션 버튼을 Owen Graphite 전용 아이콘과 liquid-glass 표면으로 맞추고, hover/focus 시 teal/cyan 림과 살짝 떠오르는 리프트를 추가했습니다. 문서 상단 root view header는 더 투명한 cyan-tint glass로 낮췄고, 활성 탭 뒤에 보이던 둥근 backline/connector 레이어를 숨겼습니다.
+
+## v3.1.53 — Live Preview Codeblock Header Editability
+
+Live Preview 코드블럭 헤더의 `TEXT`, `SHELL` 같은 언어 라벨이 클릭 후에도 사라지지 않도록 정리했습니다. 헤더 오른쪽에는 향후 copy icon 같은 액션을 넣을 수 있는 슬롯 토큰을 예약했고, 언어 라벨은 해당 영역과 겹치지 않도록 폭을 제한했습니다.
+
+## v3.1.52 — Workspace Chrome Connected Glass
+
+상단 활성 탭, 하단 문서 프레임, vault switcher를 같은 sky-rim liquid glass 언어로 맞췄습니다. 활성 탭은 문서 표면과 이어지는 bridge를 갖고, 비활성 탭은 별도 pill처럼 분리되며, 하단 문서 제목과 `Owen-WIKI` vault switcher는 활성 파일 pill 계열의 frosted glass 표면으로 정리했습니다.
+
+This release aligns the active workspace tab, bottom document frame, and vault switcher with one connected sky-rim liquid-glass language. Active tabs now read as attached to the document surface, while inactive tabs stay separated and quiet.
+
+## v3.1.51 — Top Tab Liquid Glass
+
+상단 workspace tab을 첨부 화면 기준의 붙은 탭 형태로 다듬었습니다. 활성 탭은 위·좌·우 rim이 같은 sky 톤으로 이어지고, 비활성 탭은 분리선 대신 보일듯 말듯한 graphite outline으로 경계를 남깁니다. 플로팅 툴바와 같은 frosted glass 톤 안에서 탭 상태가 더 조용하고 명확하게 읽히도록 정리했습니다.
+
+This release refines the top workspace tabs into an attached liquid-glass shape. The active tab uses one consistent sky rim across the top and sides, while inactive tabs keep a barely visible graphite outline instead of hard divider lines.
+
+## v3.1.50 — README Visual Tour Refresh
+
+README 상단 Visual Tour에 실제 작업 화면과 설정 화면 스크린샷을 보강했습니다. 문서 작성 surface, 플로팅 툴바, Style Settings의 보고서 옵션, Owen Editor 툴바 설정을 첫 화면에서 바로 확인할 수 있습니다.
+
+This release expands the README Visual Tour with real workspace screenshots for the writing surface, floating toolbar, report-oriented Style Settings controls, and Owen Editor toolbar options.
+
+## v3.1.63 — Client-Delivery PDF Preset
+
+The `PDF client-delivery recommended preset` combines screen-first PDF readability, reference-first link output, header/footer labels, and report spacing into one Style Settings preset for customer-facing handoff documents.
+
+| Area | What changed |
+| --- | --- |
+| Style Settings | A single preset applies the recommended customer-delivery PDF combination. |
+| Screen PDFs | Body, table, callout, and label tone are tuned for mail, Teams, and browser preview reading. |
+| Link output | Long URLs prefer reference-first output so the body does not become noisy. |
+
 ## v3.1.49 — 설정 제목과 검색 Focus Rim / Settings Headings and Search Focus Rim
 
 Style Settings의 그룹 제목과 Obsidian 설정 본문 섹션 제목을 같은 liquid header bar 언어로 정리했습니다. 단축키 검색·검색 패널 입력창의 강한 파란 focus rim은 추천안 B `Liquid Aqua`로 낮춰, 입력 상태는 분명하게 보이되 설정 화면 전체의 회색·흰색 glass 톤을 해치지 않도록 조정했습니다.

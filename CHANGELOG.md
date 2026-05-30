@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.70
+
+- fix: Settings > Appearance > Manage community-theme search에서 선택된 `Owen Graphite` 카드가 어두운 graphite 배경과 near-black 텍스트로 겹쳐 보이던 상태를 밝은 frosted glass 선택 카드로 정리했습니다.
+- docs: README 첫 화면을 영어 단일 소개로 재구성하고, v3.1.70 기준으로 디자인/기능 신호와 최신 하이라이트가 바로 보이도록 갱신했습니다.
+- guard: README 영어 `Version`/`Baseline` 행을 release metadata audit가 인식하도록 보강하고, CDP 런타임 확인, source usage map, core principles, release check, runtime evidence strict 검증을 통과했습니다.
+
 ## v3.1.69
 
 - polish: 파일 탐색기 active 하위 폴더 진입 전 여백을 살짝 늘려 상위 폴더와 active 문서박스 사이의 계층 리듬을 더 안정화했습니다.

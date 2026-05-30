@@ -40,6 +40,12 @@ def assert_contains(path: str, needle: str) -> None:
         raise AssertionError(f"{path} does not contain {needle!r}")
 
 
+def assert_contains_any(path: str, needles: list[str]) -> None:
+    text = read_text(path)
+    if not any(needle in text for needle in needles):
+        raise AssertionError(f"{path} does not contain any of {needles!r}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tag", help="Optional numeric git/GitHub tag to compare with manifest version.")
@@ -58,8 +64,11 @@ def main() -> int:
             raise AssertionError(f"CHANGELOG latest v{changelog_version} does not match manifest {version}")
 
         assert_contains("README.md", f"**Owen Graphite v{version}**")
-        assert_contains("README.md", f"| **버전** | `{version}` |")
-        assert_contains("README.md", f"| **베이스라인 / 롤백 기준** | `v{version}` |")
+        assert_contains_any("README.md", [f"| **Version** | `{version}` |", f"| **버전** | `{version}` |"])
+        assert_contains_any("README.md", [
+            f"| **Baseline / rollback target** | `v{version}` |",
+            f"| **베이스라인 / 롤백 기준** | `v{version}` |",
+        ])
         assert_contains("README.md", f"Owen-Graphite-{version}.zip")
         assert_contains("screenshots/README.md", f"Owen Graphite v{version}")
         assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"latest: v{version}")
