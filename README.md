@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.71** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.72** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.71` |
-| **Baseline / rollback target** | `v3.1.71` |
+| **Version** | `3.1.72` |
+| **Baseline / rollback target** | `v3.1.72` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -79,6 +79,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.72 — File Explorer CDP Spacing Correction
+
+This release uses CDP runtime evidence to tighten file explorer folder indentation while keeping Obsidian's inline tree geometry intact, so child documents now sit visually behind their folder instead of drifting ahead of it.
+
+| Area | What changed |
+| --- | --- |
+| Folder spacing | Top-level and nested folder title content is visually pulled left without overriding Obsidian inline `!important` geometry. |
+| Child documents | Nested document rows now begin after the owning folder label, preserving a clearer tree rhythm. |
+| Action menu | The file explorer action menu is aligned higher and further left so it reads as part of the pane header. |
+| Release guard | CDP runtime measurement, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
 
 ### v3.1.71 — File Explorer Codeblock Card Focus
 
@@ -137,7 +148,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.71.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.72.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -146,7 +157,7 @@ Download **`Owen-Graphite-3.1.71.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.71.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.72.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

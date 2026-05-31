@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.72
+
+- polish: 파일 탐색기 상단 action 메뉴 위치를 위쪽/왼쪽 정렬로 조정해 폴더 목록과 더 자연스럽게 붙도록 다듬었습니다.
+- fix: Obsidian inline `!important` indent를 CDP computed style로 확인하고, 폴더 title content 보정으로 상위/하위 폴더 왼쪽 공백을 줄였습니다.
+- fix: 하위 폴더 내부 문서가 폴더명보다 앞쪽에 보이지 않도록 파일 행과 폴더 행의 보이는 x 위치를 정렬했습니다.
+- guard: CDP 런타임 재측정, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.71
 
 - polish: 파일 탐색기에서 선택 문서의 직접 부모 폴더만 코드블럭 카드로 묶이도록 보존하면서, 최상위 직접 부모 폴더에도 같은 카드 규칙을 적용했습니다.

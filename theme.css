@@ -15213,6 +15213,8 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     --ogd-chrome-hairline: rgba(203, 213, 225, 0.14);
   }
 
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-header { min-height: 40px; padding: 6px 8px 2px; } body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container { display: flex; align-items: center; justify-content: flex-start; gap: 6px; width: 100%; margin: 0; padding: 0; }
+
   body:not(.is-mobile).ogd-glass-off {
     --ogd-tab-glass-bg: var(--tab-background-active) ;
     --ogd-tab-glass-bg-hover: var(--background-modifier-hover) ;
@@ -15494,18 +15496,23 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   body:not(.is-mobile) .nav-folder-title[data-path]:not([data-path*="/"]) .nav-folder-title-content {
     display: block;
     flex: 1 1 auto;
-    width: 100%;
     max-width: 100%;
     color: var(--ogd-text-subtle, #475569);
     font-size: 12.5px;
     font-weight: 760;
     letter-spacing: 0.02em;
-    padding-left: 30px;
+    margin-left: -4px;
+    width: calc(100% + 4px);
+    padding-left: 26px;
   }
 
   body:not(.is-mobile) .nav-folder-title[data-path*="/"] .nav-folder-title-content {
     font-size: 13.25px;
     font-weight: 760;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder-children .nav-folder-title[data-path*="/"] .nav-folder-title-content {
+    margin-left: -16px; width: calc(100% + 16px); padding-left: 26px;
   }
 
   body:not(.is-mobile) .nav-file-title[data-path] .nav-file-title-content {
@@ -15551,7 +15558,7 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content {
-    display: inline-flex; align-items: center; justify-content: center; flex: 0 1 auto; width: auto; max-width: calc(100% - 20px); min-width: 0; height: 20px; min-height: 20px; padding: 0 8px 0 16px; overflow: hidden; text-align: center; text-overflow: ellipsis; white-space: nowrap; color: #25364b; font-weight: 820; line-height: 20px; --ogd-nav-hover-bg: var(--ogd-surface-transparent, transparent); --ogd-nav-hover-border: var(--ogd-surface-transparent, transparent); --ogd-nav-hover-shadow: var(--ogd-shadow-none, none); --ogd-glass-filter-soft: none;
+    display: inline-flex; align-items: center; justify-content: center; flex: 0 1 auto; width: auto; max-width: calc(100% - 20px); min-width: 0; height: 20px; min-height: 20px; margin-left: 0; padding: 0 8px 0 16px; overflow: hidden; text-align: center; text-overflow: ellipsis; white-space: nowrap; color: #25364b; font-weight: 820; line-height: 20px; --ogd-nav-hover-bg: var(--ogd-surface-transparent, transparent); --ogd-nav-hover-border: var(--ogd-surface-transparent, transparent); --ogd-nav-hover-shadow: var(--ogd-shadow-none, none); --ogd-glass-filter-soft: none;
   }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content::before { left: 1px; }
