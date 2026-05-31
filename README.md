@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.70** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.71** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.70` |
-| **Baseline / rollback target** | `v3.1.70` |
+| **Version** | `3.1.71` |
+| **Baseline / rollback target** | `v3.1.71` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -79,6 +79,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.71 — File Explorer Codeblock Card Focus
+
+The current stable release refines the file explorer's selected-document folder card so the direct parent folder reads like a compact codeblock container while the selected document row gains clearer glass-filled focus.
+
+| Area | What changed |
+| --- | --- |
+| Direct parent card | The selected document's direct parent folder becomes the codeblock card, including top-level direct parents. |
+| Click hierarchy | Folder contents follow click expansion state; hover-only child listing and flattened hierarchy rules stay out. |
+| Liquid glass | Card shell, header, document-list background, and active document row now carry a stronger but still readable glass fill. |
+| Release guard | Source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
 
 ### v3.1.70 — Community Theme Search Card And README Refresh
 
@@ -126,7 +137,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.70.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.71.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -135,7 +146,7 @@ Download **`Owen-Graphite-3.1.70.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.70.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.71.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

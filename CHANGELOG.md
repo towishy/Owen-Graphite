@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.71
+
+- polish: 파일 탐색기에서 선택 문서의 직접 부모 폴더만 코드블럭 카드로 묶이도록 보존하면서, 최상위 직접 부모 폴더에도 같은 카드 규칙을 적용했습니다.
+- polish: 코드블럭 카드의 liquid-glass 외곽, 헤더, 본문 배경과 선택 문서 row의 glass-filled active 상태를 더 선명하게 조정했습니다.
+- fix: 하위 폴더 문서 리스트가 hover가 아니라 클릭 확장 상태를 따르도록 정리하고, 카드 본문 흰 배경이 좌우 border 안쪽까지 이어지게 했습니다.
+- guard: source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.70
 
 - fix: Settings > Appearance > Manage community-theme search에서 선택된 `Owen Graphite` 카드가 어두운 graphite 배경과 near-black 텍스트로 겹쳐 보이던 상태를 밝은 frosted glass 선택 카드로 정리했습니다.
