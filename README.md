@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.72** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.73** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.72` |
-| **Baseline / rollback target** | `v3.1.72` |
+| **Version** | `3.1.73` |
+| **Baseline / rollback target** | `v3.1.73` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -79,6 +79,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.73 — Document Title Pill Blue Round Glass
+
+This release fixes bottom document title clipping with CDP-measured spacing, then aligns the title pill with the right-side status chips using a softer blue round glass treatment.
+
+| Area | What changed |
+| --- | --- |
+| Title clipping | The right status reserve now matches the actual status chip footprint so long document titles keep their available width. |
+| Title pill style | The document title pill uses a soft rounded glass rim, subtle blue tint, and lower shadow to match the right status icons. |
+| Token budget | New blue tint uses existing rim/tint tokens instead of increasing raw aqua color usage. |
+| Release guard | CDP runtime measurement, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
 
 ### v3.1.72 — File Explorer CDP Spacing Correction
 
@@ -148,7 +159,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.72.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.73.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -157,7 +168,7 @@ Download **`Owen-Graphite-3.1.72.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.72.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.73.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

@@ -7,7 +7,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 18500
+- Source CSS lines: 18502
 - Parsed CSS rules: 2427
 - Selector parts: 3820
 - Hard core-owner violations: 10
@@ -172,7 +172,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 532 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:6, print-pdf:2, reading-rendered:27, table:36, workspace-chrome:16 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2081 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:260, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:208, reading-rendered:261, table:125, workspace-chrome:52 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
 | 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 263 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:23 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
-| 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1081 | overlay-menu-search | cm6:6, code:6, overlay-search:35, reading-rendered:6, table:32, workspace-chrome:45 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
+| 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1083 | overlay-menu-search | cm6:6, code:6, overlay-search:35, reading-rendered:6, table:32, workspace-chrome:45 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 1051 | overlay-menu-search | code:4, overlay-search:62, print-pdf:1, reading-rendered:4, table:63, workspace-chrome:26 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
 | 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 979 | workspace-chrome | overlay-search:10, table:143, workspace-chrome:190 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
 | 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 170 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:11, overlay-search:7, reading-rendered:2, table:4, workspace-chrome:7 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |

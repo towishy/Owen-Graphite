@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.73
+
+- fix: 하단 문서 제목 pill이 오른쪽 상태 영역을 과하게 예약해 긴 제목이 짤리던 문제를 CDP 측정 기준으로 보정했습니다.
+- polish: 문서 제목 pill을 오른쪽 상태 아이콘/chip과 맞춘 부드러운 푸른빛 라운드 glass 스타일로 정리하고, 강한 그림자와 거친 rim을 낮췄습니다.
+- guard: source usage map, CSS compatibility budget, core principles, release check, release ZIP audit, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.72
 
 - polish: 파일 탐색기 상단 action 메뉴 위치를 위쪽/왼쪽 정렬로 조정해 폴더 목록과 더 자연스럽게 붙도록 다듬었습니다.
