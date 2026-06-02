@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.75
+
+- fix: 하단 문서 제목 pill이 긴 제목에서 오른쪽 단어/문자/status chip 영역과 겹치지 않도록 status 예약폭을 viewport 기반으로 보정했습니다.
+- polish: bottom document frame의 status chip 폭 상한을 넓혀 4자리 이상 단어 수와 문자 수가 더 안정적으로 보이게 했습니다.
+- guard: CDP 런타임 확인, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.74
 
 - fix: 커뮤니티 플러그인 검색 모달의 선택 카드, `설치됨` badge, `탐색`/`업데이트 확인` 버튼을 푸른빛 liquid-glass 스타일로 정리해 검은 배경 가시성 문제를 해결했습니다.

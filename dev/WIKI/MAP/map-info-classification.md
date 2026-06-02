@@ -4,7 +4,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.74`
+- Version: `3.1.75`
 - Source: `src/entry.css`
 - Modules: 26
 - Selectors: 2436
