@@ -2,18 +2,18 @@
   "schema": "owen-graphite/source-usage-map/1",
   "moduleCount": 26,
   "sourceLines": 18502,
-  "rules": 2427,
-  "selectorParts": 3820,
+  "rules": 2433,
+  "selectorParts": 3828,
   "labelTotals": {
     "callout-list": 429,
     "cm6": 325,
     "code": 946,
     "lp-html-table": 83,
     "lp-markdown-table-widget-reference": 94,
-    "overlay-search": 275,
+    "overlay-search": 281,
     "print-pdf": 467,
     "reading-rendered": 1108,
-    "table": 1109,
+    "table": 1115,
     "workspace-chrome": 591
   },
   "hardViolations": [
@@ -436,11 +436,11 @@
       "sourceLines": 439,
       "bundleStartLine": 9335,
       "bundleEndLine": 9764,
-      "rules": 86,
-      "selectorParts": 180,
+      "rules": 92,
+      "selectorParts": 188,
       "labels": {
-        "overlay-search": 51,
-        "table": 68
+        "overlay-search": 57,
+        "table": 74
       },
       "ownerSurfaces": [
         "settings-controls"
@@ -5257,7 +5257,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 103,
+      "line": 99,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5267,7 +5267,17 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 109,
+      "line": 100,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": ".setting-item-control button.mod-cta:is(:hover, :focus-visible), .modal .setting-item-control button.mod-cta:is(:hover, :focus-visible)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 106,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5277,7 +5287,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 115,
+      "line": 112,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5287,7 +5297,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 121,
+      "line": 118,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5297,7 +5307,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 126,
+      "line": 123,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5307,7 +5317,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 134,
+      "line": 131,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5317,7 +5327,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 135,
+      "line": 132,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5327,13 +5337,23 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 138,
+      "line": 135,
       "context": "",
       "labels": [
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile) .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"])"
+      "selector": "body:not(.is-mobile) .modal.mod-community-plugin :is(.search-input-container, .search-input-container input[type=\"search\"], .search-input-container input[type=\"text\"]):is(:focus, :focus-visible, :focus-within)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 137,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile) :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item :is(.community-item-badge, .flair.mod-pop)"
     },
     {
       "module": "src/chrome/33-settings-controls.css",
@@ -5343,7 +5363,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile) .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"]) :is(.community-item-name, .community-item-author, .community-item-downloads, .community-item-downloads-text, .flair)"
+      "selector": "body:not(.is-mobile) :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"])"
     },
     {
       "module": "src/chrome/33-settings-controls.css",
@@ -5353,7 +5373,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile) .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"]) .community-item-badge"
+      "selector": "body:not(.is-mobile) :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"]) :is(.community-item-name, .community-item-author, .community-item-downloads, .community-item-downloads-text)"
     },
     {
       "module": "src/chrome/33-settings-controls.css",
@@ -5363,11 +5383,21 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile) .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"]) .flair.mod-pop"
+      "selector": "body:not(.is-mobile) :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"]) :is(.community-item-badge, .flair)"
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 164,
+      "line": 142,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile) :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"]) .flair.mod-pop"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 165,
       "context": "",
       "labels": [
         "table"
@@ -5376,7 +5406,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 169,
+      "line": 170,
       "context": "",
       "labels": [
         "table"
@@ -5385,7 +5415,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 174,
+      "line": 175,
       "context": "",
       "labels": [
         "table"
@@ -5394,7 +5424,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 179,
+      "line": 180,
       "context": "",
       "labels": [
         "table"
@@ -5403,7 +5433,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 184,
+      "line": 185,
       "context": "",
       "labels": [
         "table"
@@ -5412,7 +5442,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 189,
+      "line": 190,
       "context": "",
       "labels": [
         "table"
@@ -5421,7 +5451,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 196,
+      "line": 197,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5431,7 +5461,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 201,
+      "line": 202,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5441,7 +5471,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 206,
+      "line": 207,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5451,7 +5481,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 212,
+      "line": 213,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5461,7 +5491,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 217,
+      "line": 218,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5471,7 +5501,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 221,
+      "line": 222,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5481,7 +5511,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 228,
+      "line": 229,
       "context": "",
       "labels": [
         "table"
@@ -5490,7 +5520,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 232,
+      "line": 233,
       "context": "",
       "labels": [
         "table"
@@ -5499,7 +5529,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 235,
+      "line": 236,
       "context": "",
       "labels": [
         "table"
@@ -5508,7 +5538,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 240,
+      "line": 241,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5518,7 +5548,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 244,
+      "line": 245,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5528,7 +5558,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 247,
+      "line": 248,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5538,7 +5568,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 250,
+      "line": 251,
       "context": "",
       "labels": [
         "table"
@@ -5547,7 +5577,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 256,
+      "line": 257,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5557,7 +5587,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 260,
+      "line": 261,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5567,7 +5597,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 264,
+      "line": 265,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5577,7 +5607,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 268,
+      "line": 269,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5587,7 +5617,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 271,
+      "line": 272,
       "context": "",
       "labels": [
         "table"
@@ -5596,7 +5626,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 276,
+      "line": 277,
       "context": "",
       "labels": [
         "table"
@@ -5605,7 +5635,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 281,
+      "line": 278,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5615,7 +5645,17 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 287,
+      "line": 279,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": ".theme-dark .setting-item-control button.mod-cta:is(:hover, :focus-visible), .theme-dark .modal .setting-item-control button.mod-cta:is(:hover, :focus-visible)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 285,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5625,7 +5665,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 293,
+      "line": 291,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5635,7 +5675,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 299,
+      "line": 297,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5645,7 +5685,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 300,
+      "line": 298,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5655,7 +5695,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 301,
+      "line": 299,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5665,7 +5705,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 303,
+      "line": 301,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5675,7 +5715,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 304,
+      "line": 302,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5685,7 +5725,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 305,
+      "line": 303,
       "context": "",
       "labels": [
         "overlay-search",
@@ -5695,23 +5735,23 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
+      "line": 305,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-community-plugin :is(.search-input-container, .search-input-container input[type=\"search\"], .search-input-container input[type=\"text\"]):is(:focus, :focus-visible, :focus-within)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
       "line": 307,
       "context": "",
       "labels": [
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"])"
-    },
-    {
-      "module": "src/chrome/33-settings-controls.css",
-      "line": 308,
-      "context": "",
-      "labels": [
-        "overlay-search",
-        "table"
-      ],
-      "selector": "body:not(.is-mobile).theme-dark .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"]) .community-item-badge"
+      "selector": "body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item :is(.community-item-badge, .flair.mod-pop)"
     },
     {
       "module": "src/chrome/33-settings-controls.css",
@@ -5721,11 +5761,31 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile).theme-dark .modal.mod-community-theme .community-item:is(.is-selected, [aria-selected=\"true\"]) .flair.mod-pop"
+      "selector": "body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"])"
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 314,
+      "line": 310,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"]) :is(.community-item-badge, .flair)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 311,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-community-plugin, .modal .community-modal) .community-item:is(.is-selected, [aria-selected=\"true\"]) .flair.mod-pop"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 316,
       "context": "",
       "labels": [
         "table"
@@ -5734,7 +5794,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 318,
+      "line": 320,
       "context": "",
       "labels": [
         "table"
@@ -5743,7 +5803,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 322,
+      "line": 324,
       "context": "",
       "labels": [
         "table"
@@ -5752,7 +5812,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 325,
+      "line": 327,
       "context": "",
       "labels": [
         "table"
@@ -5761,7 +5821,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 328,
+      "line": 330,
       "context": "",
       "labels": [
         "table"
@@ -5770,7 +5830,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 331,
+      "line": 333,
       "context": "",
       "labels": [
         "table"
@@ -5779,7 +5839,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 335,
+      "line": 337,
       "context": "",
       "labels": [
         "table"
@@ -5788,7 +5848,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 338,
+      "line": 340,
       "context": "",
       "labels": [
         "table"
@@ -5797,7 +5857,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 342,
+      "line": 344,
       "context": "",
       "labels": [
         "table"
@@ -5806,7 +5866,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 346,
+      "line": 348,
       "context": "",
       "labels": [
         "table"
@@ -5815,7 +5875,7 @@
     },
     {
       "module": "src/chrome/33-settings-controls.css",
-      "line": 349,
+      "line": 351,
       "context": "",
       "labels": [
         "table"
