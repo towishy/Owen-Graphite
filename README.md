@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.75** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.76** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.75` |
-| **Baseline / rollback target** | `v3.1.75` |
+| **Version** | `3.1.76` |
+| **Baseline / rollback target** | `v3.1.76` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -79,6 +79,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.76 — Community Plugin Search Focus Rim
+
+This release keeps the community plugin search modal in the Owen Graphite glass language by removing the cyan focus rim from the search row while giving the install CTA a quieter blue glass fill.
+
+| Area | What changed |
+| --- | --- |
+| Search focus | The plugin search field no longer adds an outer cyan rim through the parent setting row. |
+| Install CTA | The `설치` button uses a blue-tinted liquid-glass fill with a neutral slate rim instead of a dark block. |
+| Selected plugin cards | Selected plugin cards and installed badges keep the soft aqua fill but use neutral graphite rims. |
+| Release guard | CDP runtime verification, source usage map, CSS compatibility budget, core principles, release check, and runtime evidence strict audit passed. |
 
 ### v3.1.73 — Document Title Pill Blue Round Glass
 
@@ -159,7 +170,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.75.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.76.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -168,7 +179,7 @@ Download **`Owen-Graphite-3.1.75.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.75.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.76.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

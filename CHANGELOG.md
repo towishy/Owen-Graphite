@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.76
+
+- fix: 커뮤니티 플러그인 검색창 포커스 시 조상 setting row에 생기던 cyan rim/halo를 중립 graphite focus shadow로 낮췄습니다.
+- polish: 커뮤니티 플러그인 상세의 `설치` CTA를 푸른빛 liquid-glass fill과 중립 slate rim으로 정리했습니다.
+- guard: CDP 런타임 확인, source usage map, CSS compatibility budget, core principles, release check, runtime evidence strict 검증을 통과했습니다.
+
 ## v3.1.75
 
 - fix: 하단 문서 제목 pill이 긴 제목에서 오른쪽 단어/문자/status chip 영역과 겹치지 않도록 status 예약폭을 viewport 기반으로 보정했습니다.
