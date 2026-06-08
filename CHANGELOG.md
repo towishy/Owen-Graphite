@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.77
+
+- polish: PNG export 등 Obsidian Notice popup을 푸른빛 liquid-glass tint로 조정해 흰/회색 내부 그라데이션보다 더 자연스럽게 보이도록 다듬었습니다.
+- fix: Notice popup 뒤쪽의 과한 drop shadow를 제거하고, 후순위 liquid-glass 전역 selector가 다시 그림자를 덮지 않도록 Notice를 전용 소유 규칙으로 분리했습니다.
+- guard: CDP 런타임 확인, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.76
 
 - fix: 커뮤니티 플러그인 검색창 포커스 시 조상 setting row에 생기던 cyan rim/halo를 중립 graphite focus shadow로 낮췄습니다.
