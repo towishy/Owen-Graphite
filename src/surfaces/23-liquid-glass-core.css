@@ -171,7 +171,7 @@
   }
 
   /* Final floating-surface owner: earlier modules keep legacy baselines, this block wins the live chrome. */
-  body:not(.is-mobile) :is(.prompt, .modal, .popover, .popover.hover-popover, .hover-popover .markdown-embed, .hover-popover .markdown-embed-content, .menu, [role="menu"], .suggestion-container, .tooltip, [role="tooltip"], .notice, .notice-container .notice) {
+  body:not(.is-mobile) :is(.prompt, .modal, .popover, .popover.hover-popover, .hover-popover .markdown-embed, .hover-popover .markdown-embed-content, .menu, [role="menu"], .suggestion-container, .tooltip, [role="tooltip"]) {
     --background-modifier-message: var(--ogd-surface-transparent, transparent);
     --text-on-accent: var(--text-normal);
     background: var(--ogd-lg-surface-bg);
