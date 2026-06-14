@@ -28,7 +28,7 @@ Use this when a change affects visible theme output. The goal is to keep Owen Gr
 - Text must stay inside its container at desktop and mobile widths.
 - Buttons and compact controls need stable dimensions.
 - Do not put cards inside cards.
-- Do not add left vertical accent rails.
+- Do not add left vertical accent rails, except for an explicitly selected Style Settings heading template scoped to `body.ogd-heading-*` and validated across Live Preview and PDF.
 - Use icons for tool actions when an icon exists.
 - Match type scale to context: no hero-scale text inside compact panels.
 

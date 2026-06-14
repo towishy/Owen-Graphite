@@ -324,31 +324,28 @@
    ============================================================ */
 
 /* Final title-rule override for Obsidian PDF export cascade.
-   v1.8.66 — Disabled for H1 (Sample B kicker style); kept for first-of-type H2. */
-body .markdown-rendered h2:first-of-type,
-body .markdown-preview-view.markdown-rendered h2:first-of-type,
-body .markdown-reading-view .markdown-rendered h2:first-of-type,
-body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+  v3.1.78 — PDF heading gradient rule removed; keep only spacing closure. */
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h2:first-of-type,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h2:first-of-type,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h2:first-of-type {
   display: inline-block;
   width: auto;
   max-width: 100%;
-  padding-bottom: 0.52em;
+  padding-bottom: 0.28em;
   border: var(--ogd-border-none, 0);
-  border-bottom: 4px solid #0f766e;
-  border-image-source: linear-gradient(90deg, #0f766e, #0284c7);
-  border-image-slice: 1;
-  border-image-width: 0 0 4px 0;
-  border-image-repeat: stretch;
+  border-bottom: 0;
+  border-image: none;
   background: var(--ogd-surface-transparent, transparent);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
 /* Reset H1 — Sample B kicker style takes precedence */
-body .markdown-rendered h1,
-body .markdown-preview-view.markdown-rendered h1,
-body .markdown-reading-view .markdown-rendered h1,
-body.ogd-report-mode .markdown-rendered > h1:first-of-type {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h1,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h1,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h1,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h1:first-of-type {
   display: block;
   width: auto;
   max-width: 100%;
@@ -362,23 +359,23 @@ body.ogd-report-mode .markdown-rendered > h1:first-of-type {
   padding-bottom: 0.2em;
 }
 
-body .markdown-rendered h2:first-of-type,
-body .markdown-preview-view.markdown-rendered h2:first-of-type,
-body .markdown-reading-view .markdown-rendered h2:first-of-type,
-body.ogd-report-mode .markdown-rendered > h2:first-of-type {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h2:first-of-type,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h2:first-of-type,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h2:first-of-type {
   padding-top: 34px;
   border-top: 1px solid #edf2f7;
   box-shadow: 0 -1px 0 #f8fafc;
 }
 
-body .markdown-rendered h1::after,
-body .markdown-preview-view.markdown-rendered h1::after,
-body .markdown-reading-view .markdown-rendered h1::after,
-body.ogd-report-mode .markdown-rendered > h1:first-of-type::after,
-body .markdown-rendered h2:first-of-type::after,
-body .markdown-preview-view.markdown-rendered h2:first-of-type::after,
-body .markdown-reading-view .markdown-rendered h2:first-of-type::after,
-body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h1::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h1::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h1::after,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h1:first-of-type::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h2:first-of-type::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h2:first-of-type::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h2:first-of-type::after,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h2:first-of-type::after {
   display: none;
   content: none;
 }
@@ -631,9 +628,9 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered), body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, li, dd, dt, blockquote):not(table *) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.92em; margin-bottom: 0.62em; padding-top: 0.34em; padding-bottom: 0.28em; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; padding: 0.20em 0.44em 0.24em; border-color: transparent; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.84), rgba(241, 245, 249, 0.50)); box-shadow: none; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 { color: #172033; text-decoration-color: rgba(14, 116, 144, 0.52); text-decoration-thickness: 1.5px; }
+  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.92em; margin-bottom: 0.62em; padding-top: 0.34em; padding-bottom: 0.28em; }
+  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; padding: 0.20em 0.44em 0.24em; border-color: transparent; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.84), rgba(241, 245, 249, 0.50)); box-shadow: none; }
+  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 { color: #172033; text-decoration-color: rgba(14, 116, 144, 0.52); text-decoration-thickness: 1.5px; }
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table { --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.46); --ogd-table-border: rgba(148, 163, 184, 0.42); --ogd-table-cell-border: rgba(203, 213, 225, 0.90); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef5); --ogd-table-row-even: rgba(248, 250, 252, 0.84); font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); border-color: var(--ogd-table-border); }
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table th { border-bottom: 2px solid #b8c6d6; background: var(--ogd-table-head-bg); color: #0f172a; font-weight: 850; }
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table :is(th, td) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
@@ -1726,7 +1723,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
 
   /* v2.30.4 - Forbidden left vertical bar removal (PDF/print parity).
      Mirrors the screen-side global force-disable in 10b. */
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
     border-left: 0;
     border-inline-start: 0;
@@ -1734,7 +1731,7 @@ body.ogd-report-mode .markdown-rendered > h2:first-of-type::after {
   }
 
   /* v2.30.4b - kill PDF pseudo-element left accent bars (preserve auto-number content) */
-  body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .ogd-executive-summary, .ogd-action-summary)::before {
     border-left: 0;
     border-inline-start: 0;

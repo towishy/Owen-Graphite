@@ -184,6 +184,39 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
   color: var(--ogd-line-soft, #e5e7eb);
 }
+
+body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-text: var(--ogd-text-inverted, #f8fafc);
+  --ogd-heading-template-subtext: var(--ogd-line-soft, #e5e7eb);
+  --ogd-heading-template-muted: var(--ogd-text-soft, #94a3b8);
+  --ogd-heading-template-border: rgba(71, 85, 105, 0.72);
+  --ogd-heading-template-border-soft: rgba(71, 85, 105, 0.62);
+  --ogd-heading-template-h1-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.50));
+  --ogd-heading-template-h2-bg: rgba(15, 23, 42, 0.28);
+  --ogd-heading-template-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 14px 28px rgba(0, 0, 0, 0.26);
+  --ogd-heading-template-h3-decoration: rgba(71, 85, 105, 0.90);
+  --ogd-heading-template-h4-decoration: rgba(51, 65, 85, 0.96);
+}
+
+body.theme-dark.ogd-heading-printclean :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered),
+body.theme-dark.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #cbd5e1;
+  --ogd-heading-template-rule: linear-gradient(90deg, rgba(203, 213, 225, 0.54), rgba(71, 85, 105, 0.58), transparent);
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-shadow: none;
+}
+
+body.theme-dark.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered),
+body.theme-dark.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered),
+body.theme-dark.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #7dd3fc;
+  --ogd-heading-template-rule: linear-gradient(90deg, color-mix(in srgb, #7dd3fc 54%, transparent), rgba(71, 85, 105, 0.58), transparent);
+}
+
+body.theme-dark.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-h1-border-left: 6px solid color-mix(in srgb, #7dd3fc 34%, transparent);
+  --ogd-heading-template-h1-border-right: 6px solid color-mix(in srgb, #7dd3fc 34%, transparent);
+}
 .theme-dark .markdown-rendered .callout {
   background: #25272d;
   border-color: #353841;

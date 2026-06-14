@@ -384,6 +384,352 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   width: min(128px, 20%);
 }
 
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-text: var(--ogd-text-strong, #111827);
+  --ogd-heading-template-subtext: var(--ogd-text-slate, #334155);
+  --ogd-heading-template-muted: var(--ogd-text-subtle, #475569);
+  --ogd-heading-template-accent: #0284c7;
+  --ogd-heading-template-accent-soft: rgba(14, 165, 233, 0.22);
+  --ogd-heading-template-border: rgba(203, 213, 225, 0.76);
+  --ogd-heading-template-border-soft: rgba(226, 232, 240, 0.86);
+  --ogd-heading-template-h1-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.72));
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 10px 24px rgba(15, 23, 42, 0.06);
+  --ogd-heading-template-radius: 8px;
+  --ogd-heading-template-h1-padding: 0.78em 0.66em 0.58em;
+  --ogd-heading-template-h1-border-left: 1px solid var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-right: 1px solid var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-top: 1px solid var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-bottom: 1px solid var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-rule-height: 2px;
+  --ogd-heading-template-h2-padding: 0.38em 0 0.42em;
+  --ogd-heading-template-h2-padding-left: 0;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1px solid var(--ogd-heading-template-border-soft);
+  --ogd-heading-template-h2-radius: 0;
+  --ogd-heading-template-h2-rule-width: min(260px, 42%);
+  --ogd-heading-template-h3-decoration: rgba(203, 213, 225, 0.78);
+  --ogd-heading-template-h4-decoration: rgba(226, 232, 240, 0.92);
+}
+
+body.ogd-heading-printclean :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #64748b;
+  --ogd-heading-template-accent-soft: rgba(148, 163, 184, 0.18);
+  --ogd-heading-template-border: rgba(148, 163, 184, 0.74);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-h1-bg: rgba(248, 250, 252, 0.82);
+  --ogd-heading-template-h1-padding: 0.56em 0.64em 0.50em;
+  --ogd-heading-template-h2-bg: rgba(248, 250, 252, 0.42);
+}
+
+body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #2563eb;
+  --ogd-heading-template-accent-soft: rgba(96, 165, 250, 0.18);
+  --ogd-heading-template-border: rgba(191, 219, 254, 0.82);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-h1-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(239, 246, 255, 0.54));
+  --ogd-heading-template-h1-border-top: 3px solid rgba(37, 99, 235, 0.72);
+  --ogd-heading-template-h1-padding: 0.66em 0.64em 0.54em;
+  --ogd-heading-template-h1-rule-height: 0;
+  --ogd-heading-template-h2-border-bottom: 1px solid rgba(191, 219, 254, 0.78);
+}
+
+body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #0284c7;
+  --ogd-heading-template-accent-soft: rgba(14, 165, 233, 0.16);
+  --ogd-heading-template-border: color-mix(in srgb, #bae6fd 82%, transparent);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-h1-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 249, 255, 0.58));
+  --ogd-heading-template-h1-border-left: 6px solid rgba(14, 165, 233, 0.44);
+  --ogd-heading-template-h1-border-right: 6px solid rgba(14, 165, 233, 0.44);
+  --ogd-heading-template-h1-padding: 0.68em 0.78em 0.54em;
+  --ogd-heading-template-h2-border-left: 3px solid rgba(14, 165, 233, 0.42);
+  --ogd-heading-template-h2-padding-left: 0.58em;
+}
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #475569;
+  --ogd-heading-template-accent-soft: rgba(100, 116, 139, 0.12);
+  --ogd-heading-template-border: rgba(203, 213, 225, 0.74);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 1px solid rgba(203, 213, 225, 0.84);
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-h1-padding: 0.48em 0 0.48em;
+  --ogd-heading-template-h2-padding-left: 2.05em;
+}
+
+body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #0ea5e9;
+  --ogd-heading-template-accent-soft: rgba(14, 165, 233, 0.20);
+  --ogd-heading-template-border: color-mix(in srgb, #bae6fd 78%, transparent);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-h1-bg: linear-gradient(180deg, rgba(240, 249, 255, 0.74), rgba(255, 255, 255, 0.78));
+  --ogd-heading-template-h1-border-top: 6px solid rgba(14, 165, 233, 0.50);
+  --ogd-heading-template-h1-padding: 0.72em 0.68em 0.56em;
+  --ogd-heading-template-h2-border-left: 6px solid rgba(14, 165, 233, 0.48);
+  --ogd-heading-template-h2-padding-left: 0.62em;
+  --ogd-heading-template-h2-radius: 8px;
+  --ogd-heading-template-h2-bg: rgba(240, 249, 255, 0.42);
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  padding: var(--ogd-heading-template-h1-padding);
+  border-top: var(--ogd-heading-template-h1-border-top);
+  border-right: var(--ogd-heading-template-h1-border-right);
+  border-bottom: var(--ogd-heading-template-h1-border-bottom);
+  border-left: var(--ogd-heading-template-h1-border-left);
+  border-radius: var(--ogd-heading-template-radius);
+  background: var(--ogd-heading-template-h1-bg);
+  box-shadow: var(--ogd-heading-template-shadow);
+  color: var(--ogd-heading-template-text);
+  text-decoration: none;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  color: var(--ogd-heading-template-accent);
+  text-decoration: none;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+  content: none;
+  display: none;
+  position: static;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 0;
+  height: 0;
+  border: 0;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-heading-template-rule);
+  box-shadow: none;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  padding: var(--ogd-heading-template-h2-padding);
+  padding-left: var(--ogd-heading-template-h2-padding-left);
+  border-left: var(--ogd-heading-template-h2-border-left);
+  border-bottom: var(--ogd-heading-template-h2-border-bottom);
+  border-radius: var(--ogd-heading-template-h2-radius);
+  background: var(--ogd-heading-template-h2-bg);
+  color: var(--ogd-heading-template-text);
+  text-decoration: none;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+  content: none;
+  display: none;
+  position: static;
+  left: auto;
+  bottom: auto;
+  width: 0;
+  height: 0;
+  border: 0;
+  border-radius: var(--ogd-radius-pill, 999px);
+  background: var(--ogd-heading-template-rule);
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  border-left: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ogd-heading-template-subtext);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.20em;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+  text-decoration-color: var(--ogd-heading-template-h3-decoration);
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  color: var(--ogd-heading-template-muted);
+  text-decoration-color: var(--ogd-heading-template-h4-decoration);
+}
+
+body.ogd-heading-printclean :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  width: min(100%, 34em);
+  padding: 0.76em 0.68em 0.58em;
+  border: 1px solid rgba(148, 163, 184, 0.78);
+  border-radius: 4px;
+  background: #f8fafc;
+  box-shadow: none;
+  font-size: 2.05em;
+}
+
+body.ogd-heading-printclean :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  top: 0.50em;
+  left: 0.72em;
+  color: #64748b;
+}
+
+body.ogd-heading-printclean :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2,
+body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: block;
+  width: min(26em, 68%);
+  border-bottom: 1px solid #94a3b8;
+  background: transparent;
+}
+
+body.ogd-heading-printclean :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+  display: block;
+  width: min(14em, 38%);
+  border-bottom: 1px solid #cbd5e1;
+  text-decoration: none;
+}
+
+body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  padding: 0.62em 0 0.52em;
+  border: 0;
+  border-top: 3px solid #2563eb;
+  border-bottom: 1px solid #dbeafe;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 2.08em;
+}
+
+body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: none;
+  display: none;
+}
+
+body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  width: min(18em, 52%);
+  border-bottom: 2px solid #60a5fa;
+}
+
+body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  padding: 1.02em 4.1em 0.62em;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(#e0f2fe, #e0f2fe) left top / 2.15em 0.36em no-repeat,
+    linear-gradient(#e0f2fe, #e0f2fe) left bottom / 2.15em 0.36em no-repeat,
+    linear-gradient(#e0f2fe, #e0f2fe) left top / 0.48em 100% no-repeat,
+    linear-gradient(#e0f2fe, #e0f2fe) right top / 2.15em 0.36em no-repeat,
+    linear-gradient(#e0f2fe, #e0f2fe) right bottom / 2.15em 0.36em no-repeat,
+    linear-gradient(#e0f2fe, #e0f2fe) right top / 0.48em 100% no-repeat;
+  box-shadow: none;
+  font-size: 2.05em;
+}
+
+body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: "FIELD " counter(ogd-h1-counter, decimal-leading-zero);
+  top: 0.58em;
+  left: 4.1em;
+  color: #0284c7;
+}
+
+body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: block;
+  width: min(18em, 52%);
+  padding-left: 0;
+  border-left: 0;
+  border-bottom: 3px solid rgba(14, 165, 233, 0.56);
+  border-radius: 0;
+  background: transparent;
+}
+
+body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  display: inline-block;
+  min-width: 9em;
+  margin-right: 2em;
+  text-decoration: none;
+}
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+  padding-left: 2.45em;
+  border-left: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  padding-top: 0.34em;
+  border-bottom: 1px solid #dbe3ec;
+  border-radius: 0;
+  font-size: 1.92em;
+}
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::before,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::before {
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  display: inline-block;
+  min-width: 1.8em;
+  color: #64748b;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono", "D2Coding", Consolas, "Courier New", monospace;
+  font-size: 0.62em;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before { content: "01"; }
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before { content: "02"; }
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::before { content: "03"; }
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::before { content: "04"; }
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  width: min(18em, 52%);
+  border-bottom: 1.6px solid #94a3b8;
+}
+
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  text-decoration: none;
+}
+
+body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  padding: 0.96em 0.72em 0.64em;
+  border: 1px solid color-mix(in srgb, #bae6fd 80%, transparent);
+  border-top: 10px solid color-mix(in srgb, #38bdf8 62%, transparent);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(240, 249, 255, 0.74), rgba(255, 255, 255, 0.78));
+  box-shadow: var(--ogd-heading-template-shadow);
+  font-size: 2.05em;
+}
+
+body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: "FOCUS " counter(ogd-h1-counter, decimal-leading-zero);
+  top: 0.56em;
+  left: 0.72em;
+  color: #0284c7;
+}
+
+body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  padding: 0.28em 0 0.30em 0.62em;
+  border-left: 6px solid color-mix(in srgb, #38bdf8 68%, transparent);
+  border-bottom: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  display: inline-block;
+  min-width: 10em;
+  margin-right: 2em;
+  text-decoration: none;
+}
+
 body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 {
   margin-top: 2.05em;
 }

@@ -52,6 +52,20 @@ Use this pattern for future codeblock work:
 5. Syntax color parity maps both `.token.*` and `.cm-*` classes to the same `--ogd-code-*` variables.
 6. Print typography must close both generic and preset-specific selectors, including `body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) ... pre code`.
 
+## Heading Template Parity Pattern
+
+Style Settings option `ogd-heading-template` maps to body classes `ogd-heading-printclean`, `ogd-heading-keyline`, `ogd-heading-bracket`, `ogd-heading-quiet-ledger`, and `ogd-heading-focus-bar`.
+
+Use this pattern for heading-template work:
+
+1. Metadata: `src/features/40-style-settings.css` and `dev/WIKI/DOCS/v3/style-settings-contract.json` define the class-select values.
+2. Reading View: `src/base/12-reading-content.css` owns rendered H1-H4 template surfaces.
+3. Live Preview source lines: `src/base/13-live-preview.css` owns `.cm-header-1` through `.cm-header-4` inline parity only; do not add vertical margin or padding to direct `.cm-line.HyperMD-header-*` selectors.
+4. PDF export: `src/features/43-print-base.css` owns print-safe H1-H4 template output.
+5. Late closure: `src/features/41-feature-presets.css`, `src/features/42-report-print-polish.css`, and `src/themes/51-accessibility-motion-contrast.css` must not reset selected heading-template borders or pseudo rules.
+6. Vertical accents are allowed only for explicitly selected heading templates and must remain scoped to `body.ogd-heading-*` selectors.
+7. CSS compatibility budget is raised to 19,250 lines and 950,000 bytes for the five-template parity surface matching the approved sample imagery; raw aqua, `!important`, `@layer`, and print compatibility budgets remain unchanged.
+
 ## Documentation Rule
 
 When a visual feature is changed in one surface and expected to match another, update this MAP if any of these changed:

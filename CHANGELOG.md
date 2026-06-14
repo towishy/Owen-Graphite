@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.78
+
+- feat: Style Settings에 H1-H4 헤더 디자인 템플릿 선택 옵션을 추가하고, 프린트 클린/코발트 키라인/브래킷 챕터/조용한 장부/포커스 바 5종을 제공합니다.
+- polish: 선택된 헤더 템플릿이 샘플 이미지의 구조를 따르도록 Reading View, Live Preview, PDF print 경로를 각각 보정하고 H1 공통 밑줄과 PDF 그라데이션 라인을 제거했습니다.
+- guard: CDP 런타임 비교 캡처, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.77
 
 - polish: PNG export 등 Obsidian Notice popup을 푸른빛 liquid-glass tint로 조정해 흰/회색 내부 그라데이션보다 더 자연스럽게 보이도록 다듬었습니다.

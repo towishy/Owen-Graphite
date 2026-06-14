@@ -158,6 +158,28 @@ settings:
     type: class-toggle
     default: false
   -
+    id: ogd-heading-template
+    title: 헤더 디자인 템플릿
+    description: H1-H4 디자인을 Live Preview와 PDF 출력에 함께 적용합니다.
+    type: class-select
+    default: ogd-heading-printclean
+    options:
+      -
+        label: 프린트 클린
+        value: ogd-heading-printclean
+      -
+        label: 코발트 키라인
+        value: ogd-heading-keyline
+      -
+        label: 브래킷 챕터
+        value: ogd-heading-bracket
+      -
+        label: 조용한 장부
+        value: ogd-heading-quiet-ledger
+      -
+        label: 포커스 바
+        value: ogd-heading-focus-bar
+  -
     id: ogd-drop-cap
     title: 드롭 캡 (첫 문단 첫 글자 크게)
     type: class-toggle

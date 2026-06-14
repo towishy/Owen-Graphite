@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.77** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.78** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.77` |
-| **Baseline / rollback target** | `v3.1.77` |
+| **Version** | `3.1.78` |
+| **Baseline / rollback target** | `v3.1.78` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -79,6 +79,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.78 — Header Design Templates
+
+This release adds selectable H1-H4 header templates so notes can switch between report-clean, keyline, bracket, ledger, and focus-bar heading systems while keeping Live Preview and PDF output aligned.
+
+| Area | What changed |
+| --- | --- |
+| Style Settings | A new header design template selector controls five H1-H4 systems. |
+| Live Preview / PDF | Reading, source-mode headers, and print output now share matching template structure. |
+| Header cleanup | Common H1 underlines and PDF gradient heading rules were removed from template output. |
+| Release guard | CDP runtime comparison, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
 
 ### v3.1.77 — Notice Popup Blue Glass
 
@@ -170,7 +181,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.77.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.78.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -179,7 +190,7 @@ Download **`Owen-Graphite-3.1.77.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.77.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.78.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 
