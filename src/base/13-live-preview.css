@@ -428,7 +428,7 @@ body.ogd-heading-focus-bar .markdown-source-view.mod-cm6 .cm-header-2 {
   text-decoration: none;
 }
 
-body:is(.ogd-heading-bracket, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-1::before {
+body:is(.ogd-heading-bracket, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-1:not(.cm-formatting):not(.cm-formatting-header)::before {
   display: block;
   margin-bottom: 0.18em;
   font-family: "JetBrains Mono", "SFMono-Regular", "Cascadia Mono", "D2Coding", Consolas, monospace;
@@ -437,12 +437,15 @@ body:is(.ogd-heading-bracket, .ogd-heading-focus-bar) .markdown-source-view.mod-
   letter-spacing: 0.06em;
   line-height: 1;
   color: #0284c7;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-body.ogd-heading-bracket .markdown-source-view.mod-cm6 .cm-header-1::before { content: "FIELD 01"; }
-body.ogd-heading-focus-bar .markdown-source-view.mod-cm6 .cm-header-1::before { content: "FOCUS 01"; }
+body.ogd-heading-bracket .markdown-source-view.mod-cm6 .cm-header-1:not(.cm-formatting):not(.cm-formatting-header)::before { content: none; }
+body.ogd-heading-focus-bar .markdown-source-view.mod-cm6 .cm-header-1:not(.cm-formatting):not(.cm-formatting-header)::before { content: none; }
 
-body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4)::before {
+body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4):not(.cm-formatting):not(.cm-formatting-header)::before {
   display: inline-block;
   min-width: 2.2em;
   margin-right: 0.52em;
@@ -451,10 +454,13 @@ body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .c
   font-size: 0.58em;
   font-weight: 760;
   letter-spacing: 0.02em;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4)::before {
-  content: counter(ogd-lp-ledger-heading, decimal-leading-zero);
+body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4):not(.cm-formatting):not(.cm-formatting-header)::before {
+  content: none;
 }
 /* owen-risk-accepted-begin: cm-table-widget; id=cm-table-widget-visibility-2026-05-25; evidence=dev/TEMP/runtime-evidence/fragments/capture-widget-risk-accepted-compare.json */
 body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor { background-color: #ffffff; border-color: rgba(148, 163, 184, 0.58); box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.90); }

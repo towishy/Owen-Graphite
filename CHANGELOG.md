@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1.81
+
+- fix: Live Preview 헤더 템플릿의 generated label이 CodeMirror `contenteditable` 내부 token에 생성되어 caret 입력을 방해하던 문제를 제거했습니다.
+- guard: CDP Live Preview click/key smoke test, source usage map, Live Preview hit-routing audit, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.80
 
 - fix: PDF footer label이 Mermaid 문서처럼 Obsidian preview footer/pusher가 섞인 문서에서도 마지막 실제 Markdown 콘텐츠 아래에 표시되도록 footer anchor를 안정화했습니다.

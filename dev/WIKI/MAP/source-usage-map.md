@@ -7,7 +7,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 19424
+- Source CSS lines: 19430
 - Parsed CSS rules: 2536
 - Selector parts: 3967
 - Hard core-owner violations: 10
@@ -162,7 +162,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 4268-4496 | 248 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:4, overlay-search:1, reading-rendered:18, table:5, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 4500-4996 | 606 | support: dark theme support | callout-list:35, cm6:6, code:48, overlay-search:3, print-pdf:2, reading-rendered:85, table:91, workspace-chrome:4 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
 | 10 | `src/features/43-print-base.css` | 5000-5370 | 680 | pdf-base | callout-list:28, cm6:1, code:81, print-pdf:92, reading-rendered:87, table:8, workspace-chrome:1 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
-| 11 | `src/base/13-live-preview.css` | 5374-6447 | 1331 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:184, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:71 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
+| 11 | `src/base/13-live-preview.css` | 5374-6447 | 1337 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:184, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:71 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
 | 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1592 | pdf-marginalia | callout-list:24, cm6:4, code:80, overlay-search:2, print-pdf:157, reading-rendered:127, table:38, workspace-chrome:11 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 696 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 8821-9021 | 201 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:20, workspace-chrome:16 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
@@ -295,16 +295,16 @@ Select-String -Path src\**\*.css -Pattern 'table|td|th|tr|caption|cm-table-widge
 ## Core Principle Status
 
 Hard violations detected:
-- `src/base/13-live-preview.css` line 407: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
-- `src/base/13-live-preview.css` line 408: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
-- `src/base/13-live-preview.css` line 409: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
-- `src/base/13-live-preview.css` line 410: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
-- `src/base/13-live-preview.css` line 411: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
-- `src/base/13-live-preview.css` line 412: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
-- `src/base/13-live-preview.css` line 413: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
-- `src/base/13-live-preview.css` line 414: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
-- `src/base/13-live-preview.css` line 415: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
-- `src/base/13-live-preview.css` line 416: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
+- `src/base/13-live-preview.css` line 413: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
+- `src/base/13-live-preview.css` line 414: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
+- `src/base/13-live-preview.css` line 415: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
+- `src/base/13-live-preview.css` line 416: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
+- `src/base/13-live-preview.css` line 417: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
+- `src/base/13-live-preview.css` line 418: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
+- `src/base/13-live-preview.css` line 419: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
+- `src/base/13-live-preview.css` line 420: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
+- `src/base/13-live-preview.css` line 421: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
+- `src/base/13-live-preview.css` line 422: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
 
 This map is descriptive. It does not replace `audit_direct_owner_guard.py`, `audit_v3_hit_routing.py`, `audit_lp_pdf_selector_ownership.py`, or `release_check.py`.
 
