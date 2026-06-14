@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1.79
+
+- fix: PDF export에서 H1 제목 박스의 위/왼쪽/오른쪽 회색 외곽선이 보이지 않도록 print H1 border를 정리했습니다.
+- guard: CDP print-media 계산 스타일 확인, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.78
 
 - feat: Style Settings에 H1-H4 헤더 디자인 템플릿 선택 옵션을 추가하고, 프린트 클린/코발트 키라인/브래킷 챕터/조용한 장부/포커스 바 5종을 제공합니다.

@@ -5481,7 +5481,8 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     print-color-adjust: exact;
 
     padding: 1.20em 0.56em 0.64em;
-    border: 1px solid var(--ogd-heading-border);
+    border: 0;
+    border-bottom: 1px solid var(--ogd-heading-border);
     background: var(--ogd-heading-h1-bg);
     color: #111827;
     text-decoration: none;
@@ -5543,9 +5544,9 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     --ogd-print-heading-h2-bg: rgba(248, 250, 252, 0.26);
     --ogd-print-heading-rule: transparent;
     --ogd-print-heading-h1-padding: 1.02em 0.56em 0.58em;
-    --ogd-print-heading-h1-border-left: 1px solid var(--ogd-print-heading-border);
-    --ogd-print-heading-h1-border-right: 1px solid var(--ogd-print-heading-border);
-    --ogd-print-heading-h1-border-top: 1px solid var(--ogd-print-heading-border);
+    --ogd-print-heading-h1-border-left: 0 solid transparent;
+    --ogd-print-heading-h1-border-right: 0 solid transparent;
+    --ogd-print-heading-h1-border-top: 0 solid transparent;
     --ogd-print-heading-h1-border-bottom: 1px solid var(--ogd-print-heading-border);
     --ogd-print-heading-h1-rule-height: 0;
     --ogd-print-heading-h2-padding-left: 0;
@@ -5679,7 +5680,8 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
   body.ogd-heading-printclean :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
     min-height: 2.18em;
-    border: 1px solid rgba(148, 163, 184, 0.74);
+    border: 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.74);
     border-radius: 4px;
     background: rgba(248, 250, 252, 0.28);
   }
@@ -5783,8 +5785,9 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
   body.ogd-heading-focus-bar :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
     min-height: 2.6em;
-    border: 1px solid color-mix(in srgb, #bae6fd 70%, transparent);
+    border: 0;
     border-top: 8px solid color-mix(in srgb, #38bdf8 60%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, #bae6fd 70%, transparent);
     border-radius: 7px;
     background: rgba(240, 249, 255, 0.28);
   }

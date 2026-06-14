@@ -7,7 +7,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 19370
+- Source CSS lines: 19374
 - Parsed CSS rules: 2542
 - Selector parts: 3963
 - Hard core-owner violations: 10
@@ -161,7 +161,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 7 | `src/surfaces/21-reading-callouts-lists.css` | 3422-4264 | 871 | reading-callouts-lists | callout-list:105, cm6:3, code:70, reading-rendered:121, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 4268-4496 | 248 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:4, overlay-search:1, reading-rendered:18, table:5, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 4500-4996 | 606 | support: dark theme support | callout-list:35, cm6:6, code:48, overlay-search:3, print-pdf:2, reading-rendered:85, table:91, workspace-chrome:4 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
-| 10 | `src/features/43-print-base.css` | 5000-5370 | 644 | pdf-base | callout-list:28, cm6:1, code:83, print-pdf:94, reading-rendered:89, table:8, workspace-chrome:1 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
+| 10 | `src/features/43-print-base.css` | 5000-5370 | 648 | pdf-base | callout-list:28, cm6:1, code:83, print-pdf:94, reading-rendered:89, table:8, workspace-chrome:1 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
 | 11 | `src/base/13-live-preview.css` | 5374-6447 | 1327 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:186, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:71 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
 | 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1588 | pdf-marginalia | callout-list:20, cm6:4, code:78, overlay-search:2, print-pdf:157, reading-rendered:127, table:34, workspace-chrome:11 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 696 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
