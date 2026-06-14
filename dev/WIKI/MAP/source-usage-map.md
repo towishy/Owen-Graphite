@@ -7,22 +7,22 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 19374
-- Parsed CSS rules: 2542
-- Selector parts: 3963
+- Source CSS lines: 19424
+- Parsed CSS rules: 2536
+- Selector parts: 3967
 - Hard core-owner violations: 10
 
 ## Surface Totals
 
-- `callout-list`: 429 rules
-- `cm6`: 354 rules
-- `code`: 1019 rules
+- `callout-list`: 434 rules
+- `cm6`: 352 rules
+- `code`: 1017 rules
 - `lp-html-table`: 83 rules
 - `lp-markdown-table-widget-reference`: 94 rules
 - `overlay-search`: 285 rules
-- `print-pdf`: 531 rules
-- `reading-rendered`: 1181 rules
-- `table`: 1125 rules
+- `print-pdf`: 529 rules
+- `reading-rendered`: 1177 rules
+- `table`: 1129 rules
 - `workspace-chrome`: 591 rules
 
 ## Quick Routing
@@ -156,14 +156,14 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 2 | `src/tokens/00-light-tokens.css` | 822-1088 | 274 | pdf-marginalia, shared-tokens | callout-list:1, code:5, print-pdf:2, table:1, workspace-chrome:1 | after `src/features/40-style-settings.css`; before `src/tokens/01-dark-tokens.css` |
 | 3 | `src/tokens/01-dark-tokens.css` | 1091-1306 | 230 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:7, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 1310-1444 | 136 | support: base/embed workspace primitives | cm6:5, code:5, overlay-search:5, reading-rendered:7, table:8, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |
-| 5 | `src/base/12-reading-content.css` | 1448-2377 | 1389 | reading-typography | callout-list:29, cm6:9, code:116, overlay-search:1, print-pdf:14, reading-rendered:136, table:19, workspace-chrome:4 | after `src/base/10-base-workspace.css`; before `src/surfaces/20-reading-tables-code.css` |
+| 5 | `src/base/12-reading-content.css` | 1448-2377 | 1393 | reading-typography | callout-list:29, cm6:9, code:113, overlay-search:1, print-pdf:14, reading-rendered:133, table:19, workspace-chrome:4 | after `src/base/10-base-workspace.css`; before `src/surfaces/20-reading-tables-code.css` |
 | 6 | `src/surfaces/20-reading-tables-code.css` | 2381-3418 | 1126 | reading-tables-code, dataview-plugin-support (allowed-late) | cm6:24, code:143, print-pdf:9, reading-rendered:130, table:53, workspace-chrome:77 | after `src/base/12-reading-content.css`; before `src/surfaces/21-reading-callouts-lists.css` |
-| 7 | `src/surfaces/21-reading-callouts-lists.css` | 3422-4264 | 871 | reading-callouts-lists | callout-list:105, cm6:3, code:70, reading-rendered:121, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
+| 7 | `src/surfaces/21-reading-callouts-lists.css` | 3422-4264 | 877 | reading-callouts-lists | callout-list:106, cm6:3, code:71, reading-rendered:122, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 4268-4496 | 248 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:4, overlay-search:1, reading-rendered:18, table:5, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 4500-4996 | 606 | support: dark theme support | callout-list:35, cm6:6, code:48, overlay-search:3, print-pdf:2, reading-rendered:85, table:91, workspace-chrome:4 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
-| 10 | `src/features/43-print-base.css` | 5000-5370 | 648 | pdf-base | callout-list:28, cm6:1, code:83, print-pdf:94, reading-rendered:89, table:8, workspace-chrome:1 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
-| 11 | `src/base/13-live-preview.css` | 5374-6447 | 1327 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:186, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:71 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
-| 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1588 | pdf-marginalia | callout-list:20, cm6:4, code:78, overlay-search:2, print-pdf:157, reading-rendered:127, table:34, workspace-chrome:11 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
+| 10 | `src/features/43-print-base.css` | 5000-5370 | 680 | pdf-base | callout-list:28, cm6:1, code:81, print-pdf:92, reading-rendered:87, table:8, workspace-chrome:1 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
+| 11 | `src/base/13-live-preview.css` | 5374-6447 | 1331 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:184, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:71 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
+| 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1592 | pdf-marginalia | callout-list:24, cm6:4, code:80, overlay-search:2, print-pdf:157, reading-rendered:127, table:38, workspace-chrome:11 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 696 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 8821-9021 | 201 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:20, workspace-chrome:16 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 9025-9331 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
@@ -193,14 +193,14 @@ Table-related rules are intentionally split by surface:
 | `src/tokens/00-light-tokens.css` | 1 | 0 | 0 | 2 |
 | `src/tokens/01-dark-tokens.css` | 7 | 0 | 0 | 1 |
 | `src/base/10-base-workspace.css` | 8 | 0 | 7 | 0 |
-| `src/base/12-reading-content.css` | 19 | 0 | 136 | 14 |
+| `src/base/12-reading-content.css` | 19 | 0 | 133 | 14 |
 | `src/surfaces/20-reading-tables-code.css` | 53 | 0 | 130 | 9 |
-| `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 121 | 0 |
+| `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 122 | 0 |
 | `src/surfaces/22-reading-embeds-workspace.css` | 5 | 0 | 18 | 0 |
 | `src/themes/50-dark.css` | 91 | 0 | 85 | 2 |
-| `src/features/43-print-base.css` | 8 | 0 | 89 | 94 |
+| `src/features/43-print-base.css` | 8 | 0 | 87 | 92 |
 | `src/base/13-live-preview.css` | 71 | 18 | 10 | 11 |
-| `src/features/41-feature-presets.css` | 34 | 0 | 127 | 157 |
+| `src/features/41-feature-presets.css` | 38 | 0 | 127 | 157 |
 | `src/chrome/30-workspace.css` | 68 | 0 | 69 | 3 |
 | `src/chrome/31-navigation-tasks-search.css` | 20 | 0 | 25 | 0 |
 | `src/chrome/32-overlay-popover-dataview.css` | 24 | 0 | 24 | 0 |
@@ -295,16 +295,16 @@ Select-String -Path src\**\*.css -Pattern 'table|td|th|tr|caption|cm-table-widge
 ## Core Principle Status
 
 Hard violations detected:
-- `src/base/13-live-preview.css` line 403: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
-- `src/base/13-live-preview.css` line 404: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
-- `src/base/13-live-preview.css` line 405: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
-- `src/base/13-live-preview.css` line 406: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
-- `src/base/13-live-preview.css` line 407: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
-- `src/base/13-live-preview.css` line 408: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
-- `src/base/13-live-preview.css` line 409: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
-- `src/base/13-live-preview.css` line 410: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
-- `src/base/13-live-preview.css` line 411: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
-- `src/base/13-live-preview.css` line 412: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
+- `src/base/13-live-preview.css` line 407: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
+- `src/base/13-live-preview.css` line 408: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
+- `src/base/13-live-preview.css` line 409: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
+- `src/base/13-live-preview.css` line 410: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
+- `src/base/13-live-preview.css` line 411: `body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
+- `src/base/13-live-preview.css` line 412: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor`
+- `src/base/13-live-preview.css` line 413: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr)`
+- `src/base/13-live-preview.css` line 414: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(th, td)`
+- `src/base/13-live-preview.css` line 415: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor th`
+- `src/base/13-live-preview.css` line 416: `body.theme-dark .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor tbody tr:hover :is(th, td)`
 
 This map is descriptive. It does not replace `audit_direct_owner_guard.py`, `audit_v3_hit_routing.py`, `audit_lp_pdf_selector_ownership.py`, or `release_check.py`.
 

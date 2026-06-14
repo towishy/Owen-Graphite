@@ -462,6 +462,7 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
   --ogd-heading-template-shadow: none;
   --ogd-heading-template-h1-padding: 0.48em 0 0.48em;
   --ogd-heading-template-h2-padding-left: 2.05em;
+  counter-reset: ogd-ledger-heading;
 }
 
 body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
@@ -658,6 +659,7 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
   border-left: 0;
   background: transparent;
   box-shadow: none;
+  counter-increment: ogd-ledger-heading;
 }
 
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
@@ -684,10 +686,12 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
   line-height: 1;
 }
 
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before { content: "01"; }
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before { content: "02"; }
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::before { content: "03"; }
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::before { content: "04"; }
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::before,
+body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::before {
+  content: counter(ogd-ledger-heading, decimal-leading-zero);
+}
 
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
   width: min(18em, 52%);

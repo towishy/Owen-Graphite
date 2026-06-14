@@ -400,6 +400,12 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .co
   color: var(--ogd-text-slate, #334155);
 }
 
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list > .task-list-item input[type="checkbox"] {
+  margin-inline-start: -0.5em;
+  margin-left: -0.5em;
+  margin-inline-end: 0.5em;
+}
+
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) input[type="checkbox"] {
   border-color: rgba(148, 163, 184, 0.56);
   border-radius: 5px;

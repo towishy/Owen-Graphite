@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.79** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.80** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.79` |
-| **Baseline / rollback target** | `v3.1.79` |
+| **Version** | `3.1.80` |
+| **Baseline / rollback target** | `v3.1.80` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -79,6 +79,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.80 — PDF Footer And Checklist Stability
+
+This patch keeps PDF footer labels visible on Mermaid-heavy notes, tightens heading template print parity, and prevents checklist checkboxes from clipping against card edges.
+
+| Area | What changed |
+| --- | --- |
+| PDF footer | Footer labels now anchor to the last real Markdown content block inside Obsidian preview sections, so trailing UI/pusher nodes do not hide the label. |
+| Heading templates | Quiet Ledger numbering now increments in Reading View, Live Preview, and PDF while PDF template frames stay clean across H2-H4. |
+| Checklist cards | Task checkboxes stay inside the card edge while preserving the compact glass checklist rhythm. |
+| Release guard | CDP footer comparison, checkbox coordinate capture, source usage map, core principles, release check, and Obsidian sync passed. |
 
 ### v3.1.79 — PDF H1 Border Cleanup
 
@@ -191,7 +202,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.79.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.80.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -200,7 +211,7 @@ Download **`Owen-Graphite-3.1.79.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.79.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.80.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

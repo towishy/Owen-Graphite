@@ -1886,6 +1886,7 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
   --ogd-heading-template-shadow: none;
   --ogd-heading-template-h1-padding: 0.48em 0 0.48em;
   --ogd-heading-template-h2-padding-left: 2.05em;
+  counter-reset: ogd-ledger-heading;
 }
 
 body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
@@ -2082,6 +2083,7 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
   border-left: 0;
   background: transparent;
   box-shadow: none;
+  counter-increment: ogd-ledger-heading;
 }
 
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
@@ -2095,6 +2097,7 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before,
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::before,
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::before {
+
   position: absolute;
   left: 0;
   top: 0.35em;
@@ -2106,12 +2109,9 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
   font-weight: 760;
   letter-spacing: 0;
   line-height: 1;
-}
 
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before { content: "01"; }
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before { content: "02"; }
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3::before { content: "03"; }
-body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4::before { content: "04"; }
+  content: counter(ogd-ledger-heading, decimal-leading-zero);
+}
 
 body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
   width: min(18em, 52%);
@@ -4118,6 +4118,12 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .co
   color: var(--ogd-text-slate, #334155);
 }
 
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .contains-task-list > .task-list-item input[type="checkbox"] {
+  margin-inline-start: -0.5em;
+  margin-left: -0.5em;
+  margin-inline-end: 0.5em;
+}
+
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) input[type="checkbox"] {
   border-color: rgba(148, 163, 184, 0.56);
   border-radius: 5px;
@@ -5446,7 +5452,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
   }
 
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
-    --ogd-heading-h1-bg: rgba(248, 250, 252, 0.34);
+    --ogd-heading-h1-bg: transparent;
     --ogd-heading-h2-bg: rgba(248, 250, 252, 0.28);
     --ogd-heading-border: rgba(203, 213, 225, 0.48);
     --ogd-heading-border-soft: rgba(203, 213, 225, 0.40);
@@ -5472,18 +5478,16 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     line-height: 1.08;
     margin-top: 1.2em;
     margin-bottom: 0.7em;
-    border-radius: 7px;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.98),
-      inset 0 -1px 0 rgba(14, 165, 233, 0.09),
-      0 12px 28px rgba(15, 23, 42, 0.08);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 
     padding: 1.20em 0.56em 0.64em;
     border: 0;
     border-bottom: 1px solid var(--ogd-heading-border);
-    background: var(--ogd-heading-h1-bg);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
     color: #111827;
     text-decoration: none;
 }
@@ -5540,7 +5544,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     --ogd-print-heading-accent: #0284c7;
     --ogd-print-heading-border: rgba(203, 213, 225, 0.76);
     --ogd-print-heading-border-soft: rgba(203, 213, 225, 0.56);
-    --ogd-print-heading-h1-bg: rgba(248, 250, 252, 0.34);
+    --ogd-print-heading-h1-bg: transparent;
     --ogd-print-heading-h2-bg: rgba(248, 250, 252, 0.26);
     --ogd-print-heading-rule: transparent;
     --ogd-print-heading-h1-padding: 1.02em 0.56em 0.58em;
@@ -5558,7 +5562,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     --ogd-print-heading-accent: #64748b;
     --ogd-print-heading-border: rgba(148, 163, 184, 0.70);
     --ogd-print-heading-rule: transparent;
-    --ogd-print-heading-h1-bg: rgba(248, 250, 252, 0.28);
+    --ogd-print-heading-h1-bg: transparent;
     --ogd-print-heading-h2-bg: rgba(248, 250, 252, 0.22);
   }
 
@@ -5590,6 +5594,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     --ogd-print-heading-h1-border-bottom: 1px solid rgba(203, 213, 225, 0.76);
     --ogd-print-heading-h1-padding: 0.84em 0 0.54em;
     --ogd-print-heading-h2-padding-left: 1.8em;
+    counter-reset: ogd-print-ledger-heading;
   }
 
   body.ogd-heading-focus-bar :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
@@ -5609,9 +5614,10 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     border-right: var(--ogd-print-heading-h1-border-right);
     border-bottom: var(--ogd-print-heading-h1-border-bottom);
     border-left: var(--ogd-print-heading-h1-border-left);
-    border-radius: 7px;
-    background: var(--ogd-print-heading-h1-bg);
+    border-radius: 0;
+    background: transparent;
     box-shadow: none;
+    outline: 0;
     color: var(--ogd-print-heading-text);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -5645,8 +5651,12 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     padding-left: var(--ogd-print-heading-h2-padding-left);
     border-left: var(--ogd-print-heading-h2-border-left);
     border-bottom: 1px solid var(--ogd-print-heading-border-soft);
-    border-radius: var(--ogd-print-heading-h2-radius);
-    background: var(--ogd-print-heading-h2-bg);
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    outline: 0;
     color: var(--ogd-print-heading-text);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -5669,6 +5679,12 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
 
   body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
     color: var(--ogd-print-heading-subtext);
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    outline: 0;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-color: rgba(148, 163, 184, 0.58);
@@ -5682,8 +5698,8 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     min-height: 2.18em;
     border: 0;
     border-bottom: 1px solid rgba(148, 163, 184, 0.74);
-    border-radius: 4px;
-    background: rgba(248, 250, 252, 0.28);
+    border-radius: 0;
+    background: transparent;
   }
 
   body.ogd-heading-printclean :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2,
@@ -5691,7 +5707,11 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     display: inline-block;
     width: min(100%, 28em);
     border-bottom: 1px solid rgba(148, 163, 184, 0.72);
+    border-top: 0;
+    border-right: 0;
     background: transparent;
+    box-shadow: none;
+    outline: 0;
     text-decoration: none;
   }
 
@@ -5718,7 +5738,11 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     display: inline-block;
     width: min(100%, 19em);
     border-bottom: 2px solid #60a5fa;
+    border-top: 0;
+    border-right: 0;
     background: transparent;
+    box-shadow: none;
+    outline: 0;
     text-decoration: none;
   }
 
@@ -5733,12 +5757,12 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     padding-right: 3.6em;
     border-radius: 0;
     background:
-      linear-gradient(#e0f2fe, #e0f2fe) left top / 1.85em 0.28em no-repeat,
-      linear-gradient(#e0f2fe, #e0f2fe) left bottom / 1.85em 0.28em no-repeat,
-      linear-gradient(#e0f2fe, #e0f2fe) left top / 0.38em 100% no-repeat,
-      linear-gradient(#e0f2fe, #e0f2fe) right top / 1.85em 0.28em no-repeat,
-      linear-gradient(#e0f2fe, #e0f2fe) right bottom / 1.85em 0.28em no-repeat,
-      linear-gradient(#e0f2fe, #e0f2fe) right top / 0.38em 100% no-repeat;
+      linear-gradient(#e0f2fe, #e0f2fe) left top / 1.85em 0.18em no-repeat,
+      linear-gradient(#e0f2fe, #e0f2fe) left bottom / 1.85em 0.18em no-repeat,
+      linear-gradient(#e0f2fe, #e0f2fe) left top / 0.24em 100% no-repeat,
+      linear-gradient(#e0f2fe, #e0f2fe) right top / 1.85em 0.18em no-repeat,
+      linear-gradient(#e0f2fe, #e0f2fe) right bottom / 1.85em 0.18em no-repeat,
+      linear-gradient(#e0f2fe, #e0f2fe) right top / 0.24em 100% no-repeat;
     box-shadow: none;
   }
 
@@ -5752,7 +5776,11 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     width: min(100%, 14em);
     border-left: 0;
     border-bottom: 2px solid rgba(14, 165, 233, 0.54);
+    border-top: 0;
+    border-right: 0;
     background: transparent;
+    box-shadow: none;
+    outline: 0;
   }
 
   body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1,
@@ -5763,16 +5791,21 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     border: 0;
     border-bottom: 1px solid rgba(203, 213, 225, 0.76);
     background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
     text-decoration: none;
+    counter-increment: ogd-print-ledger-heading;
   }
 
   body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
     font-size: 2.05em;
   }
 
-  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2::before { content: "02"; }
-  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h3::before { content: "03"; }
-  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h4::before { content: "04"; }
+  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before,
+  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2::before,
+  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h3::before,
+  body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h4::before { content: counter(ogd-print-ledger-heading, decimal-leading-zero); }
 
   body.ogd-heading-quiet-ledger :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h2, h3, h4)::before {
     position: absolute;
@@ -5788,8 +5821,8 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     border: 0;
     border-top: 8px solid color-mix(in srgb, #38bdf8 60%, transparent);
     border-bottom: 1px solid color-mix(in srgb, #bae6fd 70%, transparent);
-    border-radius: 7px;
-    background: rgba(240, 249, 255, 0.28);
+    border-radius: 0;
+    background: transparent;
   }
 
   body.ogd-heading-focus-bar :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
@@ -5800,7 +5833,12 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
   body.ogd-heading-focus-bar :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
     border-left: 5px solid color-mix(in srgb, #38bdf8 62%, transparent);
     border-bottom: 0;
+    border-top: 0;
+    border-right: 0;
     background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
   }
 
   /* v1.8.65 — PDF readability micro-tuning */
@@ -6389,6 +6427,11 @@ body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-h2-size: 1.34em;
   --ogd-lp-heading-h3-size: 1.14em;
   --ogd-lp-heading-h4-size: 1em;
+  counter-reset: ogd-lp-ledger-heading;
+}
+
+body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 .cm-line:is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4) {
+  counter-increment: ogd-lp-ledger-heading;
 }
 
 body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 .cm-header-1 {
@@ -6442,6 +6485,7 @@ body.ogd-heading-bracket .markdown-source-view.mod-cm6 .cm-header-1::before { co
 body.ogd-heading-focus-bar .markdown-source-view.mod-cm6 .cm-header-1::before { content: "FOCUS 01"; }
 
 body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4)::before {
+
   display: inline-block;
   min-width: 2.2em;
   margin-right: 0.52em;
@@ -6450,12 +6494,9 @@ body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 :is(.cm-header-1, .c
   font-size: 0.58em;
   font-weight: 760;
   letter-spacing: 0.02em;
-}
 
-body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 .cm-header-1::before { content: "01"; }
-body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 .cm-header-2::before { content: "02"; }
-body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 .cm-header-3::before { content: "03"; }
-body.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 .cm-header-4::before { content: "04"; }
+  content: counter(ogd-lp-ledger-heading, decimal-leading-zero);
+}
 /* owen-risk-accepted-begin: cm-table-widget; id=cm-table-widget-visibility-2026-05-25; evidence=dev/TEMP/runtime-evidence/fragments/capture-widget-risk-accepted-compare.json */
 body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor { background-color: #ffffff; border-color: rgba(148, 163, 184, 0.58); box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.90); }
 body .markdown-source-view.mod-cm6 .cm-table-widget.markdown-rendered table.table-editor :is(thead, tbody, tr) { background-color: #ffffff; }
@@ -8147,11 +8188,13 @@ body.ogd-pdf-label-segmented-dual {
   }
 
   /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
-  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
+  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child:not(.markdown-preview-section),
+  body.ogd-pdf-footer-enabled .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote) {
     position: relative;
     margin-bottom: var(--ogd-pdf-footer-reserve, 28mm);
   }
-  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
+  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child:not(.markdown-preview-section)::after,
+  body.ogd-pdf-footer-enabled .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote)::after {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
     top: auto;
@@ -8183,7 +8226,8 @@ body.ogd-pdf-label-segmented-dual {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::before {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child:not(.markdown-preview-section)::before,
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote)::before {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
     top: auto;
@@ -8223,7 +8267,8 @@ body.ogd-pdf-label-segmented-dual {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child:not(.markdown-preview-section)::after,
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote)::after {
     content: var(--ogd-pdf-footer-value, "");
     display: inline-flex;
     top: auto;

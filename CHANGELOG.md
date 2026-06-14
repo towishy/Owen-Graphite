@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.80
+
+- fix: PDF footer label이 Mermaid 문서처럼 Obsidian preview footer/pusher가 섞인 문서에서도 마지막 실제 Markdown 콘텐츠 아래에 표시되도록 footer anchor를 안정화했습니다.
+- fix: 헤더 템플릿의 Quiet Ledger 번호를 Reading View, Live Preview, PDF에서 실제 문서 순서대로 증가시키고, PDF H2/H3/H4 회색 frame과 bracket 두께를 정리했습니다.
+- fix: Reading View 체크리스트 카드에서 체크박스 아이콘이 왼쪽 경계에 잘려 보이지 않도록 task-list checkbox 위치를 보정했습니다.
+- guard: CDP 런타임 좌표 확인, PDF footer real-doc 비교, source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+
 ## v3.1.79
 
 - fix: PDF export에서 H1 제목 박스의 위/왼쪽/오른쪽 회색 외곽선이 보이지 않도록 print H1 border를 정리했습니다.

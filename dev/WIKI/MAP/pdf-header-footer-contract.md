@@ -17,9 +17,9 @@ This surface has already burned a lot of release time because Chromium print/PDF
 - PDF header/footer paint rules must live inside `@media print`.
 - `body.ogd-pdf-header-enabled` and `body.ogd-pdf-footer-enabled` selectors are owned by `src/features/41-feature-presets.css` only.
 - Single-label mode uses one header anchor pseudo: `.markdown-rendered::before`.
-- Single-label mode uses one footer anchor pseudo: `.markdown-rendered > :last-child::after`.
-- Key/Value 1-pair mode may add one adjacent key pseudo per surface: `.markdown-rendered::after` for the header and `.markdown-rendered > :last-child::before` for the footer.
-- Footer must reserve space on `.markdown-rendered > :last-child` with a millimeter-based `margin-bottom`.
+- Single-label mode uses one footer anchor pseudo: `.markdown-rendered > :last-child::after`; when Obsidian wraps rendered blocks in `.markdown-preview-section`, anchor to the last Markdown content wrapper inside that section with `.markdown-preview-section:last-child > :nth-last-child(1 of .el-*)::after`.
+- Key/Value 1-pair mode may add one adjacent key pseudo per surface: `.markdown-rendered::after` for the header and `.markdown-rendered > :last-child::before` for the footer, with the same last `.el-*` fallback for wrapped rendered blocks.
+- Footer must reserve space on the active footer anchor with a millimeter-based `margin-bottom`: direct `.markdown-rendered > :last-child` or wrapped `.markdown-preview-section:last-child > :nth-last-child(1 of .el-*)`.
 - Generated text must remain single-line. Single-label content uses `--ogd-pdf-header-text` / `--ogd-pdf-footer-text`; segmented value content uses `--ogd-pdf-header-value` / `--ogd-pdf-footer-value`.
 - Quick presets, label layout, label style, header/footer segment palettes, compact sizing, and header alignment must be implemented by CSS variables/classes only.
 - Anchor pseudos must use `position: absolute`, `pointer-events: none`, `white-space: nowrap`, and exact print color adjustment.

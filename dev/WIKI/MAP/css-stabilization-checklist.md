@@ -12,7 +12,7 @@
 
 - critical=0
 - high=0
-- medium=510
+- medium=516
 - low=100
 - info=0
 

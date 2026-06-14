@@ -853,11 +853,13 @@ body.ogd-pdf-label-segmented-dual {
   }
 
   /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
-  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child {
+  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child:not(.markdown-preview-section),
+  body.ogd-pdf-footer-enabled .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote) {
     position: relative;
     margin-bottom: var(--ogd-pdf-footer-reserve, 28mm);
   }
-  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child::after {
+  body.ogd-pdf-footer-enabled .markdown-rendered > :last-child:not(.markdown-preview-section)::after,
+  body.ogd-pdf-footer-enabled .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote)::after {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
     top: auto;
@@ -889,7 +891,8 @@ body.ogd-pdf-label-segmented-dual {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::before {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child:not(.markdown-preview-section)::before,
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote)::before {
     content: var(--ogd-pdf-footer-text, "");
     position: absolute;
     top: auto;
@@ -929,7 +932,8 @@ body.ogd-pdf-label-segmented-dual {
     print-color-adjust: exact;
   }
 
-  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child::after {
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > :last-child:not(.markdown-preview-section)::after,
+  body.ogd-pdf-footer-enabled:is(.ogd-pdf-label-segmented, .ogd-pdf-label-segmented-dual) .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote)::after {
     content: var(--ogd-pdf-footer-value, "");
     display: inline-flex;
     top: auto;
