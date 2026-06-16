@@ -114,15 +114,11 @@
 
 .theme-light,
 .theme-dark {
-  --font-interface-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
-  --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
-  --font-monospace-theme: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
-    "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
-
-  --ogd-code-font-family: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
-    "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --font-interface-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "Cascadia Code", "Cascadia Mono", "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --ogd-interface-font-stack: var(--font-interface, var(--font-interface-theme)); --ogd-reading-font-stack: var(--font-text, var(--font-text-theme)); --ogd-code-font-stack: var(--font-monospace, var(--font-monospace-theme)); --ogd-status-font-stack: var(--ogd-interface-font-stack);
+  --ogd-code-font-family: var(--ogd-code-font-stack);
   --ogd-pdf-surface-text-font-size: 11.6pt;
   --ogd-pdf-surface-text-line-height: 1.42;
   --ogd-code-font-size: 0.92em;
@@ -241,11 +237,7 @@
   --radius-l: 8px;
 }
 
-body {
-  background: var(--background-secondary);
-  color: var(--text-normal);
-  font-family: var(--font-interface-theme);
-}
+body { background: var(--background-secondary); color: var(--text-normal); font-family: var(--ogd-interface-font-stack); }
 
 body.ogd-motion-off {
   --ogd-hover-lift-strong: none;

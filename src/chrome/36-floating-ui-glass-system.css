@@ -150,26 +150,11 @@
     box-shadow: var(--ogd-glass-shadow-hover);
   }
 
-  .status-bar {
-    font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
-    font-size: 11px;
-    letter-spacing: 0.02em;
-  }
+  .status-bar { font-family: var(--ogd-status-font-stack, var(--ogd-interface-font-stack)); font-size: 11px; letter-spacing: 0.02em; }
 
-  body:not(.is-mobile) .status-bar .status-bar-item-segment {
-    border: 1px solid transparent;
-    border-radius: var(--ogd-radius-pill, 999px);
-    margin: 0 1px;
-    position: relative;
-    transition: var(--ogd-glass-transition);
-  }
+  body:not(.is-mobile) .status-bar .status-bar-item-segment { border: 1px solid transparent; border-radius: var(--ogd-radius-pill, 999px); margin: 0 1px; position: relative; transition: var(--ogd-glass-transition); }
 
-  body:not(.is-mobile) .status-bar .status-bar-item {
-    font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    position: relative;
-  }
+  body:not(.is-mobile) .status-bar .status-bar-item { font-family: var(--ogd-status-font-stack, var(--ogd-interface-font-stack)); font-size: 11px; letter-spacing: 0.02em; position: relative; }
 
   body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
     content: "";

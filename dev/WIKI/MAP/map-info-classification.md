@@ -4,12 +4,12 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.81`
+- Version: `3.1.82`
 - Source: `src/entry.css`
 - Modules: 26
 - Selectors: 2539
-- Findings: 616
-- Finding severity counts: critical=0, high=0, medium=516, low=100, info=0
+- Findings: 619
+- Finding severity counts: critical=0, high=0, medium=519, low=100, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -40,7 +40,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | high | 70 | `src/chrome/36-floating-ui-glass-system.css` | 120 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | high | 304 | `src/chrome/37-tabs-file-explorer-search.css` | 195 | 0 | 80 | high-specificity, has-selector, repeated-selector-in-file |
 | low | 9 | `src/themes/51-accessibility-motion-contrast.css` | 16 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| high | 96 | `src/surfaces/23-liquid-glass-core.css` | 158 | 0 | 6 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 105 | `src/surfaces/23-liquid-glass-core.css` | 158 | 0 | 6 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 109 | `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 
 ## Findings
@@ -52,7 +52,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | medium | high-specificity | `src/base/10-base-workspace.css:47` | specificity=(0, 8, 0) |
 | medium | high-specificity | `src/base/10-base-workspace.css:58` | specificity=(0, 11, 0) |
 | medium | high-specificity | `src/base/10-base-workspace.css:64` | specificity=(0, 9, 0) |
-| medium | cm6-hit-routing-sensitive | `src/base/10-base-workspace.css:97` | CM6 rule declares vertical box or overlay-sensitive properties |
+| medium | cm6-hit-routing-sensitive | `src/base/10-base-workspace.css:92` | CM6 rule declares vertical box or overlay-sensitive properties |
 | medium | high-specificity | `src/base/12-reading-content.css:37` | specificity=(0, 8, 3) |
 | medium | high-specificity | `src/base/12-reading-content.css:55` | specificity=(0, 8, 9) |
 | medium | high-specificity | `src/base/12-reading-content.css:103` | specificity=(0, 8, 0) |

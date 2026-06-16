@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.81** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.82** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.81` |
-| **Baseline / rollback target** | `v3.1.81` |
+| **Version** | `3.1.82` |
+| **Baseline / rollback target** | `v3.1.82` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -80,47 +80,16 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
 
-### v3.1.81 — Live Preview Editing Hotfix
+### v3.1.82 — User Font Respect And Overrides
 
-This hotfix restores reliable Live Preview editing when heading templates are enabled by removing generated labels from CodeMirror editable heading tokens.
-
-| Area | What changed |
-| --- | --- |
-| Live Preview | Heading template labels no longer create pseudo-content inside editable CodeMirror header spans. |
-| Editing | H1/H2 text accepts caret placement and keyboard input again in Live Preview. |
-| Release guard | CDP click/key smoke test, source usage map, Live Preview hit-routing audit, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.80 — PDF Footer And Checklist Stability
-
-This patch keeps PDF footer labels visible on Mermaid-heavy notes, tightens heading template print parity, and prevents checklist checkboxes from clipping against card edges.
+This release lets Owen Graphite respect Obsidian's Appearance font settings first, while exposing user-friendly Style Settings fields for component-specific font overrides.
 
 | Area | What changed |
 | --- | --- |
-| PDF footer | Footer labels now anchor to the last real Markdown content block inside Obsidian preview sections, so trailing UI/pusher nodes do not hide the label. |
-| Heading templates | Quiet Ledger numbering now increments in Reading View, Live Preview, and PDF while PDF template frames stay clean across H2-H4. |
-| Checklist cards | Task checkboxes stay inside the card edge while preserving the compact glass checklist rhythm. |
-| Release guard | CDP footer comparison, checkbox coordinate capture, source usage map, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.79 — PDF H1 Border Cleanup
-
-This patch removes the gray top, left, and right H1 frame lines that could appear in PDF export while preserving the intended heading template structure.
-
-| Area | What changed |
-| --- | --- |
-| PDF H1 | Top, left, and right gray frame lines are removed from print output. |
-| Template output | Header templates keep their intended bottom/accent structure without the extra gray box. |
-| Release guard | CDP print-media computed styles, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.78 — Header Design Templates
-
-This release adds selectable H1-H4 header templates so notes can switch between report-clean, keyline, bracket, ledger, and focus-bar heading systems while keeping Live Preview and PDF output aligned.
-
-| Area | What changed |
-| --- | --- |
-| Style Settings | A new header design template selector controls five H1-H4 systems. |
-| Live Preview / PDF | Reading, source-mode headers, and print output now share matching template structure. |
-| Header cleanup | Common H1 underlines and PDF gradient heading rules were removed from template output. |
-| Release guard | CDP runtime comparison, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
+| Font inheritance | Interface, reading, code, and status bar typography now route through Owen Graphite font stack variables that default to Obsidian's configured fonts. |
+| Style Settings | New direct-input fields let users override interface, reading, code, and bottom status bar fonts without seeing internal CSS variable syntax. |
+| Status bar | Bottom status chips no longer force the monospace stack unless the user explicitly chooses that behavior. |
+| Release guard | Style Settings YAML rendering, CDP runtime font verification, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
 
 ### v3.1.77 — Notice Popup Blue Glass
 
@@ -212,7 +181,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.81.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.82.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -221,7 +190,7 @@ Download **`Owen-Graphite-3.1.81.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.81.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.82.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

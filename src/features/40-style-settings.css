@@ -298,6 +298,35 @@ settings:
     type: class-toggle
     default: true
   -
+    id: ogd-settings-fonts
+    title: 폰트 적용
+    type: heading
+    level: 2
+  -
+    id: ogd-interface-font-stack
+    title: 인터페이스 폰트 직접 입력
+    description: 비워두면 Obsidian 외형 설정의 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", Pretendard, sans-serif 입니다.
+    type: variable-text
+    default: ''
+  -
+    id: ogd-reading-font-stack
+    title: 본문 폰트 직접 입력
+    description: 비워두면 Obsidian 외형 설정의 텍스트 폰트를 따릅니다. 예시는 "Noto Serif KR", serif 입니다.
+    type: variable-text
+    default: ''
+  -
+    id: ogd-code-font-stack
+    title: 코드 폰트 직접 입력
+    description: 비워두면 Obsidian 외형 설정의 모노스페이스 폰트를 따릅니다. 예시는 "D2Coding", "JetBrains Mono", monospace 입니다.
+    type: variable-text
+    default: ''
+  -
+    id: ogd-status-font-stack
+    title: 하단 상태바 폰트 직접 입력
+    description: 비워두면 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", sans-serif 입니다.
+    type: variable-text
+    default: ''
+  -
     id: ogd-settings-pdf-marginalia
     title: PDF 헤더/푸터 작은 라벨
     description: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.

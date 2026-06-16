@@ -1,27 +1,10 @@
 # Changelog
 
-## v3.1.81
+## v3.1.82
 
-- fix: Live Preview 헤더 템플릿의 generated label이 CodeMirror `contenteditable` 내부 token에 생성되어 caret 입력을 방해하던 문제를 제거했습니다.
-- guard: CDP Live Preview click/key smoke test, source usage map, Live Preview hit-routing audit, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
-
-## v3.1.80
-
-- fix: PDF footer label이 Mermaid 문서처럼 Obsidian preview footer/pusher가 섞인 문서에서도 마지막 실제 Markdown 콘텐츠 아래에 표시되도록 footer anchor를 안정화했습니다.
-- fix: 헤더 템플릿의 Quiet Ledger 번호를 Reading View, Live Preview, PDF에서 실제 문서 순서대로 증가시키고, PDF H2/H3/H4 회색 frame과 bracket 두께를 정리했습니다.
-- fix: Reading View 체크리스트 카드에서 체크박스 아이콘이 왼쪽 경계에 잘려 보이지 않도록 task-list checkbox 위치를 보정했습니다.
-- guard: CDP 런타임 좌표 확인, PDF footer real-doc 비교, source usage map, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
-
-## v3.1.79
-
-- fix: PDF export에서 H1 제목 박스의 위/왼쪽/오른쪽 회색 외곽선이 보이지 않도록 print H1 border를 정리했습니다.
-- guard: CDP print-media 계산 스타일 확인, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
-
-## v3.1.78
-
-- feat: Style Settings에 H1-H4 헤더 디자인 템플릿 선택 옵션을 추가하고, 프린트 클린/코발트 키라인/브래킷 챕터/조용한 장부/포커스 바 5종을 제공합니다.
-- polish: 선택된 헤더 템플릿이 샘플 이미지의 구조를 따르도록 Reading View, Live Preview, PDF print 경로를 각각 보정하고 H1 공통 밑줄과 PDF 그라데이션 라인을 제거했습니다.
-- guard: CDP 런타임 비교 캡처, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
+- fix: Obsidian 외형 설정에서 지정한 인터페이스/본문/모노스페이스 폰트를 Owen Graphite가 우선 따르도록 폰트 토큰 경로를 재정리했습니다.
+- polish: Style Settings에 인터페이스, 본문, 코드, 하단 상태바 폰트 직접 입력 항목을 추가하고, 빈 값이면 Obsidian 기본 폰트를 따르도록 사용자용 설명을 정리했습니다.
+- guard: Style Settings YAML 렌더링, CDP 런타임 폰트 확인, source usage map, CSS compatibility budget, core principles, release check, Obsidian theme sync 검증을 통과했습니다.
 
 ## v3.1.77
 

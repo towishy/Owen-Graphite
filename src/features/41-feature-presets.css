@@ -40,7 +40,7 @@ body.ogd-serif-body .markdown-source-view.mod-cm6 .cm-content {
     Georgia, "Times New Roman", serif;
 }
 body.ogd-serif-body .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-text-theme); /* headings stay sans */
+  font-family: var(--ogd-reading-font-stack); /* headings stay sans */
 }
 
 /* A5 reserved for future punctuation refinement. */
@@ -107,7 +107,7 @@ kbd {
   display: inline-block;
   padding: 1px 6px;
   margin: 0 1px;
-  font-family: var(--font-monospace-theme);
+  font-family: var(--ogd-code-font-stack);
   font-size: 0.82em;
   font-weight: 600;
   color: var(--ogd-text-strong, #111827);
@@ -593,7 +593,7 @@ body.ogd-pdf-label-segmented-dual {
     background: var(--ogd-pdf-marginalia-bg, rgba(71, 85, 105, 0.045));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(71, 85, 105, 0.20));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 800;
     font-style: normal;
@@ -651,7 +651,7 @@ body.ogd-pdf-label-segmented-dual {
     border: 1px solid var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
     box-shadow: none;
     box-sizing: border-box;
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 800;
     font-style: normal;
@@ -715,7 +715,7 @@ body.ogd-pdf-label-segmented-dual {
     padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
     box-shadow: none;
     box-sizing: border-box;
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 800;
     font-style: normal;
@@ -875,7 +875,7 @@ body.ogd-pdf-label-segmented-dual {
     background: var(--ogd-pdf-marginalia-bg, rgba(71, 85, 105, 0.045));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(71, 85, 105, 0.20));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-footer-font-size, 8pt);
     font-weight: 800;
     font-style: normal;
@@ -913,7 +913,7 @@ body.ogd-pdf-label-segmented-dual {
     border: 1px solid var(--ogd-pdf-footer-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
     box-shadow: none;
     box-sizing: border-box;
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-footer-font-size, 8pt);
     font-weight: 800;
     font-style: normal;
@@ -1040,7 +1040,7 @@ body.ogd-report-mode .markdown-rendered {
     Georgia, serif;
 }
 body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
-  font-family: var(--font-text-theme);
+  font-family: var(--ogd-reading-font-stack);
 }
 
 /* ---------- D. UI POLISH ---------- */

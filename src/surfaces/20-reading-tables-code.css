@@ -211,7 +211,7 @@ body .workspace-leaf-content .markdown-rendered table tbody tr:hover td {
   position: absolute;
   top: 0.5em;
   right: 0.7em;
-  font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
+  font-family: var(--ogd-code-font-stack, "JetBrains Mono", monospace);
   font-size: 0.7em;
   font-weight: 600;
   color: var(--ogd-text-soft, #94a3b8);
@@ -240,7 +240,7 @@ body .workspace-leaf-content .markdown-rendered table tbody tr:hover td {
   padding: 2px 8px;
   background: rgba(75, 85, 99, 0.85);
   color: var(--ogd-surface-base, #ffffff);
-  font-family: var(--font-monospace-theme);
+  font-family: var(--ogd-code-font-stack);
   font-size: 0.7em;
   font-weight: 700;
   text-transform: uppercase;
@@ -422,7 +422,7 @@ body.theme-dark .markdown-rendered code:not(pre code) {
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.58);
   color: var(--ogd-text-subtle, #475569);
-  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.72em;
   font-weight: 760;
   line-height: 1.1;
@@ -463,7 +463,7 @@ body.theme-dark .markdown-rendered code:not(pre code) {
   overflow-x: auto;
   color: var(--ogd-code-fg, #1e293b);
   background: transparent;
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-size: var(--ogd-code-font-size, 0.92em);
   font-weight: var(--ogd-code-font-weight, 520);
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -751,7 +751,7 @@ body .workspace-leaf-content .markdown-rendered pre::before {
   border-radius: 6px;
   background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.58));
   color: var(--ogd-text-subtle, #475569);
-  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: var(--ogd-codeblock-header-font-size, 0.72em);
   font-weight: 760;
   line-height: 1.1;
@@ -818,7 +818,7 @@ body .workspace-leaf-content .markdown-rendered pre code {
   border: 0;
   background: transparent;
   color: var(--ogd-code-fg, #1e293b);
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-size: var(--ogd-code-font-size, 0.92em);
   font-weight: var(--ogd-code-font-weight, 520);
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -936,7 +936,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
   position: absolute; top: 0; bottom: auto; left: 1.08em; right: auto;
   z-index: 2; display: inline-flex; align-items: center; height: var(--ogd-codeblock-header-height, 2.2em);
   min-height: 0; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; transform: none;
-  color: var(--ogd-text-subtle, #475569); font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ogd-text-subtle, #475569); font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.72em; font-weight: 760; line-height: 1.1; letter-spacing: 0.02em;
   max-width: calc(100% - var(--ogd-codeblock-action-space, 3.3em) - 1.08em); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   text-transform: none; opacity: 1; pointer-events: none;
@@ -1040,7 +1040,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
     [class*="token"],
     [class*="cm-"]
   ) {
-    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
     font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;

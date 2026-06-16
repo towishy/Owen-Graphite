@@ -342,6 +342,35 @@ settings:
     type: class-toggle
     default: true
   -
+    id: ogd-settings-fonts
+    title: 폰트 적용
+    type: heading
+    level: 2
+  -
+    id: ogd-interface-font-stack
+    title: 인터페이스 폰트 직접 입력
+    description: 비워두면 Obsidian 외형 설정의 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", Pretendard, sans-serif 입니다.
+    type: variable-text
+    default: ''
+  -
+    id: ogd-reading-font-stack
+    title: 본문 폰트 직접 입력
+    description: 비워두면 Obsidian 외형 설정의 텍스트 폰트를 따릅니다. 예시는 "Noto Serif KR", serif 입니다.
+    type: variable-text
+    default: ''
+  -
+    id: ogd-code-font-stack
+    title: 코드 폰트 직접 입력
+    description: 비워두면 Obsidian 외형 설정의 모노스페이스 폰트를 따릅니다. 예시는 "D2Coding", "JetBrains Mono", monospace 입니다.
+    type: variable-text
+    default: ''
+  -
+    id: ogd-status-font-stack
+    title: 하단 상태바 폰트 직접 입력
+    description: 비워두면 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", sans-serif 입니다.
+    type: variable-text
+    default: ''
+  -
     id: ogd-settings-pdf-marginalia
     title: PDF 헤더/푸터 작은 라벨
     description: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
@@ -963,15 +992,11 @@ settings:
 
 .theme-light,
 .theme-dark {
-  --font-interface-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
-  --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
-  --font-monospace-theme: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
-    "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
-
-  --ogd-code-font-family: "JetBrains Mono", "Cascadia Code", "Cascadia Mono",
-    "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --font-interface-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-text-theme: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "Cascadia Code", "Cascadia Mono", "D2Coding", "SFMono-Regular", "Consolas", "Menlo", "Courier New", monospace;
+  --ogd-interface-font-stack: var(--font-interface, var(--font-interface-theme)); --ogd-reading-font-stack: var(--font-text, var(--font-text-theme)); --ogd-code-font-stack: var(--font-monospace, var(--font-monospace-theme)); --ogd-status-font-stack: var(--ogd-interface-font-stack);
+  --ogd-code-font-family: var(--ogd-code-font-stack);
   --ogd-pdf-surface-text-font-size: 11.6pt;
   --ogd-pdf-surface-text-line-height: 1.42;
   --ogd-code-font-size: 0.92em;
@@ -1090,11 +1115,7 @@ settings:
   --radius-l: 8px;
 }
 
-body {
-  background: var(--background-secondary);
-  color: var(--text-normal);
-  font-family: var(--font-interface-theme);
-}
+body { background: var(--background-secondary); color: var(--text-normal); font-family: var(--ogd-interface-font-stack); }
 
 body.ogd-motion-off {
   --ogd-hover-lift-strong: none;
@@ -1390,12 +1411,7 @@ button.mod-warning,
 
 .markdown-preview-view,
 .markdown-rendered,
-.markdown-source-view.mod-cm6 .cm-content {
-  font-family: var(--font-text-theme);
-  font-size: var(--ogd-body-size, 15px);
-  color: var(--text-normal);
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-}
+.markdown-source-view.mod-cm6 .cm-content { font-family: var(--ogd-reading-font-stack); font-size: var(--ogd-body-size, 15px); color: var(--text-normal); font-feature-settings: "kern" 1, "liga" 1, "calt" 1; }
 
 .markdown-preview-view,
 .markdown-rendered {
@@ -2529,7 +2545,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   border-radius: 4px;
   background: var(--ogd-surface-subtle, #f3f4f6);
   color: var(--ogd-text-strong, #111827);
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
   font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
   font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
@@ -2540,7 +2556,7 @@ body .markdown-rendered blockquote blockquote blockquote {
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   background: var(--ogd-surface-muted, #f8fafc);
   color: var(--ogd-text-strong, #111827);
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-size: var(--ogd-code-font-size, 0.92em);
   font-weight: var(--ogd-code-font-weight, 520);
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -2883,7 +2899,7 @@ body .workspace-leaf-content .markdown-rendered table tbody tr:hover td {
   color: var(--ogd-text-secondary, #374151);
   background: #eef2f7;
   border-bottom: 1px solid #d1d5db;
-  font-family: var(--font-monospace-theme);
+  font-family: var(--ogd-code-font-stack);
   font-size: 0.78em;
   font-weight: 800;
   text-transform: uppercase;
@@ -2899,7 +2915,7 @@ body .workspace-leaf-content .markdown-rendered table tbody tr:hover td {
   position: absolute;
   top: 0.5em;
   right: 0.7em;
-  font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
+  font-family: var(--ogd-code-font-stack, "JetBrains Mono", monospace);
   font-size: 0.7em;
   font-weight: 600;
   color: var(--ogd-text-soft, #94a3b8);
@@ -3093,7 +3109,7 @@ body.theme-dark .markdown-rendered code:not(pre code) {
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.58);
   color: var(--ogd-text-subtle, #475569);
-  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.72em;
   font-weight: 760;
   line-height: 1.1;
@@ -3135,7 +3151,7 @@ body.theme-dark .markdown-rendered code:not(pre code) {
   overflow-x: auto;
   color: var(--ogd-code-fg, #1e293b);
   background: transparent;
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-size: var(--ogd-code-font-size, 0.92em);
   font-weight: var(--ogd-code-font-weight, 520);
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -3418,7 +3434,7 @@ body .workspace-leaf-content .markdown-rendered pre::before {
   border-radius: 6px;
   background: var(--ogd-codeblock-header-bg, rgba(255, 255, 255, 0.58));
   color: var(--ogd-text-subtle, #475569);
-  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: var(--ogd-codeblock-header-font-size, 0.72em);
   font-weight: 760;
   line-height: 1.1;
@@ -3488,7 +3504,7 @@ body .workspace-leaf-content .markdown-rendered pre code {
   border: 0;
   background: transparent;
   color: var(--ogd-code-fg, #1e293b);
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-size: var(--ogd-code-font-size, 0.92em);
   font-weight: var(--ogd-code-font-weight, 520);
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -3606,7 +3622,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
   position: absolute; top: 0; bottom: auto; left: 1.08em; right: auto;
   z-index: 2; display: inline-flex; align-items: center; height: var(--ogd-codeblock-header-height, 2.2em);
   min-height: 0; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; transform: none;
-  color: var(--ogd-text-subtle, #475569); font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ogd-text-subtle, #475569); font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.72em; font-weight: 760; line-height: 1.1; letter-spacing: 0.02em;
   max-width: calc(100% - var(--ogd-codeblock-action-space, 3.3em) - 1.08em); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   text-transform: none; opacity: 1; pointer-events: none;
@@ -3661,7 +3677,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
     [class*="token"],
     [class*="cm-"]
   ) {
-    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
     font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
@@ -6197,7 +6213,7 @@ body .markdown-source-view.mod-cm6 :is(
 
 .markdown-source-view.mod-cm6 .HyperMD-codeblock-frontmatter,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-frontmatter-bg {
-  font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
+  font-family: var(--ogd-code-font-stack, "JetBrains Mono", monospace);
   font-size: 0.88em;
   background: var(--ogd-surface-muted, #f8fafc);
 }
@@ -6742,7 +6758,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
   border: 1px solid var(--ogd-line-soft, #e5e7eb);
   border-radius: 3px;
   padding: 0 4px;
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
   font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
   font-variant-ligatures: var(--ogd-code-font-variant-ligatures, none);
@@ -7146,7 +7162,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
   border-inline: 1px solid var(--ogd-lp-code-border);
   background: var(--ogd-lp-code-bg);
   color: var(--ogd-code-fg, #1e293b);
-  font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+  font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-size: var(--ogd-code-font-size, 0.92em);
   font-weight: var(--ogd-code-font-weight, 520);
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -7267,7 +7283,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
   padding: 0;
   margin-left: 0;
   color: #475569;
-  font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.78em;
   font-weight: 760;
   line-height: inherit;
@@ -7381,7 +7397,7 @@ body.ogd-serif-body .markdown-source-view.mod-cm6 .cm-content {
     Georgia, "Times New Roman", serif;
 }
 body.ogd-serif-body .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-text-theme); /* headings stay sans */
+  font-family: var(--ogd-reading-font-stack); /* headings stay sans */
 }
 
 /* A5 reserved for future punctuation refinement. */
@@ -7448,7 +7464,7 @@ kbd {
   display: inline-block;
   padding: 1px 6px;
   margin: 0 1px;
-  font-family: var(--font-monospace-theme);
+  font-family: var(--ogd-code-font-stack);
   font-size: 0.82em;
   font-weight: 600;
   color: var(--ogd-text-strong, #111827);
@@ -7934,7 +7950,7 @@ body.ogd-pdf-label-segmented-dual {
     background: var(--ogd-pdf-marginalia-bg, rgba(71, 85, 105, 0.045));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(71, 85, 105, 0.20));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 800;
     font-style: normal;
@@ -7992,7 +8008,7 @@ body.ogd-pdf-label-segmented-dual {
     border: 1px solid var(--ogd-pdf-header-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
     box-shadow: none;
     box-sizing: border-box;
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 800;
     font-style: normal;
@@ -8056,7 +8072,7 @@ body.ogd-pdf-label-segmented-dual {
     padding: var(--ogd-pdf-segment-pad-y, 5px) var(--ogd-pdf-segment-pad-x, 10px);
     box-shadow: none;
     box-sizing: border-box;
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-header-font-size, 7.5pt);
     font-weight: 800;
     font-style: normal;
@@ -8216,7 +8232,7 @@ body.ogd-pdf-label-segmented-dual {
     background: var(--ogd-pdf-marginalia-bg, rgba(71, 85, 105, 0.045));
     border: 1px solid var(--ogd-pdf-marginalia-border, rgba(71, 85, 105, 0.20));
     box-shadow: var(--ogd-pdf-marginalia-shadow, none);
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-footer-font-size, 8pt);
     font-weight: 800;
     font-style: normal;
@@ -8254,7 +8270,7 @@ body.ogd-pdf-label-segmented-dual {
     border: 1px solid var(--ogd-pdf-footer-segment-key-border, var(--ogd-pdf-segment-key-border, transparent));
     box-shadow: none;
     box-sizing: border-box;
-    font-family: var(--font-text-theme, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
+    font-family: var(--ogd-reading-font-stack, "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif);
     font-size: var(--ogd-pdf-footer-font-size, 8pt);
     font-weight: 800;
     font-style: normal;
@@ -8381,7 +8397,7 @@ body.ogd-report-mode .markdown-rendered {
     Georgia, serif;
 }
 body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
-  font-family: var(--font-text-theme);
+  font-family: var(--ogd-reading-font-stack);
 }
 
 /* ---------- D. UI POLISH ---------- */
@@ -9170,7 +9186,7 @@ body.theme-dark.ogd-eye-care {
   padding: 2px 8px;
   background: rgba(75, 85, 99, 0.85);
   color: var(--ogd-surface-base, #ffffff);
-  font-family: var(--font-monospace-theme);
+  font-family: var(--ogd-code-font-stack);
   font-size: 0.7em;
   font-weight: 700;
   text-transform: uppercase;
@@ -9647,7 +9663,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 .metadata-container,
 .metadata-properties-container {
-  font-family: var(--font-text-theme, inherit);
+  font-family: var(--ogd-reading-font-stack, inherit);
 }
 .metadata-property-key,
 .metadata-property .metadata-property-key-input {
@@ -9657,7 +9673,7 @@ body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-frontmatter {
   font-size: 0.88em;
-  font-family: var(--font-monospace-theme);
+  font-family: var(--ogd-code-font-stack);
 
   background: var(--ogd-surface-muted, #f8fafc);
   color: var(--ogd-text-subtle, #475569);
@@ -11344,7 +11360,7 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
   align-self: center;
   padding: 0 5px;
   color: var(--ogd-text-muted, #64748b);
-  font: 650 10px/1 var(--font-interface-theme, inherit);
+  font: 650 10px/1 var(--ogd-interface-font-stack, inherit);
   letter-spacing: 0;
   white-space: nowrap;
 }
@@ -11358,7 +11374,7 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
   border-radius: 6px;
   background: var(--ogd-glass-control-bg, rgba(255, 255, 255, 0.70));
   color: var(--ogd-text-strong, #111827);
-  font: 600 12px/1 var(--font-interface-theme, inherit);
+  font: 600 12px/1 var(--ogd-interface-font-stack, inherit);
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
@@ -12729,7 +12745,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     padding: var(--ogd-codeblock-code-padding, 20pt 9pt 8.5pt);
     background: transparent;
     color: var(--ogd-code-fg, #1e293b);
-    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
     font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -13509,7 +13525,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     background: transparent;
     box-shadow: none;
     color: var(--ogd-code-fg, #1e293b);
-    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
     font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
@@ -13626,7 +13642,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     background: transparent;
     box-shadow: none;
     color: #475569;
-    font-family: var(--font-interface-theme), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 7.2pt;
     font-weight: 760;
     line-height: 1.1;
@@ -13674,7 +13690,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code :is(span, .token, [class*="token"], [class*="cm-"]),
   body .workspace-leaf-content .markdown-rendered pre code :is(span, .token, [class*="token"], [class*="cm-"]) {
 
-    font-family: var(--ogd-code-font-family, var(--font-monospace-theme));
+    font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
     font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     font-weight: var(--ogd-code-font-weight, 520);
     font-style: normal;
@@ -15199,26 +15215,11 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     box-shadow: var(--ogd-glass-shadow-hover);
   }
 
-  .status-bar {
-    font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
-    font-size: 11px;
-    letter-spacing: 0.02em;
-  }
+  .status-bar { font-family: var(--ogd-status-font-stack, var(--ogd-interface-font-stack)); font-size: 11px; letter-spacing: 0.02em; }
 
-  body:not(.is-mobile) .status-bar .status-bar-item-segment {
-    border: 1px solid transparent;
-    border-radius: var(--ogd-radius-pill, 999px);
-    margin: 0 1px;
-    position: relative;
-    transition: var(--ogd-glass-transition);
-  }
+  body:not(.is-mobile) .status-bar .status-bar-item-segment { border: 1px solid transparent; border-radius: var(--ogd-radius-pill, 999px); margin: 0 1px; position: relative; transition: var(--ogd-glass-transition); }
 
-  body:not(.is-mobile) .status-bar .status-bar-item {
-    font-family: var(--font-monospace-theme, "JetBrains Mono", monospace);
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    position: relative;
-  }
+  body:not(.is-mobile) .status-bar .status-bar-item { font-family: var(--ogd-status-font-stack, var(--ogd-interface-font-stack)); font-size: 11px; letter-spacing: 0.02em; position: relative; }
 
   body:not(.is-mobile) .status-bar :is(.status-bar-item, .status-bar-item-segment) + :is(.status-bar-item, .status-bar-item-segment)::before {
     content: "";
@@ -17640,7 +17641,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
     box-shadow: var(--ogd-glass-control-shadow);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):is(:focus, :focus-visible, :focus-within) {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within) {
     border-color: var(--ogd-lg-frost-rim);
     outline: 1px solid var(--ogd-lg-frost-outline);
     outline-offset: 2px;
@@ -17980,7 +17981,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
   }
 
   body:not(.is-mobile) :is(
-    .setting-item,
+    .setting-item:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .setting-item),
     .metadata-property,
     .search-input-container,
     .document-search-container,
@@ -18014,7 +18015,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     box-shadow: var(--ogd-lg-shadow-focus);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown):focus-within {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within {
     background: var(--ogd-lg-control-bg);
     border-color: var(--ogd-lg-frost-rim);
     outline: 1px solid var(--ogd-lg-frost-outline);
