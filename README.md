@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.83** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.84** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.83` |
-| **Baseline / rollback target** | `v3.1.83` |
+| **Version** | `3.1.84` |
+| **Baseline / rollback target** | `v3.1.84` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -80,9 +80,20 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
 
-### v3.1.83 — Font Controls Preview And Neutral Theme Search
+### v3.1.84 — Community Theme Search Focus Rim
 
 ![Style Settings font controls](screenshots/fonts.png)
+
+This release removes the remaining cyan focus rim from the community theme browser search field by excluding that modal from the broad liquid-glass focus selector.
+
+| Area | What changed |
+| --- | --- |
+| Theme search | The focused community theme search container no longer receives the cyan liquid-glass halo from the generic focus rule. |
+| Modal focus scope | Community theme/plugin modal rows and search containers now keep neutral graphite focus treatment. |
+| Runtime evidence | CDP after-fix computed style shows no `rgba(103, 232, 249, ...)` rim on the focused search field. |
+| Release guard | Source usage map, core principles, release check, and CDP runtime verification passed. |
+
+### v3.1.83 — Font Controls Preview And Neutral Theme Search
 
 This release documents the new font controls with a README preview image and lowers the community theme search focus state from cyan rim to a neutral graphite focus.
 
@@ -183,7 +194,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.83.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.84.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -192,7 +203,7 @@ Download **`Owen-Graphite-3.1.83.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.83.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.84.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

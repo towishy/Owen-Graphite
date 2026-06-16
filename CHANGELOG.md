@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.84
+
+- fix: 커뮤니티 테마 탐색 검색창 focus 시 broad liquid-glass focus selector가 부모 row와 검색 컨테이너에 다시 입히던 cyan rim/halo를 제거했습니다.
+- polish: community theme/plugin modal의 검색 focus는 neutral graphite shadow와 slate border만 남도록 범위를 좁혔습니다.
+- guard: Obsidian CDP focus 재현/after-fix computed style 확인, source usage map, core principles, release check 검증을 통과했습니다.
+
 ## v3.1.83
 
 - fix: 커뮤니티 테마 탐색 검색창 focus 시 input과 검색 컨테이너에 생기던 cyan rim/halo를 중립 graphite focus로 낮췄습니다.
