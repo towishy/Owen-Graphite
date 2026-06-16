@@ -43,7 +43,7 @@
           "module": "src/surfaces/23-liquid-glass-core.css"
         },
         {
-          "line": 815,
+          "line": 818,
           "module": "src/surfaces/23-liquid-glass-core.css"
         },
         {
@@ -92,7 +92,7 @@
           "module": "src/surfaces/23-liquid-glass-core.css"
         },
         {
-          "line": 826,
+          "line": 829,
           "module": "src/surfaces/23-liquid-glass-core.css"
         },
         {
@@ -629,7 +629,7 @@
           "module": "src/features/42-report-print-polish.css"
         },
         {
-          "line": 892,
+          "line": 895,
           "module": "src/surfaces/23-liquid-glass-core.css"
         }
       ],
@@ -1008,7 +1008,7 @@
           "module": "src/base/13-live-preview.css"
         },
         {
-          "line": 1559,
+          "line": 1562,
           "module": "src/surfaces/23-liquid-glass-core.css"
         }
       ],
@@ -5214,9 +5214,9 @@
     {
       "category": "high-specificity",
       "line": 298,
-      "message": "specificity=(0, 16, 0)",
+      "message": "specificity=(0, 24, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within)",
+      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]):not(.modal.mod-community-theme input[type=\"text\"]):not(.modal .community-modal input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]):not(.modal.mod-community-theme input[type=\"search\"]):not(.modal .community-modal input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within)",
       "severity": "medium"
     },
     {
@@ -5270,14 +5270,30 @@
     {
       "category": "high-specificity",
       "line": 728,
-      "message": "specificity=(0, 16, 0)",
+      "message": "specificity=(0, 25, 2)",
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within",
+      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .document-search-container, .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]):not(.modal.mod-community-theme input[type=\"text\"]):not(.modal .community-modal input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]):not(.modal.mod-community-theme input[type=\"search\"]):not(.modal .community-modal input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within",
       "severity": "medium"
     },
     {
       "category": "high-specificity",
-      "line": 875,
+      "line": 730,
+      "message": "specificity=(0, 10, 0)",
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile) .modal.mod-community-theme :is(.search-input-container, .community-modal-search):is(:focus, :focus-visible, :focus-within), body:not(.is-mobile) .modal.mod-community-theme :is(.prompt-input, input[type=\"search\"], input[type=\"text\"], .community-modal-search-input):is(:focus, :focus-visible)",
+      "severity": "medium"
+    },
+    {
+      "category": "high-specificity",
+      "line": 731,
+      "message": "specificity=(0, 12, 0)",
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-community-theme :is(.search-input-container, .community-modal-search):is(:focus, :focus-visible, :focus-within), body:not(.is-mobile).theme-dark .modal.mod-community-theme :is(.prompt-input, input[type=\"search\"], input[type=\"text\"], .community-modal-search-input):is(:focus, :focus-visible)",
+      "severity": "medium"
+    },
+    {
+      "category": "high-specificity",
+      "line": 878,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) .workspace-tab-header.is-active .workspace-tab-header-inner, body:not(.is-mobile) .nav-file-title.is-active .nav-file-title-content",
@@ -5285,7 +5301,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 946,
+      "line": 949,
       "message": "specificity=(0, 22, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon ), body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
@@ -5293,7 +5309,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1083,
+      "line": 1086,
       "message": "specificity=(0, 36, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
@@ -5301,7 +5317,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1088,
+      "line": 1091,
       "message": "specificity=(0, 37, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .workspace-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .side-dock-ribbon .clickable-icon:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .clickable-icon.side-dock-ribbon-action:is(:hover, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-left:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .sidebar-toggle-button.mod-right:is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )",
@@ -5309,7 +5325,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1152,
+      "line": 1155,
       "message": "specificity=(0, 9, 6)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match, .search-info-container, .search-empty-state, .empty-state, .empty-state-container ), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item), body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is(.tree-item-inner, .nav-file-title-content, .nav-folder-title-content)",
@@ -5317,7 +5333,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1161,
+      "line": 1164,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile) :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -5325,7 +5341,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1168,
+      "line": 1171,
       "message": "specificity=(0, 10, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark :is( .workspace-leaf-content[data-type=\"backlink\"], .workspace-leaf-content[data-type=\"outgoing-link\"], .workspace-leaf-content[data-type=\"outline\"], .workspace-leaf-content[data-type=\"bookmarks\"], .workspace-leaf-content[data-type=\"tag\"], .workspace-leaf-content[data-type=\"search\"] ) :is( .tree-item-self, .tag-pane-tag, .search-result-file-title, .search-result-file-match ):is(:hover, :focus-within, .is-active, .mod-current, [aria-selected=\"true\"]), body:not(.is-mobile).theme-dark :is( .suggestion-container, .search-suggest-container, .search-suggestion-container, .prompt-results ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected=\"true\"])",
@@ -5333,7 +5349,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1259,
+      "line": 1262,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::before, body:not(.is-mobile) .workspace-tabs :is(.workspace-tab-header, .workspace-tab-header-inner)::after",
@@ -5341,7 +5357,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1372,
+      "line": 1375,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container, body:not(.is-mobile) .workspace-split.mod-root .view-header",
@@ -5349,7 +5365,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1397,
+      "line": 1400,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
@@ -5357,7 +5373,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1404,
+      "line": 1407,
       "message": "specificity=(0, 9, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header:not(.is-active):is(:hover, :focus-within) .workspace-tab-header-inner",
@@ -5365,7 +5381,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1418,
+      "line": 1421,
       "message": "specificity=(0, 14, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::before, body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active::after",
@@ -5373,7 +5389,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1440,
+      "line": 1443,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
@@ -5381,7 +5397,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1463,
+      "line": 1466,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -5389,7 +5405,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1468,
+      "line": 1471,
       "message": "specificity=(0, 9, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after",
@@ -5397,7 +5413,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1477,
+      "line": 1480,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title",
@@ -5405,7 +5421,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1481,
+      "line": 1484,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body.mod-macos:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -5413,7 +5429,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1485,
+      "line": 1488,
       "message": "specificity=(0, 9, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body.mod-macos:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner",
@@ -5421,7 +5437,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1513,
+      "line": 1516,
       "message": "specificity=(0, 16, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile) :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
@@ -5429,7 +5445,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1518,
+      "line": 1521,
       "message": "specificity=(0, 8, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .clickable-icon), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action)",
@@ -5437,7 +5453,7 @@
     },
     {
       "category": "high-specificity",
-      "line": 1523,
+      "line": 1526,
       "message": "specificity=(0, 18, 0)",
       "module": "src/surfaces/23-liquid-glass-core.css",
       "selector": "body:not(.is-mobile).theme-dark :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container :is(.workspace-tab-header-inner:is(:hover, :focus-visible, :active), .workspace-tab-header.is-active .workspace-tab-header-inner, .workspace-tab-header-new-tab:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .workspace-tab-header-tab-list:is(:hover, :focus-visible, :active, .is-active, [aria-expanded=\"true\"]), .clickable-icon:is(:hover, :focus-visible, :active, .is-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])), body:not(.is-mobile).theme-dark :is(.workspace-tab-header-tab-list, .workspace-tab-header-tab-list .clickable-icon, .workspace-tab-header-tab-list button.clickable-icon, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-left .clickable-icon, .sidebar-toggle-button.mod-left button.clickable-icon, .sidebar-toggle-button.mod-left .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button.mod-right, .sidebar-toggle-button.mod-right .clickable-icon, .sidebar-toggle-button.mod-right button.clickable-icon, .sidebar-toggle-button.mod-right .clickable-icon.side-dock-ribbon-action):is(:hover, :focus-visible, :active, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"])",
@@ -8619,14 +8635,14 @@
       ]
     },
     {
-      "declaration_count": 786,
+      "declaration_count": 791,
       "entry_line": 81,
       "has_selector_count": 6,
-      "high_specificity_selector_count": 30,
+      "high_specificity_selector_count": 32,
       "import_index": 25,
       "important_count": 0,
       "legacy_id": "10b-liquid-glass-core.css",
-      "line_count": 1656,
+      "line_count": 1659,
       "live_preview_sensitive_rule_count": 0,
       "max_specificity": [
         0,
@@ -8641,13 +8657,13 @@
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 105,
-      "selector_count": 158,
+      "risk_score": 111,
+      "selector_count": 160,
       "severity": "high",
       "top_properties": [
         [
           "box-shadow",
-          96
+          98
         ],
         [
           "background",
@@ -8655,7 +8671,7 @@
         ],
         [
           "border-color",
-          85
+          87
         ],
         [
           "color",
@@ -8663,7 +8679,7 @@
         ],
         [
           "outline",
-          29
+          30
         ],
         [
           "border-bottom-color",
@@ -8775,10 +8791,10 @@
   ],
   "summary": {
     "cross_file_selector_group_count": 81,
-    "finding_count": 619,
+    "finding_count": 621,
     "finding_severity_counts": {
       "low": 100,
-      "medium": 519
+      "medium": 521
     },
     "module_count": 26,
     "module_severity_counts": {
@@ -8787,7 +8803,7 @@
       "low": 3,
       "medium": 5
     },
-    "selector_count": 2539
+    "selector_count": 2541
   },
-  "version": "3.1.82"
+  "version": "3.1.83"
 }

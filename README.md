@@ -9,7 +9,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.82** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.83** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -60,8 +60,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.82` |
-| **Baseline / rollback target** | `v3.1.82` |
+| **Version** | `3.1.83` |
+| **Baseline / rollback target** | `v3.1.83` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -80,16 +80,18 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
 
-### v3.1.82 — User Font Respect And Overrides
+### v3.1.83 — Font Controls Preview And Neutral Theme Search
 
-This release lets Owen Graphite respect Obsidian's Appearance font settings first, while exposing user-friendly Style Settings fields for component-specific font overrides.
+![Style Settings font controls](screenshots/fonts.png)
+
+This release documents the new font controls with a README preview image and lowers the community theme search focus state from cyan rim to a neutral graphite focus.
 
 | Area | What changed |
 | --- | --- |
-| Font inheritance | Interface, reading, code, and status bar typography now route through Owen Graphite font stack variables that default to Obsidian's configured fonts. |
-| Style Settings | New direct-input fields let users override interface, reading, code, and bottom status bar fonts without seeing internal CSS variable syntax. |
-| Status bar | Bottom status chips no longer force the monospace stack unless the user explicitly chooses that behavior. |
-| Release guard | Style Settings YAML rendering, CDP runtime font verification, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
+| Font controls | The README now shows the Style Settings font controls directly above the latest feature explanation. |
+| Release assets | `screenshots/fonts.png` is included in manual ZIP builds, Obsidian sync, ZIP audits, and GitHub Release assets. |
+| Theme search | The community theme browser search field no longer shows the bright cyan focus rim. |
+| Release guard | CDP runtime focus verification, docs/assets audit, source usage map, CSS compatibility budget, release check, and release ZIP audit passed. |
 
 ### v3.1.77 — Notice Popup Blue Glass
 
@@ -181,7 +183,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.82.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.83.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -190,7 +192,7 @@ Download **`Owen-Graphite-3.1.82.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.82.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.83.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

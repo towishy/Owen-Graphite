@@ -29,6 +29,7 @@ RELEASE_ASSETS = [
     "LICENSE",
     "screenshots/light.png",
     "screenshots/dark.png",
+    "screenshots/fonts.png",
     "screenshots/readme/workspace-chrome-connected-glass.svg",
     "screenshots/readme/top-tabs-liquid-glass.svg",
     "screenshots/readme/workspace-writing-surface.jpg",

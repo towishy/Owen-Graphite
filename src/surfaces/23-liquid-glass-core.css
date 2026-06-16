@@ -406,7 +406,7 @@
     box-shadow: var(--ogd-glass-control-shadow);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within) {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]):not(.modal.mod-community-theme input[type="text"]):not(.modal .community-modal input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]):not(.modal.mod-community-theme input[type="search"]):not(.modal .community-modal input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within) {
     border-color: var(--ogd-lg-frost-rim);
     outline: 1px solid var(--ogd-lg-frost-outline);
     outline-offset: 2px;
@@ -748,13 +748,16 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     box-shadow: var(--ogd-lg-shadow-focus);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .document-search-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .document-search-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]):not(.modal.mod-community-theme input[type="text"]):not(.modal .community-modal input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]):not(.modal.mod-community-theme input[type="search"]):not(.modal .community-modal input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within {
     background: var(--ogd-lg-control-bg);
     border-color: var(--ogd-lg-frost-rim);
     outline: 1px solid var(--ogd-lg-frost-outline);
     outline-offset: 2px;
     box-shadow: var(--ogd-lg-shadow-focus);
   }
+
+  body:not(.is-mobile) .modal.mod-community-theme :is(.search-input-container, .community-modal-search):is(:focus, :focus-visible, :focus-within), body:not(.is-mobile) .modal.mod-community-theme :is(.prompt-input, input[type="search"], input[type="text"], .community-modal-search-input):is(:focus, :focus-visible) { border-color: rgba(148, 163, 184, 0.24); outline: 0; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 2px 8px rgba(15, 23, 42, 0.055); }
+  body:not(.is-mobile).theme-dark .modal.mod-community-theme :is(.search-input-container, .community-modal-search):is(:focus, :focus-visible, :focus-within), body:not(.is-mobile).theme-dark .modal.mod-community-theme :is(.prompt-input, input[type="search"], input[type="text"], .community-modal-search-input):is(:focus, :focus-visible) { border-color: rgba(203, 213, 225, 0.16); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 10px rgba(0, 0, 0, 0.22); }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="search"] :is(.search-input-container, .hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within {
     background:

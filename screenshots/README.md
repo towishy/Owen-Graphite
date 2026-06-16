@@ -1,11 +1,12 @@
 # Screenshots
 
-Owen Graphite v3.1.82 마켓플레이스 등록용 스크린샷.
+Owen Graphite v3.1.83 마켓플레이스 등록용 스크린샷.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
 | `light.png` | Light | README 대표 이미지 (실제 Obsidian 화면) |
 | `dark.png` | Dark | README 다크 모드 이미지 |
+| `fonts.png` | Settings | README 폰트 직접 입력 신기능 이미지 |
 | `thumbnail.png` | — | 커뮤니티 카탈로그 썸네일 |
 | `readme/workspace-chrome-connected-glass.svg` | Workspace chrome | README 연결형 탭·하단 프레임·vault switcher 신기능 이미지 |
 | `readme/top-tabs-liquid-glass.svg` | Workspace chrome | README 상단 탭 liquid-glass 신기능 이미지 |

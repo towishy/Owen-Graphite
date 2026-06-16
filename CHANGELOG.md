@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.83
+
+- fix: 커뮤니티 테마 탐색 검색창 focus 시 input과 검색 컨테이너에 생기던 cyan rim/halo를 중립 graphite focus로 낮췄습니다.
+- docs: README 최신 폰트 기능 설명 위에 `screenshots/fonts.png`를 배치하고, 릴리즈 ZIP/동기화/GitHub Release asset 목록에 포함했습니다.
+- guard: CDP 런타임 focus 확인, docs/assets audit, source usage map, CSS compatibility budget, release check, release ZIP audit 검증을 통과했습니다.
+
 ## v3.1.82
 
 - fix: Obsidian 외형 설정에서 지정한 인터페이스/본문/모노스페이스 폰트를 Owen Graphite가 우선 따르도록 폰트 토큰 경로를 재정리했습니다.
