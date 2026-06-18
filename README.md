@@ -1,5 +1,7 @@
 <!-- markdownlint-disable MD022 MD032 MD033 MD040 MD041 -->
 
+![Owen Kit](screenshots/readme/owen-kit.png)
+
 [![GitHub release](https://img.shields.io/github/v/release/towishy/Owen-Graphite?style=flat-square)](https://github.com/towishy/Owen-Graphite/releases/latest)
 [![License](https://img.shields.io/github/license/towishy/Owen-Graphite?style=flat-square)](LICENSE)
 [![Obsidian](https://img.shields.io/badge/Obsidian-Compatible-7c3aed?style=flat-square&logo=obsidian)](https://obsidian.md)
