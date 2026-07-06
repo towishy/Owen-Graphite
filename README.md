@@ -11,7 +11,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.84** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.85** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -62,8 +62,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.84` |
-| **Baseline / rollback target** | `v3.1.84` |
+| **Version** | `3.1.85` |
+| **Baseline / rollback target** | `v3.1.85` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -81,6 +81,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.85 — Heading Template Expansion
+
+This release adds four new report heading templates so H1-H4 design can better match formal, operational, draft, and chapter-index note styles across Reading View, Live Preview, and PDF export.
+
+| Area | What changed |
+| --- | --- |
+| Heading templates | Added Double Rule Classic, Tag Ribbon, Number Stamp, and Grid Index to the Style Settings heading-template selector. |
+| Output parity | Reading View, Live Preview, PDF print, and dark mode now share matching heading hierarchy treatment for the new templates. |
+| Cascade safety | Late heading reset guards now exclude all nine heading-template classes so selected templates keep their intended borders and badges. |
+| Release guard | Obsidian CDP computed-style/screenshot checks, source usage map, core principles, and release check passed. |
 
 ### v3.1.84 — Community Theme Search Focus Rim
 
@@ -196,7 +207,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.84.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.85.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -205,7 +216,7 @@ Download **`Owen-Graphite-3.1.84.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.84.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.85.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

@@ -54,7 +54,7 @@ Use this pattern for future codeblock work:
 
 ## Heading Template Parity Pattern
 
-Style Settings option `ogd-heading-template` maps to body classes `ogd-heading-printclean`, `ogd-heading-keyline`, `ogd-heading-bracket`, `ogd-heading-quiet-ledger`, and `ogd-heading-focus-bar`.
+Style Settings option `ogd-heading-template` maps to body classes `ogd-heading-printclean`, `ogd-heading-keyline`, `ogd-heading-bracket`, `ogd-heading-quiet-ledger`, `ogd-heading-focus-bar`, `ogd-heading-double-rule`, `ogd-heading-tag-ribbon`, `ogd-heading-number-stamp`, and `ogd-heading-grid-index`.
 
 Use this pattern for heading-template work:
 
@@ -64,7 +64,9 @@ Use this pattern for heading-template work:
 4. PDF export: `src/features/43-print-base.css` owns print-safe H1-H4 template output.
 5. Late closure: `src/features/41-feature-presets.css`, `src/features/42-report-print-polish.css`, and `src/themes/51-accessibility-motion-contrast.css` must not reset selected heading-template borders or pseudo rules.
 6. Vertical accents are allowed only for explicitly selected heading templates and must remain scoped to `body.ogd-heading-*` selectors.
-7. CSS compatibility budget is raised to 19,250 lines and 950,000 bytes for the five-template parity surface matching the approved sample imagery; raw aqua, `!important`, `@layer`, and print compatibility budgets remain unchanged.
+7. CSS compatibility budget is raised to 19,900 lines and 1,010,000 bytes for the nine-template parity surface (five approved sample-imagery templates plus double-rule/tag-ribbon/number-stamp/grid-index); raw aqua, `!important`, `@layer`, and print compatibility budgets remain unchanged.
+8. `ogd-heading-tag-ribbon` and `ogd-heading-grid-index` set `display: flex` on H1/H2 and repurpose `::before` as an in-flow flex item (ribbon/number-block shape) instead of the absolute-positioned kicker used by the other templates; PDF mirrors this with a static, hardcoded counter fallback (`content: "01"`) instead of `counter(ogd-h1-counter, ...)` to match the existing `ogd-heading-bracket`/`ogd-heading-focus-bar` print precedent.
+9. Only H1 renders a chapter number badge across all nine templates; H2-H4 use unlabeled accent markers (border, chip, or square) for consistency with the existing five-template convention — do not invent a new per-level counter chain.
 
 ## Documentation Rule
 

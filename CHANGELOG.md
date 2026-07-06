@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.85
+
+- feat: Style Settings의 헤더 디자인 템플릿에 더블룰 클래식, 태그 리본, 넘버 스탬프, 그리드 인덱스 4종을 추가했습니다.
+- polish: Reading View, Live Preview, PDF 출력, 다크 모드까지 신규 헤더 템플릿의 H1-H4 위계와 배지/룰/마커 스타일을 맞췄습니다.
+- guard: Obsidian CDP로 신규 템플릿 4종의 computed style과 스크린샷을 확인했고, source usage map, core principles, release check 검증을 통과했습니다.
+
 ## v3.1.84
 
 - fix: 커뮤니티 테마 탐색 검색창 focus 시 broad liquid-glass focus selector가 부모 row와 검색 컨테이너에 다시 입히던 cyan rim/halo를 제거했습니다.

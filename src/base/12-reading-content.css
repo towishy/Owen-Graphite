@@ -384,7 +384,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   width: min(128px, 20%);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
   --ogd-heading-template-text: var(--ogd-text-strong, #111827);
   --ogd-heading-template-subtext: var(--ogd-text-slate, #334155);
   --ogd-heading-template-muted: var(--ogd-text-subtle, #475569);
@@ -479,7 +479,83 @@ body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdo
   --ogd-heading-template-h2-bg: rgba(240, 249, 255, 0.42);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #334155;
+  --ogd-heading-template-accent-soft: rgba(51, 65, 85, 0.14);
+  --ogd-heading-template-border: rgba(51, 65, 85, 0.55);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 0;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 4px solid var(--ogd-heading-template-accent);
+  --ogd-heading-template-h1-padding: 0.10em 0 0.70em;
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1.5px solid rgba(51, 65, 85, 0.48);
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #0d9488;
+  --ogd-heading-template-accent-soft: rgba(13, 148, 136, 0.18);
+  --ogd-heading-template-border: rgba(94, 234, 212, 0.55);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 0;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 0 solid transparent;
+  --ogd-heading-template-h1-padding: 0.10em 0 0.56em;
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1px solid rgba(94, 234, 212, 0.45);
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #d97706;
+  --ogd-heading-template-accent-soft: rgba(217, 119, 6, 0.16);
+  --ogd-heading-template-border: rgba(217, 119, 6, 0.45);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 10px;
+  --ogd-heading-template-h1-bg: rgba(255, 251, 235, 0.38);
+  --ogd-heading-template-h1-border-left: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-right: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-top: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-bottom: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-padding: 0.92em 0.70em 0.62em;
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1.5px dashed rgba(217, 119, 6, 0.40);
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #7c3aed;
+  --ogd-heading-template-accent-soft: rgba(124, 58, 237, 0.16);
+  --ogd-heading-template-border: rgba(196, 181, 253, 0.60);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 10px;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 0 solid transparent;
+  --ogd-heading-template-h1-padding: 0 0 0.58em;
+  --ogd-heading-template-h2-bg: rgba(237, 233, 254, 0.50);
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 0 solid transparent;
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
   padding: var(--ogd-heading-template-h1-padding);
   border-top: var(--ogd-heading-template-h1-border-top);
   border-right: var(--ogd-heading-template-h1-border-right);
@@ -492,12 +568,12 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-decoration: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
   color: var(--ogd-heading-template-accent);
   text-decoration: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
   content: none;
   display: none;
   position: static;
@@ -512,7 +588,7 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   box-shadow: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
   padding: var(--ogd-heading-template-h2-padding);
   padding-left: var(--ogd-heading-template-h2-padding-left);
   border-left: var(--ogd-heading-template-h2-border-left);
@@ -523,7 +599,7 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-decoration: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
   content: none;
   display: none;
   position: static;
@@ -536,8 +612,8 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   background: var(--ogd-heading-template-rule);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
   border-left: 0;
   background: transparent;
   box-shadow: none;
@@ -548,11 +624,11 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-underline-offset: 0.20em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
   text-decoration-color: var(--ogd-heading-template-h3-decoration);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
   color: var(--ogd-heading-template-muted);
   text-decoration-color: var(--ogd-heading-template-h4-decoration);
 }
@@ -731,6 +807,166 @@ body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdo
   display: inline-block;
   min-width: 10em;
   margin-right: 2em;
+  text-decoration: none;
+}
+
+/* 더블룰 클래식: 배경 없이 두꺼운/얇은 이중 룰 라인만으로 구성 */
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  font-size: 2.10em;
+}
+
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: none;
+  display: none;
+}
+
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 1.5px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(51, 65, 85, 0.5);
+  box-shadow: none;
+}
+
+/* 태그 리본: 챕터 번호 리본 배지를 H1/H2 앞에 인라인 배치 */
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 2.05em;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  position: static;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.05em;
+  margin: 0;
+  padding: 0 0.55em 0 0.62em;
+  clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%);
+  background: var(--ogd-heading-template-accent);
+  color: #ffffff;
+  font-size: 0.40em;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-left: 0;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before {
+  content: "";
+  flex: none;
+  width: 0.85em;
+  height: 0.85em;
+  clip-path: polygon(0 0, 65% 0, 100% 50%, 65% 100%, 0 100%);
+  background: var(--ogd-heading-template-accent);
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  border-left: 3px solid var(--ogd-heading-template-accent);
+  padding-left: 0.55em;
+  text-decoration: none;
+}
+
+/* 넘버 스탬프: 회전된 사각 배지가 점선 박스 모서리에 겹쳐지는 캐주얼 스타일 */
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  font-size: 2.02em;
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  position: absolute;
+  top: -0.62em;
+  left: 0.62em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7em;
+  height: 1.35em;
+  margin: 0;
+  padding: 0 0.3em;
+  border-radius: 4px;
+  background: var(--ogd-heading-template-accent);
+  color: #ffffff;
+  font-size: 0.34em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  transform: rotate(-7deg);
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.35);
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  padding-bottom: 0.34em;
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  text-decoration-style: dashed;
+  text-decoration-color: rgba(217, 119, 6, 0.5);
+}
+
+/* 그리드 인덱스: 좌측 넘버 블록 + 2단 편집 레이아웃 */
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.62em;
+  font-size: 2.0em;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  position: static;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.55em;
+  height: 1.55em;
+  margin: 0;
+  border-radius: 0.28em;
+  background: var(--ogd-heading-template-accent);
+  color: #ffffff;
+  font-size: 0.46em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding-left: 0;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before {
+  content: "";
+  flex: none;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 0.2em;
+  background: var(--ogd-heading-template-accent-soft);
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  padding-left: 2.1em;
+  border-left: 0;
   text-decoration: none;
 }
 

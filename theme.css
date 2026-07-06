@@ -223,6 +223,18 @@ settings:
       -
         label: 포커스 바
         value: ogd-heading-focus-bar
+      -
+        label: 더블룰 클래식
+        value: ogd-heading-double-rule
+      -
+        label: 태그 리본
+        value: ogd-heading-tag-ribbon
+      -
+        label: 넘버 스탬프
+        value: ogd-heading-number-stamp
+      -
+        label: 그리드 인덱스
+        value: ogd-heading-grid-index
   -
     id: ogd-drop-cap
     title: 드롭 캡 (첫 문단 첫 글자 크게)
@@ -1824,7 +1836,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   width: min(128px, 20%);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
   --ogd-heading-template-text: var(--ogd-text-strong, #111827);
   --ogd-heading-template-subtext: var(--ogd-text-slate, #334155);
   --ogd-heading-template-muted: var(--ogd-text-subtle, #475569);
@@ -1919,7 +1931,83 @@ body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdo
   --ogd-heading-template-h2-bg: rgba(240, 249, 255, 0.42);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #334155;
+  --ogd-heading-template-accent-soft: rgba(51, 65, 85, 0.14);
+  --ogd-heading-template-border: rgba(51, 65, 85, 0.55);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 0;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 4px solid var(--ogd-heading-template-accent);
+  --ogd-heading-template-h1-padding: 0.10em 0 0.70em;
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1.5px solid rgba(51, 65, 85, 0.48);
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #0d9488;
+  --ogd-heading-template-accent-soft: rgba(13, 148, 136, 0.18);
+  --ogd-heading-template-border: rgba(94, 234, 212, 0.55);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 0;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 0 solid transparent;
+  --ogd-heading-template-h1-padding: 0.10em 0 0.56em;
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1px solid rgba(94, 234, 212, 0.45);
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #d97706;
+  --ogd-heading-template-accent-soft: rgba(217, 119, 6, 0.16);
+  --ogd-heading-template-border: rgba(217, 119, 6, 0.45);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 10px;
+  --ogd-heading-template-h1-bg: rgba(255, 251, 235, 0.38);
+  --ogd-heading-template-h1-border-left: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-right: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-top: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-border-bottom: 1.5px dashed var(--ogd-heading-template-border);
+  --ogd-heading-template-h1-padding: 0.92em 0.70em 0.62em;
+  --ogd-heading-template-h2-bg: transparent;
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 1.5px dashed rgba(217, 119, 6, 0.40);
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #7c3aed;
+  --ogd-heading-template-accent-soft: rgba(124, 58, 237, 0.16);
+  --ogd-heading-template-border: rgba(196, 181, 253, 0.60);
+  --ogd-heading-template-rule: transparent;
+  --ogd-heading-template-shadow: none;
+  --ogd-heading-template-radius: 10px;
+  --ogd-heading-template-h1-bg: transparent;
+  --ogd-heading-template-h1-border-left: 0 solid transparent;
+  --ogd-heading-template-h1-border-right: 0 solid transparent;
+  --ogd-heading-template-h1-border-top: 0 solid transparent;
+  --ogd-heading-template-h1-border-bottom: 0 solid transparent;
+  --ogd-heading-template-h1-padding: 0 0 0.58em;
+  --ogd-heading-template-h2-bg: rgba(237, 233, 254, 0.50);
+  --ogd-heading-template-h2-border-left: 0 solid transparent;
+  --ogd-heading-template-h2-border-bottom: 0 solid transparent;
+  --ogd-heading-template-h2-padding-left: 0;
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
   padding: var(--ogd-heading-template-h1-padding);
   border-top: var(--ogd-heading-template-h1-border-top);
   border-right: var(--ogd-heading-template-h1-border-right);
@@ -1932,12 +2020,12 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-decoration: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
   color: var(--ogd-heading-template-accent);
   text-decoration: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
   content: none;
   display: none;
   position: static;
@@ -1952,7 +2040,7 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   box-shadow: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
   padding: var(--ogd-heading-template-h2-padding);
   padding-left: var(--ogd-heading-template-h2-padding-left);
   border-left: var(--ogd-heading-template-h2-border-left);
@@ -1963,7 +2051,7 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-decoration: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
   content: none;
   display: none;
   position: static;
@@ -1976,8 +2064,8 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   background: var(--ogd-heading-template-rule);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3,
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
   border-left: 0;
   background: transparent;
   box-shadow: none;
@@ -1988,11 +2076,11 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-underline-offset: 0.20em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 {
   text-decoration-color: var(--ogd-heading-template-h3-decoration);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h4 {
   color: var(--ogd-heading-template-muted);
   text-decoration-color: var(--ogd-heading-template-h4-decoration);
 }
@@ -2167,6 +2255,166 @@ body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdo
   display: inline-block;
   min-width: 10em;
   margin-right: 2em;
+  text-decoration: none;
+}
+
+/* 더블룰 클래식: 배경 없이 두꺼운/얇은 이중 룰 라인만으로 구성 */
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  font-size: 2.10em;
+}
+
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: none;
+  display: none;
+}
+
+body.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 1.5px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(51, 65, 85, 0.5);
+  box-shadow: none;
+}
+
+/* 태그 리본: 챕터 번호 리본 배지를 H1/H2 앞에 인라인 배치 */
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 2.05em;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  position: static;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.05em;
+  margin: 0;
+  padding: 0 0.55em 0 0.62em;
+  clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%);
+  background: var(--ogd-heading-template-accent);
+  color: #ffffff;
+  font-size: 0.40em;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-left: 0;
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before {
+  content: "";
+  flex: none;
+  width: 0.85em;
+  height: 0.85em;
+  clip-path: polygon(0 0, 65% 0, 100% 50%, 65% 100%, 0 100%);
+  background: var(--ogd-heading-template-accent);
+}
+
+body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  border-left: 3px solid var(--ogd-heading-template-accent);
+  padding-left: 0.55em;
+  text-decoration: none;
+}
+
+/* 넘버 스탬프: 회전된 사각 배지가 점선 박스 모서리에 겹쳐지는 캐주얼 스타일 */
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  font-size: 2.02em;
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  position: absolute;
+  top: -0.62em;
+  left: 0.62em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7em;
+  height: 1.35em;
+  margin: 0;
+  padding: 0 0.3em;
+  border-radius: 4px;
+  background: var(--ogd-heading-template-accent);
+  color: #ffffff;
+  font-size: 0.34em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  transform: rotate(-7deg);
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.35);
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  padding-bottom: 0.34em;
+}
+
+body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  text-decoration-style: dashed;
+  text-decoration-color: rgba(217, 119, 6, 0.5);
+}
+
+/* 그리드 인덱스: 좌측 넘버 블록 + 2단 편집 레이아웃 */
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.62em;
+  font-size: 2.0em;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
+  content: counter(ogd-h1-counter, decimal-leading-zero);
+  position: static;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.55em;
+  height: 1.55em;
+  margin: 0;
+  border-radius: 0.28em;
+  background: var(--ogd-heading-template-accent);
+  color: #ffffff;
+  font-size: 0.46em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding-left: 0;
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::before {
+  content: "";
+  flex: none;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 0.2em;
+  background: var(--ogd-heading-template-accent-soft);
+}
+
+body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(h3, h4) {
+  padding-left: 2.1em;
+  border-left: 0;
   text-decoration: none;
 }
 
@@ -4961,7 +5209,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
   color: var(--ogd-line-soft, #e5e7eb);
 }
 
-body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
   --ogd-heading-template-text: var(--ogd-text-inverted, #f8fafc);
   --ogd-heading-template-subtext: var(--ogd-line-soft, #e5e7eb);
   --ogd-heading-template-muted: var(--ogd-text-soft, #94a3b8);
@@ -4992,6 +5240,29 @@ body.theme-dark.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-
 body.theme-dark.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
   --ogd-heading-template-h1-border-left: 6px solid color-mix(in srgb, #7dd3fc 34%, transparent);
   --ogd-heading-template-h1-border-right: 6px solid color-mix(in srgb, #7dd3fc 34%, transparent);
+}
+
+body.theme-dark.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #cbd5e1;
+  --ogd-heading-template-h1-border-bottom: 4px solid var(--ogd-heading-template-accent);
+}
+
+body.theme-dark.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #5eead4;
+}
+
+body.theme-dark.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #fbbf24;
+  --ogd-heading-template-h1-bg: rgba(120, 53, 15, 0.20);
+  --ogd-heading-template-h1-border-left: 1.5px dashed rgba(251, 191, 36, 0.55);
+  --ogd-heading-template-h1-border-right: 1.5px dashed rgba(251, 191, 36, 0.55);
+  --ogd-heading-template-h1-border-top: 1.5px dashed rgba(251, 191, 36, 0.55);
+  --ogd-heading-template-h1-border-bottom: 1.5px dashed rgba(251, 191, 36, 0.55);
+}
+
+body.theme-dark.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #c4b5fd;
+  --ogd-heading-template-h2-bg: rgba(76, 29, 149, 0.24);
 }
 .theme-dark .markdown-rendered .callout {
   background: #25272d;
@@ -5553,7 +5824,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     box-shadow: none;
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
     --ogd-print-heading-text: #111827;
     --ogd-print-heading-subtext: #334155;
     --ogd-print-heading-muted: #475569;
@@ -5624,7 +5895,60 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     --ogd-print-heading-h2-bg: rgba(240, 249, 255, 0.28);
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+  body.ogd-heading-double-rule :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
+    --ogd-print-heading-accent: #334155;
+    --ogd-print-heading-border: rgba(51, 65, 85, 0.55);
+    --ogd-print-heading-rule: transparent;
+    --ogd-print-heading-h1-bg: transparent;
+    --ogd-print-heading-h1-border-left: 0 solid transparent;
+    --ogd-print-heading-h1-border-right: 0 solid transparent;
+    --ogd-print-heading-h1-border-top: 0 solid transparent;
+    --ogd-print-heading-h1-border-bottom: 3px solid rgba(51, 65, 85, 0.85);
+    --ogd-print-heading-h1-padding: 0.10em 0 0.66em;
+    --ogd-print-heading-h2-padding-left: 0;
+  }
+
+  body.ogd-heading-tag-ribbon :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
+    --ogd-print-heading-accent: #0d9488;
+    --ogd-print-heading-border: rgba(94, 234, 212, 0.55);
+    --ogd-print-heading-rule: transparent;
+    --ogd-print-heading-h1-bg: transparent;
+    --ogd-print-heading-h1-border-left: 0 solid transparent;
+    --ogd-print-heading-h1-border-right: 0 solid transparent;
+    --ogd-print-heading-h1-border-top: 0 solid transparent;
+    --ogd-print-heading-h1-border-bottom: 0 solid transparent;
+    --ogd-print-heading-h1-padding: 0.10em 0 0.56em;
+    --ogd-print-heading-h2-padding-left: 0;
+  }
+
+  body.ogd-heading-number-stamp :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
+    --ogd-print-heading-accent: #d97706;
+    --ogd-print-heading-border: rgba(217, 119, 6, 0.45);
+    --ogd-print-heading-rule: transparent;
+    --ogd-print-heading-h1-bg: transparent;
+    --ogd-print-heading-h1-border-left: 1.5px dashed rgba(217, 119, 6, 0.55);
+    --ogd-print-heading-h1-border-right: 1.5px dashed rgba(217, 119, 6, 0.55);
+    --ogd-print-heading-h1-border-top: 1.5px dashed rgba(217, 119, 6, 0.55);
+    --ogd-print-heading-h1-border-bottom: 1.5px dashed rgba(217, 119, 6, 0.55);
+    --ogd-print-heading-h1-padding: 0.86em 0.62em 0.56em;
+    --ogd-print-heading-h2-padding-left: 0;
+  }
+
+  body.ogd-heading-grid-index :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
+    --ogd-print-heading-accent: #7c3aed;
+    --ogd-print-heading-border: rgba(196, 181, 253, 0.60);
+    --ogd-print-heading-rule: transparent;
+    --ogd-print-heading-h1-bg: transparent;
+    --ogd-print-heading-h1-border-left: 0 solid transparent;
+    --ogd-print-heading-h1-border-right: 0 solid transparent;
+    --ogd-print-heading-h1-border-top: 0 solid transparent;
+    --ogd-print-heading-h1-border-bottom: 0 solid transparent;
+    --ogd-print-heading-h1-padding: 0 0 0.56em;
+    --ogd-print-heading-h2-bg: rgba(237, 233, 254, 0.32);
+    --ogd-print-heading-h2-padding-left: 0;
+  }
+
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
     padding: var(--ogd-print-heading-h1-padding);
     border-top: var(--ogd-print-heading-h1-border-top);
     border-right: var(--ogd-print-heading-h1-border-right);
@@ -5639,14 +5963,14 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     print-color-adjust: exact;
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
     color: var(--ogd-print-heading-accent);
     text-shadow: none;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::after {
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::after {
     content: none;
     display: none;
     position: static;
@@ -5663,7 +5987,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     print-color-adjust: exact;
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
     padding-left: var(--ogd-print-heading-h2-padding-left);
     border-left: var(--ogd-print-heading-h2-border-left);
     border-bottom: 1px solid var(--ogd-print-heading-border-soft);
@@ -5678,7 +6002,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     print-color-adjust: exact;
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2::after {
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2::after {
     content: none;
     display: none;
     position: static;
@@ -5693,7 +6017,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     print-color-adjust: exact;
   }
 
-  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
+  body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
     color: var(--ogd-print-heading-subtext);
     border-top: 0;
     border-right: 0;
@@ -5855,6 +6179,149 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     border-radius: 0;
     box-shadow: none;
     outline: 0;
+  }
+
+  body.ogd-heading-double-rule :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    border: 0;
+    border-bottom: 3px solid rgba(51, 65, 85, 0.85);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  body.ogd-heading-double-rule :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    content: none;
+    display: none;
+  }
+
+  body.ogd-heading-double-rule :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 1.5px;
+    border: 0;
+    background: rgba(51, 65, 85, 0.5);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-heading-double-rule :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
+    border-left: 0;
+    background: transparent;
+  }
+
+  body.ogd-heading-tag-ribbon :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border: 0;
+    background: transparent;
+  }
+
+  body.ogd-heading-tag-ribbon :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    content: "01";
+    position: static;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5em;
+    height: 1.05em;
+    margin: 0;
+    padding: 0 0.55em 0 0.62em;
+    clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%);
+    background: #0d9488;
+    color: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-heading-tag-ribbon :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-left: 0;
+    background: transparent;
+  }
+
+  body.ogd-heading-tag-ribbon :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
+    border-left: 3px solid rgba(13, 148, 136, 0.65);
+    padding-left: 0.55em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-heading-number-stamp :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    border-radius: 10px;
+    background: rgba(255, 251, 235, 0.35);
+  }
+
+  body.ogd-heading-number-stamp :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    content: "01";
+    position: absolute;
+    top: -0.55em;
+    left: 0.55em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7em;
+    height: 1.35em;
+    margin: 0;
+    padding: 0 0.3em;
+    border-radius: 4px;
+    background: #d97706;
+    color: #ffffff;
+    transform: rotate(-7deg);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-heading-number-stamp :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
+    border-left: 0;
+    border-bottom: 1.5px dashed rgba(217, 119, 6, 0.55);
+    background: transparent;
+  }
+
+  body.ogd-heading-number-stamp :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
+    text-decoration-style: dashed;
+    text-decoration-color: rgba(217, 119, 6, 0.55);
+  }
+
+  body.ogd-heading-grid-index :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.62em;
+    border: 0;
+    background: transparent;
+  }
+
+  body.ogd-heading-grid-index :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1::before {
+    content: "01";
+    position: static;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    height: 1.4em;
+    margin: 0;
+    border-radius: 0.28em;
+    background: #7c3aed;
+    color: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.ogd-heading-grid-index :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h2 {
+    border-left: 0;
+  }
+
+  body.ogd-heading-grid-index :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
+    padding-left: 2.1em;
+    border-left: 0;
   }
 
   /* v1.8.65 — PDF readability micro-tuning */
@@ -6308,7 +6775,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-text-soft, #94a3b8);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-text: var(--ogd-text-strong, #111827);
   --ogd-lp-heading-subtext: var(--ogd-text-slate, #334155);
   --ogd-lp-heading-muted: var(--ogd-text-subtle, #475569);
@@ -6344,7 +6811,33 @@ body.ogd-heading-bracket .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-inline-pad: 0.18em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-1 {
+body.ogd-heading-double-rule .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #334155;
+  --ogd-lp-heading-accent-soft: rgba(51, 65, 85, 0.16);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(51, 65, 85, 0.82), rgba(148, 163, 184, 0.50), transparent);
+}
+
+body.ogd-heading-tag-ribbon .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #0d9488;
+  --ogd-lp-heading-accent-soft: rgba(13, 148, 136, 0.18);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(13, 148, 136, 0.82), rgba(94, 234, 212, 0.50), transparent);
+}
+
+body.ogd-heading-number-stamp .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #d97706;
+  --ogd-lp-heading-accent-soft: rgba(217, 119, 6, 0.18);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(217, 119, 6, 0.82), rgba(251, 191, 36, 0.50), transparent);
+  --ogd-lp-heading-inline-border: 1.5px dashed rgba(217, 119, 6, 0.42);
+  --ogd-lp-heading-inline-pad: 0.18em;
+}
+
+body.ogd-heading-grid-index .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #7c3aed;
+  --ogd-lp-heading-accent-soft: rgba(124, 58, 237, 0.16);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(124, 58, 237, 0.82), rgba(196, 181, 253, 0.50), transparent);
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-1 {
   display: inline-block;
   color: var(--ogd-lp-heading-text);
   font-size: var(--ogd-lp-heading-h1-size);
@@ -6361,7 +6854,7 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-shadow: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-2 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-2 {
   color: var(--ogd-lp-heading-text);
   font-size: var(--ogd-lp-heading-h2-size);
   font-weight: 800;
@@ -6373,8 +6866,8 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-underline-offset: 0.20em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-3,
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-3,
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-lp-heading-subtext);
   text-decoration-line: underline;
   text-decoration-style: solid;
@@ -6383,18 +6876,18 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-underline-offset: 0.18em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-3 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-3 {
   font-size: var(--ogd-lp-heading-h3-size);
   font-weight: 760;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-lp-heading-muted);
   font-size: var(--ogd-lp-heading-h4-size);
   font-weight: 760;
 }
 
-body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 {
+body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-text: var(--ogd-text-inverted, #f8fafc);
   --ogd-lp-heading-subtext: var(--ogd-line-soft, #e5e7eb);
   --ogd-lp-heading-muted: var(--ogd-text-soft, #94a3b8);
@@ -6408,6 +6901,23 @@ body.theme-dark.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 {
 
 body.theme-dark.ogd-heading-bracket .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-inline-border: 2px solid color-mix(in srgb, #7dd3fc 34%, transparent);
+}
+
+body.theme-dark.ogd-heading-double-rule .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #cbd5e1;
+}
+
+body.theme-dark.ogd-heading-tag-ribbon .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #5eead4;
+}
+
+body.theme-dark.ogd-heading-number-stamp .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #fbbf24;
+  --ogd-lp-heading-inline-border: 1.5px dashed color-mix(in srgb, #fbbf24 40%, transparent);
+}
+
+body.theme-dark.ogd-heading-grid-index .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #c4b5fd;
 }
 
 body.ogd-heading-printclean .markdown-source-view.mod-cm6 .cm-header-1 {
@@ -8317,10 +8827,10 @@ body.ogd-pdf-label-segmented-dual {
 }
 
 @media print {
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h1,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h1,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h1,
-  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h1:first-of-type {
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1,
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1,
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1,
+  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type {
     display: block;
     width: auto;
     max-width: 100%;
@@ -8331,10 +8841,10 @@ body.ogd-pdf-label-segmented-dual {
     padding: 0.3em 0 0.2em;
   }
 
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h1::after,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h1::after,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h1::after,
-  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h1:first-of-type::after {
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1::after,
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1::after,
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after,
+  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type::after {
     display: none;
     content: none;
   }
@@ -8633,7 +9143,7 @@ body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown
   border-bottom-color: rgba(148, 163, 184, 0.34);
 }
 
-body.ogd-spacing-relaxed:not(.ogd-pdf-compact):not(.ogd-pdf-visibility):not(.ogd-pdf-screen-delivery):not(.ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+body.ogd-spacing-relaxed:not(.ogd-pdf-compact):not(.ogd-pdf-visibility):not(.ogd-pdf-screen-delivery):not(.ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
   width: min(176px, 30%);
   height: 2px;
   background: linear-gradient(90deg, rgba(51, 65, 85, 0.68), rgba(148, 163, 184, 0.10));
@@ -11977,10 +12487,10 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
 /* Final title-rule override for Obsidian PDF export cascade.
   v3.1.78 — PDF heading gradient rule removed; keep only spacing closure. */
 /* Reset H1 — Sample B kicker style takes precedence */
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h1,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h1,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h1,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h1:first-of-type {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type {
   display: block;
   width: auto;
   max-width: 100%;
@@ -11994,10 +12504,10 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   padding-bottom: 0.2em;
 }
 
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h2:first-of-type,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h2:first-of-type,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h2:first-of-type,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h2:first-of-type {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h2:first-of-type,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h2:first-of-type,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h2:first-of-type,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h2:first-of-type {
 
   display: inline-block;
   width: auto;
@@ -12015,14 +12525,14 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   box-shadow: 0 -1px 0 #f8fafc;
 }
 
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h1::after,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h1::after,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h1::after,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h1:first-of-type::after,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered h2:first-of-type::after,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-preview-view.markdown-rendered h2:first-of-type::after,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-reading-view .markdown-rendered h2:first-of-type::after,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) .markdown-rendered > h2:first-of-type::after {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h2:first-of-type::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h2:first-of-type::after,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h2:first-of-type::after,
+body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h2:first-of-type::after {
   display: none;
   content: none;
 }
@@ -12275,9 +12785,9 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   }
 
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered), body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, li, dd, dt, blockquote):not(table *) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.92em; margin-bottom: 0.62em; padding-top: 0.34em; padding-bottom: 0.28em; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; padding: 0.20em 0.44em 0.24em; border-color: transparent; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.84), rgba(241, 245, 249, 0.50)); box-shadow: none; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 { color: #172033; text-decoration-color: rgba(14, 116, 144, 0.52); text-decoration-thickness: 1.5px; }
+  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.92em; margin-bottom: 0.62em; padding-top: 0.34em; padding-bottom: 0.28em; }
+  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; padding: 0.20em 0.44em 0.24em; border-color: transparent; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.84), rgba(241, 245, 249, 0.50)); box-shadow: none; }
+  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 { color: #172033; text-decoration-color: rgba(14, 116, 144, 0.52); text-decoration-thickness: 1.5px; }
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table { --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.46); --ogd-table-border: rgba(148, 163, 184, 0.42); --ogd-table-cell-border: rgba(203, 213, 225, 0.90); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef5); --ogd-table-row-even: rgba(248, 250, 252, 0.84); font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); border-color: var(--ogd-table-border); }
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table th { border-bottom: 2px solid #b8c6d6; background: var(--ogd-table-head-bg); color: #0f172a; font-weight: 850; }
   body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table :is(th, td) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
@@ -13370,7 +13880,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
 
   /* v2.30.4 - Forbidden left vertical bar removal (PDF/print parity).
      Mirrors the screen-side global force-disable in 10b. */
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
     border-left: 0;
     border-inline-start: 0;
@@ -13378,7 +13888,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   }
 
   /* v2.30.4b - kill PDF pseudo-element left accent bars (preserve auto-number content) */
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .ogd-executive-summary, .ogd-action-summary)::before {
     border-left: 0;
     border-inline-start: 0;
@@ -17225,14 +17735,14 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
    Policy: no strong-color left accent bars on headings, callouts,
    blockquotes, TOC, or PDF report sections. Box outlines and bottom
    underlines are allowed; left bars are not. */
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, nav.toc, .table-of-contents, .toc, .report-toc, .ogd-executive-summary, .ogd-action-summary) {
   border-left: 0;
   border-inline-start: 0;
   border-left-width: 0;
 }
 
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6)::before,
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(blockquote, .callout, .HyperMD-callout, .ogd-executive-summary, .ogd-action-summary)::before {
   border-left: 0;
   border-inline-start: 0;

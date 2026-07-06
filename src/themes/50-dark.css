@@ -185,7 +185,7 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view.markdown-rendered
   color: var(--ogd-line-soft, #e5e7eb);
 }
 
-body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
   --ogd-heading-template-text: var(--ogd-text-inverted, #f8fafc);
   --ogd-heading-template-subtext: var(--ogd-line-soft, #e5e7eb);
   --ogd-heading-template-muted: var(--ogd-text-soft, #94a3b8);
@@ -216,6 +216,29 @@ body.theme-dark.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-
 body.theme-dark.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
   --ogd-heading-template-h1-border-left: 6px solid color-mix(in srgb, #7dd3fc 34%, transparent);
   --ogd-heading-template-h1-border-right: 6px solid color-mix(in srgb, #7dd3fc 34%, transparent);
+}
+
+body.theme-dark.ogd-heading-double-rule :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #cbd5e1;
+  --ogd-heading-template-h1-border-bottom: 4px solid var(--ogd-heading-template-accent);
+}
+
+body.theme-dark.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #5eead4;
+}
+
+body.theme-dark.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #fbbf24;
+  --ogd-heading-template-h1-bg: rgba(120, 53, 15, 0.20);
+  --ogd-heading-template-h1-border-left: 1.5px dashed rgba(251, 191, 36, 0.55);
+  --ogd-heading-template-h1-border-right: 1.5px dashed rgba(251, 191, 36, 0.55);
+  --ogd-heading-template-h1-border-top: 1.5px dashed rgba(251, 191, 36, 0.55);
+  --ogd-heading-template-h1-border-bottom: 1.5px dashed rgba(251, 191, 36, 0.55);
+}
+
+body.theme-dark.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) {
+  --ogd-heading-template-accent: #c4b5fd;
+  --ogd-heading-template-h2-bg: rgba(76, 29, 149, 0.24);
 }
 .theme-dark .markdown-rendered .callout {
   background: #25272d;

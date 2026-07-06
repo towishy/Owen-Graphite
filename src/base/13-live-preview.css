@@ -250,7 +250,7 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-text-soft, #94a3b8);
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-text: var(--ogd-text-strong, #111827);
   --ogd-lp-heading-subtext: var(--ogd-text-slate, #334155);
   --ogd-lp-heading-muted: var(--ogd-text-subtle, #475569);
@@ -286,7 +286,33 @@ body.ogd-heading-bracket .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-inline-pad: 0.18em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-1 {
+body.ogd-heading-double-rule .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #334155;
+  --ogd-lp-heading-accent-soft: rgba(51, 65, 85, 0.16);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(51, 65, 85, 0.82), rgba(148, 163, 184, 0.50), transparent);
+}
+
+body.ogd-heading-tag-ribbon .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #0d9488;
+  --ogd-lp-heading-accent-soft: rgba(13, 148, 136, 0.18);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(13, 148, 136, 0.82), rgba(94, 234, 212, 0.50), transparent);
+}
+
+body.ogd-heading-number-stamp .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #d97706;
+  --ogd-lp-heading-accent-soft: rgba(217, 119, 6, 0.18);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(217, 119, 6, 0.82), rgba(251, 191, 36, 0.50), transparent);
+  --ogd-lp-heading-inline-border: 1.5px dashed rgba(217, 119, 6, 0.42);
+  --ogd-lp-heading-inline-pad: 0.18em;
+}
+
+body.ogd-heading-grid-index .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #7c3aed;
+  --ogd-lp-heading-accent-soft: rgba(124, 58, 237, 0.16);
+  --ogd-lp-heading-rule: linear-gradient(90deg, rgba(124, 58, 237, 0.82), rgba(196, 181, 253, 0.50), transparent);
+}
+
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-1 {
   display: inline-block;
   color: var(--ogd-lp-heading-text);
   font-size: var(--ogd-lp-heading-h1-size);
@@ -303,7 +329,7 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-shadow: none;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-2 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-2 {
   color: var(--ogd-lp-heading-text);
   font-size: var(--ogd-lp-heading-h2-size);
   font-weight: 800;
@@ -315,8 +341,8 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-underline-offset: 0.20em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-3,
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-3,
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-lp-heading-subtext);
   text-decoration-line: underline;
   text-decoration-style: solid;
@@ -325,18 +351,18 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   text-underline-offset: 0.18em;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-3 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-3 {
   font-size: var(--ogd-lp-heading-h3-size);
   font-weight: 760;
 }
 
-body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 .cm-header-4 {
+body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 .cm-header-4 {
   color: var(--ogd-lp-heading-muted);
   font-size: var(--ogd-lp-heading-h4-size);
   font-weight: 760;
 }
 
-body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar) .markdown-source-view.mod-cm6 {
+body.theme-dark:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .ogd-heading-quiet-ledger, .ogd-heading-focus-bar, .ogd-heading-double-rule, .ogd-heading-tag-ribbon, .ogd-heading-number-stamp, .ogd-heading-grid-index) .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-text: var(--ogd-text-inverted, #f8fafc);
   --ogd-lp-heading-subtext: var(--ogd-line-soft, #e5e7eb);
   --ogd-lp-heading-muted: var(--ogd-text-soft, #94a3b8);
@@ -350,6 +376,23 @@ body.theme-dark.ogd-heading-quiet-ledger .markdown-source-view.mod-cm6 {
 
 body.theme-dark.ogd-heading-bracket .markdown-source-view.mod-cm6 {
   --ogd-lp-heading-inline-border: 2px solid color-mix(in srgb, #7dd3fc 34%, transparent);
+}
+
+body.theme-dark.ogd-heading-double-rule .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #cbd5e1;
+}
+
+body.theme-dark.ogd-heading-tag-ribbon .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #5eead4;
+}
+
+body.theme-dark.ogd-heading-number-stamp .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #fbbf24;
+  --ogd-lp-heading-inline-border: 1.5px dashed color-mix(in srgb, #fbbf24 40%, transparent);
+}
+
+body.theme-dark.ogd-heading-grid-index .markdown-source-view.mod-cm6 {
+  --ogd-lp-heading-accent: #c4b5fd;
 }
 
 body.ogd-heading-printclean .markdown-source-view.mod-cm6 .cm-header-1 {
