@@ -2,6 +2,38 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.83 — Font Controls Preview And Neutral Theme Search
+
+README에 Style Settings 폰트 직접 입력 화면을 추가하고, community theme 검색 입력의 focus 상태를 강한 cyan 대신 중립 graphite rim으로 낮췄습니다. 관련 이미지가 manual ZIP, Obsidian sync, ZIP audit 및 GitHub Release asset 경로에 포함되도록 계약을 갱신했습니다.
+
+## v3.1.77 — Notice Popup Blue Glass
+
+Obsidian Notice 팝업의 export/save 확인 상태를 밝은 작업 공간에서도 읽기 쉬운 blue-tint liquid glass로 정리했습니다. 배경 drop shadow를 덜어내고 light/dark 모드에서 메시지 대비를 유지했습니다.
+
+## v3.1.73 — Document Title Pill Blue Round Glass
+
+CDP 측정값을 바탕으로 긴 문서 제목의 하단 clipping을 수정하고, 문서 제목 pill을 우측 상태 chip과 어울리는 부드러운 blue round glass 표면으로 맞췄습니다.
+
+## v3.1.72 — File Explorer CDP Spacing Correction
+
+Obsidian inline tree geometry를 덮지 않으면서 폴더 들여쓰기와 하위 문서 시작점을 조정해 파일 탐색기의 계층을 명확하게 만들었습니다. 상단 action menu도 pane header와 더 자연스럽게 연결했습니다.
+
+## v3.1.71 — File Explorer Codeblock Card Focus
+
+선택된 문서의 직접 상위 폴더를 compact codeblock card처럼 표시하고, 활성 문서 row에는 더 분명한 glass-filled focus를 적용했습니다.
+
+## v3.1.70 — Community Theme Search Card And README Refresh
+
+Obsidian community theme 검색에서 선택된 Owen Graphite 카드가 어두운 저대비 블록으로 변하지 않도록 수정하고, README를 영어 중심의 marketplace 소개 구조로 정리했습니다.
+
+## v3.1.69 — File Explorer Hierarchy Polish
+
+활성 하위 폴더 간격, 파일 제목 크기, 타입 배지 폭, 파일 목록 하단 fade를 조정해 큰 vault에서도 문서 계층을 차분하게 탐색할 수 있도록 개선했습니다.
+
+## v3.1.65 — Community Theme Compatibility And Accessibility
+
+Obsidian `1.5.8+` 호환 메타데이터를 정리하고 번들 BOM을 제거했으며, light/dark 보조 텍스트와 코드 주석 대비를 강화했습니다.
+
 ## v3.1.56 — Style Settings Import / Export Glass Polish
 
 Style Settings의 `Import`, `Export`, `Copy to clipboard`, `Download`, `Import from file` 링크 문자열을 Owen Graphite의 설정 화면 톤에 맞는 작은 glass pill 버튼으로 정리했습니다. Export/Import 모달 안에서도 같은 버튼 언어를 적용해 링크 텍스트가 설정 화면에서 따로 떠 보이지 않도록 맞췄습니다.

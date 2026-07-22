@@ -196,7 +196,7 @@ def main() -> int:
 
     # === Report 1: safe in-file duplicates ===
     print("=" * 70)
-    print("REPORT 1 — Safe in-file duplicates (auto-removable)")
+    print("REPORT 1 - Safe in-file duplicates (auto-removable)")
     print("=" * 70)
     safe_total = 0
     safe_files = 0
@@ -209,7 +209,7 @@ def main() -> int:
         print(f"\n{rel} : {len(dupes)} group(s)")
         for sel, body, ctx, lines in sorted(dupes, key=lambda d: d[3][0]):
             ctx_note = f"  @ctx: {ctx}" if ctx else ""
-            print(f"  lines {lines}  sel: {sel[:90]}{'…' if len(sel) > 90 else ''}{ctx_note}")
+            print(f"  lines {lines}  sel: {sel[:90]}{'...' if len(sel) > 90 else ''}{ctx_note}")
             safe_total += len(lines) - 1
     print(f"\n  TOTAL safe-removable extra copies: {safe_total}")
     print(f"  Modules with safe duplicates: {safe_files}")
@@ -217,7 +217,7 @@ def main() -> int:
     # === Report 2: cross-file selector groups ===
     print()
     print("=" * 70)
-    print(f"REPORT 2 — Cross-file selector groups (>= {args.threshold} occurrences)")
+    print(f"REPORT 2 - Cross-file selector groups (>= {args.threshold} occurrences)")
     print("=" * 70)
     by_sel = cross_file_groups(SRC_DIR)
     big_groups = []
@@ -232,7 +232,7 @@ def main() -> int:
         cross_total += 1
     big_groups.sort(key=lambda g: -len(g[1]))
     for sel, occurrences in big_groups[:30]:
-        print(f"\n  {len(occurrences)}x  {sel[:100]}{'…' if len(sel) > 100 else ''}")
+        print(f"\n  {len(occurrences)}x  {sel[:100]}{'...' if len(sel) > 100 else ''}")
         for path, line, ctx in occurrences[:10]:
             ctx_note = f"  @ctx: {ctx[:40]}" if ctx else ""
             print(f"    {path}:{line}{ctx_note}")

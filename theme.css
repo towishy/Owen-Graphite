@@ -62,6 +62,7 @@ settings:
     title: 읽기와 본문
     type: heading
     level: 2
+    collapsed: false
   -
     id: ogd-body-size
     title: 본문 폰트 크기
@@ -86,14 +87,25 @@ settings:
   -
     id: ogd-max-width
     title: 본문 최대 폭
+    description: 긴 문단은 읽기 문서 폭을, 넓은 표·보고서는 와이드 폭을 선택하세요.
     type: variable-select
     default: 420mm
     options:
-      - 210mm
-      - 297mm
-      - 360mm
-      - 420mm
-      - 100%
+      -
+        label: 읽기 문서 · 210mm
+        value: 210mm
+      -
+        label: 보고서 · 297mm
+        value: 297mm
+      -
+        label: 와이드 보고서 · 360mm
+        value: 360mm
+      -
+        label: 대형 표 · 420mm
+        value: 420mm
+      -
+        label: 전체 폭 · 100%
+        value: 100%
   -
     id: ogd-accent
     title: 헤더 강조 색상
@@ -105,6 +117,7 @@ settings:
     title: 표와 코드
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-modern-tables
     title: 표 모던 스타일 강화
@@ -122,6 +135,7 @@ settings:
     title: 보고서와 PDF
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-report-mode
     title: 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프)
@@ -299,6 +313,7 @@ settings:
     title: 워크스페이스와 접근성
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-eye-care
     title: 시선 보호 모드 (베이지 배경)
@@ -358,6 +373,7 @@ settings:
     title: 폰트 적용
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-interface-font-stack
     title: 인터페이스 폰트 직접 입력
@@ -388,6 +404,7 @@ settings:
     description: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-pdf-header-enabled
     title: 첫 페이지 헤더 라벨 표시
@@ -421,6 +438,7 @@ settings:
     title: 공통 구성
     type: heading
     level: 3
+    collapsed: true
   -
     id: ogd-pdf-marginalia-preset
     title: 헤더/푸터 빠른 문구
@@ -487,6 +505,7 @@ settings:
     title: 헤더 설정
     type: heading
     level: 3
+    collapsed: true
   -
     id: ogd-pdf-header-key-palette
     title: 헤더 Key 색상
@@ -759,6 +778,7 @@ settings:
     title: 푸터 설정
     type: heading
     level: 3
+    collapsed: true
   -
     id: ogd-pdf-footer-key-palette
     title: 푸터 Key 색상
@@ -938,6 +958,10 @@ settings:
   --ogd-hover-lift-subtle: translateY(-0.5px);
   --ogd-hover-shift: translateX(1px);
   --ogd-press-lift: translateY(0) scale(0.99);
+  --ogd-space-unit: 4px;
+  --ogd-motion-interaction: 140ms;
+  --ogd-motion-surface: 200ms;
+  --ogd-touch-target: 44px;
 
   /* PDF Marginalia — print-only first page header / last page footer microlabels.
    * Driven by Style Settings (ogd-pdf-header / ogd-pdf-footer).
@@ -10477,7 +10501,7 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 }
 .prompt-input,
 .modal input[type="text"],
-.modal input[type="search"],
+.modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]),
 .modal textarea {
   background: var(--ogd-surface-muted, #f8fafc);
   border: 1px solid var(--ogd-line-strong, #cbd5e1);
@@ -10487,7 +10511,7 @@ body.theme-dark .metadata-property .metadata-property-key-input {
 }
 .prompt-input:focus-visible,
 .modal input[type="text"]:focus-visible,
-.modal input[type="search"]:focus-visible,
+.modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]):focus-visible,
 .modal textarea:focus-visible {
   outline: var(--ogd-border-none, 0);
   border-color: var(--ogd-focus-ring-border);
@@ -10619,7 +10643,7 @@ body.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-
 }
 .theme-dark .prompt-input,
 .theme-dark .modal input[type="text"],
-.theme-dark .modal input[type="search"],
+.theme-dark .modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]),
 .theme-dark .modal textarea {
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.42));
   border-color: rgba(148, 163, 184, 0.34);
@@ -10628,7 +10652,7 @@ body.ogd-zebra-disabled-permanently .block-language-dataview table tbody tr:nth-
 }
 .theme-dark .prompt-input:focus-visible,
 .theme-dark .modal input[type="text"]:focus-visible,
-.theme-dark .modal input[type="search"]:focus-visible,
+.theme-dark .modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]):focus-visible,
 .theme-dark .modal textarea:focus-visible {
   border-color: var(--ogd-focus-ring-border);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), var(--ogd-focus-ring-shadow), 0 4px 12px rgba(0, 0, 0, 0.24);
@@ -11072,7 +11096,7 @@ body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-a
 }
 
 /* Settings focus ring */
-.setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible { outline: 1px solid rgba(100, 116, 139, 0.42); outline-offset: 1px; }
+.setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible { outline: 2px solid var(--ogd-focus-ring-border, rgba(100, 116, 139, 0.42)); outline-offset: 2px; }
 
 .theme-dark .setting-item,
 .theme-dark .style-settings-container .setting-item,
@@ -12161,6 +12185,12 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
   border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.48));
   box-shadow: var(--ogd-lg-shadow-focus, 0 10px 24px rgba(15, 23, 42, 0.14), 0 0 0 3px rgba(103, 232, 249, 0.12));
   color: var(--text-normal);
+}
+
+.is-mobile :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .tree-item-self, .nav-file-title, .nav-folder-title),
+.is-mobile .owen-editor-glass-toolbar.is-mobile-compact .owen-editor-toolbar-button {
+  min-height: var(--ogd-touch-target, 44px);
+  min-width: var(--ogd-touch-target, 44px);
 }
 
 .is-mobile.theme-dark :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .setting-item, .tree-item-self, .nav-file-title, .nav-folder-title):is(:hover, :focus-visible, :focus-within, .is-selected, .selected, .is-active, [aria-selected="true"]) {
@@ -14955,6 +14985,44 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     bottom: var(--ogd-bottom-document-toolbar-bottom);
   }
 
+  body:not(.is-mobile) .owen-editor-glass-toolbar,
+  body:not(.is-mobile) .owen-editor-selection-toolbar {
+    background: var(--ogd-09b-toolbar-bg);
+    border-color: var(--ogd-09b-toolbar-border);
+    box-shadow: var(--ogd-09b-toolbar-shadow);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05));
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05));
+  }
+
+  body:not(.is-mobile) .owen-editor-glass-toolbar .owen-editor-toolbar-button,
+  body:not(.is-mobile) .owen-editor-selection-toolbar .owen-editor-selection-toolbar-button {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transition-duration: var(--ogd-motion-interaction, 140ms);
+  }
+
+  body:not(.is-mobile) .owen-editor-glass-toolbar .owen-editor-toolbar-button:is(:hover, :focus-visible),
+  body:not(.is-mobile) .owen-editor-selection-toolbar .owen-editor-selection-toolbar-button:is(:hover, :focus-visible) {
+    background: var(--ogd-09b-control-hover-bg);
+    border-color: var(--ogd-rim-hover, rgba(125, 211, 252, 0.44));
+    box-shadow: var(--ogd-09b-control-hover-shadow);
+  }
+
+  body:not(.is-mobile) :is(.owen-editor-toolbar-button, .owen-editor-selection-toolbar-button):focus-visible {
+    outline: 2px solid var(--ogd-focus-ring-border);
+    outline-offset: 2px;
+  }
+
+  body:not(.is-mobile).theme-dark .owen-editor-glass-toolbar,
+  body:not(.is-mobile).theme-dark .owen-editor-selection-toolbar {
+    background: var(--ogd-09b-toolbar-bg);
+    border-color: var(--ogd-09b-toolbar-border);
+    box-shadow: var(--ogd-09b-toolbar-shadow);
+  }
+
   body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-sizer,
   body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type="markdown"] .markdown-source-view .cm-scroller {
     padding-top: calc(var(--ogd-editor-toolbar-top-offset) + var(--ogd-editor-toolbar-height) + var(--ogd-editor-toolbar-content-gap) - var(--ogd-editor-toolbar-top-content-lift));
@@ -15662,7 +15730,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   body:not(.is-mobile) :is(.notice, .notice-container .notice) :is(.notice-message, .notice-content) { color: inherit; font-weight: inherit; }
   body:not(.is-mobile).theme-dark :is(.notice, .notice-container .notice) { background: radial-gradient(circle at 76% 22%, var(--ogd-rim-active-low), transparent 34%), radial-gradient(circle at 14% 74%, var(--ogd-lg-mist-line), transparent 38%), linear-gradient(180deg, rgba(14, 35, 58, 0.94), rgba(8, 47, 73, 0.80)); color: var(--ogd-text-inverted, #f8fafc); border-color: var(--ogd-rim-hover); text-shadow: 0 1px 0 rgba(0, 0, 0, 0.46); }
 
-  body:not(.is-mobile) :is(.prompt-input, .modal input[type="text"], .modal input[type="search"], .modal textarea) {
+  body:not(.is-mobile) :is(.prompt-input, .modal input[type="text"], .modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]), .modal textarea) {
     background: var(--ogd-glass-control-bg);
     -webkit-backdrop-filter: var(--ogd-glass-filter-control);
     backdrop-filter: var(--ogd-glass-filter-control);
@@ -15670,7 +15738,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     box-shadow: var(--ogd-glass-control-shadow);
   }
 
-  body:not(.is-mobile).theme-dark :is(.prompt-input, .modal input[type="text"], .modal input[type="search"], .modal textarea) {
+  body:not(.is-mobile).theme-dark :is(.prompt-input, .modal input[type="text"], .modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]), .modal textarea) {
     background: var(--ogd-glass-control-bg);
     border-color: var(--ogd-glass-border);
     box-shadow: var(--ogd-glass-control-shadow);
@@ -16248,7 +16316,8 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
 /* v1.8.56 - Overlay interaction polish. */
 .search-input-container input,
 .prompt-input,
-:is(.workspace-leaf-content[data-type="search"], .modal) :is(input[type="search"], input[type="text"]) {
+.workspace-leaf-content[data-type="search"] :is(input[type="search"], input[type="text"]),
+.modal :is(input[type="search"], input[type="text"]):not(.modal.owen-editor-palette-modal input) {
   transition: border-color 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease;
 }
 
@@ -16256,7 +16325,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   .search-input-container input,
   .prompt-input,
   .workspace-leaf-content[data-type="search"] :is(input[type="search"], input[type="text"]),
-  .modal :is(input[type="search"], input[type="text"])
+  .modal :is(input[type="search"], input[type="text"]):not(.modal.owen-editor-palette-modal input)
 ):is(:focus, :focus-visible) {
   background: var(--ogd-surface-base, #ffffff);
   border-color: #64748b;
@@ -16457,7 +16526,7 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
   .search-input-container input,
   .prompt-input,
   .workspace-leaf-content[data-type="search"] :is(input[type="search"], input[type="text"]),
-  .modal :is(input[type="search"], input[type="text"])
+  .modal :is(input[type="search"], input[type="text"]):not(.modal.owen-editor-palette-modal input)
 ):is(:focus, :focus-visible) {
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.58), rgba(15, 23, 42, 0.42));
   border-color: var(--ogd-line-faint, #94a3b8);
@@ -17679,6 +17748,29 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
   }
 }
 
+@media (prefers-reduced-transparency: reduce) {
+  body:not(.is-mobile) {
+    --ogd-glass-filter: none;
+    --ogd-glass-filter-soft: none;
+    --ogd-glass-filter-control: none;
+    --ogd-glass-bg: rgba(248, 250, 252, 0.98);
+    --ogd-glass-bg-strong: rgba(255, 255, 255, 0.99);
+    --ogd-glass-bg-hover: rgba(240, 249, 255, 0.99);
+    --ogd-lg-surface-bg: rgba(248, 250, 252, 0.98);
+    --ogd-lg-surface-bg-strong: rgba(255, 255, 255, 0.99);
+    --ogd-lg-surface-bg-hover: rgba(240, 249, 255, 0.99);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-glass-bg: rgba(30, 41, 59, 0.98);
+    --ogd-glass-bg-strong: rgba(15, 23, 42, 0.99);
+    --ogd-glass-bg-hover: rgba(30, 41, 59, 0.99);
+    --ogd-lg-surface-bg: rgba(30, 41, 59, 0.98);
+    --ogd-lg-surface-bg-strong: rgba(15, 23, 42, 0.99);
+    --ogd-lg-surface-bg-hover: rgba(30, 41, 59, 0.99);
+  }
+}
+
 @media (prefers-contrast: more) {
   body:not(.is-mobile) {
     --ogd-glass-border: color-mix(in srgb, var(--header-accent) 42%, var(--background-modifier-border));
@@ -18143,7 +18235,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
     box-shadow: var(--ogd-lg-shadow-active);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"], .modal textarea, .modal select, .modal .dropdown) {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container, .modal input[type="text"], .modal input[type="search"]:not(.modal.owen-editor-palette-modal input[type="search"]), .modal textarea, .modal select, .modal .dropdown) {
     background: var(--ogd-lg-control-bg);
     -webkit-backdrop-filter: var(--ogd-glass-filter-control);
     backdrop-filter: var(--ogd-glass-filter-control);
@@ -18151,7 +18243,7 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
     box-shadow: var(--ogd-glass-control-shadow);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]):not(.modal.mod-community-theme input[type="text"]):not(.modal .community-modal input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]):not(.modal.mod-community-theme input[type="search"]):not(.modal .community-modal input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within) {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]):not(.modal.mod-community-theme input[type="text"]):not(.modal .community-modal input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]):not(.modal.mod-community-theme input[type="search"]):not(.modal .community-modal input[type="search"]):not(.modal.owen-editor-palette-modal input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within) {
     border-color: var(--ogd-lg-frost-rim);
     outline: 1px solid var(--ogd-lg-frost-outline);
     outline-offset: 2px;
@@ -18371,7 +18463,7 @@ body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-vi
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption { caption-side: top; margin: 0; padding: 0.7em 0.9em; border: 1px solid var(--ogd-html-table-border, var(--ogd-table-border, rgba(203, 213, 225, 0.72))); border-bottom: 0; border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0; background: var(--ogd-html-table-caption-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.52))); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); color: var(--ogd-text-subtle, #475569); font-size: 0.92em; font-weight: 780; line-height: 1.35; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { display: inline-flex; align-items: center; min-height: 1.55em; margin-left: 0.55em; padding: 0.12em 0.58em; border: 1px solid rgba(125, 211, 252, 0.48); border-radius: var(--ogd-radius-pill, 999px); background: linear-gradient(180deg, rgba(240, 249, 255, 0.92), rgba(224, 242, 254, 0.64)); color: #0369a1; font-size: 0.78em; font-weight: 780; line-height: 1.2; white-space: nowrap; }
+:is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { display: inline-flex; align-items: center; min-height: 1.55em; margin-left: 0.55em; padding: 0.12em 0.58em; border: 1px solid color-mix(in srgb, var(--ogd-rim-active) 63%, transparent); border-radius: var(--ogd-radius-pill, 999px); background: linear-gradient(180deg, rgba(240, 249, 255, 0.92), rgba(224, 242, 254, 0.64)); color: #0369a1; font-size: 0.78em; font-weight: 780; line-height: 1.2; white-space: nowrap; }
 :is(
   body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
   .markdown-rendered.ogd-report-mode,
@@ -18443,7 +18535,7 @@ body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-vi
 }
 
 .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption { color: var(--ogd-line-strong, #cbd5e1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
-.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { border-color: rgba(186, 230, 253, 0.26); background: linear-gradient(180deg, rgba(14, 116, 144, 0.34), rgba(15, 23, 42, 0.28)); color: #bae6fd; }
+.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { border-color: color-mix(in srgb, var(--ogd-rim-active) 62%, transparent); background: linear-gradient(180deg, rgba(14, 116, 144, 0.34), rgba(15, 23, 42, 0.28)); color: #bae6fd; }
 
 .theme-dark :is(
   body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
@@ -18525,7 +18617,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     box-shadow: var(--ogd-lg-shadow-focus);
   }
 
-  body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .document-search-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]):not(.modal.mod-community-theme input[type="text"]):not(.modal .community-modal input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]):not(.modal.mod-community-theme input[type="search"]):not(.modal .community-modal input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within {
+  body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .document-search-container, .modal input[type="text"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="text"]):not(.modal.mod-community-theme input[type="text"]):not(.modal .community-modal input[type="text"]), .modal input[type="search"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type="search"]):not(.modal.mod-community-theme input[type="search"]):not(.modal .community-modal input[type="search"]):not(.modal.owen-editor-palette-modal input[type="search"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within {
     background: var(--ogd-lg-control-bg);
     border-color: var(--ogd-lg-frost-rim);
     outline: 1px solid var(--ogd-lg-frost-outline);
@@ -18702,9 +18794,8 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
   }
 }
 /* ============================================================
-  Quiet menu and top chrome reduction
+  Quiet menu reduction
    - Context menu rows keep surface feedback without visible outline/rim.
-   - Top tab/button chrome drops the recent halo and glass rim effects.
    ============================================================ */
 
 @media (min-width: 701px) {
@@ -18718,71 +18809,6 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
   body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]),
   body:not(.is-mobile).theme-dark :is(.prompt-results .suggestion-item, .modal .suggestion-item, .suggestion-container .suggestion-item, .menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-tab-header-inner,
-    .workspace-tab-header-inner-icon,
-    .workspace-tab-header-new-tab,
-    .workspace-tab-header-tab-list,
-    .workspace-tab-header-container .clickable-icon,
-    .view-header .view-action,
-    .view-header .clickable-icon,
-    .view-header button.clickable-icon,
-    .view-actions .view-action,
-    .view-actions .clickable-icon,
-    .view-header-nav-buttons .clickable-icon
-  ),
-  body:not(.is-mobile) :is(
-    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner,
-    .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon,
-    .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
-    .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded="true"]),
-    .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
-    .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"]),
-    .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed="true"], [aria-expanded="true"])
-  ) {
-    background: transparent;
-    border-color: transparent;
-    outline: none;
-    box-shadow: none;
-  }
-}
-
-
-/* ============================================================
-  Quiet ribbon and sidebar toggle reduction
-   - Removes glass boxes from ribbon icons and sidebar toggle buttons.
-   - Keeps only the icon glyph color change supplied by Obsidian/core theme.
-   ============================================================ */
-
-@media (min-width: 701px) {
-  body:not(.is-mobile) :is(
-    .workspace-ribbon .clickable-icon,
-    .side-dock-ribbon .clickable-icon,
-    .clickable-icon.side-dock-ribbon-action,
-    .workspace-tab-header-container .clickable-icon,
-    .workspace-tab-header-new-tab,
-    .workspace-tab-header-tab-list,
-    .sidebar-toggle-button,
-    .sidebar-toggle-button.mod-left,
-    .sidebar-toggle-button.mod-right
-  ),
-  body:not(.is-mobile) :is(
-    .workspace-ribbon .clickable-icon,
-    .side-dock-ribbon .clickable-icon,
-    .clickable-icon.side-dock-ribbon-action,
-    .workspace-tab-header-container .clickable-icon,
-    .workspace-tab-header-new-tab,
-    .workspace-tab-header-tab-list,
-    .sidebar-toggle-button,
-    .sidebar-toggle-button.mod-left,
-    .sidebar-toggle-button.mod-right
-  ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed="true"], [aria-current="true"], [aria-expanded="true"]) {
-    background: transparent;
-    border-color: transparent;
-    outline: none;
-    box-shadow: none;
   }
 }
 
@@ -18818,14 +18844,14 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
 
   body:not(.is-mobile) :is(.menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
     background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.84), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46));
-    border-color: rgba(125, 211, 252, 0.66);
+    border-color: var(--ogd-lg-refined-border-hover);
     outline: none;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10);
   }
 
   body:not(.is-mobile).theme-dark :is(.menu .menu-item, [role="menu"] [role="menuitem"]):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
     background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(15, 23, 42, 0.38));
-    border-color: rgba(186, 230, 253, 0.34);
+    border-color: var(--ogd-lg-refined-border-hover);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px rgba(0, 0, 0, 0.28);
   }
 
@@ -18911,6 +18937,28 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     background: var(--ogd-topbar-icon-hover-bg, radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.54), rgba(15, 23, 42, 0.38)));
     box-shadow: var(--ogd-topbar-icon-hover-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 20px rgba(0, 0, 0, 0.26));
   }
+
+  body:not(.is-mobile) :is(
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list,
+    .workspace-tab-header-container .clickable-icon,
+    .view-header .view-action,
+    .view-header .clickable-icon,
+    .view-header button.clickable-icon,
+    .view-actions .view-action,
+    .view-actions .clickable-icon,
+    .view-header-nav-buttons .clickable-icon,
+    .workspace-ribbon .clickable-icon,
+    .side-dock-ribbon .clickable-icon,
+    .clickable-icon.side-dock-ribbon-action,
+    .sidebar-toggle-button
+  ):focus-visible,
+  body:not(.is-mobile) .workspace-tab-header:focus-within .workspace-tab-header-inner {
+    border-color: var(--ogd-lg-frost-rim);
+    outline: 2px solid var(--ogd-lg-frost-outline);
+    outline-offset: 2px;
+    box-shadow: var(--ogd-lg-shadow-focus);
+  }
 }
 
 
@@ -18981,7 +19029,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     .prompt-results
   ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
     background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.84), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.46));
-    border-color: rgba(125, 211, 252, 0.66);
+    border-color: var(--ogd-lg-refined-border-hover);
     outline: none;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px rgba(15, 23, 42, 0.10);
     transform: none;
@@ -19008,7 +19056,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     .prompt-results
   ) :is(.suggestion-item, .search-suggest-item):is(:hover, :focus, :focus-visible, :active, .is-selected, .selected, [aria-selected="true"]) {
     background: radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.14), transparent 0 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.56), rgba(15, 23, 42, 0.38));
-    border-color: rgba(186, 230, 253, 0.34);
+    border-color: var(--ogd-lg-refined-border-hover);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px rgba(0, 0, 0, 0.28);
     color: var(--text-normal);
   }
@@ -19189,7 +19237,8 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     border-color: transparent;
     border-top-color: transparent;
     box-shadow: none;
-    flex: 0 0 260px;
+    flex: 0 1 clamp(160px, 22vw, 260px);
+    min-width: 120px;
     max-width: 260px;
   }
 
@@ -19208,12 +19257,13 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     position: relative;
     z-index: 4;
     width: 100%;
+    height: 100%;
     min-width: 0;
-    min-height: 42px;
+    min-height: 0;
     padding-inline: 18px 14px;
-    padding-block: 5px 6px;
-    margin-bottom: -1px;
-    transform: translateY(1px);
+    padding-block: 4px;
+    margin-bottom: 0;
+    transform: none;
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
@@ -19227,7 +19277,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     text-align: center;
     color: #0f172a;
     font-weight: 850;
-    transform: translateY(-3px);
+    transform: none;
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tab-header-container {
@@ -19241,7 +19291,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
     box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.18), inset -1px 0 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(148, 163, 184, 0.08), -5px 0 16px rgba(0, 0, 0, 0.24), 5px 0 16px rgba(0, 0, 0, 0.22), 0 -1px 2px rgba(0, 0, 0, 0.06), 0 8px 18px rgba(0, 0, 0, 0.22);
-    transform: translateY(1px);
+    transform: none;
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
@@ -19255,7 +19305,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     text-align: center;
     color: var(--ogd-text-inverted, #f8fafc);
     font-weight: 850;
-    transform: translateY(-3px);
+    transform: none;
   }
 
   body.mod-macos:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner {
@@ -19308,7 +19358,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
 
   body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner {
     background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.86), transparent 35%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 249, 255, 0.70)));
-    border-color: rgba(125, 211, 252, 0.64);
+    border-color: var(--ogd-lg-refined-border-hover);
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(14, 165, 233, 0.04), 0 8px 16px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(56, 189, 248, 0.08);
@@ -19317,7 +19367,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner {
     background: var(--ogd-glass-bg-strong, radial-gradient(circle at 76% 24%, rgba(148, 163, 184, 0.22), transparent 35%), linear-gradient(180deg, rgba(51, 65, 85, 0.88), rgba(15, 23, 42, 0.62)));
-    border-color: rgba(186, 230, 253, 0.36);
+    border-color: var(--ogd-lg-refined-border-hover);
     border-bottom-color: transparent;
     border-radius: 16px 16px 0 0;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.30), 0 2px 6px rgba(56, 189, 248, 0.08);
@@ -19335,17 +19385,17 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
 
 .markdown-source-view.mod-cm6 {
   --ogd-lp-focus-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(224, 242, 254, 0.22));
-  --ogd-lp-focus-rim: rgba(103, 232, 249, 0.50);
-  --ogd-lp-focus-outline: rgba(103, 232, 249, 0.34);
-  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 0 0 1px rgba(103, 232, 249, 0.10), 0 6px 14px rgba(15, 23, 42, 0.055);
+  --ogd-lp-focus-rim: color-mix(in srgb, var(--ogd-rim-focus) 81%, transparent);
+  --ogd-lp-focus-outline: color-mix(in srgb, var(--ogd-rim-focus) 55%, transparent);
+  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-focus-halo) 67%, transparent), 0 6px 14px rgba(15, 23, 42, 0.055);
   --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(240, 249, 255, 0.72), rgba(224, 242, 254, 0.46));
 }
 
 .theme-dark .markdown-source-view.mod-cm6 {
   --ogd-lp-focus-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.34), rgba(14, 116, 144, 0.16));
-  --ogd-lp-focus-rim: rgba(103, 232, 249, 0.42);
-  --ogd-lp-focus-outline: rgba(103, 232, 249, 0.28);
-  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 0 0 1px rgba(103, 232, 249, 0.08), 0 8px 18px rgba(0, 0, 0, 0.22);
+  --ogd-lp-focus-rim: var(--ogd-rim-focus);
+  --ogd-lp-focus-outline: color-mix(in srgb, var(--ogd-rim-focus) 67%, transparent);
+  --ogd-lp-focus-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-focus-halo) 80%, transparent), 0 8px 18px rgba(0, 0, 0, 0.22);
   --ogd-lp-cell-focus-bg: linear-gradient(180deg, rgba(14, 116, 144, 0.20), rgba(15, 23, 42, 0.14));
 }
 
@@ -19381,7 +19431,7 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
    ============================================================ */
 
 body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
-  --ogd-table-tint: rgba(125, 211, 252, 0.10);
+  --ogd-table-tint: color-mix(in srgb, var(--ogd-rim-active-low) 33%, transparent);
   --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
   --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68));
   --ogd-table-border: rgba(203, 213, 225, 0.24);

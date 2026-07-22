@@ -9,6 +9,7 @@ Use this table to decide whether plugin support is backed by real DOM, an approx
 | Canvas | yes | yes | yes | partial | plugin-runtime | 2026-05-25 CDP captured real node/control/card menu button/edge path states; zoom/drag behavior remains visual QA rather than selector removal evidence |
 | Graph | partial | yes | yes | partial | plugin-runtime | 2026-05-25 CDP captured real graph controls/button hover including dark mode; graph canvas color classes still need visual/runtime capture before selector removal |
 | Mermaid | partial | yes | partial | partial | plugin-runtime / document-content-fixture-gap | fixture covers rendered SVG output; confirm real Mermaid plugin output before compatibility claims |
+| Owen Editor palette | yes | no | yes | yes | state-interaction / plugin-runtime | 2026-07-22 CDP captured real palette resting/focused search, section/card controls, rail, and outer modal boundary; see `PLUGINS/runtime-dom-notes.md` |
 | Bookmarks | no | partial | partial | no | obsidian-chrome-runtime | route through chrome/list owner and capture active/hover state |
 | Outline | no | partial | partial | no | obsidian-chrome-runtime | route through chrome/list owner and capture indentation/active state |
 | Backlinks / Outgoing links | yes | yes | yes | partial | state-interaction / plugin-runtime | 2026-05-25 CDP captured real pane row resting/hover states for `src/plugins/60-canvas-graph-link-panes.css` |

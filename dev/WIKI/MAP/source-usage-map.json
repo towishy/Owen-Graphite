@@ -1,19 +1,19 @@
 {
   "schema": "owen-graphite/source-usage-map/1",
   "moduleCount": 26,
-  "sourceLines": 19944,
-  "rules": 2591,
-  "selectorParts": 4024,
+  "sourceLines": 19994,
+  "rules": 2598,
+  "selectorParts": 4036,
   "labelTotals": {
     "callout-list": 434,
     "cm6": 360,
     "code": 1064,
     "lp-html-table": 83,
     "lp-markdown-table-widget-reference": 94,
-    "overlay-search": 287,
+    "overlay-search": 288,
     "print-pdf": 549,
     "reading-rendered": 1222,
-    "table": 1139,
+    "table": 1141,
     "workspace-chrome": 643
   },
   "hardViolations": [
@@ -73,7 +73,7 @@
       "index": 1,
       "module": "src/features/40-style-settings.css",
       "legacyId": "00-settings.css",
-      "sourceLines": 844,
+      "sourceLines": 864,
       "bundleStartLine": 45,
       "bundleEndLine": 818,
       "rules": 0,
@@ -90,7 +90,7 @@
       "index": 2,
       "module": "src/tokens/00-light-tokens.css",
       "legacyId": "01-tokens.css",
-      "sourceLines": 266,
+      "sourceLines": 270,
       "bundleStartLine": 822,
       "bundleEndLine": 1088,
       "rules": 6,
@@ -477,20 +477,20 @@
       "index": 18,
       "module": "src/plugins/61-live-preview-mobile-plugin.css",
       "legacyId": "07e-live-preview-mobile-plugin.css",
-      "sourceLines": 532,
+      "sourceLines": 538,
       "bundleStartLine": 10165,
       "bundleEndLine": 10682,
-      "rules": 67,
-      "selectorParts": 189,
+      "rules": 68,
+      "selectorParts": 191,
       "labels": {
         "callout-list": 1,
         "cm6": 23,
         "code": 27,
-        "overlay-search": 6,
+        "overlay-search": 7,
         "print-pdf": 2,
         "reading-rendered": 27,
-        "table": 36,
-        "workspace-chrome": 16
+        "table": 37,
+        "workspace-chrome": 17
       },
       "ownerSurfaces": [
         "mobile-narrow-layout"
@@ -555,17 +555,17 @@
       "index": 21,
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
       "legacyId": "09b-editing-menu-tooltip-glass.css",
-      "sourceLines": 1083,
+      "sourceLines": 1121,
       "bundleStartLine": 13013,
       "bundleEndLine": 14092,
-      "rules": 110,
-      "selectorParts": 145,
+      "rules": 115,
+      "selectorParts": 154,
       "labels": {
         "cm6": 6,
         "code": 6,
         "overlay-search": 35,
         "reading-rendered": 6,
-        "table": 32,
+        "table": 33,
         "workspace-chrome": 45
       },
       "ownerSurfaces": [
@@ -579,11 +579,11 @@
       "index": 22,
       "module": "src/chrome/36-floating-ui-glass-system.css",
       "legacyId": "09c-floating-ui-glass-system.css",
-      "sourceLines": 1037,
+      "sourceLines": 1038,
       "bundleStartLine": 14096,
       "bundleEndLine": 15148,
       "rules": 120,
-      "selectorParts": 198,
+      "selectorParts": 199,
       "labels": {
         "code": 4,
         "overlay-search": 62,
@@ -624,19 +624,19 @@
       "index": 24,
       "module": "src/themes/51-accessibility-motion-contrast.css",
       "legacyId": "10a-accessibility-motion-contrast.css",
-      "sourceLines": 170,
+      "sourceLines": 193,
       "bundleStartLine": 16083,
       "bundleEndLine": 16251,
-      "rules": 16,
-      "selectorParts": 20,
+      "rules": 18,
+      "selectorParts": 22,
       "labels": {
         "callout-list": 4,
         "cm6": 4,
-        "code": 11,
+        "code": 13,
         "overlay-search": 7,
         "print-pdf": 2,
         "reading-rendered": 2,
-        "table": 4,
+        "table": 5,
         "workspace-chrome": 9
       },
       "ownerSurfaces": [],
@@ -648,19 +648,19 @@
       "index": 25,
       "module": "src/surfaces/23-liquid-glass-core.css",
       "legacyId": "10b-liquid-glass-core.css",
-      "sourceLines": 1659,
+      "sourceLines": 1617,
       "bundleStartLine": 16255,
       "bundleEndLine": 17926,
-      "rules": 160,
-      "selectorParts": 186,
+      "rules": 159,
+      "selectorParts": 184,
       "labels": {
         "cm6": 6,
-        "code": 49,
+        "code": 47,
         "overlay-search": 45,
         "print-pdf": 7,
         "reading-rendered": 39,
-        "table": 105,
-        "workspace-chrome": 87
+        "table": 104,
+        "workspace-chrome": 86
       },
       "ownerSurfaces": [
         "reading-callouts-lists (allowed-late)",
@@ -699,7 +699,7 @@
   "tableRules": [
     {
       "module": "src/tokens/00-light-tokens.css",
-      "line": 237,
+      "line": 241,
       "context": "",
       "labels": [
         "callout-list",
@@ -5237,7 +5237,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": ".theme-dark .prompt-input, .theme-dark .modal input[type=\"text\"], .theme-dark .modal input[type=\"search\"], .theme-dark .modal textarea"
+      "selector": ".theme-dark .prompt-input, .theme-dark .modal input[type=\"text\"], .theme-dark .modal input[type=\"search\"]:not(.modal.owen-editor-palette-modal input[type=\"search\"]), .theme-dark .modal textarea"
     },
     {
       "module": "src/chrome/32-overlay-popover-dataview.css",
@@ -5247,7 +5247,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": ".theme-dark .prompt-input:focus-visible, .theme-dark .modal input[type=\"text\"]:focus-visible, .theme-dark .modal input[type=\"search\"]:focus-visible, .theme-dark .modal textarea:focus-visible"
+      "selector": ".theme-dark .prompt-input:focus-visible, .theme-dark .modal input[type=\"text\"]:focus-visible, .theme-dark .modal input[type=\"search\"]:not(.modal.owen-editor-palette-modal input[type=\"search\"]):focus-visible, .theme-dark .modal textarea:focus-visible"
     },
     {
       "module": "src/chrome/32-overlay-popover-dataview.css",
@@ -6953,7 +6953,18 @@
     },
     {
       "module": "src/plugins/61-live-preview-mobile-plugin.css",
-      "line": 429,
+      "line": 428,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": ".is-mobile :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .tree-item-self, .nav-file-title, .nav-folder-title), .is-mobile .owen-editor-glass-toolbar.is-mobile-compact .owen-editor-toolbar-button"
+    },
+    {
+      "module": "src/plugins/61-live-preview-mobile-plugin.css",
+      "line": 434,
       "context": "",
       "labels": [
         "overlay-search",
@@ -8718,7 +8729,16 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 600,
+      "line": 496,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .owen-editor-glass-toolbar, body:not(.is-mobile).theme-dark .owen-editor-selection-toolbar"
+    },
+    {
+      "module": "src/chrome/35-editing-menu-tooltip-glass.css",
+      "line": 634,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8728,7 +8748,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 608,
+      "line": 642,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8737,7 +8757,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 614,
+      "line": 648,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8746,7 +8766,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 621,
+      "line": 655,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8756,7 +8776,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 627,
+      "line": 661,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8766,7 +8786,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 730,
+      "line": 768,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8775,7 +8795,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 778,
+      "line": 816,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8786,7 +8806,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 785,
+      "line": 823,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8797,7 +8817,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 806,
+      "line": 844,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8807,7 +8827,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 854,
+      "line": 892,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8817,7 +8837,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 865,
+      "line": 903,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8827,7 +8847,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 877,
+      "line": 915,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8837,7 +8857,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 926,
+      "line": 964,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8847,7 +8867,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 990,
+      "line": 1028,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8857,7 +8877,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 996,
+      "line": 1034,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8867,7 +8887,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1000,
+      "line": 1038,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8877,7 +8897,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1005,
+      "line": 1043,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8887,7 +8907,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1011,
+      "line": 1049,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8897,7 +8917,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1041,
+      "line": 1079,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8907,7 +8927,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1053,
+      "line": 1091,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8950,7 +8970,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile).theme-dark :is(.prompt-input, .modal input[type=\"text\"], .modal input[type=\"search\"], .modal textarea)"
+      "selector": "body:not(.is-mobile).theme-dark :is(.prompt-input, .modal input[type=\"text\"], .modal input[type=\"search\"]:not(.modal.owen-editor-palette-modal input[type=\"search\"]), .modal textarea)"
     },
     {
       "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -9388,7 +9408,7 @@
         "table",
         "workspace-chrome"
       ],
-      "selector": ".theme-dark :is( .search-input-container input, .prompt-input, .workspace-leaf-content[data-type=\"search\"] :is(input[type=\"search\"], input[type=\"text\"]), .modal :is(input[type=\"search\"], input[type=\"text\"]) ):is(:focus, :focus-visible)"
+      "selector": ".theme-dark :is( .search-input-container input, .prompt-input, .workspace-leaf-content[data-type=\"search\"] :is(input[type=\"search\"], input[type=\"text\"]), .modal :is(input[type=\"search\"], input[type=\"text\"]):not(.modal.owen-editor-palette-modal input) ):is(:focus, :focus-visible)"
     },
     {
       "module": "src/chrome/36-floating-ui-glass-system.css",
@@ -9533,7 +9553,7 @@
     },
     {
       "module": "src/chrome/36-floating-ui-glass-system.css",
-      "line": 1006,
+      "line": 1007,
       "context": "@media (prefers-contrast: more), (forced-colors: active)",
       "labels": [
         "code",
@@ -11001,7 +11021,17 @@
     },
     {
       "module": "src/themes/51-accessibility-motion-contrast.css",
-      "line": 100,
+      "line": 105,
+      "context": "@media (prefers-reduced-transparency: reduce)",
+      "labels": [
+        "code",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark"
+    },
+    {
+      "module": "src/themes/51-accessibility-motion-contrast.css",
+      "line": 123,
       "context": "@media (prefers-contrast: more)",
       "labels": [
         "code",
@@ -11012,7 +11042,7 @@
     },
     {
       "module": "src/themes/51-accessibility-motion-contrast.css",
-      "line": 145,
+      "line": 168,
       "context": "",
       "labels": [
         "callout-list",
@@ -11138,7 +11168,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]):not(.modal.mod-community-theme input[type=\"text\"]):not(.modal .community-modal input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]):not(.modal.mod-community-theme input[type=\"search\"]):not(.modal .community-modal input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within)"
+      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]):not(.modal.mod-community-theme input[type=\"text\"]):not(.modal .community-modal input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]):not(.modal.mod-community-theme input[type=\"search\"]):not(.modal .community-modal input[type=\"search\"]):not(.modal.owen-editor-palette-modal input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):is(:focus, :focus-visible, :focus-within)"
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
@@ -11565,7 +11595,7 @@
         "overlay-search",
         "table"
       ],
-      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .document-search-container, .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]):not(.modal.mod-community-theme input[type=\"text\"]):not(.modal .community-modal input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]):not(.modal.mod-community-theme input[type=\"search\"]):not(.modal .community-modal input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within"
+      "selector": "body:not(.is-mobile) :is(.prompt-input, .search-input-container:not(.modal.mod-community-theme .search-input-container):not(.modal .community-modal .search-input-container), .document-search-container, .modal input[type=\"text\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"text\"]):not(.modal.mod-community-theme input[type=\"text\"]):not(.modal .community-modal input[type=\"text\"]), .modal input[type=\"search\"]:not(.modal-container.mod-confirmation .modal:not(.mod-settings) input[type=\"search\"]):not(.modal.mod-community-theme input[type=\"search\"]):not(.modal .community-modal input[type=\"search\"]):not(.modal.owen-editor-palette-modal input[type=\"search\"]), .modal textarea:not(.modal-container.mod-confirmation .modal:not(.mod-settings) textarea), .modal select:not(.modal-container.mod-confirmation .modal:not(.mod-settings) select), .modal .dropdown:not(.modal-container.mod-confirmation .modal:not(.mod-settings) .dropdown)):focus-within"
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
@@ -11716,7 +11746,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 938,
+      "line": 937,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11726,7 +11756,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 942,
+      "line": 941,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11736,29 +11766,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 949,
-      "context": "@media (min-width: 701px)",
-      "labels": [
-        "code",
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile) :is( .workspace-tab-header-inner, .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon ), body:not(.is-mobile) :is( .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner, .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-icon, .workspace-tab-header-new-tab:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .workspace-tab-header-container .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-expanded=\"true\"]), .view-header :is(.view-action, .clickable-icon, button.clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-actions :is(.view-action, .clickable-icon):is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]), .view-header-nav-buttons .clickable-icon:is(:hover, :focus-visible, .is-active, .mod-active, [aria-pressed=\"true\"], [aria-expanded=\"true\"]) )"
-    },
-    {
-      "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 988,
-      "context": "@media (min-width: 701px)",
-      "labels": [
-        "code",
-        "table",
-        "workspace-chrome"
-      ],
-      "selector": "body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ), body:not(.is-mobile) :is( .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button, .sidebar-toggle-button.mod-left, .sidebar-toggle-button.mod-right ):is(:hover, :focus, :focus-visible, :active, .is-active, .mod-active, .is-selected, [aria-pressed=\"true\"], [aria-current=\"true\"], [aria-expanded=\"true\"])"
-    },
-    {
-      "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1033,
+      "line": 967,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11768,7 +11776,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1047,
+      "line": 981,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11778,7 +11786,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1053,
+      "line": 987,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11788,7 +11796,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1062,
+      "line": 996,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11798,7 +11806,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1086,
+      "line": 1020,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11809,7 +11817,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1091,
+      "line": 1025,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11820,7 +11828,17 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1155,
+      "line": 1032,
+      "context": "@media (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is( .workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .workspace-tab-header-container .clickable-icon, .view-header .view-action, .view-header .clickable-icon, .view-header button.clickable-icon, .view-actions .view-action, .view-actions .clickable-icon, .view-header-nav-buttons .clickable-icon, .workspace-ribbon .clickable-icon, .side-dock-ribbon .clickable-icon, .clickable-icon.side-dock-ribbon-action, .sidebar-toggle-button ):focus-visible, body:not(.is-mobile) .workspace-tab-header:focus-within .workspace-tab-header-inner"
+    },
+    {
+      "module": "src/surfaces/23-liquid-glass-core.css",
+      "line": 1111,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11831,7 +11849,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1164,
+      "line": 1120,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11842,7 +11860,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1171,
+      "line": 1127,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11853,7 +11871,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1279,
+      "line": 1235,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11863,7 +11881,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1334,
+      "line": 1290,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11873,7 +11891,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1341,
+      "line": 1297,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11883,7 +11901,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1350,
+      "line": 1306,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11893,7 +11911,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1355,
+      "line": 1311,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11903,7 +11921,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1361,
+      "line": 1317,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11913,7 +11931,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1367,
+      "line": 1323,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11923,7 +11941,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1400,
+      "line": 1356,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11933,7 +11951,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1407,
+      "line": 1363,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11943,7 +11961,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1457,
+      "line": 1415,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11953,7 +11971,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1466,
+      "line": 1424,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11963,7 +11981,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1471,
+      "line": 1429,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11973,7 +11991,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1480,
+      "line": 1438,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11983,7 +12001,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1488,
+      "line": 1446,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11993,7 +12011,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1504,
+      "line": 1462,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12003,7 +12021,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1516,
+      "line": 1474,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -12014,7 +12032,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1521,
+      "line": 1479,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12024,7 +12042,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1526,
+      "line": 1484,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -12035,7 +12053,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1544,
+      "line": 1502,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12045,7 +12063,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1544,
+      "line": 1502,
       "context": "",
       "labels": [
         "cm6",
@@ -12055,7 +12073,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1587,
+      "line": 1545,
       "context": "",
       "labels": [
         "code",
@@ -12066,7 +12084,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1596,
+      "line": 1554,
       "context": "",
       "labels": [
         "code",
@@ -12077,7 +12095,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1601,
+      "line": 1559,
       "context": "",
       "labels": [
         "code",
@@ -12088,7 +12106,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1605,
+      "line": 1563,
       "context": "",
       "labels": [
         "code",
@@ -12099,7 +12117,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1609,
+      "line": 1567,
       "context": "",
       "labels": [
         "code",
@@ -12110,7 +12128,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1620,
+      "line": 1578,
       "context": "",
       "labels": [
         "code",
@@ -12121,7 +12139,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1625,
+      "line": 1583,
       "context": "",
       "labels": [
         "code",
@@ -12132,7 +12150,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1629,
+      "line": 1587,
       "context": "",
       "labels": [
         "code",
@@ -13079,11 +13097,11 @@
       "labels": {
         "callout-list": 4,
         "cm6": 4,
-        "code": 11,
+        "code": 13,
         "overlay-search": 7,
         "print-pdf": 2,
         "reading-rendered": 2,
-        "table": 4,
+        "table": 5,
         "workspace-chrome": 9
       }
     }

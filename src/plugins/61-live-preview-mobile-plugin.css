@@ -523,6 +523,12 @@
   color: var(--text-normal);
 }
 
+.is-mobile :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .tree-item-self, .nav-file-title, .nav-folder-title),
+.is-mobile .owen-editor-glass-toolbar.is-mobile-compact .owen-editor-toolbar-button {
+  min-height: var(--ogd-touch-target, 44px);
+  min-width: var(--ogd-touch-target, 44px);
+}
+
 .is-mobile.theme-dark :is(.menu-item, .suggestion-item, .vertical-tab-nav-item, .setting-item, .tree-item-self, .nav-file-title, .nav-folder-title):is(:hover, :focus-visible, :focus-within, .is-selected, .selected, .is-active, [aria-selected="true"]) {
   background: var(--ogd-glass-bg-hover, linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.48)));
   border-color: var(--ogd-lg-frost-rim, rgba(103, 232, 249, 0.34));

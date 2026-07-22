@@ -18,6 +18,7 @@ settings:
     title: 읽기와 본문
     type: heading
     level: 2
+    collapsed: false
   -
     id: ogd-body-size
     title: 본문 폰트 크기
@@ -42,14 +43,25 @@ settings:
   -
     id: ogd-max-width
     title: 본문 최대 폭
+    description: 긴 문단은 읽기 문서 폭을, 넓은 표·보고서는 와이드 폭을 선택하세요.
     type: variable-select
     default: 420mm
     options:
-      - 210mm
-      - 297mm
-      - 360mm
-      - 420mm
-      - 100%
+      -
+        label: 읽기 문서 · 210mm
+        value: 210mm
+      -
+        label: 보고서 · 297mm
+        value: 297mm
+      -
+        label: 와이드 보고서 · 360mm
+        value: 360mm
+      -
+        label: 대형 표 · 420mm
+        value: 420mm
+      -
+        label: 전체 폭 · 100%
+        value: 100%
   -
     id: ogd-accent
     title: 헤더 강조 색상
@@ -61,6 +73,7 @@ settings:
     title: 표와 코드
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-modern-tables
     title: 표 모던 스타일 강화
@@ -78,6 +91,7 @@ settings:
     title: 보고서와 PDF
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-report-mode
     title: 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프)
@@ -255,6 +269,7 @@ settings:
     title: 워크스페이스와 접근성
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-eye-care
     title: 시선 보호 모드 (베이지 배경)
@@ -314,6 +329,7 @@ settings:
     title: 폰트 적용
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-interface-font-stack
     title: 인터페이스 폰트 직접 입력
@@ -344,6 +360,7 @@ settings:
     description: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
     type: heading
     level: 2
+    collapsed: true
   -
     id: ogd-pdf-header-enabled
     title: 첫 페이지 헤더 라벨 표시
@@ -377,6 +394,7 @@ settings:
     title: 공통 구성
     type: heading
     level: 3
+    collapsed: true
   -
     id: ogd-pdf-marginalia-preset
     title: 헤더/푸터 빠른 문구
@@ -443,6 +461,7 @@ settings:
     title: 헤더 설정
     type: heading
     level: 3
+    collapsed: true
   -
     id: ogd-pdf-header-key-palette
     title: 헤더 Key 색상
@@ -715,6 +734,7 @@ settings:
     title: 푸터 설정
     type: heading
     level: 3
+    collapsed: true
   -
     id: ogd-pdf-footer-key-palette
     title: 푸터 Key 색상

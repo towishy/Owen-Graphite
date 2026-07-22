@@ -11,6 +11,7 @@ Use `coverage-matrix.md` to check whether a plugin route has real DOM evidence, 
 | Canvas | `src/plugins/60-canvas-graph-link-panes.css` | card, edge, toolbar contrast | workspace chrome collision |
 | Graph | `src/plugins/60-canvas-graph-link-panes.css` | controls and background contrast | low contrast in dark mode |
 | Mermaid | `src/plugins/61-live-preview-mobile-plugin.css` or image/embed owner | SVG/image clipping and overflow | diagram cropping in Live Preview/PDF |
+| Owen Editor palette | Owen Graphite outer modal Glass; Owen Editor internal command canvas and search controls | boundary-only Glass, opaque focused search, keyboard focus | generic modal control selectors leaking nested Glass into plugin-owned work surfaces |
 | Bookmarks | chrome/list owner | active/hover row height | runtime list state drift |
 | Outline | chrome/list owner | active/hover row, indentation | left rail regression |
 | Search | chrome/search owner | focus rim, match highlight, result row | aggressive focus color |

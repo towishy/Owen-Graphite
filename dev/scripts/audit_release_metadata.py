@@ -75,6 +75,8 @@ def main() -> int:
         assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"baseline = `v{version}`")
         assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"| `manifest.json` version | `{version}` |")
         assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"dist/Owen-Graphite-{version}.zip")
+        assert_contains(".github/workflows/release.yml", "screenshots/fonts.png")
+        assert_contains(".github/workflows/release.yml", "screenshots/readme/owen-kit.png")
 
         print(f"OK: release metadata is consistent for {version}")
         return 0

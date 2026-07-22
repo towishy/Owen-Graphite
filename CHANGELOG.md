@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.86
+
+- feat: UI Foundation 기준의 4px spacing, 44px touch target, 140/200ms motion token과 reduced-transparency fallback을 추가했습니다.
+- polish: Owen Editor toolbar와 palette를 boundary-only liquid glass 구조로 맞추고, theme의 generic modal input이 plugin-owned 검색 surface를 덮지 않도록 owner 경계를 좁혔습니다.
+- a11y: 설정 control과 workspace chrome의 keyboard focus ring을 2px 기준으로 통일하고, 좁은 top tab과 모바일 target geometry를 안정화했습니다.
+- guard: Style Settings 정보 구조, WIKI owner 계약, runtime evidence와 source usage map을 갱신하고 실제 Obsidian light/dark/focus/narrow 상태를 검증했습니다.
+
 ## v3.1.85
 
 - feat: Style Settings의 헤더 디자인 템플릿에 더블룰 클래식, 태그 리본, 넘버 스탬프, 그리드 인덱스 4종을 추가했습니다.

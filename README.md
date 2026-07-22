@@ -11,7 +11,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.85** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.86** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 ## Why Owen Graphite?
 
@@ -62,8 +62,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.85` |
-| **Baseline / rollback target** | `v3.1.85` |
+| **Version** | `3.1.86` |
+| **Baseline / rollback target** | `v3.1.86` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -81,6 +81,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.86 — UI Foundation Workbench Alignment
+
+This release aligns Owen Graphite and Owen Editor around a quieter UI Foundation contract: 4px spacing, 44px targets, consistent motion, clear keyboard focus, opaque repeated work surfaces, and liquid glass at the outer boundary.
+
+| Area | What changed |
+| --- | --- |
+| Owen Editor integration | Floating tools share the Graphite boundary surface while palette controls keep plugin-owned opaque workbench styling. |
+| Accessibility | Focus rings, mobile targets, reduced-transparency surfaces, and narrow top-tab geometry use shared tokens. |
+| Style Settings | Sections open with clearer defaults and the document-width selector uses task-oriented labels. |
+| Release guard | Runtime light/dark/focus/narrow checks, owner contracts, source maps, and release audits were refreshed. |
 
 ### v3.1.85 — Heading Template Expansion
 
@@ -106,93 +117,6 @@ This release removes the remaining cyan focus rim from the community theme brows
 | Runtime evidence | CDP after-fix computed style shows no `rgba(103, 232, 249, ...)` rim on the focused search field. |
 | Release guard | Source usage map, core principles, release check, and CDP runtime verification passed. |
 
-### v3.1.83 — Font Controls Preview And Neutral Theme Search
-
-This release documents the new font controls with a README preview image and lowers the community theme search focus state from cyan rim to a neutral graphite focus.
-
-| Area | What changed |
-| --- | --- |
-| Font controls | The README now shows the Style Settings font controls directly above the latest feature explanation. |
-| Release assets | `screenshots/fonts.png` is included in manual ZIP builds, Obsidian sync, ZIP audits, and GitHub Release assets. |
-| Theme search | The community theme browser search field no longer shows the bright cyan focus rim. |
-| Release guard | CDP runtime focus verification, docs/assets audit, source usage map, CSS compatibility budget, release check, and release ZIP audit passed. |
-
-### v3.1.77 — Notice Popup Blue Glass
-
-This release refines Obsidian Notice popups so export confirmations keep the Owen Graphite liquid-glass tone while staying legible on light workspace backgrounds.
-
-| Area | What changed |
-| --- | --- |
-| Notice popup | Export/save notices now use a blue-tinted glass interior instead of a pale gray-white gradient. |
-| Shadow weight | The popup background drop shadow is removed so the toast reads cleaner against the window chrome. |
-| Text contrast | Notice message text stays dark and weighted in light mode while dark mode keeps inverted text. |
-| Release guard | CDP runtime verification, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.73 — Document Title Pill Blue Round Glass
-
-This release fixes bottom document title clipping with CDP-measured spacing, then aligns the title pill with the right-side status chips using a softer blue round glass treatment.
-
-| Area | What changed |
-| --- | --- |
-| Title clipping | The right status reserve now matches the actual status chip footprint so long document titles keep their available width. |
-| Title pill style | The document title pill uses a soft rounded glass rim, subtle blue tint, and lower shadow to match the right status icons. |
-| Token budget | New blue tint uses existing rim/tint tokens instead of increasing raw aqua color usage. |
-| Release guard | CDP runtime measurement, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.72 — File Explorer CDP Spacing Correction
-
-This release uses CDP runtime evidence to tighten file explorer folder indentation while keeping Obsidian's inline tree geometry intact, so child documents now sit visually behind their folder instead of drifting ahead of it.
-
-| Area | What changed |
-| --- | --- |
-| Folder spacing | Top-level and nested folder title content is visually pulled left without overriding Obsidian inline `!important` geometry. |
-| Child documents | Nested document rows now begin after the owning folder label, preserving a clearer tree rhythm. |
-| Action menu | The file explorer action menu is aligned higher and further left so it reads as part of the pane header. |
-| Release guard | CDP runtime measurement, source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.71 — File Explorer Codeblock Card Focus
-
-The current stable release refines the file explorer's selected-document folder card so the direct parent folder reads like a compact codeblock container while the selected document row gains clearer glass-filled focus.
-
-| Area | What changed |
-| --- | --- |
-| Direct parent card | The selected document's direct parent folder becomes the codeblock card, including top-level direct parents. |
-| Click hierarchy | Folder contents follow click expansion state; hover-only child listing and flattened hierarchy rules stay out. |
-| Liquid glass | Card shell, header, document-list background, and active document row now carry a stronger but still readable glass fill. |
-| Release guard | Source usage map, CSS compatibility budget, core principles, release check, and Obsidian sync passed. |
-
-### v3.1.70 — Community Theme Search Card And README Refresh
-
-The current stable release fixes the selected `Owen Graphite` result in Obsidian's community theme browser so search focus no longer turns the card into a dark, low-contrast block, then refreshes this README into one English-first marketplace introduction.
-
-| Area | What changed |
-| --- | --- |
-| Theme browser | The selected Owen Graphite card now stays on a light frosted glass surface with readable graphite text. |
-| Settings polish | The fix lives in the settings-controls owner module and uses existing liquid-glass rim/tint tokens. |
-| README | The first screen now presents one English description, workflow value, visual tour, and current release highlights. |
-| Release guard | CDP runtime verification, source usage map, core principles, release check, and runtime evidence strict audit passed. |
-
-### v3.1.69 — File Explorer Hierarchy Polish
-
-The current stable release refines active child-folder spacing, file-title scale, type-badge width, and the lower file-list fade so large vaults read as a calmer graphite hierarchy instead of a flat stack of rows.
-
-| Area | What changed |
-| --- | --- |
-| Active folder rhythm | The active document box and its parent folder now have a clearer pause before nested content begins. |
-| Long file names | Child-file text and badge width were tuned so dense titles stay readable for longer. |
-| Vault edge | A soft lower fade helps the file list end cleanly above the vault switcher. |
-| Release guard | CDP runtime status, source usage map, core principles, release check, and Obsidian sync all passed. |
-
-### v3.1.65 — Community Theme Compatibility And Accessibility
-
-Owen Graphite now targets Obsidian `1.5.8+`, removes the bundled CSS BOM that confused community scanners, and strengthens light/dark supporting-text and code-comment contrast to meet WCAG AA expectations.
-
-| Area | What changed |
-| --- | --- |
-| Compatibility | Community theme metadata and docs now align with the lower Obsidian baseline. |
-| Accessibility | Secondary text and code-comment palettes were adjusted for stronger light/dark contrast. |
-| Scanner hygiene | The release bundle was cleaned so community scanner warnings stay focused on real issues. |
-
 Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md).
 
 ---
@@ -207,7 +131,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.85.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.86.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -216,7 +140,7 @@ Download **`Owen-Graphite-3.1.85.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.85.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.86.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 

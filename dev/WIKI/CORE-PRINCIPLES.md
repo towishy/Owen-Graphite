@@ -25,6 +25,12 @@
 - `allowed-late` means a documented cascade role, not new ownership.
 - Do not reintroduce `src/polish`.
 
+## Resolve Sync Conflict Copies
+
+- Files containing `_Conflict` are not source modules or alternate owners.
+- Compare each conflict copy with its canonical counterpart, merge any unique work into the direct owner, and remove the copy before running audits.
+- Do not silently exclude conflict copies from source scans; the core process gate must fail until they are resolved.
+
 ## Obsidian Core Boundaries
 
 - Markdown table widget geometry is core-owned.

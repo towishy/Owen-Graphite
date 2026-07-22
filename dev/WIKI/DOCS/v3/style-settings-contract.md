@@ -5,8 +5,9 @@
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **55**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **47**
+- 전체 엔트리(heading 포함): **60**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **51**
+- 초기 표시: `읽기와 본문`은 펼치고 나머지 level 2/3 그룹은 접어 긴 PDF 고급 옵션이 기본 화면을 점유하지 않도록 구성
 
 ## 기능 옵션 목록
 
@@ -38,6 +39,10 @@
 | `ogd-glass-intensity` | `class-select` | `ogd-glass-standard` | 데스크톱 Glass 강도 |
 | `ogd-motion-intensity` | `class-select` | `ogd-motion-standard` | 데스크톱 Hover 움직임 |
 | `ogd-cjk-boost` | `class-toggle` | `true` | 한글/CJK 폰트 +0.5px 자동 보정 |
+| `ogd-interface-font-stack` | `variable-text` | `` | 인터페이스 폰트 직접 입력 |
+| `ogd-reading-font-stack` | `variable-text` | `` | 본문 폰트 직접 입력 |
+| `ogd-code-font-stack` | `variable-text` | `` | 코드 폰트 직접 입력 |
+| `ogd-status-font-stack` | `variable-text` | `` | 하단 상태바 폰트 직접 입력 |
 | `ogd-pdf-header-enabled` | `class-toggle` | `false` | 첫 페이지 헤더 라벨 표시 |
 | `ogd-pdf-footer-enabled` | `class-toggle` | `false` | 마지막 페이지 푸터 라벨 표시 |
 | `ogd-pdf-label-layout` | `class-select` | `ogd-pdf-label-single` | PDF 라벨 구성 |
@@ -93,6 +98,7 @@
 | `—` | `—` | — |
 | `—` | `—` | — |
 | `ogd-settings-workspace` | `heading` | 워크스페이스와 접근성 |
+| `ogd-settings-fonts` | `heading` | 폰트 적용 |
 | `—` | `—` | — |
 | `—` | `—` | — |
 | `—` | `—` | — |

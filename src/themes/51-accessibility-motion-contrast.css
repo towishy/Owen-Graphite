@@ -82,6 +82,29 @@
   }
 }
 
+@media (prefers-reduced-transparency: reduce) {
+  body:not(.is-mobile) {
+    --ogd-glass-filter: none;
+    --ogd-glass-filter-soft: none;
+    --ogd-glass-filter-control: none;
+    --ogd-glass-bg: rgba(248, 250, 252, 0.98);
+    --ogd-glass-bg-strong: rgba(255, 255, 255, 0.99);
+    --ogd-glass-bg-hover: rgba(240, 249, 255, 0.99);
+    --ogd-lg-surface-bg: rgba(248, 250, 252, 0.98);
+    --ogd-lg-surface-bg-strong: rgba(255, 255, 255, 0.99);
+    --ogd-lg-surface-bg-hover: rgba(240, 249, 255, 0.99);
+  }
+
+  body:not(.is-mobile).theme-dark {
+    --ogd-glass-bg: rgba(30, 41, 59, 0.98);
+    --ogd-glass-bg-strong: rgba(15, 23, 42, 0.99);
+    --ogd-glass-bg-hover: rgba(30, 41, 59, 0.99);
+    --ogd-lg-surface-bg: rgba(30, 41, 59, 0.98);
+    --ogd-lg-surface-bg-strong: rgba(15, 23, 42, 0.99);
+    --ogd-lg-surface-bg-hover: rgba(30, 41, 59, 0.99);
+  }
+}
+
 @media (prefers-contrast: more) {
   body:not(.is-mobile) {
     --ogd-glass-border: color-mix(in srgb, var(--header-accent) 42%, var(--background-modifier-border));

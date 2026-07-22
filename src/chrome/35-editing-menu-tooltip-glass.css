@@ -465,6 +465,44 @@
     bottom: var(--ogd-bottom-document-toolbar-bottom);
   }
 
+  body:not(.is-mobile) .owen-editor-glass-toolbar,
+  body:not(.is-mobile) .owen-editor-selection-toolbar {
+    background: var(--ogd-09b-toolbar-bg);
+    border-color: var(--ogd-09b-toolbar-border);
+    box-shadow: var(--ogd-09b-toolbar-shadow);
+    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05));
+    backdrop-filter: var(--ogd-glass-filter-soft, blur(16px) saturate(165%) brightness(1.05));
+  }
+
+  body:not(.is-mobile) .owen-editor-glass-toolbar .owen-editor-toolbar-button,
+  body:not(.is-mobile) .owen-editor-selection-toolbar .owen-editor-selection-toolbar-button {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transition-duration: var(--ogd-motion-interaction, 140ms);
+  }
+
+  body:not(.is-mobile) .owen-editor-glass-toolbar .owen-editor-toolbar-button:is(:hover, :focus-visible),
+  body:not(.is-mobile) .owen-editor-selection-toolbar .owen-editor-selection-toolbar-button:is(:hover, :focus-visible) {
+    background: var(--ogd-09b-control-hover-bg);
+    border-color: var(--ogd-rim-hover, rgba(125, 211, 252, 0.44));
+    box-shadow: var(--ogd-09b-control-hover-shadow);
+  }
+
+  body:not(.is-mobile) :is(.owen-editor-toolbar-button, .owen-editor-selection-toolbar-button):focus-visible {
+    outline: 2px solid var(--ogd-focus-ring-border);
+    outline-offset: 2px;
+  }
+
+  body:not(.is-mobile).theme-dark .owen-editor-glass-toolbar,
+  body:not(.is-mobile).theme-dark .owen-editor-selection-toolbar {
+    background: var(--ogd-09b-toolbar-bg);
+    border-color: var(--ogd-09b-toolbar-border);
+    box-shadow: var(--ogd-09b-toolbar-shadow);
+  }
+
   body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-sizer,
   body:not(.is-mobile).owen-editor-toolbar-offset.owen-editor-toolbar-top .workspace-leaf-content[data-type="markdown"] .markdown-source-view .cm-scroller {
     padding-top: calc(var(--ogd-editor-toolbar-top-offset) + var(--ogd-editor-toolbar-height) + var(--ogd-editor-toolbar-content-gap) - var(--ogd-editor-toolbar-top-content-lift));

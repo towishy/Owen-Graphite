@@ -51,6 +51,9 @@ FORBIDDEN_LEGACY_PATHS = [
     "docs/v3",
 ]
 
+SYNC_CONFLICT_MARKER = "_Conflict"
+SYNC_CONFLICT_SCAN_EXCLUDES = {".git", ".venv"}
+
 
 def run(label: str, command: list[str]) -> None:
     print(f"-- {label}")
@@ -127,6 +130,20 @@ def assert_no_legacy_wiki_paths() -> None:
     print("OK: legacy WIKI paths absent")
 
 
+def assert_no_sync_conflict_copies() -> None:
+    offenders = [
+        path.relative_to(ROOT).as_posix()
+        for path in ROOT.rglob(f"*{SYNC_CONFLICT_MARKER}*")
+        if path.is_file() and not SYNC_CONFLICT_SCAN_EXCLUDES.intersection(path.relative_to(ROOT).parts)
+    ]
+    if offenders:
+        fail(
+            "sync conflict copies must be compared and resolved before audits: "
+            + ", ".join(sorted(offenders))
+        )
+    print("OK: no sync conflict copies")
+
+
 def assert_numeric_release_tag_policy() -> None:
     workflow = (ROOT / ".github" / "workflows" / "release.yml").read_text(encoding="utf-8")
     release_workflow = (ROOT / "dev" / "WIKI" / "WORKFLOWS" / "release.md").read_text(encoding="utf-8")
@@ -150,6 +167,7 @@ def main() -> int:
         assert_owner_modules_exist()
         assert_wiki_exists()
         assert_no_legacy_wiki_paths()
+        assert_no_sync_conflict_copies()
         assert_numeric_release_tag_policy()
         run("WIKI consistency", [PYTHON, "dev/scripts/audit_wiki_consistency.py"])
         run("route registry", [PYTHON, "dev/scripts/audit_route_registry.py"])
