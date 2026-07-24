@@ -132,6 +132,33 @@
   }
 }
 
+/* v3.1.87 - Neutral desktop focus without cyan rim or halo. */
+@media screen and (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    button,
+    input,
+    textarea,
+    select,
+    [role="button"],
+    [role="tab"],
+    [role="menuitem"],
+    .dropdown,
+    .checkbox-container,
+    .clickable-icon,
+    .view-action
+  ):focus-visible {
+    border-color: rgba(100, 116, 139, 0.34);
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(100, 116, 139, 0.14);
+  }
+
+  body:not(.is-mobile) :is(.search-input-container, .document-search-container):focus-within {
+    border-color: rgba(100, 116, 139, 0.28);
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(100, 116, 139, 0.12);
+  }
+}
+
 @media (forced-colors: active) {
   body:not(.is-mobile) {
     --ogd-glass-bg: Canvas;

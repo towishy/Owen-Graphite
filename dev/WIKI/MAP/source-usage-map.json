@@ -1,20 +1,20 @@
 {
   "schema": "owen-graphite/source-usage-map/1",
   "moduleCount": 26,
-  "sourceLines": 19994,
-  "rules": 2598,
-  "selectorParts": 4036,
+  "sourceLines": 20192,
+  "rules": 2622,
+  "selectorParts": 4063,
   "labelTotals": {
     "callout-list": 434,
     "cm6": 360,
     "code": 1064,
     "lp-html-table": 83,
     "lp-markdown-table-widget-reference": 94,
-    "overlay-search": 288,
-    "print-pdf": 549,
+    "overlay-search": 295,
+    "print-pdf": 553,
     "reading-rendered": 1222,
-    "table": 1141,
-    "workspace-chrome": 643
+    "table": 1161,
+    "workspace-chrome": 656
   },
   "hardViolations": [
     {
@@ -283,18 +283,18 @@
       "index": 10,
       "module": "src/features/43-print-base.css",
       "legacyId": "04-print-base.css",
-      "sourceLines": 876,
+      "sourceLines": 904,
       "bundleStartLine": 5000,
       "bundleEndLine": 5370,
-      "rules": 112,
-      "selectorParts": 179,
+      "rules": 116,
+      "selectorParts": 183,
       "labels": {
         "callout-list": 28,
         "cm6": 1,
         "code": 101,
-        "print-pdf": 112,
+        "print-pdf": 116,
         "reading-rendered": 107,
-        "table": 8,
+        "table": 10,
         "workspace-chrome": 13
       },
       "ownerSurfaces": [
@@ -437,14 +437,15 @@
       "index": 16,
       "module": "src/chrome/33-settings-controls.css",
       "legacyId": "07c-settings-controls.css",
-      "sourceLines": 437,
+      "sourceLines": 485,
       "bundleStartLine": 9335,
       "bundleEndLine": 9764,
-      "rules": 96,
-      "selectorParts": 192,
+      "rules": 102,
+      "selectorParts": 200,
       "labels": {
-        "overlay-search": 61,
-        "table": 76
+        "overlay-search": 66,
+        "table": 81,
+        "workspace-chrome": 1
       },
       "ownerSurfaces": [
         "settings-controls"
@@ -555,7 +556,7 @@
       "index": 21,
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
       "legacyId": "09b-editing-menu-tooltip-glass.css",
-      "sourceLines": 1121,
+      "sourceLines": 1103,
       "bundleStartLine": 13013,
       "bundleEndLine": 14092,
       "rules": 115,
@@ -603,15 +604,15 @@
       "index": 23,
       "module": "src/chrome/37-tabs-file-explorer-search.css",
       "legacyId": "09d-tabs-file-explorer-search.css",
-      "sourceLines": 979,
+      "sourceLines": 1076,
       "bundleStartLine": 15152,
       "bundleEndLine": 16079,
-      "rules": 195,
-      "selectorParts": 208,
+      "rules": 207,
+      "selectorParts": 221,
       "labels": {
         "overlay-search": 10,
-        "table": 143,
-        "workspace-chrome": 190
+        "table": 155,
+        "workspace-chrome": 202
       },
       "ownerSurfaces": [
         "workspace-chrome"
@@ -624,19 +625,19 @@
       "index": 24,
       "module": "src/themes/51-accessibility-motion-contrast.css",
       "legacyId": "10a-accessibility-motion-contrast.css",
-      "sourceLines": 193,
+      "sourceLines": 220,
       "bundleStartLine": 16083,
       "bundleEndLine": 16251,
-      "rules": 18,
-      "selectorParts": 22,
+      "rules": 20,
+      "selectorParts": 24,
       "labels": {
         "callout-list": 4,
         "cm6": 4,
         "code": 13,
-        "overlay-search": 7,
+        "overlay-search": 9,
         "print-pdf": 2,
         "reading-rendered": 2,
-        "table": 5,
+        "table": 6,
         "workspace-chrome": 9
       },
       "ownerSurfaces": [],
@@ -648,7 +649,7 @@
       "index": 25,
       "module": "src/surfaces/23-liquid-glass-core.css",
       "legacyId": "10b-liquid-glass-core.css",
-      "sourceLines": 1617,
+      "sourceLines": 1633,
       "bundleStartLine": 16255,
       "bundleEndLine": 17926,
       "rules": 159,
@@ -2971,6 +2972,26 @@
         "table"
       ],
       "selector": "dl, .definition-list, .toc, .report-toc, .table-of-contents, .mermaid, .diagram-frame, .svg-frame, .footnotes, .footnote-section"
+    },
+    {
+      "module": "src/features/43-print-base.css",
+      "line": 886,
+      "context": "@media print",
+      "labels": [
+        "print-pdf",
+        "table"
+      ],
+      "selector": "body.ogd-pdf-paper-a4-portrait"
+    },
+    {
+      "module": "src/features/43-print-base.css",
+      "line": 896,
+      "context": "@media print",
+      "labels": [
+        "print-pdf",
+        "table"
+      ],
+      "selector": "body.ogd-pdf-paper-a3-portrait"
     },
     {
       "module": "src/base/13-live-preview.css",
@@ -6126,6 +6147,56 @@
       "selector": ".theme-dark .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):focus-visible"
     },
     {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 458,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading):is(:hover, :focus-within), body:not(.is-mobile) .modal.mod-settings .setting-item:not(.setting-item-heading):focus-within"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 464,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile) .modal.mod-settings .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):is(:focus, :focus-visible)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 470,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is(.setting-item, .vertical-tab-nav-item):focus-within"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 476,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile) :is(.hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 480,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading):is(:hover, :focus-within), body:not(.is-mobile).theme-dark .modal.mod-settings .setting-item:not(.setting-item-heading):focus-within"
+    },
+    {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
       "line": 40,
       "context": "",
@@ -8729,7 +8800,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 496,
+      "line": 487,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8738,7 +8809,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 634,
+      "line": 616,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8748,7 +8819,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 642,
+      "line": 624,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8757,7 +8828,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 648,
+      "line": 630,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8766,7 +8837,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 655,
+      "line": 637,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8776,7 +8847,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 661,
+      "line": 643,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8786,7 +8857,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 768,
+      "line": 750,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -8795,7 +8866,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 816,
+      "line": 798,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8806,7 +8877,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 823,
+      "line": 805,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8817,7 +8888,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 844,
+      "line": 826,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8827,7 +8898,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 892,
+      "line": 874,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8837,7 +8908,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 903,
+      "line": 885,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8847,7 +8918,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 915,
+      "line": 897,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -8857,7 +8928,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 964,
+      "line": 946,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8867,7 +8938,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1028,
+      "line": 1010,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8877,7 +8948,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1034,
+      "line": 1016,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8887,7 +8958,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1038,
+      "line": 1020,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8897,7 +8968,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1043,
+      "line": 1025,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8907,7 +8978,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1049,
+      "line": 1031,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8917,7 +8988,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1079,
+      "line": 1061,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -8927,7 +8998,7 @@
     },
     {
       "module": "src/chrome/35-editing-menu-tooltip-glass.css",
-      "line": 1091,
+      "line": 1073,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10847,7 +10918,127 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 977,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] :is(.nav-file-title:not(.is-active), .nav-folder-title, .tree-item-self):hover"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 986,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] :is(.nav-file-title:not(.is-active):hover .nav-file-title-content, .nav-folder-title:hover .nav-folder-title-content, .tree-item-self:hover .tree-item-inner)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 992,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 999,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1012,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1017,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)::before"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1031,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1041,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title .nav-folder-title-content"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1047,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile) .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1051,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] :is(.nav-file-title:not(.is-active), .nav-folder-title, .tree-item-self):hover, body:not(.is-mobile).theme-dark :is(.nav-file-title, .nav-folder-title, .tree-item-self):focus-within :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1057,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active)"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1061,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body:not(.is-mobile).theme-dark .workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-title"
+    },
+    {
+      "module": "src/chrome/37-tabs-file-explorer-search.css",
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10857,7 +11048,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10867,7 +11058,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10877,7 +11068,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10887,7 +11078,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10897,7 +11088,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10907,7 +11098,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 968,
+      "line": 1065,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10917,7 +11108,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 969,
+      "line": 1066,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10927,7 +11118,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 970,
+      "line": 1067,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10937,7 +11128,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 971,
+      "line": 1068,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10947,7 +11138,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 972,
+      "line": 1069,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10957,7 +11148,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 973,
+      "line": 1070,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10967,7 +11158,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 974,
+      "line": 1071,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10977,7 +11168,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 975,
+      "line": 1072,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -10987,7 +11178,7 @@
     },
     {
       "module": "src/chrome/37-tabs-file-explorer-search.css",
-      "line": 976,
+      "line": 1073,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11042,7 +11233,17 @@
     },
     {
       "module": "src/themes/51-accessibility-motion-contrast.css",
-      "line": 168,
+      "line": 147,
+      "context": "@media screen and (min-width: 701px)",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body:not(.is-mobile) :is(.search-input-container, .document-search-container):focus-within"
+    },
+    {
+      "module": "src/themes/51-accessibility-motion-contrast.css",
+      "line": 195,
       "context": "",
       "labels": [
         "callout-list",
@@ -11057,7 +11258,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 113,
+      "line": 117,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -11066,7 +11267,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 131,
+      "line": 135,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11077,7 +11278,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 164,
+      "line": 168,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11088,7 +11289,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 199,
+      "line": 203,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11098,7 +11299,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 240,
+      "line": 244,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11108,7 +11309,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 256,
+      "line": 260,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11119,7 +11320,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 266,
+      "line": 270,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11130,7 +11331,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 273,
+      "line": 277,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11141,7 +11342,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 277,
+      "line": 281,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11152,7 +11353,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 283,
+      "line": 287,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11162,7 +11363,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 298,
+      "line": 302,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11172,7 +11373,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 314,
+      "line": 318,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11182,7 +11383,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 319,
+      "line": 323,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11192,7 +11393,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 325,
+      "line": 329,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11202,7 +11403,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 334,
+      "line": 338,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11213,7 +11414,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 368,
+      "line": 372,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11223,7 +11424,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 563,
+      "line": 567,
       "context": "",
       "labels": [
         "code",
@@ -11234,7 +11435,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 571,
+      "line": 575,
       "context": "",
       "labels": [
         "code",
@@ -11245,7 +11446,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 576,
+      "line": 580,
       "context": "",
       "labels": [
         "code",
@@ -11256,7 +11457,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 580,
+      "line": 584,
       "context": "",
       "labels": [
         "code",
@@ -11267,7 +11468,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 584,
+      "line": 588,
       "context": "",
       "labels": [
         "code",
@@ -11278,7 +11479,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 586,
+      "line": 590,
       "context": "",
       "labels": [
         "code",
@@ -11290,7 +11491,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 588,
+      "line": 592,
       "context": "@supports selector(table:has(caption))",
       "labels": [
         "code",
@@ -11301,7 +11502,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 591,
+      "line": 595,
       "context": "",
       "labels": [
         "code",
@@ -11313,7 +11514,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 592,
+      "line": 596,
       "context": "",
       "labels": [
         "code",
@@ -11325,7 +11526,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 593,
+      "line": 597,
       "context": "",
       "labels": [
         "code",
@@ -11337,7 +11538,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 594,
+      "line": 598,
       "context": "",
       "labels": [
         "code",
@@ -11349,7 +11550,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 597,
+      "line": 601,
       "context": "@supports selector(table:has(caption))",
       "labels": [
         "code",
@@ -11360,7 +11561,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 598,
+      "line": 602,
       "context": "@supports selector(table:has(caption))",
       "labels": [
         "code",
@@ -11371,7 +11572,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 599,
+      "line": 603,
       "context": "@supports selector(table:has(caption))",
       "labels": [
         "code",
@@ -11382,7 +11583,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 600,
+      "line": 604,
       "context": "@supports selector(table:has(caption))",
       "labels": [
         "code",
@@ -11393,7 +11594,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 603,
+      "line": 607,
       "context": "",
       "labels": [
         "code",
@@ -11405,7 +11606,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 604,
+      "line": 608,
       "context": "",
       "labels": [
         "code",
@@ -11416,7 +11617,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 614,
+      "line": 618,
       "context": "",
       "labels": [
         "code",
@@ -11427,7 +11628,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 619,
+      "line": 623,
       "context": "",
       "labels": [
         "code",
@@ -11438,7 +11639,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 624,
+      "line": 628,
       "context": "",
       "labels": [
         "code",
@@ -11449,7 +11650,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 629,
+      "line": 633,
       "context": "",
       "labels": [
         "code",
@@ -11460,7 +11661,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 639,
+      "line": 643,
       "context": "",
       "labels": [
         "code",
@@ -11471,7 +11672,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 641,
+      "line": 645,
       "context": "",
       "labels": [
         "code",
@@ -11483,7 +11684,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 665,
+      "line": 669,
       "context": "@supports selector(table:has(caption))",
       "labels": [
         "code",
@@ -11494,7 +11695,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 647,
+      "line": 651,
       "context": "",
       "labels": [
         "code",
@@ -11505,7 +11706,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 648,
+      "line": 652,
       "context": "",
       "labels": [
         "code",
@@ -11516,7 +11717,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 658,
+      "line": 662,
       "context": "",
       "labels": [
         "code",
@@ -11527,7 +11728,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 695,
+      "line": 699,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11538,7 +11739,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 702,
+      "line": 706,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11549,7 +11750,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 704,
+      "line": 708,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11559,7 +11760,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 705,
+      "line": 709,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11569,7 +11770,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 712,
+      "line": 716,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11579,7 +11780,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 720,
+      "line": 724,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11589,7 +11790,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 728,
+      "line": 732,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11599,7 +11800,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 730,
+      "line": 734,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11609,7 +11810,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 731,
+      "line": 735,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11619,7 +11820,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 745,
+      "line": 749,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11630,7 +11831,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 765,
+      "line": 769,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11641,7 +11842,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 767,
+      "line": 771,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11651,7 +11852,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 768,
+      "line": 772,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11661,7 +11862,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 829,
+      "line": 833,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table"
@@ -11670,7 +11871,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 838,
+      "line": 842,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11681,7 +11882,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 845,
+      "line": 849,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11692,7 +11893,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 852,
+      "line": 856,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11703,7 +11904,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 866,
+      "line": 870,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11713,7 +11914,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 885,
+      "line": 889,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11723,7 +11924,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 890,
+      "line": 894,
       "context": "@media (min-width: 701px)",
       "labels": [
         "cm6",
@@ -11735,7 +11936,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 895,
+      "line": 899,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11746,7 +11947,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 937,
+      "line": 941,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11756,7 +11957,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 941,
+      "line": 945,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11766,7 +11967,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 967,
+      "line": 971,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11776,7 +11977,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 981,
+      "line": 985,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11786,7 +11987,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 987,
+      "line": 991,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11796,7 +11997,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 996,
+      "line": 1000,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11806,7 +12007,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1020,
+      "line": 1024,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11817,7 +12018,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1025,
+      "line": 1029,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -11828,7 +12029,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1032,
+      "line": 1036,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11838,7 +12039,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1111,
+      "line": 1115,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11849,7 +12050,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1120,
+      "line": 1124,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11860,7 +12061,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1127,
+      "line": 1131,
       "context": "@media (min-width: 701px)",
       "labels": [
         "overlay-search",
@@ -11871,7 +12072,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1235,
+      "line": 1239,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11881,7 +12082,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1290,
+      "line": 1294,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11891,7 +12092,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1297,
+      "line": 1301,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11901,7 +12102,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1306,
+      "line": 1310,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11911,7 +12112,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1311,
+      "line": 1315,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11921,7 +12122,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1317,
+      "line": 1321,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11931,7 +12132,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1323,
+      "line": 1327,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11941,7 +12142,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1356,
+      "line": 1360,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11951,7 +12152,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1363,
+      "line": 1367,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11961,7 +12162,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1415,
+      "line": 1430,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11971,7 +12172,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1424,
+      "line": 1439,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11981,7 +12182,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1429,
+      "line": 1445,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -11991,7 +12192,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1438,
+      "line": 1454,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12001,7 +12202,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1446,
+      "line": 1462,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12011,7 +12212,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1462,
+      "line": 1478,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12021,7 +12222,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1474,
+      "line": 1490,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -12032,7 +12233,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1479,
+      "line": 1495,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12042,7 +12243,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1484,
+      "line": 1500,
       "context": "@media (min-width: 701px)",
       "labels": [
         "code",
@@ -12053,7 +12254,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1502,
+      "line": 1518,
       "context": "@media (min-width: 701px)",
       "labels": [
         "table",
@@ -12063,7 +12264,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1502,
+      "line": 1518,
       "context": "",
       "labels": [
         "cm6",
@@ -12073,7 +12274,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1545,
+      "line": 1561,
       "context": "",
       "labels": [
         "code",
@@ -12084,7 +12285,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1554,
+      "line": 1570,
       "context": "",
       "labels": [
         "code",
@@ -12095,7 +12296,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1559,
+      "line": 1575,
       "context": "",
       "labels": [
         "code",
@@ -12106,7 +12307,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1563,
+      "line": 1579,
       "context": "",
       "labels": [
         "code",
@@ -12117,7 +12318,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1567,
+      "line": 1583,
       "context": "",
       "labels": [
         "code",
@@ -12128,7 +12329,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1578,
+      "line": 1594,
       "context": "",
       "labels": [
         "code",
@@ -12139,7 +12340,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1583,
+      "line": 1599,
       "context": "",
       "labels": [
         "code",
@@ -12150,7 +12351,7 @@
     },
     {
       "module": "src/surfaces/23-liquid-glass-core.css",
-      "line": 1587,
+      "line": 1603,
       "context": "",
       "labels": [
         "code",
@@ -13098,10 +13299,10 @@
         "callout-list": 4,
         "cm6": 4,
         "code": 13,
-        "overlay-search": 7,
+        "overlay-search": 9,
         "print-pdf": 2,
         "reading-rendered": 2,
-        "table": 5,
+        "table": 6,
         "workspace-chrome": 9
       }
     }

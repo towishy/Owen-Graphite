@@ -873,3 +873,31 @@
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) ol:not(.contains-task-list) > li:not(.task-list-item)::marker { font-variant-numeric: tabular-nums; }
 }
 
+/* v3.1.87 - Named pages selected by the PDF paper-size setting. */
+@media print {
+  @page ogd-pdf-a4-portrait { size: A4 portrait; margin: 15mm; }
+  @page ogd-pdf-a4-landscape { size: A4 landscape; margin: 15mm; }
+  @page ogd-pdf-a3-portrait { size: A3 portrait; margin: 15mm; }
+  @page ogd-pdf-a3-landscape { size: A3 landscape; margin: 15mm; }
+
+  body.ogd-pdf-paper-a4-portrait {
+    page: ogd-pdf-a4-portrait;
+    width: auto;
+  }
+
+  body.ogd-pdf-paper-a4-landscape {
+    page: ogd-pdf-a4-landscape;
+    width: auto;
+  }
+
+  body.ogd-pdf-paper-a3-portrait {
+    page: ogd-pdf-a3-portrait;
+    width: auto;
+  }
+
+  body.ogd-pdf-paper-a3-landscape {
+    page: ogd-pdf-a3-landscape;
+    width: auto;
+  }
+}
+

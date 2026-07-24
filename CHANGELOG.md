@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.87
+
+- polish: 활성 탭 하단에 19px glass continuation을 연결하고 현재 문서의 직접 부모 폴더를 heading band가 있는 중립 glass box로 정리했습니다.
+- fix: settings, search, file explorer, editing toolbar, document chrome의 cyan focus rim과 halo를 neutral slate focus로 낮췄습니다.
+- feat: Style Settings의 A4/A3 세로·가로 PDF 용지 선택을 Chromium named page geometry에 연결했습니다.
+- guard: direct-owner, Style Settings, CSS compatibility, PDF marginalia, source/risk map, runtime evidence 검증을 갱신했습니다.
+
 ## v3.1.86
 
 - feat: UI Foundation 기준의 4px spacing, 44px touch target, 140/200ms motion token과 reduced-transparency fallback을 추가했습니다.

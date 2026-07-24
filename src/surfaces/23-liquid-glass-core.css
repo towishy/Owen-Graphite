@@ -17,9 +17,9 @@
     --ogd-rim-active: rgba(186, 230, 253, 0.76);
     --ogd-rim-active-low: rgba(125, 211, 252, 0.30);
     --ogd-rim-hover: rgba(147, 197, 253, 0.54);
-    --ogd-rim-focus: rgba(103, 232, 249, 0.62);
-    --ogd-rim-focus-outline: rgba(103, 232, 249, 0.24);
-    --ogd-rim-focus-halo: rgba(103, 232, 249, 0.15);
+    --ogd-rim-focus: rgba(100, 116, 139, 0.30);
+    --ogd-rim-focus-outline: transparent;
+    --ogd-rim-focus-halo: transparent;
     --ogd-surface-tint-aqua: rgba(224, 242, 254, 0.50);
     --ogd-surface-tint-aqua-soft: rgba(186, 230, 253, 0.16);
     --ogd-lg-mist-rim: var(--ogd-rim-active);
@@ -41,7 +41,11 @@
     --ogd-lg-shadow: 0 18px 44px rgba(15, 23, 42, 0.18), 0 6px 16px rgba(15, 23, 42, 0.12), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-hover: 0 28px 64px rgba(15, 23, 42, 0.24), 0 10px 24px rgba(15, 23, 42, 0.16), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-active: 0 22px 52px rgba(15, 23, 42, 0.22), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
-    --ogd-lg-shadow-focus: 0 18px 44px rgba(15, 23, 42, 0.18), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-focus: none;
+    --ogd-focus-ring-border: rgba(100, 116, 139, 0.32);
+    --ogd-focus-ring-halo: transparent;
+    --ogd-focus-ring-shadow: none;
+    --ogd-lg-refined-focus-shadow: none;
     --ogd-lg-pane-shell-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 24px rgba(15, 23, 42, 0.08);
     --ogd-lg-pane-header-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 6px 14px rgba(15, 23, 42, 0.06);
     --ogd-lg-tab-border: var(--ogd-surface-transparent, transparent);
@@ -79,9 +83,9 @@
     --ogd-rim-active: rgba(186, 230, 253, 0.42);
     --ogd-rim-active-low: rgba(125, 211, 252, 0.22);
     --ogd-rim-hover: rgba(186, 230, 253, 0.30);
-    --ogd-rim-focus: rgba(103, 232, 249, 0.42);
-    --ogd-rim-focus-outline: rgba(103, 232, 249, 0.18);
-    --ogd-rim-focus-halo: rgba(103, 232, 249, 0.10);
+    --ogd-rim-focus: rgba(100, 116, 139, 0.30);
+    --ogd-rim-focus-outline: transparent;
+    --ogd-rim-focus-halo: transparent;
     --ogd-surface-tint-aqua: rgba(14, 116, 144, 0.20);
     --ogd-surface-tint-aqua-soft: rgba(186, 230, 253, 0.10);
     --ogd-lg-mist-fill: var(--ogd-surface-tint-aqua);
@@ -101,7 +105,7 @@
     --ogd-lg-shadow: 0 18px 46px rgba(0, 0, 0, 0.46), 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-hover: 0 30px 72px rgba(0, 0, 0, 0.56), 0 12px 28px rgba(0, 0, 0, 0.38), inset 0 1px 0 var(--ogd-lg-edge);
     --ogd-lg-shadow-active: 0 22px 54px rgba(0, 0, 0, 0.54), 0 0 0 3px var(--ogd-lg-mist-glow), inset 0 0 0 1px var(--ogd-lg-mist-line), inset 0 1px 0 var(--ogd-lg-edge);
-    --ogd-lg-shadow-focus: 0 18px 46px rgba(0, 0, 0, 0.46), 0 0 0 3px var(--ogd-lg-frost-halo), inset 0 1px 0 var(--ogd-lg-edge);
+    --ogd-lg-shadow-focus: none;
     --ogd-lg-pane-shell-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 10px 26px rgba(0, 0, 0, 0.30);
     --ogd-lg-pane-header-shadow: inset 0 1px 0 var(--ogd-lg-edge), 0 7px 16px rgba(0, 0, 0, 0.24);
     --ogd-lg-tab-border-hover: rgba(203, 213, 225, 0.18);
@@ -1393,13 +1397,24 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
     min-height: 0;
     padding-inline: 18px 14px;
     padding-block: 4px;
-    margin-bottom: 0;
+    margin-bottom: -4px;
     transform: none;
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
-    content: none;
-    display: none;
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 5;
+    right: -2px;
+    bottom: -18px;
+    left: -2px;
+    height: 19px;
+    border-inline: 1px solid rgba(203, 213, 225, 0.42);
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.98) 0%, rgba(255, 255, 255, 0.94) 68%, rgba(255, 255, 255, 0.78) 100%);
+    box-shadow: 0 10px 18px -16px rgba(15, 23, 42, 0.28);
+    pointer-events: none;
   }
 
   body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {
@@ -1426,8 +1441,9 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner::after {
-    border-inline-color: rgba(203, 213, 225, 0.12);
-    background: linear-gradient(180deg, rgba(51, 65, 85, 0.74), rgba(30, 41, 59, 0.58));
+    border-inline-color: rgba(203, 213, 225, 0.16);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.72) 68%, rgba(15, 23, 42, 0.56) 100%);
+    box-shadow: 0 10px 20px -15px rgba(0, 0, 0, 0.58);
   }
 
   body:not(.is-mobile).theme-dark .workspace-split.mod-root .workspace-tabs .workspace-tab-header.is-active .workspace-tab-header-inner-title {

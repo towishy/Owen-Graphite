@@ -434,3 +434,51 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
   outline-color: var(--ogd-text-soft, #94a3b8);
 }
 
+/* v3.1.87 - Clean Layered Utility settings rows and neutral focus. */
+@media screen and (min-width: 701px) {
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading) {
+    margin: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    transform: none;
+  }
+
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading):is(:hover, :focus-within),
+  body:not(.is-mobile) .modal.mod-settings .setting-item:not(.setting-item-heading):focus-within {
+    border: 0;
+    background: rgba(241, 245, 249, 0.72);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    outline: 0;
+    box-shadow: none;
+    transform: none;
+  }
+
+  body:not(.is-mobile) .modal.mod-settings .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):is(:focus, :focus-visible) {
+    border-color: rgba(100, 116, 139, 0.34);
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(100, 116, 139, 0.14);
+  }
+
+  body:not(.is-mobile) :is(.setting-item, .vertical-tab-nav-item):focus-within {
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  body:not(.is-mobile) :is(.hotkey-search-container, .setting-hotkey-search, .setting-hotkeys-search):focus-within {
+    border-color: rgba(100, 116, 139, 0.28);
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(100, 116, 139, 0.12);
+  }
+
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading):is(:hover, :focus-within),
+  body:not(.is-mobile).theme-dark .modal.mod-settings .setting-item:not(.setting-item-heading):focus-within {
+    background: rgba(51, 65, 85, 0.34);
+  }
+}
+

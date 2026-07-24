@@ -2,6 +2,10 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.84 — Community Theme Search Focus Rim
+
+Community theme browser 검색 필드를 generic liquid-glass focus selector에서 제외해 남아 있던 cyan rim과 halo를 제거했습니다. Community theme/plugin modal의 row와 검색 container는 중립 graphite focus를 유지하며 CDP computed style로 확인했습니다.
+
 ## v3.1.83 — Font Controls Preview And Neutral Theme Search
 
 README에 Style Settings 폰트 직접 입력 화면을 추가하고, community theme 검색 입력의 focus 상태를 강한 cyan 대신 중립 graphite rim으로 낮췄습니다. 관련 이미지가 manual ZIP, Obsidian sync, ZIP audit 및 GitHub Release asset 경로에 포함되도록 계약을 갱신했습니다.

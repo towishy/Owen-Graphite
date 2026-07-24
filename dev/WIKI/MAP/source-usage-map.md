@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 19994
-- Parsed CSS rules: 2598
-- Selector parts: 4036
+- Source CSS lines: 20192
+- Parsed CSS rules: 2622
+- Selector parts: 4063
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -19,11 +19,11 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `code`: 1064 rules
 - `lp-html-table`: 83 rules
 - `lp-markdown-table-widget-reference`: 94 rules
-- `overlay-search`: 288 rules
-- `print-pdf`: 549 rules
+- `overlay-search`: 295 rules
+- `print-pdf`: 553 rules
 - `reading-rendered`: 1222 rules
-- `table`: 1141 rules
-- `workspace-chrome`: 643 rules
+- `table`: 1161 rules
+- `workspace-chrome`: 656 rules
 
 ## Quick Routing
 
@@ -161,22 +161,22 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 7 | `src/surfaces/21-reading-callouts-lists.css` | 3422-4264 | 877 | reading-callouts-lists | callout-list:106, cm6:3, code:71, reading-rendered:122, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 4268-4496 | 248 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:5, overlay-search:1, reading-rendered:18, table:5, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 4500-4996 | 629 | support: dark theme support | callout-list:35, cm6:6, code:52, overlay-search:3, print-pdf:2, reading-rendered:89, table:95, workspace-chrome:6 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
-| 10 | `src/features/43-print-base.css` | 5000-5370 | 876 | pdf-base | callout-list:28, cm6:1, code:101, print-pdf:112, reading-rendered:107, table:8, workspace-chrome:13 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
+| 10 | `src/features/43-print-base.css` | 5000-5370 | 904 | pdf-base | callout-list:28, cm6:1, code:101, print-pdf:116, reading-rendered:107, table:10, workspace-chrome:13 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
 | 11 | `src/base/13-live-preview.css` | 5374-6447 | 1380 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:192, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:75, workspace-chrome:9 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
 | 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1592 | pdf-marginalia | callout-list:24, cm6:4, code:81, overlay-search:2, print-pdf:157, reading-rendered:127, table:38, workspace-chrome:14 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 696 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 8821-9021 | 201 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:20, workspace-chrome:16 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 9025-9331 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
-| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 437 | settings-controls | overlay-search:61, table:76 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
+| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 485 | settings-controls | overlay-search:66, table:81, workspace-chrome:1 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 9768-10161 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 538 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:7, print-pdf:2, reading-rendered:27, table:37, workspace-chrome:17 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2078 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:260, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:211, reading-rendered:261, table:125, workspace-chrome:61 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
 | 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 263 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:23 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
-| 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1121 | overlay-menu-search | cm6:6, code:6, overlay-search:35, reading-rendered:6, table:33, workspace-chrome:45 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
+| 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1103 | overlay-menu-search | cm6:6, code:6, overlay-search:35, reading-rendered:6, table:33, workspace-chrome:45 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 1038 | overlay-menu-search | code:4, overlay-search:62, print-pdf:1, reading-rendered:4, table:64, workspace-chrome:26 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
-| 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 979 | workspace-chrome | overlay-search:10, table:143, workspace-chrome:190 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
-| 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 193 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:13, overlay-search:7, print-pdf:2, reading-rendered:2, table:5, workspace-chrome:9 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
-| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1617 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:47, overlay-search:45, print-pdf:7, reading-rendered:39, table:104, workspace-chrome:86 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
+| 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 1076 | workspace-chrome | overlay-search:10, table:155, workspace-chrome:202 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
+| 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 220 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:13, overlay-search:9, print-pdf:2, reading-rendered:2, table:6, workspace-chrome:9 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
+| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1633 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:47, overlay-search:45, print-pdf:7, reading-rendered:39, table:104, workspace-chrome:86 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
 | 26 | `src/surfaces/24-html-table-live-preview-glass.css` | 17930-18169 | 238 | live-preview-rendered-widgets | callout-list:63, cm6:63, code:14, lp-html-table:63, lp-markdown-table-widget-reference:63, print-pdf:15, table:63 | after `src/surfaces/23-liquid-glass-core.css`; before `None` |
 
 ## Table Code Map
@@ -198,21 +198,21 @@ Table-related rules are intentionally split by surface:
 | `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 122 | 0 |
 | `src/surfaces/22-reading-embeds-workspace.css` | 5 | 0 | 18 | 0 |
 | `src/themes/50-dark.css` | 95 | 0 | 89 | 2 |
-| `src/features/43-print-base.css` | 8 | 0 | 107 | 112 |
+| `src/features/43-print-base.css` | 10 | 0 | 107 | 116 |
 | `src/base/13-live-preview.css` | 75 | 18 | 10 | 11 |
 | `src/features/41-feature-presets.css` | 38 | 0 | 127 | 157 |
 | `src/chrome/30-workspace.css` | 68 | 0 | 69 | 3 |
 | `src/chrome/31-navigation-tasks-search.css` | 20 | 0 | 25 | 0 |
 | `src/chrome/32-overlay-popover-dataview.css` | 24 | 0 | 24 | 0 |
-| `src/chrome/33-settings-controls.css` | 76 | 0 | 0 | 0 |
+| `src/chrome/33-settings-controls.css` | 81 | 0 | 0 | 0 |
 | `src/plugins/60-canvas-graph-link-panes.css` | 48 | 0 | 0 | 0 |
 | `src/plugins/61-live-preview-mobile-plugin.css` | 37 | 0 | 27 | 2 |
 | `src/features/42-report-print-polish.css` | 125 | 2 | 261 | 211 |
 | `src/chrome/34-nav-ribbon-glass.css` | 13 | 0 | 1 | 0 |
 | `src/chrome/35-editing-menu-tooltip-glass.css` | 33 | 0 | 6 | 0 |
 | `src/chrome/36-floating-ui-glass-system.css` | 64 | 0 | 4 | 1 |
-| `src/chrome/37-tabs-file-explorer-search.css` | 143 | 0 | 0 | 0 |
-| `src/themes/51-accessibility-motion-contrast.css` | 5 | 0 | 2 | 2 |
+| `src/chrome/37-tabs-file-explorer-search.css` | 155 | 0 | 0 | 0 |
+| `src/themes/51-accessibility-motion-contrast.css` | 6 | 0 | 2 | 2 |
 | `src/surfaces/23-liquid-glass-core.css` | 104 | 0 | 39 | 7 |
 | `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 63 | 0 | 15 |
 
@@ -266,7 +266,7 @@ These modules have explicit support roles in `owner-registry.json`. They are not
 - `src/surfaces/22-reading-embeds-workspace.css`: reading embed/workspace primitives; labels {'callout-list': 4, 'cm6': 6, 'code': 5, 'overlay-search': 1, 'reading-rendered': 18, 'table': 5, 'workspace-chrome': 6}
 - `src/themes/50-dark.css`: dark theme support; labels {'callout-list': 35, 'cm6': 6, 'code': 52, 'overlay-search': 3, 'print-pdf': 2, 'reading-rendered': 89, 'table': 95, 'workspace-chrome': 6}
 - `src/plugins/60-canvas-graph-link-panes.css`: external/plugin support; labels {'code': 2, 'overlay-search': 27, 'table': 48, 'workspace-chrome': 12}
-- `src/themes/51-accessibility-motion-contrast.css`: accessibility/motion/contrast support; labels {'callout-list': 4, 'cm6': 4, 'code': 13, 'overlay-search': 7, 'print-pdf': 2, 'reading-rendered': 2, 'table': 5, 'workspace-chrome': 9}
+- `src/themes/51-accessibility-motion-contrast.css`: accessibility/motion/contrast support; labels {'callout-list': 4, 'cm6': 4, 'code': 13, 'overlay-search': 9, 'print-pdf': 2, 'reading-rendered': 2, 'table': 6, 'workspace-chrome': 9}
 
 ## Related Maps And Artifacts
 

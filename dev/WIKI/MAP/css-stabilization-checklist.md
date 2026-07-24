@@ -12,8 +12,8 @@
 
 - critical=0
 - high=0
-- medium=525
-- low=100
+- medium=531
+- low=107
 - info=0
 
 ## Current Module Baseline
