@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.91
+
+- feat: 보고서 제목 디자인 템플릿 9종을 기본·강조·인덱스 계열로 재분류하고, Style Settings에서 현재 선택의 H1-H3 위계를 한국어와 영어로 바로 확인하는 미리보기를 추가했습니다.
+- polish: Settings 탐색·선택 상태와 커뮤니티 플러그인 선택 카드의 둥근 accent rim·left rail을 제거하고, 다크 모드 표와 보고서 제목의 대비를 정리했습니다.
+- fix: Focus Bar와 Number Stamp H1 프레임을 직각 geometry로 통일하고, 미리보기 signature color가 base selector specificity에 눌리지 않도록 owner 변수를 바로잡았습니다.
+- guard: 9개 제목 템플릿의 Live Preview/PDF 계약, companion 한·영 catalog, CSS compatibility budget, CDP computed geometry와 로컬 Obsidian 설치 hash를 검증했습니다.
+
 ## v3.1.90
 
 - feat: Owen Graphite Companion 1.1.0에서 Live Preview와 Reading View 코드 블록 제목을 인라인 편집하고 fenced Markdown의 `title="..."` 속성으로 저장할 수 있게 했습니다.

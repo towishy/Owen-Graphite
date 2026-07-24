@@ -101,7 +101,7 @@ console.log('OK: editable code-block titles preserve language, blank titles, and
     manifest = json.loads((PLUGIN / "manifest.json").read_text(encoding="utf-8"))
     assert manifest["id"] == "owen-graphite-style-settings-l10n"
     assert manifest["name"] == "Owen Graphite Companion"
-    assert manifest["version"] == "1.1.0"
+    assert manifest["version"] == "1.1.1"
     print("OK: 62 titles, 46 descriptions, and every option label are complete in ko/en")
     print("OK: existing IDs, types, defaults, and stored-value namespace remain stable")
     return 0

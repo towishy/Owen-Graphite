@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.90)
+﻿# v3 Release Record (latest: v3.1.91)
 
-**Status**: Current stable / rollback baseline = `v3.1.90` (2026-07-25). This release adds editable code block titles, clarifies the active file-explorer hierarchy, and strengthens PDF heading-template geometry and validation.
+**Status**: Current stable / rollback baseline = `v3.1.91` (2026-07-25). This release groups all nine report heading templates by purpose, adds a bilingual H1-H3 settings preview, and removes rounded accent rims from the affected settings states.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.90` |
+| `manifest.json` version | `3.1.91` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,378 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,433 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.90.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.91.zip` |
 
 ## What was removed
 

@@ -58,6 +58,21 @@ const CHROME = {
   }
 };
 
+const HEADING_PREVIEW_COPY = {
+  en: {
+    label: "Selected report heading template preview",
+    h1: "Report title",
+    h2: "Section heading",
+    h3: "Detail heading",
+  },
+  ko: {
+    label: "선택한 보고서 제목 템플릿 미리보기",
+    h1: "보고서 제목",
+    h2: "섹션 제목",
+    h3: "세부 항목",
+  },
+};
+
 function translateChromeText(source, locale) {
   const dictionary = CHROME[locale];
   if (dictionary[source]) return dictionary[source];
@@ -82,6 +97,26 @@ function localizedDescription(entry, locale) {
   return [entry.description, `${prefix} ${defaultLabel}`].filter(Boolean).join("\n");
 }
 
+function ensureHeadingTemplatePreview(row, locale) {
+  const copy = HEADING_PREVIEW_COPY[locale];
+  let preview = row.querySelector(":scope > .ogd-heading-template-preview");
+  if (!preview) {
+    preview = document.createElement("div");
+    preview.className = "ogd-heading-template-preview";
+    preview.setAttribute("role", "img");
+    for (const level of ["h1", "h2", "h3"]) {
+      const line = document.createElement("span");
+      line.className = `ogd-heading-template-preview-${level}`;
+      preview.appendChild(line);
+    }
+    row.appendChild(preview);
+  }
+  preview.setAttribute("aria-label", copy.label);
+  for (const level of ["h1", "h2", "h3"]) {
+    setText(preview.querySelector(`.ogd-heading-template-preview-${level}`), copy[level]);
+  }
+}
+
 function translateRow(row, locale) {
   const id = row.dataset.id;
   const entry = localizedEntry(catalog, id, locale);
@@ -94,6 +129,7 @@ function translateRow(row, locale) {
       if (entry.options[option.value]) option.textContent = entry.options[option.value];
     }
   }
+  if (id === "ogd-heading-template") ensureHeadingTemplatePreview(row, locale);
 }
 
 function translateChrome(root, locale) {

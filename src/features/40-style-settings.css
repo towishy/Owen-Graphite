@@ -196,37 +196,37 @@ settings:
     default: false
   -
     id: ogd-heading-template
-    title: 헤더 디자인 템플릿
-    description: H1-H4 디자인을 Live Preview와 PDF 출력에 함께 적용합니다.
+    title: 보고서 제목 디자인 템플릿
+    description: H1-H4 디자인을 Live Preview와 PDF 출력에 함께 적용합니다. 기본, 강조, 인덱스 계열로 구분됩니다.
     type: class-select
     default: ogd-heading-printclean
     options:
       -
-        label: 프린트 클린
+        label: 기본 · 프린트 클린
         value: ogd-heading-printclean
       -
-        label: 코발트 키라인
-        value: ogd-heading-keyline
-      -
-        label: 브래킷 챕터
-        value: ogd-heading-bracket
-      -
-        label: 조용한 장부
+        label: 기본 · 조용한 장부
         value: ogd-heading-quiet-ledger
       -
-        label: 포커스 바
-        value: ogd-heading-focus-bar
-      -
-        label: 더블룰 클래식
+        label: 기본 · 더블룰 클래식
         value: ogd-heading-double-rule
       -
-        label: 태그 리본
+        label: 강조 · 코발트 키라인
+        value: ogd-heading-keyline
+      -
+        label: 강조 · 브래킷 챕터
+        value: ogd-heading-bracket
+      -
+        label: 강조 · 포커스 바
+        value: ogd-heading-focus-bar
+      -
+        label: 인덱스 · 태그 리본
         value: ogd-heading-tag-ribbon
       -
-        label: 넘버 스탬프
+        label: 인덱스 · 넘버 스탬프
         value: ogd-heading-number-stamp
       -
-        label: 그리드 인덱스
+        label: 인덱스 · 그리드 인덱스
         value: ogd-heading-grid-index
   -
     id: ogd-drop-cap

@@ -29,7 +29,7 @@
 | `ogd-serif-body` | `class-toggle` | `false` | 본문 세리프 글꼴 |
 | `ogd-indent-paragraph` | `class-toggle` | `false` | 첫 줄 들여쓰기 |
 | `ogd-auto-number-headings` | `class-toggle` | `false` | 헤더 자동 넘버링 (1. 1.1 1.1.1) |
-| `ogd-heading-template` | `class-select` | `ogd-heading-printclean` | 헤더 디자인 템플릿 |
+| `ogd-heading-template` | `class-select` | `ogd-heading-printclean` | 보고서 제목 디자인 템플릿 |
 | `ogd-drop-cap` | `class-toggle` | `false` | 드롭 캡 (첫 문단 첫 글자 크게) |
 | `ogd-spacing-preset` | `class-select` | `ogd-spacing-standard` | 간격 프리셋 |
 | `ogd-accent-preset` | `class-select` | `ogd-accent-graphite` | 액센트 컬러 프리셋 |

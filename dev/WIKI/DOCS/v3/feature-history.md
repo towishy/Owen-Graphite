@@ -2,6 +2,10 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.88 — Active Tab Bridge Hotfix
+
+Obsidian core의 clipping과 숨겨진 pseudo-element 상태 때문에 끊겼던 active tab과 document surface 사이를 측정된 5px bridge로 복구했습니다. 과도한 19px 장식 cap과 shadow 대신 평평한 연결면을 사용하고 Obsidian 1.12.7 CDP computed geometry로 검증했습니다.
+
 ## v3.1.87 — Connected Workspace And Neutral Focus
 
 Active tab과 document surface를 연결하고, 현재 문서의 직접 부모 폴더를 heading band가 있는 neutral glass frame으로 정리했습니다. Settings, search, navigation, editing controls의 cyan focus halo를 낮추고 A4/A3 portrait·landscape 선택을 Chromium print geometry에 연결했습니다.
