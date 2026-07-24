@@ -7,7 +7,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20192
+- Source CSS lines: 20195
 - Parsed CSS rules: 2622
 - Selector parts: 4063
 - Hard core-owner violations: 10
@@ -176,7 +176,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 1038 | overlay-menu-search | code:4, overlay-search:62, print-pdf:1, reading-rendered:4, table:64, workspace-chrome:26 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
 | 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 1076 | workspace-chrome | overlay-search:10, table:155, workspace-chrome:202 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
 | 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 220 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:13, overlay-search:9, print-pdf:2, reading-rendered:2, table:6, workspace-chrome:9 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
-| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1633 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:47, overlay-search:45, print-pdf:7, reading-rendered:39, table:104, workspace-chrome:86 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
+| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1636 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:47, overlay-search:45, print-pdf:7, reading-rendered:39, table:104, workspace-chrome:86 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
 | 26 | `src/surfaces/24-html-table-live-preview-glass.css` | 17930-18169 | 238 | live-preview-rendered-widgets | callout-list:63, cm6:63, code:14, lp-html-table:63, lp-markdown-table-widget-reference:63, print-pdf:15, table:63 | after `src/surfaces/23-liquid-glass-core.css`; before `None` |
 
 ## Table Code Map

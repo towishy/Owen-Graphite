@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.88
+
+- fix: Obsidian core의 `overflow: hidden`, pseudo `opacity: 0`, `width: 1px` 때문에 보이지 않던 활성 탭 하단 bridge를 실제 5px 연결면으로 복구했습니다.
+- polish: 탭과 본문 경계의 3.5px 간격만 채우도록 과도한 19px continuation, 둥근 하단 cap, 그림자를 제거했습니다.
+- guard: Obsidian 1.12.7 CDP에서 source-only `252px × 5px`, `opacity: 1`, `overflow: visible` computed style을 확인하고 전체 release gate를 통과했습니다.
+
 ## v3.1.87
 
 - polish: 활성 탭 하단에 19px glass continuation을 연결하고 현재 문서의 직접 부모 폴더를 heading band가 있는 중립 glass box로 정리했습니다.

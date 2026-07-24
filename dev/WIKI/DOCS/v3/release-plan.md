@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.87)
+﻿# v3 Release Record (latest: v3.1.88)
 
-**Status**: Current stable / rollback baseline = `v3.1.87` (2026-07-24). This release connects active workspace chrome, frames the current file's parent folder, replaces cyan daily focus halos with neutral slate states, and maps A4/A3 paper choices to named print pages while preserving the v3 direct-owner architecture.
+**Status**: Current stable / rollback baseline = `v3.1.88` (2026-07-24). This hotfix restores the active tab-to-document bridge as a measured 5px continuation, overriding Obsidian core clipping and hidden pseudo-element values while preserving the v3 direct-owner architecture.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.87` |
+| `manifest.json` version | `3.1.88` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 19,923 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 19,926 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.87.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.88.zip` |
 
 ## What was removed
 

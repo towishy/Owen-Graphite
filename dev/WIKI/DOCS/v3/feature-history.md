@@ -2,6 +2,10 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.85 — Heading Template Expansion
+
+Double Rule Classic, Tag Ribbon, Number Stamp, Grid Index 4개 report heading template을 추가하고 Reading View, Live Preview, PDF, dark mode에서 H1-H4 위계와 template exclusion guard를 맞췄습니다.
+
 ## v3.1.84 — Community Theme Search Focus Rim
 
 Community theme browser 검색 필드를 generic liquid-glass focus selector에서 제외해 남아 있던 cyan rim과 halo를 제거했습니다. Community theme/plugin modal의 row와 검색 container는 중립 graphite focus를 유지하며 CDP computed style로 확인했습니다.
