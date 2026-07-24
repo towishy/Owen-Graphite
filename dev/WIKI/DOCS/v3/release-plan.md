@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.88)
+﻿# v3 Release Record (latest: v3.1.89)
 
-**Status**: Current stable / rollback baseline = `v3.1.88` (2026-07-24). This hotfix restores the active tab-to-document bridge as a measured 5px continuation, overriding Obsidian core clipping and hidden pseudo-element values while preserving the v3 direct-owner architecture.
+**Status**: Current stable / rollback baseline = `v3.1.89` (2026-07-24). This release adds automatic English/Korean Style Settings localization with explicit language overrides while preserving stable setting IDs, CSS classes, and stored values.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.88` |
+| `manifest.json` version | `3.1.89` |
 | `minAppVersion` | `1.5.8` |
 | `dist/theme-v3.css` lines / `!important` scanner count | 19,926 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.88.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.89.zip` |
 
 ## What was removed
 

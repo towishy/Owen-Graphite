@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.89
+
+- feat: Style Settings의 `Interface → Language`에서 Obsidian 언어 자동 추종, English, 한국어를 선택할 수 있도록 추가했습니다.
+- feat: Style Settings label, description, option과 검색·가져오기·내보내기 chrome을 영어와 한국어로 표시하는 locale companion을 추가했습니다.
+- guard: 한국어 Obsidian locale만 한국어로 해석하고 그 외 locale은 영어로 fallback하며, 명시적 언어 선택이 자동값보다 우선하도록 테스트했습니다.
+
 ## v3.1.88
 
 - fix: Obsidian core의 `overflow: hidden`, pseudo `opacity: 0`, `width: 1px` 때문에 보이지 않던 활성 탭 하단 bridge를 실제 5px 연결면으로 복구했습니다.

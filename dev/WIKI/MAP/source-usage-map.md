@@ -7,7 +7,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20195
+- Source CSS lines: 20218
 - Parsed CSS rules: 2622
 - Selector parts: 4063
 - Hard core-owner violations: 10
@@ -152,7 +152,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 
 | # | Module | Bundle Lines | Source Lines | Primary Owners | Major Labels | Cascade Relation |
 | ---: | --- | --- | ---: | --- | --- | --- |
-| 1 | `src/features/40-style-settings.css` | 45-818 | 864 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
+| 1 | `src/features/40-style-settings.css` | 45-818 | 887 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
 | 2 | `src/tokens/00-light-tokens.css` | 822-1088 | 270 | pdf-marginalia, shared-tokens | callout-list:1, code:5, print-pdf:2, table:1, workspace-chrome:1 | after `src/features/40-style-settings.css`; before `src/tokens/01-dark-tokens.css` |
 | 3 | `src/tokens/01-dark-tokens.css` | 1091-1306 | 230 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:7, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 1310-1444 | 131 | support: base/embed workspace primitives | cm6:5, code:5, overlay-search:5, reading-rendered:7, table:8, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |

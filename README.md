@@ -11,7 +11,9 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.88** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.89** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+
+> **Language:** Owen Graphite follows Obsidian by default: Korean uses Korean, while every other locale uses English. Override it from **Settings → Style Settings → Owen Graphite → Interface → Language**. Install the bundled locale companion to translate the Style Settings interface.
 
 ## Why Owen Graphite?
 
@@ -62,8 +64,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.88` |
-| **Baseline / rollback target** | `v3.1.88` |
+| **Version** | `3.1.89` |
+| **Baseline / rollback target** | `v3.1.89` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -81,6 +83,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.89 — Bilingual Style Settings Interface
+
+This release adds an English and Korean interface layer for Owen Graphite Style Settings while keeping setting IDs, CSS classes, and stored values stable.
+
+| Area | What changed |
+| --- | --- |
+| Automatic language | Korean Obsidian locales use Korean; every other locale falls back to English. |
+| Explicit override | `Interface → Language` can force English or Korean over the automatic value. |
+| Translation coverage | Section labels, descriptions, options, search, import, and export chrome share complete catalogs. |
+| Compatibility | Existing `ogd-language-en` and `ogd-language-ko` values remain explicit overrides. |
 
 ### v3.1.88 — Active Tab Bridge Hotfix
 
@@ -129,7 +142,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.88.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.89.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -138,7 +151,7 @@ Download **`Owen-Graphite-3.1.88.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.88.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.89.zip` for the installable theme package.
 
 ### Option C — Git Install Or Update
 
