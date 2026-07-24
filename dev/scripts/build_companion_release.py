@@ -26,7 +26,7 @@ def build(output_dir: Path) -> Path:
     manifest = json.loads((COMPANION / "manifest.json").read_text(encoding="utf-8"))
     version = manifest["version"]
     output_dir.mkdir(parents=True, exist_ok=True)
-    zip_path = output_dir / f"Owen-Graphite-Style-Settings-Language-{version}.zip"
+    zip_path = output_dir / f"Owen-Graphite-Companion-{version}.zip"
 
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for filename in FILES:

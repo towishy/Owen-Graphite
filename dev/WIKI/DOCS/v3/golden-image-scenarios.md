@@ -130,6 +130,7 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `print-image-body-quality` | PDF 이미지/figure/caption + 본문 조판 fixture | `dev/WIKI/DOCS/v3/research/pdf-image-body-quality-fixture.html`, `ogd-figure-*`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
 | `print-code-font-clarity` | Live Preview/Reading/PDF 코드 폰트와 syntax 색상 fixture | `dev/WIKI/DOCS/v3/research/code-font-clarity-fixture.html`, `ogd-code-*`, `cm-*`, `token.*` |
 | `print-table-callout-parity` | LP markdown table widget/HTML embed/Reading/PDF 표와 콜아웃 fixture | `dev/WIKI/DOCS/v3/research/table-callout-parity-fixture.html`, `cm-table-widget`, `cm-html-embed`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
+| `print-heading-templates-01..09` | 9개 heading template의 H1-H4 위계, square accent geometry, metadata 분리, 페이지 흐름 | `dev/WIKI/DOCS/v3/research/pdf-heading-template-fixture.html`, `dev/scripts/audit_pdf_heading_templates.py --render` |
 
 ## 총 시나리오 수
 
@@ -142,8 +143,8 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | Chrome | 8 |
 | Overlays | 6 |
 | Accessibility | 4 |
-| Print / PDF | 17 |
-| **합계** | **79** |
+| Print / PDF | 26 |
+| **합계** | **88** |
 
 ## v3 결과 검증 스크립트 (최신 v3.1.43 기준)
 

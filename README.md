@@ -11,9 +11,9 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.89** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.90** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
-> **Language:** Owen Graphite follows Obsidian by default: Korean uses Korean, while every other locale uses English. Override it from **Settings → Style Settings → Owen Graphite → Interface → Language**. Install the companion ZIP from the release assets to translate the Style Settings interface.
+> **Companion:** Install the companion ZIP to translate the Style Settings interface and edit code block titles directly from Live Preview or Reading View. Owen Graphite follows Obsidian's language by default; **Settings → Style Settings → Owen Graphite → Interface → Language** can override it.
 
 ## Why Owen Graphite?
 
@@ -64,8 +64,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.89` |
-| **Baseline / rollback target** | `v3.1.89` |
+| **Version** | `3.1.90` |
+| **Baseline / rollback target** | `v3.1.90` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -83,6 +83,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.90 — Editable Code Titles And File Explorer Hierarchy
+
+This release adds persistent inline code block title editing, clarifies the active file hierarchy, and strengthens PDF heading-template validation.
+
+| Area | What changed |
+| --- | --- |
+| Companion | Live Preview and Reading View code titles can be edited in place and are stored in fenced Markdown. |
+| File explorer | The selected document is bold, folder and document typography align, root icons stay quiet, and the current folder separates child folders from files. |
+| Runtime states | Root-folder hover and current-folder spacing are verified against the real Obsidian DOM and computed geometry. |
+| PDF headings | Automatic number/label badges are removed and all nine print templates have a dedicated fixture and audit. |
 
 ### v3.1.89 — Bilingual Style Settings Interface
 
@@ -106,28 +117,6 @@ This release restores the missing connection between the active tab and document
 | Visual restraint | The failed 19px decorative cap and shadow are replaced by a flat 5px continuation. |
 | Runtime evidence | Obsidian 1.12.7 CDP confirmed a source-only `252px × 5px` bridge with `opacity: 1`. |
 
-### v3.1.87 — Connected Workspace And Neutral Focus
-
-This release connects the active tab to the document surface, frames the current file's parent folder, removes cyan focus halos from daily controls, and wires the existing A4/A3 paper choices to print geometry.
-
-| Area | What changed |
-| --- | --- |
-| Workspace continuity | The active tab uses a 19px glass continuation so the tab and document read as one surface. |
-| File explorer | The current document's direct parent folder gains a compact heading band and neutral glass frame. |
-| Focus and controls | Settings, search, navigation, editing tools, and document chrome use quiet slate focus and hover states. |
-| PDF paper size | A4/A3 portrait and landscape choices now select named Chromium print pages. |
-
-### v3.1.86 — UI Foundation Workbench Alignment
-
-This release aligns Owen Graphite and Owen Editor around a quieter UI Foundation contract: 4px spacing, 44px targets, consistent motion, clear keyboard focus, opaque repeated work surfaces, and liquid glass at the outer boundary.
-
-| Area | What changed |
-| --- | --- |
-| Owen Editor integration | Floating tools share the Graphite boundary surface while palette controls keep plugin-owned opaque workbench styling. |
-| Accessibility | Focus rings, mobile targets, reduced-transparency surfaces, and narrow top-tab geometry use shared tokens. |
-| Style Settings | Sections open with clearer defaults and the document-width selector uses task-oriented labels. |
-| Release guard | Runtime light/dark/focus/narrow checks, owner contracts, source maps, and release audits were refreshed. |
-
 Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md).
 
 ---
@@ -142,7 +131,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.89.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.90.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -151,17 +140,17 @@ Download **`Owen-Graphite-3.1.89.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.89.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.90.zip` for the installable theme package.
 
-### Style Settings Language Companion
+### Owen Graphite Companion
 
-Download `Owen-Graphite-Style-Settings-Language-1.0.0.zip` from the same release and extract its `owen-graphite-style-settings-l10n` folder into:
+Download `Owen-Graphite-Companion-1.1.0.zip` from the same release and extract its compatibility-preserving `owen-graphite-style-settings-l10n` folder into:
 
 ```text
 <YourVault>/.obsidian/plugins/owen-graphite-style-settings-l10n/
 ```
 
-Reload Obsidian, enable **Owen Graphite Style Settings Language** under Community plugins, then choose **Settings → Style Settings → Owen Graphite → Interface → Language**. The companion does not create a separate settings tab or change the Style Settings plugin's stored data.
+Reload Obsidian and enable **Owen Graphite Companion** under Community plugins. Choose **Settings → Style Settings → Owen Graphite → Interface → Language** for localization. To name a code block, click its header title in Live Preview or Reading View; `Enter` saves, `Escape` cancels, and an empty title remains clickable. The title is stored in Markdown as ```` ```bash title="Package update" ````, while the companion leaves Style Settings plugin data unchanged.
 
 ### Option C — Git Install Or Update
 

@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.89)
+﻿# v3 Release Record (latest: v3.1.90)
 
-**Status**: Current stable / rollback baseline = `v3.1.89` (2026-07-24). This release adds automatic English/Korean Style Settings localization with explicit language overrides while preserving stable setting IDs, CSS classes, and stored values.
+**Status**: Current stable / rollback baseline = `v3.1.90` (2026-07-25). This release adds editable code block titles, clarifies the active file-explorer hierarchy, and strengthens PDF heading-template geometry and validation.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.89` |
+| `manifest.json` version | `3.1.90` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 19,926 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,378 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.89.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.90.zip` |
 
 ## What was removed
 

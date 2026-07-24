@@ -104,11 +104,30 @@ def build_catalog() -> dict[str, dict[str, object]]:
     return catalog
 
 
+def build_main(catalog: dict[str, dict[str, object]]) -> str:
+    core = (SOURCE / "core.js").read_text(encoding="utf-8")
+    core = core.removeprefix('"use strict";\n\n')
+    core = re.sub(r"\nmodule\.exports = \{.*?\};\s*$", "", core, flags=re.DOTALL)
+    main = (SOURCE / "main.js").read_text(encoding="utf-8")
+    main = main.removeprefix('"use strict";\n\n')
+    main = main.replace('const catalog = require("./catalog.generated.json");\n', "")
+    main = re.sub(
+        r'^const \{\n(?:(?!^const ).)*?^\} = require\(\"\./core\.js\"\);\n',
+        "",
+        main,
+        count=1,
+        flags=re.DOTALL | re.MULTILINE,
+    )
+    embedded_catalog = json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
+    return f'"use strict";\n\n{core}\n\nconst catalog = {embedded_catalog};\n\n{main}'
+
+
 def main() -> int:
     catalog = build_catalog()
     generated = SOURCE / "catalog.generated.json"
     generated.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    for filename in ("main.js", "core.js", "catalog.generated.json"):
+    (PLUGIN / "main.js").write_text(build_main(catalog), encoding="utf-8")
+    for filename in ("core.js", "catalog.generated.json"):
         shutil.copy2(SOURCE / filename, PLUGIN / filename)
     print(f"OK: built locale companion ({len(catalog)} schema entries)")
     return 0

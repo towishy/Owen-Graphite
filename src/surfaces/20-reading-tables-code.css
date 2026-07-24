@@ -946,6 +946,84 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre
 body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::after,
 body pre:is(.language-powershell, .language-ps1, .language-pwsh)::after { content: "PowerShell"; }
 
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.ogd-codeblock-title-ready::after,
+body .workspace-leaf-content .markdown-rendered pre.ogd-codeblock-title-ready::after,
+body pre.ogd-codeblock-title-ready::after {
+  content: "";
+}
+
+body .ogd-codeblock-title,
+body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger,
+body .ogd-codeblock-title-input {
+  position: absolute;
+  top: 0.25rem;
+  right: var(--ogd-codeblock-action-space, 3.3em);
+  bottom: auto;
+  left: 1rem;
+  z-index: 3;
+  box-sizing: border-box;
+  width: auto;
+  height: var(--ogd-codeblock-header-height, 2.2em);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ogd-text-subtle, #475569);
+  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72em;
+  font-weight: 760;
+  line-height: var(--ogd-codeblock-header-height, 2.2em);
+  letter-spacing: 0.02em;
+  text-align: left;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > .code-block-flair.ogd-codeblock-title-trigger,
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > .ogd-codeblock-title-input {
+  top: 0.25rem;
+  right: var(--ogd-codeblock-action-space, 3.3em);
+  bottom: auto;
+  left: 1rem;
+  padding: 0;
+}
+
+body .ogd-codeblock-title,
+body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger {
+  display: block;
+  overflow: hidden;
+  cursor: text;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body .ogd-codeblock-title:hover,
+body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger:hover {
+  background: rgba(148, 163, 184, 0.10);
+}
+
+body .ogd-codeblock-title:focus-visible,
+body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger:focus-visible,
+body .ogd-codeblock-title-input:focus {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px var(--interactive-accent);
+}
+
+body .ogd-codeblock-title-input {
+  display: block;
+  overflow: hidden;
+  cursor: text;
+  pointer-events: auto;
+}
+
+body .ogd-codeblock-title-editing .code-block-flair.ogd-codeblock-title-trigger {
+  visibility: hidden;
+}
+
 body pre code {
   padding: 4.05em 1.1em 1.05em;
 }

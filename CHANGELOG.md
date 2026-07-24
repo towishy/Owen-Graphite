@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.1.90
+
+- feat: Owen Graphite Companion 1.1.0에서 Live Preview와 Reading View 코드 블록 제목을 인라인 편집하고 fenced Markdown의 `title="..."` 속성으로 저장할 수 있게 했습니다.
+- polish: 파일 탐색기의 선택 문서를 굵게 표시하고, 현재 폴더 카드 안의 폴더 계층·타이포그래피·간격·목록 구분선을 정리했으며 최상단 폴더 hover 레이아웃을 안정화했습니다.
+- polish: workspace chrome, floating UI, notice와 반복 surface의 liquid-glass 상태 및 selector ownership을 정리했습니다.
+- fix: Reading View와 PDF heading template에서 불필요한 자동 번호·라벨 배지를 제거하고 H1/H2 패딩, 프레임, 각진 accent geometry를 맞췄습니다.
+- guard: 빈 코드 제목 재편집, CRLF·stale line 보호, 실제 Obsidian 클릭 저장과 파일 탐색기 hover/computed geometry를 검증했습니다.
+- guard: 9개 PDF heading template 전용 fixture·audit를 릴리스 시각 검증 경로에 추가하고 source map, owner contract, release gate를 갱신했습니다.
+
 ## v3.1.89
 
 - feat: Style Settings의 `Interface → Language`에서 Obsidian 언어 자동 추종, English, 한국어를 선택할 수 있도록 추가했습니다.

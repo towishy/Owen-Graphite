@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Graphite PDF Heading Template Fixture</title>
+  <link rel="stylesheet" href="../../../../../theme.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+    }
+
+    body {
+      font-family: var(--font-text-theme, "Pretendard", "Segoe UI", system-ui, sans-serif);
+    }
+
+    .fixture-print {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    .fixture-print.markdown-preview-view .fixture-template-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 0 0 1.6em;
+      padding: 0 0 0.65em;
+      border-bottom: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 10pt;
+      font-weight: 700;
+    }
+
+    .fixture-print.markdown-preview-view .fixture-template-meta > :last-child {
+      margin-left: auto;
+    }
+
+    .fixture-lead {
+      color: #334155;
+      font-size: 1.06em;
+      line-height: 1.62;
+    }
+
+    .fixture-page-break {
+      break-before: page;
+    }
+
+    .fixture-status {
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    @media print {
+      .fixture-print {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .fixture-print.markdown-preview-view .fixture-template-meta {
+        break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light ogd-heading-printclean ogd-modern-tables ogd-print-avoid-breaks ogd-spacing-standard ogd-pdf-visibility ogd-pdf-font-comfortable ogd-pdf-links-clean ogd-pdf-paper-a4-portrait">
+  <main class="fixture-print markdown-preview-view markdown-rendered" data-ogd-fixture="pdf-heading-template">
+    <article class="markdown-rendered" data-check="pdf-heading-template-article">
+      <h1>PDF document title</h1>
+      <h1 data-check="pdf-template-h1">분기 운영 보고서 디자인 검증 Quarterly Operations Review</h1>
+      <p class="fixture-template-meta"><span data-check="pdf-template-name">프린트 클린 / Print Clean</span><span>2026 Q3 · A4 Portrait</span></p>
+      <p class="fixture-lead">이 문서는 동일한 운영 보고서를 아홉 가지 헤더 디자인으로 출력해 위계, 가독성, 페이지 분할, 표와 callout의 결합 상태를 비교합니다. 긴 한글과 영문 제목은 출력 폭 안에서 자연스럽게 줄바꿈되어야 합니다.</p>
+
+      <div class="callout" data-callout="summary">
+        <div class="callout-title"><span class="callout-icon" aria-hidden="true"></span><span class="callout-title-inner">Executive summary</span></div>
+        <div class="callout-content">
+          <p>핵심 시스템의 안정성은 목표 범위에 있으며, 계정 보호 정책과 모바일 애플리케이션 관리의 예외 항목은 다음 배포 주기 전에 정리해야 합니다.</p>
+        </div>
+      </div>
+
+      <h2 data-check="pdf-template-h2">핵심 판단과 실행 우선순위</h2>
+      <p>H2는 H1보다 조용하고 H3보다 명확해야 합니다. 표와 함께 배치될 때는 장식보다 정보 구조가 먼저 읽혀야 하며, 인쇄면의 색상은 화면보다 절제된 대비를 유지해야 합니다.</p>
+
+      <table class="print-fit-table wrap-table comparison-table">
+        <thead>
+          <tr><th>우선순위</th><th>검증 항목</th><th>현재 상태</th><th>다음 조치</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>P0</td><td>조건부 액세스 정책 충돌</td><td class="fixture-status">검토 필요</td><td>예외 계정과 인증 강도 매핑 재검증</td></tr>
+          <tr><td>P1</td><td>모바일 앱 데이터 보호</td><td class="fixture-status">진행 중</td><td>iOS/Android 정책 차이를 단일 기준으로 정리</td></tr>
+          <tr><td>P2</td><td>운영 문서와 증거 보존</td><td class="fixture-status">정상</td><td>분기별 PDF 결과를 변경 기록에 연결</td></tr>
+        </tbody>
+      </table>
+
+      <h3 data-check="pdf-template-h3">검증 결과와 근거</h3>
+      <p>본문과 보조 제목은 불투명한 인쇄면 위에서 충분한 대비를 유지합니다. 긴 식별자와 명령은 본문 리듬을 깨지 않으면서 코드블록 안에서 줄바꿈되어야 합니다.</p>
+      <pre><code class="language-yaml">policy:
+  authentication_strength: phishing-resistant
+  excluded_break_glass_accounts: 2
+  review_window: 2026-Q3
+  evidence_path: security/identity/conditional-access/quarterly-review</code></pre>
+
+      <h4 data-check="pdf-template-h4">추가 확인 항목</h4>
+      <ul>
+        <li>장식은 템플릿당 하나의 signature motif로 제한합니다.</li>
+        <li>제목만 페이지 하단에 남지 않고 다음 문단과 함께 이동해야 합니다.</li>
+        <li>표, callout, 코드블록 내부에서 페이지가 부자연스럽게 분리되지 않아야 합니다.</li>
+      </ul>
+
+      <section class="fixture-page-break">
+        <h2>리스크 결정과 후속 검증</h2>
+        <p>두 번째 페이지는 heading template가 긴 문서 흐름에서도 같은 위계를 유지하는지 확인합니다. 페이지가 바뀌어도 H2와 첫 문단의 간격은 첫 페이지와 동일해야 합니다.</p>
+
+        <div class="callout" data-callout="warning">
+          <div class="callout-title"><span class="callout-icon" aria-hidden="true"></span><span class="callout-title-inner">Decision required</span></div>
+          <div class="callout-content">
+            <p>예외 정책은 운영 편의만으로 유지하지 않습니다. 소유자, 만료일, 보완 통제가 없는 예외는 다음 변경 창에서 제거합니다.</p>
+          </div>
+        </div>
+
+        <h3>권장 실행 순서</h3>
+        <ol>
+          <li>현재 정책과 실제 로그인 로그의 적용 결과를 비교합니다.</li>
+          <li>사용자 영향이 큰 항목은 report-only 상태에서 재검증합니다.</li>
+          <li>승인된 변경만 배포하고 증거를 최종 PDF에 연결합니다.</li>
+        </ol>
+
+        <blockquote>좋은 PDF 템플릿은 장식을 늘리는 대신, 판단과 근거의 거리를 줄이고 페이지가 바뀌어도 정보 위계를 유지합니다.</blockquote>
+
+        <h4>완료 기준</h4>
+        <p>아홉 개 결과물 모두에서 제목 hierarchy, 본문 폭, 표 셀 wrapping, callout 경계, 코드 가독성, 두 번째 페이지 시작 위치가 안정적이면 디자인 검증을 완료합니다.</p>
+
+        <ol class="ogd-reference-list">
+          <li><span class="ogd-reference-source">MAP</span><span class="ogd-reference-main"><span class="ogd-reference-title">Live Preview / PDF parity guidelines</span><span class="ogd-reference-note">Print owner와 selector closure 기준.</span></span></li>
+          <li><span class="ogd-reference-source">QA</span><span class="ogd-reference-main"><span class="ogd-reference-title">PDF heading template audit</span><span class="ogd-reference-note">9개 템플릿의 geometry와 개별 산출물 검증.</span></span></li>
+        </ol>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

@@ -51,6 +51,8 @@ Use this pattern for future codeblock work:
 4. Live Preview rendered widgets: `.cm-preview-code-block pre`, `.cm-hmd-codeblock pre`, `.code-block-flair` consume the same header/surface tokens.
 5. Syntax color parity maps both `.token.*` and `.cm-*` classes to the same `--ogd-code-*` variables.
 6. Print typography must close both generic and preset-specific selectors, including `body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) ... pre code`.
+7. Editable header titles are owned by the `owen-graphite-style-settings-l10n` compatibility-ID companion. It stores `title="..."` after the fence language token, uses `title=""` for an explicitly blank but clickable header, and must reject stale line updates rather than searching and rewriting a different block.
+8. The Reading View trigger uses `.ogd-codeblock-title`; the Live Preview trigger augments Obsidian's `.code-block-flair` as `.ogd-codeblock-title-trigger`. Both keep the copy-action reservation on the right and consume the existing codeblock header height and typography tokens.
 
 ## Heading Template Parity Pattern
 
@@ -63,10 +65,11 @@ Use this pattern for heading-template work:
 3. Live Preview source lines: `src/base/13-live-preview.css` owns `.cm-header-1` through `.cm-header-4` inline parity only; do not add vertical margin or padding to direct `.cm-line.HyperMD-header-*` selectors.
 4. PDF export: `src/features/43-print-base.css` owns print-safe H1-H4 template output.
 5. Late closure: `src/features/41-feature-presets.css`, `src/features/42-report-print-polish.css`, and `src/themes/51-accessibility-motion-contrast.css` must not reset selected heading-template borders or pseudo rules.
-6. Vertical accents are allowed only for explicitly selected heading templates and must remain scoped to `body.ogd-heading-*` selectors.
-7. CSS compatibility budget is raised to 19,900 lines and 1,010,000 bytes for the nine-template parity surface (five approved sample-imagery templates plus double-rule/tag-ribbon/number-stamp/grid-index); raw aqua, `!important`, `@layer`, and print compatibility budgets remain unchanged.
+6. Vertical accents are allowed only for explicitly selected heading templates and must remain scoped to `body.ogd-heading-*` selectors. Any H1/H2 surface carrying an accent line or frame must remain square; rounded corner plus accent line/frame combinations are forbidden.
+7. CSS compatibility budget is 20,500 lines and 1,025,000 bytes after the 2026-07-24 direct-owner UI Foundation pass expanded the PDF, chrome, sidebar, and runtime-state surfaces. The gate's normalized UTF-8 metric is 20,353 lines and 991,905 bytes, retaining limited headroom; raw aqua, `!important`, `@layer`, and print compatibility budgets remain unchanged.
 8. `ogd-heading-tag-ribbon` and `ogd-heading-grid-index` set `display: flex` on H1/H2 and repurpose `::before` as an in-flow flex item (ribbon/number-block shape) instead of the absolute-positioned kicker used by the other templates; PDF mirrors this with a static, hardcoded counter fallback (`content: "01"`) instead of `counter(ogd-h1-counter, ...)` to match the existing `ogd-heading-bracket`/`ogd-heading-focus-bar` print precedent.
-9. Only H1 renders a chapter number badge across all nine templates; H2-H4 use unlabeled accent markers (border, chip, or square) for consistency with the existing five-template convention — do not invent a new per-level counter chain.
+9. Numeric H1 labels are template-specific. `ogd-heading-bracket`, `ogd-heading-focus-bar`, `ogd-heading-number-stamp`, and `ogd-heading-grid-index` must keep their H1 pseudo-content removed across Reading View and PDF; H2-H4 remain unlabeled accent markers.
+10. `dev/scripts/audit_pdf_heading_templates.py --render` is the required print check for heading-template work. It validates computed geometry for all nine classes and writes reviewable PDFs, PNG previews, and a manifest under `dev/temp/pdf-heading-templates/`.
 
 ## Documentation Rule
 

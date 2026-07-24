@@ -2,6 +2,14 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.87 — Connected Workspace And Neutral Focus
+
+Active tab과 document surface를 연결하고, 현재 문서의 직접 부모 폴더를 heading band가 있는 neutral glass frame으로 정리했습니다. Settings, search, navigation, editing controls의 cyan focus halo를 낮추고 A4/A3 portrait·landscape 선택을 Chromium print geometry에 연결했습니다.
+
+## v3.1.86 — UI Foundation Workbench Alignment
+
+Owen Graphite와 Owen Editor를 4px spacing, 44px target, 일관된 motion, 명확한 keyboard focus 계약으로 맞췄습니다. 반복 작업 surface는 불투명하게 유지하고 liquid glass는 외곽 경계에 집중했으며, runtime·owner·release guard를 함께 갱신했습니다.
+
 ## v3.1.85 — Heading Template Expansion
 
 Double Rule Classic, Tag Ribbon, Number Stamp, Grid Index 4개 report heading template을 추가하고 Reading View, Live Preview, PDF, dark mode에서 H1-H4 위계와 template exclusion guard를 맞췄습니다.

@@ -98,6 +98,53 @@
   background: rgba(148, 163, 184, 0.14);
   color: var(--ogd-line-strong, #cbd5e1);
 }
+
+@media (min-width: 701px) {
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"]
+  ) .tree-item-icon.collapse-icon {
+    display: inline-flex;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    margin-inline-end: 2px;
+    border-radius: 4px;
+    background: transparent;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"]
+  ) .tree-item-icon.collapse-icon::before {
+    content: none;
+    display: none;
+  }
+
+  body:not(.is-mobile) :is(
+    .workspace-leaf-content[data-type="outline"],
+    .workspace-leaf-content[data-type="tag"],
+    .workspace-leaf-content[data-type="backlink"],
+    .workspace-leaf-content[data-type="outgoing-link"]
+  ) .tree-item-icon.collapse-icon > svg {
+    width: 14px;
+    height: 14px;
+    opacity: 0.72;
+    stroke-width: 1.8;
+  }
+
+  body:not(.is-mobile) .workspace-leaf-content[data-type="all-properties"] .tree-item-icon > svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.82;
+    stroke-width: 1.8;
+  }
+}
+
 .theme-dark .nav-file-title.is-active {
   background: radial-gradient(circle at 74% 24%, rgba(148, 163, 184, 0.12), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.64), rgba(15, 23, 42, 0.40));
   color: #f9fafb;

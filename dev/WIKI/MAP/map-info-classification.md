@@ -4,12 +4,12 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.89`
+- Version: `3.1.90`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2625
-- Findings: 638
-- Finding severity counts: critical=0, high=0, medium=531, low=107, info=0
+- Selectors: 2679
+- Findings: 656
+- Finding severity counts: critical=0, high=0, medium=545, low=111, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -21,7 +21,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | low | 2 | `src/tokens/01-dark-tokens.css` | 7 | 0 | 0 | pdf-header-footer-sensitive |
 | medium | 18 | `src/base/10-base-workspace.css` | 17 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive |
 | high | 92 | `src/base/12-reading-content.css` | 162 | 0 | 6 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
-| high | 110 | `src/surfaces/20-reading-tables-code.css` | 153 | 0 | 4 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
+| high | 128 | `src/surfaces/20-reading-tables-code.css` | 161 | 0 | 4 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 67 | `src/surfaces/21-reading-callouts-lists.css` | 122 | 0 | 3 | high-specificity, has-selector, repeated-selector-in-file |
 | medium | 21 | `src/surfaces/22-reading-embeds-workspace.css` | 30 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive |
 | high | 69 | `src/themes/50-dark.css` | 95 | 0 | 0 | high-specificity |
@@ -29,18 +29,18 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | high | 229 | `src/base/13-live-preview.css` | 192 | 0 | 2 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 104 | `src/features/41-feature-presets.css` | 310 | 0 | 0 | high-specificity, pdf-header-footer-sensitive, repeated-selector-in-file |
 | medium | 23 | `src/chrome/30-workspace.css` | 127 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 43 | 0 | 0 | high-specificity |
+| medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 47 | 0 | 0 | high-specificity |
 | high | 78 | `src/chrome/32-overlay-popover-dataview.css` | 37 | 0 | 0 | high-specificity |
 | high | 91 | `src/chrome/33-settings-controls.css` | 102 | 0 | 2 | high-specificity, has-selector |
 | high | 57 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 106 | `src/plugins/61-live-preview-mobile-plugin.css` | 68 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 176 | `src/features/42-report-print-polish.css` | 265 | 0 | 11 | high-specificity, cm6-hit-routing-sensitive, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |
 | medium | 18 | `src/chrome/34-nav-ribbon-glass.css` | 25 | 0 | 0 | high-specificity |
-| high | 64 | `src/chrome/35-editing-menu-tooltip-glass.css` | 115 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
-| high | 73 | `src/chrome/36-floating-ui-glass-system.css` | 120 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| high | 351 | `src/chrome/37-tabs-file-explorer-search.css` | 207 | 0 | 94 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 66 | `src/chrome/35-editing-menu-tooltip-glass.css` | 118 | 0 | 1 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
+| high | 73 | `src/chrome/36-floating-ui-glass-system.css` | 121 | 0 | 0 | high-specificity, repeated-selector-in-file |
+| high | 385 | `src/chrome/37-tabs-file-explorer-search.css` | 233 | 0 | 102 | high-specificity, has-selector, repeated-selector-in-file |
 | low | 10 | `src/themes/51-accessibility-motion-contrast.css` | 20 | 0 | 0 | high-specificity, repeated-selector-in-file |
-| high | 108 | `src/surfaces/23-liquid-glass-core.css` | 159 | 0 | 6 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 117 | `src/surfaces/23-liquid-glass-core.css` | 171 | 0 | 6 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 109 | `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 0 | 0 | high-specificity, cm6-hit-routing-sensitive, repeated-selector-in-file |
 
 ## Findings
@@ -61,24 +61,24 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | medium | high-specificity | `src/base/12-reading-content.css:175` | specificity=(0, 8, 3) |
 | medium | high-specificity | `src/base/12-reading-content.css:245` | specificity=(0, 14, 0) |
 | medium | high-specificity | `src/base/12-reading-content.css:249` | specificity=(0, 10, 4) |
-| medium | high-specificity | `src/base/12-reading-content.css:690` | specificity=(0, 8, 4) |
-| medium | high-specificity | `src/base/12-reading-content.css:711` | specificity=(0, 12, 0) |
-| medium | high-specificity | `src/base/12-reading-content.css:715` | specificity=(0, 12, 0) |
-| medium | high-specificity | `src/base/12-reading-content.css:955` | specificity=(0, 9, 0) |
-| medium | high-specificity | `src/base/12-reading-content.css:984` | specificity=(0, 21, 15) |
-| medium | high-specificity | `src/base/12-reading-content.css:1020` | specificity=(0, 12, 3) |
-| medium | high-specificity | `src/base/12-reading-content.css:1076` | specificity=(0, 9, 17) |
-| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1117` | CM6 rule declares vertical box or overlay-sensitive properties |
-| medium | high-specificity | `src/base/12-reading-content.css:1137` | specificity=(0, 8, 3) |
-| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1137` | CM6 rule declares vertical box or overlay-sensitive properties |
-| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1150` | CM6 rule declares vertical box or overlay-sensitive properties |
-| medium | high-specificity | `src/base/12-reading-content.css:1168` | specificity=(0, 14, 2) |
-| medium | high-specificity | `src/base/12-reading-content.css:1231` | specificity=(0, 8, 0) |
-| medium | high-specificity | `src/base/12-reading-content.css:1265` | specificity=(0, 12, 3) |
-| medium | high-specificity | `src/base/12-reading-content.css:1272` | specificity=(0, 24, 6) |
-| medium | high-specificity | `src/base/12-reading-content.css:1279` | specificity=(0, 12, 3) |
-| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1362` | CM6 rule declares vertical box or overlay-sensitive properties |
-| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1370` | CM6 rule declares vertical box or overlay-sensitive properties |
+| medium | high-specificity | `src/base/12-reading-content.css:688` | specificity=(0, 8, 4) |
+| medium | high-specificity | `src/base/12-reading-content.css:709` | specificity=(0, 12, 0) |
+| medium | high-specificity | `src/base/12-reading-content.css:713` | specificity=(0, 12, 0) |
+| medium | high-specificity | `src/base/12-reading-content.css:920` | specificity=(0, 9, 0) |
+| medium | high-specificity | `src/base/12-reading-content.css:949` | specificity=(0, 21, 15) |
+| medium | high-specificity | `src/base/12-reading-content.css:985` | specificity=(0, 12, 3) |
+| medium | high-specificity | `src/base/12-reading-content.css:1041` | specificity=(0, 9, 17) |
+| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1082` | CM6 rule declares vertical box or overlay-sensitive properties |
+| medium | high-specificity | `src/base/12-reading-content.css:1102` | specificity=(0, 8, 3) |
+| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1102` | CM6 rule declares vertical box or overlay-sensitive properties |
+| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1115` | CM6 rule declares vertical box or overlay-sensitive properties |
+| medium | high-specificity | `src/base/12-reading-content.css:1133` | specificity=(0, 14, 2) |
+| medium | high-specificity | `src/base/12-reading-content.css:1196` | specificity=(0, 8, 0) |
+| medium | high-specificity | `src/base/12-reading-content.css:1230` | specificity=(0, 12, 3) |
+| medium | high-specificity | `src/base/12-reading-content.css:1237` | specificity=(0, 24, 6) |
+| medium | high-specificity | `src/base/12-reading-content.css:1244` | specificity=(0, 12, 3) |
+| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1327` | CM6 rule declares vertical box or overlay-sensitive properties |
+| medium | cm6-hit-routing-sensitive | `src/base/12-reading-content.css:1335` | CM6 rule declares vertical box or overlay-sensitive properties |
 | medium | high-specificity | `src/base/13-live-preview.css:29` | specificity=(0, 15, 5) |
 | medium | high-specificity | `src/base/13-live-preview.css:35` | specificity=(0, 8, 2) |
 | medium | high-specificity | `src/base/13-live-preview.css:40` | specificity=(0, 9, 3) |

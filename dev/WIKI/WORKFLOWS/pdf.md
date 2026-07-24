@@ -16,10 +16,12 @@
 - Header/footer owner selectors outside `41-feature-presets.css`.
 - Screen-wide side effects from print-only fixes.
 - Table changes that bypass `20-reading-tables-code.css` owner without print/report reason.
+- Rounded corners on heading surfaces that also carry an accent line or frame.
 
 ## Required Checks
 
 ```powershell
 .\.venv\Scripts\python.exe dev\scripts\audit_pdf_header_footer.py
+.\.venv\Scripts\python.exe dev\scripts\audit_pdf_heading_templates.py --render
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
 ```

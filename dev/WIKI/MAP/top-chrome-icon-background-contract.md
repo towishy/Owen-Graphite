@@ -8,6 +8,7 @@ Top chrome includes root tab strips, view headers, side pane headers, tab button
 
 - Patch the narrowest confirmed surface: root tab strip, root view header, active tab, side pane tab header, new-tab button, tab-list button, or sidebar toggle.
 - Keep hover/focus/pressed states neutral unless the task explicitly asks for an accented selected state.
+- Keep keyboard focus distinct from hover and current/selected state with a 2px neutral outline and no colored halo.
 - Use the selected-document frosted pill only for `.workspace-tab-header.is-active`, not generic hover.
 - Do not patch SVG descendants, glyph `stroke`, `fill`, `opacity`, layout, visibility, or `z-index` unless the visible bug is proven to live there.
 - If icons disappear, inspect parent backgrounds and clickable child slots before changing icon glyph rules.

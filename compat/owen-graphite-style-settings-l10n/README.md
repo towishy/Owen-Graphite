@@ -1,6 +1,7 @@
-# Owen Graphite Style Settings Language
+# Owen Graphite Companion
 
-Locale compatibility companion for Owen Graphite and Style Settings 1.0.9.
+Runtime companion for Owen Graphite. It localizes Style Settings 1.0.9 and adds
+editable code block titles without changing the existing plugin ID.
 
 ## Why a companion
 
@@ -15,11 +16,31 @@ Automatic is the default: Korean Obsidian locales use Korean, while every other
 locale uses English. Users can explicitly override the result from the Language
 control under the Interface section.
 
+## Editable code block titles
+
+In Live Preview or Reading View, click the title area at the left of a code
+block header. The title is edited in place: `Enter` or focus loss saves, while
+`Escape` cancels. An empty header keeps the same full-width click target, and
+`F2` also starts editing from a focused Live Preview title.
+
+Titles are stored in the fenced Markdown opener, so they survive reloads and
+remain part of the note instead of plugin data:
+
+````markdown
+```bash title="Package update"
+sudo apt update
+```
+````
+
+The first info token remains the syntax-highlighting language. Clearing a title
+stores `title=""`; a fence without a title attribute continues to show the
+language label supplied by Owen Graphite.
+
 ## Provenance and license
 
 - Compatibility target: `mgmeyers/obsidian-style-settings` 1.0.9
-- Upstream source: https://github.com/mgmeyers/obsidian-style-settings/tree/1.0.9
-- Upstream manifest: https://raw.githubusercontent.com/mgmeyers/obsidian-style-settings/1.0.9/manifest.json
+- [Upstream source](https://github.com/mgmeyers/obsidian-style-settings/tree/1.0.9)
+- [Upstream manifest](https://raw.githubusercontent.com/mgmeyers/obsidian-style-settings/1.0.9/manifest.json)
 - Upstream package metadata declares MIT. This independently written companion
   is also MIT-licensed, does not include the upstream bundle, and does not
   modify the installed upstream plugin. No GPL-covered source is incorporated;

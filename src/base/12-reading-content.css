@@ -472,7 +472,7 @@ body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdo
   --ogd-heading-template-rule: transparent;
   --ogd-heading-template-h1-bg: linear-gradient(180deg, rgba(240, 249, 255, 0.74), rgba(255, 255, 255, 0.78));
   --ogd-heading-template-h1-border-top: 6px solid rgba(14, 165, 233, 0.50);
-  --ogd-heading-template-h1-padding: 0.72em 0.68em 0.56em;
+  --ogd-heading-template-h1-padding: 0.56em 0.68em 0.56em;
   --ogd-heading-template-h2-border-left: 6px solid rgba(14, 165, 233, 0.48);
   --ogd-heading-template-h2-padding-left: 0.62em;
   --ogd-heading-template-h2-radius: 8px;
@@ -688,7 +688,7 @@ body.ogd-heading-keyline :is(.markdown-rendered, .markdown-preview-view.markdown
 }
 
 body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
-  padding: 1.02em 4.1em 0.62em;
+  padding: 0.62em 4.1em;
   border: 0;
   border-radius: 0;
   background:
@@ -703,10 +703,8 @@ body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown
 }
 
 body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
-  content: "FIELD " counter(ogd-h1-counter, decimal-leading-zero);
-  top: 0.58em;
-  left: 4.1em;
-  color: #0284c7;
+  content: none;
+  display: none;
 }
 
 body.ogd-heading-bracket :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
@@ -779,7 +777,7 @@ body.ogd-heading-quiet-ledger :is(.markdown-rendered, .markdown-preview-view.mar
 }
 
 body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
-  padding: 0.96em 0.72em 0.64em;
+  padding: 0.56em 0.72em 0.64em;
   border: 1px solid color-mix(in srgb, #bae6fd 80%, transparent);
   border-top: 10px solid color-mix(in srgb, #38bdf8 62%, transparent);
   border-radius: 8px;
@@ -789,10 +787,8 @@ body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdo
 }
 
 body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
-  content: "FOCUS " counter(ogd-h1-counter, decimal-leading-zero);
-  top: 0.56em;
-  left: 0.72em;
-  color: #0284c7;
+  content: none;
+  display: none;
 }
 
 body.ogd-heading-focus-bar :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
@@ -885,32 +881,14 @@ body.ogd-heading-tag-ribbon :is(.markdown-rendered, .markdown-preview-view.markd
   text-decoration: none;
 }
 
-/* 넘버 스탬프: 회전된 사각 배지가 점선 박스 모서리에 겹쳐지는 캐주얼 스타일 */
+/* 넘버 스탬프: 숫자 배지 없이 점선 프레임만 유지하는 캐주얼 스타일 */
 body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
   font-size: 2.02em;
 }
 
 body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
-  content: counter(ogd-h1-counter, decimal-leading-zero);
-  position: absolute;
-  top: -0.62em;
-  left: 0.62em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.7em;
-  height: 1.35em;
-  margin: 0;
-  padding: 0 0.3em;
-  border-radius: 4px;
-  background: var(--ogd-heading-template-accent);
-  color: #ffffff;
-  font-size: 0.34em;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  transform: rotate(-7deg);
-  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.35);
+  content: none;
+  display: none;
 }
 
 body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {
@@ -922,7 +900,7 @@ body.ogd-heading-number-stamp :is(.markdown-rendered, .markdown-preview-view.mar
   text-decoration-color: rgba(217, 119, 6, 0.5);
 }
 
-/* 그리드 인덱스: 좌측 넘버 블록 + 2단 편집 레이아웃 */
+/* 그리드 인덱스: 숫자 블록 없이 2단 편집 레이아웃을 유지 */
 body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 {
   display: flex;
   align-items: center;
@@ -931,21 +909,8 @@ body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markd
 }
 
 body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1::before {
-  content: counter(ogd-h1-counter, decimal-leading-zero);
-  position: static;
-  display: inline-flex;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  width: 1.55em;
-  height: 1.55em;
-  margin: 0;
-  border-radius: 0.28em;
-  background: var(--ogd-heading-template-accent);
-  color: #ffffff;
-  font-size: 0.46em;
-  font-weight: 800;
-  line-height: 1;
+  content: none;
+  display: none;
 }
 
 body.ogd-heading-grid-index :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 {

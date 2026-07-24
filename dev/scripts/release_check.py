@@ -70,7 +70,12 @@ def main() -> int:
     )
 
     if args.include_visual:
-        steps.append(("Visual quality static fixture", [PYTHON, "dev/scripts/audit_visual_quality_fixture.py", "--static-only"]))
+        steps.extend(
+            [
+                ("Visual quality static fixture", [PYTHON, "dev/scripts/audit_visual_quality_fixture.py", "--static-only"]),
+                ("PDF heading templates", [PYTHON, "dev/scripts/audit_pdf_heading_templates.py"]),
+            ]
+        )
 
     if args.include_zip:
         steps.extend(
