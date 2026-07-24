@@ -5,10 +5,789 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Owen Graphite Chrome UI State Fixture</title>
   <link rel="stylesheet" href="../../../../../theme.css">
+  <style>
+    body[data-ogd-fixture="chrome-ui-state"] {
+      --fixture-canvas: #edf1f5;
+      --fixture-panel: rgba(255, 255, 255, 0.96);
+      --fixture-panel-muted: rgba(248, 250, 252, 0.96);
+      --fixture-border: rgba(100, 116, 139, 0.20);
+      --fixture-text: #172033;
+      --fixture-muted: #627089;
+      --fixture-shadow: 0 24px 60px rgba(15, 23, 42, 0.10), 0 3px 10px rgba(15, 23, 42, 0.05);
+      --fixture-panel-shadow: 0 10px 28px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --font-interface-theme: "SF Pro Text", "Helvetica Neue", sans-serif;
+      --font-ui-small: 13px;
+      --font-ui-smaller: 12px;
+      min-width: 0;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px;
+      overflow-x: hidden;
+      background-color: var(--fixture-canvas);
+      background-image:
+        linear-gradient(rgba(100, 116, 139, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 116, 139, 0.055) 1px, transparent 1px);
+      background-size: 32px 32px;
+      color: var(--fixture-text);
+      font-family: var(--font-interface-theme);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"].theme-dark {
+      --fixture-canvas: #0f1319;
+      --fixture-panel: rgba(28, 33, 42, 0.98);
+      --fixture-panel-muted: rgba(22, 27, 35, 0.98);
+      --fixture-border: rgba(203, 213, 225, 0.15);
+      --fixture-text: #eef2f7;
+      --fixture-muted: #a9b3c3;
+      --fixture-shadow: 0 28px 68px rgba(0, 0, 0, 0.44), 0 4px 14px rgba(0, 0, 0, 0.28);
+      --fixture-panel-shadow: 0 12px 30px rgba(0, 0, 0, 0.28), 0 1px 4px rgba(0, 0, 0, 0.20);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] *,
+    body[data-ogd-fixture="chrome-ui-state"] *::before,
+    body[data-ogd-fixture="chrome-ui-state"] *::after {
+      box-sizing: border-box;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-header {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      width: min(1600px, 100%);
+      min-height: 72px;
+      margin: 0 auto 24px;
+      padding: 14px 16px 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 1px solid var(--fixture-border);
+      border-radius: 18px;
+      background: var(--fixture-panel);
+      box-shadow: var(--fixture-panel-shadow);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-heading {
+      min-width: 0;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-eyebrow,
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-panel-label {
+      margin: 0 0 3px;
+      color: var(--fixture-muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-heading h1 {
+      margin: 0;
+      color: var(--fixture-text);
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: 0;
+      line-height: 1.25;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-toolbar-controls {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-control-group {
+      display: grid;
+      gap: 4px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-control-label {
+      padding-left: 4px;
+      color: var(--fixture-muted);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-theme-switch {
+      flex: 0 0 auto;
+      display: inline-grid;
+      grid-template-columns: repeat(2, minmax(72px, 1fr));
+      gap: 3px;
+      padding: 3px;
+      border: 1px solid var(--fixture-border);
+      border-radius: 10px;
+      background: var(--fixture-panel-muted);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-viewport-switch {
+      grid-template-columns: repeat(2, minmax(82px, 1fr));
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-theme-switch button {
+      min-height: 44px;
+      margin: 0;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--fixture-muted);
+      box-shadow: none;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-theme-switch button[aria-pressed="true"] {
+      border-color: var(--fixture-border);
+      background: var(--fixture-panel);
+      color: var(--fixture-text);
+      box-shadow: 0 2px 7px rgba(15, 23, 42, 0.06);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-theme-switch button:focus-visible {
+      outline: 2px solid #0e7490;
+      outline-offset: 2px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-lab {
+      width: min(1600px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 216px minmax(0, 1fr);
+      align-items: start;
+      gap: 24px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav {
+      position: sticky;
+      top: 112px;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--fixture-border);
+      border-radius: 16px;
+      background: var(--fixture-panel);
+      box-shadow: var(--fixture-panel-shadow);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav-title {
+      margin: 4px 8px 10px;
+      color: var(--fixture-muted);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav a {
+      min-height: 44px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      color: var(--fixture-muted);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav a:hover {
+      border-color: var(--fixture-border);
+      background: var(--fixture-panel-muted);
+      color: var(--fixture-text);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav a[aria-current="page"] {
+      border-color: var(--fixture-border);
+      background: var(--fixture-panel);
+      color: var(--fixture-text);
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav a:focus-visible {
+      outline: 2px solid #0e7490;
+      outline-offset: 2px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-nav-meta {
+      margin: 12px 8px 2px;
+      padding-top: 12px;
+      border-top: 1px solid var(--fixture-border);
+      color: var(--fixture-muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench {
+      min-width: 0;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace {
+      width: 100%;
+      min-width: 0;
+      min-height: 0;
+      margin: 0 auto;
+      padding: 0;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 2.28fr);
+      align-items: start;
+      gap: 24px;
+      overflow: visible;
+      background: transparent;
+      transition: max-width 180ms ease;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > aside {
+      position: sticky;
+      top: 24px;
+      scroll-margin-top: 116px;
+      min-width: 0;
+      max-height: calc(100vh - 48px);
+      padding: 20px;
+      overflow: auto;
+      border: 1px solid var(--fixture-border);
+      border-radius: 20px;
+      background: var(--fixture-panel);
+      box-shadow: var(--fixture-shadow);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-panel-label {
+      padding: 0 2px 12px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > main {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: 24px;
+      overflow: visible;
+      background: transparent;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > main > section {
+      scroll-margin-top: 116px;
+      position: relative;
+      inset: auto;
+      width: auto;
+      min-width: 0;
+      max-width: none;
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      margin: 0;
+      padding: 24px;
+      overflow: visible;
+      transform: none;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > main > :is(
+      [data-check="settings-control-states"],
+      [data-check="style-settings-export-modal"],
+      [data-check="status-bar-chip-state"]
+    ) {
+      grid-column: 1 / -1;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .modal.mod-settings {
+      display: block;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .modal.mod-settings .modal-close-button {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      min-height: 44px;
+      margin: 0;
+      scroll-margin-top: 140px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .modal.mod-settings .vertical-tab-content-container {
+      min-width: 0;
+      padding: 8px 0 0;
+      overflow: visible;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"]:not(.is-mobile) .modal.mod-settings .vertical-tab-content-container > .setting-item[data-check="settings-focus-within"] {
+      padding: 16px 20px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"]:not(.is-mobile) .modal.mod-settings .vertical-tab-content-container > .setting-item[data-check="settings-focus-within"] .setting-item-control input {
+      min-height: 36px;
+      padding: 6px 10px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .modal.mod-settings .search-input-container input[type="search"] {
+      min-height: 36px;
+      padding: 6px 10px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .setting-item-control input[type="range"] {
+      width: min(260px, 100%);
+      height: 32px;
+      margin: 0;
+      padding: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      vertical-align: middle;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .setting-item-control input[type="range"]::-webkit-slider-thumb {
+      width: 20px;
+      height: 20px;
+      margin-top: -8px;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 50%;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .setting-item-control input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .workspace-tab-header-container {
+      width: 100%;
+      height: auto;
+      padding: 4px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px;
+      border: 1px solid var(--fixture-border);
+      border-radius: 10px;
+      background: var(--fixture-panel-muted);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .workspace-tab-header {
+      position: relative;
+      width: auto;
+      min-width: 0;
+      height: 36px;
+      margin: 0;
+      display: block;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .workspace-tab-header-inner {
+      width: 100%;
+      height: 36px;
+      min-height: 36px;
+      margin: 0;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 7px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .workspace-tab-header-inner-title {
+      min-width: 0;
+      overflow: hidden;
+      font-size: 13px;
+      line-height: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .nav-files-container {
+      width: 100%;
+      min-width: 0;
+      margin-top: 12px;
+      padding: 10px;
+      overflow: visible;
+      border: 1px solid var(--fixture-border);
+      border-radius: 12px;
+      background: var(--fixture-panel-muted);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer :is(.nav-folder-title, .nav-file-title) {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      min-height: 34px;
+      margin: 0;
+      padding: 0 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer :is(.nav-folder-title-content, .nav-file-title-content) {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      min-height: 30px;
+      margin: 0;
+      padding: 5px 8px 5px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      font-size: 13px;
+      line-height: 20px;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .nav-folder:has(> .nav-folder-title[data-path]):has(> .nav-folder-children > .nav-file .nav-file-title.is-active) > .nav-folder-children {
+      width: 100%;
+      margin: 0 0 6px;
+      padding: 4px 0 4px 14px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #file-explorer .nav-folder.mod-root > .nav-folder-children {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .style-settings-container {
+      display: flex;
+      align-items: center;
+      align-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      border: 1px solid var(--fixture-border);
+      border-radius: 16px;
+      background: var(--fixture-panel);
+      box-shadow: var(--fixture-panel-shadow);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .style-settings-container .setting-item-heading {
+      flex: 1 0 100%;
+      margin-top: 0;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .modal-style-settings pre {
+      max-width: 100%;
+      margin-bottom: 0;
+      overflow: auto;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] #export pre::before {
+      right: 12px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container {
+      border: 1px solid var(--fixture-border);
+      border-radius: 16px;
+      background: var(--fixture-panel);
+      box-shadow: var(--fixture-panel-shadow);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-properties-container {
+      width: 100%;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--fixture-border);
+      border-radius: 12px;
+      background: var(--fixture-panel-muted);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property {
+      width: 100%;
+      min-width: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
+      gap: 10px;
+      border-bottom: 0;
+      background: transparent;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .fixture-metadata-field {
+      min-width: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .fixture-metadata-label {
+      color: var(--fixture-muted);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property-key-input,
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property-value :is(input, textarea) {
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      border-color: var(--fixture-border);
+      border-radius: 8px;
+      background: var(--fixture-panel);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 1px 2px rgba(15, 23, 42, 0.04);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property-key-input,
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property-value input {
+      height: 38px;
+      min-height: 38px;
+      padding: 7px 10px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property-value {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property-value textarea {
+      height: 64px;
+      min-height: 64px;
+      padding: 8px 10px;
+      resize: vertical;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property:is(:hover, :focus-within) {
+      background: transparent;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .suggestion-container {
+      display: block;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .suggestion-container .menu .menu-item {
+      min-height: 36px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .suggestion-container > .menu-item {
+      width: calc(100% - 20px);
+      min-height: 36px;
+      margin: 8px 10px 0;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .status-bar {
+      position: relative;
+      inset: auto;
+      width: auto;
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .status-bar .status-bar-item {
+      justify-content: center;
+      text-align: center;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .status-bar .status-bar-item-icon {
+      display: none;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .status-bar .status-bar-item-segment {
+      width: 100%;
+      text-align: center;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .workspace-split.mod-right-split.is-mobile {
+      width: min(320px, 100%);
+      min-width: 0;
+      min-height: 180px;
+      padding: 16px;
+      justify-self: start;
+      border: 1px solid var(--fixture-border);
+      border-radius: 16px;
+      background: var(--fixture-panel);
+      box-shadow: var(--fixture-panel-shadow);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"][data-preview-width="narrow"] .fixture-workbench > .workspace {
+      max-width: 720px;
+      margin-inline: auto;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"][data-preview-width="narrow"] .fixture-workbench > .workspace > aside {
+      position: relative;
+      top: auto;
+      max-height: none;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"][data-preview-width="narrow"] .fixture-workbench > .workspace > main {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"][data-preview-width="narrow"] .metadata-container .metadata-property {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"][data-preview-width="narrow"] .fixture-workbench > .workspace > main > section {
+      grid-column: auto;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-status {
+      min-height: 44px;
+      margin-top: 24px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 1px solid var(--fixture-border);
+      border-radius: 12px;
+      background: var(--fixture-panel);
+      color: var(--fixture-muted);
+      box-shadow: var(--fixture-panel-shadow);
+      font-size: 12px;
+    }
+
+    body[data-ogd-fixture="chrome-ui-state"] .fixture-status strong {
+      color: var(--fixture-text);
+      font-weight: 650;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      body[data-ogd-fixture="chrome-ui-state"] {
+        padding: 24px;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-lab,
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-nav {
+        position: relative;
+        top: auto;
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-nav-title,
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-nav-meta {
+        display: none;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-nav a {
+        flex: 0 0 auto;
+        padding-inline: 14px;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > aside {
+        position: relative;
+        top: auto;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      body[data-ogd-fixture="chrome-ui-state"] {
+        padding: 16px;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-header {
+        position: relative;
+        top: auto;
+        margin-bottom: 16px;
+        padding: 16px;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-toolbar-controls {
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-theme-switch {
+        width: 100%;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace,
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .fixture-workbench > .workspace > main > section {
+        grid-column: auto;
+        padding: 18px;
+      }
+
+      body[data-ogd-fixture="chrome-ui-state"] .metadata-container .metadata-property {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
 </head>
 <body class="theme-light is-frameless css-settings-manager" data-ogd-fixture="chrome-ui-state">
+  <header class="fixture-header">
+    <div class="fixture-heading">
+      <p class="fixture-eyebrow">Owen Graphite · Component fixture</p>
+      <h1>Chrome UI states</h1>
+    </div>
+    <div class="fixture-toolbar-controls">
+      <div class="fixture-control-group">
+        <span class="fixture-control-label">Preview</span>
+        <div class="fixture-theme-switch fixture-viewport-switch" role="group" aria-label="Preview width">
+          <button type="button" data-viewport-option="wide" aria-pressed="true">Wide</button>
+          <button type="button" data-viewport-option="narrow" aria-pressed="false">Narrow</button>
+        </div>
+      </div>
+      <div class="fixture-control-group">
+        <span class="fixture-control-label">Theme</span>
+        <div class="fixture-theme-switch" role="group" aria-label="Preview color scheme">
+          <button type="button" data-theme-option="light" aria-pressed="true">Light</button>
+          <button type="button" data-theme-option="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="fixture-lab">
+    <nav class="fixture-nav" aria-label="Component specimens">
+      <p class="fixture-nav-title">Specimens</p>
+      <a href="#file-explorer" aria-current="page">Explorer</a>
+      <a href="#settings">Settings</a>
+      <a href="#actions">Actions</a>
+      <a href="#export">Export</a>
+      <a href="#metadata">Metadata</a>
+      <a href="#overlays">Overlays</a>
+      <a href="#narrow-pane">Narrow pane</a>
+      <p class="fixture-nav-meta">Owen Graphite 3.1.90<br>9 interactive state groups</p>
+    </nav>
+    <div class="fixture-workbench">
   <div class="workspace workspace-split mod-root" data-check="chrome-state-shell">
-    <aside class="workspace-leaf-content" data-type="file-explorer" data-check="chrome-file-explorer-states">
+    <aside id="file-explorer" class="workspace-leaf-content" data-type="file-explorer" data-check="chrome-file-explorer-states">
+      <p class="fixture-panel-label">File explorer and tabs</p>
       <div class="workspace-tab-header-container">
         <div class="workspace-tab-header" data-check="tab-rest"><div class="workspace-tab-header-inner"><div class="workspace-tab-header-inner-title">rest</div></div></div>
         <div class="workspace-tab-header is-active mod-active" data-check="tab-active"><div class="workspace-tab-header-inner"><div class="workspace-tab-header-inner-title">active</div></div></div>
@@ -24,7 +803,8 @@
     </aside>
 
     <main class="workspace-leaf-content markdown-reading-view" data-type="markdown">
-      <section class="modal mod-settings" data-check="settings-control-states">
+      <section id="settings" class="modal mod-settings" data-check="settings-control-states">
+        <p class="fixture-panel-label">Settings controls</p>
         <button class="modal-close-button" data-check="modal-close-state" aria-label="Close settings"></button>
         <div class="modal-title">Settings</div>
         <div class="vertical-tab-content-container">
@@ -37,21 +817,42 @@
         </div>
       </section>
 
-      <section class="style-settings-container" data-check="style-settings-button-states">
+      <section id="actions" class="style-settings-container" data-check="style-settings-button-states">
+        <p class="fixture-panel-label">Action buttons</p>
         <div class="setting-item setting-item-heading"><div class="setting-item-info"><div class="setting-item-name">Style Settings</div></div></div>
         <button class="style-settings-import">Import</button><button class="style-settings-export">Export</button><button class="style-settings-copy">Copy</button><button class="style-settings-download">Download</button><label class="style-settings-import-label">Upload</label>
       </section>
 
-      <section class="modal mod-settings modal-style-settings" data-check="style-settings-export-modal">
+      <section id="export" class="modal mod-settings modal-style-settings" data-check="style-settings-export-modal">
+        <p class="fixture-panel-label">Export modal</p>
         <div class="setting-item setting-item-heading" data-check="style-settings-export-rim"><div class="setting-item-info"><div class="setting-item-name">Export settings for: All settings</div></div><div class="setting-item-control"><button class="style-settings-copy" autofocus>Copy to clipboard</button><button class="style-settings-download">Download</button></div></div>
-        <pre><code>{ "owen-graphite-document@@ogd-pdf-visibility": true }</code></pre>
+        <pre><code tabindex="0">{ "owen-graphite-document@@ogd-pdf-visibility": true }</code></pre>
       </section>
 
-      <section class="metadata-container" data-check="metadata-focus-state">
-        <div class="metadata-properties-container"><div class="metadata-property"><input class="metadata-property-key-input" value="status"><div class="metadata-property-value"><input value="ready"><textarea>notes</textarea></div></div></div>
+      <section id="metadata" class="metadata-container" data-check="metadata-focus-state">
+        <p class="fixture-panel-label">Metadata fields</p>
+        <div class="metadata-properties-container">
+          <div class="metadata-property">
+            <label class="fixture-metadata-field">
+              <span class="fixture-metadata-label">Property</span>
+              <input class="metadata-property-key-input" value="status" aria-label="Property name">
+            </label>
+            <div class="metadata-property-value">
+              <label class="fixture-metadata-field">
+                <span class="fixture-metadata-label">Value</span>
+                <input value="ready" aria-label="Property value">
+              </label>
+              <label class="fixture-metadata-field">
+                <span class="fixture-metadata-label">Notes</span>
+                <textarea aria-label="Property notes">notes</textarea>
+              </label>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section class="suggestion-container mod-search-suggestion" data-check="overlay-selection-states">
+      <section id="overlays" class="suggestion-container mod-search-suggestion" data-check="overlay-selection-states">
+        <p class="fixture-panel-label">Suggestion and menu states</p>
         <input class="prompt-input" value="command" title="Command input">
         <div class="suggestion-item">Open daily note</div>
         <div class="suggestion-item is-selected"><span class="suggestion-highlight">tabs</span> command</div>
@@ -79,14 +880,66 @@ cssclasses:
       </section>
 
       <section class="status-bar" data-check="status-bar-chip-state">
+        <p class="fixture-panel-label">Status bar</p>
         <div class="status-bar-item" aria-label="git sync"><span class="status-bar-item-icon svg-icon"></span><span class="status-bar-item-segment" title="git sync">synced</span></div>
         <div class="status-bar-item-segment" title="word count">120 words</div>
       </section>
 
-      <section class="workspace-split mod-right-split is-mobile" data-check="mobile-narrow-overflow">
+      <section id="narrow-pane" class="workspace-split mod-right-split is-mobile" data-check="mobile-narrow-overflow">
+        <p class="fixture-panel-label">Narrow pane</p>
         <div class="workspace-leaf-content" data-type="search"><div class="search-result-container"><div class="search-result-file-match is-active"><span class="search-result-file-matched-text">narrow result</span></div></div></div>
       </section>
     </main>
   </div>
+      <footer class="fixture-status" role="status">
+        <strong>9 specimens ready</strong>
+        <span data-fixture-status>Light · Wide · keyboard focus enabled</span>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const themeButtons = document.querySelectorAll('[data-theme-option]');
+    const viewportButtons = document.querySelectorAll('[data-viewport-option]');
+    const specimenLinks = document.querySelectorAll('.fixture-nav a');
+    const fixtureStatus = document.querySelector('[data-fixture-status]');
+
+    const updateStatus = () => {
+      const theme = document.body.classList.contains('theme-dark') ? 'Dark' : 'Light';
+      const viewport = document.body.dataset.previewWidth === 'narrow' ? 'Narrow' : 'Wide';
+      fixtureStatus.textContent = `${theme} · ${viewport} · keyboard focus enabled`;
+    };
+
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const theme = button.dataset.themeOption;
+        document.body.classList.toggle('theme-light', theme === 'light');
+        document.body.classList.toggle('theme-dark', theme === 'dark');
+        themeButtons.forEach((option) => {
+          option.setAttribute('aria-pressed', String(option === button));
+        });
+        updateStatus();
+      });
+    });
+
+    viewportButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        document.body.dataset.previewWidth = button.dataset.viewportOption;
+        viewportButtons.forEach((option) => {
+          option.setAttribute('aria-pressed', String(option === button));
+        });
+        updateStatus();
+      });
+    });
+
+    specimenLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        specimenLinks.forEach((option) => option.removeAttribute('aria-current'));
+        link.setAttribute('aria-current', 'page');
+      });
+    });
+
+    document.body.dataset.previewWidth = 'wide';
+    updateStatus();
+  </script>
 </body>
 </html>
