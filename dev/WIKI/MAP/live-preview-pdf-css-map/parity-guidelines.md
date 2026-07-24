@@ -51,8 +51,8 @@ Use this pattern for future codeblock work:
 4. Live Preview rendered widgets: `.cm-preview-code-block pre`, `.cm-hmd-codeblock pre`, `.code-block-flair` consume the same header/surface tokens.
 5. Syntax color parity maps both `.token.*` and `.cm-*` classes to the same `--ogd-code-*` variables.
 6. Print typography must close both generic and preset-specific selectors, including `body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) ... pre code`.
-7. Editable header titles are owned by the `owen-graphite-style-settings-l10n` compatibility-ID companion. It stores `title="..."` after the fence language token, uses `title=""` for an explicitly blank but clickable header, and must reject stale line updates rather than searching and rewriting a different block.
-8. The Reading View trigger uses `.ogd-codeblock-title`; the Live Preview trigger augments Obsidian's `.code-block-flair` as `.ogd-codeblock-title-trigger`. Both keep the copy-action reservation on the right and consume the existing codeblock header height and typography tokens.
+7. Editable header titles are owned by Owen Editor 0.6.28 or later, not by the theme. Owen Editor stores `title="..."` after the fence language token, uses `title=""` for an explicitly blank but clickable header, and rejects stale line updates rather than searching and rewriting a different block.
+8. Owen Editor owns the `.owen-editor-codeblock-title*` trigger, input, interaction, and styling contract. Owen Graphite owns only the underlying code-block surface and shared `--ogd-codeblock-*` tokens; it must not duplicate plugin runtime selectors.
 
 ## Heading Template Parity Pattern
 

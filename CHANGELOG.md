@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.92
+
+- fix: 별도 Owen Graphite Companion을 제거하고 Style Settings 제목·설명을 테마 schema의 영어 기본값과 native `title.ko`/`description.ko` metadata로 통합했습니다.
+- fix: locale별 option label을 지원하지 않는 Style Settings 계약에 맞춰 option label을 영어/한국어 병기로 제공하고, 별도 언어 override 설정과 companion 기반 제목 미리보기를 제거했습니다.
+- change: 코드 블록 제목 편집의 JavaScript와 UI 소유권을 Owen Editor 0.6.28로 이동해 테마는 시각 표현과 Style Settings schema만 소유하도록 경계를 바로잡았습니다.
+- release: companion build, install, ZIP asset, workflow와 로컬 플러그인 설치를 제거했으며 기존 Style Settings `data.json`과 setting ID/default/value는 보존했습니다.
+
 ## v3.1.91
 
 - feat: 보고서 제목 디자인 템플릿 9종을 기본·강조·인덱스 계열로 재분류하고, Style Settings에서 현재 선택의 H1-H3 위계를 한국어와 영어로 바로 확인하는 미리보기를 추가했습니다.

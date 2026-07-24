@@ -16,8 +16,10 @@ FUNCTIONAL_TYPES = {"class-toggle", "class-select", "variable-color", "variable-
 
 
 SETTING_BLOCK_RE = re.compile(r"/\*\s*@settings(?P<body>.*?)\*/", re.DOTALL)
-FIELD_RE = re.compile(r"^\s{4}(id|title|type|default):\s*(.*)\s*$")
+FIELD_RE = re.compile(r"^\s{4}(id|title|title\.ko|description|description\.ko|type|default):\s*(.*)\s*$")
+LABEL_RE = re.compile(r"^\s{8}label:\s*(.*)\s*$")
 VALUE_RE = re.compile(r"^\s{8}value:\s*(.*)\s*$")
+HANGUL_RE = re.compile(r"[가-힣]")
 
 
 def normalize(value: object) -> str:
@@ -39,7 +41,7 @@ def parse_settings() -> list[dict[str, object]]:
         if line.startswith("  -") and not line.startswith("      -"):
             if current is not None:
                 entries.append(current)
-            current = {"values": []}
+            current = {"labels": [], "values": []}
             continue
         if current is None:
             continue
@@ -47,7 +49,14 @@ def parse_settings() -> list[dict[str, object]]:
         field = FIELD_RE.match(line)
         if field:
             key, value = field.groups()
+            if key in {"title", "title.ko", "description", "description.ko"} and ": " in value and not value.startswith(("'", '"')):
+                raise AssertionError(f"{current.get('id', '<unknown>')} {key} contains an unquoted YAML mapping colon")
             current[key] = normalize(value)
+            continue
+
+        label = LABEL_RE.match(line)
+        if label:
+            current.setdefault("labels", []).append(normalize(label.group(1)))
             continue
 
         value = VALUE_RE.match(line)
@@ -77,6 +86,21 @@ def main() -> int:
         if len(functional) != len(contract_options):
             raise AssertionError(f"functional list count {len(functional)} != contract options {len(contract_options)}")
 
+        for entry in entries:
+            setting_id = entry.get("id", "<missing>")
+            if not entry.get("title") or not entry.get("title.ko"):
+                raise AssertionError(f"{setting_id} must define both title and title.ko")
+            if bool(entry.get("description")) != bool(entry.get("description.ko")):
+                raise AssertionError(f"{setting_id} must define description and description.ko together")
+            for label in entry.get("labels", []):
+                if HANGUL_RE.search(str(label)) and " / " not in str(label):
+                    raise AssertionError(f"{setting_id} Korean option label must be bilingual: {label!r}")
+
+        removed_ids = {"ogd-settings-interface", "ogd-style-settings-language"}
+        present_removed_ids = removed_ids.intersection(str(entry.get("id")) for entry in entries)
+        if present_removed_ids:
+            raise AssertionError(f"removed companion language settings remain: {sorted(present_removed_ids)}")
+
         for index, (entry, expected) in enumerate(zip(functional, contract_options), start=1):
             for key in ("id", "title", "type", "default"):
                 actual_value = normalize(entry.get(key, ""))
@@ -94,7 +118,11 @@ def main() -> int:
                 if len(values) != len(set(values)):
                     raise AssertionError(f"class-select {entry['id']} has duplicate option values")
 
-        print(f"OK: Style Settings contract matches ({len(entries)} entries, {len(functional)} functional options)")
+        localized_descriptions = sum(bool(entry.get("description")) for entry in entries)
+        print(
+            f"OK: Style Settings contract matches ({len(entries)} entries, {len(functional)} functional options, "
+            f"{len(entries)} localized titles, {localized_descriptions} localized descriptions)"
+        )
         return 0
     except Exception as exc:
         print(f"FAIL: {exc}", file=sys.stderr)

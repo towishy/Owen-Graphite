@@ -2,6 +2,10 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.89 — Bilingual Style Settings Interface
+
+Style Settings label과 description을 영어·한국어로 제공하면서 setting ID, CSS class, default, 저장값을 유지했습니다. 당시 별도 companion과 언어 override를 사용한 구현은 v3.1.92에서 제거됐고, 현재는 테마 schema의 영어 기본 metadata와 native `title.ko`/`description.ko`, 영어/한국어 병기 option label이 같은 호환 계약을 담당합니다.
+
 ## v3.1.88 — Active Tab Bridge Hotfix
 
 Obsidian core의 clipping과 숨겨진 pseudo-element 상태 때문에 끊겼던 active tab과 document surface 사이를 측정된 5px bridge로 복구했습니다. 과도한 19px 장식 cap과 shadow 대신 평평한 연결면을 사용하고 Obsidian 1.12.7 CDP computed geometry로 검증했습니다.

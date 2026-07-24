@@ -11,9 +11,9 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.91** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.92** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
-> **Companion:** Install the companion ZIP to translate the Style Settings interface and edit code block titles directly from Live Preview or Reading View. Owen Graphite follows Obsidian's language by default; **Settings → Style Settings → Owen Graphite → Interface → Language** can override it.
+> **No companion required:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Obsidian's locale selects the native setting labels. Persistent code-title editing is an optional Owen Editor 0.6.28 feature, separate from theme configuration.
 
 ## Why Owen Graphite?
 
@@ -64,8 +64,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.91` |
-| **Baseline / rollback target** | `v3.1.91` |
+| **Version** | `3.1.92` |
+| **Baseline / rollback target** | `v3.1.92` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -84,16 +84,27 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
 
+### v3.1.92 — Theme-Native Style Settings
+
+This corrective release removes the separate Owen Graphite Companion and restores a direct ownership model: the theme contains its Style Settings schema and localized metadata, while Owen Editor owns optional Markdown editing behavior.
+
+| Area | What changed |
+| --- | --- |
+| Style Settings | English defaults and native Korean `title.ko`/`description.ko` metadata now ship inside the theme. |
+| Options | Option labels show concise English/Korean pairs because Style Settings does not provide locale-specific option-label fields. |
+| Code titles | Owen Editor 0.6.28 owns persistent Live Preview and Reading View title editing. |
+| Packaging | The companion plugin, installer, build scripts, release ZIP, and workflow steps are removed. |
+
 ### v3.1.91 — Report Heading Template Preview
 
-This release groups all nine report heading templates by purpose and adds a locale-aware H1-H3 preview directly to Style Settings while keeping saved class values stable.
+This release grouped all nine report heading templates by purpose. Its companion-rendered H1-H3 settings preview was removed in v3.1.92 when Style Settings returned to a theme-only architecture.
 
 | Area | What changed |
 | --- | --- |
 | Template selection | Standard, emphasis, and index families make the nine heading templates easier to compare. |
-| Live preview | The selected template renders a compact H1-H3 sample in Korean or English without a rounded selection rim. |
+| Template output | The selected template applies consistently to Reading View, Live Preview, and PDF without a rounded selection rim. |
 | Heading geometry | Focus Bar and Number Stamp use square H1 frames, and every preview variant keeps `border-radius: 0`. |
-| Validation | All nine PDF templates, bilingual catalogs, CSS budget, runtime geometry, and local install hashes are checked. |
+| Validation | All nine PDF templates, native bilingual metadata, CSS budget, runtime geometry, and local install hashes are checked. |
 
 ### v3.1.90 — Editable Code Titles And File Explorer Hierarchy
 
@@ -101,21 +112,10 @@ This release adds persistent inline code block title editing, clarifies the acti
 
 | Area | What changed |
 | --- | --- |
-| Companion | Live Preview and Reading View code titles can be edited in place and are stored in fenced Markdown. |
+| Code-title editing | Persistent editing is now owned by Owen Editor 0.6.28 and stored in fenced Markdown. |
 | File explorer | The selected document is bold, folder and document typography align, root icons stay quiet, and the current folder separates child folders from files. |
 | Runtime states | Root-folder hover and current-folder spacing are verified against the real Obsidian DOM and computed geometry. |
 | PDF headings | Automatic number/label badges are removed and all nine print templates have a dedicated fixture and audit. |
-
-### v3.1.89 — Bilingual Style Settings Interface
-
-This release adds an English and Korean interface layer for Owen Graphite Style Settings while keeping setting IDs, CSS classes, and stored values stable.
-
-| Area | What changed |
-| --- | --- |
-| Automatic language | Korean Obsidian locales use Korean; every other locale falls back to English. |
-| Explicit override | `Interface → Language` can force English or Korean over the automatic value. |
-| Translation coverage | Section labels, descriptions, options, search, import, and export chrome share complete catalogs. |
-| Compatibility | Existing `ogd-language-en` and `ogd-language-ko` values remain explicit overrides. |
 
 Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md).
 
@@ -131,7 +131,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.91.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.92.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -140,17 +140,17 @@ Download **`Owen-Graphite-3.1.91.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.91.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.92.zip` for the installable theme package.
 
-### Owen Graphite Companion
+### Optional Code-Title Editing
 
-Download `Owen-Graphite-Companion-1.1.1.zip` from the same release and extract its compatibility-preserving `owen-graphite-style-settings-l10n` folder into:
+Owen Graphite does not require a companion plugin. To edit fenced code-block titles directly in Live Preview or Reading View, install [Owen Editor 0.6.28 or later](https://github.com/towishy/owen-editor/releases/latest). Owen Editor stores the title in Markdown:
 
-```text
-<YourVault>/.obsidian/plugins/owen-graphite-style-settings-l10n/
+````markdown
+```bash title="Package update"
+winget upgrade
 ```
-
-Reload Obsidian and enable **Owen Graphite Companion** under Community plugins. Choose **Settings → Style Settings → Owen Graphite → Interface → Language** for localization. To name a code block, click its header title in Live Preview or Reading View; `Enter` saves, `Escape` cancels, and an empty title remains clickable. The title is stored in Markdown as ```` ```bash title="Package update" ````, while the companion leaves Style Settings plugin data unchanged.
+```
 
 ### Option C — Git Install Or Update
 

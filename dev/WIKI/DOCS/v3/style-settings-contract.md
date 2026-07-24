@@ -1,17 +1,21 @@
 ﻿# v3 Style Settings Contract (extracted from v2.30.14)
 
 이 문서는 v3 Style Settings 계약입니다.
-아래 기능 옵션의 `id`/`type`/`default`/`title`은 사용자 vault 설정 호환성에 직접 영향을 줍니다.
+아래 기능 옵션의 `id`/`type`/`default`와 machine option `value`는 사용자 vault 설정 호환성에 직접 영향을 줍니다.
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
 - 전체 엔트리(heading 포함): **60**
 - 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **51**
 - 초기 표시: `읽기와 본문`은 펼치고 나머지 level 2/3 그룹은 접어 긴 PDF 고급 옵션이 기본 화면을 점유하지 않도록 구성
+- 기본 메타데이터는 영어 `title`/`description`이며, 한국어는 Style Settings 1.0.9 네이티브 `title.ko`/`description.ko` 필드로 같은 스키마에 포함
+- 네이티브 메타데이터 언어는 Obsidian locale이 결정하며, 테마 내부 언어 override 설정은 두지 않음
+- upstream Style Settings에는 locale별 option-label 필드가 없으므로 영어와 한국어가 다른 구조화 옵션 라벨은 `English / 한국어` 형식으로 병기
+- 기존 setting id, type, default, machine option value 및 순서는 유지
 
 ## 기능 옵션 목록
 
-| id | type | default | title |
+| id | type | default | 한국어 현지화 제목 (`title.ko`) |
 | --- | --- | --- | --- |
 | `ogd-body-size` | `variable-number-slider` | `15` | 본문 폰트 크기 |
 | `ogd-line-height` | `variable-select` | `1.5` | 본문 줄간격 |
@@ -67,46 +71,15 @@
 
 ## 비기능 엔트리 (heading / info)
 
-| id | type | title |
+아래 제목은 한국어 현지화 제목(`title.ko`)이며, 기본 `title`은 영어입니다.
+
+| id | type | 한국어 현지화 제목 (`title.ko`) |
 | --- | --- | --- |
 | `ogd-settings-reading` | `heading` | 읽기와 본문 |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
 | `ogd-settings-tables` | `heading` | 표와 코드 |
 | `ogd-settings-report` | `heading` | 보고서와 PDF |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
 | `ogd-settings-workspace` | `heading` | 워크스페이스와 접근성 |
 | `ogd-settings-fonts` | `heading` | 폰트 적용 |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
 | `ogd-settings-pdf-marginalia` | `heading` | PDF 헤더/푸터 작은 라벨 |
 | `ogd-pdf-settings-common` | `heading` | 공통 구성 |
 | `ogd-pdf-settings-header` | `heading` | 헤더 설정 |
