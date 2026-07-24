@@ -13,7 +13,7 @@
 
 **Owen Graphite v3.1.89** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
-> **Language:** Owen Graphite follows Obsidian by default: Korean uses Korean, while every other locale uses English. Override it from **Settings → Style Settings → Owen Graphite → Interface → Language**. Install the bundled locale companion to translate the Style Settings interface.
+> **Language:** Owen Graphite follows Obsidian by default: Korean uses Korean, while every other locale uses English. Override it from **Settings → Style Settings → Owen Graphite → Interface → Language**. Install the companion ZIP from the release assets to translate the Style Settings interface.
 
 ## Why Owen Graphite?
 
@@ -152,6 +152,16 @@ Download **`Owen-Graphite-3.1.89.zip`** from the [latest release](https://github
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
 > Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.89.zip` for the installable theme package.
+
+### Style Settings Language Companion
+
+Download `Owen-Graphite-Style-Settings-Language-1.0.0.zip` from the same release and extract its `owen-graphite-style-settings-l10n` folder into:
+
+```text
+<YourVault>/.obsidian/plugins/owen-graphite-style-settings-l10n/
+```
+
+Reload Obsidian, enable **Owen Graphite Style Settings Language** under Community plugins, then choose **Settings → Style Settings → Owen Graphite → Interface → Language**. The companion does not create a separate settings tab or change the Style Settings plugin's stored data.
 
 ### Option C — Git Install Or Update
 
