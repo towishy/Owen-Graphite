@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.93
+
+- polish: Style Settings의 그룹 제목과 일반 설정 행을 평평한 구분선 기반 surface로 정리하고, control column과 import/export utility action의 간격·강조를 안정화했습니다.
+- fix: 설정 행 hover를 직접 소유하는 `33-settings-controls.css`로 통합하고 후순위 overlay의 glass, outline, shadow, lift, 160ms transition을 제거해 마우스 진입·이탈 시 깜박임을 없앴습니다.
+- change: 기본 문서 최대 폭을 297mm로 조정해 Obsidian readable line width에 연결하고, Live Preview H1-H4 위계와 상단 문서 제목의 크기·굵기를 다듬었습니다.
+- guard: Obsidian 1.12.7에서 Style Settings heading과 본문 크기 행의 hover enter/leave computed state를 반복 검증하고 source map, direct-owner, Style Settings, runtime evidence, release gate를 통과했습니다.
+
 ## v3.1.92
 
 - fix: 별도 Owen Graphite Companion을 제거하고 Style Settings 제목·설명을 테마 schema의 영어 기본값과 native `title.ko`/`description.ko` metadata로 통합했습니다.

@@ -19,7 +19,7 @@
 | --- | --- | --- | --- |
 | `ogd-body-size` | `variable-number-slider` | `15` | 본문 폰트 크기 |
 | `ogd-line-height` | `variable-select` | `1.5` | 본문 줄간격 |
-| `ogd-max-width` | `variable-select` | `420mm` | 본문 최대 폭 |
+| `ogd-max-width` | `variable-select` | `297mm` | 본문 최대 폭 |
 | `ogd-accent` | `variable-color` | `#4b5563` | 헤더 강조 색상 |
 | `ogd-modern-tables` | `class-toggle` | `true` | 표 모던 스타일 강화 |
 | `ogd-print-avoid-breaks` | `class-toggle` | `true` | PDF 블록 분할 방지 강화 |

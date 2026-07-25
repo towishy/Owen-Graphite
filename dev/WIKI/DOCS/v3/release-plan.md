@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.92)
+﻿# v3 Release Record (latest: v3.1.93)
 
-**Status**: Current stable / rollback baseline = `v3.1.92` (2026-07-25). This corrective release removes the separate companion, moves Style Settings localization into native theme metadata, and assigns JavaScript code-title editing to Owen Editor 0.6.28.
+**Status**: Current stable / rollback baseline = `v3.1.93` (2026-07-25). This release flattens dense Settings surfaces, removes animated hover flicker, and aligns the default document width and heading hierarchy with technical writing workflows.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.92` |
+| `manifest.json` version | `3.1.93` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,380 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,342 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.92.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.93.zip` |
 
 ## What was removed
 

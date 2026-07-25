@@ -561,15 +561,15 @@
   body:not(.is-mobile) .mod-root .view-header .view-header-title {
     flex: 1 1 auto;
     min-width: 0; width: 100%; max-width: 100%;
-    padding: 5px 16px;
+    padding: 5px 14px;
     border: 1px solid transparent;
     border-radius: 9px; background-clip: padding-box;
     background: transparent;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     box-shadow: none;
-    font-size: 14.2px;
-    font-weight: 820;
+    font-size: 15px;
+    font-weight: 780;
     color: var(--ogd-text-strong, #111827);
     text-shadow: none;
   }
@@ -767,16 +767,14 @@
 }
 
 /* ============================================================
-   v1.8.39 — Settings modal hover liquid-glass
-   Apply the same glass+shadow lift used across ribbon/nav/toggle
-   to Settings modal items: left nav (.vertical-tab-nav-item) and
-   right pane rows (.setting-item).
+  v1.8.39 — Settings navigation hover liquid-glass
+  Apply the same glass+shadow lift used across ribbon/nav/toggle
+  to Settings modal left navigation (.vertical-tab-nav-item).
    Desktop only (>=701px, non-mobile).
    ============================================================ */
 
 @media (min-width: 701px) {
-  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item,
-  body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item {
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item {
     border-radius: var(--radius-l, 8px);
     transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
   }
@@ -819,26 +817,6 @@
     font-weight: 760;
   }
 
-  /* Right pane setting-item hover (light) */
-  body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item:hover {
-    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.40)));
-    border: 1px solid var(--ogd-setting-row-border, rgba(100, 116, 139, 0.18));
-    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%));
-    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.72),
-      0 1px 2px rgba(15, 23, 42, 0.035);
-    transform: var(--ogd-hover-lift, translateY(-1px));
-  }
-
-  /* Right pane setting-item hover (dark) */
-  body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-content .setting-item:hover {
-    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.36)));
-    border: 1px solid var(--ogd-setting-row-border, rgba(203, 213, 225, 0.12));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      0 1px 2px rgba(0, 0, 0, 0.10);
-  }
 }
 
 /* ============================================================

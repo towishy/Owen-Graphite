@@ -24,26 +24,21 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 36px;
-  margin: 18px 0 10px;
-  padding: 8px 12px 8px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  border-radius: var(--ogd-radius-control, 7px);
-  background: radial-gradient(circle at 92% 16%, rgba(186, 230, 253, 0.16), transparent 30%), linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.52));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(15, 23, 42, 0.035), 0 3px 10px rgba(15, 23, 42, 0.045);
+  min-height: 34px;
+  margin: 22px 0 6px;
+  padding: 7px 4px 7px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: 0;
+  transform: none;
+  transition: none;
 }
 body.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before,
 body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before {
-  content: "";
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-  border: 1px solid rgba(125, 211, 252, 0.34);
-  border-radius: var(--ogd-radius-control, 7px);
-  background: radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.80), transparent 36%), linear-gradient(180deg, rgba(240, 249, 255, 0.78), rgba(226, 232, 240, 0.54));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 5px rgba(15, 23, 42, 0.06);
-  flex: 0 0 auto;
+  content: none;
 }
 body.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-info,
 body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-info {
@@ -55,6 +50,16 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
   color: var(--ogd-text-strong, #111827);
   font-size: 14px;
   font-weight: 860;
+}
+body.css-settings-manager .style-settings-container .setting-item.setting-item-heading:is(:hover, :focus-within),
+body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3):is(:hover, :focus-within) {
+  outline: 0;
+  background: rgba(241, 245, 249, 0.72);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  transform: none;
+  transition: none;
 }
 .setting-item-description,
 .setting-item-info .setting-item-description {
@@ -123,12 +128,12 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
 .modal .setting-item-control button {
   border-radius: var(--ogd-radius-control, 7px);
   transition: background 0.12s ease, background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease,
-    box-shadow 0.12s ease, transform 0.12s ease;
+    box-shadow 0.12s ease;
 }
 .setting-item-control button:hover,
 .modal .setting-item-control button:hover {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
-  transform: var(--ogd-hover-lift, translateY(-1px));
+  transform: none;
 }
 .setting-item-control button.mod-cta, .modal .setting-item-control button.mod-cta { background: radial-gradient(circle at 74% 22%, rgba(255, 255, 255, 0.86), transparent 36%), linear-gradient(180deg, rgba(240, 249, 255, 0.94), color-mix(in srgb, var(--ogd-surface-tint-aqua) 42%, rgba(224, 242, 254, 0.72))); border-color: var(--ogd-rim-active-low); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 20%, transparent), 0 4px 11px rgba(15, 23, 42, 0.08), 0 0 0 1px color-mix(in srgb, var(--ogd-rim-active-low) 54%, transparent); color: #075985; }
 .setting-item-control button.mod-cta:is(:hover, :focus-visible), .modal .setting-item-control button.mod-cta:is(:hover, :focus-visible) { background: radial-gradient(circle at 74% 22%, rgba(255, 255, 255, 0.94), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.96), color-mix(in srgb, var(--ogd-surface-tint-aqua) 52%, rgba(224, 242, 254, 0.78))); border-color: var(--ogd-rim-active); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 color-mix(in srgb, var(--ogd-rim-active-low) 28%, transparent), 0 7px 16px rgba(15, 23, 42, 0.11), 0 0 0 2px color-mix(in srgb, var(--ogd-surface-tint-aqua-soft) 30%, transparent); color: #0369a1; }
@@ -162,13 +167,13 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
   box-shadow: var(--ogd-shadow-none, none);
 }
 
-body.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile) .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label) { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 0 10px; border: 1px solid rgba(148, 163, 184, 0.32); border-radius: var(--ogd-radius-control, 7px); background: radial-gradient(circle at 72% 20%, rgba(255, 255, 255, 0.66), transparent 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.64)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(15, 23, 42, 0.035), 0 2px 7px rgba(15, 23, 42, 0.055); color: var(--ogd-text-slate, #334155); font-size: 0.9em; font-weight: 760; line-height: 1; text-decoration: none; text-underline-offset: 0; transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease, transform 0.12s ease; }
+body.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile) .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label) { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 0 10px; border: 1px solid rgba(148, 163, 184, 0.30); border-radius: var(--ogd-radius-control, 7px); background: rgba(248, 250, 252, 0.58); box-shadow: none; color: var(--ogd-text-slate, #334155); font-size: 0.9em; font-weight: 720; line-height: 1; text-decoration: none; text-underline-offset: 0; transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease; }
 body.css-settings-manager :is(.style-settings-import, .style-settings-export):not(:last-child) { margin-right: 8px; }
 body.css-settings-manager :is(.style-settings-copy, .style-settings-download), body:not(.is-mobile) .modal-style-settings :is(.style-settings-copy, .style-settings-download) { margin-left: 8px; }
-body.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile) .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible) { border-color: rgba(14, 165, 233, 0.30); background: radial-gradient(circle at 72% 20%, rgba(255, 255, 255, 0.84), transparent 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(240, 249, 255, 0.68)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 4px 11px rgba(15, 23, 42, 0.08), 0 0 0 2px rgba(14, 165, 233, 0.055); color: #0f766e; transform: var(--ogd-hover-lift-subtle, translateY(-0.5px)); }
+body.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile) .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible) { border-color: rgba(100, 116, 139, 0.34); background: rgba(241, 245, 249, 0.86); box-shadow: none; color: var(--ogd-text-strong, #111827); transform: none; }
 body.css-settings-manager .style-settings-copy::before, body:not(.is-mobile) .modal-style-settings .style-settings-copy::before { color: #0f766e; left: -15px; }
 
-body:not(.is-mobile) :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible) { outline-color: rgba(148, 163, 184, 0.18); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76), 0 2px 8px rgba(15, 23, 42, 0.055), 0 0 0 1px rgba(148, 163, 184, 0.12); }
+body:not(.is-mobile) :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item:not(.setting-item-heading), .modal-title):is(:focus-within, :focus-visible) { outline-color: rgba(148, 163, 184, 0.18); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76), 0 2px 8px rgba(15, 23, 42, 0.055), 0 0 0 1px rgba(148, 163, 184, 0.12); }
 body:not(.is-mobile) .modal.mod-settings .search-input-container:focus-within { outline: 0; border-color: rgba(148, 163, 184, 0.22); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 2px 8px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(148, 163, 184, 0.12); }
 body:not(.is-mobile) .modal.mod-settings .search-input-container input[type="search"]:is(:focus, :focus-visible) { outline: 0; border-color: rgba(148, 163, 184, 0.22); box-shadow: none; }
 body:not(.is-mobile) .modal.mod-community-plugin :is(.search-input-container, .search-input-container input[type="search"], .search-input-container input[type="text"]):is(:focus, :focus-visible, :focus-within) { outline: 0; border-color: rgba(148, 163, 184, 0.24); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 2px 8px rgba(15, 23, 42, 0.055); }
@@ -287,19 +292,22 @@ body.css-settings-manager .style-settings-container .setting-item[data-id="ogd-a
 }
 body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading,
 body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3) {
-  border-color: rgba(203, 213, 225, 0.18);
-  background: radial-gradient(circle at 92% 16%, rgba(56, 189, 248, 0.09), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.42));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.26), 0 4px 12px rgba(0, 0, 0, 0.24);
+  border-bottom-color: rgba(148, 163, 184, 0.24);
+  background: transparent;
+  box-shadow: none;
 }
 body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading::before,
 body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3)::before {
-  background: linear-gradient(180deg, #7dd3fc, #5eead4);
-  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.10);
+  content: none;
 }
 body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading .setting-item-name,
 body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3),
 body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item.setting-item-heading .setting-item-name {
   color: var(--ogd-text-inverted, #f8fafc);
+}
+body.theme-dark.css-settings-manager .style-settings-container .setting-item.setting-item-heading:is(:hover, :focus-within),
+body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3):is(:hover, :focus-within) {
+  background: rgba(51, 65, 85, 0.46);
 }
 .theme-dark .setting-item-description,
 .theme-dark .setting-item-info .setting-item-description {
@@ -379,10 +387,10 @@ body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), inset 0 -1px 0 rgba(251, 113, 133, 0.06), 0 6px 16px rgba(0, 0, 0, 0.32), 0 0 0 3px rgba(251, 113, 133, 0.05);
   color: #fecdd3;
 }
-body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label) { border-color: rgba(203, 213, 225, 0.18); background: radial-gradient(circle at 72% 20%, rgba(148, 163, 184, 0.12), transparent 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.38)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.24), 0 4px 12px rgba(0, 0, 0, 0.24); color: var(--ogd-line-strong, #cbd5e1); }
-body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible) { border-color: rgba(14, 165, 233, 0.28); background: radial-gradient(circle at 72% 20%, rgba(148, 163, 184, 0.16), transparent 38%), linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.48)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 7px 18px rgba(0, 0, 0, 0.34), 0 0 0 3px rgba(14, 165, 233, 0.05); color: #7dd3fc; }
+body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label) { border-color: rgba(148, 163, 184, 0.22); background: rgba(30, 41, 59, 0.44); box-shadow: none; color: var(--ogd-line-strong, #cbd5e1); }
+body.theme-dark.css-settings-manager :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible), body:not(.is-mobile).theme-dark .modal-style-settings :is(.style-settings-import, .style-settings-export, .style-settings-copy, .style-settings-download, .style-settings-import-label):is(:hover, :focus-visible) { border-color: rgba(203, 213, 225, 0.28); background: rgba(51, 65, 85, 0.62); box-shadow: none; color: var(--ogd-text-inverted, #f8fafc); transform: none; }
 
-body:not(.is-mobile).theme-dark :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item, .modal-title, .setting-item-heading):is(:focus-within, :focus-visible) { outline-color: rgba(203, 213, 225, 0.14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 10px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(203, 213, 225, 0.08); }
+body:not(.is-mobile).theme-dark :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item:not(.setting-item-heading), .modal-title):is(:focus-within, :focus-visible) { outline-color: rgba(203, 213, 225, 0.14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 10px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(203, 213, 225, 0.08); }
 body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container:focus-within { border-color: rgba(203, 213, 225, 0.14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 10px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(203, 213, 225, 0.08); }
 body:not(.is-mobile).theme-dark .modal.mod-settings .search-input-container input[type="search"]:is(:focus, :focus-visible) { border-color: rgba(203, 213, 225, 0.14); box-shadow: none; }
 body:not(.is-mobile).theme-dark .modal.mod-community-plugin :is(.search-input-container, .search-input-container input[type="search"], .search-input-container input[type="text"]):is(:focus, :focus-visible, :focus-within) { border-color: rgba(203, 213, 225, 0.16); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 3px 10px rgba(0, 0, 0, 0.22); }
@@ -436,26 +444,45 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
 
 /* v3.1.87 - Clean Layered Utility settings rows and neutral focus. */
 @media screen and (min-width: 701px) {
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading) > .setting-item-info {
+    min-width: 0;
+    padding-right: 16px;
+  }
+
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading) > .setting-item-control {
+    flex: 0 1 360px;
+    justify-content: flex-end;
+    min-width: 220px;
+    max-width: 52%;
+  }
+
+  body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading) > .setting-item-control :is(input, textarea, select, .dropdown) {
+    min-width: 0;
+    max-width: 100%;
+  }
+
   body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading) {
     margin: 1px 0;
     border: 0;
-    border-radius: 8px;
-    background: rgba(248, 250, 252, 0.34);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 0;
+    background: transparent;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     box-shadow: none;
     transform: none;
+    transition: none;
   }
 
   body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading):is(:hover, :focus-within),
   body:not(.is-mobile) .modal.mod-settings .setting-item:not(.setting-item-heading):focus-within {
-    border: 0;
     background: rgba(241, 245, 249, 0.82);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     outline: 0;
     box-shadow: none;
     transform: none;
+    transition: none;
   }
 
   body:not(.is-mobile) .modal.mod-settings .setting-item-control :is(input, textarea, select, button, .dropdown, .checkbox-container):is(:focus, :focus-visible) {
@@ -480,6 +507,10 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
   body:not(.is-mobile).theme-dark .modal.mod-settings .setting-item:not(.setting-item-heading):focus-within {
     background: rgba(51, 65, 85, 0.44);
     box-shadow: none;
+  }
+
+  body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading) {
+    border-bottom-color: rgba(100, 116, 139, 0.22);
   }
 }
 

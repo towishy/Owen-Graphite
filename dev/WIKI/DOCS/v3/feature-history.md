@@ -2,6 +2,10 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.90 — Editable Code Titles And File Explorer Hierarchy
+
+Owen Editor가 fenced Markdown에 저장하는 Live Preview·Reading View 코드 제목 편집을 제공하고, 선택 문서의 직접 부모 폴더와 파일 탐색기 계층을 정리했습니다. PDF 제목 템플릿의 자동 번호·라벨을 제거하고 9개 print template 전용 fixture와 audit를 추가했습니다.
+
 ## v3.1.89 — Bilingual Style Settings Interface
 
 Style Settings label과 description을 영어·한국어로 제공하면서 setting ID, CSS class, default, 저장값을 유지했습니다. 당시 별도 companion과 언어 override를 사용한 구현은 v3.1.92에서 제거됐고, 현재는 테마 schema의 영어 기본 metadata와 native `title.ko`/`description.ko`, 영어/한국어 병기 option label이 같은 호환 계약을 담당합니다.

@@ -184,7 +184,7 @@
 | `--ogd-macos-toggle-shadow` | shadow | 1 | `None` | `inset 0 1px 0 rgba(255, 255, 255, 0.12),
       inset 0 -1px 0 rgba(0, 0, 0, 0.28),
       0 6px 16px rgba(0, 0, 0, 0.36)` |
-| `--ogd-max-width` | feature-specific | 0 | `420mm` | `None` |
+| `--ogd-max-width` | feature-specific | 0 | `297mm` | `None` |
 | `--ogd-overlay-selected-bg` | feature-specific | 1 | `None` | `rgba(51, 65, 85, 0.78)` |
 | `--ogd-overlay-selected-line` | line/border | 1 | `None` | `var(--ogd-line-strong, #cbd5e1)` |
 | `--ogd-overlay-selected-text` | text color | 1 | `None` | `var(--ogd-surface-muted, #f8fafc)` |

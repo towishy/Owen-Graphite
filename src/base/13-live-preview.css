@@ -34,7 +34,7 @@ body .markdown-source-view.mod-cm6 .cm-content {
 
 body .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer,
 body .markdown-source-view.mod-cm6.is-readable-line-width .CodeMirror-sizer {
-  max-width: var(--ogd-max-width, 420mm);
+  max-width: var(--ogd-max-width, 297mm);
   margin-left: 0;
   margin-right: auto;
 }
@@ -259,10 +259,14 @@ body:is(.ogd-heading-printclean, .ogd-heading-keyline, .ogd-heading-bracket, .og
   --ogd-lp-heading-rule: linear-gradient(90deg, rgba(14, 165, 233, 0.74), rgba(148, 163, 184, 0.48), transparent);
   --ogd-lp-heading-inline-border: 0 solid transparent;
   --ogd-lp-heading-inline-pad: 0;
-  --ogd-lp-heading-h1-size: 3.35em;
-  --ogd-lp-heading-h2-size: 1.62em;
-  --ogd-lp-heading-h3-size: 1.30em;
-  --ogd-lp-heading-h4-size: 1.12em;
+  --ogd-lp-heading-h1-size: 1.9em;
+  --ogd-lp-heading-h2-size: 1.45em;
+  --ogd-lp-heading-h3-size: 1.2em;
+  --ogd-lp-heading-h4-size: 1.05em;
+  --h1-size: var(--ogd-lp-heading-h1-size);
+  --h2-size: var(--ogd-lp-heading-h2-size);
+  --h3-size: var(--ogd-lp-heading-h3-size);
+  --h4-size: var(--ogd-lp-heading-h4-size);
 }
 
 body.ogd-heading-printclean .markdown-source-view.mod-cm6,
@@ -444,7 +448,7 @@ body.ogd-heading-focus-bar .markdown-source-view.mod-cm6 .cm-header-1 {
   padding: 0.10em 0.34em;
   border: 1px solid color-mix(in srgb, #bae6fd 78%, transparent);
   border-top: 6px solid color-mix(in srgb, #38bdf8 62%, transparent);
-  border-radius: 7px;
+  border-radius: 0;
   background: linear-gradient(180deg, rgba(240, 249, 255, 0.78), rgba(255, 255, 255, 0.80));
   text-decoration: none;
 }
@@ -988,18 +992,15 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-2 {
-  font-size: 1.64em;
   line-height: 1.24;
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-3 {
-  font-size: 1.26em;
   font-weight: 760;
   color: var(--ogd-text-slate, #334155);
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-header-4 {
-  font-size: 1.08em;
   font-weight: 760;
   color: var(--ogd-text-slate, #334155);
 }
