@@ -12,7 +12,7 @@ Owen Editor가 fenced Markdown에 저장하는 Live Preview·Reading View 코드
 
 ## v3.1.89 — Bilingual Style Settings Interface
 
-Style Settings label과 description을 영어·한국어로 제공하면서 setting ID, CSS class, default, 저장값을 유지했습니다. 당시 별도 companion과 언어 override를 사용한 구현은 v3.1.92에서 제거됐고, 현재는 테마 schema의 영어 기본 metadata와 native `title.ko`/`description.ko`, 영어/한국어 병기 option label이 같은 호환 계약을 담당합니다.
+Style Settings label과 description을 영어·한국어로 제공하면서 setting ID, CSS class, default, 저장값을 유지했습니다. v3.1.92에서 native locale만으로 전환했으나 Obsidian 1.12.7에서 Style Settings 1.0.9가 비어 있는 legacy locale 키를 영어로 처리하는 회귀가 확인되어, `자동/한국어/English` 선택과 Owen Graphite 범위의 경량 localization bridge를 복원했습니다. 테마 schema의 영어 기본 metadata와 native `title.ko`/`description.ko`, 영어/한국어 병기 option label은 fallback 계약으로 유지됩니다.
 
 ## v3.1.88 — Active Tab Bridge Hotfix
 

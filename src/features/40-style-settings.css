@@ -14,6 +14,33 @@ name: Owen Graphite
 id: owen-graphite-document
 settings:
   -
+    id: ogd-settings-interface
+    title: Interface
+    title.ko: 인터페이스
+    description: Choose the language used throughout Owen Graphite.
+    description.ko: Owen Graphite 전체에서 사용할 언어를 선택합니다.
+    type: heading
+    level: 2
+    collapsed: false
+  -
+    id: ogd-style-settings-language
+    title: Language
+    title.ko: 언어
+    description: Follow Obsidian's language or override it for Owen Graphite Style Settings.
+    description.ko: Obsidian 언어를 따르거나 Owen Graphite Style Settings에 표시할 언어를 재정의합니다.
+    type: class-select
+    default: ogd-language-auto
+    options:
+      -
+        label: Automatic (Obsidian) / 자동 (Obsidian)
+        value: ogd-language-auto
+      -
+        label: Korean / 한국어
+        value: ogd-language-ko
+      -
+        label: English
+        value: ogd-language-en
+  -
     id: ogd-settings-reading
     title: Reading and body
     title.ko: 읽기와 본문

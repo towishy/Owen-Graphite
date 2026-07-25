@@ -4,10 +4,10 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.94`
+- Version: `3.1.95`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2747
+- Selectors: 2749
 - Findings: 709
 - Finding severity counts: critical=0, high=0, medium=563, low=146, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
@@ -31,7 +31,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | medium | 23 | `src/chrome/30-workspace.css` | 127 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 47 | 0 | 0 | high-specificity |
 | high | 78 | `src/chrome/32-overlay-popover-dataview.css` | 37 | 0 | 0 | high-specificity |
-| high | 251 | `src/chrome/33-settings-controls.css` | 185 | 0 | 38 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 251 | `src/chrome/33-settings-controls.css` | 187 | 0 | 38 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 57 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 106 | `src/plugins/61-live-preview-mobile-plugin.css` | 68 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 176 | `src/features/42-report-print-polish.css` | 265 | 0 | 11 | high-specificity, cm6-hit-routing-sensitive, pdf-header-footer-sensitive, has-selector, repeated-selector-in-file |

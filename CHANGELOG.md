@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.95
+
+- fix: Obsidian 1.12.7에서 UI locale은 한국어지만 Style Settings 1.0.9의 legacy `localStorage.language`가 비어 영어로 fallback하던 회귀를 확인하고, `자동/한국어/English` 선택과 Owen Graphite 범위의 localization bridge를 복원했습니다.
+- fix: 새 `인터페이스` Style Settings heading에 기존 semantic icon owner의 18px Languages glyph와 light/dark graphite ink를 연결해 빈 아이콘 tile을 제거했습니다.
+- guard: setting ID/default와 `ogd-language-auto`/`ogd-language-ko`/`ogd-language-en` 저장값을 유지하고, English·한국어 전환 및 icon mask를 Obsidian 1.12.7 CDP에서 검증했습니다.
+- release: 경량 companion 1.2.0의 deterministic build/test와 별도 plugin ZIP asset을 릴리스 workflow에 복원했으며 Style Settings `data.json`과 Owen Editor 코드 제목 기능은 변경하지 않습니다.
+
 ## v3.1.94
 
 - polish: Obsidian core 8개 설정 탭과 Owen Graphite, Owen Editor, Owen Exporter 설정 화면을 Owen Mermaid와 같은 grouped card 구조로 맞추고 제목이 있는 각 섹션에 semantic icon과 색상을 적용했습니다.

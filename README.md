@@ -11,7 +11,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.94** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.95** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 > **No companion required:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Obsidian's locale selects the native setting labels. Persistent code-title editing is an optional Owen Editor 0.6.28 feature, separate from theme configuration.
 
@@ -64,8 +64,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.94` |
-| **Baseline / rollback target** | `v3.1.94` |
+| **Version** | `3.1.95` |
+| **Baseline / rollback target** | `v3.1.95` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -83,6 +83,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.95 — Reliable Style Settings Localization
+
+This release restores Owen Graphite's language selector when Obsidian is Korean but Style Settings cannot resolve its legacy locale key, and fills the new Interface heading's semantic icon tile.
+
+| Area | What changed |
+| --- | --- |
+| Language selector | `Automatic (Obsidian)`, `Korean`, and `English` preserve the existing `ogd-language-*` values. |
+| Compatibility bridge | The optional localization companion translates only Owen Graphite rows and Style Settings chrome without modifying Style Settings data. |
+| Interface icon | The Interface heading uses the existing semantic icon owner with an 18px Languages glyph and graphite light/dark ink. |
+| Validation | Obsidian 1.12.7 runtime checks cover automatic fallback, explicit English/Korean classes, translated labels, and the computed icon mask. |
 
 ### v3.1.94 — Semantic Settings Cards
 
@@ -106,17 +117,6 @@ This release makes dense settings easier to scan, removes animated row flicker, 
 | Document rhythm | The 297mm default width now drives Obsidian's readable line width, with a clearer H1-H4 hierarchy and document title. |
 | Validation | Live Obsidian pointer cycles, owner guards, Style Settings contracts, runtime evidence, and release gates are checked. |
 
-### v3.1.92 — Theme-Native Style Settings
-
-This corrective release removes the separate Owen Graphite Companion and restores a direct ownership model: the theme contains its Style Settings schema and localized metadata, while Owen Editor owns optional Markdown editing behavior.
-
-| Area | What changed |
-| --- | --- |
-| Style Settings | English defaults and native Korean `title.ko`/`description.ko` metadata now ship inside the theme. |
-| Options | Option labels show concise English/Korean pairs because Style Settings does not provide locale-specific option-label fields. |
-| Code titles | Owen Editor 0.6.28 owns persistent Live Preview and Reading View title editing. |
-| Packaging | The companion plugin, installer, build scripts, release ZIP, and workflow steps are removed. |
-
 Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md).
 
 ---
@@ -131,7 +131,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.94.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.95.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -140,11 +140,21 @@ Download **`Owen-Graphite-3.1.94.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.94.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.95.zip` for the installable theme package.
+
+### Optional Style Settings Localization Bridge
+
+If Obsidian is set to Korean but Style Settings still renders Owen Graphite in English, download `Owen-Graphite-Companion-1.2.0.zip` from the same release and extract its `owen-graphite-style-settings-l10n` folder into:
+
+```text
+<YourVault>/.obsidian/plugins/owen-graphite-style-settings-l10n/
+```
+
+Reload Obsidian, enable **Owen Graphite Companion** under Community plugins, then choose **Settings → Style Settings → Owen Graphite → Interface → Language**. The bridge handles localization only and leaves Style Settings `data.json` unchanged.
 
 ### Optional Code-Title Editing
 
-Owen Graphite does not require a companion plugin. To edit fenced code-block titles directly in Live Preview or Reading View, install [Owen Editor 0.6.28 or later](https://github.com/towishy/owen-editor/releases/latest). Owen Editor stores the title in Markdown:
+The localization companion does not edit Markdown. To edit fenced code-block titles directly in Live Preview or Reading View, install [Owen Editor 0.6.28 or later](https://github.com/towishy/owen-editor/releases/latest). Owen Editor stores the title in Markdown:
 
 ````markdown
 ```bash title="Package update"

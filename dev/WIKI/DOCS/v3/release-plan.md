@@ -1,18 +1,19 @@
-﻿# v3 Release Record (latest: v3.1.94)
+﻿# v3 Release Record (latest: v3.1.95)
 
-**Status**: Current stable / rollback baseline = `v3.1.94` (2026-07-25). This release aligns eight Obsidian core tabs plus Owen Graphite, Owen Editor, and Owen Exporter settings with semantic grouped cards, distinct icons, and stable section ownership.
+**Status**: Current stable / rollback baseline = `v3.1.95` (2026-07-25). This release restores reliable Korean/English Style Settings localization through a scoped compatibility bridge and completes the Interface semantic icon mapping.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.94` |
+| `manifest.json` version | `3.1.95` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,951 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,987 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.94.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.95.zip` |
+| Localization companion ZIP | `dist/Owen-Graphite-Companion-1.2.0.zip` |
 
 ## What was removed
 

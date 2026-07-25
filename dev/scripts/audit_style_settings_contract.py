@@ -96,10 +96,14 @@ def main() -> int:
                 if HANGUL_RE.search(str(label)) and " / " not in str(label):
                     raise AssertionError(f"{setting_id} Korean option label must be bilingual: {label!r}")
 
-        removed_ids = {"ogd-settings-interface", "ogd-style-settings-language"}
-        present_removed_ids = removed_ids.intersection(str(entry.get("id")) for entry in entries)
-        if present_removed_ids:
-            raise AssertionError(f"removed companion language settings remain: {sorted(present_removed_ids)}")
+        entries_by_id = {str(entry.get("id")): entry for entry in entries}
+        language = entries_by_id.get("ogd-style-settings-language")
+        if not language:
+            raise AssertionError("missing Owen Graphite language selector")
+        if language.get("default") != "ogd-language-auto":
+            raise AssertionError("language selector default must remain ogd-language-auto")
+        if language.get("values") != ["ogd-language-auto", "ogd-language-ko", "ogd-language-en"]:
+            raise AssertionError("language selector values must preserve auto/ko/en compatibility")
 
         for index, (entry, expected) in enumerate(zip(functional, contract_options), start=1):
             for key in ("id", "title", "type", "default"):

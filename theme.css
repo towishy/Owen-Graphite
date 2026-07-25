@@ -58,6 +58,33 @@ name: Owen Graphite
 id: owen-graphite-document
 settings:
   -
+    id: ogd-settings-interface
+    title: Interface
+    title.ko: 인터페이스
+    description: Choose the language used throughout Owen Graphite.
+    description.ko: Owen Graphite 전체에서 사용할 언어를 선택합니다.
+    type: heading
+    level: 2
+    collapsed: false
+  -
+    id: ogd-style-settings-language
+    title: Language
+    title.ko: 언어
+    description: Follow Obsidian's language or override it for Owen Graphite Style Settings.
+    description.ko: Obsidian 언어를 따르거나 Owen Graphite Style Settings에 표시할 언어를 재정의합니다.
+    type: class-select
+    default: ogd-language-auto
+    options:
+      -
+        label: Automatic (Obsidian) / 자동 (Obsidian)
+        value: ogd-language-auto
+      -
+        label: Korean / 한국어
+        value: ogd-language-ko
+      -
+        label: English
+        value: ogd-language-en
+  -
     id: ogd-settings-reading
     title: Reading and body
     title.ko: 읽기와 본문
@@ -11666,6 +11693,11 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
   --ogd-suite-section-ink: #475569;
 }
 
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-interface"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 8 6 6'/%3E%3Cpath d='m4 14 6-6 2-3'/%3E%3Cpath d='M2 5h12'/%3E%3Cpath d='M7 2h1'/%3E%3Cpath d='m22 22-5-10-5 10'/%3E%3Cpath d='M14 18h6'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #475569;
+}
+
 body.css-settings-manager .style-settings-heading[data-id="ogd-settings-reading"] {
   --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V5a2 2 0 0 1 2-2h5a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M21 18a1 1 0 0 0 1-1V5a2 2 0 0 0-2-2h-5a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3Z'/%3E%3C/svg%3E");
   --ogd-suite-section-ink: #0369a1;
@@ -11750,6 +11782,10 @@ body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-s
 }
 
 body.theme-dark.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] {
+  --ogd-suite-section-ink: #cbd5e1;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-interface"] {
   --ogd-suite-section-ink: #cbd5e1;
 }
 

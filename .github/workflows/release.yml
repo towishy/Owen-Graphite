@@ -50,6 +50,11 @@ jobs:
       - name: Audit manual install ZIP
         run: python dev/scripts/audit_release_zip.py
 
+      - name: Test and package Style Settings localization bridge
+        run: |
+          python compat/owen-graphite-style-settings-l10n/test.py
+          python dev/scripts/build_companion_release.py
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -78,4 +83,5 @@ jobs:
             screenshots/readme/file-explorer-type-badges.svg
             screenshots/readme/sponsor-coffee.svg
             dist/release-notes-*.md
-            dist/Owen-Graphite-*.zip
+            dist/Owen-Graphite-[0-9]*.zip
+            dist/Owen-Graphite-Companion-*.zip

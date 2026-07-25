@@ -43,6 +43,7 @@ UI 작업 전 sibling workspace folder `wiki`의 `wiki/concepts/ui-design-system
 - Style Settings 기능을 추가하거나 변경할 때 section title, setting label, description의 영어 기본값과 한국어(`title.ko`/`description.ko`)를 같은 변경에서 함께 구현한다.
 - Style Settings가 locale별 option label을 지원하지 않으므로 언어별 표기가 필요한 option label은 간결한 영어/한국어 병기로 제공한다.
 - setting ID, CSS variable/class, default value namespace, 저장된 machine value는 번역하지 않는다.
-- Obsidian locale이 native metadata 언어를 결정하며, 별도 theme language override나 companion plugin을 만들지 않는다.
+- `ogd-style-settings-language`는 Obsidian locale 자동 추종과 한국어/English 명시 선택을 제공한다. Style Settings 1.0.9의 legacy locale 키가 비어 native metadata 선택이 실패하면 `compat/owen-graphite-style-settings-l10n` bridge만 Owen Graphite 행을 현지화한다.
+- localization bridge는 Style Settings `data.json`이나 setting ID, CSS class, default, machine value를 수정하지 않는다.
 - 영어/한국어 metadata completeness, option coverage, 영어 fallback과 기존 저장값 호환성을 자동 검사에 포함한다.
 - 테마 schema를 빌드·검증하고 실제 Obsidian에서 영어/한국어 locale과 overflow를 확인한 뒤 릴리스한다.
