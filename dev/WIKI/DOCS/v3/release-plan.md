@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.93)
+﻿# v3 Release Record (latest: v3.1.94)
 
-**Status**: Current stable / rollback baseline = `v3.1.93` (2026-07-25). This release flattens dense Settings surfaces, removes animated hover flicker, and aligns the default document width and heading hierarchy with technical writing workflows.
+**Status**: Current stable / rollback baseline = `v3.1.94` (2026-07-25). This release aligns eight Obsidian core tabs plus Owen Graphite, Owen Editor, and Owen Exporter settings with semantic grouped cards, distinct icons, and stable section ownership.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.93` |
+| `manifest.json` version | `3.1.94` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,342 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,951 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.93.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.94.zip` |
 
 ## What was removed
 

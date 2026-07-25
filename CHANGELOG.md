@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.94
+
+- polish: Obsidian core 8개 설정 탭과 Owen Graphite, Owen Editor, Owen Exporter 설정 화면을 Owen Mermaid와 같은 grouped card 구조로 맞추고 제목이 있는 각 섹션에 semantic icon과 색상을 적용했습니다.
+- fix: Style Settings의 내장 collapse indicator를 semantic icon으로 재사용하지 않도록 분리해 상단 SVG clipping을 제거하고, `Footer settings`를 포함한 내부 level-3 section의 상단 구분선을 복구했습니다.
+- change: Owen Editor와 Owen Exporter가 실제 Lucide glyph와 안정적인 `data-owen-section` hook을 제공하도록 연결해 위치 기반 selector 의존성을 제거했습니다.
+- guard: Obsidian 1.12.7에서 core 8개 탭의 group/card 수와 heading icon geometry, Graphite 7개, Editor 7개, Exporter 5개 semantic icon, overflow, row overlap, footer border를 실제 runtime으로 검증했습니다.
+
 ## v3.1.93
 
 - polish: Style Settings의 그룹 제목과 일반 설정 행을 평평한 구분선 기반 surface로 정리하고, control column과 import/export utility action의 간격·강조를 안정화했습니다.

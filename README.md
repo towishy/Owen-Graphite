@@ -11,7 +11,7 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.93** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.94** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
 > **No companion required:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Obsidian's locale selects the native setting labels. Persistent code-title editing is an optional Owen Editor 0.6.28 feature, separate from theme configuration.
 
@@ -64,8 +64,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.93` |
-| **Baseline / rollback target** | `v3.1.93` |
+| **Version** | `3.1.94` |
+| **Baseline / rollback target** | `v3.1.94` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -83,6 +83,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.94 — Semantic Settings Cards
+
+This release aligns Obsidian's core settings plus Owen Graphite, Owen Editor, and Owen Exporter with the same grouped-card language used by Owen Mermaid while keeping each function visually distinct.
+
+| Area | What changed |
+| --- | --- |
+| Settings groups | Eight Obsidian core tabs plus Graphite, Editor, and Exporter use compact grouped cards with independent 32px icon tiles where native headings exist. |
+| Semantic icons | Every section has a purpose-specific Lucide glyph and color instead of a repeated collapse chevron. |
+| Ownership | Editor and Exporter expose stable semantic section hooks so the theme does not depend on child position. |
+| Validation | Obsidian 1.12.7 runtime checks cover core card counts, icon uniqueness, clipping, overflow, row overlap, and section borders. |
 
 ### v3.1.93 — Settings Rhythm And Hover Stability
 
@@ -106,17 +117,6 @@ This corrective release removes the separate Owen Graphite Companion and restore
 | Code titles | Owen Editor 0.6.28 owns persistent Live Preview and Reading View title editing. |
 | Packaging | The companion plugin, installer, build scripts, release ZIP, and workflow steps are removed. |
 
-### v3.1.91 — Report Heading Template Preview
-
-This release grouped all nine report heading templates by purpose. Its companion-rendered H1-H3 settings preview was removed in v3.1.92 when Style Settings returned to a theme-only architecture.
-
-| Area | What changed |
-| --- | --- |
-| Template selection | Standard, emphasis, and index families make the nine heading templates easier to compare. |
-| Template output | The selected template applies consistently to Reading View, Live Preview, and PDF without a rounded selection rim. |
-| Heading geometry | Focus Bar and Number Stamp use square H1 frames, and every preview variant keeps `border-radius: 0`. |
-| Validation | All nine PDF templates, native bilingual metadata, CSS budget, runtime geometry, and local install hashes are checked. |
-
 Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md).
 
 ---
@@ -131,7 +131,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.93.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.94.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -140,7 +140,7 @@ Download **`Owen-Graphite-3.1.93.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.93.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.94.zip` for the installable theme package.
 
 ### Optional Code-Title Editing
 

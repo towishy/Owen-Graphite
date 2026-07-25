@@ -514,3 +514,612 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
   }
 }
 
+/* Owen suite settings use the same grouped card rhythm as Owen Mermaid. */
+body .modal.mod-settings :is(
+  .owen-editor-settings-tab,
+  .owen-exporter-settings,
+  .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])
+) {
+  --ogd-suite-settings-line: color-mix(in srgb, var(--ogd-line-strong, #cbd5e1) 58%, transparent);
+  --ogd-suite-settings-muted: var(--ogd-text-soft, #64748b);
+  --ogd-suite-settings-text: var(--ogd-text-strong, #172033);
+  --ogd-suite-settings-surface: var(--ogd-surface-base, #ffffff);
+  --ogd-suite-settings-header: color-mix(in srgb, var(--ogd-surface-muted, #f8fafc) 78%, transparent);
+  --ogd-suite-settings-hover: color-mix(in srgb, var(--ogd-surface-muted, #f8fafc) 72%, transparent);
+  --ogd-suite-settings-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+  margin-inline: auto;
+  max-width: 960px;
+  padding: 18px 20px 40px;
+  width: 100%;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-header .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"][data-level="0"],
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] {
+  align-items: center;
+  background: var(--ogd-suite-settings-header);
+  border: 1px solid var(--ogd-suite-settings-line);
+  border-radius: 8px 8px 0 0;
+  box-shadow: none;
+  display: flex;
+  min-height: 64px;
+  padding: 12px 16px;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"][data-level="0"] {
+  border-radius: 8px;
+  box-shadow: var(--ogd-suite-settings-shadow);
+  margin: 0 0 16px;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] {
+  margin: 16px 0 0;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading:first-child,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"]:first-child {
+  margin-top: 0;
+}
+
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="interface"],
+body.css-settings-manager .owen-exporter-settings [data-owen-section="languages"] { --ogd-suite-section-accent: #0284c7; }
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="toolbar"] { --ogd-suite-section-accent: #0f766e; }
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="selection"],
+body.css-settings-manager .owen-exporter-settings [data-owen-section="file-code"] { --ogd-suite-section-accent: #4f46e5; }
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="shortcuts"],
+body.css-settings-manager .owen-exporter-settings [data-owen-section="workflow"] { --ogd-suite-section-accent: #7c3aed; }
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="graphite"] { --ogd-suite-section-accent: #a16207; }
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="favorites"] { --ogd-suite-section-accent: #be123c; }
+body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="portability"] { --ogd-suite-section-accent: #2563eb; }
+body.css-settings-manager .owen-exporter-settings [data-owen-section="image-down"] { --ogd-suite-section-accent: #0e7490; }
+body.css-settings-manager .owen-exporter-settings [data-owen-section="archive-restore"] { --ogd-suite-section-accent: #b45309; }
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab .owen-editor-settings-section-glyph,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-section-glyph {
+  align-items: center;
+  background:
+    radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
+    color-mix(in srgb, var(--ogd-suite-section-accent) 11%, var(--ogd-suite-settings-surface));
+  border: 1px solid color-mix(in srgb, var(--ogd-suite-section-accent) 36%, transparent);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 5px rgba(15, 23, 42, 0.06);
+  color: var(--ogd-suite-section-ink);
+  display: inline-flex;
+  flex: 0 0 32px;
+  height: 32px;
+  justify-content: center;
+  margin-right: 10px;
+  width: 32px;
+}
+
+body.css-settings-manager .modal.mod-settings :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph) > svg {
+  height: 17px;
+  width: 17px;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-header .setting-item.setting-item-heading {
+  --ogd-suite-section-ink: color-mix(in srgb, var(--ogd-suite-section-accent) 76%, var(--ogd-suite-settings-text));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ogd-suite-section-accent) 5%, var(--ogd-suite-settings-header)), var(--ogd-suite-settings-header));
+  position: relative;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"][data-level="0"] .style-settings-collapse-indicator,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] .style-settings-collapse-indicator {
+  display: none;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-name,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"][data-level="0"] .setting-item-name,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] .setting-item-name {
+  color: var(--ogd-suite-settings-text);
+  font-size: 14px;
+  font-weight: 820;
+  line-height: 1.3;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-description,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] .setting-item-description {
+  color: var(--ogd-suite-settings-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item {
+  background: var(--ogd-suite-settings-surface);
+  border: 0;
+  border-bottom: 1px solid var(--ogd-suite-settings-line);
+  border-left: 1px solid var(--ogd-suite-settings-line);
+  border-radius: 0;
+  border-right: 1px solid var(--ogd-suite-settings-line);
+  margin: 0;
+  padding: 14px 16px;
+  width: 100%;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .style-settings-heading[data-level="3"] {
+  border-top: 1px solid var(--ogd-suite-settings-line);
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading):is(:hover, :focus-within),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item:is(:hover, :focus-within),
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item:is(:hover, :focus-within) {
+  background: var(--ogd-suite-settings-hover);
+  box-shadow: none;
+  transform: none;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading):is(:has(+ .setting-item-heading), :last-child),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item:last-child,
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item:not(:has(~ .setting-item)) {
+  border-radius: 0 0 8px 8px;
+  box-shadow: var(--ogd-suite-settings-shadow);
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-root {
+  gap: 16px;
+  padding: 0;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group {
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-header .setting-item.setting-item-heading {
+  margin: 0;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body {
+  padding: 0;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"].is-collapsed {
+  border-radius: 8px;
+  box-shadow: var(--ogd-suite-settings-shadow);
+  margin-bottom: 16px;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"].is-collapsed + .style-settings-container {
+  display: none;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container {
+  background: var(--ogd-suite-settings-surface);
+  border: 0;
+  border-radius: 0 0 8px 8px;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+body.theme-dark .modal.mod-settings :is(
+  .owen-editor-settings-tab,
+  .owen-exporter-settings,
+  .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])
+) {
+  --ogd-suite-settings-line: rgba(203, 213, 225, 0.18);
+  --ogd-suite-settings-header: rgba(30, 41, 59, 0.72);
+  --ogd-suite-settings-hover: rgba(30, 41, 59, 0.46);
+  --ogd-suite-settings-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+  --ogd-suite-settings-surface: rgba(15, 23, 42, 0.66);
+}
+
+body.theme-dark.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] {
+  background: var(--ogd-suite-settings-header);
+}
+
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='21' x2='14' y1='4' y2='4'/%3E%3Cline x1='10' x2='3' y1='4' y2='4'/%3E%3Cline x1='21' x2='12' y1='12' y2='12'/%3E%3Cline x1='8' x2='3' y1='12' y2='12'/%3E%3Cline x1='21' x2='16' y1='20' y2='20'/%3E%3Cline x1='12' x2='3' y1='20' y2='20'/%3E%3Cline x1='14' x2='14' y1='2' y2='6'/%3E%3Cline x1='8' x2='8' y1='10' y2='14'/%3E%3Cline x1='16' x2='16' y1='18' y2='22'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #475569;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-reading"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V5a2 2 0 0 1 2-2h5a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M21 18a1 1 0 0 0 1-1V5a2 2 0 0 0-2-2h-5a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3Z'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #0369a1;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-tables"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='18' x='3' y='3' rx='2'/%3E%3Cpath d='M3 9h18M3 15h18M9 3v18'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #0f766e;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-report"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z'/%3E%3Cpath d='M14 2v6h6M8 13h8M8 17h8M8 9h2'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #4338ca;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-workspace"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='9' x='3' y='3' rx='1'/%3E%3Crect width='7' height='5' x='14' y='3' rx='1'/%3E%3Crect width='7' height='9' x='14' y='12' rx='1'/%3E%3Crect width='7' height='5' x='3' y='16' rx='1'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #2563eb;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-fonts"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7V4h16v3M9 20h6M12 4v16'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #a16207;
+}
+
+body.css-settings-manager .style-settings-heading[data-id="ogd-settings-pdf-marginalia"] {
+  --ogd-suite-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42Z'/%3E%3Ccircle cx='7.5' cy='7.5' r='.5' fill='black'/%3E%3C/svg%3E");
+  --ogd-suite-section-ink: #be123c;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) :is(
+  .style-settings-heading[data-id="owen-graphite-document"],
+  .style-settings-heading[data-id^="ogd-settings-"]
+) {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ogd-suite-section-ink) 5%, var(--ogd-suite-settings-header)),
+    var(--ogd-suite-settings-header)
+  );
+  position: relative;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) :is(
+  .style-settings-heading[data-id="owen-graphite-document"],
+  .style-settings-heading[data-id^="ogd-settings-"]
+) .style-settings-collapse-indicator {
+  display: none;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) :is(
+  .style-settings-heading[data-id="owen-graphite-document"],
+  .style-settings-heading[data-id^="ogd-settings-"]
+)::before {
+  background:
+    radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
+    color-mix(in srgb, var(--ogd-suite-section-ink) 11%, var(--ogd-suite-settings-surface));
+  border: 1px solid color-mix(in srgb, var(--ogd-suite-section-ink) 36%, transparent);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 5px rgba(15, 23, 42, 0.06);
+  content: "";
+  display: block;
+  flex: 0 0 32px;
+  height: 32px;
+  margin-right: 10px;
+  width: 32px;
+}
+
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) :is(
+  .style-settings-heading[data-id="owen-graphite-document"],
+  .style-settings-heading[data-id^="ogd-settings-"]
+)::after {
+  -webkit-mask: var(--ogd-suite-section-icon) center / contain no-repeat;
+  background: var(--ogd-suite-section-ink);
+  content: "";
+  height: 18px;
+  left: 23px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] {
+  --ogd-suite-section-ink: #cbd5e1;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-reading"] {
+  --ogd-suite-section-ink: #7dd3fc;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-tables"] {
+  --ogd-suite-section-ink: #5eead4;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-report"] {
+  --ogd-suite-section-ink: #a5b4fc;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-workspace"] {
+  --ogd-suite-section-ink: #93c5fd;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-fonts"] {
+  --ogd-suite-section-ink: #fde68a;
+}
+
+body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settings-pdf-marginalia"] {
+  --ogd-suite-section-ink: #fda4af;
+}
+
+@media screen and (max-width: 700px) {
+  body .modal.mod-settings :is(
+    .owen-editor-settings-tab,
+    .owen-exporter-settings,
+    .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])
+  ) {
+    padding: 12px 10px 28px;
+  }
+
+  body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item:not(.setting-item-heading),
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-info,
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item > .setting-item-info {
+    margin: 0 0 8px;
+  }
+
+  body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-control,
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item > .setting-item-control {
+    justify-content: flex-start;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Obsidian core settings retain native groups while matching the Owen suite card rhythm. */
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content {
+  --ogd-core-settings-line: color-mix(in srgb, var(--ogd-line-strong, #cbd5e1) 58%, transparent);
+  --ogd-core-settings-muted: var(--ogd-text-soft, #64748b);
+  --ogd-core-settings-text: var(--ogd-text-strong, #172033);
+  --ogd-core-settings-surface: var(--ogd-surface-base, #ffffff);
+  --ogd-core-settings-header: color-mix(in srgb, var(--ogd-surface-muted, #f8fafc) 78%, transparent);
+  --ogd-core-settings-hover: color-mix(in srgb, var(--ogd-surface-muted, #f8fafc) 72%, transparent);
+  --ogd-core-settings-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+  margin-inline: auto;
+  max-width: 960px;
+  padding: 18px 20px 40px;
+  width: 100%;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='21' x2='14' y1='4' y2='4'/%3E%3Cline x1='10' x2='3' y1='4' y2='4'/%3E%3Cline x1='21' x2='12' y1='12' y2='12'/%3E%3Cline x1='8' x2='3' y1='12' y2='12'/%3E%3Cline x1='21' x2='16' y1='20' y2='20'/%3E%3Cline x1='12' x2='3' y1='20' y2='20'/%3E%3Cline x1='14' x2='14' y1='2' y2='6'/%3E%3Cline x1='8' x2='8' y1='10' y2='14'/%3E%3Cline x1='16' x2='16' y1='18' y2='22'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #475569;
+  background: var(--ogd-core-settings-surface);
+  border: 1px solid var(--ogd-core-settings-line);
+  border-radius: 8px;
+  box-shadow: var(--ogd-core-settings-shadow);
+  margin: 0 0 16px;
+  overflow: hidden;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-item.setting-item-heading {
+  align-items: center;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ogd-core-section-ink) 5%, var(--ogd-core-settings-header)), var(--ogd-core-settings-header));
+  border: 0;
+  border-bottom: 1px solid var(--ogd-core-settings-line);
+  border-radius: 0;
+  display: flex;
+  margin: 0;
+  min-height: 64px;
+  padding: 12px 16px;
+  position: relative;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-item.setting-item-heading::before {
+  background:
+    radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
+    color-mix(in srgb, var(--ogd-core-section-ink) 11%, var(--ogd-core-settings-surface));
+  border: 1px solid color-mix(in srgb, var(--ogd-core-section-ink) 36%, transparent);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 5px rgba(15, 23, 42, 0.06);
+  content: "";
+  display: block;
+  flex: 0 0 32px;
+  height: 32px;
+  margin-right: 10px;
+  width: 32px;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-item.setting-item-heading::after {
+  -webkit-mask: var(--ogd-core-section-icon) center / contain no-repeat;
+  background: var(--ogd-core-section-ink);
+  content: "";
+  height: 18px;
+  left: 23px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-items {
+  background: transparent;
+  padding: 0;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-items > .setting-item {
+  background: var(--ogd-core-settings-surface);
+  border: 0;
+  border-bottom: 1px solid var(--ogd-core-settings-line);
+  border-radius: 0;
+  margin: 0;
+  padding: 14px 16px;
+  width: 100%;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-items > .setting-item:last-child {
+  border-bottom: 0;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content > .setting-group > .setting-items > .setting-item:is(:hover, :focus-within) {
+  background: var(--ogd-core-settings-hover);
+  box-shadow: none;
+  transform: none;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="hotkeys"].is-active) .vertical-tab-content > .setting-group > .setting-items > .hotkey-list-container > .setting-item {
+  box-sizing: border-box;
+  padding-inline: 16px;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="about"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #0369a1;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="editor"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #0284c7;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="editor"].is-active) .vertical-tab-content > .setting-group:nth-child(3) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.586 12.586 19 19'/%3E%3Cpath d='M3.648 3.648 11.5 21l2.78-6.72L21 11.5Z'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #0f766e;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="file"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #4f46e5;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="file"].is-active) .vertical-tab-content > .setting-group:nth-child(3) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #be123c;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='20' height='14' x='2' y='3' rx='2'/%3E%3Cpath d='M8 21h8M12 17v4M2 8h20'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #2563eb;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content > .setting-group:nth-child(3) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7V4h16v3M9 20h6M12 4v16'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #a16207;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content > .setting-group:nth-child(5) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 9-4 3 4 3M16 9l4 3-4 3M14 4l-4 16'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #7c3aed;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="keychain"].is-active) .vertical-tab-content > .setting-group:first-child {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='7.5' cy='15.5' r='5.5'/%3E%3Cpath d='m21 2-9.6 9.6M15 7l3 3M18 4l3 3'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #b45309;
+}
+
+body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="community-plugins"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+  --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.5 2H2v10.5h10.5ZM22 2h-6v6h6ZM22 11.5h-6V22h6ZM12.5 16H2v6h10.5Z'/%3E%3C/svg%3E");
+  --ogd-core-section-ink: #0f766e;
+}
+
+body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+  [data-setting-id="about"],
+  [data-setting-id="editor"],
+  [data-setting-id="file"],
+  [data-setting-id="appearance"],
+  [data-setting-id="hotkeys"],
+  [data-setting-id="keychain"],
+  [data-setting-id="plugins"],
+  [data-setting-id="community-plugins"]
+)) .vertical-tab-content {
+  --ogd-core-settings-line: rgba(203, 213, 225, 0.18);
+  --ogd-core-settings-header: rgba(30, 41, 59, 0.72);
+  --ogd-core-settings-hover: rgba(30, 41, 59, 0.46);
+  --ogd-core-settings-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+  --ogd-core-settings-surface: rgba(15, 23, 42, 0.66);
+}
+
+@media screen and (max-width: 700px) {
+  body .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
+    [data-setting-id="about"],
+    [data-setting-id="editor"],
+    [data-setting-id="file"],
+    [data-setting-id="appearance"],
+    [data-setting-id="hotkeys"],
+    [data-setting-id="keychain"],
+    [data-setting-id="plugins"],
+    [data-setting-id="community-plugins"]
+  )) .vertical-tab-content {
+    padding: 12px 10px 28px;
+  }
+}
+

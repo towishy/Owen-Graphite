@@ -12,10 +12,14 @@ Applies to Obsidian settings controls and Style Settings metadata.
 - Do not put setting control presentation in overlay or workspace chrome owners unless the selector belongs to those surfaces.
 - A setting option is not complete until CSS metadata, the contract JSON, and docs agree.
 - Use tokens for repeated setting UI colors, spacing, and focus states instead of local literals.
+- Scope Obsidian core settings cards through the active native `data-setting-id` and direct `.vertical-tab-content > .setting-group` boundary. Do not target translated section-title text.
+- Core groups without a native heading receive card geometry only. Do not synthesize locale-dependent labels or icon headers from CSS.
+- Section-specific core icons may use group position only inside a named core tab because Obsidian does not expose semantic group ids. Re-capture all core tabs after an Obsidian update changes group count or order.
 
 ## Evidence
 
 - For settings UI changes, capture the setting pane state and any focused/hovered control involved.
+- For core card changes, record group/card counts, heading icon geometry, horizontal overflow, and row overlap for `about`, `editor`, `file`, `appearance`, `hotkeys`, `keychain`, `plugins`, and `community-plugins`.
 - For Style Settings changes, record the setting id, default, option values, and generated body class.
 
 ## Checks

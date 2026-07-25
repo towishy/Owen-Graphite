@@ -1,20 +1,20 @@
 {
   "schema": "owen-graphite/source-usage-map/1",
   "moduleCount": 26,
-  "sourceLines": 20617,
-  "rules": 2667,
-  "selectorParts": 4106,
+  "sourceLines": 21226,
+  "rules": 2744,
+  "selectorParts": 4206,
   "labelTotals": {
     "callout-list": 434,
     "cm6": 360,
-    "code": 1069,
+    "code": 1070,
     "lp-html-table": 83,
     "lp-markdown-table-widget-reference": 94,
-    "overlay-search": 302,
+    "overlay-search": 352,
     "print-pdf": 553,
     "reading-rendered": 1223,
-    "table": 1185,
-    "workspace-chrome": 703
+    "table": 1208,
+    "workspace-chrome": 725
   },
   "hardViolations": [
     {
@@ -437,15 +437,16 @@
       "index": 16,
       "module": "src/chrome/33-settings-controls.css",
       "legacyId": "07c-settings-controls.css",
-      "sourceLines": 517,
+      "sourceLines": 1126,
       "bundleStartLine": 9335,
       "bundleEndLine": 9764,
-      "rules": 108,
-      "selectorParts": 208,
+      "rules": 185,
+      "selectorParts": 308,
       "labels": {
-        "overlay-search": 72,
-        "table": 86,
-        "workspace-chrome": 1
+        "code": 1,
+        "overlay-search": 122,
+        "table": 109,
+        "workspace-chrome": 23
       },
       "ownerSurfaces": [
         "settings-controls"
@@ -6297,6 +6298,239 @@
         "table"
       ],
       "selector": "body:not(.is-mobile).theme-dark .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) .setting-item:not(.setting-item-heading)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 545,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading):is(:hover, :focus-within), body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item:is(:hover, :focus-within), body.css-settings-manager .style-settings-heading[data-id=\"owen-graphite-document\"] + .style-settings-container > .style-settings-heading[data-level=\"2\"] + .style-settings-container > .setting-item:is(:hover, :focus-within)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 598,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body.theme-dark .modal.mod-settings :is( .owen-editor-settings-tab, .owen-exporter-settings, .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"]) )"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 602,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"]) .style-settings-heading[data-id=\"owen-graphite-document\"] + .style-settings-container > .style-settings-heading[data-level=\"2\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 617,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-tables\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 682,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"owen-graphite-document\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 686,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-reading\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 690,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-tables\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 694,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-report\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 698,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-workspace\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 702,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-fonts\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 706,
+      "context": "",
+      "labels": [
+        "table"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .style-settings-heading[data-id=\"ogd-settings-pdf-marginalia\"]"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 855,
+      "context": "@media screen and (max-width: 700px)",
+      "labels": [
+        "overlay-search",
+        "table"
+      ],
+      "selector": "body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-control, body.css-settings-manager .style-settings-heading[data-id=\"owen-graphite-document\"] + .style-settings-container > .style-settings-heading[data-level=\"2\"] + .style-settings-container > .setting-item > .setting-item-control"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 828,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is( [data-setting-id=\"about\"], [data-setting-id=\"editor\"], [data-setting-id=\"file\"], [data-setting-id=\"appearance\"], [data-setting-id=\"hotkeys\"], [data-setting-id=\"keychain\"], [data-setting-id=\"plugins\"], [data-setting-id=\"community-plugins\"] )) .vertical-tab-content > .setting-group > .setting-items > .setting-item:is(:hover, :focus-within)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 838,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"about\"].is-active) .vertical-tab-content > .setting-group:nth-child(2)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 843,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"editor\"].is-active) .vertical-tab-content > .setting-group:nth-child(2)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 848,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"editor\"].is-active) .vertical-tab-content > .setting-group:nth-child(3)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 853,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"file\"].is-active) .vertical-tab-content > .setting-group:nth-child(2)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 858,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"file\"].is-active) .vertical-tab-content > .setting-group:nth-child(3)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 863,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"appearance\"].is-active) .vertical-tab-content > .setting-group:nth-child(2)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 868,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"appearance\"].is-active) .vertical-tab-content > .setting-group:nth-child(3)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 873,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"appearance\"].is-active) .vertical-tab-content > .setting-group:nth-child(5)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 883,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id=\"community-plugins\"].is-active) .vertical-tab-content > .setting-group:nth-child(2)"
+    },
+    {
+      "module": "src/chrome/33-settings-controls.css",
+      "line": 891,
+      "context": "",
+      "labels": [
+        "overlay-search",
+        "table",
+        "workspace-chrome"
+      ],
+      "selector": "body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is( [data-setting-id=\"about\"], [data-setting-id=\"editor\"], [data-setting-id=\"file\"], [data-setting-id=\"appearance\"], [data-setting-id=\"hotkeys\"], [data-setting-id=\"keychain\"], [data-setting-id=\"plugins\"], [data-setting-id=\"community-plugins\"] )) .vertical-tab-content"
     },
     {
       "module": "src/plugins/60-canvas-graph-link-panes.css",
