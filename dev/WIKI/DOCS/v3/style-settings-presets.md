@@ -7,30 +7,30 @@
 | 목적 | 켜거나 고를 옵션 | 추천 상황 |
 | --- | --- | --- |
 | 기술 문서 기본형 | `ogd-modern-tables`, `ogd-cjk-boost`, `ogd-code-light`, `ogd-spacing-standard` | README, 위키, API 노트처럼 표와 코드가 많은 문서 |
-| 보고서/PDF 제출 | `ogd-report-mode`, `ogd-auto-number-headings`, `ogd-print-avoid-breaks`, `ogd-pdf-header-enabled`, `ogd-pdf-footer-enabled` | A4/A3 PDF, 검토본, 내부 보고서 |
+| 보고서/PDF 제출 | `ogd-auto-number-headings`, `ogd-print-avoid-breaks`, `ogd-pdf-header-enabled`, `ogd-pdf-footer-enabled` | A4/A3 PDF, 검토본, 내부 보고서 |
 | 장시간 읽기 | `ogd-eye-care`, `ogd-serif-body`, `ogd-spacing-relaxed`, `ogd-motion-subtle` | 긴 리서치 노트, 독서 기록, 다크 모드 피로도 완화 |
 | 넓은 위키 화면 | `ogd-max-width`, `ogd-modern-tables`, `ogd-glass-subtle` | 큰 모니터에서 여러 pane을 열고 쓰는 vault |
-| 발표/검토용 강조 | `ogd-pdf-visibility`, `ogd-pdf-font-large`, `ogd-accent-preset` | 화면 공유, 리뷰 PDF, 시니어 리뷰용 출력 |
-| 고객 전달용 PDF | `ogd-pdf-client-delivery`, `ogd-print-avoid-breaks`, `ogd-modern-tables` | 메일, Teams, 브라우저 미리보기에서 바로 읽히는 외부 공유 PDF |
+| 발표/검토용 강조 | `ogd-pdf-font-large`, `ogd-pdf-readability`, `ogd-accent-preset` | 화면 공유, 리뷰 PDF, 시니어 리뷰용 출력 |
+| 고객 전달용 PDF | `ogd-pdf-font-comfortable`, `ogd-pdf-links-reference`, `ogd-print-avoid-breaks`, `ogd-modern-tables` | 메일, Teams, 브라우저 미리보기에서 바로 읽히는 외부 공유 PDF |
 
 ## 보고서/PDF 프리셋
 
 | 그룹 | 권장값 |
 | --- | --- |
-| 문서 구조 | `ogd-report-mode`: on, `ogd-auto-number-headings`: on, `ogd-indent-paragraph`: 필요 시 on |
-| 페이지 분할 | `ogd-print-avoid-breaks`: on, `ogd-pdf-compact`: 긴 문서일 때만 on |
+| 문서 구조 | `ogd-auto-number-headings`: on, `ogd-indent-paragraph`: 필요 시 on, `ogd-serif-body`: 필요 시 on |
+| 페이지 분할 | `ogd-print-avoid-breaks`: on |
 | 첫 페이지 헤더 | `ogd-pdf-header-enabled`: on, `ogd-pdf-label-layout`: `ogd-pdf-label-segmented` 또는 `ogd-pdf-label-segmented-dual` |
 | 두 번째 Key/Value | `ogd-pdf-header-dual-pair`: 보안 등급, 검토 상태, 부서 정보를 함께 넣을 때 on |
 | 마지막 페이지 푸터 | `ogd-pdf-footer-enabled`: 제출일, 작성자, 문서 상태가 필요할 때 on |
 
-## 고객 전달용 PDF 프리셋
+## 고객 전달용 PDF 조합
 
 | 그룹 | 권장값 |
 | --- | --- |
-| 핵심 프리셋 | `ogd-pdf-client-delivery`: on |
+| 본문 크기 | `ogd-pdf-font-size`: `ogd-pdf-font-comfortable` 또는 `ogd-pdf-font-large` |
 | 페이지 분할 | `ogd-print-avoid-breaks`: on |
 | 표 | `ogd-modern-tables`: on, 표가 넓으면 Markdown table에 `print-fit-table` 또는 `wrap-table` class 사용 |
-| 링크 | 본문 뒤 URL 출력은 프리셋이 숨기고, 명시적인 `ogd-reference-list` 중심으로 정리 |
+| 링크 | `ogd-pdf-link-mode`: `ogd-pdf-links-reference`, 명시적인 `ogd-reference-list` 중심으로 정리 |
 | 헤더/푸터 | 필요 시 `ogd-pdf-header-enabled`, `ogd-pdf-footer-enabled`, `ogd-pdf-label-badge`를 함께 사용 |
 
 ## 위키/기술 문서 프리셋

@@ -38,6 +38,7 @@ COVERAGE_FIXTURES = [
     ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "coverage-priority-fixture.html",
 ]
 MATRIX_TEMPLATE = ROOT / "dev" / "WIKI" / "effective-baseline" / "v{version}" / "style-settings-matrix.json"
+STYLE_SETTINGS_CONTRACT = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "style-settings-contract.json"
 OUT_JSON = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.json"
 OUT_MD = ROOT / "dev" / "WIKI" / "MAP" / "unused-css-candidates.md"
 
@@ -242,11 +243,20 @@ def load_style_scenarios(limit: int | None) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
     payload = json.loads(path.read_text(encoding="utf-8"))
+    contract = json.loads(STYLE_SETTINGS_CONTRACT.read_text(encoding="utf-8"))
+    current_setting_ids = {str(option["id"]) for option in contract.get("options", [])}
+    removed_setting_ids = set(payload.get("coverage", {})) - current_setting_ids
+    removed_body_classes = {
+        str(body_class)
+        for item in payload.get("scenarios", [])
+        if set(item.get("settings", {})) & removed_setting_ids
+        for body_class in item.get("bodyClasses", [])
+    }
     seen: set[tuple[str, str, tuple[str, ...]]] = set()
     scenarios: list[dict[str, Any]] = []
     for item in payload.get("scenarios", []):
         body_classes = tuple(sorted(str(value) for value in item.get("bodyClasses", [])))
-        if not body_classes:
+        if not body_classes or removed_body_classes.intersection(body_classes):
             continue
         key = (str(item.get("theme", "light")), str(item.get("media", "screen")), body_classes)
         if key in seen:
@@ -288,7 +298,6 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                     "ogd-pdf-segment-graphite",
                     "ogd-pdf-segment-key-graphite",
                     "ogd-pdf-font-comfortable",
-                    "ogd-pdf-visibility",
                 ],
                 "viewport": {"width": 1440, "height": 1400},
             },
@@ -300,7 +309,6 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                 "bodyClasses": [
                     "ogd-pdf-label-filled",
                     "ogd-pdf-font-large",
-                    "ogd-pdf-visibility",
                     "ogd-zebra-disabled-permanently",
                 ],
                 "viewport": {"width": 1440, "height": 1400},
@@ -343,7 +351,6 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
         "ogd-pdf-segment-value-violet",
         "ogd-pdf-segment-value-rose",
         "ogd-pdf-segment-value-amber",
-        "ogd-report-mode",
     ]:
         scenarios.append(
             {
@@ -355,16 +362,6 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                 "viewport": {"width": 1440, "height": 1400},
             }
         )
-    scenarios.append(
-        {
-            "id": "harness-dark-report-mode",
-            "fixture": DEFAULT_FIXTURE,
-            "theme": "dark",
-            "media": "screen",
-            "bodyClasses": ["ogd-report-mode"],
-            "viewport": {"width": 1440, "height": 1400},
-        }
-    )
     for body_class in ["ogd-glass-subtle", "ogd-glass-strong"]:
         scenarios.append(
             {
@@ -388,9 +385,9 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                     {"id": f"{fixture.stem}-screen-dark-mobile", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["is-mobile"], "viewport": {"width": 390, "height": 844}},
                     {"id": f"{fixture.stem}-screen-light-relaxed", "fixture": fixture, "theme": "light", "media": "screen", "bodyClasses": ["ogd-spacing-relaxed", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-screen-dark-relaxed", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-glass-subtle", "ogd-spacing-relaxed", "ogd-modern-tables", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
-                    {"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility"], "viewport": {"width": 1440, "height": 1400}},
-                    {"id": f"{fixture.stem}-print-pdf-compound", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility", "ogd-pdf-compact", "ogd-pdf-screen-delivery", "ogd-pdf-header-enabled", "ogd-pdf-header-top-center", "ogd-pdf-label-segmented-dual", "ogd-pdf-header-dual-pair", "ogd-pdf-links-inline", "ogd-pdf-segment-value-violet", "ogd-pdf-segment-value-rose", "ogd-pdf-segment-value-amber"], "viewport": {"width": 1440, "height": 1400}},
-                    {"id": f"{fixture.stem}-print-pdf-links-clean", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-report-mode", "ogd-pdf-visibility", "ogd-pdf-links-clean"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-pdf-font-comfortable"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-print-pdf-compound", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-pdf-font-comfortable", "ogd-pdf-header-enabled", "ogd-pdf-header-top-center", "ogd-pdf-label-segmented-dual", "ogd-pdf-header-dual-pair", "ogd-pdf-links-inline", "ogd-pdf-segment-value-violet", "ogd-pdf-segment-value-rose", "ogd-pdf-segment-value-amber"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-print-pdf-links-clean", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-pdf-font-comfortable", "ogd-pdf-links-clean"], "viewport": {"width": 1440, "height": 1400}},
                 ]
             )
     scenarios.extend(load_style_scenarios(style_limit))

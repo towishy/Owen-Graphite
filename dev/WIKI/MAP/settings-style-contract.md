@@ -6,14 +6,14 @@ Applies to Obsidian settings controls and Style Settings metadata.
 
 - Obsidian settings panes, setting rows, toggles, sliders, dropdowns, and settings search presentation: `src/chrome/33-settings-controls.css`.
 - Style Settings metadata, ids, defaults, options, and user-facing compatibility: `src/features/40-style-settings.css` and `dev/WIKI/DOCS/v3/style-settings-contract.json`.
-- Owen Graphite row localization when Style Settings cannot resolve the Obsidian locale: `compat/owen-graphite-style-settings-l10n`.
+- Owen Graphite row localization when Style Settings cannot resolve the Obsidian locale, plus transient desktop title/metadata tooltip structure: `compat/owen-graphite-style-settings-l10n`.
 
 ## Boundaries
 
 - Do not put setting control presentation in overlay or workspace chrome owners unless the selector belongs to those surfaces.
 - A setting option is not complete until CSS metadata, the contract JSON, and docs agree.
 - `ogd-style-settings-language` must preserve `ogd-language-auto`, `ogd-language-ko`, and `ogd-language-en`; automatic mode follows the Obsidian runtime locale.
-- The localization bridge may translate only Owen Graphite rows and Style Settings chrome. It must not modify Style Settings `data.json`, setting ids, defaults, generated body classes, or machine option values.
+- The companion may translate only Owen Graphite rows and Style Settings chrome. It may structure transient desktop `.tooltip` text only when Obsidian provides a title/metadata blank-line separator; it must preserve the text and ignore one-line tooltips. It must not modify Style Settings `data.json`, setting ids, defaults, generated body classes, or machine option values.
 - Use tokens for repeated setting UI colors, spacing, and focus states instead of local literals.
 - Scope Obsidian core settings cards through the active native `data-setting-id` and direct `.vertical-tab-content > .setting-group` boundary. Do not target translated section-title text.
 - Core groups without a native heading receive card geometry only. Do not synthesize locale-dependent labels or icon headers from CSS.

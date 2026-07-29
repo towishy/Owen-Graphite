@@ -7,23 +7,23 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 21262
-- Parsed CSS rules: 2746
-- Selector parts: 4208
+- Source CSS lines: 20821
+- Parsed CSS rules: 2687
+- Selector parts: 4120
 - Hard core-owner violations: 10
 
 ## Surface Totals
 
-- `callout-list`: 434 rules
-- `cm6`: 360 rules
-- `code`: 1070 rules
-- `lp-html-table`: 83 rules
-- `lp-markdown-table-widget-reference`: 94 rules
-- `overlay-search`: 352 rules
-- `print-pdf`: 553 rules
-- `reading-rendered`: 1223 rules
-- `table`: 1209 rules
-- `workspace-chrome`: 725 rules
+- `callout-list`: 396 rules
+- `cm6`: 348 rules
+- `code`: 1012 rules
+- `lp-html-table`: 71 rules
+- `lp-markdown-table-widget-reference`: 82 rules
+- `overlay-search`: 373 rules
+- `print-pdf`: 501 rules
+- `reading-rendered`: 1150 rules
+- `table`: 1190 rules
+- `workspace-chrome`: 722 rules
 
 ## Quick Routing
 
@@ -152,7 +152,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 
 | # | Module | Bundle Lines | Source Lines | Primary Owners | Major Labels | Cascade Relation |
 | ---: | --- | --- | ---: | --- | --- | --- |
-| 1 | `src/features/40-style-settings.css` | 45-818 | 994 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
+| 1 | `src/features/40-style-settings.css` | 45-818 | 962 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
 | 2 | `src/tokens/00-light-tokens.css` | 822-1088 | 270 | pdf-marginalia, shared-tokens | callout-list:1, code:5, print-pdf:2, table:1, workspace-chrome:1 | after `src/features/40-style-settings.css`; before `src/tokens/01-dark-tokens.css` |
 | 3 | `src/tokens/01-dark-tokens.css` | 1091-1306 | 230 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:7, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 1310-1444 | 136 | support: base/embed workspace primitives | cm6:5, code:6, overlay-search:5, reading-rendered:8, table:9, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |
@@ -161,23 +161,23 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 7 | `src/surfaces/21-reading-callouts-lists.css` | 3422-4264 | 877 | reading-callouts-lists | callout-list:106, cm6:3, code:71, reading-rendered:122, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 4268-4496 | 248 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:5, overlay-search:1, reading-rendered:18, table:5, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 4500-4996 | 638 | support: dark theme support | callout-list:35, cm6:6, code:52, overlay-search:3, print-pdf:2, reading-rendered:89, table:95, workspace-chrome:6 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
-| 10 | `src/features/43-print-base.css` | 5000-5370 | 876 | pdf-base | callout-list:28, cm6:1, code:101, print-pdf:116, reading-rendered:107, table:10, workspace-chrome:13 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
+| 10 | `src/features/43-print-base.css` | 5000-5370 | 880 | pdf-base | callout-list:29, cm6:1, code:101, print-pdf:116, reading-rendered:106, table:10, workspace-chrome:13 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
 | 11 | `src/base/13-live-preview.css` | 5374-6447 | 1381 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:192, code:41, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:75, workspace-chrome:9 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
-| 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1592 | pdf-marginalia | callout-list:24, cm6:4, code:81, overlay-search:2, print-pdf:157, reading-rendered:127, table:38, workspace-chrome:14 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
+| 12 | `src/features/41-feature-presets.css` | 6451-8032 | 1482 | pdf-marginalia | callout-list:23, cm6:4, code:79, overlay-search:2, print-pdf:155, reading-rendered:116, table:37, workspace-chrome:14 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
 | 13 | `src/chrome/30-workspace.css` | 8036-8817 | 696 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:69, table:68, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 8821-9021 | 248 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:24, workspace-chrome:20 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 9025-9331 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
-| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 1135 | settings-controls | code:1, overlay-search:122, table:110, workspace-chrome:23 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
+| 16 | `src/chrome/33-settings-controls.css` | 9335-9764 | 1246 | settings-controls | code:5, overlay-search:125, print-pdf:11, table:118, workspace-chrome:23 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 9768-10161 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 538 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:7, print-pdf:2, reading-rendered:27, table:37, workspace-chrome:17 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
-| 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 2078 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:60, cm6:3, code:260, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:211, reading-rendered:261, table:125, workspace-chrome:61 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
+| 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 1651 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:34, cm6:3, code:205, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:152, reading-rendered:204, table:109, workspace-chrome:58 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
 | 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 263 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:23 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
 | 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1078 | overlay-menu-search | cm6:6, code:7, overlay-search:34, reading-rendered:6, table:32, workspace-chrome:47 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 990 | overlay-menu-search | code:5, overlay-search:57, print-pdf:1, reading-rendered:4, table:60, workspace-chrome:26 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
 | 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 1337 | workspace-chrome | code:2, overlay-search:16, table:170, workspace-chrome:228 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
 | 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 220 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:13, overlay-search:9, print-pdf:2, reading-rendered:2, table:6, workspace-chrome:9 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
-| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1736 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:47, overlay-search:46, print-pdf:7, reading-rendered:39, table:108, workspace-chrome:101 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
-| 26 | `src/surfaces/24-html-table-live-preview-glass.css` | 17930-18169 | 238 | live-preview-rendered-widgets | callout-list:63, cm6:63, code:14, lp-html-table:63, lp-markdown-table-widget-reference:63, print-pdf:15, table:63 | after `src/surfaces/23-liquid-glass-core.css`; before `None` |
+| 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1802 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:44, overlay-search:64, print-pdf:7, reading-rendered:35, table:110, workspace-chrome:101 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
+| 26 | `src/surfaces/24-html-table-live-preview-glass.css` | 17930-18169 | 185 | live-preview-rendered-widgets | callout-list:51, cm6:51, code:12, lp-html-table:51, lp-markdown-table-widget-reference:51, print-pdf:13, table:51 | after `src/surfaces/23-liquid-glass-core.css`; before `None` |
 
 ## Table Code Map
 
@@ -198,23 +198,23 @@ Table-related rules are intentionally split by surface:
 | `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 122 | 0 |
 | `src/surfaces/22-reading-embeds-workspace.css` | 5 | 0 | 18 | 0 |
 | `src/themes/50-dark.css` | 95 | 0 | 89 | 2 |
-| `src/features/43-print-base.css` | 10 | 0 | 107 | 116 |
+| `src/features/43-print-base.css` | 10 | 0 | 106 | 116 |
 | `src/base/13-live-preview.css` | 75 | 18 | 10 | 11 |
-| `src/features/41-feature-presets.css` | 38 | 0 | 127 | 157 |
+| `src/features/41-feature-presets.css` | 37 | 0 | 116 | 155 |
 | `src/chrome/30-workspace.css` | 68 | 0 | 69 | 3 |
 | `src/chrome/31-navigation-tasks-search.css` | 24 | 0 | 25 | 0 |
 | `src/chrome/32-overlay-popover-dataview.css` | 24 | 0 | 24 | 0 |
-| `src/chrome/33-settings-controls.css` | 110 | 0 | 0 | 0 |
+| `src/chrome/33-settings-controls.css` | 118 | 0 | 0 | 11 |
 | `src/plugins/60-canvas-graph-link-panes.css` | 48 | 0 | 0 | 0 |
 | `src/plugins/61-live-preview-mobile-plugin.css` | 37 | 0 | 27 | 2 |
-| `src/features/42-report-print-polish.css` | 125 | 2 | 261 | 211 |
+| `src/features/42-report-print-polish.css` | 109 | 2 | 204 | 152 |
 | `src/chrome/34-nav-ribbon-glass.css` | 13 | 0 | 1 | 0 |
 | `src/chrome/35-editing-menu-tooltip-glass.css` | 32 | 0 | 6 | 0 |
 | `src/chrome/36-floating-ui-glass-system.css` | 60 | 0 | 4 | 1 |
 | `src/chrome/37-tabs-file-explorer-search.css` | 170 | 0 | 0 | 0 |
 | `src/themes/51-accessibility-motion-contrast.css` | 6 | 0 | 2 | 2 |
-| `src/surfaces/23-liquid-glass-core.css` | 108 | 0 | 39 | 7 |
-| `src/surfaces/24-html-table-live-preview-glass.css` | 63 | 63 | 0 | 15 |
+| `src/surfaces/23-liquid-glass-core.css` | 110 | 0 | 35 | 7 |
+| `src/surfaces/24-html-table-live-preview-glass.css` | 51 | 51 | 0 | 13 |
 
 ## Table Selector Rules
 
@@ -238,8 +238,8 @@ Forbidden:
 | `.markdown-rendered table / .markdown-preview-view table` | src/surfaces/20-reading-tables-code.css | Reading/rendered table primitives and ordinary table surfaces | allowed |
 | `.markdown-source-view.mod-cm6 ... table:not(.cm-table):not(.cm-table-widget)` | src/base/13-live-preview.css and src/surfaces/24-html-table-live-preview-glass.css | Live Preview HTML table embeds only | allowed with both guards |
 | `.cm-table-widget / table.cm-table` | Obsidian core | Live Preview markdown table widget geometry | forbidden for theme geometry |
-| `body.ogd-report-mode ... table / @media print table` | src/features/42-report-print-polish.css | Report/PDF table output and print-safe adjustments | allowed in report/print scope |
-| `table caption / .table-caption / .table-source` | src/surfaces/23-liquid-glass-core.css and src/features/42-report-print-polish.css | Rendered captions and report notes | allowed for rendered/report surfaces |
+| `@media print table` | src/features/42-report-print-polish.css | PDF table output and print-safe adjustments | allowed in print scope |
+| `table caption / .table-caption / .table-source` | src/surfaces/23-liquid-glass-core.css and src/features/42-report-print-polish.css | Rendered captions and print notes | allowed for rendered/print surfaces |
 
 ## Risk Contracts
 

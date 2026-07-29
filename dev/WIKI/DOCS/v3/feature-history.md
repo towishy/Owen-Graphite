@@ -2,6 +2,10 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.93 — Settings Rhythm And Hover Stability
+
+Style Settings section heading과 일반 행을 평평한 divider 기반 surface로 정리하고, hover의 animated border·outline·shadow·blur·lift를 제거했습니다. 297mm 기본 문서 폭을 Obsidian readable line width에 연결하고 H1-H4 및 문서 제목 위계를 기술 문서에 맞게 다듬었습니다.
+
 ## v3.1.91 — Report Heading Template Preview
 
 보고서 제목 디자인 템플릿 9종을 기본·강조·인덱스 계열로 재분류하고 H1-H3 설정 미리보기를 추가했습니다. Companion 기반 미리보기는 v3.1.92에서 제거됐지만 Reading View, Live Preview, PDF의 9개 제목 템플릿과 각진 heading geometry는 그대로 유지됩니다.

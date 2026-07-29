@@ -2,7 +2,7 @@
 
 const { Plugin, moment } = require("obsidian");
 const catalog = require("./catalog.generated.json");
-const { localeFromClasses, localizedEntry } = require("./core.js");
+const { localeFromClasses, localizedEntry, splitTooltipText } = require("./core.js");
 
 const CHROME = {
   en: {
@@ -92,10 +92,34 @@ function translateChrome(root, locale) {
   });
 }
 
+function structureTooltip(tooltip) {
+  if (tooltip.dataset.ogdStructuredTooltip === "true") return;
+  const textNodes = Array.from(tooltip.childNodes).filter((node) => node.nodeType === Node.TEXT_NODE);
+  const parsed = splitTooltipText(textNodes.map((node) => node.textContent).join(""));
+  if (!parsed || textNodes.length === 0) return;
+
+  const title = document.createElement("span");
+  title.className = "ogd-tooltip-title";
+  title.textContent = parsed.title;
+  const meta = document.createElement("span");
+  meta.className = "ogd-tooltip-meta";
+  meta.textContent = parsed.meta;
+  textNodes[0].replaceWith(title, meta);
+  textNodes.slice(1).forEach((node) => node.remove());
+  tooltip.dataset.ogdStructuredTooltip = "true";
+}
+
+function structureTooltips(root) {
+  if (document.body.classList.contains("is-mobile")) return;
+  if (root instanceof Element && root.matches(".tooltip")) structureTooltip(root);
+  root.querySelectorAll(".tooltip").forEach(structureTooltip);
+}
+
 function translateDocument(root = document) {
   const locale = localeFromClasses(document.body.classList, moment.locale());
   root.querySelectorAll('[data-id^="ogd-"]').forEach((row) => translateRow(row, locale));
   translateChrome(root, locale);
+  structureTooltips(root);
 }
 
 module.exports = class OwenGraphiteLocalizationBridge extends Plugin {
@@ -127,3 +151,4 @@ module.exports = class OwenGraphiteLocalizationBridge extends Plugin {
 
 module.exports.translateDocument = translateDocument;
 module.exports.translateChromeText = translateChromeText;
+module.exports.structureTooltip = structureTooltip;

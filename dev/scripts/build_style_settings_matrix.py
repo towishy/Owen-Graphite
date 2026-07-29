@@ -130,11 +130,11 @@ def main() -> int:
                 },
                 {
                     "id": "lp-pdf-parity-comfortable-visible",
-                    "purpose": "LP/PDF parity fixture with PDF visibility and comfortable font preset.",
+                    "purpose": "LP/PDF parity fixture with the comfortable font preset.",
                     "theme": "light",
                     "media": "print",
-                    "settings": {"ogd-pdf-visibility": "true", "ogd-pdf-font-size": "ogd-pdf-font-comfortable"},
-                    "bodyClasses": ["ogd-pdf-visibility", "ogd-pdf-font-comfortable"],
+                    "settings": {"ogd-pdf-font-size": "ogd-pdf-font-comfortable"},
+                    "bodyClasses": ["ogd-pdf-font-comfortable"],
                 },
                 {
                     "id": "glass-motion-strong",

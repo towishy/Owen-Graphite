@@ -21,7 +21,7 @@ def digest(path: Path) -> str:
 def main() -> int:
     entries = build.parse_schema()
     catalog = build.build_catalog()
-    assert len(entries) == 62
+    assert len(entries) == 58
     assert len(catalog) == len(entries)
     assert entries[0]["id"] == "ogd-settings-interface"
     assert entries[1]["id"] == "ogd-style-settings-language"
@@ -36,6 +36,13 @@ def main() -> int:
         for locale in ("en", "ko"):
             assert localized[locale]["title"]
             assert localized[locale]["default"] == entry.get("default", "")
+    assert catalog["ogd-pdf-readability"]["en"]["title"] == "PDF readability preset"
+    assert catalog["ogd-pdf-readability"]["ko"]["title"] == "PDF 가독성 개선"
+    assert "ogd-report-mode" not in catalog
+    assert "ogd-pdf-compact" not in catalog
+    assert "ogd-pdf-visibility" not in catalog
+    assert "ogd-pdf-screen-delivery" not in catalog
+    assert "ogd-pdf-client-delivery" not in catalog
 
     build.main()
     first = {name: digest(PLUGIN / name) for name in ("main.js", "catalog.generated.json")}
@@ -53,6 +60,10 @@ if (core.localeFromClasses(classes(), 'ko-KR') !== 'ko') process.exit(3);
 if (core.localeFromClasses(classes(), 'en') !== 'en') process.exit(4);
 if (catalog['ogd-settings-reading'].ko.title !== '읽기와 본문') process.exit(5);
 if (catalog['ogd-style-settings-language'].ko.options['ogd-language-auto'] !== '자동 (Obsidian)') process.exit(6);
+const tooltip = core.splitTooltipText('gsa-beginner-guide\n\n15개 파일, 1개 폴더');
+if (tooltip.title !== 'gsa-beginner-guide') process.exit(7);
+if (tooltip.meta !== '15개 파일, 1개 폴더') process.exit(8);
+if (core.splitTooltipText('15개 파일, 1개 폴더') !== null) process.exit(9);
 console.log('OK: auto/ko/en locale model');
 """
     subprocess.run(["node", "-e", node_test], cwd=PLUGIN, check=True)

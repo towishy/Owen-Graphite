@@ -1,12 +1,16 @@
 # Owen Graphite Companion
 
-Localization bridge for Owen Graphite and Style Settings 1.0.9.
+Runtime companion for Owen Graphite and Style Settings 1.0.9.
 
 Obsidian 1.12 can render its interface in Korean while leaving the legacy
 `localStorage.language` key empty. Style Settings 1.0.9 reads that key once and
 falls back to English, so native `title.ko` and `description.ko` metadata are not
 selected. This companion localizes only Owen Graphite rows using the restored
 Automatic/Korean/English setting and Obsidian's runtime locale.
+
+On desktop, the companion also structures Obsidian's plain-text
+`title + blank line + metadata` tooltips. This lets the theme keep wrapped
+titles bold and position metadata from the real title height.
 
 The companion does not modify, migrate, or delete Style Settings `data.json`.
 
@@ -16,5 +20,5 @@ python test.py
 python install.py --obsidian-config C:\path\to\vault\.obsidian
 ```
 
-The runtime observer is limited to Owen Graphite setting rows and does not add
-unrelated editor or theme behavior.
+The runtime observer is limited to Owen Graphite settings and transient desktop
+tooltips containing Obsidian's title/metadata blank-line separator.

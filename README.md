@@ -11,9 +11,9 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.95** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.96** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
-> **No companion required:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Obsidian's locale selects the native setting labels. Persistent code-title editing is an optional Owen Editor 0.6.28 feature, separate from theme configuration.
+> **Theme-first, optional companion:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Owen Graphite Companion 1.3.0 supplies the Style Settings locale fallback and structures Obsidian's title/metadata tooltips for wrapped bold titles. Persistent code-title editing remains an optional Owen Editor 0.6.28 feature.
 
 ## Why Owen Graphite?
 
@@ -21,17 +21,17 @@
 | --- | --- |
 | Long technical notes | CJK/Latin paragraphs, headings, code, and dense tables keep a stable rhythm without feeling cramped. |
 | Live Preview writing | Editing, Reading View, and rendered widgets share the same quiet surfaces for tables, code blocks, callouts, and embeds. |
-| Report and PDF handoff | Header/footer labels, page numbering, screen-first PDF readability, and page-break guards support recurring report delivery. |
-| Daily workspace navigation | Tabs, file explorer hierarchy, search, settings, popovers, and type badges use a restrained graphite liquid-glass language. |
+| Report and PDF handoff | Header/footer labels, page numbering, paper-size-preserving readability, and page-break guards support recurring report delivery. |
+| Daily workspace navigation | Tabs, long-name folder ellipsis, unified metadata tooltips, search, settings, popovers, and type badges use a restrained graphite liquid-glass language. |
 
 ## Design And Function Snapshot
 
 | Surface | Design signal | Function signal |
 | --- | --- | --- |
-| Workspace chrome | Frosted white/graphite panels, shallow rims, and soft lift states | Active files, parent folders, tabs, and vault controls stay scannable in large vaults. |
+| Workspace chrome | Frosted white/graphite panels, connected tooltip tails, shallow rims, and soft lift states | Active files, long folder names, parent folders, tabs, and vault controls stay scannable in large vaults. |
 | Writing surface | Calm document panes with balanced body, code, table, and callout density | Long Korean/English technical pages remain readable through editing and review. |
 | Settings and presets | Compact glass controls instead of loud colored panels | Style Settings exposes PDF, typography, spacing, chrome, and accessibility options without visual clutter. |
-| PDF export | Report labels, customer-delivery presets, and print-safe spacing | Notes can become screen-shared PDFs or formal report output with less manual cleanup. |
+| PDF export | Report labels, selected-paper readability presets, and print-safe spacing | Notes can become screen-shared PDFs or formal report output without silently changing the selected paper size. |
 
 ## Release Confidence
 
@@ -52,7 +52,6 @@
 | Top tabs and floating toolbar | ![Top tabs and floating toolbar](screenshots/readme/top-tabs-liquid-glass.svg) |
 | Writing surface and floating toolbar | ![Writing surface and floating toolbar](screenshots/readme/workspace-writing-surface.jpg) |
 | Style Settings report controls | ![Style Settings report controls](screenshots/readme/style-settings-report-options.jpg) |
-| PDF customer delivery visibility | ![PDF customer delivery visibility controls](screenshots/readme/pdf-customer-delivery-feature.png) |
 | Owen Editor toolbar controls | ![Owen Editor toolbar controls](screenshots/readme/owen-editor-toolbar-settings.jpg) |
 | File explorer type badges | ![File explorer type badges](screenshots/readme/file-explorer-type-badges.svg) |
 
@@ -64,8 +63,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.95` |
-| **Baseline / rollback target** | `v3.1.95` |
+| **Version** | `3.1.96` |
+| **Baseline / rollback target** | `v3.1.96` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -83,6 +82,18 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.96 — PDF And Explorer Clarity
+
+This release removes fixed screen-delivery/report-mode branches, keeps PDF readability independent from paper size, and turns long file-explorer labels plus folder metadata into one coherent tooltip surface.
+
+| Area | What changed |
+| --- | --- |
+| PDF readability | The readability preset adjusts typography and table/code spacing while preserving the selected A4/A3 portrait or landscape page. |
+| Removed modes | Fixed `1920×1080`, customer-delivery visibility, and bundled report mode options and implementation paths are removed. |
+| File explorer | Long top-level and nested folder names stay within the explorer boundary with ellipsis; the native hover tooltip reveals the full title and folder statistics. |
+| Tooltip companion | Companion 1.3.0 structures wrapped titles and metadata into one white tonal-gradient balloon with an 800-weight title, measured divider spacing, and a connected triangular tail. |
+| Validation | Obsidian 1.12.7 runtime checks cover PDF paper preservation, LP/PDF parity, ellipsis geometry, tooltip content, two-line titles, spacing, and tail attachment. |
 
 ### v3.1.95 — Reliable Style Settings Localization
 
@@ -106,17 +117,6 @@ This release aligns Obsidian's core settings plus Owen Graphite, Owen Editor, an
 | Ownership | Editor and Exporter expose stable semantic section hooks so the theme does not depend on child position. |
 | Validation | Obsidian 1.12.7 runtime checks cover core card counts, icon uniqueness, clipping, overflow, row overlap, and section borders. |
 
-### v3.1.93 — Settings Rhythm And Hover Stability
-
-This release makes dense settings easier to scan, removes animated row flicker, and aligns the default document width and heading hierarchy with technical writing workflows.
-
-| Area | What changed |
-| --- | --- |
-| Settings surfaces | Section headings and ordinary rows use flat dividers instead of rounded glass cards or decorative rails. |
-| Hover feedback | Rows switch to a neutral background immediately, without animated borders, outlines, shadows, blur, or lift. |
-| Document rhythm | The 297mm default width now drives Obsidian's readable line width, with a clearer H1-H4 hierarchy and document title. |
-| Validation | Live Obsidian pointer cycles, owner guards, Style Settings contracts, runtime evidence, and release gates are checked. |
-
 Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/DOCS/v3/feature-history.md).
 
 ---
@@ -131,7 +131,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.95.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.96.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -140,21 +140,21 @@ Download **`Owen-Graphite-3.1.95.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.95.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.96.zip` for the installable theme package.
 
-### Optional Style Settings Localization Bridge
+### Optional Owen Graphite Companion
 
-If Obsidian is set to Korean but Style Settings still renders Owen Graphite in English, download `Owen-Graphite-Companion-1.2.0.zip` from the same release and extract its `owen-graphite-style-settings-l10n` folder into:
+Download `Owen-Graphite-Companion-1.3.0.zip` from the same release when Style Settings needs the Korean locale fallback or when you want wrapped title/metadata tooltips to use the full Owen Graphite hierarchy. Extract its `owen-graphite-style-settings-l10n` folder into:
 
 ```text
 <YourVault>/.obsidian/plugins/owen-graphite-style-settings-l10n/
 ```
 
-Reload Obsidian, enable **Owen Graphite Companion** under Community plugins, then choose **Settings → Style Settings → Owen Graphite → Interface → Language**. The bridge handles localization only and leaves Style Settings `data.json` unchanged.
+Reload Obsidian, enable **Owen Graphite Companion** under Community plugins, then choose **Settings → Style Settings → Owen Graphite → Interface → Language**. The companion preserves tooltip text while separating a wrapped bold title from metadata, and it leaves Style Settings `data.json` unchanged.
 
 ### Optional Code-Title Editing
 
-The localization companion does not edit Markdown. To edit fenced code-block titles directly in Live Preview or Reading View, install [Owen Editor 0.6.28 or later](https://github.com/towishy/owen-editor/releases/latest). Owen Editor stores the title in Markdown:
+The companion does not edit Markdown. To edit fenced code-block titles directly in Live Preview or Reading View, install [Owen Editor 0.6.28 or later](https://github.com/towishy/owen-editor/releases/latest). Owen Editor stores the title in Markdown:
 
 ````markdown
 ```bash title="Package update"
@@ -235,6 +235,7 @@ The v3 source lives in `src/` and is split into tokens, base, surfaces, chrome, 
 | fingerprint diff | `python dev/scripts/fp_diff_summary.py [--theme dark]` |
 | Release ZIP | `python dev/scripts/build_release.py` |
 | Obsidian vault sync | `python dev/scripts/sync_obsidian_theme.py` |
+| Companion test and ZIP | `python compat/owen-graphite-style-settings-l10n/test.py` then `python dev/scripts/build_companion_release.py` |
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution details, [CHANGELOG.md](CHANGELOG.md) for release history, and [dev/WIKI/DOCS/v3/design-spec.md](dev/WIKI/DOCS/v3/design-spec.md) for the design and validation contract.
 

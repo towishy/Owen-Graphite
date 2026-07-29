@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.96
+
+- change: 고정 `1920×1080` PDF 규격과 customer-delivery/report mode를 제거하고, `PDF 가독성 개선` preset이 사용자가 선택한 A4/A3 방향과 용지 크기를 그대로 유지하면서 본문·제목·표·코드 가독성만 조정하도록 정리했습니다.
+- polish: 파일 탐색기의 긴 상위/중첩 폴더명이 경계 안에서 말줄임되고, Obsidian이 제공하는 폴더명과 파일/폴더 통계를 하나의 흰 tonal-gradient 말풍선 tooltip으로 표시하도록 다듬었습니다.
+- feat: Owen Graphite Companion 1.3.0이 빈 줄로 구분된 tooltip 제목/metadata를 보존한 채 구조화해 두 줄 제목 전체를 bold로 표시하고, 제목 divider와 metadata 간격을 실제 제목 높이에 맞게 배치합니다.
+- guard: Obsidian 1.12.7 CDP에서 PDF 용지 보존, LP/PDF table parity, folder ellipsis, 단일 tooltip, 2줄 제목, divider spacing, 연결형 삼각 꼬리를 검증하고 source map, companion test, core principles, release gate를 통과했습니다.
+
 ## v3.1.95
 
 - fix: Obsidian 1.12.7에서 UI locale은 한국어지만 Style Settings 1.0.9의 legacy `localStorage.language`가 비어 영어로 fallback하던 회귀를 확인하고, `자동/한국어/English` 선택과 Owen Graphite 범위의 localization bridge를 복원했습니다.

@@ -5,8 +5,8 @@
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **62**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **52**
+- 전체 엔트리(heading 포함): **58**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **48**
 - 초기 표시: `읽기와 본문`은 펼치고 나머지 level 2/3 그룹은 접어 긴 PDF 고급 옵션이 기본 화면을 점유하지 않도록 구성
 - 기본 메타데이터는 영어 `title`/`description`이며, 한국어는 Style Settings 1.0.9 네이티브 `title.ko`/`description.ko` 필드로 같은 스키마에 포함
 - `ogd-style-settings-language`는 Obsidian locale 자동 추종과 한국어/English 명시 선택을 제공하며 기존 `ogd-language-*` 저장값을 유지
@@ -25,11 +25,7 @@
 | `ogd-accent` | `variable-color` | `#4b5563` | 헤더 강조 색상 |
 | `ogd-modern-tables` | `class-toggle` | `true` | 표 모던 스타일 강화 |
 | `ogd-print-avoid-breaks` | `class-toggle` | `true` | PDF 블록 분할 방지 강화 |
-| `ogd-report-mode` | `class-toggle` | `false` | 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프) |
-| `ogd-pdf-compact` | `class-toggle` | `false` | PDF Compact Report |
-| `ogd-pdf-visibility` | `class-toggle` | `false` | PDF 보고서 가시성 강화 |
-| `ogd-pdf-screen-delivery` | `class-toggle` | `false` | PDF 고객 전달용 화면 가시성 |
-| `ogd-pdf-client-delivery` | `class-toggle` | `false` | PDF 고객 전달 권장 프리셋 |
+| `ogd-pdf-readability` | `class-toggle` | `false` | PDF 가독성 개선 |
 | `ogd-pdf-font-size` | `class-select` | `ogd-pdf-font-standard` | PDF 글자 크기 |
 | `ogd-pdf-link-mode` | `class-select` | `ogd-pdf-links-inline` | PDF 링크 출력 방식 |
 | `ogd-serif-body` | `class-toggle` | `false` | 본문 세리프 글꼴 |

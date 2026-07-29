@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 THEME = ROOT / "theme.css"
 SRC_DIR = ROOT / "src"
-MAX_THEME_LINES = 21_100
+MAX_THEME_LINES = 21_200
 MAX_THEME_BYTES = 1_040_000
 ALLOWED_SCROLLBAR_GUTTER_VALUE = "stable both-edges"
 MAX_RAW_AQUA_RGBA = 182

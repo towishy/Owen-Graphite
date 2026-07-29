@@ -102,7 +102,7 @@ def build_main(catalog: dict[str, dict[str, object]]) -> str:
     core = re.sub(r"\nmodule\.exports = \{.*?\};\s*$", "", core, flags=re.DOTALL)
     main = (SOURCE / "main.js").read_text(encoding="utf-8").removeprefix('"use strict";\n\n')
     main = main.replace('const catalog = require("./catalog.generated.json");\n', "")
-    main = main.replace('const { localeFromClasses, localizedEntry } = require("./core.js");\n', "")
+    main = main.replace('const { localeFromClasses, localizedEntry, splitTooltipText } = require("./core.js");\n', "")
     embedded_catalog = json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
     return f'"use strict";\n\n{core}\n\nconst catalog = {embedded_catalog};\n\n{main}'
 

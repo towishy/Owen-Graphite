@@ -1,19 +1,19 @@
-﻿# v3 Release Record (latest: v3.1.95)
+﻿# v3 Release Record (latest: v3.1.96)
 
-**Status**: Current stable / rollback baseline = `v3.1.95` (2026-07-25). This release restores reliable Korean/English Style Settings localization through a scoped compatibility bridge and completes the Interface semantic icon mapping.
+**Status**: Current stable / rollback baseline = `v3.1.96` (2026-07-29). This release preserves selected PDF paper geometry while simplifying readability controls, and unifies long file-explorer titles with structured metadata tooltips.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.95` |
+| `manifest.json` version | `3.1.96` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,987 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,543 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.95.zip` |
-| Localization companion ZIP | `dist/Owen-Graphite-Companion-1.2.0.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.96.zip` |
+| Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.0.zip` |
 
 ## What was removed
 

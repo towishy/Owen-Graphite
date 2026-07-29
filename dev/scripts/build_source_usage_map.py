@@ -224,16 +224,16 @@ def table_selector_index() -> list[dict[str, str]]:
                         "status": "forbidden for theme geometry",
                 },
                 {
-                        "pattern": "body.ogd-report-mode ... table / @media print table",
-                        "owner": "src/features/42-report-print-polish.css",
-                        "purpose": "Report/PDF table output and print-safe adjustments",
-                        "status": "allowed in report/print scope",
+                    "pattern": "@media print table",
+                    "owner": "src/features/42-report-print-polish.css",
+                    "purpose": "PDF table output and print-safe adjustments",
+                    "status": "allowed in print scope",
                 },
                 {
                         "pattern": "table caption / .table-caption / .table-source",
                         "owner": "src/surfaces/23-liquid-glass-core.css and src/features/42-report-print-polish.css",
-                        "purpose": "Rendered captions and report notes",
-                        "status": "allowed for rendered/report surfaces",
+                        "purpose": "Rendered captions and print notes",
+                        "status": "allowed for rendered/print surfaces",
                 },
         ]
 

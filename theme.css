@@ -177,43 +177,11 @@ settings:
     level: 2
     collapsed: true
   -
-    id: ogd-report-mode
-    title: Report mode (numbered headings + indentation + serif)
-    title.ko: 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프)
-    description: Applies cover, numbering, indentation, and serif body settings together.
-    description.ko: 표지/넘버링/들여쓰기/세리프 본문을 한 번에 적용
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-compact
-    title: PDF compact report
-    title.ko: PDF Compact Report
-    description: Reduces spacing between headings, body text, callouts, tables, and references for denser PDF output.
-    description.ko: PDF 출력 시 제목·본문·callout·표·참고 문헌 간격을 압축해 공백을 줄이고 정보 밀도를 높입니다.
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-visibility
-    title: Enhanced PDF report visibility
-    title.ko: PDF 보고서 가시성 강화
-    description: Increases contrast for document status labels, callouts, and end markers without changing heading hierarchy or table design.
-    description.ko: PDF 출력에서 문서 상태 라벨, callout, 문서 끝 신호의 대비를 높입니다. 제목 계층과 표 디자인은 변경하지 않습니다.
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-screen-delivery
-    title: PDF screen-delivery visibility
-    title.ko: PDF 고객 전달용 화면 가시성
-    description: Adjusts heading hierarchy, body and table sizes, callout separation, and label tone for email, Teams, and browser previews.
-    description.ko: 메일, Teams, 브라우저 미리보기에서 바로 읽히도록 제목 위계, 본문·표 크기, callout 구분, 라벨 톤을 조정합니다.
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-client-delivery
-    title: Recommended client PDF preset
-    title.ko: PDF 고객 전달 권장 프리셋
-    description: Tunes body text, tables, callouts, code, and links together for client-facing PDFs.
-    description.ko: 고객 공유용 PDF에 맞춰 본문·표·callout·코드·링크를 한 번에 읽기 좋은 톤으로 조정합니다.
+    id: ogd-pdf-readability
+    title: PDF readability preset
+    title.ko: PDF 가독성 개선
+    description: Applies Pretendard, 36px titles, 18px subtitles, 16px body text, 14px captions, and 1.56 body line height without changing the selected PDF paper size.
+    description.ko: 선택한 PDF 용지 규격은 유지하고 Pretendard, 타이틀 36px, 서브 타이틀 18px, 본문 16px, 캡션 14px, 본문 행간 1.56을 적용합니다.
     type: class-toggle
     default: false
   -
@@ -5856,13 +5824,6 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
     }
   }
 
-  body.ogd-pdf-compact :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
-    font-size: 2.85em;
-    line-height: 1.06;
-    margin-top: 0.72em;
-    margin-bottom: 0.42em;
-  }
-
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
     --ogd-heading-h1-bg: transparent;
     --ogd-heading-h2-bg: rgba(248, 250, 252, 0.28);
@@ -6642,6 +6603,17 @@ body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-readin
   body.ogd-pdf-paper-a3-landscape {
     page: ogd-pdf-a3-landscape;
     width: auto;
+  }
+
+  body.ogd-pdf-readability {
+    width: auto;
+    --ogd-pdf-readability-font-stack: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif;
+    --ogd-pdf-surface-text-font-size: 16px;
+    --ogd-pdf-surface-text-line-height: 1.56;
+    --ogd-pdf-readable-font-size: 16px;
+    --ogd-pdf-readable-line-height: 1.56;
+    --ogd-pdf-readable-callout-font-size: 16px;
+    --ogd-pdf-caption-font-size: 14px;
   }
 }
 
@@ -8797,54 +8769,6 @@ body.ogd-pdf-label-segmented-dual {
     }
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) h1:first-of-type,
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) > h1:first-of-type + h1,
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) > .markdown-preview-section > h1:first-of-type,
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) > .markdown-preview-section > h1:first-of-type + h1 {
-    margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
-  }
-
-  @supports selector(:nth-child(1 of .el-h1)) {
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .el-h1:nth-child(1 of .el-h1) > h1,
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1,
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) > h1,
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
-      margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
-    }
-  }
-
   /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child:not(.markdown-preview-section),
   body.ogd-pdf-footer-enabled .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote) {
@@ -8955,8 +8879,7 @@ body.ogd-pdf-label-segmented-dual {
 @media print {
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1,
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1,
-  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type {
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1 {
     display: block;
     width: auto;
     max-width: 100%;
@@ -8969,71 +8892,10 @@ body.ogd-pdf-label-segmented-dual {
 
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1::after,
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1::after,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after,
-  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type::after {
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after {
     display: none;
     content: none;
   }
-}
-
-/* C6. Report metadata block — frontmatter rendered nicely */
-body.ogd-report-mode .metadata-container {
-  background: #fafbfc;
-  border: 1px solid #d1d5db;
-  border-radius: var(--radius-m, 6px);
-  padding: 12px 16px;
-  margin: 1em 0 1.5em;
-  font-size: 0.95em;
-}
-body.ogd-report-mode .metadata-container .metadata-property {
-  display: grid;
-  grid-template-columns: 8em 1fr;
-  gap: 8px;
-  padding: 4px 0;
-  border-bottom: 1px dashed #e5e7eb;
-}
-
-/* Report mode bundles A3+A6+A4 */
-body.ogd-report-mode {
-  /* Activate auto-numbering, indent, serif */
-}
-body.ogd-report-mode .markdown-rendered h2 {
-  counter-increment: ogd-h2;
-  counter-reset: ogd-h3 ogd-h4;
-}
-body.ogd-report-mode .markdown-rendered h2::before {
-  content: counter(ogd-h2) ". ";
-  color: var(--header-accent);
-  font-weight: 700;
-  margin-right: 0.4em;
-}
-body.ogd-report-mode .markdown-rendered h3 {
-  counter-increment: ogd-h3;
-}
-body.ogd-report-mode .markdown-rendered h3::before {
-  content: counter(ogd-h2) "." counter(ogd-h3) " ";
-  color: var(--header-accent);
-  font-weight: 700;
-  margin-right: 0.4em;
-}
-body.ogd-report-mode .markdown-rendered p {
-  text-indent: 1em;
-}
-body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p,
-body.ogd-report-mode .markdown-rendered blockquote p,
-body.ogd-report-mode .markdown-rendered li p,
-body.ogd-report-mode .markdown-rendered .callout p {
-  text-indent: 0;
-}
-body.ogd-report-mode .markdown-rendered {
-
-  counter-reset: ogd-h2 ogd-h3 ogd-h4;
-
-  font-family: "Noto Serif KR", "Nanum Myeongjo", "Source Serif Pro",
-    Georgia, serif;
-}
-body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
-  font-family: var(--ogd-reading-font-stack);
 }
 
 /* ---------- D. UI POLISH ---------- */
@@ -9269,7 +9131,7 @@ body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown
   border-bottom-color: rgba(148, 163, 184, 0.34);
 }
 
-body.ogd-spacing-relaxed:not(.ogd-pdf-compact):not(.ogd-pdf-visibility):not(.ogd-pdf-screen-delivery):not(.ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+body.ogd-spacing-relaxed:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
   width: min(176px, 30%);
   height: 2px;
   background: linear-gradient(90deg, rgba(51, 65, 85, 0.68), rgba(148, 163, 184, 0.10));
@@ -11813,6 +11675,117 @@ body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settin
   --ogd-suite-section-ink: #fda4af;
 }
 
+@media screen and (min-width: 701px) {
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] {
+    --ogd-pdf-readability-tooltip: "Font: Pretendard\A Title: 36px / Bold\A Subtitle: 18px / Bold\A Body: 16px / Regular\A Caption: 14px / Regular\A Body line height: 1.5~1.6";
+  }
+
+  html[lang^="ko"] body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] {
+    --ogd-pdf-readability-tooltip: "폰트: 프리텐다드 Pretendard\A 타이틀: 36px / Bold\A 서브 타이틀: 18px / Bold\A 본문: 16px / Regular\A 캡션: 14px / Regular\A 본문 행간: 1.5~1.6";
+  }
+
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-info > .setting-item-description {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control {
+    position: relative;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    overflow: visible;
+  }
+
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control::before {
+    content: "";
+    box-sizing: border-box;
+    display: block;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    border: 0;
+    background-color: #0878b5;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E") center / 22px 22px no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E") center / 22px 22px no-repeat;
+    cursor: help;
+    filter: drop-shadow(0 1px 1px rgba(8, 120, 181, 0.10));
+    transition: background-color 140ms ease, filter 140ms ease;
+  }
+
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control::after {
+    content: var(--ogd-pdf-readability-tooltip);
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    width: max-content;
+    max-width: min(340px, calc(100vw - 48px));
+    padding: 10px 12px;
+    border: 1px solid rgba(148, 163, 184, 0.36);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+    color: #334155;
+    font-family: var(--ogd-interface-font-stack);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-align: left;
+    white-space: pre-line;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transform-origin: top right;
+    transition: opacity 140ms ease-out, transform 140ms ease-out, visibility 0s linear 140ms;
+  }
+
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control:hover:not(:has(.checkbox-container:hover)):not(:has(.extra-setting-button:hover))::before,
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control:focus-within::before {
+    background-color: #056b9f;
+    filter: drop-shadow(0 2px 3px rgba(8, 120, 181, 0.18));
+  }
+
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control:hover:not(:has(.checkbox-container:hover)):not(:has(.extra-setting-button:hover))::after,
+  body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control:focus-within::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  body.theme-dark.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control::before {
+    background-color: #7dd3fc;
+    filter: drop-shadow(0 1px 2px rgba(14, 165, 233, 0.20));
+  }
+
+  body.theme-dark.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control::after {
+    border-color: rgba(203, 213, 225, 0.24);
+    background: rgba(30, 41, 59, 0.98);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+    color: #e2e8f0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control::before,
+    body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container .setting-item[data-id="ogd-pdf-readability"] > .setting-item-control::after {
+      transition: none;
+      transform: none;
+    }
+  }
+}
+
 @media screen and (max-width: 700px) {
   body .modal.mod-settings :is(
     .owen-editor-settings-tab,
@@ -13366,8 +13339,7 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
 /* Reset H1 — Sample B kicker style takes precedence */
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1,
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1 {
   display: block;
   width: auto;
   max-width: 100%;
@@ -13383,8 +13355,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
 
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h2:first-of-type,
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h2:first-of-type,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h2:first-of-type,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h2:first-of-type {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h2:first-of-type {
 
   display: inline-block;
   width: auto;
@@ -13405,11 +13376,9 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1::after,
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1::after,
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type::after,
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h2:first-of-type::after,
 body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h2:first-of-type::after,
-body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h2:first-of-type::after,
-body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h2:first-of-type::after {
+body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h2:first-of-type::after {
   display: none;
   content: none;
 }
@@ -13618,10 +13587,6 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     color: #1d4ed8;
   }
 
-  body.ogd-pdf-visibility { --ogd-pdf-surface-text-font-size: 12pt; --ogd-pdf-surface-text-line-height: 1.45; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.92); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.34); --ogd-pdf-marginalia-shadow: 0 4px 10px rgba(15, 23, 42, 0.10); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.04em; }
-
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) { --ogd-pdf-surface-text-font-size: 12.4pt; --ogd-pdf-surface-text-line-height: 1.48; --ogd-pdf-marginalia-bg: rgba(255, 255, 255, 0.94); --ogd-pdf-marginalia-border: rgba(71, 85, 105, 0.28); --ogd-pdf-marginalia-shadow: 0 3px 8px rgba(15, 23, 42, 0.08); --ogd-pdf-marginalia-accent: #334155; --ogd-pdf-label-letter-spacing: 0.03em; --ogd-pdf-header-font-size: 8.8pt; --ogd-pdf-footer-font-size: 9pt; --ogd-pdf-segment-key-width: 35mm; --ogd-pdf-segment-value-width: 46mm; --ogd-pdf-segment-half-width: 40.5mm; --ogd-pdf-header-title-gap: 3.25em; }
-
   body.ogd-pdf-font-comfortable { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.45); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-header-font-size: 9.4pt; --ogd-pdf-footer-font-size: 9.6pt; --ogd-pdf-segment-key-width: 36mm; --ogd-pdf-segment-value-width: 47mm; --ogd-pdf-segment-half-width: 41.5mm; }
 
   body.ogd-pdf-font-large { --ogd-pdf-readable-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-line-height: var(--ogd-pdf-surface-text-line-height, 1.45); --ogd-pdf-readable-callout-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-pdf-header-font-size: 9.8pt; --ogd-pdf-footer-font-size: 10pt; --ogd-pdf-segment-key-width: 38mm; --ogd-pdf-segment-value-width: 50mm; --ogd-pdf-segment-half-width: 44mm; }
@@ -13661,104 +13626,6 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     line-height: var(--ogd-pdf-surface-text-line-height, 1.46);
   }
 
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered), body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, li, dd, dt, blockquote):not(table *) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h1 { color: #0f172a; font-size: 3.05em; line-height: 1.08; margin-top: 0.92em; margin-bottom: 0.62em; padding-top: 0.34em; padding-bottom: 0.28em; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2 { color: #0f172a; padding: 0.20em 0.44em 0.24em; border-color: transparent; border-bottom-color: rgba(14, 116, 144, 0.42); background: linear-gradient(180deg, rgba(248, 250, 252, 0.84), rgba(241, 245, 249, 0.50)); box-shadow: none; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h3 { color: #172033; text-decoration-color: rgba(14, 116, 144, 0.52); text-decoration-thickness: 1.5px; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table { --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 12pt); --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.46); --ogd-table-border: rgba(148, 163, 184, 0.42); --ogd-table-cell-border: rgba(203, 213, 225, 0.90); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef5); --ogd-table-row-even: rgba(248, 250, 252, 0.84); font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); border-color: var(--ogd-table-border); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table th { border-bottom: 2px solid #b8c6d6; background: var(--ogd-table-head-bg); color: #0f172a; font-weight: 850; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) table :is(th, td) { color: #263445; font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout, blockquote) {
-    page-break-inside: avoid;
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout, .ogd-executive-summary, .ogd-action-summary) {
-    border: 1px solid #d5e4ec;
-    border-left-width: 1px;
-    border-radius: 7px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 253, 0.88));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 3px rgba(15, 23, 42, 0.05);
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout-title, .callout-title-inner) {
-    color: #0f172a;
-    font-weight: 820;
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout-icon {
-    background: #ffffff;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 2px rgba(15, 23, 42, 0.06);
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout[data-callout="summary"], .callout[data-callout="abstract"], .callout[data-callout="tldr"], .callout[data-callout="conclusion"], .ogd-executive-summary) {
-    border-color: #c8dfdc;
-    background: linear-gradient(180deg, #ffffff, #f4fbf9);
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout[data-callout="warning"], .callout[data-callout="attention"], .callout[data-callout="caution"], .callout[data-callout="risk"]) {
-    border-color: #ead6bd;
-    background: linear-gradient(180deg, #ffffff, #fff8ed);
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"], .callout[data-callout="recommendation"], .callout[data-callout="action"], .ogd-action-summary) {
-    border-color: #c7dff1;
-    background: linear-gradient(180deg, #ffffff, #f4f9ff);
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout-content > :last-child {
-    margin-bottom: 0;
-  }
-
-  body.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .ogd-status-badge {
-    border-color: rgba(71, 85, 105, 0.34);
-    background: #ffffff;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 2px rgba(15, 23, 42, 0.06);
-  }
-
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.callout, .ogd-executive-summary, .ogd-action-summary) { border: 1px solid #cfdce8; border-top: 3px solid #0f766e; border-left-width: 1px; border-radius: 7px; background: linear-gradient(180deg, #ffffff, #f8fafc); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 1px 3px rgba(15, 23, 42, 0.05); font-size: var(--ogd-pdf-surface-text-font-size, 12pt); line-height: var(--ogd-pdf-surface-text-line-height, 1.46); page-break-inside: avoid; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.callout-title, .callout-title-inner) { color: #0f172a; font-weight: 850; }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) .callout-icon { background: #ffffff; box-shadow: inset 0 0 0 5px rgba(15, 118, 110, 0.12), 0 1px 2px rgba(15, 23, 42, 0.06); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.callout[data-callout="summary"], .callout[data-callout="abstract"], .callout[data-callout="tldr"], .callout[data-callout="conclusion"], .ogd-executive-summary) { border-top-color: #0f766e; background: linear-gradient(180deg, #ffffff, #f4fbf9); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.callout[data-callout="warning"], .callout[data-callout="attention"], .callout[data-callout="caution"], .callout[data-callout="risk"]) { border-top-color: #b45309; background: linear-gradient(180deg, #ffffff, #fff8ed); }
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"], .callout[data-callout="recommendation"], .callout[data-callout="action"], .ogd-action-summary) { border-top-color: #0369a1; background: linear-gradient(180deg, #ffffff, #f3f8ff); }
-
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.ogd-executive-summary, .callout[data-callout="summary"]) {
     margin: 1.1em 0 1.35em;
     border-color: #cfe5e2;
@@ -13778,290 +13645,9 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     margin: 1.35em 0 1.55em;
   }
 
-  /* v2.22.79 - PDF Compact Report opt-in density preset.
-     Keeps Chromium pagination hints conservative while reducing repeated
-     vertical whitespace in headings, callouts, tables, and references. */
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) {
-    font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
-    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
-    color: #1f2937;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(p, li) {
-    color: #1f2937;
-    line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) p {
-    margin-top: 0.36em;
-    margin-bottom: 0.58em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(ul, ol) {
-    margin-top: 0.42em;
-    margin-bottom: 0.72em;
-    padding-inline-start: 1.35em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(h1, h2, h3, h4) {
-    color: #0f172a;
-    page-break-after: avoid;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) h1 {
-    font-size: 2.85em;
-    line-height: 1.06;
-    margin-top: 0.72em;
-    margin-bottom: 0.42em;
-    padding-top: 0.18em;
-    padding-bottom: 0.12em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) h1::before {
-    margin-bottom: 0.46em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) h2 {
-    margin-top: 1.05em;
-    margin-bottom: 0.46em;
-    padding-top: 0.18em;
-    padding-bottom: 0.22em;
-    line-height: 1.14;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) h3 {
-    margin-top: 0.92em;
-    margin-bottom: 0.34em;
-    line-height: 1.16;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) h4 {
-    margin-top: 0.78em;
-    margin-bottom: 0.28em;
-    line-height: 1.18;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(h1, h2, h3, h4) + :is(p, ul, ol, blockquote, .callout, table, .table-wrapper) {
-    margin-top: 0.44em;
-  }
-
-  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) hr { margin: 0.86em 0 1em; background: #e5eaf2; }
-  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) .callout + hr { display: none; }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.callout, blockquote) {
-    margin-top: 0.72em;
-    margin-bottom: 0.86em;
-    padding: 0.58em 0.76em;
-    border-radius: 6px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 1px 2px rgba(15, 23, 42, 0.035);
-    line-height: 1.42;
-    page-break-inside: avoid;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout {
-    border-left-width: 1px;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout-title {
-    min-height: 1.42em;
-    padding: 0;
-    line-height: 1.25;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout-content {
-    padding-top: 0.28em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout-content > :last-child {
-    margin-bottom: 0;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) table {
-    --ogd-table-pad-y: 0.28em;
-    --ogd-table-pad-x: 0.42em;
-    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
-    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
-    --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.56), transparent 0 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.82));
-    --ogd-table-head-bg: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(241, 245, 249, 0.82));
-    --ogd-table-border: rgba(203, 213, 225, 0.24);
-    --ogd-table-cell-border: rgba(203, 213, 225, 0.78);
-    margin-top: 0.62em;
-    margin-bottom: 0.72em;
-    line-height: var(--ogd-table-line-height);
-    border-color: var(--ogd-table-border);
-    background: var(--ogd-table-surface);
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) table:is(.compact-table, .print-fit-table, .wide-table) {
-    --ogd-table-pad-y: 0.22em;
-    --ogd-table-pad-x: 0.34em;
-    --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
-    --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) table :is(th, td) {
-    padding: var(--ogd-table-pad-y) var(--ogd-table-pad-x);
-    font-size: var(--ogd-table-font-size);
-    line-height: var(--ogd-table-line-height);
-    color: #1f2937;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) table th {
-    color: #0f172a;
-    background: var(--ogd-table-head-bg);
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(.table-note, .table-source) {
-    margin-top: -0.18em;
-    margin-bottom: 0.68em;
-    font-size: 8.8pt;
-    line-height: 1.28;
-    color: #4b5563;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(ol, ul).ogd-reference-list {
-    margin-top: 0.52em;
-    margin-bottom: 0.8em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(ol, ul).ogd-reference-list > li {
-    gap: 0.5em;
-    padding-top: 0.36em;
-    padding-bottom: 0.42em;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .ogd-reference-summary {
-    margin: 0.52em 0 0.78em;
-    padding: 0.52em 0.68em;
-    border: 1px solid #d7e4ec;
-    background: #f8fafc;
-    font-size: 9.6pt;
-    line-height: 1.36;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre {
-    margin-top: 0.58em;
-    margin-bottom: 0.82em;
-    padding: 8pt 10pt;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre code {
-    font-size: var(--ogd-code-print-font-size, var(--ogd-pdf-surface-text-font-size, 11.6pt));
-    line-height: var(--ogd-code-print-line-height, 1.44);
-  }
-
     /* v2.22.111 - PDF export parity for the approved Candidate C codeblock.
       Chromium print may flatten backdrop-filter, so the glass identity is
       carried by gradients, rim shadows, and the header divider as well. */
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre,
   :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -14095,11 +13681,6 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     backdrop-filter: var(--ogd-glass-filter-control);
   }
 
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre::before,
   :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -14118,11 +13699,6 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     text-transform: uppercase;
   }
 
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre code,
   :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
@@ -14189,27 +13765,6 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     color: var(--ogd-code-fg, #1e293b);
   }
 
-  body.theme-dark.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre {
-    border-color: var(--ogd-codeblock-border);
-    background: var(--ogd-codeblock-bg);
-    background-color: #f8fbff;
-    box-shadow: var(--ogd-codeblock-shadow);
-  }
-
-  body.theme-dark.ogd-pdf-visibility :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) pre::before {
-    border-bottom-color: var(--ogd-codeblock-header-border);
-    background: var(--ogd-codeblock-header-bg);
-    color: #475569;
-  }
-
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.keyword, .token.operator, .token.boolean) { color: var(--ogd-code-keyword, #5b21b6); }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.string, .token.attr-value) { color: var(--ogd-code-string, #a16207); }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered, .workspace-leaf-content .markdown-rendered) pre :is(.token.function, .token.variable, .token.property) { color: var(--ogd-code-function, #0f766e); }
@@ -14251,7 +13806,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   ) table:is(.print-fit-table, .wide-table),
   body .workspace-leaf-content .markdown-rendered table:is(.print-fit-table, .wide-table) {
     --ogd-table-pad-y: 0.44em;
-    --ogd-table-pad-x: 0.56em;
+    --ogd-table-pad-x: 0.65em;
     --ogd-table-font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
     --ogd-table-line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
@@ -14312,42 +13867,14 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     background: transparent;
   }
 
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(img, svg, canvas) {
-    max-height: 155mm;
-    object-fit: contain;
-  }
-
-  body.ogd-pdf-compact :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .mermaid svg {
-    max-height: none;
-  }
-
-  body.ogd-pdf-compact .markdown-rendered a[href^="http"]::after {
-    content: "";
-  }
-
   /* v2.22.80 - PDF link output profiles and figure captions.
      Reference First keeps body copy clean while relying on explicit
      .ogd-reference-list / .figure-caption authoring for traceability. */
-  body.ogd-pdf-links-inline.ogd-pdf-compact .markdown-rendered a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.78em;
-    color: #6b7280;
-    word-break: break-all;
-  }
-
-  body:is(.ogd-pdf-links-clean, .ogd-pdf-links-reference, .ogd-pdf-client-delivery) .markdown-rendered a[href^="http"]::after {
+  body:is(.ogd-pdf-links-clean, .ogd-pdf-links-reference) .markdown-rendered a[href^="http"]::after {
     content: "";
   }
 
-  body:is(.ogd-pdf-links-reference, .ogd-pdf-client-delivery) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.ogd-reference-summary, .source-note, .reference-note) {
+  body.ogd-pdf-links-reference :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(.ogd-reference-summary, .source-note, .reference-note) {
     margin: 0.7em 0 0.86em;
     padding: 0.58em 0.72em;
     border: 1px solid #d7e4ec;
@@ -14359,7 +13886,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     page-break-inside: avoid;
   }
 
-  body:is(.ogd-pdf-links-reference, .ogd-pdf-client-delivery) :is(
+  body.ogd-pdf-links-reference :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
@@ -14370,7 +13897,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     list-style: none;
   }
 
-  body:is(.ogd-pdf-links-reference, .ogd-pdf-client-delivery) :is(
+  body.ogd-pdf-links-reference :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
@@ -14385,7 +13912,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     page-break-inside: avoid;
   }
 
-  body:is(.ogd-pdf-links-reference, .ogd-pdf-client-delivery) :is(
+  body.ogd-pdf-links-reference :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
@@ -14394,7 +13921,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     content: none;
   }
 
-  body:is(.ogd-pdf-links-reference, .ogd-pdf-client-delivery) :is(
+  body.ogd-pdf-links-reference :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
@@ -14433,31 +13960,6 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   ) :is(.ogd-reference-title, .reference-title, .source-title) {
     color: #0f172a;
     font-weight: 780;
-  }
-
-  /* v3.1.38 - PDF image/body quality guards.
-     Keep figures inspectable, captions bound to their media, and body rhythm
-     predictable without changing the existing table design. */
-  body:is(.ogd-pdf-visibility, .ogd-pdf-client-delivery) :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(h2, h3, h4) {
-    page-break-after: avoid;
-  }
-
-  body:is(.ogd-pdf-visibility, .ogd-pdf-client-delivery) :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) :is(img, svg, canvas):not(.callout-icon *) {
-    max-width: 100%;
-    box-sizing: border-box;
-    border: 1px solid rgba(148, 163, 184, 0.38);
-    height: auto;
-    object-fit: contain;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
   }
 
   body :is(
@@ -14727,12 +14229,12 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
     line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
-  body:is(.ogd-pdf-visibility, .ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) .callout :is(p, li):not(table *),
-  body:is(.ogd-pdf-visibility, .ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(
     .markdown-rendered,
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
@@ -14740,21 +14242,9 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
     font-size: var(--ogd-pdf-surface-text-font-size, 11.6pt);
     line-height: var(--ogd-pdf-surface-text-line-height, 1.42);
   }
-  body:is(.ogd-pdf-visibility, .ogd-pdf-screen-delivery) :is(
-    .markdown-rendered,
-    .markdown-preview-view.markdown-rendered,
-    .markdown-reading-view .markdown-rendered
-  ) .callout-content > :is(p, ul, ol, blockquote, pre, table) {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.62em; }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.34em; }
   body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 { margin-top: 1.12em; }
-  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h2 { margin-top: 1.46em; }
-  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h3 { margin-top: 1.22em; }
-  body.ogd-pdf-compact :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) :is(p, ul, ol, blockquote, pre, table, .table-wrapper, .callout) + h4 { margin-top: 1.02em; }
-
   /* v2.30.4 - Forbidden left vertical bar removal (PDF/print parity).
      Mirrors the screen-side global force-disable in 10b. */
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(h1, h2, h3, h4, h5, h6),
@@ -15066,7 +14556,7 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after { content: "TEXT"; }
 
-  body:is(.ogd-pdf-screen-delivery, .ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
+  body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
     --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     --ogd-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
     --ogd-code-line-height: var(--ogd-pdf-surface-text-line-height, var(--ogd-code-print-line-height, 1.44));
@@ -15095,6 +14585,63 @@ body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.number, .token.constant, .token.symbol, .cm-number, .cm-literal) { color: var(--ogd-code-number, #be123c); }
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.comment, .token.prolog, .token.doctype, .cm-comment, .cm-meta) { color: var(--ogd-code-muted, #64748b); }
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view, .workspace-leaf-content .markdown-rendered) pre code :is(.token.punctuation, .cm-punctuation, .cm-separator, .cm-bracket) { color: var(--ogd-code-punctuation, #475569); }
+}
+
+/* PDF readability preset closure after report-specific print rules. */
+@media print {
+  body[class].ogd-pdf-readability :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) {
+    font-family: var(--ogd-pdf-readability-font-stack);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.56;
+  }
+
+  body[class].ogd-pdf-readability :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) h1 {
+    font-family: var(--ogd-pdf-readability-font-stack);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  body[class].ogd-pdf-readability :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) :is(h2, h3, h4, h5, h6) {
+    font-family: var(--ogd-pdf-readability-font-stack);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  body[class].ogd-pdf-readability :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) :is(p, li, dd, dt, blockquote):not(table *) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.56;
+  }
+
+  body[class].ogd-pdf-readability :is(
+    .markdown-rendered.markdown-rendered,
+    .markdown-preview-view.markdown-rendered.markdown-rendered,
+    .markdown-reading-view .markdown-rendered.markdown-rendered
+  ) :is(figcaption, caption, .ogd-caption, .table-caption, .figure-caption, .ogd-figure-caption, .media-caption) {
+    font-family: var(--ogd-pdf-readability-font-stack);
+    font-size: var(--ogd-pdf-caption-font-size, 14px);
+    font-weight: 400;
+    line-height: 1.5;
+  }
 }
 
 /* <<< src/features/42-report-print-polish.css */
@@ -19193,6 +18740,65 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
     color: var(--text-normal);
   }
 
+  body:not(.is-mobile):not(.theme-dark) :is(.tooltip, [role="tooltip"]) {
+    --ogd-tooltip-arrow-color: #ffffff;
+    --ogd-tooltip-border-color: rgba(148, 163, 184, 0.30);
+    padding: 10px 14px;
+    border-color: var(--ogd-tooltip-border-color);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #eff7fa 0%, #ffffff 46%, #f8fafc 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), 0 14px 30px rgba(15, 23, 42, 0.13), 0 3px 8px rgba(15, 23, 42, 0.06);
+    color: #334155;
+    font-weight: 560;
+    line-height: 1.5;
+    white-space: pre-line;
+  }
+
+  body:not(.is-mobile):not(.theme-dark) :is(.tooltip, [role="tooltip"]):not(:has(.ogd-tooltip-title))::first-line {
+    color: #0f172a;
+    font-weight: 800;
+  }
+
+  body:not(.is-mobile) .tooltip :is(.ogd-tooltip-title, .ogd-tooltip-meta) {
+    display: block;
+  }
+
+  body:not(.is-mobile) .tooltip .ogd-tooltip-title {
+    color: #0f172a;
+    font-weight: 800;
+  }
+
+  body:not(.is-mobile) .tooltip .ogd-tooltip-meta {
+    position: relative;
+    margin-top: 16px;
+    color: #475569;
+    font-weight: 560;
+  }
+
+  body:not(.is-mobile) .tooltip .ogd-tooltip-meta::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: -9px;
+    height: 1px;
+    background: rgba(100, 116, 139, 0.24);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.94);
+    pointer-events: none;
+  }
+
+  body:not(.is-mobile).theme-dark .tooltip .ogd-tooltip-title {
+    color: #f8fafc;
+  }
+
+  body:not(.is-mobile).theme-dark .tooltip .ogd-tooltip-meta {
+    color: #cbd5e1;
+  }
+
+  body:not(.is-mobile).theme-dark .tooltip .ogd-tooltip-meta::before {
+    background: rgba(148, 163, 184, 0.34);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
   body:not(.is-mobile) :is(.tooltip, [role="tooltip"]) :is(.tooltip-content, .tooltip-inner, .tooltip-title, .tooltip-description),
   body:not(.is-mobile) :is(.popover, .popover.hover-popover) :is(.popover-content, .markdown-embed, .markdown-embed-content, .markdown-preview-view, .markdown-rendered) {
     background: var(--ogd-surface-transparent, transparent);
@@ -19207,11 +18813,78 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
   }
 
   body:not(.is-mobile) .tooltip .tooltip-arrow {
-    border-top-color: rgba(255, 255, 255, 0.66);
-    border-right-color: rgba(255, 255, 255, 0.66);
-    border-bottom-color: rgba(255, 255, 255, 0.66);
-    border-left-color: rgba(255, 255, 255, 0.66);
-    filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.14));
+    width: 9px;
+    height: 14px;
+    margin: 0;
+    border: 0;
+    background: var(--ogd-tooltip-border-color);
+    filter: none;
+    transform: none;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  }
+
+  body:not(.is-mobile) .tooltip .tooltip-arrow::after {
+    content: "";
+    position: absolute;
+    inset: 1px 0 1px 1px;
+    background: var(--ogd-tooltip-arrow-color);
+    clip-path: inherit;
+  }
+
+  body:not(.is-mobile).theme-dark .tooltip {
+    --ogd-tooltip-arrow-color: #1e293b;
+    --ogd-tooltip-border-color: var(--ogd-lg-border);
+  }
+
+  body:not(.is-mobile) .tooltip.mod-top .tooltip-arrow {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    width: 14px;
+    height: 9px;
+    transform: translate(-50%, 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+
+  body:not(.is-mobile) .tooltip.mod-top .tooltip-arrow::after {
+    inset: 0 1px 1px;
+  }
+
+  body:not(.is-mobile) .tooltip.mod-right .tooltip-arrow {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    transform: translate(-100%, -50%);
+  }
+
+  body:not(.is-mobile) .tooltip.mod-bottom .tooltip-arrow {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: 14px;
+    height: 9px;
+    transform: translate(-50%, -100%);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  body:not(.is-mobile) .tooltip.mod-bottom .tooltip-arrow::after {
+    inset: 1px 1px 0;
+  }
+
+  body:not(.is-mobile) .tooltip.mod-left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    transform: translate(100%, -50%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+
+  body:not(.is-mobile) .tooltip.mod-left .tooltip-arrow::after {
+    inset: 1px 1px 1px 0;
   }
 
   /* Final side-pane owner: shell, header, row, and inner-label layers stay in one late cascade group. */
@@ -19635,11 +19308,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
   color: var(--ogd-text-slate, #334155);
 }
 
-body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
-
-  background: var(--ogd-table-row-even);
-}
-
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
 
   background: var(--ogd-table-row-hover);
@@ -19664,54 +19332,12 @@ body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-vi
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption { caption-side: top; margin: 0; padding: 0.7em 0.9em; border: 1px solid var(--ogd-html-table-border, var(--ogd-table-border, rgba(203, 213, 225, 0.72))); border-bottom: 0; border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0; background: var(--ogd-html-table-caption-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.52))); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); color: var(--ogd-text-subtle, #475569); font-size: 0.92em; font-weight: 780; line-height: 1.35; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { display: inline-flex; align-items: center; min-height: 1.55em; margin-left: 0.55em; padding: 0.12em 0.58em; border: 1px solid color-mix(in srgb, var(--ogd-rim-active) 63%, transparent); border-radius: var(--ogd-radius-pill, 999px); background: linear-gradient(180deg, rgba(240, 249, 255, 0.92), rgba(224, 242, 254, 0.64)); color: #0369a1; font-size: 0.78em; font-weight: 780; line-height: 1.2; white-space: nowrap; }
-:is(
-  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
-  .markdown-rendered.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode,
-  .markdown-reading-view.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode .markdown-rendered,
-  .markdown-reading-view.ogd-report-mode .markdown-rendered
-) table {
-  --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
-  --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6);
-  --ogd-table-border: rgba(148, 163, 184, 0.72);
-  --ogd-table-cell-border: rgba(203, 213, 225, 0.92);
-  --ogd-table-row-hover: #f8fafc;
-  --ogd-table-row-even: #fbfdff;
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96);
-  table-layout: auto;
-}
-
-:is(
-  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
-  .markdown-rendered.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode,
-  .markdown-reading-view.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode .markdown-rendered,
-  .markdown-reading-view.ogd-report-mode .markdown-rendered
-) table :is(th, td):first-child {
-  color: var(--ogd-text-strong, #111827);
-  font-weight: 720;
-}
-
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table.comparison-table :is(th, td):first-child {
   color: var(--ogd-text-strong, #111827);
   font-weight: 700;
 
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.76));
   box-shadow: 1px 0 0 rgba(203, 213, 225, 0.72);
-}
-
-:is(
-  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
-  .markdown-rendered.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode,
-  .markdown-reading-view.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode .markdown-rendered,
-  .markdown-reading-view.ogd-report-mode .markdown-rendered
-) table.comparison-table :is(th, td):first-child {
-  background: #eef2f7;
-  box-shadow: 1px 0 0 rgba(148, 163, 184, 0.66);
 }
 
 .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
@@ -19738,24 +19364,6 @@ body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-vi
 
 .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption { color: var(--ogd-line-strong, #cbd5e1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
 .theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table caption :is(.table-status, .ogd-caption-chip, .status) { border-color: color-mix(in srgb, var(--ogd-rim-active) 62%, transparent); background: linear-gradient(180deg, rgba(14, 116, 144, 0.34), rgba(15, 23, 42, 0.28)); color: #bae6fd; }
-
-.theme-dark :is(
-  body.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view),
-  .markdown-rendered.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode,
-  .markdown-reading-view.ogd-report-mode,
-  .markdown-preview-view.ogd-report-mode .markdown-rendered,
-  .markdown-reading-view.ogd-report-mode .markdown-rendered
-) table,
-body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
-  --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62));
-  --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74));
-  --ogd-table-border: rgba(203, 213, 225, 0.28);
-  --ogd-table-cell-border: rgba(71, 85, 105, 0.72);
-  --ogd-table-row-hover: rgba(51, 65, 85, 0.50);
-  --ogd-table-row-even: rgba(15, 23, 42, 0.36);
-  --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
-}
 
 @media (min-width: 701px) {
   body:not(.is-mobile) :is(
@@ -20689,10 +20297,10 @@ body.theme-dark.ogd-report-mode :is(.markdown-rendered, .markdown-preview-view, 
   v2.22.81 - Liquid Glass default Markdown table refresh
    - Keeps ordinary Markdown tables aligned with callout glass surfaces.
    - Uses clear rims, top shine, and shallow row tint without saturated fill.
-   - Leaves report-mode/PDF table fallback rules to their existing owners.
+  - Leaves PDF table fallback rules to their existing owners.
    ============================================================ */
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
   --ogd-table-tint: color-mix(in srgb, var(--ogd-rim-active-low) 33%, transparent);
   --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
   --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68));
@@ -20710,7 +20318,7 @@ body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .mark
   backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
   border-color: var(--ogd-table-cell-border);
   border-bottom-color: rgba(148, 163, 184, 0.46);
   background: var(--ogd-table-head-bg);
@@ -20719,20 +20327,21 @@ body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .mark
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(148, 163, 184, 0.16);
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
   border-color: var(--ogd-table-cell-border);
   color: var(--ogd-text-slate, #334155);
 }
 
-body.ogd-zebra-disabled-permanently:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+body.ogd-zebra-disabled-permanently :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:nth-child(even) td {
+
   background: var(--ogd-table-row-even);
 }
 
-body:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table tbody tr:hover td {
   background: var(--ogd-table-row-hover);
 }
 
-body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
   --ogd-table-tint: rgba(14, 165, 233, 0.10);
   --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%);
   --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58));
@@ -20743,12 +20352,12 @@ body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-
   --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
-body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table th {
   border-bottom-color: rgba(148, 163, 184, 0.34);
   color: var(--text-normal, #e5edf7);
 }
 
-body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
+body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table td {
   color: var(--text-normal, #e5edf7);
 }
 /* <<< src/surfaces/23-liquid-glass-core.css */
@@ -20767,8 +20376,7 @@ body.theme-dark:not(.ogd-report-mode) :is(.markdown-rendered, .markdown-preview-
   late position keeps the cascade ordering identical to vanilla 10d.
    ============================================================ */
 .theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: radial-gradient(circle at 42% 14%, rgba(255, 255, 255, 0.12), transparent 0 30%), linear-gradient(180deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.48)); --ogd-table-head-bg: radial-gradient(circle at 44% 12%, rgba(255, 255, 255, 0.13), transparent 0 30%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.56); --ogd-table-row-hover: rgba(51, 65, 85, 0.42); --ogd-table-row-even: rgba(15, 23, 42, 0.26); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
-.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget), body.theme-dark.ogd-report-mode .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.76), rgba(15, 23, 42, 0.62)); --ogd-table-head-bg: linear-gradient(180deg, rgba(51, 65, 85, 0.82), rgba(30, 41, 59, 0.74)); --ogd-table-border: rgba(203, 213, 225, 0.28); --ogd-table-cell-border: rgba(71, 85, 105, 0.72); --ogd-table-row-hover: rgba(51, 65, 85, 0.50); --ogd-table-row-even: rgba(15, 23, 42, 0.36); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7); }
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) th { border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7); }
 /* v2.30.10 reading-view neutralizer for HTML tables in Live Preview */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td:first-child { color: inherit; font-weight: inherit; }
 /* v2.30.13 align HTML table tone with markdown widget tokens (PDF / Live Preview parity) */
@@ -20807,39 +20415,25 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 
 /* v2.30.16 mirror dev/10d Liquid Glass markdown table block onto HTML tables in Live Preview */
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { border-color: var(--ogd-table-cell-border); color: var(--ogd-text-slate, #334155); }
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover); }
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { border-color: var(--ogd-table-cell-border); color: var(--ogd-text-slate, #334155); }
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover td { background: var(--ogd-table-row-hover); }
 body.ogd-zebra-disabled-permanently .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:nth-child(even) td { background: var(--ogd-table-row-even); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { color: var(--text-normal, #e5edf7); }
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) { --ogd-table-tint: rgba(14, 165, 233, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.10), transparent 34%), linear-gradient(180deg, rgba(30, 41, 59, 0.70), rgba(15, 23, 42, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.14), transparent 0 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(30, 41, 59, 0.58)); --ogd-table-border: rgba(203, 213, 225, 0.20); --ogd-table-cell-border: rgba(71, 85, 105, 0.58); --ogd-table-row-hover: rgba(51, 65, 85, 0.44); --ogd-table-row-even: rgba(15, 23, 42, 0.28); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10); }
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody td { color: var(--text-normal, #e5edf7); }
 
 
 /* v2.30.21 normalize HTML table outer border to match markdown widget exactly (cell-only outer line) */
 /* The visible outer line should come from collapsed cell borders only, like the markdown widget. v2.30.14 sets `border-color` on the outer <table> without an explicit `border-style`, which can leave a hairline at certain zoom levels. Force `border: 0` on the outer table and `border-top: 0` on thead/th so the outer box never paints — exactly matching the markdown widget rendering (dev/05:236 + dev/10d:537/602 stack). */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
-   --ogd-table-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)); --ogd-table-head-bg: linear-gradient(180deg, #f1f5f9, #e8eef6); --ogd-table-border: rgba(148, 163, 184, 0.72); --ogd-table-cell-border: rgba(203, 213, 225, 0.92); --ogd-table-row-hover: #f8fafc; --ogd-table-row-even: #fbfdff; --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96); table-layout: auto;
-
-  border-style: none;
-  border-width: 0;
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
    --ogd-table-tint: rgba(125, 211, 252, 0.10); --ogd-table-surface: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.66), transparent 0 32%), linear-gradient(142deg, rgba(255, 255, 255, 0.42), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.54)), linear-gradient(135deg, var(--ogd-table-tint), transparent 66%); --ogd-table-head-bg: radial-gradient(circle at 44% 0%, rgba(255, 255, 255, 0.76), transparent 0 34%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(241, 245, 249, 0.68)); --ogd-table-border: rgba(203, 213, 225, 0.24); --ogd-table-cell-border: rgba(226, 232, 240, 0.72); --ogd-table-row-hover: rgba(240, 249, 255, 0.58); --ogd-table-row-even: rgba(248, 250, 252, 0.58); --ogd-table-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90); overflow: hidden; border-color: var(--ogd-table-border); border-radius: var(--ogd-radius-control, 7px); background: var(--ogd-table-surface); box-shadow: var(--ogd-table-shadow); -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02)); backdrop-filter: var(--ogd-glass-filter-control, blur(12px) saturate(152%) contrast(103%) brightness(1.02));
 
   border-style: none;
   border-width: 0;
 }
-/* Cell border color parity with markdown widget (--ogd-table-cell-border resolves to rgba(203, 213, 225, 0.92) in report-mode via dev/10d:602 + dev/10e:18). Re-state explicitly on td to override v2.30.10's `border: 1px solid #e5e7eb` shorthand color in case any cascade ordering still leaves the opaque #e5e7eb on a sub-edge. */
+/* Cell border color parity with markdown widget. Re-state explicitly on td to override v2.30.10's `border: 1px solid #e5e7eb` shorthand color in case any cascade ordering still leaves the opaque #e5e7eb on a sub-edge. */
 /* v2.30.22 mirror dev/10-a11y markdown widget td/th rules onto HTML tables (white row overlay + smaller/denser header) */
-/* dev/10-a11y:996-1006 sets `td { background: rgba(255, 255, 255, 0.28) }` and `th { font-size: 0.88em; font-weight: 820 }` for cm-table-widget only. HTML tables in Live Preview never received these, so their rows pick up the table surface gradient (faint grey) and their headers render larger/heavier than the markdown widget side-by-side. Restate both at matching specificity for HTML tables, in both report-mode and non-report-mode. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--ogd-table-cell-border);
-
-  background: rgba(255, 255, 255, 0.28);
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+/* dev/10-a11y:996-1006 sets `td { background: rgba(255, 255, 255, 0.28) }` and `th { font-size: 0.88em; font-weight: 820 }` for cm-table-widget only. HTML tables in Live Preview never received these, so their rows pick up the table surface gradient (faint grey) and their headers render larger/heavier than the markdown widget side-by-side. */
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
 
   border-width: 1px;
   border-style: solid;
@@ -20848,10 +20442,7 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm
   background: rgba(255, 255, 255, 0.28);
 }
 /* Dark mode parity: dev/10-a11y has no dark override, so same overlay/font apply. The white overlay reads correctly on dark surface (subtle highlight without flipping rows white). */
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
-  background: rgba(255, 255, 255, 0.04);
-}
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) td {
    color: var(--text-normal, #e5edf7);
 
   background: rgba(255, 255, 255, 0.04);
@@ -20859,18 +20450,7 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 
 /* Current owner: HTML table header divider matches the normal cell grid weight. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-
-  border-top-width: 0;
-  border-top-style: none;
-
-  font-size: 0.88em;
-  font-weight: 820;
-
-  border-bottom: 1px solid rgba(226, 232, 240, 0.92);
-  box-shadow: none;
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
    border-color: var(--ogd-table-cell-border); border-bottom-color: rgba(148, 163, 184, 0.46); background: var(--ogd-table-head-bg); color: var(--ogd-text-strong, #111827);
 
   border-top-width: 0;
@@ -20882,11 +20462,7 @@ body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm
   border-bottom: 1px solid rgba(226, 232, 240, 0.92);
   box-shadow: none;
 }
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
-  border-bottom: 1px solid rgba(71, 85, 105, 0.58);
-  box-shadow: none;
-}
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) thead th {
    border-bottom-color: rgba(148, 163, 184, 0.34); color: var(--text-normal, #e5edf7);
 
   border-bottom: 1px solid rgba(71, 85, 105, 0.58);
@@ -20895,26 +20471,14 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 
 /* Current owner: outline paints only the table perimeter, avoiding collapsed-border side effects. */
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
-:is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
-  outline: 1.5px solid rgba(148, 163, 184, 0.72);
-  outline-offset: -1px;
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.96);
-}
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
-body:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
   outline: 1.5px solid rgba(148, 163, 184, 0.64);
   outline-offset: -1px;
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.90);
 }
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
-  outline: 1.5px solid rgba(148, 163, 184, 0.40);
-  outline-offset: -1px;
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.10);
-}
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
   outline: 1.5px solid rgba(148, 163, 184, 0.34);
   outline-offset: -1px;
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.10);
@@ -20923,18 +20487,14 @@ body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html
 
 /* v2.30.27 force HTML table body cells to pure white */
 /* Keep the v2.30.26 outer outline and the existing header tone. Remove the remaining glass tint from body rows by forcing table body surfaces and cells to pure white in light mode only. */
-body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
-body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget),
-body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
-body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
+body:not(.theme-dark) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget),
+body:not(.theme-dark) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) {
   --ogd-table-surface: #ffffff;
   background: #ffffff;
 }
 
-body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
-body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
-body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
-body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td) {
+body:not(.theme-dark) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td),
+body:not(.theme-dark) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) :is(tbody, tr, td) {
   background: #ffffff;
   background-color: #ffffff;
 }
@@ -20942,24 +20502,20 @@ body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.c
 
 /* v2.30.28 restore visible blue hover on HTML table body rows */
 /* v2.30.27's white body-cell override is intentionally strong, but it also wins over older hover rules. Put the hover state back after it: white at rest, blue on hover. */
-body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
-body:not(.theme-dark) :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
-body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
-body:not(.theme-dark):not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
+body:not(.theme-dark) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body:not(.theme-dark) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
   background: rgba(224, 242, 254, 0.72);
   background-color: rgba(224, 242, 254, 0.72);
 }
 
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
-body.theme-dark :is(body.ogd-report-mode .markdown-source-view.mod-cm6, .markdown-source-view.mod-cm6.ogd-report-mode) :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
-body.theme-dark:not(.ogd-report-mode) .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) tbody tr:hover > td,
+body.theme-dark .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:is(.ogd-html-table, .wide-table, .compact-table, .numeric-table, .comparison-table, .risk-table, .matrix-table, .print-fit-table, .wrap-table, .nowrap-code-table, .scroll-token-table, .scroll-table):not(.cm-table):not(.cm-table-widget) tbody tr:hover > td {
   background: rgba(8, 145, 178, 0.22);
   background-color: rgba(8, 145, 178, 0.22);
 }
 
 
-/* v3.1.39 table parity: LP HTML tables consume the shared report table rhythm tokens. */
+/* v3.1.39 table parity: LP HTML tables consume the shared table rhythm tokens. */
 .markdown-source-view.mod-cm6 :is(.cm-html-embed, .cm-embed-block:not(.cm-callout):not(.cm-table-widget)) table:not(.cm-table):not(.cm-table-widget) {
 
   border-collapse: collapse;

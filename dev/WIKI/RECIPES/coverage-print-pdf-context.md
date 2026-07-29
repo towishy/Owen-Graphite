@@ -10,7 +10,7 @@
 
 1. Pick one `print-pdf-context` reserved selector or one PDF visibility/header/footer combination.
 2. Capture the screen state and print/PDF state separately; do not assume screen behavior proves print behavior.
-3. Check header/footer overlap, page breaks, table/code wrapping, image borders, and compact report variants.
+3. Check header/footer overlap, page breaks, table/code wrapping, image borders, and readability variants.
 4. Keep report-specific closure in print owners and avoid changing screen selectors unintentionally.
 5. Update the unused CSS report only after print evidence exists.
 
