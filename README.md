@@ -160,7 +160,7 @@ The companion does not edit Markdown. To edit fenced code-block titles directly 
 ```bash title="Package update"
 winget upgrade
 ```
-```
+````
 
 ### Option C — Git Install Or Update
 
