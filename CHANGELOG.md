@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.98
+
+- fix: vault switcher, 도움말, 설정 control 사이의 실제 간격을 모두 8px로 통일했습니다.
+- fix: Owen Editor 0.6.32의 file explorer scrollbar를 native channel로 복원하고 editor palette scrollbar를 modal 오른쪽 edge에 정렬했습니다.
+- polish: Foundation Frosted ScrollArea의 canonical 2px rail, 6×44px glass grip, subtle rim, shadow, 3-line handle 재질을 그대로 유지합니다.
+- guard: Obsidian 1.12.7 CDP에서 두 vault control gap을 8px/8px로, palette scrollbar의 modal 오른쪽 inset을 6px·오차 0px로 검증하고 Graphite·Editor release gate를 통과했습니다.
+
 ## v3.1.97
 
 - feat: Owen Editor 0.6.31의 canonical Frosted ScrollArea adapter가 Obsidian native wheel·touch·keyboard viewport를 유지하면서 fixed `6×44px` grip, rail click, pointer drag를 전체 vertical scroll surface에 제공합니다.

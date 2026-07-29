@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.97)
+﻿# v3 Release Record (latest: v3.1.98)
 
-**Status**: Current stable / rollback baseline = `v3.1.97` (2026-07-29). This release connects canonical Frosted ScrollArea controls, code-block copy/title parity, and stable vault action spacing without reintroducing native scrollbar approximation.
+**Status**: Current stable / rollback baseline = `v3.1.98` (2026-07-29). This release restores exact scrollbar channels and equal vault action spacing while preserving the canonical Frosted ScrollArea material and native scrolling semantics.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.97` |
+| `manifest.json` version | `3.1.98` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,186 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,190 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.97.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.98.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.0.zip` |
 
 ## What was removed

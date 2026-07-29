@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20468
-- Parsed CSS rules: 2650
-- Selector parts: 4070
+- Source CSS lines: 20472
+- Parsed CSS rules: 2651
+- Selector parts: 4071
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -23,7 +23,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `print-pdf`: 504 rules
 - `reading-rendered`: 1141 rules
 - `table`: 1165 rules
-- `workspace-chrome`: 715 rules
+- `workspace-chrome`: 716 rules
 
 ## Quick Routing
 
@@ -171,7 +171,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 9768-10161 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 10165-10682 | 538 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:7, print-pdf:2, reading-rendered:27, table:37, workspace-chrome:17 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 10686-12744 | 1668 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:34, cm6:4, code:208, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:155, reading-rendered:206, table:110, workspace-chrome:60 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
-| 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 267 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:24 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
+| 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 271 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:25 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
 | 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1014 | overlay-menu-search | cm6:6, code:7, overlay-search:34, reading-rendered:6, table:30, workspace-chrome:41 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 856 | overlay-menu-search | code:5, overlay-search:55, print-pdf:1, reading-rendered:4, table:54, workspace-chrome:24 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
 | 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 1288 | workspace-chrome | code:2, overlay-search:13, table:168, workspace-chrome:225 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
