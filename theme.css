@@ -154,14 +154,6 @@ settings:
     level: 2
     collapsed: true
   -
-    id: ogd-modern-tables
-    title: Enhanced modern table style
-    title.ko: 표 모던 스타일 강화
-    description: Strengthens table headers, first columns, hover states, and PDF borders with a report-oriented treatment.
-    description.ko: 표 헤더, 첫 컬럼, hover, PDF border를 보고서형 톤으로 강화
-    type: class-toggle
-    default: true
-  -
     id: ogd-print-avoid-breaks
     title: Prevent PDF block splitting
     title.ko: PDF 블록 분할 방지 강화
@@ -362,30 +354,6 @@ settings:
     description.ko: 시스템 다크 모드일 때 자동으로 다크 테마 변수 적용
     type: class-toggle
     default: false
-  -
-    id: ogd-glass-intensity
-    title: Desktop glass intensity
-    title.ko: 데스크톱 Glass 강도
-    description: Adjusts transparency and shadow intensity for desktop UI chrome. Reduced lowers blur for battery life and lower-performance devices.
-    description.ko: 데스크톱 UI chrome의 투명 유리/그림자 강도를 조정합니다. Reduced는 blur를 줄여 배터리와 저성능 환경에 적합합니다.
-    type: class-select
-    default: ogd-glass-standard
-    options:
-      -
-        label: Off
-        value: ogd-glass-off
-      -
-        label: Reduced
-        value: ogd-glass-reduced
-      -
-        label: Subtle
-        value: ogd-glass-subtle
-      -
-        label: Standard
-        value: ogd-glass-standard
-      -
-        label: Strong
-        value: ogd-glass-strong
   -
     id: ogd-motion-intensity
     title: Desktop hover motion
@@ -1189,6 +1157,11 @@ settings:
   --scrollbar-bg: transparent;
   --scrollbar-thumb-bg: #cbd5e1;
   --scrollbar-active-thumb-bg: #9ca3af;
+  --ogd-scrollbar-rail: rgba(65, 82, 94, 0.12);
+  --ogd-scrollbar-thumb-start: rgba(255, 255, 255, 0.72);
+  --ogd-scrollbar-thumb-end: rgba(205, 218, 225, 0.34);
+  --ogd-scrollbar-thumb-rim: rgba(65, 82, 94, 0.3);
+  --ogd-scrollbar-thumb-shadow: rgba(36, 55, 65, 0.12);
 
   --header-accent: var(--ogd-accent, #4b5563);
   --header-accent-dark: #374151;
@@ -1396,40 +1369,6 @@ body:not(.is-mobile).theme-dark {
   --ogd-pdf-footer-segment-value-bg: var(--ogd-pdf-segment-value-bg, #0284c7);
   --ogd-pdf-footer-segment-value-text: var(--ogd-pdf-segment-value-text, #ffffff);
   --ogd-pdf-footer-segment-value-border: var(--ogd-pdf-segment-value-border, transparent);
-}
-
-body:not(.is-mobile).theme-dark.ogd-glass-reduced {
-  /* --ogd-* tokens */
-  --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.78));
-  --ogd-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(30, 41, 59, 0.74));
-  --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.84));
-  --ogd-glass-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  --ogd-glass-shadow-hover: 0 3px 10px rgba(0, 0, 0, 0.30);
-  --ogd-tab-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.74));
-  --ogd-tab-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.74), rgba(30, 41, 59, 0.62));
-  --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent);
-  --ogd-tab-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 12px -10px rgba(0, 0, 0, 0.48);
-  --ogd-tab-glass-shadow-hover: none;
-}
-
-body:not(.is-mobile).theme-dark.ogd-glass-subtle {
-  /* --ogd-* tokens */
-  --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.62));
-  --ogd-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.54));
-  --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.70));
-  --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 20px rgba(0, 0, 0, 0.34);
-  --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 4px 12px rgba(0, 0, 0, 0.28);
-}
-
-body:not(.is-mobile).theme-dark.ogd-glass-strong {
-  /* --ogd-* tokens */
-  --ogd-glass-bg: radial-gradient(circle at 76% 34%, rgba(148, 163, 184, 0.14), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(2, 6, 23, 0.48));
-  --ogd-glass-bg-hover: radial-gradient(circle at 76% 30%, rgba(148, 163, 184, 0.18), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203, 213, 225, 0.07), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.46));
-  --ogd-glass-bg-strong: radial-gradient(circle at 74% 32%, rgba(148, 163, 184, 0.16), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.80), rgba(15, 23, 42, 0.56));
-  --ogd-glass-border: rgba(203, 213, 225, 0.22);
-  --ogd-glass-border-hover: rgba(203, 213, 225, 0.24);
-  --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(0, 0, 0, 0.38), inset 0 0 22px rgba(148, 163, 184, 0.12), 0 20px 46px rgba(0, 0, 0, 0.54), 0 6px 16px rgba(0, 0, 0, 0.34);
-  --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 20px rgba(148, 163, 184, 0.14), 0 10px 28px rgba(0, 0, 0, 0.40);
 }
 
 body.theme-dark {
@@ -2880,7 +2819,7 @@ body .markdown-rendered blockquote blockquote blockquote {
 }
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
-  padding: 0.16em 0.38em;
+  padding: 0.16em 0.46em;
   border: 1px solid var(--ogd-line-soft, #e5e7eb);
   border-radius: 4px;
   background: var(--ogd-surface-subtle, #f3f4f6);
@@ -3311,7 +3250,7 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
 .markdown-rendered code:not(pre code),
 .markdown-preview-view code:not(pre code) {
   background: var(--ogd-inline-code-bg, rgba(248, 250, 252, 0.82));
-  padding: 0.11em 0.34em;
+  padding: 0.16em 0.46em;
   border: 1px solid var(--ogd-inline-code-border, rgba(148, 163, 184, 0.24));
   border-radius: 4px;
   font-size: 0.88em;
@@ -3415,13 +3354,13 @@ body.theme-dark .markdown-rendered code:not(pre code) {
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 .workspace-leaf-content .markdown-rendered pre {
 
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(241, 245, 249, 0.62));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.88);
   --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.42);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.28);
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   position: relative;
   margin: 1.28em 0 1.62em;
   padding: 0;
@@ -3524,13 +3463,13 @@ body.theme-dark .markdown-rendered code:not(pre code) {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.82);
   --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
@@ -3682,6 +3621,18 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 0 0 3px rgba(14, 165, 233, 0.10);
 }
 
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(:hover, :focus-within) > .copy-code-button,
+body .workspace-leaf-content .markdown-rendered pre:is(:hover, :focus-within) > .copy-code-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ogd-codeblock-action-size, 1.72em);
+  min-width: var(--ogd-codeblock-action-size, 1.72em);
+  height: var(--ogd-codeblock-action-size, 1.72em);
+  min-height: var(--ogd-codeblock-action-size, 1.72em);
+  padding: 0;
+}
+
 @media (max-width: 700px) {
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     --ogd-table-pad-y: 0.42em;
@@ -3691,8 +3642,8 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre) {
-    --ogd-codeblock-header-height: 2.2em;
-    --ogd-codeblock-code-padding: 3.72em 0.82em 0.88em;
+    --ogd-codeblock-header-height: 2.7em;
+    --ogd-codeblock-code-padding: 4.22em 0.82em 0.88em;
     border-radius: 9px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
@@ -3860,7 +3811,7 @@ body .workspace-leaf-content .markdown-rendered pre code {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
   --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
@@ -3878,12 +3829,12 @@ body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-readi
 body.theme-light .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
 body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
-  --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.50);
+  --ogd-codeblock-header-bg: linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.30);
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09);
   background: var(--ogd-codeblock-bg);
   border-color: var(--ogd-codeblock-border);
@@ -3920,8 +3871,8 @@ body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
 body pre[class*="language-"],
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre {
   --ogd-codeblock-radius: 12px;
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   --ogd-codeblock-action-size: 1.72em;
   --ogd-codeblock-action-right: 0.74em;
   --ogd-codeblock-action-space: 3.3em;
@@ -3973,15 +3924,15 @@ body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .la
 body pre:is(.language-powershell, .language-ps1, .language-pwsh)::after { content: "PowerShell"; }
 
 body pre code {
-  padding: 4.05em 1.1em 1.05em;
+  padding: 4.55em 1.1em 1.05em;
 }
 
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre code {
-  padding: 4.05em 1.1em 1.05em;
+  padding: 4.55em 1.1em 1.05em;
 }
 
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) :is(pre code, code) {
-  padding-top: 4.05em;
+  padding-top: 4.55em;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin :is(.cm-formatting-code, .cm-formatting-code-block, .cm-hmd-codeblock),
@@ -5169,18 +5120,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .ca
 .cm-content:focus-visible {
   outline: none;
   box-shadow: var(--ogd-shadow-none, none);
-}
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-bg);
-  border: 3px solid var(--background-primary);
-  border-radius: var(--ogd-radius-pill, 999px);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-active-thumb-bg);
 }
 
 /* <<< src/surfaces/22-reading-embeds-workspace.css */
@@ -7368,7 +7307,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
   color: var(--ogd-text-strong, #111827);
   border: 1px solid var(--ogd-line-soft, #e5e7eb);
   border-radius: 3px;
-  padding: 0 4px;
+  padding: 0.16em 0.46em;
   font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
   font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
@@ -7649,7 +7588,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.Hyper
 }
 
 body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  --ogd-lp-code-bg: rgba(248, 250, 252, 0.86);
+  --ogd-lp-code-bg: #ffffff;
   --ogd-lp-code-border: rgba(148, 163, 184, 0.46);
   border-color: var(--ogd-lp-code-border);
   background: var(--ogd-lp-code-bg);
@@ -7659,6 +7598,7 @@ body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.Hype
 
 body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
   line-height: 1.62;
+  background: var(--ogd-codeblock-header-bg, linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%));
 }
 
 body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
@@ -7676,7 +7616,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.Hyper
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
-  padding: 0.08em 0.34em;
+  padding: 0.16em 0.46em;
   border: 1px solid rgba(203, 213, 225, 0.82);
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.68));
@@ -7755,11 +7695,9 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
 
-  border-left: 1px solid #d1d5db;
-  border-right: 1px solid #d1d5db;
-
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-lp-code-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.12), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(241, 245, 249, 0.54));
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-header-bg: linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%);
+  --ogd-lp-code-bg: #ffffff;
   --ogd-lp-code-border: rgba(148, 163, 184, 0.42);
   margin-top: 0;
   margin-bottom: 0;
@@ -7767,7 +7705,8 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
   padding-bottom: 0;
   padding-left: 14px;
   padding-right: 14px;
-  border-inline: 1px solid var(--ogd-lp-code-border);
+  border-left: 1px solid var(--ogd-lp-code-border);
+  border-right: 1px solid var(--ogd-lp-code-border);
   background: var(--ogd-lp-code-bg);
   color: var(--ogd-code-fg, #1e293b);
   font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
@@ -7779,6 +7718,10 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
   line-height: var(--ogd-code-line-height, 1.58);
   letter-spacing: var(--ogd-code-letter-spacing, 0);
   tab-size: var(--ogd-code-tab-size, 2);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock .cm-indent::before {
+  border-right: 0;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
@@ -7870,7 +7813,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
   border-top: 1px solid var(--ogd-lp-code-border, rgba(148, 163, 184, 0.42));
   border-radius: var(--ogd-radius-control, 10px) var(--ogd-radius-control, 10px) 0 0;
 
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  background: var(--ogd-codeblock-header-bg);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06);
 }
 
@@ -9270,12 +9213,12 @@ body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdo
   margin: 1.05em 0 1.35em;
   border: 1px solid rgba(30, 41, 59, 0.18);
   border-radius: var(--ogd-radius-control, 7px);
-  background: linear-gradient(180deg, #172033, #111827);
+  background: #ffffff;
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
-  padding: 0.08em 0.34em;
+  padding: 0.16em 0.46em;
   border: 1px solid rgba(203, 213, 225, 0.82);
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.68));
@@ -9492,6 +9435,11 @@ body.ogd-auto-dark {
   --divider-color: #353841;
   --scrollbar-thumb-bg: #3f424b;
   --scrollbar-active-thumb-bg: #6b7280;
+  --ogd-scrollbar-rail: rgba(226, 232, 240, 0.14);
+  --ogd-scrollbar-thumb-start: rgba(255, 255, 255, 0.3);
+  --ogd-scrollbar-thumb-end: rgba(148, 163, 184, 0.18);
+  --ogd-scrollbar-thumb-rim: rgba(226, 232, 240, 0.28);
+  --ogd-scrollbar-thumb-shadow: rgba(0, 0, 0, 0.28);
 
   --header-accent: var(--ogd-accent, #94a3b8);
   --header-accent-dark: var(--ogd-line-strong, #cbd5e1);
@@ -9980,8 +9928,7 @@ a.tag:hover {
   v1.8.0 - Report quality bundle
    - PDF block split hardening
    - Purpose-based callout palette
-   - Modern table polish
-   - Style Settings toggles: ogd-modern-tables / ogd-print-avoid-breaks
+    - PDF block splitting Style Settings toggle
    ============================================================ */
 
 /* PDF: keep semantic blocks together where Chromium pagination allows it */
@@ -10064,67 +10011,6 @@ a.tag:hover {
   background: #1f2937;
   border-color: #4b5563;
   color: var(--ogd-surface-subtle, #f3f4f6);
-}
-
-/* Modern table polish: default-on, Style Settings class keeps it explicit */
-body.ogd-modern-tables .markdown-rendered table,
-.markdown-rendered table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--ogd-line-soft, #e5e7eb);
-  border-radius: var(--ogd-radius-control, 7px);
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-}
-body.ogd-modern-tables .markdown-rendered table th,
-.markdown-rendered table th {
-  background: var(--ogd-surface-subtle, #f3f4f6);
-  color: var(--ogd-text-secondary, #374151);
-  font-weight: 700;
-  border-color: var(--ogd-line-soft, #e5e7eb);
-}
-body.ogd-modern-tables .markdown-rendered table td,
-.markdown-rendered table td {
-  border-color: #eef2f7;
-}
-body.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td {
-  background: #fafafa;
-}
-body.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
-.markdown-rendered table tbody tr:hover td {
-  background: var(--ogd-surface-muted, #f8fafc);
-}
-body.ogd-modern-tables .markdown-rendered table td:first-child,
-body.ogd-modern-tables .markdown-rendered table th:first-child {
-  color: var(--ogd-text-strong, #111827);
-  font-weight: 600;
-}
-
-body.theme-dark.ogd-modern-tables .markdown-rendered table,
-.theme-dark .markdown-rendered table {
-  border-color: var(--ogd-line-contrast, #374151);
-  box-shadow: var(--ogd-shadow-none, none);
-}
-body.theme-dark.ogd-modern-tables .markdown-rendered table th,
-.theme-dark .markdown-rendered table th {
-  background: #1f2937;
-  color: var(--ogd-surface-subtle, #f3f4f6);
-  border-color: var(--ogd-line-contrast, #374151);
-}
-body.theme-dark.ogd-modern-tables .markdown-rendered table td,
-.theme-dark .markdown-rendered table td {
-  border-color: #2f3744;
-}
-body.theme-dark.ogd-zebra-disabled-permanently .markdown-rendered table tbody tr:nth-child(even) td {
-  background: #151a22;
-}
-body.theme-dark.ogd-modern-tables .markdown-rendered table tbody tr:hover td,
-.theme-dark .markdown-rendered table tbody tr:hover td {
-  background: #1b2330;
-}
-body.theme-dark.ogd-modern-tables .markdown-rendered table td:first-child,
-body.theme-dark.ogd-modern-tables .markdown-rendered table th:first-child {
-  color: #f9fafb;
 }
 
 /* ============================================================
@@ -13656,14 +13542,14 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     --ogd-codeblock-wrapper-margin: 0.68em 0 0.9em;
     --ogd-codeblock-margin: 0.68em 0 0.9em;
     --ogd-codeblock-radius: 8px;
-    --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.12), transparent 0 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.88));
+    --ogd-codeblock-bg: #ffffff;
     --ogd-codeblock-border: rgba(186, 207, 229, 0.88);
     --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
     --ogd-codeblock-header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.56));
     --ogd-codeblock-header-border: rgba(203, 213, 225, 0.72);
     --ogd-codeblock-header-padding: 5.5pt 8.5pt 5pt;
     --ogd-codeblock-header-font-size: 7.2pt;
-    --ogd-codeblock-code-padding: 20pt 9pt 8.5pt;
+    --ogd-codeblock-code-padding: 32pt 9pt 8.5pt;
     --ogd-codeblock-code-white-space: pre-wrap;
     --ogd-codeblock-code-overflow-wrap: anywhere;
     margin-top: 0.68em;
@@ -13673,7 +13559,7 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     border: 1px solid var(--ogd-codeblock-border);
     border-radius: 8px;
     background: var(--ogd-codeblock-bg);
-    background-color: #f8fbff;
+    background-color: #ffffff;
     box-shadow: var(--ogd-codeblock-shadow);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
@@ -13705,7 +13591,7 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     .markdown-reading-view .markdown-rendered
   ) pre code {
     display: block;
-    padding: var(--ogd-codeblock-code-padding, 20pt 9pt 8.5pt);
+    padding: var(--ogd-codeblock-code-padding, 32pt 9pt 8.5pt);
     background: transparent;
     color: var(--ogd-code-fg, #1e293b);
     font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
@@ -14437,7 +14323,7 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
 
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-    --ogd-codeblock-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.96));
+    --ogd-codeblock-bg: #ffffff;
     --ogd-codeblock-border: rgba(203, 213, 225, 0.78);
     --ogd-codeblock-header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 251, 255, 0.42));
     --ogd-codeblock-header-border: rgba(203, 213, 225, 0.52);
@@ -14480,10 +14366,10 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
 
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre code,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre code {
-    background: transparent;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    padding: 24pt 9pt 8.5pt;
+    background: #ffffff;
+    padding: 32pt 9pt 8.5pt;
   }
 
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::before,
@@ -14493,7 +14379,7 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     inset: 0 0 auto 0;
     z-index: 1;
     display: block;
-    height: 16pt;
+    height: 24pt;
     padding: 0;
     border: 0;
     border-bottom: 1px solid var(--ogd-codeblock-header-border, rgba(203, 213, 225, 0.52));
@@ -14513,7 +14399,7 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     z-index: 2;
     display: inline-flex;
     align-items: center;
-    height: 16pt;
+    height: 24pt;
     padding: 0;
     border: 0;
     background: transparent;
@@ -14555,6 +14441,22 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.language-sql::after { content: "SQL"; }
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after,
   body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:is(.language-text, .language-txt, .language-plain, .language-plaintext)::after { content: "TEXT"; }
+
+  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.owen-editor-codeblock-title-ready[class*="language-"]::after,
+  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre.owen-editor-codeblock-title-ready[class*="language-"]::after {
+    content: "";
+  }
+
+  @supports selector(pre:has(> .owen-editor-codeblock-title)) {
+    body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:has(> .owen-editor-codeblock-title)::after,
+    body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .workspace-leaf-content .markdown-rendered pre:has(> .owen-editor-codeblock-title)::after {
+      content: "";
+    }
+  }
+
+  body:not(.ogd-codeblock-print-legacy):not(.ogd-codeblock-print-vintage) .markdown-source-view.mod-cm6 .code-block-flair.owen-editor-codeblock-title-trigger {
+    display: none;
+  }
 
   body:is(.ogd-pdf-font-comfortable, .ogd-pdf-font-large) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) pre code {
     --ogd-pdf-readable-code-font-size: var(--ogd-pdf-surface-text-font-size, var(--ogd-code-print-font-size, 11.6pt));
@@ -14731,6 +14633,10 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 -10px 26px rgba(15, 23, 42, 0.055), 0 -3px 10px rgba(56, 189, 248, 0.035);
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
     backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(140%));
+  }
+
+  body:not(.is-mobile) .workspace-drawer-vault-actions {
+    gap: 8px;
   }
 
   body:not(.is-mobile) :is(
@@ -15925,70 +15831,6 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
   }
 }
 
-/* File explorer scrollbar cleanup: hide the sidebar thumb line. */
-@media (min-width: 701px) {
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) {
-    --scrollbar-bg: var(--ogd-surface-transparent, transparent);
-    --scrollbar-thumb-bg: var(--ogd-surface-transparent, transparent);
-    --scrollbar-active-thumb-bg: var(--ogd-surface-transparent, transparent);
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  ) {
-    -ms-overflow-style: none;
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  )::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  )::-webkit-scrollbar-thumb,
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  )::-webkit-scrollbar-track {
-    background: var(--ogd-surface-transparent, transparent);
-    border: var(--ogd-border-none, 0);
-    box-shadow: var(--ogd-shadow-none, none);
-  }
-
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-thumb,
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-track,
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-corner {
-    background: var(--ogd-surface-transparent, transparent);
-    border: var(--ogd-border-none, 0);
-    box-shadow: var(--ogd-shadow-none, none);
-  }
-}
-
 /* <<< src/chrome/35-editing-menu-tooltip-glass.css */
 /* 09c-floating-ui-glass-system.css             -> chrome/36 */
 /* >>> src/chrome/36-floating-ui-glass-system.css */
@@ -16418,91 +16260,8 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
   }
 }
 
-/* v1.8.43 - User-selectable glass intensity, plugin polish, and print isolation. */
+/* v1.8.43 - Plugin polish and print isolation. */
 @media (min-width: 701px) {
-  body:not(.is-mobile).ogd-glass-off,
-  body:not(.is-mobile).ogd-glass-reduced {
-    --ogd-glass-filter: none;
-    --ogd-glass-filter-soft: none;
-    --ogd-glass-filter-control: none;
-  }
-
-  body:not(.is-mobile).ogd-glass-off {
-    --ogd-glass-bg: var(--background-primary);
-    --ogd-glass-bg-strong: var(--background-primary);
-    --ogd-glass-bg-hover: var(--background-modifier-hover);
-    --ogd-glass-border: var(--background-modifier-border);
-    --ogd-glass-border-hover: var(--background-modifier-border-hover);
-    --ogd-glass-shadow: none;
-    --ogd-glass-shadow-hover: none;
-    --ogd-glass-control-shadow: none;
-  }
-
-  body:not(.is-mobile).ogd-glass-reduced {
-    --ogd-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82));
-    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.90));
-    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.88));
-    --ogd-glass-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
-    --ogd-glass-shadow-hover: 0 3px 10px rgba(15, 23, 42, 0.10);
-    --ogd-glass-control-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
-  }
-
-  body:not(.is-mobile).ogd-glass-subtle {
-    --ogd-glass-filter: blur(10px) saturate(130%);
-    --ogd-glass-filter-soft: blur(8px) saturate(125%);
-    --ogd-glass-filter-control: blur(6px) saturate(120%);
-    --ogd-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 250, 252, 0.62));
-    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.72));
-    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(241, 245, 249, 0.68));
-    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 8px 20px rgba(15, 23, 42, 0.10);
-    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 4px 12px rgba(15, 23, 42, 0.10);
-  }
-
-  body:not(.is-mobile).ogd-glass-standard {
-    --ogd-glass-filter: blur(22px) saturate(175%) brightness(1.06);
-    --ogd-glass-filter-soft: blur(14px) saturate(155%) brightness(1.04);
-    --ogd-glass-filter-control: blur(11px) saturate(145%) brightness(1.03);
-  }
-
-  body:not(.is-mobile).ogd-glass-strong {
-    --ogd-glass-filter: blur(28px) saturate(195%) brightness(1.10);
-    --ogd-glass-filter-soft: blur(18px) saturate(170%) brightness(1.07);
-    --ogd-glass-filter-control: blur(13px) saturate(155%) brightness(1.05);
-    --ogd-glass-bg: radial-gradient(circle at 76% 34%, rgba(255, 255, 255, 0.54), transparent 36%), radial-gradient(circle at 12% 58%, rgba(148, 163, 184, 0.14), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(226, 232, 240, 0.40));
-    --ogd-glass-bg-strong: radial-gradient(circle at 74% 32%, rgba(255, 255, 255, 0.62), transparent 36%), radial-gradient(circle at 14% 58%, rgba(148, 163, 184, 0.16), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.50));
-    --ogd-glass-bg-hover: radial-gradient(circle at 76% 30%, rgba(255, 255, 255, 0.70), transparent 34%), radial-gradient(circle at 12% 56%, rgba(148, 163, 184, 0.14), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.54));
-    --ogd-glass-border: rgba(148, 163, 184, 0.30);
-    --ogd-glass-border-hover: rgba(100, 116, 139, 0.30);
-    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(148, 163, 184, 0.20), inset 0 0 24px rgba(255, 255, 255, 0.34), 0 20px 44px rgba(15, 23, 42, 0.20), 0 6px 16px rgba(15, 23, 42, 0.10);
-    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 22px rgba(255, 255, 255, 0.38), 0 10px 26px rgba(15, 23, 42, 0.18);
-  }
-
-  body:not(.is-mobile).theme-dark.ogd-glass-reduced {
-    --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.78));
-    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.84));
-    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.84), rgba(30, 41, 59, 0.74));
-    --ogd-glass-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    --ogd-glass-shadow-hover: 0 3px 10px rgba(0, 0, 0, 0.30);
-  }
-
-  body:not(.is-mobile).theme-dark.ogd-glass-subtle {
-    --ogd-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.62));
-    --ogd-glass-bg-strong: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.70));
-    --ogd-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.54));
-    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 20px rgba(0, 0, 0, 0.34);
-    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 4px 12px rgba(0, 0, 0, 0.28);
-  }
-
-  body:not(.is-mobile).theme-dark.ogd-glass-strong {
-    --ogd-glass-bg: radial-gradient(circle at 76% 34%, rgba(148, 163, 184, 0.14), transparent 36%), linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(2, 6, 23, 0.48));
-    --ogd-glass-bg-strong: radial-gradient(circle at 74% 32%, rgba(148, 163, 184, 0.16), transparent 36%), linear-gradient(180deg, rgba(51, 65, 85, 0.80), rgba(15, 23, 42, 0.56));
-    --ogd-glass-bg-hover: radial-gradient(circle at 76% 30%, rgba(148, 163, 184, 0.18), transparent 34%), radial-gradient(circle at 12% 56%, rgba(203, 213, 225, 0.07), transparent 34%), linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.46));
-    --ogd-glass-border: rgba(203, 213, 225, 0.22);
-    --ogd-glass-border-hover: rgba(203, 213, 225, 0.24);
-    --ogd-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(0, 0, 0, 0.38), inset 0 0 22px rgba(148, 163, 184, 0.12), 0 20px 46px rgba(0, 0, 0, 0.54), 0 6px 16px rgba(0, 0, 0, 0.34);
-    --ogd-glass-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 20px rgba(148, 163, 184, 0.14), 0 10px 28px rgba(0, 0, 0, 0.40);
-  }
-
   body:not(.is-mobile) :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu) {
     -webkit-backdrop-filter: var(--ogd-glass-filter);
     backdrop-filter: var(--ogd-glass-filter);
@@ -16563,57 +16322,6 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     background: rgba(15, 23, 42, 0.34);
   }
 
-  body:not(.is-mobile).ogd-glass-off :is(.prompt, .modal, .popover.hover-popover, .notice, .notice-container .notice, #editingToolbarModalBar, .editingToolbarModalBar, .editingToolbarPopover, .editingToolbarPopoverItems, .editingToolbarSubmenu, .editingToolbarMenu),
-  body:not(.is-mobile).ogd-glass-off :is(.prompt-results .suggestion-item, .modal .suggestion-item, .popover.hover-popover .suggestion-item, .modal.mod-settings .setting-item, .metadata-container .metadata-property, .canvas-control-item, .canvas-card-menu .clickable-icon, .status-bar .status-bar-item-segment, .modal .modal-close-button, .checkbox-container):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(
-    .workspace-ribbon .clickable-icon,
-    .clickable-icon.side-dock-ribbon-action,
-    .nav-file-title.is-active,
-    .nav-file-title:hover,
-    .nav-folder-title:hover,
-    .tree-item-self:hover,
-    #editingToolbarModalBar,
-    .editingToolbarModalBar,
-    .editingToolbarPopover,
-    .editingToolbarPopoverItems,
-    .editingToolbarSubmenu,
-    .editingToolbarMenu,
-    .editingToolbarButton,
-    .menu,
-    .menu .menu-item,
-    .tooltip,
-    .view-header-breadcrumb,
-    .view-header-title,
-    .suggestion-container,
-    .search-suggest-container,
-    .search-suggestion-container
-  ),
-  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(
-    .workspace-ribbon .clickable-icon,
-    .clickable-icon.side-dock-ribbon-action,
-    .nav-file-title.is-active,
-    .nav-file-title:hover,
-    .nav-folder-title:hover,
-    .tree-item-self:hover,
-    .editingToolbarButton,
-    .menu .menu-item,
-    .view-header-breadcrumb,
-    .view-header-title,
-    .suggestion-item,
-    .search-suggest-item
-  ):is(:hover, :focus, :focus-within, :active, .is-selected, .selected, [aria-selected="true"]) {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  body:not(.is-mobile):is(.ogd-glass-off, .ogd-glass-reduced) :is(.view-header-breadcrumb, .view-header-title)::before {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
 }
 
 /* v1.8.56 - Overlay interaction polish. */
@@ -17034,32 +16742,6 @@ body:not(.is-mobile) :is(.modal.mod-community-theme, .modal .community-modal) :i
     min-height: 36px;
     margin: 0;
     padding: 0;
-  }
-
-  body:not(.is-mobile).ogd-glass-off {
-    --ogd-tab-glass-bg: var(--tab-background-active) ;
-    --ogd-tab-glass-bg-hover: var(--background-modifier-hover) ;
-    --ogd-tab-glass-border: var(--ogd-surface-transparent, transparent) ;
-    --ogd-tab-glass-border-hover: var(--ogd-surface-transparent, transparent) ;
-    --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent) ;
-    --ogd-tab-glass-shadow: none ;
-    --ogd-tab-glass-shadow-hover: none ;
-  }
-
-  body:not(.is-mobile).ogd-glass-reduced {
-    --ogd-tab-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82)) ;
-    --ogd-tab-glass-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 249, 0.84)) ;
-    --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent) ;
-    --ogd-tab-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 5px 12px -10px rgba(15, 23, 42, 0.26) ;
-    --ogd-tab-glass-shadow-hover: none ;
-  }
-
-  body:not(.is-mobile).theme-dark.ogd-glass-reduced {
-    --ogd-tab-glass-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.74)) ;
-    --ogd-tab-glass-bg-hover: linear-gradient(180deg, rgba(51, 65, 85, 0.74), rgba(30, 41, 59, 0.62)) ;
-    --ogd-tab-glass-border-bottom: var(--ogd-surface-transparent, transparent) ;
-    --ogd-tab-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 12px -10px rgba(0, 0, 0, 0.48) ;
-    --ogd-tab-glass-shadow-hover: none ;
   }
 
   body:not(.is-mobile) :is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
@@ -17894,29 +17576,6 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     --ogd-search-input-control-border: transparent;
     --ogd-search-input-shadow: none;
     --ogd-search-input-control-shadow: none;
-  }
-
-  body:not(.is-mobile).ogd-glass-off .workspace-leaf-content[data-type="search"] {
-    --ogd-search-input-bg: var(--background-primary) ;
-    --ogd-search-input-control-bg: var(--background-secondary) ;
-    --ogd-search-input-border: var(--background-modifier-border) ;
-    --ogd-search-input-control-border: var(--background-modifier-border) ;
-    --ogd-search-input-shadow: none ;
-    --ogd-search-input-control-shadow: none ;
-  }
-
-  body:not(.is-mobile).ogd-glass-reduced .workspace-leaf-content[data-type="search"] {
-    --ogd-search-input-bg: rgba(248, 250, 252, 0.96) ;
-    --ogd-search-input-control-bg: transparent ;
-    --ogd-search-input-shadow: none ;
-    --ogd-search-input-control-shadow: none ;
-  }
-
-  body:not(.is-mobile).theme-dark.ogd-glass-reduced .workspace-leaf-content[data-type="search"] {
-    --ogd-search-input-bg: rgba(17, 24, 39, 0.90) ;
-    --ogd-search-input-control-bg: transparent ;
-    --ogd-search-input-shadow: none ;
-    --ogd-search-input-control-shadow: none ;
   }
 
   body:not(.is-mobile) .workspace-leaf-content[data-type="search"] .search-row {
@@ -19241,22 +18900,6 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is
     box-shadow: var(--ogd-lg-shadow-focus);
   }
 }
-@media (min-width: 701px) {
-  body:not(.is-mobile).ogd-glass-off {
-    --ogd-lg-surface-bg: var(--background-primary);
-    --ogd-lg-surface-bg-hover: var(--background-modifier-hover);
-    --ogd-lg-surface-bg-active: var(--background-primary);
-    --ogd-lg-control-bg: var(--background-primary-alt);
-    --ogd-lg-shadow: none;
-    --ogd-lg-shadow-hover: none;
-    --ogd-lg-shadow-active: none;
-    --ogd-lg-shadow-focus: 0 0 0 2px var(--ogd-lg-frost-outline);
-    --ogd-glass-filter: none;
-    --ogd-glass-filter-soft: none;
-    --ogd-glass-filter-control: none;
-  }
-}
-
 /* ============================================================
   v2.22.31 - Table mode separation and focus halo polish
    - Keeps default wiki tables airy and glass-like.

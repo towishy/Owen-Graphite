@@ -5,14 +5,14 @@
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **58**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **48**
+- 전체 엔트리(heading 포함): **56**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **46**
 - 초기 표시: `읽기와 본문`은 펼치고 나머지 level 2/3 그룹은 접어 긴 PDF 고급 옵션이 기본 화면을 점유하지 않도록 구성
 - 기본 메타데이터는 영어 `title`/`description`이며, 한국어는 Style Settings 1.0.9 네이티브 `title.ko`/`description.ko` 필드로 같은 스키마에 포함
 - `ogd-style-settings-language`는 Obsidian locale 자동 추종과 한국어/English 명시 선택을 제공하며 기존 `ogd-language-*` 저장값을 유지
 - Style Settings 1.0.9가 Obsidian 1.12에서 비어 있는 legacy `localStorage.language`를 영어로 처리하는 경우 companion이 선택 class와 Obsidian locale을 기준으로 Owen Graphite 행을 현지화
 - upstream Style Settings에는 locale별 option-label 필드가 없으므로 영어와 한국어가 다른 구조화 옵션 라벨은 `English / 한국어` 형식으로 병기
-- 기존 setting id, type, default, machine option value 및 순서는 유지
+- 유지되는 setting id, type, default, machine option value 및 순서는 보존
 
 ## 기능 옵션 목록
 
@@ -23,7 +23,6 @@
 | `ogd-line-height` | `variable-select` | `1.5` | 본문 줄간격 |
 | `ogd-max-width` | `variable-select` | `297mm` | 본문 최대 폭 |
 | `ogd-accent` | `variable-color` | `#4b5563` | 헤더 강조 색상 |
-| `ogd-modern-tables` | `class-toggle` | `true` | 표 모던 스타일 강화 |
 | `ogd-print-avoid-breaks` | `class-toggle` | `true` | PDF 블록 분할 방지 강화 |
 | `ogd-pdf-readability` | `class-toggle` | `false` | PDF 가독성 개선 |
 | `ogd-pdf-font-size` | `class-select` | `ogd-pdf-font-standard` | PDF 글자 크기 |
@@ -38,7 +37,6 @@
 | `ogd-code-theme` | `class-select` | `ogd-code-light` | 코드블록 테마 |
 | `ogd-eye-care` | `class-toggle` | `false` | 시선 보호 모드 (베이지 배경) |
 | `ogd-auto-dark` | `class-toggle` | `false` | OS 다크 모드 자동 추종 |
-| `ogd-glass-intensity` | `class-select` | `ogd-glass-standard` | 데스크톱 Glass 강도 |
 | `ogd-motion-intensity` | `class-select` | `ogd-motion-standard` | 데스크톱 Hover 움직임 |
 | `ogd-cjk-boost` | `class-toggle` | `true` | 한글/CJK 폰트 +0.5px 자동 보정 |
 | `ogd-interface-font-stack` | `variable-text` | `` | 인터페이스 폰트 직접 입력 |

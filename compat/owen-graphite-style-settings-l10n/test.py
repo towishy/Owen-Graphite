@@ -21,7 +21,7 @@ def digest(path: Path) -> str:
 def main() -> int:
     entries = build.parse_schema()
     catalog = build.build_catalog()
-    assert len(entries) == 58
+    assert len(entries) == 56
     assert len(catalog) == len(entries)
     assert entries[0]["id"] == "ogd-settings-interface"
     assert entries[1]["id"] == "ogd-style-settings-language"
@@ -43,6 +43,8 @@ def main() -> int:
     assert "ogd-pdf-visibility" not in catalog
     assert "ogd-pdf-screen-delivery" not in catalog
     assert "ogd-pdf-client-delivery" not in catalog
+    assert "ogd-modern-tables" not in catalog
+    assert "ogd-glass-intensity" not in catalog
 
     build.main()
     first = {name: digest(PLUGIN / name) for name in ("main.js", "catalog.generated.json")}

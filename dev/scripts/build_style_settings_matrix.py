@@ -136,14 +136,6 @@ def main() -> int:
                     "settings": {"ogd-pdf-font-size": "ogd-pdf-font-comfortable"},
                     "bodyClasses": ["ogd-pdf-font-comfortable"],
                 },
-                {
-                    "id": "glass-motion-strong",
-                    "purpose": "Desktop liquid glass strong intensity with standard motion.",
-                    "theme": "light",
-                    "media": "screen",
-                    "settings": {"ogd-glass-intensity": "ogd-glass-strong", "ogd-motion-intensity": "ogd-motion-standard"},
-                    "bodyClasses": ["ogd-glass-strong", "ogd-motion-standard"],
-                },
             ]
         )
         payload = {

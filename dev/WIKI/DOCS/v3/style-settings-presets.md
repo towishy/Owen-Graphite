@@ -6,12 +6,12 @@
 
 | 목적 | 켜거나 고를 옵션 | 추천 상황 |
 | --- | --- | --- |
-| 기술 문서 기본형 | `ogd-modern-tables`, `ogd-cjk-boost`, `ogd-code-light`, `ogd-spacing-standard` | README, 위키, API 노트처럼 표와 코드가 많은 문서 |
+| 기술 문서 기본형 | `ogd-cjk-boost`, `ogd-code-light`, `ogd-spacing-standard` | README, 위키, API 노트처럼 표와 코드가 많은 문서 |
 | 보고서/PDF 제출 | `ogd-auto-number-headings`, `ogd-print-avoid-breaks`, `ogd-pdf-header-enabled`, `ogd-pdf-footer-enabled` | A4/A3 PDF, 검토본, 내부 보고서 |
 | 장시간 읽기 | `ogd-eye-care`, `ogd-serif-body`, `ogd-spacing-relaxed`, `ogd-motion-subtle` | 긴 리서치 노트, 독서 기록, 다크 모드 피로도 완화 |
-| 넓은 위키 화면 | `ogd-max-width`, `ogd-modern-tables`, `ogd-glass-subtle` | 큰 모니터에서 여러 pane을 열고 쓰는 vault |
+| 넓은 위키 화면 | `ogd-max-width`, `ogd-spacing-standard`, `ogd-motion-subtle` | 큰 모니터에서 여러 pane을 열고 쓰는 vault |
 | 발표/검토용 강조 | `ogd-pdf-font-large`, `ogd-pdf-readability`, `ogd-accent-preset` | 화면 공유, 리뷰 PDF, 시니어 리뷰용 출력 |
-| 고객 전달용 PDF | `ogd-pdf-font-comfortable`, `ogd-pdf-links-reference`, `ogd-print-avoid-breaks`, `ogd-modern-tables` | 메일, Teams, 브라우저 미리보기에서 바로 읽히는 외부 공유 PDF |
+| 고객 전달용 PDF | `ogd-pdf-font-comfortable`, `ogd-pdf-links-reference`, `ogd-print-avoid-breaks` | 메일, Teams, 브라우저 미리보기에서 바로 읽히는 외부 공유 PDF |
 
 ## 보고서/PDF 프리셋
 
@@ -29,7 +29,7 @@
 | --- | --- |
 | 본문 크기 | `ogd-pdf-font-size`: `ogd-pdf-font-comfortable` 또는 `ogd-pdf-font-large` |
 | 페이지 분할 | `ogd-print-avoid-breaks`: on |
-| 표 | `ogd-modern-tables`: on, 표가 넓으면 Markdown table에 `print-fit-table` 또는 `wrap-table` class 사용 |
+| 표 | 기본 표 스타일 사용, 표가 넓으면 Markdown table에 `print-fit-table` 또는 `wrap-table` class 사용 |
 | 링크 | `ogd-pdf-link-mode`: `ogd-pdf-links-reference`, 명시적인 `ogd-reference-list` 중심으로 정리 |
 | 헤더/푸터 | 필요 시 `ogd-pdf-header-enabled`, `ogd-pdf-footer-enabled`, `ogd-pdf-label-badge`를 함께 사용 |
 
@@ -38,9 +38,9 @@
 | 그룹 | 권장값 |
 | --- | --- |
 | 본문 | `ogd-body-size`: 기본값, `ogd-line-height`: `1.5`, `ogd-cjk-boost`: on |
-| 표 | `ogd-modern-tables`: on, zebra는 기본 유지 |
+| 표 | 기본 표 스타일과 zebra 행 구분 사용 |
 | 코드 | `ogd-code-theme`: light/dark 모드와 맞춰 선택 |
-| 워크스페이스 | `ogd-glass-intensity`: standard, `ogd-motion-intensity`: standard 또는 subtle |
+| 워크스페이스 | 기본 Liquid Glass 표면, `ogd-motion-intensity`: standard 또는 subtle |
 
 ## 장시간 읽기 프리셋
 

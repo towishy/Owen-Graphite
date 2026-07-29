@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.97
+
+- feat: Owen Editor 0.6.31의 canonical Frosted ScrollArea adapter가 Obsidian native wheel·touch·keyboard viewport를 유지하면서 fixed `6×44px` grip, rail click, pointer drag를 전체 vertical scroll surface에 제공합니다.
+- polish: Live Preview 코드 블록의 제목·복사 control을 정렬하고 PDF에는 static title 하나만 남기며, vault footer의 도움말·설정 icon 사이에 8px 간격을 적용했습니다.
+- change: Graphite의 global native `::-webkit-scrollbar` approximation을 제거하고, workspace의 희미한 separator는 유지한 채 scrollbar interaction rail은 투명하게 두어 grip 뒤의 진한 세로선을 없앴습니다.
+- guard: source usage map, core-principles, LP/PDF selector ownership, Editor build·i18n·release checks와 runtime grip geometry를 검증했습니다.
+
 ## v3.1.96
 
 - change: 고정 `1920×1080` PDF 규격과 customer-delivery/report mode를 제거하고, `PDF 가독성 개선` preset이 사용자가 선택한 A4/A3 방향과 용지 크기를 그대로 유지하면서 본문·제목·표·코드 가독성만 조정하도록 정리했습니다.

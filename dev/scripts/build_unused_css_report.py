@@ -326,7 +326,7 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                 "fixture": DEFAULT_FIXTURE,
                 "theme": "dark",
                 "media": "screen",
-                "bodyClasses": ["ogd-eye-care", "ogd-glass-reduced"],
+                "bodyClasses": ["ogd-eye-care"],
                 "viewport": {"width": 1440, "height": 1400},
             },
         ]
@@ -362,17 +362,6 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
                 "viewport": {"width": 1440, "height": 1400},
             }
         )
-    for body_class in ["ogd-glass-subtle", "ogd-glass-strong"]:
-        scenarios.append(
-            {
-                "id": f"harness-dark-{body_class}",
-                "fixture": DEFAULT_FIXTURE,
-                "theme": "dark",
-                "media": "screen",
-                "bodyClasses": [body_class],
-                "viewport": {"width": 1440, "height": 1400},
-            }
-        )
     for fixture in PRINT_FIXTURES:
         if fixture.is_file():
             scenarios.append({"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": [], "viewport": {"width": 1440, "height": 1400}})
@@ -381,10 +370,10 @@ def build_scenarios(style_limit: int | None) -> list[dict[str, Any]]:
             scenarios.extend(
                 [
                     {"id": f"{fixture.stem}-screen-light", "fixture": fixture, "theme": "light", "media": "screen", "bodyClasses": [], "viewport": {"width": 1440, "height": 1400}},
-                    {"id": f"{fixture.stem}-screen-dark", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-glass-subtle"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-screen-dark", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": [], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-screen-dark-mobile", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["is-mobile"], "viewport": {"width": 390, "height": 844}},
                     {"id": f"{fixture.stem}-screen-light-relaxed", "fixture": fixture, "theme": "light", "media": "screen", "bodyClasses": ["ogd-spacing-relaxed", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
-                    {"id": f"{fixture.stem}-screen-dark-relaxed", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-glass-subtle", "ogd-spacing-relaxed", "ogd-modern-tables", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
+                    {"id": f"{fixture.stem}-screen-dark-relaxed", "fixture": fixture, "theme": "dark", "media": "screen", "bodyClasses": ["ogd-spacing-relaxed", "ogd-zebra-disabled-permanently"], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-print-light", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-pdf-font-comfortable"], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-print-pdf-compound", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-pdf-font-comfortable", "ogd-pdf-header-enabled", "ogd-pdf-header-top-center", "ogd-pdf-label-segmented-dual", "ogd-pdf-header-dual-pair", "ogd-pdf-links-inline", "ogd-pdf-segment-value-violet", "ogd-pdf-segment-value-rose", "ogd-pdf-segment-value-amber"], "viewport": {"width": 1440, "height": 1400}},
                     {"id": f"{fixture.stem}-print-pdf-links-clean", "fixture": fixture, "theme": "light", "media": "print", "bodyClasses": ["ogd-pdf-font-comfortable", "ogd-pdf-links-clean"], "viewport": {"width": 1440, "height": 1400}},

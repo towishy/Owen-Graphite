@@ -11,9 +11,9 @@
 
 # Owen Graphite — Obsidian Theme
 
-**Owen Graphite v3.1.96** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
+**Owen Graphite v3.1.97** is a liquid-glass Obsidian theme for technical documentation, knowledge bases, and report-ready notes, giving Korean/English typography, long tables, code blocks, workspace chrome, Style Settings controls, and PDF export layouts one calm graphite surface across Live Preview, Reading View, and print.
 
-> **Theme-first, optional companion:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Owen Graphite Companion 1.3.0 supplies the Style Settings locale fallback and structures Obsidian's title/metadata tooltips for wrapped bold titles. Persistent code-title editing remains an optional Owen Editor 0.6.28 feature.
+> **Theme-first, optional companion:** Owen Graphite keeps its Style Settings schema and English/Korean metadata inside the theme. Owen Graphite Companion 1.3.0 supplies the Style Settings locale fallback and structures Obsidian's title/metadata tooltips for wrapped bold titles. Persistent code-title editing, code copying, and canonical Frosted ScrollArea controls are available through Owen Editor 0.6.31.
 
 ## Why Owen Graphite?
 
@@ -63,8 +63,8 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 
 | Item | Value |
 | --- | --- |
-| **Version** | `3.1.96` |
-| **Baseline / rollback target** | `v3.1.96` |
+| **Version** | `3.1.97` |
+| **Baseline / rollback target** | `v3.1.97` |
 | **Mode support** | Light / Dark |
 | **Platform** | Desktop & Mobile |
 | **Design policy** | Liquid Glass core · token-first surfaces · zero-important cascade |
@@ -82,6 +82,17 @@ New comparison screenshots should follow the [visual comparison guide](dev/WIKI/
 ## 2. Latest Highlights
 
 Install the [Style Settings plugin](https://community.obsidian.md/plugins/obsidian-style-settings) to unlock the report, typography, spacing, PDF, and workspace polish controls referenced below.
+
+### v3.1.97 — Canonical Scroll And Code Controls
+
+This release connects Owen Editor's canonical Frosted ScrollArea to Obsidian vertical viewports, removes the theme's native scrollbar approximation, and tightens code-block and vault action controls.
+
+| Area | What changed |
+| --- | --- |
+| Vertical scrolling | Owen Editor 0.6.31 preserves native wheel, touch, and keyboard scrolling while adding a fixed glass grip, rail click, and pointer drag. |
+| Scroll surface | The interaction rail stays transparent, the workspace separator remains faint, and the grip keeps measured clearance from file-explorer rows. |
+| Code blocks | Live Preview adds one-click copying, left-aligned editable titles, compact icons, and one static PDF title. |
+| Vault controls | The help and settings buttons keep an explicit 8px gap. |
 
 ### v3.1.96 — PDF And Explorer Clarity
 
@@ -131,7 +142,7 @@ Older feature notes are kept in [dev/WIKI/DOCS/v3/feature-history.md](dev/WIKI/D
 
 ### Option B — Manual ZIP Install
 
-Download **`Owen-Graphite-3.1.96.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
+Download **`Owen-Graphite-3.1.97.zip`** from the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest), then extract it into your vault theme folder.
 
 | Platform | Target path |
 | --- | --- |
@@ -140,7 +151,7 @@ Download **`Owen-Graphite-3.1.96.zip`** from the [latest release](https://github
 
 After extraction, open Obsidian and select `Owen Graphite` from `Settings` → `Appearance` → `Themes`.
 
-> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.96.zip` for the installable theme package.
+> Release assets also include GitHub's generated `Source code (zip)`. Use `Owen-Graphite-3.1.97.zip` for the installable theme package.
 
 ### Optional Owen Graphite Companion
 

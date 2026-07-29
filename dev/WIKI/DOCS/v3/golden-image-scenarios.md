@@ -72,7 +72,7 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `table-html-utility-class` | `.risk-table`/`.numeric-table` 유틸리티 클래스 | light |
 | `table-html-utility-dark` | 동일 유틸리티 클래스 | dark |
 | `table-zebra-disabled` | `ogd-zebra-disabled-permanently=on` | light |
-| `table-modern-strong` | `ogd-modern-tables=on` 강조 | light |
+| `table-reading-light` | 기본 Reading View 표 | light |
 | `table-print-light` | PDF 표 | light, print |
 | `table-print-dark` | PDF 표 | dark, print |
 

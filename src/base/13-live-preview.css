@@ -759,7 +759,7 @@ body .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line .cm-formatting-hig
   color: var(--ogd-text-strong, #111827);
   border: 1px solid var(--ogd-line-soft, #e5e7eb);
   border-radius: 3px;
-  padding: 0 4px;
+  padding: 0.16em 0.46em;
   font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
   font-feature-settings: var(--ogd-code-font-feature-settings, "zero" 1, "tnum" 1);
   font-variant-numeric: var(--ogd-code-font-variant-numeric, tabular-nums slashed-zero);
@@ -1046,7 +1046,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.Hyper
 }
 
 body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  --ogd-lp-code-bg: rgba(248, 250, 252, 0.86);
+  --ogd-lp-code-bg: #ffffff;
   --ogd-lp-code-border: rgba(148, 163, 184, 0.46);
   border-color: var(--ogd-lp-code-border);
   background: var(--ogd-lp-code-bg);
@@ -1056,6 +1056,7 @@ body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.Hype
 
 body.theme-light.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
   line-height: 1.62;
+  background: var(--ogd-codeblock-header-bg, linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%));
 }
 
 body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
@@ -1073,7 +1074,7 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.Hyper
 }
 
 body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-code {
-  padding: 0.08em 0.34em;
+  padding: 0.16em 0.46em;
   border: 1px solid rgba(203, 213, 225, 0.82);
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.68));
@@ -1151,8 +1152,9 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
    ============================================================ */
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-lp-code-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.12), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(241, 245, 249, 0.54));
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-header-bg: linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%);
+  --ogd-lp-code-bg: #ffffff;
   --ogd-lp-code-border: rgba(148, 163, 184, 0.42);
   margin-top: 0;
   margin-bottom: 0;
@@ -1160,7 +1162,8 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
   padding-bottom: 0;
   padding-left: 14px;
   padding-right: 14px;
-  border-inline: 1px solid var(--ogd-lp-code-border);
+  border-left: 1px solid var(--ogd-lp-code-border);
+  border-right: 1px solid var(--ogd-lp-code-border);
   background: var(--ogd-lp-code-bg);
   color: var(--ogd-code-fg, #1e293b);
   font-family: var(--ogd-code-font-family, var(--ogd-code-font-stack));
@@ -1172,6 +1175,10 @@ body.theme-dark.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-inline-cod
   line-height: var(--ogd-code-line-height, 1.58);
   letter-spacing: var(--ogd-code-letter-spacing, 0);
   tab-size: var(--ogd-code-tab-size, 2);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock .cm-indent::before {
+  border-right: 0;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
@@ -1268,7 +1275,7 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
    ============================================================ */
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.58));
+  background: var(--ogd-codeblock-header-bg);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 6px 14px rgba(15, 23, 42, 0.06);
 }
 

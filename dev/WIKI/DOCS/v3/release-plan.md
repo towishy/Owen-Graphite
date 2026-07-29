@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.96)
+﻿# v3 Release Record (latest: v3.1.97)
 
-**Status**: Current stable / rollback baseline = `v3.1.96` (2026-07-29). This release preserves selected PDF paper geometry while simplifying readability controls, and unifies long file-explorer titles with structured metadata tooltips.
+**Status**: Current stable / rollback baseline = `v3.1.97` (2026-07-29). This release connects canonical Frosted ScrollArea controls, code-block copy/title parity, and stable vault action spacing without reintroducing native scrollbar approximation.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.96` |
+| `manifest.json` version | `3.1.97` |
 | `minAppVersion` | `1.5.8` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,543 / 5 |
+| `dist/theme-v3.css` lines / `!important` scanner count | 20,186 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.96.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.97.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.0.zip` |
 
 ## What was removed
