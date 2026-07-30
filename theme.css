@@ -3908,8 +3908,10 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre[class*="language-"]::after,
 body .workspace-leaf-content .markdown-rendered pre[class*="language-"]::after,
 body pre[class*="language-"]::after,
-body .markdown-source-view.mod-cm6 .code-block-flair,
-body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) .code-block-flair {
+body:not(.mod-macos) .markdown-source-view.mod-cm6 .code-block-flair,
+body:not(.mod-macos) .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) .code-block-flair,
+body.mod-macos .markdown-source-view.mod-cm6 .code-block-flair:not(.owen-editor-codeblock-controls),
+body.mod-macos .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) .code-block-flair:not(.owen-editor-codeblock-controls) {
   position: absolute; top: 0; bottom: auto; left: 1.08em; right: auto;
   z-index: 2; display: inline-flex; align-items: center; height: var(--ogd-codeblock-header-height, 2.2em);
   min-height: 0; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; transform: none;
@@ -3936,7 +3938,7 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin :is(.cm-formatting-code, .cm-formatting-code-block, .cm-hmd-codeblock),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator):not(.code-block-flair) {
   line-height: inherit;
 }
 
@@ -3953,6 +3955,18 @@ body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock
   color: var(--ogd-text-subtle, #64748b);
   font-size: inherit;
   opacity: 1;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator):not(.code-block-flair) {
+  margin-left: 0;
+  max-width: calc(100% - var(--ogd-codeblock-action-space, 3.3em) - 1.08em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 @media print {
@@ -7819,14 +7833,6 @@ body.ogd-spacing-relaxed .markdown-source-view.mod-cm6 .cm-line.HyperMD-codebloc
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin .cm-hmd-codeblock:not(.cm-formatting):not(.cm-formatting-code):not(.cm-formatting-code-block),
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > span:not([class*="formatting"]):not(.cm-fold-indicator) {
-  max-width: calc(100% - var(--ogd-codeblock-action-space, 3.3em) - 1.08em);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: text;
-  -webkit-user-select: text;
-  user-select: text;
-
   background: transparent;
   border: 0;
   border-radius: 0;

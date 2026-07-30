@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20530
+- Source CSS lines: 20532
 - Parsed CSS rules: 2666
-- Selector parts: 4089
+- Selector parts: 4091
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -22,7 +22,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `overlay-search`: 375 rules
 - `print-pdf`: 504 rules
 - `reading-rendered`: 1141 rules
-- `table`: 1167 rules
+- `table`: 1168 rules
 - `workspace-chrome`: 720 rules
 
 ## Quick Routing
@@ -157,7 +157,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 3 | `src/tokens/01-dark-tokens.css` | 1091-1306 | 196 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:4, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 1310-1444 | 136 | support: base/embed workspace primitives | cm6:5, code:6, overlay-search:5, reading-rendered:8, table:9, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |
 | 5 | `src/base/12-reading-content.css` | 1448-2377 | 1594 | reading-typography | callout-list:29, cm6:9, code:134, overlay-search:1, print-pdf:14, reading-rendered:154, table:19, workspace-chrome:19 | after `src/base/10-base-workspace.css`; before `src/surfaces/20-reading-tables-code.css` |
-| 6 | `src/surfaces/20-reading-tables-code.css` | 2381-3418 | 1138 | reading-tables-code, dataview-plugin-support (allowed-late) | cm6:24, code:144, print-pdf:9, reading-rendered:131, table:54, workspace-chrome:78 | after `src/base/12-reading-content.css`; before `src/surfaces/21-reading-callouts-lists.css` |
+| 6 | `src/surfaces/20-reading-tables-code.css` | 2381-3418 | 1140 | reading-tables-code, dataview-plugin-support (allowed-late) | cm6:24, code:144, print-pdf:9, reading-rendered:131, table:55, workspace-chrome:78 | after `src/base/12-reading-content.css`; before `src/surfaces/21-reading-callouts-lists.css` |
 | 7 | `src/surfaces/21-reading-callouts-lists.css` | 3422-4264 | 877 | reading-callouts-lists | callout-list:106, cm6:3, code:71, reading-rendered:122, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 4268-4496 | 236 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:5, overlay-search:1, reading-rendered:18, table:3, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 4500-4996 | 643 | support: dark theme support | callout-list:35, cm6:6, code:52, overlay-search:3, print-pdf:2, reading-rendered:89, table:95, workspace-chrome:6 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
@@ -194,7 +194,7 @@ Table-related rules are intentionally split by surface:
 | `src/tokens/01-dark-tokens.css` | 4 | 0 | 0 | 1 |
 | `src/base/10-base-workspace.css` | 9 | 0 | 8 | 0 |
 | `src/base/12-reading-content.css` | 19 | 0 | 154 | 14 |
-| `src/surfaces/20-reading-tables-code.css` | 54 | 0 | 131 | 9 |
+| `src/surfaces/20-reading-tables-code.css` | 55 | 0 | 131 | 9 |
 | `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 122 | 0 |
 | `src/surfaces/22-reading-embeds-workspace.css` | 3 | 0 | 18 | 0 |
 | `src/themes/50-dark.css` | 95 | 0 | 89 | 2 |
