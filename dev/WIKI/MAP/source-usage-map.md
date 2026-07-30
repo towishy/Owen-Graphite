@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20519
-- Parsed CSS rules: 2664
-- Selector parts: 4087
+- Source CSS lines: 20530
+- Parsed CSS rules: 2666
+- Selector parts: 4089
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -23,7 +23,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `print-pdf`: 504 rules
 - `reading-rendered`: 1141 rules
 - `table`: 1167 rules
-- `workspace-chrome`: 718 rules
+- `workspace-chrome`: 720 rules
 
 ## Quick Routing
 
@@ -174,7 +174,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 20 | `src/chrome/34-nav-ribbon-glass.css` | 12748-13009 | 271 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:25 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
 | 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 13013-14092 | 1014 | overlay-menu-search | cm6:6, code:7, overlay-search:34, reading-rendered:6, table:30, workspace-chrome:41 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 14096-15148 | 864 | overlay-menu-search | code:5, overlay-search:55, print-pdf:1, reading-rendered:4, table:54, workspace-chrome:24 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
-| 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 1302 | workspace-chrome | code:2, overlay-search:13, table:168, workspace-chrome:227 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
+| 23 | `src/chrome/37-tabs-file-explorer-search.css` | 15152-16079 | 1313 | workspace-chrome | code:2, overlay-search:13, table:168, workspace-chrome:229 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
 | 24 | `src/themes/51-accessibility-motion-contrast.css` | 16083-16251 | 220 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:13, overlay-search:9, print-pdf:2, reading-rendered:2, table:6, workspace-chrome:9 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
 | 25 | `src/surfaces/23-liquid-glass-core.css` | 16255-17926 | 1829 | reading-callouts-lists (allowed-late), live-preview-rendered-widgets | cm6:6, code:44, overlay-search:70, print-pdf:7, reading-rendered:35, table:112, workspace-chrome:101 | after `src/themes/51-accessibility-motion-contrast.css`; before `src/surfaces/24-html-table-live-preview-glass.css` |
 | 26 | `src/surfaces/24-html-table-live-preview-glass.css` | 17930-18169 | 185 | live-preview-rendered-widgets | callout-list:51, cm6:51, code:12, lp-html-table:51, lp-markdown-table-widget-reference:51, print-pdf:13, table:51 | after `src/surfaces/23-liquid-glass-core.css`; before `None` |
