@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.99
+
+- polish: workspace chrome, settings controls, floating UI, tabs, file explorer, search, and shared liquid-glass surfaces now use quieter resting, hover, active, and focus states with a dedicated visual fixture.
+- fix: macOS file explorer no longer shows the native overlay scrollbar beside Owen Editor's canonical Frosted ScrollArea control.
+- fix: macOS Live Preview code-copy controls now sit 13px from the code-block boundary without theme label-width rules constraining Owen Editor controls; Windows placement remains unchanged.
+- guard: Obsidian 1.12.7 CDP verified the macOS scrollbar channel, 13px copy-button inset, title/copy behavior, and clipboard content; source map, strict runtime evidence, CM6 hit routing, core-principles, and release gates passed.
+
 ## v3.1.98
 
 - fix: vault switcher, 도움말, 설정 control 사이의 실제 간격을 모두 8px로 통일했습니다.
