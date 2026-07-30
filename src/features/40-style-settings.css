@@ -15,37 +15,44 @@ id: owen-graphite-document
 settings:
   -
     id: ogd-settings-interface
-    title: 인터페이스
-    description: Owen Graphite 전체에서 사용할 언어를 선택합니다.
+    title: Interface
+    title.ko: 인터페이스
+    description: Choose the language used throughout Owen Graphite.
+    description.ko: Owen Graphite 전체에서 사용할 언어를 선택합니다.
     type: heading
     level: 2
     collapsed: false
   -
     id: ogd-style-settings-language
-    title: 언어
-    description: Obsidian 언어를 따르거나 Owen Graphite Style Settings에 표시할 언어를 재정의합니다.
+    title: Language
+    title.ko: 언어
+    description: Follow Obsidian's language or override it for Owen Graphite Style Settings.
+    description.ko: Obsidian 언어를 따르거나 Owen Graphite Style Settings에 표시할 언어를 재정의합니다.
     type: class-select
     default: ogd-language-auto
     options:
       -
-        label: 자동 (Obsidian)
+        label: Automatic (Obsidian) / 자동 (Obsidian)
         value: ogd-language-auto
       -
-        label: 한국어
+        label: Korean / 한국어
         value: ogd-language-ko
       -
         label: English
         value: ogd-language-en
   -
     id: ogd-settings-reading
-    title: 읽기와 본문
+    title: Reading and body
+    title.ko: 읽기와 본문
     type: heading
     level: 2
     collapsed: false
   -
     id: ogd-body-size
-    title: 본문 폰트 크기
-    description: 본문(p, li 등) 기본 글자 크기
+    title: Body font size
+    title.ko: 본문 폰트 크기
+    description: Base font size for body text such as paragraphs and list items.
+    description.ko: 본문(p, li 등) 기본 글자 크기
     type: variable-number-slider
     default: 15
     min: 13
@@ -54,7 +61,8 @@ settings:
     format: px
   -
     id: ogd-line-height
-    title: 본문 줄간격
+    title: Body line height
+    title.ko: 본문 줄간격
     type: variable-select
     default: 1.5
     options:
@@ -65,106 +73,89 @@ settings:
       - 1.7
   -
     id: ogd-max-width
-    title: 본문 최대 폭
-    description: 긴 문단은 읽기 문서 폭을, 넓은 표·보고서는 와이드 폭을 선택하세요.
+    title: Maximum content width
+    title.ko: 본문 최대 폭
+    description: Choose a reading width for long prose or a wider width for tables and reports.
+    description.ko: 긴 문단은 읽기 문서 폭을, 넓은 표·보고서는 와이드 폭을 선택하세요.
     type: variable-select
-    default: 420mm
+    default: 297mm
     options:
       -
-        label: 읽기 문서 · 210mm
+        label: Reading document · 210mm / 읽기 문서 · 210mm
         value: 210mm
       -
-        label: 보고서 · 297mm
+        label: Report · 297mm / 보고서 · 297mm
         value: 297mm
       -
-        label: 와이드 보고서 · 360mm
+        label: Wide report · 360mm / 와이드 보고서 · 360mm
         value: 360mm
       -
-        label: 대형 표 · 420mm
+        label: Large table · 420mm / 대형 표 · 420mm
         value: 420mm
       -
-        label: 전체 폭 · 100%
+        label: Full width · 100% / 전체 폭 · 100%
         value: 100%
   -
     id: ogd-accent
-    title: 헤더 강조 색상
+    title: Heading accent color
+    title.ko: 헤더 강조 색상
     type: variable-color
     format: hex
     default: '#4b5563'
   -
     id: ogd-settings-tables
-    title: 표와 코드
+    title: Tables and code
+    title.ko: 표와 코드
     type: heading
     level: 2
     collapsed: true
   -
-    id: ogd-modern-tables
-    title: 표 모던 스타일 강화
-    description: 표 헤더, 첫 컬럼, hover, PDF border를 보고서형 톤으로 강화
-    type: class-toggle
-    default: true
-  -
     id: ogd-print-avoid-breaks
-    title: PDF 블록 분할 방지 강화
-    description: callout, 표, mermaid, 코드블록, 이미지가 페이지 중간에서 잘리는 것을 완화
+    title: Prevent PDF block splitting
+    title.ko: PDF 블록 분할 방지 강화
+    description: Reduces page breaks inside callouts, tables, Mermaid diagrams, code blocks, and images.
+    description.ko: callout, 표, mermaid, 코드블록, 이미지가 페이지 중간에서 잘리는 것을 완화
     type: class-toggle
     default: true
   -
     id: ogd-settings-report
-    title: 보고서와 PDF
+    title: Reports and PDF
+    title.ko: 보고서와 PDF
     type: heading
     level: 2
     collapsed: true
   -
-    id: ogd-report-mode
-    title: 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프)
-    description: 표지/넘버링/들여쓰기/세리프 본문을 한 번에 적용
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-compact
-    title: PDF Compact Report
-    description: PDF 출력 시 제목·본문·callout·표·참고 문헌 간격을 압축해 공백을 줄이고 정보 밀도를 높입니다.
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-visibility
-    title: PDF 보고서 가시성 강화
-    description: PDF 출력에서 문서 상태 라벨, callout, 문서 끝 신호의 대비를 높입니다. 제목 계층과 표 디자인은 변경하지 않습니다.
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-screen-delivery
-    title: PDF 고객 전달용 화면 가시성
-    description: 메일, Teams, 브라우저 미리보기에서 바로 읽히도록 제목 위계, 본문·표 크기, callout 구분, 라벨 톤을 조정합니다.
-    type: class-toggle
-    default: false
-  -
-    id: ogd-pdf-client-delivery
-    title: PDF 고객 전달 권장 프리셋
-    description: 고객 공유용 PDF에 맞춰 본문·표·callout·코드·링크를 한 번에 읽기 좋은 톤으로 조정합니다.
+    id: ogd-pdf-readability
+    title: PDF readability preset
+    title.ko: PDF 가독성 개선
+    description: Applies Pretendard, 36px titles, 18px subtitles, 16px body text, 14px captions, and 1.56 body line height without changing the selected PDF paper size.
+    description.ko: 선택한 PDF 용지 규격은 유지하고 Pretendard, 타이틀 36px, 서브 타이틀 18px, 본문 16px, 캡션 14px, 본문 행간 1.56을 적용합니다.
     type: class-toggle
     default: false
   -
     id: ogd-pdf-font-size
-    title: PDF 글자 크기
-    description: PDF 출력에서 본문, 목록, callout, 코드, 헤더/푸터 라벨 크기를 조정합니다. 제목 계층과 표 디자인은 변경하지 않습니다.
+    title: PDF font size
+    title.ko: PDF 글자 크기
+    description: Adjusts body, list, callout, code, and header/footer label sizes without changing heading hierarchy or table design.
+    description.ko: PDF 출력에서 본문, 목록, callout, 코드, 헤더/푸터 라벨 크기를 조정합니다. 제목 계층과 표 디자인은 변경하지 않습니다.
     type: class-select
     default: ogd-pdf-font-standard
     options:
       -
-        label: 기본
+        label: Standard / 기본
         value: ogd-pdf-font-standard
       -
-        label: 편안하게
+        label: Comfortable / 편안하게
         value: ogd-pdf-font-comfortable
       -
-        label: 크게
+        label: Large / 크게
         value: ogd-pdf-font-large
   -
     id: ogd-pdf-link-mode
-    title: PDF 링크 출력 방식
-    description: PDF export에서 외부 URL을 본문 뒤에 표시할지, 숨길지, 참고문헌 중심으로 정리할지 선택합니다.
+    title: PDF link output mode
+    title.ko: PDF 링크 출력 방식
+    description: Choose whether external URLs appear inline, stay hidden, or are organized around references in PDF exports.
+    description.ko: PDF export에서 외부 URL을 본문 뒤에 표시할지, 숨길지, 참고문헌 중심으로 정리할지 선택합니다.
     type: class-select
     default: ogd-pdf-links-inline
     options:
@@ -179,83 +170,93 @@ settings:
         value: ogd-pdf-links-reference
   -
     id: ogd-serif-body
-    title: 본문 세리프 글꼴
-    description: 본문만 Noto Serif KR로 전환 (긴 보고서 가독성)
+    title: Serif body font
+    title.ko: 본문 세리프 글꼴
+    description: Switches body text to Noto Serif KR for long-report readability.
+    description.ko: 본문만 Noto Serif KR로 전환 (긴 보고서 가독성)
     type: class-toggle
     default: false
   -
     id: ogd-indent-paragraph
-    title: 첫 줄 들여쓰기
-    description: 한국 보고서 스타일 1em 들여쓰기
+    title: First-line indentation
+    title.ko: 첫 줄 들여쓰기
+    description: Applies a 1em first-line indent for Korean report styling.
+    description.ko: 한국 보고서 스타일 1em 들여쓰기
     type: class-toggle
     default: false
   -
     id: ogd-auto-number-headings
-    title: 헤더 자동 넘버링 (1. 1.1 1.1.1)
+    title: Automatic heading numbering (1. 1.1 1.1.1)
+    title.ko: 헤더 자동 넘버링 (1. 1.1 1.1.1)
     type: class-toggle
     default: false
   -
     id: ogd-heading-template
-    title: 헤더 디자인 템플릿
-    description: H1-H4 디자인을 Live Preview와 PDF 출력에 함께 적용합니다.
+    title: Report heading design template
+    title.ko: 보고서 제목 디자인 템플릿
+    description: Applies the H1-H4 design to Live Preview and PDF output, grouped into standard, emphasis, and index families.
+    description.ko: H1-H4 디자인을 Live Preview와 PDF 출력에 함께 적용합니다. 기본, 강조, 인덱스 계열로 구분됩니다.
     type: class-select
     default: ogd-heading-printclean
     options:
       -
-        label: 프린트 클린
+        label: Standard · Print Clean / 기본 · 프린트 클린
         value: ogd-heading-printclean
       -
-        label: 코발트 키라인
-        value: ogd-heading-keyline
-      -
-        label: 브래킷 챕터
-        value: ogd-heading-bracket
-      -
-        label: 조용한 장부
+        label: Standard · Quiet Ledger / 기본 · 조용한 장부
         value: ogd-heading-quiet-ledger
       -
-        label: 포커스 바
-        value: ogd-heading-focus-bar
-      -
-        label: 더블룰 클래식
+        label: Standard · Double-rule Classic / 기본 · 더블룰 클래식
         value: ogd-heading-double-rule
       -
-        label: 태그 리본
+        label: Emphasis · Cobalt Keyline / 강조 · 코발트 키라인
+        value: ogd-heading-keyline
+      -
+        label: Emphasis · Bracket Chapter / 강조 · 브래킷 챕터
+        value: ogd-heading-bracket
+      -
+        label: Emphasis · Focus Bar / 강조 · 포커스 바
+        value: ogd-heading-focus-bar
+      -
+        label: Index · Tag Ribbon / 인덱스 · 태그 리본
         value: ogd-heading-tag-ribbon
       -
-        label: 넘버 스탬프
+        label: Index · Number Stamp / 인덱스 · 넘버 스탬프
         value: ogd-heading-number-stamp
       -
-        label: 그리드 인덱스
+        label: Index · Grid Index / 인덱스 · 그리드 인덱스
         value: ogd-heading-grid-index
   -
     id: ogd-drop-cap
-    title: 드롭 캡 (첫 문단 첫 글자 크게)
+    title: Drop cap (enlarge first paragraph initial)
+    title.ko: 드롭 캡 (첫 문단 첫 글자 크게)
     type: class-toggle
     default: false
   -
     id: ogd-spacing-preset
-    title: 간격 프리셋
+    title: Spacing preset
+    title.ko: 간격 프리셋
     type: class-select
     default: ogd-spacing-standard
     options:
       -
-        label: 컴팩트
+        label: Compact / 컴팩트
         value: ogd-spacing-compact
       -
-        label: 표준
+        label: Standard / 표준
         value: ogd-spacing-standard
       -
-        label: 여유
+        label: Relaxed / 여유
         value: ogd-spacing-relaxed
   -
     id: ogd-accent-preset
-    title: 액센트 컬러 프리셋
+    title: Accent color preset
+    title.ko: 액센트 컬러 프리셋
     type: class-select
     default: ogd-accent-graphite
     options:
       -
-        label: Graphite (기본)
+        label: Graphite (default) / Graphite (기본)
         value: ogd-accent-graphite
       -
         label: Blue
@@ -271,12 +272,13 @@ settings:
         value: ogd-accent-amber
   -
     id: ogd-code-theme
-    title: 코드블록 테마
+    title: Code block theme
+    title.ko: 코드블록 테마
     type: class-select
     default: ogd-code-light
     options:
       -
-        label: Light (기본)
+        label: Light (default) / Light (기본)
         value: ogd-code-light
       -
         label: Solarized
@@ -285,51 +287,35 @@ settings:
         label: Nord
         value: ogd-code-nord
       -
-        label: Dracula (다크 전용)
+        label: Dracula (dark only) / Dracula (다크 전용)
         value: ogd-code-dracula
   -
     id: ogd-settings-workspace
-    title: 워크스페이스와 접근성
+    title: Workspace and accessibility
+    title.ko: 워크스페이스와 접근성
     type: heading
     level: 2
     collapsed: true
   -
     id: ogd-eye-care
-    title: 시선 보호 모드 (베이지 배경)
+    title: Eye-care mode (beige background)
+    title.ko: 시선 보호 모드 (베이지 배경)
     type: class-toggle
     default: false
   -
     id: ogd-auto-dark
-    title: OS 다크 모드 자동 추종
-    description: 시스템 다크 모드일 때 자동으로 다크 테마 변수 적용
+    title: Follow OS dark mode automatically
+    title.ko: OS 다크 모드 자동 추종
+    description: Applies dark theme variables when the operating system uses dark mode.
+    description.ko: 시스템 다크 모드일 때 자동으로 다크 테마 변수 적용
     type: class-toggle
     default: false
   -
-    id: ogd-glass-intensity
-    title: 데스크톱 Glass 강도
-    description: 데스크톱 UI chrome의 투명 유리/그림자 강도를 조정합니다. Reduced는 blur를 줄여 배터리와 저성능 환경에 적합합니다.
-    type: class-select
-    default: ogd-glass-standard
-    options:
-      -
-        label: Off
-        value: ogd-glass-off
-      -
-        label: Reduced
-        value: ogd-glass-reduced
-      -
-        label: Subtle
-        value: ogd-glass-subtle
-      -
-        label: Standard
-        value: ogd-glass-standard
-      -
-        label: Strong
-        value: ogd-glass-strong
-  -
     id: ogd-motion-intensity
-    title: 데스크톱 Hover 움직임
-    description: 버튼, 메뉴 항목, 설정 row의 hover/press lift 움직임을 조정합니다. Off는 움직임 없이 색과 그림자만 유지합니다.
+    title: Desktop hover motion
+    title.ko: 데스크톱 Hover 움직임
+    description: Adjusts hover and press lift for buttons, menu items, and setting rows. Off preserves color and shadow feedback without movement.
+    description.ko: 버튼, 메뉴 항목, 설정 row의 hover/press lift 움직임을 조정합니다. Off는 움직임 없이 색과 그림자만 유지합니다.
     type: class-select
     default: ogd-motion-standard
     options:
@@ -344,151 +330,181 @@ settings:
         value: ogd-motion-standard
   -
     id: ogd-cjk-boost
-    title: 한글/CJK 폰트 +0.5px 자동 보정
+    title: Automatic +0.5px Korean/CJK font adjustment
+    title.ko: 한글/CJK 폰트 +0.5px 자동 보정
     type: class-toggle
     default: true
   -
     id: ogd-settings-fonts
-    title: 폰트 적용
+    title: Font application
+    title.ko: 폰트 적용
     type: heading
     level: 2
     collapsed: true
   -
     id: ogd-interface-font-stack
-    title: 인터페이스 폰트 직접 입력
-    description: 비워두면 Obsidian 외형 설정의 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", Pretendard, sans-serif 입니다.
+    title: Custom interface font
+    title.ko: 인터페이스 폰트 직접 입력
+    description: "Leave empty to follow Obsidian's interface font. Example: \"Malgun Gothic\", Pretendard, sans-serif."
+    description.ko: 비워두면 Obsidian 외형 설정의 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", Pretendard, sans-serif 입니다.
     type: variable-text
     default: ''
   -
     id: ogd-reading-font-stack
-    title: 본문 폰트 직접 입력
-    description: 비워두면 Obsidian 외형 설정의 텍스트 폰트를 따릅니다. 예시는 "Noto Serif KR", serif 입니다.
+    title: Custom reading font
+    title.ko: 본문 폰트 직접 입력
+    description: "Leave empty to follow Obsidian's text font. Example: \"Noto Serif KR\", serif."
+    description.ko: 비워두면 Obsidian 외형 설정의 텍스트 폰트를 따릅니다. 예시는 "Noto Serif KR", serif 입니다.
     type: variable-text
     default: ''
   -
     id: ogd-code-font-stack
-    title: 코드 폰트 직접 입력
-    description: 비워두면 Obsidian 외형 설정의 모노스페이스 폰트를 따릅니다. 예시는 "D2Coding", "JetBrains Mono", monospace 입니다.
+    title: Custom code font
+    title.ko: 코드 폰트 직접 입력
+    description: "Leave empty to follow Obsidian's monospace font. Example: \"D2Coding\", \"JetBrains Mono\", monospace."
+    description.ko: 비워두면 Obsidian 외형 설정의 모노스페이스 폰트를 따릅니다. 예시는 "D2Coding", "JetBrains Mono", monospace 입니다.
     type: variable-text
     default: ''
   -
     id: ogd-status-font-stack
-    title: 하단 상태바 폰트 직접 입력
-    description: 비워두면 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", sans-serif 입니다.
+    title: Custom status bar font
+    title.ko: 하단 상태바 폰트 직접 입력
+    description: "Leave empty to follow the interface font. Example: \"Malgun Gothic\", sans-serif."
+    description.ko: 비워두면 인터페이스 폰트를 따릅니다. 예시는 "Malgun Gothic", sans-serif 입니다.
     type: variable-text
     default: ''
   -
     id: ogd-settings-pdf-marginalia
-    title: PDF 헤더/푸터 작은 라벨
-    description: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
+    title: Small PDF header/footer labels
+    title.ko: PDF 헤더/푸터 작은 라벨
+    description: Shows header and footer labels only in PDF output, not in on-screen Reading View.
+    description.ko: PDF 출력에만 첫 페이지 헤더와 마지막 페이지 푸터 라벨을 표시합니다. 화면 Reading View에는 노출하지 않습니다.
     type: heading
     level: 2
     collapsed: true
   -
     id: ogd-pdf-header-enabled
-    title: 첫 페이지 헤더 라벨 표시
-    description: PDF 첫 페이지 상단에 한 줄 라벨을 표시합니다. 끄면 문구나 프리셋이 있어도 출력하지 않습니다.
+    title: Show first-page header label
+    title.ko: 첫 페이지 헤더 라벨 표시
+    description: Shows one label at the top of the first PDF page. Turning this off hides it even when text or a preset is configured.
+    description.ko: PDF 첫 페이지 상단에 한 줄 라벨을 표시합니다. 끄면 문구나 프리셋이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
     id: ogd-pdf-footer-enabled
-    title: 마지막 페이지 푸터 라벨 표시
-    description: PDF 마지막 콘텐츠 아래 중앙에 한 줄 라벨을 표시합니다. 끄면 문구나 프리셋이 있어도 출력하지 않습니다.
+    title: Show last-page footer label
+    title.ko: 마지막 페이지 푸터 라벨 표시
+    description: Shows one centered label below the final PDF content. Turning this off hides it even when text or a preset is configured.
+    description.ko: PDF 마지막 콘텐츠 아래 중앙에 한 줄 라벨을 표시합니다. 끄면 문구나 프리셋이 있어도 출력하지 않습니다.
     type: class-toggle
     default: false
   -
     id: ogd-pdf-label-layout
-    title: PDF 라벨 구성
-    description: 단일 라벨은 기존처럼 한 문구만 표시합니다. Key/Value는 `Prepared by` + `Owen Lee`처럼 붙어 있는 1쌍으로 표시합니다.
+    title: PDF label layout
+    title.ko: PDF 라벨 구성
+    description: Single label shows one phrase. Key/Value joins a pair such as `Prepared by` + `Owen Lee`.
+    description.ko: 단일 라벨은 기존처럼 한 문구만 표시합니다. Key/Value는 `Prepared by` + `Owen Lee`처럼 붙어 있는 1쌍으로 표시합니다.
     type: class-select
     default: ogd-pdf-label-single
     options:
       -
-        label: 단일 라벨
+        label: Single label / 단일 라벨
         value: ogd-pdf-label-single
       -
-        label: Key/Value 1쌍
+        label: One Key/Value pair / Key/Value 1쌍
         value: ogd-pdf-label-segmented
       -
-        label: Key/Value 2쌍
+        label: Two Key/Value pairs / Key/Value 2쌍
         value: ogd-pdf-label-segmented-dual
   -
     id: ogd-pdf-settings-common
-    title: 공통 구성
+    title: Common configuration
+    title.ko: 공통 구성
     type: heading
     level: 3
     collapsed: true
   -
     id: ogd-pdf-marginalia-preset
-    title: 헤더/푸터 빠른 문구
-    description: 직접 문구를 비워둘 때 쓰는 출력용 조합입니다. 직접 입력한 헤더/푸터 문구가 있으면 입력값이 우선됩니다.
+    title: Header/footer quick text
+    title.ko: 헤더/푸터 빠른 문구
+    description: Output combinations used when custom text is empty. Custom header or footer text takes precedence.
+    description.ko: 직접 문구를 비워둘 때 쓰는 출력용 조합입니다. 직접 입력한 헤더/푸터 문구가 있으면 입력값이 우선됩니다.
     type: class-select
     default: ogd-pdf-preset-custom
     options:
       -
-        label: 직접 입력
+        label: Custom text / 직접 입력
         value: ogd-pdf-preset-custom
       -
-        label: 준비본 + 기밀
+        label: Prepared + Confidential / 준비본 + 기밀
         value: ogd-pdf-preset-prepared-confidential
       -
-        label: 초안 + 내부용
+        label: Draft + Internal / 초안 + 내부용
         value: ogd-pdf-preset-draft-internal
       -
-        label: 최종본 + 문서 끝
+        label: Final + End of Document / 최종본 + 문서 끝
         value: ogd-pdf-preset-final-end
       -
-        label: 상태 + 문서 끝
+        label: Status + End of Document / 상태 + 문서 끝
         value: ogd-pdf-preset-status-end
   -
     id: ogd-pdf-marginalia-accent
-    title: 헤더/푸터 글자 색상
-    description: 두 라벨 공통 글자 색상입니다. 기본값은 출력물에 어울리는 graphite 톤입니다.
+    title: Header/footer text color
+    title.ko: 헤더/푸터 글자 색상
+    description: Shared text color for both labels. The default is a graphite tone suited to printed output.
+    description.ko: 두 라벨 공통 글자 색상입니다. 기본값은 출력물에 어울리는 graphite 톤입니다.
     type: variable-color
     format: hex
     default: '#475569'
   -
     id: ogd-pdf-marginalia-style
-    title: 헤더/푸터 라벨 스타일
-    description: PDF 엔진에서 안정적인 표면만 제공합니다. 위치나 페이지 흐름은 바꾸지 않습니다.
+    title: Header/footer label style
+    title.ko: 헤더/푸터 라벨 스타일
+    description: Provides surfaces that remain stable in PDF engines without changing position or page flow.
+    description.ko: PDF 엔진에서 안정적인 표면만 제공합니다. 위치나 페이지 흐름은 바꾸지 않습니다.
     type: class-select
     default: ogd-pdf-label-bordered
     options:
       -
-        label: 텍스트만
+        label: Text only / 텍스트만
         value: ogd-pdf-label-minimal
       -
-        label: 은은한 테두리
+        label: Subtle border / 은은한 테두리
         value: ogd-pdf-label-bordered
       -
-        label: 은은한 채움
+        label: Subtle fill / 은은한 채움
         value: ogd-pdf-label-filled
       -
-        label: 붙은 배지
+        label: Joined badge / 붙은 배지
         value: ogd-pdf-label-badge
   -
     id: ogd-pdf-marginalia-size
-    title: 헤더/푸터 라벨 크기
-    description: 글자와 내부 여백을 조정합니다. 출력 안정성을 위해 두 단계만 제공합니다.
+    title: Header/footer label size
+    title.ko: 헤더/푸터 라벨 크기
+    description: Adjusts text and internal padding with two print-stable sizes.
+    description.ko: 글자와 내부 여백을 조정합니다. 출력 안정성을 위해 두 단계만 제공합니다.
     type: class-select
     default: ogd-pdf-label-standard
     options:
       -
-        label: 작게
+        label: Compact / 작게
         value: ogd-pdf-label-compact
       -
-        label: 표준
+        label: Standard / 표준
         value: ogd-pdf-label-standard
   -
     id: ogd-pdf-settings-header
-    title: 헤더 설정
+    title: Header settings
+    title.ko: 헤더 설정
     type: heading
     level: 3
     collapsed: true
   -
     id: ogd-pdf-header-key-palette
-    title: 헤더 Key 색상
-    description: 첫 페이지 헤더의 왼쪽 key 영역 색상입니다. 예 `Prepared by` 쪽 색상입니다.
+    title: Header key color
+    title.ko: 헤더 Key 색상
+    description: Color of the left key area in the first-page header, such as `Prepared by`.
+    description.ko: 첫 페이지 헤더의 왼쪽 key 영역 색상입니다. 예 `Prepared by` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-header-key-graphite
     options:
@@ -542,8 +558,10 @@ settings:
         value: ogd-pdf-header-key-fuchsia
   -
     id: ogd-pdf-header-value-palette
-    title: 헤더 Value 색상
-    description: 첫 페이지 헤더의 오른쪽 value 영역 색상입니다. 예 `Owen Lee - Sr. CSA` 쪽 색상입니다.
+    title: Header value color
+    title.ko: 헤더 Value 색상
+    description: Color of the right value area in the first-page header, such as `Owen Lee - Sr. CSA`.
+    description.ko: 첫 페이지 헤더의 오른쪽 value 영역 색상입니다. 예 `Owen Lee - Sr. CSA` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-header-value-sky
     options:
@@ -597,28 +615,36 @@ settings:
         value: ogd-pdf-header-value-fuchsia
   -
     id: ogd-pdf-header-text
-    title: 첫 페이지 헤더 1번 Key 문구
-    description: 단일 라벨에서는 전체 문구, Key/Value에서는 1번 왼쪽 key입니다. 예 `Prepared by`.
+    title: First-page header pair 1 key text
+    title.ko: 첫 페이지 헤더 1번 Key 문구
+    description: "The full phrase in single-label layout or the left key in pair 1. Example: `Prepared by`."
+    description.ko: 단일 라벨에서는 전체 문구, Key/Value에서는 1번 왼쪽 key입니다. 예 `Prepared by`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-header-value
-    title: 첫 페이지 헤더 1번 Value 문구
-    description: Key/Value 구성에서 1번 오른쪽 value로 표시됩니다. 예 `Owen Lee` 또는 `Sr. CSA`. 단일 라벨 구성에서는 사용하지 않습니다.
+    title: First-page header pair 1 value text
+    title.ko: 첫 페이지 헤더 1번 Value 문구
+    description: The right value in pair 1, such as `Owen Lee` or `Sr. CSA`. Not used by single-label layout.
+    description.ko: Key/Value 구성에서 1번 오른쪽 value로 표시됩니다. 예 `Owen Lee` 또는 `Sr. CSA`. 단일 라벨 구성에서는 사용하지 않습니다.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-header-dual-pair
-    title: 첫 페이지 헤더 2번 Key/Value 표시
-    description: 기존 Key/Value 1쌍 구성에서 두 번째 key/value 쌍만 추가로 켭니다. PDF 라벨 구성에서 `Key/Value 2쌍`을 선택해도 같은 출력이 적용됩니다.
+    title: Show first-page header pair 2
+    title.ko: 첫 페이지 헤더 2번 Key/Value 표시
+    description: Adds only the second key/value pair to the existing one-pair layout. Selecting `Two Key/Value pairs` in PDF label layout has the same effect.
+    description.ko: 기존 Key/Value 1쌍 구성에서 두 번째 key/value 쌍만 추가로 켭니다. PDF 라벨 구성에서 `Key/Value 2쌍`을 선택해도 같은 출력이 적용됩니다.
     type: class-toggle
     default: false
   -
     id: ogd-pdf-header2-key-palette
-    title: 헤더 2번 Key 색상
-    description: 첫 페이지 헤더의 2번 key segment 색상입니다. 예 `Reviewed by` 쪽 색상입니다.
+    title: Header pair 2 key color
+    title.ko: 헤더 2번 Key 색상
+    description: Color of the second header key segment, such as `Reviewed by`.
+    description.ko: 첫 페이지 헤더의 2번 key segment 색상입니다. 예 `Reviewed by` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-header2-key-graphite
     options:
@@ -672,8 +698,10 @@ settings:
         value: ogd-pdf-header2-key-fuchsia
   -
     id: ogd-pdf-header2-value-palette
-    title: 헤더 2번 Value 색상
-    description: 첫 페이지 헤더의 2번 value segment 색상입니다. 예 `Graphite QA` 쪽 색상입니다.
+    title: Header pair 2 value color
+    title.ko: 헤더 2번 Value 색상
+    description: Color of the second header value segment, such as `Graphite QA`.
+    description.ko: 첫 페이지 헤더의 2번 value segment 색상입니다. 예 `Graphite QA` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-header2-value-sky
     options:
@@ -727,41 +755,50 @@ settings:
         value: ogd-pdf-header2-value-fuchsia
   -
     id: ogd-pdf-header-text-2
-    title: 첫 페이지 헤더 2번 Key 문구
-    description: 2번 key segment입니다. 예 `Reviewed by`.
+    title: First-page header pair 2 key text
+    title.ko: 첫 페이지 헤더 2번 Key 문구
+    description: "The second key segment. Example: `Reviewed by`."
+    description.ko: 2번 key segment입니다. 예 `Reviewed by`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-header-value-2
-    title: 첫 페이지 헤더 2번 Value 문구
-    description: 2번 value segment입니다. 예 `Design QA` 또는 `2026-05-17`.
+    title: First-page header pair 2 value text
+    title.ko: 첫 페이지 헤더 2번 Value 문구
+    description: "The second value segment. Example: `Design QA` or `2026-05-17`."
+    description.ko: 2번 value segment입니다. 예 `Design QA` 또는 `2026-05-17`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-header-position
-    title: 첫 페이지 헤더 위치
-    description: 첫 페이지 헤더 라벨 위치를 선택합니다. Key/Value 구성에서는 두 segment가 같은 기준점에 붙어서 배치됩니다. 마지막 페이지 푸터는 안정성을 위해 중앙 하단으로 고정됩니다.
+    title: First-page header position
+    title.ko: 첫 페이지 헤더 위치
+    description: Choose the first-page header position. Key/value segments stay joined at the same anchor. The last-page footer remains fixed at bottom center for stability.
+    description.ko: 첫 페이지 헤더 라벨 위치를 선택합니다. Key/Value 구성에서는 두 segment가 같은 기준점에 붙어서 배치됩니다. 마지막 페이지 푸터는 안정성을 위해 중앙 하단으로 고정됩니다.
     type: class-select
     default: ogd-pdf-header-top-right
     options:
       -
-        label: 우측 상단
+        label: Top right / 우측 상단
         value: ogd-pdf-header-top-right
       -
-        label: 중앙 상단
+        label: Top center / 중앙 상단
         value: ogd-pdf-header-top-center
   -
     id: ogd-pdf-settings-footer
-    title: 푸터 설정
+    title: Footer settings
+    title.ko: 푸터 설정
     type: heading
     level: 3
     collapsed: true
   -
     id: ogd-pdf-footer-key-palette
-    title: 푸터 Key 색상
-    description: 마지막 페이지 푸터의 왼쪽 key segment 색상입니다. 예 `Confidential` 쪽 색상입니다.
+    title: Footer key color
+    title.ko: 푸터 Key 색상
+    description: Color of the left key segment in the last-page footer, such as `Confidential`.
+    description.ko: 마지막 페이지 푸터의 왼쪽 key segment 색상입니다. 예 `Confidential` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-footer-key-graphite
     options:
@@ -815,8 +852,10 @@ settings:
         value: ogd-pdf-footer-key-fuchsia
   -
     id: ogd-pdf-footer-value-palette
-    title: 푸터 Value 색상
-    description: 마지막 페이지 푸터의 오른쪽 value segment 색상입니다. 예 `End of Document` 쪽 색상입니다.
+    title: Footer value color
+    title.ko: 푸터 Value 색상
+    description: Color of the right value segment in the last-page footer, such as `End of Document`.
+    description.ko: 마지막 페이지 푸터의 오른쪽 value segment 색상입니다. 예 `End of Document` 쪽 색상입니다.
     type: class-select
     default: ogd-pdf-footer-value-sky
     options:
@@ -870,15 +909,19 @@ settings:
         value: ogd-pdf-footer-value-fuchsia
   -
     id: ogd-pdf-footer-text
-    title: 마지막 페이지 푸터 Key 문구
-    description: 단일 라벨에서는 전체 문구, Key/Value에서는 왼쪽 key입니다. 예 `Confidential`.
+    title: Last-page footer key text
+    title.ko: 마지막 페이지 푸터 Key 문구
+    description: "The full phrase in single-label layout or the left key in key/value layout. Example: `Confidential`."
+    description.ko: 단일 라벨에서는 전체 문구, Key/Value에서는 왼쪽 key입니다. 예 `Confidential`.
     type: variable-text
     default: ''
     quotes: true
   -
     id: ogd-pdf-footer-value
-    title: 마지막 페이지 푸터 Value 문구
-    description: Key/Value 구성에서 오른쪽 value로 표시됩니다. 예 `Internal Use Only` 또는 `End of Document`. 단일 라벨 구성에서는 사용하지 않습니다.
+    title: Last-page footer value text
+    title.ko: 마지막 페이지 푸터 Value 문구
+    description: The right value in key/value layout, such as `Internal Use Only` or `End of Document`. Not used by single-label layout.
+    description.ko: Key/Value 구성에서 오른쪽 value로 표시됩니다. 예 `Internal Use Only` 또는 `End of Document`. 단일 라벨 구성에서는 사용하지 않습니다.
     type: variable-text
     default: ''
     quotes: true

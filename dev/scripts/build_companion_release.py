@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and audit the Owen Graphite Style Settings locale companion ZIP."""
+"""Build and audit the Owen Graphite Style Settings localization bridge ZIP."""
 
 from __future__ import annotations
 
@@ -11,14 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 COMPANION = ROOT / "compat" / "owen-graphite-style-settings-l10n"
-FILES = (
-    "manifest.json",
-    "main.js",
-    "core.js",
-    "catalog.generated.json",
-    "README.md",
-    "LICENSE",
-)
+FILES = ("manifest.json", "main.js", "README.md")
 PREFIX = "owen-graphite-style-settings-l10n"
 
 

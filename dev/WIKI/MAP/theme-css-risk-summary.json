@@ -24,7 +24,7 @@
         "pdf-header-footer-sensitive"
       ],
       "risk_score": 2,
-      "selector_count": 7,
+      "selector_count": 4,
       "severity": "low"
     },
     {
@@ -34,7 +34,7 @@
         "cm6-hit-routing-sensitive"
       ],
       "risk_score": 18,
-      "selector_count": 17,
+      "selector_count": 18,
       "severity": "medium"
     },
     {
@@ -57,8 +57,8 @@
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 128,
-      "selector_count": 161,
+      "risk_score": 110,
+      "selector_count": 154,
       "severity": "high"
     },
     {
@@ -79,7 +79,7 @@
         "cm6-hit-routing-sensitive"
       ],
       "risk_score": 21,
-      "selector_count": 30,
+      "selector_count": 27,
       "severity": "medium"
     },
     {
@@ -111,7 +111,7 @@
         "repeated-selector-in-file"
       ],
       "risk_score": 229,
-      "selector_count": 192,
+      "selector_count": 193,
       "severity": "high"
     },
     {
@@ -121,8 +121,8 @@
         "pdf-header-footer-sensitive",
         "repeated-selector-in-file"
       ],
-      "risk_score": 104,
-      "selector_count": 310,
+      "risk_score": 90,
+      "selector_count": 296,
       "severity": "high"
     },
     {
@@ -131,8 +131,8 @@
         "high-specificity",
         "repeated-selector-in-file"
       ],
-      "risk_score": 23,
-      "selector_count": 127,
+      "risk_score": 20,
+      "selector_count": 115,
       "severity": "medium"
     },
     {
@@ -157,10 +157,11 @@
       "module": "src/chrome/33-settings-controls.css",
       "risk_reasons": [
         "high-specificity",
-        "has-selector"
+        "has-selector",
+        "repeated-selector-in-file"
       ],
-      "risk_score": 91,
-      "selector_count": 102,
+      "risk_score": 283,
+      "selector_count": 198,
       "severity": "high"
     },
     {
@@ -189,12 +190,11 @@
       "risk_reasons": [
         "high-specificity",
         "cm6-hit-routing-sensitive",
-        "pdf-header-footer-sensitive",
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 176,
-      "selector_count": 265,
+      "risk_score": 173,
+      "selector_count": 209,
       "severity": "high"
     },
     {
@@ -203,7 +203,7 @@
         "high-specificity"
       ],
       "risk_score": 18,
-      "selector_count": 25,
+      "selector_count": 27,
       "severity": "medium"
     },
     {
@@ -214,8 +214,8 @@
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 66,
-      "selector_count": 118,
+      "risk_score": 60,
+      "selector_count": 110,
       "severity": "high"
     },
     {
@@ -224,8 +224,8 @@
         "high-specificity",
         "repeated-selector-in-file"
       ],
-      "risk_score": 73,
-      "selector_count": 121,
+      "risk_score": 55,
+      "selector_count": 103,
       "severity": "high"
     },
     {
@@ -236,7 +236,7 @@
         "repeated-selector-in-file"
       ],
       "risk_score": 385,
-      "selector_count": 233,
+      "selector_count": 227,
       "severity": "high"
     },
     {
@@ -256,8 +256,8 @@
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 117,
-      "selector_count": 171,
+      "risk_score": 108,
+      "selector_count": 184,
       "severity": "high"
     },
     {
@@ -267,17 +267,17 @@
         "cm6-hit-routing-sensitive",
         "repeated-selector-in-file"
       ],
-      "risk_score": 109,
-      "selector_count": 63,
+      "risk_score": 66,
+      "selector_count": 51,
       "severity": "high"
     }
   ],
   "summary": {
-    "cross_file_selector_group_count": 82,
-    "finding_count": 656,
+    "cross_file_selector_group_count": 78,
+    "finding_count": 692,
     "finding_severity_counts": {
-      "low": 111,
-      "medium": 545
+      "low": 146,
+      "medium": 546
     },
     "module_count": 26,
     "module_severity_counts": {
@@ -286,7 +286,7 @@
       "low": 3,
       "medium": 5
     },
-    "selector_count": 2679
+    "selector_count": 2653
   },
-  "version": "3.1.90"
+  "version": "3.1.98"
 }

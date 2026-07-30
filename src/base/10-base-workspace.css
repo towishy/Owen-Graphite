@@ -85,8 +85,13 @@ button.mod-warning,
 .markdown-source-view.is-readable-line-width .cm-contentContainer,
 .markdown-source-view.is-readable-line-width .CodeMirror-sizer,
 .markdown-rendered.is-readable-line-width {
-  max-width: var(--ogd-max-width, 420mm);
+  max-width: var(--ogd-max-width, 297mm);
   margin: 0;
+}
+
+.markdown-preview-view.is-readable-line-width,
+.markdown-source-view.is-readable-line-width {
+  --file-line-width: var(--ogd-max-width, 297mm);
 }
 
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,

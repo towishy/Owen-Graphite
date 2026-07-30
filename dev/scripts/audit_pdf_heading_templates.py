@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "dev" / "WIKI" / "DOCS" / "v3" / "research" / "pdf-heading-template-fixture.html"
+PRINT_BASE = ROOT / "src" / "features" / "43-print-base.css"
 OUT_DIR = ROOT / "dev" / "temp" / "pdf-heading-templates"
 TEMPLATE_SPECS = (
     ("ogd-heading-printclean", "01-print-clean", "프린트 클린 / Print Clean"),
@@ -112,6 +113,60 @@ def render_outputs(page: object) -> None:
     print(f"OK: wrote {manifest_path.relative_to(ROOT)}")
 
 
+def audit_readability_preset(page: object) -> None:
+    print_base = PRINT_BASE.read_text(encoding="utf-8")
+    if "@page ogd-pdf-readability" in print_base:
+        raise AssertionError("PDF readability preset must not define a fixed named page")
+
+    page.evaluate(
+        """() => {
+            document.body.classList.add('ogd-pdf-readability');
+            const caption = document.createElement('figcaption');
+            caption.dataset.check = 'pdf-readability-caption';
+            caption.textContent = 'PDF readability caption';
+            document.querySelector('[data-check="pdf-heading-template-article"]').append(caption);
+        }"""
+    )
+    styles = page.evaluate(
+        """() => {
+            const read = (selector) => {
+                const style = getComputedStyle(document.querySelector(selector));
+                return {
+                    fontFamily: style.fontFamily,
+                    fontSize: style.fontSize,
+                    fontWeight: style.fontWeight,
+                    lineHeight: style.lineHeight,
+                };
+            };
+            return {
+                page: getComputedStyle(document.body).page,
+                h1: read('[data-check="pdf-template-h1"]'),
+                h2: read('[data-check="pdf-template-h2"]'),
+                body: read('[data-check="pdf-template-h2"] + p'),
+                caption: read('[data-check="pdf-readability-caption"]'),
+            };
+        }"""
+    )
+    expected = {
+        "h1": {"fontSize": "36px", "fontWeight": "700", "lineHeight": "43.2px"},
+        "h2": {"fontSize": "18px", "fontWeight": "700", "lineHeight": "24.3px"},
+        "body": {"fontSize": "16px", "fontWeight": "400", "lineHeight": "24.96px"},
+        "caption": {"fontSize": "14px", "fontWeight": "400", "lineHeight": "21px"},
+    }
+    if styles["page"] != "ogd-pdf-a4-portrait":
+        raise AssertionError(f"PDF readability must preserve the selected paper size: {styles['page']!r}")
+    for role, expected_style in expected.items():
+        actual_style = styles[role]
+        if not actual_style["fontFamily"].startswith("Pretendard"):
+            raise AssertionError(f"PDF readability {role} must use Pretendard first")
+        for property_name, expected_value in expected_style.items():
+            if actual_style[property_name] != expected_value:
+                raise AssertionError(
+                    f"PDF readability {role} {property_name} {actual_style[property_name]!r} != {expected_value!r}"
+                )
+    print("OK: PDF readability preset preserves paper size and computed typography")
+
+
 def audit(render: bool = False) -> int:
     from playwright.sync_api import sync_playwright
 
@@ -204,6 +259,8 @@ def audit(render: bool = False) -> int:
 
         if render:
             render_outputs(page)
+
+        audit_readability_preset(page)
 
         browser.close()
 

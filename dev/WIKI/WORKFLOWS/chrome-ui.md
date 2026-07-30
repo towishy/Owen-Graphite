@@ -10,6 +10,7 @@
 ## Contract
 
 Read `dev/WIKI/MAP/top-chrome-icon-background-contract.md` before top chrome icon changes.
+- Canonical vertical Frosted ScrollArea is owned by Owen Editor `frosted-scrollbars.ts` and `styles.css`. Its adapter preserves each Obsidian native scroll viewport for wheel, touch, and keyboard input, then renders the Foundation `root / viewport / rail / grip` structure as an overlay with a 2px rail, fixed `6px x 44px` grip, three-line handle, `10px x 44px` hover/drag state, rail click, and pointer drag. Graphite must not approximate this component with global native `::-webkit-scrollbar` material or hide pane scrollbars from scoped chrome modules.
 
 ## Avoid
 

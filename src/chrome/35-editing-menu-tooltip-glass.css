@@ -561,15 +561,15 @@
   body:not(.is-mobile) .mod-root .view-header .view-header-title {
     flex: 1 1 auto;
     min-width: 0; width: 100%; max-width: 100%;
-    padding: 5px 16px;
+    padding: 5px 14px;
     border: 1px solid transparent;
     border-radius: 9px; background-clip: padding-box;
     background: transparent;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     box-shadow: none;
-    font-size: 14.2px;
-    font-weight: 820;
+    font-size: 15px;
+    font-weight: 780;
     color: var(--ogd-text-strong, #111827);
     text-shadow: none;
   }
@@ -767,16 +767,14 @@
 }
 
 /* ============================================================
-   v1.8.39 — Settings modal hover liquid-glass
-   Apply the same glass+shadow lift used across ribbon/nav/toggle
-   to Settings modal items: left nav (.vertical-tab-nav-item) and
-   right pane rows (.setting-item).
+  v1.8.39 — Settings navigation hover liquid-glass
+  Apply the same glass+shadow lift used across ribbon/nav/toggle
+  to Settings modal left navigation (.vertical-tab-nav-item).
    Desktop only (>=701px, non-mobile).
    ============================================================ */
 
 @media (min-width: 701px) {
-  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item,
-  body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item {
+  body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item {
     border-radius: var(--radius-l, 8px);
     transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
   }
@@ -784,65 +782,41 @@
   /* Left nav hover (light) */
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item:hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55));
-    border: 1px solid rgba(100, 116, 139, 0.34);
+    border-color: transparent;
     -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%));
     backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -1px 0 rgba(15, 23, 42, 0.07),
-      0 1px 3px rgba(15, 23, 42, 0.05);
+    box-shadow: none;
     color: var(--ogd-text-strong, #111827);
     transform: var(--ogd-hover-lift, translateY(-1px));
   }
 
-  /* Active stays distinct through neutral glass, rim, and lift. */
+  /* Active stays distinct through surface tone and weight, without a rim. */
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active,
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
-    background: radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.72), transparent 36%), linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.58));
-    border: 1px solid rgba(100, 116, 139, 0.34);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 8px 18px rgba(15, 23, 42, 0.13), 0 0 0 2px rgba(148, 163, 184, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.62));
+    border-color: transparent;
+    box-shadow: none;
     color: var(--ogd-text-strong, #111827);
+    font-weight: 760;
   }
 
   /* Left nav hover (dark) */
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item:hover {
     background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55));
-    border: 1px solid rgba(203, 213, 225, 0.22);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-      0 1px 3px rgba(0, 0, 0, 0.14);
+    border-color: transparent;
+    box-shadow: none;
     color: var(--ogd-text-inverted, #f8fafc);
   }
 
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active,
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
-    background: radial-gradient(circle at 76% 26%, rgba(148, 163, 184, 0.16), transparent 36%), radial-gradient(circle at 14% 64%, rgba(203, 213, 225, 0.06), transparent 32%), linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.52));
-    border: 1px solid rgba(203, 213, 225, 0.24);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), inset 0 -1px 0 rgba(203, 213, 225, 0.08), 0 8px 22px rgba(0, 0, 0, 0.36), 0 0 0 2px rgba(203, 213, 225, 0.06);
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.62), rgba(15, 23, 42, 0.46));
+    border-color: transparent;
+    box-shadow: none;
     color: var(--ogd-text-inverted, #f8fafc);
+    font-weight: 760;
   }
 
-  /* Right pane setting-item hover (light) */
-  body:not(.is-mobile) .modal.mod-settings .vertical-tab-content .setting-item:hover {
-    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 250, 252, 0.40)));
-    border: 1px solid var(--ogd-setting-row-border, rgba(100, 116, 139, 0.18));
-    -webkit-backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%));
-    backdrop-filter: var(--ogd-glass-filter-control, blur(10px) saturate(140%));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.72),
-      0 1px 2px rgba(15, 23, 42, 0.035);
-    transform: var(--ogd-hover-lift, translateY(-1px));
-  }
-
-  /* Right pane setting-item hover (dark) */
-  body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-content .setting-item:hover {
-    background: var(--ogd-glass-control-hover-bg, linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.36)));
-    border: 1px solid var(--ogd-setting-row-border, rgba(203, 213, 225, 0.12));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      0 1px 2px rgba(0, 0, 0, 0.10);
-  }
 }
 
 /* ============================================================
@@ -1034,70 +1008,6 @@
     opacity: 0;
     background: var(--ogd-surface-transparent, transparent);
     box-shadow: none;
-  }
-}
-
-/* File explorer scrollbar cleanup: hide the sidebar thumb line. */
-@media (min-width: 701px) {
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) {
-    --scrollbar-bg: var(--ogd-surface-transparent, transparent);
-    --scrollbar-thumb-bg: var(--ogd-surface-transparent, transparent);
-    --scrollbar-active-thumb-bg: var(--ogd-surface-transparent, transparent);
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  ) {
-    -ms-overflow-style: none;
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  )::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  )::-webkit-scrollbar-thumb,
-  body:not(.is-mobile) :is(
-    .workspace-split.mod-left-split,
-    .workspace-split.mod-right-split,
-    .workspace-leaf-content[data-type="file-explorer"],
-    .workspace-leaf-content[data-type="file-explorer"] .view-content,
-    .nav-files-container
-  )::-webkit-scrollbar-track {
-    background: var(--ogd-surface-transparent, transparent);
-    border: var(--ogd-border-none, 0);
-    box-shadow: var(--ogd-shadow-none, none);
-  }
-
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-thumb,
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-track,
-  body:not(.is-mobile) :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-leaf-content[data-type="file-explorer"]) *::-webkit-scrollbar-corner {
-    background: var(--ogd-surface-transparent, transparent);
-    border: var(--ogd-border-none, 0);
-    box-shadow: var(--ogd-shadow-none, none);
   }
 }
 

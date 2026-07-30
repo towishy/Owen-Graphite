@@ -7,6 +7,8 @@
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --skip-bundle
 .\.venv\Scripts\python.exe dev\scripts\build_release.py
 .\.venv\Scripts\python.exe dev\scripts\audit_release_zip.py
+.\.venv\Scripts\python.exe compat\owen-graphite-style-settings-l10n\test.py
+.\.venv\Scripts\python.exe dev\scripts\build_companion_release.py
 ```
 
 For a scripted dry run of the publish playbook, use:
@@ -30,6 +32,8 @@ Copy-Item dist\theme-v3.css theme.css -Force
 .\.venv\Scripts\python.exe dev\scripts\release_check.py --tag <version> --skip-bundle
 .\.venv\Scripts\python.exe dev\scripts\build_release.py
 .\.venv\Scripts\python.exe dev\scripts\audit_release_zip.py
+.\.venv\Scripts\python.exe compat\owen-graphite-style-settings-l10n\test.py
+.\.venv\Scripts\python.exe dev\scripts\build_companion_release.py
 git status --short
 git add -A
 git commit -m "chore: release Owen Graphite <version>"

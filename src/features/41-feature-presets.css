@@ -804,54 +804,6 @@ body.ogd-pdf-label-segmented-dual {
     }
   }
 
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) h1:first-of-type,
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) > h1:first-of-type + h1,
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) > .markdown-preview-section > h1:first-of-type,
-  body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-    .markdown-rendered.markdown-rendered,
-    .markdown-preview-view.markdown-rendered.markdown-rendered,
-    .markdown-reading-view .markdown-rendered.markdown-rendered
-  ) > .markdown-preview-section > h1:first-of-type + h1 {
-    margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
-  }
-
-  @supports selector(:nth-child(1 of .el-h1)) {
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .el-h1:nth-child(1 of .el-h1) > h1,
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1,
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) > h1,
-    body.ogd-pdf-header-enabled.ogd-pdf-screen-delivery :is(
-      .markdown-rendered.markdown-rendered,
-      .markdown-preview-view.markdown-rendered.markdown-rendered,
-      .markdown-reading-view .markdown-rendered.markdown-rendered
-    ) > .markdown-preview-section > .el-h1:nth-child(1 of .el-h1) + .el-h1 > h1 {
-      margin-top: var(--ogd-pdf-header-title-gap, 2.85em);
-    }
-  }
-
   /* FOOTER — 마지막 페이지 중앙 하단 microlabel */
   body.ogd-pdf-footer-enabled .markdown-rendered > :last-child:not(.markdown-preview-section),
   body.ogd-pdf-footer-enabled .markdown-rendered > .markdown-preview-section:last-child > :nth-last-child(1 of .el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6, .el-p, .el-div, .el-pre, .el-table, .el-ul, .el-ol, .el-blockquote) {
@@ -962,8 +914,7 @@ body.ogd-pdf-label-segmented-dual {
 @media print {
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1,
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1,
-  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type {
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1 {
     display: block;
     width: auto;
     max-width: 100%;
@@ -976,71 +927,10 @@ body.ogd-pdf-label-segmented-dual {
 
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered h1::after,
   body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-preview-view.markdown-rendered h1::after,
-  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after,
-  body.ogd-report-mode:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-rendered > h1:first-of-type::after {
+  body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) .markdown-reading-view .markdown-rendered h1::after {
     display: none;
     content: none;
   }
-}
-
-/* C6. Report metadata block — frontmatter rendered nicely */
-body.ogd-report-mode .metadata-container {
-  background: #fafbfc;
-  border: 1px solid #d1d5db;
-  border-radius: var(--radius-m, 6px);
-  padding: 12px 16px;
-  margin: 1em 0 1.5em;
-  font-size: 0.95em;
-}
-body.ogd-report-mode .metadata-container .metadata-property {
-  display: grid;
-  grid-template-columns: 8em 1fr;
-  gap: 8px;
-  padding: 4px 0;
-  border-bottom: 1px dashed #e5e7eb;
-}
-
-/* Report mode bundles A3+A6+A4 */
-body.ogd-report-mode {
-  /* Activate auto-numbering, indent, serif */
-}
-body.ogd-report-mode .markdown-rendered {
-  counter-reset: ogd-h2 ogd-h3 ogd-h4;
-}
-body.ogd-report-mode .markdown-rendered h2 {
-  counter-increment: ogd-h2;
-  counter-reset: ogd-h3 ogd-h4;
-}
-body.ogd-report-mode .markdown-rendered h2::before {
-  content: counter(ogd-h2) ". ";
-  color: var(--header-accent);
-  font-weight: 700;
-  margin-right: 0.4em;
-}
-body.ogd-report-mode .markdown-rendered h3 {
-  counter-increment: ogd-h3;
-}
-body.ogd-report-mode .markdown-rendered h3::before {
-  content: counter(ogd-h2) "." counter(ogd-h3) " ";
-  color: var(--header-accent);
-  font-weight: 700;
-  margin-right: 0.4em;
-}
-body.ogd-report-mode .markdown-rendered p {
-  text-indent: 1em;
-}
-body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) + p,
-body.ogd-report-mode .markdown-rendered blockquote p,
-body.ogd-report-mode .markdown-rendered li p,
-body.ogd-report-mode .markdown-rendered .callout p {
-  text-indent: 0;
-}
-body.ogd-report-mode .markdown-rendered {
-  font-family: "Noto Serif KR", "Nanum Myeongjo", "Source Serif Pro",
-    Georgia, serif;
-}
-body.ogd-report-mode .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
-  font-family: var(--ogd-reading-font-stack);
 }
 
 /* ---------- D. UI POLISH ---------- */
@@ -1283,7 +1173,7 @@ body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view.markdown
   border-bottom-color: rgba(148, 163, 184, 0.34);
 }
 
-body.ogd-spacing-relaxed:not(.ogd-pdf-compact):not(.ogd-pdf-visibility):not(.ogd-pdf-screen-delivery):not(.ogd-pdf-client-delivery):not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
+body.ogd-spacing-relaxed:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bracket):not(.ogd-heading-quiet-ledger):not(.ogd-heading-focus-bar):not(.ogd-heading-double-rule):not(.ogd-heading-tag-ribbon):not(.ogd-heading-number-stamp):not(.ogd-heading-grid-index) :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown-reading-view .markdown-rendered) h2::after {
   width: min(176px, 30%);
   height: 2px;
   background: linear-gradient(90deg, rgba(51, 65, 85, 0.68), rgba(148, 163, 184, 0.10));
@@ -1422,12 +1312,12 @@ body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdo
   margin: 1.05em 0 1.35em;
   border: 1px solid rgba(30, 41, 59, 0.18);
   border-radius: var(--ogd-radius-control, 7px);
-  background: linear-gradient(180deg, #172033, #111827);
+  background: #ffffff;
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 body.ogd-spacing-relaxed :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) code:not(pre code) {
-  padding: 0.08em 0.34em;
+  padding: 0.16em 0.46em;
   border: 1px solid rgba(203, 213, 225, 0.82);
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 245, 249, 0.68));

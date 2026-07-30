@@ -50,7 +50,7 @@ jobs:
       - name: Audit manual install ZIP
         run: python dev/scripts/audit_release_zip.py
 
-      - name: Test and package Style Settings language companion
+      - name: Test and package Style Settings localization bridge
         run: |
           python compat/owen-graphite-style-settings-l10n/test.py
           python dev/scripts/build_companion_release.py
@@ -78,10 +78,9 @@ jobs:
             screenshots/readme/top-tabs-liquid-glass.svg
             screenshots/readme/workspace-writing-surface.jpg
             screenshots/readme/style-settings-report-options.jpg
-            screenshots/readme/pdf-customer-delivery-feature.png
             screenshots/readme/owen-editor-toolbar-settings.jpg
             screenshots/readme/file-explorer-type-badges.svg
             screenshots/readme/sponsor-coffee.svg
             dist/release-notes-*.md
-            dist/Owen-Graphite-*.zip
+            dist/Owen-Graphite-[0-9]*.zip
             dist/Owen-Graphite-Companion-*.zip

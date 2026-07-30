@@ -1,42 +1,42 @@
 ﻿# v3 Style Settings Contract (extracted from v2.30.14)
 
 이 문서는 v3 Style Settings 계약입니다.
-아래 기능 옵션의 `id`/`type`/`default`/`title`은 사용자 vault 설정 호환성에 직접 영향을 줍니다.
+아래 기능 옵션의 `id`/`type`/`default`와 machine option `value`는 사용자 vault 설정 호환성에 직접 영향을 줍니다.
 
 - 스키마 이름: `Owen Graphite`
 - 스키마 id: `owen-graphite-document`
-- 전체 엔트리(heading 포함): **60**
-- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **51**
+- 전체 엔트리(heading 포함): **56**
+- 기능 옵션 수(`class-toggle` / `variable-*` / `class-select`): **46**
 - 초기 표시: `읽기와 본문`은 펼치고 나머지 level 2/3 그룹은 접어 긴 PDF 고급 옵션이 기본 화면을 점유하지 않도록 구성
+- 기본 메타데이터는 영어 `title`/`description`이며, 한국어는 Style Settings 1.0.9 네이티브 `title.ko`/`description.ko` 필드로 같은 스키마에 포함
+- `ogd-style-settings-language`는 Obsidian locale 자동 추종과 한국어/English 명시 선택을 제공하며 기존 `ogd-language-*` 저장값을 유지
+- Style Settings 1.0.9가 Obsidian 1.12에서 비어 있는 legacy `localStorage.language`를 영어로 처리하는 경우 companion이 선택 class와 Obsidian locale을 기준으로 Owen Graphite 행을 현지화
+- upstream Style Settings에는 locale별 option-label 필드가 없으므로 영어와 한국어가 다른 구조화 옵션 라벨은 `English / 한국어` 형식으로 병기
+- 유지되는 setting id, type, default, machine option value 및 순서는 보존
 
 ## 기능 옵션 목록
 
-| id | type | default | title |
+| id | type | default | 한국어 현지화 제목 (`title.ko`) |
 | --- | --- | --- | --- |
+| `ogd-style-settings-language` | `class-select` | `ogd-language-auto` | 언어 |
 | `ogd-body-size` | `variable-number-slider` | `15` | 본문 폰트 크기 |
 | `ogd-line-height` | `variable-select` | `1.5` | 본문 줄간격 |
-| `ogd-max-width` | `variable-select` | `420mm` | 본문 최대 폭 |
+| `ogd-max-width` | `variable-select` | `297mm` | 본문 최대 폭 |
 | `ogd-accent` | `variable-color` | `#4b5563` | 헤더 강조 색상 |
-| `ogd-modern-tables` | `class-toggle` | `true` | 표 모던 스타일 강화 |
 | `ogd-print-avoid-breaks` | `class-toggle` | `true` | PDF 블록 분할 방지 강화 |
-| `ogd-report-mode` | `class-toggle` | `false` | 보고서 모드 (헤더 자동 넘버링 + 본문 들여쓰기 + 세리프) |
-| `ogd-pdf-compact` | `class-toggle` | `false` | PDF Compact Report |
-| `ogd-pdf-visibility` | `class-toggle` | `false` | PDF 보고서 가시성 강화 |
-| `ogd-pdf-screen-delivery` | `class-toggle` | `false` | PDF 고객 전달용 화면 가시성 |
-| `ogd-pdf-client-delivery` | `class-toggle` | `false` | PDF 고객 전달 권장 프리셋 |
+| `ogd-pdf-readability` | `class-toggle` | `false` | PDF 가독성 개선 |
 | `ogd-pdf-font-size` | `class-select` | `ogd-pdf-font-standard` | PDF 글자 크기 |
 | `ogd-pdf-link-mode` | `class-select` | `ogd-pdf-links-inline` | PDF 링크 출력 방식 |
 | `ogd-serif-body` | `class-toggle` | `false` | 본문 세리프 글꼴 |
 | `ogd-indent-paragraph` | `class-toggle` | `false` | 첫 줄 들여쓰기 |
 | `ogd-auto-number-headings` | `class-toggle` | `false` | 헤더 자동 넘버링 (1. 1.1 1.1.1) |
-| `ogd-heading-template` | `class-select` | `ogd-heading-printclean` | 헤더 디자인 템플릿 |
+| `ogd-heading-template` | `class-select` | `ogd-heading-printclean` | 보고서 제목 디자인 템플릿 |
 | `ogd-drop-cap` | `class-toggle` | `false` | 드롭 캡 (첫 문단 첫 글자 크게) |
 | `ogd-spacing-preset` | `class-select` | `ogd-spacing-standard` | 간격 프리셋 |
 | `ogd-accent-preset` | `class-select` | `ogd-accent-graphite` | 액센트 컬러 프리셋 |
 | `ogd-code-theme` | `class-select` | `ogd-code-light` | 코드블록 테마 |
 | `ogd-eye-care` | `class-toggle` | `false` | 시선 보호 모드 (베이지 배경) |
 | `ogd-auto-dark` | `class-toggle` | `false` | OS 다크 모드 자동 추종 |
-| `ogd-glass-intensity` | `class-select` | `ogd-glass-standard` | 데스크톱 Glass 강도 |
 | `ogd-motion-intensity` | `class-select` | `ogd-motion-standard` | 데스크톱 Hover 움직임 |
 | `ogd-cjk-boost` | `class-toggle` | `true` | 한글/CJK 폰트 +0.5px 자동 보정 |
 | `ogd-interface-font-stack` | `variable-text` | `` | 인터페이스 폰트 직접 입력 |
@@ -67,46 +67,16 @@
 
 ## 비기능 엔트리 (heading / info)
 
-| id | type | title |
+아래 제목은 한국어 현지화 제목(`title.ko`)이며, 기본 `title`은 영어입니다.
+
+| id | type | 한국어 현지화 제목 (`title.ko`) |
 | --- | --- | --- |
+| `ogd-settings-interface` | `heading` | 인터페이스 |
 | `ogd-settings-reading` | `heading` | 읽기와 본문 |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
 | `ogd-settings-tables` | `heading` | 표와 코드 |
 | `ogd-settings-report` | `heading` | 보고서와 PDF |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
 | `ogd-settings-workspace` | `heading` | 워크스페이스와 접근성 |
 | `ogd-settings-fonts` | `heading` | 폰트 적용 |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
-| `—` | `—` | — |
 | `ogd-settings-pdf-marginalia` | `heading` | PDF 헤더/푸터 작은 라벨 |
 | `ogd-pdf-settings-common` | `heading` | 공통 구성 |
 | `ogd-pdf-settings-header` | `heading` | 헤더 설정 |

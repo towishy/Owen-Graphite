@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Generate and stage the Owen Graphite Style Settings locale companion."""
+"""Build the Owen Graphite Style Settings localization bridge."""
 
 from __future__ import annotations
 
 import json
 import re
-import shutil
 from pathlib import Path
 
 
@@ -27,6 +26,7 @@ def parse_schema() -> list[dict[str, object]]:
     match = re.search(r"/\*\s*@settings(?P<body>.*?)\*/", text, re.DOTALL)
     if not match:
         raise RuntimeError("Owen Graphite @settings block not found")
+
     entries: list[dict[str, object]] = []
     current: dict[str, object] | None = None
     current_option: dict[str, str] | None = None
@@ -39,7 +39,8 @@ def parse_schema() -> list[dict[str, object]]:
             continue
         if current is None:
             continue
-        field = re.match(r"^    (id|title|description|type|default):\s*(.*)$", line)
+
+        field = re.match(r"^    (id|title|title\.ko|description|description\.ko|type|default):\s*(.*)$", line)
         if field:
             current[field.group(1)] = normalize(field.group(2))
             continue
@@ -61,75 +62,59 @@ def parse_schema() -> list[dict[str, object]]:
     return entries
 
 
+def localized_label(label: str, locale: str) -> str:
+    if " / " not in label:
+        return label
+    english, korean = label.split(" / ", 1)
+    return korean if locale == "ko" else english
+
+
 def build_catalog() -> dict[str, dict[str, object]]:
-    english = json.loads((SOURCE / "en.json").read_text(encoding="utf-8"))
-    option_labels = english.pop("_optionLabels")
-    entries = parse_schema()
     catalog: dict[str, dict[str, object]] = {}
-    for entry in entries:
+    for entry in parse_schema():
         setting_id = str(entry["id"])
-        if setting_id not in english:
-            raise RuntimeError(f"missing English translation for {setting_id}")
-        translated = english[setting_id]
-        if not translated.get("title"):
-            raise RuntimeError(f"missing English title for {setting_id}")
-        if entry.get("description") and not translated.get("description"):
-            raise RuntimeError(f"missing English description for {setting_id}")
-        ko_options: dict[str, str] = {}
-        en_options: dict[str, str] = {}
-        for option in entry["options"]:
-            value = option.get("value", option.get("label"))
-            label = option.get("label", value)
-            if not value or not label:
-                raise RuntimeError(f"invalid option in {setting_id}")
-            ko_options[value] = label
-            en_options[value] = option_labels.get(label, label)
-        catalog[setting_id] = {
-            "ko": {
-                "title": entry["title"],
-                "description": entry.get("description", ""),
-                "options": ko_options,
+        if not entry.get("title") or not entry.get("title.ko"):
+            raise RuntimeError(f"missing localized title for {setting_id}")
+        if bool(entry.get("description")) != bool(entry.get("description.ko")):
+            raise RuntimeError(f"description locale mismatch for {setting_id}")
+
+        localized: dict[str, object] = {}
+        for locale in ("en", "ko"):
+            options: dict[str, str] = {}
+            for option in entry["options"]:
+                value = str(option.get("value", option.get("label", "")))
+                label = str(option.get("label", value))
+                if not value:
+                    raise RuntimeError(f"invalid option in {setting_id}")
+                options[value] = localized_label(label, locale)
+            localized[locale] = {
+                "title": entry["title.ko"] if locale == "ko" else entry["title"],
+                "description": entry.get("description.ko", "") if locale == "ko" else entry.get("description", ""),
+                "options": options,
                 "default": entry.get("default", ""),
-            },
-            "en": {
-                "title": translated["title"],
-                "description": translated.get("description", ""),
-                "options": en_options,
-                "default": entry.get("default", ""),
-            },
-        }
-    if set(english) != set(catalog):
-        extra = sorted(set(english) - set(catalog))
-        raise RuntimeError(f"translations without schema entries: {extra}")
+            }
+        catalog[setting_id] = localized
     return catalog
 
 
 def build_main(catalog: dict[str, dict[str, object]]) -> str:
-    core = (SOURCE / "core.js").read_text(encoding="utf-8")
-    core = core.removeprefix('"use strict";\n\n')
+    core = (SOURCE / "core.js").read_text(encoding="utf-8").removeprefix('"use strict";\n\n')
     core = re.sub(r"\nmodule\.exports = \{.*?\};\s*$", "", core, flags=re.DOTALL)
-    main = (SOURCE / "main.js").read_text(encoding="utf-8")
-    main = main.removeprefix('"use strict";\n\n')
+    main = (SOURCE / "main.js").read_text(encoding="utf-8").removeprefix('"use strict";\n\n')
     main = main.replace('const catalog = require("./catalog.generated.json");\n', "")
-    main = re.sub(
-        r'^const \{\n(?:(?!^const ).)*?^\} = require\(\"\./core\.js\"\);\n',
-        "",
-        main,
-        count=1,
-        flags=re.DOTALL | re.MULTILINE,
-    )
+    main = main.replace('const { localeFromClasses, localizedEntry, splitTooltipText } = require("./core.js");\n', "")
     embedded_catalog = json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
     return f'"use strict";\n\n{core}\n\nconst catalog = {embedded_catalog};\n\n{main}'
 
 
 def main() -> int:
     catalog = build_catalog()
-    generated = SOURCE / "catalog.generated.json"
-    generated.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (PLUGIN / "catalog.generated.json").write_text(
+        json.dumps(catalog, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     (PLUGIN / "main.js").write_text(build_main(catalog), encoding="utf-8")
-    for filename in ("core.js", "catalog.generated.json"):
-        shutil.copy2(SOURCE / filename, PLUGIN / filename)
-    print(f"OK: built locale companion ({len(catalog)} schema entries)")
+    print(f"OK: built localization bridge ({len(catalog)} schema entries)")
     return 0
 
 

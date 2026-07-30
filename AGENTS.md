@@ -6,6 +6,11 @@
 
 VS Code에서는 이 프로젝트와 `C:\OWEN\github\wiki`를 멀티 루트 워크스페이스로 함께 연다.
 
+- `C:\OWEN\github\wiki`를 디자인·지식 참고 루트로 상시 취급한다.
+- UI/UX, 접근성, 반응형 또는 컴포넌트 작업 전 `lib/ui-foundation/`, `lib/ui-lab/src/`, 관련 `lib/ui-foundation/REFERENCE-STUDY-*.md`를 작업 용어로 검색하고 해당 소스를 확인한다.
+- 사용자가 명시적으로 요청하지 않으면 `C:\OWEN\github\wiki`의 파일은 읽기 전용으로 유지한다.
+- `C:\OWEN\github\wiki`에 접근할 수 없으면 추측으로 대체하지 않고, 검증하지 못한 사실을 완료 보고에 명시한다.
+
 Owen Graphite, Obsidian 문서, SVG, PDF, UI 디자인 관련 작업은 wiki를 먼저 참조한다.
 
 ```powershell
@@ -17,6 +22,7 @@ Pop-Location
 ## UI Direction
 
 UI 작업 전 sibling workspace folder `wiki`의 `wiki/concepts/ui-design-system-knowledge.md`를 우선 참조한다.
+디자인/프론트엔드 작업을 시작하기 전 `C:\OWEN\github\wiki\lib\ui-foundation`의 `README.md`, `DESIGN.md`, `tokens/`, `src/` 컴포넌트 계약을 읽고 현재 프로젝트에 맞게 적용한다.
 
 기본 조합:
 
@@ -38,9 +44,11 @@ UI 작업 전 sibling workspace folder `wiki`의 `wiki/concepts/ui-design-system
 
 ## Localization Contract
 
-- Owen Graphite와 호환 companion의 사용자 노출 UI 기본 언어는 영어(`en`)다.
-- Style Settings 기능을 추가하거나 변경할 때 section title, setting label, description, option label, 검색·가져오기·내보내기 chrome의 영어와 한국어(`ko`)를 같은 변경에서 함께 구현한다.
+- Owen Graphite Style Settings의 사용자 노출 metadata 기본 언어는 영어(`en`)다.
+- Style Settings 기능을 추가하거나 변경할 때 section title, setting label, description의 영어 기본값과 한국어(`title.ko`/`description.ko`)를 같은 변경에서 함께 구현한다.
+- Style Settings가 locale별 option label을 지원하지 않으므로 언어별 표기가 필요한 option label은 간결한 영어/한국어 병기로 제공한다.
 - setting ID, CSS variable/class, default value namespace, 저장된 machine value는 번역하지 않는다.
-- 기본 preference는 `ogd-language-auto`다. Obsidian locale이 `ko` 계열이면 한국어, 그 외에는 영어를 사용하며, 기존 `ogd-language-en`/`ogd-language-ko` 저장값은 명시적 override로 우선한다.
-- 영어/한국어 catalog completeness, option coverage, 영어 fallback, 자동 locale 해석, override 우선순위, 기존 저장값 호환성을 자동 검사에 포함한다.
-- 테마 schema와 locale companion을 함께 빌드·검증하고 실제 Obsidian에서 두 언어 전환과 overflow를 확인한 뒤 릴리스한다.
+- `ogd-style-settings-language`는 Obsidian locale 자동 추종과 한국어/English 명시 선택을 제공한다. Style Settings 1.0.9의 legacy locale 키가 비어 native metadata 선택이 실패하면 `compat/owen-graphite-style-settings-l10n` bridge만 Owen Graphite 행을 현지화한다.
+- localization bridge는 Style Settings `data.json`이나 setting ID, CSS class, default, machine value를 수정하지 않는다.
+- 영어/한국어 metadata completeness, option coverage, 영어 fallback과 기존 저장값 호환성을 자동 검사에 포함한다.
+- 테마 schema를 빌드·검증하고 실제 Obsidian에서 영어/한국어 locale과 overflow를 확인한 뒤 릴리스한다.

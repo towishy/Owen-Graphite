@@ -2,6 +2,26 @@
 
 README의 신기능 소개에는 최신 3개 기능만 유지합니다. 그보다 오래된 신기능 소개는 이 문서로 옮겨 보관합니다.
 
+## v3.1.93 — Settings Rhythm And Hover Stability
+
+Style Settings section heading과 일반 행을 평평한 divider 기반 surface로 정리하고, hover의 animated border·outline·shadow·blur·lift를 제거했습니다. 297mm 기본 문서 폭을 Obsidian readable line width에 연결하고 H1-H4 및 문서 제목 위계를 기술 문서에 맞게 다듬었습니다.
+
+## v3.1.91 — Report Heading Template Preview
+
+보고서 제목 디자인 템플릿 9종을 기본·강조·인덱스 계열로 재분류하고 H1-H3 설정 미리보기를 추가했습니다. Companion 기반 미리보기는 v3.1.92에서 제거됐지만 Reading View, Live Preview, PDF의 9개 제목 템플릿과 각진 heading geometry는 그대로 유지됩니다.
+
+## v3.1.90 — Editable Code Titles And File Explorer Hierarchy
+
+Owen Editor가 fenced Markdown에 저장하는 Live Preview·Reading View 코드 제목 편집을 제공하고, 선택 문서의 직접 부모 폴더와 파일 탐색기 계층을 정리했습니다. PDF 제목 템플릿의 자동 번호·라벨을 제거하고 9개 print template 전용 fixture와 audit를 추가했습니다.
+
+## v3.1.89 — Bilingual Style Settings Interface
+
+Style Settings label과 description을 영어·한국어로 제공하면서 setting ID, CSS class, default, 저장값을 유지했습니다. v3.1.92에서 native locale만으로 전환했으나 Obsidian 1.12.7에서 Style Settings 1.0.9가 비어 있는 legacy locale 키를 영어로 처리하는 회귀가 확인되어, `자동/한국어/English` 선택과 Owen Graphite 범위의 경량 localization bridge를 복원했습니다. 테마 schema의 영어 기본 metadata와 native `title.ko`/`description.ko`, 영어/한국어 병기 option label은 fallback 계약으로 유지됩니다.
+
+## v3.1.88 — Active Tab Bridge Hotfix
+
+Obsidian core의 clipping과 숨겨진 pseudo-element 상태 때문에 끊겼던 active tab과 document surface 사이를 측정된 5px bridge로 복구했습니다. 과도한 19px 장식 cap과 shadow 대신 평평한 연결면을 사용하고 Obsidian 1.12.7 CDP computed geometry로 검증했습니다.
+
 ## v3.1.87 — Connected Workspace And Neutral Focus
 
 Active tab과 document surface를 연결하고, 현재 문서의 직접 부모 폴더를 heading band가 있는 neutral glass frame으로 정리했습니다. Settings, search, navigation, editing controls의 cyan focus halo를 낮추고 A4/A3 portrait·landscape 선택을 Chromium print geometry에 연결했습니다.

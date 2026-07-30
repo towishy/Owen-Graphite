@@ -106,13 +106,6 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.86);
   }
 
-  body.ogd-pdf-compact :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) h1 {
-    font-size: 2.85em;
-    line-height: 1.06;
-    margin-top: 0.72em;
-    margin-bottom: 0.42em;
-  }
-
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) {
     --ogd-heading-h1-bg: transparent;
     --ogd-heading-h2-bg: rgba(248, 250, 252, 0.28);
@@ -870,6 +863,17 @@
   body.ogd-pdf-paper-a3-landscape {
     page: ogd-pdf-a3-landscape;
     width: auto;
+  }
+
+  body.ogd-pdf-readability {
+    width: auto;
+    --ogd-pdf-readability-font-stack: "Pretendard", "Pretendard Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", system-ui, sans-serif;
+    --ogd-pdf-surface-text-font-size: 16px;
+    --ogd-pdf-surface-text-line-height: 1.56;
+    --ogd-pdf-readable-font-size: 16px;
+    --ogd-pdf-readable-line-height: 1.56;
+    --ogd-pdf-readable-callout-font-size: 16px;
+    --ogd-pdf-caption-font-size: 14px;
   }
 }
 

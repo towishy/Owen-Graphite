@@ -285,7 +285,7 @@ body pre:is(.language-regex, .language-regexp)::after { content: "Regex"; }
 .markdown-rendered code:not(pre code),
 .markdown-preview-view code:not(pre code) {
   background: var(--ogd-inline-code-bg, rgba(248, 250, 252, 0.82));
-  padding: 0.11em 0.34em;
+  padding: 0.16em 0.46em;
   border: 1px solid var(--ogd-inline-code-border, rgba(148, 163, 184, 0.24));
   border-radius: 4px;
   font-size: 0.88em;
@@ -388,13 +388,13 @@ body.theme-dark .markdown-rendered code:not(pre code) {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 .workspace-leaf-content .markdown-rendered pre {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(241, 245, 249, 0.62));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.88);
   --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.42);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.28);
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   position: relative;
   margin: 1.28em 0 1.62em;
   padding: 0;
@@ -496,13 +496,13 @@ body.theme-dark .markdown-rendered code:not(pre code) {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre,
 body.theme-dark .workspace-leaf-content .markdown-rendered pre {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
   --ogd-codeblock-rim: rgba(255, 255, 255, 0.82);
   --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   box-shadow: inset 0 1px 0 var(--ogd-codeblock-rim), inset 0 -1px 0 rgba(15, 23, 42, 0.08), 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
@@ -659,6 +659,18 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 0 0 3px rgba(14, 165, 233, 0.10);
 }
 
+body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre:is(:hover, :focus-within) > .copy-code-button,
+body .workspace-leaf-content .markdown-rendered pre:is(:hover, :focus-within) > .copy-code-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ogd-codeblock-action-size, 1.72em);
+  min-width: var(--ogd-codeblock-action-size, 1.72em);
+  height: var(--ogd-codeblock-action-size, 1.72em);
+  min-height: var(--ogd-codeblock-action-size, 1.72em);
+  padding: 0;
+}
+
 @media (max-width: 700px) {
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table {
     --ogd-table-pad-y: 0.42em;
@@ -668,8 +680,8 @@ body .workspace-leaf-content .markdown-rendered pre .copy-code-button:is(:hover,
   }
 
   body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre) {
-    --ogd-codeblock-header-height: 2.2em;
-    --ogd-codeblock-code-padding: 3.72em 0.82em 0.88em;
+    --ogd-codeblock-header-height: 2.7em;
+    --ogd-codeblock-code-padding: 4.22em 0.82em 0.88em;
     border-radius: 9px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
@@ -834,7 +846,7 @@ body .workspace-leaf-content .markdown-rendered pre code {
 
 body.theme-dark :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-dark .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.14), transparent 0 38%), linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.78));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(203, 213, 225, 0.68);
   --ogd-codeblock-header-bg: rgba(248, 250, 252, 0.58);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.36);
@@ -852,12 +864,12 @@ body.theme-light :is(.markdown-rendered, .markdown-preview-view, .markdown-readi
 body.theme-light .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
 body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) :is(.el-pre > pre, pre),
 body.theme-light:is(.ogd-auto-dark, .ogd-code-nord, .ogd-code-dracula) .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre) {
-  --ogd-codeblock-bg: radial-gradient(circle at 78% 16%, rgba(125, 211, 252, 0.16), transparent 0 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(241, 245, 249, 0.70));
+  --ogd-codeblock-bg: #ffffff;
   --ogd-codeblock-border: rgba(148, 163, 184, 0.42);
-  --ogd-codeblock-header-bg: rgba(255, 255, 255, 0.50);
+  --ogd-codeblock-header-bg: linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%);
   --ogd-codeblock-header-border: rgba(148, 163, 184, 0.30);
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   --ogd-codeblock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.09);
   background: var(--ogd-codeblock-bg);
   border-color: var(--ogd-codeblock-border);
@@ -894,8 +906,8 @@ body .workspace-leaf-content .markdown-rendered :is(.el-pre > pre, pre),
 body pre[class*="language-"],
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre {
   --ogd-codeblock-radius: 12px;
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-codeblock-code-padding: 4.05em 1.1em 1.05em;
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-codeblock-code-padding: 4.55em 1.1em 1.05em;
   --ogd-codeblock-action-size: 1.72em;
   --ogd-codeblock-action-right: 0.74em;
   --ogd-codeblock-action-space: 3.3em;
@@ -946,99 +958,21 @@ body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre
 body .workspace-leaf-content .markdown-rendered pre:is(.language-powershell, .language-ps1, .language-pwsh)::after,
 body pre:is(.language-powershell, .language-ps1, .language-pwsh)::after { content: "PowerShell"; }
 
-body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) pre.ogd-codeblock-title-ready::after,
-body .workspace-leaf-content .markdown-rendered pre.ogd-codeblock-title-ready::after,
-body pre.ogd-codeblock-title-ready::after {
-  content: "";
-}
-
-body .ogd-codeblock-title,
-body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger,
-body .ogd-codeblock-title-input {
-  position: absolute;
-  top: 0.25rem;
-  right: var(--ogd-codeblock-action-space, 3.3em);
-  bottom: auto;
-  left: 1rem;
-  z-index: 3;
-  box-sizing: border-box;
-  width: auto;
-  height: var(--ogd-codeblock-header-height, 2.2em);
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  color: var(--ogd-text-subtle, #475569);
-  font-family: var(--ogd-interface-font-stack), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.72em;
-  font-weight: 760;
-  line-height: var(--ogd-codeblock-header-height, 2.2em);
-  letter-spacing: 0.02em;
-  text-align: left;
-  text-overflow: ellipsis;
-  text-transform: none;
-  white-space: nowrap;
-}
-
-body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > .code-block-flair.ogd-codeblock-title-trigger,
-body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin > .ogd-codeblock-title-input {
-  top: 0.25rem;
-  right: var(--ogd-codeblock-action-space, 3.3em);
-  bottom: auto;
-  left: 1rem;
-  padding: 0;
-}
-
-body .ogd-codeblock-title,
-body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger {
-  display: block;
-  overflow: hidden;
-  cursor: text;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-body .ogd-codeblock-title:hover,
-body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger:hover {
-  background: rgba(148, 163, 184, 0.10);
-}
-
-body .ogd-codeblock-title:focus-visible,
-body .markdown-source-view.mod-cm6 .code-block-flair.ogd-codeblock-title-trigger:focus-visible,
-body .ogd-codeblock-title-input:focus {
-  outline: 0;
-  box-shadow: inset 0 0 0 2px var(--interactive-accent);
-}
-
-body .ogd-codeblock-title-input {
-  display: block;
-  overflow: hidden;
-  cursor: text;
-  pointer-events: auto;
-}
-
-body .ogd-codeblock-title-editing .code-block-flair.ogd-codeblock-title-trigger {
-  visibility: hidden;
-}
-
 body pre code {
-  padding: 4.05em 1.1em 1.05em;
+  padding: 4.55em 1.1em 1.05em;
 }
 
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) pre code {
-  padding: 4.05em 1.1em 1.05em;
+  padding: 4.55em 1.1em 1.05em;
 }
 
 body .markdown-source-view.mod-cm6 :is(.cm-preview-code-block, .cm-hmd-codeblock) :is(pre code, code) {
-  padding-top: 4.05em;
+  padding-top: 4.55em;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  --ogd-codeblock-header-height: 2.2em;
-  --ogd-lp-code-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.96));
+  --ogd-codeblock-header-height: 2.7em;
+  --ogd-lp-code-bg: #ffffff;
   --ogd-lp-code-border: rgba(203, 213, 225, 0.78);
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {

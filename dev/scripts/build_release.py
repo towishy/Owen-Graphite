@@ -35,7 +35,6 @@ DEFAULT_FILES = [
     "screenshots/readme/top-tabs-liquid-glass.svg",
     "screenshots/readme/workspace-writing-surface.jpg",
     "screenshots/readme/style-settings-report-options.jpg",
-    "screenshots/readme/pdf-customer-delivery-feature.png",
     "screenshots/readme/owen-editor-toolbar-settings.jpg",
     "screenshots/readme/file-explorer-type-badges.svg",
     "screenshots/readme/sponsor-coffee.svg",

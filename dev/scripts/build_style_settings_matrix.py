@@ -130,19 +130,11 @@ def main() -> int:
                 },
                 {
                     "id": "lp-pdf-parity-comfortable-visible",
-                    "purpose": "LP/PDF parity fixture with PDF visibility and comfortable font preset.",
+                    "purpose": "LP/PDF parity fixture with the comfortable font preset.",
                     "theme": "light",
                     "media": "print",
-                    "settings": {"ogd-pdf-visibility": "true", "ogd-pdf-font-size": "ogd-pdf-font-comfortable"},
-                    "bodyClasses": ["ogd-pdf-visibility", "ogd-pdf-font-comfortable"],
-                },
-                {
-                    "id": "glass-motion-strong",
-                    "purpose": "Desktop liquid glass strong intensity with standard motion.",
-                    "theme": "light",
-                    "media": "screen",
-                    "settings": {"ogd-glass-intensity": "ogd-glass-strong", "ogd-motion-intensity": "ogd-motion-standard"},
-                    "bodyClasses": ["ogd-glass-strong", "ogd-motion-standard"],
+                    "settings": {"ogd-pdf-font-size": "ogd-pdf-font-comfortable"},
+                    "bodyClasses": ["ogd-pdf-font-comfortable"],
                 },
             ]
         )

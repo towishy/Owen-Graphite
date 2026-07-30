@@ -184,15 +184,6 @@ def audit_with_playwright(require_playwright: bool) -> int:
                 f"left={callout['borderLeftWidth']}, right={callout['borderRightWidth']}"
             )
 
-        page.evaluate("document.body.classList.add('ogd-pdf-compact')")
-        compact_styles = {name: get_style(page, selector) for name, selector in PRINT_SELECTORS.items()}
-        compact_baseline = compact_styles["pdf_table_baseline"]
-        assert_close("compact print body font-size follows table", px(compact_styles["pdf_body_text"]["fontSize"]), px(compact_baseline["fontSize"]), tolerance=0.35)
-        assert_close("compact print body line-height follows table", px(compact_styles["pdf_body_text"]["lineHeight"]), px(compact_baseline["lineHeight"]), tolerance=0.75)
-        assert_close("compact print table font-size follows baseline", px(compact_styles["pdf_table_cell"]["fontSize"]), px(compact_baseline["fontSize"]), tolerance=0.35)
-        assert_close("compact print callout font-size follows table", px(compact_styles["pdf_callout_content"]["fontSize"]), px(compact_baseline["fontSize"]), tolerance=0.35)
-        page.evaluate("document.body.classList.remove('ogd-pdf-compact')")
-
         header_value = get_pseudo_style(page, ".fixture-print.markdown-rendered", "::before")
         header_key = get_pseudo_style(page, ".fixture-print.markdown-rendered", "::after")
         for name, style in {"header_value": header_value, "header_key": header_key}.items():

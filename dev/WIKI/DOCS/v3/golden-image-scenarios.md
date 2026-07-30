@@ -18,8 +18,8 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | --- | --- | --- |
 | `reading-light-default` | 기본 마크다운 문서 | light, Style Settings 기본 |
 | `reading-dark-default` | 기본 마크다운 문서 | dark |
-| `reading-light-report-mode` | 보고서 모드 | light, `ogd-report-mode=on` |
-| `reading-dark-report-mode` | 보고서 모드 | dark, `ogd-report-mode=on` |
+| `reading-light-structured` | 번호매김·들여쓰기·세리프 조합 | light, 독립 문서 구조 옵션 on |
+| `reading-dark-structured` | 번호매김·들여쓰기·세리프 조합 | dark, 독립 문서 구조 옵션 on |
 | `reading-headings-h1-h6` | H1~H6 샘플 | light |
 | `reading-headings-h1-h6-dark` | H1~H6 샘플 | dark |
 | `reading-paragraph-rhythm` | 단락·인용·구분선 | light |
@@ -72,9 +72,9 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `table-html-utility-class` | `.risk-table`/`.numeric-table` 유틸리티 클래스 | light |
 | `table-html-utility-dark` | 동일 유틸리티 클래스 | dark |
 | `table-zebra-disabled` | `ogd-zebra-disabled-permanently=on` | light |
-| `table-modern-strong` | `ogd-modern-tables=on` 강조 | light |
-| `table-pdf-mode` | report-mode 표 | light |
-| `table-pdf-mode-dark` | report-mode 표 | dark |
+| `table-reading-light` | 기본 Reading View 표 | light |
+| `table-print-light` | PDF 표 | light, print |
+| `table-print-dark` | PDF 표 | dark, print |
 
 ### Chrome (8)
 
@@ -109,13 +109,12 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `a11y-forced-colors-light` | Windows High Contrast | `forced-colors: active` |
 | `a11y-forced-colors-dark` | Windows High Contrast Dark | `forced-colors: active`, dark |
 
-### Print / PDF (17)
+### Print / PDF (16)
 
 | id | 내용 | 조건 |
 | --- | --- | --- |
 | `print-default-light` | 기본 PDF 출력 | `@media print` |
-| `print-report-mode` | report-mode PDF | `ogd-report-mode=on`, print |
-| `print-compact` | compact PDF | `ogd-pdf-compact=on`, print |
+| `print-readability` | 가독성 개선 PDF | `ogd-pdf-readability=on`, print |
 | `print-last-page-footer` | 마지막 페이지 footer | `ogd-pdf-footer-enabled=on`, print |
 | `print-pdf-header-short` | 짧은 첫 페이지 헤더 라벨 | `ogd-pdf-header-enabled=on`, custom text |
 | `print-pdf-header-long` | 긴 첫 페이지 헤더 라벨 말줄임 | `ogd-pdf-header-enabled=on`, long custom text |
@@ -126,10 +125,10 @@ S1에서 캡처할 골든 이미지 시나리오 목록입니다. v3-rewrite는 
 | `print-pdf-list-end` | 리스트로 끝나는 문서의 푸터 reserve | footer on, list as final block |
 | `print-pdf-presets` | 빠른 문구 프리셋 출력 | each marginalia preset |
 | `print-pdf-segmented-labels` | Key/Value 2세그먼트 헤더/푸터 | `ogd-pdf-label-segmented`, badge style, header/footer palette split |
-| `print-live-preview-pdf-parity` | Live Preview/Reading/PDF 공통 callout + 긴 셀 fixture | `dev/WIKI/DOCS/v3/research/live-preview-pdf-parity-fixture.html`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
-| `print-image-body-quality` | PDF 이미지/figure/caption + 본문 조판 fixture | `dev/WIKI/DOCS/v3/research/pdf-image-body-quality-fixture.html`, `ogd-figure-*`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
+| `print-live-preview-pdf-parity` | Live Preview/Reading/PDF 공통 callout + 긴 셀 fixture | `dev/WIKI/DOCS/v3/research/live-preview-pdf-parity-fixture.html`, `ogd-pdf-font-comfortable` |
+| `print-image-body-quality` | PDF 이미지/figure/caption + 본문 조판 fixture | `dev/WIKI/DOCS/v3/research/pdf-image-body-quality-fixture.html`, `ogd-figure-*`, `ogd-pdf-font-comfortable` |
 | `print-code-font-clarity` | Live Preview/Reading/PDF 코드 폰트와 syntax 색상 fixture | `dev/WIKI/DOCS/v3/research/code-font-clarity-fixture.html`, `ogd-code-*`, `cm-*`, `token.*` |
-| `print-table-callout-parity` | LP markdown table widget/HTML embed/Reading/PDF 표와 콜아웃 fixture | `dev/WIKI/DOCS/v3/research/table-callout-parity-fixture.html`, `cm-table-widget`, `cm-html-embed`, `ogd-pdf-visibility`, `ogd-pdf-font-comfortable` |
+| `print-table-callout-parity` | LP markdown table widget/HTML embed/Reading/PDF 표와 콜아웃 fixture | `dev/WIKI/DOCS/v3/research/table-callout-parity-fixture.html`, `cm-table-widget`, `cm-html-embed`, `ogd-pdf-font-comfortable` |
 | `print-heading-templates-01..09` | 9개 heading template의 H1-H4 위계, square accent geometry, metadata 분리, 페이지 흐름 | `dev/WIKI/DOCS/v3/research/pdf-heading-template-fixture.html`, `dev/scripts/audit_pdf_heading_templates.py --render` |
 
 ## 총 시나리오 수

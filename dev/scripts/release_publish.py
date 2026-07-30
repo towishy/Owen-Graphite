@@ -69,6 +69,8 @@ def main() -> int:
         run("Release check", release_check)
         run("Build manual install ZIP", [PYTHON, "dev/scripts/build_release.py"])
         run("Audit manual install ZIP", [PYTHON, "dev/scripts/audit_release_zip.py"])
+        run("Test Style Settings localization bridge", [PYTHON, "compat/owen-graphite-style-settings-l10n/test.py"])
+        run("Build localization companion ZIP", [PYTHON, "dev/scripts/build_companion_release.py"])
 
         if not args.publish:
             print("\nOK: release publish dry run complete. Re-run with --publish to commit, push, tag, and wait for GitHub Release.")

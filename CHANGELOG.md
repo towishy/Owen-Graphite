@@ -1,5 +1,61 @@
 # Changelog
 
+## v3.1.98
+
+- fix: vault switcher, 도움말, 설정 control 사이의 실제 간격을 모두 8px로 통일했습니다.
+- fix: Owen Editor 0.6.32의 file explorer scrollbar를 native channel로 복원하고 editor palette scrollbar를 modal 오른쪽 edge에 정렬했습니다.
+- polish: Foundation Frosted ScrollArea의 canonical 2px rail, 6×44px glass grip, subtle rim, shadow, 3-line handle 재질을 그대로 유지합니다.
+- guard: Obsidian 1.12.7 CDP에서 두 vault control gap을 8px/8px로, palette scrollbar의 modal 오른쪽 inset을 6px·오차 0px로 검증하고 Graphite·Editor release gate를 통과했습니다.
+
+## v3.1.97
+
+- feat: Owen Editor 0.6.31의 canonical Frosted ScrollArea adapter가 Obsidian native wheel·touch·keyboard viewport를 유지하면서 fixed `6×44px` grip, rail click, pointer drag를 전체 vertical scroll surface에 제공합니다.
+- polish: Live Preview 코드 블록의 제목·복사 control을 정렬하고 PDF에는 static title 하나만 남기며, vault footer의 도움말·설정 icon 사이에 8px 간격을 적용했습니다.
+- change: Graphite의 global native `::-webkit-scrollbar` approximation을 제거하고, workspace의 희미한 separator는 유지한 채 scrollbar interaction rail은 투명하게 두어 grip 뒤의 진한 세로선을 없앴습니다.
+- guard: source usage map, core-principles, LP/PDF selector ownership, Editor build·i18n·release checks와 runtime grip geometry를 검증했습니다.
+
+## v3.1.96
+
+- change: 고정 `1920×1080` PDF 규격과 customer-delivery/report mode를 제거하고, `PDF 가독성 개선` preset이 사용자가 선택한 A4/A3 방향과 용지 크기를 그대로 유지하면서 본문·제목·표·코드 가독성만 조정하도록 정리했습니다.
+- polish: 파일 탐색기의 긴 상위/중첩 폴더명이 경계 안에서 말줄임되고, Obsidian이 제공하는 폴더명과 파일/폴더 통계를 하나의 흰 tonal-gradient 말풍선 tooltip으로 표시하도록 다듬었습니다.
+- feat: Owen Graphite Companion 1.3.0이 빈 줄로 구분된 tooltip 제목/metadata를 보존한 채 구조화해 두 줄 제목 전체를 bold로 표시하고, 제목 divider와 metadata 간격을 실제 제목 높이에 맞게 배치합니다.
+- guard: Obsidian 1.12.7 CDP에서 PDF 용지 보존, LP/PDF table parity, folder ellipsis, 단일 tooltip, 2줄 제목, divider spacing, 연결형 삼각 꼬리를 검증하고 source map, companion test, core principles, release gate를 통과했습니다.
+
+## v3.1.95
+
+- fix: Obsidian 1.12.7에서 UI locale은 한국어지만 Style Settings 1.0.9의 legacy `localStorage.language`가 비어 영어로 fallback하던 회귀를 확인하고, `자동/한국어/English` 선택과 Owen Graphite 범위의 localization bridge를 복원했습니다.
+- fix: 새 `인터페이스` Style Settings heading에 기존 semantic icon owner의 18px Languages glyph와 light/dark graphite ink를 연결해 빈 아이콘 tile을 제거했습니다.
+- guard: setting ID/default와 `ogd-language-auto`/`ogd-language-ko`/`ogd-language-en` 저장값을 유지하고, English·한국어 전환 및 icon mask를 Obsidian 1.12.7 CDP에서 검증했습니다.
+- release: 경량 companion 1.2.0의 deterministic build/test와 별도 plugin ZIP asset을 릴리스 workflow에 복원했으며 Style Settings `data.json`과 Owen Editor 코드 제목 기능은 변경하지 않습니다.
+
+## v3.1.94
+
+- polish: Obsidian core 8개 설정 탭과 Owen Graphite, Owen Editor, Owen Exporter 설정 화면을 Owen Mermaid와 같은 grouped card 구조로 맞추고 제목이 있는 각 섹션에 semantic icon과 색상을 적용했습니다.
+- fix: Style Settings의 내장 collapse indicator를 semantic icon으로 재사용하지 않도록 분리해 상단 SVG clipping을 제거하고, `Footer settings`를 포함한 내부 level-3 section의 상단 구분선을 복구했습니다.
+- change: Owen Editor와 Owen Exporter가 실제 Lucide glyph와 안정적인 `data-owen-section` hook을 제공하도록 연결해 위치 기반 selector 의존성을 제거했습니다.
+- guard: Obsidian 1.12.7에서 core 8개 탭의 group/card 수와 heading icon geometry, Graphite 7개, Editor 7개, Exporter 5개 semantic icon, overflow, row overlap, footer border를 실제 runtime으로 검증했습니다.
+
+## v3.1.93
+
+- polish: Style Settings의 그룹 제목과 일반 설정 행을 평평한 구분선 기반 surface로 정리하고, control column과 import/export utility action의 간격·강조를 안정화했습니다.
+- fix: 설정 행 hover를 직접 소유하는 `33-settings-controls.css`로 통합하고 후순위 overlay의 glass, outline, shadow, lift, 160ms transition을 제거해 마우스 진입·이탈 시 깜박임을 없앴습니다.
+- change: 기본 문서 최대 폭을 297mm로 조정해 Obsidian readable line width에 연결하고, Live Preview H1-H4 위계와 상단 문서 제목의 크기·굵기를 다듬었습니다.
+- guard: Obsidian 1.12.7에서 Style Settings heading과 본문 크기 행의 hover enter/leave computed state를 반복 검증하고 source map, direct-owner, Style Settings, runtime evidence, release gate를 통과했습니다.
+
+## v3.1.92
+
+- fix: 별도 Owen Graphite Companion을 제거하고 Style Settings 제목·설명을 테마 schema의 영어 기본값과 native `title.ko`/`description.ko` metadata로 통합했습니다.
+- fix: locale별 option label을 지원하지 않는 Style Settings 계약에 맞춰 option label을 영어/한국어 병기로 제공하고, 별도 언어 override 설정과 companion 기반 제목 미리보기를 제거했습니다.
+- change: 코드 블록 제목 편집의 JavaScript와 UI 소유권을 Owen Editor 0.6.28로 이동해 테마는 시각 표현과 Style Settings schema만 소유하도록 경계를 바로잡았습니다.
+- release: companion build, install, ZIP asset, workflow와 로컬 플러그인 설치를 제거했으며 기존 Style Settings `data.json`과 setting ID/default/value는 보존했습니다.
+
+## v3.1.91
+
+- feat: 보고서 제목 디자인 템플릿 9종을 기본·강조·인덱스 계열로 재분류하고, Style Settings에서 현재 선택의 H1-H3 위계를 한국어와 영어로 바로 확인하는 미리보기를 추가했습니다.
+- polish: Settings 탐색·선택 상태와 커뮤니티 플러그인 선택 카드의 둥근 accent rim·left rail을 제거하고, 다크 모드 표와 보고서 제목의 대비를 정리했습니다.
+- fix: Focus Bar와 Number Stamp H1 프레임을 직각 geometry로 통일하고, 미리보기 signature color가 base selector specificity에 눌리지 않도록 owner 변수를 바로잡았습니다.
+- guard: 9개 제목 템플릿의 Live Preview/PDF 계약, companion 한·영 catalog, CSS compatibility budget, CDP computed geometry와 로컬 Obsidian 설치 hash를 검증했습니다.
+
 ## v3.1.90
 
 - feat: Owen Graphite Companion 1.1.0에서 Live Preview와 Reading View 코드 블록 제목을 인라인 편집하고 fenced Markdown의 `title="..."` 속성으로 저장할 수 있게 했습니다.
