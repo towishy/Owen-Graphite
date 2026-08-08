@@ -52,3 +52,13 @@ UI 작업 전 sibling workspace folder `wiki`의 `wiki/concepts/ui-design-system
 - localization bridge는 Style Settings `data.json`이나 setting ID, CSS class, default, machine value를 수정하지 않는다.
 - 영어/한국어 metadata completeness, option coverage, 영어 fallback과 기존 저장값 호환성을 자동 검사에 포함한다.
 - 테마 schema를 빌드·검증하고 실제 Obsidian에서 영어/한국어 locale과 overflow를 확인한 뒤 릴리스한다.
+
+<!-- ui-foundation-design-guide:start -->
+## UI Foundation Lab 디자인 가이드
+
+- 모든 UI 설계·구현 전에 [UI-FOUNDATION-DESIGN-GUIDE.md](UI-FOUNDATION-DESIGN-GUIDE.md)를 먼저 읽는다.
+- UI Foundation Lab 왼쪽 패널의 26개 UI를 모두 `Priority 1` 디자인 후보로 취급한다.
+- `Priority 1` 안에서는 Clear glass search, controls, workflow를 가장 먼저 검토한다.
+- 나머지 Lab specimen을 검토한 뒤에만 앱 전용 신규 디자인이나 외부 reference를 고려한다.
+- 이 프로젝트의 기존 제품 제약과 더 엄격한 접근성·runtime 규칙은 그대로 유지한다.
+<!-- ui-foundation-design-guide:end -->
