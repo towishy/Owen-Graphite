@@ -167,14 +167,14 @@ def audit_readability_preset(page: object) -> None:
     print("OK: PDF readability preset preserves paper size and computed typography")
 
 
-def audit(render: bool = False) -> int:
+def audit(render: bool = False, browser_channel: str | None = None) -> int:
     from playwright.sync_api import sync_playwright
 
     if not FIXTURE.exists():
         raise FileNotFoundError(f"missing fixture: {FIXTURE}")
 
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch()
+        browser = playwright.chromium.launch(channel=browser_channel)
         page = browser.new_page(viewport={"width": 1240, "height": 1400})
         page.goto(FIXTURE.as_uri(), wait_until="networkidle")
         page.emulate_media(media="print")
@@ -271,9 +271,10 @@ def audit(render: bool = False) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--render", action="store_true", help="render one PDF and print-media PNG per heading template")
+    parser.add_argument("--browser-channel", help="Use an installed Chromium channel, e.g. msedge, instead of a downloaded browser.")
     args = parser.parse_args()
     try:
-        return audit(render=args.render)
+        return audit(render=args.render, browser_channel=args.browser_channel)
     except Exception as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1

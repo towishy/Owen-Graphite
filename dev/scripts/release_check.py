@@ -19,8 +19,8 @@ def run_step(label: str, command: list[str]) -> None:
 
 
 def assert_theme_fresh() -> None:
-    theme = (ROOT / "theme.css").read_text(encoding="utf-8")
-    bundle = (ROOT / "dist" / "theme-v3.css").read_text(encoding="utf-8")
+    theme = (ROOT / "theme.css").read_bytes()
+    bundle = (ROOT / "dist" / "theme-v3.css").read_bytes()
     if theme != bundle:
         raise AssertionError("theme.css is stale vs dist/theme-v3.css; promote the fresh bundle before commit")
     print("OK: theme.css matches dist/theme-v3.css")
@@ -32,6 +32,7 @@ def main() -> int:
     parser.add_argument("--skip-bundle", action="store_true", help="Skip bundle rebuild but still check existing bundle freshness.")
     parser.add_argument("--include-zip", action="store_true", help="Build and audit the manual install ZIP.")
     parser.add_argument("--include-visual", action="store_true", help="Run the static visual quality fixture audit.")
+    parser.add_argument("--browser-channel", help="Installed Chromium channel for the optional PDF heading audit.")
     parser.add_argument("--include-sync", action="store_true", help="Sync release assets to an Obsidian theme folder after validation.")
     parser.add_argument("--sync-target", help="Target Obsidian theme folder for --include-sync.")
     parser.add_argument("--preflight", help="Run numeric release preflight for the given version before validation.")
@@ -51,6 +52,7 @@ def main() -> int:
 
     steps.extend(
         [
+            ("Bundle and sync regression tests", [PYTHON, "-m", "unittest", "discover", "-s", "dev/scripts", "-p", "test_*.py"]),
             ("Release metadata", metadata_command),
             ("Style Settings contract", [PYTHON, "dev/scripts/audit_style_settings_contract.py"]),
             ("Docs and assets", [PYTHON, "dev/scripts/audit_docs_assets.py"]),
@@ -70,10 +72,13 @@ def main() -> int:
     )
 
     if args.include_visual:
+        heading_command = [PYTHON, "dev/scripts/audit_pdf_heading_templates.py"]
+        if args.browser_channel:
+            heading_command.extend(["--browser-channel", args.browser_channel])
         steps.extend(
             [
                 ("Visual quality static fixture", [PYTHON, "dev/scripts/audit_visual_quality_fixture.py", "--static-only"]),
-                ("PDF heading templates", [PYTHON, "dev/scripts/audit_pdf_heading_templates.py"]),
+                ("PDF heading templates", heading_command),
             ]
         )
 

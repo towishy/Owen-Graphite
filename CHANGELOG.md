@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.101
+
+- build: compact release CSS with pinned, syntax-only RCSSmin while preserving readable source modules, exact Style Settings metadata, cascade order, and source-owner markers.
+- fix: remove four redundant modern print-break declarations; their existing legacy aliases already determine the computed page-break behavior.
+- polish: replace the last-setting relational selector with a specificity-equivalent filtered last-child selector and remove redundant clipping from the already clipped accessibility description.
+- guard: add bundle packaging/freshness/provenance regression tests and retain the Obsidian 1.13.0 minimum, all settings defaults, and optional companion behavior. Broad partial-support warnings and required relational selectors remain visible.
+
 ## v3.1.100
 
 - fix: promote the canonical source bundle so the five report callouts ship the accepted Obsidian 1.13 `rgb(...)` color values instead of stale comma-separated tuples.

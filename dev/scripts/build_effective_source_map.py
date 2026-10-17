@@ -37,6 +37,7 @@ def build_map() -> dict[str, object]:
     stack: list[tuple[str, int]] = []
     ranges: list[dict[str, object]] = []
     lines = BUNDLE.read_text(encoding="utf-8").splitlines()
+    compact = any(" * CSS formatting: compact;" in line for line in lines)
     for line_number, line in enumerate(lines, start=1):
         start = START_RE.search(line)
         if start:
@@ -56,7 +57,7 @@ def build_map() -> dict[str, object]:
                     "bundleStartLine": start_line,
                     "bundleEndLine": line_number - 1,
                     "sourceStartLine": 1,
-                    "sourceEndLine": max(1, line_number - start_line),
+                    "sourceEndLine": len((ROOT / module).read_text(encoding="utf-8").splitlines()) if compact else max(1, line_number - start_line),
                 }
             )
     if stack:
@@ -66,6 +67,7 @@ def build_map() -> dict[str, object]:
         "version": version(),
         "bundle": BUNDLE.relative_to(ROOT).as_posix(),
         "bundleSha256": sha256(BUNDLE),
+        "lineMapping": "module-only" if compact else "line-offset",
         "rangeCount": len(ranges),
         "ranges": ranges,
     }

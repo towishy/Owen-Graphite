@@ -961,7 +961,6 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
   ) :is(figure, .ogd-figure, .figure-block) {
     --ogd-pdf-figure-max-height: 145mm;
     margin: 0.88em 0 1.05em;
-    break-inside: avoid-page;
     page-break-inside: avoid;
   }
 
@@ -986,7 +985,6 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     .markdown-preview-view.markdown-rendered,
     .markdown-reading-view .markdown-rendered
   ) :is(.ogd-figure-keep, .ogd-img-keep) {
-    break-inside: avoid-page;
     page-break-inside: avoid;
   }
 
@@ -1033,7 +1031,6 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     font-size: 8.8pt;
     line-height: 1.32;
     text-align: center;
-    break-before: avoid;
     page-break-before: avoid;
   }
 
@@ -1081,7 +1078,6 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     background: var(--ogd-callout-bg);
     color: #334155;
     box-shadow: inset 0 0 0 1px var(--ogd-callout-border), inset 0 1px 0 rgba(255, 255, 255, 0.88);
-    break-inside: avoid-page;
     page-break-inside: avoid;
   }
 
@@ -1664,4 +1660,3 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
     line-height: 1.5;
   }
 }
-

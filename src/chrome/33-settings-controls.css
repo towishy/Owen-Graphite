@@ -657,7 +657,7 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
 
 body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading):is(:has(+ .setting-item-heading), :last-child),
 body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item:last-child,
-body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item:not(:has(~ .setting-item)) {
+body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > :nth-last-child(1 of .setting-item) {
   border-radius: 0 0 8px 8px;
   box-shadow: var(--ogd-suite-settings-shadow);
 }
@@ -860,7 +860,6 @@ body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settin
     padding: 0;
     overflow: hidden;
     clip: rect(0 0 0 0);
-    clip-path: inset(50%);
     white-space: nowrap;
   }
 
@@ -1243,4 +1242,3 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
     padding: 12px 10px 28px;
   }
 }
-

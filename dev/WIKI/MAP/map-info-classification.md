@@ -4,7 +4,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.100`
+- Version: `3.1.101`
 - Source: `src/entry.css`
 - Modules: 26
 - Selectors: 2668
@@ -31,7 +31,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | medium | 20 | `src/chrome/30-workspace.css` | 118 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 47 | 0 | 0 | high-specificity |
 | high | 78 | `src/chrome/32-overlay-popover-dataview.css` | 37 | 0 | 0 | high-specificity |
-| high | 283 | `src/chrome/33-settings-controls.css` | 199 | 0 | 42 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 281 | `src/chrome/33-settings-controls.css` | 199 | 0 | 41 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 57 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 106 | `src/plugins/61-live-preview-mobile-plugin.css` | 68 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 173 | `src/features/42-report-print-polish.css` | 209 | 0 | 13 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |

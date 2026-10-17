@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.100)
+﻿# v3 Release Record (latest: v3.1.101)
 
-**Release record**: baseline = `v3.1.100` (2026-10-17). This compatibility patch promotes the accepted Obsidian 1.13 callout colors from their source owner and retains the existing public-main minimum host. The previous published release is `v3.1.99`; screenshots were not recaptured for this patch.
+**Release record**: baseline = `v3.1.101` (2026-10-17). This patch compacts CSS without semantic optimization, removes redundant PDF break declarations and simplifies one equivalent settings selector. The previous published release is `v3.1.100`; the minimum host, settings metadata and optional companion remain unchanged. Installed-app screenshots were not recaptured for this patch.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.100` |
+| `manifest.json` version | `3.1.101` |
 | `minAppVersion` | `1.13.0` |
-| `dist/theme-v3.css` lines / `!important` scanner count | 20,255 / 5 |
+| `dist/theme-v3.css` format | compact CSS with original Style Settings metadata and module markers |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.100.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.101.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.0.zip` |
 
 ## What was removed

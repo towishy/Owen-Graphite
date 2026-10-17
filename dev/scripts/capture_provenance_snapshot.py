@@ -30,7 +30,7 @@ def load_line_map(release: str) -> dict[int, dict[str, object]]:
         for dist_line in range(start, end + 1):
             line_map[dist_line] = {
                 "module": source_range.get("module"),
-                "module_line": int(source_range.get("sourceStartLine", 1)) + (dist_line - start),
+                "module_line": None if payload.get("lineMapping") == "module-only" else int(source_range.get("sourceStartLine", 1)) + (dist_line - start),
                 "dist_line": dist_line,
             }
     return line_map
