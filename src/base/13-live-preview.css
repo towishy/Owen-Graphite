@@ -141,9 +141,9 @@ body .markdown-source-view.mod-cm6 :is(
   body .markdown-source-view.mod-cm6 :is(
     .cm-embed-block:not(.cm-table-widget) table:not(.cm-table):not(.cm-table-widget)
   ) :is(td, th) :is(
-  .cm-line:has(br:only-child),
-  .cm-active.cm-line:has(br:only-child)
-  ) {
+    .cm-line,
+    .cm-active.cm-line
+  ):has(br:only-child) {
     display: none;
     min-height: 0;
     height: 0;

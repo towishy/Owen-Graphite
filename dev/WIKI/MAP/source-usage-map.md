@@ -7,21 +7,21 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20470
-- Parsed CSS rules: 2666
-- Selector parts: 4083
+- Source CSS lines: 20437
+- Parsed CSS rules: 2663
+- Selector parts: 4078
 - Hard core-owner violations: 10
 
 ## Surface Totals
 
-- `callout-list`: 396 rules
+- `callout-list`: 393 rules
 - `cm6`: 350 rules
-- `code`: 1017 rules
+- `code`: 1014 rules
 - `lp-html-table`: 71 rules
 - `lp-markdown-table-widget-reference`: 82 rules
 - `overlay-search`: 375 rules
 - `print-pdf`: 504 rules
-- `reading-rendered`: 1141 rules
+- `reading-rendered`: 1138 rules
 - `table`: 1169 rules
 - `workspace-chrome`: 720 rules
 
@@ -156,14 +156,14 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 2 | `src/tokens/00-light-tokens.css` | 935-935 | 275 | pdf-marginalia, shared-tokens | callout-list:1, code:5, print-pdf:2, table:1, workspace-chrome:1 | after `src/features/40-style-settings.css`; before `src/tokens/01-dark-tokens.css` |
 | 3 | `src/tokens/01-dark-tokens.css` | 939-939 | 196 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:4, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 943-943 | 136 | support: base/embed workspace primitives | cm6:5, code:6, overlay-search:5, reading-rendered:8, table:9, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |
-| 5 | `src/base/12-reading-content.css` | 947-947 | 1574 | reading-typography | callout-list:29, cm6:9, code:134, overlay-search:1, print-pdf:14, reading-rendered:154, table:19, workspace-chrome:19 | after `src/base/10-base-workspace.css`; before `src/surfaces/20-reading-tables-code.css` |
-| 6 | `src/surfaces/20-reading-tables-code.css` | 951-951 | 1140 | reading-tables-code, dataview-plugin-support (allowed-late) | cm6:24, code:144, print-pdf:9, reading-rendered:131, table:55, workspace-chrome:78 | after `src/base/12-reading-content.css`; before `src/surfaces/21-reading-callouts-lists.css` |
-| 7 | `src/surfaces/21-reading-callouts-lists.css` | 955-955 | 877 | reading-callouts-lists | callout-list:106, cm6:3, code:71, reading-rendered:122, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
+| 5 | `src/base/12-reading-content.css` | 947-947 | 1569 | reading-typography | callout-list:29, cm6:9, code:134, overlay-search:1, print-pdf:14, reading-rendered:154, table:19, workspace-chrome:19 | after `src/base/10-base-workspace.css`; before `src/surfaces/20-reading-tables-code.css` |
+| 6 | `src/surfaces/20-reading-tables-code.css` | 951-951 | 1138 | reading-tables-code, dataview-plugin-support (allowed-late) | cm6:24, code:144, print-pdf:9, reading-rendered:131, table:55, workspace-chrome:78 | after `src/base/12-reading-content.css`; before `src/surfaces/21-reading-callouts-lists.css` |
+| 7 | `src/surfaces/21-reading-callouts-lists.css` | 955-955 | 856 | reading-callouts-lists | callout-list:103, cm6:3, code:68, reading-rendered:119, table:9, workspace-chrome:1 | after `src/surfaces/20-reading-tables-code.css`; before `src/surfaces/22-reading-embeds-workspace.css` |
 | 8 | `src/surfaces/22-reading-embeds-workspace.css` | 959-959 | 236 | support: reading embed/workspace primitives | callout-list:4, cm6:6, code:5, overlay-search:1, reading-rendered:18, table:3, workspace-chrome:6 | after `src/surfaces/21-reading-callouts-lists.css`; before `src/themes/50-dark.css` |
 | 9 | `src/themes/50-dark.css` | 963-963 | 640 | support: dark theme support | callout-list:35, cm6:6, code:52, overlay-search:3, print-pdf:2, reading-rendered:89, table:95, workspace-chrome:6 | after `src/surfaces/22-reading-embeds-workspace.css`; before `src/features/43-print-base.css` |
 | 10 | `src/features/43-print-base.css` | 967-967 | 873 | pdf-base | callout-list:29, cm6:1, code:101, print-pdf:116, reading-rendered:106, table:10, workspace-chrome:13 | after `src/themes/50-dark.css`; before `src/base/13-live-preview.css` |
 | 11 | `src/base/13-live-preview.css` | 971-971 | 1367 | live-preview-cm6, live-preview-rendered-widgets | callout-list:30, cm6:193, code:42, lp-html-table:18, lp-markdown-table-widget-reference:29, print-pdf:11, reading-rendered:10, table:75, workspace-chrome:9 | after `src/features/43-print-base.css`; before `src/features/41-feature-presets.css` |
-| 12 | `src/features/41-feature-presets.css` | 975-975 | 1482 | pdf-marginalia | callout-list:23, cm6:4, code:79, overlay-search:2, print-pdf:155, reading-rendered:116, table:37, workspace-chrome:14 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
+| 12 | `src/features/41-feature-presets.css` | 975-975 | 1478 | pdf-marginalia | callout-list:23, cm6:4, code:79, overlay-search:2, print-pdf:155, reading-rendered:116, table:37, workspace-chrome:14 | after `src/base/13-live-preview.css`; before `src/chrome/30-workspace.css` |
 | 13 | `src/chrome/30-workspace.css` | 979-979 | 615 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:57, table:56, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 983-983 | 248 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:24, workspace-chrome:20 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 987-987 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
@@ -172,7 +172,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 999-999 | 538 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:7, print-pdf:2, reading-rendered:27, table:37, workspace-chrome:17 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 1003-1003 | 1659 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:34, cm6:4, code:208, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:155, reading-rendered:206, table:110, workspace-chrome:60 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
 | 20 | `src/chrome/34-nav-ribbon-glass.css` | 1007-1007 | 271 | workspace-chrome | cm6:1, code:3, reading-rendered:1, table:13, workspace-chrome:25 | after `src/features/42-report-print-polish.css`; before `src/chrome/35-editing-menu-tooltip-glass.css` |
-| 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 1011-1011 | 1014 | overlay-menu-search | cm6:6, code:7, overlay-search:34, reading-rendered:6, table:30, workspace-chrome:41 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
+| 21 | `src/chrome/35-editing-menu-tooltip-glass.css` | 1011-1011 | 1013 | overlay-menu-search | cm6:6, code:7, overlay-search:34, reading-rendered:6, table:30, workspace-chrome:41 | after `src/chrome/34-nav-ribbon-glass.css`; before `src/chrome/36-floating-ui-glass-system.css` |
 | 22 | `src/chrome/36-floating-ui-glass-system.css` | 1015-1015 | 864 | overlay-menu-search | code:5, overlay-search:55, print-pdf:1, reading-rendered:4, table:54, workspace-chrome:24 | after `src/chrome/35-editing-menu-tooltip-glass.css`; before `src/chrome/37-tabs-file-explorer-search.css` |
 | 23 | `src/chrome/37-tabs-file-explorer-search.css` | 1019-1019 | 1313 | workspace-chrome | code:2, overlay-search:13, table:168, workspace-chrome:229 | after `src/chrome/36-floating-ui-glass-system.css`; before `src/themes/51-accessibility-motion-contrast.css` |
 | 24 | `src/themes/51-accessibility-motion-contrast.css` | 1023-1023 | 220 | support: accessibility/motion/contrast support | callout-list:4, cm6:4, code:13, overlay-search:9, print-pdf:2, reading-rendered:2, table:6, workspace-chrome:9 | after `src/chrome/37-tabs-file-explorer-search.css`; before `src/surfaces/23-liquid-glass-core.css` |
@@ -195,7 +195,7 @@ Table-related rules are intentionally split by surface:
 | `src/base/10-base-workspace.css` | 9 | 0 | 8 | 0 |
 | `src/base/12-reading-content.css` | 19 | 0 | 154 | 14 |
 | `src/surfaces/20-reading-tables-code.css` | 55 | 0 | 131 | 9 |
-| `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 122 | 0 |
+| `src/surfaces/21-reading-callouts-lists.css` | 9 | 0 | 119 | 0 |
 | `src/surfaces/22-reading-embeds-workspace.css` | 3 | 0 | 18 | 0 |
 | `src/themes/50-dark.css` | 95 | 0 | 89 | 2 |
 | `src/features/43-print-base.css` | 10 | 0 | 106 | 116 |
