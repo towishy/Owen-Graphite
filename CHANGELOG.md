@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.100
+
+- fix: promote the canonical source bundle so the five report callouts ship the accepted Obsidian 1.13 `rgb(...)` color values instead of stale comma-separated tuples.
+- release: retain the existing public-main minimum of Obsidian 1.13.0 and rebuild source-ownership maps and manual-install assets from that same source baseline.
+- compatibility: preserve Style Settings metadata, the unlayered cascade, and progressive CSS fallbacks rather than removing features solely to silence broad browser-support warnings.
+
 ## v3.1.99
 
 - polish: workspace chrome, settings controls, floating UI, tabs, file explorer, search, and shared liquid-glass surfaces now use quieter resting, hover, active, and focus states with a dedicated visual fixture.

@@ -33,6 +33,8 @@ REQUIRED_FILES = (
     "screenshots/readme/owen-editor-toolbar-settings.jpg",
     "screenshots/readme/file-explorer-type-badges.svg",
     "screenshots/readme/sponsor-coffee.svg",
+    "screenshots/readme/workspace-card.svg",
+    "screenshots/readme/support-sponsor.svg",
 )
 
 
@@ -82,7 +84,7 @@ def audit(zip_path: Path) -> None:
             raise AssertionError("ZIP theme.css differs from repo root theme.css")
 
         zip_readme = read_zip_text(archive, "README.md")
-        if f"Owen Graphite v{version}" not in zip_readme:
+        if f"Owen Graphite v{version}" not in zip_readme and f"Release **{version}**" not in zip_readme:
             raise AssertionError("ZIP README does not mention the current version")
 
 

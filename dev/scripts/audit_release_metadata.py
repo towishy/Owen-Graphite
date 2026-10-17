@@ -63,12 +63,20 @@ def main() -> int:
         if changelog_version != version:
             raise AssertionError(f"CHANGELOG latest v{changelog_version} does not match manifest {version}")
 
-        assert_contains("README.md", f"**Owen Graphite v{version}**")
-        assert_contains_any("README.md", [f"| **Version** | `{version}` |", f"| **버전** | `{version}` |"])
-        assert_contains_any("README.md", [
-            f"| **Baseline / rollback target** | `v{version}` |",
-            f"| **베이스라인 / 롤백 기준** | `v{version}` |",
-        ])
+        shared_release_badge = re.search(
+            r"\[!\[Release\]\(https://img\.shields\.io/github/v/release/towishy/Owen-Graphite\?[^)]*\)\]"
+            r"\(https://github\.com/towishy/Owen-Graphite/releases/latest\)",
+            read_text("README.md"),
+        )
+        if shared_release_badge:
+            assert_contains("README.md", f"Release **{version}**")
+        else:
+            assert_contains("README.md", f"**Owen Graphite v{version}**")
+            assert_contains_any("README.md", [f"| **Version** | `{version}` |", f"| **버전** | `{version}` |"])
+            assert_contains_any("README.md", [
+                f"| **Baseline / rollback target** | `v{version}` |",
+                f"| **베이스라인 / 롤백 기준** | `v{version}` |",
+            ])
         assert_contains("README.md", f"Owen-Graphite-{version}.zip")
         assert_contains("screenshots/README.md", f"Owen Graphite v{version}")
         assert_contains("dev/WIKI/DOCS/v3/release-plan.md", f"latest: v{version}")

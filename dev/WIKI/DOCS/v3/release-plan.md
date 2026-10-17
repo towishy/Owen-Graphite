@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.99)
+﻿# v3 Release Record (latest: v3.1.100)
 
-**Status**: Current stable / rollback baseline = `v3.1.99` (2026-07-30). This release refines chrome interaction states and aligns macOS file-explorer and Live Preview code controls with their canonical owners.
+**Release record**: baseline = `v3.1.100` (2026-10-17). This compatibility patch promotes the accepted Obsidian 1.13 callout colors from their source owner and retains the existing public-main minimum host. The previous published release is `v3.1.99`; screenshots were not recaptured for this patch.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.99` |
-| `minAppVersion` | `1.5.8` |
+| `manifest.json` version | `3.1.100` |
+| `minAppVersion` | `1.13.0` |
 | `dist/theme-v3.css` lines / `!important` scanner count | 20,255 / 5 |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.99.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.100.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.0.zip` |
 
 ## What was removed
@@ -79,4 +79,4 @@
 
 - Current v3 Style Settings contract is recorded in `dev/WIKI/DOCS/v3/style-settings-contract.md`.
 - Current token inventory is recorded in `dev/WIKI/DOCS/v3/token-inventory.md`.
-- `minAppVersion: 1.5.8`.
+- `minAppVersion: 1.13.0`.

@@ -38,6 +38,8 @@ DEFAULT_FILES = [
     "screenshots/readme/owen-editor-toolbar-settings.jpg",
     "screenshots/readme/file-explorer-type-badges.svg",
     "screenshots/readme/sponsor-coffee.svg",
+    "screenshots/readme/workspace-card.svg",
+    "screenshots/readme/support-sponsor.svg",
 ]
 
 
@@ -53,7 +55,7 @@ def bundle_v3() -> Path:
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    result = module.main()
+    result = module.main([])
     if result:
         raise RuntimeError("bundle_v3.py failed")
     return ROOT / "dist" / "theme-v3.css"

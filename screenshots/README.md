@@ -2,6 +2,8 @@
 
 Owen Graphite v3.1.99 마켓플레이스 등록용 스크린샷.
 
+Current package: Owen Graphite v3.1.100. The captures above remain from v3.1.99; this compatibility patch does not claim a new screenshot capture.
+
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
 | `light.png` | Light | README 대표 이미지 (실제 Obsidian 화면) |

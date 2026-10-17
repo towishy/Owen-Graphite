@@ -38,6 +38,8 @@ RELEASE_ASSETS = [
     "screenshots/readme/owen-editor-toolbar-settings.jpg",
     "screenshots/readme/file-explorer-type-badges.svg",
     "screenshots/readme/sponsor-coffee.svg",
+    "screenshots/readme/workspace-card.svg",
+    "screenshots/readme/support-sponsor.svg",
 ]
 DEFAULT_VAULTS = [
     Path(r"H:\Owen-WIKI"),

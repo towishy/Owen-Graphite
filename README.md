@@ -88,7 +88,7 @@ Install the optional [Style Settings plugin](https://community.obsidian.md/plugi
 <summary><strong>Manual installation from GitHub Releases</strong></summary>
 
 1. Open the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest).
-2. Download the installable theme package. Release **3.1.99** provides **`Owen-Graphite-3.1.99.zip`**.
+2. Download the installable theme package. Release **3.1.100** provides **`Owen-Graphite-3.1.100.zip`**.
 3. Extract it into `<YourVault>/.obsidian/themes/Owen Graphite/` with `manifest.json` and `theme.css` directly inside.
 4. Select **Owen Graphite** under **Settings → Appearance → Themes**.
 
@@ -150,6 +150,8 @@ See the [plugin compatibility matrix](dev/WIKI/DOCS/v3/plugin-compatibility.md).
 <br>
 
 ## Contributing and license
+
+After a successful release workflow, only the latest published release and its matching tag are retained. Older release downloads and tag-based rollback links are removed; source commit history is preserved. The retention workflow also supports a guarded dry run.
 
 [Open an issue](https://github.com/towishy/Owen-Graphite/issues) with the Obsidian version, theme version, platform, and reproduction steps. Remove private note content from screenshots and examples.
 
