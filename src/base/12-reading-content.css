@@ -343,10 +343,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-size: 1.28em;
   font-weight: 760;
   line-height: 1.28;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(203, 213, 225, 0.72);
-  text-decoration-thickness: 1px;
+  text-decoration: underline solid rgba(203, 213, 225, 0.72) 1px;
   text-underline-offset: 0.18em;
 }
 
@@ -373,10 +370,7 @@ body :is(.markdown-rendered, .markdown-preview-view.markdown-rendered, .markdown
   font-size: 1.06em;
   font-weight: 760;
   line-height: 1.30;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(226, 232, 240, 0.88);
-  text-decoration-thickness: 1px;
+  text-decoration: underline solid rgba(226, 232, 240, 0.88) 1px;
   text-underline-offset: 0.18em;
 }
 
@@ -950,10 +944,7 @@ body :is(.markdown-preview-view.markdown-rendered, .markdown-reading-view .markd
 .markdown-rendered a.external-link:visited,
 .markdown-preview-view a.external-link:visited {
   color: #7c3aed;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: rgba(124, 58, 237, 0.4);
-  text-decoration-thickness: 1.35px;
+  text-decoration: underline dotted rgba(124, 58, 237, 0.4) 1.35px;
 }
 body.theme-dark .markdown-rendered a.external-link:visited {
   color: #c4b5fd;
@@ -980,12 +971,8 @@ body.theme-dark .markdown-rendered a.external-link:visited {
 }
 
 @supports selector(.markdown-rendered h1:has(+ table)) {
-  .markdown-rendered h1:has(+ table),
-  .markdown-rendered h1:has(+ .table-wrapper),
-  .markdown-rendered h2:has(+ table),
-  .markdown-rendered h2:has(+ .table-wrapper),
-  .markdown-rendered h3:has(+ table),
-  .markdown-rendered h3:has(+ .table-wrapper) {
+  .markdown-rendered :is(h1, h2, h3):has(+ table),
+  .markdown-rendered :is(h1, h2, h3):has(+ .table-wrapper) {
     margin-bottom: 0.2em;
   }
 }
@@ -1490,10 +1477,7 @@ body .markdown-rendered blockquote blockquote blockquote {
 
 :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) a.internal-link:not(.is-unresolved):hover {
   color: #1d4ed8;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-color: rgba(96, 165, 250, 0.34);
-  text-decoration-thickness: 1px;
+  text-decoration: underline solid rgba(96, 165, 250, 0.34) 1px;
   text-underline-offset: 0.18em;
 }
 
@@ -1558,10 +1542,7 @@ body .markdown-rendered blockquote blockquote blockquote {
   [href^="https://"]:not(.internal-link)
 ):hover {
   color: #0d9488;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: #0f766e;
-  text-decoration-thickness: 1.35px;
+  text-decoration: underline dotted #0f766e 1.35px;
 }
 
 /* Broken / unresolved internal links */
@@ -1590,4 +1571,3 @@ body .markdown-rendered blockquote blockquote blockquote {
   color: #78350f;
   box-shadow: inset 0 -1px 0 rgba(146, 64, 14, 0.24);
 }
-

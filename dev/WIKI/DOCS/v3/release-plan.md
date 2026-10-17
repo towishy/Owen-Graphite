@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.101)
+﻿# v3 Release Record (latest: v3.1.102)
 
-**Release record**: baseline = `v3.1.101` (2026-10-17). This patch compacts CSS without semantic optimization, removes redundant PDF break declarations and simplifies one equivalent settings selector. The previous published release is `v3.1.100`; the minimum host, settings metadata and optional companion remain unchanged. Installed-app screenshots were not recaptured for this patch.
+**Release record**: baseline = `v3.1.102` (2026-10-17). This patch consolidates 15 complete static decoration declarations and factors two equal-specificity selector lists. The previous published release is `v3.1.101`; variable-driven declarations, the minimum host, settings metadata and optional companion remain unchanged. Installed-app screenshots were not recaptured for this patch.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.101` |
+| `manifest.json` version | `3.1.102` |
 | `minAppVersion` | `1.13.0` |
 | `dist/theme-v3.css` format | compact CSS with original Style Settings metadata and module markers |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.101.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.102.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.0.zip` |
 
 ## What was removed

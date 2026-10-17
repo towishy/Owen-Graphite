@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.102
+
+- refactor: consolidate 15 complete, static text-decoration quartets into equivalent shorthands; variable-driven and partial declarations remain independent to preserve invalid-value and cascade behavior.
+- refactor: factor repeated heading/table and print-note selector alternatives with equal specificity, preserving the original match sets and rule order.
+- compatibility: retain required relational selectors, shape clipping, first-line indentation, Style Settings metadata, the Obsidian 1.13.0 minimum and the optional companion. Remaining advisory groups are not disabled or hidden.
+
 ## v3.1.101
 
 - build: compact release CSS with pinned, syntax-only RCSSmin while preserving readable source modules, exact Style Settings metadata, cascade order, and source-owner markers.

@@ -530,12 +530,8 @@ body:not(.ogd-heading-printclean):not(.ogd-heading-keyline):not(.ogd-heading-bra
   }
 
   @supports selector(p:has(> strong:first-child)) {
-    body .markdown-rendered table + p:has(> strong:first-child),
-    body .markdown-preview-view table + p:has(> strong:first-child),
-    body .markdown-reading-view table + p:has(> strong:first-child),
-    body .markdown-rendered .table-wrapper + p:has(> strong:first-child),
-    body .markdown-preview-view .table-wrapper + p:has(> strong:first-child),
-    body .markdown-reading-view .table-wrapper + p:has(> strong:first-child) {
+    body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) table + p:has(> strong:first-child),
+    body :is(.markdown-rendered, .markdown-preview-view, .markdown-reading-view) .table-wrapper + p:has(> strong:first-child) {
       margin: 1.05em 0 1.35em;
       padding: 0.72em 0.9em;
       border: 1px solid #d7e4ec;

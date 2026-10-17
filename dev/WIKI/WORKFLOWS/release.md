@@ -63,6 +63,12 @@ Never run `git tag v<version>` and never publish a `v<version>` GitHub Release.
 - Warning reduction must preserve rendering, metadata and the minimum app
   version. Broad partial-support advisories and required relational selectors
   are not suppressed just to obtain a zero-warning report.
+- Consolidate decoration longhands only when all four constituents are present
+  with static values. Combining a `var()` declaration into a shorthand can
+  change invalid-at-computed-value behavior for the other constituents.
+- Factor selector alternatives only when their specificity and matching sets
+  are unchanged. In particular, keep `:has(+ table)` and
+  `:has(+ .table-wrapper)` separate: their type/class weights differ.
 - An installed Edge can run optional visual checks without a browser download:
   `release_check.py --include-visual --browser-channel msedge`.
 

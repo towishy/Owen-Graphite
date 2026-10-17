@@ -155,10 +155,7 @@
   }
 
   body :is(.markdown-rendered.markdown-rendered, .markdown-preview-view.markdown-rendered.markdown-rendered, .markdown-reading-view .markdown-rendered.markdown-rendered) :is(h3, h4) {
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-color: rgba(148, 163, 184, 0.58);
-    text-decoration-thickness: 1px;
+    text-decoration: underline solid rgba(148, 163, 184, 0.58) 1px;
     text-underline-offset: 0.22em;
     text-decoration-skip-ink: none;
     -webkit-print-color-adjust: exact;
@@ -376,10 +373,7 @@
     background: transparent;
     box-shadow: none;
     outline: 0;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-color: rgba(148, 163, 184, 0.58);
-    text-decoration-thickness: 1px;
+    text-decoration: underline solid rgba(148, 163, 184, 0.58) 1px;
     text-underline-offset: 0.22em;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -876,4 +870,3 @@
     --ogd-pdf-caption-font-size: 14px;
   }
 }
-
