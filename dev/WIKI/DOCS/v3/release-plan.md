@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.105)
+﻿# v3 Release Record (latest: v3.1.106)
 
-**Release record**: baseline = `v3.1.105` (2026-10-19). Apply the approved UI Portal SettingsPanel to all preferences pages, correct search/slider/navigation geometry and selected-text contrast, and share Frosted ScrollArea materials globally. The previous published release is `v3.1.104`. New settings screenshots were captured in isolated Obsidian 1.14.4; existing workspace screenshots remain from v3.1.99.
+**Release record**: baseline = `v3.1.106` (2026-10-19). Standardize the developer name across Owen Graphite and its Companion plugin. The previous published release is `v3.1.105`; settings screenshots were captured in isolated Obsidian 1.14.4 for that release, and existing workspace screenshots remain from v3.1.99.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.105` |
+| `manifest.json` version | `3.1.106` |
 | `minAppVersion` | `1.13.0` |
 | `dist/theme-v3.css` format | compact CSS with original Style Settings metadata and module markers |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.105.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.106.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.2.zip` |
 | Settings runtime | 24 native/core/Owen/legacy pages in light and dark modes; exact slider geometry, selected-text contrast >= 4.5:1, dropdown events, unload/reopen, and native scrollbar fallback |
 | Canonical overlay | Owen Editor 0.6.39; settings sidebar grip ends within 5px of the panel's right edge |

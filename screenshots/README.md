@@ -2,7 +2,7 @@
 
 Owen Graphite v3.1.99 마켓플레이스 등록용 스크린샷.
 
-Current package: Owen Graphite v3.1.105. Existing workspace captures remain from v3.1.99. The settings captures below were taken from an isolated Obsidian 1.14.4 vault with Graphite 3.1.105, Companion 1.3.2, and Owen Editor 0.6.39.
+Current package: Owen Graphite v3.1.106. Existing workspace captures remain from v3.1.99. The settings captures below were taken from an isolated Obsidian 1.14.4 vault with Graphite 3.1.105, Companion 1.3.2, and Owen Editor 0.6.39.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
