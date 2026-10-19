@@ -4,12 +4,12 @@ Canonical MAP location: `dev/WIKI/MAP`.
 
 ## Summary
 
-- Version: `3.1.102`
+- Version: `3.1.103`
 - Source: `src/entry.css`
 - Modules: 26
-- Selectors: 2663
-- Findings: 692
-- Finding severity counts: critical=0, high=0, medium=547, low=145, info=0
+- Selectors: 2721
+- Findings: 740
+- Finding severity counts: critical=0, high=0, medium=551, low=189, info=0
 - Module severity counts: critical=0, high=17, medium=5, low=3, info=1
 
 ## Module Risk Table
@@ -31,7 +31,7 @@ Canonical MAP location: `dev/WIKI/MAP`.
 | medium | 20 | `src/chrome/30-workspace.css` | 118 | 0 | 0 | high-specificity, repeated-selector-in-file |
 | medium | 18 | `src/chrome/31-navigation-tasks-search.css` | 47 | 0 | 0 | high-specificity |
 | high | 78 | `src/chrome/32-overlay-popover-dataview.css` | 37 | 0 | 0 | high-specificity |
-| high | 281 | `src/chrome/33-settings-controls.css` | 199 | 0 | 41 | high-specificity, has-selector, repeated-selector-in-file |
+| high | 390 | `src/chrome/33-settings-controls.css` | 257 | 0 | 87 | high-specificity, has-selector, repeated-selector-in-file |
 | high | 57 | `src/plugins/60-canvas-graph-link-panes.css` | 64 | 0 | 0 | high-specificity |
 | high | 106 | `src/plugins/61-live-preview-mobile-plugin.css` | 68 | 0 | 7 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |
 | high | 162 | `src/features/42-report-print-polish.css` | 209 | 0 | 9 | high-specificity, cm6-hit-routing-sensitive, has-selector, repeated-selector-in-file |

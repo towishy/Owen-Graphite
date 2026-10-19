@@ -24,13 +24,12 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 34px;
-  margin: 22px 0 6px;
-  padding: 7px 4px 7px 0;
-  border: 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.26);
-  border-radius: 0;
-  background: transparent;
+  min-height: 74px;
+  margin: 20px 0 0;
+  padding: 12px 18px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--background-secondary), var(--background-primary) 20%), var(--background-primary));
   box-shadow: none;
   outline: 0;
   transform: none;
@@ -54,7 +53,7 @@ body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-ta
 body.css-settings-manager .style-settings-container .setting-item.setting-item-heading:is(:hover, :focus-within),
 body:not(.is-mobile) .modal.mod-settings :is(.vertical-tab-content, .vertical-tab-content-container) :is(.setting-item.setting-item-heading, .setting-item-heading, h1, h2, h3):is(:hover, :focus-within) {
   outline: 0;
-  background: rgba(241, 245, 249, 0.72);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--background-secondary), var(--background-primary) 20%), var(--background-primary));
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   box-shadow: none;
@@ -517,8 +516,8 @@ body:not(.is-mobile).theme-dark :is(.modal.mod-community-theme, .modal.mod-commu
 
 /* Owen suite settings use the same grouped card rhythm as Owen Mermaid. */
 body .modal.mod-settings :is(
-  .owen-editor-settings-tab,
-  .owen-exporter-settings,
+  .owen-editor-settings-tab:not(.owen-settings-design),
+  .owen-exporter-settings:not(.owen-settings-design),
   .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])
 ) {
   --ogd-suite-settings-line: color-mix(in srgb, var(--ogd-line-strong, #cbd5e1) 58%, transparent);
@@ -535,8 +534,8 @@ body .modal.mod-settings :is(
   width: 100%;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading,
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-header .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-header .setting-item.setting-item-heading,
 body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"][data-level="0"],
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] {
   align-items: center;
@@ -545,7 +544,7 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
   border-radius: 8px 8px 0 0;
   box-shadow: none;
   display: flex;
-  min-height: 64px;
+  min-height: 74px;
   padding: 12px 16px;
 }
 
@@ -555,31 +554,31 @@ body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-s
   margin: 0 0 16px;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item.setting-item-heading,
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] {
   margin: 16px 0 0;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading:first-child,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item.setting-item-heading:first-child,
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"]:first-child {
   margin-top: 0;
 }
 
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="interface"],
-body.css-settings-manager .owen-exporter-settings [data-owen-section="languages"] { --ogd-suite-section-accent: #0284c7; }
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="toolbar"] { --ogd-suite-section-accent: #0f766e; }
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="selection"],
-body.css-settings-manager .owen-exporter-settings [data-owen-section="file-code"] { --ogd-suite-section-accent: #4f46e5; }
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="shortcuts"],
-body.css-settings-manager .owen-exporter-settings [data-owen-section="workflow"] { --ogd-suite-section-accent: #7c3aed; }
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="graphite"] { --ogd-suite-section-accent: #a16207; }
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="favorites"] { --ogd-suite-section-accent: #be123c; }
-body.css-settings-manager .owen-editor-settings-tab > [data-owen-section="portability"] { --ogd-suite-section-accent: #2563eb; }
-body.css-settings-manager .owen-exporter-settings [data-owen-section="image-down"] { --ogd-suite-section-accent: #0e7490; }
-body.css-settings-manager .owen-exporter-settings [data-owen-section="archive-restore"] { --ogd-suite-section-accent: #b45309; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="interface"],
+body.css-settings-manager .owen-exporter-settings:not(.owen-settings-design) [data-owen-section="languages"] { --ogd-suite-section-accent: #0284c7; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="toolbar"] { --ogd-suite-section-accent: #0f766e; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="selection"],
+body.css-settings-manager .owen-exporter-settings:not(.owen-settings-design) [data-owen-section="file-code"] { --ogd-suite-section-accent: #4f46e5; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="shortcuts"],
+body.css-settings-manager .owen-exporter-settings:not(.owen-settings-design) [data-owen-section="workflow"] { --ogd-suite-section-accent: #7c3aed; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="graphite"] { --ogd-suite-section-accent: #a16207; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="favorites"] { --ogd-suite-section-accent: #be123c; }
+body.css-settings-manager .owen-editor-settings-tab:not(.owen-settings-design) > [data-owen-section="portability"] { --ogd-suite-section-accent: #2563eb; }
+body.css-settings-manager .owen-exporter-settings:not(.owen-settings-design) [data-owen-section="image-down"] { --ogd-suite-section-accent: #0e7490; }
+body.css-settings-manager .owen-exporter-settings:not(.owen-settings-design) [data-owen-section="archive-restore"] { --ogd-suite-section-accent: #b45309; }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab .owen-editor-settings-section-glyph,
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-section-glyph {
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) .owen-editor-settings-section-glyph,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-section-glyph {
   align-items: center;
   background:
     radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
@@ -601,8 +600,8 @@ body.css-settings-manager .modal.mod-settings :is(.owen-editor-settings-section-
   width: 17px;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item.setting-item-heading,
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-header .setting-item.setting-item-heading {
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item.setting-item-heading,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-header .setting-item.setting-item-heading {
   --ogd-suite-section-ink: color-mix(in srgb, var(--ogd-suite-section-accent) 76%, var(--ogd-suite-settings-text));
   background: linear-gradient(180deg, color-mix(in srgb, var(--ogd-suite-section-accent) 5%, var(--ogd-suite-settings-header)), var(--ogd-suite-settings-header));
   position: relative;
@@ -613,7 +612,7 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
   display: none;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content:is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-name,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:is(.owen-editor-settings-tab:not(.owen-settings-design), .owen-exporter-settings:not(.owen-settings-design)) .setting-item-name,
 body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"][data-level="0"] .setting-item-name,
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] .setting-item-name {
   color: var(--ogd-suite-settings-text);
@@ -622,15 +621,15 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
   line-height: 1.3;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content:is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-description,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content:is(.owen-editor-settings-tab:not(.owen-settings-design), .owen-exporter-settings:not(.owen-settings-design)) .setting-item-description,
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] .setting-item-description {
   color: var(--ogd-suite-settings-muted);
   font-size: 12px;
   line-height: 1.4;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading),
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item:not(.setting-item-heading),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-body > .setting-item,
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item {
   background: var(--ogd-suite-settings-surface);
   border: 0;
@@ -647,27 +646,27 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
   border-top: 1px solid var(--ogd-suite-settings-line);
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading):is(:hover, :focus-within),
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item:is(:hover, :focus-within),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item:not(.setting-item-heading):is(:hover, :focus-within),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-body > .setting-item:is(:hover, :focus-within),
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item:is(:hover, :focus-within) {
   background: var(--ogd-suite-settings-hover);
   box-shadow: none;
   transform: none;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab > .setting-item:not(.setting-item-heading):is(:has(+ .setting-item-heading), :last-child),
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body > .setting-item:last-child,
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-editor-settings-tab:not(.owen-settings-design) > .setting-item:not(.setting-item-heading):is(:has(+ .setting-item-heading), :last-child),
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-body > .setting-item:last-child,
 body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > :nth-last-child(1 of .setting-item) {
   border-radius: 0 0 8px 8px;
   box-shadow: var(--ogd-suite-settings-shadow);
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-root {
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-root {
   gap: 16px;
   padding: 0;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group {
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group {
   background: transparent;
   border: 0;
   border-radius: 8px;
@@ -676,11 +675,11 @@ body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporte
   margin: 0;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-header .setting-item.setting-item-heading {
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-header .setting-item.setting-item-heading {
   margin: 0;
 }
 
-body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings .owen-exporter-settings-group-body {
+body.css-settings-manager .modal.mod-settings .vertical-tab-content.owen-exporter-settings:not(.owen-settings-design) .owen-exporter-settings-group-body {
   padding: 0;
 }
 
@@ -703,15 +702,15 @@ body.css-settings-manager .style-settings-heading[data-id="owen-graphite-documen
 }
 
 body.theme-dark .modal.mod-settings :is(
-  .owen-editor-settings-tab,
-  .owen-exporter-settings,
+  .owen-editor-settings-tab:not(.owen-settings-design),
+  .owen-exporter-settings:not(.owen-settings-design),
   .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])
 ) {
   --ogd-suite-settings-line: rgba(203, 213, 225, 0.18);
   --ogd-suite-settings-header: rgba(30, 41, 59, 0.72);
   --ogd-suite-settings-hover: rgba(30, 41, 59, 0.46);
   --ogd-suite-settings-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
-  --ogd-suite-settings-surface: rgba(15, 23, 42, 0.66);
+  --ogd-suite-settings-surface: var(--background-primary, #1b1d23);
 }
 
 body.theme-dark.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] {
@@ -764,8 +763,8 @@ body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-s
 ) {
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--ogd-suite-section-ink) 5%, var(--ogd-suite-settings-header)),
-    var(--ogd-suite-settings-header)
+    color-mix(in srgb, var(--ogd-suite-section-ink) 8%, var(--background-primary)),
+    var(--background-primary)
   );
   position: relative;
 }
@@ -785,14 +784,14 @@ body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-s
     radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
     color-mix(in srgb, var(--ogd-suite-section-ink) 11%, var(--ogd-suite-settings-surface));
   border: 1px solid color-mix(in srgb, var(--ogd-suite-section-ink) 36%, transparent);
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 5px rgba(15, 23, 42, 0.06);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgb(15 23 42 / 0.05);
   content: "";
   display: block;
-  flex: 0 0 32px;
-  height: 32px;
+  flex: 0 0 48px;
+  height: 48px;
   margin-right: 10px;
-  width: 32px;
+  width: 48px;
 }
 
 body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"]) :is(
@@ -803,7 +802,7 @@ body.css-settings-manager .modal.mod-settings .vertical-tab-content:has(.style-s
   background: var(--ogd-suite-section-ink);
   content: "";
   height: 18px;
-  left: 23px;
+  left: 31px;
   pointer-events: none;
   position: absolute;
   top: 50%;
@@ -955,25 +954,25 @@ body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settin
 
 @media screen and (max-width: 700px) {
   body .modal.mod-settings :is(
-    .owen-editor-settings-tab,
-    .owen-exporter-settings,
+    .owen-editor-settings-tab:not(.owen-settings-design),
+    .owen-exporter-settings:not(.owen-settings-design),
     .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])
   ) {
     padding: 12px 10px 28px;
   }
 
-  body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item:not(.setting-item-heading),
+  body .modal.mod-settings :is(.owen-editor-settings-tab:not(.owen-settings-design), .owen-exporter-settings:not(.owen-settings-design)) .setting-item:not(.setting-item-heading),
   body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item {
     align-items: stretch;
     flex-direction: column;
   }
 
-  body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-info,
+  body .modal.mod-settings :is(.owen-editor-settings-tab:not(.owen-settings-design), .owen-exporter-settings:not(.owen-settings-design)) .setting-item-info,
   body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item > .setting-item-info {
     margin: 0 0 8px;
   }
 
-  body .modal.mod-settings :is(.owen-editor-settings-tab, .owen-exporter-settings) .setting-item-control,
+  body .modal.mod-settings :is(.owen-editor-settings-tab:not(.owen-settings-design), .owen-exporter-settings:not(.owen-settings-design)) .setting-item-control,
   body.css-settings-manager .style-settings-heading[data-id="owen-graphite-document"] + .style-settings-container > .style-settings-heading[data-level="2"] + .style-settings-container > .setting-item > .setting-item-control {
     justify-content: flex-start;
     max-width: 100%;
@@ -1044,7 +1043,7 @@ body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-acti
   border-radius: 0;
   display: flex;
   margin: 0;
-  min-height: 64px;
+  min-height: 74px;
   padding: 12px 16px;
   position: relative;
 }
@@ -1063,14 +1062,14 @@ body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-acti
     radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
     color-mix(in srgb, var(--ogd-core-section-ink) 11%, var(--ogd-core-settings-surface));
   border: 1px solid color-mix(in srgb, var(--ogd-core-section-ink) 36%, transparent);
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 2px 5px rgba(15, 23, 42, 0.06);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgb(15 23 42 / 0.05);
   content: "";
   display: block;
-  flex: 0 0 32px;
-  height: 32px;
+  flex: 0 0 48px;
+  height: 48px;
   margin-right: 10px;
-  width: 32px;
+  width: 48px;
 }
 
 body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
@@ -1087,7 +1086,7 @@ body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-acti
   background: var(--ogd-core-section-ink);
   content: "";
   height: 18px;
-  left: 23px;
+  left: 31px;
   pointer-events: none;
   position: absolute;
   top: 50%;
@@ -1241,4 +1240,190 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   )) .vertical-tab-content {
     padding: 12px 10px 28px;
   }
+}
+
+/* Owen UI Portal SettingsPanel: shared visual contract, native host controls. */
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) {
+  --os-surface: var(--background-primary, #fff);
+  --os-text: var(--text-normal, #202631);
+  --os-muted: var(--text-muted, #667080);
+  --os-line: var(--background-modifier-border, #e3e6eb);
+  --os-selection: var(--background-modifier-hover, #eef0f5);
+  --os-accent: #64748b;
+  --os-tint: #f3f4f6;
+  color: var(--os-text);
+}
+.theme-dark :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) { --os-tint: #24262b; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item {
+  min-height: 68px;
+  padding: 10px 18px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--os-line);
+  border-radius: 0;
+  background: var(--os-surface);
+  box-shadow: none;
+  gap: 16px;
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-info { min-width: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-name { color: var(--os-text); font-size: 13px; font-weight: 650; line-height: 1.5; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-description { color: var(--os-muted); font-size: 12px; line-height: 1.5; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-control { min-width: 0; max-width: 100%; gap: 8px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading, .style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
+  --os-accent: #64748b;
+  --os-tint: #f7f8fa;
+  display: flex;
+  align-items: center;
+  min-height: 74px;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 12px 18px;
+  border: 1px solid var(--os-line);
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, var(--os-tint), color-mix(in srgb, var(--os-tint), #fff 64%));
+  box-shadow: none;
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="sky"] { --os-accent: #007dba; --os-tint: #eef7fa; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="mint"] { --os-accent: #287563; --os-tint: #eef7f4; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="teal"] { --os-accent: #147975; --os-tint: #edf7f6; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="violet"] { --os-accent: #6856a4; --os-tint: #f4f2fb; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="amber"] { --os-accent: #95651f; --os-tint: #fbf6ec; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="rose"] { --os-accent: #aa4568; --os-tint: #fbf1f4; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
+  --os-accent: var(--ogd-suite-section-ink, #64748b);
+  --os-tint: var(--ogd-suite-settings-header, #f7f8fa);
+}
+.theme-dark :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading, .style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--os-accent) 14%, #24262b), #24262b);
+  color: var(--os-text);
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::before,
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::after { content: none; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph) {
+  position: static;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--os-accent), var(--os-surface) 60%);
+  border-radius: 8px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--os-accent), var(--os-surface) 96%), color-mix(in srgb, var(--os-accent), var(--os-surface) 88%));
+  box-shadow: 0 4px 10px rgb(15 23 42 / 0.05);
+  color: var(--os-accent);
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph) svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.setting-item-heading .setting-item-name, .owen-mermaid-settings-section-title, .style-settings-heading .setting-item-name) { color: var(--os-text); font-size: 14.72px; font-weight: 750; line-height: 1.35; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.setting-item-heading .setting-item-description, .owen-mermaid-settings-section-description, .style-settings-heading .setting-item-description) { color: var(--os-muted); font-size: 11.2px; font-weight: 500; line-height: 1.4; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) { margin: 0 0 18px; padding: 0; gap: 0; border: 1px solid var(--os-line); border-radius: 8px; background: var(--os-surface); box-shadow: none; overflow: visible; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-heading { position: relative; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-heading .setting-item-info { margin: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) :is(.owen-settings-heading, .owen-mermaid-settings-section) { margin: 0; border: 0; border-bottom: 1px solid var(--os-line); }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item:last-child { border-radius: 0 0 8px 8px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-exporter-settings-group-header, .owen-exporter-settings-group-body) { padding: 0; margin: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(input[type="text"], input[type="number"], select, textarea, button) {
+  min-height: 44px;
+  border: 1px solid var(--os-line);
+  border-radius: 6px;
+  color: var(--os-text);
+  background: var(--os-surface);
+  box-shadow: none;
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(select, input[type="text"]) { width: min(238px, 100%); max-width: 100%; padding: 0 12px; font-size: 13px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(button, select, input):focus-visible { outline: 2px solid transparent; border-color: var(--os-muted); background-color: var(--os-selection); }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) button:hover { background: var(--os-selection); }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-help { display: inline-grid; width: 44px; height: 44px; margin-inline-start: 4px; padding: 0; place-items: center; border: 1px solid transparent; border-radius: 50%; color: var(--os-muted); vertical-align: middle; background: transparent; }
+.owen-settings-help svg { width: 14px; height: 14px; }
+.owen-settings-design .owen-settings-detail[popover] { position: fixed; inset: auto; max-width: min(360px, calc(100vw - 32px)); margin: auto; padding: 14px 16px; border: 1px solid var(--os-line); border-radius: 8px; background: var(--os-surface); color: var(--os-muted); font-size: 12px; line-height: 1.6; box-shadow: 0 8px 24px rgb(15 23 42 / 0.14); }
+@supports (anchor-scope: --owen-settings-help) {
+  .owen-settings-design .setting-item { anchor-scope: --owen-settings-help; }
+  .owen-settings-design .owen-settings-help { anchor-name: --owen-settings-help; }
+  .owen-settings-design .owen-settings-detail[popover] { position-anchor: --owen-settings-help; position-area: bottom span-right; position-try-fallbacks: flip-inline, flip-block; margin: 8px; }
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-popover[popover] {
+  position: fixed;
+  inset: auto;
+  max-width: calc(100vw - 16px);
+  max-height: 320px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--os-line);
+  border-radius: 8px;
+  background: var(--os-surface);
+  color: var(--os-text);
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.14);
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 2px 0;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--os-text);
+  cursor: pointer;
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) {
+  border-color: var(--os-line);
+  background: var(--os-selection);
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option.is-selected { font-weight: 650; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option.is-disabled { cursor: not-allowed; opacity: 0.48; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-check { display: inline-grid; width: 16px; height: 16px; flex: 0 0 16px; place-items: center; color: var(--os-accent); opacity: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option.is-selected .owen-settings-dropdown-check { opacity: 1; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-check svg { width: 16px; height: 16px; }
+@media (max-width: 740px) {
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item { flex-wrap: wrap; gap: 6px; }
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item:not(:has(.checkbox-container)) .setting-item-control { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+}
+@media (forced-colors: active) {
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(button, select, input):focus-visible { outline: 2px solid Highlight; }
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) { border-color: Highlight; background: Highlight; color: HighlightText; }
+}
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown][popover] {
+  position: fixed;
+  inset: auto;
+  max-width: calc(100vw - 16px);
+  max-height: 320px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--ogd-line-strong, #cbd5e1);
+  border-radius: 8px;
+  background: var(--ogd-surface-muted, #f8fafc);
+  color: var(--ogd-text-strong, #111827);
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.14);
+}
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 2px 0;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ogd-text-strong, #111827);
+  cursor: pointer;
+}
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) {
+  border-color: var(--ogd-line-strong, #cbd5e1);
+  background: color-mix(in srgb, var(--ogd-accent, #4b5563) 9%, var(--ogd-surface-muted, #f8fafc));
+}
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option.is-selected { font-weight: 650; }
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option.is-disabled { cursor: not-allowed; opacity: 0.48; }
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-check { display: inline-grid; width: 16px; height: 16px; flex: 0 0 16px; place-items: center; color: var(--ogd-accent, #4b5563); opacity: 0; }
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option.is-selected .owen-settings-dropdown-check { opacity: 1; }
+.owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-check svg { width: 16px; height: 16px; }
+@media (forced-colors: active) {
+  .owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) { border-color: Highlight; background: Highlight; color: HighlightText; }
 }

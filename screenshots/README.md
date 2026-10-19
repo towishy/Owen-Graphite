@@ -2,7 +2,7 @@
 
 Owen Graphite v3.1.99 마켓플레이스 등록용 스크린샷.
 
-Current package: Owen Graphite v3.1.102. The captures above remain from v3.1.99; this CSS-equivalence patch does not claim a new installed-app screenshot capture.
+Current package: Owen Graphite v3.1.103. The captures above remain from v3.1.99; this settings design update does not claim a new installed-app screenshot capture.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |

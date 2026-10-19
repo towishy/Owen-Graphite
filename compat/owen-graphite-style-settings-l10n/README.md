@@ -8,6 +8,10 @@ falls back to English, so native `title.ko` and `description.ko` metadata are no
 selected. This companion localizes only Owen Graphite rows using the restored
 Automatic/Korean/English setting and Obsidian's runtime locale.
 
+Owen Graphite dropdowns use an accessible custom list while retaining their
+native select values and input/change events. The list supports pointer and
+keyboard selection, typeahead, disabled options, and light-dismiss.
+
 On desktop, the companion also structures Obsidian's plain-text
 `title + blank line + metadata` tooltips. This lets the theme keep wrapped
 titles bold and position metadata from the real title height.

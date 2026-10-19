@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.103
+
+- unify Owen Graphite, Editor, Mermaid, and Exporter settings panels with the approved UI Portal design; style accessible custom dropdown lists with a neutral selected state and retain native select values/events.
+- feat: Owen Graphite Companion 1.3.1 adds a keyboard-accessible custom list for Graphite Style Settings dropdowns.
+- scope the shared settings styles to Owen settings panels so unrelated Obsidian settings are not restyled.
+
 ## v3.1.102
 
 - refactor: consolidate 15 complete, static text-decoration quartets into equivalent shorthands; variable-driven and partial declarations remain independent to preserve invalid-value and cascade behavior.

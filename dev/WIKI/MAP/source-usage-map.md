@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20437
-- Parsed CSS rules: 2663
-- Selector parts: 4078
+- Source CSS lines: 20622
+- Parsed CSS rules: 2721
+- Selector parts: 4137
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -19,10 +19,10 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `code`: 1014 rules
 - `lp-html-table`: 71 rules
 - `lp-markdown-table-widget-reference`: 82 rules
-- `overlay-search`: 375 rules
+- `overlay-search`: 430 rules
 - `print-pdf`: 504 rules
 - `reading-rendered`: 1138 rules
-- `table`: 1169 rules
+- `table`: 1173 rules
 - `workspace-chrome`: 720 rules
 
 ## Quick Routing
@@ -167,7 +167,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 13 | `src/chrome/30-workspace.css` | 979-979 | 615 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:57, table:56, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 983-983 | 248 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:24, workspace-chrome:20 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 987-987 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
-| 16 | `src/chrome/33-settings-controls.css` | 991-991 | 1245 | settings-controls | code:5, overlay-search:126, print-pdf:11, table:119, workspace-chrome:23 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
+| 16 | `src/chrome/33-settings-controls.css` | 991-991 | 1430 | settings-controls | code:5, overlay-search:181, print-pdf:11, table:123, workspace-chrome:23 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 995-995 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 999-999 | 538 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:7, print-pdf:2, reading-rendered:27, table:37, workspace-chrome:17 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 1003-1003 | 1659 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:34, cm6:4, code:208, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:155, reading-rendered:206, table:110, workspace-chrome:60 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |
@@ -204,7 +204,7 @@ Table-related rules are intentionally split by surface:
 | `src/chrome/30-workspace.css` | 56 | 0 | 57 | 3 |
 | `src/chrome/31-navigation-tasks-search.css` | 24 | 0 | 25 | 0 |
 | `src/chrome/32-overlay-popover-dataview.css` | 24 | 0 | 24 | 0 |
-| `src/chrome/33-settings-controls.css` | 119 | 0 | 0 | 11 |
+| `src/chrome/33-settings-controls.css` | 123 | 0 | 0 | 11 |
 | `src/plugins/60-canvas-graph-link-panes.css` | 48 | 0 | 0 | 0 |
 | `src/plugins/61-live-preview-mobile-plugin.css` | 37 | 0 | 27 | 2 |
 | `src/features/42-report-print-polish.css` | 110 | 2 | 206 | 155 |
