@@ -1,18 +1,18 @@
-﻿# v3 Release Record (latest: v3.1.103)
+﻿# v3 Release Record (latest: v3.1.104)
 
-**Release record**: baseline = `v3.1.103` (2026-10-19). This patch unifies the Owen product settings panels with the approved UI Portal design and adds accessible custom dropdown lists while preserving native select values and events. The previous published release is `v3.1.102`; installed-app screenshots remain from v3.1.99.
+**Release record**: baseline = `v3.1.104` (2026-10-19). This patch aligns Owen Graphite Style Settings cards and help affordances with the approved UI Portal panel design. The previous published release is `v3.1.103`; installed-app screenshots remain from v3.1.99.
 
 ## What shipped (latest)
 
 | Item | Value |
 | --- | --- |
-| `manifest.json` version | `3.1.103` |
+| `manifest.json` version | `3.1.104` |
 | `minAppVersion` | `1.13.0` |
 | `dist/theme-v3.css` format | compact CSS with original Style Settings metadata and module markers |
 | `theme.css` | sourced verbatim from `dist/theme-v3.css` |
 | Live Preview hit-routing audit | clean |
 | Duplicate-selector audit | informational only |
-| Release ZIP | `dist/Owen-Graphite-3.1.103.zip` |
+| Release ZIP | `dist/Owen-Graphite-3.1.104.zip` |
 | Localization companion ZIP | `dist/Owen-Graphite-Companion-1.3.1.zip` |
 
 ## What was removed

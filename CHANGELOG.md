@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1.104
+
+- polish: align Owen Graphite Style Settings section cards with the approved UI Portal panel geometry, including the tinted header, rounded outer edge, row separators, and spacing.
+- fix: keep help affordances unboxed and preserve their visible hover and keyboard-focus states without `!important`.
+
 ## v3.1.103
 
 - unify Owen Graphite, Editor, Mermaid, and Exporter settings panels with the approved UI Portal design; style accessible custom dropdown lists with a neutral selected state and retain native select values/events.

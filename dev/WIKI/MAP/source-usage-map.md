@@ -7,9 +7,9 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 ## Summary
 
 - Source modules: 26
-- Source CSS lines: 20622
-- Parsed CSS rules: 2721
-- Selector parts: 4137
+- Source CSS lines: 20671
+- Parsed CSS rules: 2727
+- Selector parts: 4143
 - Hard core-owner violations: 10
 
 ## Surface Totals
@@ -19,7 +19,7 @@ Canonical WIKI location: `dev/WIKI/MAP/source-usage-map.md`. Machine provenance 
 - `code`: 1014 rules
 - `lp-html-table`: 71 rules
 - `lp-markdown-table-widget-reference`: 82 rules
-- `overlay-search`: 430 rules
+- `overlay-search`: 436 rules
 - `print-pdf`: 504 rules
 - `reading-rendered`: 1138 rules
 - `table`: 1173 rules
@@ -152,7 +152,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 
 | # | Module | Bundle Lines | Source Lines | Primary Owners | Major Labels | Cascade Relation |
 | ---: | --- | --- | ---: | --- | --- | --- |
-| 1 | `src/features/40-style-settings.css` | 13-931 | 930 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
+| 1 | `src/features/40-style-settings.css` | 13-931 | 929 | style-settings-contract | metadata/tokens | after `None`; before `src/tokens/00-light-tokens.css` |
 | 2 | `src/tokens/00-light-tokens.css` | 935-935 | 275 | pdf-marginalia, shared-tokens | callout-list:1, code:5, print-pdf:2, table:1, workspace-chrome:1 | after `src/features/40-style-settings.css`; before `src/tokens/01-dark-tokens.css` |
 | 3 | `src/tokens/01-dark-tokens.css` | 939-939 | 196 | pdf-marginalia, shared-tokens | callout-list:2, code:2, overlay-search:1, print-pdf:1, table:4, workspace-chrome:1 | after `src/tokens/00-light-tokens.css`; before `src/base/10-base-workspace.css` |
 | 4 | `src/base/10-base-workspace.css` | 943-943 | 136 | support: base/embed workspace primitives | cm6:5, code:6, overlay-search:5, reading-rendered:8, table:9, workspace-chrome:5 | after `src/tokens/01-dark-tokens.css`; before `src/base/12-reading-content.css` |
@@ -167,7 +167,7 @@ See `dev/WIKI/runtime-debug-protocol.md` and the snippets in `dev/WIKI/runtime-d
 | 13 | `src/chrome/30-workspace.css` | 979-979 | 615 | workspace-chrome, mobile-narrow-layout | callout-list:26, cm6:3, code:22, overlay-search:4, print-pdf:3, reading-rendered:57, table:56, workspace-chrome:6 | after `src/features/41-feature-presets.css`; before `src/chrome/31-navigation-tasks-search.css` |
 | 14 | `src/chrome/31-navigation-tasks-search.css` | 983-983 | 248 | workspace-chrome | callout-list:21, cm6:1, code:2, overlay-search:2, reading-rendered:25, table:24, workspace-chrome:20 | after `src/chrome/30-workspace.css`; before `src/chrome/32-overlay-popover-dataview.css` |
 | 15 | `src/chrome/32-overlay-popover-dataview.css` | 987-987 | 350 | overlay-menu-search, dataview-plugin-support | code:24, overlay-search:15, reading-rendered:24, table:24 | after `src/chrome/31-navigation-tasks-search.css`; before `src/chrome/33-settings-controls.css` |
-| 16 | `src/chrome/33-settings-controls.css` | 991-991 | 1430 | settings-controls | code:5, overlay-search:181, print-pdf:11, table:123, workspace-chrome:23 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
+| 16 | `src/chrome/33-settings-controls.css` | 991-991 | 1480 | settings-controls | code:5, overlay-search:187, print-pdf:11, table:123, workspace-chrome:23 | after `src/chrome/32-overlay-popover-dataview.css`; before `src/plugins/60-canvas-graph-link-panes.css` |
 | 17 | `src/plugins/60-canvas-graph-link-panes.css` | 995-995 | 393 | support: external/plugin support | code:2, overlay-search:27, table:48, workspace-chrome:12 | after `src/chrome/33-settings-controls.css`; before `src/plugins/61-live-preview-mobile-plugin.css` |
 | 18 | `src/plugins/61-live-preview-mobile-plugin.css` | 999-999 | 538 | mobile-narrow-layout | callout-list:1, cm6:23, code:27, overlay-search:7, print-pdf:2, reading-rendered:27, table:37, workspace-chrome:17 | after `src/plugins/60-canvas-graph-link-panes.css`; before `src/features/42-report-print-polish.css` |
 | 19 | `src/features/42-report-print-polish.css` | 1003-1003 | 1659 | reading-tables-code (allowed-late), pdf-base (allowed-late), pdf-report-polish | callout-list:34, cm6:4, code:208, lp-html-table:2, lp-markdown-table-widget-reference:2, print-pdf:155, reading-rendered:206, table:110, workspace-chrome:60 | after `src/plugins/61-live-preview-mobile-plugin.css`; before `src/chrome/34-nav-ribbon-glass.css` |

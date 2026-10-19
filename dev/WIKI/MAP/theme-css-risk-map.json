@@ -6513,58 +6513,18 @@
     },
     {
       "category": "has-selector",
-      "line": 1082,
+      "line": 1089,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::before, :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::after",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .style-settings-heading[data-id^=\"ogd-settings-\"]",
       "severity": "low"
     },
     {
       "category": "has-selector",
-      "line": 1095,
+      "line": 1093,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph)",
-      "severity": "low"
-    },
-    {
-      "category": "has-selector",
-      "line": 1096,
-      "message": ":has() selector; keep narrowly scoped",
-      "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph) svg",
-      "severity": "low"
-    },
-    {
-      "category": "has-selector",
-      "line": 1097,
-      "message": ":has() selector; keep narrowly scoped",
-      "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.setting-item-heading .setting-item-name, .owen-mermaid-settings-section-title, .style-settings-heading .setting-item-name)",
-      "severity": "low"
-    },
-    {
-      "category": "has-selector",
-      "line": 1098,
-      "message": ":has() selector; keep narrowly scoped",
-      "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.setting-item-heading .setting-item-description, .owen-mermaid-settings-section-description, .style-settings-heading .setting-item-description)",
-      "severity": "low"
-    },
-    {
-      "category": "has-selector",
-      "line": 1099,
-      "message": ":has() selector; keep narrowly scoped",
-      "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group)",
-      "severity": "low"
-    },
-    {
-      "category": "has-selector",
-      "line": 1100,
-      "message": ":has() selector; keep narrowly scoped",
-      "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-heading",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .style-settings-heading[data-id^=\"ogd-settings-\"].is-collapsed",
       "severity": "low"
     },
     {
@@ -6572,12 +6532,84 @@
       "line": 1101,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .style-settings-heading[data-id^=\"ogd-settings-\"] + .style-settings-container",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1105,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .style-settings-heading[data-id^=\"ogd-settings-\"] + .style-settings-container > .setting-item:last-child",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1106,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::before, :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::after",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1119,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph)",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1120,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph) svg",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1121,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.setting-item-heading .setting-item-name, .owen-mermaid-settings-section-title, .style-settings-heading .setting-item-name)",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1122,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.setting-item-heading .setting-item-description, .owen-mermaid-settings-section-description, .style-settings-heading .setting-item-description)",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1123,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group)",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1124,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-heading",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1125,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-heading .setting-item-info",
       "severity": "low"
     },
     {
       "category": "has-selector",
-      "line": 1102,
+      "line": 1126,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) :is(.owen-settings-heading, .owen-mermaid-settings-section)",
@@ -6585,7 +6617,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1103,
+      "line": 1127,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .setting-item:last-child",
@@ -6593,7 +6625,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1104,
+      "line": 1128,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(.owen-exporter-settings-group-header, .owen-exporter-settings-group-body)",
@@ -6601,7 +6633,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1112,
+      "line": 1136,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(input[type=\"text\"], input[type=\"number\"], select, textarea, button)",
@@ -6609,7 +6641,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1113,
+      "line": 1137,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(select, input[type=\"text\"])",
@@ -6617,7 +6649,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1114,
+      "line": 1138,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(button, select, input):focus-visible",
@@ -6625,7 +6657,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1115,
+      "line": 1139,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) button:hover",
@@ -6633,15 +6665,31 @@
     },
     {
       "category": "has-selector",
-      "line": 1116,
+      "line": 1157,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
-      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-help",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) button.owen-settings-help",
       "severity": "low"
     },
     {
       "category": "has-selector",
-      "line": 1138,
+      "line": 1161,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) button.owen-settings-help:hover",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1166,
+      "message": ":has() selector; keep narrowly scoped",
+      "module": "src/chrome/33-settings-controls.css",
+      "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) button.owen-settings-help:focus-visible",
+      "severity": "low"
+    },
+    {
+      "category": "has-selector",
+      "line": 1188,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-popover[popover]",
@@ -6649,7 +6697,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1152,
+      "line": 1202,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-option",
@@ -6657,7 +6705,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1156,
+      "line": 1206,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover)",
@@ -6665,7 +6713,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1157,
+      "line": 1207,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-option.is-selected",
@@ -6673,7 +6721,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1158,
+      "line": 1208,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-option.is-disabled",
@@ -6681,7 +6729,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1159,
+      "line": 1209,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-check",
@@ -6689,7 +6737,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1160,
+      "line": 1210,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-option.is-selected .owen-settings-dropdown-check",
@@ -6697,7 +6745,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1161,
+      "line": 1211,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-check svg",
@@ -6713,7 +6761,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1382,
+      "line": 1432,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .setting-item",
@@ -6721,7 +6769,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1383,
+      "line": 1433,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .setting-item:not(:has(.checkbox-container)) .setting-item-control",
@@ -6729,7 +6777,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1386,
+      "line": 1436,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) :is(button, select, input):focus-visible",
@@ -6737,7 +6785,7 @@
     },
     {
       "category": "has-selector",
-      "line": 1387,
+      "line": 1437,
       "message": ":has() selector; keep narrowly scoped",
       "module": "src/chrome/33-settings-controls.css",
       "selector": ":is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id=\"owen-graphite-document\"])) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover)",
@@ -7745,7 +7793,7 @@
       "import_index": 1,
       "important_count": 0,
       "legacy_id": "00-settings.css",
-      "line_count": 930,
+      "line_count": 929,
       "live_preview_sensitive_rule_count": 0,
       "max_specificity": [
         0,
@@ -8830,14 +8878,14 @@
       ]
     },
     {
-      "declaration_count": 871,
+      "declaration_count": 897,
       "entry_line": 63,
-      "has_selector_count": 87,
+      "has_selector_count": 93,
       "high_specificity_selector_count": 70,
       "import_index": 16,
       "important_count": 0,
       "legacy_id": "07c-settings-controls.css",
-      "line_count": 1430,
+      "line_count": 1480,
       "live_preview_sensitive_rule_count": 0,
       "max_specificity": [
         0,
@@ -8852,41 +8900,41 @@
         "has-selector",
         "repeated-selector-in-file"
       ],
-      "risk_score": 390,
-      "selector_count": 257,
+      "risk_score": 402,
+      "selector_count": 263,
       "severity": "high",
       "top_properties": [
         [
           "background",
-          96
+          99
         ],
         [
           "box-shadow",
-          75
+          77
         ],
         [
           "color",
-          65
+          66
         ],
         [
           "border-color",
           45
         ],
         [
-          "border",
-          37
+          "border-radius",
+          41
         ],
         [
-          "border-radius",
-          37
+          "border",
+          39
         ],
         [
           "padding",
-          29
+          31
         ],
         [
           "margin",
-          25
+          27
         ],
         [
           "width",
@@ -8901,7 +8949,7 @@
           18
         ],
         [
-          "--ogd-suite-section-ink",
+          "outline",
           17
         ]
       ]
@@ -9676,9 +9724,9 @@
   ],
   "summary": {
     "cross_file_selector_group_count": 77,
-    "finding_count": 740,
+    "finding_count": 746,
     "finding_severity_counts": {
-      "low": 189,
+      "low": 195,
       "medium": 551
     },
     "module_count": 26,
@@ -9688,7 +9736,7 @@
       "low": 3,
       "medium": 5
     },
-    "selector_count": 2721
+    "selector_count": 2727
   },
-  "version": "3.1.103"
+  "version": "3.1.104"
 }
