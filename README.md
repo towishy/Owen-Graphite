@@ -88,7 +88,7 @@ Install the optional [Style Settings plugin](https://community.obsidian.md/plugi
 <summary><strong>Manual installation from GitHub Releases</strong></summary>
 
 1. Open the [latest release](https://github.com/towishy/Owen-Graphite/releases/latest).
-2. Download the installable theme package. **Owen Graphite v3.1.104** (Release **3.1.104**) provides **`Owen-Graphite-3.1.104.zip`**.
+2. Download the installable theme package. **Owen Graphite v3.1.105** (Release **3.1.105**) provides **`Owen-Graphite-3.1.105.zip`**.
 3. Extract it into `<YourVault>/.obsidian/themes/Owen Graphite/` with `manifest.json` and `theme.css` directly inside.
 4. Select **Owen Graphite** under **Settings → Appearance → Themes**.
 
@@ -105,7 +105,11 @@ GitHub's generated **Source code (zip)** is the repository archive, not the inst
 | Owen Graphite Companion | Korean Style Settings locale fallback, accessible custom dropdown lists, or structured title/metadata tooltips. |
 | [Owen Editor](https://github.com/towishy/owen-editor) | Persistent code-title editing, copying, editing commands, and Frosted ScrollArea controls. |
 
-The Graphite 3.1.104 release includes **`Owen-Graphite-Companion-1.3.1.zip`**. Extract its `owen-graphite-style-settings-l10n` folder into `.obsidian/plugins/`, reload Obsidian, and enable **Owen Graphite Companion**. Version 1.3.1 adds accessible custom dropdown lists while preserving the underlying setting values.
+The Graphite 3.1.105 release includes **`Owen-Graphite-Companion-1.3.2.zip`**. Extract its `owen-graphite-style-settings-l10n` folder into `.obsidian/plugins/`, reload Obsidian, and enable **Owen Graphite Companion**. Version 1.3.2 extends accessible custom dropdown lists and missing section headers to native settings and settings popouts while preserving the underlying setting values and descriptions.
+
+The theme styles all preferences pages even without Style Settings or the companion. Native scrollbars use the UI Portal Frosted ScrollArea material while retaining proportional native thumbs. Owen Editor 0.6.39 or newer supplies the full fixed-length glass grip across workspace and settings windows; its settings-sidebar rail follows the panel's outer right edge.
+
+Actual settings captures: [native preferences](screenshots/readme/settings-all-pages-light.png), [dark interface and zoom slider](screenshots/readme/settings-interface-dark.png), and [search and active filter contrast](screenshots/readme/settings-hotkeys-light.png).
 
 Choose **Settings → Style Settings → Owen Graphite → Interface → Language** for the locale preference. The companion does not change Style Settings `data.json` or edit Markdown. Owen Editor stores code titles in fenced Markdown as `title="..."`.
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.1.105
+
+- fix: apply the approved SettingsPanel design to every Obsidian preferences page, core-plugin page, and community-plugin settings page without requiring Style Settings.
+- polish: vertically center sidebar labels and icons, separate search text from search/clear icons, and keep selected filter and action text readable in light and dark modes.
+- fix: replace oversized range backgrounds with a 4px track and a centered 16px thumb while retaining a 44px native interaction area, keyboard controls, values, and reset actions.
+- polish: apply UI Portal Frosted ScrollArea materials to native scrollbar fallbacks; retain Owen Editor's canonical custom scrollbars without duplicate native rails.
+- feat: Companion 1.3.2 adds native settings dropdowns and localized missing section headings in settings popouts, with listener/menu cleanup on unload and window replacement.
+- guard: validate all 24 available native/core/Owen/legacy settings pages in actual Obsidian 1.14.4, including light/dark modes, slider shadow-DOM geometry, selection contrast, dropdown events, narrow layouts, and popout reopening.
+
 ## v3.1.104
 
 - polish: align Owen Graphite Style Settings section cards with the approved UI Portal panel geometry, including the tinted header, rounded outer edge, row separators, and spacing.

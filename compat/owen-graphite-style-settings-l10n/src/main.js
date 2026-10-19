@@ -4,6 +4,7 @@ const { Plugin, moment, setIcon } = require("obsidian");
 const catalog = require("./catalog.generated.json");
 const { localeFromClasses, localizedEntry, splitTooltipText } = require("./core.js");
 const dropdowns = new WeakMap();
+const dropdownControllers = new Set();
 let dropdownId = 0;
 
 const CHROME = {
@@ -55,6 +56,7 @@ function setText(element, text) {
 
 function renderDescription(element, entry, locale) {
   if (!element || element.dataset.ogdL10nLocale === locale) return;
+  const document = element.ownerDocument;
   element.dataset.ogdL10nLocale = locale;
   element.replaceChildren();
   if (entry.description) element.append(document.createTextNode(entry.description));
@@ -90,6 +92,12 @@ function enhanceDropdown(select, label) {
   const document = select.ownerDocument;
   const view = document.defaultView;
   if (!view?.HTMLElement.prototype.showPopover) return;
+  const events = new view.AbortController();
+  const listenerOptions = { signal: events.signal };
+  const originalAttributes = new Map(
+    ["aria-haspopup", "aria-controls", "aria-expanded", "aria-activedescendant"]
+      .map(name => [name, select.getAttribute(name)]),
+  );
 
   const id = `ogd-settings-dropdown-${++dropdownId}`;
   const menu = document.createElement("div");
@@ -255,16 +263,16 @@ function enhanceDropdown(select, label) {
   select.insertAdjacentElement("afterend", menu);
   menu.addEventListener("toggle", () => {
     if (!isOpen()) close();
-  });
-  select.addEventListener("change", refresh);
+  }, listenerOptions);
+  select.addEventListener("change", () => refresh(), listenerOptions);
   select.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || (event.button !== 0 && event.pointerType !== "touch")) return;
     event.preventDefault();
     select.focus();
     if (isOpen()) close();
     else open();
-  });
-  select.addEventListener("click", (event) => event.preventDefault());
+  }, listenerOptions);
+  select.addEventListener("click", (event) => event.preventDefault(), listenerOptions);
   select.addEventListener("keydown", (event) => {
     if (!isOpen()) {
       if ((event.altKey && event.key === "ArrowDown") || event.key === "Enter" || event.key === " ") {
@@ -295,9 +303,25 @@ function enhanceDropdown(select, label) {
         setActive(match);
       }
     }
-  });
+  }, listenerOptions);
 
-  dropdowns.set(select, { refresh });
+  const controller = {
+    select,
+    refresh,
+    destroy() {
+      close();
+      events.abort();
+      menu.remove();
+      for (const [name, value] of originalAttributes) {
+        if (value === null) select.removeAttribute(name);
+        else select.setAttribute(name, value);
+      }
+      dropdowns.delete(select);
+      dropdownControllers.delete(controller);
+    },
+  };
+  dropdowns.set(select, controller);
+  dropdownControllers.add(controller);
 }
 
 function translateChrome(root, locale) {
@@ -317,7 +341,8 @@ function translateChrome(root, locale) {
 
 function structureTooltip(tooltip) {
   if (tooltip.dataset.ogdStructuredTooltip === "true") return;
-  const textNodes = Array.from(tooltip.childNodes).filter((node) => node.nodeType === Node.TEXT_NODE);
+  const document = tooltip.ownerDocument;
+  const textNodes = Array.from(tooltip.childNodes).filter((node) => node.nodeType === 3);
   const parsed = splitTooltipText(textNodes.map((node) => node.textContent).join(""));
   if (!parsed || textNodes.length === 0) return;
 
@@ -333,45 +358,141 @@ function structureTooltip(tooltip) {
 }
 
 function structureTooltips(root) {
+  const document = root.nodeType === 9 ? root : root.ownerDocument;
   if (document.body.classList.contains("is-mobile")) return;
-  if (root instanceof Element && root.matches(".tooltip")) structureTooltip(root);
+  if (root.nodeType === 1 && root.matches(".tooltip")) structureTooltip(root);
   root.querySelectorAll(".tooltip").forEach(structureTooltip);
 }
 
+function enhanceSettings(root) {
+  root.querySelectorAll(".modal.mod-settings .vertical-tab-content").forEach(container => {
+    if (container.classList.contains("owen-settings-design")) return;
+    const document = container.ownerDocument;
+    const navigation = container.closest(".mod-settings").querySelector(".vertical-tab-nav-item.is-active");
+    const title = navigation?.textContent.trim();
+    if (!title) return;
+    const tones = { about: "sky", appearance: "violet", interface: "sky", editor: "mint", file: "teal", hotkeys: "amber", keychain: "amber", plugins: "violet", "community-plugins": "teal" };
+    const addHeading = parent => {
+      const native = parent.querySelector(":scope > .setting-item-heading:not(.ogd-settings-generated-heading), :scope > h1, :scope > h2, :scope > h3");
+      let heading = parent.querySelector(":scope > .ogd-settings-generated-heading");
+      if (native) {
+        heading?.remove();
+        return;
+      }
+      if (!heading) {
+        heading = document.createElement("div");
+        heading.className = "setting-item setting-item-heading owen-settings-heading ogd-settings-generated-heading";
+        heading.setAttribute("role", "heading");
+        heading.setAttribute("aria-level", "2");
+        heading.dataset.owenTone = tones[navigation.dataset.settingId] || "neutral";
+        const glyph = document.createElement("span");
+        glyph.className = "ogd-settings-section-glyph";
+        glyph.setAttribute("aria-hidden", "true");
+        const icon = navigation.querySelector("svg");
+        if (icon) glyph.append(icon.cloneNode(true));
+        else setIcon(glyph, "settings-2");
+        const info = document.createElement("div");
+        info.className = "setting-item-info";
+        const name = document.createElement("div");
+        name.className = "setting-item-name";
+        info.append(name);
+        heading.append(glyph, info);
+        parent.prepend(heading);
+      }
+      setText(heading.querySelector(".setting-item-name"), title);
+    };
+    container.querySelectorAll(":scope > .setting-group").forEach(addHeading);
+    const firstRow = container.querySelector(":scope > .setting-item");
+    if (firstRow && (!firstRow.classList.contains("setting-item-heading") || firstRow.classList.contains("ogd-settings-generated-heading"))) addHeading(container);
+    container.querySelectorAll("select").forEach(select => {
+      if (select.hasAttribute("aria-controls") && !dropdowns.has(select)) return;
+      const label = select.closest(".setting-item")?.querySelector(".setting-item-name")?.textContent.trim()
+        || select.getAttribute("aria-label") || title;
+      enhanceDropdown(select, label);
+    });
+  });
+}
+
 function translateDocument(root = document) {
-  const locale = localeFromClasses(document.body.classList, moment.locale());
+  const owner = root.nodeType === 9 ? root : root.ownerDocument;
+  const locale = localeFromClasses(owner.body.classList, moment.locale());
   root.querySelectorAll('[data-id^="ogd-"]').forEach((row) => translateRow(row, locale));
   translateChrome(root, locale);
   structureTooltips(root);
+  enhanceSettings(root);
 }
 
 module.exports = class OwenGraphiteLocalizationBridge extends Plugin {
   onload() {
+    this.documents = new Map();
     let queued = false;
+    let unloaded = false;
+    let settingsElement;
+    const settingsObserver = new MutationObserver(() => update());
+    const watchDocument = document => {
+      if (!document?.body || !document.defaultView || this.documents.has(document)) return;
+      const observer = new document.defaultView.MutationObserver(mutations => {
+        if (mutations.some(mutation => mutation.type === "childList" || mutation.target === document.body)) update();
+      });
+      observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ["class"] });
+      this.documents.set(document, observer);
+      this.registerDomEvent(document.defaultView, "unload", () => {
+        observer.disconnect();
+        this.documents.delete(document);
+      });
+    };
     const update = () => {
       if (queued) return;
       queued = true;
-      requestAnimationFrame(() => {
+      queueMicrotask(() => {
+        if (unloaded) return;
         queued = false;
-        translateDocument();
+        watchDocument(document);
+        if (typeof activeDocument !== "undefined") watchDocument(activeDocument);
+        // Native settings popouts do not emit workspace "window-open".
+        const modal = this.app.setting?.modalEl;
+        if (modal && modal !== settingsElement) {
+          settingsObserver.disconnect();
+          settingsObserver.observe(modal, { subtree: true, childList: true });
+          settingsElement = modal;
+        }
+        watchDocument(modal?.ownerDocument);
+        for (const [owner, observer] of this.documents) {
+          if (!owner.defaultView || owner.defaultView.closed) {
+            observer.disconnect();
+            this.documents.delete(owner);
+          } else translateDocument(owner);
+        }
+        for (const controller of dropdownControllers) {
+          const view = controller.select.ownerDocument.defaultView;
+          if (!controller.select.isConnected || !view || view.closed) controller.destroy();
+        }
       });
     };
-    this.observer = new MutationObserver(update);
-    this.observer.observe(document.body, {
-      subtree: true,
-      childList: true,
-      attributes: true,
-      attributeFilter: ["class"],
-    });
+    this.register(() => { unloaded = true; });
+    this.register(() => settingsObserver.disconnect());
+    watchDocument(document);
+    this.registerDomEvent(window, "focus", update);
+    this.registerDomEvent(window, "blur", update);
+    this.registerEvent(this.app.workspace.on("window-open", (_container, window) => {
+      watchDocument(window.document);
+      update();
+    }));
     this.registerEvent(this.app.workspace.on("css-change", update));
     this.app.workspace.onLayoutReady(update);
   }
 
   onunload() {
-    this.observer?.disconnect();
+    for (const [document, observer] of this.documents) {
+      observer.disconnect();
+      document.querySelectorAll(".ogd-settings-generated-heading").forEach(heading => heading.remove());
+    }
+    this.documents.clear();
+    for (const controller of dropdownControllers) controller.destroy();
   }
 };
 
 module.exports.translateDocument = translateDocument;
 module.exports.translateChromeText = translateChromeText;
 module.exports.structureTooltip = structureTooltip;
+module.exports.enhanceSettings = enhanceSettings;

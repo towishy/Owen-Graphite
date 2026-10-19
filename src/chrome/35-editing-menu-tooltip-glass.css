@@ -767,54 +767,56 @@
 }
 
 /* ============================================================
-  v1.8.39 — Settings navigation hover liquid-glass
-  Apply the same glass+shadow lift used across ribbon/nav/toggle
-  to Settings modal left navigation (.vertical-tab-nav-item).
+  Settings navigation follows the approved quiet SettingsPanel shell.
    Desktop only (>=701px, non-mobile).
    ============================================================ */
 
 @media (min-width: 701px) {
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item {
-    border-radius: var(--radius-l, 8px);
-    transition: background 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    align-items: center;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    color: var(--os-text);
+    transition: background 140ms ease, color 140ms ease;
   }
 
   /* Left nav hover (light) */
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item:hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.55));
+    background: var(--os-selection);
     border-color: transparent;
-    -webkit-backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%));
-    backdrop-filter: var(--ogd-glass-filter-soft, blur(12px) saturate(150%));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     box-shadow: none;
-    color: var(--ogd-text-strong, #111827);
-    transform: var(--ogd-hover-lift, translateY(-1px));
+    color: var(--os-text);
+    transform: none;
   }
 
   /* Active stays distinct through surface tone and weight, without a rim. */
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active,
   body:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.62));
-    border-color: transparent;
+    background: var(--os-selection);
+    border-color: var(--os-line);
     box-shadow: none;
-    color: var(--ogd-text-strong, #111827);
-    font-weight: 760;
+    color: var(--os-text);
+    font-weight: 700;
   }
 
   /* Left nav hover (dark) */
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item:hover {
-    background: linear-gradient(180deg, rgba(51, 65, 85, 0.78), rgba(15, 23, 42, 0.55));
+    background: var(--os-selection);
     border-color: transparent;
     box-shadow: none;
-    color: var(--ogd-text-inverted, #f8fafc);
+    color: var(--os-text);
   }
 
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active,
   body:not(.is-mobile).theme-dark .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
-    background: linear-gradient(180deg, rgba(51, 65, 85, 0.62), rgba(15, 23, 42, 0.46));
-    border-color: transparent;
+    background: var(--os-selection);
+    border-color: var(--os-line);
     box-shadow: none;
-    color: var(--ogd-text-inverted, #f8fafc);
-    font-weight: 760;
+    color: var(--os-text);
+    font-weight: 700;
   }
 
 }

@@ -32,11 +32,11 @@
   }
 
   /* macOS exposes a native overlay scrollbar even when Windows keeps this pane quiet. */
-  body.mod-macos:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container {
+  body.mod-macos:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container.owen-editor-frosted-scroll-viewport {
     scrollbar-width: none;
   }
 
-  body.mod-macos:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::-webkit-scrollbar {
+  body.mod-macos:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container.owen-editor-frosted-scroll-viewport::-webkit-scrollbar {
     display: none;
     width: 0;
     height: 0;
@@ -1309,4 +1309,3 @@ body:not(.is-mobile).theme-dark .nav-file-title.is-active .nav-file-title-conten
     stroke-width: 1.8;
   }
 }
-

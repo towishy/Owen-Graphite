@@ -173,7 +173,7 @@ body.css-settings-manager :is(.style-settings-import, .style-settings-export, .s
 body.css-settings-manager .style-settings-copy::before, body:not(.is-mobile) .modal-style-settings .style-settings-copy::before { color: #0f766e; left: -15px; }
 
 body:not(.is-mobile) :is(.modal-style-settings, .modal.mod-settings:has(.style-settings-copy, .style-settings-download)) :is(.setting-item:not(.setting-item-heading), .modal-title):is(:focus-within, :focus-visible) { outline-color: rgba(148, 163, 184, 0.18); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76), 0 2px 8px rgba(15, 23, 42, 0.055), 0 0 0 1px rgba(148, 163, 184, 0.12); }
-body:not(.is-mobile) .modal.mod-settings .search-input-container input[type="search"] { min-height: 36px; padding-inline-start: 10px; }
+body:not(.is-mobile) .modal.mod-settings .search-input-container :is(input[type="search"], input[type="text"]) { min-height: 44px; padding-inline: 36px; }
 body:not(.is-mobile) .modal.mod-settings .search-input-container:focus-within { outline: 0; border-color: rgba(148, 163, 184, 0.22); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 2px 8px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(148, 163, 184, 0.12); }
 body:not(.is-mobile) .modal.mod-settings .search-input-container input[type="search"]:is(:focus, :focus-visible) { outline: 0; border-color: rgba(148, 163, 184, 0.22); box-shadow: none; }
 body:not(.is-mobile) .modal.mod-community-plugin :is(.search-input-container, .search-input-container input[type="search"], .search-input-container input[type="text"]):is(:focus, :focus-visible, :focus-within) { outline: 0; border-color: rgba(148, 163, 184, 0.24); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 2px 8px rgba(15, 23, 42, 0.055); }
@@ -981,83 +981,47 @@ body.theme-dark.css-settings-manager .style-settings-heading[data-id="ogd-settin
   }
 }
 
-/* Obsidian core settings retain native groups while matching the Owen suite card rhythm. */
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content {
-  --ogd-core-settings-line: color-mix(in srgb, var(--ogd-line-strong, #cbd5e1) 58%, transparent);
-  --ogd-core-settings-muted: var(--ogd-text-soft, #64748b);
-  --ogd-core-settings-text: var(--ogd-text-strong, #172033);
-  --ogd-core-settings-surface: var(--ogd-surface-base, #ffffff);
-  --ogd-core-settings-header: color-mix(in srgb, var(--ogd-surface-muted, #f8fafc) 78%, transparent);
-  --ogd-core-settings-hover: color-mix(in srgb, var(--ogd-surface-muted, #f8fafc) 72%, transparent);
+/* Every Obsidian settings page uses the approved SettingsPanel card rhythm. */
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content {
+  --ogd-core-settings-line: var(--os-line);
+  --ogd-core-settings-muted: var(--os-muted);
+  --ogd-core-settings-text: var(--os-text);
+  --ogd-core-settings-surface: var(--os-surface);
+  --ogd-core-settings-header: var(--os-control);
+  --ogd-core-settings-hover: var(--os-surface);
   --ogd-core-settings-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
   box-sizing: border-box;
   margin-inline: auto;
   max-width: 960px;
-  padding: 18px 20px 40px;
+  padding: 24px 30px 28px;
   width: 100%;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='21' x2='14' y1='4' y2='4'/%3E%3Cline x1='10' x2='3' y1='4' y2='4'/%3E%3Cline x1='21' x2='12' y1='12' y2='12'/%3E%3Cline x1='8' x2='3' y1='12' y2='12'/%3E%3Cline x1='21' x2='16' y1='20' y2='20'/%3E%3Cline x1='12' x2='3' y1='20' y2='20'/%3E%3Cline x1='14' x2='14' y1='2' y2='6'/%3E%3Cline x1='8' x2='8' y1='10' y2='14'/%3E%3Cline x1='16' x2='16' y1='18' y2='22'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #475569;
   background: var(--ogd-core-settings-surface);
   border: 1px solid var(--ogd-core-settings-line);
   border-radius: 8px;
-  box-shadow: var(--ogd-core-settings-shadow);
-  margin: 0 0 16px;
-  overflow: hidden;
+  box-shadow: 0 6px 16px rgb(15 23 42 / 0.045);
+  margin: 0 0 18px;
+  overflow: visible;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-item.setting-item-heading {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-item.setting-item-heading {
   align-items: center;
   background: linear-gradient(180deg, color-mix(in srgb, var(--ogd-core-section-ink) 5%, var(--ogd-core-settings-header)), var(--ogd-core-settings-header));
   border: 0;
   border-bottom: 1px solid var(--ogd-core-settings-line);
-  border-radius: 0;
+  border-radius: 7px 7px 0 0;
   display: flex;
   margin: 0;
   min-height: 74px;
-  padding: 12px 16px;
+  padding: 12px 18px;
   position: relative;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-item.setting-item-heading::before {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-item.setting-item-heading::before {
   background:
     radial-gradient(circle at 68% 22%, rgba(255, 255, 255, 0.82), transparent 36%),
     color-mix(in srgb, var(--ogd-core-section-ink) 11%, var(--ogd-core-settings-surface));
@@ -1068,25 +1032,16 @@ body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-acti
   display: block;
   flex: 0 0 48px;
   height: 48px;
-  margin-right: 10px;
+  margin-right: 0;
   width: 48px;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-item.setting-item-heading::after {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-item.setting-item-heading::after {
   -webkit-mask: var(--ogd-core-section-icon) center / contain no-repeat;
   background: var(--ogd-core-section-ink);
   content: "";
   height: 18px;
-  left: 31px;
+  left: 33px;
   pointer-events: none;
   position: absolute;
   top: 50%;
@@ -1094,167 +1049,128 @@ body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-acti
   width: 18px;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-items {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-items {
   background: transparent;
   padding: 0;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-items > .setting-item {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-items > .setting-item {
   background: var(--ogd-core-settings-surface);
   border: 0;
   border-bottom: 1px solid var(--ogd-core-settings-line);
   border-radius: 0;
   margin: 0;
-  padding: 14px 16px;
+  min-height: 68px;
+  padding: 10px 18px;
   width: 100%;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-items > .setting-item:last-child {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-items > .setting-item:last-child {
   border-bottom: 0;
+  border-radius: 0 0 7px 7px;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content > .setting-group > .setting-items > .setting-item:is(:hover, :focus-within) {
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-items > .setting-item:is(:hover, :focus-within) {
   background: var(--ogd-core-settings-hover);
   box-shadow: none;
   transform: none;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="hotkeys"].is-active) .vertical-tab-content > .setting-group > .setting-items > .hotkey-list-container > .setting-item {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="hotkeys"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-items > .hotkey-list-container > .setting-item {
   box-sizing: border-box;
-  padding-inline: 16px;
+  padding-inline: 18px;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="about"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="about"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(2) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #0369a1;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="editor"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="editor"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(2) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #0284c7;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="editor"].is-active) .vertical-tab-content > .setting-group:nth-child(3) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="editor"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(3) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.586 12.586 19 19'/%3E%3Cpath d='M3.648 3.648 11.5 21l2.78-6.72L21 11.5Z'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #0f766e;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="file"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="file"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(2) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #4f46e5;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="file"].is-active) .vertical-tab-content > .setting-group:nth-child(3) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="file"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(3) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #be123c;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(2) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='20' height='14' x='2' y='3' rx='2'/%3E%3Cpath d='M8 21h8M12 17v4M2 8h20'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #2563eb;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content > .setting-group:nth-child(3) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(3) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7V4h16v3M9 20h6M12 4v16'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #a16207;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content > .setting-group:nth-child(5) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="appearance"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(5) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 9-4 3 4 3M16 9l4 3-4 3M14 4l-4 16'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #7c3aed;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="keychain"].is-active) .vertical-tab-content > .setting-group:first-child {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="keychain"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:first-child {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='7.5' cy='15.5' r='5.5'/%3E%3Cpath d='m21 2-9.6 9.6M15 7l3 3M18 4l3 3'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #b45309;
 }
 
-body.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="community-plugins"].is-active) .vertical-tab-content > .setting-group:nth-child(2) {
+body .modal.mod-settings:has(.vertical-tab-nav-item[data-setting-id="community-plugins"].is-active) .vertical-tab-content-container .vertical-tab-content > .setting-group:nth-child(2) {
   --ogd-core-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.5 2H2v10.5h10.5ZM22 2h-6v6h6ZM22 11.5h-6V22h6ZM12.5 16H2v6h10.5Z'/%3E%3C/svg%3E");
   --ogd-core-section-ink: #0f766e;
 }
 
-body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-  [data-setting-id="about"],
-  [data-setting-id="editor"],
-  [data-setting-id="file"],
-  [data-setting-id="appearance"],
-  [data-setting-id="hotkeys"],
-  [data-setting-id="keychain"],
-  [data-setting-id="plugins"],
-  [data-setting-id="community-plugins"]
-)) .vertical-tab-content {
-  --ogd-core-settings-line: rgba(203, 213, 225, 0.18);
-  --ogd-core-settings-header: rgba(30, 41, 59, 0.72);
-  --ogd-core-settings-hover: rgba(30, 41, 59, 0.46);
+body.theme-dark .modal.mod-settings .vertical-tab-content-container .vertical-tab-content {
+  --ogd-core-settings-line: var(--os-line);
+  --ogd-core-settings-header: var(--os-control);
+  --ogd-core-settings-hover: var(--os-surface);
   --ogd-core-settings-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
-  --ogd-core-settings-surface: rgba(15, 23, 42, 0.66);
+  --ogd-core-settings-surface: var(--os-surface);
 }
 
 @media screen and (max-width: 700px) {
-  body .modal.mod-settings:has(.vertical-tab-nav-item.is-active:is(
-    [data-setting-id="about"],
-    [data-setting-id="editor"],
-    [data-setting-id="file"],
-    [data-setting-id="appearance"],
-    [data-setting-id="hotkeys"],
-    [data-setting-id="keychain"],
-    [data-setting-id="plugins"],
-    [data-setting-id="community-plugins"]
-  )) .vertical-tab-content {
+  body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content {
     padding: 12px 10px 28px;
   }
 }
 
 /* Owen UI Portal SettingsPanel: shared visual contract, native host controls. */
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) {
-  --os-surface: var(--background-primary, #fff);
-  --os-text: var(--text-normal, #202631);
-  --os-muted: var(--text-muted, #667080);
-  --os-line: var(--background-modifier-border, #e3e6eb);
-  --os-selection: var(--background-modifier-hover, #eef0f5);
+:is(.owen-settings-design, .modal.mod-settings) {
+  --os-surface: #fff;
+  --os-control: #fafbfc;
+  --os-text: #202631;
+  --os-muted: #667080;
+  --os-line: #e3e6eb;
+  --os-selection: #eef0f5;
+  --os-selected-bg: #566170;
+  --os-selected-text: #fff;
   --os-accent: #64748b;
   --os-tint: #f3f4f6;
   color: var(--os-text);
 }
-.theme-dark :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) { --os-tint: #24262b; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item {
+.theme-dark :is(.owen-settings-design, .modal.mod-settings) {
+  --os-surface: #1b1d23;
+  --os-control: #242830;
+  --os-text: #edf0f5;
+  --os-muted: #adb4c1;
+  --os-line: #363b45;
+  --os-selection: #333842;
+  --os-selected-bg: #c5ceda;
+  --os-selected-text: #171d27;
+  --os-tint: #24262b;
+}
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item {
   min-height: 68px;
   padding: 10px 18px;
   margin: 0;
@@ -1265,11 +1181,11 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   box-shadow: none;
   gap: 16px;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-info { min-width: 0; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-name { color: var(--os-text); font-size: 13px; font-weight: 650; line-height: 1.5; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-description { color: var(--os-muted); font-size: 12px; line-height: 1.5; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item-control { min-width: 0; max-width: 100%; gap: 8px; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading, .style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item-info { min-width: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item-name { color: var(--os-text); font-size: 13px; font-weight: 650; line-height: 1.5; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item-description { color: var(--os-muted); font-size: 12px; line-height: 1.5; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item-control { min-width: 0; max-width: 100%; gap: 8px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading, .style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
   --os-accent: #64748b;
   --os-tint: #f7f8fa;
   display: flex;
@@ -1283,21 +1199,21 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   background: linear-gradient(180deg, var(--os-tint), color-mix(in srgb, var(--os-tint), #fff 64%));
   box-shadow: none;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="sky"] { --os-accent: #007dba; --os-tint: #eef7fa; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="mint"] { --os-accent: #287563; --os-tint: #eef7f4; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="teal"] { --os-accent: #147975; --os-tint: #edf7f6; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="violet"] { --os-accent: #6856a4; --os-tint: #f4f2fb; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="amber"] { --os-accent: #95651f; --os-tint: #fbf6ec; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) [data-owen-tone="rose"] { --os-accent: #aa4568; --os-tint: #fbf1f4; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) [data-owen-tone][data-owen-tone="sky"] { --os-accent: #007dba; --os-tint: #eef7fa; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) [data-owen-tone][data-owen-tone="mint"] { --os-accent: #287563; --os-tint: #eef7f4; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) [data-owen-tone][data-owen-tone="teal"] { --os-accent: #147975; --os-tint: #edf7f6; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) [data-owen-tone][data-owen-tone="violet"] { --os-accent: #6856a4; --os-tint: #f4f2fb; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) [data-owen-tone][data-owen-tone="amber"] { --os-accent: #95651f; --os-tint: #fbf6ec; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) [data-owen-tone][data-owen-tone="rose"] { --os-accent: #aa4568; --os-tint: #fbf1f4; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
   --os-accent: var(--ogd-suite-section-ink, #64748b);
   --os-tint: var(--ogd-suite-settings-header, #f7f8fa);
 }
-.theme-dark :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading, .style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
+.theme-dark :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading, .style-settings-heading[data-id="owen-graphite-document"], .style-settings-heading[data-id^="ogd-settings-"]) {
   background: linear-gradient(180deg, color-mix(in srgb, var(--os-accent) 14%, #24262b), #24262b);
   color: var(--os-text);
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .style-settings-heading[data-id^="ogd-settings-"] {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .style-settings-heading[data-id^="ogd-settings-"] {
   min-height: 74px;
   margin: 18px 0 0;
   padding: 12px 18px;
@@ -1305,11 +1221,11 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   border-radius: 8px 8px 0 0;
   box-shadow: none;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .style-settings-heading[data-id^="ogd-settings-"].is-collapsed {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .style-settings-heading[data-id^="ogd-settings-"].is-collapsed {
   margin-bottom: 18px;
   border-radius: 8px;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .style-settings-heading[data-id^="ogd-settings-"] + .style-settings-container {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .style-settings-heading[data-id^="ogd-settings-"] + .style-settings-container {
   margin: 0 0 18px;
   padding: 0;
   border: 0 solid var(--os-line);
@@ -1317,13 +1233,13 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   border-radius: 0 0 8px 8px;
   background: var(--os-surface);
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .style-settings-heading[data-id^="ogd-settings-"] + .style-settings-container > .setting-item:last-child {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .style-settings-heading[data-id^="ogd-settings-"] + .style-settings-container > .setting-item:last-child {
   border-bottom: 0;
   border-radius: 0 0 7px 7px;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::before,
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::after { content: none; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph) {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::before,
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-settings-heading, .owen-mermaid-settings-section, .setting-item.setting-item-heading)::after { content: none; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph, .ogd-settings-section-glyph) {
   position: static;
   display: grid;
   width: 48px;
@@ -1336,27 +1252,27 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   box-shadow: 0 4px 10px rgb(15 23 42 / 0.05);
   color: var(--os-accent);
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph) svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.setting-item-heading .setting-item-name, .owen-mermaid-settings-section-title, .style-settings-heading .setting-item-name) { color: var(--os-text); font-size: 14.72px; font-weight: 750; line-height: 1.35; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.setting-item-heading .setting-item-description, .owen-mermaid-settings-section-description, .style-settings-heading .setting-item-description) { color: var(--os-muted); font-size: 11.2px; font-weight: 500; line-height: 1.4; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) { margin: 0 0 18px; padding: 0; gap: 0; border: 1px solid var(--os-line); border-radius: 8px; background: var(--os-surface); box-shadow: none; overflow: visible; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-heading { position: relative; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-heading .setting-item-info { margin: 0; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) :is(.owen-settings-heading, .owen-mermaid-settings-section) { margin: 0; border: 0; border-bottom: 1px solid var(--os-line); }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item:last-child { border-radius: 0 0 8px 8px; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(.owen-exporter-settings-group-header, .owen-exporter-settings-group-body) { padding: 0; margin: 0; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(input[type="text"], input[type="number"], select, textarea, button) {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-editor-settings-section-glyph, .owen-exporter-settings-section-glyph, .owen-mermaid-section-glyph, .ogd-settings-section-glyph) svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.setting-item-heading .setting-item-name, .owen-mermaid-settings-section-title, .style-settings-heading .setting-item-name) { color: var(--os-text); font-size: 14.72px; font-weight: 750; line-height: 1.35; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.setting-item-heading .setting-item-description, .owen-mermaid-settings-section-description, .style-settings-heading .setting-item-description) { color: var(--os-muted); font-size: 11.2px; font-weight: 500; line-height: 1.4; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) { margin: 0 0 18px; padding: 0; gap: 0; border: 1px solid var(--os-line); border-radius: 8px; background: var(--os-surface); box-shadow: none; overflow: visible; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-heading { position: relative; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-heading .setting-item-info { margin: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-exporter-settings-group, .owen-mermaid-settings-group) :is(.owen-settings-heading, .owen-mermaid-settings-section) { margin: 0; border: 0; border-bottom: 1px solid var(--os-line); }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item:last-child { border-radius: 0 0 8px 8px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(.owen-exporter-settings-group-header, .owen-exporter-settings-group-body) { padding: 0; margin: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(input[type="text"], input[type="number"], select, textarea, button) {
   min-height: 44px;
   border: 1px solid var(--os-line);
   border-radius: 6px;
   color: var(--os-text);
-  background: var(--os-surface);
+  background: var(--os-control);
   box-shadow: none;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(select, input[type="text"]) { width: min(238px, 100%); max-width: 100%; padding: 0 12px; font-size: 13px; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(button, select, input):focus-visible { outline: 2px solid transparent; border-color: var(--os-muted); background-color: var(--os-selection); }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) button:hover { background: var(--os-selection); }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) button.owen-settings-help {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(select, input[type="text"]) { width: min(238px, 100%); max-width: 100%; padding: 0 12px; font-size: 13px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(button, select, input):focus-visible { outline: 2px solid transparent; border-color: var(--os-muted); background-color: var(--os-selection); }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) button:hover { background: var(--os-selection); }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) button.owen-settings-help {
   appearance: none;
   display: inline-grid;
   flex: 0 0 44px;
@@ -1374,11 +1290,11 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   background: transparent;
   box-shadow: none;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) button.owen-settings-help:hover {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) button.owen-settings-help:hover {
   color: var(--os-text);
   background: color-mix(in srgb, var(--os-selection) 72%, transparent);
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) button.owen-settings-help:focus-visible {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) button.owen-settings-help:focus-visible {
   outline: 2px solid var(--os-accent);
   outline-offset: 1px;
   background: transparent;
@@ -1390,7 +1306,7 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   .owen-settings-design .owen-settings-help { anchor-name: --owen-settings-help; }
   .owen-settings-design .owen-settings-detail[popover] { position-anchor: --owen-settings-help; position-area: bottom span-right; position-try-fallbacks: flip-inline, flip-block; margin: 8px; }
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-popover[popover] {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-popover[popover] {
   position: fixed;
   inset: auto;
   max-width: calc(100vw - 16px);
@@ -1405,7 +1321,7 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   color: var(--os-text);
   box-shadow: 0 8px 24px rgb(15 23 42 / 0.14);
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-option {
   display: flex;
   min-height: 44px;
   align-items: center;
@@ -1419,22 +1335,22 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
   color: var(--os-text);
   cursor: pointer;
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) {
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) {
   border-color: var(--os-line);
   background: var(--os-selection);
 }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option.is-selected { font-weight: 650; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option.is-disabled { cursor: not-allowed; opacity: 0.48; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-check { display: inline-grid; width: 16px; height: 16px; flex: 0 0 16px; place-items: center; color: var(--os-accent); opacity: 0; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option.is-selected .owen-settings-dropdown-check { opacity: 1; }
-:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-check svg { width: 16px; height: 16px; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-option.is-selected { font-weight: 650; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-option.is-disabled { cursor: not-allowed; opacity: 0.48; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-check { display: inline-grid; width: 16px; height: 16px; flex: 0 0 16px; place-items: center; color: var(--os-accent); opacity: 0; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-option.is-selected .owen-settings-dropdown-check { opacity: 1; }
+:is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-check svg { width: 16px; height: 16px; }
 @media (max-width: 740px) {
-  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item { flex-wrap: wrap; gap: 6px; }
-  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .setting-item:not(:has(.checkbox-container)) .setting-item-control { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item { flex-wrap: wrap; gap: 6px; }
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .setting-item:not(:has(.checkbox-container)) .setting-item-control { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
 }
 @media (forced-colors: active) {
-  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) :is(button, select, input):focus-visible { outline: 2px solid Highlight; }
-  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content:has(.style-settings-heading[data-id="owen-graphite-document"])) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) { border-color: Highlight; background: Highlight; color: HighlightText; }
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) :is(button, select, input):focus-visible { outline: 2px solid Highlight; }
+  :is(.owen-settings-design, .modal.mod-settings .vertical-tab-content-container .vertical-tab-content) .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) { border-color: Highlight; background: Highlight; color: HighlightText; }
 }
 .owen-settings-dropdown-popover[data-owen-graphite-dropdown][popover] {
   position: fixed;
@@ -1476,4 +1392,319 @@ body.theme-dark.css-settings-manager .modal.mod-settings:has(.vertical-tab-nav-i
 .owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-check svg { width: 16px; height: 16px; }
 @media (forced-colors: active) {
   .owen-settings-dropdown-popover[data-owen-graphite-dropdown] .owen-settings-dropdown-option:is(.is-selected, .is-active, :hover) { border-color: Highlight; background: Highlight; color: HighlightText; }
+}
+
+/* The native settings window, including plugin pages, owns this shared shell. */
+body .modal.mod-settings .vertical-tab-content :has(> .setting-group-filter) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-group-filter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  color: var(--os-text);
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: normal;
+  word-break: keep-all;
+}
+body .owen-editor-frosted-scroll-overlay.mod-settings-sidebar .owen-frosted-scroll__rail {
+  right: 0;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-item.ogd-settings-generated-heading {
+  --ogd-core-section-ink: var(--os-accent);
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-item.ogd-settings-generated-heading::before,
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group > .setting-item.ogd-settings-generated-heading::after {
+  content: none;
+}
+body.theme-dark .modal.mod-settings .vertical-tab-content-container .vertical-tab-content > .setting-group {
+  --ogd-core-section-ink: #adb4c1;
+}
+body .modal.mod-settings {
+  --ogd-glass-control-bg: var(--os-control);
+  --ogd-glass-control-shadow: none;
+  --ogd-glass-shadow-hover: none;
+  --ogd-glass-bg-hover: var(--os-control);
+  --ogd-glass-border: var(--os-line);
+  --ogd-glass-border-hover: var(--os-line);
+  --ogd-glass-filter-control: none;
+  --ogd-workbench-surface: var(--os-control);
+  --ogd-workbench-border: var(--os-line);
+  --ogd-workbench-border-strong: var(--os-accent);
+  --ogd-workbench-control-shadow: none;
+  color: var(--os-text);
+  background: var(--os-surface);
+}
+body .modal.mod-settings .vertical-tab-header {
+  flex-basis: 224px;
+  padding: 24px 14px 12px;
+  border-inline-end: 1px solid var(--os-line);
+  background: var(--os-control);
+}
+body .modal.mod-settings .vertical-tab-content-container {
+  padding: 0;
+  background: var(--os-surface);
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control :is(input[type="text"], input[type="number"], input[type="search"], select, textarea, button) {
+  min-height: 44px;
+  border: 1px solid var(--os-line);
+  border-radius: 6px;
+  background: var(--os-control);
+  color: var(--os-text);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+body .modal.mod-settings .vertical-tab-header .search-input-container input[type="search"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px 0 36px;
+  border: 0;
+  background: transparent;
+  color: var(--os-text);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+body .modal.mod-settings .vertical-tab-header .setting-search-container .search-input-container.mod-raised:focus-within {
+  outline: 2px solid var(--os-accent);
+  outline-offset: 2px;
+}
+body .modal.mod-settings .vertical-tab-header-group-title {
+  color: var(--os-muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+body .modal.mod-settings .search-input-container {
+  border: 1px solid var(--os-line);
+  border-radius: 6px;
+  background: var(--os-control);
+  box-shadow: none;
+}
+body .modal.mod-settings .search-input-container input {
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--os-text);
+  padding-inline: 36px;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item:not(.setting-item-heading) > .setting-item-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item:not(.setting-item-heading) > .setting-item-control {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 55%;
+  gap: 8px;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control :is(button, input, select, textarea, .checkbox-container):focus-visible {
+  outline: 2px solid var(--os-accent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control :is(.mod-warning, .mod-destructive) {
+  color: var(--text-error);
+  border-color: color-mix(in srgb, var(--text-error), var(--os-line) 65%);
+}
+body .modal.mod-settings .vertical-tab-content .setting-item-control :is(button, input, select, textarea):disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 1 160px;
+  width: min(160px, 100%);
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--os-accent) calc(var(--slider-fill-ratio, 0) * 100%), var(--os-line) 0);
+  box-shadow: none;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  transform: none;
+  border: 2px solid var(--os-accent);
+  border-radius: 50%;
+  background: var(--os-surface);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.16);
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control .slider-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 3ch;
+  min-height: 44px;
+  color: var(--os-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  line-height: 20px;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control .extra-setting-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--os-muted);
+  box-shadow: none;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control .extra-setting-button[aria-disabled="true"] {
+  opacity: 0.4;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item-control .extra-setting-button:focus-visible {
+  outline: 2px solid var(--os-accent);
+  outline-offset: 2px;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content input[type="range"]::-moz-range-track {
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--os-line);
+  box-shadow: none;
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content input[type="range"]::-moz-range-progress {
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--os-accent);
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--os-accent);
+  border-radius: 50%;
+  background: var(--os-surface);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.16);
+}
+body .modal.mod-settings .vertical-tab-content .setting-item-control .checkbox-container {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+body .modal.mod-settings .vertical-tab-content .setting-item-control .checkbox-container::before {
+  position: absolute;
+  inset: 11px 2px;
+  width: 40px;
+  height: 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #cbd1d8;
+  box-shadow: inset 0 1px 3px rgb(15 23 42 / 0.14);
+  content: "";
+  opacity: 1;
+}
+body .modal.mod-settings .vertical-tab-content .setting-item-control .checkbox-container::after {
+  position: absolute;
+  inset: 13px auto auto 4px;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgb(15 23 42 / 0.24);
+  transform: none;
+}
+body .modal.mod-settings .vertical-tab-content .setting-item-control .checkbox-container.is-enabled::before {
+  background: #566170;
+}
+body .modal.mod-settings .vertical-tab-content .setting-item-control .checkbox-container.is-enabled::after {
+  transform: translateX(18px);
+}
+body .modal.mod-settings .vertical-tab-content:not(.owen-settings-design) > .setting-item {
+  border-inline: 1px solid var(--os-line);
+}
+body .modal.mod-settings .vertical-tab-content:not(.owen-settings-design) > .setting-item:first-child {
+  border-top: 1px solid var(--os-line);
+  border-radius: 8px 8px 0 0;
+}
+body .modal.mod-settings .vertical-tab-content:not(.owen-settings-design) > .setting-item:last-child,
+body .modal.mod-settings .vertical-tab-content:not(.owen-settings-design) > .setting-item:has(+ .setting-item-heading) {
+  border-bottom: 1px solid var(--os-line);
+  border-radius: 0 0 8px 8px;
+}
+body .modal.mod-settings .vertical-tab-content:has(> .modal-button-container):not(:has(.setting-group, .setting-item)) {
+  width: calc(100% - 60px);
+  margin: 24px auto;
+  border: 1px solid var(--os-line);
+  border-radius: 8px;
+  background: var(--os-surface);
+}
+@supports (corner-shape: squircle) {
+  body .modal.mod-settings :is(.setting-group, .setting-item, .style-settings-heading, .ogd-settings-section-glyph, button, select, textarea, input[type="text"], input[type="number"], .search-input-container, .vertical-tab-nav-item),
+  body .modal.mod-settings .setting-item-heading::before,
+  .owen-settings-dropdown-popover[data-owen-graphite-dropdown] {
+    corner-shape: squircle;
+  }
+}
+@media (max-width: 740px) {
+  body .modal.mod-settings .vertical-tab-header {
+    flex-basis: 184px;
+    padding: 12px 8px;
+  }
+  body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content .setting-item:not(:has(.checkbox-container)) > .setting-item-control {
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  body .modal.mod-settings .vertical-tab-content .setting-item:has(.checkbox-container) {
+    flex-wrap: nowrap;
+  }
+}
+@media (forced-colors: active) {
+  body .modal.mod-settings .setting-item-control .checkbox-container::before {
+    border: 1px solid ButtonText;
+    background: Canvas;
+  }
+  body .modal.mod-settings .setting-item-control .checkbox-container.is-enabled::before {
+    background: Highlight;
+  }
+  body .modal.mod-settings .setting-item-control .checkbox-container::after {
+    background: ButtonText;
+  }
+}
+body .modal.mod-settings .vertical-tab-content-container .vertical-tab-content :is(.setting-group-filter.is-active, button.mod-cta:not(.mod-warning):not(.mod-destructive), button[aria-pressed="true"], [role="tab"][aria-selected="true"]) {
+  background: var(--os-selected-bg);
+  color: var(--os-selected-text);
+  border-color: var(--os-selected-bg);
+  box-shadow: none;
 }

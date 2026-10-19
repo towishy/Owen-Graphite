@@ -233,3 +233,48 @@
   box-shadow: var(--ogd-shadow-none, none);
 }
 
+/* FrostedScrollArea material for native scrollbars when no overlay owns the viewport. */
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+  background: transparent;
+}
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-track {
+  border: 0;
+  background: linear-gradient(var(--ogd-scrollbar-rail), var(--ogd-scrollbar-rail)) center / 2px 100% no-repeat;
+}
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-track:horizontal {
+  background-size: 100% 2px;
+}
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-thumb {
+  min-width: 44px;
+  min-height: 44px;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(var(--ogd-scrollbar-thumb-rim) 0 1px, transparent 1px 3px) center / 3px 7px no-repeat padding-box,
+    linear-gradient(180deg, var(--ogd-scrollbar-thumb-start), var(--ogd-scrollbar-thumb-end)) padding-box;
+  box-shadow: inset 0 0 0 1px var(--ogd-scrollbar-thumb-rim);
+}
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-thumb:is(:hover, :active) {
+  border-width: 2px;
+  background-size: 5px 7px, auto;
+}
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@media (forced-colors: active) {
+  body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-track {
+    background: Canvas;
+  }
+  body:not(.is-mobile) :not(.owen-frosted-scroll__viewport)::-webkit-scrollbar-thumb {
+    background: CanvasText;
+    background-clip: padding-box;
+    box-shadow: none;
+  }
+}

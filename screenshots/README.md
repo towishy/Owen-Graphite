@@ -2,7 +2,7 @@
 
 Owen Graphite v3.1.99 마켓플레이스 등록용 스크린샷.
 
-Current package: Owen Graphite v3.1.104. The captures above remain from v3.1.99; this settings design update does not claim a new installed-app screenshot capture.
+Current package: Owen Graphite v3.1.105. Existing workspace captures remain from v3.1.99. The settings captures below were taken from an isolated Obsidian 1.14.4 vault with Graphite 3.1.105, Companion 1.3.2, and Owen Editor 0.6.39.
 
 | 파일 | 모드 | 용도 |
 | --- | --- | --- |
@@ -10,6 +10,9 @@ Current package: Owen Graphite v3.1.104. The captures above remain from v3.1.99;
 | `dark.png` | Dark | README 다크 모드 이미지 |
 | `fonts.png` | Settings | README 폰트 직접 입력 신기능 이미지 |
 | `thumbnail.png` | — | 커뮤니티 카탈로그 썸네일 |
+| `readme/settings-all-pages-light.png` | Settings / Light | Native preferences, SettingsPanel cards, and edge-aligned Frosted scrollbars |
+| `readme/settings-interface-dark.png` | Settings / Dark | Interface preferences and centered zoom slider |
+| `readme/settings-hotkeys-light.png` | Settings / Light | Search icon spacing and readable active filter text |
 | `readme/workspace-chrome-connected-glass.svg` | Workspace chrome | README 연결형 탭·하단 프레임·vault switcher 신기능 이미지 |
 | `readme/top-tabs-liquid-glass.svg` | Workspace chrome | README 상단 탭 liquid-glass 신기능 이미지 |
 | `readme/owen-knowledge-work-stack.svg` | — | Owen 지식 작업 스택 다이어그램 |
