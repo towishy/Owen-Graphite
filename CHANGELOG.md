@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.106
+
+- polish: standardize the Owen Graphite and Companion developer names to Owen; bump the Companion manifest to 1.3.3 so the updated metadata is discoverable.
+
 ## v3.1.105
 
 - fix: apply the approved SettingsPanel design to every Obsidian preferences page, core-plugin page, and community-plugin settings page without requiring Style Settings.
