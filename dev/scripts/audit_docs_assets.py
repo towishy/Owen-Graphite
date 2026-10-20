@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import ast
+import hashlib
+import json
 import re
 import sys
 from pathlib import Path
@@ -29,6 +31,34 @@ def iter_markdown_files() -> list[Path]:
             if path.is_file() and path not in files:
                 files.append(path)
     return sorted(files)
+
+
+def managed_design_documents(root: Path = ROOT) -> set[Path]:
+    """Verify externally owned snapshots without auditing their upstream links."""
+    manifest = root / "docs" / "wiki-design" / ".sync-state.json"
+    if not manifest.exists():
+        return set()
+    state = json.loads(manifest.read_text(encoding="utf-8"))
+    if state.get("schemaVersion") != 1 or state.get("owner") != "wiki-project-design-guides":
+        raise AssertionError("unrecognized shared design sync manifest")
+    files = state.get("files")
+    if not isinstance(files, dict) or not files:
+        raise AssertionError("shared design sync manifest has no managed files")
+    managed: set[Path] = set()
+    mirror = (root / "docs" / "wiki-design").resolve()
+    for relative, expected_hash in files.items():
+        path = (root / relative).resolve()
+        if not path.is_relative_to(mirror) and relative not in {
+            "UI-FOUNDATION-DESIGN-GUIDE.md",
+            ".github/instructions/wiki-design.instructions.md",
+        }:
+            raise AssertionError(f"unexpected shared design managed path: {relative}")
+        actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual_hash != expected_hash:
+            raise AssertionError(f"shared design snapshot differs from its sync manifest: {relative}")
+        if path.is_relative_to(mirror):
+            managed.add(path)
+    return managed
 
 
 def clean_target(raw: str) -> str:
@@ -131,7 +161,10 @@ def audit_readme_images_are_release_assets() -> None:
 def main() -> int:
     try:
         missing: list[str] = []
+        managed = managed_design_documents()
         for source in iter_markdown_files():
+            if source.resolve() in managed:
+                continue
             text = source.read_text(encoding="utf-8")
             for match in LINK_RE.finditer(text):
                 target_path = resolve_target(source, match.group(1))
@@ -150,7 +183,7 @@ def main() -> int:
 
         audit_readme_images_are_release_assets()
 
-        print(f"OK: docs/assets local links resolved ({len(iter_markdown_files())} markdown files)")
+        print(f"OK: product docs/assets links resolved; {len(managed)} shared design snapshots verified by SHA-256")
         return 0
     except Exception as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
